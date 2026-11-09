@@ -1,3 +1,5 @@
+> Historical 24-TU baseline: the current source owner has since moved to EnemyGameStateView::StartSpell in src/PlayerHudStartSpell.cpp. The current five-TU focused report is player-hud-start-spell-20261109/README.md.
+
 # EnemyBeginSpell current-source baseline and ANM start ABI
 
 This is a focused 24-TU incremental candidate, not an exact proof.

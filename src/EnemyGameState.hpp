@@ -48,6 +48,7 @@ struct EnemyGameStateView
     int UpdateSpellPanel();
     int DrawPanelVms();
     void InvalidateSpellBonus();
+    void __stdcall StartSpell(int index, const char *name, int duration);
 };
 typedef char EnemySpellEmbeddedVmsAt10[
     (offsetof(EnemyGameStateView, stageVms) == 0x10) ? 1 : -1];
@@ -74,6 +75,37 @@ typedef char EnemyGameStateTasksAndSize[
      offsetof(EnemyGameStateView, drawTask) == 0x0c &&
      offsetof(EnemyGameStateView, auxiliaryDrawTask) == 0x37ac &&
      sizeof(EnemyGameStateView) == 0x37b0) ? 1 : -1];
+
+// Target global 0x00474C40. These are the exact state words used by spell
+// start, bonus calculation and ECL difficulty/rank dispatch.
+struct EnemyChapterStateView
+{
+    unsigned char unknown000[0x0c];
+    int spellBonusBase;
+    unsigned char unknown010[0x18];
+    int statisticsGroupA;
+    int statisticsGroupB;
+    unsigned char unknown030[0x0c];
+    int stage;
+    unsigned char unknown040[4];
+    int chapter;
+    int unknown048;
+    int chapterTimer;
+    unsigned char unknown050[8];
+    int rank;
+};
+typedef char EnemySpellStatisticsStateOffsets[
+    (offsetof(EnemyChapterStateView, spellBonusBase) == 0x0c &&
+     offsetof(EnemyChapterStateView, statisticsGroupA) == 0x28 &&
+     offsetof(EnemyChapterStateView, statisticsGroupB) == 0x2c) ? 1 : -1];
+typedef char EnemyStageAndChapterOffsets[
+    (offsetof(EnemyChapterStateView, stage) == 0x3c &&
+     offsetof(EnemyChapterStateView, chapter) == 0x44 &&
+     offsetof(EnemyChapterStateView, chapterTimer) == 0x4c) ? 1 : -1];
+typedef char EnemyRankOffsetIs58[
+    (offsetof(EnemyChapterStateView, rank) == 0x58) ? 1 : -1];
+extern EnemyChapterStateView g_EnemyChapterState;
+
 
 extern EnemyGameStateView *g_EnemyGameState;
 EnemyGameStateView *CreateEnemyGameState();

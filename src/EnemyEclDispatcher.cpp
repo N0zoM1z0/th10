@@ -565,7 +565,7 @@ __declspec(noinline) unsigned int EnemyCancelManagerView::CancelBulletPattern(
     }
     return 0;
 }
-extern void __stdcall EnemyBeginSpell(EnemyGameStateView *state, int spellId, char *name, int value);
+
 
 
 extern void EnemyEndSpell(EnemyGameStateView *gameState);
@@ -676,34 +676,6 @@ static __declspec(noinline) void EnemyInitializeScalarInterpolation(
     timer.subframe = 0.0f;
     timer.previous = -1;
 }
-struct EnemyChapterStateView
-{
-    unsigned char unknown000[0x0c];
-    int spellBonusBase;
-    unsigned char unknown010[0x18];
-    int statisticsGroupA;
-    int statisticsGroupB;
-    unsigned char unknown030[0x0c];
-    int stage;
-    unsigned char unknown040[4];
-    int chapter;
-    int unknown048;
-    int chapterTimer;
-    unsigned char unknown050[8];
-    int rank;
-};
-typedef char EnemySpellStatisticsStateOffsets[
-    (offsetof(EnemyChapterStateView, spellBonusBase) == 0x0c &&
-     offsetof(EnemyChapterStateView, statisticsGroupA) == 0x28 &&
-     offsetof(EnemyChapterStateView, statisticsGroupB) == 0x2c) ? 1 : -1];
-typedef char EnemyStageAndChapterOffsets[
-    (offsetof(EnemyChapterStateView, stage) == 0x3c &&
-     offsetof(EnemyChapterStateView, chapter) == 0x44 &&
-     offsetof(EnemyChapterStateView, chapterTimer) == 0x4c) ? 1 : -1];
-
-typedef char EnemyRankOffsetIs58[(offsetof(EnemyChapterStateView, rank) == 0x58) ? 1 : -1];
-extern EnemyChapterStateView g_EnemyChapterState;
-
 static __declspec(noinline) void EnemySetChapter(
     EnemyChapterStateView *state, int chapter)
 {
@@ -875,224 +847,6 @@ void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)
 }
 
 extern __declspec(noinline) float __stdcall EnemyWrapAngle(float angle);
-
-// The original spell-start owner loads the pointer at 0x00477838 and checks
-// dword +0x10 against one before touching either statistics history. Its
-// remaining fields and the precise meaning of stateCode10 are unresolved.
-struct EnemySpellPlaybackGateView
-{
-    unsigned char unknown000[0x10];
-    int stateCode10;
-};
-typedef char EnemySpellPlaybackStateAt10[
-    (offsetof(EnemySpellPlaybackGateView, stateCode10) == 0x10) ? 1 : -1];
-
-// Target pointer slots: playback at 477838 and statistics at 47783C.
-// Statistics indices and bonus input use receiver-relative slots in the
-// partial view at 474C40 above; original data/class owners remain unknown.
-extern unsigned char *g_EnemySpellPlaybackState;
-extern unsigned char *g_EnemySpellStatistics;
-
-// Complete maintained body for target 0x00409280, including every stage arm.
-// The target call at 0x00410F3A passes (state, spellId, name, value): it pushes
-// value/name/spellId/state right-to-left. The callee reads name at entry ESP+0x0C,
-// state at +0x04, and spellId at +0x08 before storing spellId at state+0x3788.
-// Original source class and filename remain unknown. The target folds this
-// allocation/setup/list-insertion sequence into EnemyBeginSpell, so keep the
-// helper force-inlined instead of emitting a separate call for each stage arm.
-static __forceinline void CreateSpellStageAnimation(AnmLoadedView *resource, int script);
-
-void __stdcall EnemyBeginSpell(
-    EnemyGameStateView *state, int spellId, char *name, int value)
-{
-    state->spellTimer.SetCurrent(0);
-    state->spellId = spellId;
-    strcpy(state->spellName, name);
-    state->flags378C = (state->flags378C & ~0x18u) | 3u;
-
-    if (reinterpret_cast<const EnemySpellPlaybackGateView *>(
-            g_EnemySpellPlaybackState)->stateCode10 != 1) {
-        GameStatisticsOwner *statistics =
-            reinterpret_cast<GameStatisticsOwner *>(g_EnemySpellStatistics);
-        GameStatisticsSpellHistoryEntryView *record = statistics->records[
-            g_EnemyChapterState.statisticsGroupA * 3 +
-            g_EnemyChapterState.statisticsGroupB].SpellHistoryAt(spellId);
-        strcpy(record->name, name);
-        record = statistics->records[
-            g_EnemyChapterState.statisticsGroupA * 3 +
-            g_EnemyChapterState.statisticsGroupB].SpellHistoryAt(spellId);
-        int count = record->attempts;
-        if (count < 99999) {
-            record->attempts = count + 1;
-        }
-        record = statistics->records[6].SpellHistoryAt(spellId);
-        strcpy(record->name, name);
-        if (record->attempts < 99999) {
-            ++record->attempts;
-        }
-    }
-
-    for (int i = 0; i < 8; ++i) {
-        g_GuiView->frontAnm->InitializeAndExecuteScriptIndex(
-            &state->frontVms[i], i + 0x3a);
-    }
-    for (int i = 0; i < 5; ++i) {
-        g_GuiView->frontAnm->InitializeAndExecuteScriptIndex(
-            &state->secondaryFrontVms[i], i + 0x42);
-    }
-
-    state->panelVmIds[0] = g_AsciiManagerView->asciiAnm->CreateVmVariant0(1, 15);
-    state->panelVmIds[1] = g_AsciiManagerView->textAnm->CreateVmVariant0(0x48, 15);
-    state->panelVmIds[2] = g_AsciiManagerView->asciiAnm->CreateVmVariant0(2, 15);
-    AnmVmView *nameVm = g_AnmRenderManagerView->FindVm(state->panelVmIds[1]);
-    if (nameVm == 0) {
-        state->panelVmIds[1].value = 0;
-    }
-    g_AnmRenderManagerView->DrawTextRight(nameVm, 0x00ffffffu, name);
-    reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
-        QueueSoundSample(14, 0);
-    state->managedVmId = g_EnemyPrimaryResourceOwner->primaryEnemyResource->
-        CreateVmVariant0(0x1a1, 15).value;
-    // Full enemy +0x1068 is runtime +0x2C: the world-motion position.
-    // Read the three float words through their established owner.
-    state->effectPosition = *reinterpret_cast<const AnmFloat3View *>(
-        &g_EnemyManager->specialEnemySlots[0]->runtime.worldMotion.position);
-    g_AnmRenderManagerView->SetVmWorldPosition(
-        AnmVmIdView(state->managedVmId), &state->effectPosition);
-
-    AnmVmView *vm = g_AnmRenderManagerView->FindVm(
-        AnmVmIdView(state->managedVmId));
-    if (vm == 0) {
-        state->managedVmId = 0;
-    }
-    AnmVmLayerNodeView *node = &vm->layerNode;
-    while (node != 0) {
-        AnmVmView *candidate = static_cast<AnmVmView *>(node->owner);
-        if (candidate->scriptIndex == 0x19f)
-            break;
-        node = node->next;
-    }
-    AnmVmView *child = node != 0 ?
-        static_cast<AnmVmView *>(node->owner) : 0;
-    child->intVar2 = value;
-
-    vm = g_AnmRenderManagerView->FindVm(AnmVmIdView(state->managedVmId));
-    if (vm == 0) {
-        state->managedVmId = 0;
-    }
-    node = &vm->layerNode;
-    while (node != 0) {
-        AnmVmView *candidate = static_cast<AnmVmView *>(node->owner);
-        if (candidate->scriptIndex == 0x1a0)
-            break;
-        node = node->next;
-    }
-    child = node != 0 ? static_cast<AnmVmView *>(node->owner) : 0;
-    child->intVar2 = value;
-    state->spellDuration = value;
-    const unsigned int bonusBits =
-        (static_cast<unsigned int>(g_EnemyChapterState.stage) * 3u + 10u) *
-        static_cast<unsigned int>(g_EnemyChapterState.spellBonusBase) * 10u;
-    const int bonus = static_cast<int>(bonusBits);
-    state->currentSpellBonus = bonus;
-    state->initialSpellBonus = bonus;
-    if (bonus >= 100000000) {
-        state->initialSpellBonus = 99999999;
-    }
-    g_EnemyPrimaryResourceOwner->primaryEnemyResource->
-        CreateVmVariant0(0x1ab, 15);
-
-    AnmLoadedView *stageResource;
-    switch (g_EnemyChapterState.stage) {
-    case 1:
-        stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        AnmVmStartScript(&state->stageVms[0], stageResource, 0x0c);
-        stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        AnmVmStartScript(&state->stageVms[1], stageResource, 0x0b);
-        if (spellId >= 2) {
-            stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-            CreateSpellStageAnimation(stageResource, 0x0e);
-        }
-        else {
-            stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-            CreateSpellStageAnimation(stageResource, 0x0f);
-        }
-        break;
-    case 2:
-        stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        AnmVmStartScript(&state->stageVms[0], stageResource, 0x0e);
-        stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        AnmVmStartScript(&state->stageVms[1], stageResource, 0x0f);
-        stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        CreateSpellStageAnimation(stageResource, 0x11);
-        break;
-    case 3:
-        stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        AnmVmStartScript(&state->stageVms[0], stageResource, 0x12);
-        stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        AnmVmStartScript(&state->stageVms[1], stageResource, 0x13);
-        stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        CreateSpellStageAnimation(stageResource, 0x15);
-        break;
-    case 4:
-        stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        AnmVmStartScript(&state->stageVms[0], stageResource, 0x13);
-        stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        AnmVmStartScript(&state->stageVms[1], stageResource, 0x14);
-        stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        CreateSpellStageAnimation(stageResource, 0x16);
-        break;
-    case 5:
-        stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        AnmVmStartScript(&state->stageVms[0], stageResource, 0x0c);
-        stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        AnmVmStartScript(&state->stageVms[1], stageResource, 0x0d);
-        stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        CreateSpellStageAnimation(stageResource, 0x0f);
-        break;
-    case 6:
-        stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        AnmVmStartScript(&state->stageVms[0], stageResource, 0x21);
-        stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        AnmVmStartScript(&state->stageVms[1], stageResource, 0x22);
-        stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        CreateSpellStageAnimation(stageResource, 0x24);
-        break;
-    case 7:
-        if (g_EnemyChapterState.chapter < 24) {
-            stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-            AnmVmStartScript(&state->stageVms[0], stageResource, 0x26);
-            stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-            CreateSpellStageAnimation(stageResource, 0x28);
-        }
-        else {
-            stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-            AnmVmStartScript(&state->stageVms[0], stageResource, 0x1b);
-            stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-            AnmVmStartScript(&state->stageVms[1], stageResource, 0x1c);
-            stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-            CreateSpellStageAnimation(stageResource, 0x1e);
-        }
-        break;
-    default:
-        return;
-    }
-}
-
-static __forceinline void CreateSpellStageAnimation(AnmLoadedView *resource, int script)
-{
-    AnmVmView *stageVm = g_AnmRenderManagerView->AllocateVm();
-    stageVm->renderLayer = 15;
-    stageVm->flags35C |= 0x40000000u;
-    resource->InitializeVm(stageVm, script);
-#if defined(_MSC_VER)
-#pragma inline_depth(0)
-#endif
-    g_AnmRenderManagerView->AddVmVariant0(stageVm);
-#if defined(_MSC_VER)
-#pragma inline_depth(16)
-#endif
-}
 
 struct EnemyDropVectorView
 {
@@ -2743,7 +2497,7 @@ dispatch_select_bullet_count_low:
     }
     ENEMY_READ_INT_DIRECT(2);
     uVar22 = ENEMY_READ_INT_DIRECT(1);
-    EnemyBeginSpell(g_EnemyGameState, iVar26, reinterpret_cast<char *>(local_90.bytes), (int)uVar22);
+    g_EnemyGameState->StartSpell(iVar26, reinterpret_cast<const char *>(local_90.bytes), (int)uVar22);
     return 0;
   }
   case ENEMY_ECL_END_SPELL:
