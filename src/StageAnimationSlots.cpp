@@ -32,8 +32,8 @@ void __stdcall GamePrepareAnimationSlots(GameChainOwnerView *owner)
             &stage->objects[objectIndex]->firstPrimitive;
         while (primitive->type >= 0)
         {
-            stage->objectVms[vmIndex].InitializeForLoadedScript(
-                stage->anm, primitive->unknown004);
+            AnmVmStartScript(
+                &stage->objectVms[vmIndex], stage->anm, primitive->unknown004);
             primitive->vmIndex = static_cast<short>(vmIndex);
             ++vmIndex;
             primitive = reinterpret_cast<StageObjectPrimitiveView *>(

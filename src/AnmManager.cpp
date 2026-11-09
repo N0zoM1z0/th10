@@ -2926,17 +2926,17 @@ void AnmLoadedView::SetAndExecuteScriptIndex(
 // Target 0x00404F30 prepares a reusable embedded VM for one loaded script.
 // The private LTCG ABI keeps the VM in ESI and the script index in EAX while
 // the AnmLoadedView pointer remains the sole stack argument.
-void AnmVmView::InitializeForLoadedScript(
-    AnmLoadedView *loaded, int newScriptIndex)
+__declspec(noinline) void __stdcall AnmVmStartScript(
+    AnmVmView *vm, AnmLoadedView *loaded, int newScriptIndex)
 {
-    Initialize();
-    positionOffset = AnmFloat3View(0.0f, 0.0f, 0.0f);
-    position = AnmFloat3View(0.0f, 0.0f, 0.0f);
-    alternatePosition = AnmFloat3View(0.0f, 0.0f, 0.0f);
-    glyphWidth = 0x10;
-    glyphHeight = 0x10;
-    scriptIndex = static_cast<short>(newScriptIndex);
-    loaded->InitializeAndExecuteScriptIndex(this, newScriptIndex);
+    vm->Initialize();
+    vm->positionOffset = AnmFloat3View(0.0f, 0.0f, 0.0f);
+    vm->position = AnmFloat3View(0.0f, 0.0f, 0.0f);
+    vm->alternatePosition = AnmFloat3View(0.0f, 0.0f, 0.0f);
+    vm->glyphHeight = 0x10;
+    vm->glyphWidth = 0x10;
+    vm->scriptIndex = static_cast<short>(newScriptIndex);
+    loaded->InitializeAndExecuteScriptIndex(vm, newScriptIndex);
 }
 
 // Target 0x0043E710 is the allocating-spawn counterpart of the binder above.
@@ -4099,45 +4099,6 @@ AnmVmView::~AnmVmView()
     if (generatedVertices != NULL)
         free(generatedVertices);
     generatedVertices = NULL;
-}
-
-// Target 0x00401DE0-0x00401EF0 preserves renderLayer (+0x20) and
-// positionOffset (+0x340..+0x348) while resetting the reusable VM.
-// In the real /GL caller graph the compiler carries this in EDX.
-void AnmVmView::Initialize()
-{
-    AnmVmView *vm = this;
-    AnmFloat3View savedPosition = vm->positionOffset;
-    unsigned int savedLayer = vm->renderLayer;
-
-    memset(vm, 0, sizeof(AnmVmView));
-
-    vm->renderLayer = savedLayer;
-    vm->positionOffset = savedPosition;
-
-    vm->primaryColor.value = 0xffffffff;
-    vm->scaleX = 1.0f;
-    vm->scaleY = 1.0f;
-    vm->matrix23C.SetIdentity();
-    vm->flagsLow16 = 7;
-    vm->scriptTimer.Initialize();
-
-    vm->positionInterpolation.duration = 0;
-    vm->primaryColorInterpolation.duration = 0;
-    vm->primaryAlphaInterpolation.duration = 0;
-    vm->rotationInterpolation.duration = 0;
-    vm->scaleInterpolation.duration = 0;
-    vm->secondaryColorInterpolation.duration = 0;
-    vm->secondaryAlphaInterpolation.duration = 0;
-
-    AnmVmLayerNodeView *managerNode = &vm->managerNode;
-    managerNode->owner = vm;
-    managerNode->next = NULL;
-    managerNode->previous = NULL;
-    AnmVmLayerNodeView *layerNode = &vm->layerNode;
-    layerNode->owner = vm;
-    layerNode->next = NULL;
-    layerNode->previous = NULL;
 }
 
 // Target 0x00401000-0x004010FA receives this through a private ESI register.

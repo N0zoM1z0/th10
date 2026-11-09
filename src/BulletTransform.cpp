@@ -138,7 +138,8 @@ nextRecord:
             int scriptIndex = static_cast<int>(
                 static_cast<unsigned int>(*reinterpret_cast<const int *>(scriptBaseAddress)) +
                 static_cast<unsigned int>(record->payload.int1));
-            vm.InitializeForLoadedScript(
+            AnmVmStartScript(
+                &vm,
                 reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->bulletAnm,
                 scriptIndex);
         }

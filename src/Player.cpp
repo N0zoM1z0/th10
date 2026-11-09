@@ -991,7 +991,8 @@ int PlayerInitialize(Player *player)
 
     // Target 0x4248B1 calls the real VM initializer at 0x404F30 with
     // Player+0x14, resource at +0x10, and script index zero.
-    reinterpret_cast<AnmVmView *>(&player->drawVm)->InitializeForLoadedScript(
+    AnmVmStartScript(
+        reinterpret_cast<AnmVmView *>(&player->drawVm),
         reinterpret_cast<AnmLoadedView *>(player->resource), 0);
 
     PlayerOptionDataView *data = player->optionData;

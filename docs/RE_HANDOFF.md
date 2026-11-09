@@ -61,6 +61,23 @@ scripts/repo-python scripts/ci.py
 nonexact backlog 155. See generated [PROGRESS.md](PROGRESS.md), not the
 figures in historic experiment descriptions below.
 
+## 2026-11-09 ANM VM initializer and large-owner checkpoint
+
+AnmVmInitialize @ 0x00401DE0 is now a confirmed authored exact leaf. Its
+implementation was moved to src/AnmVmInitialize.cpp and declared as
+__fastcall AnmVmInitialize(void *unused, AnmVmView *vm), with the VM in EDX.
+Two independent targeted cold builds of anm-vm-initialize-private each
+produce **273/273 raw-equal bytes**, zero link fields and zero differences.
+See [the exact replay evidence](evidence/anm-vm-initialize-fastcall-20261109/README.md).
+
+The neighboring AnmVmStartScript @ 0x00404F30 is still nonexact: the current
+24-TU candidate is 200/202 bytes and only 23/192 ordinary bytes match. The
+current EnemyBeginSpell @ 0x00409280 candidate retains its full 2,432-byte
+owner and matches 1,352/2,000 ordinary bytes with 108 candidate relocation
+fields. Neither result receives exact credit; continue attacking the large
+boss and the private start-helper register allocation rather than stopping at
+the initializer leaf. See [the current boss/ABI baseline](evidence/enemy-begin-spell-anm-start-abi-20261109/README.md).
+
 ## 2026-11-09 ANM VM registration and GameUI transition checkpoint
 
 `AnmRenderManagerView::AddVmVariant0 @0x004489D0` returns

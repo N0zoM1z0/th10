@@ -165,7 +165,8 @@ int __stdcall StageExecuteScript(StageScriptView *stage)
             break;
         case 14:
             if (integers[1] >= 0)
-                stage->scriptVms[integers[0]].InitializeForLoadedScript(stage->anm, integers[1]);
+                AnmVmStartScript(
+                    &stage->scriptVms[integers[0]], stage->anm, integers[1]);
             else
             {
                 AnmVmView *vm = &stage->scriptVms[integers[0]];

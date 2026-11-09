@@ -630,6 +630,11 @@ struct AnmSpriteView;
 struct AnmVmView;
 struct AnmLoadedView;
 struct AnmTextureEntryView;
+// Retail 0x401DE0 is an Entity_Init-style fastcall; VM is in EDX.
+__declspec(noinline) void __fastcall AnmVmInitialize(void *unused, AnmVmView *vm);
+__declspec(noinline) void __stdcall AnmVmStartScript(
+    AnmVmView *vm, AnmLoadedView *loaded, int scriptIndex);
+
 
 struct AnmVmLayerNodeView
 {
@@ -654,7 +659,7 @@ struct AnmVmView
 {
     AnmVmView();
     ~AnmVmView();
-    void Initialize();
+    void Initialize() { AnmVmInitialize(0, this); }
     int InitializePulsingRadialTrail();
     float GetFloatVar(float variable);
     int GetIntVar(int variable);
@@ -682,8 +687,6 @@ struct AnmVmView
     void StartPrimaryAlphaInterpolation(
         int duration, unsigned char mode,
         unsigned char initial, unsigned char final);
-    void InitializeForLoadedScript(
-        AnmLoadedView *loaded, int scriptIndex);
 
     int id;
     AnmVmLayerNodeView managerNode;

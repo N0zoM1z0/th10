@@ -1006,9 +1006,9 @@ void __stdcall EnemyBeginSpell(
     switch (g_EnemyChapterState.stage) {
     case 1:
         stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        state->stageVms[0].InitializeForLoadedScript(stageResource, 0x0c);
+        AnmVmStartScript(&state->stageVms[0], stageResource, 0x0c);
         stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        state->stageVms[1].InitializeForLoadedScript(stageResource, 0x0b);
+        AnmVmStartScript(&state->stageVms[1], stageResource, 0x0b);
         if (spellId >= 2) {
             stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
             CreateSpellStageAnimation(stageResource, 0x0e);
@@ -1020,56 +1020,56 @@ void __stdcall EnemyBeginSpell(
         break;
     case 2:
         stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        state->stageVms[0].InitializeForLoadedScript(stageResource, 0x0e);
+        AnmVmStartScript(&state->stageVms[0], stageResource, 0x0e);
         stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        state->stageVms[1].InitializeForLoadedScript(stageResource, 0x0f);
+        AnmVmStartScript(&state->stageVms[1], stageResource, 0x0f);
         stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
         CreateSpellStageAnimation(stageResource, 0x11);
         break;
     case 3:
         stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        state->stageVms[0].InitializeForLoadedScript(stageResource, 0x12);
+        AnmVmStartScript(&state->stageVms[0], stageResource, 0x12);
         stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        state->stageVms[1].InitializeForLoadedScript(stageResource, 0x13);
+        AnmVmStartScript(&state->stageVms[1], stageResource, 0x13);
         stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
         CreateSpellStageAnimation(stageResource, 0x15);
         break;
     case 4:
         stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        state->stageVms[0].InitializeForLoadedScript(stageResource, 0x13);
+        AnmVmStartScript(&state->stageVms[0], stageResource, 0x13);
         stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        state->stageVms[1].InitializeForLoadedScript(stageResource, 0x14);
+        AnmVmStartScript(&state->stageVms[1], stageResource, 0x14);
         stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
         CreateSpellStageAnimation(stageResource, 0x16);
         break;
     case 5:
         stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        state->stageVms[0].InitializeForLoadedScript(stageResource, 0x0c);
+        AnmVmStartScript(&state->stageVms[0], stageResource, 0x0c);
         stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        state->stageVms[1].InitializeForLoadedScript(stageResource, 0x0d);
+        AnmVmStartScript(&state->stageVms[1], stageResource, 0x0d);
         stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
         CreateSpellStageAnimation(stageResource, 0x0f);
         break;
     case 6:
         stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        state->stageVms[0].InitializeForLoadedScript(stageResource, 0x21);
+        AnmVmStartScript(&state->stageVms[0], stageResource, 0x21);
         stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-        state->stageVms[1].InitializeForLoadedScript(stageResource, 0x22);
+        AnmVmStartScript(&state->stageVms[1], stageResource, 0x22);
         stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
         CreateSpellStageAnimation(stageResource, 0x24);
         break;
     case 7:
         if (g_EnemyChapterState.chapter < 24) {
             stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-            state->stageVms[0].InitializeForLoadedScript(stageResource, 0x26);
+            AnmVmStartScript(&state->stageVms[0], stageResource, 0x26);
             stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
             CreateSpellStageAnimation(stageResource, 0x28);
         }
         else {
             stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-            state->stageVms[0].InitializeForLoadedScript(stageResource, 0x1b);
+            AnmVmStartScript(&state->stageVms[0], stageResource, 0x1b);
             stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
-            state->stageVms[1].InitializeForLoadedScript(stageResource, 0x1c);
+            AnmVmStartScript(&state->stageVms[1], stageResource, 0x1c);
             stageResource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
             CreateSpellStageAnimation(stageResource, 0x1e);
         }

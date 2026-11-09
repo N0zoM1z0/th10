@@ -30,7 +30,8 @@ int EnemyLaserType1View::Initialize(const EnemyLaserType1RequestView *initial)
     request = *initial;
     state = 3;
     AnmVmView *vm = &primaryVm;
-    vm->InitializeForLoadedScript(
+    AnmVmStartScript(
+        vm,
         reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->effectResource,
         request.color + g_BulletSpriteScriptBase[request.type]);
     primaryVm.pendingInterrupt = 2;
@@ -39,7 +40,8 @@ int EnemyLaserType1View::Initialize(const EnemyLaserType1RequestView *initial)
         vm->flags35C = (vm->flags35C & ~0x20u) | 0x10u;
     primaryVm.flags35C = (primaryVm.flags35C & 0xfc63ffffu) | 0x00600000u;
     vm = &secondaryVm;
-    vm->InitializeForLoadedScript(
+    AnmVmStartScript(
+        vm,
         reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->effectResource,
         request.color + 0x103);
     secondaryVm.pendingInterrupt = 2;
