@@ -1366,11 +1366,14 @@ jump_instruction:
 
             case ECL_VM_LENGTH_SQUARED:
             {
-                // Preserve the first operand stack home through the second read.
-                // This qualifier is a codegen hypothesis, not original source proof.
+                // Retail calls ResolveFloat(0) after the two source reads,
+                // but before either square is evaluated. A direct assignment
+                // expression leaves that side-effect ordering implicit.
+                // The original x87 sequence multiplies y first, then x.
                 const volatile float x = ReadFloat(1);
                 const float y = ReadFloat(2);
-                *ResolveFloat(0) = x * x + y * y;
+                float *const output = ResolveFloat(0);
+                *output = y * y + x * x;
                 break;
             }
 
