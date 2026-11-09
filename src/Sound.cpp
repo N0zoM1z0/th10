@@ -352,8 +352,8 @@ typedef char SoundNativeRiffWireOffsets[
 
 // Target 0x0043D250. The serialized chunk length is used literally: no RIFF
 // padding adjustment or malformed-input bounds repair is present in the game.
-unsigned char *__stdcall FindWaveChunk(unsigned char *data, unsigned int remaining,
-                             const char *tag, unsigned int *chunkSize)
+unsigned char *__stdcall FindWaveChunk(unsigned char *data, unsigned int *chunkSize,
+                             unsigned int remaining, const char *tag)
 {
     while (remaining > 0)
     {
@@ -433,12 +433,12 @@ int SoundPlayerView::LoadSoundSample(int index, const char *path)
     const unsigned int scanRemaining = remaining;
     unsigned int chunkSize;
     WAVEFORMATEX format;
-    unsigned char *formatData = FindWaveChunk(data, scanRemaining, "fmt ", &chunkSize);
+    unsigned char *formatData = FindWaveChunk(data, &chunkSize, scanRemaining, "fmt ");
     unsigned char *samples = NULL;
     if (formatData != NULL)
     {
         format = *reinterpret_cast<WAVEFORMATEX *>(formatData);
-        samples = FindWaveChunk(data, scanRemaining, "data", &chunkSize);
+        samples = FindWaveChunk(data, &chunkSize, scanRemaining, "data");
     }
     if (samples == NULL)
     {
