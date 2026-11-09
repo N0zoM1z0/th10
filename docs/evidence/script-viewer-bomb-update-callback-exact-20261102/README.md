@@ -70,3 +70,21 @@ nice -n 10 scripts/repo-python scripts/replay-exact-units.py \
 scripts/repo-python scripts/ci.py
 git diff --check
 ```
+
+## 2026-11-09 typed VM scale word
+
+In the 223-byte target Update owner, the instruction after
+SetVmPosition reads the complete 32-bit word at VM +0x40 into the Bomb
+owner's +0x3C slot. The reviewed AnmVmView layout identifies that source
+as scaleY (float at +0x40). The maintained code now uses
+memcpy(&unknown03C, &vm->scaleY, sizeof(unknown03C)) with a compile-time
+offset assertion. It preserves the floating-point *bits*, rather than
+converting float to int or aliasing unrelated C++ pointer types.
+
+A fresh selected four-TU VC7.1 LTCG build retains the complete 220-byte
+Update candidate (target 223, still NONEXACT), its 12 candidate address
+fields, and the independently target-bound 10/10 Update callback. The
+other three exact owners compiled from the changed ScriptViewerBombCreate
+source pass their scoped replays: RegisterTasks 84/84, Create 85/85,
+and destructor 137/137 (306/306 total). No unrelated owners were replayed
+and no new exact credit is claimed.

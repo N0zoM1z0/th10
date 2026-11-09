@@ -40,6 +40,8 @@ int ScriptViewerBombOwnerView::RegisterTasks()
 // are external source-bound functions; never substitute a fabricated ABI.
 #include "EnemyGameState.hpp"
 extern int g_GameStatisticsIndex0;
+typedef char ScriptViewerBombVmScaleYAt40[
+    (offsetof(AnmVmView, scaleY) == 0x40) ? 1 : -1];
 
 // Target 0x405750: stateful per-frame Bomb owner update. The input is the
 // 0x48-byte controller, whose active VM belongs to the ANM render manager.
@@ -75,8 +77,9 @@ int ScriptViewerBombOwnerView::Update()
         screenPosition.z = position30.z;
         manager->SetVmPosition(AnmVmIdView(static_cast<int>(vmId2C)),
             &screenPosition);
-        unknown03C = *reinterpret_cast<unsigned int *>(
-            reinterpret_cast<unsigned char *>(vm) + 0x40);
+        // VM +0x40 is scaleY: retain its exact IEEE-754 word rather than
+        // converting the floating-point value to an integer.
+        memcpy(&unknown03C, &vm->scaleY, sizeof(unknown03C));
         EmitAuxiliary();
     }
 #if defined(_MSC_VER)
