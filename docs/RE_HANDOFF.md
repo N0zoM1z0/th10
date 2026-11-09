@@ -61,22 +61,33 @@ scripts/repo-python scripts/ci.py
 nonexact backlog 155. See generated [PROGRESS.md](PROGRESS.md), not the
 figures in historic experiment descriptions below.
 
-## 2026-11-09 ANM VM initializer and large-owner checkpoint
+## 2026-11-09 ANM loader and spell-HUD owners (current source)
 
-AnmVmInitialize @ 0x00401DE0 is now a confirmed authored exact leaf. Its
-implementation was moved to src/AnmVmInitialize.cpp and declared as
-__fastcall AnmVmInitialize(void *unused, AnmVmView *vm), with the VM in EDX.
-Two independent targeted cold builds of anm-vm-initialize-private each
-produce **273/273 raw-equal bytes**, zero link fields and zero differences.
-See [the exact replay evidence](evidence/anm-vm-initialize-fastcall-20261109/README.md).
+`AnmVmInitialize @0x00401DE0` is restored as a global fastcall entry with
+the VM in EDX and reproduces **273/273 raw-equal bytes**. The complete
+natural C++ `LoadScript_0043e710` is also **203/203 exact** in its
+selected two-TU LTCG graph, with all four original fields bound. Eight
+selected VM creation entries remain exact, four 95-byte screen variants
+and four 118-byte world variants. These exact source-graph checks are
+recorded in [ANM loader evidence](evidence/anm-loaded-start-script-wave11-20261109/README.md).
 
-The neighboring AnmVmStartScript @ 0x00404F30 is still nonexact: the current
-24-TU candidate is 200/202 bytes and only 23/192 ordinary bytes match. The
-current EnemyBeginSpell @ 0x00409280 candidate retains its full 2,432-byte
-owner and matches 1,352/2,000 ordinary bytes with 108 candidate relocation
-fields. Neither result receives exact credit; continue attacking the large
-boss and the private start-helper register allocation rather than stopping at
-the initializer leaf. See [the current boss/ABI baseline](evidence/enemy-begin-spell-anm-start-abi-20261109/README.md).
+The private ESI/EAX/stack script-starter at `0x00404F30` has a 202-byte
+candidate, with 194/194 ordinary bytes equal under two *candidate-only*
+relocation fields. It is still not canonically accepted. In the larger
+seven-TU compiler graph, the otherwise exact loader expands to 216 bytes;
+the selected two-TU exactness does not automatically transfer to this graph.
+
+`EnemyGameStateView::StartSpell @0x00409280` is the current maintained
+large HUD owner. The complete seven-stage C++ logic now uses native
+typed-argument digit loops and stage-script adapter calls, replacing old
+hand-written EBP-relative instructions that used an incorrect assumption
+about `this`. The current seven-TU candidate is **2252 vs 2432 target
+bytes**, with **323/1920** ordinary bytes equal at offsets after masking
+83 candidate-only fields: **NONEXACT**. See the
+[focused current-source work](evidence/player-hud-start-spell-20261109/README.md)
+and its retained diagnostic recipe in
+`.analysis/gpt-web/20261109/relink-playerhud-restored-natural-loader.py`.
+Older five-/24-TU scores below describe historical source contexts only.
 
 ## 2026-11-09 ANM VM registration and GameUI transition checkpoint
 

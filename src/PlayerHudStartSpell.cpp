@@ -140,36 +140,14 @@ void __stdcall EnemyGameStateView::StartSpell(
         CountSpellAttempt(record);
     }
 
-    __asm
-    {
-        mov edi, [ebp+8]
-        add edi, 778h
-        xor esi, esi
-    loadFrontSpellDigits:
-        mov ecx, g_GuiView
-        mov ecx, [ecx+9ec8h]
-        lea ebx, [esi+3ah]
-        mov eax, edi
-        call LoadScript_0043e710
-        inc esi
-        add edi, 3ach
-        cmp esi, 8
-        jl loadFrontSpellDigits
+    // The retained raw-register experiment treated EBP as the HUD receiver,
+    // but the observed VC7.1 candidate gives EBP to the stack frame.
+    // Use the real typed VM pointers and source-level resource API instead.
+    for (int digit = 0; digit < 8; ++digit)
+        StartAnmLoadedScript(g_GuiView->frontAnm, &frontVms[digit], digit + 58);
 
-        mov edi, [ebp+8]
-        add edi, 24d8h
-        xor esi, esi
-    loadSecondarySpellDigits:
-        mov ecx, g_GuiView
-        mov ecx, [ecx+9ec8h]
-        lea ebx, [esi+42h]
-        mov eax, edi
-        call LoadScript_0043e710
-        inc esi
-        add edi, 3ach
-        cmp esi, 5
-        jl loadSecondarySpellDigits
-    }
+    for (int digit = 0; digit < 5; ++digit)
+        StartAnmLoadedScript(g_GuiView->frontAnm, &secondaryFrontVms[digit], digit + 66);
 
     panelVmIds[0] = CreatePanelAnimation(g_AsciiManagerView->asciiAnm, 1);
     panelVmIds[1] = CreatePanelAnimation(g_AsciiManagerView->textAnm, 72);
@@ -207,24 +185,12 @@ void __stdcall EnemyGameStateView::StartSpell(
     switch (g_GameScoreState.selectedStage)
     {
     case 1:
-        __asm
-        {
-            mov edx, g_EnemyManager
-            mov eax, [edx+38h]
-            push eax
-            lea esi, [edi+10h]
-            mov eax, 0ch
-            call EntityStartScript_00404f30
-        }
-        __asm
-        {
-            mov edx, g_EnemyManager
-            mov eax, [edx+38h]
-            push eax
-            lea esi, [edi+3bch]
-            mov eax, 0bh
-            call EntityStartScript_00404f30
-        }
+        StartEntityScript_00404f30(
+            &stageVms[0], 12,
+            g_EnemyManager->typedEffectResources.stageAnimationAnm);
+        StartEntityScript_00404f30(
+            &stageVms[1], 11,
+            g_EnemyManager->typedEffectResources.stageAnimationAnm);
         if (spellIndex >= 2)
             CreatePanelAnimation(
                 g_EnemyManager->typedEffectResources.stageAnimationAnm, 14);
@@ -233,150 +199,72 @@ void __stdcall EnemyGameStateView::StartSpell(
                 g_EnemyManager->typedEffectResources.stageAnimationAnm, 15);
         break;
     case 2:
-        __asm
-        {
-            mov edx, g_EnemyManager
-            mov eax, [edx+38h]
-            push eax
-            lea esi, [edi+10h]
-            mov eax, 0eh
-            call EntityStartScript_00404f30
-        }
-        __asm
-        {
-            mov edx, g_EnemyManager
-            mov eax, [edx+38h]
-            push eax
-            lea esi, [edi+3bch]
-            mov eax, 0fh
-            call EntityStartScript_00404f30
-        }
+        StartEntityScript_00404f30(
+            &stageVms[0], 14,
+            g_EnemyManager->typedEffectResources.stageAnimationAnm);
+        StartEntityScript_00404f30(
+            &stageVms[1], 15,
+            g_EnemyManager->typedEffectResources.stageAnimationAnm);
         CreatePanelAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 17);
         break;
     case 3:
-        __asm
-        {
-            mov edx, g_EnemyManager
-            mov eax, [edx+38h]
-            push eax
-            lea esi, [edi+10h]
-            mov eax, 12h
-            call EntityStartScript_00404f30
-        }
-        __asm
-        {
-            mov edx, g_EnemyManager
-            mov eax, [edx+38h]
-            push eax
-            lea esi, [edi+3bch]
-            mov eax, 13h
-            call EntityStartScript_00404f30
-        }
+        StartEntityScript_00404f30(
+            &stageVms[0], 18,
+            g_EnemyManager->typedEffectResources.stageAnimationAnm);
+        StartEntityScript_00404f30(
+            &stageVms[1], 19,
+            g_EnemyManager->typedEffectResources.stageAnimationAnm);
         CreatePanelAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 21);
         break;
     case 4:
-        __asm
-        {
-            mov edx, g_EnemyManager
-            mov eax, [edx+38h]
-            push eax
-            lea esi, [edi+10h]
-            mov eax, 13h
-            call EntityStartScript_00404f30
-        }
-        __asm
-        {
-            mov edx, g_EnemyManager
-            mov eax, [edx+38h]
-            push eax
-            lea esi, [edi+3bch]
-            mov eax, 14h
-            call EntityStartScript_00404f30
-        }
+        StartEntityScript_00404f30(
+            &stageVms[0], 19,
+            g_EnemyManager->typedEffectResources.stageAnimationAnm);
+        StartEntityScript_00404f30(
+            &stageVms[1], 20,
+            g_EnemyManager->typedEffectResources.stageAnimationAnm);
         CreatePanelAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 22);
         break;
     case 5:
-        __asm
-        {
-            mov edx, g_EnemyManager
-            mov eax, [edx+38h]
-            push eax
-            lea esi, [edi+10h]
-            mov eax, 0ch
-            call EntityStartScript_00404f30
-        }
-        __asm
-        {
-            mov edx, g_EnemyManager
-            mov eax, [edx+38h]
-            push eax
-            lea esi, [edi+3bch]
-            mov eax, 0dh
-            call EntityStartScript_00404f30
-        }
+        StartEntityScript_00404f30(
+            &stageVms[0], 12,
+            g_EnemyManager->typedEffectResources.stageAnimationAnm);
+        StartEntityScript_00404f30(
+            &stageVms[1], 13,
+            g_EnemyManager->typedEffectResources.stageAnimationAnm);
         CreatePanelAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 15);
         break;
     case 6:
-        __asm
-        {
-            mov edx, g_EnemyManager
-            mov eax, [edx+38h]
-            push eax
-            lea esi, [edi+10h]
-            mov eax, 21h
-            call EntityStartScript_00404f30
-        }
-        __asm
-        {
-            mov edx, g_EnemyManager
-            mov eax, [edx+38h]
-            push eax
-            lea esi, [edi+3bch]
-            mov eax, 22h
-            call EntityStartScript_00404f30
-        }
+        StartEntityScript_00404f30(
+            &stageVms[0], 33,
+            g_EnemyManager->typedEffectResources.stageAnimationAnm);
+        StartEntityScript_00404f30(
+            &stageVms[1], 34,
+            g_EnemyManager->typedEffectResources.stageAnimationAnm);
         CreatePanelAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 36);
         break;
     case 7:
         if (g_EnemyChapterState.chapter < 24)
         {
-            __asm
-            {
-                mov edx, g_EnemyManager
-                mov eax, [edx+38h]
-                push eax
-                lea esi, [edi+10h]
-                mov eax, 26h
-                call EntityStartScript_00404f30
-            }
+            StartEntityScript_00404f30(
+                &stageVms[0], 38,
+                g_EnemyManager->typedEffectResources.stageAnimationAnm);
             CreatePanelAnimation(
                 g_EnemyManager->typedEffectResources.stageAnimationAnm, 40);
         }
         else
         {
-            __asm
-            {
-                mov edx, g_EnemyManager
-                mov eax, [edx+38h]
-                push eax
-                lea esi, [edi+10h]
-                mov eax, 1bh
-                call EntityStartScript_00404f30
-            }
-            __asm
-            {
-                mov edx, g_EnemyManager
-                mov eax, [edx+38h]
-                push eax
-                lea esi, [edi+3bch]
-                mov eax, 1ch
-                call EntityStartScript_00404f30
-            }
+            StartEntityScript_00404f30(
+                &stageVms[0], 27,
+                g_EnemyManager->typedEffectResources.stageAnimationAnm);
+            StartEntityScript_00404f30(
+                &stageVms[1], 28,
+                g_EnemyManager->typedEffectResources.stageAnimationAnm);
             CreatePanelAnimation(
                 g_EnemyManager->typedEffectResources.stageAnimationAnm, 30);
         }
