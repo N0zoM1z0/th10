@@ -31283,7 +31283,7 @@ linkages = [
 [units.anm-loaded-start-script-wave11]
 artifact_kind = "linked-pe"
 source = "src/AnmLoadedStartScript.cpp"
-support_sources = [".analysis/gpt-web/20261109/AnmLoadedStartScriptContext.cpp"]
+support_sources = ["docs/evidence/anm-loaded-start-script-wave11-20261109/compiler-context.cpp"]
 output_dir = "build/match-linked/AnmLoadedStartScriptWave11"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]

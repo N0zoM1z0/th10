@@ -21,9 +21,7 @@ typedef char AnimationResource_0043E710_ScriptsAt11C[
 typedef char AnimationResource_0043E710_LoadingAt124[
     (offsetof(AnimationResource_0043E710, loading) == 0x124) ? 1 : -1];
 
-extern "C" void __cdecl LoadScript_0043e710(void);
-
-__declspec(noinline) void __stdcall LoadScriptAdapter_0043e710(
+extern "C" __declspec(noinline) void __stdcall LoadScript_0043e710(
     AnimationResource_0043E710 *resource,
     AnimationObject_0043E710 *object,
     int index);
@@ -31,7 +29,7 @@ __declspec(noinline) void __stdcall LoadScriptAdapter_0043e710(
 inline void StartAnmLoadedScript(
     AnmLoadedView *resource, AnmVmView *object, int index)
 {
-    LoadScriptAdapter_0043e710(
+    LoadScript_0043e710(
         reinterpret_cast<AnimationResource_0043E710 *>(resource),
         reinterpret_cast<AnimationObject_0043E710 *>(object),
         index);

@@ -37,10 +37,10 @@ comparison binds every field to the independently observed target address.
   in EDI), script index in EBX and zero in EBP. The source uses ordinary C++
   fields and accessors; there is no inline assembly.
 
-The synthetic context in
-.analysis/gpt-web/20261109/AnmLoadedStartScriptContext.cpp exists only to
-retain a compiler context for the isolated canonical proof. It is not runtime
-game code.
+The synthetic compiler context is retained as
+compiler-context.cpp in this evidence directory, so the selected exact
+unit does not depend on an ignored scratch source file. It is a proof-only
+caller, not game runtime code.
 
 ## Initializer restoration
 
@@ -76,3 +76,15 @@ index. No full cold replay was run.
 
 The remaining seven creator receipts use the same shared linked artifact and
 their corresponding unit names.
+
+## Later seven-TU compiler-context limit
+
+On the restored source, the original two-TU exact unit still owns and matches
+all 203 bytes, with four independently bound fields. Eight selected VM creator
+owners also remain exact: four 95-byte screen variants and four 118-byte world
+variants. However, a larger seven-TU spell-HUD diagnostic compiles this
+same natural loader as **216 bytes instead of 203**. The seven-TU result is
+nonexact, and the private caller ABI is not established by the two-TU proof.
+A previous 8-byte jump shim did not solve this and has been removed from
+production source. Continue investigating LTCG ownership and source-level
+parameter lowering without replacing the complete natural function.
