@@ -54,8 +54,10 @@ EclVmStackView::EclVmStackView()
 int EclVmStackView::Push(
     unsigned char type, int size, const void *value)
 {
-    if (static_cast<int>(static_cast<unsigned int>(stackTop) +
-        static_cast<unsigned int>(size)) >= 0x1000)
+    const unsigned int nextStackTopBits =
+        static_cast<unsigned int>(stackTop) + static_cast<unsigned int>(size);
+    const int nextStackTop = *reinterpret_cast<const int *>(&nextStackTopBits);
+    if (nextStackTop >= 0x1000)
         return -1;
 
     // The native stack type slot and value write are addressed as Win32
