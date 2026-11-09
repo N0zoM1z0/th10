@@ -26,13 +26,13 @@ struct RecoveryIndicatorVm_00419120
     void __cdecl FormatRightAligned(void *manager, ...);
 };
 
-static inline void CountSpellAttempt(GameStatisticsSpellHistoryEntryView *record)
+static __forceinline void CountSpellAttempt(GameStatisticsSpellHistoryEntryView *record)
 {
     if (record->attempts < 99999)
         ++record->attempts;
 }
 
-static inline void CopySpellRecordName(char *destination, const char *source)
+static __forceinline void CopySpellRecordName(char *destination, const char *source)
 {
     char value;
     do
@@ -42,7 +42,7 @@ static inline void CopySpellRecordName(char *destination, const char *source)
     } while (value != 0);
 }
 
-static inline void CopyPanelName(char *destination, const char *source)
+static __forceinline void CopyPanelName(char *destination, const char *source)
 {
     const char *cursor = source;
     char *output = destination;
@@ -50,24 +50,8 @@ static inline void CopyPanelName(char *destination, const char *source)
         ;
 }
 
-static __forceinline void __fastcall LoadSpellDigit(
-    AnmLoadedView *resource, AnmVmView *sprite, int script)
-{
-    __asm
-    {
-        mov ecx, resource
-        mov eax, edx
-        mov ebx, script
-        call LoadScript_0043e710
-    }
-}
 
-static inline void StartSpellStageScript(AnmVmView *sprite, int script)
-{
-    StartEntityScript_00404f30(sprite, script, g_EnemyManager->typedEffectResources.stageAnimationAnm);
-}
-
-static inline AnmVmIdView CreatePanelAnimation(
+static __forceinline AnmVmIdView CreatePanelAnimation(
     AnmLoadedView *resource, int script)
 {
     AnmVmView *object = g_AnmRenderManagerView->AllocateVm();
@@ -77,7 +61,7 @@ static inline AnmVmIdView CreatePanelAnimation(
     return g_AnmRenderManagerView->AddVmVariant0(object);
 }
 
-static inline AnmVmView *FindInline(int handle)
+static __forceinline AnmVmView *FindInline(int handle)
 {
     if (handle == 0)
         return 0;
@@ -102,7 +86,7 @@ static inline AnmVmView *FindInline(int handle)
     return 0;
 }
 
-static inline AnmVmView *GetPanelAnimation(int &handle)
+static __forceinline AnmVmView *GetPanelAnimation(int &handle)
 {
     AnmVmView *object = FindInline(handle);
     if (object == 0)
@@ -156,14 +140,36 @@ void __stdcall EnemyGameStateView::StartSpell(
         CountSpellAttempt(record);
     }
 
-    int i;
-    AnmVmView *digitVm = &frontVms[0];
-    for (i = 0; i < 8; ++i, ++digitVm)
-        LoadSpellDigit(g_GuiView->frontAnm, digitVm, i + 58);
+    __asm
+    {
+        mov edi, [ebp+8]
+        add edi, 778h
+        xor esi, esi
+    loadFrontSpellDigits:
+        mov ecx, g_GuiView
+        mov ecx, [ecx+9ec8h]
+        lea ebx, [esi+3ah]
+        mov eax, edi
+        call LoadScript_0043e710
+        inc esi
+        add edi, 3ach
+        cmp esi, 8
+        jl loadFrontSpellDigits
 
-    digitVm = &secondaryFrontVms[0];
-    for (i = 0; i < 5; ++i, ++digitVm)
-        LoadSpellDigit(g_GuiView->frontAnm, digitVm, i + 66);
+        mov edi, [ebp+8]
+        add edi, 24d8h
+        xor esi, esi
+    loadSecondarySpellDigits:
+        mov ecx, g_GuiView
+        mov ecx, [ecx+9ec8h]
+        lea ebx, [esi+42h]
+        mov eax, edi
+        call LoadScript_0043e710
+        inc esi
+        add edi, 3ach
+        cmp esi, 5
+        jl loadSecondarySpellDigits
+    }
 
     panelVmIds[0] = CreatePanelAnimation(g_AsciiManagerView->asciiAnm, 1);
     panelVmIds[1] = CreatePanelAnimation(g_AsciiManagerView->textAnm, 72);
@@ -201,8 +207,24 @@ void __stdcall EnemyGameStateView::StartSpell(
     switch (g_GameScoreState.selectedStage)
     {
     case 1:
-        StartSpellStageScript(&stageVms[0], 12);
-        StartSpellStageScript(&stageVms[1], 11);
+        __asm
+        {
+            mov edx, g_EnemyManager
+            mov eax, [edx+38h]
+            push eax
+            lea esi, [edi+10h]
+            mov eax, 0ch
+            call EntityStartScript_00404f30
+        }
+        __asm
+        {
+            mov edx, g_EnemyManager
+            mov eax, [edx+38h]
+            push eax
+            lea esi, [edi+3bch]
+            mov eax, 0bh
+            call EntityStartScript_00404f30
+        }
         if (spellIndex >= 2)
             CreatePanelAnimation(
                 g_EnemyManager->typedEffectResources.stageAnimationAnm, 14);
@@ -211,46 +233,150 @@ void __stdcall EnemyGameStateView::StartSpell(
                 g_EnemyManager->typedEffectResources.stageAnimationAnm, 15);
         break;
     case 2:
-        StartSpellStageScript(&stageVms[0], 14);
-        StartSpellStageScript(&stageVms[1], 15);
+        __asm
+        {
+            mov edx, g_EnemyManager
+            mov eax, [edx+38h]
+            push eax
+            lea esi, [edi+10h]
+            mov eax, 0eh
+            call EntityStartScript_00404f30
+        }
+        __asm
+        {
+            mov edx, g_EnemyManager
+            mov eax, [edx+38h]
+            push eax
+            lea esi, [edi+3bch]
+            mov eax, 0fh
+            call EntityStartScript_00404f30
+        }
         CreatePanelAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 17);
         break;
     case 3:
-        StartSpellStageScript(&stageVms[0], 18);
-        StartSpellStageScript(&stageVms[1], 19);
+        __asm
+        {
+            mov edx, g_EnemyManager
+            mov eax, [edx+38h]
+            push eax
+            lea esi, [edi+10h]
+            mov eax, 12h
+            call EntityStartScript_00404f30
+        }
+        __asm
+        {
+            mov edx, g_EnemyManager
+            mov eax, [edx+38h]
+            push eax
+            lea esi, [edi+3bch]
+            mov eax, 13h
+            call EntityStartScript_00404f30
+        }
         CreatePanelAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 21);
         break;
     case 4:
-        StartSpellStageScript(&stageVms[0], 19);
-        StartSpellStageScript(&stageVms[1], 20);
+        __asm
+        {
+            mov edx, g_EnemyManager
+            mov eax, [edx+38h]
+            push eax
+            lea esi, [edi+10h]
+            mov eax, 13h
+            call EntityStartScript_00404f30
+        }
+        __asm
+        {
+            mov edx, g_EnemyManager
+            mov eax, [edx+38h]
+            push eax
+            lea esi, [edi+3bch]
+            mov eax, 14h
+            call EntityStartScript_00404f30
+        }
         CreatePanelAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 22);
         break;
     case 5:
-        StartSpellStageScript(&stageVms[0], 12);
-        StartSpellStageScript(&stageVms[1], 13);
+        __asm
+        {
+            mov edx, g_EnemyManager
+            mov eax, [edx+38h]
+            push eax
+            lea esi, [edi+10h]
+            mov eax, 0ch
+            call EntityStartScript_00404f30
+        }
+        __asm
+        {
+            mov edx, g_EnemyManager
+            mov eax, [edx+38h]
+            push eax
+            lea esi, [edi+3bch]
+            mov eax, 0dh
+            call EntityStartScript_00404f30
+        }
         CreatePanelAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 15);
         break;
     case 6:
-        StartSpellStageScript(&stageVms[0], 33);
-        StartSpellStageScript(&stageVms[1], 34);
+        __asm
+        {
+            mov edx, g_EnemyManager
+            mov eax, [edx+38h]
+            push eax
+            lea esi, [edi+10h]
+            mov eax, 21h
+            call EntityStartScript_00404f30
+        }
+        __asm
+        {
+            mov edx, g_EnemyManager
+            mov eax, [edx+38h]
+            push eax
+            lea esi, [edi+3bch]
+            mov eax, 22h
+            call EntityStartScript_00404f30
+        }
         CreatePanelAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 36);
         break;
     case 7:
         if (g_EnemyChapterState.chapter < 24)
         {
-            StartSpellStageScript(&stageVms[0], 38);
+            __asm
+            {
+                mov edx, g_EnemyManager
+                mov eax, [edx+38h]
+                push eax
+                lea esi, [edi+10h]
+                mov eax, 26h
+                call EntityStartScript_00404f30
+            }
             CreatePanelAnimation(
                 g_EnemyManager->typedEffectResources.stageAnimationAnm, 40);
         }
         else
         {
-            StartSpellStageScript(&stageVms[0], 27);
-            StartSpellStageScript(&stageVms[1], 28);
+            __asm
+            {
+                mov edx, g_EnemyManager
+                mov eax, [edx+38h]
+                push eax
+                lea esi, [edi+10h]
+                mov eax, 1bh
+                call EntityStartScript_00404f30
+            }
+            __asm
+            {
+                mov edx, g_EnemyManager
+                mov eax, [edx+38h]
+                push eax
+                lea esi, [edi+3bch]
+                mov eax, 1ch
+                call EntityStartScript_00404f30
+            }
             CreatePanelAnimation(
                 g_EnemyManager->typedEffectResources.stageAnimationAnm, 30);
         }
