@@ -565,7 +565,7 @@ __declspec(noinline) unsigned int EnemyCancelManagerView::CancelBulletPattern(
     }
     return 0;
 }
-extern void __stdcall EnemyBeginSpell(EnemyGameStateView *state, int spellId, char *name, int value);
+extern void __stdcall EnemyBeginSpell(EnemyGameStateView *state, register int spellId, register char *name, int value);
 
 
 extern void EnemyEndSpell(EnemyGameStateView *gameState);
@@ -902,7 +902,8 @@ extern unsigned char *g_EnemySpellStatistics;
 // helper force-inlined instead of emitting a separate call for each stage arm.
 static __forceinline void CreateSpellStageAnimation(AnmLoadedView *resource, int script);
 
-void __stdcall EnemyBeginSpell(EnemyGameStateView *state, int spellId, char *name, int value)
+void __stdcall EnemyBeginSpell(
+    EnemyGameStateView *state, int spellId, char *name, int value)
 {
     state->spellTimer.SetCurrent(0);
     state->spellId = spellId;
@@ -1084,8 +1085,6 @@ static __forceinline void CreateSpellStageAnimation(AnmLoadedView *resource, int
     stageVm->renderLayer = 15;
     stageVm->flags35C |= 0x40000000u;
     resource->InitializeVm(stageVm, script);
-    // Target keeps this final insertion out of line after the initial creations.
-    // This scoped compiler policy does not establish original TU/settings.
 #if defined(_MSC_VER)
 #pragma inline_depth(0)
 #endif
@@ -2711,18 +2710,18 @@ dispatch_select_bullet_count_low:
     const EnemyEclSpellInlineOperandsView &spellOperands =
         instruction->spellOperands;
     const unsigned char *encryptedName = spellOperands.encryptedName;
-    const int spellNameLength = spellOperands.encryptedNameLength;
+    const int nameLength = spellOperands.encryptedNameLength;
     iVar17 = 0;
     bVar3 = 0x77;
     local_29d = '\a';
-    if (0 < spellNameLength) {
+    if (0 < nameLength) {
       do {
         *EnemyNativeWordIndex(&local_90.bytes[0], iVar17) =
             *EnemyNativeWordIndex(encryptedName, iVar17) ^ bVar3;
         bVar3 = bVar3 + local_29d;
         local_29d = local_29d + '\x10';
         iVar17 = iVar17 + 1;
-      } while (iVar17 < spellNameLength);
+      } while (iVar17 < nameLength);
     }
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;

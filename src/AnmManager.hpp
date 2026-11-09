@@ -947,7 +947,7 @@ struct AnmLoadedView
     void LoadSprite(int spriteIndex, AnmSpriteView *sprite);
     void Release();
     int SetSprite(AnmVmView *vm, int spriteIndex);
-    void InitializeVm(AnmVmView *vm, int scriptIndex);
+    __declspec(noinline) void InitializeVm(AnmVmView *vm, int scriptIndex);
     void InitializeAndExecuteScriptIndex(AnmVmView *vm, int scriptIndex);
     void SetAndExecuteScriptIndex(AnmVmView *vm, int scriptIndex);
     void SetAndExecuteScriptIdx(AnmVmView *vm, int scriptIndex);

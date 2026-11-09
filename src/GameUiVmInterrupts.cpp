@@ -6,6 +6,78 @@
 extern AnmVmIdView g_GameUiTransitionVmIds[3];
 extern int g_GameUiTransitionResetIndicator;
 
+
+// The two transition owners each allocate the same three root VMs. The
+// original owner type names remain unknown; +0x3C8 is the ANM resource used
+// by both constructors and +0x6FC gates the one-time setup.
+// Target 0x00420F30: create the three transition VMs for the first owner.
+void __stdcall GameUiTransitionInitialize(GameUiVmTransitionView *owner)
+{
+    if (owner->transitionState != 0)
+        return;
+    AnmLoadedView *resource = owner->transitionAnm;
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    AnmVmView *vm = manager->AllocateVm();
+    vm->flags35C |= 0x40000000u;
+    vm->renderLayer = 15;
+    resource->InitializeVm(vm, 0);
+    manager = g_AnmRenderManagerView;
+    g_GameUiTransitionVmIds[0] = manager->AddVmVariant0(vm);
+
+    resource = owner->transitionAnm;
+    manager = g_AnmRenderManagerView;
+    vm = manager->AllocateVm();
+    vm->flags35C |= 0x40000000u;
+    vm->renderLayer = 15;
+    resource->InitializeVm(vm, 1);
+    manager = g_AnmRenderManagerView;
+    g_GameUiTransitionVmIds[1] = manager->AddVmVariant0(vm);
+
+    resource = owner->transitionAnm;
+    manager = g_AnmRenderManagerView;
+    vm = manager->AllocateVm();
+    vm->flags35C |= 0x40000000u;
+    vm->renderLayer = 15;
+    resource->InitializeVm(vm, 2);
+    manager = g_AnmRenderManagerView;
+    g_GameUiTransitionVmIds[2] = manager->AddVmVariant0(vm);
+    owner->transitionState = 1;
+}
+
+// Target 0x00421180: second owner uses the same three-script transition set.
+void __stdcall GameUiTransitionInitializeSecondary(GameUiVmTransitionView *owner)
+{
+    if (owner->transitionState != 0)
+        return;
+    AnmLoadedView *resource = owner->transitionAnm;
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    AnmVmView *vm = manager->AllocateVm();
+    vm->flags35C |= 0x40000000u;
+    vm->renderLayer = 15;
+    resource->InitializeVm(vm, 0);
+    manager = g_AnmRenderManagerView;
+    g_GameUiTransitionVmIds[0] = manager->AddVmVariant0(vm);
+
+    resource = owner->transitionAnm;
+    manager = g_AnmRenderManagerView;
+    vm = manager->AllocateVm();
+    vm->flags35C |= 0x40000000u;
+    vm->renderLayer = 15;
+    resource->InitializeVm(vm, 1);
+    manager = g_AnmRenderManagerView;
+    g_GameUiTransitionVmIds[1] = manager->AddVmVariant0(vm);
+
+    resource = owner->transitionAnm;
+    manager = g_AnmRenderManagerView;
+    vm = manager->AllocateVm();
+    vm->flags35C |= 0x40000000u;
+    vm->renderLayer = 15;
+    resource->InitializeVm(vm, 2);
+    manager = g_AnmRenderManagerView;
+    g_GameUiTransitionVmIds[2] = manager->AddVmVariant0(vm);
+    owner->transitionState = 1;
+}
+
 // Target 0x00421070: acknowledge a pending transition
 // and broadcast the 1 interrupt to three root VMs and their children.
 void __stdcall GameUiSendVmInterrupt1(GameUiVmTransitionView *owner)

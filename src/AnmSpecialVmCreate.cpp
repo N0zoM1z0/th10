@@ -49,3 +49,65 @@ AnmVmIdView __stdcall CreateConfiguredAnmVm(
     created->drawCallback = entry->drawCallback;
     return id;
 }
+
+// Target 0x0040B070 takes a descriptor index in EAX, then an owner, result
+// storage and callback argument on the stack. The owner's loaded ANM is at
+// +0x10; its exact enclosing class is still unidentified.
+struct AnmSpecialVmOwnerView
+{
+    unsigned char unknown000[0x10];
+    AnmLoadedView *loaded;
+};
+typedef char AnmSpecialVmOwnerLoadedAt10[
+    offsetof(AnmSpecialVmOwnerView, loaded) == 0x10 ? 1 : -1];
+
+void __stdcall CreateConfiguredAnmVmFromOwner(
+    int descriptorIndex, AnmSpecialVmOwnerView *owner,
+    AnmVmIdView *result, int setupArgument)
+{
+    const AnmSpecialVmDescriptorView *const entry =
+        &g_AnmSpecialVmDescriptors[descriptorIndex];
+    AnmLoadedView *loaded = owner->loaded;
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    AnmVmView *vm = manager->AllocateVm();
+    vm->renderLayer = 15;
+    vm->flags35C |= 0x40000000u;
+    loaded->InitializeVm(vm, entry->scriptIndex);
+
+    manager = g_AnmRenderManagerView;
+    AnmVmIdView id = manager->AddVmVariant0(vm);
+    AnmVmView *created = manager->FindVm(id);
+    if (created == NULL)
+        id.value = 0;
+    if (entry->setupCallback != NULL)
+        entry->setupCallback(created, setupArgument);
+    created->positionCallback = entry->positionCallback;
+    created->drawCallback = entry->drawCallback;
+    *result = id;
+}
+
+// Target 0x0040B1B0 accepts the script and three callback slots explicitly.
+// Its original owner/class name is not established; the first stack operand
+// is result storage, followed by the loaded resource, script and callback data.
+void __stdcall CreateConfiguredAnmVmWithCallbacks(
+    AnmVmIdView *result, AnmLoadedView *loaded, int scriptIndex,
+    int setupArgument, AnmSpecialSetupCallback setupCallback,
+    AnmVmCallback positionCallback, AnmVmCallback drawCallback)
+{
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    AnmVmView *vm = manager->AllocateVm();
+    vm->renderLayer = 15;
+    vm->flags35C |= 0x40000000u;
+    loaded->InitializeVm(vm, scriptIndex);
+
+    manager = g_AnmRenderManagerView;
+    AnmVmIdView id = manager->AddVmVariant0(vm);
+    AnmVmView *created = manager->FindVm(id);
+    if (created == NULL)
+        id.value = 0;
+    if (setupCallback != NULL)
+        setupCallback(created, setupArgument);
+    created->positionCallback = positionCallback;
+    created->drawCallback = drawCallback;
+    *result = id;
+}
