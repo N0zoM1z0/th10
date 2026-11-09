@@ -282,8 +282,7 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                 QueueSoundSample(transformSound, 0);
         }
-        state.int2 = static_cast<int>(
-            static_cast<unsigned int>(state.int2) + 1u);
+        ++*reinterpret_cast<unsigned int *>(&state.int2);
         if (state.int2 >= state.int1)
             activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE;
 
@@ -310,8 +309,7 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
         FromAngleMagnitude(outgoingAngle, nextSpeed);
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        state.timer.current = static_cast<int>(
-            static_cast<unsigned int>(state.timer.current) + 1u);
+        ++*reinterpret_cast<unsigned int *>(&state.timer.current);
         state.timer.subframe += 1.0f;
     }
     else {
