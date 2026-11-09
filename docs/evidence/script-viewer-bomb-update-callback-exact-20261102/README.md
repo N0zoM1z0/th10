@@ -88,3 +88,24 @@ other three exact owners compiled from the changed ScriptViewerBombCreate
 source pass their scoped replays: RegisterTasks 84/84, Create 85/85,
 and destructor 137/137 (306/306 total). No unrelated owners were replayed
 and no new exact credit is claimed.
+
+## 2026-11-09: typed ANM VM scale field at +0x40
+
+The instruction after `SetVmPosition` copies the raw DWORD at ANM VM
+`+0x40` into the bomb controller's `unknown03C`. The complete
+`AnmVmView` layout establishes `offsetof(AnmVmView, scaleY) == 0x40`,
+so the maintained source now uses a `memcpy` from `vm->scaleY` into
+the DWORD destination, rather than untyped byte-offset casting. This
+preserves the floating-point bit pattern **without performing a numeric
+float-to-integer conversion** and adds a compile-time layout assertion.
+
+A fresh pinned selected `script-viewer-bomb-update-callback` build
+still owns **220 bytes** against the original **223-byte**
+`ScriptViewerBombOwnerView::Update` (12 candidate relocation fields):
+**NONEXACT**, with no newly credited bytes. The callback at
+`0x00405840` is independently **10/10 exact**. The four affected
+exact units (`script-viewer-bomb-create`, `-register-tasks`,
+`-destructor`, `-update-callback`) were replayed with the installed
+source and remain **316/316 exact** across their complete original
+target functions. This is source-level field recovery plus a scoped
+regression guard, not an exact parent claim.
