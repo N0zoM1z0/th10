@@ -1,0 +1,38 @@
+{
+  "artifact_kind": "linked-pe",
+  "candidate_address": "0x00401040",
+  "capstone_version": "5.0.6",
+  "compared_size": 217,
+  "data_spans": [],
+  "decoded_bytes": 217,
+  "extent_source": "pdb-section-contribution",
+  "first_differences": [],
+  "image": "build/match-linked/AnmLoadedInitializeVm/source.exe",
+  "image_sha256": "b271f8c9f06bee5d037cf9e883cfe3cd4f01805a9f5533183d8f3861d1fee147",
+  "linkages": [
+    {
+      "addend": 0,
+      "candidate_target": "0x00412650",
+      "linked_symbol": "?SetAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+      "local": false,
+      "offset": "0xCD",
+      "symbol": "?SetAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+      "target": "0x0043E7E0",
+      "target_encoded_value": "0xFFFF4E9F",
+      "type": "REL32",
+      "width": 4
+    }
+  ],
+  "matched_bytes": 217,
+  "matched_compared_bytes": 217,
+  "normalization_complete": true,
+  "pdb_age": 1,
+  "pdb_guid": "3841ea6c522b704894d08ceb2932caef",
+  "pdb_module_index": 19,
+  "raw_equal": false,
+  "result": "exact",
+  "size": 217,
+  "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+  "target_address": "0x00449870",
+  "unit": "anm-loaded-initialize-vm"
+}
