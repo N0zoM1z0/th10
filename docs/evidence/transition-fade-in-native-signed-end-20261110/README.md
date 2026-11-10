@@ -1,9 +1,0 @@
-# Transition fade-in: signed interpretation of the native terminal-frame word
-
-Target: original Japanese TH10 v1.00a, SHA-256 2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040.
-
-The complete 133-byte TransitionFadeIn at 0x0043C230 checks the timer against the effect frame count plus two terminal ticks. Retail performs low-DWORD i386 arithmetic and compares the result as signed. The old retained C++ computed the wraparound sum using unsigned arithmetic, then narrowed to signed int, which is implementation-defined for values above INT_MAX. The revised natural C++ computes endBits as an unsigned 32-bit word and reads its signed counterpart from the same object through a type-compatible const int pointer. No timestamp normalization, bounds guard, branch, callback ordering, ABI directive or copied machine code is involved. The signed comparison uses precisely the same two's-complement representation on the pinned VC7.1/i386 environment.
-
-The complete canonical 14-TU Gui/transition native graph retains the original static owner. Three real pinned VC7.1 SP1 /GL variants were linked with unchanged, locally cached support objects. The corresponding signed-alias source emits the full 133-byte owner and passes 133/133 strict original-bound bytes, including all five original DIR32/REL32 field targets. A union-form alternative also passes, but ordinary signed-alias C++ is selected. A memcpy form keeps size 133 but changes four other instruction bytes and was rejected. The matching selected code is protected by the official transition-fade-in and related transition-effect local replay; it is not new exact ledger credit because this owner was previously exact. The larger caller remains a separate proof.
-
-Trial script and receipts: .analysis/gpt-web/20261110-transition-fade-native-end.py and build/gpt-web/20261110/transition-native-fade-end/results.jsonl. No full historical cold replay was run.

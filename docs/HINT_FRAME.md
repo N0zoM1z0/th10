@@ -4,9 +4,9 @@
 
 | Complete owner | Current result | Evidence |
 | --- | --- | --- |
-| Update419650..41988A |571 bytes/all17 fields exact|[Accepted frame proof](evidence/hint-frame-exact-20261031/README.md) |
-| OnUpdate4198A0..4198A9 |10 bytes/all1 field exact; origin indeterminate|[Callback proof](evidence/hint-frame-values-20261031/README.md) |
-| ConsumeEntries419120..419644 |1308/1317 NONEXACT|[Complete consumption proof](evidence/hint-consume-context-20261031/README.md) |
+| Update419650..41988A |571 bytes/all17 fields exact|Accepted frame proof |
+| OnUpdate4198A0..4198A9 |10 bytes/all1 field exact; origin indeterminate|Callback proof |
+| ConsumeEntries419120..419644 |1308/1317 NONEXACT|Complete consumption proof |
 
 The canonical frame and callback use the existing eight-input factory graph,
 with Hint.cpp as primary source and the pinned VC7.1 LTCG profiles. The frame

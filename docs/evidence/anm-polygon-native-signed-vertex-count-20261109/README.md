@@ -1,9 +1,0 @@
-# ANM polygon: signed low-DWORD vertex count
-
-Original executable: Japanese TH10 v1.00a, SHA-256 2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040.
-
-The complete 9,964-byte AnmRenderManagerView::ExecuteScript at 0x0043EE30 uses polygon vertexCount-1 in three places: angle step denominator, UV texture step denominator, and the signed vertex loop bound. The original native i386 subtraction is modulo 2^32 and interprets the low word as signed. The prior C++ computed an unsigned word but converted it to int, an implementation-defined narrowing above INT_MAX. New helper AnmSignedCountMinusOne computes unsigned subtraction into one local native DWORD and reads it through its permitted corresponding signed integer type. All three sites use that helper; read order, loop controls, floating-point operations and absence of runtime guards are preserved.
-
-Four real VC7.1 SP1 /GL /GS five-TU tests compared the installed baseline, reinterpret-alias change of existing index helper, isolated count, and all three counts. All retained the complete 9,964-byte ANM ExecuteScript PDB contribution, 9,962/9,964 target bytes matching and all 350 original-bound code/data fields, with only the two previously known opcode-91 ECX/EDX encoding differences at +0x113 and +0x115. An earlier memcpy-based signed count helper instead increased size to 9,972 bytes and was rejected. This is a source semantics improvement, not new exact-codegen ledger credit.
-
-Real trial: .analysis/gpt-web/20261109/anm-polygon-count-native-alias.py. Receipts: build/gpt-web/20261109-live/anm-polygon-count-alias/results.jsonl. Verify installed source using the strict full owner and 73-byte CreateVmVariant2 child, plus selected exact ANM helper replays. No historical full cold replay or reconstructed runnable game claim.

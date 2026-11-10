@@ -1,18 +1,18 @@
 # Transition-effect fixed native observation
 
-Later [Chain dispatcher recovery](evidence/chain-dispatchers/README.md) adds
+Later Chain dispatcher recovery adds
 complete Calc/Draw source and actual-source host protocol tests. The fixed
 observations below retain their original compiler/source contexts; native
 dispatcher exactness, Windows runtime and physical storage remain open.
 
-The [2026-10-20 constructor review](evidence/effect-constructor/README.md)
+The 2026-10-20 constructor review
 now closes the complete82-byte factory and both fields through natural
 constructor-owned reset. Two cold links also retain591 existing guard bytes.
 Initializer396 and cleanup127 remain nonexact. Older factory88/82 observations
 below retain their original source binding and are superseded for current state.
 
 The observations below retain their original source binding. The later
-[2026-10-19 allocator/scheduler review](evidence/effect-allocation-abi/README.md)
+
 supersedes the nothrow/caller-clean hypotheses: ordinary-new factory remains88/82,
 initializer396/396 remains nonexact, and four complete owners now pass strict
 cold replay. Earlier sizes/addresses below are historical observations.

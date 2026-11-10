@@ -82,7 +82,7 @@ exceptional conversion/formatting equivalence or original runtime safety.
 
 The native cleanup caller, full object lifetime graph, production global/table
 storage, Windows runtime closure and exact code generation remain unresolved.
-The separate [writer dependency proof](evidence/hint-writer-dependency-20261025/README.md)
+The separate writer dependency proof
 now admits standalone `0x0044B740` as 76/all 7 exact; this grants no exporter credit. A successful host fixture or diagnostic compile is not native
 exactness evidence.
 
@@ -95,5 +95,4 @@ exactness or native caller-graph closure. The diagnostic PE SHA-256 was
 
 The 2026-10-25 fresh baseline and natural int-return dependency model both emit
 2669 bytes with all 24 writes inline, unlike the target nine-call/15-inline
-partition. The complete parent is byte-neutral and remains nonexact; see the
-writer dependency proof above.
+partition. The complete parent is byte-neutral and remains nonexact;

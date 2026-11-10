@@ -28,7 +28,7 @@ actual exactness, target identity, natural-source and state-isolation rules.
   Keep Git metadata as provenance. A document genuinely consumed by a build
   remains a build input. Never edit historical receipts to manufacture a pass.
 - Plain Markdown is sufficient for knowledge: record the finding, applicable
-  target/compiler/scope, evidence links, useful failed attempts and open
+  target/compiler/scope, useful failed attempts and open
   questions. No mandatory JSON conversion, promotion workflow or test per note.
   Search relevant sections; do not read an entire large knowledge journal.
 - Write documentation and knowledge in natural, fluent English. Lead with the
@@ -38,10 +38,10 @@ actual exactness, target identity, natural-source and state-isolation rules.
   limit once when it changes a decision; do not repeat disclaimers about what
   a note does not prove, certify or authorize. Prefer a small useful note over
   an exhaustive report that is difficult to read.
-- Keep handoff focused on current work, evidence references, blockers and the
+- Keep handoff focused on current work, reproducible commands, blockers and the
   next useful action. Generate progress from canonical ledgers; avoid manual
   duplicate counts, recurring full reports and unrelated documentation chores.
-- Preserve dirty/untracked work, targets, useful evidence, game-specific Wine
+- Preserve dirty/untracked work, targets, current comparison inputs, game-specific Wine
   prefixes and analyzer projects. Exactness still requires a complete strict
   comparison; knowledge and successful commands alone confer no exact credit.
 
@@ -115,8 +115,8 @@ call is needed for a documentation/test-maintenance batch.
 Keep boundary review, origin, source presence, exact codegen, product closure,
 runtime validation and portability independent. Ghidra names/types/boundaries
 are provisional. Record durable TH10 facts in `docs/KNOWLEDGE_BASE.md` and the
-current handoff; retain compact reproducible evidence rather than test reports
-unrelated to the exact claim.
+current handoff. Keep the commands and inputs needed to reproduce a comparison;
+historical reports and full experiment histories do not need permanent storage.
 
 Adjacent TH08/TH09/TH095 reconstructions may suggest hypotheses, never TH10
 bytes, layouts, ownership or exactness. Consult them only for a concrete lead.
@@ -134,32 +134,40 @@ caller assumptions; earlier independent exact-owner receipts remain valid
 for the source epoch they actually compile.
 Do not append repetitive chronological exact claims to its top;
 consolidate into the accepted-owners table and current open-owner
-frontiers, with evidence links. Generated PROGRESS.md is the count
+frontiers, with unit names and useful commands. Generated PROGRESS.md is the count
 authority; dated notes, scratch candidates and historical source
 pins must not override current ledgers. For uncertain old claims,
 label their source epoch rather than silently promoting them.
 
-When asked to save disk space, remove only verified regenerable
-ignored experiment PE/OBJ/PDB and Python caches. Preserve original
-target inputs, .tools, the Ghidra project, canonical
-build/match-linked, historical private evidence archives and
-unresolved heavyweight witness contexts. Record the deleted scope,
-retained witnesses and payload bytes in docs/RE_ARTIFACTS.md.
-Do not mistake a list of deleted file hashes for a restorable archive.
+Keep original target/resource inputs, .tools and this game's Wine prefix,
+the Ghidra project, maintained source, canonical ledgers and comparison tools.
+Preserve build/match-linked and only the few private compiler contexts still
+needed for current unresolved owners. Preserve unrelated work, including D3D
+adapter work.
+
+Delete superseded trial outputs, duplicate source snapshots, historical archives,
+old evidence reports, cleanup audits and dated handoffs once their useful
+findings are recorded. A document reference or historical exact receipt does
+not require keeping its old files. Retain actual build/diagnostic inputs even
+when they happen to live under docs/evidence; preserve exact acceptance rules.
+
+Do not create replacement archives, per-file deletion manifests, hash registries
+or recurring cleanup reports. A short note in docs/RE_ARTIFACTS.md describing
+the current retained scope and approximate space reclaimed is enough. Remove
+obsolete document links; Git keeps the history of tracked files.
 
 ## Checkpoint
 
 For source changes, finish with the affected native exact comparison. For
 metadata/docs/test-only changes, do not rebuild game code. Run the lightweight
-`scripts/repo-python scripts/ci.py` and `git diff --check`. Its default seven
-checks cover Python syntax, docs, ledgers, toolchain declarations, canonical
-match graph, generated progress and whitespace. Select affected Oracle
+`scripts/repo-python scripts/ci.py` and `git diff --check`. The default checks
+syntax of changed machine-readable inputs and whitespace. Select affected Oracle
 self-tests explicitly with `--only` when changing comparison infrastructure.
 Regenerate progress only when its ledger inputs change.
 
 Keep scratch/logs below `.analysis/`, builds below `build/`, shared-tool links
 below `.tools/`, and the private database below `ghidra-project/`. Remove
-superseded experiments after retaining useful evidence. Never commit original
+superseded experiments after recording useful findings. Never commit original
 game binaries/data, databases, toolchains, generated decompiler text,
 credentials or private endpoints.
 

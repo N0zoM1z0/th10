@@ -12,7 +12,7 @@ Earlier A005 structure distinguished 1392 code bytes and 148 trailing-table byte
 
 The canonical ordered graph/profile/entry, sole normal BulletTransform support, exact/nonempty path validation, resources and 885 guard were unchanged from A005. No production source, source attributes or match configuration changed. Later integration is a separate decision based on actual structure and semantics, not size alone.
 
-The native linked output is a diagnostic artifact using unresolved-symbol anchors, not a runnable game build. It was not executed. Native artifacts/logs are excluded from this checkpoint. [Compact result metadata](evidence/bullet-transform-native-2026-10-18/a006-result.json) retains exact object/artifact/owner and packet identities.
+The native linked output is a diagnostic artifact using unresolved-symbol anchors, not a runnable game build. It was not executed. Native artifacts/logs are excluded from this checkpoint. Compact result metadata retains exact object/artifact/owner and packet identities.
 
 [Offline archival reconstruction](../probes/bullet-transform/native-experiment/recovery-history/README.md) derives the exact A006 runner, manifest and overlay from immutable archived A003 inputs using small hash-checked deltas. It does not read current production source. Historical A004/R001/A005 recipes are unchanged and remain byte-identical to their frozen packets. Ready flags are historical provenance, not permission to execute another run.
 

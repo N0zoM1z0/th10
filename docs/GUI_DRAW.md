@@ -5,13 +5,11 @@
 The GUI body now has a complete724-byte NONEXACT candidate after restoring
 its two inverted DWORD flag values. Two score-rectangle instruction schedules
 remain different; all33 field identities and23 local destinations have been
-reviewed, with no GUI exact credit. See the
-[current GUI candidate](evidence/gui-draw-context-20261030/README.md).
+reviewed, with no GUI exact credit.
 
 The complete483-byte rectangle is now canonical exact in two independent colds,
 including all14 fields and the actual EDI/EBX interface. Real XYZ temporary
-construction and descending W/color stores recover the target; see the
-[complete rectangle proof](evidence/rectangle-vector-exact-20261030/README.md).
+construction and descending W/color stores recover the target;
 This grants no exact credit to the724-byte GUI drawing owner. Sections below
 retain the October17 source/native history and its former407-byte rectangle;
 the archived host/regression commands are not current checkpoint requirements.

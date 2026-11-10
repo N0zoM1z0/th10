@@ -4,7 +4,7 @@
 
 The remaining angle helper now uses ordered <= -990 and >= 990 comparisons, otherwise retaining the literal requested angle. This corrects the proved vector unordered-input path: NaN is retained without calling EnemyAngleFromPlayer. The already-corrected direction block is byte-identical. Only the helper comparison/return block changes; no ownership refactor, timer/ABI change or compilation directive is introduced.
 
-Source SHA256 is 72aa46821fdae7f35482a30fcfe8abbd48b075a75489f593d922e9ad2ab131d1 (raw LF). The single-block reversal to prior b635 source is recorded in [vector-source-change.json](evidence/bullet-transform-native-2026-10-18/vector-source-change.json). Production source attributes are unchanged. Normal C++ checkout may use CRLF; host canonicalization is separate from native raw-byte pins.
+Source SHA256 is 72aa46821fdae7f35482a30fcfe8abbd48b075a75489f593d922e9ad2ab131d1 (raw LF). Production source attributes are unchanged. Normal C++ checkout may use CRLF; host canonicalization is separate from native raw-byte pins.
 
 The reviewed valid-domain vector-prefix evidence is command repository-command:6e7a037fdda14bc9914a41683e8dc1ec. Its exact collector, authored synthetic tests and [audit](../probes/bullet-transform/vector-replay/AUDIT.md) remain frozen with historical pins. Preserve its premises and domain limits: this is not universal dispatch/state or full-transform equivalence, nor a signaling-NaN/payload-preservation theorem. Host baseline and 32 compiled semantic mutation controls pass, including vector NaN literal/lazy-aim behavior and unchanged direction behavior. Finite tests and target proof remain distinct evidence.
 
@@ -18,6 +18,6 @@ The compilation graph/profile/entry and sole normal-support boundary were unchan
 
 ## Archival stability
 
-[A005 metadata](evidence/bullet-transform-native-2026-10-18/a005-result.json) retains artifact/owner/tool-packet identities. The [recipe archive](../probes/bullet-transform/native-experiment/recovery-history/README.md) now derives A004/R001 b635 and A005 72aa source bytes from the already-archived A003 da1 overlay using small hash-checked source splices. It never depends on current production source. Exact historical A004/R001 runner/manifest/overlay identities remain unchanged, and A004 failure remains separate from R001 recovery.
+The [recipe archive](../probes/bullet-transform/native-experiment/recovery-history/README.md) now derives A004/R001 b635 and A005 72aa source bytes from the already-archived A003 da1 overlay using small hash-checked source splices. It never depends on current production source. Exact historical A004/R001 runner/manifest/overlay identities remain unchanged, and A004 failure remains separate from R001 recovery.
 
 Reconstruction is offline only; historical ready flags do not grant execution permission. Native objects, images, PDB/MAP files and raw logs are excluded from this checkpoint.

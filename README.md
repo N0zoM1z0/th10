@@ -68,12 +68,10 @@ initializer remain **NONEXACT**. A selected two-TU leaf match does not
 prove exactness in a larger LTCG caller graph. See the current handoff
 for compiler contexts and the next high-impact work.
 
-For a new agent, read [AGENTS.md](AGENTS.md), then the concise
-[NEXT_AGENT_20261110.md](docs/NEXT_AGENT_20261110.md) and
+For a new agent, read [AGENTS.md](AGENTS.md), then
 [RE_HANDOFF.md](docs/RE_HANDOFF.md), followed by the selected owner's source/ledger rows,
 and the relevant comparison lane. Use [RE_ARTIFACTS.md](docs/RE_ARTIFACTS.md)
-for private inputs, retained witnesses and restoration. Dated evidence keeps
-its original source epoch; it is not a current checklist.
+for private inputs, the few retained unresolved contexts and cleanup policy.
 
 Use `scripts/repo-python`; it enforces the locked Capstone package. Verify the
 private target before target work. Check toolchain declarations and run the
@@ -87,7 +85,7 @@ scripts/repo-python scripts/verify-toolchain.py --check
 scripts/repo-python scripts/ci.py
 ```
 
-Default CI runs seven lightweight repository checks. Regenerate progress with
+Default CI checks changed machine-input syntax and whitespace. Regenerate progress with
 `scripts/repo-python scripts/progress.py` when ledger inputs change. Historical
 host fixtures, failure/lifecycle simulations, sanitizer sweeps and mutation
 reports are not current gates. Comparator self-tests are selected explicitly
@@ -112,10 +110,9 @@ and exhaustive field manifest to the original target. Its incomplete harness
 is not a runnable reconstructed product. See [ORACLES.md](docs/ORACLES.md),
 [RE_WORKFLOW.md](docs/RE_WORKFLOW.md) and [TOOLS.md](docs/TOOLS.md).
 
-Private caches and archives are documented in [RE_ARTIFACTS.md](docs/RE_ARTIFACTS.md).
-Old paths may be archived, and source/header pin equality alone does not prove
-a reusable graph or a current native comparison. Use the listed inventory for
-selective restoration and recheck profiles, source order, objects and image.
+Keep required private inputs and current comparison contexts as described in
+[RE_ARTIFACTS.md](docs/RE_ARTIFACTS.md). Historical archives, duplicate snapshots
+and old reports can be deleted after recording useful findings.
 
 ## Required phase order
 
@@ -137,7 +134,7 @@ selective restoration and recheck profiles, source order, objects and image.
 - [`docs/RE_WORKFLOW.md`](docs/RE_WORKFLOW.md) — reconstruction loop and gates.
 - [`docs/ORACLES.md`](docs/ORACLES.md) — claim-specific falsification rules.
 - [`docs/RE_HANDOFF.md`](docs/RE_HANDOFF.md) — current resume brief, unresolved owners, and source-epoch checks.
-- [`docs/RE_ARTIFACTS.md`](docs/RE_ARTIFACTS.md) — expanded private inputs, archived experiments, and selective restoration.
+- [`docs/RE_ARTIFACTS.md`](docs/RE_ARTIFACTS.md) — required private inputs, current unresolved contexts, and cleanup policy.
 - [`docs/KNOWLEDGE_BASE.md`](docs/KNOWLEDGE_BASE.md) — TH10-only knowledge.
 
 ## License

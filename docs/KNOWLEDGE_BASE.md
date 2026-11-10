@@ -1,15 +1,9 @@
 # TH10 durable reconstruction knowledge
 
-**Source-epoch notice (updated 2026-11-09):** This file is a historical
-research log, not a single live codegen scoreboard. In particular, the
-5-source initial finalizer exact colds predate the later **6-source** real
-record-initializer caller wiring. Both statements are true only for their
-explicit source/build epochs. For *current* pins, canonical exact counts,
-artifact retention and next steps, start with
-[NEXT_AGENT_20261109.md](NEXT_AGENT_20261109.md), then
-[RE_HANDOFF.md](RE_HANDOFF.md),
-[PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
-
+Notes describe the target/compiler/source context in which a finding was made.
+Current exact counts come from [PROGRESS.md](PROGRESS.md) and current work from
+[RE_HANDOFF.md](RE_HANDOFF.md). Historical reports and scratch paths may have
+been removed; keep useful findings rather than rebuilding their old archives.
 
 ## 2026-11-09 ANM VM registration and GameUI transition ABI correction
 
@@ -63,7 +57,6 @@ receives no exact ledger credit. The 2,412-byte EnemyRuntimeUpdate
 parent now reaches **1,582/2,136** comparable bytes in the later
 aggregate-sum graph. Seven selected existing Enemy
 owners cold-pass **933/933** bytes; CI and diff-check pass. No full replay.
-[Evidence](evidence/enemy-advance-motion-x87-polar-20261108/README.md).
 
 ## 2026-11-08 EnemyAdvanceMotion Cartesian and polar x87 frontier
 
@@ -79,7 +72,6 @@ and expression-order experiments did not remove it. The function remains
 **NONEXACT**, no new ledger credit. The 2,412-byte `EnemyRuntimeUpdate`
 parent remains **655/671** aligned instructions in the same 12-TU graph.
 Four selected previously exact Enemy owners cold-pass **848/848** bytes.
-[Evidence](evidence/enemy-advance-motion-x87-frontier-20261108/README.md).
 
 ## 2026-11-08 EnemyRuntimeUpdate shared managed-VM cursor
 
@@ -96,7 +88,6 @@ Six selected previously exact Enemy owners cold-pass **903/903** bytes;
 CI and diff-check pass. No full cold replay. `EnemyAdvanceMotion` now emits 168/171 with 133/140 ordinary prefix bytes
 and all seven target fields; its final stack cleanup remains nonexact.
 `SetSubroutine` remains nonexact.
-[Evidence](evidence/enemy-runtime-vm-id-cursor-20261108/README.md).
 
 ## 2026-11-08 OpenDiskBgm exact-size early guard breakthrough
 
@@ -113,23 +104,6 @@ cold replays exactly match new `OpenDiskBgm` **241/241** original bytes
 with all ten original target fields, plus the protected LoadBgm/queue
 owners, totaling **1,991/1,991** and **539/539**. Newly admitted
 **+1 authored exact function, +241 original bytes**, no runtime claim.
-[Evidence](evidence/sound-open-disk-bgm-early-guards-20261108/README.md).
-
-## 2026-11-08 Audited next-agent storage cleanup
-
-The latest remeasured allocation for ignored `build/gpt-web/` is
-**262,840,320 bytes (250.7 MiB)**. A second bounded pass removed **12,051**
-regenerable `.obj/.exe/.pdb` outputs from 448 explicitly reviewed roots,
-reclaiming **886,214,656 allocated bytes** and reducing the tree from
-1,149,054,976 bytes. Three selected enemy witness graphs, all canonical
-`build/match-linked/` graphs, target/toolchain, nine historical compressed
-archives, Ghidra/reference inputs, `.analysis/gpt-web/` trial
-drivers/source snapshots/JSON and retained `build/gpt-web/` MAPs/logs
-were preserved. The 12 nested `installed-cold` native files and three
-root-level `.obj` inputs also remain. The private per-file SHA
-audit is `.analysis/maintenance-next-agent-20261108b/removed-native.jsonl`;
-it is not a backup. The earlier same-day 3,786-file pass is recorded in
-`.analysis/maintenance-next-agent-20261108/`. [Current tracked proof](evidence/next-agent-storage-prune-20261108b/README.md).
 
 ## 2026-11-08 BulletManager native draw-bucket slot addressing
 
@@ -141,7 +115,6 @@ preserve the **249/249** manager body with all **6** target fields, the
 **40/40** callback with 2 fields, and three related exact bullet helpers.
 Selected five-unit cold replay is **665/665** original bytes,
 **22/22** fields. No new exact codegen credit or runtime guarantee.
-[Evidence](evidence/bullet-drawbucket-native-slots-20261108/README.md).
 
 ## 2026-11-08 BulletManager UpdateBullets native 0x7F0 cursor and count
 
@@ -154,7 +127,6 @@ and all 6 fields, with the **40/40** callback also exact. Installed-source
 selected cold replay across two graph families protects five previously
 accepted bullet functions, **665/665 original bytes and 22/22 fields**.
 No new exact codegen ledger credit or runtime/product claim.
-[Evidence](evidence/bullet-manager-native-pool-cursor-20261108/README.md).
 
 ## 2026-11-08 ECL FindSubroutine native header +0x10 return
 
@@ -166,7 +138,6 @@ linked in the one-TU EclVmStack and real two-TU ECL/Enemy graph preserve
 giants' **6,997/7,020**, all **189** original Run fields. Installed-source
 selected eight-unit exact replay passes **1,081/1,081**. Run remains
 NONEXACT and this earns no new codegen ledger credit.
-[Evidence](evidence/ecl-find-subroutine-native-return-20261108/README.md).
 
 ## 2026-11-08 EnemyFullObject destructor native DEC and VM slot words
 
@@ -179,7 +150,6 @@ variants show the complete 385-byte candidate and its seven fields
 unchanged; installed-source canonical cold replay of five related exact
 owners passes **899/899**, 20 original fields. Destructor is still
 NONEXACT with no new codegen credit.
-[Evidence](evidence/enemy-full-destructor-native-words-20261108/README.md).
 
 ## 2026-11-08 EnemySpawn native active-enemy and spawn counter words
 
@@ -192,7 +162,6 @@ manager clear and callback suspension owners also remain exact; a fresh
 selected installed-source cold replay of five related exact owners in
 two graphs passes **899/899** original bytes and 20 field obligations.
 No new exact credit or complete executable/runtime claim.
-[Evidence](evidence/enemy-spawn-native-manager-counts-20261108/README.md).
 
 ## 2026-11-08 EnemyManagerUpdate signed timer word wrap
 
@@ -204,7 +173,6 @@ Three separately linked natural VC7.1 `/GL` forms reproduce full
 **166/166** update and **10/10** callback bodies with all six target-bound
 fields; installed-source selected cold replay passes **176/176**. No new
 exact owner, only faithful Win32 source behavior.
-[Evidence](evidence/enemy-manager-update-native-timer-20261108/README.md).
 
 ## 2026-11-08 ANM ExecuteScript renderMode 9 terminal vertex words
 
@@ -218,7 +186,6 @@ rejected; the installed typed helper retains **9,962/9,964** complete
 original interpreter bytes and **350/350** target-bound fields. Six
 selected previously exact ANM helper owners cold-pass **694/694**.
 No new exact credit; opcode 91's two register bytes still differ.
-[Evidence](evidence/anm-render9-terminal-vertex-words-20261108/README.md).
 
 ## 2026-11-08 CMemoryPbgFile Seek native FILE_BEGIN base word
 
@@ -230,7 +197,6 @@ that the seven branch/tail-merging differences remain. The installed
 complete **107-byte** candidate is **100/107 raw original bytes** with
 zero relocations, still **NONEXACT**. Ten selected previously exact
 file-interface units cold-pass **491/491**. No codegen ledger credit.
-[Evidence](evidence/resfile-seek-begin-native-word-20261108/README.md).
 
 ## 2026-11-08 Alternate text upload scope improves eight original bytes
 
@@ -243,7 +209,7 @@ EBP/EDI/EBX register discrepancy and were rejected. Current selected
 canonical text cold replay retains **3,030/3,030** exact bytes across
 seven other already accepted text owners, including main text upload
 **554/554 with 35 original fields**. No new exact function or runtime
-claim. [Evidence](evidence/text-render-alternate-stack-scope-20261108/README.md).
+claim. .
 
 ## 2026-11-08 TextRender main 554-byte owner stack-frame breakthrough
 
@@ -266,7 +232,6 @@ passes **3,030/3,030** bytes; second focused cold passes **703/703**.
 This adds **one newly exact authored owner and 554 original codegen bytes**.
 The all-LTCG 149-byte font-release owner stays in its correct separate
 graph, and whole-game/runtime closure remains unproven.
-[Evidence](evidence/text-render-main-stack-scope-20261108/README.md).
 
 ## 2026-11-07 ECL FORMAT native scratch/text and argument words
 
@@ -279,7 +244,6 @@ record change alone costs one byte (6,996), but the installed combined
 version returns to **6,997/7,020**, with the same 23 remaining original
 byte mismatches. Selected eight prior exact VM leaves cold-pass
 **1,081/1,081**. No new exact function or codegen credit.
-[Evidence](evidence/ecl-format-native-text-addresses-20261107/README.md).
 
 ## 2026-11-07 LoadBgm 298-byte format-pointer lifetime breakthrough
 
@@ -298,7 +262,7 @@ original-bound address/call fields**, while 1,452-byte `ProcessQueues`
 and 55-byte `ReopenBgm` stay exact. The focused three-owner acceptance
 replay totals **1,805/1,805 bytes** in each run. The ledger now earns
 **one newly exact authored owner and +298 codegen bytes**; no whole
-product or runtime equivalence is inferred. [Evidence](evidence/sound-load-bgm-format-lifetime-20261107/README.md).
+product or runtime equivalence is inferred. .
 
 ## 2026-11-07 Sound BGM format and 16-slot preloaded native indices
 
@@ -311,7 +275,6 @@ original exact ReopenBgm, 304-byte nonexact LoadBgm candidate (target
 Current source cold replay in four scoped artifacts preserves six
 previously exact Sound units **2212/2212** and all 70 target-bound fields.
 No new exact-owner credit, whole-game build, or runtime claim.
-[Evidence](evidence/sound-bgm-native-index-words-20261107/README.md).
 
 ## 2026-11-07 Sound command queue native 0x10C-byte shift cursor
 
@@ -324,7 +287,6 @@ Current-source selected cold replay retains **2,034/2,034** Sound bytes
 and **178/178** WAV exact guards. The independent 298/298 target-bound `LoadBgm` candidate was
 subsequently admitted by two canonical colds. The command shift itself
 adds no new exact codegen owner.
-[Evidence](evidence/sound-process-queue-native-shift-20261107/README.md).
 
 ## 2026-11-07 Sound BGM native preload and format slot words
 
@@ -339,7 +301,6 @@ while original-bound `ReopenBgm` **55/55** and `ProcessQueues`
 **1,452/1,452** stay exact. Selected installed-source replay passes
 **2,034/2,034** Sound bytes plus a separate **178/178** WAV guard. No
 new exact owner or unchecked index repair.
-[Evidence](evidence/sound-bgm-native-slots-20261107/README.md).
 
 ## 2026-11-07 Sound WAV loader native file and byte address words
 
@@ -352,7 +313,6 @@ mismatches, the 25 candidate field geometry, and 71/71 exact
 `FindWaveChunk`. A second installed-source selected original-bound cold replay protects
 **2,212/2,212** previously exact Sound bytes across six units. The parent stays
 nonexact, with no new exact credit.
-[Evidence](evidence/sound-sample-native-address-words-20261107/README.md).
 
 ## 2026-11-07 Sound ProcessQueues native command stage words
 
@@ -364,7 +324,6 @@ Six independent two-TU /GL /GS /EHsc trials preserve **1,452/1,452
 original bytes and all 43 target-bound links**. The reformatted committed
 source was separately cold replayed, preserving **2,034/2,034** old exact
 Sound bytes in two affected graphs. No new codegen credit or full replay.
-[Evidence](evidence/sound-process-queue-native-step-words-20261107/README.md).
 
 ## 2026-11-07 Enemy interpolation Tick and SetCurrent native timer words
 
@@ -377,7 +336,6 @@ original-bound cold builds each preserve **652/652** bytes; three further
 selected exact contexts total **964/964** previously accepted bytes.
 The complete 2-TU Enemy runtime and callback candidate functions retain
 their earlier sizes and all ordinary bytes but remain **NONEXACT**.
-[Evidence](evidence/enemy-interpolation-timer-words-20261107/README.md).
 
 ## 2026-11-07 Text alpha bleed and inversion native pixel cursors
 
@@ -391,7 +349,6 @@ preserved the exact alpha-bleed body **946/946**. A final installed-source
 selected original-bound replay passes **2,327/2,327** across five old
 exact text-renderer functions. `InvertAlpha` remains **112/157 NONEXACT**,
 and the 554/509-byte render-text owners remain open. No new exact owner.
-[Evidence](evidence/text-alpha-native-pixel-cursors-20261107/README.md).
 
 ## 2026-11-07 Player shot option indexed native record words
 
@@ -403,7 +360,6 @@ original positions and two candidate relocations. A self-contained
 `Enemy.hpp` ANM vector include fixes standalone compile failures.
 Two selected exact PlayerShot owners and ECL host replay **279/279**
 original bytes. The option origin and larger shot tracker stay nonexact.
-[Evidence](evidence/player-shot-option-native-word-20261107/README.md).
 
 ## 2026-11-07 FileSystem Encrypt native replay-shuffle pointer words
 
@@ -417,7 +373,6 @@ source candidates (two original CRT call-relocation positions in each),
 with zero candidate ordinary regressions. Five existing exact FileSystem
 owners cold-pass **760/760**, 45 original-bound fields. Neither crypto
 owner becomes exact.
-[Evidence](evidence/filesystem-encrypt-native-cursor-words-20261107/README.md).
 
 ## 2026-11-07 Enemy callback native countdown and penalty words
 
@@ -431,7 +386,6 @@ against original **593 bytes**; real `EnemyRuntimeUpdate` caller 2,371
 candidate bytes / 69 candidate fields against original **2,412 bytes**.
 The complete ordinary candidate code and candidate field geometry remain
 unchanged, but neither nonexact owner gains codegen credit.
-[Evidence](evidence/enemy-callback-native-arithmetic-20261107/README.md).
 
 ## 2026-11-07 Text GDI format record and DIB native words
 
@@ -445,7 +399,6 @@ replay protect **2,327/2,327** exact target bytes across five owners,
 including the **781-byte** text-buffer creator and **946-byte** alpha
 bleed. Three 157/554/509-byte nonexact siblings do not regress. No new
 exact codegen owner, runtime or portability claim.
-[Evidence](evidence/text-format-row-native-words-20261107/README.md).
 
 ## 2026-11-07 ECL sorted SCPT native record mover
 
@@ -459,7 +412,6 @@ and were rejected; the chosen named local pointers preserve
 7,020-byte `Run` still compares **6,997/7,020**, all 189 target-bound
 fields. Five existing exact ECL owners cold replay **671/671**. The two
 large bodies remain NONEXACT, with no new exact codegen credit.
-[Evidence](evidence/ecl-sorted-record-native-copy-20261107/README.md).
 
 ## 2026-11-07 ECL CALL argument counter native word
 
@@ -470,7 +422,6 @@ Two natural original-compiler trials preserved the entire 551-byte
 variable itself to unsigned changed two bytes and was rejected. Original
 7,020-byte `Run` remains **6,997/7,020**, all **189** target fields;
 eight selected previously exact ECL owners cold-pass **1,081/1,081**.
-[Evidence](evidence/ecl-call-argument-index-wrap-20261107/README.md).
 
 ## 2026-11-07 ECL sorted-subroutine merge native counter words
 
@@ -486,7 +437,7 @@ increments. A fresh final-source cold two-TU comparison confirms the complete
 589-byte AddScriptData remains **502/581 nonexact**, with two original
 call fields; full `EclVmContext::Run` remains **6,997/7,020**, 189 original
 fields, and four original-bound exact guards cold-pass **575/575**. No new
-exact credit. [Evidence](evidence/ecl-record-merge-counter-native-20261107/README.md).
+exact credit. .
 
 ## 2026-11-07 ANM ExecuteScript native generated-vertex count and cursor words
 
@@ -499,8 +450,7 @@ original-bound leaves cold-pass **164/164**. Combined and independent
 source variants were compared in the *complete* boss; alternative child-91
 register/layout forms failed and were rejected. The boss is still NONEXACT,
 not a newly accepted exact owner.
-[Installed comparison](evidence/anm-render9-native-vertex-words-20261107/README.md),
-[variant history](evidence/anm-executor-native-vertex-words-20261107/README.md).
+Installed comparison,
 
 ## 2026-11-07 Enemy ECL boss pattern-clear native word cursor
 
@@ -513,8 +463,7 @@ the complete **14,352-byte NONEXACT** candidate, its **716 candidate-only
 field positions**, and four neighboring complete owners. Resource bank
 variants regressed the original spell-name SIB and were rejected.
 Five selected original-bound ECL argument leaves cold-pass **87/87**.
-[Native STOSD proof](evidence/enemy-ecl-pattern-clear-stos-word-20261107/README.md),
-[additional experiments](evidence/enemy-ecl-pattern-clear-native-step-20261107/README.md).
+Native STOSD proof,
 
 ## 2026-11-07 Enemy ECL spell-name native byte-stream words
 
@@ -528,8 +477,7 @@ form retains the **14,352-byte nonexact candidate extent**, its ordinary
 ID trials changed the cipher SIB `8A 0C 31` (original at `+0x273B`)
 to `8A 0C 0E`; all were rejected. Original-bound ECL argument leaves
 cold-pass **87/87**. No new exact owner or safety bounds are claimed.
-[Current installed proof](evidence/enemy-ecl-spell-name-native-words-20261107/README.md),
-[alternate trials](evidence/enemy-ecl-spell-name-words-20261107/README.md).
+Current installed proof,
 
 ## 2026-11-07 Enemy sound-queue negative sample-count native words
 
@@ -540,7 +488,6 @@ address is calculated as a modulo-32-bit native word. Both actual
 now use typed `EnemyNativeWordIndex` addressing. The selected four-source
 cold graph continues to reproduce the **272/272** existing original bytes
 and four original-bound fields; no new exact claim or bounds repair.
-[Evidence](evidence/enemy-sound-queue-native-sample-words-20261107/README.md).
 
 ## 2026-11-07 Enemy sound-queue unchecked native index words
 
@@ -551,7 +498,6 @@ indexing. The selected current-source canonical cold replay preserves the
 already exact `QueueSoundSample` **123/123** and `QueueSoundCue` **149/149**,
 with all four original-bound fields. No new exact owner is claimed, and
 the larger ECL dispatcher remains nonexact.
-[Evidence](evidence/enemy-sound-queue-native-words-20261107/README.md).
 
 ## 2026-11-07 ECL SCPT sorted subroutine native record words
 
@@ -563,7 +509,7 @@ chosen three-part combination (589-byte owner, **502/581** original
 ordinary matches) from a rejected full record-move rewrite (**439/581**).
 `Run` stays **6,997/7,020** with 189 original-bound fields;
 `FindSubroutine` remains exact 136 bytes. Four selected exact ECL owners
-cold-pass **575/575**, no new exact credit. [Evidence](evidence/ecl-scpt-sorted-record-word-20261107/README.md).
+cold-pass **575/575**, no new exact credit. .
 
 ## 2026-11-07 Enemy ECL managed ANM script slot words
 
@@ -576,7 +522,6 @@ geometry/ordinary bytes. An attempted combination with ANM resource-bank
 indexing changed one byte and was rejected. Five selected original-bound
 Enemy ECL leaves cold-pass **87/87**. The original dispatcher remains
 **14,416 bytes, NONEXACT**, no new codegen credit.
-[Evidence](evidence/enemy-ecl-anm-managed-slot-words-20261107/README.md).
 
 ## 2026-11-07 native ECL 0x190/0x199 pattern index words
 
@@ -590,7 +535,7 @@ baseline was built with only source-pinned unchanged objects reused. The
 installed final source preserves the complete **14,352-byte candidate**,
 its 716 candidate fields and four neighboring complete owners. Five selected
 original-bound ECL leaf units pass **87/87**. The dispatcher is
-**NONEXACT**, zero new codegen credit. [Proof](evidence/enemy-ecl-pattern-init-extra-word-20261107/README.md).
+**NONEXACT**, zero new codegen credit. .
 
 ## 2026-11-07 large Bullet transform program native record words
 
@@ -604,7 +549,7 @@ combined native C++ compiler variants were tested: the selected combination
 preserves all **1,540/1,540 candidate bytes** and 32 relocations with exact
 local destination offsets; three source-reordered forms grew to 1,548.
 Three selected original-bound Bullet exact owners cold-pass **1,339/1,339**.
-No new exact owner credited. [Native evidence](evidence/bullet-transform-native-record-words-20261107/README.md).
+No new exact owner credited. Native evidence.
 
 ## 2026-11-07 ECL CALL counted scalar payload word addresses
 
@@ -618,7 +563,6 @@ word index. Five native 2-TU variants were compiled; four retain the full
 The complete original-bound 7,020-byte `Run` remains **6,997/7,020** with
 **189** target fields; nine final-source exact ECL units cold-pass
 **1,161/1,161**. Neither nonexact owner gains canonical credit.
-[Native evidence](evidence/ecl-call-scalar-word-address-20261107/README.md).
 
 ## 2026-11-07 ECL FORMAT raw scalar word addressing
 
@@ -632,7 +576,6 @@ address-word form preserves **6,997/7,020**, all **189 independently
 original-bound fields**, and the exact 171-byte float value callee. Eight
 installed-source original-bound ECL exact guards cold-pass **1,037/1,037**.
 Run remains nonexact; no new match credit.
-[Proof](evidence/ecl-format-native-scalar-byte-address-20261107/README.md).
 
 ## 2026-11-07 ANM 9,964-byte interpreter native vertex-index word
 
@@ -644,7 +587,6 @@ probes preserve **9,962/9,964 original `ExecuteScript` bytes, all 350
 original-bound fields**, and the same two opcode-91 register mismatches.
 Three previously exact ANM helpers cold replay **164/164**. No new exact
 owner is claimed for the giant interpreter.
-[Evidence](evidence/anm-render9-native-vertex-index-20261107/README.md).
 
 ## 2026-11-07 current ANM opcode-91 structural register controls
 
@@ -656,7 +598,6 @@ pointer-to-aggregate form regresses to 9,960; and a typed inline helper
 changes the complete PDB extent to **10,044 bytes**. All experimental source
 edits were restored, no new match credit. The remaining original differences
 are exactly `+0x113,+0x115`.
-[Whole-owner evidence](evidence/anm-opcode91-current-structure-20261107/README.md).
 
 ## 2026-11-07 Enemy ECL native variable-length spawn operand words
 
@@ -670,7 +611,6 @@ recompiled installed-source image preserve all **14,352 candidate bytes**,
 716 candidate address positions and four complete neighboring owner bodies.
 Five selected original-bound ECL argument leaves still pass **87/87**.
 The dispatcher remains **NONEXACT**, zero new canonical exact credit.
-[Evidence](evidence/enemy-ecl-variable-spawn-scalar-words-20261107/README.md).
 
 ## 2026-11-07 Enemy ECL typed 0x210/0x0C native index words
 
@@ -683,7 +623,6 @@ independent installed-source rebuild, preserve all **14,352** compiled
 candidate dispatcher bytes and four neighboring owner extents/field
 geometry. Five original-bound ECL leaves cold-pass **87/87**.
 Dispatcher remains **NONEXACT**, zero new canonical exact bytes.
-[Evidence](evidence/enemy-ecl-typed-pattern-array-words-20261107/README.md).
 
 ## 2026-11-07 ECL SCPT native file-slot address words
 
@@ -695,7 +634,7 @@ the **589-byte** owner and its two CRT fields: still **502/581** original
 ordinary bytes, NONEXACT. `FindSubroutine` remains **136/136 exact**; the
 parent `Run` stays **6,997/7,020**, all **189 target-bound fields**.
 Four selected original-target ECL units cold-pass **575/575**. No new
-exact credit. [Proof](evidence/ecl-scpt-native-file-slots-20261107/README.md).
+exact credit. .
 
 ## 2026-11-07 ECL native eight-byte subroutine record lookup
 
@@ -708,7 +647,6 @@ separate five-variant old-count lifetime hypothesis grew `AddScriptData`
 from 589 to 605 bytes and was rejected; installed-source AddScriptData
 retains all 589 candidate bytes, still **NONEXACT**. Four original-bound
 ECL leaf/host units cold-pass **575/575**; zero new exact credit.
-[Native proof](evidence/ecl-native-subroutine-record-index-20261107/README.md).
 
 ## 2026-11-07 Enemy ECL unchecked script-indexed record addresses
 
@@ -721,7 +659,6 @@ owners. The original target remains **NONEXACT** and adds no exact credit.
 Five directly related original-bound ECL argument leaves cold-pass
 **87/87**. A stale 11-TU cache with outdated ANM/dispatcher input pins
 was explicitly rejected and rebuilt, not treated as trustworthy history.
-[Evidence](evidence/enemy-ecl-native-unchecked-index-20261107/README.md).
 
 ## 2026-11-07 ECL SCPT native file-pointer slots
 
@@ -732,7 +669,7 @@ Actual native source maintains its complete **589-byte** candidate with
 **502/581** original nonfield bytes, **79 differences**, while the
 7,020-byte `Run` still matches **6,997/7,020**, all 189 target-bound
 fields. Four related accepted ECL exact functions pass **575/575**.
-No new exact credit. [Evidence](evidence/ecl-scpt-file-slot-native-words-20261107/README.md).
+No new exact credit. .
 
 ## 2026-11-07 Bullet SpawnSingle native indexed script/color tables
 
@@ -745,7 +682,6 @@ complete neighboring PDB owner bodies preserve the prior source codegen.
 Original SpawnSingle is **1,413 bytes**, still NONEXACT. Five selected
 original-bound accepted Bullet owners cold-pass **1,028/1,028** across
 their correct two graphs. Zero new exact credit.
-[Evidence](evidence/bullet-spawn-native-table-index-20261107/README.md).
 
 ## 2026-11-07 ANM ExecuteScript native counter-word increment
 
@@ -757,7 +693,7 @@ all preserve complete **9,962/9,964** original bytes and all **350
 independently target-bound fields**; the two unchanged opcode-91 register
 bytes remain `+0x113,+0x115`. The installed source was freshly compiled;
 two affected existing exact ANM owners cold-pass **876/876**. No new exact
-credit. [Native proof](evidence/anm-script-timer-native-counter-20261107/README.md).
+credit. .
 
 ## 2026-11-07 Enemy ECL difficulty speed native address words
 
@@ -769,7 +705,6 @@ current-source eleven-TU native PDB comparison preserves the whole
 **14,352-byte candidate** and four related complete owners, with unchanged
 candidate fields. The original is **14,416 bytes**, NONEXACT, no new exact
 credit. Five affected original-bound argument leaves cold-pass **87/87**.
-[Evidence](evidence/enemy-ecl-difficulty-speed-address-word-20261107/README.md).
 
 ## 2026-11-07 Enemy ECL native 0x210-byte pattern-index helper
 
@@ -783,7 +718,6 @@ are candidate-byte- and field-geometry-identical to the current baseline.
 One cursor-reuse variant was rejected for changed field geometry. Five
 selected original-target argument leaves cold-pass **87/87**. The giant
 owner remains **NONEXACT**, zero new canonical exact credit.
-[Evidence](evidence/enemy-ecl-pattern-index-helper-20261107/README.md).
 
 ## 2026-11-07 ECL CALL serialized scalar word overlays
 
@@ -797,7 +731,6 @@ source trial. The parent **7,020-byte** ECL Run still matches **6,997**
 original bytes and all **189** independently target-bound fields. Nine
 selected ECL exact units cold-pass **1,161/1,161**. Both large owners
 remain NONEXACT; no new exact credit.
-[Evidence](evidence/ecl-call-scalar-word-overlay-20261107/README.md).
 
 ## 2026-11-07 sound RIFF native cursor word arithmetic
 
@@ -811,7 +744,7 @@ scheduling bytes `+0x122..+0x127` (25 candidate code-address fields).
 Four installed-source, selected original-bound Sound owners pass
 **1,819/1,819**; no new exact credit. Nine separate caller lifetime probes
 were byte-neutral and rejected; an unstable Wine link is not a passing
-trial. [Native evidence](evidence/sound-riff-native-cursors-20261107/README.md).
+trial. Native evidence.
 
 ## 2026-11-07 enemy ECL remaining pattern-index word arithmetic
 
@@ -823,7 +756,7 @@ read evaluation sites. The fresh *current* eleven-TU source compilation
 preserves the complete 14,352-byte dispatcher candidate and four neighboring
 owners, with unchanged candidate field geometry. Five original-bound ECL
 argument leaf units cold-pass 87/87. The dispatcher remains **NONEXACT** and
-adds zero exact credit. [Evidence](evidence/enemy-ecl-remaining-pattern-word-20261107/README.md).
+adds zero exact credit. .
 
 ## 2026-11-07 memory-file Read/Tell cursor word semantics
 
@@ -835,7 +768,7 @@ subtraction. Five actual VC7.1 combined/isolated variants preserved complete
 Read **108/108** and Tell **7/7** target code. Ten installed-source selected
 original-bound file owners cold-pass **491/491**; related Seek still has its
 same seven differences over 107 bytes. No newly exact owners or runtime
-claims. [Evidence](evidence/resfile-native-read-tell-words-20261107/README.md).
+claims. .
 
 ## 2026-11-07 ECL indexed scalar word addresses
 
@@ -848,7 +781,7 @@ large `Run` **6,997/7,020**, all 189 independently target-bound fields,
 and the exact float callee. An explicit operand-mask shift was rejected
 because it changed the large owner's extent. Eight selected original-bound
 ECL owners cold-replay **1,037/1,037**. `Run` is **NONEXACT**; zero new
-exact credit. [Native evidence](evidence/ecl-operand-word-address-20261107/README.md).
+exact credit. Native evidence.
 
 ## 2026-11-07 ECL FIRE_BULLET_PATTERN native offset word
 
@@ -859,7 +792,6 @@ without signed overflow UB. Fresh current-source eleven-TU native comparison
 preserved all 14,352 candidate bytes, 716 candidate field positions, and four
 neighboring complete owner bodies; five original-bound ECL argument leaves
 cold-pass 87/87. The dispatcher is **NONEXACT**, no new exact credit.
-[Source and evidence](evidence/enemy-ecl-fire-offset-word-20261107/README.md).
 
 ## 2026-11-07 TransitionShakeEnvelope 349-byte frontier
 
@@ -872,7 +804,7 @@ both schedules explicit: 14-TU VC7.1 `/GL` PDB owner changes from 297 to
 present but **wrong positions at several sites**. This is NONEXACT, no new
 credit; only current selected original-bound exact guards Init396/FadeIn133/
 Delete26/Dim175 passed **730/730**. The remaining phase-limit EBX spill and
-source register scheduling are open. [Proof](evidence/transition-shake-envelope-schedule-20261107/README.md).
+source register scheduling are open. .
 
 ## 2026-11-07 ECL spawn inline count native word arithmetic
 
@@ -884,7 +816,7 @@ actual pointer/index schedule. Fresh current two-TU original-bound native
 comparison still reports **6997/7020**, all **189/189** fields and
 ReadFloatValue171 exact; selected exact ECL guards **441/441** pass. This
 is a large-interpreter source-semantic improvement, **zero new exact
-credit**. [Source and proof](evidence/ecl-spawn-index-word-wrap-20261107/README.md).
+credit**. Source and proof.
 
 ## 2026-11-07 Enemy ECL final pattern address word semantics
 
@@ -896,7 +828,6 @@ C++ overflow UB while preserving every address and argument evaluation
 site. Fresh current-epoch 11-TU PDB owners all remain candidate-byte
 identical to their prior source; five selected original-bound ECL leaves
 still pass **87/87**. **NONEXACT**, no new codegen credit.
-[Evidence](evidence/enemy-ecl-pattern-final-address-word-20261107/README.md).
 
 ## 2026-11-07 memory-file Seek remaining-space native word arithmetic
 
@@ -908,7 +839,7 @@ signed comparison, control flow and complete 107-byte original target
 frontier of **100/107**, zero fields. Nine separate VC7.1 COFF native
 variants were tested and restored. Ten selected canonical file owners
 pass **491/491** exact original bytes in a fresh selected cold; no new
-canonical credit. [Evidence](evidence/resfile-seek-remaining-native-word-20261107/README.md).
+canonical credit. .
 
 ## 2026-11-07 memory-file Seek native address words
 
@@ -920,7 +851,6 @@ low 32-bit unsigned `DWORD` address sums before converting to `BYTE*`.
 Eighteen actual whole-function source address variants were compiled and
 rejected/byte-neutral. The selected installed source cold preserves ten
 previously exact file owners, **491/491**, zero new match credit.
-[Native proof](evidence/resfile-seek-native-cursor-word-20261107/README.md).
 
 ## 2026-11-07 native-word ECL backward relative jump addresses
 
@@ -931,7 +861,6 @@ real 2-TU original-bound Run still matches **6,997/7,020**, all 189 fields,
 with 171-byte float callee exact. Four actual compiler variants were tested;
 final-source scoped eight-unit cold passes **1,037/1,037** previous exact
 bytes. No new canonical exact credit.
-[Evidence](evidence/ecl-native-script-jump-address-20261107/README.md).
 
 ## 2026-11-07 ECL EnterFrame/LeaveFrame native 32-bit words
 
@@ -942,7 +871,6 @@ undefined signed C++ overflow. Seven complete single-TU compiler trials
 reproduce all four stack owners exact and the same-graph `Run` candidate
 unchanged. Installed current-source selected six-unit exact cold **605/605**;
 separate two-TU `Run` still **6,997/7,020** with 189 fields, NONEXACT.
-[Evidence](evidence/ecl-stack-frame-native-word-20261107/README.md).
 
 ## 2026-11-07 native ECL Stack Push with guarded Pop rejection
 
@@ -954,7 +882,6 @@ whereas Pop forms preserve Pop122 exact but regress Run by 34-67 bytes;
 Pop changes are rejected. The installed Push source passes selected
 **776/776** exact bytes in two cold graphs; separate two-TU Run remains
 **6,997/7,020**, 189 fields, NONEXACT. Zero newly exact credit.
-[Evidence](evidence/ecl-stack-push-native-word-20261107/README.md).
 
 ## 2026-11-07 ECL FORMAT native-word cursor and scalar-index traps
 
@@ -966,7 +893,7 @@ removing two previous mismatches but adding three new ones; combining two
 separately neutral changes can likewise regress. The selected final-source
 combination preserves **6,997/7,020** original bytes and **189 fields**;
 eight scoped exact owners remain **1,037/1,037**. Still NONEXACT, zero new
-canonical credit. [Native result](evidence/ecl-format-native-word-cursors-20261107/README.md).
+canonical credit. Native result.
 
 ## 2026-11-07 ECL CALL native script/stack address words
 
@@ -977,7 +904,7 @@ Seven complete real two-TU compiler variants preserve its 551-byte/four-
 field candidate code exactly and the independently original-bound **Run
 6,997/7,020** with **189** target fields. Installed-source eight related
 exact owners cold-pass **1,081/1,081**; neither large function gains any
-canonical exact credit. [Proof](evidence/ecl-start-subroutine-native-argument-address-20261107/README.md).
+canonical exact credit. .
 
 ## 2026-11-07 SCPT serialized file and name native address words
 
@@ -989,7 +916,6 @@ original CRT call positions and the nonexact 502/581 target ordinary
 comparison, and `Run` stays 6,997/7,020 with all 189 original target
 fields. Six selected current-source exact owners cold-pass 904/904.
 No new canonical codegen credit.
-[Evidence](evidence/ecl-serialized-script-native-address-20261107/README.md).
 
 ## 2026-11-07 ANM variable-length script native byte addresses
 
@@ -1001,7 +927,6 @@ whole ANM executor **9,962/9,964** with **350 original fields**. Seventeen
 natural opcode-91 compiler-register variants still fail to remove the
 EDX/ECX two-byte mismatch; rejected and restored. Seven affected previous
 exact ANM helpers replay **1,037/1,037**. No new exact credit.
-[Native proof](evidence/anm-variable-stream-native-address-20261107/README.md).
 
 ## 2026-11-07 ECL indirect stack scalar read native word addresses
 
@@ -1012,7 +937,6 @@ one-TU C++ controls retain six exact read/resolve native owners and the
 whole single-TU `Run`; final-source original-bound two-TU Run remains
 **6,997/7,020** with 189 fields, and selected eight previously exact
 owners pass **1,061/1,061**. Two lvalue Resolve* sources remain separate.
-[Source epoch and proof](evidence/ecl-indirect-read-native-stack-words-20261107/README.md).
 
 ## 2026-11-07 ECL ResolveInt/ResolveFloat native 32-bit lvalue addresses
 
@@ -1026,7 +950,6 @@ six scalar leaves and the complete single-TU Run unchanged; installed
 reader+resolver current-source selected cold passes **1,197/1,197** across
 nine previously exact functions. Two-TU full Run remains **6,997/7,020**
 with **189** original fields, NONEXACT and zero new canonical credit.
-[Current evidence](evidence/ecl-indirect-resolve-native-stack-words-20261107/README.md).
 
 ## 2026-11-07 ECL ReadInt(-1) native tagged stack-pop words
 
@@ -1038,7 +961,7 @@ two stack byte addresses. Six true original-compiler variants keep all
 six scalar getter/resolver leaves exact and one-TU Run unchanged.
 Installed-source ten-unit exact original cold **1,319/1,319** and
 separate ECL/Enemy `Run` **6,997/7,020** with 189 fields; no new exact
-credit. [Proof](evidence/ecl-readint-tagged-pop-native-words-20261107/README.md).
+credit. .
 
 ## 2026-11-07 EnemyRuntimeUpdate original flash DEC native dword
 
@@ -1050,7 +973,6 @@ actual two-TU source variants preserve the complete 2,371-byte/69-field
 nonexact Enemy candidate; final-source five exact original-bound cold
 passes **570/570**, and two-TU `Run` remains **6,997/7,020** with 189
 original fields. No new exact owner credit.
-[Proof](evidence/enemy-runtime-flash-native-word-20261107/README.md).
 
 ## 2026-11-07 EnemyRuntimeUpdate native animation-script word
 
@@ -1062,7 +984,6 @@ ANM receiver and signed consumers. Five original compiled two-TU source
 experiments preserve full Enemy update 2,371-byte/69-candidate-field
 geometry and ECL Run 6,997/7,020/189 original fields. Installed-source
 selected exact five-unit cold **570/570**; zero newly exact owners.
-[Full native proof](evidence/enemy-runtime-animation-script-word-20261107/README.md).
 
 ## 2026-11-07 Sound GetFmtIndexByName native record address words
 
@@ -1074,7 +995,6 @@ source-pinned compiler probes preserve complete exact GetFmt227, large
 Sound ProcessQueues1452 and their original fields; installed-source
 five-unit 3-graph cold **2,261/2,261**, PreloadBgm remains nonexact
 365/369 with ten original fields. No newly exact codegen credit.
-[Proof](evidence/sound-getfmt-record-native-address-20261107/README.md).
 
 ## 2026-11-07 Sound GetFmtIndexByName native index dword increment
 
@@ -1085,7 +1005,7 @@ the source index logically signed. Eleven genuine two-TU native source
 variants preserve complete original exact GetFmt227/4 fields and
 ProcessQueues1452/43 fields, plus PreloadBgm365/369/10 fields. Final
 selected five-unit 3-graph original cold passes **2,261/2,261**, no newly
-exact functions. [Evidence](evidence/sound-getfmt-index-dword-wrap-20261107/README.md).
+exact functions. .
 
 ## 2026-11-07 Sound PreloadBgm original 0x34 format record stride
 
@@ -1098,7 +1018,6 @@ bound `PreloadBgm` at **365/369**, 10 fields; updating the fourth format
 publication regresses and is rejected. Installed-source selected four
 exact Sound owners, including full ProcessQueues1,452, cold-pass
 **2,034/2,034**, zero newly exact codegen credit.
-[Proof](evidence/sound-preload-native-format-stride-20261107/README.md).
 
 ## 2026-11-07 EnemyRuntimeUpdate original life SUB native dword
 
@@ -1110,7 +1029,6 @@ Five current two-TU VC7.1 source trials preserve complete nonexact
 Enemy 2,371/69 candidate fields and related ECL Run 6,997/7,020 with
 189 original fields. Final selected exact four-unit cold **404/404**;
 zero new exact owner credit.
-[Evidence](evidence/enemy-runtime-life-native-word-20261107/README.md).
 
 ## 2026-11-07 Stack Push type-slot and memcpy native byte addresses
 
@@ -1121,7 +1039,6 @@ full-owner source trials preserve four original-exact stack leaves and
 the same-graph 7,020-byte Run candidate. Installed-source six-unit
 selected cold passes **593/593**; two-TU Run remains **6,997/7,020**
 with 189 original target fields, NONEXACT, no new credit.
-[Proof](evidence/ecl-stack-push-native-word-address-20261107/README.md).
 
 ## 2026-11-07 ECL saved-frame low-word addresses and top advance
 
@@ -1133,7 +1050,6 @@ actual VC7.1 trials preserve the four existing exact stack leaves and
 same-graph `Run`; installed-source seven-unit original cold **776/776**,
 separate two-TU `Run` **6,997/7,020** with all 189 original field
 bindings. No new exact codegen credit.
-[Proof](evidence/ecl-stack-frame-saved-word-native-address-20261107/README.md).
 
 ## 2026-11-07 ECL Run FORMAT native argument counter dwords
 
@@ -1144,7 +1060,7 @@ were compared over all **7,020 original bytes / 189 original fields**:
 the installed lvalue form retains **6,997/7,020**; five natural address/
 assignment alternatives regress to 6,996 and were rejected. Current-
 source selected seven-unit original cold **1,000/1,000**; Run NONEXACT,
-zero new credit. [Proof](evidence/ecl-format-argument-index-wrap-20261107/README.md).
+zero new credit. .
 
 ## 2026-11-07 native-word ECL binary search without codegen regression
 
@@ -1155,7 +1071,7 @@ Five actual single-TU original-target native probes produce the same full
 **136/136 exact** function. Candidate Run7020/189 fields and AddScriptData588/2
 also preserve full byte/field geometry in that graph; their original codegen
 remains NONEXACT. Final-source three-unit selected cold **463/463** passes,
-zero new exact credit. [Complete proof](evidence/ecl-find-subroutine-native-word-20261107/README.md).
+zero new exact credit. Complete proof.
 
 ## 2026-11-07 ECL CALL metadata and stack native offset words
 
@@ -1165,7 +1081,7 @@ per-argument descriptor stride. Five complete actual one-TU source probes
 preserve StartSubroutine551/4 fields and ECL Run7020/189 fields byte for byte;
 Start remains NONEXACT (original550). Installed-source scoped two-artifact
 cold replay protects exact Find136, ReadInt144, ReadFloat183 and HostRun146,
-**609/609**, no new exact owner. [Proof](evidence/ecl-start-subroutine-word-offset-20261107/README.md).
+**609/609**, no new exact owner. .
 
 ## 2026-11-07 Enemy ECL pattern and counted spawn native word semantics
 
@@ -1178,7 +1094,6 @@ experiments plus installed-source PDB replay preserve the entire
 owners with zero candidate ordinary byte changes. Original dispatcher
 14,416 bytes remains nonexact, no target-field credit inferred. Selected
 five original-bound leaves remain **87/87** exact.
-[Full trial proof](evidence/enemy-ecl-spawn-pattern-index-words-20261107/README.md).
 
 ## 2026-11-07 Seek signed remaining-space using native DWORD address subtraction
 
@@ -1190,7 +1105,7 @@ inventing a bound check. Nine genuinely compiled normal-COFF alternatives
 retain the complete **107-byte / 100 matching original bytes / zero fields**
 frontier; unsigned remaining comparison regresses and was rejected. Ten
 selected original-bound file owners cold-pass **491/491**, no new exact
-credit. [Native proof](evidence/resfile-seek-native-remaining-word-20261107/README.md).
+credit. .
 
 ## 2026-11-07 large Bullet SpawnSingle 0x7F0 cursor dword stride
 
@@ -1203,7 +1118,6 @@ candidate codegen unchanged (original1,413). The separately compiled
 canonical SpawnBulletPattern194 plus four exact transform leaves pass
 **1,028/1,028**, 40 true original fields. Adjacent absolute direction
 stays **333/335**, no newly exact codegen credit.
-[Evidence](evidence/bullet-spawn-native-pool-cursor-20261107/README.md).
 
 ## 2026-11-07 bullet large SpawnSingle native odd index word
 
@@ -1215,7 +1129,6 @@ actual 7-TU source variants preserve the complete nonexact 1,504-byte
 candidate/44 fields and adjacent functions. Installed-source selected
 two-graph canonical exact cold **1,028/1,028**, 40 original fields;
 `UpdateAbsoluteDirectionChange` still **333/335**, no new exact credit.
-[Proof](evidence/bullet-spawn-odd-index-native-word-20261107/README.md).
 
 ## 2026-11-07 bullet main-loop state timer unsigned native word
 
@@ -1226,7 +1139,7 @@ stays strictly original-bound **249/249 exact**, as do callback40,
 Deactivate158 and IsOutsidePlayfield109, for **556/556** selected cold
 original bytes across two source-epoch native artifacts. This addresses a
 distinct timer from the seven transform helpers and adds no newly exact
-code. [Current proof](evidence/bullet-manager-state-timer-word-wrap-20261107/README.md).
+code. Current proof.
 
 ## 2026-11-07 Bullet transforms: native frame-timer word increments
 
@@ -1238,7 +1151,6 @@ geometry for seven complete owner functions. The absolute direction-change
 boss is still **333/335 original bytes, 8/8 bound fields**; no exact credit
 added. Current installed-source selected deceleration, horizontal-wrap and
 vertical-wrap exact guards cold-pass **484/484** original bytes.
-[Full evidence](evidence/bullet-transform-timer-word-wrap-20261107/README.md).
 
 ## 2026-11-07 FadeIn 133-byte authored callback exact
 
@@ -1252,7 +1164,6 @@ semantics but restores the native scheduling and full function length. Two
 independent full 14-TU exact colds pass plus first-artifact Init396/Delete26
 original-bound exact guards. Accepted +1 confirmed-authored exact owner,
 +133 original bytes. No full-game or physical-TU assertion.
-[Proof](evidence/transition-fade-in-133-exact-20261107/README.md).
 
 ## 2026-11-07 statistics constructor real record dependency
 
@@ -1266,8 +1177,6 @@ address, no anchor. Installed-source selected finalizer564, loader423 and
 tail142 original-bound exact units still pass1129/1129; same-image
 destructor45 exact. Constructor137 versus target132 and factory98 versus97
 remain NONEXACT. No new canonical credit.
-[Native proof](evidence/statistics-record-real-caller-20261107/README.md).
-
 
 ## 2026-11-07 statistics record default-name copy
 
@@ -1279,8 +1188,6 @@ aligning **7/8 original positions** (previously4/8). In one common fixed
 230-position ordinary mask, differences decrease **75→36**. The second
 name-word load at candidate+0x50 versus target+0x53 and distinct cursor
 registers are unresolved. No canonical or authored exact credit.
-[Current proof](evidence/statistics-record-name-copy-schedule-20261107/README.md).
-
 
 ## 2026-11-07 complete finalizer 564-byte exact
 
@@ -1293,8 +1200,6 @@ final source uses typed `offsetof` addresses relative to the whole owner.
 Two independent real five-TU colds and canonical selected1129/1129 confirm.
 New credited original authored owner: **+1/+564 bytes**. No all-unit replay or
 runnable game/product claim.
-[Complete original-bound proof](evidence/game-statistics-finalize-exact-20261107/README.md).
-
 
 ## 2026-11-06 statistics finalizer recordIndex cursor
 
@@ -1308,8 +1213,6 @@ from **481/564 to 553/564**, without reducing target size or removing
 code. Eleven ordinary differences remain: pre-loop setup order7 and tail
 checksum cursor positions4. Loader423, initializer142 selected cold and
 same-context destructor45 remain exact. **No new exact credit**.
-[Strict owner proof](evidence/game-statistics-finalize-record-cursor-20261106/README.md).
-
 
 ## 2026-11-06 text rasterization native word geometry
 
@@ -1322,8 +1225,6 @@ the preceding source; same-graph linked PDB contributions are also identical,
 although the alternate function remains575 vs original509 in the `/GL`
 context and the current `/GL /GS` inverter is only138/157. Affected three
 canonical exact units cold-replay1799/1799, no new exact credit.
-[Scoped proof](evidence/text-native-word-geometry-20261106/README.md).
-
 
 ## 2026-11-06 capture rectangle complete authored exact
 
@@ -1336,8 +1237,6 @@ recovers the one remaining byte without forcing registers. Six original
 fields are independently bound; two independent zero-reuse colds confirm
 capture162, FindVm73 and ResultMenuClose89 all exact. This is +162 original
 confirmed-authored exact bytes, not a runtime or original-TU proof.
-[Complete evidence](evidence/anm-capture-rectangle-exact-20261106/README.md).
-
 
 This index retains target-observed boundaries, structure layouts, private ABI
 constraints, canonical exact findings, and useful negative constraints. It is
@@ -1361,7 +1260,7 @@ the ledger is **1,494 exact functions / 195,082 bytes**, including **585
 confirmed-authored exact / 124,992 bytes**. The previously one-byte-close
 `TextRenderBufferView::InvertAlpha` is from a *different source and build
 epoch*; the currently installed source's fresh two-TU graph is **138/157**,
-not 156/157. [Current proof and cleanup](evidence/handoff-storage-20261106/README.md)
+not 156/157. Current proof and cleanup
 restore old experimental images separately; they do not become current proofs.
 
 Generated builds and superseded scratch are disposable after preserving useful
@@ -1395,7 +1294,7 @@ source correction. Adding GameManagerLifecycle/MainConfiguration under their
 existing profiles restores selected34-input cold185/all12, including EH.
 Save's own21-input current-source selected cold passes1681/all83. Neither
 result is new credit. Shared headers, compiler profiles and comparator remain
-unchanged. [Complete evidence and frontier](evidence/replay-initialize-constructors-20261106/README.md).
+unchanged. Complete evidence and frontier.
 
 ## 2026-11-06 type-1 circle real owner and sample semantics
 
@@ -1420,7 +1319,6 @@ Current same-image polar30, bounds91 and registration118 pass239/all4; allocator
 their own selected canonical recipes; Draw169 in the Update-root image is
 rejected as a substitute for Draw's canonical contract. Original boundary and
 origin reviews remain unchanged; zero new exact bytes.
-[Complete current-source/context evidence](evidence/laser-type1-circle-owner-20261106/README.md).
 
 ## 2026-11-06 complete ending script execution exact
 
@@ -1444,7 +1342,6 @@ PE/PDB identities and unchanged83 source/header pins. Constructor648,
 LoadScript106, decoder41, pending-ID65 and direct caller Tick93 pass953/all24
 in both images, including worker-member EH binding. Updated MIT reference
 expressions are source leads; local original bytes establish acceptance.
-[Complete proof and selected replay](evidence/ending-run-1568-exact-20261106/README.md).
 
 ## 2026-11-06 complete replay save exact
 
@@ -1463,7 +1360,6 @@ identities and unchanged83 source/header pins. Both images preserve existing
 replay/file guards412/all33; the cold image also preserves shared-artifact
 ReadIntOperand820. Original boundary/authored provenance remain unchanged.
 Encrypt286/307 stays nonexact; this establishes no runtime/product closure.
-[Complete proof and reproducible selected command](evidence/replay-save-1681-exact-20261106/README.md).
 
 ## 2026-11-06 ECL counted offset cursor restores the complete owner size
 
@@ -1481,7 +1377,7 @@ The final current-source two-input GL cold preserves generic Run6997/7020,
 all189 fields and all60 jump words/88 selectors. The maintained diagnostic
 covers its now-undecoded selector suffix without changing the comparator.
 ReadFloatValue171/all4 and Find136 pass in the same image; selected canonical
-Find136 cold also passes. [Complete pins and evidence](evidence/ecl-counted-offset-cursor-20261106/README.md).
+Find136 cold also passes. Complete pins and evidence.
 
 ## 2026-11-06 type-1 box cutter real owner and vector source
 
@@ -1502,7 +1398,6 @@ still inlines its type-0 branch; standalone factory153/151, world creator
 Original virtual ABI and all target branches belong to this bounded source
 recovery; it is **not exact**. Same-image polar30 and bounds91/all4 pass; selected canonical type-1 Update
 832/all34 cold passes.
-[Whole-owner facts, current pins and selected caller guard](evidence/laser-type1-box-owner-20261106/README.md).
 
 ## 2026-11-06 updated external TH10 source leads
 
@@ -1511,7 +1406,7 @@ has a separate ignored detached sibling at current upstream `d1f3121`
 (November 1). GitHub compares 42 commits / 264 paths; 24 source files change.
 The pinned regions ledger promotes 16 equivalent entries and leaves seven;
 15 promoted entry addresses were still open locally at review start. Read
-[the review and address crosswalk](evidence/upstream-th10-decomp-review-20261106/README.md)
+
 for camera float-product lifetime, ECL count references, scoped replay locals,
 plain Ending-manager reads, substantial laser cutters and visible real-callee
 requirements. Synthetic escape/caller/stand-in contexts are not adopted.
@@ -1539,7 +1434,7 @@ excluding unordered equality. First final-source and separate all-two-input
 canonical GL/GS colds pass173/all10. Same-image actual angle94/all6 and
 renderer216/all21 pass in both images, including the renderer table. New
 authored exact:173 bytes /one owner; original helper/class/TU and runtime
-remain unknown. See [the complete proof](evidence/laser-type1-draw-173-exact-20261106/README.md).
+remain unknown.
 
 ## 2026-11-06 statistics-record kind-loop reconstruction
 
@@ -1555,7 +1450,6 @@ retains two SIB encodings. Literal/aggregate copies are neutral, method280
 and indexed791 reject and restore. No canonical source consumer, new match,
 boundary/origin/count change or original data allocation follows. The old
 source-absent ledger wording and isolated274-byte claims are historical.
-See [the complete current proof](evidence/statistics-record-natural-loop-20261106/README.md).
 
 ## 2026-11-06 type-0 Bounce virtual ownership and ordered Y predicate
 
@@ -1576,7 +1470,7 @@ retain stack request and157/RET8; Bounce507/533, while Update and both
 constructors pass. Both restore; no new declaration permutation is warranted
 without distinguishing caller-lifetime evidence.
 No exact/boundary/origin/count credit. The old402-byte isolated diagnostic is
-historical. See [the source-pinned proof](evidence/laser-bounce-virtual-owner-20261106/README.md).
+historical.
 
 ## 2026-11-06 complete bullet vertical wrap exact
 
@@ -1589,8 +1483,7 @@ ordered reads recover the complete instruction/register layout. Direct
 compound expressions avoid the extra x87 temporaries from separate locals;
 original volatile qualification is unknown. First final-source link and
 independent all-seven-input canonical cold pass172/all8; related horizontal
-148/all8 passes. New authored exact:172 bytes /one owner. See
-[the complete proof](evidence/bullet-vertical-wrap-20261106/README.md).
+148/all8 passes. New authored exact:172 bytes /one owner.
 
 ## 2026-11-06 complete bullet vector acceleration exact
 
@@ -1602,8 +1495,7 @@ seven remaining x87 operand bytes; original volatile qualification is unknown.
 A first final-source link and a separate all-seven-input canonical cold both
 pass305/all10; related horizontal148/all8 passes. New authored exact:305 bytes /
 one owner. Same-artifact AbsoluteDirection remains333/335, now with all8 fields
-independently original-bound; +0xD7/+0xDD differ. See
-[the complete proofs](evidence/bullet-vector-acceleration-20261106/README.md).
+independently original-bound; +0xD7/+0xDD differ.
 
 ## 2026-11-06 input frame publication and repeat-cursor lifetimes
 
@@ -1617,7 +1509,7 @@ single-TU canonical query cold passes264/all12; its frame owner compares
 807/850 with all10 independently original-bound fields, still NONEXACT.
 Remaining43 differences begin+0x2DD in repeat/edge registers and scheduling.
 XOR/countdown/wider-mask/snapshot controls did not improve this frontier and
-are restored. See [the complete current proof and contract](evidence/input-frame-published-mask-20261106/README.md).
+are restored.
 
 ## 2026-11-06 complete startup version loader exact
 
@@ -1629,8 +1521,7 @@ transport with the existing PBG `/Ob1` and normal ResFile partition. A first
 final-source link and a separate all-six-input canonical cold both compare
 174/174 bytes with all 15 independently original-bound fields, complete
 cookie/error exits and local destinations. New authored exact: one owner /
-174 bytes; original TU/data ownership and runtime remain unknown. See
-[the complete proof](evidence/startup-version-174-exact-20261106/README.md).
+174 bytes; original TU/data ownership and runtime remain unknown.
 
 ## 2026-11-06 camera reset +0xE4 word stores
 
@@ -1641,8 +1532,7 @@ source omitted both. `StageCameraStateView::unknown0E4` now names the existing
 unsigned word; its meaning remains unknown. Both assignments are restored
 with size/offset assertions. Fresh complete `/GL` and normal-COFF owners are
 533 versus original 465 bytes, so no exact credit. The earlier 518-byte result
-is a source epoch without these stores. See
-[the original/native evidence](evidence/stage-camera-default-words-20261106/README.md).
+is a source epoch without these stores.
 
 ## 2026-11-05 ECL JUMP / spawned-thread counted operand wire views
 
@@ -1654,7 +1544,6 @@ instruction sizes. Two-source VC7.1 complete Run remains **6,997/7,020**
 with all **189** target bindings, and StartSubroutine retains four original
 call positions in its 551-byte nonexact candidate. Selected accepted ECL
 value readers remain **268/268 exact**; no new credit.
-[Evidence](evidence/ecl-jump-spawn-thread-wire-20261105/README.md).
 
 ## 2026-11-05 ECL FORMAT counted scalar payload across Run
 
@@ -1666,7 +1555,6 @@ indexing (no fabricated alignment). The fresh two-TU compiled
 `EclVmContext::Run` remains 7,020 bytes, 189/189 original fields,
 6,997/7,020 target ordinary bytes, and **NONEXACT**. StartSubroutine retains
 all four call sites; selected existing value leaves remain **295/295 exact**.
-[Evidence](evidence/ecl-format-counted-scalar-values-20261105/README.md).
 
 ## 2026-11-05 RIFF/WAVE native chunk wire prefix recovery
 
@@ -1678,7 +1566,6 @@ source graph preserves full `LoadSoundSample` **684-byte** codegen at
 **678/684** independently compared ordinary positions (the six byte call
 operand schedule remains NONEXACT), while accepted 71/107/227-byte Sound
 leaves retain their target-bound **405/405 exact** selected cold replays.
-[Evidence](evidence/sound-riff-chunk-prefix-20261105/README.md).
 
 ## 2026-11-05 MIDI StopPlayback newly accepted exact
 
@@ -1695,7 +1582,6 @@ canonical cold build reproduces it. The existing full **30-TU** original-bound
 MIDI destructor (156) and track release (107) also cold-pass **263/263**
 after these source changes. New total **1,485 exact / 190,260 bytes**
 (**577 authored / 120,224 bytes**). See
-[evidence](evidence/midi-stop-playback-single-owner-20261105/README.md).
 
 ## 2026-11-06 Enemy ECL circle scalar raw word storage
 
@@ -1708,7 +1594,6 @@ large Enemy ECL owner unchanged. Three affected existing original-bound
 owners, including the complete **652-byte** scalar interpolation evaluator,
 selectively cold-pass **682/682** exact bytes. The original ECL boss remains
 14,416 bytes / NONEXACT; no new canonical credit.
-[Evidence](evidence/enemy-circle-scalar-bits-20261106/README.md).
 
 ## 2026-11-06 EnemyLaser AccumulatePointChecks 54-byte exact / origin unknown
 
@@ -1721,7 +1606,7 @@ hypothesis is superseded. The function's original compiler-author/library
 provenance is explicitly **indeterminate**, so this adds one exact function
 and 54 bytes but **not** to confirmed-authored exact totals. Current
 canonical ledger: **1,488 functions / 191,009 bytes**; authored exact remains
-**579 / 120,919 bytes**. [Evidence](evidence/enemy-laser-point-checks-54-exact-20261106/README.md).
+**579 / 120,919 bytes**. .
 
 ## 2026-11-06 BulletManagerView::SpawnBulletPattern complete exact admission
 
@@ -1734,7 +1619,6 @@ identically; the earlier 195-byte isolated candidate is superseded, not
 promoted. This accepts one new authored exact function / 194 bytes, for
 **1,487 canonical exact / 190,955 bytes** and **579 authored exact /
 120,919 bytes**. Existing large Enemy/ANM/ECL bosses remain nonexact.
-[Evidence](evidence/bullet-spawn-pattern-194-exact-20261106/README.md).
 
 ## 2026-11-06 AnmFloatRectView::DrawGradient complete exact admission
 
@@ -1748,7 +1632,7 @@ original target contract; the second is an explicitly selected canonical
 cold build. This adds exactly one authored exact owner / 501 bytes, for
 **1,486 canonical exact owners / 190,761 bytes** (578 authored / 120,725
 bytes). Original historical source identity and product/runtime closure
-remain unknown. [Evidence](evidence/anm-gradient-rect-501-exact-20261106/README.md).
+remain unknown. .
 
 ## 2026-11-05 Newly accepted Sound BGM format-name lookup
 
@@ -1762,7 +1646,6 @@ second independent cold replay **227/227**, with existing 107-byte Sound
 loader retained. The current generated ledger is **1,484 canonical exact
 functions / 190,131 bytes, including 576 authored / 120,095 bytes**;
 older source-epoch totals below are superseded. See
-[evidence](evidence/sound-getfmt-index-227-exact-20261105/README.md).
 
 ## 2026-11-05 ECL SCPT file-slot reload after validation
 
@@ -1774,7 +1657,6 @@ candidate improves from 570 to **585 bytes** but remains **NONEXACT**:
 `REP MOVSD` and the two call fields are not at the original locations.
 The complete 7,020-byte ECL Run remains 6,997/7,020 original-bound, while
 three selected existing exact leaves pass 470/470. See
-[evidence](evidence/ecl-script-slot-reload-20261105/README.md).
 
 ## 2026-11-05 SoundDataLoaderThread newly accepted exact
 
@@ -1788,7 +1670,7 @@ former two-register, 112-byte source was structurally nonexact. A natural
 canonical cold replay verifies the same complete owner and field identities;
 its actual launcher also remains **34/34 exact**. This is new authored
 codegen credit only, not whole-product or runtime closure. Evidence:
-[evidence/sound-loader-single-index-exact-20261105/README.md](evidence/sound-loader-single-index-exact-20261105/README.md).
+
 Current authoritative generated ledger: **1,483 exact functions, 189,904
 exact bytes, 575 authored exact functions and 119,868 authored exact bytes**.
 The older counts below are source-epoch snapshots, not live totals.
@@ -1830,8 +1712,6 @@ Run** comparison establish unchanged current codegen, not new exact credit.
 Eleven selected complete exact owners replay **1,129/1,129 bytes** from the
 current source epoch. The large dispatcher remains 14,352 candidate bytes
 versus original 14,416; the ECL Run remains 6,997/7,020 original-matched.
-[Cross-graph native proof](evidence/th10-current-ecl-graph-after-call-20261105/README.md).
-
 
 The generated ledger now records **1,482 complete exact functions and
 189,797 exact codegen bytes**, with 1,309 source-present mappings and
@@ -1841,7 +1721,7 @@ must not be reused as current status. The 95-byte
 EnemyEclResourceView::LoadFile at 0x0040CD20 is canonical exact with
 five original target-bound fields and two independent cold links in a
 real FileSystem/EclVm producer (see
-[evidence](evidence/enemy-ecl-loadfile-real-filesystem-exact-20261104/README.md)).
+).
 Its 589-byte AddScriptData callee is *still nonexact*.
 
 Subsequent source changes typed the full 14KB Enemy ECL interpreter's
@@ -1856,7 +1736,7 @@ two child-node owner reloads; **the old 2,424-byte candidate is superseded**.
 Equal sizes and candidate-field agreement do not imply full original-target
 linkage identity. **Both ECL bosses remain NONEXACT.** Latest native graph:
 `build/gpt-web/20261105-handoff-current/complete-ecl/` with SHA-pinned
-current source. See [latest handoff native receipt](evidence/handoff-maintenance-20261105/current-native-frontiers.json).
+current source.
 **Later full-graph supersession (2026-11-05):** the dispatcher now derives
 its 22-per-pattern extra-record indexing, 24-byte extra stride, and native
 bullet-offset dword cursor from checked C++ type extents rather than literal
@@ -1865,11 +1745,10 @@ math. A new **fully recompiled 11-TU graph**, including the changed
 all ordinary candidate bytes against the previous candidate. The 14,416-byte
 original remains 64 bytes longer; neither it nor the 2,432-byte spell-start
 candidate is admitted as exact. Original-bound selected replays preserve
-292/292 existing bytes. [Current evidence](evidence/enemy-ecl-native-stride-closure-20261105/README.md).
+292/292 existing bytes. Current evidence.
 The ECL FORMAT case now has a `+0` serialized inline-byte-count prefix and
 signed record-stride computation; the complete 7,020-byte Run retains 189
 original layout/field obligations and 23 ordinary target differences.
-[Typed FORMAT evidence](evidence/ecl-format-signed-prefix-overlay-20261105/README.md).
 
 **Current November 5 whole-boss recompilation:** a fresh post-SCPT, post-Chain
 11-TU VC7.1 link establishes a current source-epoch baseline. All five ECL
@@ -1878,8 +1757,7 @@ opcode `0x199` direct field stores now address the checked overlapping
 hoisted-pointer trial, they retain all 716 candidate ECL linkage fields at
 unchanged positions and all 14,352 candidate bytes. The genuine original is
 14,416 bytes, so this **does not** close the boss. Five original-bound exact
-neighbors passed 340/340; see
-[complete typed cursor evidence](evidence/enemy-ecl-inline-extra-cursor-20261105/README.md).
+neighbors passed 340/340;
 
 **Text bitmap sign-branch finding:** the A1R5G5B5 alpha test maps to the
 encoded high-byte bit 7, allowing VC7.1 to emit `TEST AH,AH / JS` instead
@@ -1888,7 +1766,6 @@ body improves 111/157 to 112/157 ordinary raw target bytes; a separate
 real `/GL` producer reproduces 138/157. The unresolved discrepancy is
 primarily receiver/register allocation. Neither is exact. Existing selected
 text owners replayed 1,799/1,799.
-[Source and compiler proof](evidence/text-alpha-native-sign-branch-20261105/README.md).
 
 A later split pitch-read/multiply control is byte-neutral in both complete
 normal COFF112/157 and real two-input GL138/157. The latter's19 differences
@@ -1917,7 +1794,7 @@ tar, while retaining **311 expanded witness files at that historical cleanup
 checkpoint** (14,079,534 payload bytes) and all canonical `build/match-linked` producers, source, original
 target, toolchain, Ghidra, prior archives and research scripts. Selected
 restoration was tested; see [latest artifact inventory](RE_ARTIFACTS.md)
-and [next-agent storage receipt](evidence/handoff-maintenance-20261105/README.md).
+and next-agent storage receipt.
 Old archive names remain part of the recovery history and must not be
 confused with current exact-codegen claims.
 
@@ -1937,8 +1814,6 @@ preliminary ordinary positional agreement **215/339 → 245/339**, with five
 candidate fields. **NONEXACT** remains mandatory: original field geometry
 and all remaining bytes still differ. Selected accepted neighboring callback
 bodies cold-replay **123/123 exact**.
-[Evidence](evidence/player-trail-initial-xy-register-reuse-20261104/README.md).
-
 
 **Player option-trail two staged coordinate writes (2026-11-04):** The full
 359-byte `PlayerOptionTrailCallbackBody` now computes both nonzero-mode X/Y
@@ -1948,8 +1823,7 @@ callback graph, the complete PDB extent remains **359/359**, and the
 noncanonical positional ordinary byte diagnostic improves **209/339 to
 215/339**. Five candidate external fields are not enough to prove exactness;
 this owner remains **NONEXACT**, with **123/123** selected existing callback
-exact bytes cold-confirmed. [Bounded evidence](evidence/player-trail-two-staged-coordinates-20261104/README.md).
-
+exact bytes cold-confirmed. Bounded evidence.
 
 **New exact FrontEnd closure (2026-11-04):** Both previously nonexact
 27-byte FrontEnd constant-2/3 VM interrupt helpers at `0x0042C730` and
@@ -1962,8 +1836,6 @@ fields across the two functions, all nonrelocation bytes and two distinct
 cold PE/PDB identities pass. Selected existing 3,999-byte options and
 246-byte sibling exact owners remain exact. The older 32/27 source frontier
 is superseded; authored/outlined origin remains indeterminate.
-[Full evidence](evidence/frontend-vm-interrupt-adapters-exact-20261104/README.md).
-
 
 **Current ledger:** **1,829** reviewed boundaries, **1,309** source-present,
 **1,482** canonical exact functions and **189,797** exact codegen bytes.
@@ -1977,10 +1849,10 @@ a fresh compiled source epoch.
 **Previously obsolete claims corrected:** the 83-byte DirectInput thread at
 `0x0043BA90` is **83/83 exact** (not nonexact), with the 21-byte real
 DirectInput8 COM release at `0x00421D20` independently **21/21 exact**;
-[thread evidence](evidence/input-device-thread-exact-20261103/README.md).
+
 `GameCreateOwner40AF90` at `0x0040AF90` is also **86/86 exact**, not the older
 83/86 candidate mentioned by the root README before this cleanup;
-[creator proof](evidence/game-owner-creator-exact-20261102/README.md).
+
 The 43-byte `EnemyLaserDrawList` at `0x0041C450` and 46-byte registered
 laser draw callback are **both exact** under the same genuine callback-root
 LTCG graph; the 274-byte updater and 91-byte update callback remain nonexact.
@@ -1997,7 +1869,6 @@ regenerable cache pruning. `build/match-linked/`, `.analysis/gpt-web/`,
 original target, pinned tools, Ghidra project and all earlier archives are
 retained. Details and selective restore:
 [RE_ARTIFACTS.md](RE_ARTIFACTS.md) and
-[November 4 storage proof](evidence/handoff-storage-20261104/README.md).
 
 The November 3 section and all dated sections below are **historical source
 epochs**. Their former "current" statuses are not current claims when
@@ -2011,7 +1882,7 @@ contradicted by this section or the exact ledgers.
   `TextRenderBufferView::ReleaseBuffer @0x00436A30` is separately **107/107**
   exact in the same selected producer. The old source-absent inventory and
   original Ghidra name for `0x437D10` are now superseded by this full owner
-  [proof](evidence/text-font-release-exact-20261103/README.md).
+
 - **File loader actual identity:** the early `FILESYSTEM-001` paragraph
   below said source mapping and exactness were unknown. That described an
   *earlier source epoch*, not today's state: later `FILESYSTEM-010` proves
@@ -2021,7 +1892,7 @@ contradicted by this section or the exact ledgers.
   The ECL resource's 95-byte `LoadFile @0x0040CD20` now names this real
   callee rather than the old fictional `EnemyLoadFileBytes` symbol, but is
   still **85/95 NONEXACT** from call argument scheduling.
-  [Caller/source repair](evidence/enemy-ecl-load-file-identity-20261102/README.md).
+
 - **Input owner boundaries:** `InputReadWinmmJoystickCapabilities @0x0044A0C0`
   is **105/105 exact** with real `GameErrorContext::Log` LTCG support;
   `InputKeyboardSnapshotView::ReadKeyboardState @0x0044B010` is **103/103**;
@@ -2070,8 +1941,8 @@ silently rewritten as current acceptance.
 
 Use [RE_HANDOFF.md](RE_HANDOFF.md) for the short continuation brief and
 [RE_ARTIFACTS.md](RE_ARTIFACTS.md) for current versus archived working state.
-The latest [Hint frame proof](evidence/hint-frame-exact-20261031/README.md)
-supersedes its earlier571/571 nonexact reports. The [GUI stage updater proof](evidence/gui-update-exact-20261031/README.md)
+The latest Hint frame proof
+supersedes its earlier571/571 nonexact reports. The GUI stage updater proof
 supersedes the old four-byte residual. Historical source models/test lists and
 cache labels below retain their dated meaning; they are not current gates.
 
@@ -2202,27 +2073,27 @@ cache labels below retain their dated meaning; they are not current gates.
 | MAIN-027 | observed / corrected-attribution / canonical-linked-exact | `MainSupervisorView::SetNextGameMode @ 0x0040AC90` is a 37-byte shared game-mode setter. All six direct call sites preload EAX=`0x00491C28`; target startup stores the HINSTANCE at this base and Direct3DCreate9 at base+0x04, independently identifying the MainSupervisor owner. The body tests flags at +0x3CC bit 0x1000, writes the requested mode to +0x390 when clear, and otherwise forces 2. Maintained FrontEnd source already names the +0x390 slot next game mode; Gui and Player had separate placeholder transition interfaces for the same target helper. A natural MainSupervisor member, selected through real `GuiMessageVmView::Run` /GL context, yields the target private EAX receiver and reproduces all 37 relocation-free bytes raw-equal. | Hash-attested target body, global-base/caller setup and +0x390 xrefs; maintained Main/Gui/FrontEnd source; canonical `main-set-next-game-mode` replay; pinned VC7.1 SP1 build6030 |
 | MAIN-028 | observed / canonical-linked-exact / private-ABI | The target create-window owner at `0x00439730-0x00439884` is now closed by natural maintained source under a target-bound `/GL /GS` graph rooted at `GameWindowView::WindowProc`. Two independent pinned VC7.1 SP1 build6030 links reproduce all 341 bytes and the exhaustive 20-field DIR32 manifest: Win32 imports, WindowProc, `BASE`/title strings, `MainSupervisorView` `windowed`/HWND fields and `GameWindowView` state. The private EBX HINSTANCE convention is retained as interprocedural evidence; the normal-COFF explicit-argument probe remains diagnostic only. | Direct IDA Pro MCP disassembly/caller bytes at `0x00439730`, `0x004390E0`, and WinMain; focused `main-create-game-window` replay twice; pinned VC7.1 SP1 build6030 |
 
-| ANM-117 | observed / complete-parent nonexact / arithmetic schedule recovered | `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` now emits a complete 9,964-byte owner matching 9,962 ordinary/field-bound bytes; all 350 independently reviewed address/control fields, including 95 fixed local/table destinations, pass. A scoped position-Z volatile read restores the second radial vertex Z load/add order and a local fully inlined timer helper restores its terminal x87 order without regressing shared Float2/Float3 interpolation from a header-level change. Two bytes at +0x113/+0x115 remain: child opcode91 target EDX versus native ECX for the layer load/push. A scoped five-source cold link confirms the entire nonexact parent; two affected existing Add/Decrement units cold-pass 108/108. No new exact credit or original source qualifier claim. | [Complete two-byte frontier](evidence/anm-executor-two-byte-frontier-20261031/README.md); reused 350-field contract, selected native proofs |
+| ANM-117 | observed / complete-parent nonexact / arithmetic schedule recovered | `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` now emits a complete 9,964-byte owner matching 9,962 ordinary/field-bound bytes; all 350 independently reviewed address/control fields, including 95 fixed local/table destinations, pass. A scoped position-Z volatile read restores the second radial vertex Z load/add order and a local fully inlined timer helper restores its terminal x87 order without regressing shared Float2/Float3 interpolation from a header-level change. Two bytes at +0x113/+0x115 remain: child opcode91 target EDX versus native ECX for the layer load/push. A scoped five-source cold link confirms the entire nonexact parent; two affected existing Add/Decrement units cold-pass 108/108. No new exact credit or original source qualifier claim. | Complete two-byte frontier; reused 350-field contract, selected native proofs |
 
-| FRONTEND-028 | observed / canonical-linked-exact / corrected physical table boundary | `ResultMenuUpdate @ 0x004223F0..0x004224BD` is a complete 206-byte authored result-menu dispatcher. The old 179-byte ledger ended at its final RET (`+0xB2`) but the unique PDB source contribution continues through an alignment NOP (`+0xB3`), three absolute jump-table addresses (`+0xB4/+0xB8/+0xBC`) and fourteen byte selector values (`+0xC0..+0xCD`); two CC bytes separate the next independent owner at 0x4224C0. The natural maintained switch/timer code already emits all 206 bytes in the selected FrontEnd `/GL` source graph with sixteen independently bound fields, including both table-base references and all three fixed local destinations. Two distinct cold VC7.1 SP1 replays reproduce 206/206 and 16/16; physical target bytes, not a cropped prefix, are admitted. It adds 27 reviewed authored denominator bytes but no additional function/source mapping. Original C++ source/TU attribution and complete runtime remain separate. | [Full table-inclusive owner proof](evidence/result-menu-update-exact-20261031/README.md) and `result-menu-update` unit |
+| FRONTEND-028 | observed / canonical-linked-exact / corrected physical table boundary | `ResultMenuUpdate @ 0x004223F0..0x004224BD` is a complete 206-byte authored result-menu dispatcher. The old 179-byte ledger ended at its final RET (`+0xB2`) but the unique PDB source contribution continues through an alignment NOP (`+0xB3`), three absolute jump-table addresses (`+0xB4/+0xB8/+0xBC`) and fourteen byte selector values (`+0xC0..+0xCD`); two CC bytes separate the next independent owner at 0x4224C0. The natural maintained switch/timer code already emits all 206 bytes in the selected FrontEnd `/GL` source graph with sixteen independently bound fields, including both table-base references and all three fixed local destinations. Two distinct cold VC7.1 SP1 replays reproduce 206/206 and 16/16; physical target bytes, not a cropped prefix, are admitted. It adds 27 reviewed authored denominator bytes but no additional function/source mapping. Original C++ source/TU attribution and complete runtime remain separate. | Full table-inclusive owner proof and `result-menu-update` unit |
 
 ## Cross-TU lifecycle exact closures
 
 | ID | State | Durable fact or constraint | Evidence |
 | --- | --- | --- | --- |
-| LIFECYCLE-001 | observed / three canonical-linked-exact authored owners / genuine source graph | The existing `ScriptViewerCreate` 14-input VC7.1 `/GL /GS /EHs` graph selects three previously rejected authored source functions without modifying their C++: `PlayerCreate @ 0x00425020` **69/69**, five new/ctor/init/dtor/delete REL32 fields; `EnemyManagerCreate @ 0x0040D6B0` **95/95**, five allocation/global/initializer/destructor/delete fields with the actual Enemy.cpp no-`/GS /EHs` support profile; and `AnmRenderManagerView::AllocateVm @ 0x00449950` **161/161**, four operator-new/VM-constructor/two-initializer REL32 fields. All unique PDB support-TU owners, complete branches, two independent selected cold links and both existing ScriptViewer constructor/create guards prove **626/626 exact bytes across five units and 21 linked fields**. The earlier isolated 72/69 Player and 97/95 Enemy diagnostics were false negatives from compiler context; no source rewrites, partial credit or full cold replay are involved. Original production ownership and runtime remain independent. | [Complete three-owner target fields and independent selected colds](evidence/script-viewer-graph-lifecycle-exacts-20261031/README.md) |
+| LIFECYCLE-001 | observed / three canonical-linked-exact authored owners / genuine source graph | The existing `ScriptViewerCreate` 14-input VC7.1 `/GL /GS /EHs` graph selects three previously rejected authored source functions without modifying their C++: `PlayerCreate @ 0x00425020` **69/69**, five new/ctor/init/dtor/delete REL32 fields; `EnemyManagerCreate @ 0x0040D6B0` **95/95**, five allocation/global/initializer/destructor/delete fields with the actual Enemy.cpp no-`/GS /EHs` support profile; and `AnmRenderManagerView::AllocateVm @ 0x00449950` **161/161**, four operator-new/VM-constructor/two-initializer REL32 fields. All unique PDB support-TU owners, complete branches, two independent selected cold links and both existing ScriptViewer constructor/create guards prove **626/626 exact bytes across five units and 21 linked fields**. The earlier isolated 72/69 Player and 97/95 Enemy diagnostics were false negatives from compiler context; no source rewrites, partial credit or full cold replay are involved. Original production ownership and runtime remain independent. | Complete three-owner target fields and independent selected colds |
 
-| FRONTEND-029 | observed / canonical-linked-exact / real ESI result-VM caller | `ResultMenuClose @ 0x00423510..0x00423568` owns a complete 89-byte authored function. In the genuine two-input FrontEnd/`VmIdInterrupt` `ResultMenuUpdateResult` caller graph, the ordinary maintained code gives target ESI receiver, full timer reset, the same two `EnemyMarkPendingInterrupt @0x00409E50` calls, and restores actual `g_AnmGameSpeed @0x00476F78`. All 89 owned bytes, two original DIR32 speed fields and two typed REL32 calls bind exactly. The first selected canonical cold passes this 89-byte owner plus existing two411-byte result-menu callers (911/911); a separately compiled fifteen-input cold with deterministic Wine Z: conversion and unchanged compiler+linker+strict comparator also passes all89 bytes and four fields. A transient Wine path-conversion fault in one unrelated retry was not a byte verdict. No source or ABI edit, partial credit, whole-product/runtimes claims. | [Complete shutdown proof and scoped colds](evidence/result-menu-close-exact-20261031/README.md) | The prior larger ResultTransitions graph independently confirmed 911/911 with two existing guards; its Wine cold-retry fault was a tool issue, not an exact failure.
+| FRONTEND-029 | observed / canonical-linked-exact / real ESI result-VM caller | `ResultMenuClose @ 0x00423510..0x00423568` owns a complete 89-byte authored function. In the genuine two-input FrontEnd/`VmIdInterrupt` `ResultMenuUpdateResult` caller graph, the ordinary maintained code gives target ESI receiver, full timer reset, the same two `EnemyMarkPendingInterrupt @0x00409E50` calls, and restores actual `g_AnmGameSpeed @0x00476F78`. All 89 owned bytes, two original DIR32 speed fields and two typed REL32 calls bind exactly. The first selected canonical cold passes this 89-byte owner plus existing two411-byte result-menu callers (911/911); a separately compiled fifteen-input cold with deterministic Wine Z: conversion and unchanged compiler+linker+strict comparator also passes all89 bytes and four fields. A transient Wine path-conversion fault in one unrelated retry was not a byte verdict. No source or ABI edit, partial credit, whole-product/runtimes claims. | Complete shutdown proof and scoped colds | The prior larger ResultTransitions graph independently confirmed 911/911 with two existing guards; its Wine cold-retry fault was a tool issue, not an exact failure.
 
-| ENEMY-096 | observed / complete authored canonical-linked-exact / real laser-manager+Chain caller | `GameCleanupLinked41C1C0 @0x0041C1C0..0x0041C282` now emits the entire **195/195** owner in an actual two-input `GameCreateOwner41C290` graph (`EnemyLaserManager.cpp` + `Chain.cpp`), without source or ABI changes. All16 independently bound target fields identify two critical-section imports, actual g_Chain, eight `g_MainSupervisorView` subfields (base 0x491C28 +0x64C/+0x6F4), two direct real Chain::UnregisterElem calls, operator delete, and the laser manager global; all original loop and RET4 bytes agree. Two independent VC7.1 `/GL /GS` scoped colds prove 195/195, PDB-owning source and live Chain implementation. Former large-graph nonexact notes are superseded; original source/TU or runtime semantics not established. | [All16 fields and scoped double-cold proof](evidence/enemy-laser-linked-cleanup-exact-20261031/README.md); `enemy-laser-linked-cleanup` |
+| ENEMY-096 | observed / complete authored canonical-linked-exact / real laser-manager+Chain caller | `GameCleanupLinked41C1C0 @0x0041C1C0..0x0041C282` now emits the entire **195/195** owner in an actual two-input `GameCreateOwner41C290` graph (`EnemyLaserManager.cpp` + `Chain.cpp`), without source or ABI changes. All16 independently bound target fields identify two critical-section imports, actual g_Chain, eight `g_MainSupervisorView` subfields (base 0x491C28 +0x64C/+0x6F4), two direct real Chain::UnregisterElem calls, operator delete, and the laser manager global; all original loop and RET4 bytes agree. Two independent VC7.1 `/GL /GS` scoped colds prove 195/195, PDB-owning source and live Chain implementation. Former large-graph nonexact notes are superseded; original source/TU or runtime semantics not established. | All16 fields and scoped double-cold proof; `enemy-laser-linked-cleanup` |
 
-| BOMB-001 | observed / reviewed authored canonical-linked-exact / true two-input lifecycle graph | `ScriptViewerBombOwnerView::~ScriptViewerBombOwnerView @0x00405620..0x004056A8` now reproduces the complete **137/137** target bytes and **all15** actual IAT, Chain, supervisor-base+0x64C/+0x6F4, UnregisterElem, and bomb-global fields. The proper `ScriptViewerReleaseBomb`-rooted `ScriptViewerLifecycle.cpp` + `Chain.cpp` `/GL /GS /EHs` graph retains source ABI and 40-instruction RET4 physical extent; two independent selected VC7.1 cold replays accept 137/137 with distinct PDB IDs. The adjacent 236-byte BulletManager destructor remains open pending its own EH binding; no new exact credit for it or whole-game/runtime behavior. | [Complete two-cold cleanup evidence](evidence/script-viewer-bomb-cleanup-exact-20261031/README.md); `script-viewer-bomb-destructor` |
+| BOMB-001 | observed / reviewed authored canonical-linked-exact / true two-input lifecycle graph | `ScriptViewerBombOwnerView::~ScriptViewerBombOwnerView @0x00405620..0x004056A8` now reproduces the complete **137/137** target bytes and **all15** actual IAT, Chain, supervisor-base+0x64C/+0x6F4, UnregisterElem, and bomb-global fields. The proper `ScriptViewerReleaseBomb`-rooted `ScriptViewerLifecycle.cpp` + `Chain.cpp` `/GL /GS /EHs` graph retains source ABI and 40-instruction RET4 physical extent; two independent selected VC7.1 cold replays accept 137/137 with distinct PDB IDs. The adjacent 236-byte BulletManager destructor remains open pending its own EH binding; no new exact credit for it or whole-game/runtime behavior. | Complete two-cold cleanup evidence; `script-viewer-bomb-destructor` |
 
-| BULLET-019 | observed / canonical linked-PE exact / reviewed one-state array EH | `BulletManagerView::~BulletManagerView @0x00405F70..0x0040605B` is now **236/236 complete authored bytes exact**, with all 23 target fields strictly bound in the authentic three-TU `ScriptViewerReleaseBullets` + Chain + AnmManager `/GL /GS /EHs` graph. The separate generated 38-byte array-EH handler is verified with unique same-module PDB ownership, immutable one-state `FuncInfo` and unwind edges, saved `this+4`, member `+0x60`, count2001, stride2032, actual element destructor `0x405DE0` and runtime vector-dtor iterator `0x4525FF`. Twenty-eight mutation controls reject wrong metadata/address/parent. Two independently selected native cold links pass, second also protecting Bomb destructor137 (total373/373 across two graphs). **No EH helper code, BulletRuntime destructor or runtime exception semantics are credited**; original source ancestry remains open. | [Bounded full-parent EH proof](evidence/script-viewer-bullet-destructor-exact-20261031/README.md); `script-viewer-bullet-destructor` and `test-linked-bullet-array-eh.py` |
+| BULLET-019 | observed / canonical linked-PE exact / reviewed one-state array EH | `BulletManagerView::~BulletManagerView @0x00405F70..0x0040605B` is now **236/236 complete authored bytes exact**, with all 23 target fields strictly bound in the authentic three-TU `ScriptViewerReleaseBullets` + Chain + AnmManager `/GL /GS /EHs` graph. The separate generated 38-byte array-EH handler is verified with unique same-module PDB ownership, immutable one-state `FuncInfo` and unwind edges, saved `this+4`, member `+0x60`, count2001, stride2032, actual element destructor `0x405DE0` and runtime vector-dtor iterator `0x4525FF`. Twenty-eight mutation controls reject wrong metadata/address/parent. Two independently selected native cold links pass, second also protecting Bomb destructor137 (total373/373 across two graphs). **No EH helper code, BulletRuntime destructor or runtime exception semantics are credited**; original source ancestry remains open. | Bounded full-parent EH proof; `script-viewer-bullet-destructor` and `test-linked-bullet-array-eh.py` |
 
-| REPLAY-013 | observed / reviewed authored canonical-linked-exact / real ReplayManager caller | `ReplayAllocateFrameData @0x0042AA50..0x0042AADA` is now a complete **139/139** target owner with its only typed `operator new @0x00452493` REL32. The real `/GL /GS /EHs` `ReplayManager::BeginStage` + `ReplayStageHelpers.cpp` graph proves the private ESI stage/stack owner/RET4 ABI. A natural typed cursor-slot local (`ReplayRecData **cursor = &recordEnd; *cursor = records;`) restores the original post-memset record-end store before the fpsEnd LEA. Previous direct publication was 133/139 in this identical graph; simple source assignment reversal and volatile/barrier controls failed. Two independent selected cold links pass139/139 and the separate strict same-source sibling checks preserve existing ReplayClearStageFrameData93 and ReplayRestoreStagePosition83. No extra parent/helper credit or original TU/runtime proof. | [Complete one-field two-cold proof](evidence/replay-frame-allocation-exact-20261031/README.md) and `replay-allocate-frame-data` |
+| REPLAY-013 | observed / reviewed authored canonical-linked-exact / real ReplayManager caller | `ReplayAllocateFrameData @0x0042AA50..0x0042AADA` is now a complete **139/139** target owner with its only typed `operator new @0x00452493` REL32. The real `/GL /GS /EHs` `ReplayManager::BeginStage` + `ReplayStageHelpers.cpp` graph proves the private ESI stage/stack owner/RET4 ABI. A natural typed cursor-slot local (`ReplayRecData **cursor = &recordEnd; *cursor = records;`) restores the original post-memset record-end store before the fpsEnd LEA. Previous direct publication was 133/139 in this identical graph; simple source assignment reversal and volatile/barrier controls failed. Two independent selected cold links pass139/139 and the separate strict same-source sibling checks preserve existing ReplayClearStageFrameData93 and ReplayRestoreStagePosition83. No extra parent/helper credit or original TU/runtime proof. | Complete one-field two-cold proof and `replay-allocate-frame-data` |
 
-| ANM-118 | observed / complete authored canonical-linked-exact / real error-callee and stack frame correction | `AnmRenderManagerView::PreloadSurface @0x00447EC0..0x00447F68` is a **169/169-byte exact** complete owner with **10/10 typed original fields**, in the actual 13-source StageCreate `/GL /GS` graph. The old hypothesized `g_AnmErrorLoggerView.Log` must be replaced by real `th10::g_GameErrorContext.Fatal @0x0044B8E0` (same original data at0x474F70), restoring target private EDI and actual error path; the original 260-byte path buffer restores stack frame `0x10C` instead of `0x108`. The first correction reduces eight mismatches to six stack displacements; both together reach zero. Two independent selected Stage colds preserve the new169 and preexisting StageLifecycle::Initialize522, **691/691** total and31 fields. No unrelated original C++ source/TU or runtime claims. | [Full target/callee and two-cold evidence](evidence/anm-preload-surface-exact-20261031/README.md); `anm-preload-surface` |
+| ANM-118 | observed / complete authored canonical-linked-exact / real error-callee and stack frame correction | `AnmRenderManagerView::PreloadSurface @0x00447EC0..0x00447F68` is a **169/169-byte exact** complete owner with **10/10 typed original fields**, in the actual 13-source StageCreate `/GL /GS` graph. The old hypothesized `g_AnmErrorLoggerView.Log` must be replaced by real `th10::g_GameErrorContext.Fatal @0x0044B8E0` (same original data at0x474F70), restoring target private EDI and actual error path; the original 260-byte path buffer restores stack frame `0x10C` instead of `0x108`. The first correction reduces eight mismatches to six stack displacements; both together reach zero. Two independent selected Stage colds preserve the new169 and preexisting StageLifecycle::Initialize522, **691/691** total and31 fields. No unrelated original C++ source/TU or runtime claims. | Full target/callee and two-cold evidence; `anm-preload-surface` |
 
 ## Game manager
 
@@ -2232,10 +2103,8 @@ cache labels below retain their dated meaning; they are not current gates.
 | GAME-002 | observed / recovered-startup-and-registration / non-exact-core | 0x00417870-0x00417C60 is the complete 1009-byte GameManager initialization/startup owner with one stack owner and RET4. It polls renderer/loaders, initializes target score/faith/power/lives/statistics state, registers update0x4187C0 and draw0x4187D0 at priorities10/4 with node owner+0x20, copies thirteen configuration dwords to owner+0x24, executes the observed short-circuit creation/replay paths, prepares music and publishes success/failure flags. Full maintained source restores these real callback-address escapes; no registration-only fake context is added. The existing Player lives variable0x474C70 is reused with its established volatile qualification; stage-statistic signed byte+0x1D copied to0x474C94 retains a neutral role name. Draw member-pointer spelling is a source hypothesis; VC7.1 size assertion and the emitted immediate prove the observed four-byte argument, not original callback type. Two eight-byte zeroed spans in the FPS view retain unknown original member types. The final core is1037/1009 bytes and RET4; ordinary opaque dependencies still differ from several target private register contracts. This closes source presence, not exactness, original class/TU/data ownership or product/runtime gates. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
 | GAME-003 | observed / canonical-linked-exact / unknown-origin | Newly inventoried registered callback0x004187C0-0x004187C6 is seven bytes: push ECX, call update core0x00418190, RET. One target registration reference at0x004179FB and CC boundaries establish the complete adapter. Before full startup recovery, the compiler uses an EAX private callback; actual registration plus natural static OnUpdate(GameManager*) preserves ECX and matches the target. Two independent pinned /GL cold links replay all seven bytes and the exhaustive sole REL32 field zero-difference. Canonical game-manager-update-callback grants7 bytes only; source-written versus compiler/LTCG adapter origin remains indeterminate. Existing draw callback31 bytes and eight complete coupled seams1444 bytes pass focused protection. No full TH10 cold replay is performed. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
 
-| GAME-004 | observed / canonical-linked-exact | GameUpdateFaithDecay at 0x00418A00..0x00418A40 owns 65 bytes. A positive shared timer current invokes real AnmVmTimerView::Add(-1.0f) and returns before decay. Otherwise, only if faith exceeds 5000, it subtracts the old state +0x10 value before raising that value to a minimum of 18 and flooring faith at 5000. The natural established score/timer views replay all 65 bytes and the sole Add call field under real three-TU OnUpdate /GL without /GS. Original class spelling, object lifetime, shared runtime storage and parent exactness remain unproved. | [Canonical comparison and independent review](evidence/game-faith-update-20261025/README.md); maintained game-update-faith-decay unit; pinned VC7.1 build 6030 |
-| GAME-005 | observed / canonical-linked-exact / real-caller-context | GameConfigurationView::ResetDefaults @ 0x00418C40 is the complete 125-byte authored configuration reset. Its ordinary void member has a target-private EDX receiver and RET, with five fields binding the real default-key-array base 0x00474E88 plus 0/4/8/12/16. The existing colorMode=0 assignment moved before the other numeric defaults; in the same true MainLoadConfiguration two-input /GL /GS caller context, the previous order was 116/125 nonexact and this order is 125/125 exact. The provisional manifest originally double-applied the four nonzero addends; correcting them makes the complete strict comparison pass. Two independent selected canonical cold replays pass. Exact codegen does not prove original C++ order/TU, completed data owner, product runtime or portability. | TH10 original 1.00a full disassembly, five independent field bindings, old-order control, docs/evidence/game-configuration-reset-exact-20261031/README.md |
-
-
+| GAME-004 | observed / canonical-linked-exact | GameUpdateFaithDecay at 0x00418A00..0x00418A40 owns 65 bytes. A positive shared timer current invokes real AnmVmTimerView::Add(-1.0f) and returns before decay. Otherwise, only if faith exceeds 5000, it subtracts the old state +0x10 value before raising that value to a minimum of 18 and flooring faith at 5000. The natural established score/timer views replay all 65 bytes and the sole Add call field under real three-TU OnUpdate /GL without /GS. Original class spelling, object lifetime, shared runtime storage and parent exactness remain unproved. | Canonical comparison and independent review; maintained game-update-faith-decay unit; pinned VC7.1 build 6030 |
+| GAME-005 | observed / canonical-linked-exact / real-caller-context | GameConfigurationView::ResetDefaults @ 0x00418C40 is the complete 125-byte authored configuration reset. Its ordinary void member has a target-private EDX receiver and RET, with five fields binding the real default-key-array base 0x00474E88 plus 0/4/8/12/16. The existing colorMode=0 assignment moved before the other numeric defaults; in the same true MainLoadConfiguration two-input /GL /GS caller context, the previous order was 116/125 nonexact and this order is 125/125 exact. The provisional manifest originally double-applied the four nonzero addends; correcting them makes the complete strict comparison pass. Two independent selected canonical cold replays pass. Exact codegen does not prove original C++ order/TU, completed data owner, product runtime or portability. | TH10 original 1.00a full disassembly, five independent field bindings, old-order control,  |
 
 ## Frontend
 
@@ -2251,9 +2120,7 @@ A separately source-present caller at0x0040AF90 returns 83
 native bytes versus target86 and remains NONEXACT. This
 contributes one new authored/canonical exact owner (+134 bytes),
 not two. Original identifiers, physical TU and product/runtime
-closure remain unknown. See
-docs/evidence/game-owner-40ae70-initialize-exact-20261102/README.md.
-
+closure remain unknown.
 
 ### 2026-11-02 ScriptViewer scalar deleting destructor
 
@@ -2268,8 +2135,6 @@ owner alongside Create67, BulletRuntime destructor34 and
 ReleaseEnemies19, **147/147**. This adds one canonical
 codegen owner/27 bytes without changing indeterminate
 source-authored versus compiler generated provenance.
-See docs/evidence/script-viewer-scalar-deleting-dtor-exact-20261102/README.md.
-
 
 ### 2026-11-02 BulletRuntimeView destructor codegen owner
 
@@ -2282,9 +2147,7 @@ preserve the destructor34, Create67 and ReleaseEnemies19
 (120/120 common bytes); one additionally preserves
 BulletResetPool45 (165/165). This is 34 additional *canonical*
 exact codegen bytes with no authored-origin credit or
-original compiler/source-TU claim. See
-docs/evidence/bullet-runtime-generated-destructor-exact-20261102/README.md.
-
+original compiler/source-TU claim.
 
 ### 2026-11-02 full GameCleanupOwner40AF00 source/Chain closure
 
@@ -2303,8 +2166,6 @@ cannot substitute for the actual game cleanup source identity.
 One authored and canonical exact owner adds137 bytes. The
 1105-byte parent GameManagerCleanup remains nonexact and there
 is no full-product/runtime claim.
-See docs/evidence/game-owner-40af00-exact-20261102/README.md.
-
 
 ### 2026-11-02 GameCleanupOwner40AF00 full authored recovery
 
@@ -2325,8 +2186,6 @@ selected prior GameManager owner guards pass120/120.
 Adds one authored and canonical exact function
 and137 bytes. The nonexact larger GameManagerCleanup
 and original physical source provenance remain open.
-See docs/evidence/game-owner-40af00-exact-20261102/README.md.
-
 
 ### 2026-11-02 StageCrossProduct full native target body
 
@@ -2342,8 +2201,6 @@ with all ten existing external fields on the caller. This
 adds one canonical codegen owner and 77 exact bytes, but the
 original entry/provenance remains indeterminate. No authored
 credit, full-product or runtime assertion.
-See docs/evidence/stage-cross-product-exact-20261102/README.md.
-
 
 ### 2026-11-02 RNG duplicate physical target body exact
 
@@ -2357,8 +2214,6 @@ Original duplicate entry reachability and game-authored vs
 optimizer-emitted ancestry are **indeterminate**. One new
 canonical codegen exact owner / 78 bytes is accepted, no
 authored-origin credit or full-product assertion.
-See docs/evidence/rng-duplicate-u32-exact-20261102/README.md.
-
 
 ### 2026-11-02 ScriptViewer enemy-release exact leaf
 
@@ -2373,8 +2228,7 @@ ScriptViewerCreate67 and EnemyManagerClear118, 204/204 each.
 This adds one canonical codegen exact owner and19 bytes but
 no authored-origin credit: original helper versus compiler-generated
 null-delete contribution is still indeterminate. No product/runtime
-closure. See docs/evidence/script-viewer-release-enemies-exact-20261102/README.md.
-
+closure.
 
 ### 2026-11-02 complete 74-byte ResultMenuResume exact owner
 
@@ -2392,8 +2246,6 @@ cold links each pass ResultMenuResume74 and EndingCreate99,
 173/173 bytes. This adds 74 authored and canonical codegen
 bytes; no partial credit to UpdatePause, capture or ANM.
 Original source/TU, runtime and complete product are open.
-See docs/evidence/result-menu-resume-exact-20261102/README.md.
-
 
 | ID | State | Durable fact or constraint | Evidence |
 | --- | --- | --- | --- |
@@ -2422,8 +2274,7 @@ See docs/evidence/result-menu-resume-exact-20261102/README.md.
 | FRONTEND-024 | observed / source-present | The contiguous difficulty, character and shot-type selection controllers at `0x00430320`, `0x004306A0` and `0x00430A60` now have maintained source across 3,268 target bytes. All three use the shared five-state opening/active/confirmed/closing protocol. Difficulty selects one of four normal entries or the Extra root, manages the auxiliary ASCII VM and transitions to character selection. Character applies the six Extra unlock bytes at profile `+0x1D888..+0x1D88D` and sends four complementary child interrupts on confirmation. Shot type applies three per-character unlock bytes, hides three child rows whose profile record dwords are zero, and commits the selected character/shot/difficulty path either to stage selection or normal-game startup. Controller VM ids are established through slot `0x97`, with the auxiliary difficulty VM id at `+0x5D0` and saved difficulty at `+0x58F0`; the existing key-config scratch remains at `+0x59CC`. Names for the three owners and the profile records are descriptive where original symbols remain unknown. | Hash-attested target disassembly, direct calls and profile/controller offsets; Factory-native Ghidra decompilation; maintained source/layout assertions; `scripts/report-frontend-selection.py --check` |
 | FRONTEND-025 | observed / physical-table-and-data-layout | The stage update owner is physically `0x00430FF0-0x0043140B` = 1,052 bytes: executable code ends at `0x004313F6`, one NOP follows, and the directly indexed five-entry state table occupies `0x004313F8-0x0043140B`. The display owner is `0x00431410-0x004315B2` = 419 bytes and is reached from the front-end draw callback at `0x0042D2A8` with a private EDI receiver. Stage profile records are eight bytes, with score at `+0` and availability at `+5`, indexed by stage plus difficulty times six within a `(shot + character*3) * 0x437C` group. The keyboard helper distinguishes DirectInput scan codes `2..10` from Win32 virtual-key codes `0x31..0x39` in one 256-byte buffer. | Direct target table/tail/caller/data accesses and string pointers; Factory-native decompilation/xrefs; focused target report |
 | FRONTEND-026 | observed / source-present | `FrontEndControllerView::UpdateReplay @ 0x004315C0` and `DrawReplay @ 0x00431BA0` now have maintained source across 2,317 target bytes. The six-state updater loads twenty-five numbered and up to twenty-five user replay files, derives a seven-entry stage cursor from replay stage headers, commits replay path/character/shot/difficulty and game mode 12, and releases all fifty replay owners on cancellation. The display emits twenty-five metadata rows and an animated seven-stage score view using the target character, difficulty, completion and stage-name tables. The maintained controller view binds replay fields at `+0x59D8/+0x59DC/+0x59E0` and the pointer array at `+0x59E4`. Descriptive identifiers do not claim original symbols or TU ownership. | Hash-attested target disassembly, direct calls, string/data tables and field accesses; Factory-native Ghidra decompilation; maintained source/layout assertions; `scripts/report-frontend-replay.py --check` |
-| FRONTEND-027 | observed / complete capture owner scheduling / nonexact | `AnmRenderManagerView::RequestCaptureRectangle @ 0x00424480` owns 162 bytes. With the real `ResultMenuOpenPause` caller and `AnmManager.cpp` support, compiler naturally selects target EDX for `FindVm` rather than the standalone ECX; full strict binding checks six actual fields (renderer, `FindVm`, four `__ftol2`). Moving destination X after independently published source X and destination Y improves the complete linked candidate from 139/162 to 148/162, leaving 14 ordinary store/register byte differences. A second two-source cold reproduces, and two affected existing actual-caller units cold-pass 822/822 bytes. No new canonical exact unit or runtime claim. | [Complete native comparison and controls](evidence/capture-rectangle-schedule-20261031/README.md) |
-
+| FRONTEND-027 | observed / complete capture owner scheduling / nonexact | `AnmRenderManagerView::RequestCaptureRectangle @ 0x00424480` owns 162 bytes. With the real `ResultMenuOpenPause` caller and `AnmManager.cpp` support, compiler naturally selects target EDX for `FindVm` rather than the standalone ECX; full strict binding checks six actual fields (renderer, `FindVm`, four `__ftol2`). Moving destination X after independently published source X and destination Y improves the complete linked candidate from 139/162 to 148/162, leaving 14 ordinary store/register byte differences. A second two-source cold reproduces, and two affected existing actual-caller units cold-pass 822/822 bytes. No new canonical exact unit or runtime claim. | Complete native comparison and controls |
 
 ## Filesystem
 
@@ -2436,7 +2287,7 @@ See docs/evidence/result-menu-resume-exact-20261102/README.md.
 | FILESYSTEM-005 | observed / corroborated | `0x0044B220-0x0044B352` is the reviewed authored inverse transform paired with `FILESYSTEM-004`. Its machine boundary consumes the initial XOR seed in live-in AL plus five stack arguments (data, size, XOR increment, chunk size, max bytes) and returns with `ret 0x14`; `0x0044B353-0x0044B35F` is CC padding before `0x0044B360`. It copies `min(size,maxBytes)` bytes to scratch, preserves the same small tail rule as Decrypt, then reads each scratch chunk in reverse odd/even order while writing sequentially back to the original buffer and evolving the XOR key. Replay save calls it twice with `(seed, increment, chunk) = (0x3D,0x7A,0x80)` then `(0xAA,0xE1,0x400)`; score save uses `(0xAC,0x35,0x10)`, and all observed calls use `maxBytes == size`. Maintained `FileSystem::Encrypt` is adjacent-supported naming after TH10-local recovery, not an original-symbol/TU claim. | Attested TH10 function/decompile/caller/callee/xref/disassembly evidence; three raw TH10 call sites and direct boundary bytes; committed TH09/TH095 source only for later naming/source-shape corroboration |
 | FILESYSTEM-006 | observed / exact-normal-coff | `FileSystem::CloseWriteFile @ 0x0044B7E0` has a complete 37-byte authored boundary. When the shared file handle is valid, it closes the handle, leaves the shared critical section, decrements the active-file byte, and returns zero. Natural maintained source emits the same 37 bytes with pinned VC7.1 SP1 normal COFF; two independent cold builds and a focused canonical replay pass all five complete DIR32 fields (three globals and two Win32 imports) with zero differences. This bounded exact claim does not establish original source/TU, production codegen profile, or ownership of the referenced data. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
 | FILESYSTEM-007 | observed / corroborated | The replay disk-read seam contains three newly reviewed authored bodies. `0x0044B6B0-0x0044B738` opens a read-only shared handle while holding the file critical section and is maintained descriptively as `ReplayFile::Open`; `0x0044B790-0x0044B7D9` consumes a private live-in EDI byte count, allocates that many bytes, reads from the shared handle, and is maintained as `ReplayFile::Read`; `0x0044B7E0-0x0044B804` closes a valid shared handle, releases the critical section, decrements the active-file count, and is maintained as `FileSystem::CloseWriteFile`. Each extent is followed by CC padding. These names are adjacent-supported after TH10-local behavior recovery. `ReplayFile::Open`, `ReplayFile::Read`, and `FileSystem::CloseWriteFile` now have maintained source mappings; original-TU and exactness claims remain independent. | Direct TH10 raw disassembly/imports/shared-state accesses; attested function/decompile/caller evidence where provider transport succeeded; committed TH095 `ReplayFile`/`FileSystem` source used only for later naming corroboration |
-| FILESYSTEM-008 | observed / compiler exact | Maintained `ReplayFile::Read` source, compiled with pinned VC7.1 SP1 `/GL` under the `ReplayFile::Open` entry graph, reproduces the complete 74-byte target extent after exhaustive resolution of six handle, allocator, and Win32 import fields. An independent diagnostic build and the canonical cold replay both agree. The original cdecl opener diagnostic was135/137; the later [read-open proof](evidence/replay-open-context/README.md) closes the complete137/all12 with ordinary stdcall source through real LoadReplay. Both boundaries are now canonical exact; original source spelling/production ownership and runtime remain unknown. | Direct TH10 target bytes and imports; PDB-owned linked-image extents; `replay-file-read` canonical unit; independent `/GL` diagnostic |
+| FILESYSTEM-008 | observed / compiler exact | Maintained `ReplayFile::Read` source, compiled with pinned VC7.1 SP1 `/GL` under the `ReplayFile::Open` entry graph, reproduces the complete 74-byte target extent after exhaustive resolution of six handle, allocator, and Win32 import fields. An independent diagnostic build and the canonical cold replay both agree. The original cdecl opener diagnostic was135/137; the later read-open proof closes the complete137/all12 with ordinary stdcall source through real LoadReplay. Both boundaries are now canonical exact; original source spelling/production ownership and runtime remain unknown. | Direct TH10 target bytes and imports; PDB-owned linked-image extents; `replay-file-read` canonical unit; independent `/GL` diagnostic |
 | FILESYSTEM-009 | observed / canonical-linked-exact | FileSystem::CheckIfFileAlreadyExists at 0x0044B4D0 owns 111 bytes through RET 4; the following CC is excluded. Natural source enters the shared critical section, increments the unsigned-byte open count, opens read-only with shared-read/sequential-normal flags, closes a valid handle, and returns 1/0 through duplicated cleanup. Both paths leave the critical section before decrementing the count. The independently observed one-stack-argument callee-clean contract is represented by __stdcall; four complete target caller sites agree. This is not a claim about original declaration spelling or physical production TU/profile. A cdecl control is 107/111 with incorrect plain RET exits; the natural callee-clean form is 111/111 in normal COFF and /GL linked diagnostics. Two independent strict canonical cold links reproduce the complete 111-byte PDB-owned extent, all twelve exhaustively bound DIR32 fields, and zero ordinary differences. All 13 existing affected units pass 2,387 bytes across eight artifacts, including Main and ReplayManager caller contexts. Factory acceptance remains a separate receipt boundary. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
 | FILESYSTEM-010 | observed / canonical-linked-exact | `FileSystem::OpenFile @ 0x0044B360–0x0044B4C7` reproduces its complete 360-byte owner and all 26 independently reviewed fields in two canonical cold links with distinct PE/PDB identities. Natural three-parameter `__stdcall` source under the real Main checksum `/GL /GS` graph produces the target-private EAX filename plus stack sizeOut/mode and RET 8. Mode zero is archive-only; other modes are disk-only. Source preserves the second-separator search's original-path fallback, archive size publication before allocation, ignored archive-reader/ReadFile results, and Leave-before-count-decrement cleanup. The archive is the distinct singleton at `0x00497990`, not the twenty-pack array at `0x004923B0`. Field +0x65 binds the singleton with addend 4; the diagnostic map's neighboring restart-log anchor is not its semantic owner. The ordinary convention/ANM context and subsequent natural reader/context/TU controls did not close the complete owner; the selected callee-clean Main graph, null-first selections, and target-supported outlined lookup context do. All 161 existing affected exact units pass 27,909/27,909 bytes across 49 cold artifacts, including the complete transitive FileSystem header closure. At that earlier acceptance checkpoint the authored exact/denominator snapshot was 43,050 / 266,187 (16.17%) and indeterminate origins numbered 500; these are **historical numbers, not present totals** (read PROGRESS.md). Factory PASS and ACCEPTED on the first attempt at a129047, job de160cebc24d46f6bb09657a36783fec, receipt 8d2ac1e0ab4a90b6ab9b3ce20098f035b31f4679730cfb8260efda8b416c72b6. Original declaration spelling, TU/profile ownership, native product closure and runtime remain unknown. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
 
@@ -2473,7 +2324,7 @@ See docs/evidence/result-menu-resume-exact-20261102/README.md.
 | RESFILE-002 | observed | The memory-file implementation is read-only and owns its buffer. `Open` calls the reviewed archive-or-disk data and size helpers, stores buffer/size/current, and ignores its second stack argument. `Close` frees the buffer and clears all three fields. `Read` copies the requested bytes when available or the remaining tail and advances current; `Write` always returns false; `Tell` is current-minus-base and `GetSize` returns `+0x04`. `Seek` implements target-specific `FILE_BEGIN/CURRENT/END` bounds, including allowing negative current-relative movement without a lower-bound check and rejecting exact-end/exact-beginning boundary cases. Maintained source deliberately preserves these observed edge conditions rather than normalizing them. | Direct TH10 disassembly of `0x00436370-0x0043655A`; both vtable references; reviewed `0x00435800`/`0x004358E0` helper contracts |
 | RESFILE-003 | observed | A second vtable at `0x0046F328` is a derived 0x10-byte Win32-resource-backed implementation. It shares `Close`/`Read`/`Write`/`Tell`/`GetSize`/`Seek` with `0x0046F308`, overrides `Open` with `0x004366C0-0x00436767`, and has deleting destructor `0x00436660`. A direct allocation site at `0x00434CA0` performs `operator new(0x10)`, clears the three fields, and writes `0x0046F328`. The override closes prior data, loads `RT_RCDATA` using `FindResourceA`/`LoadResource`/`LockResource`, mallocs and copies `SizeofResource` bytes, and target exits return true even on the reviewed failure paths after cleanup. Maintained `CWin32ResourcePbgFile` is descriptive only. | Direct TH10 allocation/vtable/disassembly/import evidence; attested decompile at `0x00434CA0` and `0x004366C0` |
 | RESFILE-004 | observed / unknown | Denominator review added eight Ghidra-missed CC-delimited ResFile entries: `0x00436370`, `0x00436380`, `0x00436400`, `0x00436460`, `0x004364D0`, `0x004364E0`, `0x004364F0`, and `0x00436640`. The first seven are reviewed authored memory-file source bodies. `0x00436640-0x00436651` and existing `0x00436680-0x004366B0` remain deliberately `unknown/review`: each is consistent with a compiler-synthesized derived constructor/destructor with inlined base lifecycle, but TH10 cannot distinguish that from explicit source. `0x004363A0` and `0x00436660` are independently classified compiler-generated deleting destructors. `0x004362B0/0x00436330` were correctly excluded from the ResFile owner; later target-local compression review identifies them as LZSS tree helpers rather than unrelated ResFile code. `0x00436570` remains outside this owner as process-launch logic. | Direct CC boundaries/vtables; bounded target analysis; later LZSS tree owner evidence refines the earlier routing without changing the ResFile boundary |
-| RESFILE-008 | observed / canonical-coff-exact / unknown-original-origin | A separately emitted derived virtual destructor `CWin32ResourcePbgFile::~CWin32ResourcePbgFile @ 0x00436680` is now normal-COFF **49/49 exact** under the maintained class hierarchy, with three independently target-bound vtable/free relocations. The previous documentation that maintained source lacked a derived destructor was true only of its earlier source epoch; current `src/ResFile.hpp` and `src/ResFile.cpp` explicitly provide one. Its 49 bytes are distinct from the 49-byte base destructor at `0x004363C0`, which remains exact. This does **not** establish whether the original human source declared the destructor. | [Complete proof](evidence/resource-pbgfile-derived-destructor-exact-20261104/README.md); two independently replayed selected native COFF builds; original bytes and relocation fields |
+| RESFILE-008 | observed / canonical-coff-exact / unknown-original-origin | A separately emitted derived virtual destructor `CWin32ResourcePbgFile::~CWin32ResourcePbgFile @ 0x00436680` is now normal-COFF **49/49 exact** under the maintained class hierarchy, with three independently target-bound vtable/free relocations. The previous documentation that maintained source lacked a derived destructor was true only of its earlier source epoch; current `src/ResFile.hpp` and `src/ResFile.cpp` explicitly provide one. Its 49 bytes are distinct from the 49-byte base destructor at `0x004363C0`, which remains exact. This does **not** establish whether the original human source declared the destructor. | Complete proof; two independently replayed selected native COFF builds; original bytes and relocation fields |
 | RESFILE-005 | observed / noncanonical-negative-codegen | Target `CMemoryPbgFile::Seek @ 0x004364F0` occupies 107 bytes. Its dispatcher saves ESI before testing the seek origin, routes origin values 0/1 to begin/current blocks, falls through to the end block for value 2, and shares one false-return epilogue. The maintained natural switch emits a 117-byte fixed normal-COFF candidate with 12/107 comparable bytes; reordering source cases to end/current/begin leaves that output byte-identical. Ghidra currently has no function boundary at this address; the two target references are the ResFile vtable entries. Keep the source behavior and exactness status unchanged unless new target-local source-shape evidence appears. | Hash-attested target PE disassembly; vtable xrefs; pinned VC7.1 SP1 `probe-exact-backlog.py` and `/GL` diagnostic; fixed-normal case-order replay |
 | RESFILE-006 | observed / canonical-coff-exact / corrected-ABI | `CMemoryPbgFile::Open @ 0x00436400` is the 46-byte vtable Open method. Target instructions independently prove the connected archive-or-disk helper ABI: filename is in ECX for both 0x00435800 and 0x004358E0, while 0x00435800 additionally consumes one stack optional-buffer argument. The old free/cdecl declarations therefore caused the historical 51/46, 8/38 diagnostic. Maintained `ArchiveOrDiskPathView` is only a descriptive physical-call view; it does not claim an original class/TU. With that ABI and the natural assignment-expression return `return m_Current = m_Data;`, VC7.1 emits target ordering exactly: data -> +0x0C, size -> +0x04, `MOV EAX,[+0x0C]`, store to current +0x08, `TEST EAX,EAX`, `SETNE AL`. The normal-COFF COMDAT is 46 bytes with 38/38 comparable bytes and exact REL32 fields to both helpers. | Hash-attested target body and helper call setup; maintained `src/ResFile.cpp`; pinned VC7.1 SP1 normal-COFF comparison; canonical `memory-pbgfile-open` unit |
 | RESFILE-007 | observed / canonical-coff-exact | `CWin32ResourcePbgFile::Open @ 0x004366C0` closes as a complete 168-byte normal-COFF unit. Natural shared failure cleanup preserves every observed quirk (true on failure, FreeResource(NULL) on LockResource failure, no FreeResource on allocation failure). Routing all four failed operations to the same source cleanup, including LockResource failure, makes VC7.1 reproduce the target's independently duplicated physical epilogues and register allocation. The intermediate three-path funnel was 168 bytes but had eleven ordinary-byte differences; pointer aliases, declaration permutations, TU order and G5/G6/G7/GS/EHsc controls were byte-neutral, while size optimization and positive success layout regressed. The winning full extent and all seven link fields passed two cold canonical builds; all nine ResFile units passed the affected replay. This session used hash-attested disk bytes/PE imports under the operator's explicit no-Ghidra instruction; no fresh Ghidra attestation or production-TU claim follows. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
@@ -2564,16 +2415,16 @@ See docs/evidence/result-menu-resume-exact-20261102/README.md.
 | ANM-100 | observed / ABI correction / bounded controls restored | LoadTextureRegion at 0x00446D70 has complete 320-byte ownership and incoming EAX format, ECX top, EDI data, plus four stack words through RET16. Entry-stack +4 is unread, +8 is the texture entry, +0x0C is size and +0x10 is hasData; the old incoming ESI-entry/EBP-size wording was wrong. All 38 current frozen linked contexts emit the same 321-byte body shape after each owner's own eight semantic fields are enumerated; no caller-context sweep is indicated. Three rectangles plus one description at function scope produce frame 0x54. Moving only branch-exclusive aggregates into their branches gives 315 bytes and target frame 0x34. Delaying the real surface=NULL assignment until just before GetSurfaceLevel recovers the full target prologue/private argument registers and gives 319 bytes. Moving raw-entry/header pointer declarations into the branch and expressing the byte address as &data[offset] are each fully byte-neutral against 319. The remaining 58/59-byte embedded-header segment starts with MOV+ADD versus target MOV+LEA and differs in ECX/EDX temporary choices/scheduling. 2026-11-02: branch-exclusive rectangle/description storage and delayed surface initialization are now retained in source. A fresh single-TU native image emits the target 0x34 frame and a 319-byte body against target320, with the complete embedded-header MOV+ADD versus MOV+LEA frontier unresolved; three selected exact texture units cold-pass437 bytes. This is source progress with no partial or full-owner exact credit. The target's missing base relocations do not hide five DIR32 globals/table bases; those plus three REL32 calls are independently decoded and bound. Source-only protection scope is 141 existing units / 26,792 bytes / 39 artifacts, but no new regression or source retention is claimed for these restored controls. Original source spelling/ownership and indirect reachability remain unknown. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
 | ANM-101 | observed / canonical-linked-exact / focused-validation | Initialize0x401110-0x401259 owns330 bytes. Real PreloadAnm, Chain allocation/insertion, SetSprite and Log calls replace thin aliases; the three callbacks and resource publication order remain. Per-VM file/address lifetimes naturally recover EAX input and EBX preservation; explicit post-reset anmFile stores, sprite indices0/0x62 and the23-byte CP932 error literal remain. Shared Chain source uses the observed operator new, signed priorities, standard insertion callee cleanup, direct list-field reads and post-Leave depth decrement. Both canonical /GL cold triples reproduce all330 bytes and28 independently bound fields. Five modified Chain helpers remain nonexact; RegisterCalc/Draw retain their prior unresolved cleanup contract and are outside Initialize's call path. The wider dllimport-header variant also matches Create69, but selected unchanged-header context gives Create70; no Create/helper credit. Per explicit2026-10-05 operator instruction only modified functions require validation:87 already completed prior units/17478bytes in12 artifacts are partial history; remaining28 planned artifact groups were cancelled, not passed. Production TU/profile, product/runtime and500 indeterminate origins remain open. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
 | ANM-102 | observed / canonical-linked-exact / focused-validation | DrawMode6 at0x443FB0-0x444232 owns643 bytes;13 following CC bytes are padding. The unchanged real AnmPairOwnerDrawCallback to Draw to DrawMode6 /GL graph initially emitted645 bytes with frame0x34. All166 instructions already aligned after resolving30 fields and42 stack operands/four frame immediates; two color stores accounted for the extra encoded bytes. Flattening the sole-use aggregate into the same cameraDelta, color, distanceRange and distance locals recovers frame0x20 and all643 bytes. Arithmetic, branches, private inputs, seven ftol2 calls and int-before-subtract channel semantics are unchanged. Two canonical cold triples independently replay643/643 with21 absolute and9 direct-call fields. Bindings use true semantic owner bases plus explicit addends despite overlapping diagnostic anchors; both1.0 float payloads match. Only this modified owner was replayed under the focused operator scope. Prior645-byte diagnostics remain history, superseded for this selected source by this full-owner proof. No boundary/origin/denominator or other-owner credit; product/runtime and original production TU remain open. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
-| ANM-103 | observed / retained nonexact source improvement | Non-region LoadTexture @446C70 owns243 target bytes; the retained branch-owned source rectangle and late surface initialization now emit242 bytes in the real one-TU VC7.1 /GL graph, versus the old250-byte body. The target0x18 frame and opcode prefix through +70 are recovered; at +71 the branch differs by one due to the target LEA versus candidate ADD in the embedded-data header pointer, with subsequent register differences. Three independent inline payload-accessor controls remain byte-neutral and were restored. Three affected canonical resource guards cold-pass437/437. This is an open full-owner comparison, not exactness or original source/TU proof; see docs/evidence/anm-texture-load-scope-20261102/README.md. | Native PDB owner and direct target decode; scoped exact-unit cold replay |
+| ANM-103 | observed / retained nonexact source improvement | Non-region LoadTexture @446C70 owns243 target bytes; the retained branch-owned source rectangle and late surface initialization now emit242 bytes in the real one-TU VC7.1 /GL graph, versus the old250-byte body. The target0x18 frame and opcode prefix through +70 are recovered; at +71 the branch differs by one due to the target LEA versus candidate ADD in the embedded-data header pointer, with subsequent register differences. Three independent inline payload-accessor controls remain byte-neutral and were restored. Three affected canonical resource guards cold-pass437/437. This is an open full-owner comparison, not exactness or original source/TU proof;  | Native PDB owner and direct target decode; scoped exact-unit cold replay |
 | ANM-104 | observed / canonical-linked-exact | `AnmRenderManagerView::SetVmPendingInterrupt @ 0x00449210` finds a nonzero VM through `FindVm`, writes the short pending interrupt at VM +0x304, and propagates it through the root's child layer chain. The target private ABI uses EDX for the manager, ESI for the interrupt, one stack `AnmVmIdView` value and `RET 4`; the maintained value-type parameter preserves that shape naturally. Canonical unit `anm-manager-set-vm-pending-interrupt` reproduces the complete 54-byte PDB extent and sole FindVm REL32 field zero-difference in the same-TU `ServicePreloadedAnms` /GL context. | Hash-attested TH10 disassembly and FindVm call; maintained `src/AnmManager.cpp`; canonical linked replay; pinned VC7.1 SP1 build6030 |
 | ANM-105 | observed / canonical-linked-exact | `AnmRenderManagerView::SetVmPendingInterruptAndExecute @ 0x00449250` resolves a VM, writes its pending interrupt, executes it, then propagates the interrupt and execution to each child in the root layer chain. The target private ABI uses EDX for the manager, EDI for the interrupt, one stack `AnmVmIdView` value and `RET 4`; the maintained value-type parameter plus two natural `node->owner` expressions preserve the target's repeated owner loads and four-byte loop alignment. Canonical unit `anm-manager-set-vm-pending-interrupt-and-execute` reproduces the complete 76-byte PDB extent and FindVm plus both ExecuteScript REL32 fields zero-difference in the same-TU `ServicePreloadedAnms` /GL context. | Hash-attested TH10 disassembly and direct calls; maintained `src/AnmManager.cpp`; canonical linked replay; pinned VC7.1 SP1 build6030 |
 | ANM-106 | observed / canonical-linked-exact | `AnmRenderManagerView::SetVmPosition @ 0x004492F0` resolves a VM, copies the three position floats into the VM's +0x340 position-offset field, and propagates that value through a root's child layer chain. The target private ABI uses EDX for the manager, ESI for the position input, one stack `AnmVmIdView` value and `RET 4`; the maintained value-type parameter preserves the stack-ID ABI while the natural vector copy preserves the ESI source. Canonical unit `anm-manager-set-vm-position` reproduces the complete 90-byte PDB extent and sole FindVm REL32 field zero-difference in the same-TU `ServicePreloadedAnms` /GL context. | Hash-attested TH10 disassembly and direct calls; maintained `src/AnmManager.cpp`; canonical linked replay; pinned VC7.1 SP1 build6030 |
 | ANM-107 | observed / local-canonical-linked-exact | Release at 0x00447810 owns 242 bytes and retains one AnmTextureEntryView pointer per iteration across the COM Release and raw-buffer free. It reloads the table only at the next iteration; replacing repeated textures[i] member reads with that local preserves target aliasing and side-effect order. This restores the private EDI receiver and makes the unchanged ServicePreloadedAnms owner at 0x00447700 reproduce all 135 bytes with its ESI slot scan, stack manager/RET 4 and observed release-branch null-slot write. Both complete owners pass two cold canonical linked-PE replays with all eight Release and three service linkage fields independently target-bound. Normalization is complete; no padding, target bytes, stubs or policy edits were introduced. Local ledger gain is 377 authored bytes; Factory acceptance and whole-product closure remain separate. | Target disassembly and prior owner/runtime bindings; units anm-loaded-release and anm-resource-service-preloaded; focused canonical cold replays on 2026-10-14 |
-| ANM-108 | historical / radial-initializer-context / superseded | InitializePulsingRadialTrail at 0x004452F0 owns 803 bytes. Its real ExecuteScript /GL /GS context with RandomMath, AnmVmCreate and AnmVmId visibility produces an 803-byte candidate with 623 of 631 comparable bytes equal and complete normalization, unlike the unrelated service-entry 571-byte diagnostic. The target and candidate retain three initial signed-RNG calls plus two inlined two-step RNG sequences per ring iteration, with matching seed and generation-count writes. Eight comparable differences remain: radius FMUL versus radial-velocity load scheduling, and the final translation Y operand order. Whole-vector operand reversal, a radius local before publication and early radial-velocity publication all regressed matching and were reverted. This was context evidence, not exact credit for that earlier source. The later signed-RNG float-local source closes the existing 803-byte canonical unit and was accepted at 504539f9 on 2026-10-18; see evidence/radial-rng-local/README.md. A strict same-image warm check of the retained ANM-110 second cold image again passes all803 bytes/all43 fields, with no duplicate credit. | Target 803-byte disassembly; real ExecuteScript caller and existing /GL /GS support graph; bounded probes on 2026-10-14; Git history |
+| ANM-108 | historical / radial-initializer-context / superseded | InitializePulsingRadialTrail at 0x004452F0 owns 803 bytes. Its real ExecuteScript /GL /GS context with RandomMath, AnmVmCreate and AnmVmId visibility produces an 803-byte candidate with 623 of 631 comparable bytes equal and complete normalization, unlike the unrelated service-entry 571-byte diagnostic. The target and candidate retain three initial signed-RNG calls plus two inlined two-step RNG sequences per ring iteration, with matching seed and generation-count writes. Eight comparable differences remain: radius FMUL versus radial-velocity load scheduling, and the final translation Y operand order. Whole-vector operand reversal, a radius local before publication and early radial-velocity publication all regressed matching and were reverted. This was context evidence, not exact credit for that earlier source. The later signed-RNG float-local source closes the existing 803-byte canonical unit and was accepted at 504539f9 on 2026-10-18; md. A strict same-image warm check of the retained ANM-110 second cold image again passes all803 bytes/all43 fields, with no duplicate credit. | Target 803-byte disassembly; real ExecuteScript caller and existing /GL /GS support graph; bounded probes on 2026-10-14; Git history |
 | ANM-109 | observed / major-owner-binding-and-lifetime / non-exact | Fresh ExecuteScript baseline under its genuine /GL /GS graph with RandomMath, AnmVmCreate and AnmVmId was9900/9964 bytes, frame0xF8,79/92 target-sized groups and5292/8013 case-aligned comparable bytes; the older9964/84-group checkpoint is historical, not current. Target mode9 calls at0x00441210/0x00441298 bind the separate script polar owner0x00441EF0, not radial owner0x004458B0. Moving the existing AnmScriptVectorView declaration before ExecuteScript and changing only its two receiver views repairs those REL32 identities; helper bodies, arithmetic and three radial calls remain unchanged. This binding correction alone is byte-score neutral. F_SET_RANDOM opcode41 target selects its branch before operand decoding, then selects the concrete RNG receiver after GetFloatVar; the previous common RNG pointer introduced an unsupported lifetime across that call. Explicit branch-local decode/multiply reproduces the full130-byte group with98/98 comparable bytes, including getter side effects before RNG, extended x87 multiply, final float spill before destination resolution, and one selected RNG call. Two fresh cold owner checks now reproduce9948/9964 bytes,9572/9588 pre-table span, frame0xF8, all94 selectors/92 ordered groups and83 equal-sized groups. Full-owner comparison is1386 raw matches and1212/8564 comparable; case-aligned comparison6331/8000. Both normalizations complete, but nine unequal groups and other byte differences remain. No partial owner or leaf exact credit. Independent source/target/binding review passed. SCALE_TIME60 aggregate controls were then bounded and rejected: adding a constructor to the existing Float2 fails VC7 C2620 because the type is used in a vertex union; no union/layout change was made. A constructor-free by-value factory preserves Y-before-X and rounding but creates an extra aggregate copy, grows the frame to0x104 and owner to9980/9964, reduces same-sized groups to81 and aligned matching to6073/8008. Both changes were reverted. Keep the retained9948/83-group checkpoint and park this aggregate route rather than sweep spellings. | Fresh attested target; preserved hash-bound full-owner/table/case reports; independent review; two scoped cold diagnostics on2026-10-15 |
-| ANM-110 | observed / local-canonical-linked-exact / source-order control | StartPrimaryAlphaInterpolation at 0x00442300 owns130 bytes. Two independent canonical cold four-TU ExecuteScript /GL /GS links pass the full PDB-owned extent and sole game-speed DIR32 at +0x5F, with Initialize273 and SetupVertexBuffer472/all22 fields as same-image guards. Only the two zero-tangent stores move before duration/endpoints; byte formals, callers, layout and profiles stay unchanged. LTCG naturally recovers target EAX VM/ECX duration/three stack bytes/RET12 even though emitted target stores duration/mode/initial before the zeros. Machine store order therefore does not identify unique C++ statement order or original declarations. All-integer and mode-only integer controls each emit130 bytes with93/126 comparable helper positions, the same helper hash but differing callers; both are reverted. ANM-059 early Wine failures were superseded by the successful nonexact2026-10-18 archived candidate. Both retained images give ExecuteScript9948/9964, frame0xF8/0xFC, all92 groups ordered,84 same-sized,1312/8564 whole-owner and6492/8000 case-aligned comparable positions. Opcodes55/58 now align, but eight other spans and the complete parent remain nonexact; no partial-case credit. | Local read-only hash-attested Ghidra; independent complete target decode and +0x5F field; canonical unit anm-start-primary-alpha-interpolation; docs/evidence/anm-primary-alpha-local/README.md |
-| ANM-111 | observed / complete-world-creator-context-controls / non-exact | Four118-byte world creators and shared203-byte InitializeAndExecuteScriptIndex now have explicit noncanonical strict recipes: all32 fields are target bound, but each creator has13 ordinary scheduling differences and the helper one receiver byte at+27 (MOV ECX,EDI versus target EDX). Existing single-TU /GL screen-family entry Initialize gives target118/203 sizes, but Initialize itself is275/273 with unlike ECX interface. Real screen0 caller entry restores Initialize273 raw equality while helper/worlds coalesce to197/116. Four-TU /GL /GS and real EnemyKillAll contexts also emit197/116; preserving world0 outline shrinks caller404 to183/target182 without closing creators. Layer-first, flags-local, existing bitfield and ordinary three-real-parameter free-helper controls do not close the owner; all source/API/annotation changes are restored. Four existing screen95 owners and Setup472 strictly pass852 bytes/42 fields in the retained image. No original ownership/profile, runtime or partial exact credit follows. Reference volatile/asm/dead-initializer-slot shapes are not adopted. Reopen only with new TH10 alias/lifetime/caller evidence. | Local read-only hash-attested Ghidra; complete target field/constant review and PDB-owned cold contexts; docs/evidence/anm-world-creator-context/README.md |
-| ANM-112 | observed / canonical-linked-exact / slot sampling | ReleaseAnm4477D0..447806 owns55 dense bytes. It tests negative index then unsigned33-slot bound, calls Release on the selected entry, reloads loadedAnms[index] for delete and clears that slot. Replacing the old cached-pointer delete restores48 to55 bytes; unsigned sizeof-array count changes the final JGE to target JNC. Two independent eight-TU /GL /GS colds freeze26 inputs and strictly pass55/all2 fields plus actual Release242/all8 fields in each image. Incoming target caller40C2F8 belongs to source-absent1494-byte40BD80; OPT:NOREF retention does not reproduce that source edge or original production partition. Host alias-replacement witness/old-cache mutant passes ASan/UBSan; target runtime is open. Larger dispatcher14524/14416 and ANM9948/9964 remain nonexact. | [Target review, full proofs and limits](evidence/anm-release-slot/README.md) |
+| ANM-110 | observed / local-canonical-linked-exact / source-order control | StartPrimaryAlphaInterpolation at 0x00442300 owns130 bytes. Two independent canonical cold four-TU ExecuteScript /GL /GS links pass the full PDB-owned extent and sole game-speed DIR32 at +0x5F, with Initialize273 and SetupVertexBuffer472/all22 fields as same-image guards. Only the two zero-tangent stores move before duration/endpoints; byte formals, callers, layout and profiles stay unchanged. LTCG naturally recovers target EAX VM/ECX duration/three stack bytes/RET12 even though emitted target stores duration/mode/initial before the zeros. Machine store order therefore does not identify unique C++ statement order or original declarations. All-integer and mode-only integer controls each emit130 bytes with93/126 comparable helper positions, the same helper hash but differing callers; both are reverted. ANM-059 early Wine failures were superseded by the successful nonexact2026-10-18 archived candidate. Both retained images give ExecuteScript9948/9964, frame0xF8/0xFC, all92 groups ordered,84 same-sized,1312/8564 whole-owner and6492/8000 case-aligned comparable positions. Opcodes55/58 now align, but eight other spans and the complete parent remain nonexact; no partial-case credit. | Local read-only hash-attested Ghidra; independent complete target decode and +0x5F field; canonical unit anm-start-primary-alpha-interpolation;  |
+| ANM-111 | observed / complete-world-creator-context-controls / non-exact | Four118-byte world creators and shared203-byte InitializeAndExecuteScriptIndex now have explicit noncanonical strict recipes: all32 fields are target bound, but each creator has13 ordinary scheduling differences and the helper one receiver byte at+27 (MOV ECX,EDI versus target EDX). Existing single-TU /GL screen-family entry Initialize gives target118/203 sizes, but Initialize itself is275/273 with unlike ECX interface. Real screen0 caller entry restores Initialize273 raw equality while helper/worlds coalesce to197/116. Four-TU /GL /GS and real EnemyKillAll contexts also emit197/116; preserving world0 outline shrinks caller404 to183/target182 without closing creators. Layer-first, flags-local, existing bitfield and ordinary three-real-parameter free-helper controls do not close the owner; all source/API/annotation changes are restored. Four existing screen95 owners and Setup472 strictly pass852 bytes/42 fields in the retained image. No original ownership/profile, runtime or partial exact credit follows. Reference volatile/asm/dead-initializer-slot shapes are not adopted. Reopen only with new TH10 alias/lifetime/caller evidence. | Local read-only hash-attested Ghidra; complete target field/constant review and PDB-owned cold contexts;  |
+| ANM-112 | observed / canonical-linked-exact / slot sampling | ReleaseAnm4477D0..447806 owns55 dense bytes. It tests negative index then unsigned33-slot bound, calls Release on the selected entry, reloads loadedAnms[index] for delete and clears that slot. Replacing the old cached-pointer delete restores48 to55 bytes; unsigned sizeof-array count changes the final JGE to target JNC. Two independent eight-TU /GL /GS colds freeze26 inputs and strictly pass55/all2 fields plus actual Release242/all8 fields in each image. Incoming target caller40C2F8 belongs to source-absent1494-byte40BD80; OPT:NOREF retention does not reproduce that source edge or original production partition. Host alias-replacement witness/old-cache mutant passes ASan/UBSan; target runtime is open. Larger dispatcher14524/14416 and ANM9948/9964 remain nonexact. | Target review, full proofs and limits |
 
 ## ECL VM
 
@@ -2590,8 +2441,7 @@ compared; the 23 remaining differences are not granted credit.
 Eight selected existing ECL target-exact units still cold-pass1037
 bytes. This documents measured source/codegen improvement,
 not a claim about original volatile qualifiers, exactness,
-physical TU, product or runtime. See
-docs/evidence/ecl-length-squared-stack-20261102/README.md.
+physical TU, product or runtime.
 
 | ID | State | Durable fact or constraint | Evidence |
 | --- | --- | --- | --- |
@@ -2748,8 +2598,7 @@ docs/evidence/ecl-length-squared-stack-20261102/README.md.
 | ITEM-016 | observed / canonical-linked-exact / indeterminate-origin | Record constructor0x41ACF0-0x41AD57 composes nine VM timers, whole-VM clear, invalid sprite index and a tenth timer flag constructor. Using the real AnmVmTimerView member yields all104 bytes raw-equal; clearing the same flag in the Item constructor body instead reorders the invalid-sprite store and agrees at86/104 bytes. Natural member destruction produces the34-byte0x41AD60 owner, conditionally releasing the VM buffer and clearing it. Two independent pinned VC7.1 /GL cold links with actual GameCreateItemManager entry and real AnmManager support replay both complete PDB extents; destructor free REL32 offset0xF binds directly to0x452422. Images/PDB GUIDs are distinct. Omitted free relocation and constructor extent103 are both rejected. Canonical item-record-constructor/destructor grant138 overall exact bytes, with no authored exact credit: source-authored inline lifecycle versus compiler-generated contribution remains indeterminate. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
 | ITEM-017 | observed / focused-non-exact-frontier | Final Item-plus-Anm graph uses actual GameCreateItemManager as entry, with no private register annotations or profile changes. Spawn naturally recovers EAX owner, ECX position and RET16 but remains795/819 with different branch/tail layout. Allocation122/185 outlines construction and folds registration's known-zero result; destructor197/216 uses a private EBX owner/plain RET; ConvertPowerItems289/165 uses a stack owner/RET4 and inlines world-VM creation. Item update2228/2320, AddPower224/166, popup171/167 and world creator116/118 remain non-exact. Earlier guarded-do-loop popup controls do not change either171/167 or176/167 output; power-notice pointer capture changes two diagnostic bytes, while /Ob1 gives163/166 and incorrect geometry. None is promoted. Ten pre-existing affected canonical units across five compiler artifacts replay545/545 bytes under final physical source. Previous ten-TU images remain historical controls tied to their older Item source hash; current production partition, absent external Item caller contracts and product/runtime closure remain open. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
 | ITEM-018 | observed / rejected-structure-controls | Fresh target review confirms Spawn uses EAX manager, ECX position and RET16; the linked ConvertPowerItems caller preserves this ABI. At the old-kind-3 call, position is live item worldPosition in EDI. The stack-relative pointer is the hidden AnmVmIdView result buffer, consumed through EBP/EAX by CreateVmAtWorldVariant0 and AddVmVariant0; it is not a position temporary. Normal-first source with separate color-return tails restores the 819-byte extent but leaves widespread instruction/binding-position differences (78/747 comparable, 82 raw), so it was reverted. A bounded for-loop control unrolls six records, changes private cleanup to RET20 and grows to907 bytes; it too was reverted. No semantic source correction or exact credit results. Keep the complete793-byte body and26-byte alignment/table suffix; neighboring13 CC bytes remain outside this owner. | Fresh hash-attested target and linked caller/callee disassembly; bounded VC7.1 probes on2026-10-14; Git history |
-| ITEM-019 | observed / canonical-linked-exact | AddPower418930..4189D5 is complete166 bytes/all4 fields with EAX state, signed-short stack input and two RET4 exits. It rejects power>=100, preserves signed-short addition, replaces the notice only on overshoot capped to100 and returns the signed quotient comparison. A full ID clear and local real CreateVmVariant0 boundary restore224 to166 without shared-header/ANM/profile/ABI changes. Fresh target callers are both in ItemManagerUpdateBody; its source passes1 and20 and remains2208/2320 nonexact. Two independent20-input GL colds pass565 new bytes/all24 with spell end; canonical AddRank42 stays exact and12 same-image owners2243/all86 pass twice. Original class/TU/data ownership, runtime and product remain open. | [Complete power proof](evidence/gui-spell-notice-20261031/README.md); canonical game-score-add-power |
-
+| ITEM-019 | observed / canonical-linked-exact | AddPower418930..4189D5 is complete166 bytes/all4 fields with EAX state, signed-short stack input and two RET4 exits. It rejects power>=100, preserves signed-short addition, replaces the notice only on overshoot capped to100 and returns the signed quotient comparison. A full ID clear and local real CreateVmVariant0 boundary restore224 to166 without shared-header/ANM/profile/ABI changes. Fresh target callers are both in ItemManagerUpdateBody; its source passes1 and20 and remains2208/2320 nonexact. Two independent20-input GL colds pass565 new bytes/all24 with spell end; canonical AddRank42 stays exact and12 same-image owners2243/all86 pass twice. Original class/TU/data ownership, runtime and product remain open. | Complete power proof; canonical game-score-add-power |
 
 ## Sound
 
@@ -2771,7 +2620,7 @@ docs/evidence/ecl-length-squared-stack-20261102/README.md.
 | SOUND-015 | observed / source-shape-correction / canonical-linked-exact | `CWaveFile::Read @ 0x0044DE10` is a complete 202-byte EAX/EDX-bound helper with `buffer` and `bytesRead` on the stack and `RET 8`. Direct target CFG review shows the memory-backed branch, a shared not-initialized epilogue, then a distinct file-mode `else` branch whose validated path stores `*bytesRead` directly after `ReadFile`; the maintained source now preserves that natural control-flow shape. The canonical `zwave-wave-file-read` linked-PE unit uses `CSound::FillBufferWithSound` as the real `/GL` entry, reproduces all 202 bytes and the imported `ReadFile` DIR32 field, and passes two independent cold replays. The caller body is now canonical exact through SOUND-013. | Hash-attested TH10 disassembly/decompile; maintained `src/ZWave.cpp`; diagnostic CFG probe and canonical linked-PE replays; pinned VC7.1 SP1 build6030 |
 | SOUND-018 | observed / canonical-linked-exact plus source-present helper | Natural `CSoundManager::CreateStreamingFromMemory @ 0x0044CBF0-0x0044CE7A` is mapped in ZWave.cpp. Its TH10 body checks the DirectSound interface at manager+0, constructs a 0x94-byte CWaveFile with format/data/size fields, creates a DirectSound buffer from a 0x24-byte description, queries IID_IDirectSoundNotify, allocates and installs eight-byte position-notification rows, releases the notify interface and array, then constructs a 0x78-byte CStreamingSound and stores the 0x24-byte description plus manager/event/lock fields. The reviewed private ABI receives output in ECX, creation flags in EDX and 11 stack dwords with RET44. A natural /GL /GS /EHsc standalone diagnostic emits 648/651 bytes; as ZWave support under the real SoundPlayerView::LoadBgm entry it emits 647/651. Neither grants helper exactness; the 1419-byte queue caller and the streaming-sound constructor graph remain incomplete. In that same LoadBgm entry with ZWave support, `SoundPlayerView::ReopenBgm @ 0x0043D790` emits the complete 55-byte target body, including the two correctly typed target-bound calls to GetFmtIndexByName and CWaveFile::Reopen. Two independent cold VC7.1 SP1 linked-PE replays verify all 55 bytes and both REL32 fields. The lookup stays non-exact at 236/227 and LoadBgm at 317/298. The full changed-source Sound/ZWave replay keeps 17 accepted units exact, 2034/2034 bytes across nine artifacts. TH09/TH095 source shaped the helper candidate only; all accepted TH10 facts come from target-local evidence. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
 | SOUND-020 | observed / canonical-linked-exact | CStreamingSound::InitSoundBuffers at 0x0044CF20 owns all 338 bytes through 0x0044D071, followed by fourteen CC bytes. Complete raw review decodes 133 instructions and all three return paths; both Release blocks omitted by provisional Ghidra flow are live. Natural source clears playing state, releases/nulls prior buffers, guarded-deletes/nulls the old pointer array, creates a new uninitialized array, then creates each DirectSound buffer, queries IID_IDirectSoundNotify and installs sixteen notification rows. Row offsets are notifySize*(index+1)-1. Failure cleanup is intentionally asymmetric: creation/query failures return E_FAIL without rollback; notification allocation failure returns E_OUTOFMEMORY without releasing notify; SetNotificationPositions failure releases/nulls notify and deletes the notification array before E_FAIL. Success does that same notify/array cleanup and returns S_OK after all buffers. No new pointer-array allocation check, zero-initialization or safety rollback is introduced. Normal COFF emits 341 bytes; the real ProcessQueues /GL /GS /EHsc graph naturally selects the target ESI receiver and reproduces all 338 bytes without source ABI annotations. Independent review verifies five new/delete REL32 fields and the GUID DIR32 from target allocation wrappers, SDK IID payload and candidate map; PE/map/PDB uniquely identify module2 support-00-ZWave.ltcg.obj. The canonical unit keeps Sound.cpp primary with ZWave.cpp support and pdb_source=src/ZWave.cpp, already supported by existing tooling. Two cold links reproduce the full owner and all six fields with zero differences. All seventeen related old Sound/ZWave units pass2034/2034 across nine artifacts, including the two Sound-primary dependents of ZWave and the independent thread-launch unit. Original production ownership/profile, complete caller exactness, data-owner closure and runtime remain independent; Factory acceptance is a separate receipt gate. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
-| SOUND-021 | observed / source-present-non-exact / bounded-controls | SoundPlayerView::PreloadBgm owns 369 bytes at 0x0043D7D0 through 0x0043D940, with target ESI receiver, ECX path into GetFmtIndexByName, stack index and RET4 (the no-/GS standalone candidate uses EAX and is not target-equivalent). Natural source and the existing ordinary member declaration recover the real ProcessQueues context without ABI annotations. An existing allocation plus matching receiver filename returns zero; otherwise strcpy publishes the name through the global sound owner before the option-bit/manager gate. Only the prior allocation is freed and cleared; old format/data/size remain until success. CreateFileA opens the receiver unknownNameSlot, the format helper selects a 0x34-byte row, SetFilePointer uses its startOffset without a BGM-base addition, malloc and ReadFile use its requested preloadAllocSize, and read/seek/close outcomes are unchecked. Failed open or allocation returns minus one; success publishes format, allocation, data and requested size, not bytesRead. The old normal diagnostic was 373/369; the real ProcessQueues /GL /GS /EHsc Sound+ZWave graph had 369/369 with 323/329 ordinary bytes equal. A captured read-size DWORD followed by a compiler memory barrier recovers target ECX for the table and advances the strict full-owner comparison to 365/369; four remaining ordinary register differences at 0x121/0x127/0x12A/0x12B swap the size EAX/EDX and output-address registers. The original barrier/qualifier spelling is unknown. Ten linkage identities and receiver/global addends were reviewed independently, but no canonical exact unit or matches row is added. Earlier controls were byte-neutral or regressed; the new captured-size barrier alone is retained, while volatile and alternate pointer/helper variants are rejected. Two current affected canonical units pass 1641/1641 bytes in one cold two-source artifact; the previous broader sound-unit guard remains historical. The 369-byte PreloadBgm owner is explicitly NONEXACT; see docs/evidence/sound-preload-barrier-20261031/README.md. Full source presence is distinct from codegen exactness, original production ownership and runtime. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
+| SOUND-021 | observed / source-present-non-exact / bounded-controls | SoundPlayerView::PreloadBgm owns 369 bytes at 0x0043D7D0 through 0x0043D940, with target ESI receiver, ECX path into GetFmtIndexByName, stack index and RET4 (the no-/GS standalone candidate uses EAX and is not target-equivalent). Natural source and the existing ordinary member declaration recover the real ProcessQueues context without ABI annotations. An existing allocation plus matching receiver filename returns zero; otherwise strcpy publishes the name through the global sound owner before the option-bit/manager gate. Only the prior allocation is freed and cleared; old format/data/size remain until success. CreateFileA opens the receiver unknownNameSlot, the format helper selects a 0x34-byte row, SetFilePointer uses its startOffset without a BGM-base addition, malloc and ReadFile use its requested preloadAllocSize, and read/seek/close outcomes are unchecked. Failed open or allocation returns minus one; success publishes format, allocation, data and requested size, not bytesRead. The old normal diagnostic was 373/369; the real ProcessQueues /GL /GS /EHsc Sound+ZWave graph had 369/369 with 323/329 ordinary bytes equal. A captured read-size DWORD followed by a compiler memory barrier recovers target ECX for the table and advances the strict full-owner comparison to 365/369; four remaining ordinary register differences at 0x121/0x127/0x12A/0x12B swap the size EAX/EDX and output-address registers. The original barrier/qualifier spelling is unknown. Ten linkage identities and receiver/global addends were reviewed independently, but no canonical exact unit or matches row is added. Earlier controls were byte-neutral or regressed; the new captured-size barrier alone is retained, while volatile and alternate pointer/helper variants are rejected. Two current affected canonical units pass 1641/1641 bytes in one cold two-source artifact; the previous broader sound-unit guard remains historical. The 369-byte PreloadBgm owner is explicitly NONEXACT;  Full source presence is distinct from codegen exactness, original production ownership and runtime. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
 | SOUND-022 | observed / source-present-non-exact / bounded-CFG-controls | CStreamingSound::HandleWaveStreamNotification owns all 637 bytes at 0x0044D850-0x0044DACC. Complete raw decoding includes the internal three-byte LEA alignment at 0x0044D9ED omitted by Ghidra, all 238 instructions and the final null-failure tail; three CC bytes precede Reset. Ordinary member source and the real worker context preserve the private stack receiver plus BOOL/RET 8 contract without annotations. The first cursor query is unchecked; unsigned nextWriteOffset exclusion uses writeCursor-notifySize. Restore success refills with FALSE and normalizes nonnegative result to S_OK. Lock initializes only both output pointers; its second nonnull buffer returns E_UNEXPECTED without Unlock. Read/Reset failures also omit Unlock; looping short reads ResetFile(true) before every refill and preserve a possible zero-read infinite loop. Silence is 0x80 only for 8-bit format. Unlock is unchecked; the later cursor query propagates failure, unsigned progress wraps, direct COM Stop is unchecked, and the next offset advances by actual first locked length rather than notifySize. The initial 634-byte candidate has frame 0x18. A separate later play-cursor local recovers target frame 0x1C and initial stack homes; this clear natural source is retained at 634/637. Inner nonloop-first and outer positive-silence controls each emit 637 but arrange the read/nonloop-fill/latched-fill/repeat blocks differently. Guarded do and inverted shared-join controls are byte-neutral to nonloop-first; the positive shared-join control is byte-neutral to the selected 634 candidate. All five CFG controls are restored. Independent review finds no further distinct bounded CFG hypothesis; full codegen, original ownership and runtime remain open. No refill bytes enter matches.csv. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
 | SOUND-023 | observed / canonical-linked-exact / real-refill-caller | SoundPlayerView::BgmPlayerThread at 0x0043E3A0 owns 189 bytes through 0x0043E45C. Its address is passed to CreateThread by the maintained LoadBgm owner; ordinary static DWORD WINAPI(LPVOID) preserves the ignored callback parameter and RET 4. The worker waits on global BGM event+0x520C with mask 0xBF expressed by named queue flags, tests global BGM+0x5208 and playing+0x30, writes lock+0x74, calls the real refill with TRUE, reloads global BGM and clears lock. It ignores refill status, drains every queued message after WM_QUIT without Translate/Dispatch, and keeps the target wait-error behavior. Minimal Sound view splitting exposes the already-proven BOOL playing field while preserving sizes and offsets. Independent review binds all seven fields: two USER 32 IATs, four g_MainSoundOwner references with 0x5208/0x520C addends, and the actual refill symbol with matching private ABI. Both canonical cold links reproduce the full 189-byte primary source.ltcg.obj contribution with zero differences under the ProcessQueues Sound+ZWave /GL /GS /EHsc graph. The unit shares the existing SoundInitBuffers artifact because identical build groups must share an output; the first invalid separate-output recipe was rejected before compilation, then narrowly corrected without changing existing units. All 18 affected prior units pass 2372/2372 across 10 artifacts. This small caller was recovered as required context for the 637-byte medium owner, not as a tiny-owner queue. Refill, PreloadBgm and ProcessQueues remain non-exact; no partial credit is assigned. Factory acceptance remains a separate receipt gate. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
 | SOUND-024 | observed / source-present-non-exact / data-owned | SoundDataLoaderThread at0x0043D080 owns107 bytes through plain RET at0x0043D0EA. The existing launcher passes an unused API argument through an explicit function-pointer cast; the body has no stable exit-code contract. Target state2 cancels before each of37 archive reads, publishes each result includingNULL at owner+0x5230 before failure logging, and waits via Sleep(1) while state+0x5224 remains0 after all reads. It never writes state or frees allocations. Existing sound consumers establish these offsets in the0x52D0 view. The37 mutable filename-pointer slots and CP932 error format now have ordinary semantic source definitions; linked string contents and order agree with target tables0x474B40/0x46FDD4. No duplicate tracked data owner was found. Genuine launcher plus FileSystem, GameErrorContext, AnmManager and PbgArchive visibility preserves the out-of-line EAX-path/RET8 archive seam and ECX logger seam. Candidate112/107 remains non-exact: byte-offset ESI plus error index EDI replace the target single ESI index. Moving the error handler out of the loop is byte-neutral and reverted; no speculative induction variants are retained. Independent source/ABI review passed. Data source ownership does not establish complete runnable product closure. | Fresh target hash/boundaries/callers and37-string data comparison; focused VC7.1 source diagnostic on2026-10-14; Git history |
@@ -2779,14 +2628,13 @@ docs/evidence/ecl-length-squared-stack-20261102/README.md.
 | SOUND-026 | observed / canonical-linked-exact / sound-owner-release | MainReleaseSound at0x0043D120 owns301 bytes through0x0043D24C, with EAX owner and zero result/plain RET from real WinMain after joining workers. It frees format storage, releases duplicate before primary COM buffers for128 slots, and frees37 loader allocations. A NULL manager skips the remaining cleanup, including16 preload allocations. Otherwise it kills timer1, calls StopBgm, clears the DirectSound alias, unconditionally calls initial-buffer Stop, reloads/releases that buffer, rechecks/deletes BGM, and rechecks/deletes manager before freeing preloads. The manager destructor caches its object across member Release, nulls the member, then scalar-deletes the cached object. Both maintained CSoundManager declarations retain the same inline destructor. No extra null guard, rollback or cleanup is invented. Independent source/ABI/binding review and two guarded canonical cold links reproduce301/301 bytes with6 fields: three free REL32s, KillTimer IAT, StopBgm REL32 and scalar-delete REL32. Entry PE/map/PDB agree on real WinMain. Factory acceptance remains separate. | Fresh target hash and complete decode; independent review; canonical sound-release-owner unit; two cold replays on2026-10-14 |
 | SOUND-027 | observed / setup-thread-exact / initialization-source-prerequisites | The game-specific57-byte SoundSetupThread at0x0043CCF0 ignores its API argument and initializer result, waits via Sleep(1) while global state+0x5224 is0, then writes finished1 at+0x522C. The real MainStartSoundThread seam publishes window+0x5228 and creates this callback after WinMain clears the owner. Two guarded WinMain canonical cold replays reproduce57/57 bytes and all7 fields. Plain RET is target behavior, not portable WINAPI proof. New Initialize(HWND) source preserves its786-byte target contract, including the cached newly allocated manager across Initialize/format calls, later owner reloads, fixed0x8000 clear after Lock, ignored format/Unlock/Play/timer results and global sample/cancellation access. Its checkpoint candidate was753/786 and non-exact; sample source and private ABI were subsequently recovered in SOUND-028. The260-byte primary-format prerequisite is structural-equal but gets no exact/authored credit: official [Microsoft SDKsound.cpp](https://github.com/microsoft/DirectX-SDK-Samples/blob/main/C%2B%2B/DXUT/Optional/SDKsound.cpp#L70-L103) corroborates SDK lineage and success-only primary-buffer release, not the exact TH10 version. Existing origin/denominator stays unchanged pending classification audit. Both initialization diagnostic strings are source-defined and target-equal. g_MainSoundOwner storage remains unresolved and the diagnostic image remains nonrunnable; distinct existing CSound/CWaveFile partial-view ODR debt is not closed. | Independent target/source/control/storage review; official SDK provenance; target string checks; canonical sound-setup-thread unit and two cold replays on2026-10-14 |
 | SOUND-028 | observed / chunk-scanner-exact / sample-loader-non-exact | FindWaveChunk at 0x0043D250 owns 71 bytes through 0x0043D296. Its real LoadSoundSample calls at 0x0043D4BA and 0x0043D4F0 pass ECX data, EAX unsigned remaining, EDI output-size pointer and one stack tag; RET 4 owns cleanup. Ordinary __stdcall source recovers that private ABI. The helper publishes each chunk size before strncmp, subtracts size plus eight with unsigned wrap and advances literally, with no padding rounding or malformed-input repair. The target callee 0x00452F80 is independently identified CRT strncmp; the initial memcmp draft was corrected, not retained. Two guarded real-WinMain canonical cold links reproduce all 71 bytes and the single REL32 at +0x1A. The 684-byte sample loader at 0x0043D390 now has natural source and genuine EDX-owner/ECX-index/stack-path/RET4 ABI: manager-null returns zero, old primary buffer releases before waiting, Sleep(10) precedes global state2 cancellation, allocation is consumed and slot cleared, RIFF/WAVE checks use strncmp, RIFF size is reduced by 12, and the format copy is exactly 18 bytes. It creates a buffer with flags 0x80C8, copies both Lock spans and ignores Unlock status. Failure frees archive data but leaves any created COM buffer published; cancellation returns zero before acquisition. Initial diagnostic was 679/684 bytes, 189 raw matches and 177/584 comparable. The target-evidenced advancing serialized cursor (allocation plus four, read length, then advance four) restores 684/684 bytes, 605 raw matches and 576/584 comparable in two cold diagnostics, complete normalization. Remaining differences are ADD EBP,-12 versus SUB EBP,12 at +0x11A and the MOV EAX,EBP / LEA EDI,outsize scheduling at +0x122. A negative-increment spelling control was byte-neutral and reverted; stop these variants. Initializer is 754/786. Neither receives partial exact credit. The helper is 68 raw matches and 67/67 comparable before canonical binding replay. Sound setup remains structurally equal in this graph. Error strings have semantic CP932 definitions. Global sound-owner storage, runnable closure and wider partial-view ODR debt remain open. | Fresh hash-attested target, real caller graph, independent review and two canonical helper cold replays on 2026-10-15; canonical sound-find-wave-chunk manifest |
-| SOUND-029 | observed / source-present / nonexact | QueueCommand 0x43E460 is 104 bytes; GameManager call 0x4185E7 uses EAX owner 0x492590, EDX dummy path 0x46DF98, two stack arguments and RET8. Existing SoundPlayer declarations are shared byte-identically in Sound.hpp; the real member replaces the untyped GameAssignMusic facade. Natural four-TU /GL source gives QueueCommand 90/104 and parent 1569/1544, not exact. A graph-only baseline proves all 26 Sound contributions / 5114 bytes unchanged in ordinary bytes, fields and local identities; four optional same-context failures preexist the source change. All 41 original Sound exposure units and five GameManager units pass separately after recorded Wine-failure recovery; no new credit or storage/runtime closure. | [Sound command declaration evidence](evidence/game-sound-command-20261025/README.md); full current-source 112-stage CI; canonical recipes unchanged |
-| SOUND-030 | observed / native-source improvement / nonexact | LoadSoundSample@43D390 owns684 bytes. In its real EndingCreate 17-TU /GL caller graph, an immutable scan-length local shared by both FindWaveChunk calls restores target ADD EBP,-12 instead of SUB EBP,12. The complete candidate advances 676/684 to 678/684 after location-normalization of25 native address fields; the six residual ordinary bytes at +122..+127 are solely MOV EAX,EBP versus LEA EDI,[ESP+30] scheduling. Selected ending-create99 and Sound worker/queue1641 canonical cold replays pass. No strict target-role manifest admission, partial exactness, original production TU, product or runtime claim. See docs/evidence/sound-sample-lifetime-20261102/README.md. | Current verified TH10 target, 17-TU native PE/MAP/PDB, selected cold unit replay |
-| SOUND-031 | observed / canonical-linked-exact / indeterminate-origin | CSound::Get3DBuffer @0044D400..0044D433 is a complete52-byte standard SDK-shaped member gap in ZWave.cpp between GetFreeBuffer and Play. The native target first tests buffer-array+4 (CO_E_NOTINITIALIZED), next compares unsigned index with count+0x10 (E_INVALIDARG), then clears caller output and calls COM QueryInterface on the selected buffer for IID_IDirectSound3DBuffer. The actual IID bytes at0046747C match the 3D buffer SDK GUID; the original function has one DIR32 field at +0x2B. Two independent pinned VC7.1 SP1 /GL /GS selected ZWavePlayRoot cold links reproduce all52 owned bytes and the bound IID field zero-difference. The first also preserves existing Play145 and Fill483 (680/680 combined), the second replays only the new52. One canonical exact owner and52 codegen bytes are admitted; original source-authorship versus SDK/compiler ancestry remains indeterminate and authored exact credit is unchanged. See docs/evidence/zwave-get3d-buffer-exact-20261102/README.md. | TH10 target GUID/ABI and complete VC7.1 linked-PE/PDB comparison with two distinct cold artifacts |
+| SOUND-029 | observed / source-present / nonexact | QueueCommand 0x43E460 is 104 bytes; GameManager call 0x4185E7 uses EAX owner 0x492590, EDX dummy path 0x46DF98, two stack arguments and RET8. Existing SoundPlayer declarations are shared byte-identically in Sound.hpp; the real member replaces the untyped GameAssignMusic facade. Natural four-TU /GL source gives QueueCommand 90/104 and parent 1569/1544, not exact. A graph-only baseline proves all 26 Sound contributions / 5114 bytes unchanged in ordinary bytes, fields and local identities; four optional same-context failures preexist the source change. All 41 original Sound exposure units and five GameManager units pass separately after recorded Wine-failure recovery; no new credit or storage/runtime closure. | Sound command declaration evidence; full current-source 112-stage CI; canonical recipes unchanged |
+| SOUND-030 | observed / native-source improvement / nonexact | LoadSoundSample@43D390 owns684 bytes. In its real EndingCreate 17-TU /GL caller graph, an immutable scan-length local shared by both FindWaveChunk calls restores target ADD EBP,-12 instead of SUB EBP,12. The complete candidate advances 676/684 to 678/684 after location-normalization of25 native address fields; the six residual ordinary bytes at +122..+127 are solely MOV EAX,EBP versus LEA EDI,[ESP+30] scheduling. Selected ending-create99 and Sound worker/queue1641 canonical cold replays pass. No strict target-role manifest admission, partial exactness, original production TU, product or runtime claim.  | Current verified TH10 target, 17-TU native PE/MAP/PDB, selected cold unit replay |
+| SOUND-031 | observed / canonical-linked-exact / indeterminate-origin | CSound::Get3DBuffer @0044D400..0044D433 is a complete52-byte standard SDK-shaped member gap in ZWave.cpp between GetFreeBuffer and Play. The native target first tests buffer-array+4 (CO_E_NOTINITIALIZED), next compares unsigned index with count+0x10 (E_INVALIDARG), then clears caller output and calls COM QueryInterface on the selected buffer for IID_IDirectSound3DBuffer. The actual IID bytes at0046747C match the 3D buffer SDK GUID; the original function has one DIR32 field at +0x2B. Two independent pinned VC7.1 SP1 /GL /GS selected ZWavePlayRoot cold links reproduce all52 owned bytes and the bound IID field zero-difference. The first also preserves existing Play145 and Fill483 (680/680 combined), the second replays only the new52. One canonical exact owner and52 codegen bytes are admitted; original source-authorship versus SDK/compiler ancestry remains indeterminate and authored exact credit is unchanged.  | TH10 target GUID/ABI and complete VC7.1 linked-PE/PDB comparison with two distinct cold artifacts |
 
-| SOUND-033 | verified cross-TU source integration | The newly exact 19-byte CSound::GetBuffer in ZWave.cpp originally conflicted with an inline same-mangled definition inside Sound.cpp when those real LTCG source objects were linked. Removing the Sound.cpp local inline body and retaining only the declaration makes Sound.cpp use the canonical out-of-line ZWave member. Sound.cpp+ZWave.cpp selected cold now links and preserves complete Sound ProcessQueues1452 and BgmPlayerThread189, 1641/1641; selected ZWave GetBuffer19, Get3DBuffer52, Play145 and Fill483 remain 699/699. Zero new exact credit; original TU, final product and runtime open. See docs/evidence/sound-zwave-single-owner-20261102/README.md. | Two independent scoped actual source producers, strict existing exact owners |
+| SOUND-033 | verified cross-TU source integration | The newly exact 19-byte CSound::GetBuffer in ZWave.cpp originally conflicted with an inline same-mangled definition inside Sound.cpp when those real LTCG source objects were linked. Removing the Sound.cpp local inline body and retaining only the declaration makes Sound.cpp use the canonical out-of-line ZWave member. Sound.cpp+ZWave.cpp selected cold now links and preserves complete Sound ProcessQueues1452 and BgmPlayerThread189, 1641/1641; selected ZWave GetBuffer19, Get3DBuffer52, Play145 and Fill483 remain 699/699. Zero new exact credit; original TU, final product and runtime open.  | Two independent scoped actual source producers, strict existing exact owners |
 
-| SOUND-032 | observed / canonical-linked-exact / indeterminate-origin | CSound::GetBuffer @0044D3E0 owns 19 bytes. The original ECX sound / EDX unsigned index selects a buffer from the array+4 only when the array exists and the index is below count+0x10; both rejection paths return zero. A previously combined source condition emitted the same size but an inverted branch/return placement. Separating the two ordinary NULL and unsigned-range guards restores target JE/JB/zero-RET/success-RET order and makes the entire PDB-owned 19-byte body raw-equal with no address fields. Two independently cold-rebuilt ZWavePlayRoot /GL /GS selected graphs verify all four complete GetBuffer19/Get3DBuffer52/Play145/Fill483 bodies, 699/699 per build. One new codegen-exact function and 19 bytes are admitted; original source authorship/game-versus-SDK lineage stays indeterminate, so the authored exact numerator does not change. See docs/evidence/zwave-getbuffer-exact-20261102/README.md. | TH10 complete target machine-code comparison, native PE/MAP/PDB and two distinct selected cold proofs |
-
+| SOUND-032 | observed / canonical-linked-exact / indeterminate-origin | CSound::GetBuffer @0044D3E0 owns 19 bytes. The original ECX sound / EDX unsigned index selects a buffer from the array+4 only when the array exists and the index is below count+0x10; both rejection paths return zero. A previously combined source condition emitted the same size but an inverted branch/return placement. Separating the two ordinary NULL and unsigned-range guards restores target JE/JB/zero-RET/success-RET order and makes the entire PDB-owned 19-byte body raw-equal with no address fields. Two independently cold-rebuilt ZWavePlayRoot /GL /GS selected graphs verify all four complete GetBuffer19/Get3DBuffer52/Play145/Fill483 bodies, 699/699 per build. One new codegen-exact function and 19 bytes are admitted; original source authorship/game-versus-SDK lineage stays indeterminate, so the authored exact numerator does not change.  | TH10 complete target machine-code comparison, native PE/MAP/PDB and two distinct selected cold proofs |
 
 ## MIDI
 
@@ -2826,7 +2674,7 @@ docs/evidence/ecl-length-squared-stack-20261102/README.md.
 | REPLAY-009 | observed / corroborated | `0x0042A200-0x0042A3C1` is the reviewed 450-byte replay loader mapped descriptively as `ReplayManager::LoadReplay`. `0x0042A1F1-0x0042A1FF` and `0x0042A3C2-0x0042A3CF` are CC padding, and all three direct call sites pass the replay owner in live-in ESI, push one replay path, and receive a callee-popped `ret 4`. The disk path builds `replay/%s`, opens a stateful replay read handle, validates file magic `0x72303174` plus version 5, and reads the compressed payload; the archive-selected path calls reviewed `FileSystem::OpenFile`. Both paths apply `Decrypt` with `(0xAA,0xE1,0x400)` then `(0x3D,0x7A,0x80)`, call `DecompressData`, and reconstruct per-stage header/record/FPS starts from the 0x64-byte replay header and 0x1C4-byte stage records. The target deliberately replaces `stageCount >= 8` with loop bound 6. | Attested TH10 function/decompile/caller/callee/xref results; direct target entry/tail/call-site disassembly; reviewed replay layouts and transform helpers; committed TH095 source only after TH10 behavior recovery for naming/source-shape corroboration |
 | REPLAY-010 | observed / corroborated | `0x0042A450-0x0042A695` is the reviewed 582-byte replay stage-transition owner mapped descriptively as `ReplayManager::BeginStage`. Both direct call sites inside `0x00418190` load the global 0x2D4 replay owner into live-in EBX; the callee has no stack arguments and uses plain RET. The body marks each non-null replay chain element through flag bit 1. Record mode rotates the current stage frame list, conditionally refreshes stage-header scalar fields, then snapshots runtime coordinates, a 0x108-byte block, four groups of four 8-byte runtime pairs, `+0x1B8`, and runtime `+0x4474` into the 0x1C4 stage header. Playback mode restores the same snapshot, invokes the connected runtime rebuild/reset helpers, applies the target special-case `shotType + character * 3 == 5`, clears the four slot `+0x58` reset fields, and resets the replay frame counter. Ghidra reports 579 reachable body bytes because `0x0042A60D-0x0042A60F` is a retained three-byte alignment LEA skipped by the branch at `0x0042A60B`; the physical extent remains 582 bytes and is followed by CC padding at `0x0042A696-0x0042A69F`. The maintained `BeginStage` name is TH09-correlated only after TH10-local recovery; original TH10 symbol/TU remain unknown. | Attested TH10 decompile/caller/callee/xref results; direct raw entry/tail/call-site and state-copy disassembly; reviewed ReplayManager/stage layouts; committed TH09 BeginRecordingStage/BeginPlaybackStage used only for later source-family naming corroboration |
 | REPLAY-011 | observed / source-fidelity-correction / non-exact | SaveReplay at 0x00429B60 owns 1681 bytes. Fresh independent target review found that each stage writes every linked node's records first at 0x00429D80-0x00429DDD, then restarts the list and writes all FPS samples at 0x00429DF0-0x00429E2F. The former per-node records/FPS interleave was incorrect for multiple nodes and is now replaced by these two passes. The four inline write sites now have maintained WriteToOpenFile source: invalid handle skips; WriteFile BOOL is ignored; short count reloads/closes the handle, leaves the critical section and decrements count without resetting/rechecking the handle. Repeated later cleanup is original target behavior, not a safe API recommendation. No separate target boundary or tiny-fragment exact credit is invented for this inline seam. The source-extracted copy-loop regression compiles/runs synthetic unequal two-node, one-node and empty cases on the host, explicitly rejects old interleaving, and propagates compile/run failures; missing host C++ is explicitly skipped. CI always checks the two-pass source shape. This is a bounded serialization test, not full-game runtime or historical-codegen proof. The guarded SaveReplay cold diagnostic is1748/1681 bytes,76 raw matches and60/1326 comparable, normalization complete; no exact credit. Its entry RVA0x24B0/PDB contribution is verified; opener137 remains structurally equal. Shared storage and the rest of SaveReplay remain open. | Target-attested review; independent delta/test review; test-replay-payload-order.py; focused cold diagnostic on2026-10-15 |
-| REPLAY-012 | observed / source-fidelity-correction / non-exact | SaveReplay postcopy cursor advances reread record/FPS end from the same captured frame, not the next link value. Prepass payload store is followed by link-value and stage-header recapture before record-count update; natural source now preserves those effects. Fresh baseline1748, postcopy1807, prepass1744 and combined1794 all remain nonexact versus1681. Target repeats the allocation/payload end reads without an intervening write/call; native CSE remains unresolved. Canonical opener137/all12 is preserved. | [Independent full-owner and capture review](evidence/replay-save-captures-20261025/README.md); fresh canonical replay; source-extracted host capture controls |
+| REPLAY-012 | observed / source-fidelity-correction / non-exact | SaveReplay postcopy cursor advances reread record/FPS end from the same captured frame, not the next link value. Prepass payload store is followed by link-value and stage-header recapture before record-count update; natural source now preserves those effects. Fresh baseline1748, postcopy1807, prepass1744 and combined1794 all remain nonexact versus1681. Target repeats the allocation/payload end reads without an intervening write/call; native CSE remains unresolved. Canonical opener137/all12 is preserved. | Independent full-owner and capture review; fresh canonical replay; source-extracted host capture controls |
 
 ## Decompiled helpers
 
@@ -2890,9 +2738,9 @@ docs/evidence/ecl-length-squared-stack-20261102/README.md.
 | ASCII-001 | observed / source-present | The `0x89AC` owner published at `0x004776E0` is TH10's ASCII text manager, while the distinct ANM renderer is consumed through `0x00491C10`. TH10-local proof is the pair of `0x68`-byte text queues at `+0x076C` (256 records) and `+0x6F6C` (64 records), counts at `+0x896C/+0x8970`, append/format functions at `0x00401530-0x0040175D`, and renderers at `0x00401760/0x00401A50`; adjacent TH095 supplied only the initial class-role hypothesis. The owner embeds ANM VMs at `+0x14/+0x3C0`, loads `ascii.anm`, `text.anm`, and `capture.anm`, and registers update plus two draw callbacks. Constructor `+0x8974 = -1` is default color `0xFFFFFFFF`, `+0x8978/+0x897C` are scales, and `+0x898C = 9` is character-space width. The earlier lifecycle/layout observations remain valid under the corrected `AsciiManagerView` owner. | Hash-attested TH10 disassembly and raw PE bytes; append/draw field agreement; call sites; vtable/data xrefs; adjacent source used only to propose the role/name |
 | ASCII-002 | observed / source-present | TH10's maintained ASCII pipeline covers the retained reset, regular/GUI appenders, three variadic formatters, and both queue renderers. `AsciiManagerStringView` is exactly `0x68` bytes: 64-byte text, `Float3` position, color, two scales, one untouched dword, viewport index, font-bank selector, and shadow flag. `AddString` bounds at 256 and copies the shadow field; `AddGuiString` bounds at 64 and leaves that final field untouched. The regular renderer selects glyph `(smallFont * 0x62 + character - 0x20)` from a `0x44`-byte table, applies 7/9 or scaled-space/14 advances, and can draw a two-pixel half-alpha shadow. The GUI renderer uses the first glyph bank and selects rounded versus non-rounded drawing through an exact `scaleX == 1.0f` comparison. Both switch viewports only on state changes and restore the default after flushing. | Target disassembly for `0x004014D0-0x00401C89`; raw boundary/padding review; target constants; formatter caller ABIs; TH095 used only as a source-shape hypothesis |
 
-| ASCII-003 | observed / canonical-linked-exact / real registration-caller ABI | `AsciiManagerView::OnDrawHighPriority @ 0x00401520..0x00401529` owns all 10 target bytes, with the sole typed REL32 to `AsciiManagerDrawGuiStrings @ 0x00401A50`. Under the actual three-TU AsciiManagerCreate/Initialize `/GL` graph, the previous source picked EDI at three ordinary bytes. A natural scoped pointer to the embedded GUI VM inside the genuine downstream 570-byte renderer selects target EBX for the high-priority callback without modifying its source ABI. Two independent cold replays preserve both the new 10-byte callback and the preexisting 330-byte Initialize in the same image, 340/340 and all29 fields. The renderer itself remains 576/570 NONEXACT, though its comparable position count rises from54/458 to160/458 under the same graph; none of those bytes is admitted. | [Complete target and two-cold proof](evidence/ascii-high-draw-exact-20261031/README.md); canonical `ascii-manager-on-draw-high` |
+| ASCII-003 | observed / canonical-linked-exact / real registration-caller ABI | `AsciiManagerView::OnDrawHighPriority @ 0x00401520..0x00401529` owns all 10 target bytes, with the sole typed REL32 to `AsciiManagerDrawGuiStrings @ 0x00401A50`. Under the actual three-TU AsciiManagerCreate/Initialize `/GL` graph, the previous source picked EDI at three ordinary bytes. A natural scoped pointer to the embedded GUI VM inside the genuine downstream 570-byte renderer selects target EBX for the high-priority callback without modifying its source ABI. Two independent cold replays preserve both the new 10-byte callback and the preexisting 330-byte Initialize in the same image, 340/340 and all29 fields. The renderer itself remains 576/570 NONEXACT, though its comparable position count rises from54/458 to160/458 under the same graph; none of those bytes is admitted. | Complete target and two-cold proof; canonical `ascii-manager-on-draw-high` |
 
-| ASCII-004 | observed / canonical-linked-exact / real lifecycle-caller context | `AsciiManagerCreate @ 0x00401440..0x00401484` is a complete69-byte authored factory, now exact after correcting the historical single-TU compiler graph. The genuine `AsciiManagerCreate`-rooted three-input `AnmManager.cpp`+`GameErrorContext.cpp`+`Chain.cpp` `/GL` image emits the target69 bytes naturally, including original ESI constructor return, NULL path, Initialize, failure-time destructor/delete and both returns; the prior one-TU 70-byte private-destructor mismatch was a context artifact, not a reason to change ABI declarations. The five fully bound REL32 fields target operator new452493, constructor401000, Initialize401110, destructor401260 and operator delete4524A1. Two independent canonical selected cold builds reproduce factory69 plus existing Initialize330 and high-draw callback10: 409/409 exact, 34 fields. Standalone destructor and complete product/runtime remain separate. | [Original target, five fields and two independent native colds](evidence/ascii-factory-exact-20261031/README.md); canonical `ascii-manager-create` |
+| ASCII-004 | observed / canonical-linked-exact / real lifecycle-caller context | `AsciiManagerCreate @ 0x00401440..0x00401484` is a complete69-byte authored factory, now exact after correcting the historical single-TU compiler graph. The genuine `AsciiManagerCreate`-rooted three-input `AnmManager.cpp`+`GameErrorContext.cpp`+`Chain.cpp` `/GL` image emits the target69 bytes naturally, including original ESI constructor return, NULL path, Initialize, failure-time destructor/delete and both returns; the prior one-TU 70-byte private-destructor mismatch was a context artifact, not a reason to change ABI declarations. The five fully bound REL32 fields target operator new452493, constructor401000, Initialize401110, destructor401260 and operator delete4524A1. Two independent canonical selected cold builds reproduce factory69 plus existing Initialize330 and high-draw callback10: 409/409 exact, 34 fields. Standalone destructor and complete product/runtime remain separate. | Original target, five fields and two independent native colds; canonical `ascii-manager-create` |
 
 ## Filesystem writer recovery
 
@@ -2906,9 +2754,9 @@ docs/evidence/ecl-length-squared-stack-20261102/README.md.
 | ID | Evidence | Fact | Source |
 | --- | --- | --- | --- |
 | ENEMY-089 | observed / integrated-source / non-exact | Fresh five-TU EnemyEclDispatcher + EclVm + AnmManager + AnmVmCreate + EnemyLaser baseline at50cfd58 is14384/14416, frame2BC versus2C4,928 raw and630/11540 comparable. Integrated shared request/layout and missing factory/construction source is14480/14416,894 raw and625/11584 comparable, normalization_complete=true. All181 selector bytes,108 physical destination order and43 suffix bytes remain intact; the table reporter overall still warns about three duplicate nested spell-case labels, not a pass. Four laser groups own1485 target bytes. Factory capacity256, preallocation nonzero ID increment, unknown-type ID consumption, allocation/null-write behavior, previous/head/next insertion and slot1 apply ordering match target. Common424 prefix, type0 request1DC+VM600/9AC=D58 and type1 request1F8+VM61C/9C8=D74 are statically asserted. Existing real AnmVm and timer constructors are placement-invoked in observed order, but extra null checks/out-of-line VM calls remain; factory153/153 is only16/137 comparable and has wrong private cleanup/register ABI. The non-instantiated virtual-prefix view emits no replacement vtable; all three19-slot tables remain unresolved data anchors. Raw-storage object lifetime and reinterpret-polymorphic dispatch remain partial implementation-specific views, not a standard C++ or runnable closure claim. Independent source review approves semantic partial retention. Existing exact leaves40CF40/41C030 are unchanged and receive no duplicate credit; derived initializer origin stays indeterminate. Request initializer23/23 raw in this graph is diagnostic only. No new exact bytes. | Target-attested audit and independent integrated source review2026-10-15; saved full-owner image hash24f23d99e94b570d3e399c993c77e21f159237e94115f1a57ff9e8c99ef56139 |
-| ENEMY-090 | observed / polar-input-lifetime-and-selector-scope / non-exact | Fresh eight-TU /GL /GS direct-entry dispatcher baseline is14512/14416 bytes, not the older14384 context. Comparing mode7 inputs before assigning output locals restores one common angle FCOMP before mode store/CMP/FNSTSW; putting the normal-mode arm first restores JZ-to-additive. The interval now has3 sentinel comparisons and the whole owner19, matching target rather than baseline4/20. Two independent retained cold links give14500/14416, frame2BC/2C4, all181 selector bytes and108 ordered groups,35 equal-sized spans; full/case-aligned diagnostics533/11576 and2424/11133. Polar386/405 and aggregate span gap786 versus baseline776 remain nonexact; no partial credit. Unsigned-index prototype is byte-neutral and restored. Further ordinary-output deferral shrinks owner14484 but adds a live x87 speed value/FSUB ST(2), expanding the existing missing float32-output-store mismatch, and is rejected. Both retained images strictly preserve ResolveIntArgument75, ReadInt144 and ReadFloat183/all5 fields in the declared carrier, without canonical recipe changes. Selector reporting now excludes three inner spell cases from the124 outer labels; seven independent scope/rejection tests pass, and target/candidate table coverage passes without changing byte acceptance. | Local read-only hash-attested Ghidra and target constant/instruction review; complete PDB-owned comparisons; docs/evidence/enemy-dispatch-polar-lifetime/README.md |
-| ENEMY-091 | observed / polar-pair-storage-and-adapter-controls / non-exact | Actual initial/final EnemyFloat2 values feed polar0x11D/0x11F and random movement through the observed common setup tail. This restores target frame2C4, final-angle float32 FSTP before the common difference, memory FSUB, and initial-speed copy after subtraction. Complete eight-TU /GL /GS owner remains14524/14416, polar396/405,19 sentinel comparisons,181 selectors/108 ordered groups; no partial credit. Scoped pairs without the shared tail emit14540/424; shared pairs14524/396. Initial-angle-first comparison changes4 ordinary bytes and restores operand direction without changing whole-owner613/11580 or case2447/11143 counts; branch encoding remains unequal. Ordinary nonmember runtime/index and index/runtime adapter controls both preserve the same16-byte register gap and are restored. Full same-image guards bind ResolveInt75, ECL ReadInt144/ReadFloat183 and WrapAngle94:496 bytes/11 fields; canonical recipes unchanged. WrapAngle returns live x87 with34-update one-direction cap and no float32 result store. Exact rational RN-even PC53/PC64 model at input447 and initial bitsC1575CFE demonstrates target stored-angle adjustment false versus old live-angle true. Finite conditional storage counterexample only; game reachability, runtime FP control and normal-input bug unknown. No exact numerator change. | Hash-attested read-only local Ghidra, pinned target instructions/constants, complete PDB-owned cold comparisons and same-image guards; docs/evidence/enemy-dispatch-polar-storage/README.md; scripts/check-enemy-polar-rounding-model.py |
-| ENEMY-092 | observed / dispatcher-storage-and-raw-float-source / non-exact | Fresh target/local read-only Ghidra confirms spawn64-byte zeroing and spell decoding both use final ESP+248; the target frame is2C4 and cookie final ESP+2CC. Physical sharing does not prove an authored union or original array capacity. Separate function-scope request plus block-local spell buffer, and a request scoped to spawn cases with its actual shared tail, both emit14552/frame30C versus target14416/2C4; all source restored. Existing26-byte0x412AA0 gains the descriptive ReadRawFloatArgument mapping:13 dispatcher calls, EAX runtime, two real stack words, owner14D8/context4, ECX index into44FF80 and RET8. Origin remains indeterminate. Direct receiver syntax changes this to ECX despite closer13/22 ordinary positions and is rejected; argument snapshot and unsigned-index controls are byte-neutral and restored. Baseline and full-cold unsigned control share the complete14524-byte parent hash,181 selectors/108 groups/19 sentinel compares/35 equal-sized spans. Four primary-only controls reuse seven unchanged hash-checked support objects; no incremental or partial-case credit. Six complete existing guards retain791 bytes/all16 fields in the baseline actual eight-TU carrier. No boundary, authored denominator, exact numerator, canonical recipe or source body change. Current ReadIntArgument is a direct return; its older assignment experiment is historical. | Independently attested local Ghidra, target raw decode and13 direct calls; complete native extents and reconstructible rejected overlays; docs/evidence/enemy-dispatch-storage-and-forwarder/README.md |
+| ENEMY-090 | observed / polar-input-lifetime-and-selector-scope / non-exact | Fresh eight-TU /GL /GS direct-entry dispatcher baseline is14512/14416 bytes, not the older14384 context. Comparing mode7 inputs before assigning output locals restores one common angle FCOMP before mode store/CMP/FNSTSW; putting the normal-mode arm first restores JZ-to-additive. The interval now has3 sentinel comparisons and the whole owner19, matching target rather than baseline4/20. Two independent retained cold links give14500/14416, frame2BC/2C4, all181 selector bytes and108 ordered groups,35 equal-sized spans; full/case-aligned diagnostics533/11576 and2424/11133. Polar386/405 and aggregate span gap786 versus baseline776 remain nonexact; no partial credit. Unsigned-index prototype is byte-neutral and restored. Further ordinary-output deferral shrinks owner14484 but adds a live x87 speed value/FSUB ST(2), expanding the existing missing float32-output-store mismatch, and is rejected. Both retained images strictly preserve ResolveIntArgument75, ReadInt144 and ReadFloat183/all5 fields in the declared carrier, without canonical recipe changes. Selector reporting now excludes three inner spell cases from the124 outer labels; seven independent scope/rejection tests pass, and target/candidate table coverage passes without changing byte acceptance. | Local read-only hash-attested Ghidra and target constant/instruction review; complete PDB-owned comparisons;  |
+| ENEMY-091 | observed / polar-pair-storage-and-adapter-controls / non-exact | Actual initial/final EnemyFloat2 values feed polar0x11D/0x11F and random movement through the observed common setup tail. This restores target frame2C4, final-angle float32 FSTP before the common difference, memory FSUB, and initial-speed copy after subtraction. Complete eight-TU /GL /GS owner remains14524/14416, polar396/405,19 sentinel comparisons,181 selectors/108 ordered groups; no partial credit. Scoped pairs without the shared tail emit14540/424; shared pairs14524/396. Initial-angle-first comparison changes4 ordinary bytes and restores operand direction without changing whole-owner613/11580 or case2447/11143 counts; branch encoding remains unequal. Ordinary nonmember runtime/index and index/runtime adapter controls both preserve the same16-byte register gap and are restored. Full same-image guards bind ResolveInt75, ECL ReadInt144/ReadFloat183 and WrapAngle94:496 bytes/11 fields; canonical recipes unchanged. WrapAngle returns live x87 with34-update one-direction cap and no float32 result store. Exact rational RN-even PC53/PC64 model at input447 and initial bitsC1575CFE demonstrates target stored-angle adjustment false versus old live-angle true. Finite conditional storage counterexample only; game reachability, runtime FP control and normal-input bug unknown. No exact numerator change. | Hash-attested read-only local Ghidra, pinned target instructions/constants, complete PDB-owned cold comparisons and same-image guards; ; scripts/check-enemy-polar-rounding-model.py |
+| ENEMY-092 | observed / dispatcher-storage-and-raw-float-source / non-exact | Fresh target/local read-only Ghidra confirms spawn64-byte zeroing and spell decoding both use final ESP+248; the target frame is2C4 and cookie final ESP+2CC. Physical sharing does not prove an authored union or original array capacity. Separate function-scope request plus block-local spell buffer, and a request scoped to spawn cases with its actual shared tail, both emit14552/frame30C versus target14416/2C4; all source restored. Existing26-byte0x412AA0 gains the descriptive ReadRawFloatArgument mapping:13 dispatcher calls, EAX runtime, two real stack words, owner14D8/context4, ECX index into44FF80 and RET8. Origin remains indeterminate. Direct receiver syntax changes this to ECX despite closer13/22 ordinary positions and is rejected; argument snapshot and unsigned-index controls are byte-neutral and restored. Baseline and full-cold unsigned control share the complete14524-byte parent hash,181 selectors/108 groups/19 sentinel compares/35 equal-sized spans. Four primary-only controls reuse seven unchanged hash-checked support objects; no incremental or partial-case credit. Six complete existing guards retain791 bytes/all16 fields in the baseline actual eight-TU carrier. No boundary, authored denominator, exact numerator, canonical recipe or source body change. Current ReadIntArgument is a direct return; its older assignment experiment is historical. | Independently attested local Ghidra, target raw decode and13 direct calls; complete native extents and reconstructible rejected overlays;  |
 
 ## Complete stage GUI reset recovery
 
@@ -2922,18 +2770,15 @@ docs/evidence/ecl-length-squared-stack-20261102/README.md.
 
 | ID | Evidence | Fact | Source |
 | --- | --- | --- | --- |
-| GUI-007 | observed / target sampling and rejected compiler models / non-exact | Both opcode20 replay-mode checks share target mode4 tail416E8A. Target reloads character474C68, shot474C6C, difficulty474C74 and stage474C7C after its first unlock-byte write; GUI flags are ORed20 before faith474C4C is read. Common-storage source controls recover these sequences but complete Run remains nonexact:4464/4480 for four typed configuration fields,4456/4480 for six further state aliases, frameD8/150 calls. Original state class and full layout remain unknown; source changes are restored. In opcode13, all32 physical return-slot LEA displacements and lengths match, while15 short EAX absolute loads instead of target ECX account for its15-byte size gap. POD getter, repeated count-address expression and opaque cursor are raw-neutral in their immediate contexts; complementing stage7 and swapping arms changes raw bytes despite equal diagnostic totals. No partial-case credit or ledger changes. | [Target-local review, complete-owner controls and limits](evidence/gui-run-shared-state/README.md) |
-| GUI-008 | observed / canonical-linked-exact | GameUpdateGui417040..4172DE is complete671 bytes/171 instructions/36 fields/24 fixed branches. The actual GameManager caller recovers ESI GUI/plain RET. Existing score-state storage restores score/high-score reloads and digit-boundary constant reuse; whole ID clearing and local creator call boundaries retain the target notice block, nine digit pairs and both leading VMs. The flag4 OR/TEST and physically present unreachable script4A arm are retained. Signed smoothing uses difference/32, cap8D55E, nonzero proposal1 and remaining-distance clamp; normal/Extra threshold storage starts474474/474488. Two independent19-input pinned VC7.1 GL colds reproduce every byte/field. No storage/original-class/TU/runtime claim. | [Complete score/life proof](evidence/gui-score-display-exact-20261031/README.md); canonical gui-update-score-display |
-| GUI-009 | observed / canonical-linked-exact | GameAddLives4188A0..41892C owns141 bytes/42 instructions/two plain RETs/all12 fields. It adds signed amount to supplied state+30, caps above9 while skipping the successful-extend sound/notice, otherwise queues sample44/0 and replaces specialVmId9E18 with script4B/layer15. Both exits refresh life VM flags from global state+30. Actual GUI/Item callers use an ordinary count-first two-input interface; LTCG recovers target EAX state/ECX amount without fabricated ABI. State-first free and ordinary member forms preserve callee141 but reverse the updater's final two MOVs; they are restored. Explicit GameScoreState base/addend bindings avoid unrelated diagnostic-anchor neighbors at+4/+30. Both independent colds pass812 new bytes/all48 fields; eight same-image owners pass1490/all57, and affected canonical AddRank42 stays exact. | [Complete score/life proof](evidence/gui-score-display-exact-20261031/README.md); canonical game-add-lives |
-| GUI-010 | observed / corrected-owned-table / complete-source-nonexact | GuiShowScoreNotice4172E0 owns668 bytes:640 dense code through RET8 at41755D and seven immediately following DIR32 words417560..41757B. JMP4172F2 references the table; destinations+19/+161/+180/+1C0/+200/+278/+240 are internal instruction entries. Four CC bytes precede independent417580. Correcting640 to668 adds28 authored denominator bytes and zero exact bytes. Actual EnemyEndSpell caller recovers EAX kind/two stack inputs/RET8. Complete seven-case notice source is660/668 with frame28; broad clears merge tails to576, while flag/word-copy/whole-ID/script-local controls do not close the owner. Memory OR versus load/OR/store, ID publication and clear/resource-load schedules remain. | [Full notice boundary and controls](evidence/gui-spell-notice-20261031/README.md); source GuiSpellNotice.cpp |
-| GUI-011 | observed / canonical-linked-exact | EnemyEndSpell409C00..409D8E owns399 bytes, two plain RETs, six fixed branches and20 address fields. It retains the active gate, menu DWORD OR, three real pending-ID calls, flag clear, managed-ID deletion, successful score/kind0-notice/capture counters/sample45 and failed script48 creation. Existing statistics records[group]/records[6] and a90-byte spell record with captures+80 recover383 to399 and exact access scheduling. Both20-input pinned GL colds reproduce all399/all20. Real native dispatcher14348/14416 retains one direct child call at+27C9; notice660/668 and both larger parents remain nonexact. Bound public callee entry does not grant callee byte equality. | [Complete spell-end proof](evidence/gui-spell-notice-20261031/README.md); canonical enemy-end-spell |
-| GUI-012 | observed / shared-state-and-captured-inputs / complete-source-nonexact | Run415E90 remains4472/4480 NONEXACT. Existing state storage474C40+28/+2C/+34/+3C supplies character/shot/difficulty/stage; normal profile byte stores naturally retain the second selection reads without four forced volatile integer observations. The second flag calculation matches45 bound bytes. Capturing the existing typed line ID and ordinary manager before a lookup barrier restores ESI and both full side-setting schedules82/88. All14 linkage fields and two advance destinations bind explicitly;15 earlier selection reads bind the semantic state base despite coincident diagnostic anchor labels. These215 bytes are subregions of one nonexact owner and add no credit. Warm and zero-reuse21-input cold reproduce337 fields/121 locals/150 ordered calls/54 hidden outputs. Original types, barriers, ownership and later phases remain open. | [Complete candidate, bounded bindings and parked controls](evidence/gui-message-state-view-20261031/README.md) |
-| GUI-013 | observed / arithmetic-read-order / complete-source-nonexact | DrawStageElements415800..415AD3 remains724/724 NONEXACT. Capturing the score width before color and two compiler memory barriers restore FILD/color/FMUL plus FADD-before-bottom, without extra spill/call/stack space. The multiplier field is now D2; target LEA D6 remains native EC and the addition field EC remains native E8. All33 roles/payloads and23 local destinations agree, but position and ordinary bytes remain mandatory. The26-byte unresolved interval is not a wrong-byte count; bound prefix/suffix are not units. Warm and zero-reuse3-input cold reproduce173 instructions/RET4 at2D1. Actual Draw/rectangle guards and scoped canonical replay pass699/all35; callback7/all1 stays provisional. Original barriers, types and later phases remain open. | [Complete native receipt, field bindings and parked models](evidence/gui-draw-read-order-20261031/README.md) |
-
-
+| GUI-007 | observed / target sampling and rejected compiler models / non-exact | Both opcode20 replay-mode checks share target mode4 tail416E8A. Target reloads character474C68, shot474C6C, difficulty474C74 and stage474C7C after its first unlock-byte write; GUI flags are ORed20 before faith474C4C is read. Common-storage source controls recover these sequences but complete Run remains nonexact:4464/4480 for four typed configuration fields,4456/4480 for six further state aliases, frameD8/150 calls. Original state class and full layout remain unknown; source changes are restored. In opcode13, all32 physical return-slot LEA displacements and lengths match, while15 short EAX absolute loads instead of target ECX account for its15-byte size gap. POD getter, repeated count-address expression and opaque cursor are raw-neutral in their immediate contexts; complementing stage7 and swapping arms changes raw bytes despite equal diagnostic totals. No partial-case credit or ledger changes. | Target-local review, complete-owner controls and limits |
+| GUI-008 | observed / canonical-linked-exact | GameUpdateGui417040..4172DE is complete671 bytes/171 instructions/36 fields/24 fixed branches. The actual GameManager caller recovers ESI GUI/plain RET. Existing score-state storage restores score/high-score reloads and digit-boundary constant reuse; whole ID clearing and local creator call boundaries retain the target notice block, nine digit pairs and both leading VMs. The flag4 OR/TEST and physically present unreachable script4A arm are retained. Signed smoothing uses difference/32, cap8D55E, nonzero proposal1 and remaining-distance clamp; normal/Extra threshold storage starts474474/474488. Two independent19-input pinned VC7.1 GL colds reproduce every byte/field. No storage/original-class/TU/runtime claim. | Complete score/life proof; canonical gui-update-score-display |
+| GUI-009 | observed / canonical-linked-exact | GameAddLives4188A0..41892C owns141 bytes/42 instructions/two plain RETs/all12 fields. It adds signed amount to supplied state+30, caps above9 while skipping the successful-extend sound/notice, otherwise queues sample44/0 and replaces specialVmId9E18 with script4B/layer15. Both exits refresh life VM flags from global state+30. Actual GUI/Item callers use an ordinary count-first two-input interface; LTCG recovers target EAX state/ECX amount without fabricated ABI. State-first free and ordinary member forms preserve callee141 but reverse the updater's final two MOVs; they are restored. Explicit GameScoreState base/addend bindings avoid unrelated diagnostic-anchor neighbors at+4/+30. Both independent colds pass812 new bytes/all48 fields; eight same-image owners pass1490/all57, and affected canonical AddRank42 stays exact. | Complete score/life proof; canonical game-add-lives |
+| GUI-010 | observed / corrected-owned-table / complete-source-nonexact | GuiShowScoreNotice4172E0 owns668 bytes:640 dense code through RET8 at41755D and seven immediately following DIR32 words417560..41757B. JMP4172F2 references the table; destinations+19/+161/+180/+1C0/+200/+278/+240 are internal instruction entries. Four CC bytes precede independent417580. Correcting640 to668 adds28 authored denominator bytes and zero exact bytes. Actual EnemyEndSpell caller recovers EAX kind/two stack inputs/RET8. Complete seven-case notice source is660/668 with frame28; broad clears merge tails to576, while flag/word-copy/whole-ID/script-local controls do not close the owner. Memory OR versus load/OR/store, ID publication and clear/resource-load schedules remain. | Full notice boundary and controls; source GuiSpellNotice.cpp |
+| GUI-011 | observed / canonical-linked-exact | EnemyEndSpell409C00..409D8E owns399 bytes, two plain RETs, six fixed branches and20 address fields. It retains the active gate, menu DWORD OR, three real pending-ID calls, flag clear, managed-ID deletion, successful score/kind0-notice/capture counters/sample45 and failed script48 creation. Existing statistics records[group]/records[6] and a90-byte spell record with captures+80 recover383 to399 and exact access scheduling. Both20-input pinned GL colds reproduce all399/all20. Real native dispatcher14348/14416 retains one direct child call at+27C9; notice660/668 and both larger parents remain nonexact. Bound public callee entry does not grant callee byte equality. | Complete spell-end proof; canonical enemy-end-spell |
+| GUI-012 | observed / shared-state-and-captured-inputs / complete-source-nonexact | Run415E90 remains4472/4480 NONEXACT. Existing state storage474C40+28/+2C/+34/+3C supplies character/shot/difficulty/stage; normal profile byte stores naturally retain the second selection reads without four forced volatile integer observations. The second flag calculation matches45 bound bytes. Capturing the existing typed line ID and ordinary manager before a lookup barrier restores ESI and both full side-setting schedules82/88. All14 linkage fields and two advance destinations bind explicitly;15 earlier selection reads bind the semantic state base despite coincident diagnostic anchor labels. These215 bytes are subregions of one nonexact owner and add no credit. Warm and zero-reuse21-input cold reproduce337 fields/121 locals/150 ordered calls/54 hidden outputs. Original types, barriers, ownership and later phases remain open. | Complete candidate, bounded bindings and parked controls |
+| GUI-013 | observed / arithmetic-read-order / complete-source-nonexact | DrawStageElements415800..415AD3 remains724/724 NONEXACT. Capturing the score width before color and two compiler memory barriers restore FILD/color/FMUL plus FADD-before-bottom, without extra spill/call/stack space. The multiplier field is now D2; target LEA D6 remains native EC and the addition field EC remains native E8. All33 roles/payloads and23 local destinations agree, but position and ordinary bytes remain mandatory. The26-byte unresolved interval is not a wrong-byte count; bound prefix/suffix are not units. Warm and zero-reuse3-input cold reproduce173 instructions/RET4 at2D1. Actual Draw/rectangle guards and scoped canonical replay pass699/all35; callback7/all1 stays provisional. Original barriers, types and later phases remain open. | Complete native receipt, field bindings and parked models |
 
 ## Music-room state recovery
-
 
 Music-room full source recovery (2026-10-15): FrontEndUpdateMusicRoom at433EF0
 now covers all four states and its necessary59/92-byte line parsers and206-byte
@@ -3166,7 +3011,6 @@ Target rounds center and delta XYZ separately through float32 before its native
 source dot expression restore those boundaries/order in the pinned compiler.
 Independent actual-PE review passed; whole1925/1984 owner still nonexact.
 
-
 ## 2026-10-15 Stage early/late draw pass source recovery
 
 Recovered complete 0x402850/1099-byte early and 0x402CA0/929-byte late bodies
@@ -3204,10 +3048,9 @@ native D3D, x87, private ABI, alias storage or product behavior. Evidence under
 pass-late-target.txt, pass-registration-target.txt, passes.json and
 passes-test.log. Complete source retention is provisional and nonexact.
 
-
 ## 2026-10-15 Stage lifecycle supporting the full draw/script graph
 
-Superseded for current exact status by the [complete lifecycle proof](evidence/stage-initialize-context-20261029/README.md) on2026-10-30. The sizes and host reports below describe the original October15 checkpoint.
+Superseded for current exact status by the complete lifecycle proof on2026-10-30. The sizes and host reports below describe the original October15 checkpoint.
 
 StageLifecycle.cpp recovers the coherent five-owner graph: constructor
 0x402160/188, Initialize0x402230/522, destructor0x402440/499,
@@ -3253,7 +3096,6 @@ names StageLifecycle.cpp, regenerated against the unchanged PE/map/PDB and
 all ten contributions verified equal. No compiler rerun was needed for that
 metadata-only repair. Required source/storage caveats remain explicit.
 
-
 ## 2026-10-15 Genuine GameManager-to-Stage source binding
 
 GameManagerInitialize0x417870/1009 now calls maintained StageCreate through
@@ -3281,7 +3123,6 @@ ABIs, constructor/destructor EH, global aliases/storage, external dependencies
 and runtime closure remain unresolved. Independent full caller binding and
 14-contribution/entry review passed. No further Stage spelling controls planned.
 
-
 ## 2026-10-15 Enemy runtime callback scale lifetime correction
 
 Full EnemyRuntimeUpdate0x40DC80/2412 audit found a substantive callback-state
@@ -3308,7 +3149,6 @@ common timer tail are deliberately outside this fixture; host behavior does
 not prove native x87 or ABI. CI includes it. Evidence is retained under
 .analysis/gpt-dots-enemy-runtime: target.txt, baseline.json, scale-reload.json,
 scale-native.txt and scale-test.log. No repeated register-spelling experiment.
-
 
 ## 2026-10-15 Enemy callback installation source identity
 
@@ -3346,7 +3186,6 @@ not a claim that the maintained lookup normally mutates the host. No host test
 proves native x87/ABI or observes a mutation between the two plain stores.
 No exact credit, helper promotion, or denominator change.
 
-
 ## 2026-10-15 Enemy interpolation and score caller identities
 
 EnemyRuntimeUpdate now calls the maintained AnmVmFloat3InterpolationView::Evaluate
@@ -3380,7 +3219,6 @@ with distinct returned versus output pointers and lookup-side position mutation.
 These are synthetic seam witnesses, not full interpolation arithmetic or complete
 Enemy runtime tests. Existing 46-byte score exactness is not newly credited.
 All helpers and the full2412-byte owner receive zero new exact credit.
-
 
 ## 2026-10-15 Enemy movement prerequisites, provisional numeric source
 
@@ -3419,7 +3257,6 @@ precise threshold/alias behavior or host trig/native equivalence. The fixture
 uses a static zero-initialized interpolation seed copied before setup, avoiding
 indeterminate flag reads by the maintained constructor; production is unchanged.
 CI includes the test. No exact numerator or denominator change.
-
 
 ## 2026-10-15 Enemy runtime tail receiver identities
 
@@ -3641,7 +3478,6 @@ storage allocation is introduced. Profile-record pointer views and generic
 storage anchors remain incomplete lifetime/runtime models. Helper263/316 and
 both large callers are nonexact; no new authored exact credit.
 
-
 ## 2026-10-16 Pause/capture draft recovery
 
 Four existing dirty bodies are retained as source-present/nonexact: OpenPause
@@ -3689,7 +3525,6 @@ It supplies hypotheses only: assembly fallback, equivalent-region scores,
 alternate compilers and context-only steering cannot grant our exact credit.
 No upstream code was imported; explicit reuse licensing was not found.
 
-
 ## 2026-10-16 ANM color x87 context audit
 
 [Conditional precision model and negative controls](ANM_COLOR_ROUNDING.md)
@@ -3702,7 +3537,6 @@ runtime FPU state nor reachable game-state behavior is established. Two
 isolated natural-source controls were reverted after failing target topology;
 all canonical exact metrics remain unchanged. The reproducible model does not
 replace actual-source tests or native acceptance.
-
 
 ## 2026-10-16 Options display lookup and value lifetimes
 
@@ -3774,7 +3608,6 @@ options-refresh-target.txt, options-lifetimes-native.txt, options-lookup-native.
 baseline source snapshot and test logs. Retain only core source, tests and
 conclusions in Git; binaries and generated dumps are reproducible.
 
-
 ## 2026-10-16 Options controller protocol and owner bindings
 
 UpdateOptions42D920 is a3188-byte physical owner (3168 pre-table bytes plus
@@ -3841,7 +3674,6 @@ sound-bound build was recovered by reading its complete JSON/empty stderr after
 transport timeout rather than recompiling. Reference implementation/context was
 not imported; source changes follow TH10-local instructions and existing owners.
 
-
 ## 2026-10-16 Options lookup and color expansion controls
 
 This batch investigates source expansion boundaries, not a recovered historical
@@ -3897,7 +3729,7 @@ That earlier helper4497D0 review corroborated aggregate ID ownership: both branc
 write through hidden output EDI and return that pointer. Its success path,
 like refresh cold blocks42ED23 onward, reloads node->owner before reading ID.
 That historical candidate kept the previously loaded owner. The complete70-byte
-helper now closes in [the 2026-10-20 post-search proof](evidence/gui-child-search/README.md).
+helper now closes in the 2026-10-20 post-search proof.
 Do not replace the aggregate with a scalar merely to obtain EAX or add volatile.
 The historical Refresh comparison had29 more target two-byte MOVs and26 more
 padding bytes, with offsetting instruction differences; that54-byte extent
@@ -3922,7 +3754,6 @@ For the selected color-expansion image, the controller is3228 physical bytes,
 It has76 direct call instructions versus78 target; Refresh has84 observed calls
 in both images. Matching call counts alone are not semantic or exact proof.
 Store generated reports locally, not in Git.
-
 
 ## 2026-10-16 Options close-path ownership
 
@@ -3951,7 +3782,6 @@ excluding defaults. Current2909 cases and all13 mutation controls pass;
 historical baseline retains108 expected failures in2139 safe cases.
 Full CI passes. Focused existing setter replay remains163/163,
 PE3e4ca90636d4beb15873fde6be8ae83d70e46bfbd9abb57e56e383fde37e25db.
-
 
 ## 2026-10-16 Options remaining dependency audit and rejected input control
 
@@ -3994,7 +3824,6 @@ objects or duplicating a forced member; their maintained Add APIs differ.
 A sound binding needs shared type/owner evidence and an appropriate producer
 graph. Current controller tests explicitly mock creation, timer and immediate
 execution; they do not certify those bodies. No exactness credit is claimed.
-
 
 ## 2026-10-16 Options refresh canonical code-generation candidate
 
@@ -4052,7 +3881,6 @@ Final toolchain verification, tracking validation and full public CI pass.
 The two previously accepted screen/state setters remain163/163 under focused
 canonical replay, PE2f6c35c544d6d7f71475f8098371dca0735ca66f8acf755969fc620022f21220.
 This existing-byte regression check adds no new credit.
-
 
 ## 2026-10-16 Supervisor storage identity and hint-field correction
 
@@ -4112,7 +3940,6 @@ The wider manifest scan finds83 named-global symbols and no inconsistent
 same-symbol base. Public checks retain this invariant, while compiler-generated
 literal pools are deliberately outside that named-global rule.
 
-
 ## 2026-10-16 Key-configuration digit display reconstruction
 
 Native owner 42F8B0-430243 covers2452 bytes, including15 interior alignment
@@ -4167,7 +3994,6 @@ Current-source OptionsRefresh cold regression remains3999/3999, PE
 77c02488a30e2cf3e23bc4320bebc0f7babc92221442e3f1bdf626b8bcdb73d7.
 The exact ledger registers this canonical candidate; fresh Factory acceptance
 is pending the committed checkpoint and is not implied by registration.
-
 
 ## 2026-10-16 Practice controller and explicit profile-unlock contract
 
@@ -4234,7 +4060,6 @@ is FrontEnd.cpp pass, totaling7,186 bytes including the new93-byte dependency.
 This is not a replay of every transitive repository unit or runtime closure.
 The complete public CI and source-extracted checks pass at this checkpoint.
 
-
 ## 2026-10-16 Stage-HUD selector, sounds and receiver lifetimes
 
 The 3,836-byte UpdateStageElements owner has two concrete input corrections.
@@ -4293,7 +4118,6 @@ GuiScore::Add46, the two ID sprite wrappers36+34, and Main next-mode setter37.
 This is a bounded dependency check, not all transitive units or a new exact
 claim. Full public CI and both source-extracted UBSan fixtures pass.
 
-
 ## 2026-10-16 Lexical ownership of the HUD boss-gauge phase
 
 The fresh HUD baseline still emitted UpdateBossGauge, SetBossGaugeInterrupt,
@@ -4346,7 +4170,6 @@ After lexical recovery, the same four focused canonical dependency units
 again pass153/153 bytes. All three UBSan suites (12 phase,9 lifetime and3
 selector mutation controls), target GUI report and full public CI pass.
 No exact ledger or origin count is changed by this owner-boundary checkpoint.
-
 
 ## 2026-10-16 Complete lexical HUD workflow and remaining codegen gaps
 
@@ -4429,11 +4252,9 @@ The signed RNG conversion now uses one explicit float local before the unchanged
 - Private binding inventory SHA256: `4342ab97b08e082719bdd0f6e00f2c88521350b98ee10dbc9a9576dcfe2e9e58`.
 - Actual complete canonical replay: `fc309434dbb1496aad942db711ef2761`; additional 23-guard finalization completing all 29 guards: `3f15976898af4bbd951471e67e66a12e`.
 
-See [Radial signed-RNG local evidence](evidence/radial-rng-local/README.md) for source/tool/graph identities, reviewed compile-address binding scope, reproduction limits and the pending Factory handoff.
-
 ### 2026-10-18: radial initializer Factory acceptance
 
-The complete 803-byte `anm-initialize-pulsing-radial-trail` claim passed Factory forced-recompile replay and was accepted at clean commit `504539f9fcd1e465f7fd7e902af05c042e5d077d`. Receipt: `dd3a0154fc4a5a6ac0ae07cb3e17cde3bf0326b91382e7abf1bb7a78c8a334b0`; job: `40f82069fb8d46dea5d5441fe851b0e6`. The separate 115-byte signed-RNG claim was also accepted at the same source binding, receipt `64fd20e83b5c945ac8005e3af3977730dd9b5550709a6db3e5deebc32e9bce58`. See [the dated radial acceptance record](evidence/radial-rng-local/README.md#factory-acceptance-at-504539f9-2026-10-18) for exact source binding and limits. Earlier Factory-pending wording is historical; ExecuteScript remains outside this exactness claim.
+The complete 803-byte `anm-initialize-pulsing-radial-trail` claim passed Factory forced-recompile replay and was accepted at clean commit `504539f9fcd1e465f7fd7e902af05c042e5d077d`. Receipt: `dd3a0154fc4a5a6ac0ae07cb3e17cde3bf0326b91382e7abf1bb7a78c8a334b0`; job: `40f82069fb8d46dea5d5441fe851b0e6`. The separate 115-byte signed-RNG claim was also accepted at the same source binding, receipt `64fd20e83b5c945ac8005e3af3977730dd9b5550709a6db3e5deebc32e9bce58`.  Earlier Factory-pending wording is historical; ExecuteScript remains outside this exactness claim.
 
 ### 2026-10-19: GameManager static callback retirement closure
 
@@ -4448,7 +4269,6 @@ no C++ body, ABI, profile or comparator was changed. This adds 28 local canonica
 authored bytes and one source mapping without changing the origin denominator.
 The retained diagnostic static copy does not close the parent's call topology;
 GameManagerInitialize and production/runtime ownership remain nonexact/open.
-See [the bounded evidence and negative ECL/Bullet controls](evidence/game-manager-static-mark/README.md).
 
 ### 2026-10-19: script browser inventory and native owners
 
@@ -4458,7 +4278,7 @@ of which 2,293 are reviewed authored game code. Five callback/delete adapters
 retain indeterminate origin. The temporary metadata is rolled back under
 headless readOnly; target bytes do not change. The existing global boundary
 check differs in historical evidence text at 0x401100; prior ledger rows were
-preserved rather than rewritten. See [the per-owner evidence](evidence/script-viewer/README.md).
+preserved rather than rewritten.
 
 Natural `ScriptViewerView` source reproduces complete ClearScriptNames 86 at
 0x409EB0, constructor 234 at 0x40A040, RegisterTasks 106 at 0x40A130 and update
@@ -4498,7 +4318,7 @@ implementation or exact credit is registered for this dependency.
 
 ### 2026-10-19: browser manager and debug input dependency closure
 
-The [dependency checkpoint](evidence/script-viewer-dependencies/README.md)
+The dependency checkpoint
 closes complete Bullet reset 45 at 0x405ED0, Enemy clear 118 at 0x409F90,
 Enemy suspension 28 at 0x40D510 and debug input repeat 109 at 0x40AC20.
 Two frozen-source cold `/GL /GS` links pass all 300 bytes and four bound fields;
@@ -4535,7 +4355,7 @@ closure remain open.
 
 ### 2026-10-19: shared worker and Player option-rebuild interface
 
-The [worker checkpoint](evidence/script-viewer-worker/README.md) closes Stop101
+The worker checkpoint closes Stop101
 at0x44C150, Start56 at0x44C1C0 and browser player suspension36 at0x40A010:
 **193 authored exact bytes**, all six bound fields and two independent
 frozen-source cold `/GL /GS` links. Existing boundary/origin classifications
@@ -4581,7 +4401,7 @@ annotation or a tested source fix.
 
 ### 2026-10-19: complete browser Update and native member lifetimes
 
-The [native lifecycle checkpoint](evidence/script-viewer-native-lifecycle/README.md)
+The native lifecycle checkpoint
 closes complete Update 1,251 at 0x40A450, creator 67 at 0x40A3C0 and
 initializer 101 at 0x40A350: **1,419 authored exact bytes**. Loader 16 at
 0x40A340, worker destruction 16 at 0x44C130 and six nullable release helpers
@@ -4634,7 +4454,7 @@ Draw, larger nonexact destructors, Rebuild and the whole-product gate stay open.
 
 ### 2026-10-19: complete browser Draw and owned switch table
 
-The [Draw checkpoint](evidence/script-viewer-draw/README.md) closes complete
+The Draw checkpoint closes complete
 ScriptViewerView::Draw at 0x40A940: **664 authored exact bytes**, plus callback
 10 at 0x40ABF0 with unchanged indeterminate origin. Two frozen-source cold links
 pass both complete owners, all 43 new fields and four existing complete-owner
@@ -4670,7 +4490,7 @@ production owners and the complete product/runtime gate remain open.
 
 ### 2026-10-19: ECL Run jump snapshot and alias constraints
 
-The [jump-lifetime checkpoint](evidence/ecl-run-jump-lifetime/README.md)
+The jump-lifetime checkpoint
 keeps the complete Run7020 owner in scope. Fresh target instructions0x44E40F,
 0x44E411,0x44E414 and0x44E416 load one live instruction pointer, read its time,
 store currentTime, then read delta from the same pointer. Maintained jump time
@@ -4699,7 +4519,7 @@ work and native product/runtime closure remain open.
 
 ### 2026-10-19: Complete stage Fog and object-VM native closure
 
-The [native closure evidence](evidence/stage-fog-native/README.md) adds533
+The native closure evidence adds533
 reviewed authored exact bytes without source/boundary/origin changes: six-float
 Fog constructor94, subtraction92, addition92, scalar multiplication101 and
 UpdateObjectVms154. Two independent cold real-Stage-Update /GL /GS links reproduce
@@ -4726,10 +4546,9 @@ frontier is the complete evaluator's control flow/temporary lifetime, preserving
 the newly exact arithmetic dependencies rather than changing their ABI or
 forcing stores. One canonical image remains; duplicate cold artifacts are removed.
 
-
 ## Fog evaluator and easing arithmetic checkpoint (2026-10-19)
 
-The [bounded evidence](evidence/stage-fog-evaluator/README.md) corrects two
+The bounded evidence corrects two
 native source-model gaps without new exact credit. CalculateAnmInterpolation
 uses private EAX mode plus two float stack arguments and RET8 in the target.
 The maintained three-argument callee-pop spelling naturally reproduces this
@@ -4762,10 +4581,9 @@ are unchanged; only reviewed easing declaration/definition pins are recertified.
 Original source/TU ownership, whole product/runtime, semantic and port closure
 remain unknown.
 
-
 ## Easing owned table and local-link Oracle checkpoint (2026-10-19)
 
-The [complete ownership review](evidence/easing-tail-ownership/README.md)
+The complete ownership review
 supersedes the509-byte code-only boundary of CalculateAnmInterpolation.
 DEC EAX, unsigned bound15 and indexed scale4 establish all16 entries at44C550.
 Each points to an instruction start in the509-byte body. Code, three internal
@@ -4798,10 +4616,9 @@ No native historical cohort is rebuilt and no accepted exact state changes.
 Original physical compiler partition and native product/runtime/semantic/port
 closure remain open.
 
-
 ## Stage registration graph and complete dispatcher checkpoint (2026-10-19)
 
-The [complete evidence](evidence/stage-real-callback/README.md) closes376
+The complete evidence closes376
 authored exact bytes: StageScriptView::Update304 and AnmVmTimerView::Tick72.
 Three independently reviewed seven-byte registration adapters add21 exact bytes
 with indeterminate origin. Two independent cold CL13.10.6030/LINK7.10.6030
@@ -4848,7 +4665,7 @@ No draw-core, lifecycle, Fog/easing, fragment, runtime, semantic or port credit.
 
 ## Spell lifetime and compiler-visibility review (2026-10-19)
 
-The [fresh review](evidence/enemy-spell-lifetimes/README.md) leaves source,
+The fresh review leaves source,
 boundaries, origins and exact ledgers unchanged. Four-TU ECL and ten-TU Stage
 graphs emit the same normalized2476-byte spell sequence against2432. Ordinary
 child-return and node-owner-return controls emit2472 and2484; the latter models
@@ -4872,7 +4689,7 @@ One minimal baseline image is retained; duplicate controls are removed.
 
 ## Primary-stage transition delay closure (2026-10-19)
 
-The [complete helper evidence](evidence/stage-transition-delay/README.md)
+The complete helper evidence
 adds92 authored exact bytes at4045B0. Actual GameManagerUpdate loads the primary
 Stage pointer from4776E8 at4181F7 and calls the helper at4181FC; the earlier
 call4181F2 targets404530 with the distinct menu pointer4776E4. This corrects a
@@ -4890,8 +4707,7 @@ remain open.
 
 ## Transition allocator and scheduler interfaces (2026-10-19)
 
-**2026-10-31 strict cleanup acceptance:** [TransitionEffectView::Cleanup](evidence/transition-cleanup-exact-20261031/README.md) now matches all **127/127 bytes, 14/14 bound fields** in the genuine StageCreate linked graph: both critical-section enter/leave calls, each Chain pointer, four critical-section references, four nesting-counter references and two UnregisterElem calls are target-bound. Two independent selected colds reproduce it, the second also preserving the existing 522-byte StageLifecycle initializer (**649/649**). This is a new exact-source checkpoint; the older statement below that cleanup was unequal describes a historical alternate graph and is now superseded. Original TU/data/runtime remains open.
-
+**2026-10-31 strict cleanup acceptance:** TransitionEffectView::Cleanup now matches all **127/127 bytes, 14/14 bound fields** in the genuine StageCreate linked graph: both critical-section enter/leave calls, each Chain pointer, four critical-section references, four nesting-counter references and two UnregisterElem calls are target-bound. Two independent selected colds reproduce it, the second also preserving the existing 522-byte StageLifecycle initializer (**649/649**). This is a new exact-source checkpoint; the older statement below that cleanup was unequal describes a historical alternate graph and is now superseded. Original TU/data/runtime remains open.
 
 Read-only local Ghidra attests all mapped text before/after temporary metadata,
 with rollback. The target43C8B0 factory calls452493 with a single size0x44 and
@@ -4926,7 +4742,7 @@ and19 EOL pin controls pass. Only three dependency LF pins change, with full-fil
 reversal proof for calling-convention annotations alone. Ordinary-new host
 allocation is an explicit failure/prefill seam, not a native exception Oracle.
 The MIT sparse reference commitc6791d82 suggests hypotheses; target facts and
-canonical comparisons establish acceptance. See [the full scoped evidence](evidence/effect-allocation-abi/README.md).
+canonical comparisons establish acceptance.
 
 ## Constructor-owned transition reset closes factory (2026-10-20)
 
@@ -4958,8 +4774,7 @@ Actual-source host843 assertions and the moved constructor-scoped init_flags
 control pass. Header is included only by TransitionEffect.cpp; shared dependency
 pins and their rejection policy do not change. Whole major-owner previews in
 this retained Gui carrier remain nonexact, and are not a basis for changing
-their canonical profiles or granting partial credit. See [the complete scoped
-proof](evidence/effect-constructor/README.md).
+their canonical profiles or granting partial credit. See the complete scoped
 
 ## Fresh ANM operand-stack and FLIP_X controls (2026-10-20)
 
@@ -4988,8 +4803,7 @@ seven existing owners1731 bytes/all107 fields, including the complete four
 operand getters856/all84 fields. This establishes their bytes in this carrier,
 not unique original compiler partition/visibility or whole-product behavior.
 The reference explicitly calls its ANM parent equivalent with assembly fallback;
-its forced helpers/redundant stores are not natural exact proof. See [the target
-facts, rejected controls and complete guards](evidence/anm-execute-stack-review/README.md).
+its forced helpers/redundant stores are not natural exact proof.
 
 ## 2026-10-20 transition initializer and callback address binding
 
@@ -5018,8 +4832,7 @@ medium origin confidence, independently of native scores. Their source already
 exists; all five remain nonexact. Cleanup127 remains four ordinary move bytes
 away. The global boundary audit still has the known401100 evidence-text-only
 difference; no unrelated ledger rewrite is adopted. Host843, three affected
-strict controls and19 unchanged EOL controls pass. See [the complete target,
-field and native proof](evidence/effect-initializer/README.md).
+strict controls and19 unchanged EOL controls pass.
 
 ## 2026-10-20 complete Pulse and Dim callbacks
 
@@ -5043,9 +4856,7 @@ than the target within the second RNG recurrence; partial score/size agreement
 is not exactness. All Linear source bytes are restored. Host843, five strict
 mutants and unchanged host dependency pins pass. Remaining FadeIn133, Linear439,
 Envelope349 and Cleanup127, production/runtime, semantic and port gates remain
-open. Original class/TU/source spelling is unknown. See [the full target facts,
-source overlays and independent native proofs](evidence/effect-pulse-dim/README.md).
-
+open. Original class/TU/source spelling is unknown.
 
 ## 2026-10-20 GUI child-ID search exact; parent controls restored
 
@@ -5069,7 +4880,7 @@ does not close the whole owner. The final control has151 calls versus150,
 including separate opcode20 mode4 copies; its prepared replay-branch rewrite
 was not compiled. Current Run4480/4480 remains253/3160 ordinary comparable
 positions; HUD3772/3836 remains527/3552. No parent/partial-case credit follows.
-See [the complete evidence and restored-control table](evidence/gui-child-search/README.md).
+
 Original class/spelling/TU and native product/runtime, semantic and port gates
 remain open; exact bytes do not identify a unique original C++ formulation.
 
@@ -5116,7 +4927,6 @@ preserves a live vptr, timer/node prefill is defined, thread startup is simulate
 and native layout assertions are omitted in host copies. These explicit seams
 cannot prove native lifetime, scheduling, ABI or target runtime. The known
 global401100 evidence-text-only boundary audit discrepancy remains unchanged.
-See [the target, source, exact and host scope](evidence/ending-script/README.md).
 
 ## 2026-10-20 Ending reload exact and native creation corrections
 
@@ -5158,8 +4968,7 @@ Run1576/1568 and initializer584/584 remain nonexact. Auxiliary-ID borrowing,
 named reference/scalar and ordinary publication-helper controls do not close
 the full owners; the helper/scalar forms are discarded. Only the explicit
 aggregate sequencing and TH10-backed behavior corrections are retained.
-Product/runtime, dual-Oracle semantics and port gates remain open. See
-[the complete native, source and host evidence](evidence/ending-load-script/README.md).
+Product/runtime, dual-Oracle semantics and port gates remain open.
 
 ## 2026-10-20 Ending initialization sampling corrected
 
@@ -5200,7 +5009,6 @@ GameScoreState.hpp is unchanged. Init584/584, Run1576/1568, text constructor
 772/648 and bank loader131/126 remain nonexact. Node flag scheduling and other
 register/dataflow choices require fresh evidence; no equivalent-expression
 sweep, fake slot, ABI annotation or forced compiler control is adopted.
-See [the target, native and host scope](evidence/ending-initialize/README.md).
 
 ## 2026-10-20 Front-end replay-save owners and contextual replay deletion
 
@@ -5251,7 +5059,6 @@ These synthetic witnesses do not establish native ABI, x87 or real target
 callbacks. The MIT pinned reference is hypothesis material; its forced attributes,
 linker placement and symbol-number tuning are not adopted. The unrelated401100
 boundary metadata discrepancy and pre-existing D3D evidence are unchanged.
-See [the bounded target, source, native and host evidence](evidence/frontend-replay-save/README.md).
 
 ## 2026-10-20 Replay factory exact, generated EH binding and FPS source
 
@@ -5307,7 +5114,7 @@ ASan/UBSan/leak checks and14 strict named mutants pass; SDK/layout/prefill/int32
 time/renderer/allocation/I/O roles remain host limits. Native SDK declarations
 use the existing Main.hpp shield. Product/runtime, dual-Oracle semantic and
 port gates remain open. Pre-existing D3D evidence and the401100 boundary metadata
-discrepancy are untouched. See [the full scope and reproducible checks](evidence/replay-load/README.md).
+discrepancy are untouched.
 
 ## 2026-10-20 Replay callback protocol and FPS exact closure
 
@@ -5345,9 +5152,7 @@ ProcessFrame itself is an explicit host role, not target behavior proof. Positiv
 ASan/UBSan/leak checks and17 exact named mutants pass, including three callback
 controls. Existing SDK/layout/prefill/time/I/O/renderer/queue seams remain.
 The affected GameManager teardown baseline consumes the canonical fastcall
-pointer typedef and passes. Pre-existing D3D evidence is untouched. See
-[the complete target, native and host scope](evidence/replay-callbacks/README.md).
-
+pointer typedef and passes. Pre-existing D3D evidence is untouched.
 
 ## Title entry and interactive menu (2026-10-20)
 
@@ -5376,12 +5181,11 @@ Two independent complete18-TU /GL /GS /EHs colds freeze53 source/header inputs
 and each pass1181 complete bytes/all32 fields, including1112 prior guard bytes.
 Only the query adds69 authored exact bytes. The shared ReplayManagerDestroy
 carrier is refreshed for its same build group. The strict cold proof and
-host scope are recorded in [the focused evidence](evidence/frontend-main-menu/README.md).
+host scope are recorded in the focused evidence.
 Actual owners/cursor/input/queue bodies and canonical headers are host-tested
 with explicit VM/state/layout/prefill roles; nine named mutants include input
 priority, frame boundaries, Extra persistence and auxiliary identity. No native
 product, runtime, complete source ownership or semantic/port claim follows.
-
 
 ## MIDI event/timer owner recovery (2026-10-20)
 
@@ -5419,9 +5223,7 @@ proof. Tick481/473, parser1614/1670 and StopPlayback200/129 remain
 nonexact. Ordinary member declaration is byte-neutral; early calculation of the used
 status byte before FTOL closes all140 volume bytes and both fields. The Tick
 fade polarity control484/473 is rejected/restored. No forced volatile,
-packing, placement or invented register context is adopted. See
-[the complete evidence and retained license](evidence/midi-events/README.md).
-
+packing, placement or invented register context is adopted.
 
 ## Spell-card panel frame owner (2026-10-20)
 
@@ -5451,8 +5253,7 @@ player fixture pass. All86 public CI checks pass. Older FrontEnd cache inputs
 are now stale for this shared
 header/ECL TU; retain its hashes and reject unreviewed whole-cache reuse.
 MIDI cache remains independent. x87, construction, data ownership and native
-product/runtime stay open. See [the focused evidence](evidence/spell-panel/README.md).
-
+product/runtime stay open.
 
 ## Result rows and name-entry drawing (2026-10-20)
 
@@ -5483,8 +5284,7 @@ requires data-aware review. A typed profile-array control is neutral; earlier
 source is restored. Do not repeat shape/ABI/placement sweeps without new evidence.
 Actual-source ASan/UBSan/leak checks and14 strict named mutants pass. The initial
 AddString140 diagnostic size was wrong; both canonical guard replays use its
-complete132 bytes. Production class/TU/storage/runtime remain open. See
-[the complete proof and reference provenance](evidence/result-rows/README.md).
+complete132 bytes. Production class/TU/storage/runtime remain open.
 
 The final local Ghidra review corrects an old private full-text hash off-by-one:
 401000..465A80 is412289 bytes/64A81h with SHA-256
@@ -5535,7 +5335,6 @@ sizes/scores, and all88 public CI checks pass.
 Header dependency hashes invalidate affected older FrontEnd/SpellPanel objects;
 independent MIDI cache remains separate. Next recover parser1356 or another
 source gap; require new lifetime/caller evidence before more parent shape work.
-See [the complete proof and reference scope](evidence/laser-line/README.md).
 
 ## Laser command parser recovery (2026-10-20)
 
@@ -5575,7 +5374,7 @@ host domain. Negative PCs, infinite loops, overflow, invalid pointers, original
 union/object lifetime, native x87 bits/exceptions and product/runtime closure
 remain unknown. The original D3D work is preserved. Next inspect41C8C0 or
 another source gap; require new context before further parser/Draw shape work.
-See [the target, compiler and host evidence](evidence/laser-script/README.md).
+
 All89 public CI checks pass; focused target/toolchain/tracking/progress and
 whitespace checks pass. Superseded controls/host binaries free about4.2 MB.
 
@@ -5627,7 +5426,7 @@ mutants pass again with state changes only at actual script binding/execution.
 Host constructor/layout/union and polar roles remain explicit. Original C++
 lifetimes, native x87/exception state, invalid storage/overflow and product/
 runtime reachability are open. Next inspect cleanup609/type-1 init or the
-unreferenced54/query226 independently. See [complete scope](evidence/laser-init/README.md).
+unreferenced54/query226 independently.
 All90 public CI checks pass, with final target/toolchain/tracking/progress/
 whitespace checks. About5.1 MB of superseded controls and host binaries are pruned.
 
@@ -5651,7 +5450,7 @@ whitespace checks. About5.1 MB of superseded controls and host binaries are prun
 - Natural three-float construction/assignment reflects the observed temporary
   copy, but does not solve the private binder registers or ANM scheduling.
   No forced volatile/placement/ABI fix is accepted. Native exactness and product
-  closure stay open; see [complete scope](evidence/laser-clear/README.md).
+  closure stay open;
 
 ## Type1 laser lifecycle and state table (2026-10-20)
 
@@ -5681,7 +5480,7 @@ whitespace checks. About5.1 MB of superseded controls and host binaries are prun
   Z has no established native prefill; host17 is an explicit diagnostic role.
 - Formal binder-argument-order control is neutral for the three parent native
   diagnostics; do not alter the already exact273-byte pure VM reset or invent
-  register parameters to fit these callers. See [full scope](evidence/laser-type1/README.md).
+  register parameters to fit these callers.
 
 - Used sprite snapshots before X scaling and freshly before Y scaling reproduce
   the shared final30-byte scheduling difference in type0 and type1. Type1's
@@ -5705,7 +5504,6 @@ registration/Item/length reads and final stateC=1. Fullfour-TU627/623 remains
 nonexact with receiver spill/private binder registers/scheduling differences.
 No exact or denominator increment;29 actual-source ASan/UBSan/leak mutation
 controls pass. Slot20 query41F670/226 stays separately untracked, origin unknown.
-See [complete scope](evidence/laser-type1-clear/README.md).
 
 ## Input polling, word records and button helper returns (2026-10-20)
 
@@ -5739,12 +5537,11 @@ See [complete scope](evidence/laser-type1-clear/README.md).
   independent frozen three-input canonical /GL /GS colds. Merge865/833 and
   frame854/850 remain nonexact. No original source ABI/TU/data owner or native
   product/runtime claim follows. Actual-owner/helper source passes32 strict
-  ASan/UBSan/leak mutation controls. See [full scope](evidence/input-polling/README.md).
-
+  ASan/UBSan/leak mutation controls.
 
 ### 2026-10-20: Complete ECL Run disabled-trace and advance-base model
 
-The [complete-owner checkpoint](evidence/ecl-run-disabled-trace/README.md)
+The complete-owner checkpoint
 retains all7020 bytes,60 relative switch destinations and88 selectors. A natural
 empty variadic trace consumer, suggested by the pinned MIT reference, preserves
 FORMAT's redundant percent arm and argument-evaluation lifetimes. A single
@@ -5778,10 +5575,9 @@ original/native execution or malformed-input safety. Exact numerator and owned
 byte denominator stay unchanged; large-owner, product/runtime and later gates
 remain open.
 
-
 ### 2026-10-20: Complete ANM Float2 construction and UV storage
 
-The [new complete-owner checkpoint](evidence/anm-float2-storage/README.md)
+The new complete-owner checkpoint
 supersedes the old constructor C2620 blockade and frameF8 diagnostic. Vertex
 UV has raw x/y words at14/18 in a1C-byte record; its anonymous union need not
 contain the same maintained class as math Float2. A separate raw storage view
@@ -5824,16 +5620,13 @@ wrappers outlines the body and regresses the parent; no new forced attributes
 are introduced. Adding the actual ReadRawFloatArgument412AA0/26 adapter's
 EnemyEclDispatcher TU with its target-backed /GS cookie adds one difference;
 it does not repair Run's register selection or establish that adapter exact.
-All controls and graph changes are restored, with zero exact credit. See
-[scoped results](evidence/ecl-run-disabled-trace/residual-controls.json).
+All controls and graph changes are restored, with zero exact credit.
 These are historical frozen-source observations: the subsequent ANM header
 change invalidates that ECL cache for current-source replay. Do not reuse it
 without checking every recursive input or rebuilding the necessary graph.
 
-
 ### 2026-10-20: Exact Float2/Float3 interpolation value lifetimes
 
-[Two complete canonical vector evaluators](evidence/anm-vector-interpolation/README.md)
 close1539 authored bytes: Float3 404610/887 and Float2 441AD0/652. Both use
 ordinary initial-tuple snapshots for modes7/17 and one shared `t+t` before
 minusOne/Hermite weights. Float2 constructor-return arithmetic and whole-vector
@@ -5861,10 +5654,9 @@ supersedes the preceding ANM source cache. The transition host's extracted
 RNG/timer/viewport blocks are unchanged; reviewed whole-file pins only. Product/
 runtime/semantic/port planes remain open.
 
-
 ### 2026-10-20: Scalar alpha conversion boundary and RGB outlining frontier
 
-[Complete alpha proof](evidence/anm-integer-interpolation/README.md) closes
+Complete alpha proof closes
 441950/370 with12 independent target fields in two complete four-TU /GL /GS
 canonical colds,11 recursive inputs frozen. Target scalar easing performs
 `FIMUL`, `FIADD`, then tail-jumps to ftol2: truncation encloses the entire
@@ -5903,10 +5695,9 @@ proof, so those controls are restored. All28 controls are scoped in the linked
 proof. Current scalar-family carrier supersedes vector-family source-cache
 hashes; old baseline paths are historical after the canonical image rebuild.
 
-
 ### 2026-10-20: Exact RGB value graph and handoff supersession
 
-[RGB proof](evidence/anm-rgb-interpolation/README.md) closes441600/820 with17
+RGB proof closes441600/820 with17
 independent target fields in two complete five-TU /GL /GS canonical colds,
 all12 raw recursive project inputs frozen. Ordinary by-value RGB, tuple
 arithmetic, shared t+t, named weights/results and separate scale /GL /GS /Ob1
@@ -5935,7 +5726,7 @@ The operator reopened ANM ExecuteScript, ECL Run and Enemy Dispatch exact work,
 with `gpt-6-astra:` local checkpoints and direct local tools rather than Factory
 MCP. The previous end-of-campaign statement is historical.
 
-[The new scoped evidence](evidence/large-owner-call-order/README.md) revisits
+The new scoped evidence revisits
 the assumed scale initializer signature. Duration/mode/initial/final order
 recovers ExecuteScript's complete SCALE_TIME interval, including Y/X reads
 followed by ESI duration materialization; initial/final/duration/mode was not
@@ -5977,7 +5768,6 @@ space/tab/LF/CR source. Both helpers are qualified static MAP/PDB owners in
 the real two-TU LoadHintFile graph; two independent cold links are raw-equal,
 without address-field normalization. Existing ClearHintLists79/all2 fields
 also replays in both images. No whole-loader or native-runtime claim follows.
-[Reproduction and identities](evidence/hint-small-helpers/README.md).
 
 ## 2026-10-20 Hint split layout and static tail binding
 
@@ -5996,7 +5786,6 @@ Without the flag the static CALL contract is unchanged. CALL and JMP cache
 entries are separate so an earlier CALL cannot bypass the JMP mapping check.
 The22 context and50 ownership tests include adversarial selector, destination,
 boundary and byte controls. No duplicate trim credit follows from a parent.
-[Complete proof and identities](evidence/hint-split-tail/README.md).
 
 ## 2026-10-20 Hint line reader and arithmetic source
 
@@ -6021,7 +5810,7 @@ The target entry initialization writes packed BGRA at418D18 while parser/frame
 owners access the component bytes. A packed/byte view preserves the observed
 0x88 layout. Current constructor51 still has self-link store-order differences;
 its origin is still indeterminate and no exact credit is assigned. The complete
-loader remains1533/1498. [Evidence](evidence/hint-read-line/README.md).
+loader remains1533/1498. .
 
 ## 2026-10-21 Hint list tail insertion member
 
@@ -6038,12 +5827,10 @@ all52 bytes without link normalization. Six existing same-image guards retain
 caller computes the link address before its copy. Clone-store ordering,
 buffer lifetimes, the frame gap and complete loader exactness remain open.
 The existing authored-origin classification is independent of this byte proof.
-[Complete replay and identities](evidence/hint-list-member/README.md).
-
 
 ### 2026-10-21: ECL float-value call preparation
 
-The [explicit-context checkpoint](evidence/ecl-float-value-call-order/README.md)
+The explicit-context checkpoint
 replaces a provisional member declaration with ordinary static stdcall source,
 ReadFloatValue(flagIndex, context, value), and updates all three real callers.
 VC7.1 LTCG retains the target private EAX-context/ECX-index/stack-float RET4 ABI.
@@ -6070,10 +5857,9 @@ ABI evidence. FORMAT actual-source projection retains10 scenarios/eight
 strict functional mutants under ASan/UBSan/leak checking. Native product,
 runtime, semantic and portability gates remain open.
 
-
 ### 2026-10-21: ASCII viewport publication and glyph paths
 
-The [viewport source checkpoint](evidence/ascii-viewport-transitions/README.md)
+The viewport source checkpoint
 replaces a declaration-only viewport role with the effects present in both
 complete target ASCII draw owners. Record viewport selection is captured before
 flush; camera publication precedes StageConfigureCamera; active viewport and
@@ -6107,10 +5893,9 @@ diagnostics; that does not prove code neutrality. Earlier ECL/Enemy signatures,
 FORMAT state and FLIP_X controls are restored. The three original large owners
 remain nonexact.
 
-
 ### 2026-10-21: ECL mixed jump-table and selector coverage
 
-The [current-dependency ECL proof](evidence/ecl-current-dependencies/README.md)
+The current-dependency ECL proof
 confirms Run7020/6994 strict bytes,26 ordinary differences and all189 fields
 including62 local destinations in a fresh two-TU /GL cold after the ASCII
 changes. Fifteen complete same-image guards retain1587/all21. StartSubroutine
@@ -6133,10 +5918,9 @@ negation slots. All source controls are restored; Run, StartSubroutine and the
 other two original large owners remain nonexact. No new credit or later-phase
 closure is claimed.
 
-
 ### 2026-10-21: Enemy operand host view and five exact adapters
 
-The [operand adapter proof](evidence/enemy-operand-host-view/README.md) closes
+The operand adapter proof closes
 412A00/16,412A60/14,412A70/14,412A80/17 and412AA0/26. Each body loads the full
 owner at runtime+14D8, then its active context at owner+4. The maintained source
 views that loaded owner as the existing EclVmHost before reading activeContext.
@@ -6165,10 +5949,9 @@ ordinary differences, distinct from the two-TU26 result. ANM source is unchanged
 its bytes are not replayed here. Native product, runtime, semantic and portability gates
 remain open.
 
-
 ### 2026-10-21: Rank-count owner reloads and physical call sharing
 
-The [rank-count proof](evidence/enemy-rank-count-owner/README.md) changes only
+The rank-count proof changes only
 the final rank-count reads10/8 to local generic host views. Both now reuse EBX
 for the loaded owner as in the target. The rank-five physical interval grows
 369->434 against420, restoring target eleven generic integer calls and five
@@ -6195,10 +5978,9 @@ scheduling and stack homes remain open. Run7020/all189 remains27 differences
 in this context. No new exact or denominator credit is added; original
 declarations, production TU, storage aliases and later-phase gates remain open.
 
-
 ### 2026-10-21: Real scale dependency in the common dispatcher carrier
 
-The [real scale proof](evidence/enemy-real-scale-support/README.md) replaces
+The real scale proof replaces
 AnmInt3View::operator*'s unresolved data anchor with its maintained definition
 in a nine-TU dispatcher graph. The added support alone uses the existing
 reproduced /GL /GS /Ob1 profile. RGB Evaluate grows780->820 and fully matches;
@@ -6254,10 +6036,9 @@ explicit installer contexts and real callback support do not repair Run.
 These are compiler observations of the current source model, not recovered
 original locals. All EclVm/Enemy changes are restored; no large exact credit.
 
-
 ### 2026-10-21: real shortcut body and byte-wide startup path flag
 
-The [startup proof](evidence/main-startup-shortcut/README.md) closes the full
+The startup proof closes the full
 439FF0/442 caller and43A290/272 resolver:714 new authored exact bytes. The
 maintained SDK COM body replaces a declaration-only dependency. Ordinary
 stdcall source recovers EBX destination/EDI capacity and one stack path/RET4;
@@ -6282,7 +6063,6 @@ changes; do not describe the whole graph as unchanged. These are incremental
 diagnostics, with no large exact credit. The original large owners and later
 phase gates remain open.
 
-
 ## Window callback source lifetime and actual MIDI callee (2026-10-21)
 
 ### Main configuration callback ordering recovered (2026-11-02)
@@ -6295,9 +6075,7 @@ target parameter stack displacement and ESI lifetime. Four return
 epilogues and initial save still differ (17 bytes), so there is
 no whole-owner or partial exact credit. Fourteen external fields
 remain fixed. WindowProc265 and ActivateWindow8 cold-pass273/273.
-Original source/TU, runtime and compiler cause are unresolved. See
-docs/evidence/main-dialog-command-scheduling-20261102/README.md.
-
+Original source/TU, runtime and compiler cause are unresolved.
 
 Target WindowProc4390E0/265 registers as a standard four-argument stdcall
 callback and returns RET16. Its MM_MOM_DONE callee43AEB0 is the maintained
@@ -6323,7 +6101,7 @@ Original class, return spelling and physical source ownership stay unknown.
 Two independent complete four-TU colds reproduce both new owners273/all17
 and seven existing owners1351/all81,1624/all98 per image. The original
 CreateGameWindow341 recipe also replays. Wrong field-addend and IAT controls
-fail. See [complete window evidence](evidence/main-window-callback/README.md).
+fail.
 
 MainConfigurationDialogProc43A3A0/233 has maintained source for checkbox202,
 WM_COMMAND low words201/203, supervisor options bit100 and EndDialog6/7.
@@ -6333,7 +6111,6 @@ primary dependency closure of the nine-TU dispatcher graph; a primary-only
 recompile and eight hash-verified support objects retain all three complete
 large native bodies and21 complete guards2415/all52. Large functions remain
 nonexact; current pins supersede the preceding header carrier only.
-
 
 ## Executable checksum dataflow and complete replay (2026-10-21)
 
@@ -6356,7 +6133,7 @@ real WinMain, /GL /GS and17 equal frozen project inputs. Two independent full
 colds strictly replay11 owners2191/all133; only207/all9 receives new credit.
 The affected original three-TU OpenFile recipe also cold-replays. Size492384
 then checksum492380 are published only after freeing the original buffer.
-Swapped-global-target controls reject. See [complete checksum proof](evidence/main-executable-checksum/README.md).
+Swapped-global-target controls reject.
 No production header changes; all30 large-graph inputs and four artifact pins
 remain unchanged, so no new large replay is needed. Product/runtime remain open.
 
@@ -6383,7 +6160,6 @@ existing var_order pragmas as unknown; these controls do not alter them. Current
 parent90/92 target-sized groups, gap2 and7478/7995 aligned diagnostic remain
 nonexact, without partial credit. Complete source/cold/control identities are
 linked from the checksum proof; canonical source/API remains unchanged.
-
 
 ## Main screenshot and ANM capture context (2026-10-21)
 
@@ -6424,9 +6200,8 @@ including11 existing guards2191/all133. Canonical replay selects seven units,
 reject. AnmManager's changed support is recompiled in the actual nine-TU large
 graph with eight attested unchanged objects: all three complete large native
 bodies are equal after verified fields; no large target-exact credit follows.
-See [complete screenshot proof](evidence/main-screenshot-context/README.md).
-Native product, runtime, semantic and portability gates remain open.
 
+Native product, runtime, semantic and portability gates remain open.
 
 ## Screenshot worker inventory and ECL lifetime controls (2026-10-21)
 
@@ -6454,7 +6229,7 @@ data alias. After adding a real definition, its warm MAP/PDB function exists
 but the old alias-response metadata still redirects field binding. The existing
 strict comparator rejects it. Fresh full cold harnesses omit that obsolete
 fallback and pass without Oracle changes. Do not blindly reuse fallback maps
-after changing the set of definitions. See [worker proof](evidence/main-screenshot-worker/README.md).
+after changing the set of definitions.
 
 Fresh ECL target/native localization verifies current retained two-TU Run
 7020/all189/62 locals and exact171-byte float-value guard, with26 ordinary
@@ -6470,10 +6245,9 @@ Main.cpp is absent from the current nine-TU large graph; all30 current input
 pins and four artifacts/eight support objects stay unchanged, so no new large
 replay is required. All three large exact goals and later phase gates stay open.
 
-
 ### 2026-10-21: Replay read-open stack cleanup and ECL controls
 
-[Read-open evidence](evidence/replay-open-context/README.md) closes137/all12 at
+Read-open evidence closes137/all12 at
 44B6B0..44B738. The target sibling write opener differs at only three constant
 bytes16/18/2C. Target RET4 and failure-message reuse of the dead path home are
 observed independently; natural stdcall declaration/definition reproduce both.
@@ -6498,7 +6272,6 @@ const cursor declaration yields61 differences with the same seven helper guards;
 no source adopted. Neither result establishes original staticness or local names.
 Pruned terminal native controls retain exact sources and comparison identities.
 
-
 A bounded fresh CFG review of current Enemy opcode1B4 finds three generic
 ReadInt calls on every static return path in both target and native code. The
 native third call404A4C is physically inside1AA and shared by1B4; the other two
@@ -6510,10 +6283,9 @@ returning and predicates as unconstrained; argument/runtime equivalence remains
 unproven. Root105/106 physical calls and whole-function nonexactness remain.
 See the read-open receipt's enemy_count_cfg for the bounded observation.
 
-
 ### 2026-10-21: Enemy item scatter receiver, conversion and storage
 
-[Item-scatter evidence](evidence/enemy-item-scatter/README.md) closes the existing
+Item-scatter evidence closes the existing
 48-byte wrapper40C9A0 and503-byte core40C9D0, all3+27 fields, without changing
 boundaries, source mappings or denominator. Four maintained callers now load the
 real ItemManager receiver and invoke its ordinary Spawn member; target private
@@ -6551,7 +6323,6 @@ nativeEDI; a private old target-packetECX claim was wrong. Target branches reloa
 opcode after operand calls, so caching it is unsupported. All three large owners
 remain active/nonexact. No native-product/runtime/semantic/port gate closes.
 
-
 Two additional private thread-expression controls retain all28 complete helper
 owners3401/all93 after recompiling only ECL and reusing nine verified native
 objects. A named resolved thread ID before SpawnThread moves the outer constant
@@ -6565,10 +6336,9 @@ expression order or compiler declaration is established. Separate spawn-only
 and stop-context-only forms remain unexecuted. The item-scatter receipt records
 these bounded compiler observations and the unchanged31 current source pins.
 
-
 ### 2026-10-21: Enemy death finalizer real services and local lifetimes
 
-[Death-service evidence](evidence/enemy-finalize-services/README.md) closes the
+Death-service evidence closes the
 existing162-byte40E5F0..40E691 owner/all9 fields without boundary, origin,
 source-map or denominator changes. Its sole observed direct caller is
 RuntimeUpdate40E249; RET4 ends40E691 before14CC. The earlier receiverless
@@ -6616,10 +6386,9 @@ both paths explicitly sign-extend16 before the range adjustment. No opcode
 representation change is tested or adopted from this observation. The current
 death-service receipt pins the raw observation and records its limitation.
 
-
 ### 2026-10-21: ECL scalar lifetimes and support-only CPU profiles
 
-[Eight ECL controls](evidence/ecl-value-lifetimes/README.md) recompile only the
+Eight ECL controls recompile only the
 ECL support in the current ten-TU GL/GS graph and reuse nine hash-verified
 objects. Every control retains32 complete helpers3874/all105, including
 Push96 and Pop122. PushFloat const-reference, readonly Pop byte aliases,
@@ -6644,10 +6413,9 @@ or instruction record for Pop450610. Its independently qualified122-byte
 PDB/target comparison passes; provisional metadata absence is not boundary
 evidence. Full412289-byte mapped-text identity is unchanged before/after review.
 
-
 ### 2026-10-21: Bullet cancel transition and branch-local state
 
-[Cancel-record evidence](evidence/enemy-cancel-record-lifetimes/README.md) closes
+Cancel-record evidence closes
 the existing199-byte408030..4080F6 owner/all4 fields without boundary, origin,
 source-map or denominator expansion. Fresh direct Ghidra observes seven direct
 calls; raw target endsRET then nineCC before408100. Only states1/2 react. Both
@@ -6681,10 +6449,9 @@ All three large goals stay active/nonexact. The current EnemyItemDrops cache
 is pinned by this new proof; older source/artifact pins for that path are
 historical. Authored exact becomes392/71828; all later phase gates remain open.
 
-
 ### 2026-10-21: Circle cancellation preserves unordered and float3 storage
 
-[Circle-cancel evidence](evidence/enemy-circle-cancel/README.md) maps the
+Circle-cancel evidence maps the
 existing reviewed authored408100..408203 owner and closes260/all5. Boundary,
 authored disposition and denominator do not change. Fresh local Ghidra sees
 five direct callers and full RET12 extent, followed by twelveCC. Target uses
@@ -6721,10 +6488,9 @@ frame2C4,19sentinels,42/108 target-sized groups and case gap650; no large owner
 receives exact credit. The SVG now displays exact bytes/current classified
 authored bytes with a provisional label, leaving complete-game inventory open.
 
-
 ### 2026-10-21: ANM timer expression order and precision-profile limits
 
-[Current timer evidence](evidence/anm-timer-sequencing/README.md) rechecks the
+Current timer evidence rechecks the
 ANM9964 owner in the accepted ten-TU graph. Target441377 loads scale before
 adding subframe; native loads subframe first even though maintained Tick
 already spells scale + subframe. An unchanged private positive and two ordinary
@@ -6742,10 +6508,9 @@ ordinary-byte score or identity claim. This rejects the bounded current profile,
 not every possible original partition/profile. No production source/header/
 recipe/ledger or phase state changes; the three original large goals stay open.
 
-
 ### 2026-10-21: ANM child call identity and real creator context
 
-[Child/creator evidence](evidence/anm-child-creator-context/README.md) rechecks
+Child/creator evidence rechecks
 source and target routes88->448D00,90->448F60,91->448E30,92->449090. Three older
 90/91 caller comments are reversed; current source already has correct routes.
 The new checker joins source creators/canonical address bindings with actual
@@ -6770,7 +6535,6 @@ correct. Flag-before-third changes a207-byte helper without extent improvement.
 All eight full Run7020 comparisons retain identical target-replayed bytes,
 189fields/62locals and27 residuals. No source/header/profile/recipe or exact
 ledger adoption; all three original large goals and later gates remain open.
-
 
 ### Player pending3 source/callee closure and payload register (2026-10-21)
 
@@ -6797,8 +6561,7 @@ this image, while authoritative table fields plus reviewed selector annotations
 satisfy full owned-byte coverage. ANM9964/7478/7995/90groups/gap2 and Enemy14464/
 frame2C4/19sentinels/42groups/gap650 remain nonexact. The length-square expression
 control preserves all three complete raw native bodies in its preceding source
-context. No exact totals change. See [pending3 evidence](evidence/player-pending3-route/README.md).
-
+context. No exact totals change.
 
 ### Explicit VM-ID value construction closes two helpers (2026-10-21)
 
@@ -6821,30 +6584,29 @@ are pruned withthe superseded positive native artifact,1137143bytes total.
 All33 current large inputs/16artifacts and canonical large carrier remain
 unchanged becauseFrontend.cpp is absent fromthat graph; no newlarge score or
 compile is claimed. All1235previousrecipes remain unchanged andtwo are added.
-Authored exact is396/72283 bytes,26.42% provisional. See
-[explicit ID proof](evidence/pending-id-value/README.md).
+Authored exact is396/72283 bytes,26.42% provisional.
 
 ## Enemy laser pattern-copy scheduling
 
 | ID | Evidence | Fact | Source |
 | --- | --- | --- | --- |
-| ENEMY-093 | observed / source-codegen improvement / non-exact | Target1AF/1B0 copy108 dwords from runtime+2E4 into request+2C/+48. Replacing the two equivalent pointer loops with existing typed-array memcpy removes source-relative stack-address arithmetic and de-inlines straight-laser allocation into a shared independent FireLaser call. Current actual33-input/eleven-TU dispatcher is14352/14416,frame2C4,19sentinels,181selectors/108ordered groups,42equal spans,gap566 versus650. All46 guards retain5335/all142; ANM9964 and Run7020/27ordinary/all189/62locals remain. Fresh full canonical ten-TU cold passes five accepted units plus35 contextual guards4424/all118. Only the dispatcher inventory note is refreshed; no new exact bytes, recipes or state counts. Target411CA1 jumps to rank5's49-byte tail411956; replacing that five-byte jump with a cloned tail adds44 bytes; physical deficits are not missing-logic proof. Block-local aim, allocation identity and alternate result-tail controls are rejected; factory identity remains161/153 with wrong private ABI despite30/137 positions. | Direct local read-only Ghidra; exact target/mapped-text attestation; complete native extents, field-bound Run, canonical focused cold and source overlays; docs/evidence/enemy-laser-pattern-copy/README.md |
-| ENEMY-094 | observed / canonical exact, origin indeterminate | Natural base/request/two-AnmVm C++ member construction reproduces complete laser constructors41C5B0/202 and41C680/219 in two independent real-dispatcher ten-source allGL/GS cold links, all2 fields each. Existing base41C030/98 also reproduces as an extra complete guard without duplicate credit. Every cold preserves36 whole guards4618/all121 and full native Enemy/ANM/ECL baseline bodies after independently verified semantic address changes. The nineteen-word virtual windows establish only observed prefixes; unresolved callback declarations and generated vtable data gain no implementation, full extent, original identifier, physical ownership or runtime credit. Factory remains153/plain RET rather than targetRET4; standard fastcall157/RET8 is rejected. Overall+2/421; authored exact unchanged and origins stay indeterminate. | [Construction evidence](evidence/enemy-laser-constructors/README.md); canonical two constructor units; unchanged boundary/origin ledgers |
-| ENEMY-095 | observed / bounded negative source controls | In the accepted natural-construction context, three actual consistent32-file/all10-source GL/GS rebuilds test free stdcall, reordered fastcall(manager,type,request), and ordinary member(type,request). All emit complete factory157/RET8 versus target153/RET4; reordered forms place type at entryESP4 but still load request late fromESP+C rather than using targetEDI. Reordered free/member forms produce four complete raw-identical native bodies, so membership alone is neutral in these contexts. Every image passes36 whole guards4618/all121 plus complete constructors98/202/219 all2; no new exact credit or maintained source change. Actual harness logs/hashes prove two pinned harness reuses and no regeneration despite a stale raw summary flag. These observations do not exhaust source forms or establish original ABI/link ownership. | [Calling-convention evidence](evidence/enemy-laser-calling-conventions/README.md); complete PDB extents and all39 focused comparisons per image |
+| ENEMY-093 | observed / source-codegen improvement / non-exact | Target1AF/1B0 copy108 dwords from runtime+2E4 into request+2C/+48. Replacing the two equivalent pointer loops with existing typed-array memcpy removes source-relative stack-address arithmetic and de-inlines straight-laser allocation into a shared independent FireLaser call. Current actual33-input/eleven-TU dispatcher is14352/14416,frame2C4,19sentinels,181selectors/108ordered groups,42equal spans,gap566 versus650. All46 guards retain5335/all142; ANM9964 and Run7020/27ordinary/all189/62locals remain. Fresh full canonical ten-TU cold passes five accepted units plus35 contextual guards4424/all118. Only the dispatcher inventory note is refreshed; no new exact bytes, recipes or state counts. Target411CA1 jumps to rank5's49-byte tail411956; replacing that five-byte jump with a cloned tail adds44 bytes; physical deficits are not missing-logic proof. Block-local aim, allocation identity and alternate result-tail controls are rejected; factory identity remains161/153 with wrong private ABI despite30/137 positions. | Direct local read-only Ghidra; exact target/mapped-text attestation; complete native extents, field-bound Run, canonical focused cold and source overlays;  |
+| ENEMY-094 | observed / canonical exact, origin indeterminate | Natural base/request/two-AnmVm C++ member construction reproduces complete laser constructors41C5B0/202 and41C680/219 in two independent real-dispatcher ten-source allGL/GS cold links, all2 fields each. Existing base41C030/98 also reproduces as an extra complete guard without duplicate credit. Every cold preserves36 whole guards4618/all121 and full native Enemy/ANM/ECL baseline bodies after independently verified semantic address changes. The nineteen-word virtual windows establish only observed prefixes; unresolved callback declarations and generated vtable data gain no implementation, full extent, original identifier, physical ownership or runtime credit. Factory remains153/plain RET rather than targetRET4; standard fastcall157/RET8 is rejected. Overall+2/421; authored exact unchanged and origins stay indeterminate. | Construction evidence; canonical two constructor units; unchanged boundary/origin ledgers |
+| ENEMY-095 | observed / bounded negative source controls | In the accepted natural-construction context, three actual consistent32-file/all10-source GL/GS rebuilds test free stdcall, reordered fastcall(manager,type,request), and ordinary member(type,request). All emit complete factory157/RET8 versus target153/RET4; reordered forms place type at entryESP4 but still load request late fromESP+C rather than using targetEDI. Reordered free/member forms produce four complete raw-identical native bodies, so membership alone is neutral in these contexts. Every image passes36 whole guards4618/all121 plus complete constructors98/202/219 all2; no new exact credit or maintained source change. Actual harness logs/hashes prove two pinned harness reuses and no regeneration despite a stale raw summary flag. These observations do not exhaust source forms or establish original ABI/link ownership. | Calling-convention evidence; complete PDB extents and all39 focused comparisons per image |
 
 ## ANM residual scheduling and diagnostic data aliases
 
 | ID | Evidence | Fact | Source |
 | --- | --- | --- | --- |
-| ANM-113 | observed / current scheduling controls / non-exact | Current9964-byte ExecuteScript has six positional residual regions91/61/49/53/54/2 after diagnostic field exclusion. Descending-count controls do not recover target ESI: separate count is raw-neutral; direct count only commutes radial X. Split raw flags and mixed updateScale set produce identical six-byte changes: slow Tick now matches FLD scale/FADD subframe but radial Z reverses and FLIP_X remains EDX versus target EAX. All four retain46 whole guards5335/all142 and raw-identical Run/Enemy; none adopted. Absolute-memory audit inside92 case spans validates45 operands:21 literal payloads,9 canonical globals and15 reviewed vector fields. Ten vector-component addresses collide with unrelated4-byte harness anchor names; bind491C14/491E6C plus genuine addends within actual opcode scopes, never infer the source global from MAP-at-address. Naive symbol-only audit's nine mismatches/six unknowns are rejected. Prologue, calls, immediate addresses, indexed memory and tables are outside this audit; no exact, original-data-owner or runtime claim. | Current source/native hashes; direct local read-only Ghidra; four complete compiler controls; target/native operands and referent bytes; docs/evidence/anm-residual-data-audit/README.md |
+| ANM-113 | observed / current scheduling controls / non-exact | Current9964-byte ExecuteScript has six positional residual regions91/61/49/53/54/2 after diagnostic field exclusion. Descending-count controls do not recover target ESI: separate count is raw-neutral; direct count only commutes radial X. Split raw flags and mixed updateScale set produce identical six-byte changes: slow Tick now matches FLD scale/FADD subframe but radial Z reverses and FLIP_X remains EDX versus target EAX. All four retain46 whole guards5335/all142 and raw-identical Run/Enemy; none adopted. Absolute-memory audit inside92 case spans validates45 operands:21 literal payloads,9 canonical globals and15 reviewed vector fields. Ten vector-component addresses collide with unrelated4-byte harness anchor names; bind491C14/491E6C plus genuine addends within actual opcode scopes, never infer the source global from MAP-at-address. Naive symbol-only audit's nine mismatches/six unknowns are rejected. Prologue, calls, immediate addresses, indexed memory and tables are outside this audit; no exact, original-data-owner or runtime claim. | Current source/native hashes; direct local read-only Ghidra; four complete compiler controls; target/native operands and referent bytes;  |
 
 ## ANM radial counter lifetime
 
 | ID | Evidence | Fact | Source |
 | --- | --- | --- | --- |
-| ANM-114 | observed / source-codegen improvement / non-exact | Grouped seven real locals and original vertex-count expressions recover TH10 radial LEA ESI,[EAX-1]/TEST/spill/FILD setup before coefficient divisions and remove native's late MOV ESI,EAX. Both current actual33-input eleven-TU and full32-input canonical ten-TU graphs emit9964/9964,90/92 equal groups,gap2 and7541/7995 diagnostic positions versus7478. Private positive and maintained-source all3 large bodies reproduce raw; actual Run/Enemy remain unchanged. All46 guards5335/all142 and canonical35 guards4424/all118 pass; five accepted units cold-replay. One-based vertex loop regresses; combined split flags fix Tick but reverse radial Z and are rejected. Adjacent TH095 declarations/loop are hypothesis only; TH10 closing writes/calls retained. Names/declaration order/bounds changed together, so original spelling or unique mechanism is unproved. Current45 absolute-memory references still pass21 literal payload and24 global/vector address checks; this is not exhaustive field or runtime validation. No new exact/case credit, ownership or phase-gate promotion. | Fresh local read-only target/mapped-text attestation; current compiler/cold/pinned field guards; docs/evidence/anm-radial-count/README.md |
-| ANM-115 | observed compiler diagnostic / unadopted hypothesis | A source-local initialized 32-bit flag view with a 2-bit flip group yields a complete 9964-byte ExecuteScript contribution, 92/92 target-sized case groups, gap 0 and 7982/7994 case positions. The retained structural comparison enumerates 350 fields and finds 12 ordinary mismatches; independent semantic bindings for the full parent and complete peer preservation are unfinished. All 36 guards covering 4618 bytes / 121 fields, strict ECL 6995/7020 / all 189 fields plus the 171-byte callee and bounded child routes pass. Adjacent TH09 suggests source shape only; original classes/TUs/layout and ANM exactness remain unknown. Maintained ANM stays 7541/7995; no source adoption or exact credit. | Source/artifact-pinned retained replay; docs/evidence/handoff-cleanup-20261024/README.md |
-| ANM-116 | historical / superseded source-codegen improvement / nonexact | At its earlier source epoch ExecuteScript replayed 9960/9964 (superseded by the later 9962/9964 proof) after all 350 fields are independently bound, including 95 unchanged local/table destinations and 15 vector references using proper 12-byte bases/addends. An initialized two-bit axis flag value and consumed child91 script/layer record give case 7990/7994, 92/92 sizes, gap 0. Remaining bytes are child91 ECX/EDX layer at +113/+115 and second radial-vertex Z operands at +249A/+24A0; the old slow-Tick attribution was wrong. Selected/actual maintained 352 public owners are raw-identical; against before, other 351 are raw-identical. All 36 guards 4618/all121 and strict ECL 6995/7020/all189/62 plus 171-byte callee remain. Actual Player17/52 graph recompiles ANM, preserves 1380/1435/all49 and 8 guards 1753/all99, with other 518/519 public owners raw-identical. Five additional semantic identities grant no child/owner/origin credit; native Decrement68 versus target20 stays nonexact. No header, ABI, profile, recipe, exact-count or phase-gate change. | Fresh full mapped-text Ghidra attestation; independent target inventory; unchanged strict comparator; actual-source builds/public peer proofs; docs/evidence/anm-child-request-record/README.md |
+| ANM-114 | observed / source-codegen improvement / non-exact | Grouped seven real locals and original vertex-count expressions recover TH10 radial LEA ESI,[EAX-1]/TEST/spill/FILD setup before coefficient divisions and remove native's late MOV ESI,EAX. Both current actual33-input eleven-TU and full32-input canonical ten-TU graphs emit9964/9964,90/92 equal groups,gap2 and7541/7995 diagnostic positions versus7478. Private positive and maintained-source all3 large bodies reproduce raw; actual Run/Enemy remain unchanged. All46 guards5335/all142 and canonical35 guards4424/all118 pass; five accepted units cold-replay. One-based vertex loop regresses; combined split flags fix Tick but reverse radial Z and are rejected. Adjacent TH095 declarations/loop are hypothesis only; TH10 closing writes/calls retained. Names/declaration order/bounds changed together, so original spelling or unique mechanism is unproved. Current45 absolute-memory references still pass21 literal payload and24 global/vector address checks; this is not exhaustive field or runtime validation. No new exact/case credit, ownership or phase-gate promotion. | Fresh local read-only target/mapped-text attestation; current compiler/cold/pinned field guards;  |
+| ANM-115 | observed compiler diagnostic / unadopted hypothesis | A source-local initialized 32-bit flag view with a 2-bit flip group yields a complete 9964-byte ExecuteScript contribution, 92/92 target-sized case groups, gap 0 and 7982/7994 case positions. The retained structural comparison enumerates 350 fields and finds 12 ordinary mismatches; independent semantic bindings for the full parent and complete peer preservation are unfinished. All 36 guards covering 4618 bytes / 121 fields, strict ECL 6995/7020 / all 189 fields plus the 171-byte callee and bounded child routes pass. Adjacent TH09 suggests source shape only; original classes/TUs/layout and ANM exactness remain unknown. Maintained ANM stays 7541/7995; no source adoption or exact credit. | Source/artifact-pinned retained replay;  |
+| ANM-116 | historical / superseded source-codegen improvement / nonexact | At its earlier source epoch ExecuteScript replayed 9960/9964 (superseded by the later 9962/9964 proof) after all 350 fields are independently bound, including 95 unchanged local/table destinations and 15 vector references using proper 12-byte bases/addends. An initialized two-bit axis flag value and consumed child91 script/layer record give case 7990/7994, 92/92 sizes, gap 0. Remaining bytes are child91 ECX/EDX layer at +113/+115 and second radial-vertex Z operands at +249A/+24A0; the old slow-Tick attribution was wrong. Selected/actual maintained 352 public owners are raw-identical; against before, other 351 are raw-identical. All 36 guards 4618/all121 and strict ECL 6995/7020/all189/62 plus 171-byte callee remain. Actual Player17/52 graph recompiles ANM, preserves 1380/1435/all49 and 8 guards 1753/all99, with other 518/519 public owners raw-identical. Five additional semantic identities grant no child/owner/origin credit; native Decrement68 versus target20 stays nonexact. No header, ABI, profile, recipe, exact-count or phase-gate change. | Fresh full mapped-text Ghidra attestation; independent target inventory; unchanged strict comparator; actual-source builds/public peer proofs;  |
 
 ## ECL Run storage controls (2026-10-21)
 
@@ -6861,7 +6623,6 @@ are restored. Only baseline is cold; controls recompile the primary and relink
 against hash-verified support/input pins. No source, exact, ownership, runtime
 or product credit is added. Read-only/noanalysis Ghidra validates the complete
 412289-byte mapped text under maxcpu1/768 MiB; native builds are serial/nice10.
-See [complete evidence and source controls](evidence/ecl-storage-controls/README.md).
 
 ## Comparison leaf RET4 extent correction (2026-10-22)
 
@@ -6878,8 +6639,7 @@ not authored bytes or source coverage. The larger automatic/manual boundary
 audit still has1111 metadata-different rows,49 state differences and107 confidence
 differences with zero geometry differences; it is a separate unresolved audit,
 not proof that all historical manual decisions are invalid. No bulk overwrite
-or acceptance relaxation is performed. See [RET4 evidence](evidence/leaf-compare-extent/README.md).
-
+or acceptance relaxation is performed.
 
 ## Player state2 and automatic caution hints (2026-10-22)
 
@@ -6913,8 +6673,6 @@ projections/GUI/ANM/allocation seams. They prove neither native ABI/storage nor
 original construction/runtime. All32 canonical ten-TU pins remain current; the
 old eleven-TU Player-containing context is historical after the new source.
 Source mappings rise602->605, authored exact396->397 and72283->72387 bytes.
-[Complete source, target, compiler and scope evidence](evidence/player-state2-hint/README.md).
-
 
 ## Hint entry copy and initialization controls (2026-10-22)
 
@@ -6936,8 +6694,6 @@ and Append52, 467/467. Existing source mapping and authored origin
 remain; one authored exact owner adds220 bytes to both authored and
 canonical numerators, with no partial credit to any unresolved
 1317-byte ConsumeEntries or other larger parent.
-See docs/evidence/hint-automatic-entry-exact-20261102/README.md.
-
 
 ### 2026-11-02 automatic Hint entry allocation exactness
 
@@ -6956,7 +6712,6 @@ CreateHintOwner/draw units (293/293 each); separate affected Hint
 consumer guards pass. This adds220 canonical and authored codegen
 bytes, but not a claim about original volatile qualifier/TU or runtime.
 Larger ConsumeEntries and Hint loader remain nonexact.
-See docs/evidence/hint-automatic-entry-exact-20261102/README.md.
 
 ### 2026-11-02 HintEntryView constructor exactness (supersedes older nonexact candidate)
 
@@ -6975,8 +6730,6 @@ canonical codegen function /51 bytes is added, with no authored-origin
 credit: the constructor remains origin indeterminate. The earlier 37/51
 notes below are historical and superseded by this native proof. The
 1498-byte loader and 1308/1317 ConsumeEntries remain nonexact.
-See docs/evidence/hint-entry-constructor-exact-20261102/README.md.
-
 
 ### 2026-10-31 HintInitialize complete native closure (supersedes older 4-byte residual)
 
@@ -6991,9 +6744,8 @@ codegen without register forcing. Two independent selected native cold builds
 pass initialization with the four existing lifecycle owners **785/785**;
 separate two-pass `/GL` and `/GL /GS` loader cold groups preserve six existing
 owners, **366/366** and **312/312**. The older parser remains **1498-byte
-NONEXACT**, and no existing owner is counted twice. [All 13 fields, changed
-physical source mapping and scoped replay proof](evidence/hint-initialize-split-exact-20261031/README.md).
-
+NONEXACT**, and no existing owner is counted twice. All 13 fields, changed
+physical source mapping and scoped replay proof.
 
 In the real six-TU Player update graph,12-byte position memcpy recovers the
 three target integer load/store pairs and EAX destination. The34-byte XYZ/
@@ -7013,9 +6765,7 @@ allocator/constructor to242/72 and is rejected/restored. The enlarged rejected
 graph moves linked addresses, so raw changes in nonexact callees are not claimed
 as ordinary-code regressions. State2 and lifecycle actual-source contracts pass
 seven and65 strict functional controls. No new source mapping, exact credit,
-origin/layout/TU claim or later phase gate changes. See
-[entry-copy evidence](evidence/hint-entry-copy-controls/README.md).
-
+origin/layout/TU claim or later phase gate changes.
 
 ## ANM count/residual source controls (2026-10-22)
 
@@ -7036,8 +6786,6 @@ Reversing second/all vector sums recovers Z while regressing other components;
 copy/operator+= translation grows ANM9984/gap38. No form is adopted. Raw body,
 instruction and field scope must supplement positional totals. Original source
 order, TU partition and the remaining allocator/register causes stay unknown.
-See [count/residual controls](evidence/anm-count-residual-controls/README.md).
-
 
 ## ECL raw-word negation and geometric operand homes (2026-10-22)
 
@@ -7065,8 +6813,7 @@ the earlier32-input context; historical two-TU26 is not freshly revalidated.
 Host contracts exercise17 literal payloads/34 invocations, sanitizers and three
 strict functional controls using the actual case/union and an explicit stack
 seam. Host pointer width, native layout, stack conversion and runtime remain
-separate. [Full evidence and limits](evidence/ecl-raw-negation/README.md).
-
+separate. Full evidence and limits.
 
 ## ECL thread operands and coupled SIB allocation (2026-10-22)
 
@@ -7095,11 +6842,11 @@ The prior prepared/unexecuted StopThread-context statement was campaign-local,
 not a complete history audit. Earlier residual/current-dependency packs already
 executed a standalone pointer local; the latter retained historical two-TU26.
 Do not repeat it as a new untested idea or promote that old result to current
-source. [Thread-register evidence](evidence/ecl-thread-register-controls/README.md).
+source. Thread-register evidence.
 
 ## 2026-10-22 Chain construction and source mapping
 
-The [Chain evidence](evidence/chain-source-closure/README.md) reviews four complete
+The Chain evidence reviews four complete
 owners:449AA0/59 constructor,449AE0/131 calc insertion,449B70/131 draw insertion
 and449ED0/74 allocation. WinMain438BA5 pushes0x48 before operator new452493;
 438BB3 invokes the initializer. The owner has two0x24-byte elements, each with
@@ -7141,7 +6888,7 @@ g_Chain, dispatcher source, data ownership and whole Windows product remain open
 
 ## 2026-10-22 Chain dispatchers and owned switch tables
 
-[Complete target/source evidence](evidence/chain-dispatchers/README.md) recovers
+Complete target/source evidence recovers
 Calc449C00 and Draw449D40. Both take a stack owner, RET4 and return a processed
 count in EAX; Main's existing declarations now express that physical interface.
 Original identifiers, method/free-function shape, annotation and TU are unknown.
@@ -7177,7 +6924,7 @@ Fresh global boundary audit has zero geometry drift; metadata1116 rows,49 state/
 
 ## 2026-10-22 Canonical exact Chain frame runners
 
-The [native proof](evidence/chain-dispatcher-native/README.md) closes all308 bytes/
+The  closes all308 bytes/
 23 fields of Calc449C00 and268/21 of Draw449D40 in two independent actual-source
 full14-TU VC7.1 build6030 colds. Owned alignment and all14 local table words are
 included; data-base/addend and local-destination checks are unchanged. One
@@ -7205,7 +6952,7 @@ claimed. The prior62-byte table-denominator correction is separate from this
 
 ## 2026-10-22 Canonical exact Chain insertion owners
 
-The [insertion proof](evidence/chain-insertion-native/README.md) closes the complete
+The insertion proof closes the complete
 131-byte owners at449AE0 and449B70, each with seven independently target-derived
 DIR32 fields. Both target bodies densely decode through RET4. The physical ESI
 element, EDI signed priority and stack owner remain; optional ECX-argument added
@@ -7230,7 +6977,7 @@ native Windows runtime, semantic reconstruction or portability claim follows.
 
 ## 2026-10-22 ECL Run layout controls and private source routing
 
-The [layout packet](evidence/ecl-run-layout-controls/README.md) freshly verifies the
+The layout packet freshly verifies the
 ten-TU recipe,32 source/header and15 native pins and all107 maintained native
 inputs unchanged. Direct read-only Ghidra attests all412289 mapped bytes and12
 residual spans. Full Run remains7020/6993 with189 fields/62 locals and the exact
@@ -7239,7 +6986,7 @@ orientations,16 stack homes and2 latch registers. All60 words/88 selectors remai
 checked, including the annotated final selector byte.
 
 Sixteen historical executions reproduce the same entire target-replayed Run
-hash830db1c...a472. The later [source-route audit](evidence/ecl-scratch-route-audit/README.md)
+hash830db1c...a472. The later source-route audit
 shows that shared-scratch, cursor-reference and named-destination labels actually
 repeat definition reordering; the four profile trials also reorder Run. Those
 records do not prove that the three intended source forms were executed. Fifteen pass nine selected
@@ -7272,7 +7019,7 @@ complete guards4424/all118 and all8 static child paths; complete ECL retains
 7020/6993,189/62, the exact171-byte callee and the same replayed body hash.
 Equal9,964-byte totals still hide local extent and scheduling differences.
 These results constrain the tested context, not original spelling, types,
-ownership or flags. See [child/flag controls](evidence/anm-child-flag-controls/README.md).
+ownership or flags.
 
 ## ANM operand lifetime constraints (2026-10-22)
 
@@ -7285,7 +7032,6 @@ native bodies raw. All three controls retain35 complete guards4424/all118 and
 complete ECL27/189fields/62locals/171-byte callee. No form is adopted. Input
 lifetime and helper inlining cannot be inferred from matched sizes, and this
 timer spelling does not explain the remaining Tick order in the current graph.
-[Operand controls](evidence/anm-operand-lifetime-controls/README.md).
 
 ## Chain allocator flags and extent constraint (2026-10-22)
 
@@ -7297,7 +7043,7 @@ raw displacement changes with its owner address, not with a code improvement.
 Og disabled grows161 and rejects all four complete Chain guards; the other
 four models retain838/all58 but every allocator candidate fails extent74.
 No source/profile form is adopted or original declaration/TU inferred. Keep
-the allocator open and rotate coverage. [Allocation controls](evidence/chain-allocation-controls/README.md).
+the allocator open and rotate coverage. Allocation controls.
 
 ## Archive-or-disk path routing (2026-10-22)
 
@@ -7316,7 +7062,6 @@ normal-caller diagnostics produce220/236/242, still nonexact. Three selected
 canonical colds retain113/all3 and the new same-image normal caller46/all2.
 Host112/eight strict controls and full110 CI pass. Source presence is complete
 for all13 FileSystem authored owners; product/runtime and original TU remain open.
-[Target evidence and limits](evidence/filesystem-archive-routing/README.md).
 
 ## Exact archive filename lookup (2026-10-22)
 
@@ -7337,7 +7082,6 @@ builds cold-compile all four source inputs. Source and host projection
 include the accepted ordinary helper. Read/GetSize bodies stay unchanged and
 nonexact at retained236/242 versus214/190. Authored exact advances to402/73437,
 overall1243/139947; source613/247945, nonexact211 and absent121 remain separate.
-[Complete lookup proof and limits](evidence/filesystem-find-archive/README.md).
 
 ## Exact archive-or-disk size and EH metadata extent (2026-10-22)
 
@@ -7371,7 +7115,6 @@ protocol:200 bytes equal,14 ordinary register/return-order differences. It stays
 nonexact. Callee-only EHsc does not inline cleanup; parent EHsc suffices in the
 tested family. These are measured constraints, not original-source/flag proof.
 Routing112/eight strict controls pass with the updated suffix-argument mutant.
-[Full evidence and limits](evidence/filesystem-path-size/README.md).
 
 ## Exact archive-or-disk read result lifetime (2026-10-22)
 
@@ -7396,7 +7139,6 @@ Only one214-byte gain is credited: authored404/73841, overall1245/140351;
 source613/nonexact209/absent121. FileSystem source13/13, exact10/13; remaining
 LoadArchive36 and transforms323/307 total666 nonexact bytes. Original spelling,
 class/lifetime, source/TU, production flags and product/runtime remain unknown.
-[Complete read proof and limits](evidence/filesystem-path-read/README.md).
 
 ## Exact archive load support contribution (2026-10-22)
 
@@ -7422,7 +7164,6 @@ before replacement, preserving both historical cold carriers. No infrastructure
 exception is introduced. Only108 new bytes are credited: authored405/73949,
 overall1246/140459; source613/nonexact208/absent121. Callee/data owners, original
 source/TU/flags and whole product/runtime remain unknown.
-[Complete archive load proof and limits](evidence/pbgarchive-load/README.md).
 
 ## Exact archive registration success branch (2026-10-22)
 
@@ -7444,7 +7185,7 @@ and34-byte diagnostics are historical, not an exhausted source search.
 Authored exact becomes406/73985, overall1247/140495; source613/nonexact207/absent121.
 FileSystem source13/13, exact11/13; transforms323/307 remain nonexact. Actual
 product/runtime, original identifier/TU/flags and physical data owners remain
-unknown. [Complete registration proof and limits](evidence/filesystem-load-archive/README.md).
+unknown. Complete registration proof and limits.
 
 ## Exact archive entry reader and cleanup context (2026-10-22)
 
@@ -7471,7 +7212,6 @@ Read214/GetSize190 independently cold-pass404/all27. All1247 prior canonical
 dictionaries remain unchanged. Authored exact407/74266, overall1248/140776;
 source613/nonexact206/absent121. Original names/class/lifetime/TU/production flags,
 data owners and whole product/runtime remain unknown.
-[Complete reader proof and limits](evidence/pbgarchive-read-decompress-entry/README.md).
 
 ## Exact archive header and allocator context (2026-10-22)
 
@@ -7499,7 +7239,6 @@ original-profile Load cold passes108/all7. All1248 prior unit dictionaries remai
 Only350 new bytes count: authored408/74616, overall1249/141126; source613/
 nonexact205/absent121. Archive source15/15, exact14/15; resource load100 remains.
 Whole product/runtime, physical data owners and semantic/port stages stay open.
-[Complete header proof and limits](evidence/pbgarchive-parse-header/README.md).
 
 ## Exact retained resource archive loader (2026-10-22)
 
@@ -7524,7 +7263,6 @@ Only100 new authored bytes count: authored409/74716, overall1250/141226,
 source613/nonexact204/absent121. Archive15/15 authored owners now exact under
 their separate contexts. Whole Windows i386 product/runtime, data owners and
 semantic/port gates remain open.
-[Complete resource loader proof and limits](evidence/pbgarchive-load-from-resource/README.md).
 
 ## ANM operand branch and inline controls (2026-10-22)
 
@@ -7545,7 +7283,6 @@ baseline-identical raw or after only changed CALL fields with matching map
 callee identities; this is not new target equality. TH08/TH09/provisional TH095
 source-shape corroboration transfers no TH10 facts. The family is bounded,
 not exhausted. Exact counts remain409/74716 authored and1250/141226 overall.
-[ANM branch controls and limits](evidence/anm-operand-branch-controls/README.md).
 
 ## ANM common-tail alignment and source ABI limits (2026-10-22)
 
@@ -7583,7 +7320,6 @@ target RET4 and executor-body equality do not prove original source membership
 or calling convention. Fresh read-only Ghidra attests all412289 mapped text
 bytes unchanged. Authored409/74716 and overall1250/141226 remain. Product/runtime,
 data ownership, semantic and port gates stay open.
-[Complete common-tail and ABI evidence](evidence/anm-common-tail-abi-controls/README.md).
 
 ## Enemy laser source forms and caller counting (2026-10-22)
 
@@ -7617,7 +7353,6 @@ All retain parent frame2C4,19 sentinels and181
 selectors/108 ordered groups. No source, header, recipe, exact or runtime claim
 is adopted. Authored409/74716, overall1250/141226 remain. Product/runtime and
 semantic/port gates stay open.
-[Source controls, full scope and limits](evidence/enemy-laser-source-controls/README.md).
 
 ## ECL aggregate lifetime controls (2026-10-22)
 
@@ -7628,7 +7363,6 @@ comparison. An unsigned FORMAT counter retains the entire27-difference inventory
 Each ECL-only/reuse9 experiment preserves nine full guards1137/all18. These
 are compiler observations, not recovered original types or a general aggregate
 exclusion. No maintained source or exact credit changes.
-[Scope, patches and evidence](evidence/ecl-aggregate-lifetimes/README.md).
 
 ## ECL translation-unit visibility controls (2026-10-22)
 
@@ -7637,7 +7371,6 @@ is whole-Run neutral in three measured eleven-TU contexts:7020/6993/all189,
 complete171-byte float callee and nine full guards1137/all18. Replayed SHA-256
 is830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472.
 This does not establish original source-file boundaries or universal neutrality.
-[Exact transformations, evidence and scope](evidence/ecl-tu-visibility/README.md).
 
 ## ANM flip multiplication and flags (2026-10-22)
 
@@ -7647,7 +7380,6 @@ Unary-minus source emits FCHS and9948 parent bytes, rejected versus9964. Raw
 rotation flag OR4 and a pending multiplied scale result are whole-three-body
 raw-neutral; scale-first loses eight aligned positions. All four retain36
 whole guards4618/all121 and eight bounded child paths. No source or exact credit.
-[Full compiler observations and limits](evidence/anm-flip-lowering/README.md).
 
 ## ANM float-service context controls (2026-10-22)
 
@@ -7657,7 +7389,6 @@ verified changed-address fields. Both complete inventories have350 fields, zero
 unresolved destinations and zero remaining ordinary-byte differences. This is
 measured native-peer equality only, not target equality or original TU proof.
 Both retain36 whole guards4618/all121 and eight bounded child paths.
-[Source transformations and proof scope](evidence/anm-float-service-context/README.md).
 
 ## Enemy spawn request tail compiler constraint (2026-10-22)
 
@@ -7668,7 +7399,7 @@ the whole tail does not. This supports a source-shape hypothesis, not original
 source authorship or exactness. The maintained and private selected rebuilds
 have identical complete dispatcher/ANM/ECL/factory raw bodies. Other dispatcher
 groups regress, so neither matching sizes nor the smaller aggregate gap proves
-the entire parent. See [spawn-tail evidence](evidence/enemy-spawn-tail-layout/README.md).
+the entire parent.
 
 ## Enemy motion pointer and x87 source constraints (2026-10-22)
 
@@ -7681,8 +7412,7 @@ and recovers the target comparison form. A double-Y control instead loads the
 constant and compares ST(1): equal group size and aggregate scores concealed a
 different instruction sequence. These are compiler observations, not original
 source authorship or complete-parent exactness. Adopted motion group180/179
-still differs in registers, stack slots and scheduling. See
-[motion lifetime evidence](evidence/enemy-motion-lifetime/README.md).
+still differs in registers, stack slots and scheduling.
 
 ## Enemy remaining sentinel comparisons (2026-10-22)
 
@@ -7692,8 +7422,7 @@ remaining two sites; keep the negation at the fallback site to preserve unordere
 behavior. All19 actual sentinel values and ordered FCOM/FCOMP forms now agree
 in this compiler context, without proving the surrounding instructions exact.
 A const short opcode initialized at first use is raw-neutral across four complete
-bodies; it does not repair packet/opcode register allocation. See
-[sentinel evidence](evidence/enemy-sentinel-lowering/README.md).
+bodies; it does not repair packet/opcode register allocation.
 
 ## ECL debug/size options and PopFloat storage (2026-10-22)
 
@@ -7704,7 +7433,7 @@ bounded compiler observations, not original production flag identification.
 Replacing PopFloat's union with plain float while retaining its explicit stack
 pointer repairs none of the27 differences and adds +F9A/+FA6 address encodings;
 the existing union still contributes to current codegen fidelity. Maintained
-source/profile are unchanged. See [ECL codegen evidence](evidence/ecl-codegen-options/README.md).
+source/profile are unchanged.
 
 ## ANM aggregate expression and inline context constraints (2026-10-22)
 
@@ -7715,7 +7444,7 @@ body. Matching case totals conceal these FLD/FADD order regressions. An ordinary
 local FlipX helper remains outlined; requiring inlining reproduces the complete
 baseline after independently binding303 changed fields, not a better FlipX.
 The target's accumulator XOR and slow-Tick operand-order differences remain
-open. See [expression-context evidence](evidence/anm-expression-context/README.md).
+open.
 
 ## Enemy rank/aim result-tail placement (2026-10-22)
 
@@ -7728,7 +7457,7 @@ matched case positions, but does not relocate the tail. A separate rank index
 and wrapper spelling for result resolution are each raw-neutral across four
 complete bodies. Literal low-rank reads alter sharing but do not recover target
 routing. These are current-context compiler observations, not original source
-identification. See [rank/result evidence](evidence/enemy-rank-result-routing/README.md).
+identification.
 
 ## Enemy shared-tail ownership versus case order (2026-10-22)
 
@@ -7739,8 +7468,7 @@ before rank-three, violating target physical order at ordinal95. This proves
 that source case order affects tail ownership in this context, not that the
 control is exact or adoptable. Swapping only read/store label blocks is raw
 neutral. Dedicated float results change stack homes; separating aim Y afterward
-is raw-neutral across four complete bodies. See
-[tail placement evidence](evidence/enemy-tail-placement/README.md).
+is raw-neutral across four complete bodies.
 
 ## Enemy scoped selection and aim evaluation order (2026-10-22)
 
@@ -7752,8 +7480,7 @@ not almost exact merely because it is four bytes short. Combining scoped rank
 reads with the existing shared aim result restores evaluation order and gains
 target high/middle branch orientation, producing14396 bytes and case gap298.
 Its duplicated zero-result tail, tail inside aim and collapsed rank-three branch
-remain wrong. No source is adopted. See
-[selection-graph evidence](evidence/enemy-selection-graph/README.md).
+remain wrong. No source is adopted.
 
 ## Enemy common source reads do not fix native sharing (2026-10-22)
 
@@ -7764,8 +7491,7 @@ two-byte improvement in aggregate case gap. Fresh versus reused index locals
 are raw-neutral across all four complete bodies. Sharing only the fVar21 result
 store and scoping only difficulty each expand rank-five to241 versus169.
 These specific forms do not solve tail ownership; source goto sharing is not
-native block placement evidence. See
-[read-sharing controls](evidence/enemy-rank-read-sharing/README.md).
+native block placement evidence.
 
 ## ECL condition/body snapshot distinction (2026-10-22)
 
@@ -7775,7 +7501,7 @@ reload and alter early-return/layout, emitting7004 instead of7020 bytes; all are
 rejected as complete owners despite nine exact helper guards. Keeping both reads
 but naming the condition pointer preserves all three large raw bodies and all27
 Run differences. The latch register mismatch is therefore not repaired by these
-loop-variable forms. See [loop-snapshot evidence](evidence/ecl-loop-cursor-lifetime/README.md).
+loop-variable forms.
 
 ## ECL historical source-route audit and actual scratch trials (2026-10-22)
 
@@ -7787,8 +7513,7 @@ Current actual shared/reversed/separate union scratch trials all emit identical
 call field to18BC without a matching target call; the strict Oracle rejects it.
 An actual cursor reference is baseline-neutral across all three large bodies,
 with all27 Run differences unchanged. Historical comparisons remain measurements
-of their real inputs, while the source-form claims are corrected. See
-[source-route audit](evidence/ecl-scratch-route-audit/README.md).
+of their real inputs, while the source-form claims are corrected.
 
 ## ECL math local lifetime controls (2026-10-22)
 
@@ -7800,7 +7525,7 @@ union locals shared only by the math cases, leaving FORMAT and the payload union
 unchanged, grow Run to7044. Using the existing union integer member in PopInt is
 raw-neutral across the three large owners and preserves7020/6993 with27 Run
 differences. These are tested compiler-context observations, not original source
-proofs. No candidate is adopted. See [local lifetime evidence](evidence/ecl-math-local-lifetimes/README.md).
+proofs. No candidate is adopted.
 
 ## ECL raw-negation / geometric storage interaction (2026-10-22)
 
@@ -7812,7 +7537,7 @@ explicit union member addresses and an explicit stack-view pointer each retain
 that complete shared-control output. A union shared across raw negation and the
 first geometric operands instead repairs three LENGTH homes, loses the two angle
 repairs, and retains the six regressions (30 differences). No candidate is
-adopted. See [interaction evidence](evidence/ecl-neg-storage-interaction/README.md).
+adopted.
 
 ## Enemy selected-value sink lifetimes (2026-10-23)
 
@@ -7823,8 +7548,7 @@ replay (zero unresolved or ordinary bytes); this is peer equivalence only.
 Const selected references change 121 bytes in four unrelated spawn/shoot groups,
 with +6 net matched positions, but no rank/aim improvement. An ordinary static
 helper grows Enemy to 14620. All retain the selected result tail in aim instead
-of target rank-five. No source or exact gain is adopted. See
-[value-sink evidence](evidence/enemy-value-sink-lifetimes/README.md).
+of target rank-five. No source or exact gain is adopted.
 
 ## ANM shared flip flags and timer value arguments (2026-10-23)
 
@@ -7833,8 +7557,7 @@ all three complete raw bodies. Two real by-value float helpers, with opposite
 parameter orders, preserve the complete bodies after symbol/local-offset replay
 of291 changed ANM and17 Enemy fields. No unresolved or ordinary peer difference
 remains; ECL is raw-neutral. Neither form changes FlipX53/52, common1440/1441 or
-the slow timer's load order. No source/exact gain. See
-[flag/timer evidence](evidence/anm-flags-timer-values/README.md).
+the slow timer's load order. No source/exact gain.
 
 ## ANM processor and inline-selection options (2026-10-23)
 
@@ -7844,7 +7567,7 @@ ANM9948,9/92 target-sized groups and five rejected Enemy guard contracts; Enemy
 changes to14356 despite its unchanged reused object. This is an observed link
 context effect, not original settings or an internal compiler-policy proof.
 ECL retains7020/6993 and complete peer equality after105 bound address rewrites.
-No candidate is adopted. See [ANM options](evidence/anm-codegen-options/README.md).
+No candidate is adopted.
 
 ## ANM separate executor GL translation unit (2026-10-23)
 
@@ -7856,7 +7579,6 @@ ECL is raw-neutral. All36 guards and eight bounded child paths pass. An initial
 missing-type compile and auxiliary isolated-source parse reject are retained;
 whole source-body identity separately binds the maintained source view used for route
 projection against the split image. No source, original TU, or exact gain.
-See [partition evidence](evidence/anm-execute-partition/README.md).
 
 ## ANM real link-entry controls (2026-10-23)
 
@@ -7864,8 +7586,7 @@ Relinking the same ten canonical objects with real primary, secondary and
 executor entry symbols preserves all three complete large raw bodies. Primary
 and secondary roots each regress their own caller by one ordinary byte (149/148
 at+6 and123/122 at+3); executor root keeps both callers and all38 guards exact.
-No source/profile adoption or original-context inference. See
-[entry evidence](evidence/anm-real-entry-context/README.md).
+No source/profile adoption or original-context inference.
 
 ## Stage dispatcher color storage improvement (2026-10-23)
 
@@ -7878,8 +7599,7 @@ including link fields/table words, stay identical. A maintained primary compile
 reproduces the private candidate and all11 guards987/all36 pass. Both actual
 state/fog host fixtures pass with the real color declaration imported. No new
 exact credit or original field-type claim. Low-byte snapshot, six spline copies
-and four signed channel values regress (1856/1824/1892); reject them. See
-[color storage evidence](evidence/stage-color-storage/README.md).
+and four signed channel values regress (1856/1824/1892); reject them.
 
 ## Stage integer operand controls and handoff (2026-10-23)
 
@@ -7890,10 +7610,9 @@ four-byte memcpy are complete 1868-byte raw-neutral controls. An ordinary store
 helper is baseline-equal after 20 independently identified address fields;
 sharing the int local between 12/13 adds four ordinary differences. All retain 11
 whole guards 987/all 36. No adoption or exact gain. The declared forceinline
-control remains unexecuted. See
-[integer evidence](evidence/stage-integer-lifetimes/README.md).
+control remains unexecuted.
 
-The [cleanup receipt](evidence/handoff-cleanup-20261023/README.md) provides the
+The cleanup receipt provides the
 lossless historical report restoration index. The active handoff is shortened;
 all 26 older sections remain verbatim in the dated history. Restore archived
 reports before historical consumers; do not restore old source or relax pins.
@@ -7907,8 +7626,7 @@ Stage's TU is parent-equal after 3 independently bound address fields; its full
 200-byte native callee is equal after 2 fields and still differs from target 202.
 The receiver remains native EDX/target ESI. All six retain 11 complete guards 987/all 36;
 seven actual game compiles/six links, no source or exact gain. These bounded
-controls exclude neither all lifetimes nor all source/caller contexts. See
-[vector/visibility evidence](evidence/stage-vector-lifetimes/README.md).
+controls exclude neither all lifetimes nor all source/caller contexts.
 
 ## Player startup's shared VM initializer binding (2026-10-23)
 
@@ -7920,8 +7638,7 @@ Private and maintained seventeen-TU images reproduce all 366 complete public
 PDB owners raw. Player stays 1116/nonexact and its structural score 126->98/1267
 is not a byte-improvement claim. Both images retain 11 Stage guards 987/all 36 and
 the existing273-byte VM Initialize contract. Source/layout/ABI ownership and
-native runtime remain independent unknowns. See
-[binding evidence](evidence/player-initializer-binding/README.md).
+native runtime remain independent unknowns.
 
 The same target review confirms 28 direct initializer calls in11 reviewed
 physical owners; five Ghidra references lack Ghidra function owners, correcting
@@ -7948,9 +7665,9 @@ callback/VM calls. Each compiles only private Player and reuses13 pinned game
 objects; none is an independent whole-graph cold or a complete exact comparison.
 The final1388-byte job is terminal and its report/artifacts agree. Maintained
 Player source remains unchanged1116/nonexact. Two additional controls are only
-prepared, not executed. See [the measured/pending packet](evidence/player-startup-candidates/README.md).
+prepared, not executed.
 
-The [final cleanup receipt](evidence/handoff-final-20261023/README.md) records
+The final cleanup receipt records
 verified archive restoration, duplicate-object replacements and Git packing.
 Current large-owner witnesses, canonical linked outputs, original target and
 the nine unrelated D3D files are retained. No new exact, product or runtime credit.
@@ -7960,7 +7677,7 @@ the nine unrelated D3D files are retained. No new exact, product or runtime cred
 Historical checkpoint07b1be2; the ordering refinement below supersedes its
 1123/312 residual while preserving the original evidence pins.
 
-The [real-dependency packet](evidence/player-startup-real-dependencies/README.md)
+The real-dependency packet
 replaces declaration-only Chain/resource/log/data-loader calls in the complete
 Player initializer. The necessary .sht loader426520/229 is source-present, not
 exact; target and native callers use ESI Player/EAX filename. Its four diagonal-
@@ -7990,7 +7707,7 @@ Exact counts and the product/runtime/semantic gates remain unchanged.
 Historical checkpoint276ada7; the caller/publication controls below supersede
 its1170/265 residual without weakening the historical pins.
 
-The [ordering packet](evidence/player-initialization-ordering/README.md) records
+The ordering packet records
 the current1435-byte PlayerInitialize4247F0. Complete replay with all49 independently
 identified address fields matches1170/leaves265 differences, up47 versus07b1be2.
 The adopted node-flags snapshot, contiguous fixed-position pair storage view and
@@ -8015,7 +7732,7 @@ large-owner routes. The nine unrelated untracked D3D files remain untouched.
 
 ## Player initialization caller/type and publication controls (2026-10-23)
 
-The [caller/type packet](evidence/player-initialization-caller-controls/README.md)
+The caller/type packet
 records current PlayerInitialize4247F0/1435:1195 matching/240 different bytes after
 all49 independent address bindings. Draw-node and highlight-timer publication
 barriers change178 bytes with32 repairs/seven losses, net25 versus276ada7. They
@@ -8044,7 +7761,7 @@ producers and the nine unrelated D3D files remain intact.
 
 ## Player parameter/partition controls and handoff (2026-10-23)
 
-The [follow-up packet](evidence/player-initialization-parameter-controls/README.md)
+The follow-up packet
 recovers21 complete native images at source bd2b5a4:18 full1435-byte parent
 comparisons with all49 independent fields and three strict size rejections.
 Maintained Player stays1195/1435 with240 differences. Coherent Chain parameter
@@ -8067,14 +7784,14 @@ source for this dependency is still absent. Supplying it in a real caller graph
 is an unexecuted prerequisite hypothesis for large Player exact, not a new small
 exact objective. The tested19-input child-owner swap is already neutral.
 
-The [handoff cleanup receipt](evidence/handoff-ready-20261023/README.md) records
+The handoff cleanup receipt records
 verified lossless archives, restoration commands and retained current graphs.
 Maintained code, headers, recipes, ledgers and progress counts are unchanged.
 No new exactness, native product/runtime, semantic or portability credit follows.
 
 ## Player callback-owner capture and incomplete Ghidra references (2026-10-23)
 
-The [owner-capture packet](evidence/player-initialization-owner-capture/README.md)
+The owner-capture packet
 records the maintained1435-byte Player initializer at1355 matching/80 different
 after all49 independent field bindings. Capturing the real manager through one
 scoped volatile pointer observation before node publication replaces the first
@@ -8110,7 +7827,7 @@ pins are immutable. Exact counts remain409/74716 authored and1252/141647 overall
 
 ## Player vector-value ordering and native address movement (2026-10-23)
 
-The [vector-order packet](evidence/player-initialization-vector-order/README.md)
+The vector-order packet
 recovers four additional ordinary bytes in the complete1435-byte initializer:
 1359 matching/76 different after all49 independent bindings. An ordinary helper
 returns the actual three-component sum in component order with a scoped Y read;
@@ -8139,7 +7856,7 @@ No exact count, native product/runtime, semantic or portability gate changes.
 
 ## Player initializer: timer commit scheduling (2026-10-23)
 
-The [timer-commit packet](evidence/player-initialization-timer-commit/README.md)
+The timer-commit packet
 binds the complete1435-byte owner/all49 independent fields to current source.
 A compiler-only barrier between actual previous=-2/current=-1 writes postpones
 OR ESI,-1 from owner+19C to+1B0, making the whole first timer region agree with
@@ -8170,7 +7887,7 @@ at1370; source ownership, original qualifiers and compiler flags remain unknown.
 
 ## Player initializer: draw owner and selection shape (2026-10-23)
 
-The [draw-owner packet](evidence/player-initialization-draw-owner/README.md) binds
+The draw-owner packet binds
 one maintained argument change: AddToDrawChain reads existing th10::g_Chain.
 Complete1435-byte replay/all49 fields improves1370/65 to1380/55, ten target
 repairs/no target-equal losses. Actual node-argument publication now follows
@@ -8201,7 +7918,7 @@ real memcpy value copies are whole1370-neutral; do not add independent scores.
 
 ## Player value-form and current-caller exclusions (2026-10-23)
 
-The [value/caller controls](evidence/player-initialization-value-controls/README.md)
+The value/caller controls
 leave maintained source and its full1435-byte1380/55 result unchanged. Pre-masked
 flags, unsigned character/shot/pair views,32-bit enums and real flags/owner getters
 are whole-replay neutral. Neutrality does not identify original signedness/type.
@@ -8222,7 +7939,7 @@ entry anchor is allowed. These diagnostic images remain non-products.
 
 ## ECL Run: typed storage controls and incomplete /Op link (2026-10-23)
 
-The [recovered controls](evidence/handoff-ecl-cleanup-20261023/README.md) do not
+The recovered controls do not
 improve maintained7020/6993. LENGTH float records emit7036 bytes; two real
 LENGTH/angle/FORMAT record variants emit6940/7056. A stop-thread helper, const
 instruction view and commuted Pop pointer expressions reproduce every former
@@ -8240,7 +7957,7 @@ current source, target identities, exact counts and phase gates do not change.
 
 ## ECL Run: typed trace consumer checkpoint (2026-10-23)
 
-The [typed trace packet](evidence/ecl-typed-trace-lifetimes/README.md) improves
+The typed trace packet improves
 the complete maintained7020-byte Run from6993/27 to6995/25: four commuted-address
 repairs and two new commuted-address losses, all189 fields/62 locals and171-byte
 callee retained. All16 ECL contracts pass1617/all21. Selected/private and actual
@@ -8271,7 +7988,6 @@ existing boundary/origin preserved, +76 source/exact bytes. This is an independe
 dependency result: the complete2669 exporter and its227 fields remain unchanged,
 with24 inlines rather than target9 writer calls plus15 inlines. Keep shared
 474494/4744B0 tables separately identity-bound; no extra exporter-owned bytes.
-See [proof, regression scope and failures](evidence/hint-writer-dependency-20261025/README.md).
 
 ## Separate Spt Test Draw (2026-10-25)
 
@@ -8286,11 +8002,10 @@ states2/3 return after fresh-global white restoration, and there is no VM tail.
 Reviewed authored numerator increases531; denominator stays273658. Newly
 bounded callback is origin-indeterminate and adds only overall exact10 bytes.
 Original production class/TU/storage and native runtime remain unknown.
-See [complete proof and focused observations](evidence/spt-test-draw-20261025/README.md).
 
 ## Popup-number Draw first complete models (2026-10-25)
 
-The [isolated Draw pilot](evidence/popup-digit-draw-20261025/README.md) establishes
+The isolated Draw pilot establishes
 723 draw records of40 bytes from owner3C4 (allocationB884), distinct from the
 insertion ring720. Target Draw42B780..42B99B is540 dense bytes,15 link fields
 and18 local branches; callback42B9B0 is10 bytes with indeterminate origin.
@@ -8302,10 +8017,8 @@ x87 distance lifetime and alpha denominator3072 are target-local facts.
 No canonical source/metric admission or runtime/global-storage closure follows.
 Park register/profile permutations absent a new independent source contract.
 
-
 ## Player shot creation complete pilot (2026-10-25)
 
-See [the bounded evidence packet](evidence/player-shot-creation-20261025/README.md).
 Reviewed authored717-byte owner427E90 has17 link fields,25 branches/22 distinct
 local destinations,10 direct calls plus callback, RET12 and no owned table.
 Its real105-byte caller428160 passes three stack parameters; ordinary stdcall
@@ -8332,13 +8045,12 @@ fields/two locals; existing lifecycle1309/all50 and COFF bleed946 guards pass.
 No alternate or inversion source credit: first complete alternate575/509,
 inversion165 then173/157 remain isolated. Target color parameter output-home
 reuse leaves failure-without-output semantics unresolved. Historical shadow
-TEXT-00213 neutral controls stay parked. See
-[evidence and source hypotheses](evidence/text-alternate-20261025/README.md).
+TEXT-00213 neutral controls stay parked.
 Original class/TU/profile, runtime and whole-product closure remain open.
 
 ## Disk streaming first complete pilot,2026-10-25
 
-[Diagnostic packet](evidence/disk-streaming-20261025/README.md) preserves
+Diagnostic packet preserves
 parent44C8F0/702 and actual disk caller43D690/241 as isolated681/249 proposals.
 First model Open173/all3 is complete diagnostic code-exact. One independently
 reviewed natural base118+derived109 visibility model recovers both complete
@@ -8365,7 +8077,6 @@ is neutral after address-field masking and does not fix scheduling. All27 field
 roles are explicitly bound by source base/addend, not neighboring anchor names.
 Five guards retain259/all4 in each image. No maintained source/exact/denominator
 change; original class/object lifetime and runtime closure remain unknown.
-See [complete evidence and rejected models](evidence/replay-stage-restore-20261025/README.md).
 
 ## Scene camera initializer, 2026-10-25 bounded diagnostic
 
@@ -8381,13 +8092,10 @@ was required. The vector proposal does not prove the original type. All40
 bindings use explicit operation provenance and base+addend, not nearest-symbol
 matching against overlapping4-byte data anchors. No source/exact credit or
 runtime/full-CI claim. Reopen only with independent lifetime/constructor or
-actual caller/compiler-context evidence. See
-[complete evidence](evidence/scene-camera-init-20261025/README.md).
-
+actual caller/compiler-context evidence.
 
 ## Spt Test script-load pilot, 2026-10-25
 
-See [the bounded evidence](evidence/spt-test-load-20261025/README.md).
 Raw42BE20..42BF24 is261 code bytes; global callback42BE10..1F is16 and uses
 [477844], not a context argument. Existing concrete EnemyEclResourceBaseView
 provides the1098-byte allocation; raw40C830 and its inline copy install46D0F0
@@ -8402,7 +8110,7 @@ unsupported scheduling/ABI/profile panels pending new independent evidence.
 
 ## Statistics loader exact owner, 2026-10-25
 
-[Complete evidence](evidence/statistics-load-20261025/README.md):42B030423 is
+Complete evidence:42B030423 is
 exact in first and independent canonical cold graphs, all5 fields/all18 locals.
 Private EBX/AL and checksum expansion emerge from ordinary source. Reuse the
 canonical GameStatisticsOwner; ctor/factory are source-present nonexact, tail and
@@ -8411,7 +8119,6 @@ initializer, runtime-storage, original-profile or product closure follows.
 
 ## Statistics defaults pilot, 2026-10-25
 
-See [complete evidence](evidence/statistics-initializers-20261025/README.md).
 42ADD0..42AE5D is a142-byte statistics-tail initializer, not replay payload.
 Natural existing RngView/RandomMath GL visibility produces private EDX and all512
 inlined ushort draws; complete exact all7 fields/all3 fixed locals. Clear448,
@@ -8435,7 +8142,7 @@ destructor ABI. The target destructor's FS exception frame/RET4 and existing
 canonical ReplayDestroy graph justify one ReplayManager-only /GL /GS /EHs support
 correction. This restores all 18 fields/16 locals/alignment naturally; four ordinary
 ModRM bytes remain from equivalent chain argument-setup ordering. No exact/source
-admission follows. See [bounded proposal and receipts](evidence/replay-controller-cleanup-20261025/README.md).
+admission follows.
 
 ## Game-over transition isolated pilot (2026-10-25)
 
@@ -8447,7 +8154,7 @@ canonical owner.tail.payload[2F], not an invented allocation. Two aggregate
 locals and private Capture/Music argument ABIs differ. Actual Ending music
 caller visibility is whole-body neutral; no broad caller/profile panel follows.
 All28 fields/3 locals retained; five existing guards533/all0 pass both images.
-See [complete evidence](evidence/game-over-transition-20261025/README.md).
+
 No source/exact, storage/product/runtime or phase-gate admission.
 
 ## Spt Test helper closure (2026-10-25)
@@ -8463,12 +8170,9 @@ New denominator/source +382; no destructor405 or compiler-wrapper admission.
 Full destructor proposal413 adds EH-state store8 and uses EAX rather than EDX
 for ANM6 reload; all33 fields including FS0 and separate member EH21 support
 are inventoried, not credited. Whole runtime reachability remains unknown.
-See [complete receipts and parked proposal](evidence/spt-test-cleanup-20261025/README.md).
-
 
 ## 2026-10-25 Spt Test update and concrete-host factory
 
-See [the bounded packet](evidence/spt-test-update-20261025/README.md).
 Raw update42BFC0 owns926 bytes including internal LEA6; callback42C580 owns5
 with indeterminate authored-versus-outlined origin. Factory450500 owns89 and
 natural EclVmScriptDatabase member ownership explains RET4/caller cleanup
@@ -8489,8 +8193,7 @@ captures; remaining register/store scheduling is parked. Actualctor413810/367
 remains origin-indeterminate and emits525 with maintained ID constructors; never
 remove their zeroing to manufacture equality. Existing dtor tail stays parked.
 Independent allocationEH review and30 whole guards3738 pass; no product/runtime
-claim. See [GUI creation packet](evidence/gui-creation-20261025/README.md).
-
+claim.
 
 ## GUI spell notification and EndSpell finite pilot (2026-10-25)
 
@@ -8513,7 +8216,7 @@ All35 notification fields/7 local branches/7 table slots and20 target glue field
 6 local branches are inventoried. Eleven guards1078/all21 pass in all3 images;
 AllocateVm153/161 and InitializeVm207/217 remain independent nonexact dependencies.
 Their exactness is not required by default for a fully identity/ABI-bound caller,
-but none of these rejected parents receives credit. See the [packet](evidence/gui-spell-notification-20261025/README.md).
+but none of these rejected parents receives credit.
 Park unsupported convention/inline/profile panels; source/denominator unchanged.
 
 ## Enemy laser manager lifecycle — 2026-10-25
@@ -8525,7 +8228,7 @@ by the45C manager memset; global publication is inside successful construction,
 while Initialize is still called after null allocation. Full51-byte failure
 text matters independently of the pointer-shaped instruction. Saved next must
 precede virtual slot4 Unlink; links are reread afterward, with no ANM unload.
-See [complete evidence and preservation limits](evidence/enemy-laser-manager-20261025/README.md).
+
 Standalone41C100 remains unclassified/no new credit; base98's old origin/mapping
 is unchanged. The factory diagnostic is not a recovered GameManager product graph.
 
@@ -8538,13 +8241,12 @@ reproduce its complete PDB-owned body, including the sole `REL32` call to the
 330-byte `StageConfigureCamera @ 0x004215A0`. The native same-role callee
 `EnemyConfigureViewportOwner` is **not exact**, and target `0x00405300` has a
 different callee: neither gets collateral credit. This adds 60 authored exact
-bytes/one mapped owner, without whole-image or runtime claims. See
-[full evidence](evidence/enemy-prepare-projection-20261026/README.md).
+bytes/one mapped owner, without whole-image or runtime claims.
 
 ## 2026-10-28 Stage draw call-site and raw fog-word evidence
 
 Target-local decode and direct local Ghidra six-sample attestation support the
-[complete Stage draw recovery packet](evidence/stage-draw-call-sites-20261028/README.md).
+
 Early0x402850 owns1099 bytes; late0x402CA0 owns929. Separate branch-local clear
 rectangles restore early's0x20 frame. Eight early and four late instance-render
 calls replace source loops. Both parents contain actual fog setters34/36/37;
@@ -8572,7 +8274,6 @@ Shared-owner type/width and private-caller closure require further review.
 
 ## 2026-10-28 Main viewport selector, camera and fog cache
 
-[The direct-local dependency packet](evidence/stage-viewport-dependencies-20261028/README.md)
 closes113 authored exact bytes/two complete owners in two frozen-source cold
 StageCreate links: selector0x405300/60/all1 field and fog disable0x420CD0/53/all2.
 The camera0x421480/287 is maintained source only, with first294 and corrected290
@@ -8608,7 +8309,7 @@ marker-order check independently fails on prechange source as well.
 
 ## 2026-10-28 ANM registered callbacks and real Chain construction
 
-The [direct-local ANM packet](evidence/anm-draw-callbacks-20261028/README.md)
+The direct-local ANM packet
 reviews twenty previously untracked callback extents0x4485D0-0x448857,585 owned
 bytes with63 excluded CC padding bytes. Each is a constructor DATA target;
 Ghidra reference queries over all decoded instruction starts find no external
@@ -8644,7 +8345,7 @@ native runtime, allocation initialization, production ownership or product build
 
 ## 2026-10-28 Complete ANM constructor falsifiers and CRT absolute symbol
 
-The [constructor follow-up](evidence/anm-constructor-controls-20261028/README.md)
+The constructor follow-up
 corrects the old capture-ID label: manager+0x732454 is the maintained `nextVmId`
 serial handle. A plain unsigned counter removes the unwanted pre-clear store
 but loses every complete AddVm body: tail117/118,head102/112. Source/header/HUD
@@ -8669,7 +8370,7 @@ or canonical recipe migration follows. New exact/source bytes are both zero.
 
 ## 2026-10-28 Ending passive ID storage and exact text construction
 
-The [Ending storage proof](evidence/ending-id-storage-20261028/README.md) closes
+The Ending storage proof closes
 the complete648-byte text constructor40BA90..40BD17/all12 semantic fields in
 two independent source-identical18-TU `/GL /GS /EHs` cold images. Before the
 wholeEC-byte clear, target initializes three timer flags and its worker, with
@@ -8711,7 +8412,6 @@ Direct FindVm in the release helper plus a standard `throw()` Stop contract
 reproduce the complete192-byte owner/all4 fields in two independent18-TU colds,
 with existing648-byte construction intact. Original exception-specification
 spelling/TU remains unknown. `/EHsc` controls are neutral and not adopted.
-See [the exact destruction proof](evidence/ending-teardown-20261028/README.md).
 
 ## 2026-10-28 Complete Sound queue and streaming reset
 
@@ -8727,8 +8427,7 @@ and separate GetBuffer early checks reproduce the whole1452-byte owner/all43
 fields. Missing CStreamingSound Reset44DAD0 is now complete213/all4 exact; the
 restored BOOL is a local output, not a formal parameter. Two independent2-TU
 colds and the real maintained15-input Main context reproduce both. Original
-source spelling/classes/TU/storage and runtime remain unknown. See
-[the complete proof](evidence/sound-queues-20261028/README.md).
+source spelling/classes/TU/storage and runtime remain unknown.
 
 Additional raw utility bodies at44D3E0/19 and44D400/52 are now individually
 boundary-reviewed, origin indeterminate and unmapped. The latter uses the
@@ -8746,7 +8445,6 @@ The existing source preserves the immediate SetFormat failure return without
 primary release. Strict comparison also passes in the retained real15-input
 Main image. Existing origin attribution is unchanged; exact codegen does not
 establish original SDK authorship, source spelling, TU or product/runtime closure.
-See [the complete proof](evidence/sound-primary-format-20261029/README.md).
 
 Initialize43CD30 remains755/786 nonexact. Raw43CE4D and43CE92 both zero the
 WAVEFORMATEX cbSize word; the explicit assignment is retained. The old producer
@@ -8756,7 +8454,6 @@ A common failure label moves EBX's save to entry, contradicting its conditional
 save after successful manager setup in the target. Speculative CFG/order edits
 are restored. Original source spelling and the remaining scheduling/layout
 questions stay unresolved; no partial parent credit is granted.
-
 
 ## 2026-10-29 Complete disk and memory streaming creators
 
@@ -8794,8 +8491,7 @@ reviewed target bytes. Outer Startup41F990 remains292/299, disk caller43D690
 249/241, Initialize43CD30 755/786, LoadBgm304/298 and data-loader112/107. The
 startup member and disk positive-gate controls are neutral and restored. Nested
 Initialize success also returns763 and is restored. No partial caller credit or
-new original-origin conclusion follows. See [the complete proof](evidence/sound-disk-startup-20261029/README.md).
-
+new original-origin conclusion follows.
 
 ## 2026-10-29 Startup construction, launch and missing-entry audit
 
@@ -8803,8 +8499,7 @@ Complete constructor41F850/128, RegisterTasks41FAC0/140, factory41FD00/69,
 ReleaseStartupResources41F930/91 and Draw callback41FEF0/7 add435 exact bytes/
 all26 fields in two independent nineteen-input canonical colds. Existing origins
 credit300 authored bytes; constructor128 and adapter7 remain indeterminate.
-Twenty-three relevant old linked contracts6235/all179 pass per cold. See
-[the complete proof](evidence/startup-launcher-20261029/README.md).
+Twenty-three relevant old linked contracts6235/all179 pass per cold.
 
 Worker+10, VM+30, scalar id+3DC and full3F0 clear are supported independently by
 construction/launch/cleanup; size is not inferred solely from allocation. Member
@@ -8831,7 +8526,6 @@ EH address/metadata/runtime claim. ASCII capture before global clear is retained
 Named Draw result control222 is restored. No normal-path or exception-path host
 simulations, hidden-slot forcing or register/profile sweep is warranted.
 
-
 ## 2026-10-29 Statistics cleanup and Startup source model
 
 Complete destructor42AEF0/45 and global release42AF90/76 pass121 bytes/all7
@@ -8847,8 +8541,7 @@ and CC separation establish their boundaries; every-byte Ghidra queries find no
 observed references. The adjacent42AFE0..42B020 scalar deleting body is65 bytes,
 including flag1 test, conditional scalar delete, returned owner and RET4. It is
 compiler-excluded without exact or source-mapping credit. The45/76-byte bodies
-retain indeterminate origin; no authored exact/denominator change follows. See
-[the complete proof](evidence/statistics-cleanup-20261029/README.md).
+retain indeterminate origin; no authored exact/denominator change follows.
 
 The global state slot491FB8 equals supervisor491C28+390, already modeled as
 MainSupervisorView::nextGameMode. The actual factory caller4218D0 changes these
@@ -8865,12 +8558,11 @@ same actual field; that thread remains292/299. The strict callback unit binds
 ASCII manager4776E0 and Supervisor base491C28 with addends3CC and390; each local
 destination and ordinary byte is preserved. Two independent nineteen-input colds
 pass all63 bytes/all3 fields, seven prior contracts556/all33 and23 older
-contracts6235/all179 per image. See [the complete proof](evidence/startup-state-field-20261029/README.md).
+contracts6235/all179 per image.
 
 The previously reviewed registered entry/boundary and indeterminate origin are
 retained. The unreferenced EDX body41FD90, original class/TU/copy relationship,
 other legacy aliases and product/runtime closure are separate open claims.
-
 
 ## 2026-10-29 Supervisor mode graph and Sound fades
 
@@ -8888,7 +8580,6 @@ add399 exact bytes in independent canonical22-input colds. All sixteen new
 fields are strict; existing stage helper23/all2 also passes under its natural
 typed source. Thirty-four old contracts6535/all221 pass per image. Existing
 origins credit363 authored bytes and36 indeterminate; stage23 is not new credit.
-See [the complete proof](evidence/supervisor-modes-20261029/README.md).
 
 Global registration420470 publishes41FF80, initializes mode38C=-2/390=0/398=0
 and installs draw priorities1/40/50. Its real address escape retains callback ECX
@@ -8911,7 +8602,6 @@ Legacy source is unchanged; primary mapping/selector changes do not settle origi
 or add credit. GameManager's existing60-byte view now has one shared header.
 These layouts and mechanical stack-owner/RET4 interfaces do not establish original
 class/TU identity, all alias/storage ownership, product or runtime closure.
-
 
 ## 2026-10-29 FrontEnd lifecycle and natural Chain receiver
 
@@ -8952,8 +8642,7 @@ in both images. Five synthetic positives/41 rejection controls and the affected
 old Ending constructor cold pass. Handler identity grants no generated/runtime
 credit. Existing origins add949 authored and210 indeterminate exact bytes;
 the reviewed authored denominator is unchanged. Four new source mappings cover
-797 bytes. See [the complete proof](evidence/frontend-lifecycle-20261029/README.md).
-
+797 bytes.
 
 ## 2026-10-29 FrontEnd launch, shared VM retirement and actual receivers
 
@@ -8998,8 +8687,7 @@ Two independent canonical27-input colds reproduce four new authored owners520
 bytes/all37 fields plus retargeted shared65/all2. Thirty-four selected affected
 old contracts10143/all351 pass per image. Three new mappings cover455 bytes;
 FrontEnd65 is a renamed existing mapping. No comparator mechanism, host-scenario,
-product or runtime claim is made. See [the complete proof](evidence/frontend-launch-20261029/README.md).
-
+product or runtime claim is made.
 
 ## 2026-10-29 GameManager factory, Main worker and shared configuration
 
@@ -9042,9 +8730,7 @@ bindings and actual ABI are required; these images do not prove data ownership.
 Three new complete owners237 bytes/all13 fields add225 authored and12 indeterminate
 bytes with no authored-denominator change. Four mappings362 include the nonexact
 reset125. Forty-four explicit old contracts10922/all402 pass in both colds.
-No comparator, host-scenario, product or runtime claim is introduced. See
-[the complete proof](evidence/game-manager-launch-20261029/README.md).
-
+No comparator, host-scenario, product or runtime claim is introduced.
 
 ## 2026-10-29 Main configuration load and actual callee cleanup
 
@@ -9074,9 +8760,7 @@ read by subsequent resets. Original data storage remains open. Two independent
 canonical29-input colds and seven selected direct/ABI guards1217 bytes pass. Configuration
 reset125/125 retains nine differences, and WinMain1438/1389 remains nonexact;
 neither is credited by its exact caller/callee. Main initialization421F00 must
-still preserve configuration-before-worker construction. See
-[the complete proof](evidence/main-configuration-20261029/README.md).
-
+still preserve configuration-before-worker construction.
 
 ## 2026-10-29 Main member lifetime, complete exit and actual timer context
 
@@ -9130,9 +8814,7 @@ old contracts8415/all371 pass per new image; Hint and FrontEnd CreateVm also pas
 their original recipes. New-context CreateVm90/95 and OpenFile312/360 remain
 nonmatches; address/interface binding does not imply callee bytes. Six mappings
 646 include the nonexact128 mode owner. No full-cohort, comparator, host-scenario,
-product/runtime or portability claim is made. See
-[the complete proof](evidence/main-lifetime-20261029/README.md).
-
+product/runtime or portability claim is made.
 
 ## 2026-10-29 Chain/MIDI lifetime, two-sentinel EH and timer inline contexts
 
@@ -9188,9 +8870,7 @@ Two independent default30-input colds reproduce four new owners378/all19:
 selected old same-image contracts9290/all373 pass; the existing Main293 context
 passes independently twice and three other relevant contracts pass their original
 recipes. Four mappings378 added. No historical full cohort, generated-byte,
-product/runtime or portability credit is implied. See
-[the complete proof](evidence/chain-midi-lifetime-20261029/README.md).
-
+product/runtime or portability credit is implied.
 
 ## 2026-10-29 Complete Render timing and worker teardown
 
@@ -9215,9 +8895,7 @@ same-image Present236/all20 and worker Stop101/all3. Timestamp282 passes its
 existing one-input FPS recipe separately; its282-byte full-Render contribution
 still differs in frame allocation. WinMain1390/1389 remains nonexact. Adds425
 authored exact bytes with no new mapping or denominator change; no comparator,
-whole-product, runtime or portability claim. See
-[the complete Render proof](evidence/main-render-context-20261029/README.md).
-
+whole-product, runtime or portability claim.
 
 ## 2026-10-29 Complete WinMain and source lifetime joins
 
@@ -9252,9 +8930,7 @@ ratio-lifetime290, unsigned-dimension286 and a variant omitting explicit /GS (29
 are restored. Width/height conversion and aspect placement before LookAt remain
 a concrete unresolved lead. Full-graph shutdown321/293 and timestamp282/282
 remain nonexact; other accepted recipes are separate. Data ownership, original
-names/TUs and whole-product/runtime/portability closure remain open. See
-[the complete WinMain proof](evidence/main-winmain-context-20261029/README.md).
-
+names/TUs and whole-product/runtime/portability closure remain open.
 
 ## 2026-10-29 Complete Stage camera and cross-product context
 
@@ -9291,9 +8967,7 @@ precision and parameter-object controls all fail; /Op and SDK forceinline
 controls are restored. Stage draw cores1102/1099 and933/929 also remain nonexact.
 Earlier private comparisons of those cores used interior402A50/402EA0 addresses;
 only final402850/402CA0 diagnostics are valid. No exact ledger claim used the
-invalid reads; the camera comparisons and PDB sizes were unaffected. See
-[the complete Stage camera proof](evidence/stage-camera-context-20261029/README.md).
-
+invalid reads; the camera comparisons and PDB sizes were unaffected.
 
 ## 2026-10-29 Complete Stage late draw and real state owners
 
@@ -9336,9 +9010,7 @@ Early has a concrete next visibility lead: maintained exact82-byte factory
 43C8B0 takes priority in EBX, five stack arguments and RET20. It is absent from
 the current ten-input link, whose unresolved declaration keeps all six stack
 arguments. Connect the actual definition before altering caller spelling or ABI.
-No extra exact credit follows from the already accepted factory. See
-[the complete late draw proof](evidence/stage-late-context-20261029/README.md).
-
+No extra exact credit follows from the already accepted factory.
 
 ## 2026-10-29 Complete Stage early draw and real callee visibility
 
@@ -9376,9 +9048,7 @@ Adds1099 authored exact bytes, no new source mapping or denominator. Default
 camera282/287 and instance drawing remain nonexact. The shared592-byte instance
 renderer and1984-byte bounds owner are concrete next dependencies; current native
 extents and ABI need fresh review. Original source classes/TUs, data/global alias
-ownership, one-image/product/runtime and portability remain open. See
-[the complete early draw proof](evidence/stage-early-context-20261029/README.md).
-
+ownership, one-image/product/runtime and portability remain open.
 
 ## 2026-10-29 Complete Stage instance drawing and actual bounds inputs
 
@@ -9420,9 +9090,7 @@ old byte/field contract unchanged.
 Adds592 authored exact bytes without mapping/denominator change. Bounds1984 and
 default camera287 remain nonexact; complete-caller equality does not promote a
 callee. Class/method names and production TUs, physical data ownership,
-single-image/product/runtime and portability remain independent. See
-[the complete instance drawing proof](evidence/stage-instances-context-20261029/README.md).
-
+single-image/product/runtime and portability remain independent.
 
 ## 2026-10-29 Complete Stage projected-bounds culling
 
@@ -9462,8 +9130,7 @@ SetCurrent's physical inline PDB owner remains StageScript.cpp with its complete
 old contract. Default camera282/287, physical globals/aliases, single-image,
 product/runtime and portability remain open. The next substantial dispatcher
 lead is403C80/1868; fresh complete comparison takes priority over old opcode
-notes. See [the complete projected-bounds proof](evidence/stage-bounds-context-20261029/README.md).
-
+notes.
 
 ## 2026-10-29 Stage dispatcher packed-color alias sensitivity
 
@@ -9499,8 +9166,7 @@ Nine explicitly affected canonical old units4430/all155 pass in their original
 three recipes, with22 old same-image contracts6613/all282. No manifest/match,
 source-profile, source-mapping or denominator change and no exact credit.
 Original source names/classes/TUs, physical aliases, product/runtime and portability
-remain independent. See [the dispatcher source/alias review](evidence/stage-dispatch-context-20261029/README.md).
-
+remain independent.
 
 ## 2026-10-29 Complete Fog evaluation and real result destinations
 
@@ -9540,12 +9206,10 @@ eleven-input old contracts6613/all282 also pass. Only explicit affected selector
 are used; no full cohort. Easing's EAX mode/two stack floats/RET8 and44C350 address
 are bound, but complete612/576 easing remains nonexact. Dispatcher1868 and other
 coupled candidates stay open. Physical aliases, product/runtime and portability
-are independent. See [the complete Fog evaluator proof](evidence/stage-fog-evaluate-context-20261029/README.md).
-
+are independent.
 
 ## Complete shared easing calculation (2026-10-29)
 
-[CalculateAnmInterpolation proof](evidence/easing-context-20261029/README.md)
 closes the entire44C350..44C58F/576-byte owner, not only its509 executable bytes.
 Five ordinary conditional result expressions recover the three shared forward
 cubic/quartic tails at11F->17D,13C->1AF and14A->1D2. The earlier immediate-return
@@ -9567,10 +9231,8 @@ interpolation callers replay2729/all49 in their two existing ANM recipes.
 Adds576 authored exact bytes and one owner, no new source mapping or denominator
 change:94,412/275,729 bytes,477 authored exact owners,204 mapped authored backlog.
 
-
 ## Complete Stage lifecycle and handoff cleanup (2026-10-30)
 
-[Five complete lifecycle owners](evidence/stage-initialize-context-20261029/README.md)
 pass two independent13-input canonical StageCreate colds: constructor188,
 Initialize522, destructor499, factory151 and LoadData308; all1668 bytes/all91 fields.
 Adds1480 authored exact bytes/four authored owners. Constructor188 keeps its
@@ -9622,7 +9284,7 @@ Current EnemyRuntimeUpdate2362/2412 and EnemyAdvanceMotion160/171 remain nonexac
 No parent, original class/TU, global storage, product or runtime credit is added.
 Stage/ANM experimental changes are restored; ANM's five-input real RGB graph
 reproduces the already recorded four-byte frontier, so old record/vector
-permutations remain parked. See the [complete proof](evidence/enemy-scalar-context-20261030/README.md).
+permutations remain parked.
 
 ## 2026-10-30 Enemy runtime vector temporary recovery
 
@@ -9637,8 +9299,7 @@ not partial exact credit. Scalar652/all10 remains exact in one selected cold.
 World velocity still needs the target vector sum then subtraction before copy;
 bounds, callbacks and timer codegen also remain open. Motion160/171 is unchanged;
 a complete vector-sum control is neutral and restored. No profile, comparator,
-match, boundary, origin or phase credit changes. See the
-[runtime vector record](evidence/enemy-runtime-vectors-20261030/README.md).
+match, boundary, origin or phase credit changes.
 
 ## 2026-10-30 Enemy runtime world/bounds and predicate recovery
 
@@ -9661,7 +9322,6 @@ explicit original canonical colds. No whole cohort or runtime scenarios run.
 Remaining world Y/Z load order, early eight-count/manager lifetimes, subroutine
 name ABI and life-register schedule keep the owner open. Snapshot2432 and neutral
 database-capture controls are restored and parked. Motion160/171 is unchanged.
-See the [complete runtime proof and limits](evidence/enemy-runtime-world-20261030/README.md).
 
 ## 2026-10-30 Player damage full-vector bound storage
 
@@ -9684,9 +9344,7 @@ All ten game inputs are freshly compiled;36 recursive source pins stay fixed.
 Bound-slot order, accumulation, factory temporaries and later geometry/helper
 scheduling remain open. Shared scope/declaration, empty-constructor and alternate
 accumulation controls are neutral and restored. No match, denominator, boundary,
-origin, interface, profile or comparator changes. See the
-[damage bounds record](evidence/player-damage-bounds-20261030/README.md).
-
+origin, interface, profile or comparator changes.
 
 ## 2026-10-30 Player effect-row member and damage geometry
 
@@ -9709,8 +9367,7 @@ alignment still differ. No damage-owner exact credit is granted. Descriptor and
 late target-size reloads remain. EnemyRuntimeUpdate preserves its prior2412-byte
 normalized candidate and89 local destinations, still nonexact. Whole operand swap
 and compound-vector snapshot controls are rejected/restored. The new exact proof
-and scope are in [effect-row evidence](evidence/player-effect-row-context-20261030/README.md).
-
+and scope are in effect-row evidence.
 
 ## 2026-10-30 Player planar bounds complete source recovery
 
@@ -9722,7 +9379,7 @@ links are zero-difference. Existing181/all1 and65/all2 pass the first301-byte/al
 cold selection. Four/nine CC bytes and complete decode corroborate the boundary.
 Source/codegen do not resolve original class/TU, authored-versus-compiler origin
 or original inline ancestry. Origin stays indeterminate:55 new codegen bytes,
-zero authored credit. See [planar proof](evidence/player-planar-bounds-20261030/README.md).
+zero authored credit.
 
 The operation's post-store extent/center reloads preserve possible aliasing; Z
 is untouched. Current damage calls inline to all1060 ordinary normalized bytes
@@ -9731,7 +9388,6 @@ retains all2136 normalized bytes/89 destinations, still nonexact. Separate shot
 branches1169, vector arithmetic1172 and in-place rotation1174 are rejected;
 nested hit scope and coordinate-first products are neutral. None fixes stack
 homes; no partial large-owner exactness credit is granted.
-
 
 ## 2026-10-30 ANM integer decrement call boundary
 
@@ -9752,8 +9408,7 @@ pass scoped exact replays; combined with20/88 this is3229/all164. A Wine failure
 in the initial batch is reported separately: completed three units were frozen
 and revalidated, required toolchain smoke passed, and only the remaining five
 were rebuilt. No failed command is reported as passing and no historical cohort
-was repeated. See [timer boundary proof](evidence/anm-timer-boundary-20261030/README.md).
-
+was repeated.
 
 ## 2026-10-30 Complete Player shot-update caller recovery
 
@@ -9782,8 +9437,6 @@ root2412/2412, damage1172/1170 and motion160/171 remain nonexact. Delayed motion
 or velocity-only pointers lose the frame/iterator anchor and emit829; member,
 manager, bounds-boundary and timer controls are parked at their recorded epochs.
 No exact-byte, boundary/origin, product, runtime or portability promotion occurs.
-See [complete shot-update evidence](evidence/player-shots-context-20261030/README.md).
-
 
 ## 2026-10-30 Complete Player shot producer and row firing
 
@@ -9814,8 +9467,7 @@ write or shot-update's moved LEA and are restored. Early producer-search
 exhaustion avoids a four-way unroll; early-return lookup improves the complete
 candidate, while position/typed-timer controls regress. The ordinary member
 and global stdcall producer forms are byte-neutral. Park these controls until
-new target evidence discriminates them. See [producer proof](evidence/player-shot-producer-20261030/README.md).
-
+new target evidence discriminates them.
 
 ## 2026-10-30 Complete Player shot producer exact
 
@@ -9838,9 +9490,7 @@ Seventeen same-image comparisons pass2091/all53. Ten previous native candidates,
 including input153 and central Player2820, preserve ordinary bytes and complete
 field identities; none receives parent exactness credit. Assignment-result
 position capture712 and direct ID assignment706/frame18 are rejected. The
-shot-update moved LEA and input174 remain open. See the
-[complete producer proof](evidence/player-spawn-exact-20261030/README.md).
-
+shot-update moved LEA and input174 remain open.
 
 ## 2026-10-30 Complete Player input timer exact
 
@@ -9865,9 +9515,7 @@ Eighteen strict same-image bodies pass2265/all60. Nine previous native candidate
 preserve ordinary bytes and field identities, including shots876, damage1172,
 EnemyRuntime2412 and central Player2820. Target central3089 and shot-update's
 moved LEA remain open, with no parent/product/runtime/portability credit. Earlier
-input153/nonexact statements above describe their recorded source epochs. See
-the [complete input timer proof](evidence/player-input-exact-20261030/README.md).
-
+input153/nonexact statements above describe their recorded source epochs.
 
 ## 2026-10-30 Player main owner, transition source and exact bonus helper
 
@@ -9916,8 +9564,6 @@ Twenty same-image bodies pass2390/all60. Nine previous native candidates retain
 ordinary bytes and complete field identities. The14-input diagnostic emits707
 for the producer; its accepted12-input717/all17 recipe passes the current cold.
 No full-cohort replay or parent/product/runtime/portability closure follows.
-See the [complete owner evidence](evidence/player-update-owner-20261030/README.md).
-
 
 ## 2026-10-30 Exact game-over/completion openings and real Player fallback
 
@@ -9956,8 +9602,7 @@ Nine previous native candidates retain bytes/field identities;21 same-image exac
 bodies pass2508/all60. Nine selected old canonical owners pass1386/all30; the full
 current selection including the new pair is11 units/2208/all86, not a cohort.
 No origin change, target-byte ownership expansion, whole-product, runtime or
-portability claim follows. See the [complete proof](evidence/player-main-callees-20261030/README.md).
-
+portability claim follows.
 
 ## 2026-10-30 Player value copies, state0 timer and real state2 stack cleanup
 
@@ -9998,8 +9643,6 @@ candidates retain complete bytes/field identities. Constructor250 is also unchan
 pair consumers initializer1404 and movement1588→1576 do change and remain nonexact.
 Twelve explicit existing canonical cold units pass2471/all94. No full-cohort replay,
 origin/boundary expansion, parent exactness or product/runtime/portability claim.
-See the [complete source/evidence checkpoint](evidence/player-main-shapes-20261030/README.md).
-
 
 ## 2026-10-30 Complete Player damage/collision owner exact
 
@@ -10038,9 +9681,8 @@ First explicit canonical selection passes five units/1500 bytes/all35 fields;
 second independently passes1170/all28. Thirty strict bodies pass4825/all155 in
 the first cold image, and ten prior native candidates preserve full bytes/field
 identities. Shot-update and motion experiments are restored; their876/876 and
-160/171 candidates remain nonexact. The [complete proof and reproducible unit](evidence/player-damage-exact-20261030/README.md)
+160/171 candidates remain nonexact. The complete proof and reproducible unit
 retain the target review, source/object pins, controls and scoped cold reports.
-
 
 ## 2026-10-30 Complete auxiliary Player damage owner exact
 
@@ -10079,9 +9721,7 @@ native body and field identities unchanged. In the current seventeen-input
 real-InitializeVm context, the existing plain ANM profile also preserves state2
 and the197-byte script initializer completely. These controls are restored and
 parked; earlier single-TU203-byte records are different contexts, not current
-source closure. State2 and its initializer remain nonexact. See the
-[complete source and evidence](evidence/player-aux-damage-exact-20261030/README.md).
-
+source closure. State2 and its initializer remain nonexact.
 
 ## 2026-10-30 Complete movement ownership and post-script decision recovery
 
@@ -10128,8 +9768,7 @@ Final scoped cold replays only1170+202 existing exact bytes/all34 fields. Thirty
 same-image bodies pass5282/all168; eleven preceding native candidates retain full
 bytes/field identities. Exact numerator stays99,996 bytes/491 owners; the corrected
 owned denominator is275,817. No compiler/Oracle/origin change, full historical
-replay, product/runtime/portability closure follows. See the [complete proof and
-native reproduction verifier](evidence/player-movement-context-20261030/README.md).
+replay, product/runtime/portability closure follows.
 
 ## 2026-10-30 Player collision-hit complete owner and script caller control
 
@@ -10155,7 +9794,6 @@ local resolver also remain nonexact and are restored. No profile/ABI waiver.
 Three explicit canonical colds pass1688/all42; eight scoped same-image exact
 checks pass2149/all50, including the actual collision caller bound to the new
 body. This adds source presence only; authored exact remains99,996/491.
-See [the full source/byte/field receipt](evidence/player-hit-context-20261030/README.md).
 
 ## 2026-10-30 Player laser contact complete exact
 
@@ -10177,8 +9815,7 @@ movement1616 native receipts stay unchanged. The inline-lifetime result is not
 recovered by const/float trig, separate scalar Y or consumed-product spelling;
 those controls are restored/parked. Authored exact gains471 to100,467/492 owners,
 with source presence/origin/boundaries unchanged. The new helper is not a new
-source mapping or proven original inline boundary. See the
-[complete cold/field/interface proof](evidence/player-laser-contact-exact-20261030/README.md).
+source mapping or proven original inline boundary.
 
 ## 2026-10-30 Type0 laser drawing complete exact and executor scope control
 
@@ -10195,7 +9832,7 @@ its actual AddNormalizeAngle94/all6 and renderer216/all21 callees. Existing
 contact471/all8 also stays strict exact in that same image,954/all45 total.
 Source presence/origin/boundaries are unchanged; authored exact gains173 to
 100,640/493 owners. Original helper/class/TU/data ownership and runtime/portability
-remain independent. See [the complete draw proof](evidence/laser-draw-exact-20261030/README.md).
+remain independent.
 
 The old five-input executor cache had a later-stale AnmManager.hpp pin. A fresh
 current-source five-object warm relink revalidates all350 bindings and the same
@@ -10205,7 +9842,6 @@ fully restored. Conditional helpers/record Create retain calls or change extent;
 value factory is neutral; radial helpers reverse extra components. They add no
 exact credit or new current source. Use the new inline-context entry-current
 receipt instead of treating the older header epoch as current.
-
 
 ## 2026-10-30 Player main read-only timer operand candidate
 
@@ -10231,9 +9867,7 @@ candidate identities stay unchanged. Integer/literal-reference/coordinate helper
 stay3096; read-only operand3108 is retained. Multiplication spelling is neutral;
 scaling/lifetime/pointer helpers do not close the owner. Derived cursor3112
 changes prefix registers and loop addressing; by-value adds an FP difference.
-All controls are restored. No new exact/source/boundary/data credit; see the
-[complete timer operand evidence](evidence/player-main-timer-context-20261030/README.md).
-
+All controls are restored. No new exact/source/boundary/data credit;
 
 ## 2026-10-30 Exact complete Player drawing body and registered adapter
 
@@ -10266,9 +9900,7 @@ First scoped cold passes653/all46; second with the existing damage1170 and
 auxiliary202 passes1788/all58. Seventeen-input cold also preserves complete
 main3108, hit624 and movement1616 native receipts, without exact parent credit.
 New authored credit409/one; adapter7 adds only indeterminate codegen credit.
-Source mappings grow one. Boundary/origin unchanged. See the
-[complete drawing evidence](evidence/player-draw-exact-20261030/README.md).
-
+Source mappings grow one. Boundary/origin unchanged.
 
 ## 2026-10-30 Exact complete untextured rectangle and real XYZ temporary
 
@@ -10296,8 +9928,6 @@ The existing17-input Player source/header pins stay current, with no SourceRect
 input, so main/hit/movement are not rebuilt or promoted. Original vector ancestry,
 constructor/helper boundaries, source spelling, TU, GPU/runtime and portability
 remain open. New authored credit483/one; Source presence/boundary/origin unchanged.
-See the [complete rectangle proof](evidence/rectangle-vector-exact-20261030/README.md).
-
 
 ## 2026-10-30 Complete GUI drawing DWORD-bit candidate
 
@@ -10322,9 +9952,7 @@ checks pass699/all35; same-image checks also pass those and provisional7-byte
 callback. Seven geometry/color/storage models are neutral; aggregate value756
 adds a real16-byte temporary. All are restored/parked. No shared header, flags,
 forced-inline, fake ABI, numeric data alias or padding change. No new exact or
-source/boundary/origin credit; see the
-[complete GUI candidate evidence](evidence/gui-draw-context-20261030/README.md).
-
+source/boundary/origin credit;
 
 ## 2026-10-30 Complete GUI update control and ID schedules recovered
 
@@ -10353,9 +9981,7 @@ returns and table. Explicit damage1170/auxiliary202 replays pass1372/all34;
 same-image callback context adds7/all1 without credit. The previous Player
 17-input Gui.cpp pin is historical; use the new final-cold context identified
 in the handoff. No canonical GUI unit/match, new boundary/source/origin credit,
-header/profile change or product/runtime/port claim follows. See the
-[complete evidence and parked models](evidence/gui-update-context-20261030/README.md).
-
+header/profile change or product/runtime/port claim follows.
 
 ## 2026-10-30 Complete message interpreter physical groups and real leaves
 
@@ -10387,10 +10013,8 @@ A zero-reuse18-input cold reproduces complete4496/all333 native link fields,
 leaf73 plus damage1170/auxiliary202 comparisons pass1445/all34. Explicit
 canonical Player replay passes1372/all34; the complete GUI update receipt still
 reproduces3836/all72 and its four ordinary differences. Current18-input Run and
-separate17-input Player contexts are recorded in the handoff. See the
-[complete native evidence](evidence/gui-message-run-context-20261030/README.md).
+separate17-input Player contexts are recorded in the handoff.
 No new exact/source/origin/boundary credit or product/runtime/port closure follows.
-
 
 ## 2026-10-30 Audio queue and music command complete exact closure
 
@@ -10419,10 +10043,8 @@ all address entry, with no encoded E8/E9 interior ref. Existing reviewed
 boundaries/origins remain unchanged. Same-image damage1170/auxiliary202 guards
 pass1372/all34. Run4496/all333 and updater3836/all72 native receipts reproduce
 without new parent credit. Current18-input context and the two stale source pins
-in prior GUI18/Player17 epochs are recorded in the handoff. See the
-[complete audio proof](evidence/front-end-music-exact-20261030/README.md).
+in prior GUI18/Player17 epochs are recorded in the handoff.
 Authored exact increases381 to101913/275817 across499 owners; codegen170017/1376.
-
 
 ## 2026-10-30 MusicRoom complete table ownership and row lifetimes
 
@@ -10452,10 +10074,8 @@ A zero-reuse20-input cold reproduces complete2788 bytes/all104 native identities
 known input+6 and bounded literal hashes cover native unnamed fields without
 inventing target roles. Same-image explicit audio381/22 and Player1372/34
 guards pass1753/all56. Current context and stale prior FrontEnd.cpp pins are
-identified in the handoff. See the
-[complete MusicRoom evidence](evidence/music-room-context-20261030/README.md).
+identified in the handoff.
 Authored exact remains101913/499 owners; codegen170017/1376, source/backlog unchanged.
-
 
 ## 2026-10-30 Complete music parsers and interpolation exact; vector roles bound
 
@@ -10485,11 +10105,10 @@ fresh target review covers122 instructions and six entry refs without interior
 refs. Static qualification must run in the actual producer directory; copied
 snapshots preserve hashes/reports and cannot bypass the PDB producer check.
 Current context is recorded in the handoff. Parent2788/all104 still reproduces
-NONEXACT. See the [complete helper proof](evidence/music-room-helpers-exact-20261030/README.md).
+NONEXACT.
 Authored exact increases357 to102270/275835 across502 owners; codegen170374/1379.
 Source mappings1207/authored689/backlog187. No boundary/origin/data-owner or
 product/runtime/portability closure is inferred from these helper matches.
-
 
 ## 2026-10-30 Complete replay-save actual-definition context
 
@@ -10513,8 +10132,7 @@ No new match credit follows. The pressed-input value is reloaded after movement
 sound in target but retained by native code; the exact123-byte sound callee has
 no established missing effect. A boolean input-helper spelling control is
 restored/parked. Target semantics remain evidence-driven; no volatile/barrier/
-fake ABI is justified. See the [complete context proof](evidence/replay-save-context-20261030/README.md).
-
+fake ABI is justified.
 
 ## 2026-10-30 Complete Enemy integer operand reader
 
@@ -10541,13 +10159,12 @@ six direct locals and all51 native table entries. Signed/boolean flag spellings
 are byte-neutral. Early/late player-family cases restore884 bytes and target
 registers/world-X tail but place merged player code too early; swapping label
 families does not move it. Those controls are restored/parked, with no partial
-credit. See the [complete operand proof](evidence/enemy-operands-exact-20261030/README.md).
+credit.
 
 This adds820 authored bytes/one owner:103090/275835 across503; codegen171194/1380.
 Source mappings stay1207/authored689; backlog186. No product/runtime/portability
 closure follows, and previous graph receipts containing Enemy.cpp have a
 historical pin until their actual graph is relinked.
-
 
 ## 2026-10-30 Ending actual-definition context repair
 
@@ -10574,8 +10191,7 @@ Native1564 retains an array index across command8 deletion where target retains
 its ID storage address; subsequent destinations differ2 bytes plus alignment.
 Live-color, pointer-view and sampled-line controls did not close the complete
 owner and are restored/parked. No partial or equal-size credit follows. All69
-transitive input/header pins are fixed. See the [repair proof](evidence/ending-context-repair-20261030/README.md).
-
+transitive input/header pins are fixed.
 
 ## 2026-10-30 Ending native scalar record and path samples
 
@@ -10603,8 +10219,6 @@ restored/parked. The shared ID header is restored byte-for-byte. Four explicit
 affected canonical selectors cold-pass871; same-image21 existing contracts pass
 860/all19. All70 final input/header pins match the canonical cold freeze. Exact
 inventory remains103090/275835 across503 authored owners, total171194/1380.
-See the [complete proof](evidence/ending-native-record-20261030/README.md).
-
 
 ## 2026-10-31 Complete spell-start stage lifecycle
 
@@ -10637,9 +10251,7 @@ Initialize remains273 structurally equal; embedded200/202 and binder197/203
 retain unlike private interfaces. An incremental and a zero-reuse20-input cold
 reproduce the retained full owner with64 source/header pins. Twelve same-image
 canonical owners pass2243/all86; selected canonical sound/shield colds pass159.
-No match/boundary/progress ledger change. See the
-[complete review](evidence/enemy-spell-stage-20261031/README.md).
-
+No match/boundary/progress ledger change.
 
 ## 2026-10-31 Stage reset interfaces and actual Chain dependency
 
@@ -10680,8 +10292,6 @@ new transition recipe uses this graph; existing factory/Enemy/GUI recipes remain
 unchanged. Counts become104586/275863 across508 authored exact owners, total
 172690/1385, mappings1213/authored695 and backlog187. The two new source mappings
 do not change the reviewed denominator. Product/runtime/portability remain open.
-See the [complete proof](evidence/stage-animation-slots-20261031/README.md).
-
 
 ## 2026-10-31 Complete GameManager call binding repair
 
@@ -10726,8 +10336,7 @@ Tick72 is qualified to the primary Enemy PDB object here. First scoped canonical
 cold also passes transition119 and stage-delay92 through unchanged recipes. All75
 transitive source/header pins match. Counts become104652/275863 across509 authored
 exact owners; canonical172756/1386, mappings1214/authored696 and backlog187. No
-boundary/denominator/product/runtime/portability credit. See the
-[complete proof](evidence/game-manager-bindings-20261031/README.md).
+boundary/denominator/product/runtime/portability credit.
 
 Target BeginStage's playback pair copies remain a counted4-iteration loop,
 followed by resetFlag writes at Player332C/33C4/345C/34F4. Current source places
@@ -10736,7 +10345,6 @@ counted loop is retained. Target reloads Player after position/rebuild helpers
 and current-stage indices across stage helpers. These are concrete next source/
 alias leads, not permission to guess helper arity from stack words: live registers
 may supply additional meaningful arguments.
-
 
 ## 2026-10-31 Replay stage helpers and complete BeginStage
 
@@ -10777,8 +10385,6 @@ First scoped run cold-passes cleanup66/callback7 through unchanged28-input recip
 no recipe migrates. Current GameManager1538/1544 remains nonexact. Three new source
 mappings yield1217/authored699/backlog188; authored exact104828/275863 across511,
 canonical172932/1388. Extents/origins/denominator and later phases are unchanged.
-See the [complete proof](evidence/replay-stage-helpers-20261031/README.md).
-
 
 ## 2026-10-31 Complete Replay frame processing
 
@@ -10817,13 +10423,11 @@ operand; only Player ctor/dtor store it. This limited scan cannot rule out
 indirect/address-arithmetic aliases and supplies no volatile/clobber license.
 BeginStage566/582 and allocator139/139 stay nonexact, alongside Replay Initialize
 1297/1344, destructor237/367, Create181/185 and playback-control adapter62/68.
-See the [complete proof](evidence/replay-process-frame-20261031/README.md).
 
 Target GameManagerInitialize1009 has direct edge417AFB to source-absent42A6A0356;
 current actual30-input startup contribution is1024. Source still declares
 GameRestoreReplayState without a definition. This is a concrete next coupled
 large-owner lead, not ownership or exactness credit for either function.
-
 
 ## 2026-10-31 Complete startup dependencies and layout corrections
 
@@ -10868,8 +10472,7 @@ block order, schedules and fixed destinations differ. No partial-owner credit.
 
 Counts become106091/275863 across516 authored exact owners, canonical174205/1394,
 mappings1220/authored702/backlog186. Existing extents/origins/denominator and later
-phases remain separate. See the [complete proof](evidence/game-startup-restore-20261031/README.md).
-
+phases remain separate.
 
 ## 2026-10-31 Complete GameManager initialization
 
@@ -10893,9 +10496,7 @@ reject in these separate contexts. The first scoped run also cold-replays old
 dummy41/update7/draw31/mark28 recipes. Comparator/profiles/existing recipes are
 unchanged. No new mappings, origins, boundaries, denominator or later-phase
 claims. Authored exact becomes 107100/275863 across 517 owners; canonical codegen
-175214/1395, mappings1220/authored702/backlog185. See the
-[complete startup proof](evidence/game-startup-initialize-20261031/README.md).
-
+175214/1395, mappings1220/authored702/backlog185.
 
 ## 2026-10-31 Complete Enemy teardown and cleanup declaration repair
 
@@ -10929,9 +10530,7 @@ First scoped run also cold-passes old resource36, Chain262 and startup1009
 recipes. Full cleanup1098/1105, GUI579/574 and message97/97 remain nonexact.
 No comparator, runtime, product or portability closure is claimed. Authored
 exact becomes107521/275863 across519 owners; canonical175635/1397, mappings1221/
-authored703/backlog184. See the
-[complete teardown proof](evidence/enemy-manager-teardown-20261031/README.md).
-
+authored703/backlog184.
 
 ## 2026-10-31 GUI message teardown and parked parent controls
 
@@ -10952,9 +10551,7 @@ The nonthrowing Player VM member control is333/325 and restored. Complete update
 mismatches beyond its size gap. No parent equality follows. These controls are
 parked; no current compiler/linker profile changes. Source mappings, boundaries,
 origins and authored denominator stay fixed. Authored exact107618/275863 across
-520 owners; canonical175732/1398, mappings1221/authored703/backlog183. See the
-[complete message teardown proof](evidence/gui-message-teardown-20261031/README.md).
-
+520 owners; canonical175732/1398, mappings1221/authored703/backlog183.
 
 ## 2026-10-31 Complete3836-byte GUI stage update exact
 
@@ -10984,8 +10581,6 @@ callback7/all1 without new callback credit.58 source/header pins and independent
 PE/MAP/PDB inventories are retained. Authored exact becomes111454/275863 across
 521 owners; canonical179568/1399, mappings1221/authored703/backlog182. No mapping,
 boundary, origin, denominator, product/runtime or portability closure changes.
-See the [complete exact GUI update proof](evidence/gui-update-exact-20261031/README.md).
-
 
 ## 2026-10-31 Complete GUI message interpreter output slots and observations
 
@@ -11016,9 +10611,7 @@ positions still reject. Both images preserve six guards5288/all107. Separate
 canonical direct GUI caller plus coupled damage cold passes5208/all106.60 source
 pins and22 bounded native observations remain. No comparator/profile, match,
 source mapping, boundary, origin, denominator or later-phase claim changes.
-Authored exact111454/275863 across521 owners; canonical179568/1399. See the
-[complete candidate proof](evidence/gui-message-refinement-20261031/README.md).
-
+Authored exact111454/275863 across521 owners; canonical179568/1399.
 
 ## 2026-10-31 GUI interpreter call sequence and real transition ABI
 
@@ -11050,9 +10643,7 @@ images preserve seven guards5370/all109; separate scoped canonical GUI/damage/
 factory cold passes5290/all108 in two existing producers.64 source/header pins
 and16 terminal observations remain. No new exact credit, match, mapping,
 boundary, origin, denominator, product/runtime or portability change. Authored
-exact111454/275863 across521 owners; canonical179568/1399. See the
-[complete call/ABI proof](evidence/gui-message-call-closure-20261031/README.md).
-
+exact111454/275863 across521 owners; canonical179568/1399.
 
 ## 2026-10-31 Complete1057-byte spell-panel update and callback exact
 
@@ -11085,8 +10676,7 @@ toolchain execute smoke and the new retry pass. A GUI next-instruction local
 capture is separately complete-byte-neutral at4476/4480 and restored/parked.
 No GUI source/canonical recipe change follows. Authored exact becomes112511/
 275863 across522 owners; canonical180635/1401, mappings1221/authored703/backlog181.
-No boundary, origin, denominator, runtime/product or portability change. See the
-[complete spell-panel proof](evidence/spell-panel-exact-20261031/README.md).
+No boundary, origin, denominator, runtime/product or portability change.
 
 ## 2026-10-31 Hint consumption phases and value transfers
 
@@ -11104,7 +10694,7 @@ whole BGRA word before alpha is cleared. The world creator448DB0 uses EDI
 position, three stack operands (resource, hidden ID output, script), RET12 and
 returns the output pointer in EAX. Original names/types/qualifiers stay open.
 
-The [complete candidate proof](evidence/hint-consume-context-20261031/README.md)
+The complete candidate proof
 retains1308/1317 NONEXACT. Branch-local created VMs restore3C frame and the
 observed endpoint stores. Three volatile resource-field observations plus a
 large-branch compiler memory barrier preserve12 physical calls. These are
@@ -11125,7 +10715,7 @@ The selected fade branches reload alpha and use signed quotient(3*alpha)/4.
 A failed-ID lookup clears the actual field before a separate null/frame gate.
 The native control word and general host equivalence remain unknown.
 
-The [complete frame proof](evidence/hint-frame-values-20261031/README.md)
+The complete frame proof
 retains571/571 NONEXACT. Natural float source, a lookup phase helper and shared
 integer locals restore target x87 and stack-slot schedules. Native170
 instructions retain all17 identities/payloads and23 real branch destinations.
@@ -11149,7 +10739,7 @@ the two additional completed producer controls remain archived separately.
 
 ## 2026-10-31 Complete Hint frame Update exact
 
-The [complete frame proof](evidence/hint-frame-exact-20261031/README.md) closes
+The complete frame proof closes
 Update419650..41988A:571 authored exact bytes, all17 resolved fields,169
 instructions,23 fixed local destinations and RET at23A. The real factory graph
 derives owner EBX; the existing registered callback10/all1 remains exact with
@@ -11180,8 +10770,8 @@ six is `8 + 6*0x437C + 0x59C = 0x19A8C`. The maintained
 now encode these relationships. Exact scoped replays of `EnemyEndSpell`
 399/399, score loading 423/423 and spell panel 1057/1057 pass; no newly
 credited exact bytes. Full target-based evidence:
-[evidence/spell-history-record-accessor-20261105/README.md](evidence/spell-history-record-accessor-20261105/README.md)
-and [evidence/spell-panel-record-accessor-20261105/README.md](evidence/spell-panel-record-accessor-20261105/README.md).
+
+and evidence/spell-panel-record-accessor-20261105/README.md.
 
 `EnemyManagerView::effectResources[2]` is the pointer at manager +0x38 used
 for stage ANM. The maintained 2,432-byte spell-start owner now reads the
@@ -11195,10 +10785,8 @@ still NONEXACT. Later conversion of the 199-byte exact
 `EnemyCancelBulletRecord` and the enclosing batch cancel loop to genuine
 `BulletRuntimeView` fields does not disturb either whole candidate. These
 are preserved candidate-codegen statements, not complete target exactness
-or proof of source provenance. See
-[evidence/enemy-stage-animation-resource-typed-20261105/README.md](evidence/enemy-stage-animation-resource-typed-20261105/README.md),
-[evidence/enemy-cancel-typed-runtime-record-20261105/README.md](evidence/enemy-cancel-typed-runtime-record-20261105/README.md), and
-[evidence/enemy-cancel-all-typed-bullet-loop-20261105/README.md](evidence/enemy-cancel-all-typed-bullet-loop-20261105/README.md).
+or proof of source provenance. md,
+evidence/enemy-cancel-typed-runtime-record-20261105/README.md, and
 
 ## 2026-11-08 EnemyRuntimeUpdate world-velocity x87 order and aggregate home
 
@@ -11212,9 +10800,7 @@ Z spill home `ESP+0x24`, and improves the comparison to **1,582/2,136** bytes
 with 69 candidate linkage fields. The local vector block `+0x246..+0x28E` now matches
 in instruction order and stack home; the remaining function differences
 begin at `+0x49D`. This is a natural C++ codegen hypothesis, not proof of the
-original source declaration or full-function exactness. See
-[evidence/enemy-runtime-world-vector-aggregate-20261108/README.md](evidence/enemy-runtime-world-vector-aggregate-20261108/README.md).
-
+original source declaration or full-function exactness. md.
 
 ## 2026-11-08 Enemy ECL rank-five float result tail
 
@@ -11229,5 +10815,4 @@ The 181-byte opcode-to-jump-table map remains
 byte-identical to retail. This is still NONEXACT: the comparable-byte match
 is limited, and `ENEMY_ECL_INTERPOLATE_FLOAT_BY_RANK` still differs in x87
 operand order and local spill homes (`ESP+0x0C/+0x28` versus retail
-`ESP+0x10/+0x30`). See
-[evidence/enemy-ecl-rank-five-tail-20261108/README.md](evidence/enemy-ecl-rank-five-tail-20261108/README.md).
+`ESP+0x10/+0x30`). md.

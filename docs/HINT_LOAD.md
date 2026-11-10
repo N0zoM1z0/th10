@@ -146,7 +146,6 @@ NaN is injected at the atof dependency, without claiming the target CRT accepts
 that textual spelling. No original executable, Windows API, real hint-file IO,
 or native compiler build is used by these host tests.
 
-
 ## Native diagnostic and bounded cleanup replay
 
 The genuine LoadHintFile entry with Hint.cpp and FileSystem.cpp, using the
@@ -185,15 +184,13 @@ in EDX, and both target returns clean eight bytes. LTCG independently selects
 that private register argument from the three-argument declaration.
 The prior cdecl candidate differed only in return cleanup and its consequent
 local branch displacement. This does not establish the original declaration.
-See [complete helper evidence](evidence/hint-small-helpers/README.md).
 
 The subsequent HintSplitLine checkpoint uses an explicit colonless early
 return to recover its complete75-byte target layout. Both cold links replay
 all4 fields: strchr, one static trim CALL and two explicit static trim tail
 JMPs. The latter require the complete114-byte trim callee to be raw-equal and
 its maintained target source/name to agree. Existing cleanup, lookup and trim
-guards retain291 bytes/all2 fields in both images. See
-[split proof and binding limits](evidence/hint-split-tail/README.md).
+guards retain291 bytes/all2 fields in both images.
 
 ## Exact line reader and native arithmetic source
 
@@ -215,7 +212,6 @@ native runtime still unknown.
 The entry color now has packed/byte BGRA views matching the target32-bit
 initialization and parser byte accesses. The constructor is51 bytes but still
 has self-link scheduling differences; no exact or origin credit follows.
-See [line-reader identities and limits](evidence/hint-read-line/README.md).
 
 ## Exact tail insertion member source
 
@@ -229,4 +225,3 @@ next-link behavior; production and fixture calls both use that member API.
 Six existing same-image guards retain986 bytes/all36 fields. The source view's
 class identity is descriptive, and original class/name/visibility/TU remain
 unknown. Loader and constructor exactness are separate open claims.
-[Full member replay](evidence/hint-list-member/README.md).

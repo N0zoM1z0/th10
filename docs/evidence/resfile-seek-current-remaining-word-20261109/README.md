@@ -1,9 +1,0 @@
-# CMemoryPbgFile Seek: interpret FILE_CURRENT remaining length as a signed native word
-
-Original target: Japanese TH10 v1.00a, SHA-256 2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040.
-
-The 107-byte CMemoryPbgFile::Seek at 0x004364F0 evaluates remaining = native address(data) + size - native address(current), then compares the resulting low DWORD against the caller's signed seek delta. The previous C++ expression converted the unsigned native address result to signed LONG using static_cast, which has implementation-defined behavior when the top bit is set. The source now first calculates the unsigned word into a DWORD local and reads it through the corresponding signed LONG type. This is a permitted signed/unsigned alias on the pinned i386 ABI, preserving every bit and the original signed branch without adding bounds checks or changing the cursor's address arithmetic.
-
-Six actual pinned VC7.1 SP1 normal-COFF source variants compared baseline, two temporary memcpy word copies, signed/unsigned alias, union view and mutable signed-reference view. Signed alias and union preserve the complete 107-byte emitted owner, zero relocations and 100/107 unchanged original bytes. The two memcpy forms and mutable-reference form increased size to 119 bytes and were rejected. The seven remaining codegen differences at +0x49,+0x51,+0x55,+0x59,+0x5E,+0x61,+0x63 are from register assignment and the compiler's branch-tail sharing, not missing address bounds checks.
-
-The original target and lower-level file API's previously accepted exact functions are unchanged. Focused compiler experiments and byte offsets are retained in build/gpt-web/20261109-live/seek-current-remain/results.jsonl; no exact owner is promoted for this source-language repair, and the broader old replay is not run.

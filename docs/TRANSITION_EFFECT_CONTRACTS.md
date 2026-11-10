@@ -10,14 +10,14 @@ Local-only proposal atop committed67ced17fff5dfe758a33000b3f83c92002187373 (lexi
 
 Two production files implement the shared complete nine-kind initializer, eleven update/draw callbacks, factory, release trigger, cleanup and required scheduler deletion entry. `TRANSITION_EFFECT_TARGET_MATRIX.md` lists every target extent. Small scalar-deleting adapter43C890 is not manually emitted: no forcedABI or guessed virtual class is introduced. Source-level explicit destruction covers the logical cleanup/free behavior, with compiler-emitted boundary ownership unresolved.
 
-The later [allocator/scheduler review](evidence/effect-allocation-abi/README.md)
+The later allocator/scheduler review
 supersedes the allocation/ABI hypotheses and closes four bounded owners.
 This original proposal does not supply whole-product or runtime closure.
 
 ## Source design
 
 - `TransitionEffectView`: target0x44 allocation/zeroing proves seventeen words. +04/+14 are explicitly unknown zeroed words, not guessed fields/vptr or arbitrary code padding. Existing ChainElem and AnmVmTimerView are reused. Compile-time i386 layout checks fail on incompatible physical layouts.
-- Factory: ordinary new constructs the canonical timer (flag clear), then the natural effect constructor zeroes the whole target object and sets flags2; the factory calls full Initialize. Target452493 is now independently bound to the complete14-byte pinned ordinary one-size allocator, superseding the original nothrow hypothesis. Callee-pop source models RET20 with all6 real operands. The later [constructor-ownership review](evidence/effect-constructor/README.md) closes all82 factory bytes and both call fields. Allocation handlers/throw behavior plus prezero timer/object lifetime remain open. The host failure seam does not prove native allocation failure semantics; see [the scoped review](evidence/effect-allocation-abi/README.md).
+- Factory: ordinary new constructs the canonical timer (flag clear), then the natural effect constructor zeroes the whole target object and sets flags2; the factory calls full Initialize. Target452493 is now independently bound to the complete14-byte pinned ordinary one-size allocator, superseding the original nothrow hypothesis. Callee-pop source models RET20 with all6 real operands. The later constructor-ownership review closes all82 factory bytes and both call fields. Allocation handlers/throw behavior plus prezero timer/object lifetime remain open. The host failure seam does not prove native allocation failure semantics;
 - Initialization: registration and pointer publication precede deletedCallback assignment and timer/argument writes. Kind3 alpha255 is visible during registration. Invalid kind and failed registration are not safe-success cases; callers must satisfy the target's valid-allocation/kind precondition.
 - Callback return values are preserved:1 active;7 invokes delete callback;0 on kind4 finish/abort requests only node unregister. This packet does not add scheduler runners.
 - Cleanup: capture update node and current chain, enter recursive Windows critical section, increment nesting, canonical UnregisterElem, leave, decrement; reload draw node and global chain for second independent cycle. No pointer clearing or idempotence promise. Destroy cleanup then deletes effect exactly once.
@@ -37,7 +37,7 @@ Signed word reinterpretation follows the target VC7.1 two's-complement model. Ex
 
 Ordinary expressions use float source types; target x87 keeps extended precision at several sites, particularly kind1's first output. Host SSE tests establish only finite representable selected cases. NaNs, infinities, out-of-range conversion and full x87 exception/precision equivalence remain unsupported. No algebraic tuning or rounding hacks are added to match instructions.
 
-The later [Chain recovery](evidence/chain-dispatchers/README.md) supplies complete
+The later Chain recovery supplies complete
 449C00/449D40 dispatcher source and runs actual Calc in the host lifetime tests.
 Native dispatcher codegen, Windows concurrency and whole-engine storage remain
 unproved. Mode4 retains effect and draw node after scheduler return0, and

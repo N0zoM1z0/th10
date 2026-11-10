@@ -6,7 +6,7 @@ This archive contains source-only recipes and sanitized evidence. No complete An
 
 At clean baseline e534a6f6c77115017e613721353308a41cde9b6a, one unchanged-source direct ExecuteScript /GL /GS link measures complete ExecuteScript9948/9964 and primary-alpha128/130. The sole candidate changes the three byte formals to int and explicitly byte-normalizes their assignments; both caller expressions remain unchanged. Its complete owners measure ExecuteScript9948/9964 and alpha130/130. Both artifacts independently pass existing Initialize273 and SetupVertexBuffer472 canonical guards. Matching alpha extent is not byte equality, original ABI proof or exact credit. A read-only full130-byte owner comparison finds94 raw equal bytes and36 mismatches. Candidate decode identifies one4-byte DIR32 field; even allowing every byte at those four positions to change leaves at least32 mismatches. This is not normalized comparison and makes no target-global-absence claim. The candidate is parked/unadopted, with no further build or normalization authorized. A separate fresh read-only ExecuteScript diagnostic now confirms83/92 equal physical group-span lengths. This is size-only evidence, without instruction equivalence, normalization or exactness; see execute-span-lengths/ACTUAL_RESULT.md.
 
-See docs/evidence/anm-primary-alpha-2026-10-18 from repository root for the actual baseline/candidate receipts and limits. Production source was not changed by these isolated links. Math/TH09 remain outside scope.
+Production source was not changed by these isolated links. Math/TH09 remain outside scope.
 
 ## Portable host replay without source duplicates
 

@@ -108,7 +108,6 @@ bases must stay inside their respective contributions and have equal relative
 offsets. Being internal does not authorize normalizing a different code label,
 table slot or data position. The synthetic swapped-table and shifted-base
 controls in `scripts/test-linked-local-fields.py` guard this requirement.
-See the [easing extent and local-field audit](evidence/easing-tail-ownership/README.md).
 
 When decoding stops in an owned absolute jump table, complete authoritative PE
 DIR32 fields may bridge the gap to an explicitly declared unlinked data suffix.
@@ -116,8 +115,7 @@ Those annotations remain contiguous, trailing, disjoint from decoded bytes and
 all link fields; partial words and relative fields cannot fill coverage gaps.
 Field inventory and semantic binding remain exhaustive, and every data byte is
 still compared. ECL Run additionally validates its reviewed60-entry table and88
-selectors before deriving an annotation. See the
-[table coverage controls](evidence/ecl-current-dependencies/README.md).
+selectors before deriving an annotation.
 
 `diagnose-ecl-run-native.py --context-manifest PATH --unit NAME` selects an
 explicit diagnostic build context without changing canonical recipes. Target
@@ -127,7 +125,7 @@ unchanged during the comparison. The complete callee,189 fields/62 local
 destinations and table/selector coverage requirements remain unchanged.
 Artifact producer/source pins are separate evidence: the command does not
 assert that an existing image was built from the supplied context or current
-source. See the [real scale support proof](evidence/enemy-real-scale-support/README.md).
+source.
 
 For an isolated private ECL input, `--ecl-source PATH` selects its PDB source
 owner explicitly. The file must exist inside the repository and occur exactly
@@ -136,7 +134,6 @@ once among the context's primary/support inputs; the default remains
 during diagnosis. The reported source hash is an observation, not proof that
 the artifact was built from that input. Target bindings, the full callee,
 189 fields/62 local destinations and table/selector coverage are unchanged.
-See [source routing and layout controls](evidence/ecl-run-layout-controls/README.md).
 
 A direct REL32 call to a static callee may explicitly declare both
 `static_source` and `static_size`. This opt-in derives the selected object from
@@ -145,8 +142,7 @@ checks. In the default lane, the callee must have a complete reviewed target
 boundary, dense zero-field decoding and raw equality across its whole extent; the decoded
 caller must CALL its exact entry. Partial bodies, linked child fields, interior
 entries, JMPs and implicit public-to-static fallback are rejected. This binds
-the caller field without adding duplicate credit for the callee. See the
-[script browser lifecycle evidence](evidence/script-viewer-native-lifecycle/README.md).
+the caller field without adding duplicate credit for the callee.
 
 A field-bearing static CALL may additionally opt in with
 `static_callee_unit = "unit-name"`. The referenced unit must be a complete,
@@ -190,8 +186,7 @@ graph. Different declared candidate/target sizes are permitted because this is
 explicitly; the enclosing parent still replays every field and compares every
 owned byte. Callback bytes receive no credit from that parent replay. This lane
 does not weaken either direct static CALL lane above: both require a complete
-callee byte proof, not just an address. See the
-[transition initializer proof](evidence/effect-initializer/README.md).
+callee byte proof, not just an address.
 
 If a required input, extent, tool profile, or observable cannot be established,
 record `unknown` or an open candidate. Accuracy takes precedence over apparent
@@ -209,8 +204,7 @@ EBP+4, array offsets180/1F08, counts8/3 and stride3AC are checked in both images
 The VM destructor must be a real uniquely qualified34-byte AnmManager contribution;
 its full bytes and sole free field are independently bound. Vector-destructor
 and CxxFrameHandler entries are also checked. This is address/metadata identity,
-not generated-code credit or exception execution. See the
-[Stage lifecycle proof](evidence/stage-initialize-context-20261029/README.md).
+not generated-code credit or exception execution.
 Only the affected Stage array-binding self-test is added to the optional Oracle
 selection; unrelated comparison mechanisms retain their current contracts.
 
@@ -243,8 +237,7 @@ Keep executable-code and owned-data portions explicit in the evidence.
 `compare_size` can cover a larger compiler artifact without crediting every
 compared byte to one claim. It cannot justify ending a code boundary inside an
 instruction. The indeterminate404E90 leaf's old15-byte credit/17-byte comparison
-is superseded by a complete17-byte boundary and ordinary17-byte unit; see the
-[RET4 extent correction](evidence/leaf-compare-extent/README.md). This is not an
+is superseded by a complete17-byte boundary and ordinary17-byte unit. This is not an
 instruction-only authored-byte policy. A boundary correction can increase the
 authored denominator with zero exact credit.
 
@@ -258,7 +251,7 @@ the immutable one-state FuncInfo, saved storage atEBP-10 by default, scalar-dele
 and CxxFrameHandler dispatch protocol. Ordinary public/static selectors remain
 unchanged. This supplies an address identity for the complete parent replay;
 it grants no child-code, metadata ownership or EH-runtime credit. Unsupported
-shapes stay unknown. See [the replay factory proof and limitations](evidence/replay-load/README.md).
+shapes stay unknown.
 
 `allocation_eh_storage_offset` can explicitly declare another aligned negative
 disp8 frame slot. Both cleanup actions must load the identical declared offset;
@@ -267,7 +260,7 @@ stream creation use-0x48, with the same complete21-byte region, one-state28-byte
 FuncInfo, immutable metadata and qualified parent-object checks. This only binds
 the handler address for full-parent byte comparison; generated code/metadata and
 runtime receive no extra credit. Synthetic controls reject a wrong slot in either
-image and malformed declarations. See [the streaming proof](evidence/sound-disk-startup-20261029/README.md).
+image and malformed declarations.
 
 ## Stack-file EH entry binding and metadata extent
 
@@ -290,8 +283,7 @@ readers now stop at28 bytes. Synthetic section-end and arbitrary-neighbor
 positives protect that boundary; malformed headers and short ranges still fail.
 This correction adds no exact credit or metadata ownership claim. The stack-file
 lane likewise supplies address identity only; the enclosing owner must still
-compare every byte and every field. See the
-[archive size proof](evidence/filesystem-path-size/README.md).
+compare every byte and every field.
 
 ## Worker-member EH address binding
 
@@ -307,8 +299,7 @@ and its two semantically bound fields; the qualified101-byte Stop contribution
 and real vtable/Stop symbols cannot be replaced by anchors. Every parent byte,
 field and extent still passes the normal comparator. The selector supplies
 handler address identity only, with no generated-code, metadata, storage or
-EH-runtime credit. See [the Ending proof](evidence/ending-id-storage-20261028/README.md)
-and [the FrontEnd proof](evidence/frontend-lifecycle-20261029/README.md).
+EH-runtime credit.
 
 ## Two-sentinel Chain EH address binding
 

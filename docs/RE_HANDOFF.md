@@ -1,26 +1,21 @@
 # TH10 reconstruction — current agent handoff
 
-**Updated 2026-11-10 after commit `558e58a`.** This is the current continuation
-brief. Read [AGENTS.md](../AGENTS.md) first. The
-[November 9 handoff history](RE_HANDOFF_HISTORY_20261109.md) and
-[November 9 quick resume](NEXT_AGENT_20261109.md) describe an earlier source
-epoch. Their exact counts and experimental images are **historical**.
+**Updated 2026-11-10.** Read [AGENTS.md](../AGENTS.md), then the selected owner's
+source, ledger rows and comparison recipe. The latest exact source checkpoint
+is `558e58a`; later storage/documentation cleanup does not change exact credit.
 
 ## Resume and trust sources
 
-At this checkpoint `main` was **clean, 37 commits ahead of `origin/main`**.
-Newest commit: `558e58a gpt-web: Recover exact 126-byte Ending animation loader`.
-Start with `git status --short --branch` and `git log -8 --oneline`;
-inspect and continue any new dirty/untracked work rather than discarding it.
-Local commits have **not** been pushed.
+Start with `git status --short --branch` and `git log -8 --oneline`.
+Preserve and continue any dirty/untracked work. Keep commits local; never push.
 
 The only target is the Japanese TH10 v1.00a executable at `resources/th10.exe`,
 487,936 bytes, SHA-256
 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
 Use pinned VC7.1 SP1 and the source-specific /GL graph. Git does not carry
 the ignored target, private toolchain, Ghidra project, reference checkout,
-native witness images or historical archives. Read [RE_ARTIFACTS.md](RE_ARTIFACTS.md)
-if transferring machines.
+current native contexts. [RE_ARTIFACTS.md](RE_ARTIFACTS.md) lists the retained
+private inputs and five unresolved compiler contexts.
 
 The authority for accepted exactness is `config/matches.csv`; generated
 [PROGRESS.md](PROGRESS.md) is the count authority. A `functions.csv` status,
@@ -44,23 +39,16 @@ At `558e58a`, `matches.csv` and `PROGRESS.md` agree:
 | Authored-origin exact bytes | **129,209** |
 | Authored source-present nonexact backlog | **149** |
 
-The old `91bf803` handoff was **1,510 / 198,606**. Four subsequent admitted
-owners added **890 bytes** (two authored, two origin-indeterminate):
-
-| Target | Exact size | Unit and evidence |
-| --- | ---: | --- |
-| Ending LoadAnimation `0x0040C3C0` | **126/126** | `ending-text-load-animation`; 7 target-bound fields; [proof](evidence/ending-loadanimation-126-exact-20261110/README.md) |
-| Sound LoadSoundSample `0x0043D390` | **684/684** | `sound-player-load-sound-sample`; 25 fields; [proof](evidence/sound-sample-exact-20261109/README.md) |
-| MergeDirectButton `0x0044A130` | **37/37** | `input-merge-direct-button-0044a130`; origin indeterminate |
-| MergeWinMmButton `0x0044A160` | **43/43** | `input-merge-winmm-button-0044a160`; origin/private ABI provisional |
+Recent accepted owners include Ending LoadAnimation **126/126**
+(`ending-text-load-animation`, seven target-bound fields), Sound LoadSoundSample
+**684/684** (`sound-player-load-sound-sample`, 25 fields), and the two input
+merge functions **37/37** and **43/43** (origin indeterminate).
 
 Ending needed two natural C++ fixes: obtain the auxiliary VM ID **after**
 resource publication to emit the in-place flags AND, then directly read the
-serialized script DWORD so VC7.1 selects target ECX/ADD. The old 131-byte
-loader first became 126 bytes with 3 differences, then **126/126**.
-Two independent selected source cold replays passed all seven address fields.
+serialized script DWORD so VC7.1 selects target ECX/ADD. Two independent selected
+source cold replays passed all seven address fields.
 EndingTextVmView::Run remains **1568/1568** and its 18-byte callback exact.
-Do not repeat the historical 123/126 frontier as current.
 
 Sound's 684-byte match required the natural FindWaveChunk argument order
 `(data, chunkSize, remaining, tag)` in the WinMain /GL graph. Its 71-byte
@@ -95,6 +83,14 @@ Recent source changes in Bullet/ECL/FileSystem/Statistics/Text/Transition
 principally repaired i386 integer semantics while preserving exact guards;
 they did **not** increase canonical counts.
 
+## Metadata follow-up
+
+`validate-tracking.py` reports an existing name mismatch at `0x00401DE0`:
+`functions.csv` says `AnmVmInitialize`, while the source mapping says
+`AnmVmView::Initialize`. This cleanup leaves those names and all exact extents
+unchanged; reconcile them against the maintained source and unit when next
+working on that owner.
+
 ## Next useful experiments and checks
 
 1. Choose a complete **boss and/or leaf** with a specific offset-level
@@ -102,10 +98,11 @@ they did **not** increase canonical counts.
    disassembly, match unit and relevant `_reference/th10-decomp` hypothesis.
    Never treat the reference project or a previous assumption as target truth.
 2. Try a *few* natural C/C++ expressions, keeping source variants, scripts,
-   MAP/log/JSON receipts under ignored `.analysis/gpt-web/` and scratch
+   temporary diagnostics under ignored `.analysis/gpt-web/` and scratch
    compiler outputs under `build/gpt-web/`. Avoid redoing known neutral sweeps.
 3. Install a promising variant, replay **only affected exact units** and
-   original-bound complete nonexact parents. New acceptance needs independently
+   original-bound complete nonexact parents. Record useful findings and remove
+   superseded trial files. New acceptance needs independently
    confirmed exact source-linked builds. Commit real progress as
    `gpt-web: ...` with AGENTS.md's author/trailer. Never push unrequested.
 4. Wine/link.exe occasionally emits LNK1104 or a page-fault message against
@@ -113,16 +110,11 @@ they did **not** increase canonical counts.
    supplies **no** exactness receipt. Retry an isolated selected unit serially.
 
 Useful focused private drivers (not Git-tracked):
-`.analysis/gpt-web/20261110-ending-script-index-expression.py`;
 `.analysis/gpt-web/20261110-anm-child91-aggregate-initializers.py`;
 `.analysis/gpt-web/20261110-ecl-format-cursor-allocation-schedule.py`;
 `.analysis/gpt-web/20261110-bullet-absolute-speed-liveness.py`;
 `.analysis/gpt-web/20261110-seek-tail-control-flow-trials.py`.
 
-The latest November 10 storage pass removed obsolete trial MAP/log/RSP files
-and repacked Git without losing objects or history, releasing about **569 MiB**
-including Python caches. Source snapshots, JSON results, native witnesses,
-canonical graphs and private inputs remain. [RE_ARTIFACTS.md](RE_ARTIFACTS.md)
-records current storage and recovery; its earlier cleanup figures are historical.
-Read the [historical handoff](RE_HANDOFF_HISTORY_20261109.md) only when its older
-experiments directly inform the next test.
+Historical archives, old reports and duplicate handoffs have been removed.
+Use current unit recipes to reproduce accepted comparisons; retain only the
+specific unresolved contexts listed in [RE_ARTIFACTS.md](RE_ARTIFACTS.md).

@@ -22570,7 +22570,7 @@ linkages = [
 
 support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"] }
 
-# Complete Ending owners: two full17-TU colds; see docs/evidence/ending-script.
+# Complete Ending owners: two full17-TU colds.
 # Real ResultMenu controller lifecycle, using the existing 0x2C8-byte type.
 # The full 101-byte constructor uses the actual ResultMenu value layout,
 # including three VM-id slots whose early default constructors must not run.

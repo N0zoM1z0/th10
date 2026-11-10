@@ -1,9 +1,0 @@
-# ECL Push: original signed low-DWORD capacity test
-
-Original Japanese TH10 1.00a, SHA-256 2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040.
-
-EclVmStackView::Push at 0x004505B0 checks the sum of signed stackTop and supplied value length against 0x1000, using the low 32 bits and *signed* interpretation of the original i386 add. Its source already used unsigned arithmetic to avoid signed overflow but converted the high-bit result back with static_cast<int>, which is implementation-defined. The revised source computes nextStackTopBits as an unsigned DWORD and reads that object's signed integer counterpart through a permitted corresponding signed/unsigned alias. It leaves the signed threshold, tag publication, data copying, and stack-top update unchanged, and does not impose new safety checks.
-
-Four independently compiled genuine VC7.1 SP1 /GL EclVm/Enemy two-TU graphs compared baseline, corresponding signed alias, temporary memcpy bit-copy, and a split unsigned sign-bit check. Only the alias form preserved the complete original 96-byte Push PDB contribution (96/96), the 64-byte EnterFrame (64/64) and the entire 7,020-byte nonexact EclVmContext::Run (6,997/7,020 matching, all 189 original-bound code/data fields). The memcpy version emitted 95 Push bytes and shortened Run to 6,752; the explicit sign-bit form emitted 103 Push bytes and also shortened Run. Neither is accepted. No target byte patch, register directive, or all-unit cold replay was used.
-
-Private trial script/receipts: .analysis/gpt-web/20261109/ecl-push-signed-top-guard.py and build/gpt-web/20261109-live/ecl-push-sign-guard/results.jsonl. The canonical exact ledger already counts the stack leaf, so this semantic source improvement adds zero new exact function/byte credit. Validate with selected-only stack Push/EnterFrame and host Run units plus the full nonexact boss diagnostic.

@@ -5,7 +5,6 @@
 > notes do not require full CI, native replay or document-hash/pin refreshes.
 > Older broad validation instructions apply only when their impact is relevant.
 
-
 ## Current scope
 
 Current direction, 2026-11-06: work directly with local tools on exact
@@ -91,8 +90,7 @@ Exact functions alone do not establish a runnable product.
 
 Use `.analysis/` for working evidence, `build/` for generated artifacts and
 tracked ledgers/docs for accepted facts. Retain what reproduces an unresolved
-claim. For storage cleanup follow [RE_ARTIFACTS.md](RE_ARTIFACTS.md): remove only
-verified regenerable ignored experiment PE/OBJ/PDB files and Python caches,
-preserving canonical artifacts, private archives and unresolved witnesses.
-Keep source snapshots, drivers and useful logs. Inspect dirty work before
-cleanup. Never commit private binaries/data, databases or tools.
+claim. For storage cleanup follow [RE_ARTIFACTS.md](RE_ARTIFACTS.md): preserve
+canonical artifacts and only the unresolved contexts still useful for current
+work. Record useful findings, then delete superseded trials, historical archives
+and old reports. Inspect dirty work before cleanup. Never commit private binaries/data, databases or tools.

@@ -37,7 +37,6 @@
     "date": "2026-10-19",
     "starting_head": "46853f1c35cc76774a6c33e88f208a38c4646286",
     "reason": "Only UnregisterElem fastcall spelling changes; target ECX/EDX/RET interface and complete native114-byte owner pass twice. Host fixture explicitly erases __fastcall; algorithms and pin rejection policy unchanged.",
-    "evidence": "docs/evidence/script-viewer-native-lifecycle/README.md",
     "inputs": {
       "src/Chain.hpp": {
         "old_sha256_lf": "61043edbe8baa62f6fb4bf238fd7c902307734a8cdf55c531c39add4b3a13640",
@@ -53,7 +52,6 @@
     "date": "2026-10-19",
     "starting_head": "88d8bb7d61ce024c668096c9348fb665608d3b16",
     "reason": "Only StartPrimaryAlphaInterpolation tangent stores move before endpoint stores. The host-extracted AnmRandomU32InRange body is byte-identical after the existing CRLF-to-LF normalization; timer and viewport headers and all other host dependencies are unchanged. Pin rejection policy is unchanged.",
-    "evidence": "docs/evidence/anm-primary-alpha-local/README.md",
     "input": "src/AnmManager.cpp",
     "old_sha256_lf": "617dc8e960d781a5a15f2a4d92467ee5d06550731a61680cd99e729a9218ee7e",
     "new_sha256_lf": "2fc6c79a188d650e41f3b9c20be87bf05ee31e76561d8a9f22198db78a0fb647",
@@ -63,7 +61,6 @@
     "date": "2026-10-19",
     "starting_head": "6783491",
     "reason": "Only CalculateAnmInterpolation declaration and complete definition change. Substituting its prior definition and removing the declaration keyword reproduces both entire prior LF-normalized files. Extracted range helper, timer and viewport are byte-identical; strict pin normalization and rejection policy are unchanged. The shared function now models observed callee-pop and repeated x87 inverse powers, without claiming its physical owner exact.",
-    "evidence": "docs/evidence/stage-fog-evaluator/README.md",
     "inputs": {
       "src/AnmManager.cpp": {
         "old_sha256_lf": "2fc6c79a188d650e41f3b9c20be87bf05ee31e76561d8a9f22198db78a0fb647",
@@ -87,8 +84,7 @@
     "old_sha256_lf": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
     "new_sha256_lf": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
     "old_tick_sha256": "cbce922125986aa49f213008f57a8f43970702f41d6c3c5d3ee496ba32093681",
-    "new_tick_sha256": "e335fc4b666bad7673ed715e6963fe09f91a8065833d7bb97bcbad433e7c2685",
-    "evidence": "docs/evidence/stage-real-callback/README.md"
+    "new_tick_sha256": "e335fc4b666bad7673ed715e6963fe09f91a8065833d7bb97bcbad433e7c2685"
   },
   "reviewed_effect_scheduler_cc_update": {
     "date": "2026-10-19",
@@ -110,8 +106,7 @@
         "new_sha256_lf": "caca3bfe5389ede3a06acd6f8e2dcc480bb47296c46e21733092c40e4abc4b84",
         "only_callee_pop_annotations_changed": true
       }
-    },
-    "evidence": "docs/evidence/effect-allocation-abi/README.md"
+    }
   },
   "reviewed_registrar_formal_order_update": {
     "date": "2026-10-20",
@@ -128,8 +123,7 @@
         "new_sha256_lf": "0619e2e76e4f99254afa379df6f1dedcf85a08ee98bef74a9d00fb5f059dfc84",
         "whole_file_reversal_verified": true
       }
-    },
-    "evidence": "docs/evidence/effect-initializer/README.md"
+    }
   },
   "reviewed_release_slot_update": {
     "date": "2026-10-20",
@@ -140,14 +134,12 @@
     "whole_file_reversal_verified": true,
     "extracted_rng_helper_unchanged": true,
     "extracted_rng_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
-    "reason": "Only ReleaseAnm slot deletion re-read and sizeof-array bound change. Reversing both statements reproduces the entire prior input; the extracted AnmRandomU32InRange body, timer/viewport headers, all other dependencies and strict CRLF-to-LF rejection policy are unchanged. Historical raw fingerprints are provenance only.",
-    "evidence": "docs/evidence/anm-release-slot/README.md"
+    "reason": "Only ReleaseAnm slot deletion re-read and sizeof-array bound change. Reversing both statements reproduces the entire prior input; the extracted AnmRandomU32InRange body, timer/viewport headers, all other dependencies and strict CRLF-to-LF rejection policy are unchanged. Historical raw fingerprints are provenance only."
   },
   "reviewed_anm_float2_storage_update": {
     "date": "2026-10-20",
     "starting_head": "2cf915c813dfb13fa0d711eee26a6f66a9274a0a",
     "reason": "Only the Float2 constructors, a distinct raw UV storage view with vertex offset assertions, and the SCALE_TIME value construction change. The extracted RNG range helper, timer and viewport are byte-identical after the existing CRLF-to-LF normalization. No host extraction, normalization or strict rejection policy changes. Original math/UV type identities remain hypotheses.",
-    "evidence": "docs/evidence/anm-float2-storage/README.md",
     "inputs": {
       "src/AnmManager.cpp": {
         "old_sha256_lf": "efafb67f47dbe8dab6ae9c387928053944405a6f0f4a0938fead3bcc286aa052",
@@ -168,7 +160,6 @@
     "date": "2026-10-20",
     "starting_head": "09fd5a50c374e1d6a57bc1c91843f25b628bc1bb",
     "reason": "Only Float2 value-returning arithmetic and the complete Float2/Float3 evaluator bodies change. The extracted RNG helper, timer and viewport are byte-identical after existing CRLF-to-LF normalization. No host adaptations, normalization or rejection policy changes. RGB/alpha and Int3 controls are restored.",
-    "evidence": "docs/evidence/anm-vector-interpolation/README.md",
     "inputs": {
       "src/AnmManager.cpp": {
         "old_sha256_lf": "0cc9d153ec9880de88b58d0cdf62262ebf391edd52889aaf1b30218fc676bd6c",
@@ -189,7 +180,6 @@
     "date": "2026-10-20",
     "starting_head": "20b5926bf4e2bffbfcc319dffad5b87c4f8bed5f",
     "reason": "Only alpha evaluator math and executor RGB byte-store order change. Extracted RNG range helper, timer and viewport remain byte-identical under existing CRLF-to-LF normalization. No extraction, host adaptation, normalization or strict rejection change.",
-    "evidence": "docs/evidence/anm-integer-interpolation/README.md",
     "inputs": {
       "src/AnmManager.cpp": {
         "old_sha256_lf": "12c74e08ef75a18f4214593bb87d0089b847c1cf19c9a2b2324594f3e28f46ef",
@@ -206,7 +196,6 @@
     "date": "2026-10-20",
     "starting_head": "f7b809c9c430546a91e0ad1883aefa7d9e068b55",
     "reason": "RGB value API/arithmetic and scale TU partition change. Extracted range-helper, timer and viewport blocks are byte-identical after CRLF-to-LF only. Strict normalization/rejection policy unchanged; raw observations from the original receipt remain historical.",
-    "evidence": "docs/evidence/anm-rgb-interpolation/README.md",
     "inputs": {
       "src/AnmManager.cpp": {
         "old_sha256_lf": "8975fe2b8c766bcbfdd688f739e81f8435b7450858c6d5c099832f5fb2984a0d",
@@ -229,7 +218,6 @@
     "date": "2026-10-20",
     "starting_head": "9807edf5878f",
     "reason": "Scale initializer parameter order and ExecuteScript BGR snapshots change; extracted timer, viewport and random-range helper remain byte-identical after line-ending normalization. Strict whole-file pin rejection remains enabled.",
-    "evidence": "docs/evidence/large-owner-call-order/README.md",
     "inputs": {
       "src/AnmManager.cpp": {
         "old_sha256_lf": "7be1840bb29c2a6905f1c7845cac77d1920bedf773463a7ebf703cfa9d4e5435",
@@ -250,7 +238,6 @@
     "date": "2026-10-21",
     "starting_head": "277ab88",
     "reason": "ASCII viewport/camera effects, newline paths and regular glyph dirty publication change; three host-projected blocks are independently identical after CRLF-to-LF only. Strict normalization and whole-file pin rejection remain unchanged.",
-    "evidence": "docs/evidence/ascii-viewport-transitions/README.md",
     "inputs": {
       "src/AnmManager.cpp": {
         "before": "1b11274cd03f34fd8763ade8c0d45b6a3cfe0373a0102d3d22d6ce71c342c97a",
@@ -276,13 +263,11 @@
     "new_sha256_lf": "875e79ef33824fb599d01245e9f47d8924d5595a90696799ae66ee6700adae51",
     "new_raw_sha256": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
     "whole_file_reversal_verified": true,
-    "unchanged_extracted_rng_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
-    "evidence": "docs/evidence/main-screenshot-context/README.md"
+    "unchanged_extracted_rng_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1"
   },
   "reviewed_radial_count_update": {
     "date": "2026-10-21",
     "starting_head": "f434a48bab06034e7a7620fe507c75bea596ed44",
-    "evidence": "docs/evidence/anm-radial-count/README.md",
     "input": "src/AnmManager.cpp",
     "reason": "Only unrelated ExecuteScript radial locals/bounds changed; the exact host-extracted range helper and all six other dependency files remain LF-byte-identical. Strict EOL/hash rejection and fixture algorithms remain unchanged.",
     "old_cpp_sha256_lf": "875e79ef33824fb599d01245e9f47d8924d5595a90696799ae66ee6700adae51",
@@ -370,8 +355,7 @@
     "unchanged_extracted_range_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
     "other_six_host_dependencies_unchanged": true,
     "strict_normalization_and_rejection_policy_unchanged": true,
-    "reason": "Only source-local axis/child argument value views and ExecuteScript flip/child91 statements change. Exact inverse reconstructs the whole prior file; the host-consumed RNG helper and all other host dependencies are identical. No host adaptation or pin rejection policy change.",
-    "evidence": "docs/evidence/anm-child-request-record/README.md"
+    "reason": "Only source-local axis/child argument value views and ExecuteScript flip/child91 statements change. Exact inverse reconstructs the whole prior file; the host-consumed RNG helper and all other host dependencies are identical. No host adaptation or pin rejection policy change."
   },
   "reviewed_delete_identity_update": {
     "date": "2026-10-24",
@@ -379,8 +363,7 @@
     "previous_sha256_lf": "94e24ab50ea9ae8dd2abeabe48c0347f66f84bb0c237615568ce08a4df3dbf68",
     "current_sha256_lf": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
     "current_raw_sha256": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
-    "scope": "Reviewed scalar-delete identity repair: explicit raw operator delete after unchanged callback cleanup; host deallocation seam token updated; all other pins unchanged",
-    "evidence": ".analysis/gpt-dots/free-delete-binding-audit-20261024/repair-validation/final-acceptance-review.json"
+    "scope": "Reviewed scalar-delete identity repair: explicit raw operator delete after unchanged callback cleanup; host deallocation seam token updated; all other pins unchanged"
   },
   "reviewed_anm_chain_construction_20261028": {
     "date": "2026-10-28",
@@ -400,8 +383,7 @@
       "src/AnmRectangle.hpp": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15"
     },
     "strict_normalization_and_rejection_policy_unchanged": true,
-    "reason": "Only the complete AnmRenderManagerView constructor changes: use actual ChainElem allocations, low flags3 and real Chain Add entries. Restoring the previous complete constructor reconstructs the entire prior LF-normalized file. The transition fixture consumes only the unchanged RNG helper from this file; host algorithms and rejection policy remain unchanged.",
-    "evidence": "docs/evidence/anm-draw-callbacks-20261028/README.md"
+    "reason": "Only the complete AnmRenderManagerView constructor changes: use actual ChainElem allocations, low flags3 and real Chain Add entries. Restoring the previous complete constructor reconstructs the entire prior LF-normalized file. The transition fixture consumes only the unchanged RNG helper from this file; host algorithms and rejection policy remain unchanged."
   },
   "reviewed_anm_redundant_cache_clear_20261028": {
     "starting_head": "d1d5fd61012fd23115bb7501675dd1273e924525",
@@ -412,8 +394,7 @@
     "unchanged_extracted_range_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
     "other_six_active_dependencies_unchanged": true,
     "strict_normalization_and_rejection_policy_unchanged": true,
-    "reason": "Remove only the constructor texture-filter cache write absent from the complete target body; the preceding whole-object clear already establishes zero. No host-consumed algorithm changes. Scalar counter and pointer-loop controls are rejected/restored.",
-    "evidence": "docs/evidence/anm-constructor-controls-20261028/README.md"
+    "reason": "Remove only the constructor texture-filter cache write absent from the complete target body; the preceding whole-object clear already establishes zero. No host-consumed algorithm changes. Scalar counter and pointer-loop controls are rejected/restored."
   },
   "reviewed_easing_conditional_results_20261029": {
     "starting_head": "e1ce2a3ee4ae0bd98d47b974b6e69be99853ded1",
@@ -426,7 +407,6 @@
     "unchanged_extracted_range_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
     "other_six_dependency_sources_unchanged_from_entry_head": true,
     "strict_normalization_and_rejection_policy_unchanged": true,
-    "reason": "Only five CalculateAnmInterpolation branch pairs change to conditional result expressions this batch. Restoring the prior complete function reconstructs the whole entry LF-normalized source. The older pin also predates b53c7d1 camera-member migration. Pinned/entry/final RNG extraction is identical. Six other dependency sources are unchanged from entry HEAD; their historical pins are not recertified here. No host algorithm, rejection policy or later-phase host-validation claim changes.",
-    "evidence": "docs/evidence/easing-context-20261029/README.md"
+    "reason": "Only five CalculateAnmInterpolation branch pairs change to conditional result expressions this batch. Restoring the prior complete function reconstructs the whole entry LF-normalized source. The older pin also predates b53c7d1 camera-member migration. Pinned/entry/final RNG extraction is identical. Six other dependency sources are unchanged from entry HEAD; their historical pins are not recertified here. No host algorithm, rejection policy or later-phase host-validation claim changes."
   }
 }

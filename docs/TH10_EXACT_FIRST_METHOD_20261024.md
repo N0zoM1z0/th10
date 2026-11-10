@@ -52,8 +52,7 @@ nor a wrong original translation-unit partition has been proved.
   progress; it is not evidence that those activities did nothing.
 
 See the [maintained handoff](RE_HANDOFF.md), the
-[ANM source/proof packet](evidence/anm-child-request-record/README.md), and the
-[last 15 controls](evidence/handoff-request-cleanup-20261024/README.md).
+ANM source/proof packet, and the
 
 ### Comparative evidence, not a compiler recipe
 
@@ -208,7 +207,7 @@ CI coverage remains scoped to its recorded source checkpoint.
 
 ## First pilot checkpoint
 
-[MIDI ProcessEvent](evidence/midi-exact-first-20261024/README.md) exposed a real
+MIDI ProcessEvent exposed a real
 unsupported helper boundary in its first complete comparison. One lexical
 expansion restores the original37-field inventory and preserves five exact
 guards, but the complete owner remains nonexact at1690/1670. This is bounded
@@ -217,7 +216,7 @@ parking rule rather than an unbounded alignment/register experiment panel.
 
 ## Second pilot checkpoint
 
-[Options](evidence/options-input-word-20261024/README.md) first received a fresh
+Options first received a fresh
 current-source baseline, then one target-backed result-width model. Both AX
 consumers are recovered, with all executable code outside the controller and
 the full3999-byte exact Refresh peer unchanged. The controller is still
