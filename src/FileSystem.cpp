@@ -258,7 +258,7 @@ bool LoadArchive(const char *filename)
             reinterpret_cast<unsigned int>(&g_PbgArchives[0]) +
             static_cast<unsigned int>(g_PbgArchiveCount) * sizeof(PbgArchive))->Load(filename))
     {
-        g_PbgArchiveCount = static_cast<int>(static_cast<unsigned int>(g_PbgArchiveCount) + 1u);
+        ++*reinterpret_cast<unsigned int *>(&g_PbgArchiveCount);
         return true;
     }
     return false;
