@@ -598,7 +598,7 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
                         EclMutableEntryAtWord(subroutines, index);
                     const EclVmSubroutineEntry *const previous =
                         EclMutableEntryAtWord(subroutines,
-                            static_cast<int>(static_cast<unsigned int>(index) - 1u));
+                            index - 1);
                     *destination = *previous;
                 }
 
