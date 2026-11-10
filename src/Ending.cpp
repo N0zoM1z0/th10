@@ -452,10 +452,10 @@ int EndingTextVmView::LoadAnimation()
     strcat(g_StageFilePath, path);
     AnmLoadedView *bank = g_AnmRenderManagerView->PreloadAnm(
         EndingRecordInt(instruction) + 29, g_StageFilePath);
-    AsciiManagerView *ascii = g_AsciiManagerView;
     resources[EndingRecordInt(instruction)] = bank;
     flags &= ~4u;
-    EnemyMarkPendingInterrupt(&ascii->auxiliaryVm89A4);
-    ascii->auxiliaryVm89A4 = 0;
+    int *const id = &g_AsciiManagerView->auxiliaryVm89A4;
+    EnemyMarkPendingInterrupt(id);
+    *id = 0;
     return 0;
 }
