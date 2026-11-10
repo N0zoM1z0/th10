@@ -451,7 +451,7 @@ int EndingTextVmView::LoadAnimation()
     g_StageFilePath[0] = '\0';
     strcat(g_StageFilePath, path);
     AnmLoadedView *bank = g_AnmRenderManagerView->PreloadAnm(
-        EndingRecordInt(instruction) + 29, g_StageFilePath);
+        *reinterpret_cast<const int *>(instruction + 4) + 29, g_StageFilePath);
     resources[EndingRecordInt(instruction)] = bank;
     flags &= ~4u;
     int *const id = &g_AsciiManagerView->auxiliaryVm89A4;

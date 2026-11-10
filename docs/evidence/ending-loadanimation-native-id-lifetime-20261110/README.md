@@ -1,3 +1,5 @@
+Later result on 2026-11-10: this 123/126 frontier is closed by the direct serialized-script-word expression. See the full exact proof at ../ending-loadanimation-126-exact-20261110/README.md. The observations below describe the earlier source epoch only.
+
 # Ending animation loader: native auxiliary VM lifetime recovery
 
 Retail: Japanese TH10 v1.00a, SHA-256 2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040.
