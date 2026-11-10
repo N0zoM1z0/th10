@@ -105,6 +105,17 @@ cold replay: `GetVm` 21, `ClearFlag2` 67, `Release` 21, queue sample 123 and
 queue cue 149 (**381/381** across three selected artifacts). This is source
 semantics/codegen preservation, **not** a newly exact boss or game completion.
 
+A follow-on resource-table fix changes all seven dynamic `loadedAnmResources`
+reads in the same boss to `EnemyNativeWordIndex`: the four-slot typed array
+is accessed with script-provided resource selectors, which the native caller
+uses as flat 32-bit addresses. Independent current- and selected-resource
+source variants separately preserve the entire **14,416-byte** candidate
+and all **22/22** source-owned functions. The installed source was recompiled
+once more to confirm identical complete candidate hashes. Four additional
+selected exact source/callee replays pass `CreateVmVariant0` 73,
+`CreateVmVariant2` 73, queue sample 123, queue cue 149 (**418/418** in two
+artifacts). The dispatcher remains NONEXACT; no complete-product claims.
+
 New ANM child-91 and ECL Run register/lifetime/source-order controls were also
 compiled against their complete 9,964- and 7,020-byte owners. No new exact
 match was found; rejected source variants were not installed. Their active

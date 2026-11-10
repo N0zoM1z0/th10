@@ -30,6 +30,19 @@ identity or original source ownership. Selected exact cold replays passed
 `enemy-sound-queue-cue` (149): **381/381**, with existing canonical
 original-bound fields. No exact credit, accepted-fact or whole-game claim.
 
+A second 2026-11-10 pass applies the same typed native-word helper to
+**seven** dynamic `g_EnemyManager->loadedAnmResources` reads. The declared
+manager overlay has four resource pointers, while the original ECL paths
+accept script-selected indices without a range check at these call sites.
+Separate selected-resource and current-resource forms each preserve the
+full 14,416-byte candidate and all 22 local compiled owners. Recompiling
+the final installed source in that same 11-support graph yields the identical
+complete candidate hash. Focused original-bound cold replay of
+`anm-loaded-create-vm-variant0` (73), `anm-loaded-create-vm-variant2` (73),
+and the two exact enemy sound queue functions (123+149) passes **418/418**
+across two artifacts. This is a semantic fidelity fix with neutral codegen,
+not proof of an exact dispatcher or validated out-of-range runtime behavior.
+
 Ledger repair `d9769d08` also reconciled four source mapping names and one
 out-of-order exact row; `validate-tracking.py --require-target` passes with
 1,514 exact owners unchanged. A sweep of complete ANM 9,964-byte and ECL
