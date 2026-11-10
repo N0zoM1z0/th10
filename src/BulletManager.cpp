@@ -141,8 +141,7 @@ void BulletRuntimeView::UpdateDeceleration()
     }
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        state.timer.current = static_cast<int>(
-            static_cast<unsigned int>(state.timer.current) + 1u);
+        ++*reinterpret_cast<unsigned int *>(&state.timer.current);
         state.timer.subframe += 1.0f;
     }
     else {
@@ -180,8 +179,7 @@ void BulletRuntimeView::UpdateVectorAcceleration()
     }
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        state.timer.current = static_cast<int>(
-            static_cast<unsigned int>(state.timer.current) + 1u);
+        ++*reinterpret_cast<unsigned int *>(&state.timer.current);
         state.timer.subframe += 1.0f;
     }
     else {
@@ -211,8 +209,7 @@ void BulletRuntimeView::UpdatePolarAcceleration()
     }
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        state.timer.current = static_cast<int>(
-            static_cast<unsigned int>(state.timer.current) + 1u);
+        ++*reinterpret_cast<unsigned int *>(&state.timer.current);
         state.timer.subframe += 1.0f;
     }
     else {
@@ -261,8 +258,7 @@ void BulletRuntimeView::UpdateRelativeDirectionChange()
         FromAngleMagnitude(angle, nextSpeed);
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        state.timer.current = static_cast<int>(
-            static_cast<unsigned int>(state.timer.current) + 1u);
+        ++*reinterpret_cast<unsigned int *>(&state.timer.current);
         state.timer.subframe += 1.0f;
     }
     else {
@@ -375,8 +371,7 @@ void BulletRuntimeView::UpdateAimedDirectionChange()
     // The relative-direction sibling uses the opposite x87 operand order.
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        state.timer.current = static_cast<int>(
-            static_cast<unsigned int>(state.timer.current) + 1u);
+        ++*reinterpret_cast<unsigned int *>(&state.timer.current);
         state.timer.subframe += 1.0f;
     }
     else {
@@ -543,8 +538,7 @@ void BulletRuntimeView::UpdateState8()
 tickTimer:
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        state.timer.current = static_cast<int>(
-            static_cast<unsigned int>(state.timer.current) + 1u);
+        ++*reinterpret_cast<unsigned int *>(&state.timer.current);
         state.timer.subframe += 1.0f;
     }
     else {
@@ -606,8 +600,7 @@ int BulletManagerView::UpdateBullets()
         *BulletBucketAtWord(&drawBucketTails[0],
             bullet->drawBucketIndex) = bullet;
         bullet->nextInDrawBucket = 0;
-        activeBulletCount = static_cast<int>(
-            static_cast<unsigned int>(activeBulletCount) + 1u);
+        ++activeBulletCount;
         // Original stateTimer increment is a native 32-bit word, even
         // when the signed counter reaches INT_MAX.
         AnmVmTimerView &timer = bullet->stateTimer;
