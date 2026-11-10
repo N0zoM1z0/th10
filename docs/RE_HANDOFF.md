@@ -83,13 +83,32 @@ Recent source changes in Bullet/ECL/FileSystem/Statistics/Text/Transition
 principally repaired i386 integer semantics while preserving exact guards;
 they did **not** increase canonical counts.
 
-## Metadata follow-up
+## 2026-11-10 native VM slot words and ledger repair
 
-`validate-tracking.py` reports an existing name mismatch at `0x00401DE0`:
-`functions.csv` says `AnmVmInitialize`, while the source mapping says
-`AnmVmView::Initialize`. This cleanup leaves those names and all exact extents
-unchanged; reconcile them against the maintained source and unit when next
-working on that owner.
+Commit `d9769d08` reconciles four stale source name mappings at
+`0x00401DE0`, `0x0043E710`, `0x00404F30`, and `0x00409280` with the
+maintained source declarations, and restores the required address ordering of
+one misplaced `matches.csv` row. Strict target/tracking validation now passes:
+**1,829** boundaries, **1,309** mappings and **1,514** exact owners; no
+exact ledger credit was added.
+
+The unchecked `managedVmIds` accesses in `EnemyRuntimeView::DispatchEclInstruction`
+for `SET_MAIN_ANM_SCRIPT` and `PLAY_SELECTED_ANM` now use `EnemyNativeWordIndex`
+for nine reads/writes/address uses. This preserves the retail 32-bit scaled
+address word even when the script index exceeds the declared C++ array.
+An unchanged baseline and the revised TU were separately compiled into the
+same pinned 11-support /GL graph. Their **entire 14,416-byte dispatcher** and
+**all 22 source-owned functions** are raw-identical; another actual-source
+recompile confirmed the installed comment-bearing source still has that exact
+candidate body hash. Five selected original-bound exact leaves pass a fresh
+cold replay: `GetVm` 21, `ClearFlag2` 67, `Release` 21, queue sample 123 and
+queue cue 149 (**381/381** across three selected artifacts). This is source
+semantics/codegen preservation, **not** a newly exact boss or game completion.
+
+New ANM child-91 and ECL Run register/lifetime/source-order controls were also
+compiled against their complete 9,964- and 7,020-byte owners. No new exact
+match was found; rejected source variants were not installed. Their active
+frontiers remain those in the table above. No full cold replay was run.
 
 ## Next useful experiments and checks
 

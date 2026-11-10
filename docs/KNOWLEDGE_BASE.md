@@ -5,6 +5,37 @@ Current exact counts come from [PROGRESS.md](PROGRESS.md) and current work from
 [RE_HANDOFF.md](RE_HANDOFF.md). Historical reports and scratch paths may have
 been removed; keep useful findings rather than rebuilding their old archives.
 
+## 2026-11-10 Enemy ECL unchecked VM-ID indexing and native owner guards
+
+`EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` has two opcode
+families, `SET_MAIN_ANM_SCRIPT` and `PLAY_SELECTED_ANM`, that accept an
+unchecked signed VM-ID index. The former plain `managedVmIds[index]` C++
+expressions performed out-of-array pointer arithmetic for malformed script
+indices, unlike the target's flat i386 scaled addressing. Nine source
+expressions now use the existing `EnemyNativeWordIndex` helper for the low
+32-bit base + index*4 word used by `Release`, `GetVm`, `ClearFlag2`, and VM-ID
+storage, consistent with the earlier `SET_ANM_SCRIPT` arm.
+
+The pinned 11-support VC7.1 SP1 `/GL /GS` selected graph was rebuilt before
+and after this rewrite from the maintained source with identical support
+objects and data-anchor bindings. The full **14,416/14,416** baseline-versus-
+revised candidate bytes are identical, not just the edited case fragments;
+all **22/22** PDB source-owned function contributions have identical hashes.
+Recompiling the installed, commented version independently confirmed the
+complete candidate body and all 22 peers. Target comparison remains NONEXACT
+in this graph: equality of two candidate images does not imply target
+identity or original source ownership. Selected exact cold replays passed
+`anm-vm-id-get-vm` (21), `anm-vm-id-clear-flag2` (67),
+`anm-vm-id-release` (21), `enemy-sound-queue-sample` (123) and
+`enemy-sound-queue-cue` (149): **381/381**, with existing canonical
+original-bound fields. No exact credit, accepted-fact or whole-game claim.
+
+Ledger repair `d9769d08` also reconciled four source mapping names and one
+out-of-order exact row; `validate-tracking.py --require-target` passes with
+1,514 exact owners unchanged. A sweep of complete ANM 9,964-byte and ECL
+7,020-byte nonexact parents rejected compiler register and x87 temporary
+variants that did not improve their current strict baselines.
+
 ## 2026-11-09 ANM VM registration and GameUI transition ABI correction
 
 `AnmRenderManagerView::AddVmVariant0 @0x004489D0` returns the nontrivial

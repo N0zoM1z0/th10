@@ -1380,26 +1380,28 @@ dispatch_create_enemy_mirrored:
     reinterpret_cast<AnmVmView *>(iVar26)->flags35C |= 4u;
     return 0;
   case ENEMY_ECL_SET_MAIN_ANM_SCRIPT:
+    // Script-selected VM IDs are unchecked in the target. Address all slots
+    // with its native modulo-32 word stride, as in SET_ANM_SCRIPT above.
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     iVar27 = (int)uVar22;
-    reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->Release();
+    reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->Release();
     {
       AnmVmIdView createdVm =
           g_EnemyManager->loadedAnmResources[value0E8]->
               CreateVmVariant2(iVar27, 5);
-      managedVmIds[iVar26] = createdVm.value;
+      *EnemyNativeWordIndex(&managedVmIds[0], iVar26) = createdVm.value;
     }
-    uVar6 = managedVmIds[iVar26];
+    uVar6 = *EnemyNativeWordIndex(&managedVmIds[0], iVar26);
     iVar11 = reinterpret_cast<int>(
-        reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->GetVm());
+        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->GetVm());
     if (iVar26 == 0) {
       visibilityExtentX = reinterpret_cast<const AnmVmView *>(iVar11)->spriteHeight * reinterpret_cast<const AnmVmView *>(iVar11)->scaleY;
       visibilityExtentY = reinterpret_cast<const AnmVmView *>(iVar11)->spriteWidth * reinterpret_cast<const AnmVmView *>(iVar11)->scaleX;
     }
     if ((*reinterpret_cast<const unsigned char *>(&flags) & 0x10) != 0) {
-      reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->ClearFlag2();
+      reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->ClearFlag2();
     }
     if (iVar26 == 0) {
       flags = flags | 0x1000;
@@ -1413,22 +1415,22 @@ dispatch_create_enemy_mirrored:
   case ENEMY_ECL_PLAY_SELECTED_ANM:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
-    reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->Release();
+    reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->Release();
     {
       AnmVmIdView createdVm =
           g_EnemyManager->loadedAnmResources[value0E8]->
               CreateVmVariant2(animationBaseScript + 5, 5);
-      managedVmIds[iVar26] = createdVm.value;
+      *EnemyNativeWordIndex(&managedVmIds[0], iVar26) = createdVm.value;
     }
     iVar27 = reinterpret_cast<int>(
-        reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->GetVm());
+        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->GetVm());
 dispatch_update_primary_anm_bounds:
     if (iVar26 == 0) {
       visibilityExtentX = reinterpret_cast<const AnmVmView *>(iVar27)->spriteHeight * reinterpret_cast<const AnmVmView *>(iVar27)->scaleY;
       visibilityExtentY = reinterpret_cast<const AnmVmView *>(iVar27)->spriteWidth * reinterpret_cast<const AnmVmView *>(iVar27)->scaleX;
     }
     if ((*reinterpret_cast<const unsigned char *>(&flags) & 0x10) != 0) {
-      reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->ClearFlag2();
+      reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->ClearFlag2();
       return 0;
     }
     break;
