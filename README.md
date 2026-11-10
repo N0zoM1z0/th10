@@ -58,7 +58,9 @@ VM helpers (`0x43E710` **203/203** in its selected two-TU graph and
 `0x449870` **217/217**). The last two were already source-present but
 were missing from the canonical accepted ledger until 2026-11-09.
 Notable larger exact owners include `ReplayManager::SaveReplay` (1,681 bytes)
-and `EndingTextVmView::Run` (1,568 bytes).
+and `EndingTextVmView::Run` (1,568 bytes), plus newly admitted
+`EndingTextVmView::LoadAnimation` (126 bytes) and
+`SoundPlayerView::LoadSoundSample` (684 bytes).
 
 The 9,964-byte ANM executor, 7,020-byte ECL interpreter, 14,416-byte
 enemy dispatcher, 2,432-byte spell HUD start and 1,344-byte replay
@@ -67,7 +69,7 @@ prove exactness in a larger LTCG caller graph. See the current handoff
 for compiler contexts and the next high-impact work.
 
 For a new agent, read [AGENTS.md](AGENTS.md), then the concise
-[NEXT_AGENT_20261109.md](docs/NEXT_AGENT_20261109.md) and
+[NEXT_AGENT_20261110.md](docs/NEXT_AGENT_20261110.md) and
 [RE_HANDOFF.md](docs/RE_HANDOFF.md), followed by the selected owner's source/ledger rows,
 and the relevant comparison lane. Use [RE_ARTIFACTS.md](docs/RE_ARTIFACTS.md)
 for private inputs, retained witnesses and restoration. Dated evidence keeps

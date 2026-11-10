@@ -1,148 +1,124 @@
 # TH10 reconstruction — current agent handoff
 
-Updated 2026-11-09, after `91bf803` (ANM exact-ledger reconciliation).
-This is the **short authoritative continuation brief**. The dated
-[2026-11-09 historical snapshot](RE_HANDOFF_HISTORY_20261109.md) holds the
-old chronological work log, superseded source hashes and rejected trials.
-Do not treat that snapshot or isolated `build/gpt-web/` binaries as current.
+**Updated 2026-11-10 after commit `558e58a`.** This is the current continuation
+brief. Read [AGENTS.md](../AGENTS.md) first. The
+[November 9 handoff history](RE_HANDOFF_HISTORY_20261109.md) and
+[November 9 quick resume](NEXT_AGENT_20261109.md) describe an earlier source
+epoch. Their exact counts and experimental images are **historical**.
 
-## First actions and truth sources
+## Resume and trust sources
 
-1. In this live TH10 worktree, inspect `git status --short --branch` and
-   `git log -8 --oneline` before touching files. The ECL squared-length
-   experiment formerly left dirty is saved in `b707b92` and explicitly
-   **NONEXACT**; handle *any new dirty work* directly, never discard it
-   unexamined. Do not push without permission.
-2. Read [AGENTS.md](../AGENTS.md), the relevant source and the corresponding
-   rows in `config/functions.csv` and `config/matches.csv`. The latter is
-   the **accepted exact** ledger; a source function's `status=exact` alone
-   does not grant acceptance. Generated [PROGRESS.md](PROGRESS.md) is the
-   count authority.
-3. The only supported executable is the original Japanese TH10 v1.00a
-   `resources/th10.exe`, 487,936 bytes, SHA-256
-   `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
-   Use pinned MSVC 7.1 SP1, the real TH10 `/GL` graphs and local scripts.
-4. Only compile/compare **selected affected units**. Never launch the
-   historical all-unit cold replay. A complete PDB/COFF function extent,
-   every original-bound field, local tables, real ABI and independent
-   source-context reproducibility are required before an exact admission.
+At this checkpoint `main` was **clean, 37 commits ahead of `origin/main`**.
+Newest commit: `558e58a gpt-web: Recover exact 126-byte Ending animation loader`.
+Start with `git status --short --branch` and `git log -8 --oneline`;
+inspect and continue any new dirty/untracked work rather than discarding it.
+Local commits have **not** been pushed.
 
-Suggested first commands:
+The only target is the Japanese TH10 v1.00a executable at `resources/th10.exe`,
+487,936 bytes, SHA-256
+`2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
+Use pinned VC7.1 SP1 and the source-specific /GL graph. Git does not carry
+the ignored target, private toolchain, Ghidra project, reference checkout,
+native witness images or historical archives. Read [RE_ARTIFACTS.md](RE_ARTIFACTS.md)
+if transferring machines.
 
-    git status --short --branch
-    git log -8 --oneline
-    scripts/repo-python scripts/verify-target.py
-    scripts/repo-python scripts/verify-toolchain.py --check
-    scripts/repo-python scripts/ci.py
+The authority for accepted exactness is `config/matches.csv`; generated
+[PROGRESS.md](PROGRESS.md) is the count authority. A `functions.csv` status,
+local PDB similarity or candidate-only relocation normalization is insufficient.
+A new exact owner needs the complete target function extent, all original-bound
+addresses/local destinations, correct compiler graph and reproducible selected
+cold links. **Never run the historical full all-unit cold replay.**
+Prefer `scripts/repo-python scripts/replay-exact-units.py --unit UNIT --json`
+for affected source and its known exact consumers. Run lightweight CI only at
+a source/metadata checkpoint. No compile/replay is necessary for docs-only edits.
 
-No compile, Ghidra session, receipt refresh or cold replay is needed for
-ordinary documentation-only edits.
+## Canonical checkpoint
 
-## Accepted exact progress
+At `558e58a`, `matches.csv` and `PROGRESS.md` agree:
 
-As of `91bf803`, canonical `config/matches.csv` and regenerated
-`docs/PROGRESS.md` agree: **1,510 exact functions / 198,606 exact
-bytes**, of which **599 authored-origin functions / 128,399 bytes**.
-These are ledger counts, not a rebuilt runnable TH10 executable.
+| Metric | Current |
+| --- | ---: |
+| Exact functions | **1,514** |
+| Exact codegen bytes | **199,496** |
+| Authored-origin exact functions | **601** |
+| Authored-origin exact bytes | **129,209** |
+| Authored source-present nonexact backlog | **149** |
 
-Useful current-source exact functions:
+The old `91bf803` handoff was **1,510 / 198,606**. Four subsequent admitted
+owners added **890 bytes** (two authored, two origin-indeterminate):
 
-| Target | Complete extent | Selected proof / important scope |
+| Target | Exact size | Unit and evidence |
 | --- | ---: | --- |
-| `0x00446C70` ANM LoadTexture | **243/243** | `anm-resource-load-texture`; 8 bound fields |
-| `0x00446D70` ANM LoadTextureRegion | **320/320** | `anm-resource-load-texture-region`; 8 bound fields |
-| `0x0041C480` enemy laser update callback | **91/91** | `enemy-laser-update-callback-bitfield`; native flags, 6 fields |
-| `0x0043E710` loaded-script start | **203/203** | `anm-loaded-start-script-wave11`; selected **two-TU only**, 4 fields |
-| `0x00449870` loaded VM initializer | **217/217** | `anm-loaded-initialize-vm`; 1 field |
-| `0x00401DE0` VM fastcall initializer | **273/273 raw** | `anm-vm-initialize-private` |
-| `0x00447AE0` DrawTextRight | **204/204** | `anm-text-right-gs` |
+| Ending LoadAnimation `0x0040C3C0` | **126/126** | `ending-text-load-animation`; 7 target-bound fields; [proof](evidence/ending-loadanimation-126-exact-20261110/README.md) |
+| Sound LoadSoundSample `0x0043D390` | **684/684** | `sound-player-load-sound-sample`; 25 fields; [proof](evidence/sound-sample-exact-20261109/README.md) |
+| MergeDirectButton `0x0044A130` | **37/37** | `input-merge-direct-button-0044a130`; origin indeterminate |
+| MergeWinMmButton `0x0044A160` | **43/43** | `input-merge-winmm-button-0044a160`; origin/private ABI provisional |
 
-The `0x0043E710` and `0x00449870` rows were previously marked exact in
-`functions.csv` but omitted from `matches.csv`. Both have **two fresh,
-complete selected-only links** and are now formally admitted; see
-[reconciliation evidence](evidence/anm-handoff-ledger-reconciliation-20261109/README.md).
+Ending needed two natural C++ fixes: obtain the auxiliary VM ID **after**
+resource publication to emit the in-place flags AND, then directly read the
+serialized script DWORD so VC7.1 selects target ECX/ADD. The old 131-byte
+loader first became 126 bytes with 3 differences, then **126/126**.
+Two independent selected source cold replays passed all seven address fields.
+EndingTextVmView::Run remains **1568/1568** and its 18-byte callback exact.
+Do not repeat the historical 123/126 frontier as current.
 
-The ANM texture upload pair shares an inlined typed THTX accessor; its three
-previously exact texture creators remain **132/132, 264/264 and 41/41**
-in the same graph (five distinct owners, 1,000 bytes total). Laser draw
-callback **46/46** and laser point accumulator **54/54** remain exact in
-their affected source graph. Earlier large exact examples include
-ReplayManager::SaveReplay **1681/1681** and EndingTextVmView::Run
-**1568/1568**. See [ANM texture](evidence/anm-texture-load-exact-20261109/README.md),
-[laser update](evidence/enemy-laser-update-bitfields-20261109/README.md),
-and the selected function ledger.
+Sound's 684-byte match required the natural FindWaveChunk argument order
+`(data, chunkSize, remaining, tag)` in the WinMain /GL graph. Its 71-byte
+scanner and 57-byte setup thread also remain exact.
 
-## Important nonexact large owners — do not substitute leaf work
+Earlier accepted representatives: ANM LoadTexture **243/243**, LoadTextureRegion
+**320/320**, loaded-script start **203/203 at 0x43E710** (selected two-TU
+context only), loaded VM InitializeVm **217/217**, enemy laser update callback
+**91/91**, ReplayManager::SaveReplay **1681/1681**. Do not double-count these.
 
-The figures below are bounded **last observed** linked-source contexts.
-They are not current full-product validation, and changing the LTCG graph
-may change both size and register scheduling.
+## High-value nonexact owners
 
-| Target / source | Latest supported candidate | Main blocker / next action |
+These are *selected current-source comparisons*, not proof of a runnable game.
+Changing a LTCG graph can change both registers and function extent.
+
+| Owner / maintained source | Candidate | Remaining issue |
 | --- | --- | --- |
-| ANM `ExecuteScript @0x0043EE30` — `src/AnmManager.cpp` | 9,964/9,964, **9962/9964** with 350 bound target fields | Opcode 91's `renderLayer` uses ECX in candidate vs EDX retail at offsets `+0x113,+0x115`. Test a new *compiler-liveness* hypothesis, not another already-failed inline/volatile/aggregate/bitfield alias |
-| ECL `Run @0x0044E1A0` — `src/EclVm.cpp` | 7,020/7,020, **6997/7020**, 189 fields | 23 differences: early integer stack/receiver registers, x87 length/point-angle, FORMAT stack homes `+0x14/+0x18`. The saved output-pointer-order change is **not** byte progress |
-| Spell HUD `StartSpell @0x00409280` — `src/PlayerHudStartSpell.cpp` | 2,252/2,432, **322/1920 ordinary**, 83 *candidate-only* relocation fields | Seven-stage logic present, but ABI and LTCG TU partition unresolved. Genuine name draw calls exact `DrawTextRight @0x447AE0`; fabricated `FormatRightAligned` facade removed |
-| Enemy ECL dispatcher — `src/EnemyEclDispatcher.cpp` | ~14,352/14,416 in a historical selected graph, **NONEXACT** | Opcode/instruction views and private registers; recheck current source epoch before relying on any score |
-| Player update callback body `0x00425730` — `src/Player.cpp` | historical 3108/3112, **NONEXACT** | state machine call context and register allocation |
-| GameManager update body `0x00418190` — `src/GameManager.cpp` | historical 1538/1544, **NONEXACT** | `EnemyManager+0x10` is now typed `specialEnemySlots[0]`, **not** active-enemy count |
+| ANM ExecuteScript `0x43EE30`, `src/AnmManager.cpp` | **9962/9964**, 350 original fields | Opcode91 renderLayer target EDX vs candidate ECX at +0x113/+0x115. Aggregate, volatile, expression and parameter-order controls have repeatedly been neutral or regressed. |
+| ECL Run `0x44E1A0`, `src/EclVm.cpp` | **6997/7020**, 189 fields | 23 byte differences: early stack addressing, x87 length/point-angle homes, FORMAT cursor/scratch/argument slots. Use full Run diagnostic, not 146-byte host entry as a substitute. |
+| Bullet UpdateAbsoluteDirectionChange `0x4078E0` | **333/335**, 8 fields | EDX target vs EAX candidate at +0xD7/+0xDD. Speed/timer/alias/union/angle-lifetime trials failed. |
+| Sound PreloadBgm `0x43D7D0` | **365/369**, 10 fields | Four local register bytes around ReadFile; local/output/reordered wrapper variants failed. |
+| Memory-file Seek `0x4364F0` | **100/107**, zero fields | Register selection and FILE_END/FILE_CURRENT success-tail sharing. 14 early-return and other operand-order trials failed. |
+| ECL AddScriptData `0x450220` | **510/589**, 2 CRT calls | Old table-count lifetime and register schedule; typed DWORD index fixes are not new byte credit. |
+| Statistics factory `0x42AF20` | 98-byte candidate / 97 target | Extra push into private constructor; void/placement-new variants failed; constructor also 137/132. |
+| Bullet SpawnSingleBullet `0x4067D0` | 1504-byte candidate / 1413 target | Incomplete private ABI/large source graph; 194-byte SpawnBulletPattern parent exact. |
+| Spell HUD StartSpell `0x409280` | 2252 / 2432 target | Seven-stage state machine; selected two-TU leaf exact does not mean larger graph exact. |
+| Enemy dispatcher / Player update / GameManager update | historical 14352/14416, 3108/3112, 1538/1544 | Rebuild the current graph before trusting old scores. |
 
-**Critical source-context trap:** `LoadScript_0043E710` is exact at 203
-bytes in its **selected two-TU graph**, but emitted **216 bytes** in a
-larger seven-TU spell-HUD diagnostic. Likewise a 202-byte script starter
-`0x00404F30` with ordinary bytes matching under candidate-only fields is
-**not formally accepted**. Never promote these candidate findings to a
-whole `StartSpell` exact claim.
+Other current near-matches: Text InvertAlpha **112/157** zero fields; ANM
+SetAndExecuteScriptIdx **249/271 ordinary** in a 287-byte candidate.
+Recent source changes in Bullet/ECL/FileSystem/Statistics/Text/Transition
+principally repaired i386 integer semantics while preserving exact guards;
+they did **not** increase canonical counts.
 
-Focused ANM baseline is retained under
-`.analysis/gpt-web/20261109/anm-child91-natural-aliases.py`.
-ECL source-epoch diagnostic:
-`.analysis/gpt-web/20261109/ecl-run-handoff-dirty-source.json`,
-with target/byte rationale in
-[ECL squared-length note](evidence/ecl-run-length-squared-20261109/README.md).
-Spell HUD focused driver:
-`.analysis/gpt-web/20261109/relink-playerhud-restored-natural-loader.py`;
-read [spell-HUD evidence](evidence/player-hud-start-spell-20261109/README.md).
+## Next useful experiments and checks
 
-## Focused experiment loop and useful leads
+1. Choose a complete **boss and/or leaf** with a specific offset-level
+   prediction; inspect current source, `config/functions.csv`, original
+   disassembly, match unit and relevant `_reference/th10-decomp` hypothesis.
+   Never treat the reference project or a previous assumption as target truth.
+2. Try a *few* natural C/C++ expressions, keeping source variants, scripts,
+   MAP/log/JSON receipts under ignored `.analysis/gpt-web/` and scratch
+   compiler outputs under `build/gpt-web/`. Avoid redoing known neutral sweeps.
+3. Install a promising variant, replay **only affected exact units** and
+   original-bound complete nonexact parents. New acceptance needs independently
+   confirmed exact source-linked builds. Commit real progress as
+   `gpt-web: ...` with AGENTS.md's author/trailer. Never push unrequested.
+4. Wine/link.exe occasionally emits LNK1104 or a page-fault message against
+   different support objects. A failed link is **not** a byte mismatch and
+   supplies **no** exactness receipt. Retry an isolated selected unit serially.
 
-Use `scripts/repo-python scripts/build-match-unit.py --unit NAME`,
-then `scripts/repo-python scripts/compare-linked-function.py --unit NAME
---json`. For the nonexact ECL owner use
-`scripts/diagnose-ecl-run-native.py --unit ecl-vm-host-run`; a nonzero
-exit is expected because the **complete owner remains nonexact**.
-Selected-unit rebuilds, not full replay, are enough for a new experiment.
+Useful focused private drivers (not Git-tracked):
+`.analysis/gpt-web/20261110-ending-script-index-expression.py`;
+`.analysis/gpt-web/20261110-anm-child91-aggregate-initializers.py`;
+`.analysis/gpt-web/20261110-ecl-format-cursor-allocation-schedule.py`;
+`.analysis/gpt-web/20261110-bullet-absolute-speed-liveness.py`;
+`.analysis/gpt-web/20261110-seek-tail-control-flow-trials.py`.
 
-Avoid repeating proven byte-neutral variants: ECL pointer-first and swapped
-square expressions stayed **6997/7020**; ANM child-91 bitfield/record
-accessors stayed **9962/9964** (some variants regressed or moved the
-350-field geometry). Memory-file Seek `0x4364F0` remains **100/107**
-under a pinned normal-COFF candidate; reference-repo natural goto layouts
-regressed. Laser `0x41C480` is **already exact** and needs no new leaf
-credit.
-
-The `_reference/th10-decomp` tree is a source of hypotheses, **not**
-authoritative layout, ABI, source partition, or executable bytes. Prefer
-retail instructions and current native comparisons; retain failed source
-variants in ignored `.analysis/` when they materially explain the next
-attempt.
-
-## Artifacts and delivery
-
-Tracked `docs/evidence/` receipts and the original Git history travel
-with a clone. The **ignored** original executable, `.tools/` compiler,
-`ghidra-project/`, `_reference/`, historical `.analysis/archive/`,
-private scratch drivers and canonical `build/match-linked/` **do not**
-travel with Git; transfer them separately if the new agent uses another
-machine. The latest audited ignored-artifact cleanup reclaimed **71.18 MiB**
-of allocation by removing 1,090 rebuildable trial PE/OBJ/PDB and
-Python-bytecode files. Disk pruning, retained witness roots and
-private audit locations are documented in
-[RE_ARTIFACTS.md](RE_ARTIFACTS.md). Keep useful MAP/log/JSON results,
-selected native witness graphs and the canonical match graph.
-
-Commit meaningful verified work in English as `gpt-web: ...`, using
-the author/trailer specified in `AGENTS.md`; **never push** without an
-explicit request. For historical detailed hypotheses see
-[2026-11-09 archived handoff](RE_HANDOFF_HISTORY_20261109.md),
-[KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) and individual evidence pages.
+Read [RE_ARTIFACTS.md](RE_ARTIFACTS.md) for protected witnesses and the
+latest deletion audit; read the [historical handoff](RE_HANDOFF_HISTORY_20261109.md)
+only when its older experiments directly inform the next test.

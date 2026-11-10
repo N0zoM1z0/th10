@@ -1,3 +1,5 @@
+> Historical snapshot (2026-11-09). Its 1,510 / 198,606 checkpoint is superseded by [NEXT_AGENT_20261110.md](NEXT_AGENT_20261110.md) and [RE_HANDOFF.md](RE_HANDOFF.md).
+
 # TH10 next-agent quick resume — 2026-11-09
 
 Use [RE_HANDOFF.md](RE_HANDOFF.md) for the authoritative detailed brief.
