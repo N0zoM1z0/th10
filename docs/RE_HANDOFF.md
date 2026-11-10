@@ -119,6 +119,10 @@ Useful focused private drivers (not Git-tracked):
 `.analysis/gpt-web/20261110-bullet-absolute-speed-liveness.py`;
 `.analysis/gpt-web/20261110-seek-tail-control-flow-trials.py`.
 
-The November 10 bounded cleanup reclaimed **173.67 MiB** from 2,973 ignored, rebuildable native trial outputs; protected witnesses and all canonical/private inputs survived. Read [RE_ARTIFACTS.md](RE_ARTIFACTS.md) for protected witnesses and the
-latest deletion audit; read the [historical handoff](RE_HANDOFF_HISTORY_20261109.md)
-only when its older experiments directly inform the next test.
+The latest November 10 storage pass removed obsolete trial MAP/log/RSP files
+and repacked Git without losing objects or history, releasing about **569 MiB**
+including Python caches. Source snapshots, JSON results, native witnesses,
+canonical graphs and private inputs remain. [RE_ARTIFACTS.md](RE_ARTIFACTS.md)
+records current storage and recovery; its earlier cleanup figures are historical.
+Read the [historical handoff](RE_HANDOFF_HISTORY_20261109.md) only when its older
+experiments directly inform the next test.
