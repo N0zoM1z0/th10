@@ -1,13 +1,70 @@
 # TH10 ignored artifacts — live next-agent storage and recovery
 
-**Latest measured private-artifact checkpoint: 2026-11-09, after the
-handoff cleanup.** Only verified, ignored, regenerable trial
-`.obj/.exe/.pdb` and Python bytecode files were removed. Current allocations,
-retained witness roots, and the exact audit path appear below. The earlier
-2026-11-09, 2026-11-08 and 2026-11-07 measurements are deliberately retained
-as **historical**, not presented as current storage. See
-[RE_HANDOFF.md](RE_HANDOFF.md) for the live nonexact frontiers and
-[PROGRESS.md](PROGRESS.md) for canonical exact counts.
+**Latest measured cleanup: 2026-11-10, after exact commit `558e58a`.**
+This section supersedes the November 9/8/7 allocation tables lower on
+this page, which are retained only for their historical audit provenance.
+See [RE_HANDOFF.md](RE_HANDOFF.md) and generated [PROGRESS.md](PROGRESS.md)
+for *current* codegen results.
+
+## Latest 2026-11-10 selective native-output cleanup
+
+Deleted **2,973 ignored, regenerable trial files** under the three dated
+`build/gpt-web/20261109-live/`, `build/gpt-web/20261109/` and
+`build/gpt-web/20261110/` trees: **1,977 OBJ, 498 EXE, 498 PDB**.
+Total payload: **178,552,229 bytes (170.28 MiB)**. Actual allocated-space
+reclamation measured with `du -s -B1`:
+**182,104,064 bytes (173.67 MiB)**.
+
+| Path | Before allocated bytes | After allocated bytes | Disposition |
+| --- | ---: | ---: | --- |
+| `build/gpt-web/` | 556,949,504 | **374,845,440** | Rejected/rebuildable native outputs pruned, source/MAP/JSON/logs retained |
+| `build/match-linked/` | 139,427,840 | 139,427,840 | **Entire canonical native graph preserved** |
+| `.analysis/gpt-web/` | 182,616,064 | 182,616,064 | Private experiment drivers/source snapshots/results preserved |
+| `.analysis/archive/` | 216,694,784 | 216,694,784 | Historical archives preserved |
+| `.tools/` | 611,442,688 | 611,442,688 | Pinned compiler and Wine inputs preserved |
+| `_reference/` | 45,891,584 | 45,891,584 | TH10 reference checkout preserved |
+| `ghidra-project/` | 10,088,448 | 10,088,448 | Analyzer database preserved |
+
+Before deleting, every file was checked against Git's ignored-file
+inventory and the tracked-file list. Root-level input objects and nested
+`installed-cold` / `accepted-exact` / `canonical-cold` contexts were
+excluded. All existing 13 earlier retained witness roots (listed below)
+remain intact. **47** native files in eight additionally protected
+source-epoch contexts were individually SHA-256-verified before and after:
+
+- `build/gpt-web/20261110/ending-script-index/direct-member/` —
+  newly exact **126-byte Ending LoadAnimation** original-bound witness
+- `build/gpt-web/20261110/ending-loadanimation-lifetimes/late-pointer/` —
+  preceding **123/126** stage of the same recovery
+- `build/gpt-web/20261109-live/sound-sample-signature/out-before-span/` —
+  exact **684-byte Sound LoadSoundSample** compiler witness
+- `build/gpt-web/20261109/anm-execute-child91-aggregate/` —
+  complete **9,964-byte ANM** nonexact parent baseline
+- `build/gpt-web/20261109/anm-child91-natural-aliases/baseline/`,
+  `build/gpt-web/20261109/ecl-run-length-pointer-order/pointer-y-first/`,
+  `build/gpt-web/20261109/laser-callback-new/baseline/` and
+  `build/gpt-web/20261109/playerhud-restored-natural-loader/` —
+  prior handoff's selected larger-context witnesses
+
+The target `resources/th10.exe` SHA-256 stayed
+`2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`;
+the original EXE, Ghidra, toolchain, references and historical archives were
+**not modified**.
+
+Private cleanup audit, intentionally ignored and **not included in Git**:
+
+- `.analysis/maintenance-handoff-20261110/removed-native.jsonl`:
+  per-deleted-file relative path, size, SHA-256 and rebuild note.
+  Manifest SHA-256:
+  `e309d1689a3e722e635387d19af4f3e9bdff268491dc3a70525d2bbb4af1b5be`.
+- `.analysis/maintenance-handoff-20261110/cleanup-summary.json`:
+  counts, protected witness list, before/after disk allocation and hashes.
+
+**The manifest is an audit, not a backup of the deleted binaries.** Regenerate
+a removed experimental image using its retained source snapshot, trial
+script, MAP and pinned compiler; do not treat any older compiled PE/PDB as
+current source. Transfer the private audit and protected native witnesses
+separately if the next agent uses another machine.
 
 ## Preserve for the new agent
 
@@ -28,9 +85,9 @@ SHA-256 and VC7.1 profile. Never mix an old PE/PDB with newer source
 hashes, and **never delete the original EXE, private toolchain, canonical
 match-linked graph, Ghidra DB, reference tree or historical archives**.
 
-## Current 2026-11-09 handoff cleanup (verified)
+## Historical 2026-11-09 handoff cleanup (verified; superseded)
 
-This is the latest measurement and supersedes all snapshots below.
+This older measurement is superseded by the November 10 checkpoint above.
 The cleanup removed **1,090** ignored, regenerable files
 containing **73,334,711 payload bytes
 (69.94 MiB)**. By extension:
@@ -42,7 +99,7 @@ The three experiment allocation trees (`build/gpt-web`,
 measured with `du -s -B1` before/after; Python caches elsewhere also
 had their payload removed.
 
-| Path | Current allocated bytes (du -s -B1) | MiB | Disposition |
+| Path | Allocated bytes at the November 9 checkpoint | MiB | Disposition |
 | --- | ---: | ---: | --- |
 | `build/gpt-web/` | 325,505,024 | 310.43 | Rejected trial PE/OBJ/PDB outputs pruned; logs, MAP, source snapshots and selected witnesses kept |
 | `build/probe-ltcg/` | 708,608 | 0.68 | Regenerable native probe files pruned |

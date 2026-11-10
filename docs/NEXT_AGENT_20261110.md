@@ -30,7 +30,7 @@ before code changes; [November 9 quick resume](NEXT_AGENT_20261109.md) is a
   source edits need whole-owner original-bound comparison.
 - Wine/LTCG can sporadically fail to open an OBJ after a page fault;
   this is a failed build, not a mismatch. Retry the selected unit.
-- Private inputs and snapshots are ignored by Git. For preservation,
+- Bounded November 10 storage prune reclaimed **173.67 MiB** by removing 2,973 ignored native trial binaries; source snapshots, the exact Ending and Sound witnesses, all canonical graph files, Ghidra, toolchain and archives remain.\n- Private inputs and snapshots are ignored by Git. For preservation,
   cleanup and transfer use [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 Make meaningful `gpt-web: ...` commits, preferably several for distinct
