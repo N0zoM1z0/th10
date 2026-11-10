@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""Check changed machine inputs; exact comparisons are selected by affected scope."""
-from pathlib import Path
+"""Check changed input syntax and whitespace with Python's standard library."""
+
+import argparse
 import ast
+import csv
 import json
 import os
+from pathlib import Path
 import subprocess
 import sys
 import tomllib
@@ -11,40 +14,73 @@ import tomllib
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def main():
-    if sys.argv[1:] in (["--help"], ["-h"]):
-        print("usage: ci.py [--full | existing explicit check options]\nDefault: changed machine-input syntax and diff checks. Run affected exact/tool commands for the task.")
-        return 0
-    if len(sys.argv) > 1:
-        arguments = sys.argv[1:]
-        if not any(flag in arguments for flag in ('--full', '--only')):
-            print("Unknown CI option; use no arguments for scoped checks or --full for the broad suite.", file=sys.stderr)
-            return 2
-        arguments = [arg for arg in arguments if arg != "--full"]
-        return subprocess.call([sys.executable, str(ROOT / "scripts/ci-full.py"), *arguments], cwd=ROOT)
-    names = set()
-    for command in (["git", "diff", "HEAD", "--name-only", "-z"],
-                    ["git", "ls-files", "--others", "--exclude-standard", "-z"]):
-        names.update(n for n in subprocess.check_output(command, cwd=ROOT).decode().split("\0") if n)
-    if os.environ.get("CI"):
-        # Clean CI checkouts have no worktree diff. Inspect the commit being checked.
-        names.update(n for n in subprocess.check_output(
-            ["git", "show", "--format=", "--first-parent", "--name-only", "-z", "HEAD"],
-            cwd=ROOT).decode().split("\0") if n)
-    for name in sorted(names):
-        path = ROOT / name
-        if not path.is_file() or path.is_symlink():
-            continue
-        if path.suffix == ".py":
-            ast.parse(path.read_text(), filename=name)
-        elif path.suffix == ".json":
-            json.loads(path.read_text())
-        elif path.suffix == ".toml":
-            tomllib.loads(path.read_text())
-        elif path.suffix == ".sh":
-            subprocess.run(["bash", "-n", str(path)], check=True)
-    subprocess.run(["git", "diff", "--check"], cwd=ROOT, check=True)
-    print("Changed machine inputs checked. Use affected exact/tool checks; --full explicitly selects the broad suite.")
+def check_file(path: Path) -> bool:
+    if path.suffix == ".py":
+        ast.parse(path.read_bytes(), filename=str(path.relative_to(ROOT)))
+    elif path.suffix == ".json":
+        json.loads(path.read_bytes())
+    elif path.suffix == ".toml":
+        with path.open("rb") as stream:
+            tomllib.load(stream)
+    elif path.suffix == ".csv":
+        with path.open(encoding="utf-8", newline="") as stream:
+            rows = csv.reader(stream, strict=True)
+            width = len(next(rows, []))
+            for row in rows:
+                if row and len(row) != width:
+                    raise ValueError(f"CSV line {rows.line_num}: expected {width} columns, got {len(row)}")
+    elif path.suffix in ("", ".sh"):
+        with path.open("rb") as stream:
+            shebang = stream.readline()
+        if path.suffix != ".sh" and shebang.strip() not in (
+            b"#!/bin/bash", b"#!/usr/bin/env bash", b"#!/bin/sh", b"#!/usr/bin/env sh"
+        ):
+            return False
+        shell = "sh" if shebang.strip() in (b"#!/bin/sh", b"#!/usr/bin/env sh") else "bash"
+        subprocess.run([shell, "-n", str(path)], check=True)
+    else:
+        return False
+    return True
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--base", metavar="REV", help="also check changes from REV to the current checkout (for CI)")
+    args = parser.parse_args()
+    try:
+        base = args.base or "HEAD"
+        if args.base and set(args.base) == {"0"}:
+            # GitHub uses an all-zero before SHA for the first push of a branch.
+            base = subprocess.check_output(
+                ["git", "hash-object", "-t", "tree", "--stdin"], input=b"", cwd=ROOT
+            ).decode().strip()
+        names = set()
+        for command in (
+            ["git", "diff", "--name-only", "--diff-filter=ACMR", "-z", base, "--"],
+            ["git", "ls-files", "--others", "--exclude-standard", "-z"],
+        ):
+            names.update(os.fsdecode(name) for name in subprocess.check_output(command, cwd=ROOT).split(b"\0") if name)
+        checked = 0
+        for name in sorted(names):
+            path = ROOT / name
+            if not path.is_file() or path.is_symlink():
+                continue
+            try:
+                checked += check_file(path)
+            except (OSError, UnicodeError, SyntaxError, ValueError, csv.Error) as error:
+                print(f"error: {name}: {error}", file=sys.stderr)
+                return 1
+        # Check each local layer so unstaged edits cannot hide a staged error.
+        for command in (
+            ["git", "diff", "--check"],
+            ["git", "diff", "--cached", "--check"],
+            ["git", "diff", "--check", base, "--"],
+        ):
+            subprocess.run(command, cwd=ROOT, check=True)
+    except (OSError, subprocess.CalledProcessError) as error:
+        print(f"error: basic checks failed: {error}", file=sys.stderr)
+        return 1
+    print(f"Basic checks passed ({checked} changed machine-input files; whitespace OK).")
     return 0
 
 

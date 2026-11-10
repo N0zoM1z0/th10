@@ -85,11 +85,12 @@ scripts/repo-python scripts/verify-toolchain.py --check
 scripts/repo-python scripts/ci.py
 ```
 
-Default CI checks changed machine-input syntax and whitespace. Regenerate progress with
+Default CI checks changed Python/JSON/TOML/CSV/Shell syntax and whitespace,
+including staged changes. It uses only Python 3.11+ and Git. Regenerate progress with
 `scripts/repo-python scripts/progress.py` when ledger inputs change. Historical
 host fixtures, failure/lifecycle simulations, sanitizer sweeps and mutation
 reports are not current gates. Comparator self-tests are selected explicitly
-with `ci.py --only 'STAGE'` when the affected mechanism changes.
+by running the affected `scripts/test-*.py` directly when that mechanism changes.
 
 Exact work compares complete native owners, every relocation/resolved field,
 fixed local destinations, actual ABI and required callee bindings. Select only

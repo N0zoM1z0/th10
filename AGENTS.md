@@ -161,8 +161,9 @@ obsolete document links; Git keeps the history of tracked files.
 For source changes, finish with the affected native exact comparison. For
 metadata/docs/test-only changes, do not rebuild game code. Run the lightweight
 `scripts/repo-python scripts/ci.py` and `git diff --check`. The default checks
-syntax of changed machine-readable inputs and whitespace. Select affected Oracle
-self-tests explicitly with `--only` when changing comparison infrastructure.
+syntax of changed machine-readable inputs and whitespace. Run affected Oracle
+self-test scripts directly when changing comparison infrastructure; CI does not
+run native builds, replay owners, or audit historical ledgers/documentation.
 Regenerate progress only when its ledger inputs change.
 
 Keep scratch/logs below `.analysis/`, builds below `build/`, shared-tool links

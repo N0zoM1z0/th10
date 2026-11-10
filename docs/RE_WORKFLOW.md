@@ -56,14 +56,17 @@ requirements. Preserve actual target error/cleanup branches in the source and
 byte comparison. Use a small directed probe only if a specific exact mismatch
 needs it, then return to the complete comparison.
 
-`scripts/repo-python scripts/ci.py` runs seven lightweight repository checks:
-Python syntax, doc references, ledgers, toolchain declarations, canonical match
-graph, generated progress and whitespace. It runs no host C++ fixtures or
-compiler/linker jobs. If comparison infrastructure changes, explicitly select
-its relevant self-test, for example:
+`scripts/repo-python scripts/ci.py` checks changed Python, JSON, TOML, CSV and
+Shell syntax plus working-tree and staged whitespace. Markdown-only work gets
+whitespace checks. It needs no private target, Wine, compiler or extra packages.
+GitHub passes `--base REV` to include the complete push or pull-request diff;
+ordinary local work needs no arguments. CI does not rebuild or replay game code,
+validate historical ledgers, or require document/source-pin refreshes.
+
+Run an affected comparator self-test directly when its mechanism changes:
 
 ```sh
-scripts/repo-python scripts/ci.py --only 'Validate internal linked destinations'
+scripts/repo-python scripts/test-linked-local-fields.py
 ```
 
 The retained Oracle self-tests protect byte/field/owner acceptance, including
