@@ -90,7 +90,9 @@ static int __fastcall TransitionFadeIn(void *argument)
     }
     // Target is 32-bit wrapping addition. Unsigned addition avoids C++ signed
     // overflow; the cast follows the target compiler's two's-complement model.
-    const int end = static_cast<int>(static_cast<unsigned int>(effect->frames) + 2u);
+    const unsigned int endBits =
+        static_cast<unsigned int>(effect->frames) + 2u;
+    const int end = *reinterpret_cast<const int *>(&endBits);
     if (effect->timer.current >= end)
         return 7;
     ResultGameManagerView *game = g_ResultGameManager;
