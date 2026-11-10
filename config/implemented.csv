@@ -129,7 +129,7 @@ EnemyEclResourceBaseView::EnemyEclResourceBaseView
 EnemyEclResourceBaseView::~EnemyEclResourceBaseView
 AnmVmView::~AnmVmView
 AnmVmView::AnmVmView
-AnmVmView::Initialize
+AnmVmInitialize
 AnmMatrixView::SetIdentity
 AnmVmTimerView::Initialize
 AsciiManagerView::AsciiManagerView
@@ -224,7 +224,7 @@ AnmRenderManagerView::AddVmVariant3
 AnmRenderManagerView::FindVm
 AnmRenderManagerView::AllocateVm
 AnmLoadedView::SetAndExecuteScriptIndex
-AnmLoadedView::InitializeAndExecuteScriptIndex
+LoadScript_0043e710
 AnmLoadedView::CreateVmAtScreenVariant0
 AnmLoadedView::CreateVmAtWorldVariant0
 AnmLoadedView::CreateVmAtScreenVariant2
@@ -415,7 +415,7 @@ CSound::Unpause
 AnmVmTimerView::SetCurrent
 BulletRuntimeView::AdvanceTransformProgram
 EnemyCancelBulletRecord
-AnmVmView::InitializeForLoadedScript
+EntityStartScript_00404f30
 BulletManagerView::SpawnSingleBullet
 BulletManagerView::SpawnBulletPattern
 BulletRuntimeView::Deactivate
@@ -861,7 +861,7 @@ th10::leaf::Fn00449A30
 th10::leaf::Fn0044C640
 th10::leaf::Fn0044C660
 th10::leaf::Fn0044C6D0
-EnemyBeginSpell
+EnemyGameStateView::StartSpell
 ItemManagerRegisterCallbacks
 ItemManagerUpdateBody
 ItemManagerView::Draw

@@ -148,7 +148,7 @@ th10::leaf::Fn0040CC30,0x0040CC30,function
 th10::leaf::Fn0040CC40,0x0040CC40,function
 AnmVmView::~AnmVmView,0x00401FF0,function
 AnmVmView::AnmVmView,0x00402050,function
-AnmVmView::Initialize,0x00401DE0,function
+AnmVmInitialize,0x00401DE0,function
 AnmMatrixView::SetIdentity,0x00401F00,function
 AnmVmTimerView::Initialize,0x00401F40,function
 AsciiManagerView::AsciiManagerView,0x00401000,function
@@ -248,7 +248,7 @@ AnmRenderManagerView::~AnmRenderManagerView,0x00446220,function
 AnmRenderManagerView::FindVm,0x004491C0,function
 AnmRenderManagerView::AllocateVm,0x00449950,function
 AnmLoadedView::SetAndExecuteScriptIndex,0x0043E7E0,function
-AnmLoadedView::InitializeAndExecuteScriptIndex,0x0043E710,function
+LoadScript_0043e710,0x0043E710,function
 AnmLoadedView::CreateVmAtScreenVariant0,0x00448D50,function
 AnmLoadedView::CreateVmAtWorldVariant0,0x00448DB0,function
 AnmLoadedView::CreateVmAtScreenVariant2,0x00448E80,function
@@ -425,7 +425,7 @@ CSound::Unpause,0x0044D5D0,function
 AnmVmTimerView::SetCurrent,0x00405410,function
 BulletRuntimeView::AdvanceTransformProgram,0x00406D90,function
 EnemyCancelBulletRecord,0x00408030,function
-AnmVmView::InitializeForLoadedScript,0x00404F30,function
+EntityStartScript_00404f30,0x00404F30,function
 BulletManagerView::SpawnSingleBullet,0x004067D0,function
 BulletManagerView::SpawnBulletPattern,0x004073E0,function
 BulletRuntimeView::Deactivate,0x00405BE0,function
@@ -867,7 +867,7 @@ th10::leaf::Fn00449A30,0x00449A30,function
 th10::leaf::Fn0044C640,0x0044C640,function
 th10::leaf::Fn0044C660,0x0044C660,function
 th10::leaf::Fn0044C6D0,0x0044C6D0,function
-EnemyBeginSpell,0x00409280,function
+EnemyGameStateView::StartSpell,0x00409280,function
 ItemManagerRegisterCallbacks,0x0041AD90,function
 ItemManagerUpdateBody,0x0041AFD0,function
 ItemManagerView::Draw,0x0041B8E0,function
