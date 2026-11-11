@@ -43,6 +43,34 @@ fields), `result-menu-update-callback-00422a90` (**10/10**, one field), and
 `anm-request-capture-rectangle` (**162/162**, six fields) all pass. These
 selected controls validate preservation, not the nonexact parent.
 
+## 2026-11-11 Result-menu replay-file release loop ownership
+
+In `ResultMenuUpdateResult @0x004236F0`, state-10 cancellation releases
+25 replay-file objects and clears their slots. The maintained loop used
+`replayFiles[slot]` with a positive array index. A source-equivalent,
+owner-local pointer induction with an explicit countdown gives the native
+compiler a closer model of the original destructor/clear path:
+`ReplayManager **output = menu->replayFiles; for (int remaining = 25;
+remaining > 0; --remaining)` with one cached `ReplayManager *file` and
+`*output++ = NULL` after deletion. The loop still examines and clears all
+25 slots, without adding null guards or changing cleanup side effects.
+
+Under identical genuine `/GL /GS /EHs` FrontEnd + VmIdInterrupt +
+EnemyEclDispatcher WPO inputs, the complete PDB-owned parent remains
+**3,220 versus original 3,227 bytes**, but normalized ordered original
+Capstone instruction matches rise **650 to 662**; source-size equality
+alone was not used as the ranking metric. Pointer-only and load-loop
+variants matched fewer instructions (648–650). Four count-loop spellings
+converged to the same 662-instruction result; the installed form has no
+post-decrement of the counter in the condition. The parent remains
+NONEXACT and no new canonical owner credit is claimed.
+
+Installed-source selected cold replay again passes original-bound
+`result-menu-close` **89/89** (4 fields),
+`result-menu-update-callback-00422a90` **10/10** (1 field), and
+`anm-request-capture-rectangle` **162/162** (6 fields): **261/261**
+bytes with all associated fields preserved. No full cohort replay.
+
 ## 2026-11-11 Result-menu native horizontal-key branch ordering
 
 The 3,227-byte target `ResultMenuUpdateResult` branches **separately** on

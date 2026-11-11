@@ -4231,10 +4231,12 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
             menu->cursor.count = 3;
             menu->cursor.wraps = 1;
             menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
-            for (int slot = 0; slot < 25; ++slot)
+            ReplayManager **output = menu->replayFiles;
+            for (int remaining = 25; remaining > 0; --remaining)
             {
-                if (menu->replayFiles[slot] != NULL) delete menu->replayFiles[slot];
-                menu->replayFiles[slot] = NULL;
+                ReplayManager *file = *output;
+                if (file != NULL) delete file;
+                *output++ = NULL;
             }
             menu->state = 8;
             menu->timer.SetCurrent(0);
