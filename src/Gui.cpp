@@ -814,12 +814,23 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             if (stageState[13] != 4)
             {
                 // Preserve separate flag publications and the intervening index reads.
+                // Retail multiplies stage-selected record indices and byte strides as
+                // native 32-bit words before addressing this flat profile buffer.
                 unsigned char *profile = g_GuiPersistentData;
-                const int shot = stageState[11] + stageState[10] * 3;
-                profile[shot * 0x437c + 0x4e1 +
-                    (stageState[15] + stageState[13] * 6) * 8] = 1;
-                profile[(stageState[11] + stageState[10] * 3) * 0x437c + 0x4e0 +
-                    (stageState[15] + stageState[13] * 6) * 8] = 1;
+                const unsigned int shot =
+                    static_cast<unsigned int>(stageState[11]) +
+                    static_cast<unsigned int>(stageState[10]) * 3u;
+                *reinterpret_cast<unsigned char *>(
+                    reinterpret_cast<unsigned int>(profile) +
+                    shot * 0x437cu + 0x4e1u +
+                    (static_cast<unsigned int>(stageState[15]) +
+                     static_cast<unsigned int>(stageState[13]) * 6u) * 8u) = 1;
+                *reinterpret_cast<unsigned char *>(
+                    reinterpret_cast<unsigned int>(profile) +
+                    (static_cast<unsigned int>(stageState[11]) +
+                     static_cast<unsigned int>(stageState[10]) * 3u) * 0x437cu + 0x4e0u +
+                    (static_cast<unsigned int>(stageState[15]) +
+                     static_cast<unsigned int>(stageState[13]) * 6u) * 8u) = 1;
             }
             if ((g_GuiGameFlags & 0x10) != 0)
             {
@@ -832,7 +843,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 g_GuiView->guiFlags |= 0x20;
                 // Retain the flag store before the following score-input reads.
                 _ReadWriteBarrier();
-                g_GuiScore.Add(g_GuiCounter4C4C * 1000);
+                g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiCounter4C4C) * 1000u));
                 switch (stageState[13])
                 {
                 case 0:
@@ -882,7 +893,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 g_GuiView->guiFlags |= 0x20;
                 // Retain the flag store before the following score-input reads.
                 _ReadWriteBarrier();
-                g_GuiScore.Add(g_GuiCounter4C4C * 1000);
+                g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiCounter4C4C) * 1000u));
                 g_GuiScore.Add(g_GuiPowerLevel * 40000000);
                 g_GuiScore.Add(static_cast<int>(g_GuiPower) * 400000);
                 if (g_ReplayManager->mode != 1)
