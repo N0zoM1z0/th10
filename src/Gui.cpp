@@ -859,11 +859,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                     g_GuiScore.Add(static_cast<int>(g_GuiPower) * 200000);
                     break;
                 case 3:
-                    g_GuiScore.Add(g_GuiPowerLevel * 40000000);
+                    g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiPowerLevel) * 40000000u));
                     g_GuiScore.Add(static_cast<int>(g_GuiPower) * 300000);
                     break;
                 case 4:
-                    g_GuiScore.Add(g_GuiPowerLevel * 40000000);
+                    g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiPowerLevel) * 40000000u));
                     g_GuiScore.Add(static_cast<int>(g_GuiPower) * 400000);
                     break;
                 }
@@ -876,9 +876,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 gui->endingCounter = 0;
                 gui->guiFlags |= 0x10;
                 {
-                    unsigned char *counter = g_GuiPersistentData +
-                        (stageState[10] * 3 + stageState[11]) * 0x437c + 0x4d0 +
-                        stageState[13] * 4;
+                    unsigned char *counter = reinterpret_cast<unsigned char *>(
+                        reinterpret_cast<unsigned int>(g_GuiPersistentData) +
+                        (static_cast<unsigned int>(stageState[10]) * 3u +
+                         static_cast<unsigned int>(stageState[11])) * 0x437cu + 0x4d0u +
+                        static_cast<unsigned int>(stageState[13]) * 4u);
                     int value;
                     memcpy(&value, counter, sizeof(value));
                     if (value < 99999)
@@ -894,16 +896,18 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 // Retain the flag store before the following score-input reads.
                 _ReadWriteBarrier();
                 g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiCounter4C4C) * 1000u));
-                g_GuiScore.Add(g_GuiPowerLevel * 40000000);
+                g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiPowerLevel) * 40000000u));
                 g_GuiScore.Add(static_cast<int>(g_GuiPower) * 400000);
                 if (g_ReplayManager->mode != 1)
                 {
                     GameCompleteStageTransition(
                         reinterpret_cast<ResultMenuView *>(g_GameOwner477830));
                     {
-                        unsigned char *counter = g_GuiPersistentData +
-                            (stageState[10] * 3 + stageState[11]) * 0x437c + 0x4d0 +
-                            stageState[13] * 4;
+                        unsigned char *counter = reinterpret_cast<unsigned char *>(
+                            reinterpret_cast<unsigned int>(g_GuiPersistentData) +
+                            (static_cast<unsigned int>(stageState[10]) * 3u +
+                             static_cast<unsigned int>(stageState[11])) * 0x437cu + 0x4d0u +
+                            static_cast<unsigned int>(stageState[13]) * 4u);
                         int value;
                         memcpy(&value, counter, sizeof(value));
                         if (value < 99999)

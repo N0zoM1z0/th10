@@ -89,6 +89,19 @@ whole-product runtime are not established exact. See the
 top of [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) and the new unit
 `enemy-read-dialog`. **Do not run the all-unit cold replay.**
 
+## 2026-11-11 GUI message stage counter and score word checkpoint
+
+`src/Gui.cpp` uses low-32-bit native pointer/stride arithmetic for both
+stage-counter publications and unsigned-multiply/signed-argument semantics
+for the three `g_GuiPowerLevel*40000000` additions in the 4,480-byte
+original `GuiMessageVmView::Run` Boss. In the selected 17-input `/GL` graph,
+all 22 GUI-owned functions/566 decoded fields and ordinary bytes match the
+pre-change build; the 4,492-byte Run candidate is still NONEXACT. A fresh
+**original-bound** comparison of the 3,836-byte exact GUI stage-update
+Boss passes 3,836/3,836 and all 72 fields. A subsequent selected cold replay
+attempt terminated before producing a result; do not claim cold completion.
+No full-cohort replay or new exact ledger credit.
+
 ## High-value nonexact owners
 
 These are *selected current-source comparisons*, not proof of a runnable game.

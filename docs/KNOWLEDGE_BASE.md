@@ -1,5 +1,30 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-11 GUI message stage counters and power score use i386 words
+
+The large `GuiMessageVmView::Run` (`0x00415E90`, target 4,480 bytes)
+contains two state-dependent persistent stage-counter records. Both were
+formerly addressed through signed C++ products and an out-of-array pointer
+addition against `g_GuiPersistentData`. The source now computes the
+`(stage*3+shot)*0x437c + 0x4d0 + difficulty*4` byte offset and the
+base+offset address in unsigned **32-bit words**, retaining independent
+operand reads and writes. The three `g_GuiPowerLevel * 40000000` score
+arguments also use low-32-bit multiplication before signed publication.
+No new bounds checks, target-address constants, or assembly were introduced.
+
+Scoped single-site and combined native VC7.1 17-input `/GL` GUI compiles
+leave the complete 4,492-byte **nonexact** Run candidate unchanged. Across
+the graph all **22 Gui.cpp source-owned function extents and ordinary bytes**
+and all **566 decoded field identities** remain unchanged. Crucially a
+freshly linked combined-source image was independently compared against the
+original target using the canonical `gui-update-stage-elements` contract:
+**3,836/3,836 bytes exact**, all **72** original-bound fields, complete
+normalization and no differences. This is an **in-context target-bound
+comparison**, not a completed new cold replay. An additional selected cold
+build was attempted but its native process terminated without a receipt;
+no cold-pass claim is made from that attempt. No new canonical credit.
+
+
 Notes describe the target/compiler/source context in which a finding was made.
 Current exact counts come from [PROGRESS.md](PROGRESS.md) and current work from
 [RE_HANDOFF.md](RE_HANDOFF.md). Historical reports and scratch paths may have
