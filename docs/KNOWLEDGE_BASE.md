@@ -1,5 +1,28 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-11 GUI message Run active-side indexed native words
+
+The large nonexact `GuiMessageVmView::Run @0x00415E90` uses the mutable
+`message->activeSide` to select the two four-byte `textColors` entries in
+five text-drawing paths and the two twelve-byte `textPositions` entries in
+two VM positioning paths. These are script-controlled source-indexed loads:
+retail i386 forms the addresses as base + low-32-bit index * stride without
+constructing bounded C++ array pointers. The maintained `src/Gui.cpp` now
+forms the seven native DWORD addresses explicitly, preserving the same
+loads and calls without introducing any index clamps or new branches.
+
+Separate baseline, color-only, position-only and combined 17-input VC7.1
+`/GL` compiles preserve all **22 Gui.cpp source-owned complete functions**
+and their **566 decoded address fields**, with no changes to ordinary bytes
+or owner lengths. The large `Run` remains a **4,492-byte candidate versus
+original 4,480**, and is still NONEXACT; this is an original-ABI source
+semantics checkpoint, not new exact-function credit. After installing the
+combined revision, a selected original-bound cold replay independently
+confirms `gui-update-stage-elements` **3,836/3,836 exact**, including all
+**72** original target-bound fields. No full all-unit replay or runtime
+claim.
+
+
 ## 2026-11-11 New exact: BulletManagerView::DrawBucket 134/134 in real ANM graph
 
 `BulletManagerView::DrawBucket @0x004066E0` is a **new canonical authored

@@ -177,6 +177,18 @@ units pass **258/258** original bytes across four artifacts, including the
 new 124-byte `EnemyReadDialog` (nine EH/constructor/global bindings). No
 full cold replay and no new exact ledger credit.
 
+## 2026-11-11 GUI message active-side native word checkpoint
+
+`src/Gui.cpp` now computes five text-color DWORD and two twelve-byte
+text-position record addresses through native low-32-bit `activeSide`
+index arithmetic. The 17-input `/GL` GUI context before/after preserves
+**22 complete GUI-owned functions, 566 fields and all ordinary bytes**;
+`GuiMessageVmView::Run` stays nonexact at candidate 4,492/target 4,480
+bytes. Installed-source selected original-bound cold replay passes the
+3,836-byte exact GUI stage-update Boss **3,836/3,836**, all **72** fields.
+No full replay and no new exact credit beyond the newly accepted 134-byte
+Bullet draw-bucket owner.
+
 ## High-value nonexact owners
 
 These are *selected current-source comparisons*, not proof of a runnable game.
