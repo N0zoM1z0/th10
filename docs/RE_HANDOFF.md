@@ -22,8 +22,8 @@ describe their own source epochs, not the current score.
    the canonical ledgers. `config/functions.csv` and matching candidate sizes
    alone never establish exactness.
 
-**Snapshot of generated progress:** 1,518 exact functions / 199,908 codegen
-bytes; 605 authored-origin exact functions / 129,621 bytes; 145 authored
+**Snapshot of generated progress:** 1,519 exact functions / 200,036 codegen
+bytes; 606 authored-origin exact functions / 129,749 bytes; 144 authored
 source-present functions remain nonexact. Regenerate/check the numbers from
 `docs/PROGRESS.md`, not this prose. All commits use `gpt-web: ...` with the
 name/email/trailer specified in `AGENTS.md`; **do not push**.
@@ -51,12 +51,13 @@ selected unit after inspecting the error.
 
 | Owner | Canonical unit | Proven scope |
 | --- | --- | --- |
+| `ReleaseModeOwners @0x004203F0` | `main-release-mode-owners` | **128/128**, all 15 original-bound globals/cleanup/destructor/delete fields in current 30-input WinMain lifecycle graph. Five explicit natural nullable owner checks retain ESI and exact teardown order; existing real `MainSupervisorView::ReleaseGame` caller also passes **293/293** and 25 fields, **421/421** scoped. |
 | `EnemyEclHostBaseView::SetSubroutine @0x00450700` | `enemy-ecl-host-set-subroutine` | **30/30**, one original-bound REL32 to the genuine exact 136-byte `EclVmScriptDatabase::FindSubroutine` in the two-TU Enemy/EclVm graph. Scoped volatile database-field read restores native EAX database / ECX name and two independent context reloads; two independent cold builds pass. Target 2,412-byte EnemyRuntimeUpdate remains nonexact. |
 | `ScriptViewerBombOwnerView::EmitAuxiliary @0x00405AC0` | `script-viewer-bomb-emit-auxiliary` | **124/124**, six target-bound fields in the real six-source Bomb-update callback /GL /GS /EHs graph; target ESI receiver, separate bullet-cancel branches and volatile reread of spell 109. Existing laser cancel guard **76/76** also cold-passes. Two independent colds pass; the 223-byte Bomb Update parent remains nonexact. |
 | `BulletManagerView::DrawBucket @0x004066E0` | `bullet-manager-draw-bucket` | **134/134**, five target-bound fields; two independent VC7.1 `/GL` cold links of real `BulletDraw.cpp` + `AnmManager.cpp`; true EAX/ECX Draw ABI. Source uses two `_ReadWriteBarrier`s and a volatile flags DWORD read, with no ASM/padding. |
 | `EnemyReadDialog @0x00415DB0` | `enemy-read-dialog` | **124/124**, nine ctor/global/EH fields; two independent cold links of the real six-TU `/GL /GS /EHsc` graph and complete static PDB ownership. A scoped volatile read restores the global index publication order. |
 
-These are **four accepted authored owners** (not just positional candidate
+These are **five accepted authored owners** (not just positional candidate
 matches). Their accepted units and all ledger rows are already committed.
 Useful existing exact guards: `anm-render-draw` **216/216**, `bullet-manager-draw-callback`
 **44/44**, `gui-update-stage-elements` **3836/3836** (72 fields),

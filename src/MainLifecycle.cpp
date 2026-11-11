@@ -33,11 +33,16 @@ void FrontEndDelete(FrontEndControllerView *controller);
 // Target4203F0..42046F. Each actual owner supplies its own cleanup/global effects.
 void ReleaseModeOwners()
 {
-    GameManagerDelete(g_GameManager);
-    FrontEndDelete(g_FrontEndControllerView);
-    delete g_StartupWorker;
-    EndingDelete(g_EndingView);
-    delete g_ReplayManager;
+    GameManager *const game = g_GameManager;
+    if (game != NULL) GameManagerDelete(game);
+    FrontEndControllerView *const front = g_FrontEndControllerView;
+    if (front != NULL) FrontEndDelete(front);
+    StartupWorkerView *const startup = g_StartupWorker;
+    if (startup != NULL) delete startup;
+    EndingView *const ending = g_EndingView;
+    if (ending != NULL) EndingDelete(ending);
+    ReplayManager *const replay = g_ReplayManager;
+    if (replay != NULL) delete replay;
 }
 
 // Target420270..420394; preserve global and receiver-relative ownership.

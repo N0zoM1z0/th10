@@ -2,12 +2,13 @@
 
 ## Reading this journal against the current ledger (2026-11-11)
 
-**Current canonical snapshot:** **1,518 exact owners** and **199,908 exact
-bytes**, including **605 authored exact owners** and **129,621 authored exact
-bytes**; **145 authored source-present owners** remain nonexact. The newest
-accepted authored addition is `EnemyEclHostBaseView::SetSubroutine
-@0x00450700` (**30/30**, one bound call field). Earlier additions include
-`ScriptViewerBombOwnerView::EmitAuxiliary` (**124/124**, six fields),
+**Current canonical snapshot:** **1,519 exact owners** and **200,036 exact
+bytes**, including **606 authored exact owners** and **129,749 authored exact
+bytes**; **144 authored source-present owners** remain nonexact. The newest
+accepted authored addition is `ReleaseModeOwners @0x004203F0` (**128/128**,
+15 bound fields) in the real WinMain mode-lifecycle graph. Earlier exact
+additions include `EnemyEclHostBaseView::SetSubroutine` (**30/30**, one
+field), `ScriptViewerBombOwnerView::EmitAuxiliary` (**124/124**, six fields),
 `BulletManagerView::DrawBucket` (**134/134**) and `EnemyReadDialog`
 (**124/124**). See canonical
 `config/matches.csv`, `config/match-units.toml` and generated
@@ -171,6 +172,39 @@ related, already accepted `result-menu-close` (**89/89**, four original-bound
 fields), `result-menu-update-callback-00422a90` (**10/10**, one field), and
 `anm-request-capture-rectangle` (**162/162**, six fields) all pass. These
 selected controls validate preservation, not the nonexact parent.
+
+## 2026-11-11 ReleaseModeOwners full native five-owner teardown exact
+
+The **128-byte** retail owner `ReleaseModeOwners @0x004203F0` is now a
+canonical exact authored leaf in the **genuine WinMain/MainLifecycle**
+30-input `/GL /GS` graph. All five original nullable cleanup legs
+(GameManager, FrontEnd, StartupWorker, Ending and ReplayManager) capture
+the real mode-object global, test it for null, destroy/clean it and call
+the common scalar `operator delete`. The target saves ESI at +0x00 and
+retains each owner in ESI through its tests and two calls. The previous
+natural unconditional source forwarded each global directly to a nullable
+cleanup helper and compiled to **133 bytes**: the optimizer repeatedly
+loaded EAX, tested it, then transferred the pointer to ESI. Capturing a
+separate typed owner pointer and explicitly checking non-null for all
+five paths yields exactly the target's register lifetime and **128-byte**
+complete PDB contribution. Snapshot-only locals shrink to 132 bytes;
+forced volatile global loads either grow or disturb WPO registers and
+were rejected. No fake ABI, assembly or padding is present.
+
+The target's **15 independently decoded code fields** bind five real
+mode-object global addresses at `0x00477810`, `0x0047784C`, `0x00477820`,
+`0x00477700`, `0x00477838`; their real cleanup/destructor targets
+`0x00417C80`, `0x0042CB60`, `0x0041FB50`, `0x0040B7B0`, `0x004294A0`;
+and the five calls to scalar delete at `0x004524A1`. The selected
+original-bound cold replay passes all **128/128** bytes and **15/15**
+fields. In the **same fresh recipe**, its existing exact caller
+`MainSupervisorView::ReleaseGame @0x00420270` also passes **293/293**
+bytes and all **25** fields, proving **421/421** complete related bytes
+and 40 target-bound fields. No full historical cold replay was run.
+
+The original retail translation-unit boundaries, final complete-product
+link and runtime behavior are still separate claims; this addition
+records precisely the verified emitted owner and its connections.
 
 ## 2026-11-11 Result-menu state-11 native empty-name early return
 
