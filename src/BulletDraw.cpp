@@ -15,8 +15,13 @@ extern BulletUpdateGateView *g_BulletUpdateGate;
 // passes the manager in EAX and bucket index in ECX after LTCG promotion.
 int BulletManagerView::DrawBucket(int bucketIndex)
 {
-    for (BulletRuntimeView *bullet = drawBucketHeads[bucketIndex];
-         bullet != NULL; bullet = bullet->nextInDrawBucket)
+    // Retail's EAX + ECX*4 + 0x14 reads a flat Win32 address word, even
+    // when a script-derived bucket number exceeds the declared array.
+    BulletRuntimeView *bullet = *reinterpret_cast<BulletRuntimeView *const *>(
+        reinterpret_cast<unsigned int>(&drawBucketHeads[0]) +
+        static_cast<unsigned int>(bucketIndex) *
+        static_cast<unsigned int>(sizeof(BulletRuntimeView *)));
+    for (; bullet != NULL; bullet = bullet->nextInDrawBucket)
     {
         const volatile float &worldX = bullet->position.x;
         const volatile float &worldY = bullet->position.y;

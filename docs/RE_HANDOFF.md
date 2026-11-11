@@ -135,6 +135,16 @@ ordinary machine-code bytes; nonexact Run remains 4,492 bytes against the
 3,836-byte GUI update Boss is exact **3,836/3,836 with all 72 fields**.
 No full replay or new exact credit.
 
+## 2026-11-11 Bullet draw bucket native DWORD cursor checkpoint
+
+`src/BulletDraw.cpp` now uses native low-32-bit index*4 address words for the
+unchecked draw-bucket pointer lookup. Explicit real-ANM dual-TU `/GL`
+linking confirms the EAX/ECX private Draw ABI and a byte-identical 139-byte
+candidate before/after (target 134, still NONEXACT), while the 44-byte
+Bullet callback remains exact. Two installed-source selected cold units pass
+**260/260** original-bound bytes and **23** fields (Bullet adapter 44+2,
+ANM Draw 216+21). No full replay or exact ledger increment.
+
 ## High-value nonexact owners
 
 These are *selected current-source comparisons*, not proof of a runnable game.

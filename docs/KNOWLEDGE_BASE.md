@@ -1,5 +1,30 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-11 Bullet draw bucket native index and real ANM callee
+
+`BulletManagerView::DrawBucket @0x004066E0` uses a private EAX manager / ECX
+bucket ABI and immediately reads a pointer at `manager + 0x14 + bucket*4`.
+The maintained source now calculates this dynamic bucket slot using the
+original unsigned low-32-bit i386 address and stride, avoiding out-of-array
+C++ pointer formation for unchecked bucket values. No validation/clamp is
+invented. Natural VC7.1 `/GL` compilation with the **real** separately
+reconstructed `AnmRenderManagerView::Draw` source restores the callee's
+private EAX VM / ECX renderer argument convention in `DrawBucket`, unlike
+a link with an unresolved external callee. The current natural two-TU
+`DrawBucket` is **139 bytes vs target 134**, with five local address fields;
+it is still NONEXACT. A scoped pre/post image comparison shows the new
+bucket-address expression preserves the entire 139-byte PDB contribution,
+its five field positions and all 44 bytes of the neighboring draw adapter.
+
+Additional volatile flags, VM-field, barrier and coordinate scheduling
+variants were compiled; none restores the target's complete X/Y/Z update
+ordering, direct memory flag test and call-field positions. None was
+installed. After installing the address-index fix, **selected** original-bound
+cold replays pass the Bullet draw callback **44/44** with two fields and
+real ANM renderer draw **216/216** with 21 fields: **260/260 bytes** over
+two artifacts. No full replay or new canonical exact credit.
+
+
 ## 2026-11-11 GUI message stage-bonus DWORD multiplication checkpoint
 
 `GuiMessageVmView::Run` still implements the stage completion score
