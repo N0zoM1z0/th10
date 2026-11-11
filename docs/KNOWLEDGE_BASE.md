@@ -43,6 +43,35 @@ fields), `result-menu-update-callback-00422a90` (**10/10**, one field), and
 `anm-request-capture-rectangle` (**162/162**, six fields) all pass. These
 selected controls validate preservation, not the nonexact parent.
 
+## 2026-11-11 Result-menu native choice-one/two dispatch
+
+The original 3,227-byte `ResultMenuUpdateResult @0x004236F0`
+dispatches the result screen's replay-selection choices 1 and 2 through
+**one cursor load, `DEC EAX; JE`, then `DEC EAX; JNE`**. The previous
+maintained `if (cursor == 1) ... else if (cursor == 2)` instead emitted
+separate comparisons and a separated second branch. Reconstructing this
+as a natural `switch (menu->cursor.current)` with two self-contained
+`case` bodies preserves the two actual behaviors and the separately
+executable confirm/cancel tests after the switch, while restoring
+original dispatch ordering and target selector code shape.
+
+In the **same** pinned VC7.1 `/GL /GS /EHs` FrontEnd + VmIdInterrupt +
+real EnemyEclDispatcher sound-callee graph, the complete PDB-owned
+candidate remains **3,220** vs **3,227** original bytes; ordered,
+normalized instruction sequence matches rise **662 -> 677** (original
+has 907 decoded instructions, candidate 919). Without the previously
+installed replay cleanup pointer/countdown form, switch alone raised
+650 -> 665. An explicit decrement-local equivalent emitted the old
+comparison score (666 against the pointer/countdown baseline), not the
+native target ordering. Those diagnostics are not a full exact/field
+comparison, and the parent remains NONEXACT with no ledger credit.
+
+Following the installed source change, original-bound selected native
+cold replays pass `result-menu-close` **89/89** (four fields),
+`result-menu-update-callback-00422a90` **10/10** (one field) and
+`anm-request-capture-rectangle` **162/162** (six fields), all 261 bytes.
+No unselected full-cohort replay was performed.
+
 ## 2026-11-11 Result-menu replay-file release loop ownership
 
 In `ResultMenuUpdateResult @0x004236F0`, state-10 cancellation releases

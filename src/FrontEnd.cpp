@@ -4150,8 +4150,9 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
             menu->state = 13;
             menu->timer.SetCurrent(0);
             ResultMenuSynchronizeScore(g_GuiView);
-            if (menu->cursor.current == 1)
+            switch (menu->cursor.current)
             {
+            case 1: {
                 menu->state = 10;
                 menu->timer.SetCurrent(0);
                 menu->mainVm.ClearFlag2();
@@ -4164,13 +4165,17 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
                     sprintf(replayPath, "th10_%.2d.rpy", slot);
                     menu->replayFiles[slot - 1] = ReplayManager::Load(replayPath);
                 }
+                break;
             }
-            else if (menu->cursor.current == 2)
-            {
+
+            case 2: {
                 menu->state = 13;
                 menu->timer.SetCurrent(0);
                 ResultMenuSound(10);
+                break;
             }
+            }
+
         }
         // Independent test: simultaneous confirm/cancel also reaches this path.
         if ((g_FrontEndInput.pressed & 0x0a) != 0)
