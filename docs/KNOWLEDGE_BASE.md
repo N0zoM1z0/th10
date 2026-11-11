@@ -43,6 +43,47 @@ fields), `result-menu-update-callback-00422a90` (**10/10**, one field), and
 `anm-request-capture-rectangle` (**162/162**, six fields) all pass. These
 selected controls validate preservation, not the nonexact parent.
 
+## 2026-11-11 Result-menu real sound callee and security-cookie context
+
+The installed `ResultMenuUpdateResult @0x004236F0` is now split into
+native state-11 replay naming and state-12 score entry (see the preceding
+section). Its full 3,227-byte target begins with a `/GS` cookie: `SUB ESP,4C`,
+load the original `__security_cookie`, XOR with ESP, and store the result at
+the stack cookie slot. The earlier 3,036-byte FrontEnd + ResultMenuLifecycle
+`/GL` diagnostic did not emit this prologue. A new, **actual VC7.1 `/GL
+/GS /EHs` two-TU cold compilation** of the installed FrontEnd source with
+`VmIdInterrupt.cpp` produces a complete 3,196-byte PDB-owned candidate,
+including the cookie prologue; the residual frame allocation is `0x48`
+versus the target `0x4C`. Thus the apparent 191-byte shortage in the old
+profile must not be treated as an isolated source omission.
+
+The target `EnemySoundQueueView::QueueSoundSample @0x0043DC90` receives the
+queue owner in ECX, sound ID in EDI, and the sample on the stack (RET 4).
+The previous two-TU candidate used a stack argument for the sound ID because
+it linked no real callee implementation. Adding the **real, already compiled
+`EnemyEclDispatcher.cpp` LTCG object** to the installed FrontEnd +
+`VmIdInterrupt.cpp` graph yields a 3,168-byte PDB-owned candidate. Its state-6
+entry now loads `EDI=10`, sends only sample 0 on the stack and calls the
+actual 123-byte `QueueSoundSample` body, matching the original caller ABI.
+The target has 3,227 bytes, so this stronger semantic/ABI graph is still
+nonexact: target and current physical case span boundaries differ. No
+original-bound parent field inventory has been accepted, and no new match
+ledger credit is claimed. Reproduce only this affected graph rather than
+running an all-unit replay. The previously exact selected `ResultMenuClose`
+89/89 (four fields), update callback 10/10 (one field) and ANM capture
+162/162 (six fields) were cold-replayed after the state split.
+
+A related leaf, `ScriptViewerPopupDraw42B9B0 @0x0042B9B0`, remains 10 bytes
+but saves EBX rather than the target EDI. Its real called renderer Draw is
+537 versus target 540 bytes in the four-TU `/GL /GS /EHs` graph. Five
+natural C++ owner-local trials (record and player declaration order, local
+indexed records, unsigned loop counter, hoisted VM) did not recover the
+EDI/EBP ownership pattern; the hoisted-VM version regressed the Draw/callback
+to 526/7. These experimental sources were not installed. Likewise, two
+scoped sign-first cursor-interrupt variants left the `ResultMenuUpdateResult`
+3,196-byte candidate unchanged; the signed-short load requires a different
+register-lifetime hypothesis, not just source spelling.
+
 ## 2026-11-11 GUI large-message script operand and instruction cursor words
 
 The 4,480-byte target `GuiMessageVmView::Run @0x00415E90` reads 32-bit
