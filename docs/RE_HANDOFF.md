@@ -174,6 +174,16 @@ bindings; both large update owners remain nonexact. Installed-source
 selected cold replay passes 7 related exact Player units, **819/819**
 original bytes across 4 artifacts. No full cold replay or ledger change.
 
+## 2026-11-11 Player large movement native DWORD arithmetic
+
+`src/Player.cpp` now forms movement X/Y additions, option offsets and the
+interpolation's signed-difference/unsigned-multiply intermediate as native
+32-bit words. Five real three-input `/GL` before/after compiles preserve all
+67 complete Player source functions, their 556 field identities and every
+ordinary byte. The 1,616-byte movement and 3,100-byte update bodies remain
+nonexact. Installed-source selected original-bound replay passes seven Player
+exact units, **819/819 bytes** in four artifacts; no full replay.
+
 ## 2026-11-11 Enemy ECL dialog word checkpoint
 
 `src/EnemyEclDispatcher.cpp` now applies the native 32-bit index/stride and

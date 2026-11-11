@@ -34,6 +34,25 @@ also recompiled as complete parent diagnostics. They did not improve its
 existing 6,997/7,020 original bytes and 189 target-bound fields; several
 changed additional bytes or its complete PDB extent. None was installed.
 
+## 2026-11-11 Player large movement owner native position and transition words
+
+`PlayerUpdateMovementAndOptions` now performs the X/Y movement additions,
+active option-position offsets, interpolation difference-times-frame products,
+and final interpolation additions in low-32-bit unsigned words, publishing the
+int results before the original signed comparisons and `/100` division.
+The source previously used signed C++ arithmetic that could overflow even
+though retail uses plain i386 ADD/SUB/IMUL and wraps the intermediate DWORD.
+
+Independent scoped and combined source compiles in the real three-input
+PlayerDraw `/GL` graph preserve all **67 Player source-owned functions** and
+**556 field identities**: no ordinary-byte or full-function-size changes.
+The selected large movement owner remains 1,616 candidate bytes against its
+1,656-byte original, and the 3,100-byte Player update callback stays
+nonexact against 3,112 original bytes. The installed-source selected cold
+replays pass seven existing exact Player units across four artifacts,
+**819/819 original bytes** (including the 409-byte draw body and 273-byte
+runtime reset). No new canonical exact credit and no all-unit replay.
+
 ## 2026-11-11 Enemy ECL dialog index and record address words
 
 `EnemyReadDialog` is reached from `READ_DIALOG` with a raw script integer.
