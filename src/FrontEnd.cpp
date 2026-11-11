@@ -4247,9 +4247,15 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         if (g_FrontEndInput.IsRepeated(0x10)) menu->keyboard.Move(-13);
         if (g_FrontEndInput.IsRepeated(0x20)) menu->keyboard.Move(13);
         if (g_FrontEndInput.IsRepeated(0x40))
-            menu->keyboard.Move(menu->keyboard.current % 13 == 0 ? 12 : -1);
+        {
+            if (menu->keyboard.current % 13 != 0) menu->keyboard.Move(-1);
+            else menu->keyboard.Move(12);
+        }
         if (g_FrontEndInput.IsRepeated(0x80))
-            menu->keyboard.Move(menu->keyboard.current % 13 == 12 ? -12 : 1);
+        {
+            if (menu->keyboard.current % 13 != 12) menu->keyboard.Move(1);
+            else menu->keyboard.Move(-12);
+        }
         if (menu->keyboard.previous != menu->keyboard.current) ResultMenuSound(12);
         if ((g_FrontEndInput.pressed & 0x1001) != 0)
         {
@@ -4321,9 +4327,15 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
             if (g_FrontEndInput.IsRepeated(0x10)) menu->keyboard.Move(-13);
             if (g_FrontEndInput.IsRepeated(0x20)) menu->keyboard.Move(13);
             if (g_FrontEndInput.IsRepeated(0x40))
-                menu->keyboard.Move(menu->keyboard.current % 13 == 0 ? 12 : -1);
+            {
+                if (menu->keyboard.current % 13 != 0) menu->keyboard.Move(-1);
+                else menu->keyboard.Move(12);
+            }
             if (g_FrontEndInput.IsRepeated(0x80))
-                menu->keyboard.Move(menu->keyboard.current % 13 == 12 ? -12 : 1);
+            {
+                if (menu->keyboard.current % 13 != 12) menu->keyboard.Move(1);
+                else menu->keyboard.Move(-12);
+            }
             if (menu->keyboard.previous != menu->keyboard.current) ResultMenuSound(12);
         }
         if ((g_FrontEndInput.pressed & 0x1001) != 0)

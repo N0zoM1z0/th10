@@ -43,6 +43,35 @@ fields), `result-menu-update-callback-00422a90` (**10/10**, one field), and
 `anm-request-capture-rectangle` (**162/162**, six fields) all pass. These
 selected controls validate preservation, not the nonexact parent.
 
+## 2026-11-11 Result-menu native horizontal-key branch ordering
+
+The 3,227-byte target `ResultMenuUpdateResult` branches **separately** on
+keyboard-column remainder for both horizontal keys in states 11 and 12.
+The original left operation checks `remainder != 0`, emits its `Move(-1)`
+arm before `Move(12)`; the right operation checks `remainder != 12` and
+emits its `Move(1)` arm before `Move(-12)`. The previous ternary source
+compiled to branchless NEG/SBB/AND arithmetic rather than the target's
+TEST/CMP, conditional jump and two discrete PUSH arms. The maintained
+`FrontEnd.cpp` now expresses the target-supported arms as ordinary `if`/
+`else` blocks, preserving key behavior for both naming states.
+
+Under the same real three-source-input `/GL /GS /EHs` linked graph with
+`EnemyEclDispatcher` providing the actual sound callee, the **complete
+PDB-owned** candidate is **3,220 bytes** versus target **3,227**. The
+normalized ordered Capstone match grows from **631 to 650 instructions**;
+all four relevant remainder branches now have the target TEST/CMP + JE +
+PUSH + JMP + PUSH shape, including their push constants and branch order.
+The candidate still has other original-bound discrepancies; this is not
+full-function exactness or an added ledger owner. Left-only and right-only
+trials yielded 3,224 bytes/641 instructions each; both simultaneous repairs
+had the larger code-shape benefit, despite their shorter candidate extent.
+
+Cold selected exact replays after the installed source change pass
+`result-menu-close` 89/89 (four fields),
+`result-menu-update-callback-00422a90` 10/10 (one field), and
+`anm-request-capture-rectangle` 162/162 (six fields). All **261** original
+bytes and associated fields remain exact without a full cohort rebuild.
+
 ## 2026-11-11 Result-menu native character/space control flow
 
 `ResultMenuUpdateResult @0x004236F0` has **separate target blocks** for
