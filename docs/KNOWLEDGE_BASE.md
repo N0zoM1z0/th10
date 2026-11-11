@@ -172,6 +172,48 @@ fields), `result-menu-update-callback-00422a90` (**10/10**, one field), and
 `anm-request-capture-rectangle` (**162/162**, six fields) all pass. These
 selected controls validate preservation, not the nonexact parent.
 
+## 2026-11-11 Result-menu state-7 native early-return block order and true VM callee
+
+`ResultMenuUpdateResult @0x004236F0` is a genuine 3,227-byte boss. Its
+state-7 `ResultMenuPrepareScore` branch has an early score-name entry
+(state 12 / `ClearFlag2` / return) and otherwise continues to the
+shared state-8 cursor initialization/interrupt publication. The previous
+natural source nested `if (scoreUnavailable == 0) { ...return; }`, and
+VC7.1 placed the shared state-8 machine code **after** the score-entry
+early-return block, unlike TH10 at target `+0xF1..+0x19B`.
+
+The maintained `FrontEnd.cpp` now explicitly joins the score-unavailable
+path at `result_state8:` and returns on the score-entry path. No
+conditions, side effects, timer writes, or cursor values were changed.
+The reverse-`if`/`else` lexical variant produced identical code; the
+explicit common continuation is retained to express native block order.
+
+Crucially, the diagnostic compiler graph was repaired at the **real
+call chain** instead of faking the `AnmVmIdView::SetInterrupt` ABI:
+`FrontEnd.cpp` `/GL /GS /EHs` + real `VmIdInterrupt.cpp` + actual Enemy
+sound queue callee + `AnmVmId.cpp` object. The previous graph omitted
+`AnmVmId.cpp`, giving the result-menu a wrong ECX/stack interrupt call;
+with its genuine definition, VC7.1 naturally uses the target EAX ID and
+ESI interrupt input. At a common *before/after* graph, the unmodified
+state-7 source has a **3,208-byte PDB-owned** parent with **735/907
+ordered normalized target instructions aligned**. The installed join
+improves the same graph to **3,212 bytes and 744/907** instructions.
+Adding the real large `AnmManager.cpp` as further support makes the
+65-byte `SetInterrupt` itself original-exact, but changes the parent
+codegen (3280 bytes / 714 aligned before the state-7 change); these
+separate graph sizes are not interchangeable evidence of a source win.
+The old three-source (no AnmVmId) graph was 3216 bytes / 695 aligned
+at its prior source checkpoint; those are historical diagnostics.
+
+The 3,227-byte parent is still **NONEXACT**: GUI score receiver, private
+other call boundaries, frame 0x48 versus target 0x4C, and remaining
+state-12 CFG remain unresolved. No partial parent bytes enter the exact
+ledger. After installation, selected **cold original-bound** units pass
+`anm-vm-id-set-interrupt` 65/65 (two fields), `result-menu-close` 89/89
+(four), `result-menu-update-callback-00422a90` 10/10 (one), and
+`anm-request-capture-rectangle` 162/162 (six): **326/326**, 13 bound
+fields. No full historical cold replay was run.
+
 ## 2026-11-11 Result-menu state-13 native option dispatch
 
 `ResultMenuUpdateResult @0x004236F0` ends its 12-tick result-menu close

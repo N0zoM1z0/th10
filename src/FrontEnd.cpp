@@ -4117,13 +4117,13 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         {
             ResultMenuPrepareScore(menu);
             menu->timer.SetCurrent(0);
-            if (menu->scoreUnavailable == 0)
-            {
-                menu->state = 12;
-                menu->mainVm.ClearFlag2();
-                return;
-            }
+            if (menu->scoreUnavailable != 0)
+                goto result_state8;
+            menu->state = 12;
+            menu->mainVm.ClearFlag2();
+            return;
         }
+    result_state8:
         menu->state = 8;
         menu->cursor.count = 3;
         menu->cursor.wraps = 1;
