@@ -64,6 +64,50 @@ single isolated reset retry plus the remaining selected replay succeeded.
 That linker failure is not an original-byte mismatch. No new canonical
 exact owner was added and no full-cohort replay was used.
 
+## 2026-11-11 Native LTCG medium/large register frontiers
+
+A bounded review of already retained original-bound LTCG artifacts identified
+whole-owner candidates worth probing without replaying the historical cohort.
+These are **nonexact** and the rejected candidate sources remain isolated.
+
+- `BulletRuntimeView::UpdateAbsoluteDirectionChange @0x004078E0` remains
+  **333/335** with all eight decoded link fields in the real seven-input
+  `BulletRuntimeUpdate` `/GL /GS` graph. The only ordinary bytes still differ
+  at `+0xD7` and `+0xDD`, where target EDX and candidate EAX carry the angle
+  argument. Eight natural angle-read/union/alias/receiver-lifetime variants
+  were full-owner linked: the best preserved 333, while direct float reads
+  regressed to 331. The exact relative-direction sibling is unchanged.
+- `CreateFpsCounter @0x00413350` retains its **151-byte extent**, six link
+  fields and **18 ordinary differences** in the full 30-source `WinMain`
+  `/GL /GS` graph. Target reserves EBP for zero and EBX for the FPS object;
+  candidate reserves EBX for zero and EBP for the FPS object. Nine natural
+  object-pointer/task-declaration/conditional-lifetime controls either
+  preserved exactly those differences or shrank the owner to 145/149 bytes.
+- `MainConfigurationDialogProc @0x0043A3A0` likewise retains its complete
+  **233-byte extent**, 14 link fields and **17 ordinary differences** in
+  the same native WinMain graph. The target saves ESI before the WM_COMMAND
+  outer branch at `+0x10` and emits `XOR EAX,EAX; POP ESI` in four command
+  returns; candidate defers `PUSH ESI` until `+0x16` and emits the return
+  instructions in reverse order. Case-local early returns shrink the owner to
+  225; a named command local, extra case scope and outer default return are
+  neutral; moving the compiler barrier to function entry grows the mismatch
+  to 25. The original scoped WM_COMMAND barrier remains installed.
+- `TextRenderBufferView::InvertAlpha @0x00437160` owns **157 bytes** and no
+  relocations. The real `TextBufferLifecycle` LTCG context matches **138/157**
+  (target EAX count/EDX pixels/ESI induction versus candidate ECX count/
+  EDX pixels/ESI induction), whereas the normal-COFF candidate matches
+  112/157 with a different private receiver register. Twenty natural
+  declaration, pixel-view and value-order controls under normal COFF were
+  neutral or regressed; changes to pointer ownership cannot be inferred from
+  matching function size alone.
+
+`EnemyEclHostBaseView::SetSubroutine @0x00450700` was also reviewed as a
+complete 30-byte leaf in the seven-input Bullet context. Its only call field
+binds `FindSubroutine @0x00450470`, but the incoming name register and the
+subsequent context register choices differ from the original. Do not add exact
+credit or force a non-natural register ABI; the producer graph needs attention.
+The current canonical exact ledger remains unchanged.
+
 ## 2026-11-11 Player large-owner native replay-history address words
 
 The Player movement/options (`0x004250B0`, 1,656 original bytes) and update

@@ -165,6 +165,19 @@ selected exact Player units pass target-bound cold **807/807 bytes** after an
 isolated retry of a transient Wine/linker failure; no full replay. The
 remaining Player boss targets still need separate exact codegen recovery.
 
+## 2026-11-11 remaining selected LTCG frontiers
+
+Natural codegen trials against complete current-source graphs leave Bullet
+absolute direction at **333/335**, FPS creation at **151 bytes with 18
+ordinary differences**, the configuration dialog at **233 bytes with 17
+ordinary differences**, and Text InvertAlpha at **138/157** under its real
+LTCG context (112/157 normal COFF). All relevant field inventories were
+checked; failed register, lifetime, branch, declaration and pixel-view forms
+were not installed. The top of `docs/KNOWLEDGE_BASE.md` records exact
+register/block differences and failed hypotheses. More progress needs caller
+visibility or an independently grounded source/dataflow explanation rather
+than repeating these neutral variants. No newly exact owner was admitted.
+
 ## 2026-11-11 Player large-owner history indexing
 
 `src/Player.cpp` now uses `PlayerNativeHistoryWord` for the two unchecked
