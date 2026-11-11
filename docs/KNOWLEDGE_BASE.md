@@ -34,6 +34,24 @@ also recompiled as complete parent diagnostics. They did not improve its
 existing 6,997/7,020 original bytes and 189 target-bound fields; several
 changed additional bytes or its complete PDB extent. None was installed.
 
+## 2026-11-11 Player damage and startup height use native DWORD arithmetic
+
+`Player::CalculateDamageToTarget` now adds shot damage, hit-accumulator
+updates and the global score increment through low-32-bit unsigned words.
+`PlayerUpdateCallbackBody` computes the state-zero `timer * 8000` as a wrapped
+DWORD before the original signed `/60`. This mirrors the retail i386
+`ADD`/`IMUL` semantics on extreme state values, without changing signed
+comparisons, division or clamping.
+
+Independent scoped and combined VC7.1 three-input `/GL` compiles preserve all
+**67 Player source functions**, including the complete **3,100-byte** update
+candidate and its damage-calculation companion; **556 field identities** and
+all ordinary code bytes are unchanged. The combined trial explicitly excludes
+the three `g_PlayerPower` short-word rewrites: they changed instruction/field
+layout in the update boss. After installation, seven directly related exact
+Player units cold replay **819/819** original bytes across four artifacts.
+No full replay or new exact ledger credit.
+
 ## 2026-11-11 Player large movement owner native position and transition words
 
 `PlayerUpdateMovementAndOptions` now performs the X/Y movement additions,

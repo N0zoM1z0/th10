@@ -174,6 +174,15 @@ bindings; both large update owners remain nonexact. Installed-source
 selected cold replay passes 7 related exact Player units, **819/819**
 original bytes across 4 artifacts. No full cold replay or ledger change.
 
+## 2026-11-11 Player large update/damage DWORD checkpoint
+
+`src/Player.cpp` now uses native DWORD arithmetic for state-zero timer*8000
+and shot/damage/score accumulation. Five scoped/combined three-input `/GL`
+trials preserve all 67 Player functions/556 fields and ordinary bytes;
+rewriting short `g_PlayerPower` was rejected as a codegen regression. Seven
+selected original-bound Player exact units cold-pass **819/819** bytes. The
+3,112-byte target update boss remains NONEXACT and no full replay was run.
+
 ## 2026-11-11 Player large movement native DWORD arithmetic
 
 `src/Player.cpp` now forms movement X/Y additions, option offsets and the

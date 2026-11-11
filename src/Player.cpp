@@ -1870,7 +1870,8 @@ int Player::CalculateDamageToTarget(
         if (collisionType != PLAYER_SHOT_TYPE_3 ||
             shot->timer.HasIntervalTick(4) != 0)
         {
-            damage += descriptor->damage;
+            damage = static_cast<int>(static_cast<unsigned int>(damage) +
+                static_cast<unsigned int>(descriptor->damage));
         }
 
         if (descriptor->type != PLAYER_SHOT_TYPE_3)
@@ -1969,8 +1970,10 @@ int Player::CalculateDamageToTarget(
                 continue;
         }
 
-        damage += motion->damage;
-        motion->hitAccumulator += motion->damage;
+        damage = static_cast<int>(static_cast<unsigned int>(damage) +
+            static_cast<unsigned int>(motion->damage));
+        *reinterpret_cast<unsigned int *>(&motion->hitAccumulator) +=
+            static_cast<unsigned int>(motion->damage);
         if (motion->hitCap > motion->hitAccumulator)
             continue;
         motion->damage = 0;
@@ -1978,7 +1981,8 @@ int Player::CalculateDamageToTarget(
 
     if (damage != 0)
     {
-        g_GameScore += (damage / 10 + 10) / 10;
+        *reinterpret_cast<unsigned int *>(&g_GameScore) +=
+            static_cast<unsigned int>((damage / 10 + 10) / 10);
         if (g_GameScore >= 1000000000)
             g_GameScore = 999999999;
     }
@@ -2014,7 +2018,8 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
     case 0:
     {
         player->positionY =
-            48000 - (player->updateTimer1.current * 8000) / 60;
+            48000 - static_cast<int>(
+                static_cast<unsigned int>(player->updateTimer1.current) * 8000u) / 60;
         player->drawPosition.y = (float)player->positionY * 0.01f;
 
         player->options[0].resetFlag = 1;
