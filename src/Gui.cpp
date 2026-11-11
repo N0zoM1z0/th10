@@ -847,24 +847,24 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 switch (stageState[13])
                 {
                 case 0:
-                    g_GuiScore.Add(g_GuiPowerLevel * 20000000);
-                    g_GuiScore.Add(static_cast<int>(g_GuiPower) * 100000);
+                    g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiPowerLevel) * 20000000u));
+                    g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiPower) * 100000u));
                     break;
                 case 1:
-                    g_GuiScore.Add(g_GuiPowerLevel * 25000000);
-                    g_GuiScore.Add(static_cast<int>(g_GuiPower) * 100000);
+                    g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiPowerLevel) * 25000000u));
+                    g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiPower) * 100000u));
                     break;
                 case 2:
-                    g_GuiScore.Add(g_GuiPowerLevel * 35000000);
-                    g_GuiScore.Add(static_cast<int>(g_GuiPower) * 200000);
+                    g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiPowerLevel) * 35000000u));
+                    g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiPower) * 200000u));
                     break;
                 case 3:
                     g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiPowerLevel) * 40000000u));
-                    g_GuiScore.Add(static_cast<int>(g_GuiPower) * 300000);
+                    g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiPower) * 300000u));
                     break;
                 case 4:
                     g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiPowerLevel) * 40000000u));
-                    g_GuiScore.Add(static_cast<int>(g_GuiPower) * 400000);
+                    g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiPower) * 400000u));
                     break;
                 }
                 if (g_ReplayManager->mode == 1)
@@ -897,7 +897,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 _ReadWriteBarrier();
                 g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiCounter4C4C) * 1000u));
                 g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiPowerLevel) * 40000000u));
-                g_GuiScore.Add(static_cast<int>(g_GuiPower) * 400000);
+                g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiPower) * 400000u));
                 if (g_ReplayManager->mode != 1)
                 {
                     GameCompleteStageTransition(

@@ -124,6 +124,17 @@ focused cold replay passes five existing exact callbacks/factory-owners,
 **823/823** bytes and **57/57** fields. No new exact ledger credit and no
 full historical cold replay.
 
+## 2026-11-11 GUI stage reward native DWORD checkpoint
+
+`src/Gui.cpp` now uses low-32-bit unsigned IMUL-equivalent multiplication
+and signed publication for all remaining stage reward level/Power bonuses
+inside `GuiMessageVmView::Run`. Scoped and combined real 17-input `/GL`
+compiles preserve all 22 GUI source owners/566 decoded binding fields and
+ordinary machine-code bytes; nonexact Run remains 4,492 bytes against the
+4,480-byte target. Focused **installed-source cold replay** of the actual
+3,836-byte GUI update Boss is exact **3,836/3,836 with all 72 fields**.
+No full replay or new exact credit.
+
 ## High-value nonexact owners
 
 These are *selected current-source comparisons*, not proof of a runnable game.

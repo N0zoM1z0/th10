@@ -1,5 +1,29 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-11 GUI message stage-bonus DWORD multiplication checkpoint
+
+`GuiMessageVmView::Run` still implements the stage completion score
+switch. The remaining `g_GuiPowerLevel * {20000000,25000000,35000000}`
+and all six `g_GuiPower * {100000,200000,300000,400000}` reward terms
+previously used signed C++ multiplication. The retail i386 IMUL truncates
+to one DWORD before the signed score argument is passed; the maintained
+source now computes each corresponding wrapped unsigned product before
+interpreting it as signed. No game score constants, branches or other
+calculations were changed.
+
+Independent baseline, level-only, Power-only and combined VC7.1 17-input
+`/GL` compiles retain **all 22 Gui.cpp source-owned complete functions**, all
+**566 decoded address-field positions/types/symbol identities**, and every
+ordinary byte. In particular the original 4,480-byte `GuiMessageVmView::Run`
+is still nonexact with a **4,492-byte** candidate; this checkpoint does
+not assert runtime closure or exactness for Run. The newly linked combined
+source was checked against the target's separate 3,836-byte exact
+`GuiView::UpdateStageElements` contract (72 original-bound fields), and
+an **installed-source selected cold replay** independently passes
+**3,836/3,836 bytes, 72/72 original-bound fields**. No full all-unit replay
+or canonical exact ledger change.
+
+
 ## 2026-11-11 Transition shake pause-gate register ordering improvement
 
 The original 349-byte TU-static `TransitionShakeEnvelope @0x0043C710`
