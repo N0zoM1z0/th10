@@ -1,5 +1,38 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-11 FrontEnd shot/practice/music profile native DWORD words
+
+The maintained `src/FrontEnd.cpp` now computes five more classes of
+script/config-selected profile addresses as flat low-32-bit i386 words:
+`GetFrontEndScoreTable` shot-group 0x437C stride, Extra difficulty's
+character*3 unlock bytes, three stage record DWORDs at 0x4D0/0x484C/0x8BC8,
+`DrawPractice` cursor-selected 0x437C shot page, and the music unlock flag
+at profile byte 0x1D892 plus a selected track (one publication and four
+reads). This removes out-of-array C++ pointer formation and signed index
+multiplication while retaining the original unchecked byte addresses,
+separate state reads, data/layout constants and branch semantics.
+
+Six independent scoped and one combined VC7.1 `/GL` compiler trials kept
+the **83 complete FrontEnd source-owned bodies and 1,819 decoded link
+field offsets/types/symbol identities** unchanged, with zero non-field
+machine-code differences against the already installed baseline. This
+includes the still-nonexact 2,616-byte `ResultMenuUpdateResult` candidate
+(target 3,227), and the 2,596-byte `FrontEndUpdateMusicRoom` candidate.
+Anonymous MSVC source-local symbol hashes were normalized only across
+identical source-private functions during that before/after comparison.
+
+After installing the combined source, **six selected original-bound cold
+replays pass 443/443 bytes and all 18 declared fields across four
+independent artifacts**: `front-end-load-music` 120 (5 fields),
+`front-end-play-music` 73 (8), `front-end-music-skip-line` 59 (0),
+`front-end-music-copy-line` 92 (0), `result-menu-close` 89 (4), and
+`result-menu-update-callback-00422a90` 10 (1). The combined selected
+cold command returned its exact receipt after a long native link even
+though its invocation connection timed out; the complete JSON receipt
+was inspected in the repository. No full all-unit cold replay, no new
+canonical exact owner, and no product/runtime claim.
+
+
 ## 2026-11-11 FrontEnd result/practice record native DWORD addressing
 
 The large nonexact `ResultMenuUpdateResult @0x004236F0` and several frontend

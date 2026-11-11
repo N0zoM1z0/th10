@@ -206,6 +206,19 @@ proves **zero changed ordinary bytes and identical 28 fields**, so its old
 shifted field frontier is not a regression caused by these edits. No full
 cold replay and no new canonical exact credit.
 
+## 2026-11-11 FrontEnd shot/practice/music native score words
+
+`src/FrontEnd.cpp` now uses original low-32-bit base+stride arithmetic for
+shot score tables, Extra character unlocks, three shot-type stage records,
+practice score pages and music unlock profile bytes. Independent scoped and
+combined `/GL` compiles preserve **83/83 complete FrontEnd source functions,
+1,819/1,819 decoded address fields and all ordinary bytes**; the 2,616-byte
+result menu and 2,596-byte music update candidates remain nonexact.
+Installed-source selected original-bound cold replay of six exact units
+passes **443/443 bytes**, 18 target-bound fields in four artifacts (load
+music120, play music73, music helper59+92, result close89 and callback10).
+No full replay or ledger exact credit.
+
 ## High-value nonexact owners
 
 These are *selected current-source comparisons*, not proof of a runnable game.

@@ -458,7 +458,8 @@ static FrontEndScoreRecordView *GetPracticeScoreRecord(
 static FrontEndScoreTableView *GetFrontEndScoreTable(int shot)
 {
     return reinterpret_cast<FrontEndScoreTableView *>(
-        g_FrontEndProfileData + shot * 0x437c + 8);
+        reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
+        static_cast<unsigned int>(shot) * 0x437cu + 8u);
 }
 
 static void InterruptPracticeRows(FrontEndControllerView *controller)
@@ -1948,7 +1949,9 @@ int __stdcall FrontEndControllerView::UpdateShotType(
         if (g_ReplayDifficulty == 4)
         {
             unsigned char *unlocks =
-                g_FrontEndProfileData + 0x1d888 + g_ReplayCharacter * 3;
+                reinterpret_cast<unsigned char *>(
+                    reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
+                    0x1d888u + static_cast<unsigned int>(g_ReplayCharacter) * 3u);
             if (unlocks[0] == 0)
             {
                 if (controller->cursor.current == 0)
@@ -1979,13 +1982,18 @@ int __stdcall FrontEndControllerView::UpdateShotType(
         SetScreenState(controller, FRONT_END_SELECTION_OPENING);
 
         {
-            int recordIndex = g_ReplayCharacter * 0x329d + g_ReplayDifficulty;
+            const unsigned int recordWord =
+                static_cast<unsigned int>(g_ReplayCharacter) * 0x329du +
+                static_cast<unsigned int>(g_ReplayDifficulty);
             int firstRecord = *reinterpret_cast<int *>(
-                g_FrontEndProfileData + 0x4d0 + recordIndex * 4);
+                reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
+                0x4d0u + recordWord * 4u);
             int secondRecord = *reinterpret_cast<int *>(
-                g_FrontEndProfileData + 0x484c + recordIndex * 4);
+                reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
+                0x484cu + recordWord * 4u);
             int thirdRecord = *reinterpret_cast<int *>(
-                g_FrontEndProfileData + 0x8bc8 + recordIndex * 4);
+                reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
+                0x8bc8u + recordWord * 4u);
             short firstScript = static_cast<short>(
                 g_ReplayCharacter * 3 + 0x8a);
 
@@ -2838,8 +2846,9 @@ int FrontEndControllerView::DrawPractice()
         }
     }
 
-    unsigned char *shotProfile =
-        g_FrontEndProfileData + cursor.current * 0x437c;
+    unsigned char *shotProfile = reinterpret_cast<unsigned char *>(
+        reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
+        static_cast<unsigned int>(cursor.current) * 0x437cu);
     ascii->color = 0xffffffffu;
     position.x = 328.0f;
     position.y = 378.0f;
@@ -3602,7 +3611,9 @@ int __stdcall FrontEndPlayMusic(int slot, int trackIndex)
     if ((g_FrontEndSupervisorFlags & 0x10) != 0)
         FrontEndQueueSoundCommand("dummy", 4, 0);
     FrontEndQueueSoundCommand("dummy", 2, slot);
-    g_FrontEndProfileData[0x1d892 + trackIndex] = 1;
+    *reinterpret_cast<unsigned char *>(
+        reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
+        0x1d892u + static_cast<unsigned int>(trackIndex)) = 1;
     return 0;
 }
 
@@ -3721,7 +3732,9 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
                 AnmVmView *vm = manager->FindVm(*rowId);
                 if (vm == NULL)
                     rowId->value = 0;
-                if (g_FrontEndProfileData[0x1d892 + i] != 0)
+                if (*reinterpret_cast<unsigned char *>(
+                        reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
+                        0x1d892u + static_cast<unsigned int>(i)) != 0)
                     manager->DrawTextLeft(
                         vm, 0xffffff, controller->musicTitles[i]);
                 else
@@ -3748,7 +3761,9 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
         if (controller->stateTimer.current % 2 == 0 && controller->musicCommentLine < 8)
         {
             AnmVmView *vm = controller->musicCommentVmIds[controller->musicCommentLine].GetVm();
-            if (g_FrontEndProfileData[0x1d892 + controller->musicSelectedTrack] == 0 &&
+            if (*reinterpret_cast<unsigned char *>(
+                    reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
+                    0x1d892u + static_cast<unsigned int>(controller->musicSelectedTrack)) == 0 &&
                 controller->musicWarning != 0)
                 g_AnmRenderManagerView->DrawTextLeft(vm, 0x8080ff,
                     g_MusicWarningLines[controller->musicCommentLine]);
@@ -3765,7 +3780,9 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
         if (controller->stateTimer.current % 2 == 0 && controller->musicCommentLine < 8)
         {
             AnmVmView *vm = controller->musicCommentVmIds[controller->musicCommentLine].GetVm();
-            if (g_FrontEndProfileData[0x1d892 + controller->musicSelectedTrack] == 0 &&
+            if (*reinterpret_cast<unsigned char *>(
+                    reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
+                    0x1d892u + static_cast<unsigned int>(controller->musicSelectedTrack)) == 0 &&
                 controller->musicWarning != 0)
                 g_AnmRenderManagerView->DrawTextLeft(vm, 0x8080ff,
                     g_MusicWarningLines[controller->musicCommentLine]);
@@ -3835,7 +3852,9 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
             controller->musicSelectedTrack = controller->cursor.current;
             controller->musicCommentLine = 0;
             ResetStateTimer(controller);
-            if (g_FrontEndProfileData[0x1d892 + controller->musicSelectedTrack] == 0 &&
+            if (*reinterpret_cast<unsigned char *>(
+                    reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
+                    0x1d892u + static_cast<unsigned int>(controller->musicSelectedTrack)) == 0 &&
                 controller->musicWarning == 0)
             {
                 if ((g_FrontEndSupervisorFlags & 0x10) != 0)
