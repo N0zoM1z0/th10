@@ -4428,10 +4428,18 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         if (menu->timer.current < 12) break;
         ResultMenuClose(menu);
         menu->state = 21;
-        if (menu->cursor.current == 0)
+        switch (menu->cursor.current)
+        {
+        case 0:
             g_GameTransitionState = menu->completed != 0 ? 10 : 13;
-        else if (menu->cursor.current == 1 || menu->cursor.current == 2)
+            break;
+        case 1:
             g_MainSupervisorView.SetNextGameMode(4);
+            break;
+        case 2:
+            g_MainSupervisorView.SetNextGameMode(4);
+            break;
+        }
         break;
     }
 }

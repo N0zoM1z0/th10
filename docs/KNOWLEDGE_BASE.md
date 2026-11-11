@@ -172,6 +172,38 @@ fields), `result-menu-update-callback-00422a90` (**10/10**, one field), and
 `anm-request-capture-rectangle` (**162/162**, six fields) all pass. These
 selected controls validate preservation, not the nonexact parent.
 
+## 2026-11-11 Result-menu state-13 native option dispatch
+
+`ResultMenuUpdateResult @0x004236F0` ends its 12-tick result-menu close
+path by selecting option 0 (game transition) or options 1/2 (next mode 4).
+The complete original `+0xC3A..+0xC4F` code loads the cursor once, emits
+`SUB EAX,0`, stores state 21, and then branches using `JE; DEC EAX; JE;
+DEC EAX; JNE`. The older maintained `if (cursor==0) ... else if
+(cursor==1 || cursor==2)` emitted a `TEST` and two independent `CMP`
+operations rather than the original cascade.
+
+The installed **natural C++ switch** now uses separate `case 0`, `case 1`,
+and `case 2` bodies with the same real effects. VC7.1 folds the duplicate
+`SetNextGameMode(4)` calls into the single native code tail and retains
+the target's `SUB/DEC/DEC` selection layout. A fallthrough-shared arm
+compiled to `TEST/JLE/CMP` (690 aligned instructions) instead; a
+manual decrement local compiled to only 686 aligned instructions.
+
+In one unchanged pinned `/GL /GS /EHs` FrontEnd + VmIdInterrupt + real
+Enemy sound-callee graph, the complete PDB-owned candidate moves from
+**3,220 to 3,216 bytes** against the original **3,227**, and ordered
+normalized Capstone matches rise **685 to 695 of 907 original
+instructions**. The frame is still 0x48 vs the target 0x4C and the
+parent is explicitly **NONEXACT**; no exact-ledger entry or partial owner
+credit follows. This is a whole-function diagnostic, not a cropped tail
+or a statement of byte identity.
+
+After source installation, selected cold original-bound exact replays of
+`result-menu-close` 89/89 (four fields),
+`result-menu-update-callback-00422a90` 10/10 (one field) and
+`anm-request-capture-rectangle` 162/162 (six fields) all pass:
+**261/261** unaffected exact bytes and 11 bound fields. No full replay.
+
 ## 2026-11-11 Result-menu state-10 replay timestamp branch ownership
 
 The original `ResultMenuUpdateResult @0x004236F0` loads the global
