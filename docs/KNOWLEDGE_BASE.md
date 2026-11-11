@@ -20,6 +20,29 @@ scratch files were intentionally deleted to save space; the five preserved
 compiler contexts and four trial drivers are listed in `docs/RE_ARTIFACTS.md`.
 
 
+## 2026-11-11 Result-menu replay-name and score-entry dispatch separation
+
+`ResultMenuUpdateResult @0x004236F0` has distinct native switch bodies for
+state 11 (replay-file naming) and state 12 (score-entry naming). Read-only,
+target-attested Ghidra decompilation and direct source comparison showed that
+the previous `case 11: case 12:` shared a large input, editing and cancellation
+body, then selected its behavior with `entryState` conditions. The target
+has two independently dispatched flows with different name submission,
+backspace, and cancel continuations. Maintained `src/FrontEnd.cpp` now gives
+these cases independent natural C++ bodies without changing their respective
+existing behaviors or using artificial padding/ABI annotations.
+
+With the same pinned VC7.1 `/GL` FrontEnd + ResultMenuLifecycle graph and
+`ResultMenuUpdateResult` as the real entry, the complete PDB-owned candidate
+increases **2,616 -> 3,036 bytes**, reducing the extent shortfall against the
+**3,227-byte target** from **611 to 191 bytes**. The full parent remains
+NONEXACT and its remaining ABI, branch layout, code and fields require direct
+comparison before an exact claim. Installed-source cold replays for the
+related, already accepted `result-menu-close` (**89/89**, four original-bound
+fields), `result-menu-update-callback-00422a90` (**10/10**, one field), and
+`anm-request-capture-rectangle` (**162/162**, six fields) all pass. These
+selected controls validate preservation, not the nonexact parent.
+
 ## 2026-11-11 GUI large-message script operand and instruction cursor words
 
 The 4,480-byte target `GuiMessageVmView::Run @0x00415E90` reads 32-bit

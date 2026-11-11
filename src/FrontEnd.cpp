@@ -4241,12 +4241,72 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
             ResultMenuSound(11);
         }
         break;
-    case 11:
-    case 12:
+    case 11: // Replay-file naming: distinct from the score-entry state.
         if (menu->timer.current < 10) break;
-        // These two target states have separate dispatch bodies. The lexical
-        // common navigation below preserves each state's gate and input order.
-        if (entryState == 11 || menu->scoreUnavailable == 0)
+        menu->keyboard.previous = menu->keyboard.current;
+        if (g_FrontEndInput.IsRepeated(0x10)) menu->keyboard.Move(-13);
+        if (g_FrontEndInput.IsRepeated(0x20)) menu->keyboard.Move(13);
+        if (g_FrontEndInput.IsRepeated(0x40))
+            menu->keyboard.Move(menu->keyboard.current % 13 == 0 ? 12 : -1);
+        if (g_FrontEndInput.IsRepeated(0x80))
+            menu->keyboard.Move(menu->keyboard.current % 13 == 12 ? -12 : 1);
+        if (menu->keyboard.previous != menu->keyboard.current) ResultMenuSound(12);
+        if ((g_FrontEndInput.pressed & 0x1001) != 0)
+        {
+            int length = strlen(g_FrontEndScoreEntryAlphabet);
+            int key = menu->keyboard.current;
+            if (key < length - 3 || key == length - 3)
+            {
+                char value = key < length - 3 ? g_FrontEndScoreEntryAlphabet[key] : ' ';
+                if (menu->nameIndex < 8)
+                {
+                    menu->name[menu->nameIndex] = value;
+                    ++menu->nameIndex;
+                    if (menu->nameIndex >= 8) menu->keyboard.SetCurrent(length - 1);
+                }
+                else menu->name[menu->nameIndex - 1] = value;
+            }
+            else if (key == length - 2)
+            {
+                if (menu->nameIndex == 0) return;
+                --menu->nameIndex;
+                menu->name[menu->nameIndex] = ' ';
+                ResultMenuSound(11);
+                return;
+            }
+            else if (key == length - 1)
+            {
+                ResultMenuSound(44);
+                sprintf(replayPath, "th10_%.2d.rpy", menu->cursor.current + 1);
+                ReplayManager::Destroy(menu->replayFiles[menu->cursor.current]);
+                g_ReplayManager->SaveReplay(replayPath, menu->name);
+                // Original re-reads the selected slot after saving.
+                int slot = menu->cursor.current;
+                menu->replayFiles[slot] = ReplayManager::Load(replayPath);
+                menu->state = 10;
+                menu->timer.SetCurrent(0);
+                strcpy(reinterpret_cast<char *>(g_FrontEndProfileData + 0x1d878), menu->name);
+                return;
+            }
+            ResultMenuSound(10);
+        }
+        if ((g_FrontEndInput.pressed & 0x0a) != 0)
+        {
+            ResultMenuSound(11);
+            if (menu->nameIndex != 0)
+            {
+                --menu->nameIndex;
+                menu->name[menu->nameIndex] = ' ';
+                return;
+            }
+            menu->state = 10;
+            menu->timer.SetCurrent(0);
+            return;
+        }
+        break;
+    case 12: // Score-entry naming: a separately dispatched state in retail.
+        if (menu->timer.current < 10) break;
+        if (menu->scoreUnavailable == 0)
         {
             menu->keyboard.previous = menu->keyboard.current;
             if (g_FrontEndInput.IsRepeated(0x10)) menu->keyboard.Move(-13);
@@ -4259,7 +4319,7 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         }
         if ((g_FrontEndInput.pressed & 0x1001) != 0)
         {
-            if (entryState == 11 || menu->scoreUnavailable == 0)
+            if (menu->scoreUnavailable == 0)
             {
                 int length = strlen(g_FrontEndScoreEntryAlphabet);
                 int key = menu->keyboard.current;
@@ -4279,29 +4339,9 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
                     if (menu->nameIndex == 0) return;
                     --menu->nameIndex;
                     menu->name[menu->nameIndex] = ' ';
-                    if (entryState == 11)
-                    {
-                        ResultMenuSound(11);
-                        return;
-                    }
                 }
                 else if (key == length - 1)
                 {
-                    if (entryState == 11)
-                    {
-                        ResultMenuSound(44);
-                        sprintf(replayPath, "th10_%.2d.rpy", menu->cursor.current + 1);
-                        ReplayManager::Destroy(menu->replayFiles[menu->cursor.current]);
-                        g_ReplayManager->SaveReplay(replayPath, menu->name);
-                        // Save failure is deliberately ignored, and the selected
-                        // index is reloaded after SaveReplay before loading.
-                        int slot = menu->cursor.current;
-                        menu->replayFiles[slot] = ReplayManager::Load(replayPath);
-                        menu->state = 10;
-                        menu->timer.SetCurrent(0);
-                        strcpy(reinterpret_cast<char *>(g_FrontEndProfileData + 0x1d878), menu->name);
-                        return;
-                    }
                     unsigned char *profile = g_FrontEndProfileData;
                     strcpy(reinterpret_cast<char *>(profile +
                         (g_ReplayCharacter * 3 + g_ReplayShotType) * 0x437c + 0x1e +
@@ -4330,21 +4370,6 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         }
         if ((g_FrontEndInput.pressed & 0x0a) != 0)
         {
-            // The dispatch state at entry, rather than a state changed by the
-            // confirmation arm, chooses this target continuation.
-            if (entryState == 11)
-            {
-                ResultMenuSound(11);
-                if (menu->nameIndex != 0)
-                {
-                    --menu->nameIndex;
-                    menu->name[menu->nameIndex] = ' ';
-                    return;
-                }
-                menu->state = 10;
-                menu->timer.SetCurrent(0);
-                return;
-            }
             if (menu->cursor.current < 0)
             {
                 menu->state = 8;
