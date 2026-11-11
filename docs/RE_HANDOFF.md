@@ -164,6 +164,16 @@ complete 14,416-byte nonexact dispatcher** and all 22 source-owned functions
 original-bound normal COFF exact. Five selected cold replays pass **153/153**
 original bytes; the dispatcher itself remains NONEXACT. No full cold replay.
 
+## 2026-11-11 GameManager update native stats and frame words
+
+`src/GameManager.cpp` now computes its dynamic statistics row index/address
+as low-32-bit unsigned words and increments both global frame counters as
+native DWORDs. The real 23-input GameStageSlots graph preserves **13/13
+GameManager source owners**, **374/374** field geometries, and all non-field
+bytes, including the still-nonexact 1,544-byte GameManagerUpdateBody.
+After installation, three selected canonical exact units cold replay
+**191/191** original bytes in three artifacts. No full replay or exact credit.
+
 ## 2026-11-11 Player option coordinate DWORD semantics
 
 `src/Player.cpp` now uses low-32-bit unsigned ADD/SUB with signed publication

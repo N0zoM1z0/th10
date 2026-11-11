@@ -301,8 +301,12 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
 
     if (g_ReplayManager->mode != REPLAY_MANAGER_PLAYBACK)
     {
-        GameStatisticsRecord &row =
-            g_GameStatisticsRows->records[g_GameStatisticsIndex1 + g_GameStatisticsIndex0 * 3];
+        const unsigned int recordIndex =
+            static_cast<unsigned int>(g_GameStatisticsIndex1) +
+            static_cast<unsigned int>(g_GameStatisticsIndex0) * 3u;
+        GameStatisticsRecord &row = *reinterpret_cast<GameStatisticsRecord *>(
+            reinterpret_cast<unsigned int>(&g_GameStatisticsRows->records[0]) +
+            recordIndex * static_cast<unsigned int>(sizeof(GameStatisticsRecord)));
         if (row.activeFrames < 215999999)
             ++row.activeFrames;
     }
@@ -312,8 +316,8 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
         g_GuiView->message == NULL &&
         manager->stageTimer.current >= 90)
         GameUpdateFaithDecay(g_GameStageState);
-    ++g_GameFrameCounter0;
-    ++g_GameFrameCounter1;
+    ++*reinterpret_cast<unsigned int *>(&g_GameFrameCounter0);
+    ++*reinterpret_cast<unsigned int *>(&g_GameFrameCounter1);
     manager->stageTimer.Tick();
     return 1;
 }

@@ -5,6 +5,35 @@ Current exact counts come from [PROGRESS.md](PROGRESS.md) and current work from
 [RE_HANDOFF.md](RE_HANDOFF.md). Historical reports and scratch paths may have
 been removed; keep useful findings rather than rebuilding their old archives.
 
+## 2026-11-11 GameManager large update stats and frame DWORD arithmetic
+
+The 1,544-byte original `GameManagerUpdateBody @0x00418190` uses native
+32-bit arithmetic for the statistics record's `index1 + index0 * 3`
+selector and its 0x437C-byte record stride, then increments two global
+frame counters using i386 DWORD operations. The maintained
+`src/GameManager.cpp` now computes the selector, byte stride and base
+address as unsigned 32-bit words before reading `activeFrames` and advances
+the two frame counters through unsigned-word lvalues. No artificial bounds
+clamp, new branch, or new observable game behavior is introduced.
+
+Independent baseline, unsigned-index, native-record-address, native-frame,
+and combined source builds used the existing 23-input GameStageSlots `/GL`
+context with only `src/GameManager.cpp` recompiled. In the complete selected
+graph, **all 13 GameManager-owned function contributions** kept the same
+extents, **all 374** decoded address fields retained positions, types and
+symbol identities, and there were **zero non-field byte differences** from
+baseline. The selected `GameManagerUpdateBody` stays 1,544 bytes, but **is
+still NONEXACT** against retail; matching its extent does not validate its
+remaining control flow or the original field addresses. A transient Wine
+`LNK1104` linker crash on the first baseline was overcome by a subsequent
+serial baseline build; the comparison used the successful persisted images.
+
+Installed-source *selected* original-bound cold replay passes
+`game-manager-update-callback` (7 bytes, 1 field),
+`game-update-faith-decay` (65 bytes, 1 field), and
+`game-enter-menu-state` (119 bytes, 2 fields): **191/191** across three
+artifacts. No full cold replay, exact ledger addition or game runtime claim.
+
 ## 2026-11-11 Player option trail coordinates as native signed DWORD results
 
 The physical `PlayerOptionTrailCallbackBody @0x00427960` uses i386 `ADD`
