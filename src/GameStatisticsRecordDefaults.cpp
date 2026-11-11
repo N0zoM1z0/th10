@@ -48,15 +48,22 @@ void __stdcall InitializeGameStatisticsRecord(GameStatisticsRecord *record)
         {
             *reinterpret_cast<int *>(activeByte - 4) = score;
             activeByte[0] = 1;
-            // The retail copy consumes two 32-bit words and one final byte.
-            // Publish the independent extra word between those writes so
-            // VC7.1 retains the original source-name load schedule.
-            memcpy(activeByte + 2, g_GameStatisticsDefaultEntryName, 8);
+            // The original reads the fixed name as two DWORDs and a final
+            // byte. Keep the ninth-byte store after the independent status
+            // and score updates, preserving its true destination word.
+            unsigned char *const nameDest = activeByte + 2;
+            *reinterpret_cast<unsigned int *>(nameDest) =
+                *reinterpret_cast<const unsigned int *>(
+                    &g_GameStatisticsDefaultEntryName[0]);
+            *reinterpret_cast<unsigned int *>(nameDest + 4) =
+                *reinterpret_cast<const unsigned int *>(
+                    &g_GameStatisticsDefaultEntryName[4]);
+            const unsigned char ninth = g_GameStatisticsDefaultEntryName[8];
             *reinterpret_cast<int *>(activeByte + 12) = 0;
-            activeByte[10] = g_GameStatisticsDefaultEntryName[8];
             activeByte[1] = 0;
             score -= 100000;
             activeByte += 24;
+            nameDest[8] = ninth;
         } while (score > 0);
     } while (--groupsRemaining != 0);
 

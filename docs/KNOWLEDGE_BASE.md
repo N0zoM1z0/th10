@@ -24,6 +24,45 @@ scratch files were intentionally deleted to save space; the five preserved
 compiler contexts and four trial drivers are listed in `docs/RE_ARTIFACTS.md`.
 
 
+## 2026-11-11 Statistics record fixed-name native word accesses
+
+`InitializeGameStatisticsRecord @0x0042ACB0` is a **274-byte** complete
+score-record defaults function in the real six-source
+`GameStatisticsTail` `/GL /GS` linker graph. Its first loop initializes
+five groups of ten ranking records, copies the nine-byte default name,
+zeros independently owned record fields and decrements the score by
+100000 per row. The target reads the name as two **32-bit words and one
+final byte**. The old natural `memcpy(...,8)` combined with a separate
+ninth-byte write yielded a complete 274-byte PDB owner but **43 ordinary
+non-linkage byte differences** in the selected graph, notably wrong
+pointer and outer-loop register lifetimes.
+
+Maintained `src/GameStatisticsRecordDefaults.cpp` now gives the name field
+a typed destination pointer, reads the two complete original DWORDs
+separately, captures the final byte before the independent status writes,
+and publishes that final byte to the **same old record** after advancing
+the source loop cursor. This preserves every record's final contents and
+its loop boundaries while improving whole-owner ordinary mismatch count
+**43 -> 25** at the unchanged **274-byte extent**. The native source
+loads/byte stores and repeated name destination are now closer to the
+original. Eight code/data relocation fields remain present, though their
+identities/positions and the EDX/EBX/ESI/EDI allocation are **not all
+original-bound**. The remaining 25 bytes include the zero register,
+name-copy register pair, 5-group counter and the later kind-table
+initialization schedule; the function is explicitly **NONEXACT**, with no
+new canonical ledger credit.
+
+The installed, reindented source was compiled and linked again in the
+full pinned graph, confirming **274 bytes and 25 ordinary differences**.
+Ten additional typed-pointer/9th-byte spelling controls and twelve
+counter/register controls were tested; no better comparable source was
+installed. Only three related original-bound owners were cold-replayed:
+`game-statistics-load` **423/423** (5 fields),
+`game-statistics-finalize` **564/564** (24 fields) and
+`game-statistics-initialize-tail` **142/142** (7 fields).
+All **1,129/1,129** bytes and **36** fields pass. No historical all-unit
+cold replay was run.
+
 ## 2026-11-11 Result-menu PrepareScore complete-length success-first CFG
 
 `ResultMenuPrepareScore @0x00423570` is an **original 377-byte** authored
