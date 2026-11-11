@@ -21,6 +21,40 @@ scratch files were intentionally deleted to save space; the five preserved
 compiler contexts and four trial drivers are listed in `docs/RE_ARTIFACTS.md`.
 
 
+## 2026-11-11 Bomb Update null-publication and second-ID schedule
+
+In the real six-source `/GL /GS /EHs` update-callback graph, the installed
+223-byte `ScriptViewerBombOwnerView::Update @0x00405750` still placed its
+second VM ID load **after** the first screen-position store. Target code
+loads owner `vmId2C` at `+0x8B`, before the screen position's X and Z
+publication. Reading the actual `volatile unsigned int` owner word into
+`nextVmId` immediately after the spell-adjusted Y decision, then using
+that value in `SetVmPosition`, restores the original stack argument and
+position-word scheduling (nine former byte differences disappear).
+A plain local is codegen-neutral; only the explicit native word read
+preserves this read boundary through VC7.1 optimization.
+
+In the VM-lookup NULL branch, the target clears owner `vmId2C`, restores
+EBX, then clears `mode28`; the earlier candidate restored EBX before
+both stores. Publishing the two original zero values through `volatile`
+owner-word views restores the exact target interleaving without changing
+any conditions, loads or return behavior. Together these two scoped
+source edits reduce the **complete 223-byte** parent's non-address
+ordinary mismatches from **32 to 9 bytes**, and improve target-aligned
+normalized instruction matching from **60/72 to 63/72**. The remaining
+nine bytes are all associated with register selection: target EBP
+manager/EBX VM versus candidate EBX manager/EBP VM, plus their copied
+argument and post-call registers. Its twelve code fields remain present,
+but this parent is **NONEXACT** and earns no new canonical match.
+
+Normal member/reference/const-manager/const-VM declarations, reordered
+source position stores, and a separate VM pointer assignment were
+byte-neutral. A nested success-first NULL branch regressed to 227 bytes
+and was rejected. The installed checkpoint retains the original
+behavior and all five affected original-bound exact guards, cold-replayed
+**379/379** bytes with their fields (registration84, creator85,
+callback10, emitter124 and laser cancel76); no full cohort ran.
+
 ## 2026-11-11 Bomb Update full-frame native VM-id read
 
 `ScriptViewerBombOwnerView::Update @0x00405750` is a complete 223-byte

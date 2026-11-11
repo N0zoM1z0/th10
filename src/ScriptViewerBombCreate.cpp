@@ -57,8 +57,8 @@ int ScriptViewerBombOwnerView::Update()
         AnmVmView *vm = manager->FindVm(AnmVmIdView(vmId));
         if (vm == NULL)
         {
-            vmId2C = 0;
-            mode28 = 0;
+            *reinterpret_cast<volatile unsigned int *>(&vmId2C) = 0;
+            *reinterpret_cast<volatile int *>(&mode28) = 0;
             return 1;
         }
         EnemyGameStateView *state = g_EnemyGameState;
@@ -71,11 +71,12 @@ int ScriptViewerBombOwnerView::Update()
         else
             position30.y -= 1.3f;
 
+        const unsigned int nextVmId = *reinterpret_cast<volatile unsigned int *>(&vmId2C);
         AnmFloat3View screenPosition;
         screenPosition.x = position30.x + 224.0f;
         screenPosition.y = position30.y + 16.0f;
         screenPosition.z = position30.z;
-        manager->SetVmPosition(AnmVmIdView(static_cast<int>(vmId2C)),
+        manager->SetVmPosition(AnmVmIdView(static_cast<int>(nextVmId)),
             &screenPosition);
         // VM +0x40 is scaleY: retain its exact IEEE-754 word rather than
         // converting the floating-point value to an integer.
