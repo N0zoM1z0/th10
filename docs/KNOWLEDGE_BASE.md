@@ -5,6 +5,39 @@ Current exact counts come from [PROGRESS.md](PROGRESS.md) and current work from
 [RE_HANDOFF.md](RE_HANDOFF.md). Historical reports and scratch paths may have
 been removed; keep useful findings rather than rebuilding their old archives.
 
+## 2026-11-11 Player large-owner native replay-history address words
+
+The Player movement/options (`0x004250B0`, 1,656 original bytes) and update
+callback body (`0x00425730`, 3,112 original bytes) each copy a history pair
+selected by the runtime `optionCount * 8` rather than a compile-time C++ array
+index. The original i386 address calculation is the low 32-bit base plus a
+64-byte option stride, with no array-bound operation at the read site.
+`src/Player.cpp` now uses a single inlined `PlayerNativeHistoryWord` at **both**
+reads, computing the option index and the eight-byte pair stride as unsigned
+32-bit words. This avoids C++ out-of-array pointer formation and signed
+multiplication overflow at those two address expressions; unrelated loop
+conditions and bounds handling are unchanged.
+
+An independently compiled pre/post three-TU VC7.1 `/GL` PlayerDraw graph
+compared **all 67 complete Player source-owned functions and all 556 decoded
+address fields**. Every function kept its original contribution extent,
+every non-address instruction byte was identical and every decoded field
+retained its offset, type and candidate symbol binding. Specifically the two
+large nonexact candidate extents remain **1,616** and **3,100 bytes** in
+this selected graph; their target exactness is not implied. The apparent
+44 raw byte changes in the callback body were all relocation/link-address
+values, with no non-field differences. Other source-owned bodies also retained
+their complete normalized code and bindings.
+
+After installing the change, focused original-bound cold replays pass six
+canonical exact Player functions across four artifacts:
+`player-update-callback` (7), `player-draw-callback-body` (409),
+`player-draw-callback` (7), `player-reset-runtime-state` (273),
+`player-option-trail-callback` (12) and `player-option-special-body` (99),
+**807/807 bytes**, including all independently specified link fields.
+No exact-function ledger credit is added. Remaining original large-owner
+ABI, scheduling and other unvalidated runtime paths are separate.
+
 ## 2026-11-11 TH10 complete-owner register and natural-source frontiers
 
 The current VC7.1 source was compiled and compared in bounded scopes in

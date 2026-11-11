@@ -1,6 +1,6 @@
 # TH10 reconstruction — current agent handoff
 
-**Updated 2026-11-10.** Read [AGENTS.md](../AGENTS.md), then the selected owner's
+**Updated 2026-11-11.** Read [AGENTS.md](../AGENTS.md), then the selected owner's
 source, ledger rows and comparison recipe. The latest exact source checkpoint
 is `558e58a`; later storage/documentation cleanup does not change exact credit.
 
@@ -141,6 +141,20 @@ control-flow layout. The original branch from FILE_CURRENT goes to FILE_END's
 EAX/EDX addition at `+0x2A`; the candidate jumps into FILE_BEGIN's equivalent
 tail at `+0x60`. Further work needs a specific compiler register-lifetime
 hypothesis, not the already rejected direct-return/operand-order controls.
+
+## 2026-11-11 Player large-owner history indexing
+
+`src/Player.cpp` now uses `PlayerNativeHistoryWord` for the two unchecked
+`optionCount * 8` history reads in PlayerUpdateMovementAndOptions and
+PlayerUpdateCallbackBody. Both express the retail low-32-bit base+stride
+without C++ out-of-array pointer arithmetic. In the selected PlayerDraw
+three-TU `/GL` graph, two independent source compiles preserve all **67**
+complete Player-owned function bodies and **556** original candidate symbol
+bindings/field positions; no non-field byte differs. Full candidate sizes
+remain 1,616 and 3,100 respectively, so neither large owner becomes exact.
+Six directly relevant, target-bound canonical Player cold replays pass
+**807/807 bytes** across four artifacts, without a full-cohort replay.
+See the top of `docs/KNOWLEDGE_BASE.md` for target applicability and scope.
 
 ## 2026-11-11 additional natural-source probes
 

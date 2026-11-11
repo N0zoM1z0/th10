@@ -1107,6 +1107,16 @@ int PlayerInitialize(Player *player)
 typedef char PlayerMovementVmAt14[(offsetof(Player, drawVm) == 0x14) ? 1 : -1];
 typedef char PlayerMovementVmSize[(sizeof(PlayerDrawVmView) == sizeof(AnmVmView)) ? 1 : -1];
 
+// The original i386 player history cursor uses low-32-bit address words.
+// A dynamically selected option slot need not be within the C++ array.
+static __forceinline const PlayerPositionPair *PlayerNativeHistoryWord(
+    const Player *player, unsigned int index)
+{
+    return reinterpret_cast<const PlayerPositionPair *>(
+        reinterpret_cast<unsigned int>(&player->replayPositionHistory[0]) +
+        index * static_cast<unsigned int>(sizeof(PlayerPositionPair)));
+}
+
 int PlayerUpdateMovementAndOptions(Player *player)
 {
     int horizontalSpeed = 0;
@@ -1318,7 +1328,8 @@ int PlayerUpdateMovementAndOptions(Player *player)
         int historyIndex = 32;
         for (; historyIndex > player->optionCount * 8; --historyIndex)
             player->replayPositionHistory[historyIndex] =
-                player->replayPositionHistory[player->optionCount * 8];
+                *PlayerNativeHistoryWord(
+                    player, static_cast<unsigned int>(player->optionCount) * 8u);
         for (; historyIndex > 0; --historyIndex)
             player->replayPositionHistory[historyIndex] =
                 player->replayPositionHistory[historyIndex - 1];
@@ -1977,7 +1988,8 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
 
         for (i = 32; i > player->optionCount * 8; --i)
             player->replayPositionHistory[i] =
-                player->replayPositionHistory[player->optionCount * 8];
+                *PlayerNativeHistoryWord(
+                    player, static_cast<unsigned int>(player->optionCount) * 8u);
         for (; i > 0; --i)
             player->replayPositionHistory[i] =
                 player->replayPositionHistory[i - 1];
