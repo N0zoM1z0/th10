@@ -23,6 +23,67 @@ scratch files were intentionally deleted to save space; the five preserved
 compiler contexts and four trial drivers are listed in `docs/RE_ARTIFACTS.md`.
 
 
+## 2026-11-11 Result-menu actual stack locals versus apparent frame padding
+
+The original `ResultMenuUpdateResult @0x004236F0` has a complete **3,227-byte**
+code owner and its Ghidra decompilation expressly identifies `char
+local_44[64]`, `int local_4c[2]`, and the `/GS` cookie. The 64-byte
+`replayPath` array in maintained `FrontEnd.cpp` therefore **must not be
+inflated** as a codegen-only method of closing the target's `SUB ESP,0x4C`
+versus current `SUB ESP,0x48` frame difference. Two original temporary
+DWORD slots share the preceding stack area, including the live 25-item
+replay-list cleanup countdown. The original also constructs the transient
+state-8 VM ID via hidden return storage (`LEA EDI,[ESP+0x14]`) before
+`ResultMenuPendingSix`, whereas the current four-TU candidate uses
+`[ESP+0x10]`. Ghidra's contiguous `int[2]` presentation does **not**
+independently prove a two-element array in original source.
+
+Isolated real VC7.1 `/GL /GS /EHs` experiments with `replayPath[65]` or
+`[68]` restore the native 0x4C frame and raise full-parent normalized
+ordered matching **762/907 -> 789/907** in the otherwise unchanged
+four-TU graph; `[72]` overallocates 0x50 and reverts to 762. Despite the
+match gain, the 65/68 forms directly contradict the target's confirmed
+64-byte local and were **not installed**. Promoting the real state-8
+`AnmVmIdView selected` local to function/case scope restores 0x4C and
+reaches **773/907** (same 3,216-byte candidate), but replaces the target's
+direct hidden-return pointer with an extra three-instruction copy from
+temporary to named VM-ID storage. This is also rejected. Hoisting the
+countdown's declaration alone is codegen-neutral; making its 25-item
+lifetime volatile grows the parent to **3,224 bytes / 754/907** and is
+not adopted. Finding a faithful separate DWORD lifetime without an extra
+copy remains open; fake stack padding is not an acceptable solution.
+
+Separately, the real `ReplayManager.cpp` `/GL /GS /EHs` source object was
+connected to the already tested FrontEnd + VmIdInterrupt + genuine Enemy
+sound + genuine AnmVmId graph. It naturally recovers the private
+`SaveReplay` **EDX replay-path argument** and native member receiver
+loading, unlike the unresolved-callee diagnostic that forwarded a stack
+path pointer. The complete PDB parent is still **3,264 bytes** with
+**748/907** normalized alignment and **174** candidate fields, against
+3,227 original; the WPO graph is different and is **not** a new best
+exact comparison. Adding real AnmManager or Chain to this graph does not
+improve the parent. Connecting genuine dependencies is useful ABI evidence,
+not original-bound full-function exactness, and no canonical recipe or
+source change was installed from these probes. The committed four-TU
+best remains **3,216 bytes / 762/907**, all **173** candidate fields;
+selected four exact control owners previously replayed **326/326**.
+
+## 2026-11-11 ANM interpreter child91 register lifetime control
+
+The complete `AnmRenderManagerView::ExecuteScript @0x0043EE30` remains
+**9,962/9,964 original-bound bytes**, **350/350** independently reviewed
+fields, with precisely `+0x113/+0x115` (target `MOV EDX,[EBP+20h]` and
+`PUSH EDX`; candidate ECX) nonexact. Twelve additional real five-TU
+VC7.1 `/GL /GS` codegen trials explored explicitly resolved script
+parameter branches, unsigned/signed bit patterns, child ID assignment,
+argument pointers and the child-91 private script/layer record's field
+order and signedness. Eight retain the two-byte frontier; others change
+other bytes, contribution size or binding locations. None recovers EDX;
+all trial source stayed in ignored `.analysis` and the selected maintained
+ANM parent source was **not changed**. Do not mistake equal 9,964-byte
+extents for a recovered retail register assignment or count any parent
+exactness from these tests.
+
 ## 2026-11-11 Enemy ECL SetSubroutine complete native call seam
 
 `EnemyEclHostBaseView::SetSubroutine @0x00450700` is now a **30/30
