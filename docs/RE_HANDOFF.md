@@ -142,6 +142,17 @@ EAX/EDX addition at `+0x2A`; the candidate jumps into FILE_BEGIN's equivalent
 tail at `+0x60`. Further work needs a specific compiler register-lifetime
 hypothesis, not the already rejected direct-return/operand-order controls.
 
+## 2026-11-11 Player history loop threshold checkpoint
+
+Both Player large update loops now compute the script-facing history
+threshold with `static_cast<int>(static_cast<unsigned int>(optionCount) << 3)`.
+This restores native 32-bit SHL semantics while retaining the signed loop
+comparison. Selected 3-TU VC7.1 comparison keeps all 67 Player-owned bodies
+and 556 field layouts/non-field bytes unchanged; six selected exact native
+cold units pass **807/807** (one transient Wine link retry). Neither 1,656-
+nor 3,112-byte original Player boss receives exact credit. See the knowledge
+note for rejected unsigned-compare and helper variants.
+
 ## 2026-11-11 Player large-owner history indexing
 
 `src/Player.cpp` now uses `PlayerNativeHistoryWord` for the two unchecked

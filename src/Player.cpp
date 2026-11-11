@@ -1326,7 +1326,11 @@ int PlayerUpdateMovementAndOptions(Player *player)
         (horizontalSpeed != 0 || verticalSpeed != 0))
     {
         int historyIndex = 32;
-        for (; historyIndex > player->optionCount * 8; --historyIndex)
+        // The native SHL of the option count wraps at 32 bits, then the
+        // loop compares the resulting word as signed on i386.
+        for (; historyIndex > static_cast<int>(
+                   static_cast<unsigned int>(player->optionCount) << 3);
+             --historyIndex)
             player->replayPositionHistory[historyIndex] =
                 *PlayerNativeHistoryWord(
                     player, static_cast<unsigned int>(player->optionCount) * 8u);
@@ -1986,7 +1990,9 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
         player->options[2].resetFlag = 1;
         player->options[3].resetFlag = 1;
 
-        for (i = 32; i > player->optionCount * 8; --i)
+        // Match the low-32-bit SHL and signed loop comparison in retail.
+        for (i = 32; i > static_cast<int>(
+                 static_cast<unsigned int>(player->optionCount) << 3); --i)
             player->replayPositionHistory[i] =
                 *PlayerNativeHistoryWord(
                     player, static_cast<unsigned int>(player->optionCount) * 8u);

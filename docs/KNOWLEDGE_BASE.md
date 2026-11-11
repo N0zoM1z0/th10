@@ -5,6 +5,34 @@ Current exact counts come from [PROGRESS.md](PROGRESS.md) and current work from
 [RE_HANDOFF.md](RE_HANDOFF.md). Historical reports and scratch paths may have
 been removed; keep useful findings rather than rebuilding their old archives.
 
+## 2026-11-11 Player history loop threshold uses native unsigned shift
+
+In `PlayerUpdateMovementAndOptions` (original `0x004250B0`, 1,656 bytes)
+and `PlayerUpdateCallbackBody` (original `0x00425730`, 3,112 bytes),
+the history-loop bound previously evaluated `optionCount * 8` using C++
+signed multiplication. The target uses an i386 `SHL ..., 3` followed by a
+**signed** comparison. The installed source now computes the low 32-bit
+word with an unsigned shift, then interprets it as signed on TH10's pinned
+MSVC/i386 toolchain. An unsigned comparison would change the target's
+control flow; that control was rejected after two ordinary byte differences
+in each complete parent.
+
+Two fresh independent 3-TU `/GL` source variants (shift form and unsigned
+multiply form) preserved all **67** complete Player source-owned function
+extents, all **556** decoded address-field offsets/types, and every
+non-field machine-code byte against the baseline. A separate helper-function
+attempt, despite encoding the same intended shift, changed both large
+functions' optimizer schedule and was rejected. These are complete-body
+comparisons for the selected graph, not proofs that the nonexact originals
+are now exact. Current selected graph sizes remain 1,616 and 3,100 bytes.
+
+After installation, six selected original-bound Player exact units pass
+**807/807 bytes** across four native build artifacts: update callback 7,
+draw body 409, draw adapter 7, reset 273, option trail 12 and option
+special 99. A first Wine linker LNK1104/page-fault failure on the reset
+artifact was transient; isolated serial retry passed and the other five
+passed separately. No full cold replay and no ledger credit.
+
 ## 2026-11-11 Player large-owner native replay-history address words
 
 The Player movement/options (`0x004250B0`, 1,656 original bytes) and update
