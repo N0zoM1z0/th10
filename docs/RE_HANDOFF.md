@@ -112,6 +112,18 @@ Three selected original-bound exact units cold-pass **1,129/1,129 bytes**
 (load423, finalizer564, tail init142); no full replay and no added exact
 credit. Existing statistics factory and constructor remain nonexact.
 
+## 2026-11-11 Transition shake pause-gate compiler frontier
+
+`src/TransitionEffect.cpp` now separates the nullable game-manager test
+from the 0x72/bit0+bit2 flags conditions. In real 14-input VC7.1 `/GL`
+source builds, `TransitionShakeEnvelope` keeps a 350-byte candidate (target
+349), improving comparable positional bytes from **181/285 to 207/285**
+and restoring the game-owner field to +0x17. All 17 other source-owned
+code bodies keep normalized bytes, extents and fields. Installed-source
+focused cold replay passes five existing exact callbacks/factory-owners,
+**823/823** bytes and **57/57** fields. No new exact ledger credit and no
+full historical cold replay.
+
 ## High-value nonexact owners
 
 These are *selected current-source comparisons*, not proof of a runnable game.

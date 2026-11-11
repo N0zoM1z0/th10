@@ -233,11 +233,10 @@ static int __fastcall TransitionShakeEnvelope(void *argument)
     if (g_GameStartupCounter != 0)
         return 7;
     ResultGameManagerView *game = g_ResultGameManager;
-    // The target observes bit0 and bit2 through SHR/OR/TEST before it
-    // separately tests bits 1, 4, 5 and 6 of the same flags word.
-    if (game == NULL ||
-        ((((game->flags58 >> 2) | game->flags58) & 1u) != 0) ||
-        ((game->flags58 & 0x72u) != 0))
+    if (game == NULL)
+        return 1;
+    if ((((game->flags58 >> 2) | game->flags58) & 1u) != 0 ||
+        (game->flags58 & 0x72u) != 0)
         return 1;
     effect->timer.Tick();
     // Both later branches use the same modulo-2^32 second-stage boundary.

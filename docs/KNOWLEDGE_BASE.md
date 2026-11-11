@@ -1,5 +1,33 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-11 Transition shake pause-gate register ordering improvement
+
+The original 349-byte TU-static `TransitionShakeEnvelope @0x0043C710`
+loads the nullable game manager in ECX and its flags in EAX before the
+separate SHR/OR/TEST and bit-0x72 checks. The previous natural C++
+combined its null test into the flags condition; pinned VC7.1 `/GL` emitted
+the pointer in EAX and flags in ECX. Splitting the null return from the
+unchanged two flags tests restores the original beginning's ECX/EAX
+selection while retaining the original short-circuit conditions.
+
+Two separately linked 14-input GUI/transition profiles compare the complete
+static PDB owner with the same target boundary. The **350-byte** maintained
+candidate remains **NONEXACT** against the 349-byte original, but positional
+ordinary-byte matches improve from **181/285 to 207/285**. The first game
+manager global-address field moves from +0x16 to the original +0x17, while
+other fields and later block ordering still prevent exactness. The 18
+TransitionEffect source-owned code contributions were compared completely:
+17 other owners retain every ordinary byte, extent and decoded field
+identity. Multiple alternate nested/late phase and flags-local forms
+regressed; none were installed.
+
+The installed-source **selected original-bound cold replay** proves
+`transition-fade-out` 93, `transition-effect-initialize` 396,
+`transition-fade-in` 133, `transition-delete` 26 and `transition-dim` 175,
+**823/823 bytes and all 57 fields** across one artifact. No full cold
+replay, runtime claim, or new canonical exact credit.
+
+
 ## 2026-11-11 Statistics loader serialized byte and record address words
 
 `GameStatisticsOwner::Load42B030` now accumulates both distinct serialized
