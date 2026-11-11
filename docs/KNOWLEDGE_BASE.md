@@ -21,6 +21,37 @@ scratch files were intentionally deleted to save space; the five preserved
 compiler contexts and four trial drivers are listed in `docs/RE_ARTIFACTS.md`.
 
 
+## 2026-11-11 Bomb Update full-frame native VM-id read
+
+`ScriptViewerBombOwnerView::Update @0x00405750` is a complete 223-byte
+parent of the newly exact 124-byte `EmitAuxiliary`. In the same genuine
+six-source `/GL /GS /EHs` Bomb update-callback LTCG graph, its prior
+source candidate had a **220-byte** PDB contribution, saved ESI after
+EBX/EBP and zeroed ECX only after the lookup. The target saves ESI first,
+zeroes it once, compares the mode and VM pointer against that saved zero,
+then loads owner `vmId2C` before the renderer global.
+
+Reading the owner ID as a `volatile unsigned int` native memory word
+before `FindVm` preserves its actual 32-bit representation and forces the
+target-consistent read order without fabricated ABI declarations. This
+recovers the complete **223-byte** candidate, restores target
+`PUSH ESI / XOR ESI,ESI / CMP EAX,ESI` entry instructions, and increases
+ordered normalized matching from **51/72 to 60/72 instructions**.
+The candidate retains twelve linked fields. It is **NONEXACT**: its
+manager/VM callee-saved registers are still EBX/EBP versus target
+EBP/EBX; zero-path pop/store ordering and a few stack writes differ.
+A named argument and alternate float-three constructor were codegen-neutral;
+a braced aggregate initializer was rejected because `AnmFloat3View` has a
+user-defined constructor. All rejected trial sources stayed private.
+
+After installing this one-line change, selected original-bound cold replay
+passed the entire affected five-unit set: Bomb registration **84/84**
+(eight fields), Bomb creation **85/85** (five), exact emitter **124/124**
+(six), laser pattern propagation **76/76** (zero), and Bomb update
+callback **10/10** (one). Total **379/379**, with no full historical
+replay. Existing exact parent-independent owners and original target
+identity were preserved; no new exact ledger credit is claimed here.
+
 ## 2026-11-11 Bomb emitter exact in its real update-callback graph
 
 The complete `ScriptViewerBombOwnerView::EmitAuxiliary @0x00405AC0` is now

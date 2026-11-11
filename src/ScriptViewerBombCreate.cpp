@@ -52,7 +52,7 @@ int ScriptViewerBombOwnerView::Update()
         return 1;
     if (--currentMode == 0)
     {
-        int vmId = static_cast<int>(vmId2C);
+        int vmId = static_cast<int>(*reinterpret_cast<volatile unsigned int *>(&vmId2C));
         AnmRenderManagerView *manager = g_AnmRenderManagerView;
         AnmVmView *vm = manager->FindVm(AnmVmIdView(vmId));
         if (vm == NULL)
