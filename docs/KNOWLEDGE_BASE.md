@@ -1,5 +1,45 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-11 FrontEnd result/practice record native DWORD addressing
+
+The large nonexact `ResultMenuUpdateResult @0x004236F0` and several frontend
+stage/practice helpers select serialized score records through character,
+shot, stage, difficulty and row numbers. Five maintained address sites
+previously formed signed C++ multiplied offsets or pointers outside the
+named profile-data object. `src/FrontEnd.cpp` now computes all five as
+low-32-bit unsigned i386 words before forming the final record pointer:
+result-menu `0x437C` shot-group + `0x4DC` stage row, stage-score lookup,
+practice catalog `0x90` rows, practice result `0x437C` + `0x624`, and
+practice score `0x18` records. Independent state loads, record sizes,
+conditional stores and all retail unchecked selector behavior remain.
+
+Five scoped and one combined real single-TU VC7.1 `/GL` FrontEnd build were
+compared after canonicalizing **only** temporary anonymous PDB symbol-name
+hashes (they vary with each scratch source file path). All **83 complete
+source-owned functions**, **1,819 decoded link-field geometries and symbol
+identities**, and all ordinary bytes were unchanged between the current
+baseline and each variant. The selected nonexact `ResultMenuUpdateResult`
+candidate remains 2,616 bytes against its 3,227-byte original. In two
+*installed-source selected cold replays*, `result-menu-close` (89 bytes,
+four fields) and `result-menu-update-callback-00422a90` (10 bytes, one
+field) remain original-bound **99/99 exact** across two artifacts.
+
+Two additional selected cold checks did not return exact receipts, but the
+causes were separately investigated rather than suppressed. The legacy
+`result-menu-update` 206-byte comparator rejects its declared final 1-byte
+data span as inconsistent with current Capstone complete decode coverage.
+Its source graph's 83-owner pre/post normalization is byte-neutral; this
+report does not relax or modify the physical data-span contract. The
+`result-menu-open-game-over` 15-TU graph's 411-byte body has 28 address
+fields whose offsets diverge from the original from +0xD2 onward.
+A **controlled before/after** re-link with the *same freshly compiled 15-TU
+support objects*, recompiling only the original FrontEnd source from HEAD,
+proved that both versions have exactly the same 411-byte full-body ordinary
+machine code and the same 28 field bindings. This gap is pre-existing to
+the current five address-word modifications, not a regression or exact pass.
+No full historical replay, exact ledger credit or product runtime claim.
+
+
 ## 2026-11-11 GUI message Run active-side indexed native words
 
 The large nonexact `GuiMessageVmView::Run @0x00415E90` uses the mutable

@@ -407,11 +407,16 @@ static void DisableChildVmTree(
 
 static FrontEndStageScoreRecordView *GetFrontEndStageScoreRecord(int stage)
 {
-    int shotGroup = g_ReplayShotType + g_ReplayCharacter * 3;
-    FrontEndStageScoreRecordView *records =
-        reinterpret_cast<FrontEndStageScoreRecordView *>(
-            g_FrontEndProfileData + shotGroup * 0x437c + 0x4dc);
-    return &records[stage + g_ReplayDifficulty * 6];
+    const unsigned int shotWord =
+        static_cast<unsigned int>(g_ReplayShotType) +
+        static_cast<unsigned int>(g_ReplayCharacter) * 3u;
+    const unsigned int stageWord =
+        static_cast<unsigned int>(stage) +
+        static_cast<unsigned int>(g_ReplayDifficulty) * 6u;
+    return reinterpret_cast<FrontEndStageScoreRecordView *>(
+        reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
+        shotWord * 0x437cu + 0x4dcu +
+        stageWord * static_cast<unsigned int>(sizeof(FrontEndStageScoreRecordView)));
 }
 
 static int CountPracticeRecordsForDifficulty(int difficulty)
@@ -427,21 +432,27 @@ static int CountPracticeRecordsForDifficulty(int difficulty)
 
 static unsigned char *GetPracticeCatalogRecord(int record)
 {
-    return g_FrontEndProfileData + 0x19a8c + record * 0x90;
+    return reinterpret_cast<unsigned char *>(
+        reinterpret_cast<unsigned int>(g_FrontEndProfileData) + 0x19a8cu +
+        static_cast<unsigned int>(record) * 0x90u);
 }
 
 static int *GetPracticeResultRecord(int shot, int record)
 {
     return reinterpret_cast<int *>(
-        g_FrontEndProfileData + shot * 0x437c + 0x624 + record * 0x90);
+        reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
+        static_cast<unsigned int>(shot) * 0x437cu + 0x624u +
+        static_cast<unsigned int>(record) * 0x90u);
 }
 
 static FrontEndScoreRecordView *GetPracticeScoreRecord(
     int shot, int difficulty, int row)
 {
     return reinterpret_cast<FrontEndScoreRecordView *>(
-        g_FrontEndProfileData + shot * 0x437c + 0x18 +
-        (difficulty * 10 + row) * 0x18);
+        reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
+        static_cast<unsigned int>(shot) * 0x437cu + 0x18u +
+        (static_cast<unsigned int>(difficulty) * 10u +
+         static_cast<unsigned int>(row)) * 0x18u);
 }
 
 static FrontEndScoreTableView *GetFrontEndScoreTable(int shot)
@@ -4071,9 +4082,15 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         ResultMenuSynchronizeScore(g_GuiView);
         if ((g_GameRuntimeFlags & 0x10) != 0)
         {
-            int *record = reinterpret_cast<int *>(g_FrontEndProfileData +
-                (g_ReplayCharacter * 3 + g_ReplayShotType) * 0x437c + 0x4dc +
-                (g_FrontEndSelectedStage + g_ReplayDifficulty * 6) * 8);
+            const unsigned int shotWord =
+                static_cast<unsigned int>(g_ReplayCharacter) * 3u +
+                static_cast<unsigned int>(g_ReplayShotType);
+            const unsigned int stageWord =
+                static_cast<unsigned int>(g_FrontEndSelectedStage) +
+                static_cast<unsigned int>(g_ReplayDifficulty) * 6u;
+            int *record = reinterpret_cast<int *>(
+                reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
+                shotWord * 0x437cu + 0x4dcu + stageWord * 8u);
             if (g_GameScoreState.score > *record)
                 *record = g_GameScoreState.score;
         }

@@ -189,6 +189,23 @@ bytes. Installed-source selected original-bound cold replay passes the
 No full replay and no new exact credit beyond the newly accepted 134-byte
 Bullet draw-bucket owner.
 
+## 2026-11-11 FrontEnd large result/practice DWORD address checkpoint
+
+`src/FrontEnd.cpp` now computes five score/state profile record addresses
+using native low-32-bit multiplications and base+byte offsets, covering the
+large `ResultMenuUpdateResult` and stage/practice record helpers. Independent
+`/GL` trials preserve **83/83 FrontEnd source owners, 1,819/1,819 field
+bindings** and every non-address byte (anonymous PDB hashes normalized only
+for same local function identities). Two installed-source selected exact cold
+replays pass ResultMenuClose89 and ResultMenuUpdateCallback10, **99/99 bytes**
+and five fields. The older `result-menu-update` unit has an existing stale
+one-byte data-span/Capstone contract conflict and did *not* pass its
+comparator. The 411-byte `ResultMenuOpenGameOver` 15-TU graph also remains
+nonexact, but an explicit same-support-objects before/after source re-link
+proves **zero changed ordinary bytes and identical 28 fields**, so its old
+shifted field frontier is not a regression caused by these edits. No full
+cold replay and no new canonical exact credit.
+
 ## High-value nonexact owners
 
 These are *selected current-source comparisons*, not proof of a runnable game.
