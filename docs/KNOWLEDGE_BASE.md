@@ -48,6 +48,13 @@ regression of seven existing Enemy helpers in four artifacts passes
 **244/244 bytes**, including `enemy-mark-pending-interrupt` (65) and the
 other six related exact leaves (179). No full cold replay was performed.
 
+A follow-up, noninstalled compiler trial on the distinct
+`GuiMessageVmView` constructor (`683` retail, `702` current candidate bytes)
+used its same six-TU EH graph: three `memset` spelling variants preserve 702
+bytes, while explicit byte/DWORD clear loops grow to 1,115/1,210 bytes.
+The actual excess ID default-constructors require a more structural source
+reconstruction, not a memset expression swap; no constructor code was changed.
+
 ## 2026-11-11 Player movement/option interpolation native DWORD arithmetic
 
 `PlayerUpdateMovementAndOptions` composes movement coordinates and four
@@ -76,31 +83,6 @@ The separate `EclVmContext::Run` controls for inlined `Pop` addresses,
 also recompiled as complete parent diagnostics. They did not improve its
 existing 6,997/7,020 original bytes and 189 target-bound fields; several
 changed additional bytes or its complete PDB extent. None was installed.
-
-## 2026-11-11 EnemyReadDialog closes 124-byte EH-backed static leaf exactly
-
-The ECL `READ_DIALOG` helper `EnemyReadDialog @0x00415DB0` is the complete
-124-byte TU-static function with private EDI GuiView / ESI index live-ins.
-After constructing and publishing `GuiMessageVmView`, retail reads the old
-global dialog index **after** the publication stores. Reading through a
-scoped `const volatile int &` restores this instruction schedule without
-hand-written assembly, synthetic ABI, patches or padding.
-
-A real six-TU VC7.1 `/GL /GS /EHsc` diagnostic preserves the unique static
-map/PDB contribution. Its nine target-bound fields cover the actual
-`GuiMessageVmView` constructor, global index/state addresses, new, all three
-FS:[0] `__except_list` fields and the generated allocation EH handler. The
-handler is independently validated by its one-state, 21-byte EBP-0x10 saved
-allocation cleanup and FuncInfo/unwind-map protocol; those diagnostic
-anchors are **not runnable EH runtime**. Two independently built selected
-original-bound cold links reproduce **124/124** bytes and all nine fields.
-
-The same source edit is raw-identical in the full 11-support Enemy dispatcher
-graph: its 14,416-byte boss and all 22 source-owned functions preserve all
-800 decoded address fields. This is one new canonical authored exact owner;
-`config/matches.csv` and generated `docs/PROGRESS.md` account for the
-124-byte addition. `GuiMessageVmView`'s distinct 683-byte constructor and
-the dispatcher boss remain nonexact.
 
 ## 2026-11-11 Player damage and startup height use native DWORD arithmetic
 
