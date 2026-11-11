@@ -142,6 +142,25 @@ EAX/EDX addition at `+0x2A`; the candidate jumps into FILE_BEGIN's equivalent
 tail at `+0x60`. Further work needs a specific compiler register-lifetime
 hypothesis, not the already rejected direct-return/operand-order controls.
 
+## 2026-11-11 additional natural-source probes
+
+No new exact match was found after the Enemy flag-loop checkpoint. Complete
+selected ANM ExecuteScript remains **9,962/9,964** (350 original fields), ECL
+Run **6,997/7,020** (189 fields), Sound PreloadBgm **365/369** (ten fields),
+Memory Seek **100/107**, statistics record defaults **199/242** comparable
+ordinary bytes in its 274-byte function, and Chain AllocElem **48/70** in its
+74-byte function. Additional declaration, copy, volatile, barrier, constructor
+and argument-order controls were compiled; none improved those whole-owner
+frontiers. See the 2026-11-11 register/ABI section at the top of
+`docs/KNOWLEDGE_BASE.md` for specific failed shapes and target instructions.
+
+**Important false exact lead:** the 202-byte `EntityStartScript_00404f30`
+normal-COFF probe has 194/194 ordinary bytes and both genuine callee fields,
+but its maintained body is naked handwritten assembly. Do not admit it as a
+natural exact owner or add a `matches.csv` row. The useful open task is to
+recover the ESI-VM/EAX-script/stack-resource private ABI naturally in the
+real multi-TU caller graph; the earlier natural five-TU body was 200/202.
+
 ## Next useful experiments and checks
 
 1. Choose a complete **boss and/or leaf** with a specific offset-level

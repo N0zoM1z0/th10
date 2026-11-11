@@ -5,6 +5,67 @@ Current exact counts come from [PROGRESS.md](PROGRESS.md) and current work from
 [RE_HANDOFF.md](RE_HANDOFF.md). Historical reports and scratch paths may have
 been removed; keep useful findings rather than rebuilding their old archives.
 
+## 2026-11-11 TH10 complete-owner register and natural-source frontiers
+
+The current VC7.1 source was compiled and compared in bounded scopes in
+the same session as source checkpoint `2848a1a3`. No new exact owner was admitted. Rejected variants stayed
+under ignored `.analysis/gpt-web/` and `build/gpt-web/`, without replacing the
+maintained source.
+
+- **ANM ExecuteScript, 9,964 bytes:** four fresh child-91 argument-lifetime
+  and local-record variants produced 9,954/9,964 or worse, against the
+  current **9,962/9,964** with 350 target-bound fields. The two-byte
+  EDX-versus-ECX layer operand remains open; the attempted direct/local forms
+  also changed the existing call-setup encodings.
+- **ECL Run, 7,020 bytes:** natural FORMAT index declaration/initialization
+  variants retained **6,997/7,020** and all 189 fields. Combining scratch
+  and argument index into a concrete local record instead emitted 6,928 or
+  7,028 bytes (depending on member order), not the original 7,020. The
+  complete 171-byte float-operand callee remained exact in the valid
+  7,020-byte trials. Do not equate a FORMAT slot coincidence with parent
+  equality.
+- **SoundPlayerView::PreloadBgm, 369 bytes:** native-word spelling of each
+  previously typed BGM slot, individually or combined, shifted three bytes
+  around format-row SIB operands and preserved the other 28 source-owned
+  PDB functions, but regressed the candidate. The existing complete
+  **365/369**, ten-field frontier is still best. The original ReadFile setup
+  loads the size into EDX and its output-pointer address into EAX at
+  +0x120/+0x126; the current candidate chooses EAX/EDX in the opposite
+  order. Eight local output/size forms, seven barrier-placement/qualifier
+  controls and four inline-wrapper forms were byte-neutral or regressed.
+- **CMemoryPbgFile::Seek, 107 bytes:** current normal COFF remains
+  **100/107** with no fields. Target FILE_CURRENT branches to its FILE_END
+  add-tail; the candidate instead branches into the FILE_BEGIN addition.
+  Native pointer, word-cursor, tail-sharing and early-return controls left
+  the seven differences unchanged or disturbed the complete function.
+- **InitializeGameStatisticsRecord, 274 bytes:** the selected normal-COFF
+  candidate remains **199/242** ordinary bytes, with eight source referents.
+  Outer-loop declaration order, named name-copy pointers and 8-byte aggregate
+  copying are neutral; splitting the copy into two DWORD operations shortens
+  the function to 264 bytes. The missing register allocation is in the
+  active-byte/name destination induction, not the format of the copied data.
+- **Chain::AllocElem, 74 bytes:** the current 74-byte normal-COFF body has
+  **48/70** ordinary bytes equal and one independently identified allocation
+  REL32 to `0x00452493`. The target zero register is ECX and the retained
+  flags register EDX, versus candidate EDX/ECX; after construction, the
+  target clears callback slots +0x0C/+0x10 before its callback and flags
+  stores. Reordering natural source assignments/constructor stores, changing
+  bitfield expression or adding compiler read-write barriers did not repair
+  the complete owner. Versions moving the flag store earlier often shrink
+  the function from 74 to 69 bytes.
+
+**Do not promote the apparent 202-byte exact leaf at `0x00404F30` from
+`probe-exact-backlog.py`.** The normal COFF probe reports 194/194 comparable
+bytes and correct REL32 references to `AnmVmInitialize @0x00401DE0` and
+`LoadScript_0043E710 @0x0043E710`, but the current
+`src/AnmVmStartScript.cpp` implements that body with `__declspec(naked)`
+and hand-written register/stack assembly. This validates the physical
+instruction sequence as a diagnostic, not a naturally reconstructed owner.
+The earlier natural five-TU source emitted 200/202 with the wrong private
+ESI/EAX/stack calling context. Recover a natural ABI-producing caller graph
+before considering a canonical exact entry. No matches/progress ledger was
+changed during these experiments.
+
 ## 2026-11-11 Enemy ECL bounded VM flag-loop native indexing
 
 The `SET_FLAGS` and `CLEAR_FLAGS` cases of the 14,416-byte
