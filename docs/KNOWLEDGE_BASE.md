@@ -1,5 +1,42 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-11 New exact: BulletManagerView::DrawBucket 134/134 in real ANM graph
+
+`BulletManagerView::DrawBucket @0x004066E0` is a **new canonical authored
+exact 134-byte PDB owner**. Its private EAX manager / ECX bucket entry and
+native low-32-bit `manager+0x14+bucket*4` pointer read were already recovered.
+The missing optimizer schedule was the sequence of published VM X, Y and Z
+coordinates followed by a direct memory test of `vm.flags35C`. Two natural
+MSVC `_ReadWriteBarrier()` intrinsics after Y and Z, and one `volatile`
+DWORD read at the flags test, let the pinned VC7.1 compiler reproduce the
+entire retail source codegen without patching, padding, manual assembly or
+handwritten target bytes. The true callee is the separately reconstructed
+`AnmRenderManagerView::Draw`, which under `/GL` receives VM in EAX and renderer
+in ECX rather than the default external thiscall convention.
+
+The new `bullet-manager-draw-bucket` unit compiles **current**
+`src/BulletDraw.cpp` plus **current** `src/AnmManager.cpp`, not a cached binary
+or a synthetic callee. **Two independent, selected VC7.1 SP1 `/GL` cold
+replays** each give **134/134 bytes and 5/5 original-bound fields**:
+world-offset X `0x470B4C` (+0x18), Y `0x470B48` (+0x2A), real
+`AddNormalizeAngle @0x44BC10` (+0x59), global render manager `0x491C10`
+(+0x69), real ANM Draw `0x4451C0` (+0x71). The cold image's public MAP/PDB
+entries resolve each bound symbol uniquely, with **complete normalization**.
+Independently selected same-image original-bound guards preserve the exact
+44-byte Bullet draw callback (2 fields) and the complete 216-byte ANM Draw
+(21 fields, including its jump table). The prior unresolved-linkage diagnostic
+contained an unused alias that obscured the real `AddNormalizeAngle` public;
+rebuilding both actual sources cold removes that stale alias. The raw
+function's boundary and 5 fields are independently grounded in the target,
+not inferred from the candidate.
+
+`config/matches.csv` now adds **one** canonical authored exact owner and
+**134** exact bytes, with `config/functions.csv` status and generated progress
+synchronized. The original TU identity, full game product runtime and
+cross-platform behavior remain unproven. **No full all-unit cold replay** was
+run; previous nonexact probe results below describe a superseded source epoch.
+
+
 ## 2026-11-11 Enemy ECL spell-name key native byte wrap
 
 The 14,416-byte `EnemyRuntimeView::DispatchEclInstruction` handles
@@ -23,7 +60,7 @@ pass across four artifacts: `enemy-read-dialog` 124 (9 fields),
 **258/258 bytes**. No all-unit replay or ledger addition.
 
 
-## 2026-11-11 Bullet draw bucket native index and real ANM callee
+## 2026-11-11 Bullet draw bucket native index and real ANM callee — superseded nonexact frontier
 
 `BulletManagerView::DrawBucket @0x004066E0` uses a private EAX manager / ECX
 bucket ABI and immediately reads a pointer at `manager + 0x14 + bucket*4`.
@@ -33,19 +70,20 @@ C++ pointer formation for unchecked bucket values. No validation/clamp is
 invented. Natural VC7.1 `/GL` compilation with the **real** separately
 reconstructed `AnmRenderManagerView::Draw` source restores the callee's
 private EAX VM / ECX renderer argument convention in `DrawBucket`, unlike
-a link with an unresolved external callee. The current natural two-TU
-`DrawBucket` is **139 bytes vs target 134**, with five local address fields;
-it is still NONEXACT. A scoped pre/post image comparison shows the new
+a link with an unresolved external callee. At that earlier source epoch, the natural two-TU
+`DrawBucket` was **139 bytes vs target 134**, with five local address fields;
+it was then NONEXACT. A scoped pre/post image comparison shows the new
 bucket-address expression preserves the entire 139-byte PDB contribution,
 its five field positions and all 44 bytes of the neighboring draw adapter.
 
 Additional volatile flags, VM-field, barrier and coordinate scheduling
-variants were compiled; none restores the target's complete X/Y/Z update
+variants were compiled; none at that epoch restored the target's complete X/Y/Z update
 ordering, direct memory flag test and call-field positions. None was
 installed. After installing the address-index fix, **selected** original-bound
 cold replays pass the Bullet draw callback **44/44** with two fields and
 real ANM renderer draw **216/216** with 21 fields: **260/260 bytes** over
-two artifacts. No full replay or new canonical exact credit.
+two artifacts. No full replay or exact credit **at that earlier checkpoint**. The new
+134/134 accepted source and binding proof are recorded above.
 
 
 ## 2026-11-11 GUI message stage-bonus DWORD multiplication checkpoint

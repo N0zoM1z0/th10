@@ -1,5 +1,8 @@
 #include "BulletManager.hpp"
 
+extern "C" void _ReadWriteBarrier();
+#pragma intrinsic(_ReadWriteBarrier)
+
 // Native target-read float operands in the shared game constant pool. Only
 // their addresses and consumed binary32 values are established here.
 extern float g_BulletDrawWorldOffsetX; // 0x00470B4C = +224.0f
@@ -27,8 +30,13 @@ int BulletManagerView::DrawBucket(int bucketIndex)
         const volatile float &worldY = bullet->position.y;
         bullet->vm.position.x = worldX + g_BulletDrawWorldOffsetX;
         bullet->vm.position.y = worldY + g_BulletDrawWorldOffsetY;
+        // The original writes both float offsets before loading the Z word.
+        _ReadWriteBarrier();
         bullet->vm.position.z = bullet->position.z;
-        if ((bullet->vm.flags35C & 0x08000000u) != 0)
+        // The original tests the flags DWORD after publishing X/Y/Z.
+        _ReadWriteBarrier();
+        if ((*reinterpret_cast<const volatile unsigned int *>(
+                &bullet->vm.flags35C) & 0x08000000u) != 0)
         {
             bullet->vm.rotation.z = AddNormalizeAngle(bullet->angle, 1.5707964f);
             bullet->vm.flags35C |= 4u;

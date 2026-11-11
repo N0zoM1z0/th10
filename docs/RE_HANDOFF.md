@@ -2,9 +2,10 @@
 
 **Updated 2026-11-11.** Read [AGENTS.md](../AGENTS.md), then the selected owner's
 source, ledger rows and comparison recipe. The latest new exact owner is
-`EnemyReadDialog @0x00415DB0` (2026-11-11, two independent selected cold
-124-byte/9-field replays); the historical exact checkpoint `558e58a` is
-superseded for counts by the current generated ledger.
+`BulletManagerView::DrawBucket @0x004066E0` (2026-11-11, two independent
+134-byte/5-field selected cold replays in the real two-TU ANM caller graph).
+The prior `EnemyReadDialog @0x00415DB0` exact result remains valid; older
+checkpoint counts are superseded by the generated ledger.
 
 ## Resume and trust sources
 
@@ -31,16 +32,16 @@ a source/metadata checkpoint. No compile/replay is necessary for docs-only edits
 
 ## Canonical checkpoint
 
-As of the 2026-11-11 `EnemyReadDialog` acceptance, `matches.csv` and
+As of the 2026-11-11 `BulletManagerView::DrawBucket` acceptance, `matches.csv` and
 `PROGRESS.md` agree (the older checkpoint was `558e58a`):
 
 | Metric | Current |
 | --- | ---: |
-| Exact functions | **1,515** |
-| Exact codegen bytes | **199,620** |
-| Authored-origin exact functions | **602** |
-| Authored-origin exact bytes | **129,333** |
-| Authored source-present nonexact backlog | **148** |
+| Exact functions | **1,516** |
+| Exact codegen bytes | **199,754** |
+| Authored-origin exact functions | **603** |
+| Authored-origin exact bytes | **129,467** |
+| Authored source-present nonexact backlog | **147** |
 
 Recent accepted owners include Ending LoadAnimation **126/126**
 (`ending-text-load-animation`, seven target-bound fields), Sound LoadSoundSample
@@ -61,6 +62,25 @@ Earlier accepted representatives: ANM LoadTexture **243/243**, LoadTextureRegion
 **320/320**, loaded-script start **203/203 at 0x43E710** (selected two-TU
 context only), loaded VM InitializeVm **217/217**, enemy laser update callback
 **91/91**, ReplayManager::SaveReplay **1681/1681**. Do not double-count these.
+
+## 2026-11-11 New exact: Bullet draw bucket 134/134
+
+`src/BulletDraw.cpp` now has **one new canonical authored exact function**:
+`BulletManagerView::DrawBucket @0x004066E0`, **134/134 bytes** and all **five
+original-bound fields** in two separate selected cold VC7.1 `/GL` builds
+with genuine `src/AnmManager.cpp` support. The source preserves its native
+EAX-manager/ECX-bucket entry and EAX-VM/ECX-renderer Draw call. Two compiler
+memory barriers after Y and Z publication and a volatile flags DWORD read
+restore the retail FPU/TEST ordering without ASM or patched bytes. The same
+linked PE confirms exact Bullet draw callback 44/2 fields and ANM Draw
+216/21 fields. The old 139-byte `DrawBucket` diagnostic is superseded.
+
+Canonical increase: **+1 exact authored owner and +134 exact bytes**; new
+generated totals are **1,516 canonical exact**, **603 authored exact**,
+**199,754 all exact bytes**, **129,467 authored exact bytes**, with **147**
+authored source-present nonexact still pending. No all-unit cold replay,
+push, product/runtime or original physical-TU claim. See the top of
+`docs/KNOWLEDGE_BASE.md` and `bullet-manager-draw-bucket` unit.
 
 ## 2026-11-11 GUI message Run native profile/score checkpoint
 
@@ -135,15 +155,16 @@ ordinary machine-code bytes; nonexact Run remains 4,492 bytes against the
 3,836-byte GUI update Boss is exact **3,836/3,836 with all 72 fields**.
 No full replay or new exact credit.
 
-## 2026-11-11 Bullet draw bucket native DWORD cursor checkpoint
+## 2026-11-11 Bullet draw bucket native DWORD cursor checkpoint — superseded earlier source snapshot
 
 `src/BulletDraw.cpp` now uses native low-32-bit index*4 address words for the
 unchecked draw-bucket pointer lookup. Explicit real-ANM dual-TU `/GL`
 linking confirms the EAX/ECX private Draw ABI and a byte-identical 139-byte
-candidate before/after (target 134, still NONEXACT), while the 44-byte
+candidate before/after (target 134, then still NONEXACT), while the 44-byte
 Bullet callback remains exact. Two installed-source selected cold units pass
 **260/260** original-bound bytes and **23** fields (Bullet adapter 44+2,
-ANM Draw 216+21). No full replay or exact ledger increment.
+ANM Draw 216+21). No full replay or exact ledger increment **at that earlier source epoch**;
+see the newly accepted exact unit above.
 
 ## 2026-11-11 Enemy large Boss spell-key byte checkpoint
 
