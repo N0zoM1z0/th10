@@ -164,6 +164,16 @@ complete 14,416-byte nonexact dispatcher** and all 22 source-owned functions
 original-bound normal COFF exact. Five selected cold replays pass **153/153**
 original bytes; the dispatcher itself remains NONEXACT. No full cold replay.
 
+## 2026-11-11 Enemy ECL dialog word checkpoint
+
+`src/EnemyEclDispatcher.cpp` now applies the native 32-bit index/stride and
+base+offset rules to `EnemyReadDialog`, including its script-index increment.
+The current 11-support `/GL /GS` graph preserves the entire 14,416-byte
+nonexact dispatcher and all 22 source functions, with 800 field identities
+unchanged. Six selected exact Enemy helper units cold-pass 179/179 original
+bytes in three artifacts. `EnemyReadDialog` (124) stays nonexact; no ledger
+change or full cold replay.
+
 ## 2026-11-11 ZWave native WAV read and stream cursor checkpoint
 
 `src/ZWave.cpp` now forms the memory-backed wave Read/Reset byte offsets,

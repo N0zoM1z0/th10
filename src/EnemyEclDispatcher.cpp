@@ -709,12 +709,15 @@ static void EnemyReadDialog(GuiView *gui, int index)
     // The new-expression allocates the message before either file dereference.
     // Keep both loads at their original source evaluation point.
     GuiMessageVmView *dialog = new GuiMessageVmView(
-        static_cast<unsigned char *>(gui->messageFile) +
-        reinterpret_cast<const EnemyDialogFileIndexEntryView *>(
-            gui->messageFile)[index].contentOffset);
+        reinterpret_cast<unsigned char *>(
+            reinterpret_cast<unsigned int>(gui->messageFile) +
+            static_cast<unsigned int>(
+                EnemyNativeWordIndex(
+                    reinterpret_cast<const EnemyDialogFileIndexEntryView *>(gui->messageFile),
+                    index)->contentOffset)));
     gui->message = dialog;
     dialog->messageIndex = index;
-    int nextIndex = index + 1;
+    int nextIndex = static_cast<int>(static_cast<unsigned int>(index) + 1u);
     int previousIndex = g_EnemyDialogIndex;
     g_EnemyDialogIndex = nextIndex;
     if (previousIndex != nextIndex) {

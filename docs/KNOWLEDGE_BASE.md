@@ -5,6 +5,29 @@ Current exact counts come from [PROGRESS.md](PROGRESS.md) and current work from
 [RE_HANDOFF.md](RE_HANDOFF.md). Historical reports and scratch paths may have
 been removed; keep useful findings rather than rebuilding their old archives.
 
+## 2026-11-11 Enemy ECL dialog index and record address words
+
+`EnemyReadDialog` is reached from `READ_DIALOG` with a raw script integer.
+Its eight-byte message-file index record and indexed content offset are
+unchecked in retail. The maintained helper now computes both the record
+address and the payload pointer by low-32-bit i386 word arithmetic via
+`EnemyNativeWordIndex`, avoiding C++ out-of-array pointer formation and
+signed pointer offsets. Publishing the next dialog index also uses unsigned
+32-bit addition before the target's signed integer comparison. Object
+allocation still precedes both file reads, and message publication retains
+its existing order.
+
+Baseline, scoped and combined variants were separately compiled in the real
+11-support Enemy `/GL /GS` graph. The complete 14,416-byte
+`EnemyRuntimeView::DispatchEclInstruction` and all 22 local source-owned
+functions are raw-identical between baseline and the installed variant;
+all 800 decoded address fields keep their offsets, types and bindings.
+Installed-source selected original-bound cold replays pass six Enemy leaf
+units across three artifacts, 179/179 bytes (the 26-byte raw-float helper
+carries one independent address field). `EnemyReadDialog` itself remains a
+124-byte nonexact helper in its separate GUI/EH graph; no exact credit is
+claimed for the large dispatcher or dialog helper. No full cold replay.
+
 ## 2026-11-11 ZWave native memory/stream pointer words with exact guards
 
 The memory-backed `CWaveFile::Read` and `CWaveFile::ResetFile` previously
