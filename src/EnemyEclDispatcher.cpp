@@ -1835,7 +1835,7 @@ dispatch_initialize_polar_interpolation:
     flags = uVar8;
     if ((uVar8 & 0x10) != 0) {
       for (iVar26 = 0; iVar26 < 10; ++iVar26)
-        reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->ClearFlag2();
+        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->ClearFlag2();
       return 0;
     }
     break;
@@ -1845,7 +1845,7 @@ dispatch_initialize_polar_interpolation:
     flags = uVar8;
     if ((uVar8 & 0x10) == 0) {
       for (iVar26 = 0; iVar26 < 10; ++iVar26)
-        reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->SetFlag2();
+        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->SetFlag2();
       return 0;
     }
     break;

@@ -121,6 +121,27 @@ compiled against their complete 9,964- and 7,020-byte owners. No new exact
 match was found; rejected source variants were not installed. Their active
 frontiers remain those in the table above. No full cold replay was run.
 
+## 2026-11-11 current-source VM flag loop checkpoint
+
+The two bounded ten-element `SET_FLAGS` / `CLEAR_FLAGS` loops in
+`src/EnemyEclDispatcher.cpp` now use the same native 32-bit VM word index
+helper as the script-driven VM operations. Independent pre/post compiles of
+the complete dispatcher produce **14,416/14,416 identical bytes** and all
+**22/22** source-owned functions unchanged in the pinned 11-support /GL
+context. Focused selected cold replays pass `anm-vm-id-set-flag2`,
+`anm-vm-id-clear-flag2`, and `enemy-apply-bullet-clear` (**178/178 bytes**).
+No new exact owner is claimed; the dispatcher remains NONEXACT.
+
+A separate current-source investigation of the 107-byte
+`CMemoryPbgFile::Seek @0x004364F0` confirms **100/107** ordinary bytes,
+zero relocation fields, and seven register/branch encoding differences at
+`+0x49,+0x51,+0x55,+0x59,+0x5E,+0x61,+0x63`. Four valid new source variants
+were no better; changing FILE_BEGIN to an early return worsened the whole
+control-flow layout. The original branch from FILE_CURRENT goes to FILE_END's
+EAX/EDX addition at `+0x2A`; the candidate jumps into FILE_BEGIN's equivalent
+tail at `+0x60`. Further work needs a specific compiler register-lifetime
+hypothesis, not the already rejected direct-return/operand-order controls.
+
 ## Next useful experiments and checks
 
 1. Choose a complete **boss and/or leaf** with a specific offset-level

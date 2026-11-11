@@ -5,6 +5,26 @@ Current exact counts come from [PROGRESS.md](PROGRESS.md) and current work from
 [RE_HANDOFF.md](RE_HANDOFF.md). Historical reports and scratch paths may have
 been removed; keep useful findings rather than rebuilding their old archives.
 
+## 2026-11-11 Enemy ECL bounded VM flag-loop native indexing
+
+The `SET_FLAGS` and `CLEAR_FLAGS` cases of the 14,416-byte
+`EnemyRuntimeView::DispatchEclInstruction` owner each iterate exactly ten
+managed ANM IDs. They were the last two direct `&managedVmIds[iVar26]`
+expressions after the unchecked script-controlled VM-ID paths had been
+restored to the native four-byte indexing helper. Both loops now use
+`EnemyNativeWordIndex(&managedVmIds[0], iVar26)` as well. Unlike the script
+selectors, these two loops stay within the declared ten-ID array; the change
+unifies their source address model, not a new runtime boundary behavior.
+
+Independent baseline and edited-source compiles in the existing pinned
+11-support VC7.1 `/GL /GS` graph produce **identical complete 14,416-byte
+candidate bodies** (`b1f4d6953dad26d74411998acd25ad60c229c3e962aa5454cadd9c9b12dadd61`)
+and **22/22 identical source-owned PDB functions**. Focused current-source
+cold replay passes `anm-vm-id-set-flag2` (67), `anm-vm-id-clear-flag2` (67)
+and `enemy-apply-bullet-clear` (44), **178/178 bytes** across two artifacts.
+The big dispatcher itself remains nonexact; this preserves an existing
+candidate without adding canonical exact credit.
+
 ## 2026-11-10 Enemy ECL unchecked VM-ID indexing and native owner guards
 
 `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` has two opcode
