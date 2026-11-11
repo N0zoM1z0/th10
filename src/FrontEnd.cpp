@@ -4315,14 +4315,14 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         if ((g_FrontEndInput.pressed & 0x0a) != 0)
         {
             ResultMenuSound(11);
-            if (menu->nameIndex != 0)
+            if (menu->nameIndex == 0)
             {
-                --menu->nameIndex;
-                menu->name[menu->nameIndex] = ' ';
+                menu->state = 10;
+                menu->timer.SetCurrent(0);
                 return;
             }
-            menu->state = 10;
-            menu->timer.SetCurrent(0);
+            --menu->nameIndex;
+            menu->name[menu->nameIndex] = ' ';
             return;
         }
         break;

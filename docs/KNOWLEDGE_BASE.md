@@ -172,6 +172,41 @@ fields), `result-menu-update-callback-00422a90` (**10/10**, one field), and
 `anm-request-capture-rectangle` (**162/162**, six fields) all pass. These
 selected controls validate preservation, not the nonexact parent.
 
+## 2026-11-11 Result-menu state-11 native empty-name early return
+
+In the complete `ResultMenuUpdateResult @0x004236F0` target, state 11
+replay-name cancellation plays sound 11, reads the current `nameIndex`,
+and branches on `TEST EAX,EAX; JNE` **to the late one-byte backspace**.
+When index is zero, the original's early nearby branch instead sets
+state 10 and zeroes its timer with the original `SetCurrent` call. The
+old maintained `if (nameIndex != 0) { ...delete and return... }`
+placed the backspace in the early branch and the zero-name reset
+out-of-line, reversing this machine-code control layout.
+
+A natural source equivalent (`if (nameIndex == 0) { state=10;
+timer.SetCurrent(0); return; } --nameIndex; name[nameIndex]=' ';
+return;`) recovers the retail positive JNE and the original nearby
+zero-name early-return shape. Ordinary `if/else` and explicit `goto`
+alternatives compile to the **same** machine-code body. There are no
+new condition tests, side effects or timing differences.
+
+Under the **same** four-real-source VC7.1 `/GL /GS /EHs` graph with
+`VmIdInterrupt`, actual `AnmVmId` and Enemy sound queue, the full
+PDB-owned parent moves **3,212 to 3,216 bytes** against original
+**3,227**, and normalized ordered Capstone matching grows **757 to
+762 of 907 target instructions** (candidate has 914). All **173**
+observed candidate link fields remain present. This is not an
+original-bound full-function exact result: parent stays **NONEXACT**
+with ABI, stack frame and other branch differences; it earns no new
+exact match row.
+
+Selected original-bound cold replays after the installed source change
+pass `anm-vm-id-set-interrupt` **65/65** (two fields),
+`result-menu-close` **89/89** (four),
+`anm-request-capture-rectangle` **162/162** (six), and
+`result-menu-update-callback-00422a90` **10/10** (one): **326/326**
+bytes and **13** fields. No full historical replay ran.
+
 ## 2026-11-11 Result-menu state-12 native cancel/erase branch order
 
 `ResultMenuUpdateResult @0x004236F0` (complete target **3,227-byte** boss)
