@@ -4202,15 +4202,15 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
             menu->keyboard.SetCurrent(0);
             menu->keyboard.count = strlen(g_FrontEndScoreEntryAlphabet);
             menu->keyboard.wraps = 1;
-            // Target retains the replay-data pointer field's address across time().
-            ReplayDataHeader **data = &g_ReplayManager->replayData;
             if (menu->completed != 0 && (g_GameRuntimeFlags & 0x10) == 0)
             {
+                ReplayDataHeader **data = &g_ReplayManager->replayData;
                 time(reinterpret_cast<time_t *>(&(*data)->timestamp));
                 (*data)->completionState = 8;
             }
             else
             {
+                ReplayDataHeader **data = &g_ReplayManager->replayData;
                 time(reinterpret_cast<time_t *>(&(*data)->timestamp));
                 (*data)->completionState = g_FrontEndSelectedStage;
             }

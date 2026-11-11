@@ -139,6 +139,39 @@ fields), `result-menu-update-callback-00422a90` (**10/10**, one field), and
 `anm-request-capture-rectangle` (**162/162**, six fields) all pass. These
 selected controls validate preservation, not the nonexact parent.
 
+## 2026-11-11 Result-menu state-10 replay timestamp branch ownership
+
+The original `ResultMenuUpdateResult @0x004236F0` loads the global
+`g_ReplayManager` **inside each** state-10 replay-header timestamp branch,
+retains the address of its `replayData` pointer across `_time32`, and
+reloads the pointed-to header before writing the completion-state value.
+Previously source placed `ReplayDataHeader **data` above the
+`completed && !runtimeFlags` condition, letting VC7.1 hoist and share the
+owner load in a way that diverged from the original native branches.
+Maintained `FrontEnd.cpp` now gives each branch an independent scoped
+`ReplayDataHeader **data = &g_ReplayManager->replayData` before its time
+call. Both branches keep the same time and completion-state side effects;
+no address is copied or cached across calls beyond the original field
+address lifetime. The target conditional selects value 8 in one arm and
+`g_FrontEndSelectedStage` in the other exactly as before.
+
+In the **same** real `/GL /GS /EHs` FrontEnd + VmIdInterrupt + genuine
+Enemy sound-callee context, the full original owner is **3,227 bytes**;
+the candidate moves from **3,204 to 3,220 bytes**, and its normalized
+ordered Capstone matching increases **680 to 685 target instructions**
+(of 907 original). The actual per-branch manager loads, time call setup
+and completion stores now have the original native scheduling. A scoped
+volatile-global alternative produced 3,208 bytes/681 matches and was
+rejected. This is source-level and full-PDB extent improvement, **not**
+a full exact parent; other state handlers, the `0x48` versus `0x4C`
+stack frame and original-bound link fields remain unresolved. No exact
+match-ledger credit was claimed.
+
+After installing this natural source, selected original-bound cold replay
+passes `result-menu-close` 89/89 (four fields), update callback 10/10
+(one), and `anm-request-capture-rectangle` 162/162 (six): 261/261
+original bytes and all 11 fields. No full historical cold replay.
+
 ## 2026-11-11 Result-menu state-10 native trailing-space loop
 
 In the 3,227-byte `ResultMenuUpdateResult @0x004236F0`, replay-name
