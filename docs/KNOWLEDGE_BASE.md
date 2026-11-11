@@ -1,5 +1,28 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-11 Enemy ECL spell-name key native byte wrap
+
+The 14,416-byte `EnemyRuntimeView::DispatchEclInstruction` handles
+`START_SPELL` and difficulty-adjusted spell start opcodes with a scripted
+XOR-decryption loop. Its rolling increment `local_29d` was a signed `char`
+which receives `+0x10` after each emitted byte. Native i386 performs this
+as an 8-bit wrapped operation; the C++ signed-char assignment has an
+implementation-defined out-of-range result. `local_29d` is now explicitly
+`unsigned char` and the increment is an unsigned byte result, preserving
+the key cycle and all existing unchecked script length behavior.
+
+Independent pre/post current-source compiles in the pinned 11-support
+VC7.1 `/GL /GS` Enemy graph confirm the **complete 14,416-byte Boss** is
+raw-identical, with all **22** source-owned function bodies and **800**
+decoded linkage field identities unchanged. The original Boss remains
+NONEXACT; this is a source-semantics checkpoint and not a new exact owner.
+After installation, five **selected original-bound cold replay** units
+pass across four artifacts: `enemy-read-dialog` 124 (9 fields),
+`enemy-configure-interrupt` 48, `enemy-apply-bullet-clear` 44,
+`enemy-read-raw-float-argument` 26 (one field) and `enemy-set-chapter` 16,
+**258/258 bytes**. No all-unit replay or ledger addition.
+
+
 ## 2026-11-11 Bullet draw bucket native index and real ANM callee
 
 `BulletManagerView::DrawBucket @0x004066E0` uses a private EAX manager / ECX

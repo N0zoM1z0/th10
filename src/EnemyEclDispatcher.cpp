@@ -1079,7 +1079,7 @@ int EnemyRuntimeView::DispatchEclInstruction()
   PlayerFloat3 vectorScratch;
   float local_2a8;
   float local_2a4;
-  char local_29d;
+  unsigned char local_29d;
   float local_29c;
   float local_298;
   EnemyLaserRequestScratch local_288;
@@ -2478,6 +2478,8 @@ dispatch_select_bullet_count_low:
     const unsigned char *encryptedName = spellOperands.encryptedName;
     const int nameLength = spellOperands.encryptedNameLength;
     iVar17 = 0;
+    // Retail's XOR key increments are 8-bit machine-word operations.
+    // Keep the 0x10 step modulo 256, without signed-char narrowing.
     bVar3 = 0x77;
     local_29d = '\a';
     if (0 < nameLength) {
@@ -2485,7 +2487,7 @@ dispatch_select_bullet_count_low:
         *EnemyNativeWordIndex(&local_90.bytes[0], iVar17) =
             *EnemyNativeWordIndex(encryptedName, iVar17) ^ bVar3;
         bVar3 = bVar3 + local_29d;
-        local_29d = local_29d + '\x10';
+        local_29d = static_cast<unsigned char>(local_29d + 0x10u);
         iVar17 = iVar17 + 1;
       } while (iVar17 < nameLength);
     }

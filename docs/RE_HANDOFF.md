@@ -145,6 +145,17 @@ Bullet callback remains exact. Two installed-source selected cold units pass
 **260/260** original-bound bytes and **23** fields (Bullet adapter 44+2,
 ANM Draw 216+21). No full replay or exact ledger increment.
 
+## 2026-11-11 Enemy large Boss spell-key byte checkpoint
+
+`src/EnemyEclDispatcher.cpp` now expresses the rolling encrypted spell-name
+key increment as unsigned-byte modulo-256 arithmetic instead of narrowing
+a signed `char`. The real 11-support `/GL /GS` pre/post compiler graph keeps
+the 14,416-byte nonexact dispatcher, all 22 source-owned functions and 800
+field identities raw-identical. Five installed-source selected exact cold
+units pass **258/258** original bytes across four artifacts, including the
+new 124-byte `EnemyReadDialog` (nine EH/constructor/global bindings). No
+full cold replay and no new exact ledger credit.
+
 ## High-value nonexact owners
 
 These are *selected current-source comparisons*, not proof of a runnable game.
