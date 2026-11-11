@@ -625,6 +625,16 @@ static void LoadPlayerOptionPair(
     pair->y = ScalePlayerOptionCoordinate(position->y);
 }
 
+// The original i386 player history cursor uses low-32-bit address words.
+// A dynamically selected option slot need not be within the C++ array.
+static __forceinline const PlayerPositionPair *PlayerNativeHistoryWord(
+    const Player *player, unsigned int index)
+{
+    return reinterpret_cast<const PlayerPositionPair *>(
+        reinterpret_cast<unsigned int>(&player->replayPositionHistory[0]) +
+        index * static_cast<unsigned int>(sizeof(PlayerPositionPair)));
+}
+
 // Maintained spelling of the observed ECX-bound option callback boundary. This
 // models the target machine ABI; the original source declaration and the
 // wrapper/body optimizer ownership remain unknown.
@@ -645,8 +655,8 @@ __declspec(noinline) void PlayerOptionTrailCallbackBody(
 
     // Preserve the separate X/Y load sequence of the physical option-trail
     // owner; a struct assignment triggers a different VC7.1 register schedule.
-    const PlayerPositionPair *const currentSample =
-        &player->replayPositionHistory[(option->optionIndex + 1) * 8];
+    const PlayerPositionPair *const currentSample = PlayerNativeHistoryWord(
+        player, (static_cast<unsigned int>(option->optionIndex) + 1u) << 3);
     const int initialX = currentSample->x;
     const int initialY = currentSample->y;
     option->replayPair0.x = initialX;
@@ -665,30 +675,40 @@ __declspec(noinline) void PlayerOptionTrailCallbackBody(
         volatile int nextX = player->positionX + option->replayPair2.x;
         volatile int nextY = player->positionY + option->replayPair2.y;
         PlayerPositionPair *const destination =
-            &player->replayPositionHistory[(option->optionIndex + 1) * 8];
+            const_cast<PlayerPositionPair *>(PlayerNativeHistoryWord(
+                player, (static_cast<unsigned int>(option->optionIndex) + 1u) << 3));
         destination->x = nextX;
         destination->y = nextY;
 
         float fraction = 0.125f;
-        for (int i = option->optionIndex * 8 + 1;
-             i <= option->optionIndex * 8 + 7; ++i)
+        for (int i = static_cast<int>(
+                 (static_cast<unsigned int>(option->optionIndex) << 3) + 1u);
+             i <= static_cast<int>(
+                 (static_cast<unsigned int>(option->optionIndex) << 3) + 7u);
+             ++*reinterpret_cast<unsigned int *>(&i))
         {
             // Native loop cursor points to the Y word. Derive both signed
             // coordinates from the same physical 8-byte history entry.
-            unsigned char *sampleY =
-                reinterpret_cast<unsigned char *>(
-                    &player->replayPositionHistory[i]) +
+            unsigned char *sampleY = reinterpret_cast<unsigned char *>(
+                const_cast<PlayerPositionPair *>(PlayerNativeHistoryWord(
+                    player, static_cast<unsigned int>(i)))) +
                 offsetof(PlayerPositionPair, y);
             *reinterpret_cast<int *>(sampleY - sizeof(int)) = (int)(
-                (player->replayPositionHistory[(option->optionIndex + 1) * 8].x -
-                 player->replayPositionHistory[option->optionIndex * 8].x) *
+                (PlayerNativeHistoryWord(
+                     player, (static_cast<unsigned int>(option->optionIndex) + 1u) << 3)->x -
+                 PlayerNativeHistoryWord(
+                     player, static_cast<unsigned int>(option->optionIndex) << 3)->x) *
                     fraction +
-                player->replayPositionHistory[option->optionIndex * 8].x);
+                PlayerNativeHistoryWord(
+                     player, static_cast<unsigned int>(option->optionIndex) << 3)->x);
             *reinterpret_cast<int *>(sampleY) = (int)(
-                (player->replayPositionHistory[(option->optionIndex + 1) * 8].y -
-                 player->replayPositionHistory[option->optionIndex * 8].y) *
+                (PlayerNativeHistoryWord(
+                     player, (static_cast<unsigned int>(option->optionIndex) + 1u) << 3)->y -
+                 PlayerNativeHistoryWord(
+                     player, static_cast<unsigned int>(option->optionIndex) << 3)->y) *
                     fraction +
-                player->replayPositionHistory[option->optionIndex * 8].y);
+                PlayerNativeHistoryWord(
+                     player, static_cast<unsigned int>(option->optionIndex) << 3)->y);
             fraction += 0.125f;
         }
     }
@@ -1106,16 +1126,6 @@ int PlayerInitialize(Player *player)
 // object-lifetime/aliasing closure between the legacy draw view and AnmVmView.
 typedef char PlayerMovementVmAt14[(offsetof(Player, drawVm) == 0x14) ? 1 : -1];
 typedef char PlayerMovementVmSize[(sizeof(PlayerDrawVmView) == sizeof(AnmVmView)) ? 1 : -1];
-
-// The original i386 player history cursor uses low-32-bit address words.
-// A dynamically selected option slot need not be within the C++ array.
-static __forceinline const PlayerPositionPair *PlayerNativeHistoryWord(
-    const Player *player, unsigned int index)
-{
-    return reinterpret_cast<const PlayerPositionPair *>(
-        reinterpret_cast<unsigned int>(&player->replayPositionHistory[0]) +
-        index * static_cast<unsigned int>(sizeof(PlayerPositionPair)));
-}
 
 int PlayerUpdateMovementAndOptions(Player *player)
 {

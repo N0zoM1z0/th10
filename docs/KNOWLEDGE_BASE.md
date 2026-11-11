@@ -5,6 +5,36 @@ Current exact counts come from [PROGRESS.md](PROGRESS.md) and current work from
 [RE_HANDOFF.md](RE_HANDOFF.md). Historical reports and scratch paths may have
 been removed; keep useful findings rather than rebuilding their old archives.
 
+## 2026-11-11 Player option trail history uses native DWORD cursors
+
+`PlayerOptionTrailCallbackBody @0x00427960` consumes runtime option indices
+through an eight-sample (64-byte) history group. The original i386 reader,
+writer, sample interpolation and counted loop form 32-bit address/index
+words without checks for a C++ array subobject. The maintained source now
+reuses `PlayerNativeHistoryWord` (moved above the callback) for the first
+sample, writable destination, interpolation endpoints and each loop sample.
+The start/end cursor computes `optionIndex << 3` with unsigned 32-bit
+arithmetic, then compares its signed result as retail does; its increment
+also operates on the corresponding unsigned word. This removes signed
+index overflow and abstract-array pointer arithmetic at these sites
+without adding clamps or altering evaluation ordering.
+
+Multiple **actual** VC7.1 `/GL` callback-root source variants were compiled
+and compared over the complete **359-byte** callback. The final natural
+helper form remains 359 bytes with **245/339** ordinary bytes matching the
+target (five decoded candidate address fields): still NONEXACT. The
+independent baseline and final source links preserve all **67** source-owned
+function extents and all **556** decoded field offsets/types/bindings with
+zero non-field differences. Splitting the two initial X/Y reads or using
+aggregate copies regressed this owner; removing the scoped `volatile`
+interpolation locals shrank it to 343 bytes. Those controls were rejected.
+
+Final installed-source selected original-bound cold replay passes six
+canonical Player functions across four artifacts: trail callback adapter
+12, special callback adapter 12, special callback body 99, draw callback
+body 409, update callback adapter 7 and runtime-state reset 273,
+**812/812 bytes**. No full all-unit replay or new exact-ledger credit.
+
 ## 2026-11-11 Enemy ECL context and callback records use native DWORD addresses
 
 Two rank-controlled float-result paths in `EnemyRuntimeView::DispatchEclInstruction`

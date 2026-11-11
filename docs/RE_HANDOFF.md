@@ -142,6 +142,17 @@ EAX/EDX addition at `+0x2A`; the candidate jumps into FILE_BEGIN's equivalent
 tail at `+0x60`. Further work needs a specific compiler register-lifetime
 hypothesis, not the already rejected direct-return/operand-order controls.
 
+## 2026-11-11 Player option trail history word checkpoint
+
+The 359-byte `PlayerOptionTrailCallbackBody` now uses the existing native
+history-word helper for script-selected replay samples and its interpolation
+loop, with low-32-bit shifts and increment followed by the original signed
+loop compare. Final natural code remains **359/359 sized, 245/339 ordinary
+bytes** and NONEXACT. The selected PlayerOptionCallbacks `/GL` build checks
+**67/67** source owners and **556/556** field layouts with no non-field
+byte changes. Six selected already-exact Player owners cold-replay
+**812/812** bytes across four artifacts; no full cold replay or ledger change.
+
 ## 2026-11-11 Enemy context / interrupt address-word checkpoint
 
 `src/EnemyEclDispatcher.cpp` now uses low-32-bit unsigned address arithmetic
