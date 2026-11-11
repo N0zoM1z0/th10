@@ -164,6 +164,18 @@ complete 14,416-byte nonexact dispatcher** and all 22 source-owned functions
 original-bound normal COFF exact. Five selected cold replays pass **153/153**
 original bytes; the dispatcher itself remains NONEXACT. No full cold replay.
 
+## 2026-11-11 Player option coordinate DWORD semantics
+
+`src/Player.cpp` now uses low-32-bit unsigned ADD/SUB with signed publication
+for all option-trail initial, next, interpolated-difference and final X/Y
+coordinates in `PlayerOptionTrailCallbackBody`. Separate and combined
+three-input `/GL` trial sources preserve the full **359-byte** candidate and
+all 67 source PDB owner hashes. This original remains NONEXACT (245/339
+comparable ordinary bytes and five candidate address fields); no score credit.
+Installed-source selected original-bound Player cold replay passes seven
+exact units, **819/819 bytes** in four artifacts, including complete draw
+body409 and reset273. No full replay was run.
+
 ## 2026-11-11 Player history loop threshold checkpoint
 
 Both Player large update loops now compute the script-facing history

@@ -5,6 +5,39 @@ Current exact counts come from [PROGRESS.md](PROGRESS.md) and current work from
 [RE_HANDOFF.md](RE_HANDOFF.md). Historical reports and scratch paths may have
 been removed; keep useful findings rather than rebuilding their old archives.
 
+## 2026-11-11 Player option trail coordinates as native signed DWORD results
+
+The physical `PlayerOptionTrailCallbackBody @0x00427960` uses i386 `ADD`
+and `SUB` word instructions on replay X/Y offsets. Previously the maintained
+source used signed C++ addition/subtraction in its zero-mode initial offset
+calculation, nonzero-mode next pair, two interpolation endpoint differences
+and final published X/Y coordinates. The script-owned positions and replay
+coordinates are unconstrained signed values; signed C++ arithmetic could
+invoke overflow UB even though the retail processor simply wraps one DWORD.
+
+The installed source now forms each of these signed results from **unsigned
+32-bit arithmetic before signed publication**, including the interpolation
+subtraction *before* x87's signed-int-to-float conversion. It preserves the
+original signed conversion/compare meaning and does not add any bounds check.
+
+Five independent original-source, two-support `/GL` trial images (baseline,
+three scoped coordinate classes, and combined including both interpolation
+subtractions) each reproduce the exact **359-byte** prior PDB candidate hash,
+all **5** candidate linkage field positions and all **67** local source-owned
+PDB function hashes. The original still matches only **245/339** comparable
+ordinary bytes in this graph, not a newly exact 359-byte function. Twelve
+additional byte-neutral local/register variants of `InvertAlpha @0x437160`
+were also compiled in normal COFF and remained at **112/157**, so none
+was adopted.
+
+Installed-source target-bound *selected* cold replay independently confirms
+seven existing exact Player functions across four artifacts:
+`player-update-callback` (7), `player-reset-runtime-state` (273),
+`player-option-trail-callback` (12), `player-option-special-callback` (12),
+`player-option-special-body` (99), `player-draw-callback-body` (409) and
+`player-draw-callback` (7): **819/819 original bytes**, with all specified
+field identities. No full replay, runtime claim or new canonical exact credit.
+
 ## 2026-11-11 Player option trail history uses native DWORD cursors
 
 `PlayerOptionTrailCallbackBody @0x00427960` consumes runtime option indices

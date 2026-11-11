@@ -667,13 +667,19 @@ __declspec(noinline) void PlayerOptionTrailCallbackBody(
         const int y = initialY;
         const int positionX = player->positionX;
         const int positionY = player->positionY;
-        option->replayPair2.x = x - positionX;
-        option->replayPair2.y = y - positionY;
+        option->replayPair2.x = static_cast<int>(
+            static_cast<unsigned int>(x) - static_cast<unsigned int>(positionX));
+        option->replayPair2.y = static_cast<int>(
+            static_cast<unsigned int>(y) - static_cast<unsigned int>(positionY));
     }
     else
     {
-        volatile int nextX = player->positionX + option->replayPair2.x;
-        volatile int nextY = player->positionY + option->replayPair2.y;
+        volatile int nextX = static_cast<int>(
+            static_cast<unsigned int>(player->positionX) +
+            static_cast<unsigned int>(option->replayPair2.x));
+        volatile int nextY = static_cast<int>(
+            static_cast<unsigned int>(player->positionY) +
+            static_cast<unsigned int>(option->replayPair2.y));
         PlayerPositionPair *const destination =
             const_cast<PlayerPositionPair *>(PlayerNativeHistoryWord(
                 player, (static_cast<unsigned int>(option->optionIndex) + 1u) << 3));
@@ -694,18 +700,20 @@ __declspec(noinline) void PlayerOptionTrailCallbackBody(
                     player, static_cast<unsigned int>(i)))) +
                 offsetof(PlayerPositionPair, y);
             *reinterpret_cast<int *>(sampleY - sizeof(int)) = (int)(
-                (PlayerNativeHistoryWord(
-                     player, (static_cast<unsigned int>(option->optionIndex) + 1u) << 3)->x -
-                 PlayerNativeHistoryWord(
-                     player, static_cast<unsigned int>(option->optionIndex) << 3)->x) *
+                static_cast<int>(
+                 static_cast<unsigned int>(PlayerNativeHistoryWord(
+                     player, (static_cast<unsigned int>(option->optionIndex) + 1u) << 3)->x) -
+                 static_cast<unsigned int>(PlayerNativeHistoryWord(
+                     player, static_cast<unsigned int>(option->optionIndex) << 3)->x)) *
                     fraction +
                 PlayerNativeHistoryWord(
                      player, static_cast<unsigned int>(option->optionIndex) << 3)->x);
             *reinterpret_cast<int *>(sampleY) = (int)(
-                (PlayerNativeHistoryWord(
-                     player, (static_cast<unsigned int>(option->optionIndex) + 1u) << 3)->y -
-                 PlayerNativeHistoryWord(
-                     player, static_cast<unsigned int>(option->optionIndex) << 3)->y) *
+                static_cast<int>(
+                 static_cast<unsigned int>(PlayerNativeHistoryWord(
+                     player, (static_cast<unsigned int>(option->optionIndex) + 1u) << 3)->y) -
+                 static_cast<unsigned int>(PlayerNativeHistoryWord(
+                     player, static_cast<unsigned int>(option->optionIndex) << 3)->y)) *
                     fraction +
                 PlayerNativeHistoryWord(
                      player, static_cast<unsigned int>(option->optionIndex) << 3)->y);
@@ -713,8 +721,12 @@ __declspec(noinline) void PlayerOptionTrailCallbackBody(
         }
     }
 
-    const int sumX = player->positionX + option->replayPair2.x;
-    const int sumY = player->positionY + option->replayPair2.y;
+    const int sumX = static_cast<int>(
+        static_cast<unsigned int>(player->positionX) +
+        static_cast<unsigned int>(option->replayPair2.x));
+    const int sumY = static_cast<int>(
+        static_cast<unsigned int>(player->positionY) +
+        static_cast<unsigned int>(option->replayPair2.y));
     option->replayPair0.x = sumX;
     option->replayPair0.y = sumY;
     option->previousMode = optionMode;
