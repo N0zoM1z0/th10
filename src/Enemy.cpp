@@ -228,8 +228,9 @@ typedef char EnemyEclResourceViewSizeIs1098[
 // pointer for both instruction publication and the subsequent time reset.
 int EnemyEclHostBaseView::SetSubroutine(const char *name)
 {
+    EclVmScriptDatabase *const database = *reinterpret_cast<EclVmScriptDatabase *volatile *>(&scriptDatabase);
     EnemyEclInstructionView *const instruction =
-        reinterpret_cast<EnemyEclInstructionView *>(scriptDatabase->FindSubroutine(name));
+        reinterpret_cast<EnemyEclInstructionView *>(database->FindSubroutine(name));
     activeEclContext->currentInstruction = instruction;
     activeEclContext->currentTime = 0.0f;
     return 0;

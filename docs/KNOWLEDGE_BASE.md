@@ -2,11 +2,12 @@
 
 ## Reading this journal against the current ledger (2026-11-11)
 
-**Current canonical snapshot:** **1,517 exact owners** and **199,878 exact
-bytes**, including **604 authored exact owners** and **129,591 authored exact
-bytes**; **146 authored source-present owners** remain nonexact. The newest
-accepted authored addition is `ScriptViewerBombOwnerView::EmitAuxiliary
-@0x00405AC0` (**124/124**, six bound fields). Earlier additions include
+**Current canonical snapshot:** **1,518 exact owners** and **199,908 exact
+bytes**, including **605 authored exact owners** and **129,621 authored exact
+bytes**; **145 authored source-present owners** remain nonexact. The newest
+accepted authored addition is `EnemyEclHostBaseView::SetSubroutine
+@0x00450700` (**30/30**, one bound call field). Earlier additions include
+`ScriptViewerBombOwnerView::EmitAuxiliary` (**124/124**, six fields),
 `BulletManagerView::DrawBucket` (**134/134**) and `EnemyReadDialog`
 (**124/124**). See canonical
 `config/matches.csv`, `config/match-units.toml` and generated
@@ -20,6 +21,38 @@ repository. Current matched-unit manifests take precedence. Most historical
 scratch files were intentionally deleted to save space; the five preserved
 compiler contexts and four trial drivers are listed in `docs/RE_ARTIFACTS.md`.
 
+
+## 2026-11-11 Enemy ECL SetSubroutine complete native call seam
+
+`EnemyEclHostBaseView::SetSubroutine @0x00450700` is now a **30/30
+byte exact** authored leaf with its sole independently bound `REL32 +0x08`
+pointing to the real `EclVmScriptDatabase::FindSubroutine @0x00450470`
+(the latter is an already accepted 136-byte exact owner). The target
+uses ESI for the host, loads its database from `+0x102C` to **EAX**,
+passes the name from **ECX** on the stack, then reloads the active context
+at `+4` separately for instruction `+4` and time `+0` publication. The
+previous naturally declared lookup compiled ECX database / EAX name in
+an unresolved-callee graph, and EAX name / late EAX database load even
+when the real callee was supplied.
+
+A scoped C++ view of the *existing* `scriptDatabase` pointer as a
+`volatile` low-32-bit memory read **before** the lookup call makes VC7.1
+retain precisely the original database/name evaluation ordering.
+The result, publication and status return paths remain unchanged; no
+hand-written ABI stub, ASM, artificial padding or new side effect was
+introduced. This observation does not establish how retail originally
+spelled the pointer's qualifier or what its physical translation unit was.
+
+The new canonical `enemy-ecl-host-set-subroutine` unit cold-builds the
+real `EnemyManagerUpdateCallback` caller with unchanged `EclVm.cpp` as
+LTCG support. **Two independent source-pinned colds**, with distinct PE
+SHA-256 and PDB GUID identities, confirm complete 30-byte PDB ownership,
+30/30 decoded bytes, zero non-field differences and the original-bound
+real `FindSubroutine` call binding. First selected cold also preserves
+the exact 166-byte
+`EnemyManagerUpdate` and its 10-byte callback (**206/206** across three
+owners). The 2,412-byte EnemyRuntimeUpdate parent and 14,416-byte ECL
+dispatcher remain **NONEXACT**; no parent/function-inventory claim follows.
 
 ## 2026-11-11 Bomb Update null-publication and second-ID schedule
 
