@@ -5,6 +5,37 @@ Current exact counts come from [PROGRESS.md](PROGRESS.md) and current work from
 [RE_HANDOFF.md](RE_HANDOFF.md). Historical reports and scratch paths may have
 been removed; keep useful findings rather than rebuilding their old archives.
 
+## 2026-11-11 Enemy ECL context and callback records use native DWORD addresses
+
+Two rank-controlled float-result paths in `EnemyRuntimeView::DispatchEclInstruction`
+read the current ECL context through the native 32-bit owner word plus four.
+The previous `iVar26 + 4` was signed C++ pointer-address arithmetic and could
+overflow when the owner address crosses the signed boundary. Both reads now
+form the low 32-bit unsigned address word before casting back to a pointer.
+
+The independent `EnemyConfigureInterrupt` helper uses an ECL-selected record
+slot. Its first `slot * 0x10` cursor and the timer-callback address using
+`(slot + 0x24A) * 0x10` now compute in unsigned 32-bit words, preserving the
+native wrapped address and target's unchecked slot behavior rather than
+introducing clamps. The actual layout remains `EnemyFullObjectView + 0x2494`
+with 16-byte records, and the helper keeps its observed private ABI.
+
+Before/after source variants were built independently in the pinned
+11-support `/GL /GS` Enemy graph. The complete **14,416-byte** dispatcher
+was raw-identical, as were all **22** local source-owned functions; all
+**800** decoded address fields kept their exact positions, types and
+candidate symbol bindings. The normal-COFF `EnemyConfigureInterrupt`
+**48/48** still matches the original with zero relocations, independently
+confirmed before installing the source. The other two selected COFF leaves
+`EnemyFindLaser` (22) and `EnemySetChapter` (16) also remained exact.
+
+Final installed-source selected cold replay of `enemy-configure-interrupt`,
+`enemy-find-laser`, `enemy-set-chapter`, `enemy-set-laser-position` and
+`enemy-apply-bullet-clear` passes **153/153 original-bound bytes** across
+two artifacts. This advances low-32-bit source semantics while preserving
+complete existing candidate and accepted-leaf codegen; the large dispatcher
+is still NONEXACT and no new ledger exactness is claimed.
+
 ## 2026-11-11 Player history loop threshold uses native unsigned shift
 
 In `PlayerUpdateMovementAndOptions` (original `0x004250B0`, 1,656 bytes)

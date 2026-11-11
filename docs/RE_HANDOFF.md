@@ -142,6 +142,17 @@ EAX/EDX addition at `+0x2A`; the candidate jumps into FILE_BEGIN's equivalent
 tail at `+0x60`. Further work needs a specific compiler register-lifetime
 hypothesis, not the already rejected direct-return/operand-order controls.
 
+## 2026-11-11 Enemy context / interrupt address-word checkpoint
+
+`src/EnemyEclDispatcher.cpp` now uses low-32-bit unsigned address arithmetic
+for both `owner+4` ECL context reads in the rank result path and for both
+script-selected interrupt-record address/stride computations. In the pinned
+11-support `/GL /GS` graph, before and after are **raw-identical over the
+complete 14,416-byte nonexact dispatcher** and all 22 source-owned functions
+(800 decoded fields). The 48-byte `EnemyConfigureInterrupt` leaf remains
+original-bound normal COFF exact. Five selected cold replays pass **153/153**
+original bytes; the dispatcher itself remains NONEXACT. No full cold replay.
+
 ## 2026-11-11 Player history loop threshold checkpoint
 
 Both Player large update loops now compute the script-facing history

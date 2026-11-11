@@ -642,9 +642,10 @@ static __declspec(noinline) void __stdcall EnemyConfigureInterrupt(
     EnemyFullObjectView *owner, int slot, int lifeThreshold,
     int timerThreshold, const unsigned char *callbackName)
 {
-    unsigned char *record =
-        reinterpret_cast<unsigned char *>(owner) +
-        slot * static_cast<int>(sizeof(EnemyCallbackThresholdView));
+    unsigned char *record = reinterpret_cast<unsigned char *>(
+        reinterpret_cast<unsigned int>(owner) +
+        static_cast<unsigned int>(slot) *
+            static_cast<unsigned int>(sizeof(EnemyCallbackThresholdView)));
     *reinterpret_cast<int *>(record + ENEMY_CALLBACK_FULL_BASE) = lifeThreshold;
     if (lifeThreshold >= 0) {
         EnemyCallbackThresholdView *threshold =
@@ -653,9 +654,10 @@ static __declspec(noinline) void __stdcall EnemyConfigureInterrupt(
         threshold->timerThreshold = timerThreshold;
         threshold->lifeCallbackName = callbackName;
         *reinterpret_cast<const unsigned char **>(
-            reinterpret_cast<unsigned char *>(owner) +
-            (slot + ENEMY_CALLBACK_TIMER_SCALED_BASE) *
-            static_cast<int>(sizeof(EnemyCallbackThresholdView))) = callbackName;
+            reinterpret_cast<unsigned int>(owner) +
+            (static_cast<unsigned int>(slot) +
+             static_cast<unsigned int>(ENEMY_CALLBACK_TIMER_SCALED_BASE)) *
+            static_cast<unsigned int>(sizeof(EnemyCallbackThresholdView))) = callbackName;
     }
 }
 
@@ -2800,7 +2802,7 @@ dispatch_select_bullet_count_low:
     fVar19 = ReadFloatArgument(1);
     iVar26 = reinterpret_cast<int>(owner);
     pfVar15 = reinterpret_cast<EclVmContext *>(
-        *reinterpret_cast<int *>(iVar26 + 4))->ResolveFloat(0);
+        *reinterpret_cast<int *>(static_cast<unsigned int>(iVar26) + 4u))->ResolveFloat(0);
     *pfVar15 = (float)fVar19;
     return 0;
 dispatch_rank_float_tail_b:
@@ -2810,7 +2812,7 @@ dispatch_store_float_result:
     // as the full owner immediately before ResolveFloat.
     iVar26 = reinterpret_cast<int>(owner);
     pfVar15 = reinterpret_cast<EclVmContext *>(
-        *reinterpret_cast<int *>(iVar26 + 4))->ResolveFloat(0);
+        *reinterpret_cast<int *>(static_cast<unsigned int>(iVar26) + 4u))->ResolveFloat(0);
     *pfVar15 = (float)fVar19;
     return 0;
 dispatch_rank_float_tail_a:
