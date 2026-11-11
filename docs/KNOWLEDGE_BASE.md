@@ -42,10 +42,13 @@ an `else` for unsuccessful insertion, and a do/while backward space trim.
 These retain score/publication effects, name bytes, cursor and keyboard
 initialization and the original 0..8 length contract. The pinned full
 PDB-owned candidate recovers **377/377 extent**, **99 of 106** normalized
-ordered original instructions, and **18 linked code fields**. Its remaining
-31 non-field byte differences fall mainly in the native
-`FrontEndCursorSetCurrent(row)` high-bound path and the immediately
-following keyboard-zero cursor reset. Inlining equivalent cursor bounds,
+ordered original instructions, and **18 detected candidate linked code
+fields** at the original operand offsets. A fresh source recompile of the
+installed and reindented C++ reproduces the same complete 377-byte owner
+and 99 aligned instructions, not just a transient test fixture. Its
+remaining **31 ordinary byte differences** are all confined to
+`+0xA4..+0xC5`, in the native `FrontEndCursorSetCurrent(row)` high-bound
+path and the immediately following keyboard-zero cursor reset. Inlining equivalent cursor bounds,
 constant/reload/early returns or moving the two controls regressed the
 full body (or changed the WPO parent) and were not installed.
 
@@ -58,8 +61,8 @@ byte: result-menu-score-synchronize 28, result-menu-close 89,
 result-menu-update 206, result-menu-pending-three 65,
 result-menu-pending-six 65, result-menu-update-callback 10,
 anm-request-capture-rectangle 162 and anm-vm-id-set-interrupt 65;
-**690/690** bytes and all their address/link fields. No all-unit
-historical cold replay ran.
+**690/690** complete bytes and all **36 original-bound address/link
+fields**. No full all-unit/historical cold replay ran.
 
 ## 2026-11-11 Exact 28-byte result-menu score synchronization
 
