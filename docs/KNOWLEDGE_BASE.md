@@ -24,6 +24,43 @@ scratch files were intentionally deleted to save space; the five preserved
 compiler contexts and four trial drivers are listed in `docs/RE_ARTIFACTS.md`.
 
 
+## 2026-11-11 Result-menu PrepareScore complete-length success-first CFG
+
+`ResultMenuPrepareScore @0x00423570` is an **original 377-byte** authored
+result-menu helper, called by the still-nonexact `ResultMenuUpdateResult`
+3,227-byte parent. In the real four-source VC7.1 `/GL /GS /EHs` diagnostic
+graph (FrontEnd + VmIdInterrupt + EnemyEclDispatcher genuine sound callee +
+AnmVmId genuine interrupt callee), the old source emitted **372 bytes**,
+with **87 of 106** target instructions aligned under the same normalized
+ordered Capstone comparison. The original keeps the successful score
+insertion/keyboard setup on the fall-through path and the failed
+insertion's `scoreUnavailable=1` return at the **tail**. Its eight-character
+trailing-space trim decrements an EAX length under a `TEST/JG` loop.
+
+Installed natural C++ now uses a success-first `if (row >= 0)` body with
+an `else` for unsuccessful insertion, and a do/while backward space trim.
+These retain score/publication effects, name bytes, cursor and keyboard
+initialization and the original 0..8 length contract. The pinned full
+PDB-owned candidate recovers **377/377 extent**, **99 of 106** normalized
+ordered original instructions, and **18 linked code fields**. Its remaining
+31 non-field byte differences fall mainly in the native
+`FrontEndCursorSetCurrent(row)` high-bound path and the immediately
+following keyboard-zero cursor reset. Inlining equivalent cursor bounds,
+constant/reload/early returns or moving the two controls regressed the
+full body (or changed the WPO parent) and were not installed.
+
+The 377-byte function is **NONEXACT**. No exact ledger entry or count is
+claimed for it, and the result-menu parent's current separate four-TU
+candidate remains **3,208 bytes / 763 of 907** aligned instructions,
+still **NONEXACT**. After installing the maintained source, a **selected
+original-bound cold replay of only eight affected units** passed every
+byte: result-menu-score-synchronize 28, result-menu-close 89,
+result-menu-update 206, result-menu-pending-three 65,
+result-menu-pending-six 65, result-menu-update-callback 10,
+anm-request-capture-rectangle 162 and anm-vm-id-set-interrupt 65;
+**690/690** bytes and all their address/link fields. No all-unit
+historical cold replay ran.
+
 ## 2026-11-11 Exact 28-byte result-menu score synchronization
 
 `ResultMenuSynchronizeScore @0x00421F60` is now fully original-bound

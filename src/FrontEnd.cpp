@@ -4054,30 +4054,32 @@ void __stdcall ResultMenuPrepareScore(ResultMenuView *menu)
         g_FrontEndSelectedStage = 7;
         g_FrontEndSelectedStageMirror = 7;
     }
-    if (row < 0)
+    // Preserve the native success-first branch and late failure publication.
+    if (row >= 0)
+    {
+        menu->cursor.count = 25;
+        menu->cursor.wraps = 1;
+        menu->cursor.SetCurrent(row);
+        menu->keyboard.SetCurrent(0);
+        menu->keyboard.count = strlen(g_FrontEndScoreEntryAlphabet);
+        menu->keyboard.wraps = 1;
+        strcpy(menu->name, reinterpret_cast<char *>(g_FrontEndProfileData + 0x1d878));
+        menu->nameIndex = 0;
+        if (strcmp(menu->name, "        ") != 0)
+            menu->keyboard.Move(-1);
+        int length = 8;
+        do
+        {
+            if (menu->name[length - 1] != ' ') break;
+            --length;
+        } while (length > 0);
+        menu->nameIndex = length;
+        menu->scoreUnavailable = 0;
+    }
+    else
     {
         menu->scoreUnavailable = 1;
-        return;
     }
-    menu->cursor.count = 25;
-    menu->cursor.wraps = 1;
-    menu->cursor.SetCurrent(row);
-    menu->keyboard.SetCurrent(0);
-    menu->keyboard.count = strlen(g_FrontEndScoreEntryAlphabet);
-    menu->keyboard.wraps = 1;
-    strcpy(menu->name, reinterpret_cast<char *>(g_FrontEndProfileData + 0x1d878));
-    menu->nameIndex = 0;
-    if (strcmp(menu->name, "        ") != 0)
-        menu->keyboard.Move(-1);
-    int length = 8;
-    while (menu->name[length - 1] == ' ')
-    {
-        --length;
-        if (length <= 0)
-            break;
-    }
-    menu->nameIndex = length;
-    menu->scoreUnavailable = 0;
 }
 
 // Target 0x4236F0: 3227 code bytes plus separately audited jump-table data.
