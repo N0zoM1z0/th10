@@ -5,6 +5,34 @@ Current exact counts come from [PROGRESS.md](PROGRESS.md) and current work from
 [RE_HANDOFF.md](RE_HANDOFF.md). Historical reports and scratch paths may have
 been removed; keep useful findings rather than rebuilding their old archives.
 
+## 2026-11-11 GUI message Run stage-profile native address and score words
+
+The original GUI message interpreter (`GuiMessageVmView::Run @0x00415E90`,
+4,480 target bytes) publishes two distinct persistent-profile flag bytes in
+`GUI_MSG_COMPLETE_STAGE`. The script and stage selectors may be signed input
+words; retail i386 multiplies their 3/6/8/0x437C strides and adds the flat
+base in 32-bit address words. The maintained `src/Gui.cpp` now performs both
+separately reread index paths using native low-32-bit unsigned arithmetic,
+then stores each flag to the computed DWORD address. It does not introduce a
+range clamp, combine the two stores or remove their intervening index reads.
+
+Both GUI stage-completion score paths also compute
+`g_GuiCounter4C4C * 1000` as a native wrapped DWORD before calling the
+unchanged signed score consumer. These changes remove signed-overflow and
+out-of-array C++ address formation without changing intended i386 codegen.
+
+Scoped and combined VC7.1 `/GL` trials rebuilt only Gui.cpp in the real
+17-input `gui-update-stage-elements` graph. The installed variant preserves
+**all 23 Gui.cpp-owned functions** with identical complete extents,
+ordinary bytes, and **all 567** decoded candidate field offsets/types and
+symbol identities. The selected GuiMessage Run remains **NONEXACT** at
+4,492 bytes versus 4,480 retail bytes (other LTCG graphs have different
+candidate extents). Installed-source selected original-bound cold replay
+passes `gui-update-stage-elements` (3,836 bytes, 72 fields),
+`gui-message-destructor` (97), `gui-prepare-reuse` (121), `gui-score-add`
+(46), and `gui-set-lives-display-count` (77): **4,177/4,177** exact bytes
+in four artifacts. No all-unit replay or new exact credit.
+
 ## 2026-11-11 newly canonical exact EnemyReadDialog (124/124)
 
 `EnemyReadDialog @0x00415DB0-0x00415E2B` now reproduces **all 124 original

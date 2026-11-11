@@ -62,6 +62,17 @@ Earlier accepted representatives: ANM LoadTexture **243/243**, LoadTextureRegion
 context only), loaded VM InitializeVm **217/217**, enemy laser update callback
 **91/91**, ReplayManager::SaveReplay **1681/1681**. Do not double-count these.
 
+## 2026-11-11 GUI message Run native profile/score checkpoint
+
+`src/Gui.cpp` now forms the two stage-profile flag addresses through native
+32-bit record-index multiplies and flat base+offset words; two
+`g_GuiCounter4C4C * 1000` score contributions likewise wrap before signed
+publication. The pinned 17-input `/GL` baseline and final source preserve
+**23/23 Gui.cpp-owned functions**, **567/567** field identities and all
+ordinary bytes. GUI Run remains NONEXACT (4,492 selected-graph bytes versus
+4,480 original); five selected exact GUI cold replays pass **4,177/4,177**
+original bytes across four artifacts. No full replay or ledger increase.
+
 ## 2026-11-11 new exact EnemyReadDialog
 
 `EnemyReadDialog @0x00415DB0` is now **124/124 canonical exact**, with
