@@ -1315,8 +1315,10 @@ int PlayerUpdateMovementAndOptions(Player *player)
     player->previousVerticalSpeed = verticalSpeed;
     player->movementDeltaX = (int)((float)horizontalSpeed * g_PlayerTimerScale);
     player->movementDeltaY = (int)((float)verticalSpeed * g_PlayerTimerScale);
-    player->positionX += player->movementDeltaX;
-    player->positionY += player->movementDeltaY;
+    *reinterpret_cast<unsigned int *>(&player->positionX) +=
+        static_cast<unsigned int>(player->movementDeltaX);
+    *reinterpret_cast<unsigned int *>(&player->positionY) +=
+        static_cast<unsigned int>(player->movementDeltaY);
 
     if (player->positionX < -18400)
         player->positionX = -18400;
@@ -1371,8 +1373,12 @@ int PlayerUpdateMovementAndOptions(Player *player)
 
         const PlayerPositionPair &offset =
             player->optionMode == 0 ? option.replayPair2 : option.replayPair3;
-        option.replayPair0.x = player->positionX + offset.x;
-        option.replayPair0.y = player->positionY + offset.y;
+        option.replayPair0.x = static_cast<int>(
+            static_cast<unsigned int>(player->positionX) +
+            static_cast<unsigned int>(offset.x));
+        option.replayPair0.y = static_cast<int>(
+            static_cast<unsigned int>(player->positionY) +
+            static_cast<unsigned int>(offset.y));
 
         if (option.updateCallback != NULL)
             option.updateCallback(&option);
@@ -1381,16 +1387,20 @@ int PlayerUpdateMovementAndOptions(Player *player)
         {
             if (player->optionTransitionFrames >= 30)
             {
-                const int stepX =
-                    ((option.replayPair0.x - option.replayPair1.x) *
-                     player->optionTransitionFrames) / 100;
-                const int stepY =
-                    ((option.replayPair0.y - option.replayPair1.y) *
-                     player->optionTransitionFrames) / 100;
+                const int stepX = static_cast<int>(
+                    (static_cast<unsigned int>(option.replayPair0.x) -
+                     static_cast<unsigned int>(option.replayPair1.x)) *
+                    static_cast<unsigned int>(player->optionTransitionFrames)) / 100;
+                const int stepY = static_cast<int>(
+                    (static_cast<unsigned int>(option.replayPair0.y) -
+                     static_cast<unsigned int>(option.replayPair1.y)) *
+                    static_cast<unsigned int>(player->optionTransitionFrames)) / 100;
                 if (stepX != 0 || stepY != 0)
                 {
-                    option.replayPair1.x += stepX;
-                    option.replayPair1.y += stepY;
+                    *reinterpret_cast<unsigned int *>(&option.replayPair1.x) +=
+                        static_cast<unsigned int>(stepX);
+                    *reinterpret_cast<unsigned int *>(&option.replayPair1.y) +=
+                        static_cast<unsigned int>(stepY);
                 }
                 else
                 {

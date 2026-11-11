@@ -164,6 +164,16 @@ complete 14,416-byte nonexact dispatcher** and all 22 source-owned functions
 original-bound normal COFF exact. Five selected cold replays pass **153/153**
 original bytes; the dispatcher itself remains NONEXACT. No full cold replay.
 
+## 2026-11-11 Player movement and option interpolation DWORD checkpoint
+
+`src/Player.cpp` uses native i386 low-32-bit addition for movement and option
+position coordinates, and low-word subtraction/multiplication before signed
+integer division for option transition steps. The real PlayerDraw three-TU
+comparison preserves all 67 Player source bodies and 556 address-field
+bindings; both large update owners remain nonexact. Installed-source
+selected cold replay passes 7 related exact Player units, **819/819**
+original bytes across 4 artifacts. No full cold replay or ledger change.
+
 ## 2026-11-11 Enemy ECL dialog word checkpoint
 
 `src/EnemyEclDispatcher.cpp` now applies the native 32-bit index/stride and

@@ -5,6 +5,35 @@ Current exact counts come from [PROGRESS.md](PROGRESS.md) and current work from
 [RE_HANDOFF.md](RE_HANDOFF.md). Historical reports and scratch paths may have
 been removed; keep useful findings rather than rebuilding their old archives.
 
+## 2026-11-11 Player movement/option interpolation native DWORD arithmetic
+
+`PlayerUpdateMovementAndOptions` composes movement coordinates and four
+option offsets from runtime signed integers, then blends option positions
+using `(destination - previous) * transitionFrames / 100`. Retail i386
+uses wrapping DWORD `ADD`, `SUB` and low-word `IMUL` before **signed**
+integer division and before position clamping. The maintained source now
+forms the sums, products and step accumulators with unsigned 32-bit words,
+then interprets the result as signed for the division and coordinate tests.
+No clamping, game-state changes or loop changes were inserted.
+
+The five independent scoped/combined variations were compiled under the
+real three-input PlayerDraw `/GL` graph. The combined source retains **all
+67 source-owned Player function extents and normalized machine-code bytes**
+with **all 556 original candidate address-field offsets/types/symbols**
+unchanged. `PlayerUpdateMovementAndOptions` remains a 1,616-byte nonexact
+candidate against the original 1,656-byte owner;
+`PlayerUpdateCallbackBody` remains 3,100 bytes against 3,112. The
+installed-source selected cold replay passes seven related canonical exact
+units across four artifacts, **819/819 original-bound bytes**, including
+all original fields of draw callback body and reset. No full replay or
+new exact ledger credit was used.
+
+The separate `EclVmContext::Run` controls for inlined `Pop` addresses,
+`STOP_THREAD` context references, and length-squared evaluation were
+also recompiled as complete parent diagnostics. They did not improve its
+existing 6,997/7,020 original bytes and 189 target-bound fields; several
+changed additional bytes or its complete PDB extent. None was installed.
+
 ## 2026-11-11 Enemy ECL dialog index and record address words
 
 `EnemyReadDialog` is reached from `READ_DIALOG` with a raw script integer.
