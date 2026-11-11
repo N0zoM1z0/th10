@@ -5,6 +5,40 @@ Current exact counts come from [PROGRESS.md](PROGRESS.md) and current work from
 [RE_HANDOFF.md](RE_HANDOFF.md). Historical reports and scratch paths may have
 been removed; keep useful findings rather than rebuilding their old archives.
 
+## 2026-11-11 ZWave native memory/stream pointer words with exact guards
+
+The memory-backed `CWaveFile::Read` and `CWaveFile::ResetFile` previously
+formed out-of-range C++ pointers in their read-limit test, pointer difference,
+post-copy cursor advance and loop-intro skip. The original i386 uses `LEA`,
+`ADD`, `SUB` and an unsigned address comparison on native 32-bit words; the
+source now forms those address words explicitly before casting back to BYTE*.
+Two `CStreamingSound::HandleWaveStreamNotification` refill paths similarly
+form unchecked locked-buffer+read-offset addresses as low 32-bit words.
+The original sound stream's zero-byte loop/early error/unchecked unlock
+behavior is deliberately unchanged. These source changes remove C++ pointer
+arithmetic outside an array without adding a bounds clamp.
+
+Single-site and combined source trials compiled a fresh `src/ZWave.cpp` into
+the existing real `SoundPlayerView::ProcessQueues` 2-TU `/GL /GS /EHsc`
+context. After link-address normalization, the combined revision retains
+**all 35 source-owned PDB function extents and ordinary bytes** and
+**all 103 decoded link fields** with exactly the same symbol identities.
+`CWaveFile::Read` remains the original **202-byte** body with its sole
+ReadFile import at +0xAD. The separate original-bound *installed-source*
+selected cold replay passes `zwave-wave-file-read` **202/202** (one field),
+`zwave-wave-file-reset` **194/194** (four fields), and the directly coupled
+`sound-process-queues` **1,452/1,452** (43 fields): **1,848/1,848 bytes**
+across three separate selected artifacts, no full replay.
+
+Separate bounded original 637-byte `HandleWaveStreamNotification` CFG trials
+produced 634- and 637-byte candidates; the source-inverted outer/inner
+branch version reached **441 positional ordinary bytes** at 637 total bytes,
+versus 233 in the current 634-byte diagnostic. However it rearranges the
+latched-silence block before the active read and does not reproduce all five
+original direct-call field positions, so this candidate was **not installed**
+or entered as exact. Further exploration needs the target's active read ->
+nonloop short-fill -> latched fill -> cyclic refill -> common Unlock layout.
+
 ## 2026-11-11 GameManager large update stats and frame DWORD arithmetic
 
 The 1,544-byte original `GameManagerUpdateBody @0x00418190` uses native

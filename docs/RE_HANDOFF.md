@@ -164,6 +164,19 @@ complete 14,416-byte nonexact dispatcher** and all 22 source-owned functions
 original-bound normal COFF exact. Five selected cold replays pass **153/153**
 original bytes; the dispatcher itself remains NONEXACT. No full cold replay.
 
+## 2026-11-11 ZWave native WAV read and stream cursor checkpoint
+
+`src/ZWave.cpp` now forms the memory-backed wave Read/Reset byte offsets,
+read-limit comparisons, and the locked stream refill destinations as low
+32-bit words rather than out-of-array C++ pointers. A pinned SoundProcessQueues
+2-TU recompilation preserves **35/35 source-owned ZWave functions** and
+**103/103 decoded field identities** (zero normalized-byte changes).
+Focused current-source exact cold replay passes three relevant original-bound
+units: wave-file Read202, Reset194 and Sound ProcessQueues1452, totaling
+**1,848/1,848 bytes** across three artifacts. The 637-byte original
+stream notification callback remains NONEXACT; rejected 637-byte CFG source
+variants were not installed. No full replay or ledger change.
+
 ## 2026-11-11 GameManager update native stats and frame words
 
 `src/GameManager.cpp` now computes its dynamic statistics row index/address

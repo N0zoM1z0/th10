@@ -293,7 +293,8 @@ HRESULT CWaveFile::ResetFile(bool loop)
         if (m_pzwf->totalLength > 0)
             m_ulDataSize = m_pzwf->totalLength;
         if (loop && m_pzwf->introLength > 0)
-            m_pbDataCur += m_pzwf->introLength;
+            m_pbDataCur = reinterpret_cast<BYTE *>(
+                reinterpret_cast<unsigned int>(m_pbDataCur) + m_pzwf->introLength);
     }
     else
     {
@@ -336,10 +337,14 @@ HRESULT CWaveFile::Read(
             return CO_E_NOTINITIALIZED;
         if (bytesRead != NULL)
             *bytesRead = 0;
-        if (m_pbDataCur + bytesToRead > m_pbData + m_ulDataSize)
-            bytesToRead = m_ulDataSize - (DWORD)(m_pbDataCur - m_pbData);
+        if (reinterpret_cast<unsigned int>(m_pbDataCur) + bytesToRead >
+            reinterpret_cast<unsigned int>(m_pbData) + m_ulDataSize)
+            bytesToRead = m_ulDataSize -
+                (reinterpret_cast<unsigned int>(m_pbDataCur) -
+                 reinterpret_cast<unsigned int>(m_pbData));
         CopyMemory(buffer, m_pbDataCur, bytesToRead);
-        m_pbDataCur += bytesToRead;
+        m_pbDataCur = reinterpret_cast<BYTE *>(
+            reinterpret_cast<unsigned int>(m_pbDataCur) + bytesToRead);
         if (bytesRead != NULL)
             *bytesRead = bytesToRead;
         return S_OK;
@@ -809,7 +814,7 @@ HRESULT CStreamingSound::HandleWaveStreamNotification(BOOL loopedPlay)
                     if (FAILED(hr = m_pWaveFile->ResetFile(true)))
                         return hr;
                     if (FAILED(hr = m_pWaveFile->Read(
-                            static_cast<BYTE *>(lockedBuffer) + readSoFar,
+                            reinterpret_cast<BYTE *>(reinterpret_cast<unsigned int>(lockedBuffer) + readSoFar),
                             lockedSize - readSoFar, &bytesRead)))
                         return hr;
                     readSoFar += bytesRead;
@@ -817,7 +822,7 @@ HRESULT CStreamingSound::HandleWaveStreamNotification(BOOL loopedPlay)
             }
             else
             {
-                FillMemory(static_cast<BYTE *>(lockedBuffer) + bytesRead,
+                FillMemory(reinterpret_cast<BYTE *>(reinterpret_cast<unsigned int>(lockedBuffer) + bytesRead),
                            lockedSize - bytesRead,
                            static_cast<BYTE>(m_pWaveFile->m_pzwf->format.wBitsPerSample == 8 ? 128 : 0));
                 m_bFillNextNotificationWithSilence = TRUE;
