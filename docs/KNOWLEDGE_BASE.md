@@ -172,6 +172,42 @@ fields), `result-menu-update-callback-00422a90` (**10/10**, one field), and
 `anm-request-capture-rectangle` (**162/162**, six fields) all pass. These
 selected controls validate preservation, not the nonexact parent.
 
+## 2026-11-11 Result-menu state-12 native cancel/erase branch order
+
+`ResultMenuUpdateResult @0x004236F0` (complete target **3,227-byte** boss)
+checks the cancel bitmask after state-12 name entry. The retail original's
+`+0xB8A..+0xBDA` section tests the signed cursor and branches **to**
+the negative-choice exit path **after** the nonnegative name-backspace
+path; positive cursor plus nonzero `nameIndex` enqueues sound 11 and
+erases the last name byte, while a negative cursor reinitializes result
+state 8 and returns after sound 10. The old source put the negative exit
+block first, causing VC7.1 to emit a reverse `CMP/JGE` layout and to
+split a much longer span of the switch-owned control flow.
+
+Installed source now uses the equivalent nonnegative-first form:
+`if (cursor.current >= 0) { if (nameIndex != 0) { ...backspace... } }
+else { ...reset and return... }`. Neither input precedence nor timer,
+cursor, state, sound and erase side effects changed. Scoped volatile
+cursor/name-index reads and an explicit `goto` were compiler-neutral or
+regressive and were not installed.
+
+A **fresh link from the actual maintained source**, with the same four
+real LTCG inputs (FrontEnd `/GL /GS /EHs`, `VmIdInterrupt`, real Enemy
+sound queue and `AnmVmId`), preserves the complete candidate PDB extent
+**3,212 bytes** and **173 detected link fields**; normalized ordered
+instruction matching improves from **744/907 to 757/907** target
+instructions (candidate 912). Unlike earlier short scoped probes this
+compares the complete emitted parent; the target **3,227** bytes and
+private stack/callee arrangements remain unresolved, so the boss stays
+**NONEXACT** with no added ledger credit.
+
+After installation, only the four affected selected original-bound cold
+owners were replayed: `anm-vm-id-set-interrupt` **65/65** (two fields),
+`result-menu-close` **89/89** (four), `anm-request-capture-rectangle`
+**162/162** (six), and `result-menu-update-callback-00422a90` **10/10**
+(one). Result: **326/326** complete matched bytes and all **13** bound
+fields; no all-unit/full historical cold replay was run.
+
 ## 2026-11-11 Result-menu state-7 native early-return block order and true VM callee
 
 `ResultMenuUpdateResult @0x004236F0` is a genuine 3,227-byte boss. Its

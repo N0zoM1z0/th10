@@ -4407,7 +4407,16 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         }
         if ((g_FrontEndInput.pressed & 0x0a) != 0)
         {
-            if (menu->cursor.current < 0)
+            if (menu->cursor.current >= 0)
+            {
+                if (menu->nameIndex != 0)
+                {
+                    ResultMenuSound(11);
+                    --menu->nameIndex;
+                    menu->name[menu->nameIndex] = ' ';
+                }
+            }
+            else
             {
                 menu->state = 8;
                 menu->cursor.count = 3;
@@ -4415,12 +4424,6 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
                 menu->timer.SetCurrent(0);
                 ResultMenuSound(10);
                 return;
-            }
-            if (menu->nameIndex != 0)
-            {
-                ResultMenuSound(11);
-                --menu->nameIndex;
-                menu->name[menu->nameIndex] = ' ';
             }
         }
         break;
