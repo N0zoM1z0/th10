@@ -102,6 +102,16 @@ Boss passes 3,836/3,836 and all 72 fields. A subsequent selected cold replay
 attempt terminated before producing a result; do not claim cold completion.
 No full-cohort replay or new exact ledger credit.
 
+## 2026-11-11 Statistics loader unchecked address-word checkpoint
+
+`src/GameStatisticsLoad.cpp` now uses native 32-bit address words for both
+serialized checksum loops and the unchecked statistics-record slot.
+The 6-TU `/GL /GS /EHsc /Gz` compiler graph preserves the complete
+423-byte exact loader, four source functions and 26 local field identities.
+Three selected original-bound exact units cold-pass **1,129/1,129 bytes**
+(load423, finalizer564, tail init142); no full replay and no added exact
+credit. Existing statistics factory and constructor remain nonexact.
+
 ## High-value nonexact owners
 
 These are *selected current-source comparisons*, not proof of a runnable game.

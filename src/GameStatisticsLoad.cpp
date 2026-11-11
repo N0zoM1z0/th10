@@ -49,11 +49,20 @@ int GameStatisticsOwner::Load42B030()
             {
                 if (record->unknown02 == 0)
                 {
+                    // Serialized payload bytes are addressed with native
+                    // DWORD offsets. The retail loader does not clamp a
+                    // corrupt input recordIndex to the seven-entry array.
                     unsigned int checksum = 0;
                     for (unsigned int i = 0; i < 0x4374; ++i)
-                        checksum += cursor[i + 8];
+                        checksum += *reinterpret_cast<const unsigned char *>(
+                            reinterpret_cast<unsigned int>(cursor) +
+                            static_cast<unsigned int>(i) + 8u);
                     if (checksum == record->checksum && record->unknown08 == 0x437c)
-                        memcpy(&records[record->recordIndex], cursor, 0x437c);
+                        memcpy(reinterpret_cast<GameStatisticsRecord *>(
+                            reinterpret_cast<unsigned int>(&records[0]) +
+                            static_cast<unsigned int>(record->recordIndex) *
+                            static_cast<unsigned int>(sizeof(GameStatisticsRecord))),
+                        cursor, 0x437c);
                 }
             }
             else if (record->magic == 0x5453)
@@ -62,7 +71,9 @@ int GameStatisticsOwner::Load42B030()
                 {
                     unsigned int checksum = 0;
                     for (unsigned int i = 0; i < 0x440; ++i)
-                        checksum += cursor[i + 8];
+                        checksum += *reinterpret_cast<const unsigned char *>(
+                            reinterpret_cast<unsigned int>(cursor) +
+                            static_cast<unsigned int>(i) + 8u);
                     if (checksum == record->checksum && record->unknown08 == 0x448)
                         memcpy(&tail, cursor, 0x448);
                 }

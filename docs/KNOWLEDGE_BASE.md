@@ -1,5 +1,26 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-11 Statistics loader serialized byte and record address words
+
+`GameStatisticsOwner::Load42B030` now accumulates both distinct serialized
+checksums using low-32-bit Win32 cursor+byte-index addresses rather than
+out-of-bounds C++ pointer-array indexing. The unchecked encoded
+`recordIndex` also selects the 0x437C-byte statistics row through the
+same low-32-bit base+stride calculation, matching native x86 address
+formation without introducing clamps or changing fallback conditions.
+
+Independent scoped `/GL /GS /EHsc /Gz` six-TU trials preserve the entire
+423-byte loader, all four source-owned PDB functions and all 26 decoded
+link fields with zero ordinary-byte or binding changes; the installed
+revision differs from the qualified combined trial only by explanatory
+comments. **Selected original-bound cold replay** after installation passes
+`game-statistics-load` 423/423 (5 fields), `game-statistics-finalize`
+564/564 (24 fields), and `game-statistics-initialize-tail` 142/142
+(7 fields): **1,129/1,129 bytes** in one shared artifact. The
+constructor/factory remain nonexact. No new exact ledger credit or full
+historical cold replay.
+
+
 ## 2026-11-11 GUI message stage counters and power score use i386 words
 
 The large `GuiMessageVmView::Run` (`0x00415E90`, target 4,480 bytes)
