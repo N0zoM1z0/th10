@@ -718,7 +718,10 @@ static void EnemyReadDialog(GuiView *gui, int index)
     gui->message = dialog;
     dialog->messageIndex = index;
     int nextIndex = static_cast<int>(static_cast<unsigned int>(index) + 1u);
-    int previousIndex = g_EnemyDialogIndex;
+    // The retail read occurs after publishing the message pointer and
+    // message index. Keep this one observed global load ordered.
+    const volatile int &previousIndexRef = g_EnemyDialogIndex;
+    int previousIndex = previousIndexRef;
     g_EnemyDialogIndex = nextIndex;
     if (previousIndex != nextIndex) {
         g_EnemyDialogState = 0;

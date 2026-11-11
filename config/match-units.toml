@@ -4886,6 +4886,37 @@ target_address = 0x00412720
 size = 48
 relocations = []
 
+# Original 124-byte dialogue factory: allocation EH and private EDI/ESI
+# live-ins arise naturally from the six-TU /GL /GS /EHsc call graph.
+# The local generated handler is bound by its complete one-state unwind
+# protocol; the anchored image is diagnostic and not a runnable game.
+[units.enemy-read-dialog]
+artifact_kind = "linked-pe"
+source = "src/EnemyEclDispatcher.cpp"
+support_sources = ["src/EclVm.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/EnemyLaser.cpp", "src/GuiMessage.cpp"]
+output_dir = "build/match-linked/EnemyReadDialogEh"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ"
+pdb_source = "src/EnemyEclDispatcher.cpp"
+owner_visibility = "static"
+functions = ["EnemyReadDialog"]
+symbol = "?EnemyReadDialog@@YAXPAUGuiView@@H@Z"
+target_address = 0x00415DB0
+size = 124
+linkages = [
+  { offset = 0x03, type = "DIR32", symbol = "__ehhandler$?EnemyReadDialog@@YAXPAUGuiView@@H@Z", target = 0x0046582B, allocation_eh_handler = true },
+  { offset = 0x09, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 0x11, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 0x1C, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x41, type = "REL32", symbol = "??0GuiMessageVmView@@QAE@PBE@Z", target = 0x00415B00 },
+  { offset = 0x53, type = "DIR32", symbol = "?g_EnemyDialogIndex@@3HA", target = 0x00474C84 },
+  { offset = 0x5D, type = "DIR32", symbol = "?g_EnemyDialogIndex@@3HA", target = 0x00474C84 },
+  { offset = 0x65, type = "DIR32", symbol = "?g_EnemyDialogState@@3HA", target = 0x00474C8C },
+  { offset = 0x74, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+]
+
 [units.enemy-wait-for-effect]
 artifact_kind = "coff"
 source = "src/EnemyEclDispatcher.cpp"

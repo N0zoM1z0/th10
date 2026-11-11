@@ -1,8 +1,10 @@
 # TH10 reconstruction — current agent handoff
 
 **Updated 2026-11-11.** Read [AGENTS.md](../AGENTS.md), then the selected owner's
-source, ledger rows and comparison recipe. The latest exact source checkpoint
-is `558e58a`; later storage/documentation cleanup does not change exact credit.
+source, ledger rows and comparison recipe. The latest new exact owner is
+`EnemyReadDialog @0x00415DB0` (2026-11-11, two independent selected cold
+124-byte/9-field replays); the historical exact checkpoint `558e58a` is
+superseded for counts by the current generated ledger.
 
 ## Resume and trust sources
 
@@ -29,15 +31,16 @@ a source/metadata checkpoint. No compile/replay is necessary for docs-only edits
 
 ## Canonical checkpoint
 
-At `558e58a`, `matches.csv` and `PROGRESS.md` agree:
+As of the 2026-11-11 `EnemyReadDialog` acceptance, `matches.csv` and
+`PROGRESS.md` agree (the older checkpoint was `558e58a`):
 
 | Metric | Current |
 | --- | ---: |
-| Exact functions | **1,514** |
-| Exact codegen bytes | **199,496** |
-| Authored-origin exact functions | **601** |
-| Authored-origin exact bytes | **129,209** |
-| Authored source-present nonexact backlog | **149** |
+| Exact functions | **1,515** |
+| Exact codegen bytes | **199,620** |
+| Authored-origin exact functions | **602** |
+| Authored-origin exact bytes | **129,333** |
+| Authored source-present nonexact backlog | **148** |
 
 Recent accepted owners include Ending LoadAnimation **126/126**
 (`ending-text-load-animation`, seven target-bound fields), Sound LoadSoundSample
@@ -58,6 +61,22 @@ Earlier accepted representatives: ANM LoadTexture **243/243**, LoadTextureRegion
 **320/320**, loaded-script start **203/203 at 0x43E710** (selected two-TU
 context only), loaded VM InitializeVm **217/217**, enemy laser update callback
 **91/91**, ReplayManager::SaveReplay **1681/1681**. Do not double-count these.
+
+## 2026-11-11 new exact EnemyReadDialog
+
+`EnemyReadDialog @0x00415DB0` is now **124/124 canonical exact**, with
+**9/9 original-bound fields** including independently checked one-state EH
+unwind handler, three FS exception-list fields, allocation and real GUI
+constructor. The one-line scoped `const volatile` index read in
+`src/EnemyEclDispatcher.cpp` preserves the target's post-publication global
+load. Two distinct six-input `/GL /GS /EHsc` selected cold replays pass.
+The separately compiled nonexact 14,416-byte Enemy dispatcher/22 PDB owners
+and 800 candidate fields are byte-neutral to this source change. Seven
+existing neighboring Enemy exact leaves also pass a separate **244/244**
+selected cold replay across four artifacts. The GUI constructor and
+whole-product runtime are not established exact. See the
+top of [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) and the new unit
+`enemy-read-dialog`. **Do not run the all-unit cold replay.**
 
 ## High-value nonexact owners
 

@@ -5,6 +5,49 @@ Current exact counts come from [PROGRESS.md](PROGRESS.md) and current work from
 [RE_HANDOFF.md](RE_HANDOFF.md). Historical reports and scratch paths may have
 been removed; keep useful findings rather than rebuilding their old archives.
 
+## 2026-11-11 newly canonical exact EnemyReadDialog (124/124)
+
+`EnemyReadDialog @0x00415DB0-0x00415E2B` now reproduces **all 124 original
+bytes** under the complete six-TU VC7.1 `/GL /GS /EHsc` Enemy dispatcher
+entry graph (primary `EnemyEclDispatcher.cpp`, support `EclVm.cpp`,
+`AnmManager.cpp`, `AnmVmCreate.cpp`, `EnemyLaser.cpp`, `GuiMessage.cpp`).
+The function is a TU-static 124-byte PDB contribution with private EDI GUI
+receiver and ESI script index, selected by an explicit static owner manifest.
+The previously misplaced load of `g_EnemyDialogIndex` was hoisted above the
+`gui->message` and `dialog->messageIndex` publications. A **scoped
+`const volatile int &` read** retains the original source-visible ordering
+and makes VC7.1 place `MOV ECX,[g_EnemyDialogIndex]` after both stores,
+recovering the previous nine ordinary mismatching bytes. The natural new,
+constructor, message publication and native 8-byte dialog record index
+logic are unchanged, without hand-authored assembly or target-byte patching.
+
+The new `enemy-read-dialog` canonical match unit binds **all nine** decoded
+original fields: the local generated allocation EH handler at +0x03
+(original `0x0046582B`), `__except_list` at +0x09/+0x11/+0x74 (retail FS:0),
+operator new +0x1C (`0x00452493`), the real `GuiMessageVmView` constructor
++0x41 (`0x00415B00`), the dialog index twice at +0x53/+0x5D
+(`0x00474C84`) and the dialog-state global +0x65 (`0x00474C8C`). The EH
+binding checks the entire 21-byte handler region, the 28-byte one-state
+FuncInfo, the EBP-0x10 saved allocation and its scalar delete action in
+both the original and candidate images. This binds generated EH addresses,
+**not** runtime exception safety in the non-runnable diagnostic image.
+
+Two independently cold-built canonical selected replay images both pass
+**124/124** with all nine independently target-bound fields and complete
+non-field byte equality; their PE SHA256 values differ
+(`606dc97735fcb34480c252e5c1845cc890584d63c97cb4a50b46a09628ab5ba6`
+and `ae506cea60f65c246263f96e7be3c9ecb54507d3593eac7b126d2b9b35460d47`),
+and PDB GUIDs differ as well. Prior independent noncanonical scoped volatile
+pointer/reference forms produce the same 124-byte normalized target result.
+In the separate 11-support `/GL /GS` Enemy graph, the entire **14,416-byte**
+nonexact dispatcher, all 22 local source-owned bodies and all 800 decoded
+link fields remain exactly identical. Add 124 canonical authored bytes;
+**do not** claim that the large Enemy dispatcher, GUI constructor, runnable
+image or whole game is exact. An additional installed-source selected cold
+regression of seven existing Enemy helpers in four artifacts passes
+**244/244 bytes**, including `enemy-mark-pending-interrupt` (65) and the
+other six related exact leaves (179). No full cold replay was performed.
+
 ## 2026-11-11 Player movement/option interpolation native DWORD arithmetic
 
 `PlayerUpdateMovementAndOptions` composes movement coordinates and four
@@ -33,6 +76,31 @@ The separate `EclVmContext::Run` controls for inlined `Pop` addresses,
 also recompiled as complete parent diagnostics. They did not improve its
 existing 6,997/7,020 original bytes and 189 target-bound fields; several
 changed additional bytes or its complete PDB extent. None was installed.
+
+## 2026-11-11 EnemyReadDialog closes 124-byte EH-backed static leaf exactly
+
+The ECL `READ_DIALOG` helper `EnemyReadDialog @0x00415DB0` is the complete
+124-byte TU-static function with private EDI GuiView / ESI index live-ins.
+After constructing and publishing `GuiMessageVmView`, retail reads the old
+global dialog index **after** the publication stores. Reading through a
+scoped `const volatile int &` restores this instruction schedule without
+hand-written assembly, synthetic ABI, patches or padding.
+
+A real six-TU VC7.1 `/GL /GS /EHsc` diagnostic preserves the unique static
+map/PDB contribution. Its nine target-bound fields cover the actual
+`GuiMessageVmView` constructor, global index/state addresses, new, all three
+FS:[0] `__except_list` fields and the generated allocation EH handler. The
+handler is independently validated by its one-state, 21-byte EBP-0x10 saved
+allocation cleanup and FuncInfo/unwind-map protocol; those diagnostic
+anchors are **not runnable EH runtime**. Two independently built selected
+original-bound cold links reproduce **124/124** bytes and all nine fields.
+
+The same source edit is raw-identical in the full 11-support Enemy dispatcher
+graph: its 14,416-byte boss and all 22 source-owned functions preserve all
+800 decoded address fields. This is one new canonical authored exact owner;
+`config/matches.csv` and generated `docs/PROGRESS.md` account for the
+124-byte addition. `GuiMessageVmView`'s distinct 683-byte constructor and
+the dispatcher boss remain nonexact.
 
 ## 2026-11-11 Player damage and startup height use native DWORD arithmetic
 
@@ -90,9 +158,10 @@ functions are raw-identical between baseline and the installed variant;
 all 800 decoded address fields keep their offsets, types and bindings.
 Installed-source selected original-bound cold replays pass six Enemy leaf
 units across three artifacts, 179/179 bytes (the 26-byte raw-float helper
-carries one independent address field). `EnemyReadDialog` itself remains a
-124-byte nonexact helper in its separate GUI/EH graph; no exact credit is
-claimed for the large dispatcher or dialog helper. No full cold replay.
+carries one independent address field). At this source epoch `EnemyReadDialog` was still a 124-byte nonexact
+helper in its separate GUI/EH graph; the **2026-11-11 canonical exact
+EnemyReadDialog entry above supersedes that finding**. The large dispatcher
+remains nonexact. No full cold replay.
 
 ## 2026-11-11 ZWave native memory/stream pointer words with exact guards
 
