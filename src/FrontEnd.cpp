@@ -4255,16 +4255,25 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         {
             int length = strlen(g_FrontEndScoreEntryAlphabet);
             int key = menu->keyboard.current;
-            if (key < length - 3 || key == length - 3)
+            if (key < length - 3)
             {
-                char value = key < length - 3 ? g_FrontEndScoreEntryAlphabet[key] : ' ';
                 if (menu->nameIndex < 8)
                 {
-                    menu->name[menu->nameIndex] = value;
+                    menu->name[menu->nameIndex] = g_FrontEndScoreEntryAlphabet[key];
                     ++menu->nameIndex;
                     if (menu->nameIndex >= 8) menu->keyboard.SetCurrent(length - 1);
                 }
-                else menu->name[menu->nameIndex - 1] = value;
+                else menu->name[menu->nameIndex - 1] = g_FrontEndScoreEntryAlphabet[key];
+            }
+            else if (key == length - 3)
+            {
+                if (menu->nameIndex < 8)
+                {
+                    menu->name[menu->nameIndex] = ' ';
+                    ++menu->nameIndex;
+                    if (menu->nameIndex >= 8) menu->keyboard.SetCurrent(length - 1);
+                }
+                else menu->name[menu->nameIndex - 1] = ' ';
             }
             else if (key == length - 2)
             {
@@ -4323,16 +4332,25 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
             {
                 int length = strlen(g_FrontEndScoreEntryAlphabet);
                 int key = menu->keyboard.current;
-                if (key < length - 3 || key == length - 3)
+                if (key < length - 3)
                 {
-                    char value = key < length - 3 ? g_FrontEndScoreEntryAlphabet[key] : ' ';
                     if (menu->nameIndex < 8)
                     {
-                        menu->name[menu->nameIndex] = value;
+                        menu->name[menu->nameIndex] = g_FrontEndScoreEntryAlphabet[key];
                         ++menu->nameIndex;
                         if (menu->nameIndex >= 8) menu->keyboard.SetCurrent(length - 1);
                     }
-                    else menu->name[menu->nameIndex - 1] = value;
+                    else menu->name[menu->nameIndex - 1] = g_FrontEndScoreEntryAlphabet[key];
+                }
+                else if (key == length - 3)
+                {
+                    if (menu->nameIndex < 8)
+                    {
+                        menu->name[menu->nameIndex] = ' ';
+                        ++menu->nameIndex;
+                        if (menu->nameIndex >= 8) menu->keyboard.SetCurrent(length - 1);
+                    }
+                    else menu->name[menu->nameIndex - 1] = ' ';
                 }
                 else if (key == length - 2)
                 {

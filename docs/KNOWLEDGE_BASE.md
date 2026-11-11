@@ -43,6 +43,30 @@ fields), `result-menu-update-callback-00422a90` (**10/10**, one field), and
 `anm-request-capture-rectangle` (**162/162**, six fields) all pass. These
 selected controls validate preservation, not the nonexact parent.
 
+## 2026-11-11 Result-menu native character/space control flow
+
+`ResultMenuUpdateResult @0x004236F0` has **separate target blocks** for
+ordinary alphabet keys and the space key in both state 11 (replay naming) and
+state 12 (score naming). The old natural source combined these conditions and
+selected a `char value` with `?:`; the installed `FrontEnd.cpp` now expresses
+the distinct alphabet and space writes in ordinary C++ while keeping the
+same name-index, selection and backspace behavior.
+
+In one identical source/input configuration (`/GL /GS /EHs` FrontEnd +
+`VmIdInterrupt` + the **real EnemyEclDispatcher sound callee**), this improves
+the complete PDB-owned parent candidate from **3,168 to 3,224 bytes** against
+the **3,227-byte original**. A normalized Capstone instruction-sequence
+comparison also improves from **574 to 631 matching instructions**. These are
+exploratory codegen measurements, not a complete target-bound exact result;
+the parent still differs in register allocation, stack frame and control flow.
+The old combined-character implementation remains in Git history if needed.
+
+Following installation, selected **cold exact replay** of
+`result-menu-close` (89/89), `result-menu-update-callback-00422a90` (10/10),
+and `anm-request-capture-rectangle` (162/162) passes all three complete
+owners and their original-bound fields (**261/261** across those guards).
+No unrelated historical cohort or whole-program cold replay was run.
+
 ## 2026-11-11 Result-menu real sound callee and security-cookie context
 
 The installed `ResultMenuUpdateResult @0x004236F0` is now split into
