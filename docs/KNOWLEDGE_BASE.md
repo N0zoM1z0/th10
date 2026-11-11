@@ -1,5 +1,34 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-11 GUI large-message script operand and instruction cursor words
+
+The 4,480-byte target `GuiMessageVmView::Run @0x00415E90` reads 32-bit
+serialized script integers, then adds named sprite/portrait script offsets.
+The maintained `src/Gui.cpp` now sends those integer additions through one
+inlined low-32-bit unsigned-word operation before publishing the signed
+argument. At extreme serialized integer payloads this avoids C++ signed
+addition overflow while preserving the retail i386 ADD and signed sprite
+index. The helper does not add bounds checks, allocations or runtime calls.
+
+The serialized instruction walker is also an independent 9-byte
+`GuiMessageInstructionNext` PDB owner. Directly replacing its call in
+`GuiMessageVmView::Run` removed that PDB function, so those seemingly neutral
+candidate forms were **rejected**. Instead, the maintained `src/Gui.hpp`
+helper itself now computes the next record address as native low-32-bit
+`base + 4 + sizeByte`, preserving its original i386 address wrap. Scoped
+single-site and **combined** 17-input VC7.1 `/GL` compiles reproduce all
+**22 complete Gui.cpp source-owned function bodies**, **566 decoded field
+positions/types/symbol identities**, and all ordinary bytes. In particular
+the 9-byte instruction-next helper, 4,492-byte nonexact `Run` candidate and
+3,836-byte exact GUI stage-update Boss retain their full boundaries.
+
+After installing the combined source, **selected original-bound cold replay**
+passes `gui-update-stage-elements` **3,836/3,836 original bytes and all 72
+address fields**. The 4,480-byte original GUI Run remains NONEXACT; this
+checkpoint preserves its 4,492-byte candidate without new canonical exact
+credit. No full historical all-unit replay or whole-game runtime claim.
+
+
 ## 2026-11-11 FrontEnd shot/practice/music profile native DWORD words
 
 The maintained `src/FrontEnd.cpp` now computes five more classes of

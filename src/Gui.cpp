@@ -173,6 +173,12 @@ static AnmVmView *ResolveVm(AnmVmIdView *id)
 // broad ancestry: TH10 has a compact heap-owned 0x90-byte VM and a different
 // opcode assignment, portrait-child scheme and stage-clear path.
 // Scoped volatile reads model observed TH10 accesses; original qualifiers are unknown.
+// Serial message instruction operand additions follow low-32-bit ADD.
+static __forceinline int GuiMessageNativeIntAdd(int value, unsigned int offset)
+{
+    return static_cast<int>(static_cast<unsigned int>(value) + offset);
+}
+
 int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
 {
     // Provisional scalar view: character +28, shot +2C, difficulty +34, stage +3C.
@@ -448,20 +454,20 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 {
                     ResultMenuFindScript(
                         &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x17).SetSprite(
-                            GuiMessageInstructionIntArgument(message->currentInstruction) + 0x34);
+                            GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0x34u));
                     ResultMenuFindScript(
                         &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x1a).SetSprite(
-                            GuiMessageInstructionIntArgument(message->currentInstruction) + 0x3c);
+                            GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0x3cu));
                     break;
                 }
                 case 1:
                 {
                     ResultMenuFindScript(
                         &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x17).SetSprite(
-                            GuiMessageInstructionIntArgument(message->currentInstruction) + 0x2d);
+                            GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0x2du));
                     ResultMenuFindScript(
                         &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x1a).SetSprite(
-                            GuiMessageInstructionIntArgument(message->currentInstruction) + 0x35);
+                            GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0x35u));
                     break;
                 }
             }
@@ -478,26 +484,26 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                     {
                     case 0:
                     {
-                        const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0xf;
+                        const int first = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0xfu);
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(resource, first);
                         resource = ReadGuiEnemyMessageResource();
                         GuiMessageInstructionView *currentInstruction = ReadGuiMessageInstruction(message);
-                        const int second = GuiMessageInstructionIntArgument(currentInstruction) + 0x17;
+                        const int second = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(currentInstruction), 0x17u);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(resource, second);
                         break;
                     }
                     case 1:
                     {
-                        const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0xf;
+                        const int first = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0xfu);
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(resource, first);
                         resource = ReadGuiEnemyMessageResource();
                         GuiMessageInstructionView *currentInstruction = ReadGuiMessageInstruction(message);
-                        const int second = GuiMessageInstructionIntArgument(currentInstruction) + 0x17;
+                        const int second = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(currentInstruction), 0x17u);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(resource, second);
                         break;
@@ -511,26 +517,26 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                     {
                     case 0:
                     {
-                        const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x15;
+                        const int first = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0x15u);
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(resource, first);
                         resource = ReadGuiEnemyMessageResource();
                         GuiMessageInstructionView *currentInstruction = ReadGuiMessageInstruction(message);
-                        const int second = GuiMessageInstructionIntArgument(currentInstruction) + 0x1e;
+                        const int second = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(currentInstruction), 0x1eu);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(resource, second);
                         break;
                     }
                     case 1:
                     {
-                        const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x15;
+                        const int first = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0x15u);
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(resource, first);
                         resource = ReadGuiEnemyMessageResource();
                         GuiMessageInstructionView *currentInstruction = ReadGuiMessageInstruction(message);
-                        const int second = GuiMessageInstructionIntArgument(currentInstruction) + 0x1e;
+                        const int second = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(currentInstruction), 0x1eu);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(resource, second);
                         break;
@@ -544,26 +550,26 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                     {
                     case 0:
                     {
-                        const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x22;
+                        const int first = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0x22u);
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(resource, first);
                         resource = ReadGuiEnemyMessageResource();
                         GuiMessageInstructionView *currentInstruction = ReadGuiMessageInstruction(message);
-                        const int second = GuiMessageInstructionIntArgument(currentInstruction) + 0x2b;
+                        const int second = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(currentInstruction), 0x2bu);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(resource, second);
                         break;
                     }
                     case 1:
                     {
-                        const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x22;
+                        const int first = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0x22u);
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(resource, first);
                         resource = ReadGuiEnemyMessageResource();
                         GuiMessageInstructionView *currentInstruction = ReadGuiMessageInstruction(message);
-                        const int second = GuiMessageInstructionIntArgument(currentInstruction) + 0x2b;
+                        const int second = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(currentInstruction), 0x2bu);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(resource, second);
                         break;
@@ -577,26 +583,26 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                     {
                     case 0:
                     {
-                        const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x25;
+                        const int first = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0x25u);
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(resource, first);
                         resource = ReadGuiEnemyMessageResource();
                         GuiMessageInstructionView *currentInstruction = ReadGuiMessageInstruction(message);
-                        const int second = GuiMessageInstructionIntArgument(currentInstruction) + 0x2e;
+                        const int second = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(currentInstruction), 0x2eu);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(resource, second);
                         break;
                     }
                     case 1:
                     {
-                        const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x25;
+                        const int first = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0x25u);
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(resource, first);
                         resource = ReadGuiEnemyMessageResource();
                         GuiMessageInstructionView *currentInstruction = ReadGuiMessageInstruction(message);
-                        const int second = GuiMessageInstructionIntArgument(currentInstruction) + 0x2e;
+                        const int second = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(currentInstruction), 0x2eu);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(resource, second);
                         break;
@@ -610,26 +616,26 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                     {
                     case 0:
                     {
-                        const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x16;
+                        const int first = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0x16u);
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(resource, first);
                         resource = ReadGuiEnemyMessageResource();
                         GuiMessageInstructionView *currentInstruction = ReadGuiMessageInstruction(message);
-                        const int second = GuiMessageInstructionIntArgument(currentInstruction) + 0x1f;
+                        const int second = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(currentInstruction), 0x1fu);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(resource, second);
                         break;
                     }
                     case 1:
                     {
-                        const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x16;
+                        const int first = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0x16u);
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(resource, first);
                         resource = ReadGuiEnemyMessageResource();
                         GuiMessageInstructionView *currentInstruction = ReadGuiMessageInstruction(message);
-                        const int second = GuiMessageInstructionIntArgument(currentInstruction) + 0x1f;
+                        const int second = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(currentInstruction), 0x1fu);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(resource, second);
                         break;
@@ -643,26 +649,26 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                     {
                     case 0:
                     {
-                        const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x30;
+                        const int first = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0x30u);
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1c).SetSpriteWithAnm(resource, first);
                         resource = ReadGuiEnemyMessageResource();
                         GuiMessageInstructionView *currentInstruction = ReadGuiMessageInstruction(message);
-                        const int second = GuiMessageInstructionIntArgument(currentInstruction) + 0x39;
+                        const int second = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(currentInstruction), 0x39u);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1f).SetSpriteWithAnm(resource, second);
                         break;
                     }
                     case 1:
                     {
-                        const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x30;
+                        const int first = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0x30u);
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1c).SetSpriteWithAnm(resource, first);
                         resource = ReadGuiEnemyMessageResource();
                         GuiMessageInstructionView *currentInstruction = ReadGuiMessageInstruction(message);
-                        const int second = GuiMessageInstructionIntArgument(currentInstruction) + 0x39;
+                        const int second = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(currentInstruction), 0x39u);
                         ResultMenuFindScript(
                             &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1f).SetSpriteWithAnm(resource, second);
                         break;
@@ -678,26 +684,26 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                         {
                         case 0:
                         {
-                            const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x44;
+                            const int first = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0x44u);
                             AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                             ResultMenuFindScript(
                                 &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x21).SetSpriteWithAnm(resource, first);
                             resource = ReadGuiEnemyMessageResource();
                             GuiMessageInstructionView *currentInstruction = ReadGuiMessageInstruction(message);
-                            const int second = GuiMessageInstructionIntArgument(currentInstruction) + 0x4d;
+                            const int second = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(currentInstruction), 0x4du);
                             ResultMenuFindScript(
                                 &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x24).SetSpriteWithAnm(resource, second);
                             break;
                         }
                         case 1:
                         {
-                            const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x44;
+                            const int first = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0x44u);
                             AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                             ResultMenuFindScript(
                                 &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x21).SetSpriteWithAnm(resource, first);
                             resource = ReadGuiEnemyMessageResource();
                             GuiMessageInstructionView *currentInstruction = ReadGuiMessageInstruction(message);
-                            const int second = GuiMessageInstructionIntArgument(currentInstruction) + 0x4d;
+                            const int second = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(currentInstruction), 0x4du);
                             ResultMenuFindScript(
                                 &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x24).SetSpriteWithAnm(resource, second);
                             break;
@@ -710,26 +716,26 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                         {
                         case 0:
                         {
-                            const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x2e;
+                            const int first = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0x2eu);
                             AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                             ResultMenuFindScript(
                                 &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(resource, first);
                             resource = ReadGuiEnemyMessageResource();
                             GuiMessageInstructionView *currentInstruction = ReadGuiMessageInstruction(message);
-                            const int second = GuiMessageInstructionIntArgument(currentInstruction) + 0x37;
+                            const int second = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(currentInstruction), 0x37u);
                             ResultMenuFindScript(
                                 &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(resource, second);
                             break;
                         }
                         case 1:
                         {
-                            const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x2e;
+                            const int first = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(message->currentInstruction), 0x2eu);
                             AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                             ResultMenuFindScript(
                                 &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(resource, first);
                             resource = ReadGuiEnemyMessageResource();
                             GuiMessageInstructionView *currentInstruction = ReadGuiMessageInstruction(message);
-                            const int second = GuiMessageInstructionIntArgument(currentInstruction) + 0x37;
+                            const int second = GuiMessageNativeIntAdd(GuiMessageInstructionIntArgument(currentInstruction), 0x37u);
                             ResultMenuFindScript(
                                 &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(resource, second);
                             break;

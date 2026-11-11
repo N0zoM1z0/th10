@@ -38,7 +38,9 @@ inline int GuiMessageInstructionIntArgument(const GuiMessageInstructionView *p)
 }
 inline GuiMessageInstructionView *GuiMessageInstructionNext(GuiMessageInstructionView *p)
 {
-    return p + 4 + p[3];
+    // Encoded instruction lengths advance a native, wrapping i386 address.
+    return reinterpret_cast<GuiMessageInstructionView *>(
+        reinterpret_cast<unsigned int>(p) + 4u + static_cast<unsigned int>(p[3]));
 }
 
 

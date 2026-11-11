@@ -219,6 +219,19 @@ passes **443/443 bytes**, 18 target-bound fields in four artifacts (load
 music120, play music73, music helper59+92, result close89 and callback10).
 No full replay or ledger exact credit.
 
+## 2026-11-11 GUI message script operand and cursor word checkpoint
+
+`src/Gui.cpp` now uses native DWORD addition for serialized instruction
+integer offsets; `src/Gui.hpp` advances the message instruction pointer via
+the original low-32-bit base+4+length word. Do *not* bypass the retained
+9-byte `GuiMessageInstructionNext` helper: that source form deleted a PDB
+owner even though Run's 4,492-byte candidate stayed unchanged. Independent
+single-site and combined 17-input `/GL` builds preserve **22/22 GUI source
+owners, 566/566 decoded bindings, full 9-byte Next and all ordinary bytes**.
+The 4,480-byte original GUI Run remains NONEXACT. Installed-source
+selected GUI stage-update Boss cold replay is **3,836/3,836 exact**, 72
+original-bound fields. No full replay or new canonical exact credit.
+
 ## High-value nonexact owners
 
 These are *selected current-source comparisons*, not proof of a runnable game.
