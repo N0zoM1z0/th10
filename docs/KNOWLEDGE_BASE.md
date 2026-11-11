@@ -2,12 +2,13 @@
 
 ## Reading this journal against the current ledger (2026-11-11)
 
-**Current canonical snapshot:** **1,516 exact owners** and **199,754 exact
-bytes**, including **603 authored exact owners** and **129,467 authored exact
-bytes**; **147 authored source-present owners** remain nonexact. The two
-latest accepted authored additions are `BulletManagerView::DrawBucket
-@0x004066E0` (**134/134**, five bound fields) and `EnemyReadDialog
-@0x00415DB0` (**124/124**, nine bound fields). See canonical
+**Current canonical snapshot:** **1,517 exact owners** and **199,878 exact
+bytes**, including **604 authored exact owners** and **129,591 authored exact
+bytes**; **146 authored source-present owners** remain nonexact. The newest
+accepted authored addition is `ScriptViewerBombOwnerView::EmitAuxiliary
+@0x00405AC0` (**124/124**, six bound fields). Earlier additions include
+`BulletManagerView::DrawBucket` (**134/134**) and `EnemyReadDialog`
+(**124/124**). See canonical
 `config/matches.csv`, `config/match-units.toml` and generated
 `docs/PROGRESS.md` for the actual accepted state. The compact
 `docs/RE_HANDOFF.md` names the current open owners and next actions.
@@ -19,6 +20,36 @@ repository. Current matched-unit manifests take precedence. Most historical
 scratch files were intentionally deleted to save space; the five preserved
 compiler contexts and four trial drivers are listed in `docs/RE_ARTIFACTS.md`.
 
+
+## 2026-11-11 Bomb emitter exact in its real update-callback graph
+
+The complete `ScriptViewerBombOwnerView::EmitAuxiliary @0x00405AC0` is now
+**124/124 exact with all six original-bound address/call fields**. The
+actual `ScriptViewerBombUpdateCallback405840` / `Update` caller and real
+`ScriptViewerBombCreate`, `Chain`, `ScriptViewerLifecycle`, `AnmManager`,
+and `EnemyEclDispatcher` LTCG sources recover the target **ESI** owner
+without a private-ABI shim. The real bullet cancellation callee binds to
+`0x00408100` and laser propagation to `0x0041C800`; four data references
+bind `0x004776F4` twice, `0x004776F0` and `0x0047781C`.
+
+The target keeps the `spellId == 109` option as an **OR alternative** to
+`((flags & 1) && spellId >= 93 && spellId <= 96)`. It reads the ID again
+from game state for the `==109` comparison, even if the flag is zero.
+The old combined `bool` branch generated the wrong selection flow and
+register lifetime. Two natural `CancelBulletPattern` call arms with the
+same radius/center, inline `(~flags) & 1u` and a single `volatile const
+int` lvalue reread for the 109 branch recover all target instructions,
+including the `JE +0x10` at `+0x16` and the branch-local `NOT`/`AND`.
+These source expressions are supported by target disassembly, not
+fabricated padding or forced registers.
+
+Two independent maintained six-source `/GL /GS /EHs` cold links with
+different PE SHA-256 and PDB GUID identities strictly match all **124**
+physical PDB-owned bytes after resolving six complete target fields. The
+selected affected `enemy-effect-wait-pattern-cancel` original **76/76**
+bytes remain exact in its own distinct five-support graph (**200/200**
+across the first two selected owner builds). The large 223-byte Bomb
+`Update` parent and the complete game product remain separate work.
 
 ## 2026-11-11 Result-menu replay-name and score-entry dispatch separation
 

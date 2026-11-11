@@ -22,8 +22,8 @@ describe their own source epochs, not the current score.
    the canonical ledgers. `config/functions.csv` and matching candidate sizes
    alone never establish exactness.
 
-**Snapshot of generated progress:** 1,516 exact functions / 199,754 codegen
-bytes; 603 authored-origin exact functions / 129,467 bytes; 147 authored
+**Snapshot of generated progress:** 1,517 exact functions / 199,878 codegen
+bytes; 604 authored-origin exact functions / 129,591 bytes; 146 authored
 source-present functions remain nonexact. Regenerate/check the numbers from
 `docs/PROGRESS.md`, not this prose. All commits use `gpt-web: ...` with the
 name/email/trailer specified in `AGENTS.md`; **do not push**.
@@ -51,10 +51,11 @@ selected unit after inspecting the error.
 
 | Owner | Canonical unit | Proven scope |
 | --- | --- | --- |
+| `ScriptViewerBombOwnerView::EmitAuxiliary @0x00405AC0` | `script-viewer-bomb-emit-auxiliary` | **124/124**, six target-bound fields in the real six-source Bomb-update callback /GL /GS /EHs graph; target ESI receiver, separate bullet-cancel branches and volatile reread of spell 109. Existing laser cancel guard **76/76** also cold-passes. Two independent colds pass; the 223-byte Bomb Update parent remains nonexact. |
 | `BulletManagerView::DrawBucket @0x004066E0` | `bullet-manager-draw-bucket` | **134/134**, five target-bound fields; two independent VC7.1 `/GL` cold links of real `BulletDraw.cpp` + `AnmManager.cpp`; true EAX/ECX Draw ABI. Source uses two `_ReadWriteBarrier`s and a volatile flags DWORD read, with no ASM/padding. |
 | `EnemyReadDialog @0x00415DB0` | `enemy-read-dialog` | **124/124**, nine ctor/global/EH fields; two independent cold links of the real six-TU `/GL /GS /EHsc` graph and complete static PDB ownership. A scoped volatile read restores the global index publication order. |
 
-These are **two accepted authored owners** (not just positional candidate
+These are **three accepted authored owners** (not just positional candidate
 matches). Their accepted units and all ledger rows are already committed.
 Useful existing exact guards: `anm-render-draw` **216/216**, `bullet-manager-draw-callback`
 **44/44**, `gui-update-stage-elements` **3836/3836** (72 fields),

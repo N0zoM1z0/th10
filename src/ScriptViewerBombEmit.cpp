@@ -17,16 +17,16 @@ int ScriptViewerBombOwnerView::EmitAuxiliary()
 
     EnemyGameStateView *state = g_EnemyGameState;
     const unsigned int spellFlags = state->flags378C;
-    const int spellId = state->spellId;
-    const bool useNoItemDrop =
-        ((spellFlags & 1u) != 0 && spellId >= 93 && spellId <= 96) ||
-        spellId == 109;
-    const int cancelMode = (~spellFlags) & 1u;
-    reinterpret_cast<EnemyCancelManagerView *>(g_ScriptViewerBullets)->
-        CancelBulletPattern(
-            reinterpret_cast<const PlayerFloat3 *>(&position30),
-            *reinterpret_cast<const float *>(&unknown03C),
-            cancelMode, useNoItemDrop ? 0 : 1);
+    if (((spellFlags & 1u) != 0 &&
+         state->spellId >= 93 && state->spellId <= 96) ||
+        *reinterpret_cast<volatile const int *>(&state->spellId) == 109)
+        reinterpret_cast<EnemyCancelManagerView *>(g_ScriptViewerBullets)->
+            CancelBulletPattern(reinterpret_cast<const PlayerFloat3 *>(&position30),
+                *reinterpret_cast<const float *>(&unknown03C), (~spellFlags) & 1u, 0);
+    else
+        reinterpret_cast<EnemyCancelManagerView *>(g_ScriptViewerBullets)->
+            CancelBulletPattern(reinterpret_cast<const PlayerFloat3 *>(&position30),
+                *reinterpret_cast<const float *>(&unknown03C), (~spellFlags) & 1u, 1);
 
     const unsigned int laserMode = (~g_EnemyGameState->flags378C) & 1u;
     reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyLaserManager)->
