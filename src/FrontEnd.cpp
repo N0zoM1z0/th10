@@ -4022,8 +4022,9 @@ static AnmVmIdView ResultMenuFindScript(ResultMenuVmIdStorage *id, int scriptInd
 void ResultMenuSynchronizeScore(GuiView *gui)
 {
     gui->value9E78 = g_GameScoreState.score;
-    if (g_GameScoreState.unknown00 < g_GameScoreState.score)
-        g_GameScoreState.unknown00 = g_GameScoreState.score;
+    const int score = gui->value9E78;
+    if (g_GameScoreState.unknown00 < score)
+        g_GameScoreState.unknown00 = score;
 }
 
 // Target 0x423510 does not deallocate the controller or replay list.

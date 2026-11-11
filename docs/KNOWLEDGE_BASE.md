@@ -2,13 +2,14 @@
 
 ## Reading this journal against the current ledger (2026-11-11)
 
-**Current canonical snapshot:** **1,519 exact owners** and **200,036 exact
-bytes**, including **606 authored exact owners** and **129,749 authored exact
-bytes**; **144 authored source-present owners** remain nonexact. The newest
-accepted authored addition is `ReleaseModeOwners @0x004203F0` (**128/128**,
-15 bound fields) in the real WinMain mode-lifecycle graph. Earlier exact
-additions include `EnemyEclHostBaseView::SetSubroutine` (**30/30**, one
-field), `ScriptViewerBombOwnerView::EmitAuxiliary` (**124/124**, six fields),
+**Current canonical snapshot:** **1,520 exact owners** and **200,064 exact
+bytes**, including **607 authored exact owners** and **129,777 authored exact
+bytes**; **143 authored source-present owners** remain nonexact. The newest
+accepted authored addition is `ResultMenuSynchronizeScore @0x00421F60`
+(**28/28**, three score-state fields). Earlier additions include
+`ReleaseModeOwners` (**128/128**, 15 fields),
+`EnemyEclHostBaseView::SetSubroutine` (**30/30**, one field),
+`ScriptViewerBombOwnerView::EmitAuxiliary` (**124/124**, six fields),
 `BulletManagerView::DrawBucket` (**134/134**) and `EnemyReadDialog`
 (**124/124**). See canonical
 `config/matches.csv`, `config/match-units.toml` and generated
@@ -22,6 +23,37 @@ repository. Current matched-unit manifests take precedence. Most historical
 scratch files were intentionally deleted to save space; the five preserved
 compiler contexts and four trial drivers are listed in `docs/RE_ARTIFACTS.md`.
 
+
+## 2026-11-11 Exact 28-byte result-menu score synchronization
+
+`ResultMenuSynchronizeScore @0x00421F60` is now fully original-bound
+**28/28 bytes** in the real four-TU VC7.1 `/GL /GS /EHs` graph:
+`FrontEnd.cpp`, `VmIdInterrupt.cpp`, `EnemyEclDispatcher.cpp` (real sound
+callee) and `AnmVmId.cpp` (real interrupt callee). The original writes the
+current global score to `GuiView::value9E78`, **then reads the just-published
+GUI field** into the value used by the high-score comparison. The former
+source instead fetched `g_GameScoreState.score` a second time. That allowed
+VC7.1 to collapse the value into EAX, remove the native `MOV EAX,ECX`, and
+change the private receiver from native EAX to ECX: a 25-byte candidate.
+
+Natural C++ now reads `const int score = gui->value9E78;` between the GUI
+store and the comparison. This recovers the target's complete `MOV ECX,
+[score]; MOV [EAX+9E78h],ECX; MOV EAX,ECX; CMP [highest],EAX` sequence,
+without changing the intended score publication. All three original DIR32
+fields bind to `g_GameScoreState` (+4, +0, +0). **Two independent cold links**
+with different PE hashes and PDB GUIDs reproduce every byte and field.
+The same selected cold verifies `ResultMenuClose` **89/89**,
+`ResultMenuUpdateCallback` **10/10**, `AnmRequestCaptureRectangle`
+**162/162**, and `AnmVmId::SetInterrupt` **65/65**, for **354/354** complete
+related bytes and 16/16 fields. No historical all-unit cold replay.
+
+The still-nonexact `ResultMenuUpdateResult @0x004236F0` parent, in the
+*same* four-TU diagnostic graph, moves from 3,216 bytes / 762 normalized
+matched instructions to **3,208 bytes / 763 of 907** original instructions.
+The large parent remains open; recovering this leaf earns no parent exact
+credit. Alternative highest-score return values, cached-global score, and
+volatile GUI controls either left 25 bytes or changed other bytes and were
+rejected.
 
 ## 2026-11-11 Result-menu actual stack locals versus apparent frame padding
 
