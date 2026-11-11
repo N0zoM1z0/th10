@@ -1,5 +1,25 @@
 # TH10 durable reconstruction knowledge
 
+## Reading this journal against the current ledger (2026-11-11)
+
+**Current canonical snapshot:** **1,516 exact owners** and **199,754 exact
+bytes**, including **603 authored exact owners** and **129,467 authored exact
+bytes**; **147 authored source-present owners** remain nonexact. The two
+latest accepted authored additions are `BulletManagerView::DrawBucket
+@0x004066E0` (**134/134**, five bound fields) and `EnemyReadDialog
+@0x00415DB0` (**124/124**, nine bound fields). See canonical
+`config/matches.csv`, `config/match-units.toml` and generated
+`docs/PROGRESS.md` for the actual accepted state. The compact
+`docs/RE_HANDOFF.md` names the current open owners and next actions.
+
+The sections below are a **dated experiment journal**: an older statement
+that a function was nonexact, a historical count, or a private scratch path
+can be correct *at its source epoch* but no longer describe the current
+repository. Current matched-unit manifests take precedence. Most historical
+scratch files were intentionally deleted to save space; the five preserved
+compiler contexts and four trial drivers are listed in `docs/RE_ARTIFACTS.md`.
+
+
 ## 2026-11-11 GUI large-message script operand and instruction cursor words
 
 The 4,480-byte target `GuiMessageVmView::Run @0x00415E90` reads 32-bit
@@ -922,9 +942,9 @@ also resets eight renderer viewport words at `+0x2C..+0x48` to
 The current explicit C++ sequences are a better candidate than a loop:
 the loop experiment produced 194- and 250-byte functions against 309- and
 369-byte targets; explicit script-0/1/2 creation produces 307 and 369 bytes.
-The latest 23-TU incremental diagnostic is
-`.analysis/gpt-web/20261108-current/anm-initialize-vm-gameui-results.json`.
-It reports `InitializeVm` 207/218 (35/203 comparable ordinary bytes),
+A historical 23-TU incremental diagnostic from the 2026-11-08 source
+epoch (its ignored `.analysis/gpt-web/20261108-current/` scratch output has
+since been pruned) reported `InitializeVm` 207/218 (35/203 comparable ordinary bytes),
 `InitializeForLoadedScript` 200/202 (24/192),
 `InitializeAndExecuteScriptIndex` 197/203 (17/181), GameUI primary
 307/309 (63/219), and GameUI secondary 369/369 (30/277).
@@ -2629,9 +2649,9 @@ remain stable against its preceding source epoch. The separately owned
 fields, equal in extent to its original 2,432-byte owner after recovering
 two child-node owner reloads; **the old 2,424-byte candidate is superseded**.
 Equal sizes and candidate-field agreement do not imply full original-target
-linkage identity. **Both ECL bosses remain NONEXACT.** Latest native graph:
-`build/gpt-web/20261105-handoff-current/complete-ecl/` with SHA-pinned
-current source.
+linkage identity. **Both ECL bosses remain NONEXACT.** The historical 2026-11-05 native diagnostic graph was at
+`build/gpt-web/20261105-handoff-current/complete-ecl/` (now pruned);
+rebuild from the current source and selected canonical unit for new work.
 **Later full-graph supersession (2026-11-05):** the dispatcher now derives
 its 22-per-pattern extra-record indexing, 24-byte extra stride, and native
 bullet-offset dword cursor from checked C++ type extents rather than literal
@@ -2665,8 +2685,9 @@ text owners replayed 1,799/1,799.
 A later split pitch-read/multiply control is byte-neutral in both complete
 normal COFF112/157 and real two-input GL138/157. The latter's19 differences
 track EAX/ECX receiver/count/selector allocation. The control restores the
-source exactly; retained evidence is private
-`.analysis/gpt-web/20261106-text-alpha-owner/`. No new exact credit follows.
+source exactly. The dated private
+`.analysis/gpt-web/20261106-text-alpha-owner/` experiment files were pruned;
+only this finding survives in the journal. No new exact credit follows.
 
 The ANM 9,964-byte executor now retains sequentially evaluated opcode-91
 child arguments with 9,962/9,964 strict bytes; this source edit was
@@ -4498,10 +4519,10 @@ cannot be counted as byte-exact target code. All native results are diagnostic,
 with zero new exact credit. Exact numerator/denominator and canonical manifests
 remain unchanged.
 
-Local-only evidence: .analysis/gpt-web/th10-resume-20261016/options-*.json,
-options-refresh-target.txt, options-lifetimes-native.txt, options-lookup-native.txt,
-baseline source snapshot and test logs. Retain only core source, tests and
-conclusions in Git; binaries and generated dumps are reproducible.
+The 2026-10-16 options experiment's ignored local-only JSON, text and
+source snapshots under `.analysis/gpt-web/th10-resume-20261016/` were pruned.
+The source-epoch conclusions below remain; reproduce any new hypothesis from
+the current maintained code and exact unit recipe, not those old paths.
 
 ## 2026-10-16 Options controller protocol and owner bindings
 

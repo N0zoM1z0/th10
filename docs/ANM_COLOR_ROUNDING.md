@@ -5,6 +5,9 @@
 > five-TU candidate reproduces the complete820-byte evaluator and scale helper.
 > The conditional model and target observations below remain scoped to their
 > recorded inputs; they do not establish runtime x87 state or a gameplay bug.
+> This is a 2026-10-16 source epoch. Its 9,948-byte ExecuteScript candidate
+> is superseded by the current selected 9,962/9,964-byte, 350-field frontier
+> in [RE_HANDOFF.md](RE_HANDOFF.md); the color evaluator checkpoint is separate.
 
 ## Scope and important limitation
 
@@ -159,10 +162,11 @@ matches all 44 non-field bytes. Its canonical acceptance is unchanged.
 No source or header change remains; no canonical manifest, metric, boundary,
 receipt or exact-byte credit was changed.
 
-Local evidence is bounded under .analysis/gpt-web/th10-resume-20261016/:
-anm-color-{baseline,order,value}.json, color-order-comparison.json,
-color-value-comparison.json, color-caller-context.txt, source snapshots and
-the two control patches. Build artifacts are reproducible and not committed.
+The original 2026-10-16 local evidence lived under
+`.analysis/gpt-web/th10-resume-20261016/` (color control JSON, caller context,
+source snapshots and patches). Those ignored trial outputs were pruned during
+the 2026-11-11 storage cleanup; the findings above are retained here and
+can be reproduced from current source if a new hypothesis warrants it.
 Do not rerun these spelling/signature controls without new evidence.
 Next investigate the actual caller/LTCG graph: the pause and ExecuteScript
 contexts demonstrate different inline decisions for identical source.

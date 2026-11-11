@@ -1,47 +1,66 @@
-# TH10 retained inputs and working artifacts
+# TH10 retained private inputs and reclaimable storage
 
-## What to keep
+**Updated 2026-11-11.** This describes what a successor must preserve when
+moving the reconstruction to another environment. A Git clone alone does
+**not** contain the original executable or all private compiler contexts.
 
-- Original target and resource inputs, pinned `.tools/` and this game's Wine prefix.
-- `ghidra-project/`, `_reference/`, maintained source, canonical ledgers and comparison scripts.
-- `build/match-linked/`, which supplies the current canonical native comparison graphs.
-- Concrete findings and useful failed approaches in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md),
-  with current work in [RE_HANDOFF.md](RE_HANDOFF.md).
-- Unrelated D3D adapter work, including its private directories and retained notes.
+## Keep — do not prune
 
-Two files under `docs/evidence/` remain actual inputs:
-`anm-loaded-start-script-wave11-20261109/compiler-context.cpp` is compiled by the
-accepted loaded-script unit, and `anm-child-request-record/binding-contract.json`
-is read by the current ANM experiment driver. Their directory name does not make
-them disposable historical reports.
+- The original ignored `resources/th10.exe` (Japanese v1.00a), its SHA-256
+  verified through `scripts/verify-target.py`, and legitimate resource inputs.
+- `.tools/` and `.tools/wineprefix-msvc710-sp1/`, the pinned VC7.1 SP1
+  compiler/linker environment. The Wine prefix is the largest retained
+  private asset; deleting it would require reinstalling/reinitializing tools.
+- `ghidra-project/`, `_reference/`, source, scripts, canonical ledgers and Git.
+- **All** of `build/match-linked/` — current canonical native comparison graphs,
+  PE/MAP/PDB files and support objects used by scoped cold reconstruction.
+- Unrelated D3D adapter analysis and retained inputs, including their private
+  `.analysis/d3d-*` directories.
+- Actual build inputs stored under `docs/evidence/`:
+  `anm-loaded-start-script-wave11-20261109/compiler-context.cpp` and
+  `anm-child-request-record/binding-contract.json`. These are **not**
+  disposable just because their path contains `evidence`.
 
-## Current unresolved compiler contexts
+## Kept unresolved contexts
 
-These five directories under `build/gpt-web/` retain the useful native inputs
-and outputs for distinct open problems:
+Only five hand-selected private diagnostic contexts remain under
+`build/gpt-web/`:
 
-| Owner | Directory |
+| Problem | Retained directory |
 | --- | --- |
-| ANM ExecuteScript | `20261109/anm-execute-child91-aggregate/` |
-| ECL Run | `20261109/ecl-run-length-pointer-order/pointer-y-first/` |
-| Enemy runtime and motion | `20261108-enemy-runtime-aggregate-sum/` |
-| Enemy dispatcher | `20261108-enemy-dispatch-rank-tail-final/` |
-| Player HUD loader graph | `20261109/playerhud-restored-natural-loader/` |
+| ANM `ExecuteScript`, opcode 91 | `20261109/anm-execute-child91-aggregate/` |
+| ECL `Run`, floating-point/FORMAT ordering | `20261109/ecl-run-length-pointer-order/pointer-y-first/` |
+| Enemy runtime/motion | `20261108-enemy-runtime-aggregate-sum/` |
+| Enemy ECL dispatcher | `20261108-enemy-dispatch-rank-tail-final/` |
+| Player HUD loader | `20261109/playerhud-restored-natural-loader/` |
 
-Four focused ANM/ECL/Bullet/Seek trial drivers remain in `.analysis/gpt-web/`;
-the current handoff names them. Replace or delete a context when its problem is
-resolved or it no longer helps the next experiment.
+Four focused, small Python trial drivers remain in `.analysis/gpt-web/`:
+`20261110-anm-child91-aggregate-initializers.py`,
+`20261110-ecl-format-cursor-allocation-schedule.py`,
+`20261110-bullet-absolute-speed-liveness.py`, and
+`20261110-seek-tail-control-flow-trials.py`.
 
-## Cleanup policy
+The accepted 134-byte `bullet-manager-draw-bucket` and 124-byte
+`enemy-read-dialog` functions have canonical replay recipes in
+`config/match-units.toml`. Their deleted date-stamped trial outputs are
+**not** required for acceptance; rebuild only the chosen unit using
+`scripts/repo-python scripts/replay-exact-units.py --unit UNIT --json`.
 
-Historical archives, duplicate trial snapshots, old evidence reports, cleanup
-audits and dated handoffs do not need permanent retention. Keep their useful
-findings and reproducible current comparison commands. A citation alone is not
-a reason to keep an old file. Do not add replacement archives, per-file deletion
-manifests, hash registries or recurring cleanup reports.
+## Storage cleanup and future policy
 
-The November 10 cleanup removed the historical private archives and obsolete
-reports/experiments, releasing approximately **515 MiB**. No replacement backup
-was made. Tracked-file history remains in Git. Moving to another machine still
-requires transferring the original/private inputs and current retained contexts
-separately from the repository clone.
+On **2026-11-11**, removed superseded generated compiler images, objects,
+PDB/MAPs, source duplicates and logs from `build/gpt-web/` plus historical
+`.analysis/gpt-web/` scratch snapshots. **306,678,113 bytes (about
+292.47 MiB) of file content** were reclaimed. The five contexts and four
+scripts above remain (about 4.24 MiB together). The total repository
+working directory measured approximately 836 MiB afterward, mostly protected
+Wine/compiler inputs and canonical comparison builds. A prior 2026-11-10
+cleanup had already reclaimed about 515 MiB from other obsolete archives.
+
+Old paths mentioned by dated knowledge notes may therefore no longer exist;
+those descriptions are historical source-epoch observations, not current
+live file links. Reconstruct an experiment using the tracked source,
+canonical unit manifest and pinned toolchain if its hypothesis becomes useful
+again. Do not rebuild all historical units simply to replace deleted caches.
+Do not create new archives, per-file deletion manifests or repeated cleanup
+reports. Preserve dirty or unrelated work before any future pruning.
