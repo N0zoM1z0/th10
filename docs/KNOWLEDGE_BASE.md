@@ -33,6 +33,37 @@ special 99. A first Wine linker LNK1104/page-fault failure on the reset
 artifact was transient; isolated serial retry passed and the other five
 passed separately. No full cold replay and no ledger credit.
 
+## 2026-11-11 Player signed history-loop threshold matches native SHL
+
+The two large Player update paths that already use `PlayerNativeHistoryWord`
+still compared their 32-entry history cursor against signed C++
+`player->optionCount * 8`. The original TH10 i386 code instead shifts the
+option count left by three (wrapping within one DWORD), then compares the
+result as signed. The maintained source now computes the threshold as
+`static_cast<int>(static_cast<unsigned int>(player->optionCount) << 3)` in
+`PlayerUpdateMovementAndOptions` and `PlayerUpdateCallbackBody`. This removes
+signed-multiplication overflow from the computation while preserving the
+retail SHL/signed-compare under the pinned MSVC 7.1 i386 conversion behavior.
+No bounds check or loop exit has been inserted.
+
+Independently built current-source and candidate three-TU PlayerDraw `/GL`
+images retain **all 67 Player PDB owners and all 556 decoded address-field
+positions/types**, with zero non-field differences or extent changes. The
+unsigned-word multiply then signed-cast expression is also codegen-identical;
+changing the *comparison* to unsigned is not equivalent and changes two
+ordinary instruction bytes in each large owner, so it was rejected. A
+bit-copy-to-signed local changes stack/register allocation and was also
+rejected. The large update bodies are still nonexact against the original.
+
+Installed-source target-bound selected cold replays pass
+`player-reset-runtime-state` (273 bytes) and five additional Player units
+(534 bytes) across **four** selected artifacts: **807/807 bytes**, with
+all originally specified fields. The first combined replay encountered
+an intermittent Wine/LNK1104 crash on an existing Gui support object; a
+single isolated reset retry plus the remaining selected replay succeeded.
+That linker failure is not an original-byte mismatch. No new canonical
+exact owner was added and no full-cohort replay was used.
+
 ## 2026-11-11 Player large-owner native replay-history address words
 
 The Player movement/options (`0x004250B0`, 1,656 original bytes) and update

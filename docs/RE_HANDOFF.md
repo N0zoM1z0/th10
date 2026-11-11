@@ -153,6 +153,18 @@ cold units pass **807/807** (one transient Wine link retry). Neither 1,656-
 nor 3,112-byte original Player boss receives exact credit. See the knowledge
 note for rejected unsigned-compare and helper variants.
 
+## 2026-11-11 Player native loop threshold continuation
+
+The two large Player history-copy loops now use unsigned DWORD `<< 3`
+followed by the pinned MSVC i386 signed comparison in place of potentially
+overflowing signed multiplication. A complete two-source `/GL` comparison
+retains all **67** source-owned PDB bodies and **556** address fields with
+zero non-field or extent changes. Changing the compare itself to unsigned
+is wrong and changes four ordinary bytes across the two owners. All six
+selected exact Player units pass target-bound cold **807/807 bytes** after an
+isolated retry of a transient Wine/linker failure; no full replay. The
+remaining Player boss targets still need separate exact codegen recovery.
+
 ## 2026-11-11 Player large-owner history indexing
 
 `src/Player.cpp` now uses `PlayerNativeHistoryWord` for the two unchecked
