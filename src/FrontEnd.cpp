@@ -4218,11 +4218,11 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
             menu->nameIndex = 0;
             if (strcmp(menu->name, "        ") != 0) menu->keyboard.Move(-1);
             int length = 8;
-            while (menu->name[length - 1] == ' ')
+            do
             {
+                if (menu->name[length - 1] != ' ') break;
                 --length;
-                if (length <= 0) break;
-            }
+            } while (length > 0);
             menu->nameIndex = length;
             ResultMenuSound(10);
             return;

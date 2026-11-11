@@ -139,6 +139,38 @@ fields), `result-menu-update-callback-00422a90` (**10/10**, one field), and
 `anm-request-capture-rectangle` (**162/162**, six fields) all pass. These
 selected controls validate preservation, not the nonexact parent.
 
+## 2026-11-11 Result-menu state-10 native trailing-space loop
+
+In the 3,227-byte `ResultMenuUpdateResult @0x004236F0`, replay-name
+initialization trims up to eight trailing spaces. The target loads the
+initial length into EAX **before** its first indexed byte comparison,
+then decrements EAX and branches on `TEST EAX,EAX; JG` while the final
+character is still a space. The prior `while (...) { --length; if
+(length <= 0) break; }` caused VC7.1 to peel the first constant-index
+comparison, reverse the last condition and add an unnecessary JMP/NOP.
+The installed natural `do { if (name[length-1] != ' ') break; --length; }
+while (length > 0);` expresses exactly the target's 8-to-0 decrement
+contract without touching the contents of the name or its publication.
+
+With the **same** real `/GL /GS /EHs` FrontEnd + VmIdInterrupt + Enemy
+sound-callee graph, the complete PDB-owned candidate moves from **3,220
+to 3,204 bytes** versus **3,227** original. This is *not* an extent
+match; the ordered normalized instruction sequence improves from **677
+of 907** target instructions to **680**, including the target's original
+EAX loop form. All four loop controls (do-break, explicit positive-while,
+positive for and post-decrement recheck) emitted the same candidate bytes;
+volatile name-index publication did not move the store and was rejected.
+The parent remains **NONEXACT**. The native stack frame remains `0x48`
+versus target `0x4C`, and the independent cursor/interrupt private ABI
+still differs. No padding/extra-stack dummy, fake ABI or codegen ledger
+credit was added to bridge these differences.
+
+Selected original-bound cold replay after installing this source passes
+`result-menu-close` **89/89** (four original fields),
+`result-menu-update-callback-00422a90` **10/10** (one), and
+`anm-request-capture-rectangle` **162/162** (six): **261/261** total.
+No full historical replay was run.
+
 ## 2026-11-11 Result-menu native choice-one/two dispatch
 
 The original 3,227-byte `ResultMenuUpdateResult @0x004236F0`
