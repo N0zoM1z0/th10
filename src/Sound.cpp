@@ -885,8 +885,11 @@ process_command:
             }
             else if (command->step == 2)
             {
+                // An out-of-range positive BGM slot still forms a native
+                // low-32-bit filename pointer rather than a C++ array index.
                 const char *path = command->argument >= 0
-                    ? bgmFileNames[command->argument] : command->path;
+                    ? *SoundWordSlot(&bgmFileNames[0], command->argument)
+                    : command->path;
                 int index = GetFmtIndexByName(path);
                 // BGM lookup may return an unchecked signed index.
                 // Preserve the retail flat 32-bit format-table address.
