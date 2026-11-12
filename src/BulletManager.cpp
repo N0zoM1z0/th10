@@ -246,8 +246,11 @@ void BulletRuntimeView::UpdateRelativeDirectionChange()
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                 QueueSoundSample(transformSound, 0);
         }
-        state.int2 = static_cast<int>(
-            static_cast<unsigned int>(state.int2) + 1u);
+        // Relative direction cycles publish the full wrapped DWORD before
+        // applying their signed cycle-count termination condition.
+        const unsigned int nextCycleBits =
+            static_cast<unsigned int>(state.int2) + 1u;
+        memcpy(&state.int2, &nextCycleBits, sizeof state.int2);
         if (state.int2 >= state.int1)
             activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_RELATIVE;
 
