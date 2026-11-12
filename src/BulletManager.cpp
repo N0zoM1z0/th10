@@ -457,7 +457,13 @@ void BulletRuntimeView::UpdateBoundaryBounce()
             FromAngleMagnitude(angle, speed);
 
         if (bounced != 0)
-            ++state.int0;
+        {
+            // Retail increments the bounce count as one native signed
+            // DWORD before comparing it against its terminal bound.
+            const unsigned int nextBounceCountBits =
+                static_cast<unsigned int>(state.int0) + 1u;
+            memcpy(&state.int0, &nextBounceCountBits, sizeof state.int0);
+        }
         if (state.int0 >= state.int1) {
             activeTransformFlags &=
                 ~(BULLET_TRANSFORM_BOUNCE_ALL_EDGES |
