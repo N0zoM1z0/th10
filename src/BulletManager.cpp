@@ -313,9 +313,10 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
                 static_cast<float>(state.int0);
     }
 
-    int outgoingAngleBits = angleBits;
+    // Forward the current angle as an IEEE-754 word, without an arithmetic
+    // conversion or a redundant signed-word temporary.
     float outgoingAngle;
-    memcpy(&outgoingAngle, &outgoingAngleBits, sizeof(outgoingAngle));
+    memcpy(&outgoingAngle, &angleBits, sizeof(outgoingAngle));
     reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
         FromAngleMagnitude(outgoingAngle, nextSpeed);
     state.timer.previous = state.timer.current;
