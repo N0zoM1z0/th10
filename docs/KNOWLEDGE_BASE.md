@@ -337,6 +337,17 @@ owners remained structurally exact in the same graph. Focused original-bound
 cold replay of both neighbors passed **769/769** bytes and **20** fields
 in one artifact. The outstanding +0xD7/+0xDD register seam is unchanged.
 
+The exact `UpdateAimedDirectionChange @0x00407A30` has the same fast-timer
+word increment. It now publishes the incremented unsigned DWORD through a
+`memcpy` into signed `timer.current`, avoiding an unrelated unsigned-pointer
+lvalue while matching native `INC` wrap even at `INT_MAX`. Three natural
+spellings were compared in the complete seven-input Bullet callback graph;
+all preserve the **431-byte** aimed owner and its **12** fields, the complete
+335-byte nonexact absolute owner and eight fields, and the 338-byte relative
+owner. The selected original-bound cold test explicitly replays the exact
+aimed and relative owners, **769/769** bytes and **20** fields in one
+artifact. Existing exact credit remains unchanged.
+
 ## 2026-11-11 Statistics record fixed-name native word accesses
 
 `InitializeGameStatisticsRecord @0x0042ACB0` is a **274-byte** complete

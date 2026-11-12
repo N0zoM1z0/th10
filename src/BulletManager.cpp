@@ -378,7 +378,11 @@ void BulletRuntimeView::UpdateAimedDirectionChange()
     // The relative-direction sibling uses the opposite x87 operand order.
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        ++*reinterpret_cast<unsigned int *>(&state.timer.current);
+        // Native fast tick increments the timer DWORD modulo 2^32;
+        // publish the bit pattern into the signed field without aliasing.
+        const unsigned int nextFrame =
+            static_cast<unsigned int>(state.timer.current) + 1u;
+        memcpy(&state.timer.current, &nextFrame, sizeof nextFrame);
         state.timer.subframe += 1.0f;
     }
     else {
