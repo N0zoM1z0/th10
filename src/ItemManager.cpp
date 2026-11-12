@@ -90,8 +90,9 @@ void GameScoreStateView::SetTimerCurrent(int value)
 void GameScoreStateView::AddRank(int amount)
 {
     // The native ADD wraps before the signed [-0x400, 0x400] bounds test.
-    unsigned int &rankWord = reinterpret_cast<unsigned int &>(rank);
-    rankWord += static_cast<unsigned int>(amount);
+    rank = static_cast<int>(
+        static_cast<unsigned int>(rank) +
+        static_cast<unsigned int>(amount));
     if (rank > 0x400)
         rank = 0x400;
     else if (rank < -0x400)
