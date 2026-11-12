@@ -727,10 +727,19 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
              link != NULL; link = link->next)
         {
             ReplayFrameData *frameData = (ReplayFrameData *)link->value;
-            int fpsBytes = frameData->fpsEnd - frameData->fpsSamples;
+            // Serialized frame cursors are Win32 address words. Subtract
+            // their low DWORDs even for a malformed out-of-array cursor.
+            int fpsBytes = static_cast<int>(
+                reinterpret_cast<unsigned int>(frameData->fpsEnd) -
+                reinterpret_cast<unsigned int>(frameData->fpsSamples));
             memcpy(uncompressedData + allocationSize, frameData->fpsSamples,
                    fpsBytes);
-            allocationSize += frameData->fpsEnd - frameData->fpsSamples;
+            // Re-read the final FPS cursor after memcpy, as the target does;
+            // the accumulator also wraps at the 32-bit address boundary.
+            allocationSize = static_cast<int>(
+                static_cast<unsigned int>(allocationSize) +
+                (reinterpret_cast<unsigned int>(frameData->fpsEnd) -
+                 reinterpret_cast<unsigned int>(frameData->fpsSamples)));
         }
     }
 
