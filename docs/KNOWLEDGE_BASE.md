@@ -24,6 +24,26 @@ scratch files were intentionally deleted to save space; the five preserved
 compiler contexts and four trial drivers are listed in `docs/RE_ARTIFACTS.md`.
 
 
+## 2026-11-12 Absolute-direction native cycle word without aliasing
+
+`BulletRuntimeView::UpdateAbsoluteDirectionChange @0x004078E0` uses the
+unsigned low-32-bit `int2` increment before its signed `int2 >= int1` test.
+It now expresses the increment as an unsigned value calculation followed by
+assignment to the existing signed field, matching the established relative-
+direction pattern rather than writing through an incompatible unsigned pointer.
+This preserves the target's i386 wrap at `0xFFFFFFFF` without depending on
+strict-aliasing violations. In the real three-TU Bullet/ANM/Enemy `/GL /GS`
+graph, the installed source still emits the complete **335-byte** contribution
+with **301/303** comparable ordinary bytes matching and eight candidate
+fields; only `+0xD7` and `+0xDD` differ, where the target loads the angle
+through EDX but VC7.1 chooses EAX. Six natural counter spellings were
+compiled: three were codegen-equivalent, pointer-reference forms changed
+many unrelated bytes, and a volatile write regressed the extent. Neither
+register-only mismatch is thereby solved. The two affected original-bound
+cold units remain exact: relative direction **338/338** (8 fields) and
+player-aimed direction **431/431** (12 fields), **769/769** total. No full
+replay and no new exact credit.
+
 ## 2026-11-11 Statistics record fixed-name native word accesses
 
 `InitializeGameStatisticsRecord @0x0042ACB0` is a **274-byte** complete

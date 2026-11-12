@@ -278,7 +278,10 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                 QueueSoundSample(transformSound, 0);
         }
-        ++*reinterpret_cast<unsigned int *>(&state.int2);
+        // The native cycle word wraps on UINT32 overflow before the signed
+        // comparison against int1, without aliasing it through another type.
+        state.int2 = static_cast<int>(
+            static_cast<unsigned int>(state.int2) + 1u);
         if (state.int2 >= state.int1)
             activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE;
 
