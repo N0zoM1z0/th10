@@ -937,10 +937,17 @@ int PlayerLoadOptionData(Player *player, const char *filename)
 
     for (int i = 0; i < player->optionData->entryCount; ++i)
     {
-        reinterpret_cast<unsigned int &>(
+        // The .sht table stores a relative 32-bit address word in this
+        // pointer-sized slot. Add the buffer base in native Win32 arithmetic,
+        // then publish the resulting typed pointer without aliasing its
+        // storage through an unrelated integer reference.
+        PlayerShotDataEntryBoundaryView &entry =
             reinterpret_cast<PlayerShotDataEntryBoundaryView *>(
-                reinterpret_cast<unsigned char *>(player->optionData) + 0x110)[i].descriptors) +=
+                reinterpret_cast<unsigned char *>(player->optionData) + 0x110)[i];
+        const unsigned int relocated =
+            reinterpret_cast<unsigned int>(entry.descriptors) +
             reinterpret_cast<unsigned int>(player->optionData);
+        entry.descriptors = reinterpret_cast<PlayerShotDescriptorView *>(relocated);
         PlayerShotDescriptorView *descriptor =
             reinterpret_cast<PlayerShotDataEntryBoundaryView *>(
                 reinterpret_cast<unsigned char *>(player->optionData) + 0x110)[i].descriptors;
