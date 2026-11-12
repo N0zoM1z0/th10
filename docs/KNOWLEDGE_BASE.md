@@ -1,5 +1,62 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-12 Complete-owner register frontiers and typed native-word fixes
+
+The current source retains complete but still nonexact ANM and ECL bosses.
+A seven-form genuine five-input `/GL /GS` investigation of
+`AnmRenderManagerView::ExecuteScript @0x0043EE30` confirms that the present
+opcode-91 child creation yields **9,962/9,964 original bytes with all 350
+bound fields**. Explicit scalar evaluation, a volatile layer read and a
+four-byte layer copy reproduce the identical two register-encoding differences
+at `+0x113/+0x115` (ECX versus target EDX). A referenced layer local instead
+introduces two more differences near `+0x2476`. Reordering the scalar/layer
+schedule and making the layer local volatile change the function's physical
+shape or bound fields, so those trials were not installed. The result-menu
+`ResultMenuPrepareScore @0x00423570` similarly stays a complete **377-byte**
+owner: its remaining 31 ordinary differences are in cursor clamping. The
+original clamps into EAX, then performs a single store after the branch;
+inlining the clamp explicitly changes the candidate to **361 bytes** and also
+perturbs the enclosing `ResultMenuUpdateResult` from 3,228 to 3,264 bytes.
+The original update owner is 3,227 bytes. No score or ANM trial was accepted.
+
+`EclVmContext::Run @0x0044E1A0` remains **6,997/7,020 target-bound bytes**
+with **189 original fields**. Nine local `EclVmStackView::Pop` trials in the
+genuine two-input ECL/Enemy link prove why leaf-only optimization is unsafe:
+the 122-byte Pop and its original field stay exact in all trials, but rewriting
+its stack pointer arithmetic to raw native addresses or its subtraction to
+unsigned words changes inlined code in Run. The unsigned decrement/memcpy
+variant alone expands Run to **7,212 bytes**. Swapping the C++ addend order
+is codegen-neutral, not a solution to the SIB register selection. Independently,
+four variants of the `ReadInt` top-word sign test show that a direct
+`static_cast<int>(topBits)` matches both the full 144-byte exact leaf and the
+unmodified 7,020-byte Run; a high-sign-bit test or a signed `memcpy` grow
+the leaf to 147 bytes. The installed signed-word view passed selected exact
+`ReadInt`, `ReadIntValue`, `Pop`, and `EclVmHost::Run` guards,
+**536/536 bytes and seven fields**. The large Run still needs separate
+register/x87/FORMAT source-shape work.
+
+Two further maintained source corrections are supported by complete native
+compilation, not just source inspection. `BulletRuntimeView::UpdateAbsoluteDirectionChange`
+now copies the current floating angle bits directly from the typed
+`angleBits` member; its real seven-input candidate stays **335 bytes**, with
+**333/335 bound original bytes and eight fields**. Eight register-lifetime
+spelling trials did not remove its EAX-versus-target-EDX seam at
+`+0xD7/+0xDD`. Selected exact relative/aimed Bullet owners pass
+**769/769 bytes and 20 fields**. `PlayerLoadOptionData @0x00426520`
+now reinterprets its relative serialized `.sht` pointer word through a
+round-trip native `unsigned int` address instead of an unrelated integer
+reference into pointer storage. The full 12-input Player graph retains the
+**229-byte nonexact fixup**, the same 1,404-byte initializer candidate,
+and the original-exact 876-byte shot updater. Selected strict shot update,
+shot spawn and row emission pass **1,698/1,698 bytes and 41 fields**.
+Reusing the typed entry in the following descriptor read was tested and
+rejected: it changed the fixup's codegen without reducing its differences.
+
+The retained trial drivers and native comparisons are under ignored
+`.analysis/gpt-web/20261112-*` and `build/gpt-web/20261112/` directories.
+These are replayable diagnostic inputs, not canonical exact receipts.
+The three source checkpoints are `ae018651`, `a9353f80` and `5bd04cff`.
+
 ## 2026-11-12 Native transition fade-in terminal bound without a typed alias
 
 `TransitionFadeIn @0x0043C230` computes its terminal frame as the unsigned
