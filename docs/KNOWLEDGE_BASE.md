@@ -1,5 +1,57 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-12 Ending/Player bosses and archive/score word semantics
+
+Nine independently committed source checkpoints preserve the native i386
+modulo-32-bit semantics without introducing signed arithmetic overflow or
+unsigned-pointer aliases. They do **not** add a newly exact owner; each
+accepted change has a full original-bound local replay.
+
+- `EndingTextVmView::Run @0x0040BD80` increments `textLine` as a native
+  low-DWORD counter before comparing the signed row against five. Its complete
+  **1,568/1,568** bytes and **92** target fields cold-replay exact under the
+  genuine 21-TU context (`61e1fcd0`). The already retained opcode-7 animation
+  resource-index word wrap remains intact.
+- `Player::CalculateDamageToTarget @0x00428630` now accumulates the external
+  field-hit damage with an unsigned 32-bit ADD before its signed damage/score
+  logic, and creates hit-animation scripts using a modulo-DWORD `+5` instead
+  of signed-overflow-prone arithmetic. The original **1,170/1,170** bytes
+  with **28** bindings replay exact (`32adecb4`, `bf9b62e4`).
+- `ArchiveOrDiskPathView::FindArchive @0x004356F0` publishes the loop's
+  signed index through native wrapping arithmetic instead of an incompatible
+  unsigned-int pointer. It remains **212/212**, **7 fields**; neighboring
+  archive/disk `Read @0x00435800` remains **214/214**, **14 fields** in the
+  respective focused caller graphs (`774c28e2`). The global archive count
+  increment likewise publishes through the declared signed word, with the
+  complete `FileSystem::LoadArchive @0x004357D0` **36/36**, **4 fields** and
+  the 214-byte `Read` owner unchanged (`51e6c879`).
+- Game score faith/rank helpers use unsigned low-DWORD addition/subtraction
+  followed by the original signed caps, rather than accessing signed fields
+  through unrelated `unsigned int*`/references. `AddFaith` **46/46**,
+  `DecayFaith` **46/46** and `AddRank` **42/42** retain exactness
+  (`68726bbf`, `1ff6dd92`, `36b89430`). `SetTimerCurrent` copies the native
+  signed previous-frame bit pattern with `memcpy`, preserving **59/59** plus
+  the **73/73** `SetFaith` guard (`0d75f3eb`). One transient Wine LNK1104
+  during the rank trial passed on isolated retry; no original-byte failure.
+
+The same session carried out negative complete-owner experiments rather than
+merely inspecting open functions. Nine additional `EclVmContext::Run` (7,020-byte, 189-field)
+result-variable ordering, scope and type controls did **not** reduce the
+existing 23 non-field differences: five declaration/order variants and a
+merged comparison result retained **6,997/7,020**, while bool/char/unsigned
+promotions changed the complete function shape/field map. In
+`ResultMenuPrepareScore @0x00423570` (377-byte target and current candidate),
+five additional cursor/clamp and volatile-pointer shapes preserved the
+**31** ordinary differences or regressed to **361/362** bytes. They also
+changed the enclosing `ResultMenuUpdateResult` candidate from **3,228** to
+**3,264** bytes versus its **3,227-byte** target, so none was installed.
+The attempted native `ReplayManager::SaveReplay` record-pointer subtraction
+forms either changed ordinary bytes or shortened the exact 1,681-byte
+owner to 1,665 bytes, and were reverted. The original code was kept.
+No full historical cold replay, target mutation, exact-ledger promotion or
+remote push was performed. The retained private diagnostics are under
+`.analysis/gpt-web/20261112-*` and `build/gpt-web/20261112/`.
+
 ## 2026-11-12 Native RIFF parsing, ECL postdecrement, and bounded owner trials
 
 `FindWaveChunk @0x0043D250` now copies the serialized RIFF chunk-length
