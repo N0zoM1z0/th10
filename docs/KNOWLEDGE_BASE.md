@@ -1,5 +1,42 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-12 ECL x87 stack homes and Sound ReadFile registers: bounded negative trials
+
+Full native i386 /GL comparisons leave `EclVmContext::Run @0x0044E1A0`
+at **7,020 bytes**, with its prior **23 non-field differences** and **189
+source-bound fields**. In `LENGTH_SQUARED`, the target's two x87 square
+operations read `ESP+0x14` then `ESP+0x18`, while the candidate reads them in
+reverse order. In `POINT_ANGLE`, the final `FLD` is from `ESP+0x14` in the
+target and `ESP+0x18` in the candidate. Ten isolated `LENGTH_SQUARED` and
+eleven `POINT_ANGLE` source forms were linked with the genuine ECL/Enemy
+support graph and compared as complete owners. Changing expression order,
+local declaration order, and naming the angle result was byte-neutral.
+`volatile` scratch and independently materialized square results instead
+altered the stack frame or displaced unrelated instructions; naming the
+ResolveFloat destination changed the `FPATAN` neighborhood but worsened
+agreement. Best complete target-bound baseline remains **6,997/7,020**;
+structural comparisons on the common 6,264 nonfield positions remained at
+**6,241/6,264**. No ECL variant was installed or promoted.
+
+`SoundPlayerView::PreloadBgm @0x0043D7D0` remains **369 bytes** with exactly
+four register-encoding differences at `+0x121`, `+0x127`, `+0x12A`, and
+`+0x12B`. Eight separately compiled genuine Sound/ZWave `/GL /GS /EHsc`
+versions kept all ten fields. Named `ReadFile` output pointers, mutable and
+plain unsigned size values, and a named handle reproduced **325/329**
+ordinary bytes; making the size volatile grew the body to 383 bytes, while
+recomputing it through an explicitly typed byte address grew it to 371.
+Neither repair is accepted. Investigate caller-visible register lifetime or
+original record read ordering rather than re-probing those declarations.
+
+The ANM `ExecuteScript` 9,964-byte Boss also rejected three isolated
+`I_ADD` destination word-publication alternatives: typed assignment,
+standalone `memcpy`, and a copied operand-first form changed its complete
+PDB extent or field map rather than resolving opcode 91's remaining
+`+0x113/+0x115` ECX-versus-EDX registers. The retained full owner is still
+**9,962/9,964** with 350 bound fields. Trial drivers and comparison results
+are under ignored `.analysis/gpt-web/20261112-*` and
+`build/gpt-web/20261112/`; no full historical cold replay was run.
+
 ## 2026-11-12 Exact score serialization and large-owner native counters
 
 The score-file reader and writer now publish native 32-bit words through
