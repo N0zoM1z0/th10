@@ -166,6 +166,28 @@ local cold replay: **1,129/1,129** bytes and **36** target-bound fields
 across one build artifact. The 274-byte initializer remains **NONEXACT**;
 no new canonical credit or full historical replay is claimed.
 
+## 2026-11-12 ECL stack-push guard recovers signed DWORD without aliasing
+
+`EclVmStackView::Push` computes its next stack top as a native unsigned
+32-bit sum before checking the signed 0x1000-byte limit. The old maintained
+source read an `unsigned int` local through an incompatible `const int*`
+lvalue. It now converts through `static_cast<int>`: the pinned VC7.1 i386
+compiler preserves the low 32-bit signed pattern, including the sign bit.
+This is implementation-defined signed narrowing outside the pinned target
+compiler; portability beyond VC7.1 is not claimed.
+
+Four independently compiled EclVm + Enemy `/GL` candidates show why the
+choice matters. The direct signed conversion and a union-based spelling
+preserve the complete, already exact **96-byte** stack-push owner and the
+**7,020-byte** NONEXACT `EclVmContext::Run` candidate with all **189**
+target-bound fields and **23** ordinary differences. By contrast, inserting
+`memcpy` at this particular expression changes the Push owner to 95 bytes
+and shrinks the ECL runner to 6,752 bytes; it was rejected. The linked
+script database remains 589 bytes, and `FindSubroutine` 136-byte exact.
+Scoped original-bound cold replay proves **522/522** bytes and **five**
+fields in two build artifacts: Push96, ReadInt144, Find136, and HostRun146.
+No full replay or new exact ledger credit.
+
 ## 2026-11-12 Native script database counters without aliasing
 
 `EclVmScriptDatabase::AddScriptData @0x00450220` retains seven signed

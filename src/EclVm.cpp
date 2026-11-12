@@ -56,7 +56,9 @@ int EclVmStackView::Push(
 {
     const unsigned int nextStackTopBits =
         static_cast<unsigned int>(stackTop) + static_cast<unsigned int>(size);
-    const int nextStackTop = *reinterpret_cast<const int *>(&nextStackTopBits);
+    // VC7.1 i386 preserves the low 32-bit signed pattern on conversion.
+    // That conversion is compiler-specific but avoids a mismatched int alias.
+    const int nextStackTop = static_cast<int>(nextStackTopBits);
     if (nextStackTop >= 0x1000)
         return -1;
 
