@@ -1387,11 +1387,14 @@ jump_instruction:
                 EclVmScalar value;
                 value.integer = ReadInt(0);
                 int *destination = ResolveInt(0);
-                // Native DWORD decrement, published through the actual int
-                // destination. The pinned VC7.1 Win32 conversion preserves
-                // the low 32 bits; no unrelated-type pointer alias is used.
+                // Native DWORD postdecrement wraps before publication.
+                // Reuse the VM's 4-byte scalar overlay instead of narrowing
+                // an arbitrary unsigned result to signed int. The unchanged
+                // `value` is still the predecrement result pushed below.
                 const unsigned int nextWord = value.bits - 1u;
-                *destination = static_cast<int>(nextWord);
+                EclVmScalar nativeWord;
+                nativeWord.bits = nextWord;
+                *destination = nativeWord.integer;
                 stack.Push('i', sizeof(value.integer), &value.integer);
                 break;
             }
