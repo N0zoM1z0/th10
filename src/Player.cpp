@@ -1711,21 +1711,22 @@ int __stdcall PlayerUpdateShots(Player *player)
         if (updateCallback != NULL)
             updateCallback(player, shot);
 
-        PlayerShotMotionView *motion = &shot->motion;
-        if ((motion->flags & PLAYER_SHOT_POLAR_MOTION) == 0)
+        PlayerShotMotionView *const branchMotion = &shot->motion;
+        if ((branchMotion->flags & PLAYER_SHOT_POLAR_MOTION) == 0)
         {
             reinterpret_cast<EnemyRuntimeVectorView *>(
-                &motion->velocity)->FromAngleMagnitude(
-                    motion->angle, motion->speedOrAngleStep);
-            motion->velocity.z = 0.0f;
+                &branchMotion->velocity)->FromAngleMagnitude(
+                    branchMotion->angle, branchMotion->speedOrAngleStep);
+            branchMotion->velocity.z = 0.0f;
         }
         else
         {
-            motion->polarMagnitude += motion->polarMagnitudeDelta;
-            motion->angle = EnemyWrapAngle(
-                motion->speedOrAngleStep + motion->angle);
+            branchMotion->polarMagnitude += branchMotion->polarMagnitudeDelta;
+            branchMotion->angle = EnemyWrapAngle(
+                branchMotion->speedOrAngleStep + branchMotion->angle);
         }
 
+        PlayerShotMotionView *motion = &shot->motion;
         EnemyAdvanceMotion(reinterpret_cast<EnemyMotionView *>(motion));
 
         PlayerVm *primaryVm = reinterpret_cast<PlayerVm *>(
@@ -1796,7 +1797,8 @@ int __stdcall PlayerUpdateShots(Player *player)
         }
         else
         {
-            shot->timer.Add(*shot->timer.scale);
+            shot->timer.subframe += *shot->timer.scale;
+            shot->timer.current = static_cast<int>(shot->timer.subframe);
         }
     }
 
