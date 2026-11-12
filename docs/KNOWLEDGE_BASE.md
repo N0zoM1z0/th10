@@ -24,6 +24,28 @@ scratch files were intentionally deleted to save space; the five preserved
 compiler contexts and four trial drivers are listed in `docs/RE_ARTIFACTS.md`.
 
 
+## 2026-11-12 Player shot timer signed-overflow recovery
+
+`PlayerUpdateShots @0x00428280` is the complete **876-byte** shot owner in
+the real twelve-source VC7.1 `/GL` callback graph. The target's fast shot
+clock path at `+0x321..+0x32E` loads timer.current into EDX, executes
+`INC EDX` at `+0x324`, and writes the wrapped native 32-bit word back
+before updating the subframe. The maintained C++ formerly incremented the
+signed timer directly, so the `INT_MAX` transition was undefined by the
+source language even though the target always wraps. It now computes
+`static_cast<unsigned int>(timer.current) + 1u` and publishes the resulting
+word to the signed timer, preserving both the actual machine semantics and
+the source-visible `current` field.
+
+The real twelve-input linker graph compiled a baseline and two natural
+unsigned spellings. All retain the complete **876-byte** owner and all
+**22** candidate linked fields; the same **40** ordinary nonfield-byte
+differences remain, beginning at the independently known jump/LEA frontier
+`+0x111`, so this owner is still **NONEXACT**. The two related
+original-bound cold units remain **158/158**, with seven fields:
+`player-shot-outside-playfield` **91/91** and `player-angle-to-point`
+**67/67**. No historical or whole-game cold replay was used.
+
 ## 2026-11-12 Absolute-direction native cycle word without aliasing
 
 `BulletRuntimeView::UpdateAbsoluteDirectionChange @0x004078E0` uses the

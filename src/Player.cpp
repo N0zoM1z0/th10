@@ -1788,7 +1788,10 @@ int __stdcall PlayerUpdateShots(Player *player)
         shot->timer.previous = shot->timer.current;
         if (*shot->timer.scale > 0.99f && *shot->timer.scale < 1.01f)
         {
-            ++shot->timer.current;
+            // Retail INC wraps the 32-bit timer word at INT_MAX; compute
+            // it unsigned before publishing the new signed frame count.
+            shot->timer.current = static_cast<int>(
+                static_cast<unsigned int>(shot->timer.current) + 1u);
             shot->timer.subframe += 1.0f;
         }
         else
