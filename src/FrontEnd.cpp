@@ -25,7 +25,12 @@ int __fastcall FrontEndCursorSetCurrent(
     {
         if (value >= count)
         {
-            --count;
+            // The original LEA/DEC publishes count-1 as a signed native
+            // DWORD, even when the source count is INT_MIN. Copy the low
+            // four bytes without overflowing a signed C++ subtraction.
+            const unsigned int nextCountBits =
+                static_cast<unsigned int>(count) - 1u;
+            memcpy(&count, &nextCountBits, sizeof count);
             cursor->current = count;
             return count;
         }
