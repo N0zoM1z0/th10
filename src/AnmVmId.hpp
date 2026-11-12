@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string.h>
+
 #if defined(_MSC_VER)
 #define TH10_ANM_NOINLINE __declspec(noinline)
 #else
@@ -21,7 +23,12 @@ struct AnmVmIdView
 
     int operator++(int)
     {
-        return value++;
+        // Native VM IDs increment as one modulo-32-bit word. The caller
+        // still receives the pre-increment value (postfix semantics).
+        const int previous = value;
+        const unsigned int nextBits = static_cast<unsigned int>(value) + 1u;
+        memcpy(&value, &nextBits, sizeof value);
+        return previous;
     }
 
     TH10_ANM_NOINLINE AnmVmView *GetVm();
