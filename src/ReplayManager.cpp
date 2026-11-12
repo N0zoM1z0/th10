@@ -842,10 +842,16 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
     userDataCursor += sprintf(userDataCursor, "Slow Rate %2.2f\r\n",
                               replayData->slowRate) + 1;
 
-    if (static_cast<int>(userDataCursor - (char *)userData) % 4 != 0)
-        userDataCursor += 4 - static_cast<int>(userDataCursor - (char *)userData) % 4;
+    if (static_cast<int>(
+            reinterpret_cast<unsigned int>(userDataCursor) -
+            reinterpret_cast<unsigned int>(userData)) % 4 != 0)
+        userDataCursor += 4 - static_cast<int>(
+            reinterpret_cast<unsigned int>(userDataCursor) -
+            reinterpret_cast<unsigned int>(userData)) % 4;
 
-    userDataHeader->size = static_cast<int>(userDataCursor - (char *)userData);
+    userDataHeader->size = static_cast<int>(
+            reinterpret_cast<unsigned int>(userDataCursor) -
+            reinterpret_cast<unsigned int>(userData));
     FileSystem::WriteToOpenFile(userData, userDataHeader->size);
 
     memset(userData, 0, 0xffff);
@@ -855,10 +861,16 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
     userDataCursor = (char *)(userDataHeader + 1);
     userDataCursor += sprintf(userDataCursor, g_ReplayUserCommentText) + 1;
 
-    if (static_cast<int>(userDataCursor - (char *)userData) % 4 != 0)
-        userDataCursor += 4 - static_cast<int>(userDataCursor - (char *)userData) % 4;
+    if (static_cast<int>(
+            reinterpret_cast<unsigned int>(userDataCursor) -
+            reinterpret_cast<unsigned int>(userData)) % 4 != 0)
+        userDataCursor += 4 - static_cast<int>(
+            reinterpret_cast<unsigned int>(userDataCursor) -
+            reinterpret_cast<unsigned int>(userData)) % 4;
 
-    userDataHeader->size = static_cast<int>(userDataCursor - (char *)userData);
+    userDataHeader->size = static_cast<int>(
+            reinterpret_cast<unsigned int>(userDataCursor) -
+            reinterpret_cast<unsigned int>(userData));
     FileSystem::WriteToOpenFile(userData, userDataHeader->size);
 
     free(userData);
