@@ -1,160 +1,98 @@
-# TH10 reconstruction — next agent handoff
+# TH10 reconstruction — agent handoff
 
-**Updated 2026-11-12.** This is the short continuation brief, not a chronological
-experiment log. Read [AGENTS.md](../AGENTS.md) for the exactness, source and
-storage rules. Consult [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) by function/address
-for detailed observations and rejected approaches; its older dated paragraphs
-describe their own source epochs, not the current score.
+**Current as of 2026-11-12.** This is the working brief, not a chronological
+experiment log. The detailed [knowledge journal](KNOWLEDGE_BASE.md) contains
+older source-epoch observations, some of which were superseded. Read
+[AGENTS.md](../AGENTS.md) for the target, toolchain, exactness and Git rules.
 
-## First actions and authorities
+## State and first actions
 
-1. Run `git status --short --branch` and inspect **all** dirty/untracked work;
-   preserve and take responsibility for it. Inspect `git log -8 --oneline`.
-2. Verify only the original Japanese TH10 v1.00a target:
-   `scripts/repo-python scripts/verify-target.py`. The ignored, uncommitted
-   `resources/th10.exe` must have SHA-256
-   `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
-3. Use the pinned VC7.1 SP1 toolchain, source-specific `/GL`/`/GS` profiles
-   and real source-link dependencies. Inspect
-   `scripts/repo-python scripts/verify-toolchain.py --check` if setup changes.
-4. The authority for accepted exact units is `config/matches.csv` and
-   `config/match-units.toml`; [PROGRESS.md](PROGRESS.md) is **generated** from
-   the canonical ledgers. `config/functions.csv` and matching candidate sizes
-   alone never establish exactness.
+- Start with `git status --short --branch` and `git diff`; take over any dirty
+  or untracked work. Check `git log -8 --oneline`. Do not reset work or push.
+- Validate the private **Japanese TH10 v1.00a** target with
+  `scripts/repo-python scripts/verify-target.py`. Required SHA-256:
+  `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
+- Accepted function/binding truth is in `config/matches.csv`,
+  `config/match-units.toml` and `config/functions.csv`. The generated
+  [PROGRESS.md](PROGRESS.md) is current (`scripts/repo-python scripts/progress.py --check`).
+  **1,521 exact functions / 200,940 bytes**; of these, **608 / 130,653**
+  have authored source; **142 authored** functions remain nonexact. These
+  counts do not imply a closed, runnable reconstructed game.
+- Use pinned VC7.1 SP1 and the particular unit's real `/GL`, `/GS`,
+  support-object and PDB-owner recipe. Compare **complete functions**, all
+  original-bound fields and local branches. A similar-size candidate,
+  masked opcode resemblance or an exact caller is not an exact callee.
+- Run **only selected** cold replay units affected by a source edit:
+  `scripts/repo-python scripts/replay-exact-units.py --unit UNIT --json`.
+  Never run the full historical replay. For docs-only work, no compile or
+  replay is necessary. Commit useful checkpoints as `gpt-web: ...` with the
+  author/trailer in `AGENTS.md`.
 
-**Snapshot of generated progress:** 1,521 exact functions / 200,940 codegen
-bytes; 608 authored-origin exact functions / 130,653 bytes; 142 authored
-source-present functions remain nonexact. Regenerate/check the numbers from
-`docs/PROGRESS.md`, not this prose. All commits use `gpt-web: ...` with the
-name/email/trailer specified in `AGENTS.md`; **do not push**.
+## Accepted exact owners and useful guards
 
-Never run the full historical/all-unit cold replay. Build and compare one
-complete affected owner, all original-bound relocations and its known exact
-consumers. Use explicit `--unit` selectors only:
+These are highlights, **not** the full list of 608 authored exact owners.
 
-```bash
-scripts/repo-python scripts/replay-exact-units.py --unit bullet-manager-draw-bucket --json
-scripts/repo-python scripts/replay-exact-units.py --unit enemy-read-dialog --json
-scripts/repo-python scripts/replay-exact-units.py --unit gui-update-stage-elements --json
-scripts/repo-python scripts/progress.py --check
-scripts/repo-python scripts/build-match-unit.py --check
-git diff --check
-```
+| Exact owner / canonical unit | Complete original-bound scope |
+| --- | --- |
+| `PlayerUpdateShots @0x428280` / `player-update-shots` | **876/876**, 22 fields in the real 12-input Enemy/Player graph. Branch-local motion `LEA` timing and direct slow timer x87 addition are already solved. The 717-byte spawn and 91-byte bounds functions also pass. |
+| `Player::CalculateDamageToTarget @0x428630` / `player-calculate-damage` | **1,170/1,170**, 28 fields. Signed DWORD accumulator updates were made type-correct without changing codegen. |
+| `AnmRenderManagerView::SetupVertexBuffer @0x4462F0` / `anm-setup-vertex-buffer` | **472/472**, 22 fields. Eight UV IEEE-754 words now copy via `memcpy`, not incompatible integer lvalues. Strict `ExecuteScript` parent is **not** exact. |
+| `GameWindowView::ResetRenderState @0x439D20` / `main-reset-render-state` | **710/710**, 34 COFF relocations. Three floating-point render-state values now publish their bit patterns with `memcpy`. |
+| `TransitionFadeIn @0x43C230` / `transition-fade-in` | **133/133**, five fields; native unsigned frame-bound + target VC7.1 signed conversion. `FadeOut` 93 and `Dim` 175 are exact; `ShakeEnvelope` is not. |
+| `ResultMenuSynchronizeScore @0x421F60` / `result-menu-score-synchronize` | **28/28**, three fields. This does **not** make the 377-byte score preparation or 3,227-byte result state machine exact. |
+| `ReleaseModeOwners @0x4203F0` / `main-release-mode-owners` | **128/128**, 15 fields; `MainSupervisorView::ReleaseGame` 293/293 also passes its own unit. |
+| `EnemyEclHostBaseView::SetSubroutine @0x450700` / `enemy-ecl-host-set-subroutine` | **30/30**, one call field to the exact 136-byte `FindSubroutine`. The 2,412-byte Enemy update remains nonexact. |
+| `ScriptViewerBombOwnerView::EmitAuxiliary @0x405AC0` / `script-viewer-bomb-emit-auxiliary` | **124/124**, six fields. The 223-byte Bomb update caller is still nonexact. |
+| `BulletManagerView::DrawBucket @0x4066E0` / `bullet-manager-draw-bucket` | **134/134**, five fields. Bullet deceleration164/vector305/polar209/relative338/aimed431/state8-306 and pool-update249 are separately exact after native timer fixes. |
+| `EnemyReadDialog @0x415DB0` / `enemy-read-dialog` | **124/124**, nine fields in the real EH graph. |
 
-The three replays above are **examples**, not a mandatory session-entry suite.
-For a prose-only cleanup no compiler, CI or replay is needed. Wine/link.exe
-occasionally fails with `LNK1104`/page faults; a failed link is neither an
-exact result nor evidence of changed target bytes. Retry only the affected
-selected unit after inspecting the error.
+Additional accepted larger guards: `GuiView::UpdateStageElements` **3,836**
+bytes/72 fields, `ReplayManager::SaveReplay` **1,681** bytes, and
+`EndingTextVmView::Run` **1,568** bytes. Rebuild these only if a change
+actually touches their dependency graph.
 
-## Recently accepted exact functions — do not reopen as nonexact
+## Open functions — choose a concrete hypothesis before compiling
 
-| Owner | Canonical unit | Proven scope |
-| --- | --- | --- |
-| `PlayerUpdateShots @0x00428280` | `player-update-shots` | **876/876** original bytes and **22/22** target-bound fields in the 12-input Enemy/Player `/GL` graph. Branch-local motion pointer delays `LEA ESI,[EDI-0xC]` from +0x111 to target +0x142; direct slow timer update restores target x87 `FLD subframe`/`FADD scale`. Two independent cold links pass, with `Player::SpawnShot` **717/717** and shot-bounds **91/91** exact guards. |
-| `ResultMenuSynchronizeScore @0x00421F60` | `result-menu-score-synchronize` | **28/28**, three original-bound score-state DIR32s (+4, +0, +0). Native GUI stored-score reread restores EAX receiver/ECX score and MOV EAX,ECX. Two independent cold builds pass; related result-menu guards total **354/354**. The large 3,227-byte parent remains nonexact. |
-| `ReleaseModeOwners @0x004203F0` | `main-release-mode-owners` | **128/128**, all 15 original-bound globals/cleanup/destructor/delete fields in current 30-input WinMain lifecycle graph. Five explicit natural nullable owner checks retain ESI and exact teardown order; existing real `MainSupervisorView::ReleaseGame` caller also passes **293/293** and 25 fields, **421/421** scoped. |
-| `EnemyEclHostBaseView::SetSubroutine @0x00450700` | `enemy-ecl-host-set-subroutine` | **30/30**, one original-bound REL32 to the genuine exact 136-byte `EclVmScriptDatabase::FindSubroutine` in the two-TU Enemy/EclVm graph. Scoped volatile database-field read restores native EAX database / ECX name and two independent context reloads; two independent cold builds pass. Target 2,412-byte EnemyRuntimeUpdate remains nonexact. |
-| `ScriptViewerBombOwnerView::EmitAuxiliary @0x00405AC0` | `script-viewer-bomb-emit-auxiliary` | **124/124**, six target-bound fields in the real six-source Bomb-update callback /GL /GS /EHs graph; target ESI receiver, separate bullet-cancel branches and volatile reread of spell 109. Existing laser cancel guard **76/76** also cold-passes. Two independent colds pass; the 223-byte Bomb Update parent remains nonexact. |
-| `BulletManagerView::DrawBucket @0x004066E0` | `bullet-manager-draw-bucket` | **134/134**, five target-bound fields; two independent VC7.1 `/GL` cold links of real `BulletDraw.cpp` + `AnmManager.cpp`; true EAX/ECX Draw ABI. Source uses two `_ReadWriteBarrier`s and a volatile flags DWORD read, with no ASM/padding. |
-| `EnemyReadDialog @0x00415DB0` | `enemy-read-dialog` | **124/124**, nine ctor/global/EH fields; two independent cold links of the real six-TU `/GL /GS /EHsc` graph and complete static PDB ownership. A scoped volatile read restores the global index publication order. |
+All counts below are **selected graph snapshots**, not universal claims across
+all LTCG contexts. Check current source and the original byte offsets first.
 
-These are **seven accepted authored owners** (not just positional candidate
-matches). Their accepted units and all ledger rows are already committed.
-Useful existing exact guards: `anm-render-draw` **216/216**, `bullet-manager-draw-callback`
-**44/44**, `gui-update-stage-elements` **3836/3836** (72 fields),
-`script-viewer-popup-constructor` **134/134**, and `result-menu-close`
-**89/89**. Other accepted large representatives include
-`ReplayManager::SaveReplay` **1681/1681** and EndingTextVmView::Run **1568/1568**.
-The existing canonical `Player::CalculateDamageToTarget` **1,170-byte**
-owner remains exact after replacing two type-punned unsigned-pointer sums
-(hit accumulator and global score) with native unsigned-DWORD calculations.
-Its 28 fields and all bytes cold-pass, alongside the **91-byte** shot-bounds
-helper: selected **1,261/1,261** bytes, **32** fields and two artifacts.
-This preserves source fidelity without increasing the exact numerator.
+| Priority and owner | Current frontier / next actionable discrepancy |
+| --- | --- |
+| **ANM Boss** `ExecuteScript @0x43EE30`, `src/AnmManager.cpp` | Target/candidate **9,964**; **9,962 matching bytes and 350 bound fields**. Only opcode 91 `CreateVmVariant2`: target EDX vs candidate ECX at `+0x113/+0x115`. Record layouts, script/layer temporaries, neighboring opcodes and aggregate forms did not fix it. **Do not** replace `I_ADD/I_SUB/I_MUL` destination aliases with typed compound forms without checking: that attempt shrank the Boss to **9,948** bytes. The separate `I_SET_ADD/SUB/MUL` paths already have typed publication. |
+| **ECL Boss** `EclVmContext::Run @0x44E1A0`, `src/EclVm.cpp` | Full **7,020**, **6,997 matching ordinary bytes**, 189 fields; **23** remaining differences at early stack/register homes, x87 `LENGTH_SQUARED` / `POINT_ANGLE`, `FORMAT`. Natural stack-`Pop` arithmetic forms preserved the exact 122-byte leaf but **regressed the whole runner**; do not install on leaf evidence alone. `AddScriptData @0x450220` is separately **589 bytes, 79 differences**, two candidate fields. |
+| **Result-menu Boss** `ResultMenuUpdateResult @0x4236F0`, `src/FrontEnd.cpp` | Target **3,227**, selected **3,228**; **784/907 normalized target instructions** and 173 candidate fields in four-TU `/GL /GS /EHs`. State-7 branch ownership, state-8 VM-ID and states 10–13 remain unresolved. `ResultMenuPrepareScore @0x423570` is **377/377 extent** but **31 ordinary differences** around `+0xA4..+0xC5` cursor high-bound; score-sync28 is exact. Avoid old 372-byte candidates. |
+| **Enemy large owners** `EnemyRuntimeUpdate @0x40DC80`, `src/Enemy.cpp`; dispatcher `src/EnemyEclDispatcher.cpp` | Runtime is **2,412 bytes, 69 fields**, 1,575/2,136 comparable matched in a selected ten-TU graph. Life/flash unsigned-DWORD `memcpy` writes did not change codegen. ECL dispatcher has complete **14,416-byte** extent and **800** source field identities, still nonexact; unresolved register/ABI schedules, not merely type-alias cleanup. |
+| **GUI and Player** `GuiMessageVmView::Run @0x415E90`, `src/Gui.cpp`; Player update `src/Player.cpp` | GUI target **4,480**, candidate **4,492**; preserve standalone 9-byte instruction-next leaf. Player callback target **3,112** vs candidate **3,100**; movement target **1,656** vs candidate **1,616**. Recent native 32-bit option/movement writes are codegen-neutral. The shot loop is already exact. |
+| **Near-exact Bullet** `UpdateAbsoluteDirectionChange @0x4078E0`, `src/BulletManager.cpp` | Full **335** with **two ordinary differences** at `+0xD7/+0xDD`: target uses EDX to load/push angle, candidate EAX. Eight fields remain bound. Do not confuse the **301/303 unmasked** comparison with a 301/335 failure. Relative/aimed are already exact. |
+| **Near-exact Sound** `PreloadBgm @0x43D7D0`, `src/Sound.cpp` | Full **369**, **four ordinary differences** `+0x121/+0x127/+0x12A/+0x12B` in `ReadFile` size/output register assignment; ten fields. Prior pointer/reference/volatile trials did not fix the register coloring. |
+| **Other medium owners** | `ScriptViewerBombOwnerView::Update @0x405750`: full **223**, nine nonfield register bytes, 12 fields; EBP/EBX owner/VM allocation. `MainRegisterChain @0x420470`: full **204**, ten EBX/EBP register bytes, 21 fields. `CMemoryPbgFile::Seek @0x4364F0`: full **107**, seven register bytes, no fields. No known safe exact variant yet. |
+| **Additional genuine backlog** | `InitializeGameStatisticsRecord @0x42ACB0` full **274**, 25 ordinary differences/eight fields; `TransitionShakeEnvelope @0x43C710` target **349**, candidate **350**, 207/285 comparable, 16 fields; `TextRenderBufferView::InvertAlpha @0x437160` full **157**, register frontier; `PollInputFrame @0x44A5F0` target/candidate **850**, repeat/cursor register and callee ABI scheduling. Check each complete source and graph before adopting a historic score. |
 
-Do not infer a nonexact parent is solved from an exact callback/leaf.
+`EntityStartScript_00404F30` is **not** an accepted exact reconstruction:
+its 202-byte reference source still uses `__declspec(naked)`/hand assembly.
+A 194/194 comparable-COFF match is insufficient under the natural-source
+rule. Recover the private ABI with ordinary C/C++ before considering credit.
 
-The FrontEnd cursor member API now returns the published index from the
-already exact 33-byte `FrontEndCursorSetCurrent` physical helper. After that
-header change, 10 selected exact cursor/result-menu owners cold-pass
-**737/737** bytes and 28 fields (seven artifacts); full 377-byte score
-preparation and 3,228-byte result-menu parent remain nonexact.
+**Comparison caveat:** The legacy `result-menu-update` unit's one-byte
+`data_spans` conflicts with its current decoder contract; do not silently
+relax the physical-owner check. A separate 15-input
+`result-menu-open-game-over` field drift predated the later FrontEnd DWORD
+changes and does not invalidate the stricter canonical graph.
 
-The ECL `AddScriptData` insertion-shift decrement now uses modulo-DWORD
-arithmetic and `memcpy` publication instead of an incompatible unsigned-int
-pointer. Its two-TU 589-byte candidate and the 7,020-byte Run parent are
-**ordinary-byte unchanged**; both remain NONEXACT. Four selected ECL exact
-cold units pass **410/410** bytes and three target-bound fields.
+## Efficient continuation and private inputs
 
-## High-value nonexact work (source/context-sensitive)
+Start with one large and one medium/leaf owner whose **remaining offset**
+has a plausible source/ABI explanation. Use few natural C/C++ hypotheses,
+real graph/PDB provenance and exact-target checks before editing the ledger.
+Keep only codegen-equivalent source changes that repair actual semantics;
+do not promote unchanged NONEXACT candidates or repeatedly re-probe known
+neutral register-control variants.
 
-The figures below describe **specific selected compiler graphs**, not a
-universal size for every LTCG graph. Rebuild the current source before using
-a historical numerical frontier as an acceptance decision.
-
-| Original function / source | Target and selected candidate | Specific next hypothesis or blocker |
-| --- | --- | --- |
-| ANM `ExecuteScript @0x43EE30`, `src/AnmManager.cpp` | Target **9,964**, 9,962 matching bytes, **350** fields | Count-minus-one helper now uses target-compiler-defined signed 32-bit conversion after unsigned DWORD decrement, avoiding the unrelated-type pointer lvalue; parent unchanged and four selected exact leafs cold-pass **372/372** bytes/31 fields. Three integer `I_SET_ADD/SUB/MUL` opcodes now publish native DWORD results through the actual typed `int*` resolver instead of incompatible unsigned-pointer lvalues, with byte-identical four-input codegen and scoped **372/372** exact guards. Opcode 91 child VM layer: target EDX vs candidate ECX at +0x113/+0x115. Aggregate, source-order, reference, union, volatile, explicit script resolution and signed/field-order variants do not close the gap. Native unsigned JUMP_DEC publication now uses the actual `int *` target and preserves the same complete 9,962/9,964, 350-field comparison. Four selected affected exact leaves cold-pass 372/372 bytes (31 fields); see pinned ANM context. ANM `SetupVertexBuffer` now copies eight UV DWORDs via `memcpy` rather than incompatible pointers: 472-byte owner/all 22 fields exact, strict five-input ExecuteScript remains 9,962/9,964 with all 350 fields. Selected setup/alpha cold replay 602/602 bytes/23 fields. |
-| ECL `EclVmScriptDatabase::AddScriptData @0x00450220`, `src/EclVm.cpp` | Complete target/candidate **589 bytes**, two fields, **79 ordinary mismatches**; NONEXACT | Seven script-count/merge/file-index DWORD operations now publish through signed fields via unsigned arithmetic and four-byte `memcpy` rather than incompatible unsigned pointers. Complete ECL Run7020 and Find136 images are codegen-identical in the two-source graph; four local original-bound exact guards cold-pass **520/520** bytes and all seven fields. Remaining issue is register/merge schedule. |
-| ECL `EclVmContext::Run @0x44E1A0`, `src/EclVm.cpp` | Target **7,020**, 6,997 matched, **189** fields | ReadInt second signed stack-top decrement now uses native unsigned DWORD subtraction and `memcpy` publication, preserving the 144-byte exact helper and complete 7,020-byte ECL parent. Selected exact cold 595/595 bytes, 10 fields. POST_DECREMENT_INT now publishes low-DWORD arithmetic through its actual int* rather than an unsigned-pointer alias; full owner remains 6,997/7,020/189. Four related exact units locally cold-pass **536/536** bytes, seven fields. ECL Stack::Push now recovers the low signed stack word with target VC7.1 conversion rather than a mismatched pointer lvalue; four selected exact cold guards pass **522/522** bytes/five fields in two artifacts; runner remains 7,020/189. Remaining 23 bytes: early stack/ESI register homes, x87 LENGTH_SQUARED/POINT_ANGLE and FORMAT local slots. Run the *complete* owner diagnostic; a host adapter is not a substitute. |
-| GUI `GuiMessageVmView::Run @0x415E90`, `src/Gui.cpp` / `Gui.hpp` | Target **4,480**, selected candidate **4,492** | Script integer offsets, activeSide addresses, profile counters and instruction cursor now use native DWORD semantics; 22 GUI-owned functions/566 fields were preserved. The 9-byte `GuiMessageInstructionNext` owner must remain separately emitted. |
-| Enemy runtime `EnemyRuntimeUpdate @0x0040DC80`, `src/Enemy.cpp` | Target/candidate **2,412** bytes; **1,575/2,136** comparable bytes and **69** fields, **NONEXACT** | Native unsigned modulo-DWORD life subtraction and flash countdown now publish through `memcpy` instead of incompatible aliases. Real ten-input linked candidate has identical whole-function SHA to pre-edit image; four selected original-bound exact neighbors cold-pass **669/669 bytes**, **21** fields. Motion, callback ABI and register scheduling remain open. |
-| Enemy ECL dispatcher, `src/EnemyEclDispatcher.cpp` | Target/candidate extent **14,416** in selected 11-support graph, **800** source field identities | Still nonexact vs original. Native index, resource, callback, dialog and 8-bit spell-key fixes are already installed and byte-neutral; do not misread unchanged candidate code as target exactness. |
-| Player update, `src/Player.cpp` | `PlayerUpdateCallbackBody`: target **3,112** / candidate **3,100**; movement target **1,656** / candidate **1,616** | Natural 32-bit history, movement, transition and damage operations are installed; further work needs concrete ABI/stack/codegen differences, not more unsigned spelling sweeps. |
-| Player damage `CalculateDamageToTarget @0x00428630`, `src/Player.cpp` | **Already exact**, complete **1,170 bytes** and all **28** fields in its 17-input `/GL` graph | Replaced two incompatible `unsigned int*` accumulator aliases with natural native unsigned 32-bit additions and signed-field stores. Focused original-bound cold replay preserves existing 1,170-byte damage owner and 67-byte angle leaf, **1,237/1,237** and all **31** fields, two artifacts. No new exact credit. |
-| `InitializeGameStatisticsRecord @0x0042ACB0` (`src/GameStatisticsRecordDefaults.cpp`) | Target/candidate full **274-byte** six-TU score graph with **25 ordinary differences**, eight candidate fields; remains **NONEXACT** | Default name uses two separate four-byte `memcpy`s and a late ninth byte. Native score and extra DWORD stores now also use byte-safe four-byte `memcpy`s (compiler emits identical full owner; no pointer alias assumption). Related exact Load423, Finalize564 and InitializeTail142 cold replay **1,129/1,129**, all **36** fields, one artifact. No full cold replay. |
-| GameManager update, `src/GameManager.cpp` | Target/candidate extent **1,544** in selected 23-input GameStageSlots graph; **114** candidate fields, still **NONEXACT** | Restored both native low-DWORD frame-counter increments via unsigned addition and `memcpy` bit-pattern publication, avoiding type aliasing; complete candidate has **0 ordinary-byte changes** relative to previous same-image graph. Exact callback **7/7** and faith decay **65/65** selected cold replay **72/72**, two target-bound fields; remaining register/layout frontier. |
-| `ResultMenuPrepareScore @0x00423570` (`src/FrontEnd.cpp`) | Target **377** / candidate **377** bytes; **99/106** normalized original instructions aligned (previous 372 bytes / 87/106). Native success-first/failure-tail and eight-character do/while trim installed; all 18 candidate fields present. **NONEXACT**: remaining 31 ordinary bytes differ only at `+0xA4..+0xC5` in cursor/keyboard high-bound register/CFG. Eight scoped original-bound exact guards pass **690/690**, without full cold replay. |
-| Result-menu state machine `ResultMenuUpdateResult @0x4236F0`, `src/FrontEnd.cpp` | Original **3,227** bytes. Current **3,228**-byte four-TU `/GL /GS /EHs` candidate with genuine VM-ID/sound callees: **784/907** normalized ordered instructions, **173** detected candidate fields. Previous checkpoints: 3,208/763 → 3,216/775 → 3,224/781. | Native **0x4C** frame restored with function-scope selected VM-ID; states 10/11 use native 16-bit `AX` input-result tests, and state-12 up/down/left likewise. Widening the state-12 edit to all four inputs shifts CFG/registers and regresses. Remaining state-7 preparation placement, state-8 VM-ID copy, state-10/11 naming and replay loop code, and state-12/13 control-flow differences are still **NONEXACT**. Score sync **28/28** exact, PrepareScore full **377**-byte candidate but **31** nonfield differences. Three successive checkpoints each passed eight selected original-bound cold exact units **529/529** with **28** fields; no full cold replay. |
-| Player movement/options and option trail, `src/Player.cpp` | Movement target **1,656**, candidate **1,616** bytes, nonexact; option trail body 359-byte nonexact | Five signed Player/option DWORD increments now use native VC7.1 unsigned wrap with typed publication rather than mismatched aliases. Entire candidate graph is byte-identical to baseline; five selected original-bound exact guards cold-pass **2,224/2,224 bytes**, **57 fields** across four artifacts, including 876-byte exact `PlayerUpdateShots`. Movement and trail owners are still open. |
-| Bullet absolute direction, `src/BulletManager.cpp` | **333/335** ordinary-plus-linkage bytes, eight candidate fields, **NONEXACT** | Both the `int2` cycle increment and the fast timer tick now use native unsigned 32-bit wrap without aliasing (timer via `memcpy` bit-pattern publication), retaining the unchanged full 335-byte graph. Remaining +0xD7/+0xDD EDX-vs-EAX load/push difference; additional size/output lifetime and counter variants neutral or regressed. The exact aimed-direction fast timer now also uses native unsigned-DWORD increment and `memcpy` publication, preserving the 431-byte exact owner. Four other Bullet transforms (deceleration164/vector305/polar209/relative338) now publish unsigned DWORD timer wraps via `memcpy`, and selected exact cold replay passes **1,016/1,016** with 33 fields across three artifacts; aimed431 remains exact in the same graph. State8 (306 bytes) and the pool UpdateBullets (249) plus callback (40) now also use native `memcpy` DWORD timer increments, selected cold **595/595** and 20 fields; all seven transform timer fast paths are corrected without changing original codegen. |
-| Transition `TransitionShakeEnvelope @0x0043C710`, `src/TransitionEffect.cpp` | Original **349**, current **350-byte** candidate; **207/285** comparable bytes, 16 fields, NONEXACT | The neighboring exact FadeIn uses target-compiler signed DWORD interpretation of duration+2 instead of an incompatible pointer read. Real 14-input link leaves ShakeEnvelope unchanged; selected FadeIn133/FadeOut93/Dim175 cold replay **401/401** bytes, 18 fields. Envelope's branch/x87 scheduling is still open. |
-| Text `InvertAlpha @0x00437160`, `src/TextRenderer.cpp` | Target/candidate full **157**, ordinary bytes **112/157**, **NONEXACT** | Replaced signed-index unsigned-pointer alias increments with unsigned DWORD addition plus exact signed-bit publication via a local helper. Fresh normal COFF is **byte-identical** to prior candidate; three related exact units pass selected cold **1,125/1,125**, three fields, two artifacts. No full replay. |
-| Sound `PreloadBgm`, `src/Sound.cpp` | **365/369**, ten fields | Four register bytes near `ReadFile`; extra formatting pointers/reg-lifetime trials failed. |
-| `CMemoryPbgFile::Seek @0x4364F0`, `src/ResFile.cpp` | **100/107**, zero fields | FILE_CURRENT should share the FILE_END EAX tail; native signed remaining word now uses pinned VC7.1 `static_cast<LONG>` rather than an incompatible `LONG*` alias. Complete ordinary COFF still **100/107** with identical seven register differences. Five selected neighboring exact units cold-pass **214/214** bytes, one artifact. |
-| Transition shake `@0x43C710`, `src/TransitionEffect.cpp` | Target **349** / candidate **350** | Separating the null/flags checks improved positional ordinary bytes **181 → 207/285**, but remaining phase ordering is nonexact; five neighboring transition units replayed exact. |
-| Popup factory `GameCreateOwner42B660`, `src/ScriptViewerPopupCreate.cpp` | Target/candidate extent **71**, still nonexact | Genuine ctor/init/dtor and five fields present; ESI-vs-EBX retention plus allocation/cleanup path. New/placement/volatile variants regressed. Its 134-byte ctor is separately exact. |
-| Bomb `ScriptViewerBombOwnerView::Update @0x405750`, `src/ScriptViewerBombCreate.cpp` | Target **223** / current six-source native candidate **223**; **63/72** target normalized instructions aligned, only **nine non-field byte differences** | Installed native `vmId2C` reads and volatile NULL zero-publication restore ESI-zero entry, target stack scheduling and null-path stores (prior 220 bytes, 51/72). Remaining differences are EBP manager/EBX VM register coloring versus EBX/EBP in the candidate. Five affected exact original-bound guards cold-pass **379/379**. |
-| Popup Draw and callback, `src/ScriptViewerPopupCreate.cpp` | Draw target **540** / selected candidate **537**; callback target/candidate **10** | The target callback saves EDI and calls an EDI-receiver Draw, while the four-TU candidate saves EBX and uses an EBX-receiver Draw. Changing record/player declaration order or index signedness is codegen-neutral; hoisting `drawVm` regresses to 526/7. Keep real caller/receiver work in scope alongside leaves. |
-
-**False positive to avoid:** `EntityStartScript_00404F30` showed 194/194
-comparable bytes in normal COFF, but its maintained function uses
-`__declspec(naked)`/hand-written assembly. **Do not add exact credit** on
-that evidence. Recover the ESI VM / EAX script / resource-stack private ABI
-naturally in its full source graph.
-
-**Known comparison caveats:** The legacy `result-menu-update` unit's declared
-one-byte `data_spans` conflicts with the current Capstone normalization; do
-not silently delete/relax its physical-owner contract. In one 15-TU graph,
-`result-menu-open-game-over` has shifted fields after +0xD2; a controlled
-same-support-objects FrontEnd **before/after** relink proved identical 411-byte
-candidate code and all 28 candidate field identities, so that mismatch
-predates the later FrontEnd DWORD fixes. It is not an accepted exact replay
-in that graph.
-
-## Efficient continuation and retained private inputs
-
-Select one large and one small owner with an offset-level hypothesis. Read
-its source, target bytes, unit recipe, and the relevant knowledge section;
-compile a *small* number of natural C/C++ forms, compare the **complete**
-PDB-owned byte extent and **all** original-bound fields, and commit a useful
-source checkpoint. Avoid repeating source-form grids already rejected.
-Portable source edits and canonical contracts are tracked; compiler fixtures,
-original binary and private diagnostics are not.
-
-Retain `build/match-linked/`, the Ghidra project, target, `_reference/`,
-`.tools/` including this game's Wine prefix, and the **five narrowly pinned
-unresolved contexts** named in [RE_ARTIFACTS.md](RE_ARTIFACTS.md). Historical
-`build/gpt-web` variants and duplicate scratch C++ outputs were intentionally
-pruned for storage; do not assume a date-stamped path is still on disk.
-Four focused private trial drivers remain in `.analysis/gpt-web/`:
-
-- `20261110-anm-child91-aggregate-initializers.py`
-- `20261110-ecl-format-cursor-allocation-schedule.py`
-- `20261110-bullet-absolute-speed-liveness.py`
-- `20261110-seek-tail-control-flow-trials.py`
-
-See the unit manifest for source/caller graphs and reproduce any missing
-historical probe from current source. Do not delete or alter the immutable
-target, canonical ledgers, analyzer project, Wine prefix or unrelated D3D work.
+Preserve the real executable, `.tools/` (especially the game Wine prefix),
+`ghidra-project/`, `_reference/`, the canonical source/ledger/tool scripts,
+**all of `build/match-linked/`** and unrelated `.analysis/d3d-*` work. The
+five narrow private diagnostic contexts and four optional trial drivers are
+listed in [RE_ARTIFACTS.md](RE_ARTIFACTS.md). Historical `build/gpt-web`
+variants and `.analysis/gpt-web` source snapshots are disposable: a dated
+knowledge-journal path is not a promise the file still exists. Recreate only
+an affected source/link graph when needed; **no full cold replay**.
