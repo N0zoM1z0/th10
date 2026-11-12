@@ -444,7 +444,9 @@ int SoundPlayerView::LoadSoundSample(int index, const char *path)
     unsigned char *samples = NULL;
     if (formatData != NULL)
     {
-        format = *reinterpret_cast<WAVEFORMATEX *>(formatData);
+        // The WAV format record is a serialized byte region and may have
+        // no natural C++ alignment. Preserve its complete native wire copy.
+        memcpy(&format, formatData, sizeof format);
         samples = FindWaveChunk(data, &chunkSize, scanRemaining, "data");
     }
     if (samples == NULL)
