@@ -668,11 +668,20 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
         for (ReplayListNode *link = stageFrameLists[stage].next;
              link != NULL; link = link->next)
         {
-            allocationSize += ReplayFramePayloadSize((ReplayFrameData *)link->value);
-            stageHeaders[stage]->payloadSize +=
-                ReplayFramePayloadSize((ReplayFrameData *)link->value);
-            stageHeaders[stage]->recordCount +=
-                ReplayFrameRecordCount((ReplayFrameData *)link->value);
+            // Original Win32 accumulators are low-32-bit DWORD sums, even
+            // when malformed chain counts cross the signed range.
+            allocationSize = static_cast<int>(
+                static_cast<unsigned int>(allocationSize) +
+                static_cast<unsigned int>(ReplayFramePayloadSize(
+                    (ReplayFrameData *)link->value)));
+            stageHeaders[stage]->payloadSize = static_cast<int>(
+                static_cast<unsigned int>(stageHeaders[stage]->payloadSize) +
+                static_cast<unsigned int>(ReplayFramePayloadSize(
+                    (ReplayFrameData *)link->value)));
+            stageHeaders[stage]->recordCount = static_cast<int>(
+                static_cast<unsigned int>(stageHeaders[stage]->recordCount) +
+                static_cast<unsigned int>(ReplayFrameRecordCount(
+                    (ReplayFrameData *)link->value)));
         }
 
         stageCount++;
