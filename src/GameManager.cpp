@@ -204,6 +204,14 @@ static __forceinline void ResetGameStage()
         g_GameOwner477814->drawChain->flags |= 2;
 }
 
+// A frame count is a native Win32 signed word. Preserve the i386 wrap without
+// accessing an int through an unrelated unsigned-int lvalue.
+static __forceinline void GameAdvanceFrameWord(int &counter)
+{
+    const unsigned int bits = static_cast<unsigned int>(counter) + 1u;
+    memcpy(&counter, &bits, sizeof counter);
+}
+
 // The registered ECX adapter pushes its owner and the target core returns RET4.
 // This noinline source split models that verified machine boundary; original
 // source-written versus LTCG-outline provenance remains unknown.
@@ -316,8 +324,8 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
         g_GuiView->message == NULL &&
         manager->stageTimer.current >= 90)
         GameUpdateFaithDecay(g_GameStageState);
-    ++*reinterpret_cast<unsigned int *>(&g_GameFrameCounter0);
-    ++*reinterpret_cast<unsigned int *>(&g_GameFrameCounter1);
+    GameAdvanceFrameWord(g_GameFrameCounter0);
+    GameAdvanceFrameWord(g_GameFrameCounter1);
     manager->stageTimer.Tick();
     return 1;
 }

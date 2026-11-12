@@ -69,6 +69,28 @@ and **31 linkage fields** across three artifacts (`anm-get-int-var`, its
 pointer resolver, `anm-loaded-create-vm-variant2`, and layer-node insertion).
 No full cold replay or new exact credit.
 
+## 2026-11-12 GameManager 32-bit frame counter publication
+
+`GameManagerUpdateBody @0x00418190` increments two signed Win32 frame
+counters at addresses `0x00474C88` and `0x00474C8C` once at its successful
+update tail. The original emits native low-32-bit increment/store semantics.
+The former maintained source accessed each `int` object through an
+`unsigned int*` lvalue. `GameAdvanceFrameWord` now computes its increment in
+unsigned arithmetic and copies the exact wrapped DWORD pattern back to the
+signed object. This preserves `INT_MAX` rollover and removes the unrelated-
+type aliasing at both distinct globals.
+
+In the real **23-input** `GameStageSlots` `/GL` linked graph, fresh CL7.1
+compilation of the modified GameManager owner emits a complete **1,544-byte**
+`GameManagerUpdateBody` with **114** detected candidate linkage fields.
+Comparison against the previous image from the same fixed graph finds
+**zero ordinary-byte changes** (32 address/link differences arise solely
+from shifted image addresses); the original owner remains **NONEXACT**.
+Scoped cold replay of `game-manager-update-callback` **7/7** and
+`game-update-faith-decay` **65/65** passes **72/72 bytes** and both
+original-bound fields across two artifacts. No full cold replay or exact
+credit is claimed for the owner.
+
 ## 2026-11-12 Text alpha inversion native index wrap without aliasing
 
 `TextRenderBufferView::InvertAlpha @0x00437160` has three original pixel
