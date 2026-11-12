@@ -1415,22 +1415,22 @@ void AnmRenderManagerView::SetupVertexBuffer()
         *reinterpret_cast<AnmFloat3View *>(&untexturedVertices[2]);
     *reinterpret_cast<AnmFloat3View *>(&g_AnmBackgroundQuadVertices[3]) =
         *reinterpret_cast<AnmFloat3View *>(&untexturedVertices[3]);
-    *reinterpret_cast<unsigned int *>(&g_AnmBackgroundQuadVertices[0].u) =
-        *reinterpret_cast<unsigned int *>(&untexturedVertices[0].u);
-    *reinterpret_cast<unsigned int *>(&g_AnmBackgroundQuadVertices[0].v) =
-        *reinterpret_cast<unsigned int *>(&untexturedVertices[0].v);
-    *reinterpret_cast<unsigned int *>(&g_AnmBackgroundQuadVertices[1].u) =
-        *reinterpret_cast<unsigned int *>(&untexturedVertices[1].u);
-    *reinterpret_cast<unsigned int *>(&g_AnmBackgroundQuadVertices[1].v) =
-        *reinterpret_cast<unsigned int *>(&untexturedVertices[1].v);
-    *reinterpret_cast<unsigned int *>(&g_AnmBackgroundQuadVertices[2].u) =
-        *reinterpret_cast<unsigned int *>(&untexturedVertices[2].u);
-    *reinterpret_cast<unsigned int *>(&g_AnmBackgroundQuadVertices[2].v) =
-        *reinterpret_cast<unsigned int *>(&untexturedVertices[2].v);
-    *reinterpret_cast<unsigned int *>(&g_AnmBackgroundQuadVertices[3].u) =
-        *reinterpret_cast<unsigned int *>(&untexturedVertices[3].u);
-    *reinterpret_cast<unsigned int *>(&g_AnmBackgroundQuadVertices[3].v) =
-        *reinterpret_cast<unsigned int *>(&untexturedVertices[3].v);
+    memcpy(&g_AnmBackgroundQuadVertices[0].u,
+        &untexturedVertices[0].u, sizeof(float));
+    memcpy(&g_AnmBackgroundQuadVertices[0].v,
+        &untexturedVertices[0].v, sizeof(float));
+    memcpy(&g_AnmBackgroundQuadVertices[1].u,
+        &untexturedVertices[1].u, sizeof(float));
+    memcpy(&g_AnmBackgroundQuadVertices[1].v,
+        &untexturedVertices[1].v, sizeof(float));
+    memcpy(&g_AnmBackgroundQuadVertices[2].u,
+        &untexturedVertices[2].u, sizeof(float));
+    memcpy(&g_AnmBackgroundQuadVertices[2].v,
+        &untexturedVertices[2].v, sizeof(float));
+    memcpy(&g_AnmBackgroundQuadVertices[3].u,
+        &untexturedVertices[3].u, sizeof(float));
+    memcpy(&g_AnmBackgroundQuadVertices[3].v,
+        &untexturedVertices[3].v, sizeof(float));
 
     D3d9DeviceView *device = g_Direct3DDevice;
     device->vtable->CreateVertexBuffer(

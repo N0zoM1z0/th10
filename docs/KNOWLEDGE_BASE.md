@@ -1,5 +1,26 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-12 ANM exact quad UV words without incompatible pointer aliases
+
+`AnmRenderManagerView::SetupVertexBuffer @0x004462F0` builds four 20-byte
+untextured vertices and publishes their independent background-quad copies.
+The eight UV float fields were previously read and written through unrelated
+`unsigned int*` lvalues. The retained source uses eight four-byte `memcpy`
+operations. This preserves the exact IEEE-754 representation of each U/V
+coordinate without changing either the order or the physical addresses.
+
+Four isolated complete `/GL /GS` ANM graph builds (baseline, word-sized
+`memcpy`, UV-pair copies and floating assignments) preserved the complete
+**472-byte PDB owner**, all **22 original-bound fields**, and all non-field
+bytes. The retained word-sized form was also checked in the separate strict
+five-input `ExecuteScript` graph, where the 9,964-byte runner remains
+**9,962/9,964** with its **350 target-bound fields**: only opcode 91's
+`+0x113/+0x115` ECX/EDX coloring still differs. A selected original-bound
+cold replay passes `anm-setup-vertex-buffer` **472/472** (22 fields) and
+`anm-start-primary-alpha-interpolation` **130/130** (one field), totaling
+**602/602** with 23 fields in one artifact. Neither the Boss nor the existing
+exact ledger changes status.
+
 ## Reading this journal against the current ledger (2026-11-12)
 
 **Current canonical snapshot:** **1,521 exact owners** and **200,940 exact
