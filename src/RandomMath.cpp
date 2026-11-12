@@ -15,7 +15,10 @@ unsigned short RngView::GetRandomU16()
 // Target 0x0044B9E0-0x0044BA2D concatenates two successive 16-bit results.
 unsigned int RngView::GetRandomU32()
 {
-    return GetRandomU16() << 16 | GetRandomU16();
+    // C++ promotes a 16-bit draw to signed int before shifting; the retail
+    // i386 SHL constructs an unsigned native DWORD even when bit 31 is set.
+    return (static_cast<unsigned int>(GetRandomU16()) << 16) |
+        GetRandomU16();
 }
 
 // Target 0x0044BB20-0x0044BB8C maps the unsigned result to [0, 1].
