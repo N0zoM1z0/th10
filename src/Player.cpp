@@ -1804,8 +1804,10 @@ int __stdcall PlayerUpdateShots(Player *player)
         {
             // Retail INC wraps the 32-bit timer word at INT_MAX; compute
             // it unsigned before publishing the new signed frame count.
-            shot->timer.current = static_cast<int>(
-                static_cast<unsigned int>(shot->timer.current) + 1u);
+            const unsigned int nextFrameBits =
+                static_cast<unsigned int>(shot->timer.current) + 1u;
+            memcpy(&shot->timer.current, &nextFrameBits,
+                sizeof shot->timer.current);
             shot->timer.subframe += 1.0f;
         }
         else
