@@ -360,8 +360,11 @@ void BulletRuntimeView::UpdateAimedDirectionChange()
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                 QueueSoundSample(transformSound, 0);
         }
-        state.int2 = static_cast<int>(
-            static_cast<unsigned int>(state.int2) + 1u);
+        // Aimed-change cycles advance one signed native DWORD before
+        // testing the terminal count; publish its wrapped representation.
+        const unsigned int nextCycleBits =
+            static_cast<unsigned int>(state.int2) + 1u;
+        memcpy(&state.int2, &nextCycleBits, sizeof state.int2);
         if (state.int2 >= state.int1)
             activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_AIMED;
 
