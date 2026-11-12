@@ -357,7 +357,10 @@ unsigned char *__stdcall FindWaveChunk(unsigned char *data, unsigned int *chunkS
 {
     while (remaining > 0)
     {
-        *chunkSize = reinterpret_cast<const SoundRiffChunkPrefixView *>(data)->byteLength;
+        // RIFF chunks are byte streams, not aligned C++ objects. Copy their
+        // raw DWORD length into the caller's slot without a typed overlay.
+        memcpy(chunkSize, data + offsetof(SoundRiffChunkPrefixView, byteLength),
+               sizeof(*chunkSize));
         if (strncmp(reinterpret_cast<const char *>(data), tag, 4) == 0)
             // Original flat i386 32-bit address addition, not C++ array pointer
             // arithmetic: the length is supplied by unchecked RIFF data.
@@ -419,7 +422,11 @@ int SoundPlayerView::LoadSoundSample(int index, const char *path)
         return -1;
     }
     unsigned char *data = SoundByteWord(allocation, 4);
-    unsigned int remaining = reinterpret_cast<const SoundWaveRootAfterTagView *>(data)->containerBytes;
+    // RIFF root sizes also arrive at a byte offset in an unchecked file;
+    // extract the exact four-byte representation without an aligned lvalue.
+    unsigned int remaining;
+    memcpy(&remaining, data + offsetof(SoundWaveRootAfterTagView, containerBytes),
+           sizeof remaining);
     data = SoundByteWord(data, 4);
     if (strncmp(reinterpret_cast<const char *>(data), "WAVE", 4) != 0)
     {
