@@ -67,7 +67,11 @@ inline AnmVmView *ResolveEndingTextSlot(AnmVmIdView *id)
 // File header+4 supplies the first instruction offset.
 inline unsigned char *EndingScriptStart(unsigned char *file)
 {
-    return file + EndingRecordInt(file);
+    // The script header carries an unchecked signed offset. Retail forms
+    // the entry point through modulo-32-bit Win32 address arithmetic.
+    return reinterpret_cast<unsigned char *>(
+        reinterpret_cast<unsigned int>(file) +
+        static_cast<unsigned int>(EndingRecordInt(file)));
 }
 // Opcodes 8 and 15..17 carry destination, resource and script dwords.
 struct EndingAnimationCommand
