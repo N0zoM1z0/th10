@@ -69,6 +69,27 @@ and **31 linkage fields** across three artifacts (`anm-get-int-var`, its
 pointer resolver, `anm-loaded-create-vm-variant2`, and layer-node insertion).
 No full cold replay or new exact credit.
 
+## 2026-11-12 Statistics score-slot full DWORD stores through byte view
+
+`InitializeGameStatisticsRecord @0x0042ACB0` owns **274** target bytes in
+its six-TU score-file graph. The maintained source reaches the score-row
+fields through `activeByte`, an address into a packed/partially unknown
+record layout. Its two integer lvalue stores (score at `activeByte-4` and
+extra zero at `activeByte+12`) now use explicit four-byte `memcpy`, matching
+the native DWORD store semantics without requiring an aligned `int*`
+interpretation of that byte-addressed record. The two separate four-byte
+fixed-name copies and late ninth-byte publication are unchanged.
+
+Fresh native VC7.1 `/GL /GS` candidate tests of each store alone and both
+stores together yield the same complete **274-byte** owner, with **25**
+ordinary-byte differences and **8** candidate fields. All adjacent
+PDB-owned `game-statistics-load` **423/423** (5 fields),
+`game-statistics-finalize` **564/564** (24 fields), and
+`game-statistics-initialize-tail` **142/142** (7 fields) pass an explicit
+local cold replay: **1,129/1,129** bytes and **36** target-bound fields
+across one build artifact. The 274-byte initializer remains **NONEXACT**;
+no new canonical credit or full historical replay is claimed.
+
 ## 2026-11-12 ECL script insertion shift native predecrement
 
 `EclVmScriptDatabase::AddScriptData @0x00450220` uses a signed temporary

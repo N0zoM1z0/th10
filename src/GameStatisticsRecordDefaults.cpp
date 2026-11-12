@@ -46,7 +46,7 @@ void __stdcall InitializeGameStatisticsRecord(GameStatisticsRecord *record)
         int score = 1000000;
         do
         {
-            *reinterpret_cast<int *>(activeByte - 4) = score;
+            memcpy(activeByte - 4, &score, sizeof score);
             activeByte[0] = 1;
             // The original reads the fixed name as two DWORDs and a final
             // byte. Keep the ninth-byte store after the independent status
@@ -57,7 +57,8 @@ void __stdcall InitializeGameStatisticsRecord(GameStatisticsRecord *record)
             memcpy(nameDest, &g_GameStatisticsDefaultEntryName[0], 4);
             memcpy(nameDest + 4, &g_GameStatisticsDefaultEntryName[4], 4);
             const unsigned char ninth = g_GameStatisticsDefaultEntryName[8];
-            *reinterpret_cast<int *>(activeByte + 12) = 0;
+            const int zero = 0;
+            memcpy(activeByte + 12, &zero, sizeof zero);
             activeByte[1] = 0;
             score -= 100000;
             activeByte += 24;
