@@ -70,36 +70,6 @@ and **31 linkage fields** across three artifacts (`anm-get-int-var`, its
 pointer resolver, `anm-loaded-create-vm-variant2`, and layer-node insertion).
 No full cold replay or new exact credit.
 
-## 2026-11-12 PlayerUpdateShots: 876-byte complete native exact reconstruction
-
-`PlayerUpdateShots @0x00428280` was previously a complete 876-byte
-NONEXACT owner with 40 ordinary differing bytes and an early
-`LEA ESI,[EDI-0xC]` at `+0x111` instead of the original `+0x142`.
-Keeping a branch-local `branchMotion` for the vector/polar update, then
-introducing a separate `motion` alias at `EnemyAdvanceMotion`, naturally
-restores the original LEA location and the internal branch displacements.
-The full owner shrinks from 40 to only four ordinary differences.
-
-The last four are `+0x334..+0x337`: inlining `PlayerTimerView::Add` put the
-x87 operands in reverse order. Implementing the same slow-timer behavior
-inline as `subframe += *scale; current = static_cast<int>(subframe)` gives
-target `FLD subframe; FADD scale` without float rounding or control-flow
-changes. Three equivalent direct expressions compile into the same full
-**876-byte** extent with **zero ordinary mismatches** and all **22** target-
-bound fields. This preserves all 273 instructions, the in-extent unreachable
-alignment, original branch destinations, one-stack-argument `RET 4`, and
-real called APIs and constants (including motion service `0x44C2A0` and
-shot bounds `0x428D70`). No byte patches or register constraints were used.
-
-New canonical unit `player-update-shots` uses the real 12-source
-`PlayerSpawnShot` `/GL` graph. Two *independent cold rebuilds* both pass
-this full **876/876** unit and the original exact `Player::SpawnShot`
-**717/717** with all 39 target-bound fields. The first also cold-passes
-`player-shot-outside-playfield` **91/91**, totaling **1,684/1,684**
-across two artifacts; the second totals **1,593/1,593** in one artifact.
-This adds **876 new exact authored bytes**. Original C++ identifiers,
-production source partition and product runtime are not thereby proven.
-
 ## 2026-11-12 ECL ReadInt second stack-pop native DWORD publication
 
 `EclVmContext::ReadInt @0x0044FDB0` handles special indirect `-1`
