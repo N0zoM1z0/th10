@@ -47,8 +47,9 @@ void GameScoreStateView::AddFaith(int amount)
 void GameScoreStateView::DecayFaith(int amount)
 {
     // Reconstruct the original 32-bit word subtraction before the signed cap.
-    *reinterpret_cast<unsigned int *>(&faith) -=
-        static_cast<unsigned int>(amount / 10);
+    faith = static_cast<int>(
+        static_cast<unsigned int>(faith) -
+        static_cast<unsigned int>(amount / 10));
     if (faith < 5000)
         faith = 5000;
 }
