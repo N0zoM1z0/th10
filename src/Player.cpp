@@ -691,7 +691,7 @@ __declspec(noinline) void PlayerOptionTrailCallbackBody(
                  (static_cast<unsigned int>(option->optionIndex) << 3) + 1u);
              i <= static_cast<int>(
                  (static_cast<unsigned int>(option->optionIndex) << 3) + 7u);
-             ++*reinterpret_cast<unsigned int *>(&i))
+             i = static_cast<int>(static_cast<unsigned int>(i) + 1u))
         {
             // Native loop cursor points to the Y word. Derive both signed
             // coordinates from the same physical 8-byte history entry.
@@ -1315,10 +1315,12 @@ int PlayerUpdateMovementAndOptions(Player *player)
     player->previousVerticalSpeed = verticalSpeed;
     player->movementDeltaX = (int)((float)horizontalSpeed * g_PlayerTimerScale);
     player->movementDeltaY = (int)((float)verticalSpeed * g_PlayerTimerScale);
-    *reinterpret_cast<unsigned int *>(&player->positionX) +=
-        static_cast<unsigned int>(player->movementDeltaX);
-    *reinterpret_cast<unsigned int *>(&player->positionY) +=
-        static_cast<unsigned int>(player->movementDeltaY);
+    player->positionX = static_cast<int>(
+        static_cast<unsigned int>(player->positionX) +
+        static_cast<unsigned int>(player->movementDeltaX));
+    player->positionY = static_cast<int>(
+        static_cast<unsigned int>(player->positionY) +
+        static_cast<unsigned int>(player->movementDeltaY));
 
     if (player->positionX < -18400)
         player->positionX = -18400;
@@ -1397,10 +1399,12 @@ int PlayerUpdateMovementAndOptions(Player *player)
                     static_cast<unsigned int>(player->optionTransitionFrames)) / 100;
                 if (stepX != 0 || stepY != 0)
                 {
-                    *reinterpret_cast<unsigned int *>(&option.replayPair1.x) +=
-                        static_cast<unsigned int>(stepX);
-                    *reinterpret_cast<unsigned int *>(&option.replayPair1.y) +=
-                        static_cast<unsigned int>(stepY);
+                    option.replayPair1.x = static_cast<int>(
+                        static_cast<unsigned int>(option.replayPair1.x) +
+                        static_cast<unsigned int>(stepX));
+                    option.replayPair1.y = static_cast<int>(
+                        static_cast<unsigned int>(option.replayPair1.y) +
+                        static_cast<unsigned int>(stepY));
                 }
                 else
                 {

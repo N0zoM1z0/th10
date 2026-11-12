@@ -166,6 +166,32 @@ local cold replay: **1,129/1,129** bytes and **36** target-bound fields
 across one build artifact. The 274-byte initializer remains **NONEXACT**;
 no new canonical credit or full historical replay is claimed.
 
+## 2026-11-12 Player movement and option trail native DWORD loops
+
+The complete `PlayerUpdateMovementAndOptions @0x004250B0` owner updates the
+fixed-point player position and interpolated option offsets, while
+`PlayerOptionTrailCallbackBody @0x00427960` walks historical eight-frame
+samples using the low 32-bit option index. Five writes in the maintained
+source previously used an incompatible `unsigned int*` lvalue to increment
+signed `int` storage. The source now computes all five increments via
+unsigned modulo-2^32 arithmetic and assigns back through the actual signed
+`int` fields under the pinned VC7.1 Win32 compiler. This preserves the
+original two's-complement wrap without pointer aliasing; signed narrowing
+outside its range is compiler-defined rather than portable ISO behavior.
+
+Five genuine three-input `/GL` Player/ANM trial builds showed the installed
+`all-casts` source to be codegen-identical to the prior candidate for the
+**1,616-byte** nonexact movement owner (1,656-byte target), the complete
+**359-byte** option trail body (still nonexact), and the associated 3,100-byte
+update callback. The alternative four-byte `memcpy` writes changed the
+movement function to 1,620 bytes and were rejected. An independently
+selected original-bound cold replay validates five exact Player units:
+angle-to-point 67, option-trail callback 12, option-special body 99,
+calculate-damage 1,170, and shot update 876 = **2,224/2,224 bytes** and
+**57** verified fields across four artifacts. This preserves the already
+accepted 876-byte shot-loop exact owner; it does not promote the nonexact
+movement/trail functions or require any whole-game replay.
+
 ## 2026-11-12 Enemy runtime native life/flash DWORD publication
 
 The full `EnemyRuntimeUpdate @0x0040DC80` (2,412 bytes) contains two native
