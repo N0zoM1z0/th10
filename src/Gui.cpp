@@ -1301,7 +1301,12 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                     }
                     manager->primaryVmListTail = node;
                     AnmVmIdView *incrementReceiver = &manager->nextVmId;
-                    (*incrementReceiver)++;
+                    // Native VM ID allocation increments the low DWORD,
+                    // even when the signed ID reaches INT_MAX.
+                    const unsigned int nextVmIdBits =
+                        static_cast<unsigned int>(incrementReceiver->value) + 1u;
+                    memcpy(&incrementReceiver->value, &nextVmIdBits,
+                        sizeof incrementReceiver->value);
                     if (manager->nextVmId == AnmVmIdView())
                         manager->nextVmId++;
                     vm->id = manager->nextVmId.value;
@@ -1342,7 +1347,11 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                         }
                         manager->primaryVmListTail = node;
                         AnmVmIdView *incrementReceiver = &manager->nextVmId;
-                        (*incrementReceiver)++;
+                        // Keep the VM allocation ID as one wrapping DWORD.
+                        const unsigned int nextVmIdBits =
+                            static_cast<unsigned int>(incrementReceiver->value) + 1u;
+                        memcpy(&incrementReceiver->value, &nextVmIdBits,
+                            sizeof incrementReceiver->value);
                         if (manager->nextVmId == AnmVmIdView())
                             manager->nextVmId++;
                         vm->id = manager->nextVmId.value;
