@@ -1923,7 +1923,11 @@ int Player::CalculateDamageToTarget(
         }
     }
 
-    damage += g_PlayerUpdateGate28->GetDamageAtPosition(targetPosition);
+    // The field/effect contribution is accumulated with a native i386
+    // ADD: keep its low-DWORD wrap before the later signed score update.
+    damage = static_cast<int>(static_cast<unsigned int>(damage) +
+        static_cast<unsigned int>(
+            g_PlayerUpdateGate28->GetDamageAtPosition(targetPosition)));
 
     PlayerEffectRowView *row = &effectRows[0];
     for (int remainingRows = 32; remainingRows != 0; --remainingRows, ++row)
