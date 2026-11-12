@@ -28,9 +28,9 @@ struct FrontEndCursorView
     int wraps;
     int disabledEntryCount;
 
-    void SetCurrent(int value)
+    int SetCurrent(int value)
     {
-        FrontEndCursorSetCurrent(value, this);
+        return FrontEndCursorSetCurrent(value, this);
     }
 
     void DisableEntry(int value)

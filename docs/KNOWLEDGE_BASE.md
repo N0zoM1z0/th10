@@ -24,6 +24,24 @@ scratch files were intentionally deleted to save space; the five preserved
 compiler contexts and four trial drivers are listed in `docs/RE_ARTIFACTS.md`.
 
 
+## 2026-11-12 Cursor-set return value preserved at member boundary
+
+The original `FrontEndCursorSetCurrent @0x0040AD20` returns the published
+cursor index in EAX for **all three** native count/limit cases. The maintained
+33-byte physical helper already reconstructs that result exactly, but the
+`FrontEndCursorView::SetCurrent` C++ wrapper silently discarded it by
+returning `void`. The wrapper now returns the helper's `int`, so callers can
+observe the established native result if needed; existing callers that
+ignore the result retain their behavior. This changes no cursor layout,
+call convention, branch behavior, or built machine code in the selected
+result-menu graph. Complete `ResultMenuPrepareScore` remains **377 bytes**
+with 31 ordinary differences and `ResultMenuUpdateResult` remains the
+**3,228-byte NONEXACT** candidate with **784/907** aligned instructions.
+Selected original-bound local cold replay protects **10 exact owners,
+737/737 bytes, 28 fields, seven artifacts**: the four cursor helpers and
+six result-menu neighbors. This is source/API fidelity work, **not** a new
+exact owner or proof of the original C++ method signature.
+
 ## 2026-11-12 Player shot timer signed-overflow recovery
 
 `PlayerUpdateShots @0x00428280` is the complete **876-byte** shot owner in

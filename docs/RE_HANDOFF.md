@@ -67,6 +67,12 @@ Useful existing exact guards: `anm-render-draw` **216/216**, `bullet-manager-dra
 `ReplayManager::SaveReplay` **1681/1681** and EndingTextVmView::Run **1568/1568**.
 Do not infer a nonexact parent is solved from an exact callback/leaf.
 
+The FrontEnd cursor member API now returns the published index from the
+already exact 33-byte `FrontEndCursorSetCurrent` physical helper. After that
+header change, 10 selected exact cursor/result-menu owners cold-pass
+**737/737** bytes and 28 fields (seven artifacts); full 377-byte score
+preparation and 3,228-byte result-menu parent remain nonexact.
+
 ## High-value nonexact work (source/context-sensitive)
 
 The figures below describe **specific selected compiler graphs**, not a
