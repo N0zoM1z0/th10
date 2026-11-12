@@ -1,5 +1,37 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-12 Shared VM IDs, BGM queue words and unresolved register frontiers
+
+The four `AnmRenderManagerView::AddVmVariant*` owners remain exact after
+`AnmVmIdView::operator++(int)` was made a native four-byte, old-value-returning
+postfix increment (118/112/118/112 bytes). In the same source epoch, both HUD
+VM ID allocation sites preserve the complete 3,836-byte `GuiView::UpdateStageElements`
+with all 72 target-bound fields. The full five-input ANM `ExecuteScript`
+remains 9,962/9,964 with 350 fields: changing its `JUMP_DEC` store to either
+`memcpy` or a signed/unsigned union added two differences at +0x2476/+0x247C.
+Neither form was retained; the outstanding opcode-91 +0x113/+0x115 pair
+still needs a genuine EDX live-range explanation.
+
+`ScriptViewerBombOwnerView::Update` now decrements the local mode through
+native 32-bit word publication. Its complete 223-byte owner retains the
+same ten register byte differences (165/175 ordinary matches, 12 bindings),
+while registration84, creator85, auxiliary emission124 and callback10
+all cold-replay exact. `SoundPlayerView::ProcessQueues` now copies four
+incremented command-step words and one decremented retry step without
+signed narrowing, retaining all 1,452 bytes and 43 fields. `EndingView::Update`
+preserves the native signed skip counter: 111/111 exact, with its 10-byte
+callback and 93-byte tick plus the distinct 1,568-byte script runner exact.
+
+Further native complete-owner probes ruled out two tempting but ineffective
+shortcuts. Ten natural angle/receiver/velocity temporaries in the 335-byte
+Bullet absolute-direction owner stayed at 301/303 comparable bytes
+(target EDX versus candidate EAX at +0xD7/+0xDD), or regressed. `volatile`
+made it 352 bytes. In the 377-byte Result Menu score preparer, cursor
+`Move` or `Push` native-word rewrites left their separate 128/66-byte leaves
+exact but changed the enclosing result-update candidate from 3,228 to
+3,264 bytes versus the 3,227-byte target; both edits were rejected. Isolated
+four-byte BGM and replay guards must not substitute for complete boss checks.
+
 ## 2026-11-12 Ending/Player bosses and archive/score word semantics
 
 Nine independently committed source checkpoints preserve the native i386
