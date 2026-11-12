@@ -92,16 +92,18 @@ constant/reload/early returns or moving the two controls regressed the
 full body (or changed the WPO parent) and were not installed.
 
 The 377-byte function is **NONEXACT**. No exact ledger entry or count is
-claimed for it, and the result-menu parent's current separate four-TU
-candidate remains **3,208 bytes / 763 of 907** aligned instructions,
-still **NONEXACT**. After installing the maintained source, a **selected
+claimed for it. The result-menu parent's four-TU candidate previously
+measured **3,208 bytes / 763 of 907** aligned instructions. Moving the
+selected VM-ID's real local lifetime to function scope restores the native
+**0x4C** stack frame and advances the complete candidate to **3,216 bytes /
+775 of 907** aligned instructions; it remains **NONEXACT**. After installing the maintained source, a **selected
 original-bound cold replay of only eight affected units** passed every
 byte: result-menu-score-synchronize 28, result-menu-close 89,
 result-menu-update 206, result-menu-pending-three 65,
 result-menu-pending-six 65, result-menu-update-callback 10,
 anm-request-capture-rectangle 162 and anm-vm-id-set-interrupt 65;
 **690/690** complete bytes and all **36 original-bound address/link
-fields**. No full all-unit/historical cold replay ran.
+fields**. No full all-unit/historical cold replay ran. The subsequent selected-VM-ID lifetime change separately passed eight current selected cold exact units (529/529 bytes across seven artifacts).
 
 ## 2026-11-11 Exact 28-byte result-menu score synchronization
 

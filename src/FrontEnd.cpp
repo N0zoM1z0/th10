@@ -4086,6 +4086,8 @@ void __stdcall ResultMenuPrepareScore(ResultMenuView *menu)
 void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
 {
     char replayPath[64];
+    // Keep the selected animation VM value live across the result-state arms.
+    AnmVmIdView selected;
     const int entryState = menu->state;
     switch (entryState)
     {
@@ -4147,7 +4149,7 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         }
         if ((g_FrontEndInput.pressed & 0x1001) != 0)
         {
-            AnmVmIdView selected = ResultMenuFindScript(&menu->mainVm, menu->cursor.current + 0x7c);
+            selected = ResultMenuFindScript(&menu->mainVm, menu->cursor.current + 0x7c);
             ResultMenuPendingSix(&selected);
             ResultMenuSound(10);
             menu->state = 13;
