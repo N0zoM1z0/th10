@@ -18,27 +18,6 @@ cold replay of FadeIn, FadeOut and Dim passes **401/401** bytes and all
 **18** fields in one genuine build artifact. This preserves existing exact
 credit; the transition ShakeEnvelope remains nonexact.
 
-## 2026-11-12 Transition fade-in interprets its wrapped frame bound without aliasing
-
-`TransitionFadeIn @0x0043C230` computes the terminal frame as one native
-32-bit addition of the configured duration plus two. The resulting DWORD is
-then compared as *signed*. Its prior source read the unsigned temporary
-through an unrelated `const int*` lvalue. The retained implementation uses
-`static_cast<int>(endBits)` on the pinned VC7.1 Win32 compiler, which
-preserves the low signed 32-bit representation. Out-of-range conversion is
-compiler-defined, so this is tied to the authenticated target toolchain.
-
-A real 14-input Gui/Transition `/GL` link compared the baseline, signed
-conversion, and a four-byte `memcpy` alternative. Only the baseline and
-signed conversion preserve the complete **133-byte FadeIn** with all
-**five** target-bound fields; the `memcpy` variant changed four ordinary
-bytes and was rejected. The **93-byte FadeOut**, **175-byte Dim**, and
-**350-byte NONEXACT ShakeEnvelope** candidate remain structurally unchanged
-in the same graph. Selected original-bound cold replay confirms **401/401**
-bytes and **18** fields across FadeIn133, FadeOut93 and Dim175 in a single
-artifact. ShakeEnvelope still targets 349 bytes; no new exact credit or
-full historical replay is claimed.
-
 ## 2026-11-12 Main render state publishes three IEEE-754 words without aliases
 
 `GameWindowView::ResetRenderState @0x00439D20` has a complete **710-byte**
