@@ -678,10 +678,14 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
                 static_cast<unsigned int>(stageHeaders[stage]->payloadSize) +
                 static_cast<unsigned int>(ReplayFramePayloadSize(
                     (ReplayFrameData *)link->value)));
-            stageHeaders[stage]->recordCount = static_cast<int>(
+            // The original record count increments by one native DWORD.
+            // Publish the wrapped bits without unsigned-to-signed narrowing.
+            const unsigned int nextRecordCountBits =
                 static_cast<unsigned int>(stageHeaders[stage]->recordCount) +
                 static_cast<unsigned int>(ReplayFrameRecordCount(
-                    (ReplayFrameData *)link->value)));
+                    (ReplayFrameData *)link->value));
+            memcpy(&stageHeaders[stage]->recordCount, &nextRecordCountBits,
+                sizeof stageHeaders[stage]->recordCount);
         }
 
         stageCount++;
