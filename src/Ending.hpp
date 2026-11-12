@@ -17,14 +17,22 @@ inline unsigned short EndingRecordTime(const unsigned char *p)
     memcpy(&value, p, sizeof(value));
     return value;
 }
-// Native scalar view matching the observed i386 dword operand load.
+// Script operand offsets are native i386 address words, not bounded C++
+// array positions. Retain the original four-byte load at that flat address.
 inline int EndingRecordInt(const unsigned char *p, int operand = 0)
 {
-    return *reinterpret_cast<const int *>(p + 4 + operand * 4);
+    const unsigned int operandAddress =
+        reinterpret_cast<unsigned int>(p) + 4u +
+        static_cast<unsigned int>(operand) * 4u;
+    return *reinterpret_cast<const int *>(operandAddress);
 }
 inline unsigned char *EndingRecordNext(unsigned char *p)
 {
-    return p + 4 + p[3];
+    // Counted script instructions are traversed by flat 32-bit i386 cursor
+    // words; retain wraparound even for a malformed record-length byte.
+    return reinterpret_cast<unsigned char *>(
+        reinterpret_cast<unsigned int>(p) + 4u +
+        static_cast<unsigned int>(p[3]));
 }
 
 typedef char EndingRecordScalarWidths[
