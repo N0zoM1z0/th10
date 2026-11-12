@@ -88,6 +88,24 @@ for **1,261/1,261**, **32 fields**, and two artifacts. The owner had already
 received canonical exact credit; this patch adds **no new exact owner** and
 runs no full replay.
 
+## 2026-11-12 Player collision damage native accumulators preserve exactness
+
+`Player::CalculateDamageToTarget @0x00428630` is **already canonically exact**:
+its complete 1,170-byte, 28-field production-target owner belongs to
+`player-calculate-damage-to-target`. In that existing 17-TU `/GL` graph,
+two signed integer accumulators (`shot->motion.hitAccumulator` and the
+shared `g_GameScore`) were formerly incremented through reinterpreted
+`unsigned int*` lvalues. The source now computes both increments in native
+unsigned 32-bit arithmetic and assigns the resulting value to each signed
+field, retaining the observed i386 rollover without unrelated-type aliases.
+
+A fresh complete 17-input LTCG diagnostic emits **1,170/1,170** ordinary
+bytes and all **28** candidate binding fields; selected original-bound cold
+replay explicitly protects the full existing damage owner **1,170/1,170**
+and `player-angle-to-point` **67/67**, for **1,237/1,237** bytes and
+**31** target-bound fields across two artifacts. This change retains existing
+exact credit; it creates **no new exact function**. No full cold replay.
+
 ## 2026-11-12 GameManager 32-bit frame counter publication
 
 `GameManagerUpdateBody @0x00418190` increments two signed Win32 frame
