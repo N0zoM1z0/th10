@@ -115,7 +115,10 @@ void InitializeStatisticsTail42ADD0(GameStatisticsTail *tail)
     unsigned char *bytes = reinterpret_cast<unsigned char *>(tail);
     tail->magic = 0x5453;
     tail->unknown002 = 0;
-    *reinterpret_cast<unsigned int *>(bytes + 8) = sizeof(*tail);
+    // The ST record length is a serialized four-byte word. Publish it
+    // without requiring an unsigned-int lvalue in the byte buffer.
+    const unsigned int serializedSize = static_cast<unsigned int>(sizeof *tail);
+    memcpy(bytes + 8, &serializedSize, sizeof serializedSize);
     strcpy(tail->parsedPayload.initialText0C, "        ");
     for (int i = 0; i < 512; ++i)
         tail->parsedPayload.randomWords046[i] = g_RngView.GetRandomU16();
