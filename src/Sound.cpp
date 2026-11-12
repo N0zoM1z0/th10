@@ -821,8 +821,10 @@ process_command:
         {
             if (command->step != 0)
             {
-                command->step = static_cast<int>(
-            static_cast<unsigned int>(command->step) + 1u);
+                // Native command steps advance as a wrapping DWORD.
+                const unsigned int nextStepBits =
+                    static_cast<unsigned int>(command->step) + 1u;
+                memcpy(&command->step, &nextStepBits, sizeof command->step);
                 break;
             }
             StopBgm();
@@ -902,8 +904,11 @@ process_command:
             else if (command->step >= 7)
                 goto remove_command;
         }
-        command->step = static_cast<int>(
-            static_cast<unsigned int>(command->step) + 1u);
+        {
+            const unsigned int nextStepBits =
+                static_cast<unsigned int>(command->step) + 1u;
+            memcpy(&command->step, &nextStepBits, sizeof command->step);
+        }
         break;
 
     case SOUND_COMMAND_RELEASE_BGM:
@@ -922,8 +927,11 @@ process_command:
             if (WaitForSingleObject(bgmThreadHandle, 256) != WAIT_OBJECT_0)
             {
                 PostThreadMessageA(bgmThreadId, WM_QUIT, 0, 0);
-                command->step = static_cast<int>(
-                    static_cast<unsigned int>(command->step) - 1u);
+                // Keep the thread-wait retry at its native 32-bit step.
+                const unsigned int previousStepBits =
+                    static_cast<unsigned int>(command->step) - 1u;
+                memcpy(&command->step, &previousStepBits,
+                    sizeof command->step);
             }
             else
                 bgmThreadHandle = NULL;
@@ -942,8 +950,11 @@ process_command:
         }
         else if (command->step == 10)
             goto remove_command;
-        command->step = static_cast<int>(
-            static_cast<unsigned int>(command->step) + 1u);
+        {
+            const unsigned int nextStepBits =
+                static_cast<unsigned int>(command->step) + 1u;
+            memcpy(&command->step, &nextStepBits, sizeof command->step);
+        }
         break;
 
     case SOUND_COMMAND_STOP_BGM:
@@ -953,8 +964,11 @@ process_command:
             bgm->Stop();
         else if (command->step == 1)
             goto remove_command;
-        command->step = static_cast<int>(
-            static_cast<unsigned int>(command->step) + 1u);
+        {
+            const unsigned int nextStepBits =
+                static_cast<unsigned int>(command->step) + 1u;
+            memcpy(&command->step, &nextStepBits, sizeof command->step);
+        }
         break;
 
     case SOUND_COMMAND_FADE_BGM:
