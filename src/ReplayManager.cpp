@@ -803,10 +803,17 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
 
     userDataCursor += sprintf(
         userDataCursor, "Chara %s\r\n",
-        g_ReplayCharacterNames[replayData->character * 3 + replayData->shotType]);
+        *reinterpret_cast<const char *const *>(
+            reinterpret_cast<unsigned int>(g_ReplayCharacterNames) +
+            (static_cast<unsigned int>(replayData->character) * 3u +
+             static_cast<unsigned int>(replayData->shotType)) *
+                sizeof(*g_ReplayCharacterNames)));
     userDataCursor += sprintf(
         userDataCursor, "Rank %s\r\n",
-        g_ReplayDifficultyNames[replayData->difficulty]);
+        *reinterpret_cast<const char *const *>(
+            reinterpret_cast<unsigned int>(g_ReplayDifficultyNames) +
+            static_cast<unsigned int>(replayData->difficulty) *
+                sizeof(*g_ReplayDifficultyNames)));
 
     if (replayData->completionState > 7)
     {
