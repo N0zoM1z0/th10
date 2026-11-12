@@ -328,6 +328,15 @@ cold units remain exact: relative direction **338/338** (8 fields) and
 player-aimed direction **431/431** (12 fields), **769/769** total. No full
 replay and no new exact credit.
 
+The absolute-direction *timer* increment is now also an explicit native
+unsigned DWORD addition, followed by `memcpy` of the wrapped bit pattern into
+its signed `current` field. Three independently compiled spellings retained
+the complete 335-byte owner, the original **301/303** comparable-byte
+frontier and eight fields, while the relative 338-byte and aimed 431-byte
+owners remained structurally exact in the same graph. Focused original-bound
+cold replay of both neighbors passed **769/769** bytes and **20** fields
+in one artifact. The outstanding +0xD7/+0xDD register seam is unchanged.
+
 ## 2026-11-11 Statistics record fixed-name native word accesses
 
 `InitializeGameStatisticsRecord @0x0042ACB0` is a **274-byte** complete

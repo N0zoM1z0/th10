@@ -308,7 +308,11 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
         FromAngleMagnitude(outgoingAngle, nextSpeed);
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        ++*reinterpret_cast<unsigned int *>(&state.timer.current);
+        // Retail INC advances the timer's low DWORD modulo 2^32. Publish
+        // the signed field through its bit representation, not an alias.
+        const unsigned int nextFrame =
+            static_cast<unsigned int>(state.timer.current) + 1u;
+        memcpy(&state.timer.current, &nextFrame, sizeof nextFrame);
         state.timer.subframe += 1.0f;
     }
     else {
