@@ -69,6 +69,31 @@ and **31 linkage fields** across three artifacts (`anm-get-int-var`, its
 pointer resolver, `anm-loaded-create-vm-variant2`, and layer-node insertion).
 No full cold replay or new exact credit.
 
+## 2026-11-12 ANM signed countdown avoids an incompatible-pointer lvalue
+
+`AnmSignedCountMinusOne` is inlined by the complete 9,964-byte
+`AnmRenderManagerView::ExecuteScript @0x0043EE30` for the interpolated
+vertex countdown (`vertexCount - 1`). The previous form read an unsigned
+local through a reinterpreted signed-int pointer. The maintained helper now
+computes the same native unsigned DWORD subtraction and converts to signed
+with a normal `static_cast<int>` at its return. That conversion for values
+above `INT_MAX` is implementation-defined, but the *pinned* VC7.1 SP1 i386
+compiler keeps the low 32-bit signed pattern; no broader C++ portability
+is claimed. An independent `memcpy` bit-cast variant is standards-safe but
+changes the parent to 9,972 bytes, so it was not installed. A union-word
+spelling is byte-neutral but would retain C++ type-punning uncertainty.
+
+Fresh four-input genuine `/GL /GS` diagnostic of the selected cast spelling
+retains the complete **9,964-byte** PDB-owned ExecuteScript candidate,
+**9,962** ordinary matching bytes and **350** target-bound address fields;
+the +0x113/+0x115 EDX-versus-ECX load/push seam in child opcode 91 remains
+**NONEXACT**. Selected original-bound cold replay preserves four helpers:
+`anm-vm-layer-node-insert-after` **23/23**, `anm-get-int-var` **144/144**,
+`anm-get-int-var-ptr` **132/132**, `anm-loaded-create-vm-variant2`
+**73/73**. Total **372/372** bytes with **31** original fields across
+three artifacts. No full replay, original-source-qualifier inference or new
+exact credit is involved.
+
 ## 2026-11-12 Statistics score-slot full DWORD stores through byte view
 
 `InitializeGameStatisticsRecord @0x0042ACB0` owns **274** target bytes in

@@ -3204,8 +3204,10 @@ static __forceinline int AnmSignedWordBits(unsigned int bits)
 
 static __forceinline int AnmSignedCountMinusOne(int count)
 {
+    // The target VC7.1 i386 conversion keeps the wrapped 32-bit pattern.
+    // This signed conversion is compiler-specific but avoids type aliasing.
     const unsigned int nativeBits = static_cast<unsigned int>(count) - 1u;
-    return *reinterpret_cast<const int *>(&nativeBits);
+    return static_cast<int>(nativeBits);
 }
 
 int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
