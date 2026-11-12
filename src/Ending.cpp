@@ -304,7 +304,11 @@ int __stdcall EndingTextVmView::Run()
                     color, reinterpret_cast<const char *>(
                         th10::leaf::Fn00417010(instruction + 4)));
                 PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&textIds[textLine]));
-                if (++textLine >= 5) textLine = 0;
+                // The text-row counter is advanced by native i386 INC,
+                // including low-DWORD wrap before its signed five-row guard.
+                textLine = static_cast<int>(
+                    static_cast<unsigned int>(textLine) + 1u);
+                if (textLine >= 5) textLine = 0;
             }
             break;
         case 4:
