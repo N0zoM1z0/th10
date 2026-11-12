@@ -260,7 +260,10 @@ bool LoadArchive(const char *filename)
             reinterpret_cast<unsigned int>(&g_PbgArchives[0]) +
             static_cast<unsigned int>(g_PbgArchiveCount) * sizeof(PbgArchive))->Load(filename))
     {
-        ++*reinterpret_cast<unsigned int *>(&g_PbgArchiveCount);
+        // The retail archive count uses one native i386 word increment.
+        // Preserve its wrapped bits without an incompatible unsigned lvalue.
+        g_PbgArchiveCount = static_cast<int>(
+            static_cast<unsigned int>(g_PbgArchiveCount) + 1u);
         return true;
     }
     return false;
