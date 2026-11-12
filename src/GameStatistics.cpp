@@ -27,16 +27,21 @@ int GameFinalizeStatistics42B1E0(GameStatisticsOwner *statistics)
                 indexCursor - offsetof(GameStatisticsRecord, recordIndex))
             == 0x5243)
         {
-            *reinterpret_cast<unsigned int *>(indexCursor) = i;
+            // Serialized record indices are four-byte words even when the
+            // enclosing byte cursor carries no C++ alignment guarantee.
+            memcpy(indexCursor, &i, sizeof i);
             unsigned int checksum = 0;
             const unsigned char *payload = indexCursor -
                 (offsetof(GameStatisticsRecord, recordIndex) -
                  offsetof(GameStatisticsRecord, unknown08));
             for (unsigned int j = 0; j < 0x4374; ++j)
                 checksum += payload[j];
-            *reinterpret_cast<unsigned int *>(indexCursor -
+            // The checksum is likewise serialized as one native DWORD,
+            // without creating an unsigned-int lvalue in a byte buffer.
+            unsigned char *checksumCursor = indexCursor -
                 (offsetof(GameStatisticsRecord, recordIndex) -
-                 offsetof(GameStatisticsRecord, checksum))) = checksum;
+                 offsetof(GameStatisticsRecord, checksum));
+            memcpy(checksumCursor, &checksum, sizeof checksum);
             memcpy(scratch + appendOffset,
                    indexCursor - offsetof(GameStatisticsRecord, recordIndex),
                    sizeof(GameStatisticsRecord));
