@@ -1,5 +1,25 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-12 Main render state publishes three IEEE-754 words without aliases
+
+`GameWindowView::ResetRenderState @0x00439D20` has a complete **710-byte**
+original-exact owner. Its three floating-point D3D9 render states send the
+32-bit IEEE-754 representations of `1.0f`, `1000.0f` and `5000.0f`, not
+numerically converted integer values. The maintained source previously read
+the float scratch slot through an unrelated `unsigned int*` lvalue. It now
+uses an `unsigned int` scratch word and a four-byte `memcpy` before each
+native `SetRenderState` call. The real float stack-slot lifetime is retained.
+
+Normal pinned VC7.1 SP1 COFF comparisons show that three spellings (local
+`memcpy`, inlined helper, MSVC union) all preserve the complete **710/710**
+code extent and **34** relocation fields. Replacing the float values with
+literal integer bit patterns shrinks the function to **690 bytes**, losing
+its actual scratch-slot scheduling, and was rejected. The retained portable
+`memcpy` form passed selected original-bound cold replay alongside
+`MainSetScreenColor`: **710/710 + 108/108 = 818/818** bytes across two
+artifacts; all **11** screen-color fields are bound. No new exact-owner credit
+or broad replay is claimed.
+
 ## 2026-11-12 ANM exact quad UV words without incompatible pointer aliases
 
 `AnmRenderManagerView::SetupVertexBuffer @0x004462F0` builds four 20-byte

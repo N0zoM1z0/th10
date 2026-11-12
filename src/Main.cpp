@@ -1017,6 +1017,7 @@ int GameWindowView::InitD3DRendering()
 void GameWindowView::ResetRenderState()
 {
     float stateValue;
+    unsigned int renderStateWord;
     AnmRenderManagerView *manager;
 
 #define MAIN_SET_RENDER_STATE(state, value) \
@@ -1042,17 +1043,20 @@ void GameWindowView::ResetRenderState()
     MAIN_SET_RENDER_STATE(0x19, 0x00000007);
     MAIN_SET_RENDER_STATE(0x1c, 0x00000001);
     stateValue = 1.0f;
+    memcpy(&renderStateWord, &stateValue, sizeof renderStateWord);
     MAIN_SET_RENDER_STATE(
-        0x26, *reinterpret_cast<unsigned int *>(&stateValue));
+        0x26, renderStateWord);
     MAIN_SET_RENDER_STATE(0x23, 0x00000000);
     MAIN_SET_RENDER_STATE(0x8c, 0x00000003);
     MAIN_SET_RENDER_STATE(0x22, 0xffa0a0a0);
     stateValue = 1000.0f;
+    memcpy(&renderStateWord, &stateValue, sizeof renderStateWord);
     MAIN_SET_RENDER_STATE(
-        0x24, *reinterpret_cast<unsigned int *>(&stateValue));
+        0x24, renderStateWord);
     stateValue = 5000.0f;
+    memcpy(&renderStateWord, &stateValue, sizeof renderStateWord);
     MAIN_SET_RENDER_STATE(
-        0x25, *reinterpret_cast<unsigned int *>(&stateValue));
+        0x25, renderStateWord);
     MAIN_SET_RENDER_STATE(0xa1, 0x00000000);
 
     MAIN_SET_TEXTURE_STAGE_STATE(0x04, 0x00000004);
