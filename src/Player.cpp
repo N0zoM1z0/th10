@@ -1711,6 +1711,8 @@ int __stdcall PlayerUpdateShots(Player *player)
         if (updateCallback != NULL)
             updateCallback(player, shot);
 
+        // The native ESI motion address becomes live only after both motion
+        // branches; retain a separate branch-local alias before that point.
         PlayerShotMotionView *const branchMotion = &shot->motion;
         if ((branchMotion->flags & PLAYER_SHOT_POLAR_MOTION) == 0)
         {
@@ -1797,6 +1799,7 @@ int __stdcall PlayerUpdateShots(Player *player)
         }
         else
         {
+            // Match the native x87 FLD subframe / FADD scale operand order.
             shot->timer.subframe += *shot->timer.scale;
             shot->timer.current = static_cast<int>(shot->timer.subframe);
         }

@@ -1,6 +1,6 @@
 # TH10 reconstruction — next agent handoff
 
-**Updated 2026-11-11.** This is the short continuation brief, not a chronological
+**Updated 2026-11-12.** This is the short continuation brief, not a chronological
 experiment log. Read [AGENTS.md](../AGENTS.md) for the exactness, source and
 storage rules. Consult [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) by function/address
 for detailed observations and rejected approaches; its older dated paragraphs
@@ -22,8 +22,8 @@ describe their own source epochs, not the current score.
    the canonical ledgers. `config/functions.csv` and matching candidate sizes
    alone never establish exactness.
 
-**Snapshot of generated progress:** 1,520 exact functions / 200,064 codegen
-bytes; 607 authored-origin exact functions / 129,777 bytes; 143 authored
+**Snapshot of generated progress:** 1,521 exact functions / 200,940 codegen
+bytes; 608 authored-origin exact functions / 130,653 bytes; 142 authored
 source-present functions remain nonexact. Regenerate/check the numbers from
 `docs/PROGRESS.md`, not this prose. All commits use `gpt-web: ...` with the
 name/email/trailer specified in `AGENTS.md`; **do not push**.
@@ -51,6 +51,7 @@ selected unit after inspecting the error.
 
 | Owner | Canonical unit | Proven scope |
 | --- | --- | --- |
+| `PlayerUpdateShots @0x00428280` | `player-update-shots` | **876/876** original bytes and **22/22** target-bound fields in the 12-input Enemy/Player `/GL` graph. Branch-local motion pointer delays `LEA ESI,[EDI-0xC]` from +0x111 to target +0x142; direct slow timer update restores target x87 `FLD subframe`/`FADD scale`. Two independent cold links pass, with `Player::SpawnShot` **717/717** and shot-bounds **91/91** exact guards. |
 | `ResultMenuSynchronizeScore @0x00421F60` | `result-menu-score-synchronize` | **28/28**, three original-bound score-state DIR32s (+4, +0, +0). Native GUI stored-score reread restores EAX receiver/ECX score and MOV EAX,ECX. Two independent cold builds pass; related result-menu guards total **354/354**. The large 3,227-byte parent remains nonexact. |
 | `ReleaseModeOwners @0x004203F0` | `main-release-mode-owners` | **128/128**, all 15 original-bound globals/cleanup/destructor/delete fields in current 30-input WinMain lifecycle graph. Five explicit natural nullable owner checks retain ESI and exact teardown order; existing real `MainSupervisorView::ReleaseGame` caller also passes **293/293** and 25 fields, **421/421** scoped. |
 | `EnemyEclHostBaseView::SetSubroutine @0x00450700` | `enemy-ecl-host-set-subroutine` | **30/30**, one original-bound REL32 to the genuine exact 136-byte `EclVmScriptDatabase::FindSubroutine` in the two-TU Enemy/EclVm graph. Scoped volatile database-field read restores native EAX database / ECX name and two independent context reloads; two independent cold builds pass. Target 2,412-byte EnemyRuntimeUpdate remains nonexact. |
@@ -58,7 +59,7 @@ selected unit after inspecting the error.
 | `BulletManagerView::DrawBucket @0x004066E0` | `bullet-manager-draw-bucket` | **134/134**, five target-bound fields; two independent VC7.1 `/GL` cold links of real `BulletDraw.cpp` + `AnmManager.cpp`; true EAX/ECX Draw ABI. Source uses two `_ReadWriteBarrier`s and a volatile flags DWORD read, with no ASM/padding. |
 | `EnemyReadDialog @0x00415DB0` | `enemy-read-dialog` | **124/124**, nine ctor/global/EH fields; two independent cold links of the real six-TU `/GL /GS /EHsc` graph and complete static PDB ownership. A scoped volatile read restores the global index publication order. |
 
-These are **six accepted authored owners** (not just positional candidate
+These are **seven accepted authored owners** (not just positional candidate
 matches). Their accepted units and all ledger rows are already committed.
 Useful existing exact guards: `anm-render-draw` **216/216**, `bullet-manager-draw-callback`
 **44/44**, `gui-update-stage-elements` **3836/3836** (72 fields),
@@ -100,7 +101,6 @@ a historical numerical frontier as an acceptance decision.
 | Enemy ECL dispatcher, `src/EnemyEclDispatcher.cpp` | Target/candidate extent **14,416** in selected 11-support graph, **800** source field identities | Still nonexact vs original. Native index, resource, callback, dialog and 8-bit spell-key fixes are already installed and byte-neutral; do not misread unchanged candidate code as target exactness. |
 | Player update, `src/Player.cpp` | `PlayerUpdateCallbackBody`: target **3,112** / candidate **3,100**; movement target **1,656** / candidate **1,616** | Natural 32-bit history, movement, transition and damage operations are installed; further work needs concrete ABI/stack/codegen differences, not more unsigned spelling sweeps. |
 | Player damage `CalculateDamageToTarget @0x00428630`, `src/Player.cpp` | **Already exact**, complete **1,170 bytes** and all **28** fields in its 17-input `/GL` graph | Replaced two incompatible `unsigned int*` accumulator aliases with natural native unsigned 32-bit additions and signed-field stores. Focused original-bound cold replay preserves existing 1,170-byte damage owner and 67-byte angle leaf, **1,237/1,237** and all **31** fields, two artifacts. No new exact credit. |
-| Player shot loop `PlayerUpdateShots @0x00428280`, `src/Player.cpp` | **NEW CANONICAL EXACT**, complete **876/876 bytes, 22/22 target-bound fields** under the genuine 12-source `/GL` graph; two independently rebuilt cold images | `branchMotion` in polar/vector phase followed by a post-branch `motion` alias naturally restores `LEA ESI,[EDI-0xC]` at +0x142 (was +0x111); direct `subframe += *scale` and `current = int(subframe)` restores native x87 `FLD subframe; FADD scale` at +0x333. Two cold proofs preserve existing `player-spawn-shot` 717/717; first also preserves `player-shot-outside-playfield` 91/91. No full replay. |
 | `InitializeGameStatisticsRecord @0x0042ACB0` (`src/GameStatisticsRecordDefaults.cpp`) | Target/candidate full **274-byte** six-TU score graph with **25 ordinary differences**, eight candidate fields; remains **NONEXACT** | Default name uses two separate four-byte `memcpy`s and a late ninth byte. Native score and extra DWORD stores now also use byte-safe four-byte `memcpy`s (compiler emits identical full owner; no pointer alias assumption). Related exact Load423, Finalize564 and InitializeTail142 cold replay **1,129/1,129**, all **36** fields, one artifact. No full cold replay. |
 | GameManager update, `src/GameManager.cpp` | Target/candidate extent **1,544** in selected 23-input GameStageSlots graph; **114** candidate fields, still **NONEXACT** | Restored both native low-DWORD frame-counter increments via unsigned addition and `memcpy` bit-pattern publication, avoiding type aliasing; complete candidate has **0 ordinary-byte changes** relative to previous same-image graph. Exact callback **7/7** and faith decay **65/65** selected cold replay **72/72**, two target-bound fields; remaining register/layout frontier. |
 | `ResultMenuPrepareScore @0x00423570` (`src/FrontEnd.cpp`) | Target **377** / candidate **377** bytes; **99/106** normalized original instructions aligned (previous 372 bytes / 87/106). Native success-first/failure-tail and eight-character do/while trim installed; all 18 candidate fields present. **NONEXACT**: remaining 31 ordinary bytes differ only at `+0xA4..+0xC5` in cursor/keyboard high-bound register/CFG. Eight scoped original-bound exact guards pass **690/690**, without full cold replay. |

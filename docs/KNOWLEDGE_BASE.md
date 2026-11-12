@@ -1,12 +1,13 @@
 # TH10 durable reconstruction knowledge
 
-## Reading this journal against the current ledger (2026-11-11)
+## Reading this journal against the current ledger (2026-11-12)
 
-**Current canonical snapshot:** **1,520 exact owners** and **200,064 exact
-bytes**, including **607 authored exact owners** and **129,777 authored exact
-bytes**; **143 authored source-present owners** remain nonexact. The newest
-accepted authored addition is `ResultMenuSynchronizeScore @0x00421F60`
-(**28/28**, three score-state fields). Earlier additions include
+**Current canonical snapshot:** **1,521 exact owners** and **200,940 exact
+bytes**, including **608 authored exact owners** and **130,653 authored exact
+bytes**; **142 authored source-present owners** remain nonexact. The newest
+accepted authored addition is `PlayerUpdateShots @0x00428280`
+(**876/876**, 22 original-bound fields). Earlier additions include
+`ResultMenuSynchronizeScore @0x00421F60` (**28/28**, three fields),
 `ReleaseModeOwners` (**128/128**, 15 fields),
 `EnemyEclHostBaseView::SetSubroutine` (**30/30**, one field),
 `ScriptViewerBombOwnerView::EmitAuxiliary` (**124/124**, six fields),
