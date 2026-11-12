@@ -348,6 +348,27 @@ owner. The selected original-bound cold test explicitly replays the exact
 aimed and relative owners, **769/769** bytes and **20** fields in one
 artifact. Existing exact credit remains unchanged.
 
+## 2026-11-12 ECL post-decrement publishes the native signed script word
+
+The 7,020-byte `EclVmContext::Run @0x0044E1A0` handles
+`ECL_VM_POST_DECREMENT_INT` by retaining the predecrement value for the
+script stack, then decrementing a resolved signed `int` destination modulo
+2^32. The maintained source previously wrote that destination through a
+reinterpreted `unsigned int*` lvalue. It now computes the same unsigned
+DWORD subtraction and publishes the result through the actual `int*`.
+Signed narrowing is implementation-defined for values above `INT_MAX`, but
+the pinned VC7.1 Win32 compiler retains the native two's-complement word.
+
+The fresh real two-input EclVm/Enemy `/GL` comparison retains the **7,020-byte**
+PDB-owned runner, **6,997** original matching bytes and **189** original-bound
+fields. The 23 remaining differences are in earlier register/x87/FORMAT
+source scheduling, so the large owner is still NONEXACT. The otherwise
+standards-safe `memcpy` publication was rejected because it introduced a
+net ordinary-byte regression (**6,996** matches). Four local original-bound
+cold exact guards pass **536/536 bytes** with **seven** fields across two
+artifacts: `ecl-vm-read-int` 144, `read-int-value` 124, `stack-pop` 122 and
+`host-run` 146. No full replay was run.
+
 ## 2026-11-11 Statistics record fixed-name native word accesses
 
 `InitializeGameStatisticsRecord @0x0042ACB0` is a **274-byte** complete

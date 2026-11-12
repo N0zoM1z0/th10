@@ -1369,11 +1369,11 @@ jump_instruction:
                 EclVmScalar value;
                 value.integer = ReadInt(0);
                 int *destination = ResolveInt(0);
-                // Decrement is a native 32-bit unsigned word operation.
-                // Access the int destination through its corresponding
-                // unsigned type to avoid implementation-defined narrowing.
-                *reinterpret_cast<unsigned int *>(destination) =
-                    value.bits - 1u;
+                // Native DWORD decrement, published through the actual int
+                // destination. The pinned VC7.1 Win32 conversion preserves
+                // the low 32 bits; no unrelated-type pointer alias is used.
+                const unsigned int nextWord = value.bits - 1u;
+                *destination = static_cast<int>(nextWord);
                 stack.Push('i', sizeof(value.integer), &value.integer);
                 break;
             }
