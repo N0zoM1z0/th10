@@ -1,5 +1,46 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-12 Native RIFF parsing, ECL postdecrement, and bounded owner trials
+
+`FindWaveChunk @0x0043D250` now copies the serialized RIFF chunk-length
+DWORD from a byte offset instead of dereferencing a potentially unaligned
+C++ structure. `SoundPlayerView::LoadSoundSample @0x0043D390` likewise copies
+the root container length and the complete `WAVEFORMATEX` wire record into
+real locals. Separate selected cold linked-PE builds confirm full **71/71**
+and **684/684** exactness with **1 + 25** original-bound fields. The BGM
+format-index increment now copies the wrapped unsigned DWORD bits into its
+signed counter; its **227-byte** lookup, **1,452-byte** queue dispatcher and
+**55-byte** reopen caller remain exact with **4 + 43 + 2** fields. These are
+source-fidelity corrections to existing accepted owners, not newly admitted
+matches.
+
+For the still-nonexact `EclVmContext::Run @0x0044E1A0`, native word
+postdecrement now publishes through the already maintained four-byte
+`EclVmScalar` integer/bits overlay while pushing the original, predecrement
+value. Both the old signed-narrowing form and the retained scalar form emit
+**6,997/7,020** complete target bytes and **189** bound fields; there are
+**23** unchanged non-field differences. A direct destination `memcpy` or
+an intermediate signed-copy local instead emits **6,996/7,020**, fixing the
+SIB positions at `+0xAF/+0x1FB` but introducing three new ones near
+`+0x14D7/+0x168A/+0x1710`. Selected exact guards in the current source
+pass **ReadInt 144/144**, **Stack::Pop 122/122**, and **Host::Run 146/146**,
+including all six source-bound fields. Nine separate return-stack and
+spawn-thread spelling controls for the full 7,020-byte VM did not improve
+the 23-byte frontier; the renamed thread-id local regressed thirteen bytes.
+
+Two other open-owner trials do not justify a source edit. `CMemoryPbgFile::Seek
+@0x004364F0` remains **100/107**: its target `FILE_CURRENT` success branch
+enters the code tail shared with `FILE_END`, but spelling the corresponding
+`m_Data + remaining + offset` address in C++ expands the normal-COFF body
+to **120 bytes** and reduces comparable agreement to 57. The source and target
+branch semantics need further scrutiny before accepting an apparent bug.
+`GameCreateOwner42B660 @0x0042B660` retains the **71-byte** nonexact popup
+factory: a single-pointer `new` spelling reduces it to **67 bytes**, and
+placement-new spellings produce **67/70 bytes** without restoring the target
+ESI/EBX allocator/constructor schedule. All candidate graphs still emit the
+independent **134-byte** popup constructor exactly. No exact-owner status or
+canonical ledger entry changed in these trials.
+
 ## 2026-11-12 ECL x87 stack homes and Sound ReadFile registers: bounded negative trials
 
 Full native i386 /GL comparisons leave `EclVmContext::Run @0x0044E1A0`
