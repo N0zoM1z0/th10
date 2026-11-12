@@ -69,6 +69,29 @@ and **31 linkage fields** across three artifacts (`anm-get-int-var`, its
 pointer resolver, `anm-loaded-create-vm-variant2`, and layer-node insertion).
 No full cold replay or new exact credit.
 
+## 2026-11-12 ECL script insertion shift native predecrement
+
+`EclVmScriptDatabase::AddScriptData @0x00450220` uses a signed temporary
+`index` to shift existing sorted entries. The target decrements that index as
+an ordinary i386 DWORD before comparison with the insertion position. The
+maintained `EclPredecrementNativeWord` helper previously wrote to the signed
+index through an incompatible `unsigned int*`. It now computes the modulo
+`2^32` unsigned decrement, copies the resulting word back with `memcpy`, and
+returns its signed interpretation. No source-level range check or changed
+branch is introduced.
+
+Real **two-module** EclVm + Enemy `/GL` link checks of complete owners confirm
+that `AddScriptData` remains **589 bytes** with **two** candidate fields,
+**79** ordinary original mismatches, and `EclVmContext::Run` remains
+**7,020 bytes**, **189** candidate fields and **23** ordinary mismatches.
+`FindSubroutine` remains complete **136/136**. Relative to the previous
+same-graph binary, **all three functions have zero ordinary-byte changes**;
+the open owners stay **NONEXACT**. Original-bound selected cold replays of
+`ecl-vm-find-thread` **36/36**, `ecl-vm-find-subroutine` **136/136**,
+`ecl-vm-stack-push` **96/96** and `ecl-vm-spawn-thread` **142/142** pass
+**410/410 bytes**, **three** fields, two artifacts. No full replay or new
+exact credit.
+
 ## 2026-11-12 Exact Player damage native DWORD accumulators
 
 `Player::CalculateDamageToTarget @0x00428630` was **already** a canonical

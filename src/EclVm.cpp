@@ -496,7 +496,8 @@ static __forceinline EclVmSubroutineEntry *EclMutableEntryAtWord(
 
 static __forceinline int EclPredecrementNativeWord(int &value)
 {
-    --*reinterpret_cast<unsigned int *>(&value);
+    const unsigned int nativeWord = static_cast<unsigned int>(value) - 1u;
+    memcpy(&value, &nativeWord, sizeof value);
     return value;
 }
 

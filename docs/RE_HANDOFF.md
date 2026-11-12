@@ -80,6 +80,12 @@ header change, 10 selected exact cursor/result-menu owners cold-pass
 **737/737** bytes and 28 fields (seven artifacts); full 377-byte score
 preparation and 3,228-byte result-menu parent remain nonexact.
 
+The ECL `AddScriptData` insertion-shift decrement now uses modulo-DWORD
+arithmetic and `memcpy` publication instead of an incompatible unsigned-int
+pointer. Its two-TU 589-byte candidate and the 7,020-byte Run parent are
+**ordinary-byte unchanged**; both remain NONEXACT. Four selected ECL exact
+cold units pass **410/410** bytes and three target-bound fields.
+
 ## High-value nonexact work (source/context-sensitive)
 
 The figures below describe **specific selected compiler graphs**, not a
