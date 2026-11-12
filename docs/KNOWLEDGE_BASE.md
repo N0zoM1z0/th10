@@ -69,6 +69,32 @@ and **31 linkage fields** across three artifacts (`anm-get-int-var`, its
 pointer resolver, `anm-loaded-create-vm-variant2`, and layer-node insertion).
 No full cold replay or new exact credit.
 
+## 2026-11-12 ANM three native integer destination ops use typed stores
+
+The 9,964-byte native `AnmRenderManagerView::ExecuteScript @0x0043EE30`
+implements integer `SET_ADD`, `SET_SUB` and `SET_MUL` opcode pairs as native
+32-bit word operations. The maintained source already performed each
+calculation with unsigned arithmetic to reproduce the original wrapping
+ADD/SUB/IMUL. The destination resolver returns a genuine `int*`, however,
+and all three cases formerly cast that pointer to an incompatible
+`unsigned int*` lvalue for the final store. Each now assigns the wrapped
+result through the actual `int*`, using the known pinned VC7.1 i386
+signed narrowing convention for the final bit pattern. This removes the
+incompatible-type lvalue and leaves instruction evaluation and resolver
+order intact. The narrowing is implementation-defined in portable ISO C++;
+this remains a target-compiler reconstruction, not a portability claim.
+
+Three separate case probes plus the combined full source each compiled in
+the real four-input ANM `/GL /GS` graph. Every candidate preserves the
+complete **9,964-byte** ExecuteScript body, **9,962** comparable original
+bytes, and **350** source-bound linkage fields. The remaining two ordinary
+bytes are still opcode 91's EDX/ECX load-and-push at `+0x113/+0x115`, so
+the parent stays **NONEXACT**. The shared `memcpy` bit-pattern helper
+variant expanded the owner and was rejected; lvalue compound-update
+controls were not accepted without full candidate closure. Four related
+original-bound cold exact units pass **372/372** bytes and **31** fields
+across three artifacts. No full cold replay or new exact credit.
+
 ## 2026-11-12 ANM signed countdown avoids an incompatible-pointer lvalue
 
 `AnmSignedCountMinusOne` is inlined by the complete 9,964-byte
