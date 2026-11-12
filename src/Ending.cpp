@@ -225,7 +225,11 @@ int EndingView::Update()
             (g_MainSupervisorView.flags & 0x1000) ? 2 : 15;
         return 1;
     }
-    ++skipCounter;
+    // The native ending frame gate uses a wrapping 32-bit INC before the
+    // signed modulo-twelve skip check.
+    const unsigned int nextSkipBits =
+        static_cast<unsigned int>(skipCounter) + 1u;
+    memcpy(&skipCounter, &nextSkipBits, sizeof skipCounter);
     if ((text->flags & 4) == 0 && (flags & 2) == 0 &&
         (text->flags & 2) != 0 && (g_FrontEndInput.current & 0x100) != 0)
         if (skipCounter % 12 != 0)
