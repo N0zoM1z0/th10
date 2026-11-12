@@ -83,7 +83,9 @@ int GameStatisticsOwner::Load42B030()
             // Stream records use native low-32-bit size words. An unsigned
             // view preserves the original wrapped subtraction and its signed
             // negative check, without an out-of-range integer conversion.
-            *reinterpret_cast<unsigned int *>(&remaining) -= record->unknown08;
+            const unsigned int remainingBits =
+                static_cast<unsigned int>(remaining) - record->unknown08;
+            memcpy(&remaining, &remainingBits, sizeof remaining);
             if (remaining < 0)
                 goto fallback;
             // A malformed recorded length may advance beyond the backing
