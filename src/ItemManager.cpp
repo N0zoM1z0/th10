@@ -82,8 +82,8 @@ void GameScoreStateView::SetTimerCurrent(int value)
     }
     timer.current = value;
     // Native timer publication stores the low 32 bits even at INT_MIN.
-    *reinterpret_cast<unsigned int *>(&timer.previous) =
-        static_cast<unsigned int>(value) - 1u;
+    const unsigned int previousBits = static_cast<unsigned int>(value) - 1u;
+    memcpy(&timer.previous, &previousBits, sizeof timer.previous);
     timer.subframe = (float)value;
 }
 
