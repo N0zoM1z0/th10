@@ -24,6 +24,28 @@ scratch files were intentionally deleted to save space; the five preserved
 compiler contexts and four trial drivers are listed in `docs/RE_ARTIFACTS.md`.
 
 
+## 2026-11-12 Statistics record two native four-byte name copies
+
+The target initializer `InitializeGameStatisticsRecord @0x0042ACB0`
+loads its default nine-character score name as two consecutive 32-bit words
+and one final byte, with the final byte published late in the score loop.
+`nameDest = activeByte + 2` is not guaranteed to be four-byte aligned by
+C++'s abstract machine, so the previous `reinterpret_cast<unsigned int *>`
+reads/writes expressed native x86 behavior through a potentially unaligned
+integer pointer. The source now uses **two independent `memcpy` calls of
+exactly four bytes**, preserving the word boundaries, independent load/store
+order and late ninth byte without assuming pointer alignment. An eight-byte
+bulk copy was tested and rejected because it changed the target codegen.
+
+The complete current six-source VC7.1 `/GL /GS` score graph still emits the
+**274-byte** initializer, eight candidate linkage fields and **25** remaining
+ordinary byte differences. Two four-byte `memcpy` variants produced the same
+native candidate; a combined eight-byte `memcpy` had 89 ordinary differences.
+The three original-bound exact score neighbors cold-pass **1,129/1,129**
+bytes and **36 fields** (`Load42B030` 423, `GameFinalizeStatistics42B1E0`
+564, and `InitializeStatisticsTail42ADD0` 142). The initializer remains
+**NONEXACT** and has not been added to the exact ledger.
+
 ## 2026-11-12 ANM JUMP_DEC native word publication
 
 `AnmRenderManagerView::ExecuteScript @0x0043EE30` processes opcode

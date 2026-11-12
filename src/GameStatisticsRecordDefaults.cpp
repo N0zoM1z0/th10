@@ -52,12 +52,10 @@ void __stdcall InitializeGameStatisticsRecord(GameStatisticsRecord *record)
             // byte. Keep the ninth-byte store after the independent status
             // and score updates, preserving its true destination word.
             unsigned char *const nameDest = activeByte + 2;
-            *reinterpret_cast<unsigned int *>(nameDest) =
-                *reinterpret_cast<const unsigned int *>(
-                    &g_GameStatisticsDefaultEntryName[0]);
-            *reinterpret_cast<unsigned int *>(nameDest + 4) =
-                *reinterpret_cast<const unsigned int *>(
-                    &g_GameStatisticsDefaultEntryName[4]);
+            // Two independent four-byte copies preserve the target DWORD
+            // read/write order without requiring aligned uint32 pointers.
+            memcpy(nameDest, &g_GameStatisticsDefaultEntryName[0], 4);
+            memcpy(nameDest + 4, &g_GameStatisticsDefaultEntryName[4], 4);
             const unsigned char ninth = g_GameStatisticsDefaultEntryName[8];
             *reinterpret_cast<int *>(activeByte + 12) = 0;
             activeByte[1] = 0;
