@@ -37,8 +37,9 @@ void GameScoreStateView::AddFaith(int amount)
 {
     // The target adds two 32-bit words before clamping the signed result.
     // Unsigned addition preserves native wrap at the signed bounds.
-    *reinterpret_cast<unsigned int *>(&faith) +=
-        static_cast<unsigned int>(amount / 10);
+    faith = static_cast<int>(
+        static_cast<unsigned int>(faith) +
+        static_cast<unsigned int>(amount / 10));
     if (faith > 99999)
         faith = 99999;
 }
