@@ -332,6 +332,25 @@ original-bound cold units remain **158/158**, with seven fields:
 `player-shot-outside-playfield` **91/91** and `player-angle-to-point`
 **67/67**. No historical or whole-game cold replay was used.
 
+## 2026-11-12 Complete Bullet transform and manager native timer wrap
+
+The state-eight transformation owner `UpdateState8 @0x00407EF0` and the
+central pool `BulletManagerView::UpdateBullets @0x004065C0` still advanced
+signed timer fields through incompatible `unsigned int*` lvalues. Both now
+compute unsigned modulo-2^32 increments and publish the exact four-byte
+representation through `memcpy`. This completes native signed-timer fast-
+path publication for all seven Bullet transform modes and the pool owner.
+
+Each isolated change and the combined source were compiled in the real
+seven-input Bullet `/GL /GS` callback graph. All preserved complete
+original target owners: `UpdateState8` **306 bytes/12 fields**, pool Update
+**249 bytes/6 fields**, pool callback **40 bytes/2 fields**, plus the
+relative 338 and aimed 431 exact directions. A targeted cold replay of
+exactly the three directly affected owners passed **595/595** bytes and
+**20** fields across two artifacts. The 335-byte absolute-direction owner
+still has the same two register-encoding mismatches at `+0xD7/+0xDD`;
+this checkpoint introduces no new exact credit or full replay.
+
 ## 2026-11-12 Four native Bullet transform timer increments preserve exactness
 
 The deceleration, vector-acceleration, polar-acceleration and relative-

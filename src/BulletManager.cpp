@@ -561,7 +561,10 @@ void BulletRuntimeView::UpdateState8()
 tickTimer:
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        ++*reinterpret_cast<unsigned int *>(&state.timer.current);
+        // Preserve native modulo-DWORD tick, including signed rollover.
+        const unsigned int nextBits =
+            static_cast<unsigned int>(state.timer.current) + 1u;
+        memcpy(&state.timer.current, &nextBits, sizeof nextBits);
         state.timer.subframe += 1.0f;
     }
     else {
@@ -629,7 +632,10 @@ int BulletManagerView::UpdateBullets()
         AnmVmTimerView &timer = bullet->stateTimer;
         timer.previous = timer.current;
         if (*timer.scale > 0.99f && *timer.scale < 1.01f) {
-            ++*reinterpret_cast<unsigned int *>(&timer.current);
+            // The original signed manager timer advances modulo 2^32.
+            const unsigned int nextBits =
+                static_cast<unsigned int>(timer.current) + 1u;
+            memcpy(&timer.current, &nextBits, sizeof nextBits);
             timer.subframe += 1.0f;
         }
         else {
