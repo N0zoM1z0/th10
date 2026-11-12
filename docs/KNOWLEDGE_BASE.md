@@ -308,6 +308,26 @@ original-bound cold units remain **158/158**, with seven fields:
 `player-shot-outside-playfield` **91/91** and `player-angle-to-point`
 **67/67**. No historical or whole-game cold replay was used.
 
+## 2026-11-12 Four native Bullet transform timer increments preserve exactness
+
+The deceleration, vector-acceleration, polar-acceleration and relative-
+direction transform update paths increment `state.timer.current` as a
+native i386 DWORD. The maintained source previously wrote its signed
+`int` field through an incompatible `unsigned int*` alias. Each now
+computes the increment in `unsigned int` and uses `memcpy` to publish the
+identical low 32-bit representation, including `INT_MAX` rollover.
+
+Each isolated variant and the four-function combination were compiled in
+the real seven-input Bullet `/GL /GS` graph. The combined build preserves
+complete original-equivalent owners: deceleration **164/164** (7 fields),
+vector acceleration **305/305** (10), polar acceleration **209/209** (8),
+and relative direction **338/338** (8). The exact aimed **431/431** (12)
+and the still nonexact 335-byte absolute owner (301/303 comparable bytes,
+8 fields) remain structurally unchanged. Cold replay of precisely the four
+modified exact owners passed **1,016/1,016** bytes and all **33**
+target-bound fields in three artifacts. No new exact-credit claim or
+full historical replay is involved.
+
 ## 2026-11-12 Absolute-direction native cycle word without aliasing
 
 `BulletRuntimeView::UpdateAbsoluteDirectionChange @0x004078E0` uses the

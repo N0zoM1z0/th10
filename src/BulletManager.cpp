@@ -141,7 +141,10 @@ void BulletRuntimeView::UpdateDeceleration()
     }
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        ++*reinterpret_cast<unsigned int *>(&state.timer.current);
+        // Native INC wraps this signed timer as one low 32-bit word.
+        const unsigned int nextFrame =
+            static_cast<unsigned int>(state.timer.current) + 1u;
+        memcpy(&state.timer.current, &nextFrame, sizeof nextFrame);
         state.timer.subframe += 1.0f;
     }
     else {
@@ -179,7 +182,10 @@ void BulletRuntimeView::UpdateVectorAcceleration()
     }
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        ++*reinterpret_cast<unsigned int *>(&state.timer.current);
+        // Native INC wraps this signed timer as one low 32-bit word.
+        const unsigned int nextFrame =
+            static_cast<unsigned int>(state.timer.current) + 1u;
+        memcpy(&state.timer.current, &nextFrame, sizeof nextFrame);
         state.timer.subframe += 1.0f;
     }
     else {
@@ -209,7 +215,10 @@ void BulletRuntimeView::UpdatePolarAcceleration()
     }
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        ++*reinterpret_cast<unsigned int *>(&state.timer.current);
+        // Native INC wraps this signed timer as one low 32-bit word.
+        const unsigned int nextFrame =
+            static_cast<unsigned int>(state.timer.current) + 1u;
+        memcpy(&state.timer.current, &nextFrame, sizeof nextFrame);
         state.timer.subframe += 1.0f;
     }
     else {
@@ -258,7 +267,10 @@ void BulletRuntimeView::UpdateRelativeDirectionChange()
         FromAngleMagnitude(angle, nextSpeed);
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        ++*reinterpret_cast<unsigned int *>(&state.timer.current);
+        // Native INC wraps this signed timer as one low 32-bit word.
+        const unsigned int nextFrame =
+            static_cast<unsigned int>(state.timer.current) + 1u;
+        memcpy(&state.timer.current, &nextFrame, sizeof nextFrame);
         state.timer.subframe += 1.0f;
     }
     else {
