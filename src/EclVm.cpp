@@ -360,7 +360,11 @@ int EclVmContext::ReadInt(unsigned int index)
                     reinterpret_cast<const unsigned char *>(
                     reinterpret_cast<unsigned int>(stack.data) +
                     static_cast<unsigned int>(stack.stackTop)))->bits;
-                *reinterpret_cast<unsigned int *>(&stack.stackTop) -= 4u;
+                // Preserve the popped native DWORD without writing through
+                // a differently typed pointer into the signed stack top.
+                const unsigned int nextBits =
+                    static_cast<unsigned int>(stack.stackTop) - 4u;
+                memcpy(&stack.stackTop, &nextBits, sizeof stack.stackTop);
                 // The caller has just popped a value DWORD; the preceding
                 // four-byte slot carries its one-byte type tag.
                 if (reinterpret_cast<const EclVmStackTypeSlotView *>(

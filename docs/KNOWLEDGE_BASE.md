@@ -69,6 +69,30 @@ and **31 linkage fields** across three artifacts (`anm-get-int-var`, its
 pointer resolver, `anm-loaded-create-vm-variant2`, and layer-node insertion).
 No full cold replay or new exact credit.
 
+## 2026-11-12 ECL ReadInt second stack-pop native DWORD publication
+
+`EclVmContext::ReadInt @0x0044FDB0` handles special indirect `-1`
+operands by reading a value word and a preceding type-tag word from the
+nested ECL stack. The second stack-top decrement formerly modified the
+signed `stack.stackTop` field through a reinterpreted `unsigned int*`.
+It now subtracts in an unsigned 32-bit temporary and copies that exact
+native word back to the signed field with `memcpy`, preserving the target's
+low-word wrap without a mismatched alias lvalue. It neither changes the
+pre-popped value nor reorders the tag test. An attempted unsigned sign-bit
+rewrite of the *initial* top check made the exact helper 147 instead of
+144 bytes, so that independent change was rejected.
+
+Fresh real `EclVm` plus `Enemy` `/GL` graph diagnostics of the installed
+variant preserve `ReadInt`'s complete **144-byte** owner, **zero ordinary
+byte differences** and its bound call field. The complete **7,020-byte**
+`EclVmContext::Run` still matches **6,997** original ordinary bytes with
+all **189** comparison fields; its 23 remaining differences are **NONEXACT**.
+Selected original-bound cold replay passes `ecl-vm-read-int` **144/144**,
+`ecl-vm-read-float` **183/183**, `ecl-vm-stack-pop` **122/122**, and
+`ecl-vm-host-run` **146/146**, total **595/595** bytes and **10**
+original-bound fields across two artifacts. No full cold replay or new
+exact credit was used.
+
 ## 2026-11-12 ANM three native integer destination ops use typed stores
 
 The 9,964-byte native `AnmRenderManagerView::ExecuteScript @0x0043EE30`
