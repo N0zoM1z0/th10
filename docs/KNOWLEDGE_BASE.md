@@ -69,6 +69,25 @@ and **31 linkage fields** across three artifacts (`anm-get-int-var`, its
 pointer resolver, `anm-loaded-create-vm-variant2`, and layer-node insertion).
 No full cold replay or new exact credit.
 
+## 2026-11-12 Exact Player damage native DWORD accumulators
+
+`Player::CalculateDamageToTarget @0x00428630` was **already** a canonical
+exact 1,170-byte owner. Its hit accumulator and global score are signed `int`
+objects, but the old source wrote through `unsigned int *` aliases. The
+source now uses explicit unsigned DWORD addition followed by signed-word
+publication. On pinned VC7.1 i386, this preserves the original wrapping
+word without an incompatible-type pointer write. Out-of-range unsigned-to-
+signed conversion follows this compiler's established word representation;
+no portable conversion behavior is asserted.
+
+A fresh **17-input** `/GL` graph retains all **1,170** owner bytes and **28**
+candidate fields, with zero ordinary differences. Selected original-bound
+cold replay passed `player-calculate-damage-to-target` **1,170/1,170** with
+28 fields and `player-shot-outside-playfield` **91/91** with four fields,
+for **1,261/1,261**, **32 fields**, and two artifacts. The owner had already
+received canonical exact credit; this patch adds **no new exact owner** and
+runs no full replay.
+
 ## 2026-11-12 GameManager 32-bit frame counter publication
 
 `GameManagerUpdateBody @0x00418190` increments two signed Win32 frame

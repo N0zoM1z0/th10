@@ -65,6 +65,13 @@ Useful existing exact guards: `anm-render-draw` **216/216**, `bullet-manager-dra
 `script-viewer-popup-constructor` **134/134**, and `result-menu-close`
 **89/89**. Other accepted large representatives include
 `ReplayManager::SaveReplay` **1681/1681** and EndingTextVmView::Run **1568/1568**.
+The existing canonical `Player::CalculateDamageToTarget` **1,170-byte**
+owner remains exact after replacing two type-punned unsigned-pointer sums
+(hit accumulator and global score) with native unsigned-DWORD calculations.
+Its 28 fields and all bytes cold-pass, alongside the **91-byte** shot-bounds
+helper: selected **1,261/1,261** bytes, **32** fields and two artifacts.
+This preserves source fidelity without increasing the exact numerator.
+
 Do not infer a nonexact parent is solved from an exact callback/leaf.
 
 The FrontEnd cursor member API now returns the published index from the

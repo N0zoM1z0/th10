@@ -1975,8 +1975,9 @@ int Player::CalculateDamageToTarget(
 
         damage = static_cast<int>(static_cast<unsigned int>(damage) +
             static_cast<unsigned int>(motion->damage));
-        *reinterpret_cast<unsigned int *>(&motion->hitAccumulator) +=
-            static_cast<unsigned int>(motion->damage);
+        motion->hitAccumulator = static_cast<int>(
+            static_cast<unsigned int>(motion->hitAccumulator) +
+            static_cast<unsigned int>(motion->damage));
         if (motion->hitCap > motion->hitAccumulator)
             continue;
         motion->damage = 0;
@@ -1984,8 +1985,9 @@ int Player::CalculateDamageToTarget(
 
     if (damage != 0)
     {
-        *reinterpret_cast<unsigned int *>(&g_GameScore) +=
-            static_cast<unsigned int>((damage / 10 + 10) / 10);
+        g_GameScore = static_cast<int>(
+            static_cast<unsigned int>(g_GameScore) +
+            static_cast<unsigned int>((damage / 10 + 10) / 10));
         if (g_GameScore >= 1000000000)
             g_GameScore = 999999999;
     }
