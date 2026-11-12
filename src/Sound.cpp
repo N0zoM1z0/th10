@@ -673,7 +673,9 @@ int SoundPlayerView::GetFmtIndexByName(const char *path)
             break;
         // Retail INC EBP wraps the low 32-bit format-table index. The pinned
         // Win32 compiler publishes the wrapped DWORD through this signed int.
-        index = static_cast<int>(static_cast<unsigned int>(index) + 1u);
+        const unsigned int nextIndexBits =
+            static_cast<unsigned int>(index) + 1u;
+        memcpy(&index, &nextIndexBits, sizeof index);
     }
 
     if (reinterpret_cast<ThBgmFormat *>(
