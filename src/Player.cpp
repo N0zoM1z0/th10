@@ -1904,7 +1904,11 @@ int Player::CalculateDamageToTarget(
 
             shot->primaryVmId =
                 static_cast<AnmLoadedView *>(resource)->CreateVmVariant0(
-                    shot->descriptor->hitAnimationScript + 5, PLAYER_VM_LAYER).value;
+                    // Script IDs in the binary are native 32-bit words.
+                    // Keep the original ADD 5 wrap for malformed indexes.
+                    static_cast<int>(static_cast<unsigned int>(
+                        shot->descriptor->hitAnimationScript) + 5u),
+                    PLAYER_VM_LAYER).value;
             AnmVmView *hitVm = vmId->GetVm();
             hitVm->rotation.z = savedAngle;
             hitVm->flags35C |= PLAYER_VM_SHOT_ANGLE_DIRTY;
