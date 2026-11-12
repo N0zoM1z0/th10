@@ -662,7 +662,12 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
             firstStage = stage;
 
         stageHeader->payloadSize = 0;
-        allocationSize += sizeof(ReplayStageDataHeader);
+        // Retail grows the total allocation as a wrapping DWORD, even if
+        // the accumulated signed size has passed INT_MAX.
+        const unsigned int nextAllocationBits =
+            static_cast<unsigned int>(allocationSize) +
+            static_cast<unsigned int>(sizeof(ReplayStageDataHeader));
+        memcpy(&allocationSize, &nextAllocationBits, sizeof allocationSize);
         lastStage = stage;
 
         for (ReplayListNode *link = stageFrameLists[stage].next;
@@ -712,7 +717,12 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
 
         memcpy(uncompressedData + allocationSize, stageHeader,
                sizeof(ReplayStageDataHeader));
-        allocationSize += sizeof(ReplayStageDataHeader);
+        // The write cursor advances by the same unsigned native header
+        // extent, preserving the original post-copy read ordering.
+        const unsigned int nextWriteCursorBits =
+            static_cast<unsigned int>(allocationSize) +
+            static_cast<unsigned int>(sizeof(ReplayStageDataHeader));
+        memcpy(&allocationSize, &nextWriteCursorBits, sizeof allocationSize);
 
         for (ReplayListNode *link = stageFrameLists[stage].next;
              link != NULL; link = link->next)
