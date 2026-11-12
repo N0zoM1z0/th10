@@ -50,7 +50,12 @@ int ScriptViewerBombOwnerView::Update()
     int currentMode = mode28;
     if (currentMode == 0)
         return 1;
-    if (--currentMode == 0)
+    // Native i386 DEC wraps the mode word before the zero test, including
+    // INT_MIN; publish it without signed C++ overflow or pointer aliasing.
+    const unsigned int nextModeBits =
+        static_cast<unsigned int>(currentMode) - 1u;
+    memcpy(&currentMode, &nextModeBits, sizeof currentMode);
+    if (currentMode == 0)
     {
         int vmId = static_cast<int>(*reinterpret_cast<volatile unsigned int *>(&vmId2C));
         AnmRenderManagerView *manager = g_AnmRenderManagerView;
