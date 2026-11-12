@@ -3349,7 +3349,12 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             continue;
 
         case ANM_OP_JUMP_DEC:
-            --*reinterpret_cast<unsigned int *>(GET_INT_VAR_PTR(0));
+        {
+            // The target decrements one native i386 word in-place. Compute
+            // the wrap without signed overflow or aliasing a second type.
+            int *const targetWord = GET_INT_VAR_PTR(0);
+            *targetWord = static_cast<int>(
+                static_cast<unsigned int>(*targetWord) - 1u);
             if (GET_INT_VAR(0) > 0)
             {
                 vm->scriptTimer.SetCurrent(currentInstruction->decrementJump.targetTime);
@@ -3358,6 +3363,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
                 continue;
             }
             break;
+        }
 
         case ANM_OP_FLIP_X:
         {

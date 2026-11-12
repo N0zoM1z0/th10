@@ -24,6 +24,29 @@ scratch files were intentionally deleted to save space; the five preserved
 compiler contexts and four trial drivers are listed in `docs/RE_ARTIFACTS.md`.
 
 
+## 2026-11-12 ANM JUMP_DEC native word publication
+
+`AnmRenderManagerView::ExecuteScript @0x0043EE30` processes opcode
+`ANM_OP_JUMP_DEC` by resolving the genuine script-int lvalue once, then
+subtracting one modulo 2^32 before its ordinary signed greater-than-zero
+jump test. The original has `DEC dword ptr [EAX]`; the maintained source
+previously incremented/decremented that memory by casting the resolver's
+`int *` return to `unsigned int *`. Now it computes the wrapping unsigned
+value and publishes it through the native `int *` lvalue in a scoped switch
+case. This retains the original variable resolver/read order, jump timer and
+script-byte-offset behavior without depending on a separately reinterpreted
+lvalue type. Two other semantically equivalent forms disturbed bytes outside
+the opcode and were rejected.
+
+Strict complete five-input `/GL /GS` replay of the installed C++ yields
+**9,962 of 9,964 original bytes**, with all **350 original-bound fields**,
+unchanged from the previous source. Only opcode 91 child-layer register
+encodings at `+0x113/+0x115` remain; this big owner is still **NONEXACT**.
+Four selected affected original-bound exact leaves cold-pass **372/372** bytes
+and **31 linkage fields** across three artifacts (`anm-get-int-var`, its
+pointer resolver, `anm-loaded-create-vm-variant2`, and layer-node insertion).
+No full cold replay or new exact credit.
+
 ## 2026-11-12 Cursor-set return value preserved at member boundary
 
 The original `FrontEndCursorSetCurrent @0x0040AD20` returns the published
