@@ -113,7 +113,9 @@ bool CMemoryPbgFile::Seek(DWORD offset, DWORD seekFrom)
         // converting an out-of-range DWORD to signed LONG.
         const DWORD remainingBits = reinterpret_cast<DWORD>(m_Data) + m_Size -
             reinterpret_cast<DWORD>(m_Current);
-        const LONG remaining = *reinterpret_cast<const LONG *>(&remainingBits);
+        // VC7.1 Win32 keeps the low DWORD on conversion to signed LONG.
+        // This is compiler-specific, but avoids an unrelated-type pointer.
+        const LONG remaining = static_cast<LONG>(remainingBits);
         if (remaining <= signedOffset)
             return false;
         position = reinterpret_cast<BYTE *>(reinterpret_cast<DWORD>(m_Current) + offset);

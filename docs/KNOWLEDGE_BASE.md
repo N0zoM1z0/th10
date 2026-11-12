@@ -166,6 +166,28 @@ local cold replay: **1,129/1,129** bytes and **36** target-bound fields
 across one build artifact. The 274-byte initializer remains **NONEXACT**;
 no new canonical credit or full historical replay is claimed.
 
+## 2026-11-12 PBG memory-file seek remaining-word signed conversion
+
+`CMemoryPbgFile::Seek @0x004364F0` compares a native low-32-bit remaining
+byte distance as one *signed* Win32 LONG in its FILE_CURRENT branch. The
+maintained source formerly accessed an unsigned DWORD temporary through an
+unrelated `const LONG*` lvalue. The source now converts it with
+`static_cast<LONG>` under the pinned VC7.1 Win32 compiler, which preserves
+the low native signed bits. Conversion outside LONG's range is
+implementation-defined by ISO C++, so this is an attested target-compiler
+reconstruction rather than a portable sign-bit cast.
+
+Four normal VC7.1 SP1 COFF source spellings (LONG and int casts, split
+assignment and union) retain the *complete* 107-byte candidate,
+**100/107** matching target bytes and zero relocations. The remaining seven
+mismatches at `+0x49/+0x51/+0x55/+0x59/+0x5E/+0x61/+0x63` are precisely
+the FILE_CURRENT/FILE_BEGIN EAX-versus-EDX register-coloring seam, unchanged
+by this fix. The earlier `memcpy` alternative changed the register schedule
+and was rejected. Selected original-bound cold replay of neighboring
+`memory-pbgfile-open` 46, destructor 49, read 108, tell 7 and get-size 4
+passes **214/214** bytes in one artifact. Seek remains NONEXACT; no whole
+replay or new exact credit.
+
 ## 2026-11-12 ECL stack-push guard recovers signed DWORD without aliasing
 
 `EclVmStackView::Push` computes its next stack top as a native unsigned
