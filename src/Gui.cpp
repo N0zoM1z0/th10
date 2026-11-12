@@ -1446,7 +1446,13 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                 timer.previous = timer.current;
                 if (*scale > 0.99f && *scale < 1.01f)
                 {
-                    ++timer.current;
+                    // Native i386 INC wraps the signed message timer
+                    // counter at INT_MAX. Publish the original low DWORD
+                    // through its actual signed field, without narrowing.
+                    const unsigned int nextFrameBits =
+                        static_cast<unsigned int>(timer.current) + 1u;
+                    memcpy(&timer.current, &nextFrameBits,
+                        sizeof timer.current);
                     timer.subframe += 1.0f;
                 }
                 else
