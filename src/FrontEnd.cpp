@@ -4338,9 +4338,9 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         if (menu->scoreUnavailable == 0)
         {
             menu->keyboard.previous = menu->keyboard.current;
-            if (g_FrontEndInput.IsRepeated(0x10)) menu->keyboard.Move(-13);
-            if (g_FrontEndInput.IsRepeated(0x20)) menu->keyboard.Move(13);
-            if (g_FrontEndInput.IsRepeated(0x40))
+            if (static_cast<short>(g_FrontEndInput.IsRepeated(0x10))) menu->keyboard.Move(-13);
+            if (static_cast<short>(g_FrontEndInput.IsRepeated(0x20))) menu->keyboard.Move(13);
+            if (static_cast<short>(g_FrontEndInput.IsRepeated(0x40)))
             {
                 if (menu->keyboard.current % 13 != 0) menu->keyboard.Move(-1);
                 else menu->keyboard.Move(12);

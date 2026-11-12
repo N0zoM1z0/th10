@@ -99,16 +99,23 @@ selected VM-ID's real local lifetime to function scope restores the native
 775 of 907** aligned instructions. A subsequent source change preserves retail's
 16-bit `TEST AX,AX` results for the six input-repeat calls in states 10
 and 11, instead of testing full EAX. This advances the same four-TU
-nonexact owner to **3,224 bytes / 781 of 907** aligned instructions (against
-3,227 original bytes). Narrowing state 12 instead yields only 605 aligned
-instructions and was not installed. After installing the maintained source, a **selected
+nonexact owner to **3,224 bytes / 781 of 907** aligned instructions.
+Restoring the native `TEST AX,AX` width on state-12 up/down/left movement
+(without the right-movement test) retains the original 0x4C frame and advances
+the complete four-TU candidate to **3,228 bytes / 784 of 907** aligned
+instructions against the 3,227-byte target. All 173 candidate code fields
+remain present; their original-bound status is not yet established. Making
+all four state-12 returns 16-bit instead causes a non-target register-
+allocation/CFG shift (605 aligned instructions), so that broader change is
+rejected. Single, paired and three-of-four masks were compiled and compared
+before selecting the three-path source. After installing the maintained source, a **selected
 original-bound cold replay of only eight affected units** passed every
 byte: result-menu-score-synchronize 28, result-menu-close 89,
 result-menu-update 206, result-menu-pending-three 65,
 result-menu-pending-six 65, result-menu-update-callback 10,
 anm-request-capture-rectangle 162 and anm-vm-id-set-interrupt 65;
 **690/690** complete bytes and all **36 original-bound address/link
-fields**. No full all-unit/historical cold replay ran. The subsequent selected-VM-ID lifetime and native AX-test changes each separately passed eight selected cold exact units (529/529 bytes, 28 original-bound linkage fields across seven artifacts per change).
+fields**. No full all-unit/historical cold replay ran. The selected-VM-ID lifetime and both AX-test changes each independently passed eight selected cold exact units (529/529 bytes, 28 original-bound linkage fields across seven artifacts per checkpoint). No complete replay cohort was run.
 
 ## 2026-11-11 Exact 28-byte result-menu score synchronization
 
