@@ -354,7 +354,10 @@ int EclVmContext::ReadInt(unsigned int index)
         {
             const unsigned int topBits =
                 static_cast<unsigned int>(stack.stackTop) - 4u;
-            if (*reinterpret_cast<const int *>(&topBits) >= 0)
+            // The VM compares this native DWORD as one signed i386 word.
+            // VC7.1 preserves its two's-complement bits on conversion, without
+            // loading an unsigned local through a different typed pointer.
+            if (static_cast<int>(topBits) >= 0)
             {
                 stack.stackTop = static_cast<int>(
                     static_cast<unsigned int>(stack.stackTop) - 4u);
