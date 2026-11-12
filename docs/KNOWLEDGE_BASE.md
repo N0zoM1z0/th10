@@ -1,5 +1,45 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-12 Exact replay word publication and isolated large-owner compiler controls
+
+`ReplayManager::SaveReplay @0x00429B60` now publishes its per-stage
+recordCount as a native four-byte signed word, and computes both distinct
+stage-header length advances with unsigned low-32-bit arithmetic followed by
+bit-preserving copies. The second `ReplayFrameRecordCount` and each header
+cursor read stay in their original positions. Complete selected native cold
+replay passes **1,681/1,681 bytes and 83 target-bound fields** after each
+checkpoint (`7a23c24e`, `b95631cb`). A corresponding `payloadSize` copy was
+rejected: it shifted original-bound linked fields. `GameScoreStateView::AddRank`
+now publishes its wrapped 32-bit result through `memcpy` before the signed
+clamp; selected exact Rank42, AddFaith46 and DecayFaith46 pass after
+`a0d35e03`. `EndingView::Update` wraps `skipCounter` through a native DWORD
+before its signed modulo-twelve gate; the full update111, adapter10 and
+tick93 remain exact (`59814368`). No new exact owner was promoted.
+
+A direct **six-form inline-wrapper** experiment for `FrontEndCursorView::SetCurrent`
+used local header copies and the real four-TU Result Menu `/GL /GS /EHs`
+link, leaving maintained source untouched. The current full 377-byte
+`ResultMenuPrepareScore` candidate has 274/305 comparable ordinary bytes
+and 18 linked fields; its 3,228-byte parent remains nonexact against the
+3,227-byte target. All five alternative high-clamp/merged-store source shapes
+shrank the score owner to **361/377** and altered the parent to 3,156 or
+3,220 bytes with changed field maps. A single high-clamp expression kept
+377 bytes but reduced comparable equality to 260/305. These controls do
+not recover the original unified store and must not replace the physical
+33-byte `FrontEndCursorSetCurrent` exact helper.
+
+Under the genuine GUI/Transition 14-input link, `TransitionShakeEnvelope`
+remains **350-byte candidate versus the 349-byte target**, with 16 fields
+and 207/285 comparable bytes. Sharing the unsigned phase limit inside the
+x87 amplitude expression heavily regressed the body, while an explicit
+unsigned final bound was neutral. The native `TextRenderBufferView::InvertAlpha`
+remains **157 bytes, 138/157 bytes matching, zero address fields** with the
+same 19 register bytes whether the real selected entry is `CreateTextBuffer`,
+`RenderTextToTexture`, or `RenderTextToTextureAlternate`; merely changing
+caller entry does not recover the original receiver/count register schedule.
+All trial sources and results are in ignored `.analysis/gpt-web/20261112-*`
+and `build/gpt-web/20261112/`; no full historical cold replay was run.
+
 ## 2026-11-12 Shared VM IDs, BGM queue words and unresolved register frontiers
 
 The four `AnmRenderManagerView::AddVmVariant*` owners remain exact after
