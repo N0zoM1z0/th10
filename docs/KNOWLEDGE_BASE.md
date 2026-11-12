@@ -1,5 +1,23 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-12 Native transition fade-in terminal bound without a typed alias
+
+`TransitionFadeIn @0x0043C230` computes its terminal frame as the unsigned
+low-DWORD sum `frames + 2u`, then compares that word as a signed 32-bit
+value. The maintained `const int*` reinterpretation of the unsigned local
+was replaced by `static_cast<int>` under pinned VC7.1 Win32 semantics,
+which preserves the same signed bit pattern without incompatible aliasing.
+
+Independent complete 14-object Gui/Transition `/GL` probes preserve the
+**133-byte** FadeIn owner with **five** target-bound fields, while the
+neighboring **93-byte** FadeOut (five fields), **175-byte** Dim (eight fields),
+and still-nonexact **350-byte** ShakeEnvelope candidate remain unchanged.
+A `memcpy` alternative at this specific stack-word seam would have changed
+four FadeIn machine-code bytes and was rejected. Selected original-bound
+cold replay of FadeIn, FadeOut and Dim passes **401/401** bytes and all
+**18** fields in one genuine build artifact. This preserves existing exact
+credit; the transition ShakeEnvelope remains nonexact.
+
 ## 2026-11-12 Main render state publishes three IEEE-754 words without aliases
 
 `GameWindowView::ResetRenderState @0x00439D20` has a complete **710-byte**

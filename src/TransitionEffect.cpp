@@ -92,7 +92,9 @@ static int __fastcall TransitionFadeIn(void *argument)
     // overflow; the cast follows the target compiler's two's-complement model.
     const unsigned int endBits =
         static_cast<unsigned int>(effect->frames) + 2u;
-    const int end = *reinterpret_cast<const int *>(&endBits);
+    // VC7.1 Win32 preserves the signed low DWORD when interpreting the
+    // modulo-2^32 duration bound; avoid an incompatible int-pointer read.
+    const int end = static_cast<int>(endBits);
     if (effect->timer.current >= end)
         return 7;
     ResultGameManagerView *game = g_ResultGameManager;
