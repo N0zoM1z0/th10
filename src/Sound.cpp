@@ -1026,8 +1026,8 @@ process_command:
         soundQueue[i] = -1;
         if (soundQueueRequestCounts[i] < 0)
         {
-            if (duplicateSoundBuffers[soundIndex] != NULL)
-                duplicateSoundBuffers[soundIndex]->Stop();
+            if ((*SoundWordSlot(&duplicateSoundBuffers[0], soundIndex)) != NULL)
+                (*SoundWordSlot(&duplicateSoundBuffers[0], soundIndex))->Stop();
             soundQueueRequestCounts[i] = 0;
             continue;
         }
