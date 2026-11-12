@@ -1022,8 +1022,10 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
     {
         // The original i386 counter advances with native modulo-32-bit
         // arithmetic before its signed terminal-frame comparison.
-        gui->endingCounter = static_cast<int>(
-            static_cast<unsigned int>(gui->endingCounter) + 1u);
+        const unsigned int nextEndingCounterBits =
+            static_cast<unsigned int>(gui->endingCounter) + 1u;
+        memcpy(&gui->endingCounter, &nextEndingCounterBits,
+            sizeof gui->endingCounter);
         if (gui->endingCounter >= 120)
             g_GuiGlobalMode = (g_GuiSupervisorFlags & 0x1000) != 0 ? 2 : 14;
     }
