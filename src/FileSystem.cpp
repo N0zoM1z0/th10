@@ -38,7 +38,9 @@ PbgArchive *ArchiveOrDiskPathView::FindArchive()
 
     PbgArchive *archive = g_PbgArchives;
     for (int index = 0; index < g_PbgArchiveCount;
-         ++*reinterpret_cast<unsigned int *>(&index),
+         // Original INC advances the signed index through one native DWORD.
+         // Use unsigned arithmetic without an incompatible-pointer lvalue.
+         index = static_cast<int>(static_cast<unsigned int>(index) + 1u),
          archive = reinterpret_cast<PbgArchive *>(
              reinterpret_cast<unsigned int>(archive) + sizeof(PbgArchive)))
     {
