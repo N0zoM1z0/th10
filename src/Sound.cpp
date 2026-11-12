@@ -888,7 +888,9 @@ process_command:
                 const char *path = command->argument >= 0
                     ? bgmFileNames[command->argument] : command->path;
                 int index = GetFmtIndexByName(path);
-                bgm->GetWaveFile()->Reopen(&bgmFormats[index]);
+                // BGM lookup may return an unchecked signed index.
+                // Preserve the retail flat 32-bit format-table address.
+                bgm->GetWaveFile()->Reopen(SoundWordSlot(bgmFormats, index));
             }
             else if (command->step == 3)
             {
