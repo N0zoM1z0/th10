@@ -90,9 +90,10 @@ void GameScoreStateView::SetTimerCurrent(int value)
 void GameScoreStateView::AddRank(int amount)
 {
     // The native ADD wraps before the signed [-0x400, 0x400] bounds test.
-    rank = static_cast<int>(
-        static_cast<unsigned int>(rank) +
-        static_cast<unsigned int>(amount));
+    // i386 ADD publishes the exact wrapped 32-bit rank representation.
+    const unsigned int nextRankBits =
+        static_cast<unsigned int>(rank) + static_cast<unsigned int>(amount);
+    memcpy(&rank, &nextRankBits, sizeof rank);
     if (rank > 0x400)
         rank = 0x400;
     else if (rank < -0x400)
