@@ -1,5 +1,44 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-12 Exact score serialization and large-owner native counters
+
+The score-file reader and writer now publish native 32-bit words through
+four-byte `memcpy` instead of constructing potentially incompatible or
+unaligned unsigned-int lvalues. `GameStatisticsOwner::Load42B030` computes
+its remaining serialized byte count modulo 2^32 and copies the word into
+the signed counter; `GameFinalizeStatistics42B1E0` copies the record index
+and checksum into their original byte-cursor positions. The selected six-TU
+VC7.1 score graph cold-passes the complete **423-byte** loader (five fields),
+**564-byte** finalizer (24 fields), and **142-byte** tail initializer (seven
+fields), totaling **1,129/1,129 bytes and 36 bound fields**. The separate
+274-byte record-default initializer remains nonexact.
+
+Two larger exact authored bodies also retain the original Win32 arithmetic.
+`ReplayManager::SaveReplay @0x00429B60` accumulates record and payload sizes
+through native unsigned DWORD additions, preserving the original machine
+code **1,681/1,681 bytes and 83 bound fields** in its selected 20-input
+linked graph. `GuiView::UpdateStageElements @0x00414900` now increments
+its signed ending counter by an unsigned modulo-32-bit expression, preserving
+the original signed terminal-frame test; focused linked replay passes its
+entire **3,836/3,836 bytes and 72 fields**. These are source-fidelity
+corrections and retained exact-owner proofs, not new exact function credit
+or a complete game/runtime build. Commits: `e90a06bc`, `c43747ba`,
+`6edca467`, `3f227ec3`.
+
+Large nonexact owners received additional negative native tests. In the
+complete 9,964-byte ANM `ExecuteScript` comparison, changing `I_ADD` to a
+typed destination shrank the PDB contribution to **9,948** bytes; explicit
+four-byte value-copy variants also failed complete owner/field comparison.
+The native baseline remains **9,962/9,964 with 350 fields**, differing only
+at child opcode 91 `+0x113/+0x115`. In the full 7,020-byte ECL `Run`
+comparison, nine `LENGTH_SQUARED` x87 evaluation/local-qualifier forms
+failed to improve the **23 ordinary-byte** frontier with 189 fields; extra
+square locals perturb the interpreter's global frame/register allocation.
+The exact 122-byte `EclVmStackView::Pop` can remain exact even when its
+inlined parent regresses. Preserve both intact source baselines until a
+falsifiable register-lifetime or compiler-context hypothesis is available.
+The relevant ignored trial drivers are under `.analysis/gpt-web/20261112-*`.
+
 ## 2026-11-12 Complete-owner register frontiers and typed native-word fixes
 
 The current source retains complete but still nonexact ANM and ECL bosses.

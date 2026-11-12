@@ -47,9 +47,12 @@ These are highlights, **not** the full list of 608 authored exact owners.
 | `EnemyReadDialog @0x415DB0` / `enemy-read-dialog` | **124/124**, nine fields in the real EH graph. |
 
 Additional accepted larger guards: `GuiView::UpdateStageElements` **3,836**
-bytes/72 fields, `ReplayManager::SaveReplay` **1,681** bytes, and
-`EndingTextVmView::Run` **1,568** bytes. Rebuild these only if a change
-actually touches their dependency graph.
+bytes/72 fields (native modulo-32 ending counter, commit `3f227ec3`),
+`ReplayManager::SaveReplay` **1,681** bytes/83 fields (native DWORD payload
+accumulators, `6edca467`), and `EndingTextVmView::Run` **1,568** bytes.
+The score loader **423**, finalizer **564**, and tail initializer **142**
+remain exact after byte-safe record publications (`e90a06bc`, `c43747ba`).
+Rebuild only if a change touches their dependency graph.
 
 ## Open functions — choose a concrete hypothesis before compiling
 
