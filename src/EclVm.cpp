@@ -473,9 +473,10 @@ float *EclVmContext::ResolveFloat(unsigned int index)
 // See docs/licenses/th10-decomp-MIT.txt.
 static void AddEclSubroutineCount(int &count, int added)
 {
-    // TH10 accumulates the number of named scripts as a 32-bit word.
-    *reinterpret_cast<unsigned int *>(&count) +=
+    // Preserve native modulo-DWORD addition without a mismatched int alias.
+    const unsigned int bits = static_cast<unsigned int>(count) +
         static_cast<unsigned int>(added);
+    memcpy(&count, &bits, sizeof count);
 }
 
 
@@ -557,7 +558,9 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
                 name = reinterpret_cast<const char *>(
                     reinterpret_cast<unsigned int>(name) +
                     static_cast<unsigned int>(strlen(name)) + 1u);
-                ++*reinterpret_cast<unsigned int *>(&index);
+                const unsigned int indexBits =
+                    static_cast<unsigned int>(index) + 1u;
+                memcpy(&index, &indexBits, sizeof index);
                 scriptData = reinterpret_cast<void *>(
                     reinterpret_cast<unsigned int>(offsetCursor) +
                     static_cast<unsigned int>(sizeof(EclVmSerializedSubroutineOffsetView)));
@@ -568,9 +571,11 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
     {
         // This size is also native 32-bit subtraction, including wrap.
         int sortedCount;
-        *reinterpret_cast<unsigned int *>(&sortedCount) =
+        // The native difference is a DWORD, even when its signed bit is set.
+        const unsigned int countBits =
             static_cast<unsigned int>(subroutineCount) -
             static_cast<unsigned int>((*EclFileSlotAtWord(&files[0], fileCount))->subroutineCount);
+        memcpy(&sortedCount, &countBits, sizeof sortedCount);
         memcpy(newEntries, oldEntries,
                sortedCount * sizeof(EclVmSubroutineEntry));
         if (previousEntries != NULL)
@@ -589,7 +594,9 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
                     {
                         if (strcmp(name, entry->name) <= 0)
                             break;
-                        ++*reinterpret_cast<unsigned int *>(&insertionIndex);
+                        const unsigned int insertionIndexBits =
+                            static_cast<unsigned int>(insertionIndex) + 1u;
+                        memcpy(&insertionIndex, &insertionIndexBits, sizeof insertionIndex);
                         entry = reinterpret_cast<EclVmSubroutineEntry *>(
                             reinterpret_cast<unsigned int>(entry) +
                             static_cast<unsigned int>(sizeof(EclVmSubroutineEntry)));
@@ -618,8 +625,12 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
                 scriptData = reinterpret_cast<void *>(
                     reinterpret_cast<unsigned int>(offsetCursor) +
                     static_cast<unsigned int>(sizeof(EclVmSerializedSubroutineOffsetView)));
-                ++*reinterpret_cast<unsigned int *>(&sortedCount);
-                ++*reinterpret_cast<unsigned int *>(&added);
+                const unsigned int sortedCountBits =
+                    static_cast<unsigned int>(sortedCount) + 1u;
+                memcpy(&sortedCount, &sortedCountBits, sizeof sortedCount);
+                const unsigned int addedBits =
+                    static_cast<unsigned int>(added) + 1u;
+                memcpy(&added, &addedBits, sizeof added);
             } while (added < (*EclFileSlotAtWord(&files[0], fileCount))->subroutineCount);
         }
     }
@@ -628,7 +639,9 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
     // across the signed boundary. Publish the wrapped word after retaining
     // the old index for the package-load dispatch and result.
     const int result = fileCount;
-    ++*reinterpret_cast<unsigned int *>(&fileCount);
+    const unsigned int fileCountBits =
+        static_cast<unsigned int>(fileCount) + 1u;
+    memcpy(&fileCount, &fileCountBits, sizeof fileCount);
     file = (*EclFileSlotAtWord(&files[0], result));
     if (file->includeLength != 0)
     {

@@ -166,6 +166,30 @@ local cold replay: **1,129/1,129** bytes and **36** target-bound fields
 across one build artifact. The 274-byte initializer remains **NONEXACT**;
 no new canonical credit or full historical replay is claimed.
 
+## 2026-11-12 Native script database counters without aliasing
+
+`EclVmScriptDatabase::AddScriptData @0x00450220` retains seven signed
+counter/index words in its SCPT file/merge loop: the accumulated script
+count, unsorted index, pre-merge sorted count, insertion index, advancing
+sorted count, number added and file slot. The prior maintained code wrote
+each `int` via an unrelated `unsigned int*` lvalue. The source now computes
+exact native modulo-2^32 arithmetic and uses four-byte `memcpy` to publish
+the word to the signed field; this preserves i386 wrap without unsafe
+pointer aliasing or implementation-defined signed narrowing. The existing
+checked magic/version, unchecked native slot addressing, merge order and
+allocation behavior remain intact.
+
+Five isolated/combined native two-source `/GL` builds emitted the same
+complete PDB-owned `AddScriptData` **589 bytes**, **two** candidate fields,
+**79** ordinary original mismatches; in every variant `EclVmContext::Run`
+stayed **7,020 bytes**, with **189** fields and **23** ordinary mismatches,
+while `FindSubroutine` stayed byte-identical at **136/136**. The installed
+source reproduces those same extents. Four selected original-bound cold
+exact units pass **520/520** bytes and all **seven** fields across two
+artifacts: `find-subroutine` 136, `spawn-thread` 142, `stack-push` 96 and
+`host-run` 146. Both larger owners are still NONEXACT; no full cold replay
+or exact ledger change occurred.
+
 ## 2026-11-12 ECL script insertion shift native predecrement
 
 `EclVmScriptDatabase::AddScriptData @0x00450220` uses a signed temporary
