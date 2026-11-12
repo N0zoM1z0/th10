@@ -4194,11 +4194,12 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         }
         break;
     case 10:
+        // Retail branches on AX, not the full EAX input-helper return.
         if (menu->timer.current < 10)
             break;
         menu->cursor.previous = menu->cursor.current;
-        if (g_FrontEndInput.IsRepeated(0x10)) menu->cursor.Move(-1);
-        if (g_FrontEndInput.IsRepeated(0x20)) menu->cursor.Move(1);
+        if (static_cast<short>(g_FrontEndInput.IsRepeated(0x10))) menu->cursor.Move(-1);
+        if (static_cast<short>(g_FrontEndInput.IsRepeated(0x20))) menu->cursor.Move(1);
         if (menu->cursor.previous != menu->cursor.current) ResultMenuSound(12);
         if ((g_FrontEndInput.pressed & 0x1001) != 0)
         {
@@ -4254,16 +4255,17 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         }
         break;
     case 11: // Replay-file naming: distinct from the score-entry state.
+        // Preserve the same native 16-bit input-result tests here.
         if (menu->timer.current < 10) break;
         menu->keyboard.previous = menu->keyboard.current;
-        if (g_FrontEndInput.IsRepeated(0x10)) menu->keyboard.Move(-13);
-        if (g_FrontEndInput.IsRepeated(0x20)) menu->keyboard.Move(13);
-        if (g_FrontEndInput.IsRepeated(0x40))
+        if (static_cast<short>(g_FrontEndInput.IsRepeated(0x10))) menu->keyboard.Move(-13);
+        if (static_cast<short>(g_FrontEndInput.IsRepeated(0x20))) menu->keyboard.Move(13);
+        if (static_cast<short>(g_FrontEndInput.IsRepeated(0x40)))
         {
             if (menu->keyboard.current % 13 != 0) menu->keyboard.Move(-1);
             else menu->keyboard.Move(12);
         }
-        if (g_FrontEndInput.IsRepeated(0x80))
+        if (static_cast<short>(g_FrontEndInput.IsRepeated(0x80)))
         {
             if (menu->keyboard.current % 13 != 12) menu->keyboard.Move(1);
             else menu->keyboard.Move(-12);

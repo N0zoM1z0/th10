@@ -96,14 +96,19 @@ claimed for it. The result-menu parent's four-TU candidate previously
 measured **3,208 bytes / 763 of 907** aligned instructions. Moving the
 selected VM-ID's real local lifetime to function scope restores the native
 **0x4C** stack frame and advances the complete candidate to **3,216 bytes /
-775 of 907** aligned instructions; it remains **NONEXACT**. After installing the maintained source, a **selected
+775 of 907** aligned instructions. A subsequent source change preserves retail's
+16-bit `TEST AX,AX` results for the six input-repeat calls in states 10
+and 11, instead of testing full EAX. This advances the same four-TU
+nonexact owner to **3,224 bytes / 781 of 907** aligned instructions (against
+3,227 original bytes). Narrowing state 12 instead yields only 605 aligned
+instructions and was not installed. After installing the maintained source, a **selected
 original-bound cold replay of only eight affected units** passed every
 byte: result-menu-score-synchronize 28, result-menu-close 89,
 result-menu-update 206, result-menu-pending-three 65,
 result-menu-pending-six 65, result-menu-update-callback 10,
 anm-request-capture-rectangle 162 and anm-vm-id-set-interrupt 65;
 **690/690** complete bytes and all **36 original-bound address/link
-fields**. No full all-unit/historical cold replay ran. The subsequent selected-VM-ID lifetime change separately passed eight current selected cold exact units (529/529 bytes across seven artifacts).
+fields**. No full all-unit/historical cold replay ran. The subsequent selected-VM-ID lifetime and native AX-test changes each separately passed eight selected cold exact units (529/529 bytes, 28 original-bound linkage fields across seven artifacts per change).
 
 ## 2026-11-11 Exact 28-byte result-menu score synchronization
 
