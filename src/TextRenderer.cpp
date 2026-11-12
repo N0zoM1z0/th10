@@ -149,6 +149,14 @@ bool __stdcall TextRenderBufferApplyAlphaBleed(
     return true;
 }
 
+static __forceinline int TextNativeIndexAdvance(int index, unsigned int delta)
+{
+    const unsigned int bits = static_cast<unsigned int>(index) + delta;
+    int next;
+    memcpy(&next, &bits, sizeof next);
+    return next;
+}
+
 // Target 0x00437160 (157-byte owner): invert GDI bitmap alpha for the
 // three supported pixel formats. The A1R5G5B5 path also clears the 15-bit
 // color whenever the new alpha becomes zero; the other formats keep RGB.
@@ -170,7 +178,7 @@ bool TextRenderBufferView::InvertAlpha(int processedRows)
     {
     case 0x15:  // A8R8G8B8
         for (index = 3; index < totalBytes;
-             *reinterpret_cast<unsigned int *>(&index) += 4u)
+             index = TextNativeIndexAdvance(index, 4u))
             *TextNativePixelAt(bytes, index) = static_cast<unsigned char>(
                 ~*TextNativePixelAt(bytes, index));
         return true;
@@ -197,7 +205,7 @@ bool TextRenderBufferView::InvertAlpha(int processedRows)
 
     case 0x1a:  // A4R4G4B4
         for (index = 1; index < totalBytes;
-             *reinterpret_cast<unsigned int *>(&index) += 2u)
+             index = TextNativeIndexAdvance(index, 2u))
             *TextNativePixelAt(bytes, index) ^= 0xf0;
         return true;
     }

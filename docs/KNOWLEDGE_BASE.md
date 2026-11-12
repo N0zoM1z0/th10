@@ -69,6 +69,26 @@ and **31 linkage fields** across three artifacts (`anm-get-int-var`, its
 pointer resolver, `anm-loaded-create-vm-variant2`, and layer-node insertion).
 No full cold replay or new exact credit.
 
+## 2026-11-12 Text alpha inversion native index wrap without aliasing
+
+`TextRenderBufferView::InvertAlpha @0x00437160` has three original pixel
+formats and a physical **157-byte** owner. Its A8R8G8B8 and A4R4G4B4 paths
+advance a signed byte index by four and two, respectively, using native i386
+32-bit wrapping. The previous maintained source wrote through an unsigned-
+int pointer obtained by reinterpreting the signed index address. The local
+`TextNativeIndexAdvance` helper now computes the unsigned DWORD arithmetic
+and copies its exact bit pattern into the signed index via `memcpy`, avoiding
+an incompatible-type lvalue and implementation-defined signed conversion.
+
+A fresh normal-COFF VC7.1 SP1 `/O2 /Gy` build emits a **byte-identical
+157-byte** `InvertAlpha` owner compared with the preceding source. Its
+**112/157** ordinary target-byte frontier therefore remains **NONEXACT**,
+not a newly accepted match. Only three affected original-bound exact
+cold units were replayed: `text-buffer-apply-alpha-bleed` **946/946**,
+`text-release-buffer` **107/107** (three binding fields), and
+`text-fill-color` **72/72**, for **1,125/1,125** bytes across two artifacts.
+No complete/historical replay was run.
+
 ## 2026-11-12 Cursor-set return value preserved at member boundary
 
 The original `FrontEndCursorSetCurrent @0x0040AD20` returns the published
