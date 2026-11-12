@@ -961,8 +961,9 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
                 enemy->damageReductionTimer.current <= 0)
             {
                 // Retail i386 SUB uses the native low 32-bit life word.
-                *reinterpret_cast<unsigned int *>(&enemy->life) -=
+                const unsigned int nativeLife = static_cast<unsigned int>(enemy->life) -
                     static_cast<unsigned int>(damage);
+                memcpy(&enemy->life, &nativeLife, sizeof nativeLife);
             }
 
             const unsigned char *callback =
@@ -1110,7 +1111,8 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
         if ((enemy->flags & 0x8000u) != 0)
             g_GuiView->bossPositionVm.flags35C &= ~0x8000u;
         // Retail i386 decrements the actual four-byte flash counter word.
-        --*reinterpret_cast<unsigned int *>(&enemy->damageFlashFrames);
+        const unsigned int nativeFlash = static_cast<unsigned int>(enemy->damageFlashFrames) - 1u;
+        memcpy(&enemy->damageFlashFrames, &nativeFlash, sizeof nativeFlash);
     }
 
     if (enemy->damageReductionTimer.current > 0)

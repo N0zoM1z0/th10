@@ -166,6 +166,30 @@ local cold replay: **1,129/1,129** bytes and **36** target-bound fields
 across one build artifact. The 274-byte initializer remains **NONEXACT**;
 no new canonical credit or full historical replay is claimed.
 
+## 2026-11-12 Enemy runtime native life/flash DWORD publication
+
+The full `EnemyRuntimeUpdate @0x0040DC80` (2,412 bytes) contains two native
+signed-integer updates whose i386 arithmetic wraps at the 32-bit boundary:
+life decrement after collision damage and the four-frame damage-flash
+countdown. Their maintained source wrote `int` fields through incompatible
+`unsigned int*` lvalues. Both updates now compute the native unsigned DWORD
+subtraction and publish the *exact* four bytes into the signed field via
+`memcpy`, without changing the update control flow, signed life/death test,
+or flash cue selection.
+
+Five individually rebuilt ten-input Enemy `/GL /GS` link graphs (baseline,
+each isolated change, both typed casts, and both `memcpy` writes) retain the
+complete 2,412-byte PDB owner. In the final installed-source link, the owner
+has **1,575/2,136** comparable bytes, **69** candidate linked fields, and a
+*byte-identical full-function SHA256* to the baseline image:
+`310b998f625195a5a93b6ba17b119da116b393f79a743dc40871ea349f8b7dc8`.
+The parent remains **NONEXACT**, with its pre-existing register, motion, and
+callback differences. Four independently cold-replayed target-bound neighbors
+pass **669/669 bytes**, **21** fields, one actual artifact: item-drop
+counts48, finalize-death162, cancel-record199 and cancel-pattern260.
+This is a real machine-code-neutral source repair, not a new exact entry; no
+whole-game replay was invoked.
+
 ## 2026-11-12 PBG memory-file seek remaining-word signed conversion
 
 `CMemoryPbgFile::Seek @0x004364F0` compares a native low-32-bit remaining
