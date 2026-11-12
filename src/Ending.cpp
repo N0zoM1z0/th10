@@ -348,7 +348,10 @@ int __stdcall EndingTextVmView::Run()
             break;
         case 7:
             g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f);
-            g_AnmRenderManagerView->ReleaseAnm(EndingRecordInt(instruction) + 29);
+            // The resource bank index is computed by a wrapping i386 add;
+            // keep the terminal script word's low 32 bits on conversion.
+            g_AnmRenderManagerView->ReleaseAnm(static_cast<int>(
+                static_cast<unsigned int>(EndingRecordInt(instruction)) + 29u));
             flags |= 4;
             backgroundPath = reinterpret_cast<const char *>(instruction + 8);
             worker.Start(this, EndingLoadAnimationCallback);
