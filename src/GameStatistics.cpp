@@ -21,7 +21,11 @@ int GameFinalizeStatistics42B1E0(GameStatisticsOwner *statistics)
     unsigned char *indexCursor = reinterpret_cast<unsigned char *>(statistics)
         + offsetof(GameStatisticsOwner, records)
         + offsetof(GameStatisticsRecord, recordIndex);
-    for (; i < 7; ++i, indexCursor += sizeof(GameStatisticsRecord))
+    // Serialized recordIndex fields are traversed using native flat
+    // Win32 addresses, not byte-pointer arithmetic across subobjects.
+    for (; i < 7; ++i, indexCursor = reinterpret_cast<unsigned char *>(
+             reinterpret_cast<unsigned int>(indexCursor) +
+             static_cast<unsigned int>(sizeof(GameStatisticsRecord))))
     {
         if (*reinterpret_cast<unsigned short *>(
                 indexCursor - offsetof(GameStatisticsRecord, recordIndex))
