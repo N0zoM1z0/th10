@@ -1,4 +1,5 @@
 #include "Rng.hpp"
+#include <string.h>
 
 // Original 0x0044BA80..0x0044BB1A (155 bytes): two returned 16-bit draws,
 // followed by two more seed advances. All four advances are observable via
@@ -12,5 +13,9 @@ unsigned int RngView::GetRandomU32SkipNextPair()
     result[1] = GetRandomU16();
     result[2] = GetRandomU16();
     result[3] = GetRandomU16();
-    return *reinterpret_cast<unsigned int *>(result);
+    // Retail reads the low two 16-bit draws as one native DWORD. Copy the
+    // representation rather than dereferencing an unaligned integer alias.
+    unsigned int resultWord;
+    memcpy(&resultWord, result, sizeof resultWord);
+    return resultWord;
 }
