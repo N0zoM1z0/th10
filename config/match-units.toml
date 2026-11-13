@@ -22662,6 +22662,21 @@ linkages = [
 ]
 
 
+[units.result-menu-mark-tasks]
+artifact_kind = "linked-pe"
+source = "src/ResultMenuLifecycle.cpp"
+support_sources = ["src/Chain.cpp", "src/AnmManager.cpp", "src/ReplayManager.cpp", "src/ResultMenuCleanup.cpp"]
+output_dir = "build/match-linked/ResultMenuIntegrated"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?GameCreateController@@YAPAXXZ"
+functions = ["ResultMenuMarkTasks422200"]
+symbol = "?ResultMenuMarkTasks422200@@YAXPAUResultMenuView@@@Z"
+target_address = 0x00422200
+size = 28
+linkages = []
+
 [units.result-menu-constructor]
 artifact_kind = "linked-pe"
 source = "src/ResultMenuLifecycle.cpp"
