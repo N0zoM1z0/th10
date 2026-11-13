@@ -12,13 +12,20 @@ Slow Rate and comment writes. The two formatted terminators still advance by
 the `sprintf` return plus one byte. Each selected original-bound cold replay
 preserves the full **1,681/1,681 bytes and 83 fields**.
 
-`Player::CalculateDamageToTarget` retains **1,170/1,170 bytes and 28 fields**
-after the effect-hit counter, score accumulator, shot-hit total and effect
-row total were made explicit native DWORD operations (`e6d1f733`,
-`be58bce9`, `12099ae8`, `d0657fd9`). `Player::SpawnShot` remains **717/717 / 17
-fields** after flat source-slot addressing and wrapped animation-script `+5`
-(`d01d1a90`, `58989c8f`); `PlayerUpdateShots` remains **876/876 / 22 fields**
-with native unchecked slot addressing (`e60fa9ab`).
+`Player::DamageTargetView::CalculateDamageToTarget @0x00428630` retains
+**1,170/1,170 bytes and 28 fields** after restoring the target's private ABI.
+Ghidra and the actual Enemy caller establish ECX as the nullable optional
+hit-flag pointer, with `Player*`, target position and target size on the stack
+and `RET 12`. The four-byte `DamageTargetView` is only an ABI overlay; it does
+not claim the original class or identifier. The caller now emits `XOR ECX,ECX`,
+pushes the three stack arguments in target order, and calls the complete owner.
+Two independent canonical 17-TU `/GL` cold links after this correction each
+reproduce **1,170/1,170 bytes and all 28 fields**. The same selected replay set
+also passes `PlayerUpdateGate28::GetDamageAtPosition` **202/202 / 6 fields**,
+`PlayerUpdateShots` **876/876 / 22 fields**, and `EnemyManagerUpdate`
+**166/166 / 5 fields**. `Player::SpawnShot` remains **717/717 / 17 fields**
+after flat source-slot addressing and wrapped animation-script `+5`
+(`d01d1a90`, `58989c8f`).
 
 `GameScoreStateView::AddFaith` and `DecayFaith` publish their wrapped ADD/SUB
 words through the signed field before the original clamps (`b9540161`). The
@@ -61,11 +68,21 @@ field** `ExecuteScript` frontier (`4320ebe6`).
   target, with 173 fields. State 7/8 and states 10–13 remain the main control
   flow frontier.
 - **Enemy**: `EnemyRuntimeUpdate` remains 2,412 bytes / 69 fields, with
-  1,575/2,136 comparable bytes in the selected ten-TU graph. The 14,416-byte
-  ECL dispatcher remains nonexact with 800 source field identities.
+  1,575/2,136 comparable bytes. Its damage call now has the correct nullable
+  ECX receiver and three stack arguments; the complete 1,170-byte Player damage
+  owner is exact. The first runtime seam is target `MOV EBX,8` at `+0x49D`,
+  before the damage branch; the candidate materializes the loop count directly
+  into `[esp+0x2C]` inside the two managed-VM loop arms and uses EBX for the
+  manager pointer. Moving `remaining = 8` before the branch was byte-neutral;
+  rewriting the arms as one conditional loop shrank the owner to 2,383 bytes
+  and 1,124/2,136 comparable bytes, so it was rejected. The 14,416-byte ECL
+  dispatcher remains nonexact with 800 source field identities.
 - **GUI and Player**: `GuiMessageVmView::Run` is 4,492 versus the 4,480-byte
   target. The Player callback is 3,100 versus 3,112 bytes; movement is 1,616
-  versus 1,656 bytes. The shot loop and damage owner remain exact.
+  versus 1,656 bytes. The Player damage owner is **1,170/1,170 / 28 fields**
+  under the corrected private ABI; auxiliary damage, shot update and Enemy
+  manager update pass their selected **202/202**, **876/876** and **166/166**
+  replays.
 - **Sound `PreloadBgm`**: 369 bytes, 325/329 ordinary bytes and ten fields;
   four `ReadFile` register encodings remain different at `+0x121/+0x127/
   +0x12A/+0x12B`.
@@ -105,7 +122,14 @@ homes and two volatile Y-destination forms were byte-neutral. The enclosing
 fields and **1,575/2,136 comparable bytes** in the same 12-source graph. Moving
 or registering the eight-VM loop count did not improve it; an explicit EBX
 home experiment grew it to 2,418 bytes and reduced agreement to 1,129/2,136,
-so it was discarded. No new exact credit or ledger promotion was made.
+so it was discarded. A two-axis pointer loop for the motion leaf grew it to
+172 bytes and only 11/155 comparable bytes. The target's `MOV EBX,8` at
+`+0x49D` seeds the eight-VM loop counter before the damage branch, then spills
+it before EBX becomes the manager pointer. Moving `remaining = 8` before that
+branch did not change codegen; a single conditional loop form shrank the
+complete runtime to 2,383 bytes and 1,124/2,136 comparable bytes. Both source
+controls were rejected. The corrected Player damage call ABI is now exact;
+no Enemy runtime or motion exact credit changed.
 
 ## 2026-11-12 Exact replay word publication and isolated large-owner compiler controls
 
