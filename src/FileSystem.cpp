@@ -262,8 +262,10 @@ bool LoadArchive(const char *filename)
     {
         // The retail archive count uses one native i386 word increment.
         // Preserve its wrapped bits without an incompatible unsigned lvalue.
-        g_PbgArchiveCount = static_cast<int>(
-            static_cast<unsigned int>(g_PbgArchiveCount) + 1u);
+        const unsigned int nextArchiveCountBits =
+            static_cast<unsigned int>(g_PbgArchiveCount) + 1u;
+        memcpy(&g_PbgArchiveCount, &nextArchiveCountBits,
+            sizeof g_PbgArchiveCount);
         return true;
     }
     return false;
