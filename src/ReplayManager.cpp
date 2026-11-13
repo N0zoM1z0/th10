@@ -805,24 +805,30 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
             userDataCursor, "Name %s\r\n", replayData->replayName)));
 
     tm *localTime = localtime((time_t *)&replayData->timestamp);
-    userDataCursor += sprintf(
-        userDataCursor, "Date %.2d/%.2d/%.2d %.2d:%.2d\r\n",
-        localTime->tm_year % 100, localTime->tm_mon + 1, localTime->tm_mday,
-        localTime->tm_hour, localTime->tm_min);
+    userDataCursor = reinterpret_cast<char *>(
+        reinterpret_cast<unsigned int>(userDataCursor) +
+        static_cast<unsigned int>(sprintf(
+            userDataCursor, "Date %.2d/%.2d/%.2d %.2d:%.2d\r\n",
+            localTime->tm_year % 100, localTime->tm_mon + 1, localTime->tm_mday,
+            localTime->tm_hour, localTime->tm_min)));
 
-    userDataCursor += sprintf(
+    userDataCursor = reinterpret_cast<char *>(
+        reinterpret_cast<unsigned int>(userDataCursor) +
+        static_cast<unsigned int>(sprintf(
         userDataCursor, "Chara %s\r\n",
         *reinterpret_cast<const char *const *>(
             reinterpret_cast<unsigned int>(g_ReplayCharacterNames) +
             (static_cast<unsigned int>(replayData->character) * 3u +
              static_cast<unsigned int>(replayData->shotType)) *
-                sizeof(*g_ReplayCharacterNames)));
-    userDataCursor += sprintf(
+                sizeof(*g_ReplayCharacterNames)))));
+    userDataCursor = reinterpret_cast<char *>(
+        reinterpret_cast<unsigned int>(userDataCursor) +
+        static_cast<unsigned int>(sprintf(
         userDataCursor, "Rank %s\r\n",
         *reinterpret_cast<const char *const *>(
             reinterpret_cast<unsigned int>(g_ReplayDifficultyNames) +
             static_cast<unsigned int>(replayData->difficulty) *
-                sizeof(*g_ReplayDifficultyNames)));
+                sizeof(*g_ReplayDifficultyNames)))));
 
     if (replayData->completionState > 7)
     {
