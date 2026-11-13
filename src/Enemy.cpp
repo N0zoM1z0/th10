@@ -1047,21 +1047,19 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
 
     unsigned int *id = &enemy->managedVmIds[0];
     int remaining = eclResult == 0 ? 8 : 0;
-    AnmRenderManagerView *manager;
     if ((enemy->flags & 0x40000u) == 0)
     {
-        manager = g_AnmRenderManagerView;
         for (; remaining != 0; --remaining, ++id)
-            manager->SetVmWorldPosition(AnmVmIdView(*id),
+            g_AnmRenderManagerView->SetVmWorldPosition(AnmVmIdView(*id),
                 reinterpret_cast<const AnmFloat3View *>(&enemy->worldMotion.position));
     }
     else
     {
-        manager = g_AnmRenderManagerView;
         for (; remaining != 0; --remaining, ++id)
-            manager->SetVmPosition(AnmVmIdView(*id),
+            g_AnmRenderManagerView->SetVmPosition(AnmVmIdView(*id),
                 reinterpret_cast<const AnmFloat3View *>(&enemy->worldMotion.position));
     }
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
 
     if ((enemy->flags & 0x11u) == 0 &&
         (enemy->flags & 0xc0000u) == 0)

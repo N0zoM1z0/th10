@@ -121,23 +121,22 @@ homes and two volatile Y-destination forms were byte-neutral. A local
 `__forceinline` floor wrapper kept the 168-byte extent but regressed ordinary
 agreement to **131/143**. A two-axis pointer loop grew the leaf to **172** bytes
 and **11/155** comparable bytes; neither was installed. The enclosing
-`EnemyRuntimeUpdate` remains a complete **2,412-byte** candidate with 69
-fields and **1,582/2,136 comparable bytes** in the same 12-source graph after
-retaining the ECL result and deriving the eight-slot VM count from its success
-state. This recovers seven ordinary bytes at `+0x948..+0x94E` in the timer
-update's x87 operand order without changing the 2,412-byte extent or 69 fields.
-The target's earlier `MOV EBX,8` at `+0x49D` remains unmatched. Moving or
-registering the count alone did not improve it; an explicit EBX home experiment
-grew the owner to 2,418 bytes and reduced agreement to 1,129/2,136, so it was
-discarded. A two-axis pointer loop for the motion leaf grew it to
-172 bytes and only 11/155 comparable bytes. The target's `MOV EBX,8` at
-`+0x49D` seeds the eight-VM loop counter before the damage branch, then spills
-it before EBX becomes the manager pointer. Moving `remaining = 8` before that
-branch did not change codegen; adding a C++ `register` hint was also
-byte-neutral. A single conditional loop form shrank the complete runtime to
-2,383 bytes and 1,124/2,136 comparable bytes. The ECL-result-derived count
-is retained for its seven-byte timer-tail win; the other counter controls were
-rejected. The Player damage owner now uses a four-byte `DamageTargetView` overlay as
+`EnemyRuntimeUpdate` remains a complete **2,412-byte** candidate and now
+matches **2,128/2,132 comparable bytes** with 70 candidate field identities.
+The ECL-result-derived eight-slot count preserves the seven-byte timer-tail
+recovery at `+0x948..+0x94E`. A larger register-lifetime breakthrough came from
+using `g_AnmRenderManagerView` directly in each mutually exclusive VM loop,
+then binding the manager local after the loop for `FindVm`. This makes LTCG
+restore the target's `MOV EBX,8` at `+0x49D`, spill EBX to `[esp+0x2C]` in each
+branch, and load the manager into EBX only after that spill. Both branch loop
+bodies now match the target schedule. Only four ordinary byte differences
+remain, at `+0x741`, `+0x742`, `+0x7AC` and `+0x7B2`; the first pair is the
+second loop's EAX-versus-ECX load/push, and the latter pair is EAX-versus-EDX
+for the tracked-enemy owner copy. The two-axis pointer loop for the motion leaf
+grew it to 172 bytes and only 11/155 comparable bytes; the leaf remains
+168/171. A volatile manager local regressed the Boss to 1,135/2,132, a single
+conditional loop shrank it to 2,383 bytes / 1,124/2,136, and the other counter
+controls were rejected. The Player damage owner now uses a four-byte `DamageTargetView` overlay as
 the nullable ECX receiver and passes `Player*`, target position and target size
 on the stack; canonical replay still passes **1,170/1,170 bytes / 28 fields**.
 The `EnemyRuntimeUpdate` damage callsite now emits that exact ABI. Seven
