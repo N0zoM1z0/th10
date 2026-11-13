@@ -4392,9 +4392,15 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
                 else if (key == length - 1)
                 {
                     unsigned char *profile = g_FrontEndProfileData;
-                    strcpy(reinterpret_cast<char *>(profile +
-                        (g_ReplayCharacter * 3 + g_ReplayShotType) * 0x437c + 0x1e +
-                        (menu->cursor.current + g_ReplayDifficulty * 10) * 0x18), menu->name);
+                    // Score-profile addresses are flat native DWORDs.
+                    strcpy(reinterpret_cast<char *>(
+                        reinterpret_cast<unsigned int>(profile) +
+                        (static_cast<unsigned int>(g_ReplayCharacter) * 3u +
+                         static_cast<unsigned int>(g_ReplayShotType)) * 0x437cu +
+                        0x1eu +
+                        (static_cast<unsigned int>(menu->cursor.current) +
+                         static_cast<unsigned int>(g_ReplayDifficulty) * 10u) * 0x18u),
+                        menu->name);
                     strcpy(reinterpret_cast<char *>(profile + 0x1d878), menu->name);
                     menu->mainVm.SetFlag2();
                     menu->state = 8;
