@@ -2186,21 +2186,15 @@ dispatch_difficulty_float_index_4_a:
   case ENEMY_ECL_SET_BULLET_SPEED_BY_RANK_3:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
-    if (g_EnemyChapterState.rank >= 0x200) {
-dispatch_bullet_speed_high:
-      iVar26 = static_cast<int>(
-          static_cast<unsigned int>(iVar26) *
-          static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
-          static_cast<unsigned int>(runtimeAddress));
-      fVar19 = (ReadFloatArgument(5));
-      EnemyPatternAtRuntimeByte(iVar26)->fields.speedA = (float)fVar19;
-      fVar19 = (ReadFloatArgument(6));
-      EnemyPatternAtRuntimeByte(iVar26)->fields.speedB = (float)fVar19;
-      return 0;
-    }
-    iVar27 = static_cast<int>(
-        static_cast<unsigned int>(g_EnemyChapterState.rank) + 0x200u);
-    goto dispatch_select_bullet_speed_low;
+    if (g_EnemyChapterState.rank >= 0x200)
+      goto dispatch_bullet_speed_high;
+    iVar26 = static_cast<int>(
+        static_cast<unsigned int>(iVar26) *
+        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
+        static_cast<unsigned int>(runtimeAddress));
+    if (g_EnemyChapterState.rank >= -512)
+      goto dispatch_select_bullet_speed_low;
+    goto dispatch_bullet_speed_lowest;
   case ENEMY_ECL_SET_BULLET_SPEED_BY_RANK_5:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
@@ -2209,9 +2203,9 @@ dispatch_bullet_speed_high:
           static_cast<unsigned int>(iVar26) *
           static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
           static_cast<unsigned int>(runtimeAddress));
-      fVar19 = (ReadFloatArgument(9));
+      fVar19 = ReadFloatArgument(9);
       EnemyPatternAtRuntimeByte(iVar26)->fields.speedA = (float)fVar19;
-      fVar19 = (ReadFloatArgument(10));
+      fVar19 = ReadFloatArgument(10);
       EnemyPatternAtRuntimeByte(iVar26)->fields.speedB = (float)fVar19;
       return 0;
     }
@@ -2220,31 +2214,41 @@ dispatch_bullet_speed_high:
           static_cast<unsigned int>(iVar26) *
           static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
           static_cast<unsigned int>(runtimeAddress));
-      fVar19 = (ReadFloatArgument(7));
+      fVar19 = ReadFloatArgument(7);
       EnemyPatternAtRuntimeByte(iVar26)->fields.speedA = (float)fVar19;
-      fVar19 = (ReadFloatArgument(8));
+      fVar19 = ReadFloatArgument(8);
       EnemyPatternAtRuntimeByte(iVar26)->fields.speedB = (float)fVar19;
       return 0;
     }
-    if (g_EnemyChapterState.rank >= -200) goto dispatch_bullet_speed_high;
-    iVar27 = static_cast<int>(
-        static_cast<unsigned int>(g_EnemyChapterState.rank) + 600u);
-dispatch_select_bullet_speed_low:
+    if (g_EnemyChapterState.rank >= -200)
+      goto dispatch_bullet_speed_high;
     iVar26 = static_cast<int>(
-          static_cast<unsigned int>(iVar26) *
-          static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
-          static_cast<unsigned int>(runtimeAddress));
-    if (0 <= iVar27) {
-      fVar19 = (ReadFloatArgument(3));
-      EnemyPatternAtRuntimeByte(iVar26)->fields.speedA = (float)fVar19;
-      fVar19 = (ReadFloatArgument(4));
-      EnemyPatternAtRuntimeByte(iVar26)->fields.speedB = (float)fVar19;
-      return 0;
-    }
-dispatch_bullet_speed_lowest:
-    fVar19 = (ReadFloatArgument(1));
+        static_cast<unsigned int>(iVar26) *
+        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
+        static_cast<unsigned int>(runtimeAddress));
+    if (g_EnemyChapterState.rank >= -600)
+      goto dispatch_select_bullet_speed_low;
+    goto dispatch_bullet_speed_lowest;
+  dispatch_bullet_speed_high:
+    iVar26 = static_cast<int>(
+        static_cast<unsigned int>(iVar26) *
+        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
+        static_cast<unsigned int>(runtimeAddress));
+    fVar19 = ReadFloatArgument(5);
     EnemyPatternAtRuntimeByte(iVar26)->fields.speedA = (float)fVar19;
-    fVar19 = (ReadFloatArgument(2));
+    fVar19 = ReadFloatArgument(6);
+    EnemyPatternAtRuntimeByte(iVar26)->fields.speedB = (float)fVar19;
+    return 0;
+  dispatch_select_bullet_speed_low:
+    fVar19 = ReadFloatArgument(3);
+    EnemyPatternAtRuntimeByte(iVar26)->fields.speedA = (float)fVar19;
+    fVar19 = ReadFloatArgument(4);
+    EnemyPatternAtRuntimeByte(iVar26)->fields.speedB = (float)fVar19;
+    return 0;
+  dispatch_bullet_speed_lowest:
+    fVar19 = ReadFloatArgument(1);
+    EnemyPatternAtRuntimeByte(iVar26)->fields.speedA = (float)fVar19;
+    fVar19 = ReadFloatArgument(2);
     EnemyPatternAtRuntimeByte(iVar26)->fields.speedB = (float)fVar19;
     return 0;
   case ENEMY_ECL_INTERPOLATE_BULLET_SPEED_BY_RANK:
@@ -2268,21 +2272,15 @@ dispatch_bullet_speed_lowest:
   case ENEMY_ECL_SET_BULLET_COUNT_BY_RANK_3:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
-    if (g_EnemyChapterState.rank >= 0x200) {
-dispatch_bullet_count_high:
-      iVar26 = static_cast<int>(
-          static_cast<unsigned int>(iVar26) *
-          static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
-          static_cast<unsigned int>(runtimeAddress));
-      uVar22 = ENEMY_READ_INT_DIRECT(5);
-      EnemyPatternAtRuntimeByte(iVar26)->fields.countA = (short)uVar22;
-      uVar22 = ENEMY_READ_INT_DIRECT(6);
-      EnemyPatternAtRuntimeByte(iVar26)->fields.countB = (short)uVar22;
-      return 0;
-    }
-    iVar27 = static_cast<int>(
-        static_cast<unsigned int>(g_EnemyChapterState.rank) + 0x200u);
-    goto dispatch_select_bullet_count_low;
+    if (g_EnemyChapterState.rank >= 0x200)
+      goto dispatch_bullet_count_high;
+    iVar26 = static_cast<int>(
+        static_cast<unsigned int>(iVar26) *
+        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
+        static_cast<unsigned int>(runtimeAddress));
+    if (g_EnemyChapterState.rank >= -512)
+      goto dispatch_select_bullet_count_low;
+    goto dispatch_bullet_count_lowest;
   case ENEMY_ECL_SET_BULLET_COUNT_BY_RANK_5:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
@@ -2314,22 +2312,34 @@ dispatch_bullet_count_high:
       EnemyPatternAtRuntimeByte(iVar26)->fields.countB = (short)uVar22;
       return 0;
     }
-    if (g_EnemyChapterState.rank >= -200) goto dispatch_bullet_count_high;
-    iVar27 = static_cast<int>(
-        static_cast<unsigned int>(g_EnemyChapterState.rank) + 600u);
-dispatch_select_bullet_count_low:
-    iVar11 = reinterpret_cast<int>(owner);
+    if (g_EnemyChapterState.rank >= -200)
+      goto dispatch_bullet_count_high;
     iVar26 = static_cast<int>(
-          static_cast<unsigned int>(iVar26) *
-          static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
-          static_cast<unsigned int>(runtimeAddress));
-    if (0 <= iVar27) {
-      uVar22 = ENEMY_READ_INT_DIRECT(3);
-      EnemyPatternAtRuntimeByte(iVar26)->fields.countA = (short)uVar22;
-      uVar22 = ENEMY_READ_INT_DIRECT(4);
-      EnemyPatternAtRuntimeByte(iVar26)->fields.countB = (short)uVar22;
-      return 0;
-    }
+        static_cast<unsigned int>(iVar26) *
+        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
+        static_cast<unsigned int>(runtimeAddress));
+    if (g_EnemyChapterState.rank >= -600)
+      goto dispatch_select_bullet_count_low;
+    goto dispatch_bullet_count_lowest;
+  dispatch_bullet_count_high:
+    iVar26 = static_cast<int>(
+        static_cast<unsigned int>(iVar26) *
+        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
+        static_cast<unsigned int>(runtimeAddress));
+    uVar22 = ENEMY_READ_INT_DIRECT(5);
+    EnemyPatternAtRuntimeByte(iVar26)->fields.countA = (short)uVar22;
+    uVar22 = ENEMY_READ_INT_DIRECT(6);
+    EnemyPatternAtRuntimeByte(iVar26)->fields.countB = (short)uVar22;
+    return 0;
+  dispatch_select_bullet_count_low:
+    iVar11 = reinterpret_cast<int>(owner);
+    uVar22 = ENEMY_READ_INT_DIRECT(3);
+    EnemyPatternAtRuntimeByte(iVar26)->fields.countA = (short)uVar22;
+    uVar22 = ENEMY_READ_INT_DIRECT(4);
+    EnemyPatternAtRuntimeByte(iVar26)->fields.countB = (short)uVar22;
+    return 0;
+  dispatch_bullet_count_lowest:
+    iVar11 = reinterpret_cast<int>(owner);
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     EnemyPatternAtRuntimeByte(iVar26)->fields.countA = (short)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(2);

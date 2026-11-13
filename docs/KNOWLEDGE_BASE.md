@@ -13571,3 +13571,26 @@ byte-identical to retail. This is still NONEXACT: the comparable-byte match
 is limited, and `ENEMY_ECL_INTERPOLATE_FLOAT_BY_RANK` still differs in x87
 operand order and local spill homes (`ESP+0x0C/+0x28` versus retail
 `ESP+0x10/+0x30`). md.
+
+## 2026-11-13 Enemy ECL dispatcher rank-threshold reconstruction
+
+The 14,416-byte `EnemyRuntimeView::DispatchEclInstruction @0x0040E770`
+remains nonexact. A pinned 11-support-TU VC7.1 `/GL` diagnostic link now
+reproduces its main 181-byte opcode-to-handler map **byte-for-byte**: all
+181 opcode slots map to the same 108 unique handler indices as retail. The
+retail main switch table starts at function `+0x35C0`; the current candidate's
+starts at `+0x35E0`, so its candidate owner is 14,448 bytes (32 bytes larger).
+The table's equal byte map establishes opcode grouping, not body exactness.
+
+Rank-selected bullet speed/count branches were rewritten with their direct
+native thresholds: rank-3 selectors split at `+512/-512`; rank-5 selectors
+split at `+600/+200/-200/-600`. In the selected linked diagnostic, the rank-5
+bullet-speed handler (`0x1A7`) improves from **0.244 to 0.853** normalized
+instruction-shape similarity against its target handler. The rank-3 bullet
+count handler (`0x1A9`) regresses from **0.706 to 0.350**, while rank-5 bullet
+count (`0x1AA`) improves from **0.527 to 0.586**. This is an explicit
+trade-off, not an exactness claim; keep the count-handler seam open and do
+not promote the dispatcher to exact. Code-only sequence comparison (excluding
+the embedded switch data) is **3,412/3,926 mnemonic matches** and **2,871
+normalized-shape matches** in the current candidate. No full cold replay was
+run; only the affected 11-source Enemy linked graph was rebuilt.
