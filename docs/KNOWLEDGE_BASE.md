@@ -13614,3 +13614,24 @@ state cleanup ordering. Seven candidate absolute-address fields are
 recognized and normalization is complete. This is a high-similarity
 intermediate, not an exactness claim; no canonical replay receipt has been
 accepted and the callback remains nonexact.
+
+## 2026-11-13 EnemyResolveRuntimeCallback native timer-flag ordering
+
+The 593-byte `EnemyResolveRuntimeCallback @0x004127A0` now has a much closer
+17-TU VC7.1 SP1 `/GL /GS` linked diagnostic. The timer-expiry branch emits the
+native `or dword ptr [ecx+0x2480], 0x10000` directly before reading and
+subtracting the timeout global. This preserves the target's memory-operation
+order; allowing the compiler to schedule the global read earlier had produced
+a 601-byte candidate with only 362/548 comparable ordinary bytes.
+
+Current linked candidate: **593/593 bytes**, seven candidate DIR32 fields at
+`+0xA2, +0x112, +0x16C, +0x193, +0x1A2, +0x1AA, +0x1B3`. Five align with
+target sites; the first and third are four bytes later than target sites
+`+0x9E` and `+0x168`. Excluding the union of target and candidate address
+fields, **539/557 ordinary bytes match** after excluding the union of target and candidate address fields (18 differ), with 147/147 decoded
+instructions and 144 matched normalized instruction shapes (0.979592).
+Relocation normalization is complete. The remaining differences are
+concentrated in Player-state flag cleanup and register/lifetime ordering. The
+callback remains `unclassified`/nonexact; this diagnostic is not a canonical
+accepted replay and does not establish original production TU ownership. The
+full 17-TU affected graph was linked; no full cold replay was run.

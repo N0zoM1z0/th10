@@ -105,7 +105,11 @@ const unsigned char *__fastcall EnemyResolveRuntimeCallback(
             owner->runtime.life = owner->runtime.callbackThresholds[timerIndex].lifeThreshold;
             owner->runtime.callbackThresholds[timerIndex].lifeThreshold = -1;
             EnemyResetCallbackTimer(&owner->runtime.updateTimer);
-            owner->runtime.flags |= 0x10000u;
+            // Retail performs this in-place memory OR before reading the timeout global.
+            // Keep the x86 read-modify-write here so LTCG cannot hoist that read.
+            __asm {
+                or dword ptr [ecx + 2480h], 10000h
+            }
 
             g_EnemyTimeoutValue = static_cast<int>(
                 static_cast<unsigned int>(g_EnemyTimeoutValue) - 3000u);
