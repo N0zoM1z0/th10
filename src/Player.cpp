@@ -2015,9 +2015,12 @@ int Player::CalculateDamageToTarget(
 
     if (damage != 0)
     {
-        g_GameScore = static_cast<int>(
+        // Score accumulation is a native i386 DWORD before the signed
+        // billion-point saturation check; preserve the exact wrapped bits.
+        const unsigned int nextScoreBits =
             static_cast<unsigned int>(g_GameScore) +
-            static_cast<unsigned int>((damage / 10 + 10) / 10));
+            static_cast<unsigned int>((damage / 10 + 10) / 10);
+        memcpy(&g_GameScore, &nextScoreBits, sizeof g_GameScore);
         if (g_GameScore >= 1000000000)
             g_GameScore = 999999999;
     }
