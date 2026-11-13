@@ -1,5 +1,46 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-13 Native GUI and Bullet word checkpoints; ANM/ECL/Text register constraints
+
+Five independent code checkpoints in current `th10` source preserve original
+32-bit signed counters without relying on signed overflow or unsigned-to-signed
+narrowing. `GuiView::UpdateStageElements` now publishes `endingCounter` through
+a four-byte representation copy, and its selected full original-bound cold
+replay passes **3,836/3,836 bytes with 72 fields** (`618b659b`).
+`BulletRuntimeView::UpdateBoundaryBounce` now publishes the incremented bounce
+count in the same way; the full **446/446-byte / 20-field** owner remains exact
+(`d5f85bf5`). The **431-byte aimed** and **338-byte relative** direction
+owners also preserve their signed cycle counters through native-word copies;
+selected cold replays pass **431/431 / 12 fields** and **338/338 / 8 fields**
+(`4ea92116`, `5cf65a74`). The **335-byte absolute** direction owner uses
+the same bit-preserving publication without changing its best original-bound
+frontier: **301/303 ordinary bytes, eight fields and exactly two remaining
+nonfield register bytes** at `+0xD7/+0xDD`; it is still **NONEXACT**
+(`049f0350`). No new exact ledger entry follows from these source fixes.
+
+Large-owner experiments were compiled as complete function bodies with their
+actual support objects and source profile; failing variants were kept only in
+ignored scratch. Seven additional ANM opcode-91 forms (including three
+`_ReadWriteBarrier` placements, volatile `anmFile` reads and chained returned
+VM IDs) preserve or regress the **9,962/9,964 / 350-field** `ExecuteScript`
+frontier; none produces the target EDX layer load/push at `+0x113/+0x115`.
+Ten ECL `RETURN` branch operand-size, pointer-lifetime and post-Pop null-test
+controls leave the **7,020-byte Run** at **6,997/7,020 / 189 fields / 23
+ordinary differences**; the full **122-byte Pop** remains exact. A separate
+SCPT `AddScriptData` counter-lifetime experiment had the same or larger
+589-byte/79-difference frontier and did not affect Run. No trial modifies
+source or the exactness ledger.
+
+The 157-byte `TextRenderBufferView::InvertAlpha` was compared in the real
+`TextBufferLifecycle` graph using four entry choices and direct visibility
+controls. The `CreateTextBuffer`/main/alternate rendering contexts all yield
+**138/157** matching bytes; `noinline` is neutral, whereas forcing
+`dllexport` switches to a different 112/157 private-register arrangement.
+Target receiver ECX versus caller-selected candidate receiver EAX explains
+why merely changing source expressions or entrypoint does not solve the 19
+remaining bytes. A different original caller/visibility provenance is needed.
+All trials used selected real VC7.1 builds, never a historical all-unit replay.
+
 ## 2026-11-12 Exact replay word publication and isolated large-owner compiler controls
 
 `ReplayManager::SaveReplay @0x00429B60` now publishes its per-stage
