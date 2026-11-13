@@ -864,15 +864,21 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
     userDataCursor = reinterpret_cast<char *>(
         reinterpret_cast<unsigned int>(userDataCursor) +
         static_cast<unsigned int>(sprintf(userDataCursor, "Score %d\r\n", replayData->score)));
-    userDataCursor += sprintf(userDataCursor, "Slow Rate %2.2f\r\n",
-                              replayData->slowRate) + 1;
+    // Retail advances past the formatted slow-rate terminator as well.
+    userDataCursor = reinterpret_cast<char *>(
+        reinterpret_cast<unsigned int>(userDataCursor) +
+        static_cast<unsigned int>(sprintf(
+            userDataCursor, "Slow Rate %2.2f\r\n",
+            replayData->slowRate)) + 1u);
 
     if (static_cast<int>(
             reinterpret_cast<unsigned int>(userDataCursor) -
             reinterpret_cast<unsigned int>(userData)) % 4 != 0)
-        userDataCursor += 4 - static_cast<int>(
-            reinterpret_cast<unsigned int>(userDataCursor) -
-            reinterpret_cast<unsigned int>(userData)) % 4;
+        userDataCursor = reinterpret_cast<char *>(
+            reinterpret_cast<unsigned int>(userDataCursor) +
+            static_cast<unsigned int>(4 - static_cast<int>(
+                reinterpret_cast<unsigned int>(userDataCursor) -
+                reinterpret_cast<unsigned int>(userData)) % 4));
 
     userDataHeader->size = static_cast<int>(
             reinterpret_cast<unsigned int>(userDataCursor) -
@@ -884,14 +890,20 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
     userDataHeader->magic = 0x52455355;
     userDataHeader->type = 1;
     userDataCursor = (char *)(userDataHeader + 1);
-    userDataCursor += sprintf(userDataCursor, g_ReplayUserCommentText) + 1;
+    // The comment USER block also includes its trailing formatted NUL.
+    userDataCursor = reinterpret_cast<char *>(
+        reinterpret_cast<unsigned int>(userDataCursor) +
+        static_cast<unsigned int>(sprintf(
+            userDataCursor, g_ReplayUserCommentText)) + 1u);
 
     if (static_cast<int>(
             reinterpret_cast<unsigned int>(userDataCursor) -
             reinterpret_cast<unsigned int>(userData)) % 4 != 0)
-        userDataCursor += 4 - static_cast<int>(
-            reinterpret_cast<unsigned int>(userDataCursor) -
-            reinterpret_cast<unsigned int>(userData)) % 4;
+        userDataCursor = reinterpret_cast<char *>(
+            reinterpret_cast<unsigned int>(userDataCursor) +
+            static_cast<unsigned int>(4 - static_cast<int>(
+                reinterpret_cast<unsigned int>(userDataCursor) -
+                reinterpret_cast<unsigned int>(userData)) % 4));
 
     userDataHeader->size = static_cast<int>(
             reinterpret_cast<unsigned int>(userDataCursor) -
