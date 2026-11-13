@@ -60,56 +60,52 @@ static __forceinline void EnemyResetCallbackTimer(EnemyRuntimeTimerView *timer)
 const unsigned char *__fastcall EnemyResolveRuntimeCallback(
     EnemyFullObjectView *owner)
 {
-    EnemyRuntimeView *enemy = &owner->runtime;
     const int zero = 0;
     unsigned int lifeIndex = 0;
-    EnemyCallbackThresholdView *lifeRecord = enemy->callbackThresholds;
-
-    for (; lifeIndex < 8; ++lifeIndex, ++lifeRecord)
+    for (; lifeIndex < 8; ++lifeIndex)
     {
         volatile int &lifeThreshold = *reinterpret_cast<volatile int *>(
-            &lifeRecord->lifeThreshold);
+            &owner->runtime.callbackThresholds[lifeIndex].lifeThreshold);
         if (lifeThreshold >= zero)
         {
-            enemy->lifeToNextCallback = static_cast<int>(
-                static_cast<unsigned int>(enemy->life) -
-                static_cast<unsigned int>(enemy->callbackThresholds[lifeIndex].lifeThreshold));
-            if (enemy->life <= enemy->callbackThresholds[lifeIndex].lifeThreshold)
+            owner->runtime.lifeToNextCallback = static_cast<int>(
+                static_cast<unsigned int>(owner->runtime.life) -
+                static_cast<unsigned int>(owner->runtime.callbackThresholds[lifeIndex].lifeThreshold));
+            if (owner->runtime.life <= owner->runtime.callbackThresholds[lifeIndex].lifeThreshold)
             {
-                enemy->life = enemy->callbackThresholds[lifeIndex].lifeThreshold;
-                enemy->callbackThresholds[lifeIndex].lifeThreshold = -1;
-                EnemyResetCallbackTimer(&enemy->updateTimer);
-                enemy->flags &= ~0x10000u;
-                return enemy->callbackThresholds[lifeIndex].lifeCallbackName;
+                owner->runtime.life = owner->runtime.callbackThresholds[lifeIndex].lifeThreshold;
+                owner->runtime.callbackThresholds[lifeIndex].lifeThreshold = -1;
+                EnemyResetCallbackTimer(&owner->runtime.updateTimer);
+                owner->runtime.flags &= ~0x10000u;
+                return owner->runtime.callbackThresholds[lifeIndex].lifeCallbackName;
             }
             break;
         }
     }
 
     unsigned int timerIndex = 0;
-    EnemyCallbackThresholdView *timerRecord = enemy->callbackThresholds;
-    for (; timerIndex < 8; ++timerIndex, ++timerRecord)
+    for (; timerIndex < 8; ++timerIndex)
     {
         volatile int &timerLifeThreshold = *reinterpret_cast<volatile int *>(
-            &timerRecord->lifeThreshold);
+            &owner->runtime.callbackThresholds[timerIndex].lifeThreshold);
         if (timerLifeThreshold >= zero &&
-            *reinterpret_cast<volatile int *>(&timerRecord->timerThreshold) > zero)
+            owner->runtime.callbackThresholds[timerIndex].timerThreshold > zero)
         {
             int seconds = static_cast<int>(
-                static_cast<unsigned int>(enemy->callbackThresholds[timerIndex].timerThreshold) -
-                static_cast<unsigned int>(enemy->updateTimer.current) + 59u) / 60;
+                static_cast<unsigned int>(owner->runtime.callbackThresholds[timerIndex].timerThreshold) -
+                static_cast<unsigned int>(owner->runtime.updateTimer.current) + 59u) / 60;
             if (seconds > 99)
                 seconds = 99;
             g_GuiView->spellSeconds = seconds;
 
-            if (enemy->updateTimer.current <
-                enemy->callbackThresholds[timerIndex].timerThreshold)
-                return NULL;
+            if (owner->runtime.updateTimer.current <
+                owner->runtime.callbackThresholds[timerIndex].timerThreshold)
+                goto dispatch_callback_null;
 
-            enemy->life = enemy->callbackThresholds[timerIndex].lifeThreshold;
-            enemy->callbackThresholds[timerIndex].lifeThreshold = -1;
-            EnemyResetCallbackTimer(&enemy->updateTimer);
-            enemy->flags |= 0x10000u;
+            owner->runtime.life = owner->runtime.callbackThresholds[timerIndex].lifeThreshold;
+            owner->runtime.callbackThresholds[timerIndex].lifeThreshold = -1;
+            EnemyResetCallbackTimer(&owner->runtime.updateTimer);
+            owner->runtime.flags |= 0x10000u;
 
             g_EnemyTimeoutValue = static_cast<int>(
                 static_cast<unsigned int>(g_EnemyTimeoutValue) - 3000u);
@@ -130,8 +126,9 @@ const unsigned char *__fastcall EnemyResolveRuntimeCallback(
                 player->flags20DC &= ~2u;
                 player->flags2488 &= ~2u;
             }
-            return enemy->callbackThresholds[timerIndex].timerCallbackName;
+            return owner->runtime.callbackThresholds[timerIndex].timerCallbackName;
         }
     }
+dispatch_callback_null:
     return NULL;
 }

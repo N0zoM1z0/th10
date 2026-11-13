@@ -13594,3 +13594,23 @@ not promote the dispatcher to exact. Code-only sequence comparison (excluding
 the embedded switch data) is **3,412/3,926 mnemonic matches** and **2,871
 normalized-shape matches** in the current candidate. No full cold replay was
 run; only the affected 11-source Enemy linked graph was rebuilt.
+
+## 2026-11-13 Enemy callback shared-exit alignment
+
+`EnemyResolveRuntimeCallback @0x004127A0` has a new source shape that
+reproduces the native two-pass threshold walk and shared null-return exit.
+The maintained callback now indexes `owner->runtime.callbackThresholds`
+directly (rather than retaining a separate `EnemyRuntimeView *` alias and
+record cursor), and the not-yet-expired timer path branches to the common
+`dispatch_callback_null` return. These two changes recover the native
+register allocation and shrink-wrapped EDI save around the second scan.
+
+A targeted 17-support-TU Enemy linked graph produced a 601-byte candidate
+against the 593-byte target. Capstone instruction-shape alignment reports
+**142/147 matched instructions (95.946%)**, up from the previous full-graph
+baseline of **81/148 (54.73%)**. The five remaining instruction-level
+mismatches are concentrated in timeout/flag update ordering and Player
+state cleanup ordering. Seven candidate absolute-address fields are
+recognized and normalization is complete. This is a high-similarity
+intermediate, not an exactness claim; no canonical replay receipt has been
+accepted and the callback remains nonexact.
