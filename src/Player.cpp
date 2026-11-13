@@ -1518,7 +1518,10 @@ int Player::SpawnShot(const PlayerShotDescriptorView *descriptor, int frame)
     Player *player = this;
     PlayerShotRuntimeView *shot = &player->shots[0];
     if (descriptor->type == PLAYER_SHOT_TYPE_3 &&
-        player->shotSourceActive[descriptor->sourceIndex - 1] != 0)
+        *reinterpret_cast<int *>(
+            reinterpret_cast<unsigned int>(&player->shotSourceActive[0]) +
+            (static_cast<unsigned int>(descriptor->sourceIndex) - 1u) *
+                sizeof(player->shotSourceActive[0])) != 0)
         return 0;
     for (int count = 0; count < 128; ++count, ++shot)
     {
@@ -1543,7 +1546,10 @@ int Player::SpawnShot(const PlayerShotDescriptorView *descriptor, int frame)
             shot->motion.position = point;
         }
         if (descriptor->type == PLAYER_SHOT_TYPE_3)
-            player->shotSourceActive[descriptor->sourceIndex - 1] = 1;
+            *reinterpret_cast<int *>(
+            reinterpret_cast<unsigned int>(&player->shotSourceActive[0]) +
+            (static_cast<unsigned int>(descriptor->sourceIndex) - 1u) *
+                sizeof(player->shotSourceActive[0])) = 1;
         shot->motion.speedOrAngleStep = descriptor->speed;
         shot->motion.angle = EnemyWrapAngle(descriptor->angle);
         PlayerShotMotionView *motion = &shot->motion;
