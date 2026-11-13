@@ -2725,6 +2725,25 @@ parent now reaches **1,582/2,136** comparable bytes in the later
 aggregate-sum graph. Seven selected existing Enemy
 owners cold-pass **933/933** bytes; CI and diff-check pass. No full replay.
 
+## 2026-11-13 EnemyAdvanceMotion outgoing-x87-argument cleanup diagnostic
+
+The remaining natural-C++ `EnemyMotionView::AdvanceMotion @0x0044C2A0`
+frontier is still **168/171 bytes**, with all seven target relocation fields
+bound and 133/143 ordinary bytes matching. A diagnostic-only x86 control
+reproduces the complete **171/171 bytes / 7 fields** and isolates the exact
+schedule: reserve the 0x18-byte motion temporary, allocate one 8-byte outgoing
+`floor(double)` argument slot before X, reuse that slot for Y, then release
+those eight bytes **before** the final Y `FSTP`, followed by the separate
+`ADD ESP,0x18`. The maintained natural-C++ candidate instead folds the two
+releases into `ADD ESP,0x20` after the store. The control uses a naked assembly
+body and is deliberately **not installed or credited**; it is only a byte-level
+oracle for the source-level investigation. Natural float/double temporaries,
+volatile source/destination forms, direct component stores, nested scopes,
+inline/noinline floor helpers, `/Ob1`, and explicit `/Oy` did not improve the
+natural leaf. After removing the diagnostic-only path, selected default-profile
+cold replays still pass `EnemyRuntimeUpdate` **2,412/2,412 / 70 fields** and
+`PlayerUpdateShots` **876/876 / 22 fields**. No full replay was run.
+
 ## 2026-11-08 EnemyAdvanceMotion Cartesian and polar x87 frontier
 
 `EnemyAdvanceMotion @0x0044C2A0` now preserves the target's Cartesian X
