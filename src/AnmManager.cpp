@@ -3174,8 +3174,9 @@ static __forceinline void TickScriptTimerScale(AnmVmTimerView *timer)
         // One native i386 INC word, including the INT_MAX -> INT_MIN
         // transition; avoid signed overflow and type-punning through an
         // unrelated unsigned-int lvalue.
-        timer->current = static_cast<int>(
-            static_cast<unsigned int>(timer->current) + 1u);
+        const unsigned int nextTimerBits =
+            static_cast<unsigned int>(timer->current) + 1u;
+        memcpy(&timer->current, &nextTimerBits, sizeof timer->current);
         timer->subframe += 1.0f;
     }
     else
