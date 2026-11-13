@@ -1,6 +1,8 @@
 #include "AnmManager.hpp"
 #include "Enemy.hpp"
 #include "Gui.hpp"
+extern "C" void _ReadWriteBarrier(void);
+#pragma intrinsic(_ReadWriteBarrier)
 
 extern float g_PlayerTimerScale;
 extern int g_EnemyTimeoutValue;
@@ -122,6 +124,7 @@ const unsigned char *__fastcall EnemyResolveRuntimeCallback(
             {
                 player->state3790 = 0;
                 player->flags378C &= ~2u;
+                _ReadWriteBarrier();
                 player->flags0AD4 &= ~2u;
                 player->flags0E80 &= ~2u;
                 player->flags15D8 &= ~2u;

@@ -13656,3 +13656,22 @@ indices); its code/table boundary is candidate `+0x35A0` versus target
 Rank-5 Count improved from 0.545 to 0.582 in the final pattern-index variant.
 These are opcode-handler shape diagnostics, not byte-exact claims. The full
 Dispatcher remains NONEXACT and no full cold replay was run.
+
+## 2026-11-13 Enemy callback Player cleanup scheduling barrier
+
+A VC7.1 intrinsic declaration for `_ReadWriteBarrier` is now used between
+the first Player flag update (`+0x378C`) and the remaining Player flag clears.
+This is a compiler-only barrier and emits no runtime instruction. It constrains
+LTCG's scheduling of the subsequent Player memory operations without changing
+the callback's state transitions.
+
+The affected 17-support-TU `/GL /GS` linked graph improves from 539/557 to
+**544/557 ordinary bytes** after excluding the union of target and candidate
+DIR32 fields. The candidate remains 593/593 bytes, with seven candidate
+DIR32 fields and complete relocation normalization. Instruction count is
+147/147; normalized instruction-shape matching is **146/147 (0.993197)**.
+The remaining instruction-order difference is the first three Player cleanup
+operations: retail stores `+0x3790` before loading the `-3` mask and clearing
+`+0x378C`, while the candidate schedules the mask and AND first. The callback
+remains NONEXACT; no canonical replay receipt or original production TU proof
+is claimed. Only the affected 17-source Enemy graph was linked.
