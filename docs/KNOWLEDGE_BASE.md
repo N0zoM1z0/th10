@@ -62,8 +62,17 @@ field** `ExecuteScript` frontier (`4320ebe6`).
 - **ECL `Run`**: 7,020 bytes, **6,997/7,020 total bytes** match; of the
   **6,264 non-field positions, 6,241 match**, leaving 23 ordinary differences
   across 189 bound fields. `Stack::Pop` remains **122/122** exact. Rewriting
-  its address expressions worsened the parent; the direct array spelling was
-  neutral. `AddScriptData` remains a separate 589-byte / 79-difference owner.
+  its address expressions and the current `LENGTH_SQUARED` / `POINT_ANGLE`
+  declaration and expression order controls did not improve the parent.
+  `AddScriptData @0x450220` is a separate 589-byte / 79-difference owner.
+  A fresh two-input `EclVm.cpp` + `Enemy.cpp` diagnostic retains **510/581**
+  comparable bytes and two bound fields; the actual five-source
+  `EnemyEclResourceView::LoadFile` caller graph gives **502/581**. Capturing
+  `previousCount` before the old-table pointer did not reproduce the target's
+  early EDX lifetime and regressed to **346/581**. The target reads the old
+  count before saving the old table in EBP, then adds the new file count; a
+  source-level snapshot alone lets LTCG reschedule the reads. Keep the
+  two-input 510/581 baseline and seek a semantically grounded ordering cause.
 - **Result Menu**: `UpdateResult` remains 3,228 bytes versus the 3,227-byte
   target, with 173 fields. State 7/8 and states 10–13 remain the main control
   flow frontier.
