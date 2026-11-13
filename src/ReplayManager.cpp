@@ -833,27 +833,37 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
     if (replayData->completionState > 7)
     {
         if (firstStage == 7)
-            userDataCursor += sprintf(userDataCursor, "Extra Stage Clear\r\n");
+            userDataCursor = reinterpret_cast<char *>(
+                reinterpret_cast<unsigned int>(userDataCursor) +
+                static_cast<unsigned int>(sprintf(userDataCursor, "Extra Stage Clear\r\n")));
         else
-            userDataCursor += sprintf(userDataCursor, "Stage All Clear\r\n");
+            userDataCursor = reinterpret_cast<char *>(
+                reinterpret_cast<unsigned int>(userDataCursor) +
+                static_cast<unsigned int>(sprintf(userDataCursor, "Stage All Clear\r\n")));
     }
     else if (firstStage == lastStage)
     {
         if (firstStage == 7)
-            userDataCursor += sprintf(userDataCursor, "Extra Stage\r\n");
+            userDataCursor = reinterpret_cast<char *>(
+                reinterpret_cast<unsigned int>(userDataCursor) +
+                static_cast<unsigned int>(sprintf(userDataCursor, "Extra Stage\r\n")));
         else
-            userDataCursor +=
-                sprintf(userDataCursor, "Stage %d\r\n", firstStage);
+            userDataCursor = reinterpret_cast<char *>(
+                reinterpret_cast<unsigned int>(userDataCursor) +
+                static_cast<unsigned int>(sprintf(userDataCursor, "Stage %d\r\n", firstStage)));
     }
     else
     {
         // The retail text uses the Shift-JIS wave-dash between stage numbers.
-        userDataCursor += sprintf(userDataCursor, "Stage %d \x81\x60 %d\r\n",
-                                  firstStage, lastStage);
+        userDataCursor = reinterpret_cast<char *>(
+            reinterpret_cast<unsigned int>(userDataCursor) +
+            static_cast<unsigned int>(sprintf(userDataCursor, "Stage %d \x81\x60 %d\r\n",
+                                  firstStage, lastStage)));
     }
 
-    userDataCursor +=
-        sprintf(userDataCursor, "Score %d\r\n", replayData->score);
+    userDataCursor = reinterpret_cast<char *>(
+        reinterpret_cast<unsigned int>(userDataCursor) +
+        static_cast<unsigned int>(sprintf(userDataCursor, "Score %d\r\n", replayData->score)));
     userDataCursor += sprintf(userDataCursor, "Slow Rate %2.2f\r\n",
                               replayData->slowRate) + 1;
 
