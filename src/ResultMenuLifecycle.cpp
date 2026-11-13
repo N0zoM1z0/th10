@@ -71,10 +71,11 @@ void *GameCreateController()
 // unregisters them under the scheduler critical section.
 void ResultMenuMarkTasks422200(ResultMenuView *owner)
 {
-    th10::ChainElem *task = owner->updateTask;
-    if (task != NULL)
-        task->flagBits.pendingRemoval = 1;
-    task = owner->drawTask;
-    if (task != NULL)
-        task->flagBits.pendingRemoval = 1;
+    // The target reloads each scheduler element from the real owner field,
+    // rather than carrying one local pointer between the two publications.
+    // Preserve that alias/read lifetime for VC7.1's private EAX receiver.
+    if (owner->updateTask != NULL)
+        owner->updateTask->flagBits.pendingRemoval = 1;
+    if (owner->drawTask != NULL)
+        owner->drawTask->flagBits.pendingRemoval = 1;
 }
