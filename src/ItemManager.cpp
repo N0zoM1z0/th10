@@ -37,9 +37,12 @@ void GameScoreStateView::AddFaith(int amount)
 {
     // The target adds two 32-bit words before clamping the signed result.
     // Unsigned addition preserves native wrap at the signed bounds.
-    faith = static_cast<int>(
+    // Publish the wrapped native ADD through the signed faith field
+    // without implementation-defined unsigned-to-signed narrowing.
+    const unsigned int nextFaithBits =
         static_cast<unsigned int>(faith) +
-        static_cast<unsigned int>(amount / 10));
+        static_cast<unsigned int>(amount / 10);
+    memcpy(&faith, &nextFaithBits, sizeof faith);
     if (faith > 99999)
         faith = 99999;
 }
@@ -47,9 +50,12 @@ void GameScoreStateView::AddFaith(int amount)
 void GameScoreStateView::DecayFaith(int amount)
 {
     // Reconstruct the original 32-bit word subtraction before the signed cap.
-    faith = static_cast<int>(
+    // Publish the wrapped native SUB through the signed faith field
+    // before the original signed 5000-point floor test.
+    const unsigned int nextFaithBits =
         static_cast<unsigned int>(faith) -
-        static_cast<unsigned int>(amount / 10));
+        static_cast<unsigned int>(amount / 10);
+    memcpy(&faith, &nextFaithBits, sizeof faith);
     if (faith < 5000)
         faith = 5000;
 }
