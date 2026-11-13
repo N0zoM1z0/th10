@@ -122,18 +122,29 @@ homes and two volatile Y-destination forms were byte-neutral. A local
 agreement to **131/143**. A two-axis pointer loop grew the leaf to **172** bytes
 and **11/155** comparable bytes; neither was installed. The enclosing
 `EnemyRuntimeUpdate` remains a complete **2,412-byte** candidate with 69
-fields and **1,575/2,136 comparable bytes** in the same 12-source graph. Moving
-or registering the eight-VM loop count did not improve it; an explicit EBX
-home experiment grew it to 2,418 bytes and reduced agreement to 1,129/2,136,
-so it was discarded. A two-axis pointer loop for the motion leaf grew it to
+fields and **1,582/2,136 comparable bytes** in the same 12-source graph after
+retaining the ECL result and deriving the eight-slot VM count from its success
+state. This recovers seven ordinary bytes at `+0x948..+0x94E` in the timer
+update's x87 operand order without changing the 2,412-byte extent or 69 fields.
+The target's earlier `MOV EBX,8` at `+0x49D` remains unmatched. Moving or
+registering the count alone did not improve it; an explicit EBX home experiment
+grew the owner to 2,418 bytes and reduced agreement to 1,129/2,136, so it was
+discarded. A two-axis pointer loop for the motion leaf grew it to
 172 bytes and only 11/155 comparable bytes. The target's `MOV EBX,8` at
 `+0x49D` seeds the eight-VM loop counter before the damage branch, then spills
 it before EBX becomes the manager pointer. Moving `remaining = 8` before that
 branch did not change codegen; adding a C++ `register` hint was also
 byte-neutral. A single conditional loop form shrank the complete runtime to
-2,383 bytes and 1,124/2,136 comparable bytes. All counter controls were
-rejected. The corrected Player damage call ABI is now exact;
-no Enemy runtime or motion exact credit changed.
+2,383 bytes and 1,124/2,136 comparable bytes. The ECL-result-derived count
+is retained for its seven-byte timer-tail win; the other counter controls were
+rejected. The Player damage owner now uses a four-byte `DamageTargetView` overlay as
+the nullable ECX receiver and passes `Player*`, target position and target size
+on the stack; canonical replay still passes **1,170/1,170 bytes / 28 fields**.
+The `EnemyRuntimeUpdate` damage callsite now emits that exact ABI. Seven
+selected units across five cold artifact graphs pass after this source change:
+Enemy runtime constructor, manager update/callback, death finalizer, Player
+damage, auxiliary damage and shot update. `EnemyRuntimeUpdate` and the motion
+leaf remain nonexact; no exact credit was added for either.
 
 ## 2026-11-12 Exact replay word publication and isolated large-owner compiler controls
 

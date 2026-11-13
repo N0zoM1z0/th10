@@ -935,7 +935,8 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     }
 
     const float timerScale = *enemy->updateTimer.scale;
-    if (EnemyRunEcl(enemy->owner, timerScale) != 0)
+    const int eclResult = EnemyRunEcl(enemy->owner, timerScale);
+    if (eclResult != 0)
         return -1;
 
     enemy->flags &= ~0x2000u;
@@ -1045,7 +1046,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     }
 
     unsigned int *id = &enemy->managedVmIds[0];
-    int remaining = 8;
+    int remaining = eclResult == 0 ? 8 : 0;
     AnmRenderManagerView *manager;
     if ((enemy->flags & 0x40000u) == 0)
     {
