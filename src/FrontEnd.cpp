@@ -4052,7 +4052,11 @@ void __stdcall ResultMenuPrepareScore(ResultMenuView *menu)
         g_FrontEndSelectedStage = 8;
         g_FrontEndSelectedStageMirror = 8;
     }
-    int row = FrontEndInsertScore(GetFrontEndScoreTable(g_ReplayCharacter * 3 + g_ReplayShotType));
+    // The rank table selector is a retail low-DWORD character/shot word;
+    // keep modulo-32-bit indexing for malformed replay metadata.
+    int row = FrontEndInsertScore(GetFrontEndScoreTable(static_cast<int>(
+        static_cast<unsigned int>(g_ReplayCharacter) * 3u +
+        static_cast<unsigned int>(g_ReplayShotType))));
     if (g_FrontEndSelectedStage == 7 && menu->completed != 0)
     {
         g_FrontEndScoreFormatTable = g_FrontEndDefaultScoreFormatTable;
