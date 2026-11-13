@@ -1912,8 +1912,12 @@ int Player::CalculateDamageToTarget(
         if (collisionType != PLAYER_SHOT_TYPE_3 ||
             shot->timer.HasIntervalTick(4) != 0)
         {
-            damage = static_cast<int>(static_cast<unsigned int>(damage) +
-                static_cast<unsigned int>(descriptor->damage));
+            // The shot damage counter is a native signed DWORD. Publish
+            // the wrapped low word without out-of-range signed conversion.
+            const unsigned int nextDamageBits =
+                static_cast<unsigned int>(damage) +
+                static_cast<unsigned int>(descriptor->damage);
+            memcpy(&damage, &nextDamageBits, sizeof damage);
         }
 
         if (descriptor->type != PLAYER_SHOT_TYPE_3)
