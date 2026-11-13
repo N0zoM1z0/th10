@@ -117,7 +117,10 @@ the 171-byte target, with **133/143 ordinary positions** matching across seven
 bound fields. Its remaining three-byte seam is the target's separate
 `ADD ESP,8` before the final Y `FSTP`, followed by `ADD ESP,0x18`; the current
 candidate combines those releases into `ADD ESP,0x20`. Four local-double/float
-homes and two volatile Y-destination forms were byte-neutral. The enclosing
+homes and two volatile Y-destination forms were byte-neutral. A local
+`__forceinline` floor wrapper kept the 168-byte extent but regressed ordinary
+agreement to **131/143**. A two-axis pointer loop grew the leaf to **172** bytes
+and **11/155** comparable bytes; neither was installed. The enclosing
 `EnemyRuntimeUpdate` remains a complete **2,412-byte** candidate with 69
 fields and **1,575/2,136 comparable bytes** in the same 12-source graph. Moving
 or registering the eight-VM loop count did not improve it; an explicit EBX
@@ -126,9 +129,10 @@ so it was discarded. A two-axis pointer loop for the motion leaf grew it to
 172 bytes and only 11/155 comparable bytes. The target's `MOV EBX,8` at
 `+0x49D` seeds the eight-VM loop counter before the damage branch, then spills
 it before EBX becomes the manager pointer. Moving `remaining = 8` before that
-branch did not change codegen; a single conditional loop form shrank the
-complete runtime to 2,383 bytes and 1,124/2,136 comparable bytes. Both source
-controls were rejected. The corrected Player damage call ABI is now exact;
+branch did not change codegen; adding a C++ `register` hint was also
+byte-neutral. A single conditional loop form shrank the complete runtime to
+2,383 bytes and 1,124/2,136 comparable bytes. All counter controls were
+rejected. The corrected Player damage call ABI is now exact;
 no Enemy runtime or motion exact credit changed.
 
 ## 2026-11-12 Exact replay word publication and isolated large-owner compiler controls
