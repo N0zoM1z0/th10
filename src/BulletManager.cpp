@@ -295,8 +295,11 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
         }
         // The native cycle word wraps on UINT32 overflow before the signed
         // comparison against int1, without aliasing it through another type.
-        state.int2 = static_cast<int>(
-            static_cast<unsigned int>(state.int2) + 1u);
+        // Absolute direction-change cycle counts are native i386 words.
+        // Preserve the wrapped signed bit pattern before the int1 guard.
+        const unsigned int nextCycleBits =
+            static_cast<unsigned int>(state.int2) + 1u;
+        memcpy(&state.int2, &nextCycleBits, sizeof state.int2);
         if (state.int2 >= state.int1)
             activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE;
 
