@@ -1,5 +1,50 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-13 Exact result-task marker; native Player and result-state indexing
+
+`ResultMenuMarkTasks422200 @0x00422200` now has a naturally generated **28-byte
+exact** function under the real five-source `ResultMenuIntegrated` VC7.1
+`/GL /GS /EHs` graph. The original function takes a private EAX
+`ResultMenuView*`, reads its `updateTask` at +0x08 and `drawTask` at +0x0C,
+and ORs removal bit `2` at each nonnull node +0x04. The initial natural
+one-local spelling compiled to 26 bytes, selected ECX for the owner and
+EAX for both task pointers and omitted the target's 2-byte `MOV EAX,ECX`.
+Changing only the C++ to independently reload each owner field inside its
+nonnull branch restores all target instructions and register allocation.
+The canonical `result-menu-mark-tasks` unit passed **two independent** complete
+original-bound cold links at **28/28, no relocations**; selected neighboring
+`result-menu-constructor` 101/1 field, `result-menu-initialize` 142/9,
+`result-menu-creator` 67/5 and `result-menu-cleanup` 311/18 also pass.
+`89422b95` preserves the source; `7f0958d6` records the new exact unit,
+function-ledger row and regenerated progress. Original source attribution
+is still indeterminate; the exact codegen claim does not change it.
+
+The still-open 3,227-byte target `ResultMenuUpdateResult` now expresses
+unchecked state-12 score-profile offsets as native unsigned DWORD arithmetic
+rather than overflowing signed products or out-of-array C++ pointer addition
+(`68f89dc7`). A locally cached index grew the source candidate to 3,264
+bytes/174 fields and was rejected. The retained in-expression form preserves
+the existing **3,228-byte / 173-field** candidate, alongside unchanged
+377-byte score preparation; result-menu score-sync 28 and update adapter 10
+cold-pass. The large result state machine remains NONEXACT.
+
+Player source checkpoints (`e6d1f733`, `be58bce9`, `e60fa9ab`, `d01d1a90`)
+use unsigned native-word publication for effect-hit and global score counters,
+and flat Win32 index/stride operations for unchecked shot source slots in both
+SpawnShot and UpdateShots. Selected full original-bound cold replays cover
+damage **1,170/28 fields**, shot spawn **717/17**, and shot update **876/22**.
+The whole-owner results stay exact, not merely individual instruction spans.
+
+Complete two-input ECL `Run` tests of eight different native `Stack::Pop`
+byte-address shapes found no new exactness: the 122-byte Pop leaf remained
+exact for the ordinary variants, but changing its value or type-slot address
+made the 7,020-byte parent lose 48–94 additional comparable bytes; a volatile
+pointer expanded both functions. A direct array-address spelling was
+codegen-neutral, leaving the original **23** ECL ordinary differences.
+Ten complete 107-byte `CMemoryPbgFile::Seek` tests of FILE_BEGIN expressions
+also left the best **100/107** or expanded to **122**; a new block-sharing
+hypothesis is needed rather than repeating early-return/goto controls.
+
 ## 2026-11-13 Native GUI and Bullet word checkpoints; ANM/ECL/Text register constraints
 
 Five independent code checkpoints in current `th10` source preserve original
