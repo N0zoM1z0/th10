@@ -13,9 +13,9 @@ temporary native compiler products. Preserve the following local inputs.
   VC7.1 compiler/linker setup; `ghidra-project/` and `_reference/`.
 - Canonical manifest-backed `build/match-linked/` native comparison contexts,
   including PDB/MAP/PE files and support objects. An absent unit output is
-  rebuilt from its `config/match-units.toml` recipe. Unmanifested diagnostic
-  output such as `EnemyAdvanceMotionStandalone/` is disposable after its result
-  is recorded.
+  rebuilt from its `config/match-units.toml` recipe.
+- `build/match/*.obj`: support COFF objects explicitly referenced by object-backed
+  `config/match-units.toml` recipes. These are build inputs, not disposable cache.
 - Maintained `src/`, `scripts/`, `config/`, Git and build-input files, including
   `docs/evidence/anm-loaded-start-script-wave11-20261109/compiler-context.cpp`
   and `docs/evidence/anm-child-request-record/binding-contract.json`.
@@ -58,3 +58,21 @@ manifest-backed `build/match-linked/` artifacts were otherwise preserved.
 Dated paths in `KNOWLEDGE_BASE.md` are historical experiment references, not
 live artifact dependencies. Rebuild only the affected graph for a new
 hypothesis; never recreate a full historical cache or replay cohort.
+
+## 2026-11-13 handoff cleanup
+
+Pruned superseded scratch from the recent ECL/Enemy experiments: `.analysis`
+source snapshots and per-variant reports for ECL `Run`, Enemy motion and Enemy
+callback, the older ANM baseline scratch, and unreferenced `build/` probe/link
+outputs. Their useful results and rejected hypotheses are summarized in
+`KNOWLEDGE_BASE.md` and `RE_HANDOFF.md`; the current canonical sources and unit
+recipes recreate any needed comparison. The generic `build/probe-ltcg/` and
+`build/probe-backlog/` directories are scratch outputs and are recreated by
+their scripts.
+
+Preserved `build/match/*.obj` because manifest recipes consume those objects;
+all 260 manifest-backed `build/match-linked/` contexts; the five retained
+`build/gpt-web/` contexts; the four `.analysis/gpt-web/` trial drivers; all
+`.analysis/d3d-*` evidence; and the shared `.analysis/factory-runtime/` state.
+No target, toolchain, Wine prefix, Ghidra project, reference tree, source,
+canonical ledger or build input was removed.

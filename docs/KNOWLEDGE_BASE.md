@@ -89,9 +89,11 @@ field** `ExecuteScript` frontier (`4320ebe6`).
   lifetime forms did not resolve it.
 - **ECL `Run`**: 7,020 bytes, **6,997/7,020 total bytes** match; of the
   **6,264 non-field positions, 6,241 match**, leaving 23 ordinary differences
-  across 189 bound fields. `Stack::Pop` remains **122/122** exact. Rewriting
-  its address expressions and the current `LENGTH_SQUARED` / `POINT_ANGLE`
-  declaration and expression order controls did not improve the parent.
+  across 189 bound fields. `Stack::Pop` remains **122/122** exact. Recent Pop
+  pointer/subscript forms, caller-side RETURN Pop expansion, SPAWN/STOP thread
+  local lifetimes, FORMAT declaration order and x87 local-order controls did
+  not improve the parent. A shared scratch union regressed to 369/6,268
+  ordinary positions and was reverted.
   `AddScriptData @0x450220` is now a separate **589/589 exact** owner with a
   canonical `ecl-database-add-script-data` unit. Two independent five-input
   Enemy ECL resource-load cold replays bind all 581 ordinary bytes plus the
@@ -113,10 +115,15 @@ field** `ExecuteScript` frontier (`4320ebe6`).
   and both manager-loop register lifetimes. Its damage call has the correct
   nullable ECX receiver and three stack arguments; Player damage remains
   **1,170/1,170**. `EnemyAdvanceMotion` remains **168/171** in maintained
-  natural C++; the 171-byte naked-assembly diagnostic is normalized-only and
-  was not installed. `EnemyResolveRuntimeCallback @0x4127A0` remains nonexact
-  at a 593-byte target; recent pointer/index and volatile trials did not close
-  it. The 14,416-byte ECL dispatcher remains nonexact with 800 source field
+  natural C++ (**133/143 ordinary positions, seven fields**); recent Y-local,
+  double-valued and volatile-scale controls did not improve its split x87
+  cleanup. `FromAngleMagnitude @0x44C5D0` is separately **30/30**.
+  `EnemyResolveRuntimeCallback @0x4127A0` targets 593 bytes: the full-graph
+  baseline is 606 bytes / 58/565 ordinary positions, while a three-support
+  diagnostic reached 592 bytes / 104/565 / seven fields. That candidate has
+  not been revalidated in the 16-source graph and remains nonexact; the
+  maintained source remains the 606-byte baseline. The 592-byte candidate was
+  diagnostic-only and was reverted. The 14,416-byte ECL dispatcher remains nonexact with 800 source field
   identities.
 - **GUI and Player**: `GuiMessageVmView::Run` is 4,492 versus the 4,480-byte
   target. The Player callback is 3,100 versus 3,112 bytes; movement is 1,616
@@ -558,11 +565,13 @@ exact ledger changes status.
 
 ## Reading this journal against the current ledger (2026-11-13)
 
-**Current canonical snapshot:** **1,522 exact owners** and **200,968 exact
-bytes**, including **608 authored exact owners** and **130,653 authored exact
-bytes**; **142 authored source-present owners** remain nonexact. The newest
-accepted authored addition is `ResultMenuMarkTasks422200 @0x00422200`
-(**28/28**, no fields). Earlier additions include `PlayerUpdateShots
+**Current canonical snapshot (refreshed 2026-11-13):** **1,524 exact owners**
+and **203,969 exact bytes**, including **610 authored exact owners** and
+**133,654 authored exact bytes**; **140 authored source-present owners** remain
+nonexact. The newest accepted authored addition is
+`EclVmScriptDatabase::AddScriptData @0x00450220` (**589/589**, two REL32
+fields). Earlier additions include `ResultMenuMarkTasks422200 @0x00422200`
+(**28/28**, no fields), `PlayerUpdateShots
 @0x00428280` (**876/876**, 22 original-bound fields),
 `ResultMenuSynchronizeScore @0x00421F60` (**28/28**, three fields),
 `ReleaseModeOwners` (**128/128**, 15 fields),
@@ -818,6 +827,10 @@ fields in two build artifacts: Push96, ReadInt144, Find136, and HostRun146.
 No full replay or new exact ledger credit.
 
 ## 2026-11-12 Native script database counters without aliasing
+
+**Superseded 2026-11-13:** The 79 ordinary-byte mismatch recorded below was
+closed by the exact five-input recovery documented at the top of this journal.
+This section is retained only as pre-recovery experiment history.
 
 `EclVmScriptDatabase::AddScriptData @0x00450220` retains seven signed
 counter/index words in its SCPT file/merge loop: the accumulated script
@@ -1297,8 +1310,10 @@ SHA-256 and PDB GUID identities, confirm complete 30-byte PDB ownership,
 real `FindSubroutine` call binding. First selected cold also preserves
 the exact 166-byte
 `EnemyManagerUpdate` and its 10-byte callback (**206/206** across three
-owners). The 2,412-byte EnemyRuntimeUpdate parent and 14,416-byte ECL
-dispatcher remain **NONEXACT**; no parent/function-inventory claim follows.
+owners). At this historical source epoch, the 2,412-byte EnemyRuntimeUpdate parent and
+14,416-byte ECL dispatcher remained **NONEXACT**. EnemyRuntimeUpdate was later
+closed by the 2026-11-13 16-source exact recovery at the top of this journal;
+the ECL dispatcher remains open.
 
 ## 2026-11-11 Bomb Update null-publication and second-ID schedule
 
