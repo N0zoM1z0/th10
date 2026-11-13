@@ -1843,29 +1843,28 @@ int __stdcall PlayerUpdateShots(Player *player)
 }
 
 // Maintained source for the 0x00428630-0x00428AC1 Player damage owner. The
-// logical source shape is a Player member with three arguments. The target's
-// optimized private boundary rotates those four logical values: optionalHitFlag
-// is live in ECX, while Player*, targetPosition, and targetSize are stack-bound,
-// and the body returns with RET 12. This spelling does not claim the original
-// identifier, translation unit, or production optimizer profile.
-int Player::CalculateDamageToTarget(
+// target's private member boundary uses the optional hit-flag pointer as its
+// nullable ECX receiver, with Player*, targetPosition, and targetSize on the
+// stack and RET 12. DamageTargetView models that four-byte output slot; it does
+// not claim the original identifier, translation unit, or production profile.
+int Player::DamageTargetView::CalculateDamageToTarget(
+    Player *player,
     const PlayerFloat3 *targetPosition,
-    const PlayerFloat3 *targetSize,
-    int *optionalHitFlag)
+    const PlayerFloat3 *targetSize)
 {
     int damage = 0;
 
-    if (updateTimer1.current == updateTimer1.previous)
+    if (player->updateTimer1.current == player->updateTimer1.previous)
         return 0;
 
-    PlayerShotRuntimeView *shot = &shots[0];
+    PlayerShotRuntimeView *shot = &player->shots[0];
     PlayerFloat3 scratch;
     PlayerFloat3 targetMin;
     PlayerFloat3 targetMax;
     targetPosition->GetPlanarBounds(&targetMin, &targetMax, &targetSize->x);
 
-    if (optionalHitFlag != NULL)
-        *optionalHitFlag = 0;
+    if (this != NULL)
+        this->value = 0;
 
     // Collision bounds use the existing three-component vector slots;
     // this two-dimensional overlap test only consumes X and Y.
@@ -1895,7 +1894,7 @@ int Player::CalculateDamageToTarget(
             continue;
 
         if (descriptor->collisionCallback != NULL &&
-            descriptor->collisionCallback(this, shot, targetPosition) != 0)
+            descriptor->collisionCallback(player, shot, targetPosition) != 0)
         {
             continue;
         }
@@ -1930,7 +1929,7 @@ int Player::CalculateDamageToTarget(
             vmId->Release();
 
             shot->primaryVmId =
-                static_cast<AnmLoadedView *>(resource)->CreateVmVariant0(
+                static_cast<AnmLoadedView *>(player->resource)->CreateVmVariant0(
                     // Script IDs in the binary are native 32-bit words.
                     // Keep the original ADD 5 wrap for malformed indexes.
                     static_cast<int>(static_cast<unsigned int>(
@@ -1948,7 +1947,7 @@ int Player::CalculateDamageToTarget(
         descriptor = shot->descriptor;
         if (descriptor->type == 2)
         {
-            SpawnEffectRow(
+            player->SpawnEffectRow(
                 &shot->motion.position,
                 32.0f, 1.3999999761581421f, 13, descriptor->damage / 3);
         }
@@ -1960,7 +1959,7 @@ int Player::CalculateDamageToTarget(
         static_cast<unsigned int>(
             g_PlayerUpdateGate28->GetDamageAtPosition(targetPosition)));
 
-    PlayerEffectRowView *row = &effectRows[0];
+    PlayerEffectRowView *row = &player->effectRows[0];
     for (int remainingRows = 32; remainingRows != 0; --remainingRows, ++row)
     {
         PlayerEffectMotionView *motion = &row->motion;

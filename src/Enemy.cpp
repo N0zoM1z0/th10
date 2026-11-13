@@ -941,10 +941,10 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     enemy->flags &= ~0x2000u;
     if ((enemy->flags & 0x11u) == 0)
     {
-        int damage = g_Player->CalculateDamageToTarget(
-            &enemy->worldMotion.position,
-            reinterpret_cast<const PlayerFloat3 *>(&enemy->damageHitbox),
-            NULL);
+        int damage = reinterpret_cast<Player::DamageTargetView *>(NULL)->
+            CalculateDamageToTarget(
+                g_Player, &enemy->worldMotion.position,
+                reinterpret_cast<const PlayerFloat3 *>(&enemy->damageHitbox));
         if (g_Player->runtimeState == 2 || g_Player->runtimeState == 0)
             damage /= 5;
 

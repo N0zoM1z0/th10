@@ -471,10 +471,19 @@ struct Player
         const PlayerFloat3 *position,
         float radius, float radiusDelta, int frames, int damage);
     int SpawnShot(const PlayerShotDescriptorView *descriptor, int frame);
-    int CalculateDamageToTarget(
-        const PlayerFloat3 *targetPosition,
-        const PlayerFloat3 *targetSize,
-        int *optionalHitFlag);
+    // The target's private ABI uses the optional hit-flag pointer as the
+    // nullable receiver and passes Player* explicitly on the stack.
+    struct DamageTargetView
+    {
+        // The target passes this optional output pointer in ECX; it is not
+        // the Player receiver. The Player owner is an explicit stack argument.
+        int value;
+        int CalculateDamageToTarget(Player *player,
+            const PlayerFloat3 *targetPosition,
+            const PlayerFloat3 *targetSize);
+    };
+    typedef char DamageTargetViewSizeIs4[
+        (sizeof(DamageTargetView) == 4) ? 1 : -1];
 };
 typedef char PlayerUpdateCallbackNodeAt08[
     (offsetof(Player, updateCallbackNode) == 0x08) ? 1 : -1];
