@@ -67,17 +67,21 @@ field** `ExecuteScript` frontier (`4320ebe6`).
 - **Result Menu**: `UpdateResult` remains 3,228 bytes versus the 3,227-byte
   target, with 173 fields. State 7/8 and states 10–13 remain the main control
   flow frontier.
-- **Enemy**: `EnemyRuntimeUpdate` is now canonical exact at **2,412/2,412
-  bytes with all 70 relocation fields bound**. The new `enemy-runtime-update`
-  linked-PE unit cold-replays the 16-source LTCG graph and verifies every
-  external target identity/address. A trivial four-byte VM-ID slot overlay
-  preserves the raw ten-DWORD storage without adding ten constructors; a
-  separate 0x14-byte Enemy timer view preserves the target volatile scale
-  operand without changing `PlayerTimerView`. The Boss retains the target
-  `MOV EBX,8` and both manager-loop register lifetimes. Its damage call has
-  the correct nullable ECX receiver and three stack arguments; Player damage
-  remains **1,170/1,170**. The 14,416-byte ECL dispatcher remains nonexact with
-  800 source field identities.
+- **Enemy**: `EnemyRuntimeUpdate` is locally canonical exact at **2,412/2,412
+  bytes with all 70 relocation fields bound**; two independent 16-source
+  VC7.1 `/GL` cold links reproduce the complete PDB owner and every target
+  linkage after normalization. A trivial four-byte VM-ID slot overlay preserves
+  the raw ten-DWORD storage without adding ten constructors; a separate
+  0x14-byte Enemy timer view preserves the target volatile scale operand
+  without changing `PlayerTimerView`. The Boss retains the target `MOV EBX,8`
+  and both manager-loop register lifetimes. Its damage call has the correct
+  nullable ECX receiver and three stack arguments; Player damage remains
+  **1,170/1,170**. `EnemyAdvanceMotion` remains **168/171** in maintained
+  natural C++; the 171-byte naked-assembly diagnostic is normalized-only and
+  was not installed. `EnemyResolveRuntimeCallback @0x4127A0` remains nonexact
+  at a 593-byte target; recent pointer/index and volatile trials did not close
+  it. The 14,416-byte ECL dispatcher remains nonexact with 800 source field
+  identities.
 - **GUI and Player**: `GuiMessageVmView::Run` is 4,492 versus the 4,480-byte
   target. The Player callback is 3,100 versus 3,112 bytes; movement is 1,616
   versus 1,656 bytes. The Player damage owner is **1,170/1,170 / 28 fields**
@@ -2729,9 +2733,8 @@ owners cold-pass **933/933** bytes; CI and diff-check pass. No full replay.
 
 The remaining natural-C++ `EnemyMotionView::AdvanceMotion @0x0044C2A0`
 frontier is still **168/171 bytes**, with all seven target relocation fields
-bound and 133/143 ordinary bytes matching. A diagnostic-only x86 control
-reproduces the complete **171/171 bytes / 7 fields** and isolates the exact
-schedule: reserve the 0x18-byte motion temporary, allocate one 8-byte outgoing
+bound and 133/143 ordinary bytes matching. A diagnostic-only x86 control matches all **171 normalized bytes / 7 mapped
+fields** (the PE is not raw-equal) and isolates the exact schedule: reserve the 0x18-byte motion temporary, allocate one 8-byte outgoing
 `floor(double)` argument slot before X, reuse that slot for Y, then release
 those eight bytes **before** the final Y `FSTP`, followed by the separate
 `ADD ESP,0x18`. The maintained natural-C++ candidate instead folds the two
@@ -2743,6 +2746,19 @@ inline/noinline floor helpers, `/Ob1`, and explicit `/Oy` did not improve the
 natural leaf. After removing the diagnostic-only path, selected default-profile
 cold replays still pass `EnemyRuntimeUpdate` **2,412/2,412 / 70 fields** and
 `PlayerUpdateShots` **876/876 / 22 fields**. No full replay was run.
+
+## 2026-11-13 EnemyResolveRuntimeCallback pointer/index follow-up
+
+`EnemyResolveRuntimeCallback @0x004127A0` remains a separate **593-byte**
+nonexact owner. The maintained source's earlier standalone graph produced a
+606-byte candidate with seven candidate fields and 58/565 comparable ordinary
+positions. New pointer/index struct views produced 554-byte candidates with
+55-56/565 ordinary matches; volatile-threshold variants ranged from 554-573
+bytes and 37-73/565 ordinary matches. None reproduced the complete body, and
+no experiment was installed. The exact `EnemyRuntimeUpdate` parent binds its
+two calls to the target callback address; that call-site match does not make
+the callback body exact. Resume from `src/EnemyCallback.cpp` and compare the
+callback owner itself.
 
 ## 2026-11-08 EnemyAdvanceMotion Cartesian and polar x87 frontier
 

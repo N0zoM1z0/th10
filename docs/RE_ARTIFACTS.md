@@ -11,9 +11,11 @@ temporary native compiler products. Preserve the following local inputs.
   Check with `scripts/repo-python scripts/verify-target.py`.
 - `.tools/`, including `.tools/wineprefix-msvc710-sp1/`, and the pinned
   VC7.1 compiler/linker setup; `ghidra-project/` and `_reference/`.
-- All existing `build/match-linked/` native comparison contexts, including
-  PDB/MAP/PE files and support objects. An absent unit output is rebuilt from
-  its canonical `config/match-units.toml` recipe.
+- Canonical manifest-backed `build/match-linked/` native comparison contexts,
+  including PDB/MAP/PE files and support objects. An absent unit output is
+  rebuilt from its `config/match-units.toml` recipe. Unmanifested diagnostic
+  output such as `EnemyAdvanceMotionStandalone/` is disposable after its result
+  is recorded.
 - Maintained `src/`, `scripts/`, `config/`, Git and build-input files, including
   `docs/evidence/anm-loaded-start-script-wave11-20261109/compiler-context.cpp`
   and `docs/evidence/anm-child-request-record/binding-contract.json`.
@@ -44,13 +46,14 @@ results can be recreated from current source and the unit manifest.
 
 ## 2026-11-13 storage cleanup
 
-Removed superseded `build/gpt-web/20261112/` and `build/gpt-web/20261113/`
-outputs, plus all `.analysis/gpt-web/` scratch except the four drivers above.
-This removed **2,220 build files** and **545 scratch files**, approximately
-**118.6 MB (113.1 MiB)**. The five retained compiler contexts occupy about
-**4.5 MiB**; the four trial drivers are about **20 KB of source** (roughly
-**120 KiB allocated**). The existing `build/match-linked/` contexts (about
-**142 MiB**) were preserved intact.
+Removed the regenerated `build/gpt-web/20261113/` trial graph cache, the
+`EnemyAdvanceMotionStandalone/` diagnostic PE (its temporary manifest entry
+was removed), `.analysis/gpt-web/20261113/`, and the 83 root-level
+`20261113-*` source/sweep files. This batch reclaimed approximately **242 MB
+(231 MiB)** across 2,717+ transient files. The five retained compiler contexts
+remain under `build/gpt-web/20261108-*` and `build/gpt-web/20261109/`; the four
+`20261110-*` trial drivers remain under `.analysis/gpt-web/`. Canonical
+manifest-backed `build/match-linked/` artifacts were otherwise preserved.
 
 Dated paths in `KNOWLEDGE_BASE.md` are historical experiment references, not
 live artifact dependencies. Rebuild only the affected graph for a new
