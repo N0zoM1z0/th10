@@ -1568,7 +1568,12 @@ int Player::SpawnShot(const PlayerShotDescriptorView *descriptor, int frame)
         shot->motion.position.x += descriptor->spawnOffsetX - shot->motion.velocity.x;
         shot->motion.position.y += descriptor->spawnOffsetY - shot->motion.velocity.y;
 
-        int script = descriptor->animationScript + 5;
+        // Impact script IDs are serialized native words. Keep the original
+        // low-DWORD ADD 5 when the signed script index reaches INT_MAX.
+        const unsigned int scriptBits =
+            static_cast<unsigned int>(descriptor->animationScript) + 5u;
+        int script;
+        memcpy(&script, &scriptBits, sizeof script);
         AnmLoadedView *loaded = static_cast<AnmLoadedView *>(player->resource);
         AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
         vm->renderLayer = PLAYER_VM_LAYER;
