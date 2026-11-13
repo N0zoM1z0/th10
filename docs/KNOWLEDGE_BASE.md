@@ -2,6 +2,34 @@
 
 ## 2026-11-13 Current source corrections and open-owner frontiers
 
+### ECL database name-table exact recovery
+
+`EclVmScriptDatabase::AddScriptData @0x00450220` is now a maintained natural-C++
+**589/589 exact** owner. The five-input `EnemyEclResourceLoadFile` VC7.1 `/GL`
+graph identifies the complete 589-byte PDB contribution in `src/EclVm.cpp`;
+all **581 ordinary bytes** match and the two excluded fields bind to the target
+`malloc @0x00452706` and `free @0x00452422` calls at `+0x6C` and `+0x101`.
+Two independent canonical cold replays produce distinct PE hashes and PDB GUIDs,
+both **589/589**. The existing `EnemyEclResourceView::LoadFile` owner remains
+**95/95** in the same graph. The new canonical unit is
+`ecl-database-add-script-data`, sharing the five-source caller graph while
+selecting the `src/EclVm.cpp` PDB contribution.
+
+The recovered compiler shape uses a forced-inline `int&` count update so the
+stored count is reloaded for the eight-byte allocation size, and retains two
+separate old-table pointer locals in the free expression. This restores the
+retail count/register schedule without an assembly body or an ABI shim. The
+algorithm still validates SCPT, builds the first table, inserts subsequent
+names in sorted order, frees the old table, increments the file count and loads
+optional package chunks. This establishes source-level exact code generation,
+not historical translation-unit spelling or full game runtime.
+
+The adjacent ECL Boss `EclVmContext::Run @0x44E1A0` remains **6,997/7,020 total
+bytes** with 189 bound fields and 23 ordinary differences. Rebuilding the
+ECL/Enemy host-run graph after the AddScriptData change confirms the same
+**6,241/6,264 ordinary-byte** Run frontier while AddScriptData itself remains
+**589/589** in that second context. No full cold replay was run.
+
 ### Exact-owner-preserving source corrections
 
 `ReplayManager::SaveReplay @0x00429B60` now advances every USER text append
@@ -64,15 +92,14 @@ field** `ExecuteScript` frontier (`4320ebe6`).
   across 189 bound fields. `Stack::Pop` remains **122/122** exact. Rewriting
   its address expressions and the current `LENGTH_SQUARED` / `POINT_ANGLE`
   declaration and expression order controls did not improve the parent.
-  `AddScriptData @0x450220` is a separate 589-byte / 79-difference owner.
-  A fresh two-input `EclVm.cpp` + `Enemy.cpp` diagnostic retains **510/581**
-  comparable bytes and two bound fields; the actual five-source
-  `EnemyEclResourceView::LoadFile` caller graph gives **502/581**. Capturing
-  `previousCount` before the old-table pointer did not reproduce the target's
-  early EDX lifetime and regressed to **346/581**. The target reads the old
-  count before saving the old table in EBP, then adds the new file count; a
-  source-level snapshot alone lets LTCG reschedule the reads. Keep the
-  two-input 510/581 baseline and seek a semantically grounded ordering cause.
+  `AddScriptData @0x450220` is now a separate **589/589 exact** owner with a
+  canonical `ecl-database-add-script-data` unit. Two independent five-input
+  Enemy ECL resource-load cold replays bind all 581 ordinary bytes plus the
+  `malloc @0x452706` and `free @0x452422` REL32 fields; the existing
+  `EnemyEclResourceView::LoadFile` caller remains **95/95** exact. The ECL/Enemy
+  host-run graph also confirms AddScriptData **589/589** while the 7,020-byte
+  Run owner remains at **6,997/7,020**. Continue the 23-byte Run frontier; do
+  not reopen the now-exact database loader without new evidence.
 - **Result Menu**: `UpdateResult` remains 3,228 bytes versus the 3,227-byte
   target, with 173 fields. State 7/8 and states 10–13 remain the main control
   flow frontier.
