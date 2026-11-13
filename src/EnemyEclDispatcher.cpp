@@ -1268,7 +1268,7 @@ dispatch_create_enemy_mirrored:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
-    reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->Release();
+    reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->Release();
     if ((int)uVar22 < 0) {
       return 0;
     }
@@ -1277,17 +1277,17 @@ dispatch_create_enemy_mirrored:
       AnmVmIdView createdVm =
           (*EnemyNativeWordIndex(&g_EnemyManager->loadedAnmResources[0], value0E8))->
               CreateVmVariant2((int)uVar22, 5);
-      *EnemyNativeWordIndex(&managedVmIds[0], iVar26) = createdVm.value;
+      EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value = createdVm.value;
     }
-    uVar6 = *EnemyNativeWordIndex(&managedVmIds[0], iVar26);
+    uVar6 = static_cast<unsigned int>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value);
     if (iVar26 == 0) {
       uVar22 = ENEMY_READ_INT_DIRECT(1);
       value0F0 = (int)uVar22;
       value0EC = value0E8;
-      uVar6 = *EnemyNativeWordIndex(&managedVmIds[0], iVar26);
+      uVar6 = static_cast<unsigned int>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value);
     }
     iVar27 = reinterpret_cast<int>(
-        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->GetVm());
+        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->GetVm());
     goto dispatch_update_primary_anm_bounds;
   case ENEMY_ECL_PLAY_ANM:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -1396,22 +1396,22 @@ dispatch_create_enemy_mirrored:
     iVar26 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     iVar27 = (int)uVar22;
-    reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->Release();
+    reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->Release();
     {
       AnmVmIdView createdVm =
           (*EnemyNativeWordIndex(&g_EnemyManager->loadedAnmResources[0], value0E8))->
               CreateVmVariant2(iVar27, 5);
-      *EnemyNativeWordIndex(&managedVmIds[0], iVar26) = createdVm.value;
+      EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value = createdVm.value;
     }
-    uVar6 = *EnemyNativeWordIndex(&managedVmIds[0], iVar26);
+    uVar6 = static_cast<unsigned int>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value);
     iVar11 = reinterpret_cast<int>(
-        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->GetVm());
+        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->GetVm());
     if (iVar26 == 0) {
       visibilityExtentX = reinterpret_cast<const AnmVmView *>(iVar11)->spriteHeight * reinterpret_cast<const AnmVmView *>(iVar11)->scaleY;
       visibilityExtentY = reinterpret_cast<const AnmVmView *>(iVar11)->spriteWidth * reinterpret_cast<const AnmVmView *>(iVar11)->scaleX;
     }
     if ((*reinterpret_cast<const unsigned char *>(&flags) & 0x10) != 0) {
-      reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->ClearFlag2();
+      reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->ClearFlag2();
     }
     if (iVar26 == 0) {
       flags = flags | 0x1000;
@@ -1425,22 +1425,22 @@ dispatch_create_enemy_mirrored:
   case ENEMY_ECL_PLAY_SELECTED_ANM:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
-    reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->Release();
+    reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->Release();
     {
       AnmVmIdView createdVm =
           (*EnemyNativeWordIndex(&g_EnemyManager->loadedAnmResources[0], value0E8))->
               CreateVmVariant2(animationBaseScript + 5, 5);
-      *EnemyNativeWordIndex(&managedVmIds[0], iVar26) = createdVm.value;
+      EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value = createdVm.value;
     }
     iVar27 = reinterpret_cast<int>(
-        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->GetVm());
+        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->GetVm());
 dispatch_update_primary_anm_bounds:
     if (iVar26 == 0) {
       visibilityExtentX = reinterpret_cast<const AnmVmView *>(iVar27)->spriteHeight * reinterpret_cast<const AnmVmView *>(iVar27)->scaleY;
       visibilityExtentY = reinterpret_cast<const AnmVmView *>(iVar27)->spriteWidth * reinterpret_cast<const AnmVmView *>(iVar27)->scaleX;
     }
     if ((*reinterpret_cast<const unsigned char *>(&flags) & 0x10) != 0) {
-      reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->ClearFlag2();
+      reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->ClearFlag2();
       return 0;
     }
     break;
@@ -1843,7 +1843,7 @@ dispatch_initialize_polar_interpolation:
     flags = uVar8;
     if ((uVar8 & 0x10) != 0) {
       for (iVar26 = 0; iVar26 < 10; ++iVar26)
-        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->ClearFlag2();
+        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->ClearFlag2();
       return 0;
     }
     break;
@@ -1853,7 +1853,7 @@ dispatch_initialize_polar_interpolation:
     flags = uVar8;
     if ((uVar8 & 0x10) == 0) {
       for (iVar26 = 0; iVar26 < 10; ++iVar26)
-        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->SetFlag2();
+        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->SetFlag2();
       return 0;
     }
     break;

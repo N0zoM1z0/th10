@@ -495,7 +495,7 @@ int EnemyFullObjectView::ReadIntOperand(int operand)
         return (int)g_EnemyManager->specialEnemySlots[0]->runtime.worldMotion.position.y;
     case ENEMY_ECL_OPERAND_PRIMARY_VM_VALUE38A:
         return reinterpret_cast<EnemyManagedVmView *>(
-            reinterpret_cast<AnmVmIdView *>(&runtime.managedVmIds[0])->GetVm())->value38A;
+            reinterpret_cast<AnmVmIdView *>(&runtime.managedVmIds.views[0])->GetVm())->value38A;
     case ENEMY_ECL_OPERAND_RANK:
         return g_EnemyRank;
     case ENEMY_ECL_OPERAND_DIFFICULTY:
@@ -921,7 +921,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
         {
             enemy->animationBaseScript = enemy->animationScriptPrimary;
             AnmSetVmScriptIndexAndExecute(
-                &enemy->managedVmIds[0], enemy->animationScriptPrimary);
+                reinterpret_cast<unsigned int *>(&enemy->managedVmIds.words[0]), enemy->animationScriptPrimary);
             enemy->flags |= 0x200001u;
         }
         else if (g_EnemyAnimationMode->value28 == 0 &&
@@ -929,7 +929,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
         {
             enemy->animationBaseScript = enemy->animationScriptAlternate;
             AnmSetVmScriptIndexAndExecute(
-                &enemy->managedVmIds[0], enemy->animationScriptAlternate);
+                reinterpret_cast<unsigned int *>(&enemy->managedVmIds.words[0]), enemy->animationScriptAlternate);
             enemy->flags &= 0xffdffffeu;
         }
     }
@@ -1037,7 +1037,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
 
             enemy->animationDirection = direction;
             AnmSetVmScriptIndexAndExecute(
-                &enemy->managedVmIds[0],
+                reinterpret_cast<unsigned int *>(&enemy->managedVmIds.words[0]),
                 // Original ADD EDX,ECX publishes the low 32-bit script word.
                 static_cast<int>(
                     static_cast<unsigned int>(enemy->animationBaseScript) +
@@ -1045,18 +1045,18 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
         }
     }
 
-    unsigned int *id = &enemy->managedVmIds[0];
+    AnmVmIdView *id = reinterpret_cast<AnmVmIdView *>(&enemy->managedVmIds.views[0]);
     int remaining = eclResult == 0 ? 8 : 0;
     if ((enemy->flags & 0x40000u) == 0)
     {
         for (; remaining != 0; --remaining, ++id)
-            g_AnmRenderManagerView->SetVmWorldPosition(AnmVmIdView(*id),
+            g_AnmRenderManagerView->SetVmWorldPosition(*id,
                 reinterpret_cast<const AnmFloat3View *>(&enemy->worldMotion.position));
     }
     else
     {
         for (; remaining != 0; --remaining, ++id)
-            g_AnmRenderManagerView->SetVmPosition(AnmVmIdView(*id),
+            g_AnmRenderManagerView->SetVmPosition(*id,
                 reinterpret_cast<const AnmFloat3View *>(&enemy->worldMotion.position));
     }
     AnmRenderManagerView *manager = g_AnmRenderManagerView;
@@ -1076,9 +1076,9 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     }
 
     EnemyManagedVmView *primaryVm = reinterpret_cast<EnemyManagedVmView *>(
-        manager->FindVm(AnmVmIdView(enemy->managedVmIds[0])));
+        manager->FindVm(*reinterpret_cast<AnmVmIdView *>(&enemy->managedVmIds.views[0])));
     if (primaryVm == NULL)
-        enemy->managedVmIds[0] = 0;
+        enemy->managedVmIds.words[0] = 0;
 
     if (enemy->damageFlashFrames == 0)
     {
@@ -1120,7 +1120,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     if (enemy->playerCollisionTimer.current > 0)
         reinterpret_cast<AnmVmTimerView *>(&enemy->playerCollisionTimer)->Add(-1.0f);
 
-    reinterpret_cast<AnmVmTimerView *>(&enemy->updateTimer)->Tick();
+    enemy->updateTimer.Tick();
 
     return 0;
 }
@@ -1690,7 +1690,7 @@ EnemyFullObjectView::~EnemyFullObjectView()
 
     for (int i = 0; i < 10; ++i)
     {
-        const unsigned int vmId = enemy->runtime.managedVmIds[i];
+        const unsigned int vmId = enemy->runtime.managedVmIds.words[i];
         if (vmId != 0)
         {
             EnemyManagedVmView *vm = NULL;
@@ -1733,7 +1733,7 @@ EnemyFullObjectView::~EnemyFullObjectView()
                 }
             }
         }
-        enemy->runtime.managedVmIds[i] = 0;
+        enemy->runtime.managedVmIds.words[i] = 0;
     }
 
     if (g_Player != NULL)

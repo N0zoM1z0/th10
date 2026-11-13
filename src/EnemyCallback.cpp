@@ -42,7 +42,7 @@ typedef char EnemyCallbackPlayerState3790At3790[
     (offsetof(EnemyCallbackPlayerStateView, state3790) == 0x3790) ? 1 : -1];
 
 
-static __forceinline void EnemyResetCallbackTimer(PlayerTimerView *timer)
+static __forceinline void EnemyResetCallbackTimer(EnemyRuntimeTimerView *timer)
 {
     if ((timer->flags & 1u) == 0)
     {

@@ -318,6 +318,69 @@ typedef char EnemyItemDropCountRadiusLayout[
      offsetof(EnemyItemDropCountRadiusView, radiusX) == 0x34 &&
      offsetof(EnemyItemDropCountRadiusView, radiusY) == 0x38) ? 1 : -1];
 
+// Enemy runtime's primary update timer has a target-observed volatile scale
+// operand. The neighboring timer records use the same 0x14-byte layout; the
+// shared PlayerTimerView remains their common storage/API view.
+struct EnemyRuntimeTimerView
+{
+    int previous;
+    int current;
+    float subframe;
+    volatile float *scale;
+    unsigned int flags;
+
+    EnemyRuntimeTimerView() { flags &= ~1u; }
+    void Tick()
+    {
+        previous = current;
+        if (*scale > 0.99f && *scale < 1.01f)
+        {
+            ++current;
+            subframe += 1.0f;
+        }
+        else
+        {
+            subframe = *scale + subframe;
+            current = static_cast<int>(subframe);
+        }
+    }
+    void SetCurrent(int value)
+    {
+        if ((flags & 1u) == 0)
+        {
+            current = 0;
+            previous = -999999;
+            subframe = 0.0f;
+            scale = &g_AnmGameSpeed;
+            flags |= 1u;
+        }
+        current = value;
+        subframe = static_cast<float>(value);
+        previous = value - 1;
+    }
+};
+typedef char EnemyRuntimeTimerViewSizeIs14[
+    (sizeof(EnemyRuntimeTimerView) == 0x14) ? 1 : -1];
+
+struct EnemyManagedVmIdSlotView
+{
+    int value;
+    operator AnmVmIdView() const { return AnmVmIdView(value); }
+    AnmVmView *GetVm() const { return AnmVmIdView(value).GetVm(); }
+};
+typedef char EnemyManagedVmIdSlotViewSizeIs4[
+    (sizeof(EnemyManagedVmIdSlotView) == 4) ? 1 : -1];
+
+union EnemyManagedVmIdSlotsView
+{
+    EnemyManagedVmIdSlotView views[10];
+    unsigned int words[10];
+
+    EnemyManagedVmIdSlotsView() {}
+};
+typedef char EnemyManagedVmIdSlotsViewSizeIs28[
+    (sizeof(EnemyManagedVmIdSlotsView) == 0x28) ? 1 : -1];
+
 struct EnemyRuntimeView
 {
     // Target 0x0040E770 is the runtime-tail implementation reached by the
@@ -337,7 +400,7 @@ struct EnemyRuntimeView
     EnemyMotionView baseMotion;
     EnemyFloat2 damageHitbox;
     EnemyFloat2 playerCollisionHitbox;
-    unsigned int managedVmIds[10];
+    EnemyManagedVmIdSlotsView managedVmIds;
     int value0E8;
     int value0EC;
     int value0F0;
@@ -347,7 +410,7 @@ struct EnemyRuntimeView
     // full Enemy +0x1138..+0x1144 and four writable float variables at
     // +0x1148..+0x1154. This exact 0x20-byte block begins runtime +0x0FC.
     EnemyEclVariableView eclVariables;
-    PlayerTimerView updateTimer;
+    EnemyRuntimeTimerView updateTimer;
     EnemyListNodeView listNode;
     EnemyPositionInterpolationView positionInterpolation0;
     EnemyPositionInterpolationView positionInterpolation1;
