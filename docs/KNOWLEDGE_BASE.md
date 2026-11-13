@@ -121,7 +121,11 @@ candidate combines those releases into `ADD ESP,0x20`. Four local-double/float
 homes and two volatile Y-destination forms were byte-neutral. A local
 `__forceinline` floor wrapper kept the 168-byte extent but regressed ordinary
 agreement to **131/143**. A two-axis pointer loop grew the leaf to **172** bytes
-and **11/155** comparable bytes; neither was installed. The enclosing
+and **11/155** comparable bytes; neither was installed. The nested 30-byte
+`EnemyRuntimeVectorView::FromAngleMagnitude` helper now independently cold
+replays through `enemy-runtime-vector` and passes **30/30 raw-equal bytes**;
+this isolates the remaining three-byte discrepancy to `AdvanceMotion` itself.
+The enclosing
 `EnemyRuntimeUpdate` is now canonical exact: **2,412/2,412 bytes, 70/70
 relocation fields, normalization complete**. The new `enemy-runtime-update`
 manifest entry records all 70 target-linked fields and rebuilds the complete
