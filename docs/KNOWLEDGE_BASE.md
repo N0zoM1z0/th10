@@ -1,170 +1,86 @@
 # TH10 durable reconstruction knowledge
 
-## 2026-11-13 Replay USER serialization, faith and archive native words; targeted nonexact controls
+## 2026-11-13 Current source corrections and open-owner frontiers
 
-`ReplayManager::SaveReplay @0x00429B60` now evaluates every USER text append
-and four-byte padding advance as a native modulo-32-bit Win32 cursor. Four
-independent checkpoints (`ff0cafd5`, `aa773a7d`, `943698c8`, `f9b25210`)
-preserve the original distinct preamble/version/name, date/character/rank,
-stage/score, slow-rate and comment paths. The two USER record terminators
-still advance by the `sprintf` byte count plus one; both alignment checks
-continue to re-read their cursors. Original-bound selected cold replay after
-each change preserves the full **1,681/1,681 bytes and all 83 fields**, not
-just the string snippets. The current source no longer creates out-of-array
-C++ pointers when an unchecked text append exceeds its serialized buffer.
+### Exact-owner-preserving source corrections
 
-Two `GameScoreStateView` leaf owners now publish 32-bit ADD/SUB results with
-`memcpy` before their signed upper/lower faith clamps (`b9540161`). Their
-**46-byte AddFaith** and **46-byte DecayFaith** full owners remain exact,
-alongside **42-byte AddRank**; the three original-bound selected cold checks
-pass **134/134**. `FileSystem::LoadArchive` publishes a wrapped archive count
-through the real signed global rather than out-of-range narrowing
-(`f709e891`); selected exact guards cover **LoadArchive 36/4 fields**,
-**FindArchive 212/7 fields**, and archive/disk **Read 214/14 fields**.
+`ReplayManager::SaveReplay @0x00429B60` now advances every USER text append
+and both four-byte alignment cursors as native modulo-32-bit Win32 addresses.
+The four checkpoints (`ff0cafd5`, `aa773a7d`, `943698c8`, `f9b25210`) preserve
+the separate preamble/version/name, date/character/rank, stage/score,
+Slow Rate and comment writes. The two formatted terminators still advance by
+the `sprintf` return plus one byte. Each selected original-bound cold replay
+preserves the full **1,681/1,681 bytes and 83 fields**.
 
-New compiler controls did not reduce the current nonexact frontiers. Six
-source permutations of `CMemoryPbgFile::Seek` FILE_BEGIN/CURRENT/END leave
-the full **107-byte** owner at **100/107**, with exactly the same seven
-branch-tail/register bytes: VC7.1 chooses the same shared successor regardless
-of case lexical ordering. Another ten natural record-initializer controls
-(group/score loops, signed/unsigned fields, zero publication and ranked-kind
-pointer spelling) preserve **InitializeGameStatisticsRecord** at **274 bytes,
-217/242 ordinary comparisons, eight fields**; the adjacent `Load42B030`
-remains **423/423 exact**. Seven `CreateStatistics42AF20` natural `new`,
-return-lifetime and volatile forms do not reproduce the target's private
-EAX constructor argument: baseline **98 bytes against the 97-byte target**;
-forcing `volatile` shrinks to 89/86 bytes with poorer binding/branch geometry.
-None of these nonexact trials entered maintained C++ or an exact ledger.
+`Player::CalculateDamageToTarget` retains **1,170/1,170 bytes and 28 fields**
+after the effect-hit counter, score accumulator, shot-hit total and effect
+row total were made explicit native DWORD operations (`e6d1f733`,
+`be58bce9`, `12099ae8`, `d0657fd9`). `Player::SpawnShot` remains **717/717 / 17
+fields** after flat source-slot addressing and wrapped animation-script `+5`
+(`d01d1a90`, `58989c8f`); `PlayerUpdateShots` remains **876/876 / 22 fields**
+with native unchecked slot addressing (`e60fa9ab`).
 
-## 2026-11-13 Player collision boss word publication and scoped register experiments
+`GameScoreStateView::AddFaith` and `DecayFaith` publish their wrapped ADD/SUB
+words through the signed field before the original clamps (`b9540161`). The
+**46-byte** AddFaith and DecayFaith owners and **42-byte** AddRank remain exact.
+`FileSystem::LoadArchive` similarly publishes its native archive-count INC
+through the signed global (`f709e891`); the selected exact owners remain
+**LoadArchive 36/36 / 4 fields**, **FindArchive 212/212 / 7 fields**, and
+archive/disk **Read 214/214 / 14 fields**.
 
-The Player collision owner now publishes two additional modulo-DWORD damage
-sums as signed bit patterns, one for shot descriptor hits and one for effect
-row damage (`12099ae8`, `d0657fd9`). Independent original-bound selected
-cold links preserve the complete **1,170/1,170-byte / 28-field** owner after
-each edit. The two accumulations retain their positions relative to shot
-interval tests, effect hit counters, and score saturation. In the related
-ANM `ExecuteScript` interpreter, the timer's signed `INC` now publishes its
-native 32-bit representation through `memcpy` (`4320ebe6`); the genuine
-five-object parent remains **9,962/9,964 / 350 fields**, with only opcode
-91's EDX/ECX pair unclosed. Selected exact guards pass the 112-byte ANM
-primary-list head insertion and **3,836/3,836 / 72-field** GUI HUD owner.
-The first GUI cold attempt failed with a transient Wine linker page fault;
-an isolated retry passed. Neither source edit promotes a new exact owner.
+The 28-byte `ResultMenuMarkTasks422200 @0x00422200` remains naturally exact in
+its five-source graph after two independent original-bound cold links
+(`89422b95`, `7f0958d6`). `ResultMenuUpdateResult` state 12 now computes its
+unchecked score-profile offset with native unsigned DWORD arithmetic
+(`68f89dc7`), preserving the existing **3,228-byte / 173-field** candidate;
+the target is 3,227 bytes and remains nonexact. `ResultMenuPrepareScore`
+retains its **377-byte** candidate with **274/305 ordinary bytes and 18
+fields**.
 
-`ResultMenuPrepareScore` now evaluates the unchecked character/shot table
-selector using native unsigned DWORD arithmetic (`5a0bd0b4`). The actual
-four-TU compiler graph preserves its **377-byte / 274-of-305 comparable /
-18-field** candidate and the **3,228-byte / 173-field** `UpdateResult` parent
-without introducing new ordinary or bound-field drift; the target Boss is
-3,227 bytes and still nonexact. Selected `FrontEndCursorSetCurrent` **33/33**
-and `ResultMenuSynchronizeScore` **28/28 / 3-field** colds pass.
+The 3,836-byte GUI HUD owner remains **3,836/3,836 / 72 fields** after its
+ending-counter word publication (`618b659b`). Bullet bounce **446/446 / 20
+fields**, aimed **431/431 / 12 fields**, and relative **338/338 / 8 fields**
+remain exact after native counter publication (`d5f85bf5`, `4ea92116`,
+`5cf65a74`). Absolute direction is still nonexact at **301/303 ordinary
+bytes / 8 fields**, with two register differences at `+0xD7/+0xDD`
+(`049f0350`). The ANM timer word update preserves the **9,962/9,964 / 350
+field** `ExecuteScript` frontier (`4320ebe6`).
 
-Several more falsifiable owner-register attempts were rejected. The
-**274-byte** score-record default initializer remains **217/242 comparable
-bytes with eight fields** under its genuine mixed-profile six-TU statistics
-link. Moving zero/score locals, changing group-counter types and name-word
-read forms did not fix the 25 ordinary register differences; temporary
-name-word copies reduced equality to 169/242, while adjacent statistics
-`Load42B030` stayed full **423/423 exact**. In the real four-source popup
-allocation graph, the popup `Draw` source is still **537 versus target 540
-bytes** and **211/480 comparable / 15 fields**, and its ten-byte callback
-still differs by EBX-versus-EDI receiver coloring (**3/6 comparable, one
-field**). Eight owner/record/player aliases, loop-step and draw-VM lifetime
-forms were neutral or regressed; no register-forcing source was installed.
-ECL `Run` retained **7,020 bytes, 6,241/6,264 comparable and 189 fields**
-with 23 ordinary differences. Byte-address rewrites in exact `Stack::Pop`
-(122 bytes/one field) reduced parent equality to 6,193 or 6,170 bytes; the
-simple array spelling was neutral. Finally, three signed-word/union and two
-native pan-slot formulations changed the binding schedule of the exact
-**1,452-byte Sound queue Boss** and were restored. All experiments used
-complete selected native scopes, not full historical replay.
+### Open owners and rejected controls
 
-## 2026-11-13 Exact result-task marker; native Player and result-state indexing
-
-`ResultMenuMarkTasks422200 @0x00422200` now has a naturally generated **28-byte
-exact** function under the real five-source `ResultMenuIntegrated` VC7.1
-`/GL /GS /EHs` graph. The original function takes a private EAX
-`ResultMenuView*`, reads its `updateTask` at +0x08 and `drawTask` at +0x0C,
-and ORs removal bit `2` at each nonnull node +0x04. The initial natural
-one-local spelling compiled to 26 bytes, selected ECX for the owner and
-EAX for both task pointers and omitted the target's 2-byte `MOV EAX,ECX`.
-Changing only the C++ to independently reload each owner field inside its
-nonnull branch restores all target instructions and register allocation.
-The canonical `result-menu-mark-tasks` unit passed **two independent** complete
-original-bound cold links at **28/28, no relocations**; selected neighboring
-`result-menu-constructor` 101/1 field, `result-menu-initialize` 142/9,
-`result-menu-creator` 67/5 and `result-menu-cleanup` 311/18 also pass.
-`89422b95` preserves the source; `7f0958d6` records the new exact unit,
-function-ledger row and regenerated progress. Original source attribution
-is still indeterminate; the exact codegen claim does not change it.
-
-The still-open 3,227-byte target `ResultMenuUpdateResult` now expresses
-unchecked state-12 score-profile offsets as native unsigned DWORD arithmetic
-rather than overflowing signed products or out-of-array C++ pointer addition
-(`68f89dc7`). A locally cached index grew the source candidate to 3,264
-bytes/174 fields and was rejected. The retained in-expression form preserves
-the existing **3,228-byte / 173-field** candidate, alongside unchanged
-377-byte score preparation; result-menu score-sync 28 and update adapter 10
-cold-pass. The large result state machine remains NONEXACT.
-
-Player source checkpoints (`e6d1f733`, `be58bce9`, `e60fa9ab`, `d01d1a90`)
-use unsigned native-word publication for effect-hit and global score counters,
-and flat Win32 index/stride operations for unchecked shot source slots in both
-SpawnShot and UpdateShots. Selected full original-bound cold replays cover
-damage **1,170/28 fields**, shot spawn **717/17**, and shot update **876/22**.
-The whole-owner results stay exact, not merely individual instruction spans.
-
-Complete two-input ECL `Run` tests of eight different native `Stack::Pop`
-byte-address shapes found no new exactness: the 122-byte Pop leaf remained
-exact for the ordinary variants, but changing its value or type-slot address
-made the 7,020-byte parent lose 48–94 additional comparable bytes; a volatile
-pointer expanded both functions. A direct array-address spelling was
-codegen-neutral, leaving the original **23** ECL ordinary differences.
-Ten complete 107-byte `CMemoryPbgFile::Seek` tests of FILE_BEGIN expressions
-also left the best **100/107** or expanded to **122**; a new block-sharing
-hypothesis is needed rather than repeating early-return/goto controls.
-
-## 2026-11-13 Native GUI and Bullet word checkpoints; ANM/ECL/Text register constraints
-
-Five independent code checkpoints in current `th10` source preserve original
-32-bit signed counters without relying on signed overflow or unsigned-to-signed
-narrowing. `GuiView::UpdateStageElements` now publishes `endingCounter` through
-a four-byte representation copy, and its selected full original-bound cold
-replay passes **3,836/3,836 bytes with 72 fields** (`618b659b`).
-`BulletRuntimeView::UpdateBoundaryBounce` now publishes the incremented bounce
-count in the same way; the full **446/446-byte / 20-field** owner remains exact
-(`d5f85bf5`). The **431-byte aimed** and **338-byte relative** direction
-owners also preserve their signed cycle counters through native-word copies;
-selected cold replays pass **431/431 / 12 fields** and **338/338 / 8 fields**
-(`4ea92116`, `5cf65a74`). The **335-byte absolute** direction owner uses
-the same bit-preserving publication without changing its best original-bound
-frontier: **301/303 ordinary bytes, eight fields and exactly two remaining
-nonfield register bytes** at `+0xD7/+0xDD`; it is still **NONEXACT**
-(`049f0350`). No new exact ledger entry follows from these source fixes.
-
-Large-owner experiments were compiled as complete function bodies with their
-actual support objects and source profile; failing variants were kept only in
-ignored scratch. Seven additional ANM opcode-91 forms (including three
-`_ReadWriteBarrier` placements, volatile `anmFile` reads and chained returned
-VM IDs) preserve or regress the **9,962/9,964 / 350-field** `ExecuteScript`
-frontier; none produces the target EDX layer load/push at `+0x113/+0x115`.
-Ten ECL `RETURN` branch operand-size, pointer-lifetime and post-Pop null-test
-controls leave the **7,020-byte Run** at **6,997/7,020 / 189 fields / 23
-ordinary differences**; the full **122-byte Pop** remains exact. A separate
-SCPT `AddScriptData` counter-lifetime experiment had the same or larger
-589-byte/79-difference frontier and did not affect Run. No trial modifies
-source or the exactness ledger.
-
-The 157-byte `TextRenderBufferView::InvertAlpha` was compared in the real
-`TextBufferLifecycle` graph using four entry choices and direct visibility
-controls. The `CreateTextBuffer`/main/alternate rendering contexts all yield
-**138/157** matching bytes; `noinline` is neutral, whereas forcing
-`dllexport` switches to a different 112/157 private-register arrangement.
-Target receiver ECX versus caller-selected candidate receiver EAX explains
-why merely changing source expressions or entrypoint does not solve the 19
-remaining bytes. A different original caller/visibility provenance is needed.
-All trials used selected real VC7.1 builds, never a historical all-unit replay.
+- **ANM `ExecuteScript`**: 9,964-byte target, 9,962 matching total bytes and
+  350 bound fields. Opcode 91 still differs in the EDX/ECX layer operand at
+  `+0x113/+0x115`. Additional aggregate, volatile-pointer, barrier and return
+  lifetime forms did not resolve it.
+- **ECL `Run`**: 7,020 bytes, **6,997/7,020 total bytes** match; of the
+  **6,264 non-field positions, 6,241 match**, leaving 23 ordinary differences
+  across 189 bound fields. `Stack::Pop` remains **122/122** exact. Rewriting
+  its address expressions worsened the parent; the direct array spelling was
+  neutral. `AddScriptData` remains a separate 589-byte / 79-difference owner.
+- **Result Menu**: `UpdateResult` remains 3,228 bytes versus the 3,227-byte
+  target, with 173 fields. State 7/8 and states 10–13 remain the main control
+  flow frontier.
+- **Enemy**: `EnemyRuntimeUpdate` remains 2,412 bytes / 69 fields, with
+  1,575/2,136 comparable bytes in the selected ten-TU graph. The 14,416-byte
+  ECL dispatcher remains nonexact with 800 source field identities.
+- **GUI and Player**: `GuiMessageVmView::Run` is 4,492 versus the 4,480-byte
+  target. The Player callback is 3,100 versus 3,112 bytes; movement is 1,616
+  versus 1,656 bytes. The shot loop and damage owner remain exact.
+- **Sound `PreloadBgm`**: 369 bytes, 325/329 ordinary bytes and ten fields;
+  four `ReadFile` register encodings remain different at `+0x121/+0x127/
+  +0x12A/+0x12B`.
+- **Medium owners**: `MainRegisterChain` is 204 bytes / 110/120 ordinary
+  bytes / 21 fields; `CMemoryPbgFile::Seek` is 107 bytes / 100/107 with no
+  fields. Six `switch` case permutations leave the same seven Seek bytes.
+- **Statistics**: `InitializeGameStatisticsRecord` remains 274 bytes /
+  217/242 ordinary bytes / eight fields; ten loop, name-copy, zero and index
+  controls did not improve it. The adjacent 423-byte loader remains exact.
+  `CreateStatistics42AF20` remains 98 bytes against a 97-byte target;
+  seven natural allocation/return variants did not recover its private ABI.
+- **Popup and text**: popup Draw is 537 bytes against 540, with 211/480
+  ordinary bytes and 15 fields; its ten-byte adapter remains 3/6 with one
+  field. `InvertAlpha` remains 138/157 across real text-render graphs; forcing
+  exported visibility regressed it to 112/157.
 
 ## 2026-11-12 Exact replay word publication and isolated large-owner compiler controls
 
@@ -203,8 +119,10 @@ remains **157 bytes, 138/157 bytes matching, zero address fields** with the
 same 19 register bytes whether the real selected entry is `CreateTextBuffer`,
 `RenderTextToTexture`, or `RenderTextToTextureAlternate`; merely changing
 caller entry does not recover the original receiver/count register schedule.
-All trial sources and results are in ignored `.analysis/gpt-web/20261112-*`
-and `build/gpt-web/20261112/`; no full historical cold replay was run.
+At that source epoch, trial sources and results were written under ignored
+`.analysis/gpt-web/20261112-*` and `build/gpt-web/20261112/`. Those per-variant
+scratch trees were pruned in the 2026-11-13 storage cleanup; the findings are
+retained here. No full historical cold replay was run.
 
 ## 2026-11-12 Shared VM IDs, BGM queue words and unresolved register frontiers
 
@@ -287,8 +205,8 @@ The attempted native `ReplayManager::SaveReplay` record-pointer subtraction
 forms either changed ordinary bytes or shortened the exact 1,681-byte
 owner to 1,665 bytes, and were reverted. The original code was kept.
 No full historical cold replay, target mutation, exact-ledger promotion or
-remote push was performed. The retained private diagnostics are under
-`.analysis/gpt-web/20261112-*` and `build/gpt-web/20261112/`.
+remote push was performed. The per-variant diagnostics from this epoch were
+pruned in the 2026-11-13 cleanup; see `RE_ARTIFACTS.md` for retained contexts.
 
 ## 2026-11-12 Native RIFF parsing, ECL postdecrement, and bounded owner trials
 
@@ -364,9 +282,10 @@ The ANM `ExecuteScript` 9,964-byte Boss also rejected three isolated
 standalone `memcpy`, and a copied operand-first form changed its complete
 PDB extent or field map rather than resolving opcode 91's remaining
 `+0x113/+0x115` ECX-versus-EDX registers. The retained full owner is still
-**9,962/9,964** with 350 bound fields. Trial drivers and comparison results
-are under ignored `.analysis/gpt-web/20261112-*` and
-`build/gpt-web/20261112/`; no full historical cold replay was run.
+**9,962/9,964** with 350 bound fields. Trial drivers and comparison results were originally written under ignored
+`.analysis/gpt-web/20261112-*` and `build/gpt-web/20261112/`; those variant
+outputs were pruned in the 2026-11-13 cleanup. No full historical cold replay
+was run.
 
 ## 2026-11-12 Exact score serialization and large-owner native counters
 
@@ -405,7 +324,9 @@ square locals perturb the interpreter's global frame/register allocation.
 The exact 122-byte `EclVmStackView::Pop` can remain exact even when its
 inlined parent regresses. Preserve both intact source baselines until a
 falsifiable register-lifetime or compiler-context hypothesis is available.
-The relevant ignored trial drivers are under `.analysis/gpt-web/20261112-*`.
+The relevant trial drivers were originally stored under `.analysis/gpt-web/20261112-*`;
+those dated outputs were pruned in the 2026-11-13 cleanup. See
+`RE_ARTIFACTS.md` for the four reusable drivers that remain.
 
 ## 2026-11-12 Complete-owner register frontiers and typed native-word fixes
 
@@ -459,9 +380,11 @@ shot spawn and row emission pass **1,698/1,698 bytes and 41 fields**.
 Reusing the typed entry in the following descriptor read was tested and
 rejected: it changed the fixup's codegen without reducing its differences.
 
-The retained trial drivers and native comparisons are under ignored
-`.analysis/gpt-web/20261112-*` and `build/gpt-web/20261112/` directories.
-These are replayable diagnostic inputs, not canonical exact receipts.
+The per-variant trial drivers and native comparisons from this epoch were
+under ignored `.analysis/gpt-web/20261112-*` and `build/gpt-web/20261112/`;
+those outputs were pruned in the 2026-11-13 cleanup. The findings remain
+reproducible from maintained source and the canonical unit recipes, but are
+not canonical exact receipts.
 The three source checkpoints are `ae018651`, `a9353f80` and `5bd04cff`.
 
 ## 2026-11-12 Native transition fade-in terminal bound without a typed alias
@@ -523,13 +446,14 @@ cold replay passes `anm-setup-vertex-buffer` **472/472** (22 fields) and
 **602/602** with 23 fields in one artifact. Neither the Boss nor the existing
 exact ledger changes status.
 
-## Reading this journal against the current ledger (2026-11-12)
+## Reading this journal against the current ledger (2026-11-13)
 
-**Current canonical snapshot:** **1,521 exact owners** and **200,940 exact
+**Current canonical snapshot:** **1,522 exact owners** and **200,968 exact
 bytes**, including **608 authored exact owners** and **130,653 authored exact
 bytes**; **142 authored source-present owners** remain nonexact. The newest
-accepted authored addition is `PlayerUpdateShots @0x00428280`
-(**876/876**, 22 original-bound fields). Earlier additions include
+accepted authored addition is `ResultMenuMarkTasks422200 @0x00422200`
+(**28/28**, no fields). Earlier additions include `PlayerUpdateShots
+@0x00428280` (**876/876**, 22 original-bound fields),
 `ResultMenuSynchronizeScore @0x00421F60` (**28/28**, three fields),
 `ReleaseModeOwners` (**128/128**, 15 fields),
 `EnemyEclHostBaseView::SetSubroutine` (**30/30**, one field),
@@ -4226,7 +4150,8 @@ computed, integer-divided text offset. Source uses an `EclVmScalar` overlay
 for actual int/float argument values but retains the native `count / 4`
 indexing (no fabricated alignment). The fresh two-TU compiled
 `EclVmContext::Run` remains 7,020 bytes, 189/189 original fields,
-6,997/7,020 target ordinary bytes, and **NONEXACT**. StartSubroutine retains
+6,997/7,020 total target bytes; the common non-field comparison is
+6,241/6,264. It remains **NONEXACT**. StartSubroutine retains
 all four call sites; selected existing value leaves remain **295/295 exact**.
 
 ## 2026-11-05 RIFF/WAVE native chunk wire prefix recovery

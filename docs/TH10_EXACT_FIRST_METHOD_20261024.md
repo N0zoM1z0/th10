@@ -1,13 +1,16 @@
 # TH10 exact-first method, 2026-10-24
 
-## Current execution — 2026-11-06
+## Workflow pointer — current rules as of 2026-11-13
 
-Use local tools directly and `gpt-web:` commits; never push. Exact work
-requires complete native byte/field/ABI comparison and cold reproducibility.
+This dated proposal is historical. Follow `AGENTS.md` and `RE_WORKFLOW.md`
+for current execution rules; use local `gpt-web:` commits and never push.
+Exact work requires complete native byte/field/ABI comparison and cold
+reproducibility.
 Host allocation-failure/null/exception simulations, lifecycle suites,
 sanitizer/leak runs and mutation campaigns are not checkpoint requirements.
-Replay only affected exact owners. Default CI checks changed input syntax and whitespace. Run comparator
-self-test scripts directly only when changing that mechanism.
+Replay only affected exact owners. Default CI checks changed input syntax and
+whitespace. Run comparator self-test scripts directly only when changing that
+mechanism.
 See [the current workflow](RE_WORKFLOW.md). Earlier validation reports below
 are historical observations, not a checklist to repeat.
 

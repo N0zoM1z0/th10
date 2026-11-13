@@ -7,7 +7,7 @@
 
 ## Current scope
 
-Current direction, 2026-11-06: work directly with local tools on exact
+Current direction, 2026-11-13: work directly with local tools on exact
 reconstruction.
 [AGENTS.md](../AGENTS.md) is the operational authority. No Factory provider,
 receipt, coordinator or Factory-document prerequisite applies. Use
