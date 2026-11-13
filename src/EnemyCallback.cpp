@@ -120,10 +120,13 @@ const unsigned char *__fastcall EnemyResolveRuntimeCallback(
 
             EnemyCallbackPlayerStateView *player =
                 reinterpret_cast<EnemyCallbackPlayerStateView *>(g_Player);
-            if ((player->flags378C & 8u) == 0 && player->state3738 >= 60)
+            unsigned int flags378C = player->flags378C;
+            if ((flags378C & 8u) == 0 && player->state3738 >= 60)
             {
                 player->state3790 = 0;
-                player->flags378C &= ~2u;
+                _ReadWriteBarrier();
+                flags378C &= ~2u;
+                player->flags378C = flags378C;
                 _ReadWriteBarrier();
                 player->flags0AD4 &= ~2u;
                 player->flags0E80 &= ~2u;
