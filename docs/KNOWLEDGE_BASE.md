@@ -1,5 +1,41 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-13 Replay USER serialization, faith and archive native words; targeted nonexact controls
+
+`ReplayManager::SaveReplay @0x00429B60` now evaluates every USER text append
+and four-byte padding advance as a native modulo-32-bit Win32 cursor. Four
+independent checkpoints (`ff0cafd5`, `aa773a7d`, `943698c8`, `f9b25210`)
+preserve the original distinct preamble/version/name, date/character/rank,
+stage/score, slow-rate and comment paths. The two USER record terminators
+still advance by the `sprintf` byte count plus one; both alignment checks
+continue to re-read their cursors. Original-bound selected cold replay after
+each change preserves the full **1,681/1,681 bytes and all 83 fields**, not
+just the string snippets. The current source no longer creates out-of-array
+C++ pointers when an unchecked text append exceeds its serialized buffer.
+
+Two `GameScoreStateView` leaf owners now publish 32-bit ADD/SUB results with
+`memcpy` before their signed upper/lower faith clamps (`b9540161`). Their
+**46-byte AddFaith** and **46-byte DecayFaith** full owners remain exact,
+alongside **42-byte AddRank**; the three original-bound selected cold checks
+pass **134/134**. `FileSystem::LoadArchive` publishes a wrapped archive count
+through the real signed global rather than out-of-range narrowing
+(`f709e891`); selected exact guards cover **LoadArchive 36/4 fields**,
+**FindArchive 212/7 fields**, and archive/disk **Read 214/14 fields**.
+
+New compiler controls did not reduce the current nonexact frontiers. Six
+source permutations of `CMemoryPbgFile::Seek` FILE_BEGIN/CURRENT/END leave
+the full **107-byte** owner at **100/107**, with exactly the same seven
+branch-tail/register bytes: VC7.1 chooses the same shared successor regardless
+of case lexical ordering. Another ten natural record-initializer controls
+(group/score loops, signed/unsigned fields, zero publication and ranked-kind
+pointer spelling) preserve **InitializeGameStatisticsRecord** at **274 bytes,
+217/242 ordinary comparisons, eight fields**; the adjacent `Load42B030`
+remains **423/423 exact**. Seven `CreateStatistics42AF20` natural `new`,
+return-lifetime and volatile forms do not reproduce the target's private
+EAX constructor argument: baseline **98 bytes against the 97-byte target**;
+forcing `volatile` shrinks to 89/86 bytes with poorer binding/branch geometry.
+None of these nonexact trials entered maintained C++ or an exact ledger.
+
 ## 2026-11-13 Player collision boss word publication and scoped register experiments
 
 The Player collision owner now publishes two additional modulo-DWORD damage
