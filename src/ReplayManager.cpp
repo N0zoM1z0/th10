@@ -790,10 +790,19 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
     userDataHeader->type = 0;
 
     char *userDataCursor = (char *)(userDataHeader + 1);
-    userDataCursor += sprintf(userDataCursor, g_ReplayUserInfoText);
-    userDataCursor += sprintf(userDataCursor, "Version %s\r\n", "1.00a");
-    userDataCursor +=
-        sprintf(userDataCursor, "Name %s\r\n", replayData->replayName);
+    // Native USER text appends a returned byte count to the low Win32
+    // address word; a malformed size does not form an abstract C++ array.
+    userDataCursor = reinterpret_cast<char *>(
+        reinterpret_cast<unsigned int>(userDataCursor) +
+        static_cast<unsigned int>(sprintf(userDataCursor, g_ReplayUserInfoText)));
+    userDataCursor = reinterpret_cast<char *>(
+        reinterpret_cast<unsigned int>(userDataCursor) +
+        static_cast<unsigned int>(sprintf(
+            userDataCursor, "Version %s\r\n", "1.00a")));
+    userDataCursor = reinterpret_cast<char *>(
+        reinterpret_cast<unsigned int>(userDataCursor) +
+        static_cast<unsigned int>(sprintf(
+            userDataCursor, "Name %s\r\n", replayData->replayName)));
 
     tm *localTime = localtime((time_t *)&replayData->timestamp);
     userDataCursor += sprintf(
