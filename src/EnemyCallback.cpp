@@ -61,48 +61,50 @@ const unsigned char *__fastcall EnemyResolveRuntimeCallback(
     EnemyFullObjectView *owner)
 {
     EnemyRuntimeView *enemy = &owner->runtime;
-    unsigned int callbackIndex = 0;
+    unsigned int lifeIndex = 0;
 
-    for (; callbackIndex < 8; ++callbackIndex)
+    for (; lifeIndex < 8; ++lifeIndex)
     {
-        if (enemy->callbackThresholds[callbackIndex].lifeThreshold >= 0)
+        volatile int &lifeThreshold = *reinterpret_cast<volatile int *>(
+            &enemy->callbackThresholds[lifeIndex].lifeThreshold);
+        if (lifeThreshold >= 0)
         {
             enemy->lifeToNextCallback = static_cast<int>(
                 static_cast<unsigned int>(enemy->life) -
-                static_cast<unsigned int>(enemy->callbackThresholds[callbackIndex].lifeThreshold));
-            if (enemy->life <=
-                enemy->callbackThresholds[callbackIndex].lifeThreshold)
+                static_cast<unsigned int>(lifeThreshold));
+            if (enemy->life <= lifeThreshold)
             {
-                enemy->life =
-                    enemy->callbackThresholds[callbackIndex].lifeThreshold;
-                enemy->callbackThresholds[callbackIndex].lifeThreshold = -1;
+                enemy->life = lifeThreshold;
+                lifeThreshold = -1;
                 EnemyResetCallbackTimer(&enemy->updateTimer);
                 enemy->flags &= ~0x10000u;
-                return enemy->callbackThresholds[callbackIndex].lifeCallbackName;
+                return enemy->callbackThresholds[lifeIndex].lifeCallbackName;
             }
             break;
         }
     }
 
-    for (callbackIndex = 0; callbackIndex < 8; ++callbackIndex)
+    unsigned int timerIndex = 0;
+    for (; timerIndex < 8; ++timerIndex)
     {
-        if (enemy->callbackThresholds[callbackIndex].lifeThreshold >= 0 &&
-            enemy->callbackThresholds[callbackIndex].timerThreshold > 0)
+        volatile int &timerLifeThreshold = *reinterpret_cast<volatile int *>(
+            &enemy->callbackThresholds[timerIndex].lifeThreshold);
+        if (timerLifeThreshold >= 0 &&
+            enemy->callbackThresholds[timerIndex].timerThreshold > 0)
         {
             int seconds = static_cast<int>(
-                static_cast<unsigned int>(enemy->callbackThresholds[callbackIndex].timerThreshold) -
+                static_cast<unsigned int>(enemy->callbackThresholds[timerIndex].timerThreshold) -
                 static_cast<unsigned int>(enemy->updateTimer.current) + 59u) / 60;
             if (seconds > 99)
                 seconds = 99;
             g_GuiView->spellSeconds = seconds;
 
             if (enemy->updateTimer.current <
-                enemy->callbackThresholds[callbackIndex].timerThreshold)
+                enemy->callbackThresholds[timerIndex].timerThreshold)
                 return NULL;
 
-            enemy->life =
-                enemy->callbackThresholds[callbackIndex].lifeThreshold;
-            enemy->callbackThresholds[callbackIndex].lifeThreshold = -1;
+            enemy->life = timerLifeThreshold;
+            timerLifeThreshold = -1;
             EnemyResetCallbackTimer(&enemy->updateTimer);
             enemy->flags |= 0x10000u;
 
@@ -125,7 +127,7 @@ const unsigned char *__fastcall EnemyResolveRuntimeCallback(
                 player->flags20DC &= ~2u;
                 player->flags2488 &= ~2u;
             }
-            return enemy->callbackThresholds[callbackIndex].timerCallbackName;
+            return enemy->callbackThresholds[timerIndex].timerCallbackName;
         }
     }
     return NULL;
