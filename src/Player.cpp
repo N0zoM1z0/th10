@@ -1688,7 +1688,12 @@ int __stdcall PlayerUpdateShots(Player *player)
             EnemyMarkPendingInterrupt(reinterpret_cast<int *>(&shot->secondaryVmId));
             descriptor = shot->descriptor;
             shot->state = PLAYER_SHOT_HIT_TRANSITION;
-            player->shotSourceActive[(int)descriptor->sourceIndex - 1] = 0;
+            // The shot option slot is addressed as one native 32-bit word,
+            // including the unchecked sourceIndex==0 underflow case.
+            *reinterpret_cast<int *>(
+                reinterpret_cast<unsigned int>(&player->shotSourceActive[0]) +
+                (static_cast<unsigned int>(descriptor->sourceIndex) - 1u) *
+                    sizeof(player->shotSourceActive[0])) = 0;
         }
 
         descriptor = shot->descriptor;
@@ -1702,7 +1707,12 @@ int __stdcall PlayerUpdateShots(Player *player)
             EnemyMarkPendingInterrupt(reinterpret_cast<int *>(&shot->primaryVmId));
             EnemyMarkPendingInterrupt(reinterpret_cast<int *>(&shot->secondaryVmId));
             descriptor = shot->descriptor;
-            player->shotSourceActive[(int)descriptor->sourceIndex - 1] = 0;
+            // The shot option slot is addressed as one native 32-bit word,
+            // including the unchecked sourceIndex==0 underflow case.
+            *reinterpret_cast<int *>(
+                reinterpret_cast<unsigned int>(&player->shotSourceActive[0]) +
+                (static_cast<unsigned int>(descriptor->sourceIndex) - 1u) *
+                    sizeof(player->shotSourceActive[0])) = 0;
         }
 
         descriptor = shot->descriptor;
