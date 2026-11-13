@@ -31652,7 +31652,7 @@ linkages = [
   { offset = 0x0F1, type = "REL32", symbol = "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z", target = 0x0040C4D0 },
   { offset = 0x11E, type = "REL32", symbol = "?FromAngleMagnitude@EnemyRuntimeVectorView@@QAEXMM@Z", target = 0x0044C5D0 },
   { offset = 0x13B, type = "REL32", symbol = "?EnemyWrapAngle@@YGMM@Z", target = 0x0044BC70 },
-  { offset = 0x146, type = "REL32", symbol = "?EnemyAdvanceMotion@@YAXPAUEnemyMotionView@@@Z", target = 0x0044C2A0 },
+  { offset = 0x146, type = "REL32", symbol = "?AdvanceMotion@EnemyMotionView@@QAEXXZ", target = 0x0044C2A0 },
   { offset = 0x151, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
   { offset = 0x25B, type = "REL32", symbol = "?IsOutsidePlayfield@PlayerShotBoundsView@@QAEHMM@Z", target = 0x00428D70 },
   { offset = 0x268, type = "REL32", symbol = "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z", target = 0x004492A0 },

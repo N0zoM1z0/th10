@@ -724,8 +724,9 @@ EnemyFloat2 *EnemyScalarInterpolationView::Evaluate(EnemyFloat2 *output)
 
 // Target 0x0044C2A0: polar mode replaces the position, Cartesian mode adds
 // velocity. X/Y are then floored to hundredths, including negative values.
-void EnemyAdvanceMotion(EnemyMotionView *motion)
+void EnemyMotionView::AdvanceMotion()
 {
+    EnemyMotionView *motion = this;
     if ((motion->flags & 1u) == 0)
     {
         volatile float &oldX = *reinterpret_cast<volatile float *>(&motion->position.x);
@@ -857,14 +858,14 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
         }
     }
 
-    EnemyAdvanceMotion(&enemy->offsetMotion);
+    enemy->offsetMotion.AdvanceMotion();
     if ((enemy->flags & 0x40000u) != 0)
     {
         baseMotion->position.x += g_EnemyGlobalPositionOffset.x;
         baseMotion->position.y += g_EnemyGlobalPositionOffset.y;
         baseMotion->position.z += g_EnemyGlobalPositionOffset.z;
     }
-    EnemyAdvanceMotion(baseMotion);
+    baseMotion->AdvanceMotion();
 
     const volatile float &baseX = baseMotion->position.x;
     const volatile float &baseY = baseMotion->position.y;
@@ -878,7 +879,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
         baseY + offsetPosition.y,
         baseZ + offsetPosition.z};
     *reinterpret_cast<AnmFloat3View *>(&enemy->worldMotion.velocity) = sum - worldPosition;
-    EnemyAdvanceMotion(&enemy->worldMotion);
+    enemy->worldMotion.AdvanceMotion();
 
     if ((enemy->flags & 0x200u) != 0)
     {

@@ -74,6 +74,10 @@ struct EnemyMotionView
         unsigned int value24Bits;
     };
     unsigned int flags;
+
+    // The retail motion step is an internal ESI-receiver method, not a
+    // stack-argument free function. Keep the operation on its owning record.
+    void AdvanceMotion();
 };
 typedef char EnemyMotionViewSizeIs2C[(sizeof(EnemyMotionView) == 0x2c) ? 1 : -1];
 typedef char EnemyMotionVelocityAt0C[(offsetof(EnemyMotionView, velocity) == 0x0c) ? 1 : -1];
@@ -107,7 +111,6 @@ struct EnemyRuntimeVectorView
 typedef char EnemyRuntimeVectorViewSizeIs0C[
     (sizeof(EnemyRuntimeVectorView) == 0x0c) ? 1 : -1];
 
-void EnemyAdvanceMotion(EnemyMotionView *motion);
 
 // TH10's Enemy interpolation records use the same four-value plus timer
 // layout observed independently in their evaluator and initializer bodies.

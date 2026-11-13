@@ -1761,7 +1761,7 @@ int __stdcall PlayerUpdateShots(Player *player)
         }
 
         PlayerShotMotionView *motion = &shot->motion;
-        EnemyAdvanceMotion(reinterpret_cast<EnemyMotionView *>(motion));
+        reinterpret_cast<EnemyMotionView *>(motion)->AdvanceMotion();
 
         PlayerVm *primaryVm = reinterpret_cast<PlayerVm *>(
             g_AnmRenderManagerView->FindVm(*reinterpret_cast<AnmVmIdView *>(&shot->primaryVmId)));
@@ -2314,7 +2314,7 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
                 EnemyWrapAngle(motion.angle + motion.angularStep);
         }
 
-        EnemyAdvanceMotion(reinterpret_cast<EnemyMotionView *>(&row->position));
+        reinterpret_cast<EnemyMotionView *>(&row->position)->AdvanceMotion();
         row->radius += row->radiusDelta;
         row->angle += row->angleDelta;
 
