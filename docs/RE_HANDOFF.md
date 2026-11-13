@@ -56,7 +56,12 @@ accumulators, `6edca467`), and `EndingTextVmView::Run` **1,568** bytes/92 fields
 with native field-damage and impact-script additions (`32adecb4`, `bf9b62e4`).
 The score loader **423**, finalizer **564**, and tail initializer **142**
 remain exact after byte-safe record publications (`e90a06bc`, `c43747ba`).
-Rebuild only if a change touches their dependency graph.
+More recent complete Boss guards: Player damage **1,170/28** after additional
+shot-hit and effect-total DWORD bit copies (`12099ae8`, `d0657fd9`); ANM
+`ExecuteScript` still **9,962/9,964 / 350 fields**, with timer DWORD
+publication codegen-neutral (`4320ebe6`), and GUI HUD cold-replay exact
+**3,836/72** in the same updated source epoch. Rebuild only if a change
+touches their dependency graph.
 
 ## Open functions — choose a concrete hypothesis before compiling
 
@@ -73,7 +78,7 @@ all LTCG contexts. Check current source and the original byte offsets first.
 | **Near-exact Bullet** `UpdateAbsoluteDirectionChange @0x4078E0`, `src/BulletManager.cpp` | Full **335** with **two ordinary differences** at `+0xD7/+0xDD`: target uses EDX to load/push angle, candidate EAX. Eight fields remain bound. Ten natural angle/receiver/speed forms and three native cycle-store variants were neutral or regressed. The installed bit-copy cycle store preserves this baseline; a new EDX-liveness hypothesis is needed. Relative/aimed remain exact. |
 | **Near-exact Sound** `PreloadBgm @0x43D7D0`, `src/Sound.cpp` | Full **369**, **four ordinary differences** `+0x121/+0x127/+0x12A/+0x12B` in `ReadFile` size/output register assignment; ten fields. Eight fresh full-owner Sound/ZWave `ReadFile` declaration/address trials were neutral or regressed; seek genuine caller-visible register lifetimes rather than repeated pointer spelling. |
 | **Other medium owners** | `ScriptViewerBombOwnerView::Update @0x405750`: full **223**, ten nonfield register bytes, 12 fields; EBP/EBX owner/VM allocation. The current native mode-word fix preserves its best candidate; volatile manager/VM pointers expanded it to 228 bytes. `MainRegisterChain @0x420470`: full **204**, ten EBX/EBP register bytes, 21 fields. `CMemoryPbgFile::Seek @0x4364F0`: full **107**, seven register bytes, no fields. No known safe exact variant yet. |
-| **Additional genuine backlog** | `InitializeGameStatisticsRecord @0x42ACB0` full **274**, 25 ordinary differences/eight fields; `TransitionShakeEnvelope @0x43C710` target **349**, candidate **350**, 207/285 comparable and 16 fields (final-bound cast neutral, amplitude bound sharing regressed); `TextRenderBufferView::InvertAlpha @0x437160` full **157**, 19 receiver/count register bytes still differ in all three real text-render entry contexts; noinline is neutral and forcing exported ABI regresses 138/157 to 112/157; `PollInputFrame @0x44A5F0` target/candidate **850**, repeat/cursor register and callee ABI scheduling. Check each complete source and graph before adopting a historic score. |
+| **Additional genuine backlog** | `InitializeGameStatisticsRecord @0x42ACB0` full **274**, 25 ordinary differences/eight fields after source-lifetime and name-copy controls; `TransitionShakeEnvelope @0x43C710` target **349**, candidate **350**, 207/285 comparable and 16 fields (final-bound cast neutral, amplitude bound sharing regressed); `TextRenderBufferView::InvertAlpha @0x437160` full **157**, 19 receiver/count register bytes still differ in all three real text-render entry contexts; noinline is neutral and forcing exported ABI regresses 138/157 to 112/157; `PollInputFrame @0x44A5F0` target/candidate **850**, repeat/cursor register and callee ABI scheduling. Check each complete source and graph before adopting a historic score. |
 
 `EntityStartScript_00404F30` is **not** an accepted exact reconstruction:
 its 202-byte reference source still uses `__declspec(naked)`/hand assembly.

@@ -1,5 +1,49 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-13 Player collision boss word publication and scoped register experiments
+
+The Player collision owner now publishes two additional modulo-DWORD damage
+sums as signed bit patterns, one for shot descriptor hits and one for effect
+row damage (`12099ae8`, `d0657fd9`). Independent original-bound selected
+cold links preserve the complete **1,170/1,170-byte / 28-field** owner after
+each edit. The two accumulations retain their positions relative to shot
+interval tests, effect hit counters, and score saturation. In the related
+ANM `ExecuteScript` interpreter, the timer's signed `INC` now publishes its
+native 32-bit representation through `memcpy` (`4320ebe6`); the genuine
+five-object parent remains **9,962/9,964 / 350 fields**, with only opcode
+91's EDX/ECX pair unclosed. Selected exact guards pass the 112-byte ANM
+primary-list head insertion and **3,836/3,836 / 72-field** GUI HUD owner.
+The first GUI cold attempt failed with a transient Wine linker page fault;
+an isolated retry passed. Neither source edit promotes a new exact owner.
+
+`ResultMenuPrepareScore` now evaluates the unchecked character/shot table
+selector using native unsigned DWORD arithmetic (`5a0bd0b4`). The actual
+four-TU compiler graph preserves its **377-byte / 274-of-305 comparable /
+18-field** candidate and the **3,228-byte / 173-field** `UpdateResult` parent
+without introducing new ordinary or bound-field drift; the target Boss is
+3,227 bytes and still nonexact. Selected `FrontEndCursorSetCurrent` **33/33**
+and `ResultMenuSynchronizeScore` **28/28 / 3-field** colds pass.
+
+Several more falsifiable owner-register attempts were rejected. The
+**274-byte** score-record default initializer remains **217/242 comparable
+bytes with eight fields** under its genuine mixed-profile six-TU statistics
+link. Moving zero/score locals, changing group-counter types and name-word
+read forms did not fix the 25 ordinary register differences; temporary
+name-word copies reduced equality to 169/242, while adjacent statistics
+`Load42B030` stayed full **423/423 exact**. In the real four-source popup
+allocation graph, the popup `Draw` source is still **537 versus target 540
+bytes** and **211/480 comparable / 15 fields**, and its ten-byte callback
+still differs by EBX-versus-EDI receiver coloring (**3/6 comparable, one
+field**). Eight owner/record/player aliases, loop-step and draw-VM lifetime
+forms were neutral or regressed; no register-forcing source was installed.
+ECL `Run` retained **7,020 bytes, 6,241/6,264 comparable and 189 fields**
+with 23 ordinary differences. Byte-address rewrites in exact `Stack::Pop`
+(122 bytes/one field) reduced parent equality to 6,193 or 6,170 bytes; the
+simple array spelling was neutral. Finally, three signed-word/union and two
+native pan-slot formulations changed the binding schedule of the exact
+**1,452-byte Sound queue Boss** and were restored. All experiments used
+complete selected native scopes, not full historical replay.
+
 ## 2026-11-13 Exact result-task marker; native Player and result-state indexing
 
 `ResultMenuMarkTasks422200 @0x00422200` now has a naturally generated **28-byte
