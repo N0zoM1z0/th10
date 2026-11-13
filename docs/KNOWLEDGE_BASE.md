@@ -13635,3 +13635,24 @@ concentrated in Player-state flag cleanup and register/lifetime ordering. The
 callback remains `unclassified`/nonexact; this diagnostic is not a canonical
 accepted replay and does not establish original production TU ownership. The
 full 17-TU affected graph was linked; no full cold replay was run.
+
+## 2026-11-13 Enemy ECL rank-three count and rank-five count follow-up
+
+The maintained `EnemyEclDispatcher.cpp` now keeps the Rank-3 Count selector's
+retail host indirection (`EclVmHost::activeContext->ReadInt(0)`) and expresses
+the signed `rank < -512` split directly. The Rank-5 Count selector now binds
+its selected record through `EnemyPatternAtRuntimeIndex` and uses the same
+typed host/context read path for its branch operands. The earlier
+`ReadIntArgument`-wrapper experiment was measured on the affected 11-TU graph
+and reverted because it regressed the shared Rank-3 Count handler.
+
+A fresh selected 11-support-TU VC7.1 `/GL` link of the maintained source emits
+a 14,384-byte dispatcher candidate against the 14,416-byte target. The main
+181-byte opcode map remains byte-identical (181/181 slots, 108 unique handler
+indices); its code/table boundary is candidate `+0x35A0` versus target
+`+0x35C0`. Per-handler normalized instruction-shape ratios are `0x1A6`
+0.76190, `0x1A7` 0.85294, `0x1A8` 0.89109, `0x1A9` **0.94737**, `0x1AA`
+0.58182, and `0x1AB` 0.83761. Rank-3 Count improved from 0.706 to 0.947;
+Rank-5 Count improved from 0.545 to 0.582 in the final pattern-index variant.
+These are opcode-handler shape diagnostics, not byte-exact claims. The full
+Dispatcher remains NONEXACT and no full cold replay was run.
