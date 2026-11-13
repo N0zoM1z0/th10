@@ -82,6 +82,31 @@ field** `ExecuteScript` frontier (`4320ebe6`).
   field. `InvertAlpha` remains 138/157 across real text-render graphs; forcing
   exported visibility regressed it to 112/157.
 
+## 2026-11-13 Enemy motion private-receiver recovery
+
+The target `EnemyAdvanceMotion @0x0044C2A0` is an internal ESI-receiver
+operation on the 0x2C-byte motion record, not a stack-argument free helper.
+`EnemyMotionView` now owns `AdvanceMotion()`, and the three Enemy runtime calls
+plus the two Player shot/bullet callers use that member operation. In the real
+12-source Enemy/Player `/GL` graph, VC7.1 naturally keeps the motion record in
+ESI and emits a direct call, matching the target's private receiver convention.
+The Player shot caller remains **876/876 bytes / 22 fields**; the one-source
+Enemy manager update remains **166/166 / 5 fields**; and the Enemy death
+finalizer remains **162/162 / 9 fields**. The Player shot and death-finalizer
+units were replayed after the source change; no full cold replay was run.
+
+The motion leaf itself is not yet exact: its candidate is **168 bytes** against
+the 171-byte target, with **133/143 ordinary positions** matching across seven
+bound fields. Its remaining three-byte seam is the target's separate
+`ADD ESP,8` before the final Y `FSTP`, followed by `ADD ESP,0x18`; the current
+candidate combines those releases into `ADD ESP,0x20`. Four local-double/float
+homes and two volatile Y-destination forms were byte-neutral. The enclosing
+`EnemyRuntimeUpdate` remains a complete **2,412-byte** candidate with 69
+fields and **1,575/2,136 comparable bytes** in the same 12-source graph. Moving
+or registering the eight-VM loop count did not improve it; an explicit EBX
+home experiment grew it to 2,418 bytes and reduced agreement to 1,129/2,136,
+so it was discarded. No new exact credit or ledger promotion was made.
+
 ## 2026-11-12 Exact replay word publication and isolated large-owner compiler controls
 
 `ReplayManager::SaveReplay @0x00429B60` now publishes its per-stage
