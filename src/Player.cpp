@@ -2001,9 +2001,13 @@ int Player::CalculateDamageToTarget(
 
         damage = static_cast<int>(static_cast<unsigned int>(damage) +
             static_cast<unsigned int>(motion->damage));
-        motion->hitAccumulator = static_cast<int>(
+        // Native i386 accumulation wraps the hit-counter DWORD before
+        // comparing against the signed per-effect damage cap.
+        const unsigned int nextHitBits =
             static_cast<unsigned int>(motion->hitAccumulator) +
-            static_cast<unsigned int>(motion->damage));
+            static_cast<unsigned int>(motion->damage);
+        memcpy(&motion->hitAccumulator, &nextHitBits,
+            sizeof motion->hitAccumulator);
         if (motion->hitCap > motion->hitAccumulator)
             continue;
         motion->damage = 0;
