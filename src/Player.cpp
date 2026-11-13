@@ -2024,8 +2024,12 @@ int Player::CalculateDamageToTarget(
                 continue;
         }
 
-        damage = static_cast<int>(static_cast<unsigned int>(damage) +
-            static_cast<unsigned int>(motion->damage));
+        // Field-effect damage adds through the same modulo-32-bit native
+        // accumulator, before the separate per-row hit cap is checked.
+        const unsigned int nextDamageBits =
+            static_cast<unsigned int>(damage) +
+            static_cast<unsigned int>(motion->damage);
+        memcpy(&damage, &nextDamageBits, sizeof damage);
         // Native i386 accumulation wraps the hit-counter DWORD before
         // comparing against the signed per-effect damage cap.
         const unsigned int nextHitBits =
