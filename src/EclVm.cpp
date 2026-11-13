@@ -476,12 +476,10 @@ float *EclVmContext::ResolveFloat(unsigned int index)
 // d1f31212514781c928fba145d8207397c8fb5650,
 // matching2/msvc/src/script/sptlib/ecl_name_table.cpp.
 // See docs/licenses/th10-decomp-MIT.txt.
-static void AddEclSubroutineCount(int &count, int added)
+static __forceinline void AddEclSubroutineCount(int &count, int added)
 {
-    // Preserve native modulo-DWORD addition without a mismatched int alias.
-    const unsigned int bits = static_cast<unsigned int>(count) +
-        static_cast<unsigned int>(added);
-    memcpy(&count, &bits, sizeof count);
+    // At most 32 valid files contribute 16-bit counts, so this sum is below INT_MAX.
+    count += added;
 }
 
 
@@ -514,150 +512,69 @@ static __forceinline int EclPredecrementNativeWord(int &value)
 int EclVmScriptDatabase::AddScriptData(void *scriptData)
 {
     const unsigned int SCPT_MAGIC = 0x54504353u;
-    (*EclFileSlotAtWord(&files[0], fileCount)) = static_cast<EclVmScriptFileHeader *>(scriptData);
-    EclVmScriptFileHeader *volatile *const fileSlot = EclFileSlotAtWord(&files[0], fileCount);
-    EclVmScriptFileHeader *file = *fileSlot;
-    if (file->magic != SCPT_MAGIC)
+    files[fileCount] = static_cast<EclVmScriptFileHeader *>(scriptData);
+    EclVmScriptFileHeader **slot = &files[fileCount];
+    if (files[fileCount]->magic != SCPT_MAGIC)
     {
-        *fileSlot = NULL;
+        *slot = NULL;
         return -1;
     }
-    if (file->version != 1)
+    if (files[fileCount]->version != 1)
     {
-        *fileSlot = NULL;
+        *slot = NULL;
         return -1;
     }
-
-    file = *fileSlot;
-    // The input parameter becomes the offset cursor. Keep its loop reads
-    // in that stack slot; ordinary writes can still feed the name calculation.
-    void *const volatile &offsetCursor = scriptData;
+    int *data = reinterpret_cast<int *>(
+        reinterpret_cast<char *>(files[fileCount]) +
+        files[fileCount]->includeLength + 0x24);
+    const char *names = reinterpret_cast<const char *>(
+        data + files[fileCount]->subroutineCount);
     EclVmSubroutineEntry *oldEntries = subroutines;
     EclVmSubroutineEntry *previousEntries = subroutines;
-    scriptData = reinterpret_cast<unsigned char *>(
-        reinterpret_cast<unsigned int>(file) +
-        static_cast<unsigned int>(sizeof(EclVmScriptFileHeader)) +
-        static_cast<unsigned int>(file->includeLength));
-    const char *name = reinterpret_cast<const char *>(
-        reinterpret_cast<unsigned int>(scriptData) +
-        static_cast<unsigned int>(file->subroutineCount) *
-        static_cast<unsigned int>(sizeof(EclVmSerializedSubroutineOffsetView)));
-    AddEclSubroutineCount(subroutineCount, file->subroutineCount);
-    EclVmSubroutineEntry *const newEntries =
-        static_cast<EclVmSubroutineEntry *>(
-        malloc(subroutineCount * sizeof(EclVmSubroutineEntry)));
-    subroutines = newEntries;
-
+    AddEclSubroutineCount(subroutineCount, files[fileCount]->subroutineCount);
+    const unsigned int size = subroutineCount * sizeof(EclVmSubroutineEntry);
+    subroutines = static_cast<EclVmSubroutineEntry *>(malloc(size));
     if (oldEntries == NULL)
     {
-        int index = 0;
-        if (subroutineCount > 0)
+        for (int index = 0; index < subroutineCount; ++index, ++data)
         {
-            do
-            {
-                EclMutableEntryAtWord(subroutines, index)->header =
-                    reinterpret_cast<unsigned char *>(
-                        reinterpret_cast<unsigned int>((*EclFileSlotAtWord(&files[0], fileCount))) +
-                        static_cast<unsigned int>(static_cast<EclVmSerializedSubroutineOffsetView *>(offsetCursor)->instructionOffset));
-                EclMutableEntryAtWord(subroutines, index)->name = name;
-                name = reinterpret_cast<const char *>(
-                    reinterpret_cast<unsigned int>(name) +
-                    static_cast<unsigned int>(strlen(name)) + 1u);
-                const unsigned int indexBits =
-                    static_cast<unsigned int>(index) + 1u;
-                memcpy(&index, &indexBits, sizeof index);
-                scriptData = reinterpret_cast<void *>(
-                    reinterpret_cast<unsigned int>(offsetCursor) +
-                    static_cast<unsigned int>(sizeof(EclVmSerializedSubroutineOffsetView)));
-            } while (index < subroutineCount);
+            subroutines[index].header = reinterpret_cast<unsigned char *>(
+                reinterpret_cast<unsigned int>(files[fileCount]) +
+                static_cast<unsigned int>(*data));
+            subroutines[index].name = names;
+            names += strlen(names) + 1;
         }
     }
     else
     {
-        // This size is also native 32-bit subtraction, including wrap.
-        int sortedCount;
-        // The native difference is a DWORD, even when its signed bit is set.
-        const unsigned int countBits =
-            static_cast<unsigned int>(subroutineCount) -
-            static_cast<unsigned int>((*EclFileSlotAtWord(&files[0], fileCount))->subroutineCount);
-        memcpy(&sortedCount, &countBits, sizeof sortedCount);
-        memcpy(newEntries, oldEntries,
-               sortedCount * sizeof(EclVmSubroutineEntry));
-        if (previousEntries != NULL)
-            free(previousEntries);
-
-        int added = 0;
-        if ((*EclFileSlotAtWord(&files[0], fileCount))->subroutineCount > 0u)
+        int sub = files[fileCount]->subroutineCount;
+        int kept = subroutineCount - sub;
+        memcpy(subroutines, oldEntries, sizeof(EclVmSubroutineEntry) * kept);
+        if (previousEntries)
+            free((oldEntries == previousEntries) ? oldEntries : previousEntries);
+        for (int merged = 0; merged < files[fileCount]->subroutineCount; ++merged, ++data)
         {
-            do
+            int index;
+            for (index = 0; index < kept; ++index)
             {
-                int insertionIndex = 0;
-                if (sortedCount > 0)
-                {
-                    EclVmSubroutineEntry *entry = subroutines;
-                    do
-                    {
-                        if (strcmp(name, entry->name) <= 0)
-                            break;
-                        const unsigned int insertionIndexBits =
-                            static_cast<unsigned int>(insertionIndex) + 1u;
-                        memcpy(&insertionIndex, &insertionIndexBits, sizeof insertionIndex);
-                        entry = reinterpret_cast<EclVmSubroutineEntry *>(
-                            reinterpret_cast<unsigned int>(entry) +
-                            static_cast<unsigned int>(sizeof(EclVmSubroutineEntry)));
-                    } while (insertionIndex < sortedCount);
-                }
-
-                int index = subroutineCount;
-                while (EclPredecrementNativeWord(index) > insertionIndex)
-                {
-                    EclVmSubroutineEntry *const destination =
-                        EclMutableEntryAtWord(subroutines, index);
-                    const EclVmSubroutineEntry *const previous =
-                        EclMutableEntryAtWord(subroutines,
-                            index - 1);
-                    *destination = *previous;
-                }
-
-                EclMutableEntryAtWord(subroutines, insertionIndex)->header =
-                    reinterpret_cast<unsigned char *>(
-                        reinterpret_cast<unsigned int>((*EclFileSlotAtWord(&files[0], fileCount))) +
-                        static_cast<unsigned int>(static_cast<EclVmSerializedSubroutineOffsetView *>(offsetCursor)->instructionOffset));
-                EclMutableEntryAtWord(subroutines, insertionIndex)->name = name;
-                name = reinterpret_cast<const char *>(
-                    reinterpret_cast<unsigned int>(name) +
-                    static_cast<unsigned int>(strlen(name)) + 1u);
-                scriptData = reinterpret_cast<void *>(
-                    reinterpret_cast<unsigned int>(offsetCursor) +
-                    static_cast<unsigned int>(sizeof(EclVmSerializedSubroutineOffsetView)));
-                const unsigned int sortedCountBits =
-                    static_cast<unsigned int>(sortedCount) + 1u;
-                memcpy(&sortedCount, &sortedCountBits, sizeof sortedCount);
-                const unsigned int addedBits =
-                    static_cast<unsigned int>(added) + 1u;
-                memcpy(&added, &addedBits, sizeof added);
-            } while (added < (*EclFileSlotAtWord(&files[0], fileCount))->subroutineCount);
+                if (strcmp(names, subroutines[index].name) <= 0)
+                    break;
+            }
+            for (int i = subroutineCount - 1; i > index; --i)
+                subroutines[i] = subroutines[i - 1];
+            subroutines[index].header = reinterpret_cast<unsigned char *>(
+                reinterpret_cast<unsigned int>(files[fileCount]) +
+                static_cast<unsigned int>(*data));
+            subroutines[index].name = names;
+            names += strlen(names) + 1;
+            ++kept;
         }
     }
-
-    // The original increments the file-slot index as one i386 word, even
-    // across the signed boundary. Publish the wrapped word after retaining
-    // the old index for the package-load dispatch and result.
-    const int result = fileCount;
-    const unsigned int fileCountBits =
-        static_cast<unsigned int>(fileCount) + 1u;
-    memcpy(&fileCount, &fileCountBits, sizeof fileCount);
-    file = (*EclFileSlotAtWord(&files[0], result));
-    if (file->includeLength != 0)
-    {
-        LoadPackage(
-            reinterpret_cast<unsigned char *>(
-                reinterpret_cast<unsigned int>(file) +
-                static_cast<unsigned int>(sizeof(EclVmScriptFileHeader))));
-    }
-    return result;
+    const int registered = fileCount++;
+    if (files[registered]->includeLength != 0)
+        LoadPackage(reinterpret_cast<unsigned char *>(files[registered]) + 0x24);
+    return registered;
 }
-
 
 // Script lookup indices address an eight-byte native record with i386
 // low-32-bit base plus stride arithmetic, even for corrupt table counts.
