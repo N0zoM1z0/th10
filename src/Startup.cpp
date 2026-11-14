@@ -13,7 +13,6 @@
 extern AnmLoadedView *g_FrontEndMusicCommentAnm;
 extern AsciiManagerView *AsciiManagerCreate();
 extern GameStatisticsOwner *CreateStatistics42AF20();
-int FinalizeStartupResources();
 
 char g_StartupTextError[] =
     "error : \x95\xb6\x8e\x9a\x82\xcc\x8f\x89\x8a\xfa\x89\xbb\x82\xc9\x8e\xb8\x94\x73\x82\xb5\x82\xdc\x82\xb5\x82\xbd\r\n";
@@ -22,7 +21,9 @@ char g_StartupBgmError[] =
 
 // Target41F990..41FABA, plain RET. The thread API declaration is not used to
 // infer a WINAPI callback ABI or a return value consumed by that API.
-int StartupWorkerView::StartupThread()
+// The thread receives its owner in ECX and uses it only for the resource
+// finalizer, which ignores it; LTCG drops that argument but keeps its stack home.
+int __fastcall StartupWorkerView::StartupThread(StartupWorkerView *owner)
 {
     StartupWorkerView *worker = g_StartupWorker;
     worker->signatureAnm = g_AnmRenderManagerView->PreloadAnm(1, "sig.anm");
@@ -54,7 +55,7 @@ int StartupWorkerView::StartupThread()
             strcpy(reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->unknownNameSlot,
                    "thbgm.dat");
     }
-    FinalizeStartupResources();
+    owner->FinalizeStartupResources();
     worker->calcElement->flags |= 2;
     CreateStatistics42AF20();
     return 0;
@@ -71,7 +72,7 @@ char g_StartupBulletError[] =
     "\x93\x47\x92\x65\x83\x66\x81\x5b\x83\x5e\x82\xaa\x8c\xa9\x82\xc2\x82\xa9\x82\xe8\x82\xdc\x82\xb9\x82\xf1\x81\x42\x83\x66\x81\x5b\x83\x5e\x82\xaa\x89\xf3\x82\xea\x82\xc4\x82\xa2\x82\xdc\x82\xb7\r\n";
 
 // Target41F8D0..41F921. Each failed preload emits its own original diagnostic.
-int FinalizeStartupResources()
+int StartupWorkerView::FinalizeStartupResources()
 {
     if (g_AnmRenderManagerView->PreloadAnm(6, "front.anm") == NULL)
     {

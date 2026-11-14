@@ -26,7 +26,8 @@ struct StartupWorkerView
     ~StartupWorkerView();
     int RegisterTasks();
     int __stdcall Draw();
-    static int StartupThread();
+    int FinalizeStartupResources();
+    static int __fastcall StartupThread(StartupWorkerView *owner);
     static int __fastcall OnUpdate(StartupWorkerView *owner);
     static int __fastcall OnDraw(StartupWorkerView *owner);
 };
