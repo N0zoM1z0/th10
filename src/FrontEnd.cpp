@@ -152,7 +152,12 @@ extern FrontEndControllerMappingView g_FrontEndSavedControllerMapping;
 
 extern void FrontEndQueueSoundCommand(
     const char *command, int parameter0, int parameter1);
-extern void FrontEndPlaySound(int soundId);
+// Retail inlines every front-end sound cue as a direct queue call.
+static inline void FrontEndPlaySound(int soundId)
+{
+    reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
+        soundId, 0);
+}
 int __stdcall FrontEndLoadMusic(int slot, const char *path);
 int __stdcall FrontEndPlayMusic(int slot, int trackIndex);
 extern signed char *__fastcall FrontEndGetControllerState(int controllerIndex);
