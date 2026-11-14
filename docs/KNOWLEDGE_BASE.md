@@ -13773,3 +13773,23 @@ is complete. This fresh build reproduces the earlier relocation-normalized
 body match from the current maintained source; it does not change the
 function's `unclassified` ledger status and is not a canonical Oracle replay
 acceptance. No full cold replay was run.
+
+## 2026-11-14 Enemy ECL Rank-5 register-qualified pattern cursor refinement
+
+The maintained Rank-5 Count branches now acquire their first ECL context
+before scaling the pattern cursor, and declare the runtime-relative pattern
+cursor as a `register` local. This VC7.1 register-allocation hint is limited to
+the five count paths; the post-first-store owner rebind remains in place so the
+second operand read reloads `activeEclContext` through the full owner.
+
+A selected 11-support-TU VC7.1 `/GL` link retains the **14,416-byte**
+Dispatcher extent, exact `+0x35C0` code/table boundary and byte-identical
+181-slot opcode map. Rank-3 Count remains **9/9 instructions / 45/45 bytes**
+with 1.00000 shape. Rank-5 Count improves to **0.73451** (108 candidate
+instructions / 378 bytes versus 118 / 420); Rank-5 low tail `0x1AB` improves
+to **0.78632** (58 / 204 versus 59 / 206). The other measured selectors
+remain `0x1A6` 0.76190, `0x1A7` 0.85294 and `0x1A8` 0.89109. This supersedes
+the previous 14,416-byte owner-rebind-only candidate (Rank-5 0.72566, low-tail
+0.75214) as the current source checkpoint. The Dispatcher remains NONEXACT;
+these are selected linked-graph shape diagnostics, not canonical replay or
+Oracle acceptance. No full cold replay was run.
