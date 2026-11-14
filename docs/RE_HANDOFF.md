@@ -148,6 +148,17 @@ touches their dependency graph.
   `GameResetGui` is 534/543 and `GameManagerCleanup` 277/309 in the
   LoadScript graph. `EnemyFireLaser` needs whole-program caller context: no
   local declaration (stdcall, fastcall, member) registerizes its request.
+- **Next structural lever, the laser vtables (about 8.6 KB of backlog).**
+  Retail's Type1 vtable `0x46DA10` names the real `EnemyLaserType1View`
+  methods (Initialize `0x41E5C0`, Update, Draw, Clear, CheckBox/Circle,
+  CheckPoint) followed by ten shared one-byte leaf slots (`0x41BF90`..).
+  Our `EnemyLaserType1StorageView` (EnemyLaser.cpp, exact ctor `0x41C680`)
+  derives from `EnemyLaserConstructionBaseView`, whose virtuals are undefined
+  stand-ins, so `EnemyLaserType1View::Initialize` is never referenced and
+  LTCG gives it a private EAX ABI (70/73). The same split affects Type0 and
+  `EnemyLaserLineView`. Unify each storage view with its real class (one
+  vtable, the shared leaf slots as base virtuals), update the ctor's vtable
+  DIR32 symbol, then replay the laser Update/Draw/ctor guards.
 - `scripts/diagnostics/triage/quick-relink.py UNIT --dirty src/X.cpp`
   recompiles only the named sources and relinks (about 4 min instead of 15
   for big graphs). It is for triage only; acceptance still needs the cold
