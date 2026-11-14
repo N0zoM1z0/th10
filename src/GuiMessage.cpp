@@ -17,19 +17,20 @@ void __stdcall EnemyKillAll(EnemyManagerView *manager)
     EnemyListNodeView *node = manager->enemyListHead;
     while (node != 0)
     {
-        EnemyRuntimeView *enemy = &node->enemy->runtime;
+        EnemyFullObjectView *enemy = node->enemy;
         EnemyListNodeView *next = node->next;
-        if ((enemy->flags & 0xc050u) == 0 || (enemy->flags & 0x80u) != 0)
+        if (((enemy->runtime.flags & 0x50u) == 0 && (enemy->runtime.flags & 0xc000u) == 0) ||
+            (enemy->runtime.flags & 0x80u) != 0)
         {
-            if (enemy->deathEffectScript >= 0)
+            if (enemy->runtime.deathEffectScript >= 0)
             {
                 reinterpret_cast<AnmLoadedView *>(
-                    g_EnemyManager->effectResources[enemy->deathEffectResourceIndex])->
-                    CreateVmAtWorldVariant0(enemy->deathEffectScript,
+                    g_EnemyManager->effectResources[enemy->runtime.deathEffectResourceIndex])->
+                    CreateVmAtWorldVariant0(enemy->runtime.deathEffectScript,
                         reinterpret_cast<const AnmFloat3View *>(
-                            &enemy->worldMotion.position));
+                            &enemy->runtime.worldMotion.position));
             }
-            enemy->flags |= 0x20000u;
+            enemy->runtime.flags |= 0x20000u;
         }
         node = next;
     }
