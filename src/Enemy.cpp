@@ -83,13 +83,6 @@ typedef char EnemyManagedVmRegistrySecondaryAt72DADC[
     (offsetof(EnemyManagedVmRegistryView, secondaryList) == 0x72dadc) ? 1 : -1];
 
 
-struct EnemyRandomView
-{
-    unsigned int GetU32();
-    float GetUnitFloat();
-    float GetSignedUnitFloat();
-};
-
 // TH10 uses negative ECL operand selectors in the reviewed 0x00411FC0 /
 // 0x00412350 readers. Names below describe only target-observed behavior;
 // duplicate A/B selectors deliberately remain distinct because their original
@@ -272,7 +265,6 @@ extern unsigned char g_EnemyCallbackLockDepth;
 extern EnemyAnimationOwnerView *g_EnemyAnimationOwner;
 extern EnemyPrimaryResourceOwnerView *g_EnemyPrimaryResourceOwner;
 extern char g_EnemyEclFilenameBuffer[];
-extern EnemyRandomView g_EnemyRandom;
 extern int g_EnemyRank;
 extern int g_EnemyDifficulty;
 
@@ -424,11 +416,11 @@ int EnemyFullObjectView::ReadIntOperand(int operand)
     switch (operand)
     {
     case ENEMY_ECL_OPERAND_RANDOM_U32:
-        return (int)g_EnemyRandom.GetU32();
+        return (int)g_RngView.GetRandomU32();
     case ENEMY_ECL_OPERAND_RANDOM_UNIT:
-        return (int)g_EnemyRandom.GetUnitFloat();
+        return (int)g_RngView.GetRandomF32();
     case ENEMY_ECL_OPERAND_RANDOM_SIGNED:
-        return (int)g_EnemyRandom.GetSignedUnitFloat();
+        return (int)g_RngView.GetRandomF32Signed();
     case ENEMY_ECL_OPERAND_PLAYER_X_A:
         return (int)g_Player->drawPosition.x;
     case ENEMY_ECL_OPERAND_PLAYER_Y_A:
@@ -534,13 +526,13 @@ float EnemyFullObjectView::ReadFloatOperand(int operand)
     switch (operand)
     {
     case ENEMY_ECL_OPERAND_RANDOM_U32:
-        return (float)g_EnemyRandom.GetU32();
+        return (float)g_RngView.GetRandomU32();
     case ENEMY_ECL_OPERAND_RANDOM_UNIT:
-        return g_EnemyRandom.GetUnitFloat();
+        return g_RngView.GetRandomF32();
     case ENEMY_ECL_OPERAND_RANDOM_SIGNED:
-        return g_EnemyRandom.GetSignedUnitFloat();
+        return g_RngView.GetRandomF32Signed();
     case ENEMY_ECL_OPERAND_RANDOM_ANGLE:
-        return g_EnemyRandom.GetSignedUnitFloat() * 3.1415927f;
+        return g_RngView.GetRandomF32Signed() * 3.1415927f;
     case ENEMY_ECL_OPERAND_ANGLE_TO_PLAYER_WORLD:
         return EnemyAngleFromPlayer(g_Player, &runtime.worldMotion.position);
     case ENEMY_ECL_OPERAND_UPDATE_TIMER:
