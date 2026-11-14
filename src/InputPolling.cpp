@@ -236,7 +236,9 @@ unsigned short __fastcall PollInputFrame(int bindingIndex)
         ++hold;
         repeat <<= 1;
     }
-    binding->pressed = (binding->current ^ binding->previous) & binding->current;
-    binding->released = (binding->current ^ binding->previous) & ~binding->current;
+    unsigned short current = binding->current;
+    unsigned short changed = current ^ binding->previous;
+    binding->pressed = changed & current;
+    binding->released = changed & ~current;
     return merged;
 }
