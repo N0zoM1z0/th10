@@ -165,7 +165,7 @@ extern int FrontEndReadKeyboardState(unsigned char *keyboardState);
 
 int __stdcall FrontEndUpdateMainMenu(FrontEndControllerView *controller);
 int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller);
-extern int FrontEndBeginGame();
+int GamePrepareDummyMusic();
 int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller);
 // TH10 practice unlock helper: 0x0042C8C0, reviewed 93-byte extent.
 // The source signature preserves the observed explicit profile receiver;
@@ -185,10 +185,9 @@ void FrontEndUnlockPracticeRecords(unsigned char *profile)
         }
     }
 }
-extern void * __stdcall FrontEndBeginSelectionTransition(
-    int type, int duration, int parameter2, int parameter3, int parameter4,
-    int chainPriority);
-extern int __stdcall FrontEndFinalizeGameSelection(float value);
+int __stdcall GameQueueScaledSoundCommand(float magnitude);
+void *__stdcall StageCreateTransitionEffect(int drawPriority, int kind, int frames,
+    unsigned int value0, unsigned int value1, unsigned int value2);
 
 // Target 0x0042C6D0 is a repeated front-end VM retirement seam.  It is kept
 // as a TU-visible helper so LTCG can retain the target's private EDI/ESI
@@ -1075,7 +1074,7 @@ int FrontEndControllerView::Update()
     case FRONT_END_SCREEN_START_GAME:
         g_MainSupervisorView.nextGameMode =
             ((~(g_MainSupervisorView.flags >> 12)) & 1) | 2;
-        FrontEndBeginGame();
+        GamePrepareDummyMusic();
         break;
     case FRONT_END_SCREEN_OPTIONS:
         UpdateOptions(this);
@@ -1097,7 +1096,7 @@ int FrontEndControllerView::Update()
         break;
     case FRONT_END_SCREEN_START_GAME_10:
     case FRONT_END_SCREEN_START_GAME_13:
-        FrontEndBeginGame();
+        GamePrepareDummyMusic();
         break;
     case FRONT_END_SCREEN_REPLAY:
         UpdateReplay(this);
@@ -2065,7 +2064,7 @@ int __stdcall FrontEndControllerView::UpdateShotType(
             if ((g_FrontEndSupervisorFlags & 0x10) == 0)
             {
                 g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f);
-                FrontEndBeginSelectionTransition(5, 0x20, 0, 0, 0, 0x2b);
+                StageCreateTransitionEffect(0x2b, 5, 0x20, 0, 0, 0);
             }
             else
             {
@@ -2101,7 +2100,7 @@ int __stdcall FrontEndControllerView::UpdateShotType(
                 g_FrontEndSelectedStageMirror = 7;
             }
             g_FrontEndNextGameMode = 7;
-            FrontEndFinalizeGameSelection(6.0f);
+            GameQueueScaledSoundCommand(6.0f);
             return 1;
         }
         break;
@@ -2178,7 +2177,7 @@ int __stdcall FrontEndControllerView::UpdateStage(
         if (controller->stateTimer.current == 10)
         {
             g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f);
-            FrontEndBeginSelectionTransition(5, 0x20, 0, 0, 0, 0x2b);
+            StageCreateTransitionEffect(0x2b, 5, 0x20, 0, 0, 0);
         }
 
         if (controller->stateTimer.current >= 40)
@@ -2189,7 +2188,7 @@ int __stdcall FrontEndControllerView::UpdateStage(
             g_FrontEndSelectedStageRecord =
                 g_FrontEndStageRecords[controller->cursor.current];
             g_FrontEndSelectedStageMirror = g_FrontEndSelectedStage;
-            FrontEndFinalizeGameSelection(6.0f);
+            GameQueueScaledSoundCommand(6.0f);
             g_FrontEndNextGameMode = 7;
             return 1;
         }
@@ -2412,7 +2411,7 @@ int __stdcall FrontEndControllerView::UpdateReplay(
     case FRONT_END_REPLAY_STARTING:
         if (controller->stateTimer.current == 2)
         {
-            FrontEndBeginSelectionTransition(5, 0x20, 0, 0, 0, 0x2b);
+            StageCreateTransitionEffect(0x2b, 5, 0x20, 0, 0, 0);
             g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f);
         }
 
@@ -2423,7 +2422,7 @@ int __stdcall FrontEndControllerView::UpdateReplay(
             g_FrontEndSelectedStageRecord =
                 g_FrontEndStageRecords[controller->selectedReplayStage];
             g_FrontEndSelectedStageMirror = g_FrontEndSelectedStage;
-            FrontEndFinalizeGameSelection(6.0f);
+            GameQueueScaledSoundCommand(6.0f);
             g_FrontEndNextGameMode = 12;
 
             ReplayManager *replay =
