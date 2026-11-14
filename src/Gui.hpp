@@ -32,9 +32,7 @@ inline unsigned char *GuiMessageInstructionPayload(GuiMessageInstructionView *p)
 }
 inline int GuiMessageInstructionIntArgument(const GuiMessageInstructionView *p)
 {
-    int value;
-    memcpy(&value, p + 4, sizeof(value));
-    return value;
+    return *reinterpret_cast<const int *>(p + 4);
 }
 inline GuiMessageInstructionView *GuiMessageInstructionNext(GuiMessageInstructionView *p)
 {

@@ -1,5 +1,67 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-14 Reference-guided natural sources: four exact owners and a GUI Run graph fix
+
+The upstream `_reference/th10-decomp` (at `d1f3121`) reports byte-exact MSVC
+C++ for 135 of our 140 nonexact authored owners. Its sources are useful
+hypotheses, but many of its exact builds depend on synthetic LTCG caller
+contexts, escape functions, `volatile` reads or stand-in callees. Port only
+the natural spelling, then verify it in our real graph.
+
+Accepted in commit `1266b4a5` (selected cold replay of 23 units):
+
+- `CMemoryPbgFile::Seek @0x4364F0` **107/107** coff. FILE_BEGIN must call an
+  inline `Contains(LONG)` member. The identical condition written inline keeps
+  a separate FILE_CURRENT tail instead of the retail cross-jump into the
+  FILE_END store; that was the old seven-byte "register" seam.
+- `TextRenderBufferView::InvertAlpha @0x437160` **157/157** coff with a
+  `colors:15, alpha:1` bitfield pixel and plain `index += 2/4` loops.
+- `StageResetPublishedCameras @0x4216F0` **465/465**, 40 fields, coff: write
+  each camera completely (position, direction, up, FOV, viewport, flag, eye
+  offset), front camera `0x491E94` first. The old interleaved order missed.
+- `MainConfigurationDialogProc @0x43A3A0` **233/233**, 14 fields in the
+  WinMain five-TU `/GL /GS` graph: add `default: return 0;` to the inner
+  command switch; the `_ReadWriteBarrier` was not needed.
+
+Parked after bounded trials:
+
+- `UpdateAbsoluteDirectionChange @0x4078E0` stays 333/335. Passing the float
+  `angle` field directly to `FromAngleMagnitude` fixes the `+0xD7/+0xDD`
+  EDX/EAX seam, but every float-typed spelling of the angle assignment moves
+  its load/store relative to the speed `fst` (320, 316 and size-changing
+  variants). The union word copy keeps that block exact but restores the seam.
+  An `int length` local (reference spelling) is neutral.
+- `TransitionShakeLinear @0x43C550` (unit `transition-shake-linear`) misses only
+  the late `fidiv` placement: our LTCG build places it right after `fmul`,
+  retail inside the second RNG draw. A named `(float)` product and an `int
+  limit` local are neutral. Non-`/GL` COFF does not inline `Tick`/RNG, so the
+  real context is LTCG; the reference only gets there with a private in-file
+  RNG copy.
+- The reference's `Chain::AllocElem` and `PollInputFrame` rely on a `volatile`
+  flag read and a fake 64-bit-argument callee ABI; do not port those parts.
+  `PollInputFrame` should probably return its merged `unsigned short` (the
+  target keeps it in AX through the epilogue); untested.
+
+GUI message VM boss `GuiMessageVmView::Run @0x415E90` (4,480 bytes): every
+existing graph lacked `GuiMessageLeaves.cpp` (`0x417010`, EAX argument) and
+`VmIdInterrupt.cpp` (`0x409E50`, EAX pointer). Without them both callees fall
+back to stack arguments. The new candidate unit `gui-message-run-candidate`
+(14-TU transition graph plus those two TUs, entry `UpdateStageElements`)
+moves the candidate from 981 to 1,014 identical normalized instructions.
+Natural cleanups then reach **1,047/1,219**, 4,463 bytes: a plain typed operand load
+`*(const int *)(p + 4)` instead of `memcpy` (the largest single gain), plain
+`currentInstruction`/resource reads instead of `volatile` helpers, plain
+`operand + k` additions, and if/else replay arms instead of `goto`. Remaining
+families: (1) player/enemy portrait operand registers (EDX/ECX in retail,
+EAX here); (2) in the second call of each enemy-portrait pair retail loads
+the resource before the operand; (3) at stage 6/7 retail keeps both
+clear-count increments inline and merges the `SetNextGameMode(4)` tails,
+while we merge the increments; (4) `guiFlags |= 0x20` must precede the
+score-field reads. Retail reads `0x474C4C/0x474C70/0x474C48` as fields of
+the escaped globals object at `0x474C40` (the `Add` receiver); our separate
+alias globals let LTCG hoist those loads above the flag store. Modeling that
+object as one struct is the next real lever for (4) and likely for (3).
+
 ## 2026-11-13 Current source corrections and open-owner frontiers
 
 ### ECL database name-table exact recovery
@@ -785,6 +847,9 @@ whole-game replay was invoked.
 
 ## 2026-11-12 PBG memory-file seek remaining-word signed conversion
 
+**Superseded 2026-11-14:** Seek is exact; the seven-byte seam was the inline
+`Contains` cross-jump, not register coloring. See the 2026-11-14 section.
+
 `CMemoryPbgFile::Seek @0x004364F0` compares a native low-32-bit remaining
 byte distance as one *signed* Win32 LONG in its FILE_CURRENT branch. The
 maintained source formerly accessed an unsigned DWORD temporary through an
@@ -938,6 +1003,9 @@ original-bound fields across two artifacts. No full cold replay or exact
 credit is claimed for the owner.
 
 ## 2026-11-12 Text alpha inversion native index wrap without aliasing
+
+**Superseded 2026-11-14:** InvertAlpha is exact with a natural bitfield
+source; the `TextNativeIndexAdvance` helper was removed.
 
 `TextRenderBufferView::InvertAlpha @0x00437160` has three original pixel
 formats and a physical **157-byte** owner. Its A8R8G8B8 and A4R4G4B4 paths
