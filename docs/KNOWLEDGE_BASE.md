@@ -13643,26 +13643,32 @@ callback remains `unclassified`/nonexact; this diagnostic is not a canonical
 accepted replay and does not establish original production TU ownership. The
 full 17-TU affected graph was linked; no full cold replay was run.
 
-## 2026-11-13 Enemy ECL rank-three count and rank-five count follow-up
+## 2026-11-14 Enemy ECL Rank-3 exact-shape count selector and Rank-5 shared tail
 
-The maintained `EnemyEclDispatcher.cpp` now keeps the Rank-3 Count selector's
-retail host indirection (`EclVmHost::activeContext->ReadInt(0)`) and expresses
-the signed `rank < -512` split directly. The Rank-5 Count selector now binds
-its selected record through `EnemyPatternAtRuntimeIndex` and uses the same
-typed host/context read path for its branch operands. The earlier
-`ReadIntArgument`-wrapper experiment was measured on the affected 11-TU graph
-and reverted because it regressed the shared Rank-3 Count handler.
+The maintained `EnemyEclDispatcher.cpp` now expresses Rank-3 Count as the
+retail shared control-flow path: load `owner->activeContext`, read operand 0,
+compare rank against `+512`, scale the pattern index with a 32-bit IMUL, then
+compare against `-512` and enter the shared low/lowest count tails. The
+Rank-3 handler is **9/9 instructions and 45/45 bytes**, with **1.00000
+normalized instruction-shape similarity** to retail. This is handler-shape
+identity, not a raw byte or complete-owner exactness claim.
 
-A fresh selected 11-support-TU VC7.1 `/GL` link of the maintained source emits
-a 14,384-byte dispatcher candidate against the 14,416-byte target. The main
-181-byte opcode map remains byte-identical (181/181 slots, 108 unique handler
-indices); its code/table boundary is candidate `+0x35A0` versus target
-`+0x35C0`. Per-handler normalized instruction-shape ratios are `0x1A6`
-0.76190, `0x1A7` 0.85294, `0x1A8` 0.89109, `0x1A9` **0.94737**, `0x1AA`
-0.58182, and `0x1AB` 0.83761. Rank-3 Count improved from 0.706 to 0.947;
-Rank-5 Count improved from 0.545 to 0.582 in the final pattern-index variant.
-These are opcode-handler shape diagnostics, not byte-exact claims. The full
-Dispatcher remains NONEXACT and no full cold replay was run.
+The Rank-5 Count handler keeps separate `+600/+200/-200/-600` thresholds and
+uses explicit per-branch ECL context reads. Its current shared-tail candidate
+is 102 instructions / 345 bytes versus retail's 118 instructions / 420 bytes,
+with **0.60909** normalized instruction-shape similarity. Rank-5 bullet speed
+(`0x1A7`) remains at **0.85294**; adjacent Rank-5 selector `0x1A8` is **0.89109**.
+A separate branch-local-host experiment raises Rank-5 Count to 0.76856 but
+regresses Rank-3 Count to 0.15, so that trade-off is not installed.
+
+A fresh selected 11-support-TU VC7.1 `/GL` link of the maintained source
+produces a **14,384-byte** dispatcher candidate against the 14,416-byte target.
+The 181-byte opcode map remains byte-identical (181/181 slots, 108 unique
+handler indices); the code/table boundary is candidate `+0x35A0` versus target
+`+0x35C0`. Per-handler shape ratios are `0x1A6` 0.76190, `0x1A7` 0.85294,
+`0x1A8` 0.89109, `0x1A9` **1.00000**, `0x1AA` 0.60909 and `0x1AB` 0.78632.
+The dispatcher remains NONEXACT. This was an affected 11-source linked graph,
+not a full cold replay or canonical Oracle acceptance.
 
 ## 2026-11-13 Enemy callback Player cleanup scheduling barrier
 
