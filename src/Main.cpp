@@ -1195,10 +1195,6 @@ int __stdcall GameWindowView::ResolveShortcut(
 
 // TH10_MAIN_FUNCTION: 0x0043A3A0 MainConfigurationDialogProc
 // Four-argument dialog callback; the target returns zero on every path.
-// Native target keeps WM_COMMAND argument effects ordered before case dispatch.
-// Compiler barrier models codegen ordering, not synchronization.
-extern "C" void _ReadWriteBarrier();
-#pragma intrinsic(_ReadWriteBarrier)
 
 INT_PTR CALLBACK MainConfigurationDialogProc(
     HWND dialog, UINT message, WPARAM wparam, LPARAM lparam)
@@ -1210,7 +1206,6 @@ INT_PTR CALLBACK MainConfigurationDialogProc(
         SendMessageA(GetDlgItem(dialog, 202), BM_SETCHECK, BST_CHECKED, 0);
         return 0;
     case WM_COMMAND:
-        _ReadWriteBarrier();
         switch (LOWORD(wparam))
         {
         case 201:
@@ -1227,6 +1222,8 @@ INT_PTR CALLBACK MainConfigurationDialogProc(
                 g_MainSupervisorView.configuration.options &= ~0x100u;
             EndDialog(dialog, IDNO);
             break;
+        default:
+            return 0;
         }
         break;
     }

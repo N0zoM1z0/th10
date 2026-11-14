@@ -17,11 +17,6 @@ void StageResetPublishedCameras()
     g_StageSecondaryCamera.position = AnmFloat3View(0.0f, 0.0f, 1000.0f);
     g_StageSecondaryCamera.direction = AnmFloat3View(0.0f, 0.0f, 0.0f);
     g_StageSecondaryCamera.up = AnmFloat3View(0.0f, 1.0f, 0.0f);
-    g_StageSecondaryCamera.rockingOffset = AnmFloat3View(0.0f, 0.0f, 0.0f);
-
-    g_StagePublishedCamera.position = AnmFloat3View(0.0f, 0.0f, 1000.0f);
-    g_StagePublishedCamera.direction = AnmFloat3View(0.0f, 0.0f, 0.0f);
-    g_StagePublishedCamera.up = AnmFloat3View(0.0f, 1.0f, 0.0f);
     g_StageSecondaryCamera.value048 = 0.5235988f;
     g_StageSecondaryCamera.viewport.x = 0;
     g_StageSecondaryCamera.viewport.y = 0;
@@ -30,9 +25,11 @@ void StageResetPublishedCameras()
     g_StageSecondaryCamera.viewport.minZ = 0.0f;
     g_StageSecondaryCamera.viewport.maxZ = 1.0f;
     g_StageSecondaryCamera.unknown0E4 = 1;
-
+    g_StageSecondaryCamera.rockingOffset = AnmFloat3View(0.0f, 0.0f, 0.0f);
+    g_StagePublishedCamera.position = AnmFloat3View(0.0f, 0.0f, 1000.0f);
+    g_StagePublishedCamera.direction = AnmFloat3View(0.0f, 0.0f, 0.0f);
+    g_StagePublishedCamera.up = AnmFloat3View(0.0f, 1.0f, 0.0f);
     g_StagePublishedCamera.value048 = 0.5235988f;
-
     g_StagePublishedCamera.viewport.x = 32;
     g_StagePublishedCamera.viewport.y = 16;
     g_StagePublishedCamera.viewport.width = 384;

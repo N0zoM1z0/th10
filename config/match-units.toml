@@ -31789,3 +31789,167 @@ linkages = [
 "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 "src/Gui.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 "src/Hint.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+
+[units.memory-pbgfile-seek]
+artifact_kind = "coff"
+source = "src/ResFile.cpp"
+object = "build/match/ResFile.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["CMemoryPbgFile::Seek"]
+symbol = "?Seek@CMemoryPbgFile@@UAE_NKK@Z"
+target_address = 0x004364F0
+size = 107
+
+[units.text-buffer-invert-alpha]
+artifact_kind = "coff"
+source = "src/TextRenderer.cpp"
+object = "build/match/TextRenderer.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["TextRenderBufferView::InvertAlpha"]
+symbol = "?InvertAlpha@TextRenderBufferView@@QAE_NH@Z"
+target_address = 0x00437160
+size = 157
+
+[units.main-configuration-dialog-proc]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "WinMain@16"
+output_dir = "build/match-linked/MainExecutableChecksum"
+functions = ["MainConfigurationDialogProc"]
+symbol = "?MainConfigurationDialogProc@@YGHPAUHWND__@@IIJ@Z"
+target_address = 0x0043A3A0
+size = 233
+linkages = [
+  { offset = 0x38, type = "DIR32", symbol = "__imp__IsDlgButtonChecked@8", target = 0x00466250 },
+  { offset = 0x40, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x150 },
+  { offset = 0x4F, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x150 },
+  { offset = 0x55, type = "DIR32", symbol = "__imp__EndDialog@8", target = 0x00466244 },
+  { offset = 0x68, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x150 },
+  { offset = 0x6E, type = "DIR32", symbol = "__imp__EndDialog@8", target = 0x00466244 },
+  { offset = 0x84, type = "DIR32", symbol = "__imp__IsDlgButtonChecked@8", target = 0x00466250 },
+  { offset = 0x8C, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x150 },
+  { offset = 0x9B, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x150 },
+  { offset = 0xA1, type = "DIR32", symbol = "__imp__EndDialog@8", target = 0x00466244 },
+  { offset = 0xB4, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x150 },
+  { offset = 0xBA, type = "DIR32", symbol = "__imp__EndDialog@8", target = 0x00466244 },
+  { offset = 0xD9, type = "DIR32", symbol = "__imp__GetDlgItem@8", target = 0x00466240 },
+  { offset = 0xE0, type = "DIR32", symbol = "__imp__SendMessageA@16", target = 0x00466228 },
+]
+
+[units.stage-reset-published-cameras]
+artifact_kind = "coff"
+source = "src/StageCameraDefaults.cpp"
+object = "build/match/StageCameraDefaults.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["StageResetPublishedCameras"]
+symbol = "?StageResetPublishedCameras@@YAXXZ"
+target_address = 0x004216F0
+size = 465
+relocations = [
+  { offset = 0x0E, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0x2C, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0x32, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0x59, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0x69, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0x6F, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0x8C, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0x94, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0x9C, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0xB0, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0xB6, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0xBC, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0xCA, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0xD4, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0xDE, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0xE4, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0xFC, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0x104, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0x11A, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0x123, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0x128, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0x12E, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0x138, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0x141, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0x147, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0x151, type = "DIR32", symbol = "?g_StageSecondaryCamera@@3UStageCameraStateView@@A", target = 0x00491E94 },
+  { offset = 0x15B, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0x161, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0x167, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0x16D, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0x177, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0x181, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0x18B, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0x195, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0x19E, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0x1A4, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0x1AD, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0x1BD, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0x1C3, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0x1C9, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+]
+
+[units.bullet-update-absolute-direction]
+artifact_kind = "linked-pe"
+source = "src/BulletManager.cpp"
+support_sources = ["src/BulletRuntime.cpp", "src/BulletTransform.cpp", "src/PlayerCollision.cpp", "src/AnmManager.cpp", "src/EnemyEclDispatcher.cpp", "src/Enemy.cpp"]
+output_dir = "build/match-linked/BulletHorizontalWrap"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?BulletManagerUpdateCallback@@YIHPAUBulletManagerView@@@Z"
+functions = ["BulletRuntimeView::UpdateAbsoluteDirectionChange"]
+symbol = "?UpdateAbsoluteDirectionChange@BulletRuntimeView@@QAEXXZ"
+target_address = 0x004078E0
+size = 335
+linkages = [
+  { offset = 0x26, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x00492590 },
+  { offset = 0x2B, type = "REL32", symbol = "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z", target = 0x0043DC90 },
+  { offset = 0x97, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
+  { offset = 0xE5, type = "REL32", symbol = "?FromAngleMagnitude@AnmOpcodeVectorView@@QAEXMM@Z", target = 0x00408750 },
+  { offset = 0xFF, type = "DIR32", symbol = "__real@3f7d70a4", target = 0x00470B68 },
+  { offset = 0x10E, type = "DIR32", symbol = "__real@3f8147ae", target = 0x00470B64 },
+  { offset = 0x122, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x143, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+]
+
+[units.transition-shake-linear]
+artifact_kind = "linked-pe"
+source = "src/Gui.cpp"
+support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/Player.cpp", "src/FrontEnd.cpp", "src/DecomphelpLeafAccessors.cpp", "src/Main.cpp", "src/Sound.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/AnmRectangle.cpp"]
+pdb_source = "src/TransitionEffect.cpp"
+output_dir = "build/match-linked/GuiTransitionEffectFactory"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?UpdateStageElements@GuiView@@SGHPAU1@@Z"
+owner_visibility = "static"
+functions = ["TransitionShakeLinear"]
+symbol = "?TransitionShakeLinear@@YIHPAX@Z"
+target_address = 0x0043C550
+size = 439
+linkages = [
+  { offset = 0x01, type = "DIR32", symbol = "?g_GameStartupCounter@@3HA", target = 0x004918A4 },
+  { offset = 0x1C, type = "DIR32", symbol = "__real@3f7d70a4", target = 0x00470B68 },
+  { offset = 0x2B, type = "DIR32", symbol = "__real@3f8147ae", target = 0x00470B64 },
+  { offset = 0x3C, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x51, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0x7B, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0 },
+  { offset = 0xA4, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0, addend = 4, width = 4 },
+  { offset = 0xAD, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0 },
+  { offset = 0xB2, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0 },
+  { offset = 0xD8, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0 },
+  { offset = 0x105, type = "DIR32", symbol = "?g_TransitionShakeX@@3MA", target = 0x00491E64 },
+  { offset = 0x10D, type = "DIR32", symbol = "?g_TransitionShakeX@@3MA", target = 0x00491E64 },
+  { offset = 0x115, type = "DIR32", symbol = "?g_TransitionShakeX@@3MA", target = 0x00491E64 },
+  { offset = 0x11E, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0 },
+  { offset = 0x13F, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0 },
+  { offset = 0x144, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0 },
+  { offset = 0x166, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0 },
+  { offset = 0x180, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0, addend = 4, width = 4 },
+  { offset = 0x193, type = "DIR32", symbol = "?g_TransitionShakeY@@3MA", target = 0x00491E68 },
+  { offset = 0x1A3, type = "DIR32", symbol = "?g_TransitionShakeY@@3MA", target = 0x00491E68 },
+]

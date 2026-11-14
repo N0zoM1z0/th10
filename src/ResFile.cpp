@@ -87,55 +87,32 @@ DWORD CMemoryPbgFile::GetSize()
 
 bool CMemoryPbgFile::Seek(DWORD offset, DWORD seekFrom)
 {
-    // Interpret the seek DWORD as one signed native i386 word. Copy the
-    // representation instead of converting an out-of-range unsigned value
-    // to LONG (which is implementation-defined by ISO C++).
-    LONG signedOffset;
-    memcpy(&signedOffset, &offset, sizeof signedOffset);
-    unsigned char *position;
+    LONG distance = (LONG)offset;
     switch (seekFrom)
     {
     case FILE_BEGIN:
-        if (signedOffset < 0 || offset >= m_Size)
+        if (!Contains(distance))
             return false;
-        // Retail forms the FILE_BEGIN position as one low-32-bit Win32
-        // address word, even if the backing allocation metadata is invalid.
-        position = reinterpret_cast<BYTE *>(
-            reinterpret_cast<DWORD>(m_Data) + offset);
+        m_Current = m_Data + distance;
         break;
     case FILE_CURRENT:
-    {
-        // The original ADD/SUB uses Win32 address words, not C++ array
-        // subtraction: an earlier negative seek may leave this cursor
-        // before the allocated buffer, and the signed check still applies.
-        // Remaining bytes are compared as one signed native 32-bit word.
-        // Preserve the original low 32-bit address arithmetic without
-        // converting an out-of-range DWORD to signed LONG.
-        const DWORD remainingBits = reinterpret_cast<DWORD>(m_Data) + m_Size -
-            reinterpret_cast<DWORD>(m_Current);
-        // VC7.1 Win32 keeps the low DWORD on conversion to signed LONG.
-        // This is compiler-specific, but avoids an unrelated-type pointer.
-        const LONG remaining = static_cast<LONG>(remainingBits);
-        if (remaining <= signedOffset)
-            return false;
-        position = reinterpret_cast<BYTE *>(reinterpret_cast<DWORD>(m_Current) + offset);
+        if ((LONG)((m_Data + m_Size) - m_Current) <= distance)
+            goto fail;
+        m_Current += distance;
         break;
-    }
     case FILE_END:
-    {
-        if (signedOffset > 0)
-            return false;
-        DWORD distance = signedOffset < 0 ? 0U - offset : offset;
-        if (distance >= m_Size)
-            return false;
-        position = reinterpret_cast<BYTE *>(reinterpret_cast<DWORD>(m_Data) + m_Size + offset);
+        if (distance > 0)
+            goto fail;
+        if ((DWORD)(distance < 0 ? -distance : distance) >= m_Size)
+            goto fail;
+        m_Current = m_Data + m_Size + distance;
         break;
-    }
     default:
-        return false;
+        goto fail;
     }
-    m_Current = position;
     return true;
+fail:
+    return false;
 }
 
 // The native derived destruction at 0x00436680 is physically separate but

@@ -21,6 +21,14 @@ class CMemoryPbgFile : public IPbgFile
     virtual bool Seek(DWORD offset, DWORD seekFrom);
 
   protected:
+    // True when `offset` names one of the owned bytes. Seek's FILE_BEGIN
+    // check must come through this inline helper: the spelled-out condition
+    // keeps a separate FILE_CURRENT tail instead of the retail cross-jump.
+    bool Contains(LONG offset) const
+    {
+        return offset >= 0 && (DWORD)offset < m_Size;
+    }
+
     DWORD m_Size;
     BYTE *m_Current;
     BYTE *m_Data;
