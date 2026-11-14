@@ -32,8 +32,9 @@ static unsigned int MergeDirectButton(unsigned short *out, short button,
 // Target44A190: the actual PollInputFrame caller permits LTCG to lower the
 // mask to ECX while retaining two stack arguments and RET8.
 unsigned short __stdcall MergeJoystickInput(
-    int bindingIndex, int padIndex, unsigned short buttons)
+    unsigned short buttons, int bindingIndex, int padIndex)
 {
+    unsigned short merged = buttons;
     InputJoystickInfoView info;
     InputDirectJoystickStateView state;
     InputBindingSetView *binding =
@@ -44,26 +45,26 @@ unsigned short __stdcall MergeJoystickInput(
         info.size = sizeof(info);
         info.flags = 0xff;
         if (joyGetPosEx(padIndex != 0, &info) != 0)
-            return buttons;
-        MergeWinMmButton(&buttons, binding->controllerMappings[0], 1, info.buttons);
-        MergeWinMmButton(&buttons, binding->controllerMappings[1], 2, info.buttons);
-        MergeWinMmButton(&buttons, binding->controllerMappings[3], 8, info.buttons);
-        MergeWinMmButton(&buttons, binding->controllerMappings[2], 4, info.buttons);
-        MergeWinMmButton(&buttons, binding->controllerMappings[8], 0x100, info.buttons);
+            return merged;
+        MergeWinMmButton(&merged, binding->controllerMappings[0], 1, info.buttons);
+        MergeWinMmButton(&merged, binding->controllerMappings[1], 2, info.buttons);
+        MergeWinMmButton(&merged, binding->controllerMappings[3], 8, info.buttons);
+        MergeWinMmButton(&merged, binding->controllerMappings[2], 4, info.buttons);
+        MergeWinMmButton(&merged, binding->controllerMappings[8], 0x100, info.buttons);
 
         unsigned int xQuarter = (g_InputJoystickCaps[padIndex].xMax -
             g_InputJoystickCaps[padIndex].xMin) >> 2;
-        buttons |= info.x > ((g_InputJoystickCaps[padIndex].xMin +
+        merged |= info.x > ((g_InputJoystickCaps[padIndex].xMin +
             g_InputJoystickCaps[padIndex].xMax) >> 1) + xQuarter ? 0x80 : 0;
-        buttons |= info.x < ((g_InputJoystickCaps[padIndex].xMin +
+        merged |= info.x < ((g_InputJoystickCaps[padIndex].xMin +
             g_InputJoystickCaps[padIndex].xMax) >> 1) - xQuarter ? 0x40 : 0;
         unsigned int yQuarter = (g_InputJoystickCaps[padIndex].yMax -
             g_InputJoystickCaps[padIndex].yMin) >> 2;
-        buttons |= info.y > ((g_InputJoystickCaps[padIndex].yMin +
+        merged |= info.y > ((g_InputJoystickCaps[padIndex].yMin +
             g_InputJoystickCaps[padIndex].yMax) >> 1) + yQuarter ? 0x20 : 0;
-        buttons |= info.y < ((g_InputJoystickCaps[padIndex].yMin +
+        merged |= info.y < ((g_InputJoystickCaps[padIndex].yMin +
             g_InputJoystickCaps[padIndex].yMax) >> 1) - yQuarter ? 0x10 : 0;
-        return buttons;
+        return merged;
     }
 
     if (g_InputPadDevices[padIndex]->vtable->Poll(g_InputPadDevices[padIndex]) < 0)
@@ -76,24 +77,24 @@ unsigned short __stdcall MergeJoystickInput(
             result = g_InputPadDevices[padIndex]->vtable->Acquire(
                 g_InputPadDevices[padIndex]);
             if (++retries >= 400)
-                return buttons;
+                return merged;
         }
-        return buttons;
+        return merged;
     }
     memset(&state, 0, sizeof(state));
     if (g_InputPadDevices[padIndex]->vtable->GetDeviceState(
         g_InputPadDevices[padIndex], sizeof(state), &state) < 0)
-        return buttons;
-    MergeDirectButton(&buttons, binding->controllerMappings[0], 1, state.buttons);
-    MergeDirectButton(&buttons, binding->controllerMappings[1], 2, state.buttons);
-    MergeDirectButton(&buttons, binding->controllerMappings[3], 8, state.buttons);
-    MergeDirectButton(&buttons, binding->controllerMappings[2], 4, state.buttons);
-    MergeDirectButton(&buttons, binding->controllerMappings[8], 0x100, state.buttons);
-    buttons |= state.x < -g_InputJoystickXThreshold ? 0x40 : 0;
-    buttons |= state.y < -g_InputJoystickYThreshold ? 0x10 : 0;
-    buttons |= state.x > g_InputJoystickXThreshold ? 0x80 : 0;
-    buttons |= state.y > g_InputJoystickYThreshold ? 0x20 : 0;
-    return buttons;
+        return merged;
+    MergeDirectButton(&merged, binding->controllerMappings[0], 1, state.buttons);
+    MergeDirectButton(&merged, binding->controllerMappings[1], 2, state.buttons);
+    MergeDirectButton(&merged, binding->controllerMappings[3], 8, state.buttons);
+    MergeDirectButton(&merged, binding->controllerMappings[2], 4, state.buttons);
+    MergeDirectButton(&merged, binding->controllerMappings[8], 0x100, state.buttons);
+    merged |= state.x < -g_InputJoystickXThreshold ? 0x40 : 0;
+    merged |= state.y < -g_InputJoystickYThreshold ? 0x10 : 0;
+    merged |= state.x > g_InputJoystickXThreshold ? 0x80 : 0;
+    merged |= state.y > g_InputJoystickYThreshold ? 0x20 : 0;
+    return merged;
 }
 
 // Target44A4E0: caller-visible scratch buttons. The DirectInput record is
@@ -144,7 +145,7 @@ signed char *__fastcall FrontEndGetControllerState(int padIndex)
 
 // Target44A5F0: keyboard state plus joystick merge, followed by the gameplay
 // counters atA. This differs from the separate debug-repeat counters at38.
-void __fastcall PollInputFrame(int bindingIndex)
+unsigned short __fastcall PollInputFrame(int bindingIndex)
 {
     unsigned short mask = 0;
     InputBindingSetView *binding =
@@ -212,12 +213,11 @@ void __fastcall PollInputFrame(int bindingIndex)
             }
         }
     }
-    // Publish the returned word before destructively shifting a separate cursor.
-    const unsigned short merged = MergeJoystickInput(bindingIndex, 0, mask);
+    const unsigned short merged = MergeJoystickInput(mask, bindingIndex, 0);
     binding->previous = binding->current;
     binding->current = merged;
-    unsigned short bits = merged;
     unsigned short repeat = 1;
+    unsigned short bits = merged;
     binding->repeated = 0;
     unsigned short *hold = binding->holdCounters;
     for (int index = 0; index < 16; ++index)
@@ -236,7 +236,7 @@ void __fastcall PollInputFrame(int bindingIndex)
         ++hold;
         repeat <<= 1;
     }
-    unsigned short changed = binding->current ^ binding->previous;
-    binding->pressed = changed & binding->current;
-    binding->released = changed & ~binding->current;
+    binding->pressed = (binding->current ^ binding->previous) & binding->current;
+    binding->released = (binding->current ^ binding->previous) & ~binding->current;
+    return merged;
 }

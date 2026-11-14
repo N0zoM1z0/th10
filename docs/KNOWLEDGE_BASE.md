@@ -42,6 +42,24 @@ Parked after bounded trials:
   `PollInputFrame` should probably return its merged `unsigned short` (the
   target keeps it in AX through the epilogue); untested.
 
+Input polling (`input-controller-buttons` graph, entry `PollInputFrame`):
+`MergeJoystickInput @0x44A190` receives the button mask in ECX through LTCG
+lowering of its *first* parameter, with the binding index and a zero pad index
+on the stack. Two natural source facts produce that: the signature is
+`(unsigned short buttons, int bindingIndex, int padIndex)`, and the body
+copies `buttons` into a local before passing `&merged` to the button
+helpers. An address-taken parameter blocks the register lowering entirely.
+`PollInputFrame @0x44A5F0` returns its merged `unsigned short`. It is now
+276/278 normalized instructions. The only remaining seam is the
+pressed-mask AND: retail copies `changed`, we copy `current` and hoist the
+`not`. Five spellings were neutral: operand order, XOR order, locals before
+stores, fully inline expressions, and the reference's local form.
+`MergeJoystickInput` itself moved from 228 to 235/282.
+
+`PreloadBgm` and the stale `ProcessQueues` claim: see `bf3ecb83`. The
+`ProcessQueues` duplicate-buffer guard must be the plain array read; the
+`SoundWordSlot` form from `fe52288e` moves one load from EAX to ESI.
+
 GUI message VM boss `GuiMessageVmView::Run @0x415E90` (4,480 bytes): every
 existing graph lacked `GuiMessageLeaves.cpp` (`0x417010`, EAX argument) and
 `VmIdInterrupt.cpp` (`0x409E50`, EAX pointer). Without them both callees fall

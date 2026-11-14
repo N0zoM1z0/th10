@@ -83,8 +83,8 @@ extern short g_InputJoystickXThreshold, g_InputJoystickYThreshold;
 extern signed char g_InputJoystickButtons[128];
 
 unsigned short __stdcall MergeJoystickInput(
-    int bindingIndex, int padIndex, unsigned short buttons);
+    unsigned short buttons, int bindingIndex, int padIndex);
 signed char *__fastcall FrontEndGetControllerState(int padIndex);
-void __fastcall PollInputFrame(int bindingIndex);
+unsigned short __fastcall PollInputFrame(int bindingIndex);
 
 #endif
