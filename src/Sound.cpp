@@ -705,14 +705,24 @@ extern "C" void _ReadWriteBarrier();
 
 // Target 0x0043D7D0. Comparison uses this owner, but the filename copy uses
 // the global sound owner. Seek/read/close results are intentionally unchecked.
+// Byte count of one BGM format record's preloaded track.
+static inline DWORD SoundBgmTrackBytes(SoundPlayerView *player, int formatIndex)
+{
+    return player->bgmFormats[formatIndex].preloadAllocSize;
+}
+
 int SoundPlayerView::PreloadBgm(int index, const char *path)
 {
     if (bgmPreloadAllocations[index] != NULL &&
         strcmp(path, bgmFileNames[index]) == 0)
         return 0;
 
-    strcpy(reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)
-               ->bgmFileNames[index], path);
+    const char *source = path;
+    char *destination =
+        reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->bgmFileNames[index];
+    while ((*destination++ = *source++) != 0)
+        ;
+
     if ((g_MainSupervisorView.configuration.options & 0x10) == 0 || manager == NULL)
         return 0;
 
@@ -728,19 +738,10 @@ int SoundPlayerView::PreloadBgm(int index, const char *path)
     if (file == INVALID_HANDLE_VALUE)
         return -1;
 
-    // Original i386 IMUL index,0x34 then adds the BGM-format base as
-    // low 32-bit address words; keep the three distinct format reads.
     const int formatIndex = GetFmtIndexByName(path);
-    SetFilePointer(file, (reinterpret_cast<ThBgmFormat *>(
-        reinterpret_cast<unsigned int>(bgmFormats) +
-        static_cast<unsigned int>(formatIndex) *
-        static_cast<unsigned int>(sizeof(ThBgmFormat))))->startOffset,
-                   NULL, FILE_BEGIN);
+    SetFilePointer(file, bgmFormats[formatIndex].startOffset, NULL, FILE_BEGIN);
     BYTE *allocation = static_cast<BYTE *>(
-        malloc((reinterpret_cast<ThBgmFormat *>(
-        reinterpret_cast<unsigned int>(bgmFormats) +
-        static_cast<unsigned int>(formatIndex) *
-        static_cast<unsigned int>(sizeof(ThBgmFormat))))->preloadAllocSize));
+        malloc(SoundBgmTrackBytes(this, formatIndex)));
     if (allocation == NULL)
     {
         CloseHandle(file);
@@ -748,12 +749,7 @@ int SoundPlayerView::PreloadBgm(int index, const char *path)
     }
 
     DWORD bytesRead;
-    const DWORD requestedSize = (reinterpret_cast<ThBgmFormat *>(
-        reinterpret_cast<unsigned int>(bgmFormats) +
-        static_cast<unsigned int>(formatIndex) *
-        static_cast<unsigned int>(sizeof(ThBgmFormat))))->preloadAllocSize;
-    _ReadWriteBarrier();
-    ReadFile(file, allocation, requestedSize, &bytesRead, NULL);
+    ReadFile(file, allocation, SoundBgmTrackBytes(this, formatIndex), &bytesRead, NULL);
     CloseHandle(file);
 
     bgmPreloadFormats[index] = &bgmFormats[formatIndex];
@@ -1026,8 +1022,8 @@ process_command:
         soundQueue[i] = -1;
         if (soundQueueRequestCounts[i] < 0)
         {
-            if ((*SoundWordSlot(&duplicateSoundBuffers[0], soundIndex)) != NULL)
-                (*SoundWordSlot(&duplicateSoundBuffers[0], soundIndex))->Stop();
+            if (duplicateSoundBuffers[soundIndex] != NULL)
+                duplicateSoundBuffers[soundIndex]->Stop();
             soundQueueRequestCounts[i] = 0;
             continue;
         }

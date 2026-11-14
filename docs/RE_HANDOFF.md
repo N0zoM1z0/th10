@@ -1,6 +1,6 @@
 # TH10 reconstruction — agent handoff
 
-**Current as of 2026-11-13.** This is the working brief, not a chronological
+**Current as of 2026-11-14.** This is the working brief, not a chronological
 experiment log. The detailed [knowledge journal](KNOWLEDGE_BASE.md) contains
 older source-epoch observations, some of which were superseded. Read
 [AGENTS.md](../AGENTS.md) for the target, toolchain, exactness and Git rules.
@@ -14,10 +14,14 @@ older source-epoch observations, some of which were superseded. Read
   `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
 - Local exact function/binding truth is in `config/matches.csv`,
   `config/match-units.toml` and `config/functions.csv`. The generated
-  [PROGRESS.md](PROGRESS.md) is current (`scripts/repo-python scripts/progress.py --check`).
-  **1,524 exact functions / 203,969 bytes**; of these, **610 / 133,654**
-  have authored source; **140 authored** functions remain nonexact. These
-  counts do not imply a closed, runnable reconstructed game.
+  [PROGRESS.md](PROGRESS.md) is the count authority
+  (`scripts/repo-python scripts/progress.py --check`). Exact counts do not
+  imply a closed, runnable reconstructed game.
+- `_reference/th10-decomp` (upstream `levzzz5154/th10-decomp`, sparse
+  checkout incl. `matching2/msvc/{src,include,build_support}`) has
+  byte-exact MSVC C++ for most of our backlog. Treat it as hypotheses: port
+  the natural spelling, never its synthetic LTCG contexts, escape functions,
+  `volatile` reads or fake ABIs, and verify in our real graph.
 - Use pinned VC7.1 SP1 and the particular unit's real `/GL`, `/GS`,
   support-object and PDB-owner recipe. Compare **complete functions**, all
   original-bound fields and local branches. A similar-size candidate,
@@ -25,7 +29,8 @@ older source-epoch observations, some of which were superseded. Read
 - Run **only selected** cold replay units affected by a source edit:
   `scripts/repo-python scripts/replay-exact-units.py --unit UNIT --json`.
   Never run the full historical replay. For docs-only work, no compile or
-  replay is necessary. Commit useful checkpoints as `gpt-web: ...` with the
+  replay is necessary. Commit useful checkpoints as `claude-opus-5.5-high: ...` (current
+  operator request) with the
   author/trailer in `AGENTS.md`.
 
 ## Accepted exact owners and useful guards
@@ -70,6 +75,29 @@ publication codegen-neutral (`4320ebe6`), and GUI HUD cold-replay exact
 **3,836/72** in the same updated source epoch. Rebuild only if a change
 touches their dependency graph.
 
+## 2026-11-14 session results
+
+- New exact owners: `CMemoryPbgFile::Seek` 107, `InvertAlpha` 157,
+  `StageResetPublishedCameras` 465, `MainConfigurationDialogProc` 233,
+  `SoundPlayerView::PreloadBgm` 369 (units `memory-pbgfile-seek`,
+  `text-buffer-invert-alpha`, `stage-reset-published-cameras`,
+  `main-configuration-dialog-proc`, `sound-preload-bgm`).
+- **Stale exact claim found:** `fe52288e` replaced the `ProcessQueues`
+  duplicate-buffer guard with `SoundWordSlot` and claimed 1,452/1,452, but
+  that source fails the field check; the plain `duplicateSoundBuffers[i]`
+  guard restores exactness. Other recent "native word" commits were not
+  re-audited; a source-group replay of recently edited files (FrontEnd,
+  Player, ReplayManager, EnemyEclDispatcher, BulletManager, EclVm, ...) is
+  the way to check them when the compiler is idle.
+- New candidate units (NONEXACT, empty or partial linkages, for triage):
+  `gui-message-run-candidate` (GUI Run with GuiMessageLeaves/VmIdInterrupt;
+  1,047/1,219 normalized instructions), `bullet-update-absolute-direction`
+  (333/335), `transition-shake-linear` (late `fidiv`). See the 2026-11-14
+  knowledge-base section for levers and failed attempts.
+- Triage helper idea that worked: build the candidate graph, then align
+  normalized instructions against the target (difflib over capstone text)
+  before writing the exhaustive linkage list.
+
 ## Open functions — choose a concrete hypothesis before compiling
 
 All counts below are **selected graph snapshots**, not universal claims across
@@ -83,9 +111,8 @@ all LTCG contexts. Check current source and the original byte offsets first.
 | **Enemy large owners** `EnemyRuntimeUpdate @0x40DC80`, `src/Enemy.cpp`; callback `src/EnemyCallback.cpp`; dispatcher `src/EnemyEclDispatcher.cpp` | `EnemyRuntimeUpdate` is exact: two independent pinned VC7.1 `/GL` cold replays reproduce **2,412/2,412 bytes / 70/70 target fields** in the 16-source graph. The ECL-result-derived eight-slot count retains the timer-tail recovery; direct manager calls preserve `MOV EBX,8` and both manager-loop lifetimes. The four-byte VM-ID overlay and 0x14-byte Enemy timer view remain part of the exact source. Player damage remains **1,170/1,170 / 28 fields** with nullable ECX hit-flag receiver and three stack arguments. `EnemyAdvanceMotion` remains **168/171** in natural C++ (**133/143 ordinary bytes, seven fields**); its remaining seam is the split outgoing x87 argument cleanup before the final Y store. `FromAngleMagnitude` is separately **30/30**. `EnemyResolveRuntimeCallback @0x4127A0` remains nonexact against its **593-byte** target. A full-graph baseline is **606 bytes / 58/565 ordinary bytes**; the best recent three-support diagnostic is **592 bytes / 104/565 / seven fields**, but it has not been revalidated in the 16-source graph. The maintained source remains the 606-byte baseline; the 592-byte candidate is diagnostic-only and was reverted. Rebuild the canonical graph before extending the callback. The ECL dispatcher remains **14,416 bytes / 800 source field identities**, nonexact. |
 | **GUI and Player** `GuiMessageVmView::Run @0x415E90`, `src/Gui.cpp`; Player update `src/Player.cpp` | GUI target **4,480**, candidate **4,492**; preserve standalone 9-byte instruction-next leaf. Player callback target **3,112** vs candidate **3,100**; movement target **1,656** vs candidate **1,616**. Player damage `@0x428630` is now **1,170/1,170 / 28 fields** with the actual nullable ECX hit-flag receiver and three stack arguments; two independent canonical 17-TU `/GL` cold links pass. Same selected replay set passes auxiliary damage **202/202 / 6 fields**, shot update **876/876 / 22 fields**, and Enemy manager update **166/166 / 5 fields**. |
 | **Near-exact Bullet** `UpdateAbsoluteDirectionChange @0x4078E0`, `src/BulletManager.cpp` | Full **335** with **two ordinary differences** at `+0xD7/+0xDD`: target uses EDX to load/push angle, candidate EAX. Eight fields remain bound. Ten natural angle/receiver/speed forms and three native cycle-store variants were neutral or regressed. The installed bit-copy cycle store preserves this baseline; a new EDX-liveness hypothesis is needed. Relative/aimed remain exact. |
-| **Near-exact Sound** `PreloadBgm @0x43D7D0`, `src/Sound.cpp` | Full **369**, **four ordinary differences** `+0x121/+0x127/+0x12A/+0x12B` in `ReadFile` size/output register assignment; ten fields. Eight fresh full-owner Sound/ZWave `ReadFile` declaration/address trials were neutral or regressed; seek genuine caller-visible register lifetimes rather than repeated pointer spelling. |
-| **Other medium owners** | `ScriptViewerBombOwnerView::Update @0x405750`: full **223**, ten nonfield register bytes, 12 fields; EBP/EBX owner/VM allocation. `MainRegisterChain @0x420470`: full **204**, **110/120 ordinary bytes**, 21 fields; nine natural owner/flag lifetime forms were neutral. `CMemoryPbgFile::Seek @0x4364F0`: full **107**, **100/107**, no fields; six switch-case source orders preserve the same seven mismatches. |
-| **Additional genuine backlog** | `InitializeGameStatisticsRecord @0x42ACB0` full **274**, **217/242 ordinary bytes**, eight fields after ten source-lifetime/name-copy controls; adjacent 423-byte loader is exact. `CreateStatistics42AF20 @0x42AF20` is **98 bytes** against a 97-byte target, 33/61 ordinary bytes and nine fields; seven natural `new`/return variants did not recover its private ABI. `ScriptViewerPopupOwnerView::Draw` is 537 bytes against 540, 211/480 ordinary bytes and 15 fields; its ten-byte adapter is 3/6 with one field. `TransitionShakeEnvelope @0x43C710` target **349**, candidate **350**, 207/285 comparable and 16 fields. `TextRenderBufferView::InvertAlpha @0x437160` full **157**, 138/157 across real graphs; noinline is neutral and exported ABI regresses to 112/157. `PollInputFrame @0x44A5F0` target/candidate **850**, repeat/cursor register and callee ABI scheduling. Check each complete source and graph before adopting a historic score. |
+| **Other medium owners** | `ScriptViewerBombOwnerView::Update @0x405750`: full **223**, ten nonfield register bytes, 12 fields; EBP/EBX owner/VM allocation. `MainRegisterChain @0x420470`: full **204**, **110/120 ordinary bytes**, 21 fields; nine natural owner/flag lifetime forms were neutral. |
+| **Additional genuine backlog** | `InitializeGameStatisticsRecord @0x42ACB0` full **274**, **217/242 ordinary bytes**, eight fields after ten source-lifetime/name-copy controls; adjacent 423-byte loader is exact. `CreateStatistics42AF20 @0x42AF20` is **98 bytes** against a 97-byte target, 33/61 ordinary bytes and nine fields; seven natural `new`/return variants did not recover its private ABI. `ScriptViewerPopupOwnerView::Draw` is 537 bytes against 540, 211/480 ordinary bytes and 15 fields; its ten-byte adapter is 3/6 with one field. `TransitionShakeEnvelope @0x43C710` target **349**, candidate **350**, 207/285 comparable and 16 fields. `PollInputFrame @0x44A5F0` target/candidate **850**, repeat/cursor register and callee ABI scheduling. Check each complete source and graph before adopting a historic score. |
 
 `EntityStartScript_00404F30` is **not** an accepted exact reconstruction:
 its 202-byte reference source still uses `__declspec(naked)`/hand assembly.
