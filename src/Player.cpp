@@ -517,13 +517,20 @@ static void MarkPlayerVmDeleteState(unsigned int id, unsigned short state)
 
 // Target426CF0: complete collision-hit candidate, not an exact claim.
 // The observed boundary is one stack Player pointer and RET4.
+// Effect origin in screen space: the playfield is offset by (224, 16).
+static inline void SetPlayerHitEffectPosition(
+    AnmFloat3View *position, const PlayerFloat3 *drawPosition)
+{
+    position->x = drawPosition->x + 224.0f;
+    position->y = drawPosition->y + 16.0f;
+    position->z = drawPosition->z;
+}
+
 void __stdcall PlayerHandleCollisionHit(Player *player)
 {
     player->runtimeState = 4;
     AnmFloat3View position;
-    position.x = player->drawPosition.x + 224.0f;
-    position.y = player->drawPosition.y + 16.0f;
-    position.z = player->drawPosition.z;
+    SetPlayerHitEffectPosition(&position, &player->drawPosition);
 
     {
         AnmLoadedView *loaded = reinterpret_cast<BulletManagerView *>(

@@ -105,9 +105,10 @@ touches their dependency graph.
 - **Second 2026-11-14 pass, new exact owners:** `ReplayManager::Initialize`
   1,344, `PollInputFrame` 850, `StartupWorkerView::StartupThread` 299,
   `CreateConfiguredAnmVm` 148, `PlayerTransitionToState2` 796 and
-  `EnemyManagerView::Initialize` 334 (units `replay-manager-initialize`,
+  `EnemyManagerView::Initialize` 334, `PlayerHandleCollisionHit` 627 (units `replay-manager-initialize`,
   `poll-input-frame`, `startup-thread`, `create-configured-anm-vm`,
-  `player-transition-to-state2`, `enemy-manager-initialize`).
+  `player-transition-to-state2`, `enemy-manager-initialize`,
+  `player-handle-collision-hit`).
 - **The biggest single lever was dangling declarations.** Functions
   declared but defined nowhere are anchored in *every* graph, so all their
   callers get a stack ABI. Fixed so far: `FrontEndPlaySound` (retail
@@ -138,12 +139,11 @@ touches their dependency graph.
   (`fld st(0); fmul [mem]`, `PlayerLoadOptionData`); and when retail keeps
   an early store ahead of later field accesses, do those accesses through an
   inline helper's pointer parameter, which stops LTCG sinking the store
-  (`EnemyManagerView::Initialize` timer reset).
+  (`EnemyManagerView::Initialize` timer reset, `PlayerHandleCollisionHit`
+  effect position).
 - **Candidates left at a register/scheduling seam** (units exist, no
   linkages): `transition-shake-envelope` 115/118, `enemy-kill-all` 62/64
-  (scaled-timer fadd order), `player-handle-collision-hit` 138/141 (early
-  `runtimeState = 4` store sunk; try the pointer-helper lesson),
-  `player-load-option-data` 62/67 (zero CSE into EBX), `enemy-read-float-
+  (scaled-timer fadd order), `player-load-option-data` 62/67 (zero CSE into EBX), `enemy-read-float-
   operand` 137/176 (ECX tail cross-jumping), `enemy-advance-motion` 50/52.
   `GameResetGui` is 534/543 and `GameManagerCleanup` 277/309 in the
   LoadScript graph. `EnemyFireLaser` needs whole-program caller context: no

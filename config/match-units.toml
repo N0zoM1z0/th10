@@ -32386,6 +32386,27 @@ symbol = "?PlayerHandleCollisionHit@@YGXPAUPlayer@@@Z"
 target_address = 0x00426CF0
 size = 627
 linkages = [
+  { offset = 0x05, type = "DIR32", symbol = "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A", target = 0x004776F0 },
+  { offset = 0x21, type = "DIR32", symbol = "__real@43600000", target = 0x00470B4C },
+  { offset = 0x2E, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x45, type = "DIR32", symbol = "__real@41800000", target = 0x00470B48 },
+  { offset = 0x52, type = "REL32", symbol = "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ", target = 0x00449950 },
+  { offset = 0x7A, type = "REL32", symbol = "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z", target = 0x00449870 },
+  { offset = 0x80, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x8B, type = "REL32", symbol = "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z", target = 0x004489D0 },
+  { offset = 0x9B, type = "REL32", symbol = "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z", target = 0x004492F0 },
+  { offset = 0xB1, type = "DIR32", symbol = "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A", target = 0x004776F0 },
+  { offset = 0xC2, type = "REL32", symbol = "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ", target = 0x00449950 },
+  { offset = 0xEC, type = "REL32", symbol = "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z", target = 0x00449870 },
+  { offset = 0xF2, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0xFD, type = "REL32", symbol = "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z", target = 0x004489D0 },
+  { offset = 0x10D, type = "REL32", symbol = "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z", target = 0x004492F0 },
+  { offset = 0x122, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
+  { offset = 0x14E, type = "DIR32", symbol = "?g_GameManager@@3PAUGameManager@@A", target = 0x00477810 },
+  { offset = 0x17B, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x00492590 },
+  { offset = 0x180, type = "REL32", symbol = "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z", target = 0x0043DC90 },
+  { offset = 0x1DC, type = "REL32", symbol = "_LoadScript_0043e710@12", target = 0x0043E710 },
+  { offset = 0x1E1, type = "DIR32", symbol = "?g_EnemyGameState@@3PAUEnemyGameStateView@@A", target = 0x004776F4 },
 ]
 
 [units.create-configured-anm-vm]
