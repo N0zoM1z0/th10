@@ -13757,3 +13757,19 @@ recovers both the complete parent extent and code/table boundary.
 These remain selected linked-graph instruction-shape diagnostics only. The
 Dispatcher is NONEXACT, no canonical replay receipt was submitted or accepted,
 and no full cold replay was run.
+
+## 2026-11-14 EnemyResolveRuntimeCallback fresh 17-support-TU confirmation
+
+Rebuilt the current `src/EnemyCallback.cpp` as the primary TU against the
+complete pinned 17-support-TU VC7.1 `/GL /GS` Enemy graph. The PDB-owned
+`EnemyResolveRuntimeCallback` is again **593/593 bytes**, with candidate SHA-256
+`3c4a43a6fd58b46fd1b68f6725297a743534488f521c065890c716f4d477cf73`.
+Target and candidate each decode to 147 instructions; normalized instruction
+shape is **147/147 (1.00000)**. The candidate has seven DIR32 words at
+`+0xA2, +0x112, +0x16C, +0x193, +0x1A2, +0x1AA, +0x1B3`. Their 28 bytes mask
+all 21 raw differing bytes; the remaining **565/565 ordinary bytes are
+identical**, with zero ordinary-byte differences. Linked-code normalization
+is complete. This fresh build reproduces the earlier relocation-normalized
+body match from the current maintained source; it does not change the
+function's `unclassified` ledger status and is not a canonical Oracle replay
+acceptance. No full cold replay was run.
