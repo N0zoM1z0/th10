@@ -13724,3 +13724,36 @@ instructions / 429 bytes versus 118 / 420 (0.65000 shape); Rank-5 low tail
 Dispatcher extent and code/table boundary are materially closer, while keeping
 the Rank-3 shape exact. The dispatcher remains NONEXACT; these are selected
 linked-graph diagnostics only, with no canonical replay or Oracle acceptance.
+
+## 2026-11-14 Enemy ECL Rank-5 owner-rebind and exact-size dispatcher checkpoint
+
+The maintained Rank-5 Count source now explicitly reacquires the full Enemy
+owner pointer after publishing the first count field. The first read uses the
+current `owner->activeEclContext`; after the first 16-bit store,
+`runtimeAddress` is rebound to the owner and the second read reloads
+`activeEclContext` through that owner. This matches the retail register
+lifetime in which the runtime's owner pointer is reloaded into EBX before the
+second operand read. The same per-operand owner reload is applied to all five
+rank bands, including the two shared low tails.
+
+A selected 11-support-TU VC7.1 `/GL` link of this source produces a
+**14,416-byte** Dispatcher contribution, exactly matching the target's
+14,416-byte extent. The main code/table boundary is **`+0x35C0`**, also exactly
+the target boundary; the 181-byte opcode map is byte-identical. Handler shape
+metrics are: `0x1A6` 0.76190, `0x1A7` 0.85294, `0x1A8` 0.89109, `0x1A9`
+**1.00000** (9/9 instructions and 45/45 bytes), `0x1AA` **0.72566** (108
+candidate instructions / 378 bytes versus 118 / 420), and `0x1AB` 0.75214.
+This supersedes the preceding 14,432-byte / 0.65000 Rank-5 candidate and is
+the current maintained source checkpoint.
+
+Two diagnostic alternatives were rejected. A shared low-tail setup candidate
+retained the 14,416-byte parent but regressed Rank-3 Count to 0.40 and Rank-5
+Count to 0.67873. A direct inline-assembly Rank-5 implementation reached
+0.91150 Rank-5 Count shape, but expanded the parent to 14,596 bytes and
+regressed Rank-3 Count to 0.23729; it is not installed. The owner-rebind
+candidate is preferred because it keeps the Rank-3 handler exact-shape and
+recovers both the complete parent extent and code/table boundary.
+
+These remain selected linked-graph instruction-shape diagnostics only. The
+Dispatcher is NONEXACT, no canonical replay receipt was submitted or accepted,
+and no full cold replay was run.
