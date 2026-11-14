@@ -32,14 +32,13 @@ AnmVmIdView __stdcall CreateConfiguredAnmVm(
     const AnmSpecialVmDescriptorView *const entry =
         &g_AnmSpecialVmDescriptors[descriptorIndex];
     const int scriptIndex = entry->scriptIndex;
-    AnmRenderManagerView *manager = g_AnmRenderManagerView;
-    AnmVmView *vm = manager->AllocateVm();
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
     vm->renderLayer = 15;
     vm->flags35C |= 0x40000000u;
     loaded->InitializeVm(vm, scriptIndex);
 
-    AnmVmIdView id;
-    id = manager->AddVmVariant0(vm);
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    AnmVmIdView id = manager->AddVmVariant0(vm);
     AnmVmView *created = manager->FindVm(id);
     if (created == NULL)
         id.value = 0;

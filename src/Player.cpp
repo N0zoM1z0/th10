@@ -924,16 +924,16 @@ int PlayerLoadOptionData(Player *player, const char *filename)
     if (player->optionData == NULL)
         return -1;
 
-    const double diagonalScale = sin(0.7853982f);
-    player->optionData->diagonalSpeedMode0 = static_cast<float>(
-        diagonalScale * player->optionData->axisSpeedMode0);
-    player->optionData->diagonalSpeedMode1 = static_cast<float>(
-        diagonalScale * player->optionData->axisSpeedMode1);
+    const float diagonalScale = static_cast<float>(sin(0.7853982f));
+    player->optionData->diagonalSpeedMode0 =
+        diagonalScale * player->optionData->axisSpeedMode0;
+    player->optionData->diagonalSpeedMode1 =
+        diagonalScale * player->optionData->axisSpeedMode1;
     // The target repeats both writes, reloading the header pointer between them.
-    player->optionData->diagonalSpeedMode0 = static_cast<float>(
-        diagonalScale * player->optionData->axisSpeedMode0);
-    player->optionData->diagonalSpeedMode1 = static_cast<float>(
-        diagonalScale * player->optionData->axisSpeedMode1);
+    player->optionData->diagonalSpeedMode0 =
+        diagonalScale * player->optionData->axisSpeedMode0;
+    player->optionData->diagonalSpeedMode1 =
+        diagonalScale * player->optionData->axisSpeedMode1;
 
     for (int i = 0; i < player->optionData->entryCount; ++i)
     {
