@@ -102,13 +102,31 @@ touches their dependency graph.
   `gui-message-run-candidate` (1,047/1,219 normalized instructions),
   `bullet-update-absolute-direction` (333/335), `transition-shake-linear`
   (late `fidiv`). `PollInputFrame` is 276/278 in `input-controller-buttons`.
-- Next leads: `ReplayManager::Initialize` (386/389 in a stale image; retail
-  pushes the `LoadReplay` path on the stack, ours appears register-lowered),
-  `PlayerHandleCollisionHit` (136/141), `ResultMenuPrepareScore` (99/106),
-  `ScriptViewerPopupOwnerView::Initialize` and its 71-byte factory (`delete`
-  plus a field re-read; patch idea in the knowledge base). Survey near misses
-  cheaply by diffing backlog functions inside existing `build/match-linked`
-  images before compiling anything.
+- **Best next lead:** `ReplayManager::Initialize @0x428F60` reaches
+  1,344/1,344 bytes and 388/389 normalized instructions in the new candidate
+  unit `replay-manager-initialize-candidate` (`ClaudeReplayInit` graph =
+  the `replay-manager-create` graph plus `FileSystem.cpp` `/GL /GS` and
+  normal `Decompress.cpp`). Without those TUs, `ReplayFile::Read` is anchored
+  and LTCG lowers `LoadReplay`'s path into ECX. The one remaining seam is an
+  early `mov eax,[global]` at `+0x3C4`. Its linkage list is still empty:
+  generate it with the triage tool below, then compare. `LoadReplay @0x42A200`
+  itself is 79/138 in that graph.
+- Other leads: `PlayerHandleCollisionHit` (136/141 in a stale image),
+  `ScriptViewerPopupOwnerView::Initialize` and its factory (LTCG receiver
+  choice; see the knowledge base), `PollInputFrame` 276/278, GUI `Run`
+  1,047/1,219, and the two `ResultTransitions` units that were already stale.
+- Triage tools (never acceptance) in `scripts/diagnostics/triage/`:
+  `idiff.py` aligns a linked candidate against the target with addresses
+  masked; `target-fields.py` lists a target function's DIR32/REL32 fields;
+  `linkages-from-candidate.py` drafts a unit's linkage list from a built
+  candidate. To survey near misses cheaply, diff backlog functions that
+  already sit inside existing `build/match-linked` images before compiling.
+  Typical loop: add a unit with `linkages = []`, build it, run `idiff.py`,
+  fix the source, then draft linkages and run `compare-linked-function.py`.
+- Recurring lesson: most remaining seams were source *shape/type* errors
+  that older sessions masked with `memcpy`, `volatile`, `_ReadWriteBarrier`
+  or address-word arithmetic. Check graph completeness first (missing TUs
+  turn private-ABI callees into anchored externals).
 - Do not import the reference's synthetic contexts or `volatile`/fake-ABI
   spellings; `AnmVmInitialize(void *unused, AnmVmView *)` in our tree is an
   existing fake-ABI declaration worth replacing once its 13 consumers can be

@@ -76,3 +76,11 @@ all 260 manifest-backed `build/match-linked/` contexts; the five retained
 `.analysis/d3d-*` evidence; and the shared `.analysis/factory-runtime/` state.
 No target, toolchain, Wine prefix, Ghidra project, reference tree, source,
 canonical ledger or build input was removed.
+
+2026-11-14: the `build/match-linked/Claude*` directories (`ClaudeGuiRun`,
+`ClaudeReplayInit`, `ClaudeResultOpenPause`) and `ScriptViewerAllocateVm` are
+outputs of manifest units and are rebuilt by them. Session scratch under
+`build/claude/` and `.analysis/claude/` was removed after its findings were
+recorded. `_reference/th10-decomp` now also checks out
+`matching2/msvc/{include,build_support}`, `matching2/tools` and
+`matching2/tests` (sparse checkout, about 20 MB).
