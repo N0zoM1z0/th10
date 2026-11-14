@@ -2288,12 +2288,12 @@ dispatch_difficulty_float_index_4_a:
     uVar22 = initialHost->activeContext->ReadInt(0);
     iVar26 = (int)uVar22;
     if (g_EnemyChapterState.rank >= 600) {
+      EclVmContext *const firstContext = reinterpret_cast<EclVmContext *>(owner->activeEclContext);
       iVar26 = static_cast<int>(static_cast<unsigned int>(iVar26) *
           static_cast<unsigned int>(sizeof(EnemyBulletPatternView)));
-      EnemyRuntimeView *const patternRuntime = reinterpret_cast<EnemyRuntimeView *>(
+      register EnemyRuntimeView *patternRuntime = reinterpret_cast<EnemyRuntimeView *>(
           static_cast<unsigned int>(runtimeAddress) + static_cast<unsigned int>(iVar26));
-      EclVmContext *const firstContext = reinterpret_cast<EclVmContext *>(owner->activeEclContext);
-      uVar22 = firstContext->ReadInt(9);
+            uVar22 = firstContext->ReadInt(9);
       patternRuntime->bulletPatterns[0].fields.countA = (short)uVar22;
       runtimeAddress = reinterpret_cast<int>(owner);
       uVar22 = reinterpret_cast<EclVmContext *>(reinterpret_cast<EnemyFullObjectView *>(runtimeAddress)->activeEclContext)->ReadInt(10);
@@ -2301,12 +2301,12 @@ dispatch_difficulty_float_index_4_a:
       return 0;
     }
     if (g_EnemyChapterState.rank >= 200) {
+      EclVmContext *const firstContext = reinterpret_cast<EclVmContext *>(owner->activeEclContext);
       iVar26 = static_cast<int>(static_cast<unsigned int>(iVar26) *
           static_cast<unsigned int>(sizeof(EnemyBulletPatternView)));
-      EnemyRuntimeView *const patternRuntime = reinterpret_cast<EnemyRuntimeView *>(
+      register EnemyRuntimeView *patternRuntime = reinterpret_cast<EnemyRuntimeView *>(
           static_cast<unsigned int>(runtimeAddress) + static_cast<unsigned int>(iVar26));
-      EclVmContext *const firstContext = reinterpret_cast<EclVmContext *>(owner->activeEclContext);
-      uVar22 = firstContext->ReadInt(7);
+            uVar22 = firstContext->ReadInt(7);
       patternRuntime->bulletPatterns[0].fields.countA = (short)uVar22;
       runtimeAddress = reinterpret_cast<int>(owner);
       uVar22 = reinterpret_cast<EclVmContext *>(reinterpret_cast<EnemyFullObjectView *>(runtimeAddress)->activeEclContext)->ReadInt(8);
@@ -2316,12 +2316,12 @@ dispatch_difficulty_float_index_4_a:
   }
 dispatch_rank5_minus_200:
   if (g_EnemyChapterState.rank >= -200) {
+    EclVmContext *const firstContext = reinterpret_cast<EclVmContext *>(owner->activeEclContext);
     iVar26 = static_cast<int>(static_cast<unsigned int>(iVar26) *
         static_cast<unsigned int>(sizeof(EnemyBulletPatternView)));
-    EnemyRuntimeView *const patternRuntime = reinterpret_cast<EnemyRuntimeView *>(
+    register EnemyRuntimeView *patternRuntime = reinterpret_cast<EnemyRuntimeView *>(
           static_cast<unsigned int>(runtimeAddress) + static_cast<unsigned int>(iVar26));
-    EclVmContext *const firstContext = reinterpret_cast<EclVmContext *>(owner->activeEclContext);
-    uVar22 = firstContext->ReadInt(5);
+        uVar22 = firstContext->ReadInt(5);
     patternRuntime->bulletPatterns[0].fields.countA = (short)uVar22;
     runtimeAddress = reinterpret_cast<int>(owner);
     uVar22 = reinterpret_cast<EclVmContext *>(reinterpret_cast<EnemyFullObjectView *>(runtimeAddress)->activeEclContext)->ReadInt(6);
@@ -2336,7 +2336,7 @@ dispatch_rank5_minus_200:
 
 dispatch_rank_count_low:
   {
-    EnemyRuntimeView *const patternRuntime = reinterpret_cast<EnemyRuntimeView *>(
+    register EnemyRuntimeView *patternRuntime = reinterpret_cast<EnemyRuntimeView *>(
           static_cast<unsigned int>(runtimeAddress) + static_cast<unsigned int>(iVar26));
     EclVmContext *const firstContext = reinterpret_cast<EclVmContext *>(owner->activeEclContext);
     uVar22 = firstContext->ReadInt(3);
@@ -2348,7 +2348,7 @@ dispatch_rank_count_low:
   }
 dispatch_rank_count_lowest:
   {
-    EnemyRuntimeView *const patternRuntime = reinterpret_cast<EnemyRuntimeView *>(
+    register EnemyRuntimeView *patternRuntime = reinterpret_cast<EnemyRuntimeView *>(
           static_cast<unsigned int>(runtimeAddress) + static_cast<unsigned int>(iVar26));
     EclVmContext *const firstContext = reinterpret_cast<EclVmContext *>(owner->activeEclContext);
     uVar22 = firstContext->ReadInt(1);
