@@ -302,7 +302,9 @@ int ReplayManager::Initialize(int replayMode, const char *path)
         *reinterpret_cast<int *>(g_GameScoreState.history.unknown30) = stageHeader->unknown01C;
         g_GameScoreState.rank = stageHeader->unknown020;
         *reinterpret_cast<int *>(g_GameScoreState.unknown44 + 12) = stageHeader->unknown1B4;
-        g_ReplayStageValue1B8 =
+        // Retail writes +0x5C through the score-state global itself; the
+        // separate g_ReplayStageValue1B8 symbol schedules the stage reload early.
+        reinterpret_cast<GameStartupStateView &>(g_GameScoreState).rankResetCounter =
             stageStates[g_GameScoreState.selectedStage].header->unknown1B8;
 
         th10::ChainElem *task = new th10::ChainElem;

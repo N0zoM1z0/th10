@@ -102,15 +102,18 @@ touches their dependency graph.
   `gui-message-run-candidate` (1,047/1,219 normalized instructions),
   `bullet-update-absolute-direction` (333/335), `transition-shake-linear`
   (late `fidiv`). `PollInputFrame` is 276/278 in `input-controller-buttons`.
-- **Best next lead:** `ReplayManager::Initialize @0x428F60` reaches
-  1,344/1,344 bytes and 388/389 normalized instructions in the new candidate
-  unit `replay-manager-initialize-candidate` (`ClaudeReplayInit` graph =
-  the `replay-manager-create` graph plus `FileSystem.cpp` `/GL /GS` and
-  normal `Decompress.cpp`). Without those TUs, `ReplayFile::Read` is anchored
-  and LTCG lowers `LoadReplay`'s path into ECX. The one remaining seam is an
-  early `mov eax,[global]` at `+0x3C4`. Its linkage list is still empty:
-  generate it with the triage tool below, then compare. `LoadReplay @0x42A200`
-  itself is 79/138 in that graph.
+- `ReplayManager::Initialize @0x428F60` is exact (1,344 / 74 fields) in
+  `replay-manager-initialize` (`ClaudeReplayInit` graph = the
+  `replay-manager-create` graph plus `FileSystem.cpp` `/GL /GS` and normal
+  `Decompress.cpp`). Its last seam was a global *symbol* choice: writing
+  `+0x5C` through a separate extern instead of `g_GameScoreState` moved a
+  load. Watch for the same split-global pattern elsewhere; anchored
+  addresses hide it. `LoadReplay @0x42A200` is 94/138 in that graph.
+- `scripts/diagnostics/triage/quick-relink.py UNIT --dirty src/X.cpp`
+  recompiles only the named sources and relinks (about 4 min instead of 15
+  for big graphs). It is for triage only; acceptance still needs the cold
+  replay. Never edit `config/match-units.toml` while a replay runs, because
+  each unit build re-reads the manifest.
 - Other leads: `PlayerHandleCollisionHit` (136/141 in a stale image),
   `ScriptViewerPopupOwnerView::Initialize` and its factory (LTCG receiver
   choice; see the knowledge base), `PollInputFrame` 276/278, GUI `Run`
