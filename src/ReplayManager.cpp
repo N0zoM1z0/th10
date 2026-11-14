@@ -104,7 +104,16 @@ int __stdcall ReplayAppendRecord(ReplayFrameData *frameData, unsigned short inpu
                         unsigned short auxiliaryInput, unsigned short inputFlags);
 ReplayListNode *__stdcall ReplayAllocateFrameData(ReplayManager *manager, int stage);
 void ReplayClearStageFrameData(ReplayManager *manager, int stage);
-void ReplayCutChain(ReplayChainElement *element);
+// Retail inlines each chain cut under the first chain critical section.
+static inline void ReplayCutChain(ReplayChainElement *element)
+{
+    th10::Chain *chain = th10::g_Chain;
+    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+    ++g_MainSupervisorView.criticalSectionLockCounts[0];
+    chain->UnregisterElem(reinterpret_cast<th10::ChainElem *>(element));
+    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+    --g_MainSupervisorView.criticalSectionLockCounts[0];
+}
 
 // Complete target-observed position restoration is maintained in
 // ReplayStageHelpers.cpp; original class/TU ownership remains unknown.
@@ -142,17 +151,17 @@ ReplayManager::ReplayManager()
 
 ReplayManager::~ReplayManager()
 {
-    free(fileHeader);
+    delete fileHeader;
 
     for (int stage = 0; stage < 8; stage++)
         ReplayClearStageFrameData(this, stage);
 
-    free(replayData);
+    delete replayData;
     replayData = NULL;
 
     for (int stage = 0; stage < 8; stage++)
     {
-        free(stageHeaders[stage]);
+        delete stageHeaders[stage];
         stageHeaders[stage] = NULL;
     }
 

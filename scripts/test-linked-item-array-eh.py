@@ -20,6 +20,7 @@ from linked_image import LinkedImageError, PEImage, linked_functions, map_public
 
 ROOT = Path(__file__).resolve().parents[1]
 PRODUCT = ROOT / 'build/match-linked/ItemManagerDestructor'
+REPLAY_PRODUCT = ROOT / 'build/match-linked/ClaudeReplayInitLoadScript'
 
 
 class MutableImage:
@@ -49,27 +50,27 @@ class MutableImage:
         self.write(address, struct.pack('<I', value & 0xFFFFFFFF))
 
 
-def fixture():
-    unit = copy.deepcopy(runpy.run_path(str(ROOT / 'scripts/build-match-unit.py'))['load']()['units']['item-manager-destructor-0041adf0'])
+def fixture(name='item-manager-destructor-0041adf0', product=PRODUCT):
+    unit = copy.deepcopy(runpy.run_path(str(ROOT / 'scripts/build-match-unit.py'))['load']()['units'][name])
     field = next(f for f in unit['linkages'] if f.get('item_array_eh_handler'))
-    functions = linked_functions(PRODUCT/'source.exe', PRODUCT/'source.map', PRODUCT/'source.pdb')['functions']
-    parent, = [r for r in functions if r['symbol'] == eh.PARENT]
-    statics = map_statics(PRODUCT/'source.map')
-    pdb = pdb_section_contributions(PRODUCT/'source.pdb')
-    publics = map_publics(PRODUCT/'source.map')
-    aliases = runpy.run_path(str(ROOT / 'scripts/compare-linked-function.py'))['anchor_aliases'](PRODUCT/'link-aliases.rsp')
-    handler, = [r for r in statics if r['symbol'] == eh.HANDLER]
+    functions = linked_functions(product/'source.exe', product/'source.map', product/'source.pdb')['functions']
+    parent, = [r for r in functions if r['symbol'] == unit['symbol']]
+    statics = map_statics(product/'source.map')
+    pdb = pdb_section_contributions(product/'source.pdb')
+    publics = map_publics(product/'source.map')
+    aliases = runpy.run_path(str(ROOT / 'scripts/compare-linked-function.py'))['anchor_aliases'](product/'link-aliases.rsp')
+    handler, = [r for r in statics if r['symbol'] == '__ehhandler$' + unit['symbol']]
     return dict(unit=unit, field=field, parent=parent, statics=statics,
-                pdb=pdb, publics=publics, aliases=aliases,
+                pdb=pdb, publics=publics, aliases=aliases, product=product,
                 address=handler['address'],
-                candidate=MutableImage(PEImage(PRODUCT/'source.exe')),
+                candidate=MutableImage(PEImage(product/'source.exe')),
                 target=MutableImage(PEImage(ROOT/'resources/th10.exe')))
 
 
 def bind(f):
     with patch.object(eh, 'map_statics', return_value=f['statics']), \
          patch.object(eh, 'pdb_section_contributions', return_value=f['pdb']):
-        return eh.item_array_eh_target(f['unit'], f['field'], PRODUCT,
+        return eh.item_array_eh_target(f['unit'], f['field'], f['product'],
                                        f['candidate'], f['publics'],
                                        f['aliases'], f['target'], f['parent'],
                                        f['address'])
@@ -140,7 +141,33 @@ def main():
         else:
             raise AssertionError('Item EH negative control accepted: '+label)
         checked += 1
-    print(f'item-array EH: 1 native/target positive, 1 unrelated-byte control, {checked} rejects OK')
+    replay = lambda: fixture('replay-manager-destructor', REPLAY_PRODUCT)
+    r = replay()
+    proof = bind(r)
+    assert proof['candidate']['action_bytes'] == proof['target']['action_bytes'] == 24
+    assert proof['target']['element_count'] == 8 and proof['target']['element_stride'] == 0x24
+    assert proof['target']['member_offset'] == 0xA0
+    spec = eh.PARENTS['??1ReplayManager@@QAE@XZ']
+    target_action = spec['handler'] - 24
+    replay_cases = [
+        ('replay-wrong-field-offset', lambda q: q['field'].update(offset=9)),
+        ('replay-target-element-count', lambda q: q['target'].write(target_action+6, b'\x09')),
+        ('replay-target-element-stride', lambda q: q['target'].write(target_action+8, b'\x28')),
+        ('replay-target-member-offset', lambda q: q['target'].word(target_action+14, 0xA4)),
+        ('replay-target-destructor', lambda q: q['target'].word(target_action+1, spec['target_destructor']+1)),
+        ('replay-candidate-unwind-action', lambda q: q['candidate'].word(int(bind(replay())['candidate']['unwind_map'], 16)+4, q['address']-23)),
+    ]
+    for label, mutation in replay_cases:
+        q = replay()
+        try:
+            mutation(q)
+            bind(q)
+        except (LinkedImageError, ValueError, IndexError, AssertionError) as exc:
+            assert str(exc), label
+        else:
+            raise AssertionError('Replay EH negative control accepted: '+label)
+        checked += 1
+    print(f'item-array EH: 2 native/target positives, 1 unrelated-byte control, {checked} rejects OK')
 
 
 if __name__ == '__main__':
