@@ -290,10 +290,6 @@ EnemyEclInstructionView *EnemyLookupEclSubroutine(
 void __stdcall EnemyDropItemCountsCore(
     const PlayerFloat3 *position, int *itemDropBlock);
 
-void EnemyRegisterUpdateCallbackNode(
-    EnemyCallbackNodeView *node, int priority, void *manager);
-void EnemyRegisterDrawCallbackNode(
-    EnemyCallbackNodeView *node, int priority, void *manager);
 void * __fastcall EnemyLoadAnimationResource(
     int resourceIndex, EnemyAnimationOwnerView *owner, const char *filename);
 void EnemyDestroyAnimationResource(
@@ -1118,25 +1114,6 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
 }
 
 
-static EnemyCallbackNodeView *CreateEnemyCallbackNode(EnemyChainCallback callback)
-{
-    EnemyCallbackNodeView *node = static_cast<EnemyCallbackNodeView *>(
-        ::operator new(sizeof(EnemyCallbackNodeView)));
-    if (node != NULL)
-    {
-        node->priority = 0;
-        node->flags &= ~1u;
-        node->callback = NULL;
-        node->unknown00C = NULL;
-        node->unknown010 = NULL;
-        node->self14 = node;
-        node->unknown018 = NULL;
-        node->unknown01C = NULL;
-        node->callback = callback;
-    }
-    return node;
-}
-
 static void RemoveEnemyCallbackNode(EnemyCallbackNodeView *node)
 {
     th10::Chain *chain = th10::g_Chain;
@@ -1235,6 +1212,21 @@ EnemyManagerView::EnemyManagerView()
 
 // Target 0x0040D280-0x0040D3CD carries manager in EBX and one ECL-resource
 // filename on the stack, returning with RET 4. It installs the process-owned
+static inline void ResetEnemyManagerTimer(PlayerTimerView *timer)
+{
+    if ((timer->flags & 1u) == 0)
+    {
+        timer->current = 0;
+        timer->previous = -999999;
+        timer->subframe = 0.0f;
+        timer->scale = &g_PlayerTimerScale;
+        timer->flags |= 1u;
+    }
+    timer->current = 0;
+    timer->subframe = 0.0f;
+    timer->previous = -1;
+}
+
 // ECL resource, registers update/draw callbacks, and initializes manager timer.
 int EnemyManagerView::Initialize(const char *eclResourceFilename)
 {
@@ -1246,33 +1238,27 @@ int EnemyManagerView::Initialize(const char *eclResourceFilename)
     manager->scriptDatabase = resource;
     resource->LoadFile(eclResourceFilename);
 
-    EnemyCallbackNodeView *updateNode =
-        CreateEnemyCallbackNode(EnemyManagerUpdateCallback);
-    updateNode->owner = manager;
-    updateNode->flags &= ~2u;
-    updateNode->flags |= 1u;
-    EnemyRegisterUpdateCallbackNode(updateNode, 0x12, g_EnemyCallbackManager);
-    manager->updateCallbackNode = updateNode;
+    th10::ChainElem *task = new th10::ChainElem;
+    unsigned int taskFlags = task->flags;
+    task->callback = reinterpret_cast<th10::ChainCallback>(EnemyManagerUpdateCallback);
+    task->addedCallback = NULL;
+    task->deletedCallback = NULL;
+    task->arg = manager;
+    task->flags = (taskFlags & ~2u) | 1u;
+    th10::g_Chain->AddToCalcChain(task, 0x12);
+    manager->updateCallbackNode = reinterpret_cast<EnemyCallbackNodeView *>(task);
 
-    EnemyCallbackNodeView *drawNode =
-        CreateEnemyCallbackNode(EnemyManagerDrawCallback);
-    drawNode->owner = manager;
-    drawNode->flags &= ~2u;
-    drawNode->flags |= 1u;
-    EnemyRegisterDrawCallbackNode(drawNode, 0x14, g_EnemyCallbackManager);
-    manager->drawCallbackNode = drawNode;
+    task = new th10::ChainElem;
+    taskFlags = task->flags;
+    task->callback = reinterpret_cast<th10::ChainCallback>(EnemyManagerDrawCallback);
+    task->addedCallback = NULL;
+    task->deletedCallback = NULL;
+    task->arg = manager;
+    task->flags = (taskFlags & ~2u) | 1u;
+    th10::g_Chain->AddToDrawChain(task, 0x14);
+    manager->drawCallbackNode = reinterpret_cast<EnemyCallbackNodeView *>(task);
 
-    if ((manager->timer.flags & 1u) == 0)
-    {
-        manager->timer.previous = -999999;
-        manager->timer.current = 0;
-        manager->timer.subframe = 0.0f;
-        manager->timer.scale = &g_PlayerTimerScale;
-        manager->timer.flags |= 1u;
-    }
-    manager->timer.current = 0;
-    manager->timer.subframe = 0.0f;
-    manager->timer.previous = -1;
+    ResetEnemyManagerTimer(&manager->timer);
     return 0;
 }
 

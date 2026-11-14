@@ -102,22 +102,62 @@ touches their dependency graph.
   `gui-message-run-candidate` (1,047/1,219 normalized instructions),
   `bullet-update-absolute-direction` (333/335), `transition-shake-linear`
   (late `fidiv`). `PollInputFrame` is 276/278 in `input-controller-buttons`.
-- `ReplayManager::Initialize @0x428F60` is exact (1,344 / 74 fields) in
-  `replay-manager-initialize` (`ClaudeReplayInit` graph = the
-  `replay-manager-create` graph plus `FileSystem.cpp` `/GL /GS` and normal
-  `Decompress.cpp`). Its last seam was a global *symbol* choice: writing
-  `+0x5C` through a separate extern instead of `g_GameScoreState` moved a
-  load. Watch for the same split-global pattern elsewhere; anchored
-  addresses hide it. `LoadReplay @0x42A200` is 94/138 in that graph.
+- **Second 2026-11-14 pass, new exact owners:** `ReplayManager::Initialize`
+  1,344, `PollInputFrame` 850, `StartupWorkerView::StartupThread` 299,
+  `CreateConfiguredAnmVm` 148, `PlayerTransitionToState2` 796 and
+  `EnemyManagerView::Initialize` 334 (units `replay-manager-initialize`,
+  `poll-input-frame`, `startup-thread`, `create-configured-anm-vm`,
+  `player-transition-to-state2`, `enemy-manager-initialize`).
+- **The biggest single lever was dangling declarations.** Functions
+  declared but defined nowhere are anchored in *every* graph, so all their
+  callers get a stack ABI. Fixed so far: `FrontEndPlaySound` (retail
+  inlines `QueueSoundSample(id, 0)`), `FrontEndBeginSelectionTransition`
+  (= `StageCreateTransitionEffect` with priority first),
+  `FrontEndFinalizeGameSelection` (= `GameQueueScaledSoundCommand`),
+  `FrontEndBeginGame` (= `GamePrepareDummyMusic`), `EnemyRandomView`
+  (= `RngView` on `g_RngView`), and the Enemy manager callback-node helpers
+  (= the plain `ChainElem` + `AddToCalcChain` pattern). About 50 more remain;
+  list them by checking which `/alternatename` symbols in a big graph's
+  `link-aliases.rsp` have no definition in `src/` (e.g. `GameCleanup*`
+  stand-ins for real destructors, `EnemySetScreenShake`,
+  `FrontEndReadKeyboardState` = `InputKeyboardSnapshotView::ReadKeyboardState`
+  with a dropped receiver). Map each to its retail callee address first.
+- **Graph completeness:** `build/match-linked/ClaudeReplayInitLoadScript`
+  (the ReplayInit graph plus `AnmLoadedStartScript.cpp`) is the most
+  complete current graph; clone `player-handle-collision-hit` for new
+  Player/Enemy/FrontEnd candidates. Without `AnmLoadedStartScript.cpp`,
+  `LoadScript_0043e710` is anchored and every `StartAnmLoadedScript` caller
+  is wrong. Do not use the Player graph without `Chain.cpp` for chain
+  registrations.
+- **Source-shape lessons that produced exact bytes:** read a field once into
+  a local when retail swaps commutative-operand registers (`PollInputFrame`);
+  write through the same global symbol retail uses (`g_GameScoreState+0x5C`);
+  initialize a returned id directly instead of assign-after-default
+  (`CreateConfiguredAnmVm`); re-read globals after calls when retail does;
+  use `float` locals where retail multiplies `float x float`
+  (`fld st(0); fmul [mem]`, `PlayerLoadOptionData`); and when retail keeps
+  an early store ahead of later field accesses, do those accesses through an
+  inline helper's pointer parameter, which stops LTCG sinking the store
+  (`EnemyManagerView::Initialize` timer reset).
+- **Candidates left at a register/scheduling seam** (units exist, no
+  linkages): `transition-shake-envelope` 115/118, `enemy-kill-all` 62/64
+  (scaled-timer fadd order), `player-handle-collision-hit` 138/141 (early
+  `runtimeState = 4` store sunk; try the pointer-helper lesson),
+  `player-load-option-data` 62/67 (zero CSE into EBX), `enemy-read-float-
+  operand` 137/176 (ECX tail cross-jumping), `enemy-advance-motion` 50/52.
+  `GameResetGui` is 534/543 and `GameManagerCleanup` 277/309 in the
+  LoadScript graph. `EnemyFireLaser` needs whole-program caller context: no
+  local declaration (stdcall, fastcall, member) registerizes its request.
 - `scripts/diagnostics/triage/quick-relink.py UNIT --dirty src/X.cpp`
   recompiles only the named sources and relinks (about 4 min instead of 15
   for big graphs). It is for triage only; acceptance still needs the cold
   replay. Never edit `config/match-units.toml` while a replay runs, because
   each unit build re-reads the manifest.
-- Other leads: `PlayerHandleCollisionHit` (136/141 in a stale image),
-  `ScriptViewerPopupOwnerView::Initialize` and its factory (LTCG receiver
-  choice; see the knowledge base), `PollInputFrame` 276/278, GUI `Run`
-  1,047/1,219, and the two `ResultTransitions` units that were already stale.
+- Other leads: `ScriptViewerPopupOwnerView::Initialize` and its factory
+  (LTCG receiver choice; see the knowledge base), GUI `Run` 1,047/1,219
+  (about 70 of its misses are one repeated resource-before-argument load
+  order in the portrait cases), and the two `ResultTransitions` units that
+  were already stale.
 - Triage tools (never acceptance) in `scripts/diagnostics/triage/`:
   `idiff.py` aligns a linked candidate against the target with addresses
   masked; `target-fields.py` lists a target function's DIR32/REL32 fields;
