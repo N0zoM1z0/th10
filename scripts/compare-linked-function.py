@@ -427,10 +427,6 @@ def compare_unit(name: str, *, _active_units=(), _unit_manifest=None) -> dict[st
     candidate_image = PEImage(image_path)
     candidate_address = int(str(function["address"]), 0)
     publics = map_publics(map_path)
-    field_report = linked_code_fields(
-        candidate_image, publics, candidate_address, compared_size
-    )
-    actual = list(field_report["fields"])
     expected = expected_fields(unit)
     occupied = {
         offset
@@ -438,6 +434,12 @@ def compare_unit(name: str, *, _active_units=(), _unit_manifest=None) -> dict[st
         for offset in range(int(row["offset"]), int(row["offset"]) + int(row["width"]))
     }
     data_spans = expected_data_spans(unit, compared_size, occupied)
+    # Declared trailing data is not an instruction stream; stop decoding there.
+    field_report = linked_code_fields(
+        candidate_image, publics, candidate_address, compared_size,
+        min((int(span["offset"]) for span in data_spans), default=None),
+    )
+    actual = list(field_report["fields"])
     require_decode_coverage(field_report, data_spans, compared_size)
     actual_key = sorted(
         (int(row["offset"]), str(row["type"]), int(row["width"])) for row in actual

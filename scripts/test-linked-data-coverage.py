@@ -168,5 +168,42 @@ class RunTableLayout(unittest.TestCase):
             self.spans()
 
 
+
+class _FlatImage:
+    """Minimal image stand-in: bytes at one address and no base relocations."""
+    def __init__(self, address, code):
+        self.address, self.code = address, code
+    def read_address(self, address, size):
+        start = address - self.address
+        return self.code[start:start + size]
+    def base_relocations(self):
+        return []
+
+
+class DeclaredDataStopsDecoding(unittest.TestCase):
+    # ret; then five data bytes that would decode as CALL rel32 out of extent.
+    CODE = bytes([0xC3, 0xE8, 0x00, 0x10, 0x00, 0x00])
+
+    def fields(self, limit):
+        from linked_image import linked_code_fields
+        return linked_code_fields(_FlatImage(0x401000, self.CODE), [], 0x401000,
+                                  len(self.CODE), limit)
+
+    def test_unlimited_decode_reports_a_false_call_field(self):
+        report = self.fields(None)
+        self.assertEqual(report["decoded_bytes"], 6)
+        self.assertEqual([f["type"] for f in report["fields"]], ["REL32"])
+
+    def test_declared_data_ends_the_instruction_stream(self):
+        report = self.fields(1)
+        self.assertEqual(report["decoded_bytes"], 1)
+        self.assertEqual(report["fields"], [])
+        self.assertFalse(report["normalization_complete"])
+
+    def test_limit_outside_the_extent_is_rejected(self):
+        from linked_image import LinkedImageError
+        with self.assertRaises(LinkedImageError):
+            self.fields(7)
+
 if __name__ == "__main__":
     unittest.main()

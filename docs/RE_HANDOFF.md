@@ -79,24 +79,40 @@ touches their dependency graph.
 
 - New exact owners: `CMemoryPbgFile::Seek` 107, `InvertAlpha` 157,
   `StageResetPublishedCameras` 465, `MainConfigurationDialogProc` 233,
-  `SoundPlayerView::PreloadBgm` 369 (units `memory-pbgfile-seek`,
+  `SoundPlayerView::PreloadBgm` 369, `ScriptViewerBombOwnerView::Update` 223,
+  `ResultMenuOpenPause` 382 (units `memory-pbgfile-seek`,
   `text-buffer-invert-alpha`, `stage-reset-published-cameras`,
-  `main-configuration-dialog-proc`, `sound-preload-bgm`).
-- **Stale exact claim found:** `fe52288e` replaced the `ProcessQueues`
-  duplicate-buffer guard with `SoundWordSlot` and claimed 1,452/1,452, but
-  that source fails the field check; the plain `duplicateSoundBuffers[i]`
-  guard restores exactness. Other recent "native word" commits were not
-  re-audited; a source-group replay of recently edited files (FrontEnd,
-  Player, ReplayManager, EnemyEclDispatcher, BulletManager, EclVm, ...) is
-  the way to check them when the compiler is idle.
-- New candidate units (NONEXACT, empty or partial linkages, for triage):
-  `gui-message-run-candidate` (GUI Run with GuiMessageLeaves/VmIdInterrupt;
-  1,047/1,219 normalized instructions), `bullet-update-absolute-direction`
-  (333/335), `transition-shake-linear` (late `fidiv`). See the 2026-11-14
-  knowledge-base section for levers and failed attempts.
-- Triage helper idea that worked: build the candidate graph, then align
-  normalized instructions against the target (difflib over capstone text)
-  before writing the exhaustive linkage list.
+  `main-configuration-dialog-proc`, `sound-preload-bgm`,
+  `script-viewer-bomb-update`, `result-menu-open-pause`).
+- **Stale exact claims at the session-start commit** (each reproduced from a
+  clean worktree of `d69a5efc`, then repaired):
+  `ProcessQueues` (`fe52288e` guard), `AllocateVm` (graph missing
+  `AnmVmInitialize.cpp` after the 11-09 split), and `ResultMenuResume`
+  (bisected to `3e9fca28`'s `ResultMenuVmIdStorage`). **Open risk:** other
+  accepted units may be stale in the same ways (file splits leaving callees
+  anchored, storage-type wrappers changing argument materialization). A
+  grouped broad replay is the way to find them; replays stop at the first
+  failure, so run one invocation per output directory.
+- Comparator change: `linked_code_fields(..., code_limit)` stops instruction
+  decoding at the unit's declared trailing data. Without it, decoding jump
+  tables as instructions made `enemy-spawn` depend on its link address. Its
+  span now declares the whole 53-byte selector table. Covered by
+  `scripts/test-linked-data-coverage.py`.
+- New candidate units (NONEXACT, partial linkages, for triage):
+  `gui-message-run-candidate` (1,047/1,219 normalized instructions),
+  `bullet-update-absolute-direction` (333/335), `transition-shake-linear`
+  (late `fidiv`). `PollInputFrame` is 276/278 in `input-controller-buttons`.
+- Next leads: `ReplayManager::Initialize` (386/389 in a stale image; retail
+  pushes the `LoadReplay` path on the stack, ours appears register-lowered),
+  `PlayerHandleCollisionHit` (136/141), `ResultMenuPrepareScore` (99/106),
+  `ScriptViewerPopupOwnerView::Initialize` and its 71-byte factory (`delete`
+  plus a field re-read; patch idea in the knowledge base). Survey near misses
+  cheaply by diffing backlog functions inside existing `build/match-linked`
+  images before compiling anything.
+- Do not import the reference's synthetic contexts or `volatile`/fake-ABI
+  spellings; `AnmVmInitialize(void *unused, AnmVmView *)` in our tree is an
+  existing fake-ABI declaration worth replacing once its 13 consumers can be
+  replayed.
 
 ## Open functions — choose a concrete hypothesis before compiling
 
@@ -119,11 +135,11 @@ its 202-byte reference source still uses `__declspec(naked)`/hand assembly.
 A 194/194 comparable-COFF match is insufficient under the natural-source
 rule. Recover the private ABI with ordinary C/C++ before considering credit.
 
-**Comparison caveat:** The legacy `result-menu-update` unit's one-byte
-`data_spans` conflicts with its current decoder contract; do not silently
-relax the physical-owner check. A separate 15-input
-`result-menu-open-game-over` field drift predated the later FrontEnd DWORD
-changes and does not invalidate the stricter canonical graph.
+**Comparison caveat:** `result-menu-update` and `enemy-spawn` now declare
+their complete trailing selector tables as data spans (see the comparator
+`code_limit` note above). `result-menu-open-game-over` and
+`game-complete-stage-transition` (`ResultTransitions` graph) already failed
+their field checks at `d69a5efc`; they still need repair.
 
 ## Efficient continuation and private inputs
 

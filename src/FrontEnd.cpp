@@ -4734,27 +4734,30 @@ void __stdcall ResultMenuOpenPause(ResultMenuView *menu)
     AnmRenderManagerView *manager = g_AnmRenderManagerView;
     AnmLoadedView *resource = g_AsciiManagerView->captureAnm;
     AnmVmView *vm = manager->AllocateVm();
+    unsigned int vmFlags = vm->flags35C;
     vm->renderLayer = 15;
-    vm->flags35C |= 0x40000000;
+    vm->flags35C = vmFlags | 0x40000000;
     resource->InitializeVm(vm, 0);
     manager = g_AnmRenderManagerView;
-    menu->secondaryVm = manager->AddVmVariant1(vm);
-    manager->RequestCaptureRectangle(menu->secondaryVm.value, 32, 16, 384, 448);
+    AnmVmIdView id = manager->AddVmVariant1(vm);
+    menu->secondaryVm = id;
+    manager->RequestCaptureRectangle(id, 32, 16, 384, 448);
     resource = g_GuiView->frontAnm;
     menu->frontAnm = resource;
     vm = manager->AllocateVm();
+    vmFlags = vm->flags35C;
     vm->renderLayer = 15;
-    vm->flags35C |= 0x40000000;
+    vm->flags35C = vmFlags | 0x40000000;
     resource->InitializeVm(vm, 121);
-    menu->mainVm = g_AnmRenderManagerView->AddVmVariant1(vm);
+    AnmVmIdView mainId = g_AnmRenderManagerView->AddVmVariant1(vm);
+    menu->mainVm = mainId;
     ResultMenuPendingThree(&menu->mainVm);
     ResultMenuSound(32);
     FrontEndQueueSoundCommand("Pause", 6, 0);
     if (g_ResultGameManager->initializationMode != 0)
     {
-        AnmVmIdView id = ResultMenuFindScript(&menu->mainVm, 117);
-        g_AnmRenderManagerView->MarkVmForDeletion(id);
-        id.value = 0;
+        ResultMenuFindScript(reinterpret_cast<AnmVmIdView *>(&menu->mainVm), 117)
+            .MarkForDeletionAndClear();
     }
     menu->savedSpeed = g_AnmGameSpeed;
     g_AnmGameSpeed = 1.0f;
@@ -4827,7 +4830,7 @@ void ResultMenuResume(ResultMenuView *menu)
 {
     g_ResultGameManager->flags58 &= ~0x10;
     FrontEndQueueSoundCommand("UnPause", 7, 0);
-    g_AnmRenderManagerView->MarkVmForDeletion(menu->auxiliaryVm);
+    g_AnmRenderManagerView->MarkVmForDeletion(*reinterpret_cast<AnmVmIdView *>(&menu->auxiliaryVm));
     menu->auxiliaryVm.value = 0;
     _ReadWriteBarrier();
     g_AnmGameSpeed = menu->savedSpeed;

@@ -701,8 +701,15 @@ def linked_code_fields(
     publics: list[dict[str, object]],
     address: int,
     size: int,
+    code_limit: int | None = None,
 ) -> dict[str, object]:
-    """Enumerate link-resolved fields in one complete linked code extent."""
+    """Enumerate link-resolved fields in one complete linked code extent.
+
+    ``code_limit`` ends the instruction stream at a declared trailing data
+    extent. Those bytes are compared raw by the caller; decoding them as
+    instructions would make the result depend on the absolute addresses in
+    preceding jump tables.
+    """
     try:
         from capstone import CS_ARCH_X86, CS_GRP_CALL, CS_GRP_JUMP, CS_MODE_32, Cs
         from capstone.x86_const import X86_OP_IMM
@@ -740,7 +747,10 @@ def linked_code_fields(
     decoder = Cs(CS_ARCH_X86, CS_MODE_32)
     decoder.detail = True
     decoded = 0
-    for instruction in decoder.disasm(code, address):
+    limit = size if code_limit is None else code_limit
+    if not 0 <= limit <= size:
+        raise LinkedImageError("linked code limit leaves the function extent")
+    for instruction in decoder.disasm(code[:limit], address):
         if instruction.address != address + decoded:
             break
         decoded += instruction.size

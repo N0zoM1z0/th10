@@ -43,58 +43,68 @@ extern int g_GameStatisticsIndex0;
 typedef char ScriptViewerBombVmScaleYAt40[
     (offsetof(AnmVmView, scaleY) == 0x40) ? 1 : -1];
 
-// Target 0x405750: stateful per-frame Bomb owner update. The input is the
-// 0x48-byte controller, whose active VM belongs to the ANM render manager.
-int ScriptViewerBombOwnerView::Update()
+// A missing VM clears its id through the pointer. That store may alias the
+// owner's mode, which orders the target's two zero stores.
+static inline AnmVmView *ScriptViewerBombFindVmOrClear(
+    AnmRenderManagerView *manager, AnmVmIdView *id)
 {
-    int currentMode = mode28;
-    if (currentMode == 0)
-        return 1;
-    // Native i386 DEC wraps the mode word before the zero test, including
-    // INT_MIN; publish it without signed C++ overflow or pointer aliasing.
-    const unsigned int nextModeBits =
-        static_cast<unsigned int>(currentMode) - 1u;
-    memcpy(&currentMode, &nextModeBits, sizeof currentMode);
-    if (currentMode == 0)
+    AnmVmView *vm = manager->FindVm(*id);
+    if (vm == NULL)
+        id->value = 0;
+    return vm;
+}
+
+// Mode 1 follows its VM and drifts upwards; every active mode ticks the timer.
+// A missing VM returns into Update's shared `return 1`.
+static __forceinline void ScriptViewerBombStep(ScriptViewerBombOwnerView *bomb)
+{
+    switch (bomb->mode28)
     {
-        int vmId = static_cast<int>(*reinterpret_cast<volatile unsigned int *>(&vmId2C));
-        AnmRenderManagerView *manager = g_AnmRenderManagerView;
-        AnmVmView *vm = manager->FindVm(AnmVmIdView(vmId));
+    case 1:
+    {
+        AnmVmView *vm = ScriptViewerBombFindVmOrClear(
+            g_AnmRenderManagerView, reinterpret_cast<AnmVmIdView *>(&bomb->vmId2C));
         if (vm == NULL)
         {
-            *reinterpret_cast<volatile unsigned int *>(&vmId2C) = 0;
-            *reinterpret_cast<volatile int *>(&mode28) = 0;
-            return 1;
+            bomb->mode28 = 0;
+            return;
         }
         EnemyGameStateView *state = g_EnemyGameState;
         if ((state->flags378C & 1u) != 0 &&
             ((state->spellId >= 93 && state->spellId <= 96) ||
              state->spellId == 109))
-            position30.y -= 0.5f;
+            bomb->position30.y -= 0.5f;
         else if (g_GameStatisticsIndex0 == 0)
-            position30.y -= 1.0f;
+            bomb->position30.y -= 1.0f;
         else
-            position30.y -= 1.3f;
-
-        const unsigned int nextVmId = *reinterpret_cast<volatile unsigned int *>(&vmId2C);
-        AnmFloat3View screenPosition;
-        screenPosition.x = position30.x + 224.0f;
-        screenPosition.y = position30.y + 16.0f;
-        screenPosition.z = position30.z;
-        manager->SetVmPosition(AnmVmIdView(static_cast<int>(nextVmId)),
-            &screenPosition);
-        // VM +0x40 is scaleY: retain its exact IEEE-754 word rather than
-        // converting the floating-point value to an integer.
-        memcpy(&unknown03C, &vm->scaleY, sizeof(unknown03C));
-        EmitAuxiliary();
+            bomb->position30.y -= 1.3f;
+        AnmFloat3View screenPosition(bomb->position30.x + 224.0f,
+            bomb->position30.y + 16.0f, bomb->position30.z);
+        g_AnmRenderManagerView->SetVmPosition(
+            *reinterpret_cast<AnmVmIdView *>(&bomb->vmId2C), &screenPosition);
+        bomb->collisionRadius = vm->scaleY;
+        bomb->EmitAuxiliary();
+        break;
     }
+    default:
+        break;
+    }
+    // The target calls the shared timer Tick here rather than expanding it.
 #if defined(_MSC_VER)
 #pragma inline_depth(0)
 #endif
-    timer.Tick();
+    bomb->timer.Tick();
 #if defined(_MSC_VER)
 #pragma inline_depth(16)
 #endif
+}
+
+// Target 0x405750: stateful per-frame Bomb owner update. The input is the
+// 0x48-byte controller, whose active VM belongs to the ANM render manager.
+int ScriptViewerBombOwnerView::Update()
+{
+    if (mode28 != 0)
+        ScriptViewerBombStep(this);
     return 1;
 }
 

@@ -34,9 +34,11 @@ struct ScriptViewerBombOwnerView
     unsigned int unknown010;
     AnmVmTimerView timer;
     int mode28;
+    // VM id word. The constructor clears it only through its memset, so the
+    // slot avoids AnmVmIdView's default constructor; uses read it as an id.
     unsigned int vmId2C;
     AnmFloat3View position30;
-    int unknown03C;
+    float collisionRadius;
     unsigned char opaque040[8];
     ScriptViewerBombOwnerView();
     __declspec(noinline) int RegisterTasks();

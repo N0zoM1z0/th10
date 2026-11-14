@@ -22,16 +22,16 @@ int ScriptViewerBombOwnerView::EmitAuxiliary()
         *reinterpret_cast<volatile const int *>(&state->spellId) == 109)
         reinterpret_cast<EnemyCancelManagerView *>(g_ScriptViewerBullets)->
             CancelBulletPattern(reinterpret_cast<const PlayerFloat3 *>(&position30),
-                *reinterpret_cast<const float *>(&unknown03C), (~spellFlags) & 1u, 0);
+                collisionRadius, (~spellFlags) & 1u, 0);
     else
         reinterpret_cast<EnemyCancelManagerView *>(g_ScriptViewerBullets)->
             CancelBulletPattern(reinterpret_cast<const PlayerFloat3 *>(&position30),
-                *reinterpret_cast<const float *>(&unknown03C), (~spellFlags) & 1u, 1);
+                collisionRadius, (~spellFlags) & 1u, 1);
 
     const unsigned int laserMode = (~g_EnemyGameState->flags378C) & 1u;
     reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyLaserManager)->
         ApplyPatternCancel(
             reinterpret_cast<const PlayerFloat3 *>(&position30),
-            *reinterpret_cast<const float *>(&unknown03C), laserMode);
+            collisionRadius, laserMode);
     return 0;
 }

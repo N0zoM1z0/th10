@@ -42,6 +42,65 @@ Parked after bounded trials:
   `PollInputFrame` should probably return its merged `unsigned short` (the
   target keeps it in AX through the epilogue); untested.
 
+Stale exact claims found at the session-start commit `d69a5efc` (all
+reproduced from a clean worktree of that commit):
+
+- `ProcessQueues` (fixed in `bf3ecb83`): `fe52288e`'s `SoundWordSlot` guard.
+- `AnmRenderManagerView::AllocateVm @0x449950` (`script-viewer-anm-allocate-vm`):
+  `AnmVmInitialize` moved into the new `src/AnmVmInitialize.cpp` on 11-09,
+  but this graph never got the TU. The callee became an anchored external
+  fastcall and the caller gained two `xor ecx,ecx` (161 -> 165 bytes). Fix:
+  a dedicated output directory with the TU added, and linkage rows that name
+  `?AnmVmInitialize@@YIXPAXPAUAnmVmView@@@Z` (target `0x401DE0`) instead of
+  the inline `AnmVmView::Initialize` wrapper. Other graphs that predate a file
+  split may have the same silent anchoring.
+- `ResultMenuResume @0x422C30` (`result-menu-resume`): bisected to `3e9fca28`,
+  which retyped the menu VM slots as `ResultMenuVmIdStorage` with a by-value
+  `operator AnmVmIdView()`. Passing the slot then builds a fresh id instead of
+  copying it, which moves the final `savedSpeed` copy from ECX to EAX
+  (73 vs 74 bytes). Passing `*reinterpret_cast<AnmVmIdView *>(&slot)`
+  restores 74/74. The storage type is the deeper problem: its wrapper
+  overloads also absorb `ResultMenuFindScript` inline (see OpenPause below).
+
+More exact owners from natural shapes (2026-11-14, later the same day):
+
+- `ScriptViewerBombOwnerView::Update @0x405750` **223/223**, 12 fields
+  (`script-viewer-bomb-update`, bomb update-callback graph). It uses the
+  reference's shape: an inline find-or-clear helper that clears the id
+  through its pointer, and an inline `void` step that returns into the shared
+  `return 1`, with `#pragma inline_depth(0)` kept only around the out-of-line
+  `Tick`. Two representation fixes were decisive. The `+0x2C` id must reach
+  `SetVmPosition` as a *copy* of the id object, not a freshly constructed
+  `AnmVmIdView(int)` (EDX instead of EAX). Typing the slot as `AnmVmIdView`
+  does that, but its default constructor adds a 7-byte zero store to the
+  owner constructor before its `memset` (0x5C vs 0x55), so the slot stays an
+  `unsigned int` read through `*reinterpret_cast<AnmVmIdView *>`. And `+0x3C`
+  is the `float` collision radius (no int-bits copy).
+- `ResultMenuOpenPause @0x422AB0` **382/382**, 25 fields
+  (`result-menu-open-pause`: Ending graph plus `AnmVmInitialize.cpp`, entry
+  `ResultMenuUpdate`). Call the real `ResultMenuFindScript(AnmVmIdView *)`.
+  The storage-type overload wrapper made LTCG inline the 70-byte body; moving
+  the definition to `AnmManager.cpp` (its address range says it belongs
+  there) did not stop that. Mark and clear through the returned temporary
+  with an inline `AnmVmIdView::MarkForDeletionAndClear()`. Receive each
+  `AddVmVariant1` result into a *fresh* local: assigning into an existing
+  local adds a hidden-return temporary and a stack slot, while retail reuses
+  the parameter slot. Reading the VM flags before the render-layer store is
+  codegen-neutral but matches retail order.
+
+Untested popup lead: retail `GameCreateOwner42B660 @0x42B660` is exactly
+`new` (null-checked constructor call), `Initialize`, then on failure an inline
+null-checked destructor call plus `operator delete`. That is what `delete owner;`
+emits for a non-virtual destructor, so the hand-written `initializedOwner`
+copy and null test should go. The reference's `Initialize @0x42B4D0` also
+re-reads the resource field after both task registrations instead of reusing
+the early local.
+
+Reproduce a historical state without touching the working tree:
+`git worktree add --detach build/claude/wt <commit>`, symlink `.tools` and
+`resources/th10.exe` into it, then run `build-match-unit.py` and
+`compare-linked-function.py` inside it; `git bisect run` works there.
+
 Input polling (`input-controller-buttons` graph, entry `PollInputFrame`):
 `MergeJoystickInput @0x44A190` receives the button mask in ECX through LTCG
 lowering of its *first* parameter, with the binding index and a zero pad index
