@@ -32,6 +32,15 @@ struct FrontEndCursorView
     {
         return FrontEndCursorSetCurrent(value, this);
     }
+    // Selects an entry, keeping it below a non-zero count. Unlike SetCurrent
+    // there is no lower clamp; the score-entry setup inlines this form.
+    void Select(int value)
+    {
+        if (count != 0)
+            current = value >= count ? count - 1 : value;
+        else
+            current = value;
+    }
 
     void DisableEntry(int value)
     {

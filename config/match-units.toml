@@ -32067,3 +32067,37 @@ linkages = [
   { offset = 0x163, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
   { offset = 0x172, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
 ]
+
+[units.result-menu-prepare-score]
+artifact_kind = "linked-pe"
+source = "src/FrontEnd.cpp"
+support_sources = ["src/VmIdInterrupt.cpp"]
+output_dir = "build/match-linked/ResultMenuClose"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ResultMenuUpdateResult@@YGXPAUResultMenuView@@@Z"
+functions = ["ResultMenuPrepareScore"]
+symbol = "?ResultMenuPrepareScore@@YGXPAUResultMenuView@@@Z"
+target_address = 0x00423570
+size = 377
+linkages = [
+  { offset = 0x01, type = "DIR32", symbol = "?g_FrontEndSelectedStage@@3HA", target = 0x00474C7C },
+  { offset = 0x26, type = "DIR32", symbol = "?g_FrontEndScoreFormatTable@@3PAXA", target = 0x00477848 },
+  { offset = 0x2A, type = "DIR32", symbol = "?g_FrontEndScoreEntryFormatTable@@3PAEA", target = 0x00474908 },
+  { offset = 0x2F, type = "DIR32", symbol = "?g_FrontEndSelectedStage@@3HA", target = 0x00474C7C },
+  { offset = 0x34, type = "DIR32", symbol = "?g_FrontEndSelectedStageMirror@@3HA", target = 0x00474C80 },
+  { offset = 0x39, type = "DIR32", symbol = "?g_ReplayCharacter@@3HA", target = 0x00474C68 },
+  { offset = 0x3F, type = "DIR32", symbol = "?g_ReplayShotType@@3HA", target = 0x00474C6C },
+  { offset = 0x49, type = "DIR32", symbol = "?g_FrontEndProfileData@@3PAEA", target = 0x0047783C },
+  { offset = 0x58, type = "REL32", symbol = "?FrontEndInsertScore@?A0xa289783d@@YAHPAUFrontEndScoreTableView@1@@Z", target = 0x00421FA0 },
+  { offset = 0x5E, type = "DIR32", symbol = "?g_FrontEndSelectedStage@@3HA", target = 0x00474C7C },
+  { offset = 0x70, type = "DIR32", symbol = "?g_FrontEndScoreFormatTable@@3PAXA", target = 0x00477848 },
+  { offset = 0x74, type = "DIR32", symbol = "?g_FrontEndDefaultScoreFormatTable@@3PAEA", target = 0x004748D8 },
+  { offset = 0x7A, type = "DIR32", symbol = "?g_FrontEndSelectedStage@@3HA", target = 0x00474C7C },
+  { offset = 0x80, type = "DIR32", symbol = "?g_FrontEndSelectedStageMirror@@3HA", target = 0x00474C80 },
+  { offset = 0xD2, type = "DIR32", symbol = "?g_FrontEndScoreEntryAlphabet@@3PBDB", target = 0x004746D8 },
+  { offset = 0xF1, type = "DIR32", symbol = "?g_FrontEndProfileData@@3PAEA", target = 0x0047783C },
+  { offset = 0x11B, type = "DIR32", symbol = "??_C@_08GGFKNFHG@?5?5?5?5?5?5?5?5?$AA@", target = 0x0046E354 },
+  { offset = 0x139, type = "REL32", symbol = "?Move@FrontEndCursorView@@QAEHH@Z", target = 0x0044BEA0 },
+]

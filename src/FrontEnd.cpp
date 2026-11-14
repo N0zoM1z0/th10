@@ -4052,11 +4052,8 @@ void __stdcall ResultMenuPrepareScore(ResultMenuView *menu)
         g_FrontEndSelectedStage = 8;
         g_FrontEndSelectedStageMirror = 8;
     }
-    // The rank table selector is a retail low-DWORD character/shot word;
-    // keep modulo-32-bit indexing for malformed replay metadata.
-    int row = FrontEndInsertScore(GetFrontEndScoreTable(static_cast<int>(
-        static_cast<unsigned int>(g_ReplayCharacter) * 3u +
-        static_cast<unsigned int>(g_ReplayShotType))));
+    int row = FrontEndInsertScore(GetFrontEndScoreTable(
+        g_ReplayShotType + g_ReplayCharacter * 3));
     if (g_FrontEndSelectedStage == 7 && menu->completed != 0)
     {
         g_FrontEndScoreFormatTable = g_FrontEndDefaultScoreFormatTable;
@@ -4068,20 +4065,20 @@ void __stdcall ResultMenuPrepareScore(ResultMenuView *menu)
     {
         menu->cursor.count = 25;
         menu->cursor.wraps = 1;
-        menu->cursor.SetCurrent(row);
-        menu->keyboard.SetCurrent(0);
+        menu->cursor.Select(row);
+        menu->keyboard.Select(0);
         menu->keyboard.count = strlen(g_FrontEndScoreEntryAlphabet);
         menu->keyboard.wraps = 1;
         strcpy(menu->name, reinterpret_cast<char *>(g_FrontEndProfileData + 0x1d878));
         menu->nameIndex = 0;
         if (strcmp(menu->name, "        ") != 0)
             menu->keyboard.Move(-1);
-        int length = 8;
-        do
+        int length;
+        for (length = 8; length > 0; --length)
         {
-            if (menu->name[length - 1] != ' ') break;
-            --length;
-        } while (length > 0);
+            if (menu->name[length - 1] != ' ')
+                break;
+        }
         menu->nameIndex = length;
         menu->scoreUnavailable = 0;
     }

@@ -88,13 +88,30 @@ More exact owners from natural shapes (2026-11-14, later the same day):
   the parameter slot. Reading the VM flags before the render-layer store is
   codegen-neutral but matches retail order.
 
+`ResultMenuPrepareScore @0x423570` **377/377**, 18 fields
+(`result-menu-prepare-score`, ResultMenuClose graph). The old 31-byte seam
+around `+0xA4..+0xC5` was not a register problem. Both cursors are set with
+an inline *unclamped* select: `current = value >= count ? count - 1 : value`
+for a non-zero count, with no lower clamp. Retail inlines it with one merged
+store (`lea eax,[ecx-1]`). The standalone `FrontEndCursorSetCurrent
+@0x40AD20` has a lower clamp and per-path stores; its `memcpy` spelling of
+`count - 1` is load-bearing there (a plain subtraction gives 32 instead of
+33 bytes, a single-store body 28), so leave it alone. The table index is
+`shot + character * 3` and the trailing-space scan a plain `for` loop.
+
 Untested popup lead: retail `GameCreateOwner42B660 @0x42B660` is exactly
 `new` (null-checked constructor call), `Initialize`, then on failure an inline
 null-checked destructor call plus `operator delete`. That is what `delete owner;`
 emits for a non-virtual destructor, so the hand-written `initializedOwner`
 copy and null test should go. The reference's `Initialize @0x42B4D0` also
 re-reads the resource field after both task registrations instead of reusing
-the early local.
+the early local. Tried: with both changes and `AnmVmInitialize.cpp` added
+to the graph (which removes a dummy `xor ecx,ecx`), the factory is 67/71
+bytes (18/30 instructions) and `Initialize` 141/145 (34/45). The remaining
+seam is LTCG's receiver choice. Retail keeps the new object in ESI (the
+constructor's EAX return), saves EBX only around the constructor call and
+passes `Initialize` its receiver in EAX. We keep the object in EBX and pass
+EBX.
 
 Reproduce a historical state without touching the working tree:
 `git worktree add --detach build/claude/wt <commit>`, symlink `.tools` and
