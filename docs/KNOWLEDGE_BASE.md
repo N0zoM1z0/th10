@@ -13709,3 +13709,18 @@ shape-improving source checkpoint, not an exactness result: the dispatcher
 remains NONEXACT, no canonical replay receipt was submitted or accepted, and
 no full cold replay was run. The selected 11-source graph was linked only to
 measure the affected dispatcher and its LTCG context.
+
+A subsequent selected 11-support-TU refinement keeps the same per-operand
+`activeContext` reload but retains the runtime-relative `EnemyRuntimeView *`
+for the pattern cursor instead of materializing an `EnemyBulletPatternView *`
+through the offset helper. The resulting dispatcher contribution is **14,432
+bytes** (16 bytes over retail), with the code/table boundary at `+0x35D0`
+versus retail `+0x35C0`; the opcode map remains identical. Rank-3 Count remains
+9/9 instructions and 45/45 bytes (1.00000 shape). Rank-5 Count is 122
+instructions / 429 bytes versus 118 / 420 (0.65000 shape); Rank-5 low tail
+`0x1AB` remains 0.83761. The other measured handlers remain 0x1A6 0.76190,
+0x1A7 0.85294 and 0x1A8 0.89109. This supersedes the preceding 14,480-byte /
+0.65823-shape candidate as the current source checkpoint because the whole
+Dispatcher extent and code/table boundary are materially closer, while keeping
+the Rank-3 shape exact. The dispatcher remains NONEXACT; these are selected
+linked-graph diagnostics only, with no canonical replay or Oracle acceptance.
