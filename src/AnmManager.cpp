@@ -4193,24 +4193,15 @@ fail:
 
 static void RemoveAnmChainElement(AnmChainElementView *element)
 {
-    if (element == NULL)
-        return;
-    EnterCriticalSection(g_AnmChainCriticalSection);
-    ++g_AnmChainMutationDepth;
-    AnmRemoveChainElement(element, g_AnmChainView);
-    LeaveCriticalSection(g_AnmChainCriticalSection);
-    --g_AnmChainMutationDepth;
-}
-
-static void ReleaseAnmResourceSlot(unsigned int offset)
-{
-    void **slot = reinterpret_cast<void **>(
-        static_cast<unsigned char *>(g_AnmFileSystemView) + offset);
-    if (*slot == NULL)
-        return;
-    AnmReleaseResource(*slot);
-    free(*slot);
-    *slot = NULL;
+    th10::Chain *chain = th10::g_Chain;
+    if (element != NULL)
+    {
+        EnterCriticalSection(g_AnmChainCriticalSection);
+        ++g_AnmChainMutationDepth;
+        chain->UnregisterElem(reinterpret_cast<th10::ChainElem *>(element));
+        LeaveCriticalSection(g_AnmChainCriticalSection);
+        --g_AnmChainMutationDepth;
+    }
 }
 
 AsciiManagerView::~AsciiManagerView()
@@ -4222,9 +4213,9 @@ AsciiManagerView::~AsciiManagerView()
     RemoveAnmChainElement(
         static_cast<AnmChainElementView *>(drawChainElement));
 
-    ReleaseAnmResourceSlot(0x3ad074);
-    ReleaseAnmResourceSlot(0x3ad06c);
-    ReleaseAnmResourceSlot(0x3ad078);
+    g_AnmRenderManagerView->ReleaseAnm(2);
+    g_AnmRenderManagerView->ReleaseAnm(0);
+    g_AnmRenderManagerView->ReleaseAnm(3);
     g_AsciiManagerView = NULL;
 }
 
