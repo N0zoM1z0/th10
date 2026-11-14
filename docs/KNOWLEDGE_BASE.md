@@ -13688,3 +13688,24 @@ operations: retail stores `+0x3790` before loading the `-3` mask and clearing
 `+0x378C`, while the candidate schedules the mask and AND first. The callback
 remains NONEXACT; no canonical replay receipt or original production TU proof
 is claimed. Only the affected 17-source Enemy graph was linked.
+
+## 2026-11-14 Enemy ECL Rank-5 per-operand context reload refinement
+
+A second selected 11-support-TU VC7.1 `/GL` link tests the rank-5 count path
+without caching `EclVmHost::activeContext` across argument reads. Each count
+read now reacquires `owner->activeContext`, while the 0x210-byte pattern
+cursor remains a single unsigned 32-bit index-plus-runtime address word and
+field writes continue through the typed pattern view. This preserves the
+Rank-3 Count handler at 9/9 instructions and 45/45 bytes (1.00000 normalized
+shape) while improving Rank-5 Count from 0.60909 to **0.65823**: 119 candidate
+instructions / 438 bytes versus 118 / 420 in retail. Rank-5 low-tail selector
+`0x1AB` improves from 0.78632 to **0.83761** (58 / 204 versus 59 / 206).
+Other measured selectors remain `0x1A6` 0.76190, `0x1A7` 0.85294 and `0x1A8`
+0.89109. The opcode map remains byte-identical across all 181 slots.
+
+The new linked dispatcher contribution is **14,480 bytes** against retail's
+14,416; its main code/table boundary is `+0x3600` versus `+0x35C0`. This is a
+shape-improving source checkpoint, not an exactness result: the dispatcher
+remains NONEXACT, no canonical replay receipt was submitted or accepted, and
+no full cold replay was run. The selected 11-source graph was linked only to
+measure the affected dispatcher and its LTCG context.
