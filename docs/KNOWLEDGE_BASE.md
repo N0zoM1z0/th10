@@ -279,6 +279,13 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   owner into ECX, context into EDX, forms `LEA ESI,[EAX+EBX]`, and branches;
   the candidate hoists owner/context and uses an ADD plus a separate cursor
   move. The second read and lower branch are still nonexact.
+  [2026-11-15] For opcode 0x1AB, a volatile view of the full Enemy owner for
+  operand zero forces the retail `MOV EDX,[EDX+4]; PUSH 0; CALL` reload
+  and immediate ESI save. The selected 12-TU `/GS` diagnostic rises from
+  1,541/11,568 to 1,545/11,568 comparable bytes (1,852 raw bytes).
+  Remaining operands 1-4 still have delayed register saves and different
+  stack homes; the graph remains diagnostic-only (206 unresolved, 55
+  unowned code contributions), not an exact owner replay.
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: 9,962/9,964, 350
   fields. Only opcode 91 differs: target `MOV EDX,[EBP+20h]; PUSH EDX` at
   +0x113/+0x115, ours ECX. Over 40 lifetime, aggregate, volatile and barrier
