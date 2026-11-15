@@ -271,6 +271,14 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   the `rank < -200` paths retain cursor and operand scheduling differences.
   This anchored probe still has 206 unresolved symbols and 55 unowned code
   contributions, so it is diagnostic only, not exactness evidence.
+  [2026-11-15] Sharing `firstHost`, `firstContext` and one runtime-base pattern
+  cursor across the `rank >= -600` split is the best measured low-band source
+  shape so far: 1,541 comparable bytes / 1,849 raw bytes match in the 12-TU
+  `/GS` diagnostic. Duplicating both branch setups falls to 1,019 / 1,264.
+  Remaining low-band schedule differs: retail compares rank first, then loads
+  owner into ECX, context into EDX, forms `LEA ESI,[EAX+EBX]`, and branches;
+  the candidate hoists owner/context and uses an ADD plus a separate cursor
+  move. The second read and lower branch are still nonexact.
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: 9,962/9,964, 350
   fields. Only opcode 91 differs: target `MOV EDX,[EBP+20h]; PUSH EDX` at
   +0x113/+0x115, ours ECX. Over 40 lifetime, aggregate, volatile and barrier
