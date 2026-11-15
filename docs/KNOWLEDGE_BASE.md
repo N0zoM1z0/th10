@@ -291,21 +291,19 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   +0x113/+0x115, ours ECX. Over 40 lifetime, aggregate, volatile and barrier
   forms failed; other opcode spellings move bytes elsewhere. A five-input graph
   reproduction of the 9,962 state also failed in the last session. [2026-11-14]
-- **EclVmContext::Run @0x44E1A0 (7,020)**: root at the real caller
+- **EclVmContext::Run @0x44E1A0 (7,020)**: rooted at the real caller
   `EclVmHost::Run`; the typed-Pop baseline is 6,241/6,264 comparable bytes
   with the exact 7,020-byte extent. Moving `floatResult` and `logicalResult`
   from switch-wide locals into their opcode scopes makes `POINT_ANGLE`'s x87
   sequence exact: the third operand spills to `[esp+0x14]`, then reloads there
   before `FPATAN`, matching retail. The combined scope change scores
-  6,236/6,264; it moves the remaining Return-pop SIB mismatch to +0x97 while
-  eliminating the prior +0xAF/+0x1FB pair. Moving only `floatResult` local
-  also fixes `POINT_ANGLE`, but leaves the +0xAF/+0x1FB pair (6,232/6,264).
-  `LENGTH_SQUARED` still evaluates x-square before y-square. A sequenced
-  `result = y*y; result += x*x` form gets the x87 multiply order right but
-  emits `FADD` plus an extra `FSTP ST(0)` and drops the parent to 5,755/6,264.
-  Direct `data + stackTop` addressing in Pop restores the old SIB pair rather
-  than fixing both sites. Remaining: +0x97, `LENGTH_SQUARED` x87 order, and
-  comparison-arm spills. [2026-11-15]
+  6,236/6,264 and moves the remaining Return-pop SIB mismatch to +0x97 while
+  eliminating the prior +0xAF/+0x1FB pair. Making the second `LENGTH_SQUARED`
+  operand volatile and writing `x*x + y*y` now exactly matches the retail
+  `ReadFloat(1) -> [esp+0x18]`, `ReadFloat(2) -> [esp+0x14]`,
+  `ResolveFloat(0)`, then `FMUL [esp+0x14]`, `FMUL [esp+0x18]`, `FADDP`
+  sequence. The parent rises to 6,238/6,264. Remaining: the first Return-pop
+  SIB byte at +0x97 and comparison-arm spills. [2026-11-15]
 - **EclVmStackView::Pop @0x450610 (122)**: both the typed
   `typeAddress->type` access and `stackData[stackTop]` produce an exact
   122/122-byte linked contribution with the real `Run` entry and preserve the

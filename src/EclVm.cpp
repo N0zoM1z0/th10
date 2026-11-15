@@ -1340,10 +1340,10 @@ jump_instruction:
                 // but before either square is evaluated. A direct assignment
                 // expression leaves that side-effect ordering implicit.
                 // The original x87 sequence multiplies y first, then x.
-                const volatile float x = ReadFloat(1);
-                const float y = ReadFloat(2);
+                const float x = ReadFloat(1);
+                const volatile float y = ReadFloat(2);
                 float *const output = ResolveFloat(0);
-                *output = y * y + x * x;
+                *output = x * x + y * y;
                 break;
             }
 
