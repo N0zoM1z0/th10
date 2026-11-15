@@ -22,7 +22,7 @@ struct HintEntryView
     HintLinkView link;
     unsigned char unknown18[4];
     // Storage through +0x5F includes constructor-zeroed bytes after the 65-byte copy.
-    // This preserves safe C++ string access without claiming an original array size.
+    // The original array size is unknown.
     char text[68];
     int count;
     int alignment;

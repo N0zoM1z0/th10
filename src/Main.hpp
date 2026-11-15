@@ -254,7 +254,6 @@ struct MidiTimerView;
 // Two camera slots starting at Main supervisor +0x154 use a 0x118-byte
 // record. The first 0xE4 bytes are the actual ANM viewport/matrix prefix;
 // target-observed +0xE8/+0xEC screen-shake scalars follow that prefix.
-// This is a storage view, not a claim about the original C++ class name.
 struct MainCameraRecordView
 {
     AnmViewportOwnerView prefix;

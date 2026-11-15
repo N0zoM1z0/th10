@@ -116,8 +116,7 @@ void SptTestView::ClearScriptNames()
         scriptNames = NULL;
     }
 }
-// Destructor42BC30 remains an explicit unresolved dependency; its complete
-// first proposal is nonexact and is not admitted with these helpers.
+// The destructor at 0x42BC30 is not reconstructed here.
 
 #include "Enemy.hpp"
 #include "InputState.hpp"

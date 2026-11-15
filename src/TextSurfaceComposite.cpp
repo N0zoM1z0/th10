@@ -3,9 +3,7 @@
 
 // Target 0x00437750: blend the GDI bitmap into a locked D3D9 surface.
 // Native private ABI: EAX=destination row, EDX=bitmap buffer, ECX=column,
-// followed by (surface, pixelWidth, rows) on the stack / RET 0x0C. This
-// descriptive C++ parameter ordering is not a claim about the original
-// compiler-private source signature.
+// followed by (surface, pixelWidth, rows) on the stack / RET 0x0C.
 // The source matches the original format-dependent pixel semantics,
 // including its unusual four-bit-alpha channel and saturation operations.
 bool __fastcall BlendTextBitmapToSurface(

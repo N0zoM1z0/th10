@@ -179,7 +179,6 @@ void HintLinkView::Append(HintLinkView *node)
 
 // Target419040. Entries have trivial destruction; the target call4524A1 is a
 // free-tail runtime wrapper, whose original delete/free symbol is unresolved.
-// Natural deletion is a lifetime candidate, not a new runtime identity claim.
 void ClearHintLists(HintOwnerView *owner)
 {
     for (int stage = 0; stage < 8; ++stage)

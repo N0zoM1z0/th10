@@ -21,8 +21,7 @@
 extern "C" void _ReadWriteBarrier();
 #pragma intrinsic(_ReadWriteBarrier)
 
-// The target shares 0x00404610 with ANM. These are partial layout views,
-// not a claim that the broader Enemy/ANM object lifetimes have been unified.
+// The target shares 0x00404610 with ANM; these are partial layout views.
 typedef char EnemyPositionInterpolationMatchesAnm[
     (sizeof(EnemyPositionInterpolationView) == sizeof(AnmVmFloat3InterpolationView) &&
      offsetof(EnemyPositionInterpolationView, initial) == offsetof(AnmVmFloat3InterpolationView, initial) &&
@@ -275,9 +274,8 @@ struct EnemyAnimationModeView
 };
 extern EnemyAnimationModeView *g_EnemyAnimationMode;
 
-// Descriptive interfaces for target-observed callees. Several target machine
-// boundaries use EAX/ESI/EDI live-ins; these declarations deliberately express
-// logical source values instead of claiming those private conventions.
+// Target callees. LTCG gives several of them private EAX/ESI/EDI inputs;
+// the declarations stay ordinary C++.
 float __stdcall EnemyWrapAngle(float angle);
 void __stdcall AnmSetVmScriptIndexAndExecute(
     const unsigned int *vmId, int scriptIndex);
@@ -1362,8 +1360,8 @@ EnemyBulletPatternView::EnemyBulletPatternView()
 
 // Maintained logical constructor for target 0x0040D830-0x0040DAD0. The target
 // machine boundary carries the full object in ESI and one stack subroutine-name
-// argument with RET 4. The ordinary C++ spelling recovers the target-proven
-// base/derived construction order without claiming that private machine ABI.
+// argument with RET 4. The ordinary C++ spelling recovers the target's
+// base/derived construction order.
 EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
 {
     EnemyFullObjectView *enemy = this;
@@ -1468,9 +1466,7 @@ EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
 // Maintained source for target 0x0040CFB0 plus its compiler-owned alignment and
 // switch tables through 0x0040D1F0. The target machine boundary uses EAX for the
 // 0x40-byte request and two stack arguments (manager, ECL subroutine name), then
-// RET 8. The maintained __stdcall declaration preserves the callee-cleanup
-// contract and the LTCG entry symbol; the private EAX request assignment remains
-// a target-observed optimizer seam rather than a source-level parameter claim.
+// RET 8. __stdcall keeps the callee cleanup; LTCG moves the request into EAX.
 EnemyFullObjectView *__stdcall EnemySpawn(
     EnemyManagerView *manager,
     const char *eclSubroutineName,

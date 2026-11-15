@@ -252,8 +252,7 @@ int __stdcall WriteFile(const char *path, const void *data, unsigned int size)
 }
 
 // TH10_FILESYSTEM_FUNCTION: 0x004357D0 FileSystem::LoadArchive
-// The retained target body receives its filename through a private LTCG EAX
-// seam. This source signature records the behavior without claiming that ABI.
+// The target receives the filename in EAX through LTCG.
 bool LoadArchive(const char *filename)
 {
     if (reinterpret_cast<PbgArchive *>(

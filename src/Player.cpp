@@ -132,7 +132,7 @@ typedef char PlayerCallbackNodeViewOwnerAt20[
 typedef char PlayerFixedPositionPairContiguous[
     (offsetof(Player, positionY) == offsetof(Player, positionX) + sizeof(int)) ? 1 : -1];
 // Existing shared storage begins at target 0x474C40; the selection words are
-// observed at +0x28/+0x2C. This is a storage view, not an original owner claim.
+// observed at +0x28/+0x2C.
 typedef char PlayerSelectionStorageAt28[
     (offsetof(GameScoreStateView, unknown28) == 0x28) ? 1 : -1];
 typedef char PlayerCallbackNodeMatchesChain[
@@ -515,8 +515,7 @@ static void MarkPlayerVmDeleteState(unsigned int id, unsigned short state)
     }
 }
 
-// Target426CF0: complete collision-hit candidate, not an exact claim.
-// The observed boundary is one stack Player pointer and RET4.
+// Target 0x426CF0: one stack Player pointer and RET4.
 // Effect origin in screen space: the playfield is offset by (224, 16).
 static inline void SetPlayerHitEffectPosition(
     AnmFloat3View *position, const PlayerFloat3 *drawPosition)
@@ -569,8 +568,7 @@ void __stdcall PlayerHandleCollisionHit(Player *player)
 }
 
 // Target4269D0. The maintained update caller enters state2 after its state4
-// timer reaches eight. Resource, timer, option and panel storage remain the
-// existing shared views; this body grants no original type/TU or exact claim.
+// timer reaches eight.
 void __stdcall PlayerTransitionToState2(Player *player)
 {
     const int faithLoss = ((g_GameScoreState.faith - 5000) / 3) * 10;
@@ -789,8 +787,7 @@ __declspec(noinline) void PlayerOptionSpecialCallbackBody(
 }
 
 // Maintained source for the Player constructor/reset/factory/destructor seam.
-// The target optimizer uses private ESI/stack/register boundaries for several
-// bodies; these natural C++ declarations do not claim those machine ABIs.
+// LTCG gives several of these bodies private ESI/stack/register boundaries.
 PlayerDrawVmView::~PlayerDrawVmView()
 {
     if (ownedData358 != NULL)
@@ -1145,11 +1142,7 @@ int PlayerInitialize(Player *player)
 }
 
 // Maintained source for the Player movement/options owner at 0x004250B0.
-// The target body receives Player in live-in EDI from its sole caller. This
-// ordinary source parameter is a maintainable spelling of that behavior, not a
-// claim about the original declaration or the optimizer-owned machine ABI.
-// Explicit embedded-storage ABI view; this assertion does not establish C++
-// object-lifetime/aliasing closure between the legacy draw view and AnmVmView.
+// The target body receives Player in EDI from its sole caller.
 typedef char PlayerMovementVmAt14[(offsetof(Player, drawVm) == 0x14) ? 1 : -1];
 typedef char PlayerMovementVmSize[(sizeof(PlayerDrawVmView) == sizeof(AnmVmView)) ? 1 : -1];
 
@@ -1852,8 +1845,7 @@ int __stdcall PlayerUpdateShots(Player *player)
 // Maintained source for the 0x00428630-0x00428AC1 Player damage owner. The
 // target's private member boundary uses the optional hit-flag pointer as its
 // nullable ECX receiver, with Player*, targetPosition, and targetSize on the
-// stack and RET 12. DamageTargetView models that four-byte output slot; it does
-// not claim the original identifier, translation unit, or production profile.
+// stack and RET 12. DamageTargetView models that four-byte output slot.
 int Player::DamageTargetView::CalculateDamageToTarget(
     Player *player,
     const PlayerFloat3 *targetPosition,

@@ -4,8 +4,7 @@
 #include "Chain.hpp"
 #include <stddef.h>
 
-// Target allocation is 0x44 bytes, zeroed as seventeen dwords. This is an
-// observed storage view, not a recovered original class or ownership claim.
+// Target allocation is 0x44 bytes, zeroed as seventeen dwords.
 struct TransitionEffectView
 {
     unsigned int flags;
@@ -39,9 +38,8 @@ typedef char TransitionEffectPhysicalLayout[
      offsetof(TransitionEffectView, released) == 0x2c &&
      offsetof(TransitionEffectView, timer) == 0x30) ? 1 : -1];
 
-// Target passes priority in EBX and five stack arguments with RET20.
-// This callee-pop spelling is a maintained compiler model, not the original
-// source annotation or a whole-product ABI claim.
+// Target passes priority in EBX and five stack arguments with RET20; LTCG
+// derives that from this callee-pop declaration.
 void *__stdcall StageCreateTransitionEffect(int drawPriority, int kind, int frames,
     unsigned int value0, unsigned int value1, unsigned int value2);
 void DestroyTransitionEffect(TransitionEffectView *effect);

@@ -2,7 +2,7 @@
 #include <stddef.h>
 #include <string.h>
 
-// Target-backed partial storage views, not claims about original source names.
+// Target-backed partial storage views.
 struct GameStatisticsFileHeader
 {
     unsigned int magic; // 0x30314854 (TH10) in the retail header.

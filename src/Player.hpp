@@ -413,9 +413,7 @@ typedef char PlayerShotRuntimeDescriptorAt58[
 
 struct PlayerCallbackNodeView;
 
-// Maintained partial TH10 player layout. Only target-observed fields needed by
-// the reviewed Player replay, option, movement, update, and draw seams are
-// exposed. This is not an original-symbol or translation-unit ownership claim.
+// Partial TH10 player layout (0x4478 bytes): only target-observed fields.
 struct Player
 {
     unsigned char unknown000[0x08];

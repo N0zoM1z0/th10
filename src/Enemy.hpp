@@ -384,8 +384,8 @@ typedef char EnemyManagedVmIdSlotsViewSizeIs28[
 struct EnemyRuntimeView
 {
     // Target 0x0040E770 is the runtime-tail implementation reached by the
-    // full-object virtual forwarding entry at 0x0040E760. Its maintained body
-    // covers every target-active opcode; compiler exactness remains unknown.
+    // full-object virtual forwarding entry at 0x0040E760. The body covers every
+    // target-active opcode.
     int DispatchEclInstruction();
     __declspec(noinline) int ReadIntArgument(int index);
     int *ResolveIntArgument(int index);

@@ -308,9 +308,7 @@ struct FrontEndControllerView
     static int __stdcall UpdateReplaySave(FrontEndControllerView *controller);
     static int __stdcall DrawReplaySave(FrontEndControllerView *controller);
 
-    // Target 0x0042C620 keeps the screen-state/timer reset as a private
-    // controller seam.  The descriptive suffix avoids claiming the original
-    // source identifier while preserving a callable owner for replay probes.
+    // Target 0x0042C620: screen-state and timer reset.
     void SetScreenStateTarget(int state);
     void SetScreenTarget(int screen);
 };

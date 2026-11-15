@@ -259,9 +259,7 @@ typedef char SoundPlayerBgmOffsets[
 char g_SoundInitSuccessFormat[] = "\x44\x69\x72\x65\x63\x74\x53\x6f\x75\x6e\x64\x20\x82\xcd\x90\xb3\x8f\xed\x82\xc9\x8f\x89\x8a\xfa\x89\xbb\x82\xb3\x82\xea\x82\xdc\x82\xb5\x82\xbd\x0d\x0a";
 char g_SoundInitFailureFormat[] = "\x44\x69\x72\x65\x63\x74\x53\x6f\x75\x6e\x64\x20\x83\x49\x83\x75\x83\x57\x83\x46\x83\x4e\x83\x67\x82\xcc\x8f\x89\x8a\xfa\x89\xbb\x82\xaa\x8e\xb8\x94\x73\x82\xb5\x82\xbd\x82\xe6\x0d\x0a";
 
-// Target 0x0043CD30-0x0043D041. Partial source recovery: the sample-loader
-// source and private ABI are recovered below; byte mismatches remain, so no
-// codegen credit is claimed for this initializer.
+// Target 0x0043CD30-0x0043D041.
 int SoundPlayerView::Initialize(HWND window)
 {
     memset(unconsumedSoundMetadata, 0xff, sizeof(unconsumedSoundMetadata));
@@ -531,8 +529,8 @@ void SoundDataLoaderThread()
         Sleep(1);
 }
 
-// Existing Main shutdown seam: target 0x00438DDA stores cancellation state2.
-// This source helper has no separate target owner or exact-byte claim.
+// Main shutdown at target 0x00438DDA stores cancellation state 2; this helper
+// has no separate target owner.
 void MainRequestSoundThreadStop(unsigned char *soundOwner)
 {
     reinterpret_cast<SoundPlayerView *>(soundOwner)->soundDataLoadState = 2;

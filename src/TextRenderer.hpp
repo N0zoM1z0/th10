@@ -44,8 +44,7 @@ typedef char TextBufferBitmapAt11c[
 typedef char TextBufferPixelsAt120[
     offsetof(TextRenderBufferView, pixels) == 0x120 ? 1 : -1];
 
-// The target takes two stack arguments and returns with RET 8. This spelling
-// models that machine contract, not an original-source convention claim.
+// The target takes two stack arguments and returns with RET 8.
 bool __stdcall TextRenderBufferApplyAlphaBleed(
     TextRenderBufferView *buffer, unsigned int processedRows);
 

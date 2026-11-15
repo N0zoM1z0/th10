@@ -14,9 +14,8 @@
 #include <time.h>
 
 // TH10 0x0040AD20 is the shared cursor setter used by multiple FrontEnd
-// controllers. The physical helper consumes value in ECX and cursor in EDX;
-// the member API in FrontEnd.hpp delegates here without claiming that this
-// private helper ABI was the original source declaration.
+// controllers. It takes the value in ECX and the cursor in EDX; the member API
+// in FrontEnd.hpp delegates here.
 int __fastcall FrontEndCursorSetCurrent(
     int value, FrontEndCursorView *cursor)
 {

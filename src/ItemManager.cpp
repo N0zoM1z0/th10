@@ -569,7 +569,7 @@ int __fastcall ItemManagerView::OnDraw(ItemManagerView *manager)
 
 // The allocation at0x41AED0 constructs every record before clearing the
 // complete manager. This intentionally also clears the timer flags just
-// initialized by the member constructors. No original class name is claimed.
+// initialized by the member constructors.
 ItemManagerView *g_ItemManager;
 
 ItemManagerView::ItemManagerView()

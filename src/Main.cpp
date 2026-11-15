@@ -733,8 +733,7 @@ double GameWindowView::GetTimestamp()
 }
 
 // TH10_MAIN_FUNCTION: 0x00439730 GameWindowView::CreateGameWindow
-// WinMain supplies HINSTANCE in live-in EBX in the linked target. The natural
-// source signature records its logical input while leaving exactness unknown.
+// WinMain supplies HINSTANCE in EBX in the linked target.
 int GameWindowView::CreateGameWindow(HINSTANCE instance)
 {
     WNDCLASSA windowClass;

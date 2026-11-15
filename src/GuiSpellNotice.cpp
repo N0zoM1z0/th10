@@ -11,10 +11,9 @@
 struct GameChainOwnerView;
 extern GameChainOwnerView *g_GameAnimationSlots;
 
-// Physical owner includes640 code bytes and the following28-byte switch table.
-// Complete maintained source remains a nonexact660-byte native candidate.
-// The target passes kind in EAX and the GUI/value on the stack. All three
-// logical inputs remain ordinary C++ parameters; LTCG selects the private ABI.
+// Physical owner: 640 code bytes plus a 28-byte switch table. The target
+// passes kind in EAX and the GUI/value on the stack; LTCG selects that ABI
+// from these ordinary parameters.
 void __stdcall GuiShowScoreNotice(int kind, GuiView *gui, int value)
 {
     switch (kind)

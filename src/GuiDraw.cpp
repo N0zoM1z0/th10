@@ -112,8 +112,7 @@ int __stdcall GuiView::DrawStageElements(GuiView *gui)
     return 1;
 }
 
-// Actual registered draw callback at target 0x00415AF0. Its seven code bytes
-// are caller context only, not a separately claimed authored owner.
+// Registered draw callback at target 0x00415AF0 (push ecx; call; ret).
 int __fastcall GuiDrawCallback(void *owner)
 {
     return GuiView::DrawStageElements(static_cast<GuiView *>(owner));

@@ -6,9 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-// This file is maintained reconstruction source.  TH10's original source file,
-// translation-unit partition, and per-function normal-COFF/LTCG ownership are
-// still unknown; source presence here is not an exactness or object-owner claim.
+// TH10's original file and translation-unit partition for these functions are
+// unknown.
 
 struct PbgDecryptProfile
 {
