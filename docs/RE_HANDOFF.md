@@ -159,6 +159,12 @@ touches their dependency graph.
   `EnemyLaserLineView`. Unify each storage view with its real class (one
   vtable, the shared leaf slots as base virtuals), update the ctor's vtable
   DIR32 symbol, then replay the laser Update/Draw/ctor guards.
+- `AnmRenderManagerView::AnmRenderManagerView` (2,315 bytes) is 655/670 in
+  `anm-render-manager-constructor`. One seam is an extra
+  `[this+0x732454] = 0` from `AnmVmIdView`'s user default constructor on the
+  `nextVmId` member; retail has no such store, so the original id type was
+  probably plain data. Changing that constructor touches many exact owners,
+  so replay their units if you try it.
 - `scripts/diagnostics/triage/quick-relink.py UNIT --dirty src/X.cpp`
   recompiles only the named sources and relinks (about 4 min instead of 15
   for big graphs). It is for triage only; acceptance still needs the cold
