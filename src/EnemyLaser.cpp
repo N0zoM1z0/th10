@@ -58,11 +58,6 @@ int EnemyLaserVectorView::IsOutsidePlayfield(
 
 extern unsigned char g_MainSoundOwner[];
 extern float __stdcall EnemyWrapAngle(float angle);
-extern float g_EnemyPlayfieldMinX;
-extern float g_EnemyPlayfieldMaxX;
-extern float g_EnemyPlayfieldMinY;
-extern float g_EnemyPlayfieldMaxY;
-extern float g_EnemyPi;
 
 // The type-0 request copied by target collision owner 0x0041D880 is 0x77
 // dwords (0x1DC bytes).  Its short type/color pair at +0x24/+0x26 and the
@@ -316,10 +311,10 @@ int EnemyLaserType0CollisionView::CheckCollisionCircle(
             ++hitCount;
 
             if (capture != 0 &&
-                g_EnemyPlayfieldMinX <= sample.x + 32.0f &&
-                sample.x - 32.0f < g_EnemyPlayfieldMaxX &&
-                g_EnemyPlayfieldMinY <= sample.y + 32.0f &&
-                sample.y - 32.0f < g_EnemyPlayfieldMaxY)
+                -192.0f <= sample.x + 32.0f &&
+                sample.x - 32.0f < 192.0f &&
+                0.0f <= sample.y + 32.0f &&
+                sample.y - 32.0f < 448.0f)
             {
                 g_ItemManager->Spawn(
                     reinterpret_cast<const AnmFloat3View *>(&sample),
@@ -783,10 +778,10 @@ void EnemyLaserType0StorageView::Bounce()
     projected.y += state.position.y;
     projected.z = 0.0f;
 
-    if (!(projected.x <= g_EnemyPlayfieldMinX ||
-          projected.x >= g_EnemyPlayfieldMaxX ||
-          projected.y <= g_EnemyPlayfieldMinY ||
-          projected.y >= g_EnemyPlayfieldMaxY)) {
+    if (!(projected.x <= -192.0f ||
+          projected.x >= 192.0f ||
+          projected.y <= 0.0f ||
+          projected.y >= 448.0f)) {
         return;
     }
 
@@ -796,10 +791,10 @@ void EnemyLaserType0StorageView::Bounce()
             ->QueueSoundSample(state.soundId, 0);
     }
 
-    if (projected.x < g_EnemyPlayfieldMinX ||
-        projected.x >= g_EnemyPlayfieldMaxX) {
+    if (projected.x < -192.0f ||
+        projected.x >= 192.0f) {
         state.request.position = projected;
-        state.request.angle = EnemyWrapAngle(-state.angle - g_EnemyPi);
+        state.request.angle = EnemyWrapAngle(-state.angle - 3.1415927f);
         state.request.speed = state.patterns[4].values[0].scalar;
         EnemyFireLaser(g_EnemyLaserManager,
             reinterpret_cast<EnemyLaserRequestScratch *>(&state.request), 0);
@@ -807,8 +802,8 @@ void EnemyLaserType0StorageView::Bounce()
     }
 
     if ((state.flags & 0x08000000u) == 0 &&
-        (projected.y < g_EnemyPlayfieldMinY ||
-         (projected.y >= g_EnemyPlayfieldMaxY &&
+        (projected.y < 0.0f ||
+         (projected.y >= 448.0f &&
           (state.flags & 0x400u) != 0))) {
         state.request.position = projected;
         state.request.angle = -state.angle;
