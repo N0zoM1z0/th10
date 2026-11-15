@@ -33,6 +33,10 @@
 | Validate ledgers | `scripts/repo-python scripts/validate-tracking.py --require-target` | Internal consistency and target binding |
 | Report progress | `scripts/repo-python scripts/report-reconstruction-status.py` | Ledger-derived status |
 | Validate public checkout | `scripts/repo-python scripts/ci.py` | Small target-independent checks |
+| Align a candidate with the target | `scripts/repo-python scripts/diagnostics/triage/idiff.py IMAGE SYMBOL ADDRESS SIZE` | Address-masked instruction alignment; triage only |
+| Relink a big graph after a small edit | `scripts/repo-python scripts/diagnostics/triage/quick-relink.py UNIT --dirty src/X.cpp` | Recompiles only the named sources; triage only |
+| Draft a unit's linkages | `scripts/repo-python scripts/diagnostics/triage/linkages-from-candidate.py IMAGE SYMBOL ADDRESS SIZE` | Candidate-derived fields to review and canonicalize |
+| List a target function's fields | `scripts/repo-python scripts/diagnostics/triage/target-fields.py ADDRESS SIZE` | DIR32/REL32 operands from target decode |
 
 Use local commands directly under [AGENTS.md](../AGENTS.md). No Factory
 provider, routing prerequisite or receipt is required. The public game
@@ -76,16 +80,6 @@ declared extent, the hash-pinned Capstone decoder must enumerate every linked
 field, the manifest must bind every field to a semantic target, and target
 replay must leave zero differences. The linked harness never receives product
 closure or runtime credit.
-Probe-mode relocation targets are decoded from the selected target window to
-make a prospective canonical manifest reviewable. They remain candidates until
-the symbol meaning, complete extent, and relocation ownership are reviewed and
-the resulting manifest unit replays with zero differences. Candidate code size
-comes only from its COFF function definition or a single-function COMDAT code
-section; requested target length never extends the candidate into the next
-section. Probe records produced before this invariant was added must be rerun
-before their object-size or comparable-byte fields are used as current
-evidence.
-
 The canonical private input is ignored/read-only `resources/th10.exe`. Do not
 search `/mnt`, add Windows mounts or set `TH10_TARGET_PATH` without an explicit
 operator override. A Git clone does not supply this executable; see

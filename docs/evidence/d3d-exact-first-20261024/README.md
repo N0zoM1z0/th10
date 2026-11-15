@@ -6,8 +6,7 @@ This packet records the baseline and bounded tangent, API, combination,
 stdcall declaration, byte-flag and camera-sign trials for InitD3DRendering.
 The byte-flag native build completed, but its original postbuild audit failed;
 a separate existing-image supplemental validation is recorded without rewriting
-that failure. It follows the [exact-first method](../../TH10_EXACT_FIRST_METHOD_20261024.md);
-it is not the stopped adapter-format experiment.
+that failure. It is not the stopped adapter-format experiment.
 
 The target is original Japanese TH10 1.00a, SHA-256
 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.

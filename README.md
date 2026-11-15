@@ -51,22 +51,10 @@ and ledger rows. [PROGRESS.md](docs/PROGRESS.md) is generated from the ledgers
 and is the count authority. The inventory and origin classifications remain
 provisional; the Windows i386 product, runtime semantics and portability are open.
 
-Current selected exact results include the ANM texture upload pair
-(`LoadTexture` **243/243**, `LoadTextureRegion` **320/320**), the
-enemy-laser update callback (**91/91**) and both formally admitted ANM
-VM helpers (`0x43E710` **203/203** in its selected two-TU graph and
-`0x449870` **217/217**). The last two were already source-present but
-were missing from the canonical accepted ledger until 2026-11-09.
-Notable larger exact owners include `ReplayManager::SaveReplay` (1,681 bytes)
-and `EndingTextVmView::Run` (1,568 bytes), plus newly admitted
-`EndingTextVmView::LoadAnimation` (126 bytes) and
-`SoundPlayerView::LoadSoundSample` (684 bytes).
-
-The 9,964-byte ANM executor, 7,020-byte ECL interpreter, 14,416-byte
-enemy dispatcher, 2,432-byte spell HUD start and 1,344-byte replay
-initializer remain **NONEXACT**. A selected two-TU leaf match does not
-prove exactness in a larger LTCG caller graph. See the current handoff
-for compiler contexts and the next high-impact work.
+The largest remaining nonexact owners are the 14,416-byte enemy ECL
+dispatcher, the 9,964-byte ANM executor, the 7,020-byte ECL interpreter and the
+4,480-byte GUI message interpreter. The handoff lists the current open-owner
+frontiers and their units.
 
 For a new agent, read [AGENTS.md](AGENTS.md), then
 [RE_HANDOFF.md](docs/RE_HANDOFF.md), followed by the selected owner's source/ledger rows,
