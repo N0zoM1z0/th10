@@ -2319,8 +2319,8 @@ dispatch_rank5_minus_200:
   iVar26 = static_cast<int>(static_cast<unsigned int>(iVar26) *
       static_cast<unsigned int>(sizeof(EnemyBulletPatternView)));
   {
-    EclVmHost *const firstHost = reinterpret_cast<EclVmHost *>(owner);
-    EclVmContext *const firstContext = firstHost->activeContext;
+    register EclVmHost *const firstHost = reinterpret_cast<EclVmHost *>(owner);
+    register EclVmContext *const firstContext = firstHost->activeContext;
     register EnemyRuntimeView *patternRuntime = reinterpret_cast<EnemyRuntimeView *>(
         reinterpret_cast<unsigned int>(this) + static_cast<unsigned int>(iVar26));
     if (g_EnemyChapterState.rank >= -600) {
