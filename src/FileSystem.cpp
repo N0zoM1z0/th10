@@ -271,73 +271,48 @@ bool LoadArchive(const char *filename)
     return false;
 }
 
-// The retail i386 stream shuffler walks unchecked byte addresses in
-// a flat low-32-bit word; do not introduce abstract out-of-array pointers.
-static __forceinline unsigned char *NativeCryptoByteOffset(
-    unsigned char *base, unsigned int delta)
-{
-    return reinterpret_cast<unsigned char *>(
-        reinterpret_cast<unsigned int>(base) + delta);
-}
-
-unsigned char *Decrypt(unsigned char *data, int size, unsigned char xorValue,
+unsigned char *__stdcall Decrypt(unsigned char *data, int size, unsigned char xorValue,
                        unsigned char xorValueIncrement, int chunkSize,
                        int maxBytes)
 {
     int remainder = size % chunkSize;
     int unencryptedBytes = remainder < chunkSize / 4 ? remainder : 0;
     int copySize = maxBytes > size ? size : maxBytes;
-    unsigned char *temporary = (unsigned char *)malloc(copySize);
+    unsigned char *output = data;
+    unsigned char *temporary = static_cast<unsigned char *>(malloc(copySize));
+    unsigned char *input = temporary;
     if (temporary == NULL)
         return data;
 
-    unencryptedBytes = static_cast<int>(
-        static_cast<unsigned int>(unencryptedBytes) +
-        static_cast<unsigned int>(size & 1));
-    size = static_cast<int>(
-        static_cast<unsigned int>(size) -
-        static_cast<unsigned int>(unencryptedBytes));
+    size -= (size & 1) + unencryptedBytes;
     memcpy(temporary, data, copySize);
-
-    unsigned char *inputCursor = temporary;
-    unsigned char *outputCursor = data;
-
     while (size > 0 && maxBytes > 0)
     {
         if (size < chunkSize)
             chunkSize = size;
-
-        unsigned char *outputCursorBackup = outputCursor;
-        outputCursor = NativeCryptoByteOffset(outputCursor,
-            static_cast<unsigned int>(chunkSize) - 1u);
-
+        unsigned char *end = output + chunkSize;
         int i;
-        for (i = static_cast<int>(
-                 static_cast<unsigned int>(chunkSize) + 1u) / 2;
-             i > 0; i--, inputCursor = NativeCryptoByteOffset(inputCursor, 1u))
+        // Cipher bytes arrive in order; the plain bytes fill the chunk from
+        // its back, every other byte per pass.
+        output = end - 1;
+        for (i = (chunkSize + 1) / 2; i > 0; i--)
         {
-            *outputCursor = *inputCursor ^ xorValue;
-            outputCursor = NativeCryptoByteOffset(outputCursor, static_cast<unsigned int>(-2));
+            *output = *input ^ xorValue;
+            output -= 2;
             xorValue += xorValueIncrement;
+            input++;
         }
-
-        outputCursor = NativeCryptoByteOffset(outputCursorBackup,
-            static_cast<unsigned int>(chunkSize) - 2u);
-        for (i = chunkSize / 2; i > 0;
-             i--, inputCursor = NativeCryptoByteOffset(inputCursor, 1u))
+        output = end - 2;
+        for (i = chunkSize / 2; i > 0; i--)
         {
-            *outputCursor = *inputCursor ^ xorValue;
-            outputCursor = NativeCryptoByteOffset(outputCursor, static_cast<unsigned int>(-2));
+            *output = *input ^ xorValue;
+            output -= 2;
             xorValue += xorValueIncrement;
+            input++;
         }
-
-        size = static_cast<int>(
-            static_cast<unsigned int>(size) -
-            static_cast<unsigned int>(chunkSize));
-        outputCursor = NativeCryptoByteOffset(outputCursorBackup, static_cast<unsigned int>(chunkSize));
-        maxBytes = static_cast<int>(
-            static_cast<unsigned int>(maxBytes) -
-            static_cast<unsigned int>(chunkSize));
+        output = end;
+        size -= chunkSize;
+        maxBytes -= chunkSize;
     }
 
     free(temporary);
@@ -351,57 +326,41 @@ unsigned char *__stdcall Encrypt(unsigned char *data, int size, unsigned char xo
     int remainder = size % chunkSize;
     int unencryptedBytes = remainder < chunkSize / 4 ? remainder : 0;
     int copySize = maxBytes > size ? size : maxBytes;
-    unsigned char *temporary = (unsigned char *)malloc(copySize);
+    unsigned char *output = data;
+    unsigned char *temporary = static_cast<unsigned char *>(malloc(copySize));
+    unsigned char *input = temporary;
     if (temporary == NULL)
         return data;
 
-    unencryptedBytes = static_cast<int>(
-        static_cast<unsigned int>(unencryptedBytes) +
-        static_cast<unsigned int>(size & 1));
-    size = static_cast<int>(
-        static_cast<unsigned int>(size) -
-        static_cast<unsigned int>(unencryptedBytes));
+    size -= (size & 1) + unencryptedBytes;
     memcpy(temporary, data, copySize);
-
-    unsigned char *inputCursor = temporary;
-    unsigned char *outputCursor = data;
-
     while (size > 0 && maxBytes > 0)
     {
         if (size < chunkSize)
             chunkSize = size;
-
-        unsigned char *inputCursorBackup = inputCursor;
-        inputCursor = NativeCryptoByteOffset(inputCursor,
-            static_cast<unsigned int>(chunkSize) - 1u);
-
+        unsigned char *end = input + chunkSize;
         int i;
-        for (i = static_cast<int>(
-                 static_cast<unsigned int>(chunkSize) + 1u) / 2;
-             i > 0; i--, outputCursor = NativeCryptoByteOffset(outputCursor, 1u))
+        // The mirror of Decrypt: plain bytes are read from the back of the
+        // chunk and the cipher bytes are written in order.
+        input = end - 1;
+        for (i = (chunkSize + 1) / 2; i > 0; i--)
         {
-            *outputCursor = *inputCursor ^ xorValue;
-            inputCursor = NativeCryptoByteOffset(inputCursor, 0u - 2u);
+            *output = *input ^ xorValue;
+            input -= 2;
             xorValue += xorValueIncrement;
+            output++;
         }
-
-        inputCursor = NativeCryptoByteOffset(inputCursorBackup,
-            static_cast<unsigned int>(chunkSize) - 2u);
-        for (i = chunkSize / 2; i > 0;
-             i--, outputCursor = NativeCryptoByteOffset(outputCursor, 1u))
+        input = end - 2;
+        for (i = chunkSize / 2; i > 0; i--)
         {
-            *outputCursor = *inputCursor ^ xorValue;
-            inputCursor = NativeCryptoByteOffset(inputCursor, 0u - 2u);
+            *output = *input ^ xorValue;
+            input -= 2;
             xorValue += xorValueIncrement;
+            output++;
         }
-
-        size = static_cast<int>(
-            static_cast<unsigned int>(size) -
-            static_cast<unsigned int>(chunkSize));
-        inputCursor = NativeCryptoByteOffset(inputCursorBackup, static_cast<unsigned int>(chunkSize));
-        maxBytes = static_cast<int>(
-            static_cast<unsigned int>(maxBytes) -
-            static_cast<unsigned int>(chunkSize));
+        input = end;
+        size -= chunkSize;
+        maxBytes -= chunkSize;
     }
 
     free(temporary);
