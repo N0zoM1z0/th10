@@ -179,26 +179,26 @@ int MainRegisterChain()
     g_MainSupervisorView.unknown398 = 0;
     th10::ChainElem *element = th10::Chain::AllocElem(
         reinterpret_cast<th10::ChainCallback>(MainSupervisorView::OnUpdate));
-    element->flags |= 2;
     element->arg = &g_MainSupervisorView;
+    element->flags |= 2;
     element->addedCallback = reinterpret_cast<th10::ChainCallback>(MainAddedCallback);
     int result = th10::g_Chain->AddToCalcChain(element, 1);
     if (result != 0)
         return result;
     element = th10::Chain::AllocElem(
         reinterpret_cast<th10::ChainCallback>(MainDrawCallback));
-    element->flags |= 2;
     element->arg = &g_MainSupervisorView;
+    element->flags |= 2;
     th10::g_Chain->AddToDrawChain(element, 1);
     element = th10::Chain::AllocElem(
         reinterpret_cast<th10::ChainCallback>(MainDrawLateCallback));
-    element->flags |= 2;
     element->arg = &g_MainSupervisorView;
+    element->flags |= 2;
     th10::g_Chain->AddToDrawChain(element, 40);
     element = th10::Chain::AllocElem(
         reinterpret_cast<th10::ChainCallback>(MainDrawFinalCallback));
-    element->flags |= 2;
     element->arg = &g_MainSupervisorView;
+    element->flags |= 2;
     th10::g_Chain->AddToDrawChain(element, 50);
     return 0;
 }
