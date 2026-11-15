@@ -1568,8 +1568,6 @@ inline void AnmVmIdView::MarkForDeletionAndClear()
     g_AnmRenderManagerView->MarkVmForDeletion(*this);
     value = 0;
 }
-__declspec(noinline) void __stdcall EntityStartScript_00404f30(
-    AnmLoadedView *resource);
 __declspec(noinline) void __stdcall StartEntityScript_00404f30(
     AnmVmView *entity, int scriptIndex, AnmLoadedView *resource);
 extern D3d9DeviceView *g_Direct3DDevice;
