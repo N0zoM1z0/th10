@@ -101,10 +101,7 @@ int EclVmStackView::Pop(unsigned char type, int size, void *value)
     if (type != 0)
     {
         stackTop -= static_cast<int>(sizeof(EclVmStackTypeSlotView));
-        const EclVmStackTypeSlotView *const typeAddress =
-            reinterpret_cast<const EclVmStackTypeSlotView *>(
-                stackData + stackTop);
-        const unsigned char storedType = typeAddress->type;
+        const unsigned char storedType = stackData[stackTop];
         if (storedType != 'f')
         {
             if (storedType == 'i' && type == 'f')

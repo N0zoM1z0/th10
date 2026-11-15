@@ -291,11 +291,19 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   +0x113/+0x115, ours ECX. Over 40 lifetime, aggregate, volatile and barrier
   forms failed; other opcode spellings move bytes elsewhere. A five-input graph
   reproduction of the 9,962 state also failed in the last session. [2026-11-14]
-- **EclVmContext::Run @0x44E1A0 (7,020)**: 6,997/7,020, 189 fields, 23
-  differences: SIB registers at +0xAF/+0x1FB, `LENGTH_SQUARED` and
-  `POINT_ANGLE` x87 stack-slot order, and a spill-slot swap. About 40 spelling
-  forms are neutral; the next step needs a register-lifetime or graph
-  hypothesis. [2026-11-14]
+- **EclVmContext::Run @0x44E1A0 (7,020)**: root at the real caller
+  `EclVmHost::Run`; the clean one-TU diagnostic is 6,241/6,264 comparable
+  bytes with the exact 7,020-byte extent. Remaining differences include SIB
+  base/index ordering at +0xAF and +0x1FB, `LENGTH_SQUARED` and `POINT_ANGLE`
+  x87 stack-slot order, and a spill-slot swap. About 40 spelling forms are
+  neutral. [2026-11-15]
+- **EclVmStackView::Pop @0x450610 (122)**: `stackData[stackTop]` for the
+  stored type byte produces an exact 122/122-byte linked contribution with
+  the real `Run` entry and preserves the private EAX/ECX/BL ABI. This exact
+  leaf spelling does not transfer to the inlined `Run` copy: the same source
+  experiment lowers the parent diagnostic from 6,241 to 5,973 matched
+  comparable bytes. Keep the leaf fix; continue isolating the inline parent
+  schedule separately. [2026-11-15]
 - **GuiMessageVmView::Run @0x415E90 (4,480)**: unit `gui-message-run-candidate`
   (14-TU transition graph plus GuiMessageLeaves.cpp and VmIdInterrupt.cpp,
   entry `UpdateStageElements`), 4,463 bytes, 1,047/1,219 normalized
