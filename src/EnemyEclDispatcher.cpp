@@ -2289,43 +2289,31 @@ dispatch_difficulty_float_index_4_a:
     iVar26 = (int)uVar22;
     if (g_EnemyChapterState.rank >= 600) {
       EclVmHost *const firstHost = reinterpret_cast<EclVmHost *>(owner);
-      iVar26 = static_cast<int>(static_cast<unsigned int>(iVar26) *
-          static_cast<unsigned int>(sizeof(EnemyBulletPatternView)));
       uVar22 = firstHost->activeContext->ReadInt(9);
-      register EnemyRuntimeView *patternRuntime = reinterpret_cast<EnemyRuntimeView *>(
-          reinterpret_cast<unsigned int>(this) + static_cast<unsigned int>(iVar26));
-      patternRuntime->bulletPatterns[0].fields.countA = (short)uVar22;
+      bulletPatterns[iVar26].fields.countA = (short)uVar22;
       runtimeAddress = reinterpret_cast<int>(owner);
       uVar22 = reinterpret_cast<EclVmContext *>(reinterpret_cast<EnemyFullObjectView *>(runtimeAddress)->activeEclContext)->ReadInt(10);
-      patternRuntime->bulletPatterns[0].fields.countB = (short)uVar22;
+      bulletPatterns[iVar26].fields.countB = (short)uVar22;
       return 0;
     }
     if (g_EnemyChapterState.rank >= 200) {
       EclVmHost *const firstHost = reinterpret_cast<EclVmHost *>(owner);
-      iVar26 = static_cast<int>(static_cast<unsigned int>(iVar26) *
-          static_cast<unsigned int>(sizeof(EnemyBulletPatternView)));
       uVar22 = firstHost->activeContext->ReadInt(7);
-      register EnemyRuntimeView *patternRuntime = reinterpret_cast<EnemyRuntimeView *>(
-          reinterpret_cast<unsigned int>(this) + static_cast<unsigned int>(iVar26));
-      patternRuntime->bulletPatterns[0].fields.countA = (short)uVar22;
+      bulletPatterns[iVar26].fields.countA = (short)uVar22;
       runtimeAddress = reinterpret_cast<int>(owner);
       uVar22 = reinterpret_cast<EclVmContext *>(reinterpret_cast<EnemyFullObjectView *>(runtimeAddress)->activeEclContext)->ReadInt(8);
-      patternRuntime->bulletPatterns[0].fields.countB = (short)uVar22;
+      bulletPatterns[iVar26].fields.countB = (short)uVar22;
       return 0;
     }
   }
 dispatch_rank5_minus_200:
   if (g_EnemyChapterState.rank >= -200) {
     EclVmHost *const firstHost = reinterpret_cast<EclVmHost *>(owner);
-    iVar26 = static_cast<int>(static_cast<unsigned int>(iVar26) *
-        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)));
     uVar22 = firstHost->activeContext->ReadInt(5);
-    register EnemyRuntimeView *patternRuntime = reinterpret_cast<EnemyRuntimeView *>(
-          reinterpret_cast<unsigned int>(this) + static_cast<unsigned int>(iVar26));
-    patternRuntime->bulletPatterns[0].fields.countA = (short)uVar22;
+    bulletPatterns[iVar26].fields.countA = (short)uVar22;
     runtimeAddress = reinterpret_cast<int>(owner);
     uVar22 = reinterpret_cast<EclVmContext *>(reinterpret_cast<EnemyFullObjectView *>(runtimeAddress)->activeEclContext)->ReadInt(6);
-    patternRuntime->bulletPatterns[0].fields.countB = (short)uVar22;
+    bulletPatterns[iVar26].fields.countB = (short)uVar22;
     return 0;
   }
   iVar26 = static_cast<int>(static_cast<unsigned int>(iVar26) *

@@ -259,15 +259,17 @@ trusting a number. Owners without an entry have no useful recorded attempt.
 - **EnemyRuntimeView::DispatchEclInstruction @0x40E770 (14,416)**: full extent,
   table boundary +0x35C0 and the 181-slot map match; 800 fields. Residuals: the
   private ReadIntArgument register pair, x87 homes, branch layout and the
-  rank-five count group (0x1AA scores 0.73; inline asm is not acceptable).
-  Keep the spell-cipher SIB `8A 0C 31` at +0x273B. Native-word rewrites are
-  neutral. [2026-11-14]
-  [2026-11-15] A focused 12-TU anchored diagnostic with `/Oy-` moved the
-  runtime base to EBX (matching the target prologue); spelling the first
-  rank-band context through `EclVmHost*` reproduced the 0x1AA high-band
-  `ECX=host` then `EDX=activeContext` load sequence. The pointer `ADD`/`MOV`
-  versus target `LEA`, later rank bands, and epilogue ordering remain open.
-  This anchored probe still had 204 unresolved symbols and 55 unowned code
+  rank-five lower bands. Keep the spell-cipher SIB `8A 0C 31` at +0x273B.
+  Native-word rewrites are neutral. [2026-11-14]
+  [2026-11-15] A focused 12-TU anchored diagnostic must use `/GS` without
+  `/Oy-`: it reproduces the target's aligned 0x2C4 frame and EBX runtime base;
+  `/Oy-` instead changes the frame and leaves the base in EBP. Spelling the
+  rank-5 cursor as `bulletPatterns[index]` and the first operand through
+  `EclVmHost*` now reproduces the 0x1AA `rank >= 600` and `rank >= 200` bands:
+  the `IMUL`/`LEA`, context loads, argument pushes and count stores align with
+  retail. The `rank >= -200` band still hoists `IMUL` before its comparison;
+  the `rank < -200` paths retain cursor and operand scheduling differences.
+  This anchored probe still has 206 unresolved symbols and 55 unowned code
   contributions, so it is diagnostic only, not exactness evidence.
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: 9,962/9,964, 350
   fields. Only opcode 91 differs: target `MOV EDX,[EBP+20h]; PUSH EDX` at
