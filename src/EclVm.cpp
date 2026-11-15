@@ -95,7 +95,7 @@ int EclVmStackView::Pop(unsigned char type, int size, void *value)
 
     unsigned char *const stackData = data;
     stackTop -= size;
-    unsigned char *const valueAddress = stackData + stackTop;
+    unsigned char *const valueAddress = data + stackTop;
     memcpy(value, valueAddress, size);
 
     if (type != 0)
@@ -103,7 +103,7 @@ int EclVmStackView::Pop(unsigned char type, int size, void *value)
         stackTop -= static_cast<int>(sizeof(EclVmStackTypeSlotView));
         const EclVmStackTypeSlotView *const typeAddress =
             reinterpret_cast<const EclVmStackTypeSlotView *>(
-                stackData + stackTop);
+                stackTop + stackData);
         const unsigned char storedType = typeAddress->type;
         if (storedType != 'f')
         {
@@ -853,6 +853,19 @@ static void EclDebugTrace(const char *format, float value)
 }
 
 
+static __forceinline int PopReturnTimeWord(
+    EclVmStackView *stack, float *value)
+{
+    const int size = sizeof(*value);
+    if (stack->stackTop - size < 0)
+        return -1;
+    unsigned char *const stackData = stack->data;
+    stack->stackTop -= size;
+    unsigned char *const valueAddress = stackData + stack->stackTop;
+    memcpy(value, valueAddress, size);
+    return 0;
+}
+
 int EclVmContext::Run(float timeDelta)
 {
     EclVmInstruction **const instructionCursor = &instruction;
@@ -884,7 +897,7 @@ int EclVmContext::Run(float timeDelta)
 
                 stack.Pop(
                     0, sizeof(*instructionCursor), instructionCursor);
-                stack.Pop(0, sizeof(currentTime), &currentTime);
+                PopReturnTimeWord(&stack, &currentTime);
                 if (*instructionCursor == NULL)
                     return -1;
                 break;
