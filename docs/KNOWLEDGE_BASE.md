@@ -297,13 +297,15 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   base/index ordering at +0xAF and +0x1FB, `LENGTH_SQUARED` and `POINT_ANGLE`
   x87 stack-slot order, and a spill-slot swap. About 40 spelling forms are
   neutral. [2026-11-15]
-- **EclVmStackView::Pop @0x450610 (122)**: `stackData[stackTop]` for the
-  stored type byte produces an exact 122/122-byte linked contribution with
-  the real `Run` entry and preserves the private EAX/ECX/BL ABI. This exact
-  leaf spelling does not transfer to the inlined `Run` copy: the same source
-  experiment lowers the parent diagnostic from 6,241 to 5,973 matched
-  comparable bytes. Keep the leaf fix; continue isolating the inline parent
-  schedule separately. [2026-11-15]
+- **EclVmStackView::Pop @0x450610 (122)**: both the typed
+  `typeAddress->type` access and `stackData[stackTop]` produce an exact
+  122/122-byte linked contribution with the real `Run` entry and preserve the
+  private EAX/ECX/BL ABI. Prefer the typed spelling: it keeps the parent
+  `Run` diagnostic at 6,241/6,264 comparable bytes; byte indexing drops it to
+  5,973. An explicit native 32-bit type-byte address fixes the parent's
+  +0xAF/+0x1FB SIBs but moves differences to +0x97/+0x1E7 and nets 6,227/6,264.
+  Keep the exact typed leaf and solve the inlined parent schedule separately.
+  [2026-11-15]
 - **GuiMessageVmView::Run @0x415E90 (4,480)**: unit `gui-message-run-candidate`
   (14-TU transition graph plus GuiMessageLeaves.cpp and VmIdInterrupt.cpp,
   entry `UpdateStageElements`), 4,463 bytes, 1,047/1,219 normalized
