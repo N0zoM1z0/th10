@@ -125,12 +125,6 @@ struct FpsSampleGateView
 
 extern ItemPrimaryResourceOwnerView *g_EnemyPrimaryResourceOwner;
 extern FpsSampleGateView *g_FpsSampleGateView;
-extern float g_ItemScreenOffsetX;
-extern float g_ItemScreenOffsetY;
-extern float g_ItemTopThreshold;
-extern float g_ItemAlphaRange;
-extern float g_ItemAlphaScale;
-extern float g_ItemAlphaFull;
 
 // Shared maintained definitions used by the independently reconstructed Gui
 // and Enemy owners. These views do not establish original class/TU identities.
@@ -517,37 +511,33 @@ __declspec(noinline) int ItemManagerRegisterCallbacks(ItemManagerView *manager)
     return 0;
 }
 
+// The playfield origin sits at (224, 16) on screen.
+static inline void ItemPlayfieldToScreen(
+    const AnmFloat3View *playfield, AnmFloat3View *screen)
+{
+    screen->x = playfield->x + 224.0f;
+    screen->y = playfield->y + 16.0f;
+    screen->z = playfield->z;
+}
+
 int ItemManagerView::Draw()
 {
     ItemRecordView *item = &items[0];
-    AnmFloat3View *position = &items[0].vm.position;
-    for (int remaining = 0x896; remaining != 0; --remaining, ++item,
-         position = reinterpret_cast<AnmFloat3View *>(
-             reinterpret_cast<unsigned char *>(position) + sizeof(ItemRecordView)))
+    for (int remaining = 0x896; remaining != 0; --remaining, ++item)
     {
         if (item->active == 0)
             continue;
 
-        position->x = *reinterpret_cast<volatile const float *>(&item->worldPosition.x) + g_ItemScreenOffsetX;
-        position->y = *reinterpret_cast<volatile const float *>(&item->worldPosition.y) + g_ItemScreenOffsetY;
-        position->z = item->worldPosition.z;
-
-        if (position->y < g_ItemTopThreshold)
+        ItemPlayfieldToScreen(&item->worldPosition, &item->vm.position);
+        if (item->vm.position.y < 8.0f)
         {
-            const float y = position->y;
-            position->y = 24.0f;
-            const float delta = y - g_ItemTopThreshold;
-            if (delta >= g_ItemAlphaRange)
-            {
+            const float distance = item->vm.position.y - 8.0f;
+            item->vm.position.y = 24.0f;
+            if (distance >= 32.0f)
                 item->vm.primaryColor.alpha = 0xff;
-            }
             else
-            {
-                item->vm.primaryColor.alpha = static_cast<unsigned char>(
-                    static_cast<int>(
-                        delta * g_ItemAlphaScale * g_ItemAlphaFull));
-            }
-
+                item->vm.primaryColor.alpha =
+                    static_cast<unsigned char>(255.0f * (distance / 32.0f));
             if (item->vm.activeSpriteIndex != item->spriteKind + 0x161)
             {
                 g_EnemyPrimaryResourceOwner->primaryEnemyResource->SetSprite(
