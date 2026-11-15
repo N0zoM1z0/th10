@@ -2318,9 +2318,25 @@ dispatch_rank5_minus_200:
   }
   iVar26 = static_cast<int>(static_cast<unsigned int>(iVar26) *
       static_cast<unsigned int>(sizeof(EnemyBulletPatternView)));
-  if (g_EnemyChapterState.rank >= -600)
-    goto dispatch_rank_count_low;
-  goto dispatch_rank_count_lowest;
+  {
+    EclVmHost *const firstHost = reinterpret_cast<EclVmHost *>(owner);
+    EclVmContext *const firstContext = firstHost->activeContext;
+    register EnemyRuntimeView *patternRuntime = reinterpret_cast<EnemyRuntimeView *>(
+        reinterpret_cast<unsigned int>(this) + static_cast<unsigned int>(iVar26));
+    if (g_EnemyChapterState.rank >= -600) {
+      uVar22 = firstContext->ReadInt(3);
+      patternRuntime->bulletPatterns[0].fields.countA = (short)uVar22;
+      runtimeAddress = reinterpret_cast<int>(owner);
+      uVar22 = reinterpret_cast<EclVmContext *>(reinterpret_cast<EnemyFullObjectView *>(runtimeAddress)->activeEclContext)->ReadInt(4);
+    } else {
+      uVar22 = firstContext->ReadInt(1);
+      patternRuntime->bulletPatterns[0].fields.countA = (short)uVar22;
+      runtimeAddress = reinterpret_cast<int>(owner);
+      uVar22 = reinterpret_cast<EclVmContext *>(reinterpret_cast<EnemyFullObjectView *>(runtimeAddress)->activeEclContext)->ReadInt(2);
+    }
+    patternRuntime->bulletPatterns[0].fields.countB = (short)uVar22;
+    return 0;
+  }
 
 dispatch_rank_count_low:
   {
