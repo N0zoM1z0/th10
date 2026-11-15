@@ -262,6 +262,13 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   rank-five count group (0x1AA scores 0.73; inline asm is not acceptable).
   Keep the spell-cipher SIB `8A 0C 31` at +0x273B. Native-word rewrites are
   neutral. [2026-11-14]
+  [2026-11-15] A focused 12-TU anchored diagnostic with `/Oy-` moved the
+  runtime base to EBX (matching the target prologue); spelling the first
+  rank-band context through `EclVmHost*` reproduced the 0x1AA high-band
+  `ECX=host` then `EDX=activeContext` load sequence. The pointer `ADD`/`MOV`
+  versus target `LEA`, later rank bands, and epilogue ordering remain open.
+  This anchored probe still had 204 unresolved symbols and 55 unowned code
+  contributions, so it is diagnostic only, not exactness evidence.
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: 9,962/9,964, 350
   fields. Only opcode 91 differs: target `MOV EDX,[EBP+20h]; PUSH EDX` at
   +0x113/+0x115, ours ECX. Over 40 lifetime, aggregate, volatile and barrier
