@@ -42,18 +42,13 @@ int __stdcall GuiView::DrawStageElements(GuiView *gui)
     unsigned int color;
     if (g_GuiState4C58 != 0)
     {
-        // Preserve the observed multiply/add reads before the bounds stores.
-        // Original source barriers and qualifiers remain unknown.
         const float width = g_GuiState4C58 * 0.29230770468711853f;
         color = static_cast<unsigned int>(
             gui->displayVms5[0].primaryColor.alpha) << 24;
-        _ReadWriteBarrier();
         rectangle.left = 51.0f;
         rectangle.top = 461.0f;
-        const float right = width + 51.0f;
-        _ReadWriteBarrier();
+        rectangle.right = width + 51.0f;
         rectangle.bottom = 463.0f;
-        rectangle.right = right;
         DrawColoredRectangle(&rectangle, color);
 
         color = (static_cast<unsigned int>(
