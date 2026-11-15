@@ -32672,3 +32672,20 @@ target_address = 0x00415800
 size = 724
 linkages = [
 ]
+
+[units.bullet-cancel-in-area]
+artifact_kind = "linked-pe"
+source = "src/BulletManager.cpp"
+support_sources = ["src/BulletRuntime.cpp", "src/BulletTransform.cpp", "src/PlayerCollision.cpp", "src/AnmManager.cpp", "src/EnemyEclDispatcher.cpp", "src/Enemy.cpp", "src/BulletCancelArea.cpp"]
+output_dir = "build/match-linked/BulletCancelArea"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?BulletManagerUpdateCallback@@YIHPAUBulletManagerView@@@Z"
+pdb_source = "src/BulletCancelArea.cpp"
+functions = ["BulletManagerView::CancelBulletsInArea"]
+symbol = "PLACEHOLDER"
+target_address = 0x00408210
+size = 585
+linkages = [
+]

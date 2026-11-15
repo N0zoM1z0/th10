@@ -13,9 +13,12 @@ extern unsigned int g_BulletCancelPaletteLarge[4];
 // This private method receives its manager in EBX and spawnItems on the stack.
 int BulletManagerView::CancelBulletsInArea(int spawnItems)
 {
-    const AnmFloat3View half = cancelAreaSize * 0.5f;
-    const AnmFloat3View lower = cancelAreaCenter - half;
-    const AnmFloat3View upper = cancelAreaCenter + half;
+    AnmFloat3View half;
+    AnmFloat3View lower;
+    AnmFloat3View upper;
+    half = cancelAreaSize * 0.5f;
+    lower = cancelAreaCenter - half;
+    upper = half + cancelAreaCenter;
 
     BulletRuntimeView *bullet = bullets;
     for (int remaining = 2000; remaining != 0; --remaining, ++bullet)
