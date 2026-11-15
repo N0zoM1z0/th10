@@ -61,3 +61,5 @@ report scripts and their tests were deleted from the tree (about 3.3 MB
 tracked). Git history keeps all of them. Locally, `build/probe-ltcg/` and
 the `.analysis/` session scratch were removed (about 177 MB); the D3D evidence,
 factory runtime state and the four trial drivers above remain.
+Twenty-five `build/match-linked/` directories that no manifest unit owns (old
+trial outputs, mostly without images) were also removed.

@@ -114,26 +114,15 @@ DIR32 fields may bridge the gap to an explicitly declared unlinked data suffix.
 Those annotations remain contiguous, trailing, disjoint from decoded bytes and
 all link fields; partial words and relative fields cannot fill coverage gaps.
 Field inventory and semantic binding remain exhaustive, and every data byte is
-still compared. ECL Run additionally validates its reviewed60-entry table and88
-selectors before deriving an annotation.
+still compared.
 
-`diagnose-ecl-run-native.py --context-manifest PATH --unit NAME` selects an
-explicit diagnostic build context without changing canonical recipes. Target
-bindings and callee templates always come from canonical match-units.toml;
-the context cannot replace them. Both files are fingerprinted and must remain
-unchanged during the comparison. The complete callee,189 fields/62 local
-destinations and table/selector coverage requirements remain unchanged.
-Artifact producer/source pins are separate evidence: the command does not
-assert that an existing image was built from the supplied context or current
-source.
-
-For an isolated private ECL input, `--ecl-source PATH` selects its PDB source
-owner explicitly. The file must exist inside the repository and occur exactly
-once among the context's primary/support inputs; the default remains
-`src/EclVm.cpp`. The selected source and both manifests must remain unchanged
-during diagnosis. The reported source hash is an observation, not proof that
-the artifact was built from that input. Target bindings, the full callee,
-189 fields/62 local destinations and table/selector coverage are unchanged.
+Nonexact owners are tracked by the diagnostic frontier ratchet,
+`scripts/check-frontier.py` with `config/frontiers.toml`. It rebuilds each
+named unit graph, masks the candidate's link-resolved fields and fails when a
+byte that matched before now differs. It grants no exact credit; a promoted
+owner still needs a canonical unit, `compare-linked-function.py` and a cold
+replay. Candidate units carry `candidate = true` in the manifest and are
+excluded from the exact ledger check and from replay.
 
 A direct REL32 call to a static callee may explicitly declare both
 `static_source` and `static_size`. This opt-in derives the selected object from

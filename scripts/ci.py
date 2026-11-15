@@ -46,6 +46,8 @@ def check_file(path: Path) -> bool:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base", metavar="REV", help="also check changes from REV to the current checkout (for CI)")
+    parser.add_argument("--full", action="store_true",
+                        help="also run every scripts/test-*.py tooling self-test and the ledger validator")
     args = parser.parse_args()
     try:
         base = args.base or "HEAD"
@@ -81,6 +83,26 @@ def main() -> int:
         print(f"error: basic checks failed: {error}", file=sys.stderr)
         return 1
     print(f"Basic checks passed ({checked} changed machine-input files; whitespace OK).")
+    if args.full:
+        return run_full()
+    return 0
+
+
+def run_full() -> int:
+    """Run the tooling self-tests and the ledger validator; several need the private target."""
+    commands = [[sys.executable, str(path)] for path in sorted((ROOT / "scripts").glob("test-*.py"))]
+    commands.append([sys.executable, str(ROOT / "scripts/validate-tracking.py")])
+    failed = []
+    for command in commands:
+        name = Path(command[-1]).name
+        result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
+        if result.returncode != 0:
+            failed.append(name)
+            print(f"FAIL {name}\n{(result.stdout + result.stderr)[-1500:]}", file=sys.stderr)
+    if failed:
+        print(f"error: {len(failed)} of {len(commands)} full checks failed: {', '.join(failed)}", file=sys.stderr)
+        return 1
+    print(f"Full checks passed ({len(commands)} commands).")
     return 0
 
 

@@ -65,6 +65,15 @@ def validate() -> dict[str, int]:
     configured_units = units.get("units", {})
     if not isinstance(configured_units, dict):
         raise ValueError("match units must be a table")
+    # Candidate units are triage graphs for nonexact owners (see
+    # config/frontiers.toml); they never count as exact.
+    for name, unit in configured_units.items():
+        if unit.get("candidate") not in (None, True):
+            raise ValueError(f"unit {name!r} candidate flag must be true when present")
+    candidate_units = {name for name, unit in configured_units.items() if unit.get("candidate")}
+    configured_units = {
+        name: unit for name, unit in configured_units.items() if name not in candidate_units
+    }
     archive_exact_addresses = {
         int(row["address"], 0)
         for row in matches

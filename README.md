@@ -77,8 +77,10 @@ Default CI checks changed Python/JSON/TOML/CSV/Shell syntax and whitespace,
 including staged changes. It uses only Python 3.11+ and Git. Regenerate progress with
 `scripts/repo-python scripts/progress.py` when ledger inputs change. Historical
 host fixtures, failure/lifecycle simulations, sanitizer sweeps and mutation
-reports are not current gates. Comparator self-tests are selected explicitly
-by running the affected `scripts/test-*.py` directly when that mechanism changes.
+reports are not current gates. `scripts/repo-python scripts/ci.py --full` adds
+the comparator self-tests and the ledger validator (about 15 seconds); run it
+when shared tooling changes. Nonexact owners are tracked by the diagnostic
+ratchet `scripts/check-frontier.py` (data in `config/frontiers.toml`).
 
 Exact work compares complete native owners, every relocation/resolved field,
 fixed local destinations, actual ABI and required callee bindings. Select only

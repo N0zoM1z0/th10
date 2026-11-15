@@ -203,6 +203,12 @@ rewrites in the ECL dispatcher; moving ECL stack services to another TU.
 - An exact leaf can stay exact while its inlined copy regresses the parent
   (`EclVmStackView::Pop` versus Run), and an exact child does not make its
   caller exact.
+- Nonexact owners live in `config/frontiers.toml`, checked by
+  `scripts/check-frontier.py`: it rebuilds each graph, masks the candidate's
+  REL32 and base-relocation fields and fails when a previously matching byte
+  differs. Triage units carry `candidate = true` and are excluded from the
+  exact ledger check and replay. A frontier residual measured in one graph does
+  not transfer to another.
 - Identical build groups must share one output directory, and two units cannot
   own the same target address. Never edit `config/match-units.toml` while a
   replay runs, because each unit build rereads it.

@@ -25,8 +25,9 @@ target, toolchain, exactness and Git rules.
 1. Pick an owner from the knowledge base's **Open owners** list and read its
    source and target bytes.
 2. Clone an existing unit whose graph contains the owner's TU, with
-   `linkages = []`, and build it:
-   `scripts/repo-python scripts/build-match-unit.py --unit NAME`.
+   `linkages = []` and `candidate = true`, and build it:
+   `scripts/repo-python scripts/build-match-unit.py --unit NAME`. Candidate
+   units are excluded from the exact ledger check and from replay.
 3. Align candidate and target with
    `scripts/repo-python scripts/diagnostics/triage/idiff.py IMAGE SYMBOL ADDR SIZE`.
    For big graphs, `scripts/diagnostics/triage/quick-relink.py UNIT --dirty
@@ -41,8 +42,17 @@ target, toolchain, exactness and Git rules.
    `scripts/repo-python scripts/replay-exact-units.py --unit A --unit B --json`.
    Replays stop at the first failure, so group by output directory. Never edit
    the manifest while a replay runs.
-6. Update `config/matches.csv` and `config/functions.csv`, run
+6. Remove the unit's `candidate` flag and its `config/frontiers.toml` entry,
+   update `config/matches.csv` and `config/functions.csv`, run
    `scripts/repo-python scripts/progress.py`, and commit.
+
+`scripts/repo-python scripts/check-frontier.py [NAME...]` is the ratchet for
+nonexact owners. It rebuilds their graphs and fails if a byte that matched
+before now differs; after a source change, run it for the frontiers whose
+graphs compile that source, and record an improvement with `--update`. Add an
+owner with `--add NAME --unit UNIT --function F [--symbol S --address A --size N]`.
+Run `scripts/repo-python scripts/ci.py --full` (about 15 seconds) when shared
+tooling changes.
 
 The most complete graph is `build/match-linked/ClaudeReplayInitLoadScript`
 (the ReplayInit graph plus `AnmLoadedStartScript.cpp`, entry

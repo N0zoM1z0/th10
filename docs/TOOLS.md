@@ -25,7 +25,6 @@
 | Inspect linked function extents | `scripts/repo-python scripts/inspect-linked-functions.py IMAGE MAP PDB [--object TEXT] [--contains TEXT] [--json]` | PE/map/PDB-bound public functions whose sizes come from DBI section contributions; no acceptance authority |
 | Batch-probe LTCG backlog | `scripts/repo-python scripts/probe-ltcg-backlog.py [--source SOURCE] [--entry SOURCE=NAME] [--support SOURCE=SUPPORT_SOURCE] [--show RESULT] [--json]` | Cold one- or multi-source `/GL` compile and diagnostic link, PDB-owned extents, and target structural comparison; no acceptance authority |
 | Audit physical function boundaries | `scripts/repo-python scripts/report-boundary-inventory.py --check-ledger [--json]` | Target-bound dense decode, sparse Ghidra ranges, gaps, references and indexed indirect-control-table queue; no automatic ownership credit |
-| Verify the front-end/options core | `scripts/repo-python scripts/report-frontend-core.py --check [--json]` | Target identity, physical tails/tables/padding, selected call counts, maintained state/layout coverage and ANM child-key invariant |
 | Initialize private Ghidra project | `scripts/repo-python scripts/ghidra.py import` | Operator-only bootstrap; provisional inventory |
 | Attest private Ghidra project | `scripts/repo-python scripts/ghidra.py check` | Target/project binding, no exactness credit |
 | Query local Ghidra | `scripts/repo-python scripts/ghidra.py query .analysis/query.txt OPERATION ARG...` | Read-only target-attested provisional semantic analysis |
@@ -33,6 +32,8 @@
 | Validate ledgers | `scripts/repo-python scripts/validate-tracking.py --require-target` | Internal consistency and target binding |
 | Report progress | `scripts/repo-python scripts/report-reconstruction-status.py` | Ledger-derived status |
 | Validate public checkout | `scripts/repo-python scripts/ci.py` | Small target-independent checks |
+| Track nonexact owners | `scripts/repo-python scripts/check-frontier.py [NAME...] [--no-build] [--update] [--show]` | Ratchet over `config/frontiers.toml`; fails when a matched byte regresses; record new owners with `--add NAME --unit UNIT --function F [--symbol S --address A --size N]`; diagnostic only |
+| Run the tooling self-tests | `scripts/repo-python scripts/ci.py --full` | Basic checks plus every `scripts/test-*.py` and the ledger validator (about 15 s; needs the private target and built EH fixture graphs) |
 | Align a candidate with the target | `scripts/repo-python scripts/diagnostics/triage/idiff.py IMAGE SYMBOL ADDRESS SIZE` | Address-masked instruction alignment; triage only |
 | Relink a big graph after a small edit | `scripts/repo-python scripts/diagnostics/triage/quick-relink.py UNIT --dirty src/X.cpp` | Recompiles only the named sources; triage only |
 | Draft a unit's linkages | `scripts/repo-python scripts/diagnostics/triage/linkages-from-candidate.py IMAGE SYMBOL ADDRESS SIZE` | Candidate-derived fields to review and canonicalize |

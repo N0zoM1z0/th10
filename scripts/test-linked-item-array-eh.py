@@ -9,6 +9,7 @@ each mutation must be rejected before any exact-owner credit is possible.
 from __future__ import annotations
 
 import copy
+import functools
 import runpy
 import struct
 from pathlib import Path
@@ -50,21 +51,27 @@ class MutableImage:
         self.write(address, struct.pack('<I', value & 0xFFFFFFFF))
 
 
-def fixture(name='item-manager-destructor-0041adf0', product=PRODUCT):
-    unit = copy.deepcopy(runpy.run_path(str(ROOT / 'scripts/build-match-unit.py'))['load']()['units'][name])
-    field = next(f for f in unit['linkages'] if f.get('item_array_eh_handler'))
+@functools.lru_cache(maxsize=None)
+def _inputs(name, product):
+    """Parse the manifest, map, PDB and images once; cases mutate deep copies."""
+    unit = runpy.run_path(str(ROOT / 'scripts/build-match-unit.py'))['load']()['units'][name]
     functions = linked_functions(product/'source.exe', product/'source.map', product/'source.pdb')['functions']
-    parent, = [r for r in functions if r['symbol'] == unit['symbol']]
-    statics = map_statics(product/'source.map')
-    pdb = pdb_section_contributions(product/'source.pdb')
-    publics = map_publics(product/'source.map')
     aliases = runpy.run_path(str(ROOT / 'scripts/compare-linked-function.py'))['anchor_aliases'](product/'link-aliases.rsp')
+    return (unit, functions, map_statics(product/'source.map'), pdb_section_contributions(product/'source.pdb'),
+            map_publics(product/'source.map'), aliases, PEImage(product/'source.exe'), PEImage(ROOT/'resources/th10.exe'))
+
+
+def fixture(name='item-manager-destructor-0041adf0', product=PRODUCT):
+    unit, functions, statics, pdb, publics, aliases, candidate, target = (
+        copy.deepcopy(v) if i < 6 else v for i, v in enumerate(_inputs(name, product)))
+    field = next(f for f in unit['linkages'] if f.get('item_array_eh_handler'))
+    parent, = [r for r in functions if r['symbol'] == unit['symbol']]
     handler, = [r for r in statics if r['symbol'] == '__ehhandler$' + unit['symbol']]
     return dict(unit=unit, field=field, parent=parent, statics=statics,
                 pdb=pdb, publics=publics, aliases=aliases, product=product,
                 address=handler['address'],
-                candidate=MutableImage(PEImage(product/'source.exe')),
-                target=MutableImage(PEImage(ROOT/'resources/th10.exe')))
+                candidate=MutableImage(candidate),
+                target=MutableImage(target))
 
 
 def bind(f):

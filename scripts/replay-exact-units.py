@@ -53,7 +53,12 @@ def load_units() -> dict[str, dict[str, object]]:
 def select_units(
     units: dict[str, dict[str, object]], args: argparse.Namespace
 ) -> list[str]:
+    candidates = {name for name, unit in units.items() if unit.get("candidate")}
+    units = {name: unit for name, unit in units.items() if name not in candidates}
     if args.unit:
+        named = sorted(set(args.unit) & candidates)
+        if named:
+            raise ValueError(f"candidate unit(s) are not exact; use check-frontier.py: {named}")
         unknown = sorted(set(args.unit) - set(units))
         if unknown:
             raise ValueError(f"unknown unit(s): {unknown}")

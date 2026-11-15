@@ -5,7 +5,6 @@ Synthetic PE/MAP/PDB fixtures compare every byte, including unlinked data.
 The decoder-stop seam models a real stop at an owned jump-table boundary.
 No original executable or reconstruction artifact is modified.
 """
-import copy
 import importlib.util
 from pathlib import Path
 import struct
@@ -89,84 +88,6 @@ class TrailingCoverage(unittest.TestCase):
         self.fixture.unit.pop("data_spans")
         with self.assertRaisesRegex(ValueError, "Capstone decoded"):
             self.compare()
-
-
-class RunTableLayout(unittest.TestCase):
-    def setUp(self):
-        self.d = module("diagnose-ecl-run-native.py")
-        d = self.d
-        self.base = 0x501000
-        def field(offset, relative):
-            return dict(offset=offset, width=4, type="DIR32",
-                        candidate_target=hex(self.base + relative),
-                        target_candidate=hex(d.RUN_ADDRESS + relative))
-        self.report = dict(candidate_address=hex(self.base), decoded_candidate_bytes=7019,
-                           normalization_complete=False,
-                           linkage_fields=[field(97, d.RUN_SELECTOR_OFFSET),
-                                           field(104, d.RUN_CODE_SIZE)] +
-                           [field(d.RUN_CODE_SIZE + i * 4, i * 4) for i in range(60)])
-        self.selector = bytes(i % 60 for i in range(88))
-
-    def spans(self):
-        outer = self
-        class Image:
-            def read_address(self, address, size):
-                outer.assertEqual(address, outer.base + outer.d.RUN_SELECTOR_OFFSET)
-                outer.assertEqual(size, 88)
-                return outer.selector
-        return self.d.run_data_spans(Image(), self.report)
-
-    def test_last_selector_byte(self):
-        self.assertEqual(self.spans(), [{"offset": 7019, "width": 1}])
-
-    def test_stop_at_or_inside_jump_table(self):
-        for decoded in (6692, 6693, 6932):
-            with self.subTest(decoded=decoded):
-                self.report["decoded_candidate_bytes"] = decoded
-                self.assertEqual(self.spans(), [{"offset": 6932, "width": 88}])
-
-    def test_dense_decode_needs_no_annotation(self):
-        self.report.update(decoded_candidate_bytes=7020, normalization_complete=True)
-        self.assertEqual(self.spans(), [])
-
-    def test_stopping_inside_code_is_rejected(self):
-        self.report["decoded_candidate_bytes"] = 6691
-        with self.assertRaisesRegex(ValueError, "executable body"):
-            self.spans()
-
-    def test_shifted_reference_is_rejected(self):
-        for key in ("candidate_target", "target_candidate"):
-            with self.subTest(side=key):
-                original = copy.deepcopy(self.report)
-                field = self.report["linkage_fields"][0]
-                field[key] = hex(int(field[key], 0) + 4)
-                with self.assertRaisesRegex(ValueError, "dispatch-table reference"):
-                    self.spans()
-                self.report = original
-
-    def test_missing_or_duplicate_table_entry_is_rejected(self):
-        self.report["linkage_fields"][-1]["offset"] -= 4
-        with self.assertRaisesRegex(ValueError, "60-entry"):
-            self.spans()
-
-    def test_noncode_destination_is_rejected(self):
-        self.report["linkage_fields"][-1]["candidate_target"] = hex(
-            self.base + self.d.RUN_CODE_SIZE)
-        with self.assertRaisesRegex(ValueError, "executable body"):
-            self.spans()
-
-    def test_link_field_inside_selectors_is_rejected(self):
-        field = copy.deepcopy(self.report["linkage_fields"][-1])
-        field["offset"] = self.d.RUN_SELECTOR_OFFSET
-        self.report["linkage_fields"].append(field)
-        with self.assertRaisesRegex(ValueError, "selector data.*link field"):
-            self.spans()
-
-    def test_selector_domain_is_checked(self):
-        self.selector = bytes([60]) + self.selector[1:]
-        with self.assertRaisesRegex(ValueError, "selector data.*domain"):
-            self.spans()
-
 
 
 class _FlatImage:
