@@ -292,11 +292,13 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   forms failed; other opcode spellings move bytes elsewhere. A five-input graph
   reproduction of the 9,962 state also failed in the last session. [2026-11-14]
 - **EclVmContext::Run @0x44E1A0 (7,020)**: root at the real caller
-  `EclVmHost::Run`; the clean one-TU diagnostic is 6,241/6,264 comparable
-  bytes with the exact 7,020-byte extent. Remaining differences include SIB
-  base/index ordering at +0xAF and +0x1FB, `LENGTH_SQUARED` and `POINT_ANGLE`
-  x87 stack-slot order, and a spill-slot swap. About 40 spelling forms are
-  neutral. [2026-11-15]
+  `EclVmHost::Run`; the typed-Pop baseline is 6,241/6,264 comparable bytes
+  with the exact 7,020-byte extent. Moving `floatResult` and `logicalResult`
+  from switch-wide locals into their opcode scopes makes `POINT_ANGLE`'s x87
+  sequence exact: the third operand spills to `[esp+0x14]`, then reloads there
+  before `FPATAN`, matching retail. This costs five matched bytes in the float
+  comparison arms (6,236/6,264 overall). Remaining: SIB ordering at +0xAF and
+  +0x1FB, `LENGTH_SQUARED` x87 order, and comparison-arm spills. [2026-11-15]
 - **EclVmStackView::Pop @0x450610 (122)**: both the typed
   `typeAddress->type` access and `stackData[stackTop]` produce an exact
   122/122-byte linked contribution with the real `Run` entry and preserve the
