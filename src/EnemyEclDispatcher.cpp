@@ -2363,15 +2363,18 @@ dispatch_rank_count_lowest:
     return 0;
   }
   case ENEMY_ECL_INTERPOLATE_BULLET_COUNT_BY_RANK:
+  {
     // Native SUB, ADD and IMUL keep the low 32-bit word even on overflow.
     // The subsequent signed division still rounds toward zero.
-    uVar22 = ENEMY_READ_INT_DIRECT(0);
+    volatile EnemyFullObjectView *const readOwner = owner;
+    register unsigned int patternIndex =
+        static_cast<unsigned int>(reinterpret_cast<EclVmContext *>(
+            readOwner->activeEclContext)->ReadInt(0));
     uVar23 = ENEMY_READ_INT_DIRECT(1);
     secondLowBulletCount = ENEMY_READ_INT_DIRECT(2);
     uVar24 = ENEMY_READ_INT_DIRECT(3);
     uVar25 = ENEMY_READ_INT_DIRECT(4);
-    iVar27 = static_cast<int>(
-        static_cast<unsigned int>(uVar22) *
+    iVar27 = static_cast<int>(patternIndex *
         static_cast<unsigned int>(sizeof(EnemyBulletPatternView)));
     iVar26 = static_cast<int>((static_cast<unsigned int>(uVar24) -
         static_cast<unsigned int>(uVar23)) *
@@ -2389,6 +2392,7 @@ dispatch_rank_count_lowest:
          (short)(iVar26 / 2048) +
          (short)secondLowBulletCount;
     return 0;
+  }
   case ENEMY_ECL_SET_BULLET_AIM_MODE:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     uVar23 = ENEMY_READ_INT_DIRECT(1);
