@@ -440,18 +440,17 @@ void ReplayManager::BeginStage()
                 slot.replayPair3;
         }
 
-        stageHeader->unknown1B8 = g_ReplayStageValue1B8;
-        int stage = g_GameScoreState.selectedStage;
-        activeStage = stage;
-        stageHeaders[stage]->unknown1BC = runtime->optionMode;
+        stageHeader->unknown1B8 =
+            reinterpret_cast<GameStartupStateView &>(g_GameScoreState).rankResetCounter;
+        activeStage = g_GameScoreState.selectedStage;
+        stageHeaders[activeStage]->unknown1BC = runtime->optionMode;
     }
     else if (mode == REPLAY_MANAGER_PLAYBACK)
     {
-        int stage = g_GameScoreState.selectedStage;
-        ReplayStageDataHeader *stageHeader = stageStates[stage].header;
+        ReplayStageDataHeader *stageHeader =
+            stageStates[g_GameScoreState.selectedStage].header;
         Player *runtime = g_Player;
-
-        activeStage = stage;
+        activeStage = g_GameScoreState.selectedStage;
         ReplayRestoreStagePosition(runtime, &stageHeader->unknown024);
         Player *updatedRuntime = g_Player;
         memcpy(runtime->replayPositionHistory, stageHeader->runtimeSnapshot,

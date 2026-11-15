@@ -632,24 +632,25 @@ void *GameCreateItemManager()
 
 int ItemManagerView::ConvertPowerItems()
 {
-    ItemRecordView *item = &items[0];
-    for (int remaining = 150; remaining != 0; --remaining, ++item)
+    for (int index = 0; index < 150; ++index)
     {
-        if (item->active == 0 || (item->kind != 1 && item->kind != 4))
+        ItemRecordView *item = &items[index];
+        if (item->active == 0)
+            continue;
+        int kind = item->kind;
+        if (kind != 1 && kind != 4)
             continue;
         item->active = 0;
-        int kind = item->kind;
-        if (kind == 1)
-            kind = 9;
-        else if (kind == 4)
-            kind = 9;
-        else if (kind == 10 || kind == 11)
-            kind = 5;
-        else
-            continue;
         // The last conversion arm is retained in the target despite the
         // preceding predicate excluding those values.
-        Spawn(&item->worldPosition, kind, 0xffffffffu, -1.5707964f, 2.2f);
+        if (kind == 1)
+            Spawn(&item->worldPosition, 9, 0xffffffffu, -1.5707964f, 2.2f);
+        else if (kind == 4)
+            Spawn(&item->worldPosition, 9, 0xffffffffu, -1.5707964f, 2.2f);
+        else if (kind == 10 || kind == 11)
+            Spawn(&item->worldPosition, 5, 0xffffffffu, -1.5707964f, 2.2f);
+        else
+            continue;
         g_EnemyPrimaryResourceOwner->primaryEnemyResource->
             CreateVmAtWorldVariant0(0x189, &item->worldPosition);
     }
