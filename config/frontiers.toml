@@ -33,13 +33,6 @@ candidate_size = 168
 target_sha256 = "9c40c6d9b39e51be36a5b49f37d7eaa9e251a0e38783645399e8bdb056432a9f"
 residual = ["A1-AA"]
 
-[frontier.player-load-option-data]
-function = "PlayerLoadOptionData"
-unit = "player-load-option-data"
-candidate_size = 229
-target_sha256 = "268307c702403c47448c68e49efadd0d668ace2f4f79b31d24be149456f21e96"
-residual = ["0-5", "A-F", "11-1A", "1F-20", "22-5F", "61-65", "67-6B", "E1-E3"]
-
 [frontier.enemy-read-float-operand]
 function = "EnemyFullObjectView::ReadFloatOperand"
 unit = "enemy-read-float-operand"
