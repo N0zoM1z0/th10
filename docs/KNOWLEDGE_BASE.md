@@ -286,26 +286,28 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   Remaining operands 1-4 still have delayed register saves and different
   stack homes; the graph remains diagnostic-only (206 unresolved, 55
   unowned code contributions), not an exact owner replay.
-- **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: 9,962/9,964, 350
-  fields. Only opcode 91 differs: target `MOV EDX,[EBP+20h]; PUSH EDX` at
-  +0x113/+0x115, ours ECX. Over 40 lifetime, aggregate, volatile and barrier
-  forms failed; other opcode spellings move bytes elsewhere. A five-input graph
-  reproduction of the 9,962 state also failed in the last session. [2026-11-14]
+- **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: the current
+  `player-handle-collision-hit` graph has the full 9,964-byte extent and two
+  residual bytes at +0x113/+0x115. A 2026-11-16 relink rebuilt both
+  `src/AnmManager.cpp` and `src/EclVm.cpp` support objects; the frontier still
+  reports the same two differences. Retail loads `[ebp+0x20]` into EDX and
+  pushes EDX; the candidate uses ECX. The current opcode-91 source uses a local
+  `AnmChildScriptLayer` with separate `script` and `layer` assignments. Keep
+  the surrounding opcode bodies intact while investigating this call-site
+  register lifetime. [2026-11-16]
 - **EclVmContext::Run @0x44E1A0 (7,020)**: rooted at the real caller
-  `EclVmHost::Run`; current split-Return-Pop candidate is 6,241/6,264
-  comparable bytes with the exact 7,020-byte extent. The two Return pops now
-  reproduce retail byte-for-byte: the instruction dword reads through SIB
-  `0x38` (`[eax+edi]`), while the `currentTime` dword reads through SIB `0x07`
-  (`[edi+eax]`). The latter uses a dedicated force-inlined four-byte pop helper;
-  the public `EclVmStackView::Pop` leaf remains exact at 122/122. The
-  `POINT_ANGLE` x87 sequence is exact: the third operand spills to
-  `[esp+0x14]` and reloads there before `FPATAN`. `LENGTH_SQUARED` also exactly
-  matches retail's `ReadFloat(1) -> [esp+0x18]`, `ReadFloat(2) -> [esp+0x14]`,
-  `ResolveFloat(0)`, then `FMUL [esp+0x14]`, `FMUL [esp+0x18]`, `FADDP` sequence.
-  The remaining first tag-byte SIB at +0x1FB is `0x30` vs retail `0x06`; a
-  reversed pointer-add form fixes a later tag access at +0x316 but not this
-  earlier JUMP_IF access. Next isolate those call-site-specific tag-address
-  schedules without regressing the two Return pops or exact leaf. [2026-11-15]
+  `EclVmHost::Run`; the fresh 2026-11-16 36-support-TU relink has the full
+  7,020-byte extent and 23 differing bytes. `check-frontier --no-build --show
+  ecl-run` reports `REGRESSED`: the count remains 23, but the differing
+  offsets moved relative to the stored residual set. Current examples include
+  EDX/EDI selection at +0xEB/+0xF1, pointer-register selection at
+  +0x129/+0x12B, commutative SIB order at +0x1F9/+0x241, spill homes in
+  +0x403..+0x4CD, SIB order at +0xE6D/+0xE79/+0x1584, and EDX/EAX selection
+  at +0x19E5/+0x19E7. Do not update the frontier baseline merely to accept the
+  moved residuals. The earlier isolated probe measured 6,241/6,264 comparable
+  bytes and found the two Return-pop SIBs plus the `POINT_ANGLE` and
+  `LENGTH_SQUARED` x87 schedules exact; recheck those sequences in the fresh
+  linked image before relying on that local result. [2026-11-16]
 - **EclVmStackView::Pop @0x450610 (122)**: both the typed
   `typeAddress->type` access and `stackData[stackTop]` produce an exact
   122/122-byte linked contribution with the real `Run` entry and preserve the
