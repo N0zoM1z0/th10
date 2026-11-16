@@ -7,11 +7,10 @@
 
 ## Current scope
 
-Current direction, 2026-11-13: work directly with local tools on exact
-reconstruction.
-[AGENTS.md](../AGENTS.md) is the operational authority. No Factory provider,
-receipt, coordinator or Factory-document prerequisite applies. Use
-`gpt-web:` local commits; never push.
+Work directly with local tools on exact reconstruction. [AGENTS.md](../AGENTS.md)
+is the operational authority if this summary is stale or conflicts with current
+instructions. No Factory provider, receipt, coordinator or Factory-document
+prerequisite applies. Use `gpt-web:` local commits; never push.
 
 The objective is at least 98% of reviewed authored owned bytes exact. Advance
 complete medium/large representatives and useful leaves. Natural low-level

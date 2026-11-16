@@ -292,7 +292,11 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   14,480, but introduces new offsets (+0xBA/+0xF8) and moves many residuals;
   the frontier correctly rejects it. Volatile host/runtime reload variants
   expand to 14,512 bytes and 10,630-10,647 differences. Do not promote a
-  smaller raw count when the new-offset ratchet fails.
+  smaller raw count when the new-offset ratchet fails. The current 36-support
+  `player-handle-collision-hit` image is a separate measurement: candidate
+  extent 14,492 against the 14,416-byte target, 10,568 differing bytes, and
+  `REGRESSED` against the stored 10,416-byte residual set. Keep the 1,545/11,568
+  result labelled as the best 12-TU diagnostic, not a complete-owner match.
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: the current
   `player-handle-collision-hit` graph has the full 9,964-byte extent and two
   residual bytes at +0x113/+0x115. A 2026-11-16 relink rebuilt both
@@ -301,7 +305,10 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   pushes EDX; the candidate uses ECX. The current opcode-91 source uses a local
   `AnmChildScriptLayer` with separate `script` and `layer` assignments. Keep
   the surrounding opcode bodies intact while investigating this call-site
-  register lifetime. [2026-11-16]
+  register lifetime. Register/const/volatile layer locals, field-order changes
+  and direct `renderLayer` argument rewrites did not produce a safe improvement;
+  an inline-assembly rewrite damaged the whole owner. All trials were reverted.
+  [2026-11-16]
 - **EclVmContext::Run @0x44E1A0 (7,020)**: rooted at the real caller
   `EclVmHost::Run`; the fresh 2026-11-16 36-support-TU relink has the full
   7,020-byte extent and 23 differing bytes. `check-frontier --no-build --show
@@ -329,7 +336,8 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   unchanged. A PopInt rewrite in MULTIPLY_INT shrinks Run to 6,992 bytes and
   5,087 differences. Reject these parent regressions; retain the typed Pop
   spelling and do not refresh the 23-byte frontier merely to accept moved
-  offsets.
+  offsets. The current linked graph also compares the four stack leaves exactly:
+  Pop 122/122, Push 96/96, EnterFrame 64/64 and LeaveFrame 41/41. [2026-11-16]
 - **EclVmStackView::Pop @0x450610 (122)**: both the typed
   `typeAddress->type` access and `stackData[stackTop]` produce an exact
   122/122-byte linked contribution with the real `Run` entry and preserve the
@@ -430,7 +438,11 @@ trusting a number. Owners without an entry have no useful recorded attempt.
 - **TransitionShakeEnvelope @0x43C710 (349)**: 115/118 normalized; block order
   and a phase-limit spill. [2026-11-14]
 - **BulletRuntimeView::UpdateAbsoluteDirectionChange @0x4078E0 (335)**: 333/335;
-  the angle argument register at +0xD7/+0xDD (target EDX, ours EAX). [2026-11-14]
+  the angle argument register at +0xD7/+0xDD (target EDX, ours EAX). `register`
+  hints on the speed/angle locals are byte-neutral. Removing the angle-copy local
+  and passing `angle` directly adds two differences; an inline-assembly call
+  damages the whole function. All trials were reverted; the baseline remains
+  333/335. [2026-11-16]
 - **Player::~Player @0x424ED0 (325)**: 333. [2026-10-31]
 - **FrontEndInsertScore @0x421FA0 (316)**: 263; the helper uses 64-bit `100.0`
   where the target uses 32-bit. [2026-10-15]
