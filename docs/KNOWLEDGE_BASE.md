@@ -453,8 +453,14 @@ trusting a number. Owners without an entry have no useful recorded attempt.
 - **InitializeGameStatisticsRecord @0x42ACB0 (274)**: full size, 25 ordinary
   differences (zero register, name-copy register pair, group counter).
   [2026-11-13]
-- **PlayerLoadOptionData @0x426520 (229)**: 62/67 normalized with
-  `static_cast<float>(sin(0.7853982f))`. [2026-11-14]
+- **PlayerLoadOptionData @0x426520 (229)**: a fresh, selected 20-support-TU
+  `EnemyReadIntOperand` caller graph retains the real `PlayerInitialize`
+  consumer and `src/Player.cpp` PDB ownership. All 229 bytes decode; the
+  `FileSystem::OpenFile` call, sine constant and four callback tables bind to
+  six reviewed target addresses. Local `compare-linked-function.py` reports
+  229/229 normalized bytes with no differences, while the existing 820-byte
+  Enemy integer reader remains exact. This is still a candidate until a
+  scoped canonical cold replay, not yet accepted exact credit. [2026-11-16]
 - **GamePrepareAnimationSlots @0x404450 (214)**: the target uses a stack owner
   and RET4; the real graph gives EDI and plain RET. [2026-10-31]
 - **StartEntityScript_00404f30 @0x404F30 (202)**: now natural source (the naked
