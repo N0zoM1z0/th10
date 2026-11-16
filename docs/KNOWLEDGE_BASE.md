@@ -286,6 +286,13 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   Remaining operands 1-4 still have delayed register saves and different
   stack homes; the graph remains diagnostic-only (206 unresolved, 55
   unowned code contributions), not an exact owner replay.
+  [2026-11-16] The clean 12-TU `/GS` baseline is 14,496/14,416 bytes with
+  10,574 differing bytes. For opcode 0x1AB, routing operands 1-4 through one
+  local `EclVmHost*` lowers the raw count to 10,542 and candidate extent to
+  14,480, but introduces new offsets (+0xBA/+0xF8) and moves many residuals;
+  the frontier correctly rejects it. Volatile host/runtime reload variants
+  expand to 14,512 bytes and 10,630-10,647 differences. Do not promote a
+  smaller raw count when the new-offset ratchet fails.
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: the current
   `player-handle-collision-hit` graph has the full 9,964-byte extent and two
   residual bytes at +0x113/+0x115. A 2026-11-16 relink rebuilt both
@@ -308,6 +315,21 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   bytes and found the two Return-pop SIBs plus the `POINT_ANGLE` and
   `LENGTH_SQUARED` x87 schedules exact; recheck those sequences in the fresh
   linked image before relying on that local result. [2026-11-16]
+  [2026-11-16] A clean-source relink through the real 36-support-TU caller
+  graph reconfirms 7,020/7,020 bytes and 23 differing bytes. Thirteen
+  companion ECL leaf units (Push, EnterFrame, LeaveFrame, ReadIntValue,
+  ReadInt, ReadFloatValue, ReadFloat, FindThread, Host::Run, SpawnThread,
+  StopAllThreads, FindSubroutine and PolarVector::FromAngleMagnitude) each
+  compare with zero differing bytes; Pop is separately exact at 122/122.
+  A STOP_THREAD inline-assembly trial matches the local EAX reload at
+  +0x129/+0x12B but raises the parent to 53 differences. Replacing Pop's
+  value/type addresses with explicit native-word arithmetic keeps the leaf
+  exact but raises the parent to 100 differences (both addresses) or 42
+  (type address only); `&data[stackTop]` leaves the 23-byte parent residual
+  unchanged. A PopInt rewrite in MULTIPLY_INT shrinks Run to 6,992 bytes and
+  5,087 differences. Reject these parent regressions; retain the typed Pop
+  spelling and do not refresh the 23-byte frontier merely to accept moved
+  offsets.
 - **EclVmStackView::Pop @0x450610 (122)**: both the typed
   `typeAddress->type` access and `stackData[stackTop]` produce an exact
   122/122-byte linked contribution with the real `Run` entry and preserve the
