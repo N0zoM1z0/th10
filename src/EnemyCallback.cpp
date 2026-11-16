@@ -117,10 +117,11 @@ const unsigned char *__fastcall EnemyResolveRuntimeCallback(
             owner->runtime.life = owner->runtime.callbackThresholds[timerIndex].lifeThreshold;
             owner->runtime.callbackThresholds[timerIndex].lifeThreshold = -1;
             EnemyResetCallbackTimer(&owner->runtime.updateTimer);
-            volatile EnemyCallbackRuntimeFlagWordView *runtimeFlags =
-                reinterpret_cast<volatile EnemyCallbackRuntimeFlagWordView *>(
+            EnemyCallbackRuntimeFlagWordView *runtimeFlags =
+                reinterpret_cast<EnemyCallbackRuntimeFlagWordView *>(
                     &owner->runtime.flags);
             runtimeFlags->timeoutCallback = 1;
+            _ReadWriteBarrier();
 
             g_EnemyTimeoutValue = static_cast<int>(
                 static_cast<unsigned int>(g_EnemyTimeoutValue) - 3000u);

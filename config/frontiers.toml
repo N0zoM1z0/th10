@@ -236,13 +236,3 @@ unit = "replay-playback-frame-control-callback"
 candidate_size = 68
 target_sha256 = "fcad5e38ac142b4d3f8a5e492c4fd1a4bb75fddf3cb5214b384b52b712b85a1f"
 residual = ["13", "18", "22", "37"]
-
-[frontier.enemy-resolve-runtime-callback]
-function = "EnemyResolveRuntimeCallback"
-unit = "enemy-resolve-runtime-callback"
-symbol = "?EnemyResolveRuntimeCallback@@YIPBEPAUEnemyFullObjectView@@@Z"
-address = 0x004127A0
-size = 593
-candidate_size = 600
-target_sha256 = "ef3572398ce7dd9d852c81897b40950cce7879b93f9fcbf0bc9f3fea9f303113"
-residual = ["188-189", "18E", "190-199", "19E-1A8", "1AD-1B0", "1B5-1B9", "1BE-1E2", "1E4-1E8", "1EA-1EE", "1F0-1F5", "1F7-1FC", "1FE-20E", "210-214", "216-21A", "21C-220", "222-226", "228-238", "23A-23E", "240-244", "247-257"]

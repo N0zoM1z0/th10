@@ -421,15 +421,16 @@ trusting a number. Owners without an entry have no useful recorded attempt.
 - **MainSupervisorView::UpdateGameMode @0x4218D0 (666)**: 678. [2026-10-29]
 - **CStreamingSound::HandleWaveStreamNotification @0x44D850 (637)**: 634. The
   637-byte CFG variants order the read and fill blocks wrongly. [2026-11-11]
-- **EnemyResolveRuntimeCallback @0x4127A0 (593)**: the prior 593-byte,
-  147-instruction result used inline assembly for the timeout flag and is not
-  an acceptable C++ reconstruction. Replacing it with a size-checked,
-  volatile 32-bit bit-field is natural C++ and removes all assembly from the
-  callback, but VC7.1 emits a 600-byte PDB contribution with 173 residual
-  bytes. The eight-record life/timer scans and Player state transition remain
-  source-backed; keep this as a nonexact candidate until the timeout flag
-  operation and remaining layout are expressed in C++ with the correct codegen.
-  [2026-11-16]
+- **EnemyResolveRuntimeCallback @0x4127A0 (593)**: natural C++ callback now
+  uses a 32-bit flag-word bit-field and `_ReadWriteBarrier()` to preserve the
+  timeout state write ordering without inline assembly. The full 593-byte
+  PDB-owned contribution matches all 147 instructions; seven target-bound
+  DIR32 fields, including `g_Player` at +0x1B3, normalize completely with
+  zero differences in the pinned 17-support-TU VC7.1 SP1 /GL /GS graph. A
+  scoped canonical cold replay independently rebuilt this unit and passed
+  the complete PDB-owned extent, all seven DIR32 bindings and normalization
+  checks (PDB GUID `e2fe72994a11224b8fb8ca595ee88ec9`, age 1). No inline
+  assembly or padding is used. [2026-11-17]
 - **EndingView::Initialize @0x40B560 (584)**: full size, node-flag scheduling.
   [2026-10-30]
 - **ReplayManager::BeginStage @0x42A450 (582)**: 566. [2026-10-31] Porting
