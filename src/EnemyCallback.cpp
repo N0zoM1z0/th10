@@ -43,6 +43,16 @@ typedef char EnemyCallbackPlayerFlags378CAt378C[
 typedef char EnemyCallbackPlayerState3790At3790[
     (offsetof(EnemyCallbackPlayerStateView, state3790) == 0x3790) ? 1 : -1];
 
+// The timeout callback sets bit 16 in the runtime flag word.
+struct EnemyCallbackRuntimeFlagWordView
+{
+    unsigned int reserved : 16;
+    unsigned int timeoutCallback : 1;
+    unsigned int remaining : 15;
+};
+typedef char EnemyCallbackRuntimeFlagWordSizeIs4[
+    (sizeof(EnemyCallbackRuntimeFlagWordView) == sizeof(unsigned int)) ? 1 : -1];
+
 
 static __forceinline void EnemyResetCallbackTimer(EnemyRuntimeTimerView *timer)
 {
@@ -107,11 +117,10 @@ const unsigned char *__fastcall EnemyResolveRuntimeCallback(
             owner->runtime.life = owner->runtime.callbackThresholds[timerIndex].lifeThreshold;
             owner->runtime.callbackThresholds[timerIndex].lifeThreshold = -1;
             EnemyResetCallbackTimer(&owner->runtime.updateTimer);
-            // Retail performs this in-place memory OR before reading the timeout global.
-            // Keep the x86 read-modify-write here so LTCG cannot hoist that read.
-            __asm {
-                or dword ptr [ecx + 2480h], 10000h
-            }
+            volatile EnemyCallbackRuntimeFlagWordView *runtimeFlags =
+                reinterpret_cast<volatile EnemyCallbackRuntimeFlagWordView *>(
+                    &owner->runtime.flags);
+            runtimeFlags->timeoutCallback = 1;
 
             g_EnemyTimeoutValue = static_cast<int>(
                 static_cast<unsigned int>(g_EnemyTimeoutValue) - 3000u);
