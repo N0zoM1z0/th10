@@ -20,6 +20,9 @@ temporary native compiler products. Preserve the following local inputs.
   `docs/evidence/anm-loaded-start-script-wave11-20261109/compiler-context.cpp`
   and `docs/evidence/anm-child-request-record/binding-contract.json`.
 - Unrelated `.analysis/d3d-*` work and associated private evidence.
+- The independent target-hash-pinned origin review at
+  `.analysis/gpt-5.6-sol/20260917-origin-review/runtime-origin-review.json`
+  (334 CRT matches and 961 resolved runtime references).
 
 ## Five retained noncanonical diagnostic contexts
 
@@ -60,3 +63,12 @@ Removed the generated `build/probe-ltcg/` directory (about 2.5 MB) and the
 failed, unreferenced `build/gpt-web/enemy-callback-pointer-zero/` probe.
 The five diagnostic contexts above, canonical `build/match-linked/` outputs,
 `build/match/` objects, D3D evidence and Factory runtime state were preserved.
+
+2026-11-16 second-pass cleanup: removed 397 superseded top-level `.analysis/`
+scratch files (logs, frontier snapshots, transient JSON/patches, decompiler
+text and one-off helper scripts), about 1.03 MB. Kept the active Ghidra lock,
+the four current `.analysis/gpt-web/` trial drivers, the independent origin
+review, D3D evidence and Factory runtime. Removed the generated
+`caller.obj`/`caller.normal.obj` from `build/anm-caller-abi-test/` while keeping
+its small `caller.cpp` ABI probe source. The five retained `build/gpt-web/`
+contexts and canonical build caches were not touched.
