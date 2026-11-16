@@ -33,12 +33,6 @@ candidate_size = 168
 target_sha256 = "9c40c6d9b39e51be36a5b49f37d7eaa9e251a0e38783645399e8bdb056432a9f"
 residual = ["A1-AA"]
 
-[frontier.enemy-kill-all]
-function = "EnemyKillAll"
-unit = "enemy-kill-all"
-candidate_size = 182
-target_sha256 = "6938d287528c2af7be38613f59cb63237839670e05a0d8cb11ddec440bb36648"
-residual = []
 [frontier.player-load-option-data]
 function = "PlayerLoadOptionData"
 unit = "player-load-option-data"

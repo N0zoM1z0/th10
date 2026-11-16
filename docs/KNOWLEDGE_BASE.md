@@ -430,8 +430,12 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   LoadReplay together with it broke `replay-manager-create`.
 - **EclVmContext::StartSubroutine @0x44DF70 (550)**: 551. [2026-11-07]
 - **ScriptViewerPopupOwnerView::Draw @0x42B780 (540)**: 537, 211/480 ordinary.
-- **EnemyKillAll @0x40E6A0 (182)**: 62/64 normalized instructions with the
-  full-object pointer and split masks. [2026-11-14]
+- **EnemyKillAll @0x40E6A0 (182)**: canonical `enemy-kill-all` linked-PE
+  unit cold-replays the complete 182-byte PDB-owned extent with all six
+  target-bound DIR32/REL32 fields at zero differences. The real
+  `AnmLoadedView::InitializeVm` caller graph owns the `src/GuiMessage.cpp`
+  contribution; a volatile scale pointer preserves the retail x87 operand
+  order in the timer fallback. [2026-11-16]
 - **TransitionShakeLinear @0x43C550 (439)**: 133/134 normalized; only the late
   `FIDIV` placement differs (ours right after `FMUL`, retail inside the second
   RNG draw). [2026-11-14]

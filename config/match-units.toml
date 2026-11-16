@@ -32331,7 +32331,6 @@ linkages = [
 "src/Hint.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 
 [units.enemy-kill-all]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/AnmVmCreate.cpp"
 pdb_source = "src/GuiMessage.cpp"
