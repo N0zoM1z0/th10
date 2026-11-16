@@ -35,15 +35,19 @@ void __stdcall EnemyKillAll(EnemyManagerView *manager)
         node = next;
     }
 
+    // Retail reads the pointed-to scale as volatile before the subframe;
+    // keep that operand live to preserve the native x87 addition order.
+    volatile float *const timerScale = manager->timer.scale;
     manager->timer.previous = manager->timer.current;
-    if (*manager->timer.scale > 0.99f && *manager->timer.scale < 1.01f)
+    if (*timerScale > 0.99f && *timerScale < 1.01f)
     {
         ++manager->timer.current;
         manager->timer.subframe += 1.0f;
     }
     else
     {
-        manager->timer.Add(*manager->timer.scale);
+        manager->timer.subframe = *timerScale + manager->timer.subframe;
+        manager->timer.current = static_cast<int>(manager->timer.subframe);
     }
 }
 

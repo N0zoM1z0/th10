@@ -38,8 +38,7 @@ function = "EnemyKillAll"
 unit = "enemy-kill-all"
 candidate_size = 182
 target_sha256 = "6938d287528c2af7be38613f59cb63237839670e05a0d8cb11ddec440bb36648"
-residual = ["A3-A6"]
-
+residual = []
 [frontier.player-load-option-data]
 function = "PlayerLoadOptionData"
 unit = "player-load-option-data"
