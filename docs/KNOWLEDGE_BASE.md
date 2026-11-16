@@ -484,6 +484,15 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   retail clears the second element's flag bit with an in-place `and`, ours
   loads it first because the ChainElem constructor uses `_ReadWriteBarrier`.
   Try a barrier-free constructor in the ReplayInit graph. [2026-11-15]
+- **ReplayPlaybackFrameControlCallback @0x42A3E0 (68)**: the complete
+  `src/ReplayManager.cpp` callback now naturally inlines its runtime/flag
+  guard and the frame-skip decision in the real `frontend-options-refresh`
+  graph. Before the explicit split the compiler emitted 62/68 bytes with
+  38 ordinary differences. The revised 68/68 body has two bound DIR32
+  operands and **four** remaining conditional-branch destination bytes at
+  +0x13/+0x18/+0x22/+0x37 (target shared RET, candidate late return-1).
+  Independent 3,999-byte FrontEnd owner stays canonical exact; callback
+  remains a **nonexact** ratcheted frontier. [2026-11-16]
 - **th10::leaf::Fn0041FD90 @0x41FD90 (63)**: no callers or stored pointers; its
   EDX input ABI cannot be recovered from a caller.
 

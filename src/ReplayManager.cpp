@@ -588,9 +588,23 @@ int __fastcall ReplayProcessFrameCallback(ReplayManager *manager)
 // TH10_REPLAY_FUNCTION: 0x0042A3E0 ReplayPlaybackFrameControlCallback
 int __fastcall ReplayPlaybackFrameControlCallback(ReplayManager *manager)
 {
-    if (g_ReplayRuntime != NULL && (g_ReplayRuntime->flags & 4) != 0)
-        return 1;
-    return manager->ControlPlaybackFrames();
+    // The replay runtime may be absent even while the callback is registered.
+    // Keep that return separate from the initialized playback result: the
+    // native control path already has the success value in EAX.
+    ReplayRuntimeState *const runtime = g_ReplayRuntime;
+    if (runtime != NULL)
+    {
+        if ((runtime->flags & 4u) != 0)
+            return 1;
+        int result = 1;
+        if (manager->mode == result && (g_FrontEndInput.current & 0x100u) != 0)
+        {
+            if (manager->frameCounter % 4 != 0)
+                return 6;
+        }
+        return result;
+    }
+    return 1;
 }
 
 // TH10_REPLAY_FUNCTION: 0x0042A430 ReplayDrawFpsCallback
