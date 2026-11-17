@@ -298,6 +298,17 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   separate 12-TU `/GS` graph is 14,496 bytes with 10,574 differences and an
   unchanged diagnostic frontier. Keep these measurements separate; neither
   is close to exact or a canonical owner replay.
+  [2026-11-17] Opcode `0x199` uses 22 overlapping `0x18`-byte extra
+  records inside each `0x210`-byte bullet pattern. The final float is the
+  typed `EnemyBulletExtraView::floatB` member at +4 of the same record as
+  `floatA`, with the native byte-address cursor already computed for the
+  four integer stores. Replacing the later eight-byte-scaled address
+  expression with that member is semantically equivalent for all 32-bit
+  index words and makes the source model the actual record. The selected
+  12-TU `/GS` diagnostic remains nonexact (14,496/14,416 bytes, 10,576
+  differences versus 10,574 before this change); the exact
+  `EnemyApplyBulletClear` 44-byte owner remains unchanged in the graph.
+  No dispatcher exactness is claimed from this type recovery.
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and

@@ -2435,14 +2435,9 @@ dispatch_rank_count_lowest:
     fVar19 = (ReadFloatArgument(6));
     EnemyExtraRecordAt(iVar27)->floatA = (float)fVar19;
     fVar19 = (ReadFloatArgument(7));
-    // Keep the native index scaled in eight-byte units. This is the +4
-    // floatB member of the same extra slot, not a separate float array.
-    *reinterpret_cast<float *>(static_cast<unsigned int>(runtimeAddress) +
-        (static_cast<unsigned int>(iVar26) * 3u +
-         static_cast<unsigned int>(
-             (offsetof(EnemyRuntimeView, bulletPatterns) +
-              offsetof(EnemyBulletPatternFieldsView, unknown020) +
-              offsetof(EnemyBulletExtraView, floatB)) / 8)) * 8u) = (float)fVar19;
+    // The second float belongs to the same 0x18-byte extra record.
+    // Retain the shared record address computed above.
+    EnemyExtraRecordAt(iVar27)->floatB = (float)fVar19;
     return 0;
   case ENEMY_ECL_RESET_UPDATE_TIMER:
     updateTimer.SetCurrent(0);
