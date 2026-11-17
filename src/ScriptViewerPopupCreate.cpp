@@ -77,7 +77,12 @@ int ScriptViewerPopupOwnerView::Draw()
         else
             alpha = 80;
         int count = record->digitCount;
-        unsigned char *digit = record->digits + count - 1;
+        // The last digit is addressed as a native 32-bit byte word.
+        // Forming a pointer one byte before the digits with count == 0
+        // must not use out-of-bounds C++ pointer arithmetic.
+        unsigned char *digit = reinterpret_cast<unsigned char *>(
+            reinterpret_cast<unsigned int>(record->digits) +
+            static_cast<unsigned int>(count) - 1u);
         if (count > 0)
         {
             AnmVmView *const drawVm = &vm;
@@ -97,7 +102,10 @@ int ScriptViewerPopupOwnerView::Draw()
                 drawVm->flags35C |= 8;
                 g_AnmRenderManagerView->DrawNoRotation(drawVm);
                 drawVm->positionOffset.x += spacing;
-                --digit;
+                // Advance the native digit byte cursor even after the
+                // final entry, without forming an invalid C++ array pointer.
+                digit = reinterpret_cast<unsigned char *>(
+                    reinterpret_cast<unsigned int>(digit) - 1u);
             } while (--count);
             player = g_Player;
         }

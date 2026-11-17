@@ -496,6 +496,16 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   LoadReplay together with it broke `replay-manager-create`.
 - **EclVmContext::StartSubroutine @0x44DF70 (550)**: 551. [2026-11-07]
 - **ScriptViewerPopupOwnerView::Draw @0x42B780 (540)**: 537, 211/480 ordinary.
+  [2026-11-17] The count-dependent digit cursor now uses native
+  modulo-32-bit address addition to `record->digits` and decrements the
+  byte cursor through the same unsigned word representation. This avoids
+  undefined one-before-array pointer arithmetic when `digitCount == 0`
+  or after the last digit, while preserving the target
+  `LEA/DEC` behavior and ordinary C++ digit rendering. A fresh focused
+  four-source popup linked image remains 537/540 bytes with 266
+  non-relocation differences; the 10-byte draw callback remains nonexact,
+  and the separate popup Update owner passes its strict 134/134-byte
+  link comparison. This is a semantic repair, not exact-code credit.
 - **EnemyKillAll @0x40E6A0 (182)**: canonical `enemy-kill-all` linked-PE
   unit cold-replays the complete 182-byte PDB-owned extent with all six
   target-bound DIR32/REL32 fields at zero differences. The real
