@@ -601,21 +601,21 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   `AnmVmInitialize` as an external, so Initialize takes `this` in EBX instead
   of EAX. Build them in a graph with AnmVmInitialize.cpp; an earlier trial with
   `delete owner;` and that TU reached 141/145 and 67/71. [2026-11-15]
-- **Chain::Chain @0x449AA0 (59)** and **Chain::AllocElem @0x449ED0 (74)**:
-  [2026-11-17] Removing the two unnecessary barriers from the real ChainElem
-  constructor and publishing its self-link through a volatile member reference
-  restores the complete 59-byte constructor extent (formerly 66), with only
-  six bytes at +16..+1B different: the first self-store and second-sentinel
-  `LEA` are scheduled in the opposite order. Reading the allocator's existing
-  flags through a const volatile reference before publishing the callback
-  restores the complete 74-byte AllocElem extent, with nine ordinary bytes
-  different after masking its single allocator call field. Its `AND` on the
-  first flags word still precedes four zero stores instead of following them.
-  Both outcomes reproduce in the selected four-TU popup graph and the
-  30-input ChainLifetime graph. The same images retain exact popup Update
-  (134 bytes) and ChainElem destructor (12 bytes). Both Chain owners remain
-  nonexact; avoid barriers inside the member constructor, which reintroduce
-  a saved ESI register and increase the constructor to 66 bytes.
+- **th10::Chain::AllocElem @0x449ED0 (74)**: exact. Keeping the
+  `ChainElem` self-link publication before both volatile next/prev pointer
+  clears restores the target's inlined constructor order within `new`.
+  The selected four-TU ScriptViewer popup LTCG graph produces the entire
+  74-byte PDB-owned function, with no ordinary byte differences and its sole
+  `operator new` REL32 bound to 0x452493. Targeted cold replay is exact;
+  Popup Update (134 bytes), ChainElem destructor (12) and Chain destructor
+  (103) retain complete strict equality in affected graphs. No ASM or
+  padding is used. [2026-11-17]
+- **Chain::Chain @0x449AA0 (59)**: still nonexact. Its 59-byte current
+  candidate differs at eight bytes associated with the first self-link
+  store / second sentinel address scheduling. Before explicitly ordering
+  both next/prev clears the constructor was six bytes away, but that source
+  left the allocator nine bytes away. Keep these separate and do not claim
+  exactness for the constructor. [2026-11-17]
 - **ReplayManager::ProcessFrame @0x4297D0 (596)**: [2026-11-17]
   The frame counter now advances through an unsigned 32-bit word and
   bit-preserving `memcpy` instead of a potentially overflowing signed

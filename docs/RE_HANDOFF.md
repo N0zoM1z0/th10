@@ -1,12 +1,12 @@
 # TH10 reconstruction — next-agent handoff
 
-**Updated 2026-11-17.** Continue on the repository's local `main` branch; do not push. Start with [AGENTS.md](../AGENTS.md). This brief records the **current source** through `1e12ccbe` (typed laser-request `memset` cleanup), not the old `82bc4ab1` checkpoint. Git history is the provenance record; do not assume a clean tree without checking it.
+**Updated 2026-11-17.** Continue on the repository's local `main` branch; do not push. Start with [AGENTS.md](../AGENTS.md). This brief tracks the current typed ECL and Chain allocator source, including the new `chain-alloc-elem` exact owner. Git history is the provenance record; do not assume a clean tree without checking it.
 
 ## First five minutes
 
 Run `git status --short --branch`, `git diff --check` and `git log -8 --oneline`. Preserve any dirty changes and resolve them before switching owners. Verify the only valid target with `scripts/repo-python scripts/verify-target.py`: original Japanese TH10 v1.00a, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`. Use `scripts/repo-python scripts/verify-toolchain.py --check` for compiler declarations, not a repeated full toolchain smoke.
 
-The count authority is generated [PROGRESS.md](PROGRESS.md), not an old narrative or an aggregate match-size guess. As of this handoff, the 1,831 reviewed candidates include **1,552 exact functions / 214,418 exact codegen bytes**; among 750 reviewed authored functions, 636 functions / 144,089 bytes are exact and 114 mapped authored functions remain. Both seven-byte GUI callback entries are exact **with indeterminate original authorship**. Separate source mapping, original authorship, compilation and whole-game runtime closure.
+The count authority is generated [PROGRESS.md](PROGRESS.md), not an old narrative or an aggregate match-size guess. As of this handoff, the 1,831 reviewed candidates include **1,553 exact functions / 214,492 exact codegen bytes**; among 750 reviewed authored functions, 637 functions / 144,163 bytes are exact and 113 mapped authored functions remain. Both seven-byte GUI callback entries are exact **with indeterminate original authorship**. Separate source mapping, original authorship, compilation and whole-game runtime closure.
 
 ## Complete exact owners to protect
 
@@ -21,6 +21,7 @@ The count authority is generated [PROGRESS.md](PROGRESS.md), not an old narrativ
 | `EnemyKillAll @0x40E6A0`, `EnemyReadDialog @0x415DB0` | 182/182 and 124/124 bytes, respectively, in their affected owner graphs. |
 | `PlayerLoadOptionData @0x426520`, `EnemyReadIntOperand @0x412350` | 229/229 and 820/820 bytes, respectively; preserve the existing caller bindings. |
 | `FrontEndControllerView::RefreshOptionsDisplay` | 3,999/3,999 bytes in `frontend-options-refresh`. |
+| `th10::Chain::AllocElem @0x449ED0` | 74/74 bytes and one target-bound `operator new` REL32 in four-TU ScriptViewer popup graph; targeted cold replay exact. |
 | ECL stack `Pop` / `Push` / `EnterFrame` / `LeaveFrame` | 122 / 96 / 64 / 41 exact bytes, respectively; the complete `Run` owner is **not** exact. |
 
 All exact entries are tracked in `config/matches.csv`. Source-presence and original-source origin are separate in `config/reccmp-functions.csv`, `config/implemented.csv` and `config/function-origins.csv`. Do not promote a partial byte count or nonexact parent because an exact leaf survived.
@@ -40,7 +41,7 @@ All sizes below are **candidate / target**. `OK` and `REGRESSED` are comparisons
 | `GuiMessageVmView` constructor `@0x415B00` | **684 / 683**, 81 ordinary byte mismatches. | Preserve scoped VM ID return values and storage layout; the extra byte is near the final enemy-manager register reload. A 683-byte spelling had 227 mismatches and is worse. |
 | `ScriptViewerPopupOwnerView::Draw @0x42B780` | **537 / 540**, 266 non-linkage differences; draw callback 10/10 length but nonexact. | Owner/digit-cursor register allocation and alpha lifetime. The advancing digit address is now native DWORD arithmetic; Update stays 134/134 exact. |
 | `TransitionShakeLinear @0x43C550` | **439 / 439**, 27 differences. | The floating divide is scheduled before the second RNG state update; naive source movement breaks the entire function. Preserve the separate exact 349-byte envelope. |
-| `Chain::Chain @0x449AA0`; `Chain::AllocElem @0x449ED0` | Last matched **59/59** with 6 mismatches and **74/74** with 9 ordinary mismatches, respectively. | First sentinel self-link order and allocator flags-word scheduling; verify both together and keep exact destructor/popup callers. |
+| `Chain::Chain @0x449AA0` | **59/59**, eight residual bytes; `Chain::AllocElem` is now separately canonical exact. | First self-link/second sentinel register scheduling remains nonexact; preserve the new allocator exactness and three exact destructor/popup guards. |
 | `BulletRuntimeView::UpdateAbsoluteDirectionChange @0x4078E0` | **335 / 335**, two register bytes at +0xD7/+0xDD. | Angle parameter EDX versus EAX; multiple earlier type/`register` hints were neutral or worse. |
 | `ReplayPlaybackFrameControlCallback @0x42A3E0` | **68 / 68**, four conditional-branch destinations. | Shared return tail; preserve the exact 3,999-byte FrontEnd owner. Explicit `goto` variants severely regressed. |
 

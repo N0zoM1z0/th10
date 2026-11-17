@@ -38,8 +38,11 @@ ChainElem::ChainElem()
     // Publish the self link after preserving the non-allocation flags.
     ChainElem *volatile *const publishedSelf = &self;
     *publishedSelf = this;
-    next = NULL;
-    prev = NULL;
+    // Link clearance follows self-publication in the native list constructor.
+    ChainElem *volatile *const publishedNext = &next;
+    *publishedNext = NULL;
+    ChainElem *volatile *const publishedPrev = &prev;
+    *publishedPrev = NULL;
 }
 
 ChainElem::~ChainElem()
