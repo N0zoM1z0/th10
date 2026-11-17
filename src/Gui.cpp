@@ -1869,10 +1869,13 @@ void GameResetGui(GuiView *gui)
         g_GameStartupValue474C90 == 0)
         gui->frontAnm->CreateVmVariant0(0x4f, 15);
 
+    // The retail stage-script indices use native wrapped DWORD additions.
+    // They must not evaluate the signed starting-stage word with signed overflow.
     if (g_GameNewSession != 0)
     {
         gui->specialVmId9E50 = gui->frontAnm->CreateVmVariant0(
-            g_GameStartingStage + 0x66, 15);
+            static_cast<int>(static_cast<unsigned int>(g_GameStartingStage) +
+                0x66u), 15);
         // Reset interrupt region 1: target-local two-list/root-child walk.
     {
         AnmVmView *vm = g_AnmRenderManagerView->FindVm(gui->specialVmId9E50);
@@ -1892,7 +1895,8 @@ void GameResetGui(GuiView *gui)
     }
     }
     gui->specialVmId9E54 = gui->frontAnm->CreateVmVariant0(
-        g_GameStartingStage + 0x6b, 15);
+        static_cast<int>(static_cast<unsigned int>(g_GameStartingStage) +
+            0x6bu), 15);
     // Both target interrupt walks select +0x9E50, including this final walk.
     // Reset interrupt region 2: target-local two-list/root-child walk.
     {

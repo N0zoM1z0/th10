@@ -392,10 +392,17 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   scheduling still differ. [2026-11-14]
 - **ExportAutomaticHints @0x41A200 (2,247)**: native inlines all 24 writer uses;
   the target makes 9 calls and inlines 15. [2026-10-25]
-- **GameResetGui @0x413BC0 (1,965)**: fresh 2026-11-17 linked graph has the
-  full 1,965-byte extent and 47 residual bytes; the frontier remains `OK`.
-  Previous stage-VM manual expansion increased the residual to 175 bytes and
-  was reverted.
+- **GameResetGui @0x413BC0 (1,965)**: the 2026-11-17 real
+  `player-handle-collision-hit` 36-support-TU graph retains the complete
+  1,965-byte function with 47 residual bytes and its exact 627-byte caller.
+  The target builds both stage-script indices by adding `0x66` and `0x6B`
+  to the stored 32-bit starting-stage word (`ADD EBP,0x66` and
+  `ADD EBX,0x6B`); source now uses unsigned-word addition before converting
+  to the signed `CreateVmVariant0` argument. This removes signed-overflow
+  undefined behavior for unchecked stage numbers without changing any
+  candidate bytes. The remaining differences are still life-loop register
+  allocation and stage-VM call scheduling. An earlier manual expansion of
+  the stage-VM path grew the residual to 175 bytes and was reverted.
 - **StageExecuteScript @0x403C80 (1,868)**: full size, nonexact. Opcodes 10-13
   register choice; opcode 14's VM input is ESI in the target and EDX native.
   [2026-10-29]
