@@ -7,6 +7,7 @@
 #include "EnemySoundQueue.hpp"
 #include <new>
 
+#include <math.h>
 #include <stddef.h>
 #include <string.h>
 
@@ -24,10 +25,10 @@ void EnemyLaserVectorView::FromAngleMagnitude(float angle, float magnitude)
         fstp [eax + 4]
     }
 #else
-    (void)angle;
-    (void)magnitude;
-    x = 0.0f;
-    y = 0.0f;
+    // Reconstruct both polar components in ordinary C++, rather than
+    // suppressing laser displacement on non-MSVC compilers.
+    x = static_cast<float>(cos(angle)) * magnitude;
+    y = static_cast<float>(sin(angle)) * magnitude;
 #endif
 }
 
