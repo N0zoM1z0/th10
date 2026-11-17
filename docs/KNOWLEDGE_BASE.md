@@ -458,9 +458,17 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   `AnmLoadedView::InitializeVm` caller graph owns the `src/GuiMessage.cpp`
   contribution; a volatile scale pointer preserves the retail x87 operand
   order in the timer fallback. [2026-11-16]
-- **TransitionShakeLinear @0x43C550 (439)**: 133/134 normalized; only the late
-  `FIDIV` placement differs (ours right after `FMUL`, retail inside the second
-  RNG draw). [2026-11-14]
+- **TransitionShakeLinear @0x43C550 (439)**: capturing the signed duration
+  and initial amplitude offset into ordinary C++ locals recovers the target
+  stack-operand lifetime across the RNG calls. The selected 14-input GUI /
+  Transition graph improves from 427/439 bytes with 346 differences to the
+  complete 439/439-byte owner with 27 differences; its recorded frontier
+  passes unchanged. The remaining cluster schedules `FIDIV` before, rather
+  than inside, the second RNG update. Fifteen whole same-image exact guards
+  pass (1,732 bytes); initializer @0x43C970 retains 396/396 code and 37
+  linkage positions, but its strict guard is blocked by the older static
+  selector expecting ShakeEnvelope size 350, while the current envelope is
+  352/349. Neither shake callback is exact. [2026-11-17]
 - **TransitionShakeEnvelope @0x43C710 (349)**: 115/118 normalized; block order
   and a phase-limit spill. [2026-11-14]
 - **BulletRuntimeView::UpdateAbsoluteDirectionChange @0x4078E0 (335)**: fresh

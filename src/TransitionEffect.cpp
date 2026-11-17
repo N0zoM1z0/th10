@@ -205,8 +205,11 @@ static int __fastcall TransitionShakeLinear(void *argument)
     if (effect->timer.current >= effect->frames)
         return 7;
     const int difference = static_cast<int>(effect->value1 - effect->value0);
-    const float amplitude = difference * effect->timer.subframe / effect->frames +
-        static_cast<int>(effect->value0);
+    // The duration and initial offset remain fixed for both axis samples.
+    const int duration = effect->frames;
+    const int initialOffset = static_cast<int>(effect->value0);
+    const float amplitude = difference * effect->timer.subframe / duration +
+        initialOffset;
     g_RngView.GetRandomU16();
     unsigned int half = g_RngView.GetRandomU16();
     unsigned int choice = ((half << 16) | half) % 3u;
