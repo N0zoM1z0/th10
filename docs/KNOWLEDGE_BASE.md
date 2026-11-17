@@ -864,6 +864,15 @@ register preservation or mod-ref assumptions) where our builds exploit it
   residual ledger). The independently linked 3,836-byte GUI stage
   updater remains exactly matched with all 72 target-bound fields.
   This is a semantic overflow repair, not extra exact byte credit.
+  [2026-11-17] `GUI_MSG_SET_SIDE_0/1` now uses a typed
+  `GuiMessageSideTextPosition` accessor for the second text-line VM.
+  It retains the original unchecked, wrapped 32-bit address and real
+  12-byte `textPositions` stride rather than repeating two raw pointer
+  casts. The current 16-TU message graph remains 4,464/4,480 bytes
+  with 1,935 differences; the separate GUI stage updater passed its
+  complete 3,836-byte / 72-field strict comparison and selected cold
+  replay. Rewriting the five color accesses through a shared helper
+  shortened the message owner to 4,460 bytes and was rejected.
 - Persistent stage counter address: `(stage*3+shot)*0x437C + 0x4D0 + difficulty*4`.
   [2026-11-17] The shared `GuiStageClearCount` helper now expresses this
   as native unsigned DWORD arithmetic on the serialized stage, shot and

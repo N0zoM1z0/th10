@@ -183,6 +183,18 @@ static __forceinline int GuiPortraitSpriteScriptIndex(
         offset);
 }
 
+// The dialogue side selects a real twelve-byte text-position record.
+// Form the unchecked native address as a wrapping i386 word.
+static __forceinline const AnmFloat3View *GuiMessageSideTextPosition(
+    const GuiMessageVmView *message)
+{
+    const unsigned int offset =
+        static_cast<unsigned int>(message->activeSide) *
+        static_cast<unsigned int>(sizeof(message->textPositions[0]));
+    return reinterpret_cast<const AnmFloat3View *>(
+        reinterpret_cast<unsigned int>(&message->textPositions[0]) + offset);
+}
+
 int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
 {
     // Provisional scalar view: character +28, shot +2C, difficulty +34, stage +3C.
@@ -418,10 +430,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 &message->textPositions[0]);
             manager->SetVmPosition(
                 message->vmIds[GUI_MESSAGE_TEXT_LINE_1],
-                reinterpret_cast<AnmFloat3View *>(
-                    reinterpret_cast<unsigned int>(&message->textPositions[0]) +
-                    static_cast<unsigned int>(message->activeSide) *
-                    static_cast<unsigned int>(sizeof(message->textPositions[0]))));
+                GuiMessageSideTextPosition(message));
             message->alternatingLine = 0;
             break;
         }
@@ -437,10 +446,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 &message->textPositions[1]);
             manager->SetVmPosition(
                 message->vmIds[GUI_MESSAGE_TEXT_LINE_1],
-                reinterpret_cast<AnmFloat3View *>(
-                    reinterpret_cast<unsigned int>(&message->textPositions[0]) +
-                    static_cast<unsigned int>(message->activeSide) *
-                    static_cast<unsigned int>(sizeof(message->textPositions[0]))));
+                GuiMessageSideTextPosition(message));
             message->alternatingLine = 0;
             break;
         }
