@@ -220,22 +220,21 @@ template <class T> static __forceinline T *EnemyNativeWordIndex(T *first, int in
 
 // Native 0x210-byte pattern index/address word for unchecked ECL operands.
 static __forceinline EnemyBulletPatternView *EnemyPatternAtRuntimeIndex(
-    int runtimeAddress, int patternIndex)
+    EnemyRuntimeView *runtime, int patternIndex)
 {
-    return EnemyPatternAtRuntimeByte(static_cast<int>(
+    return reinterpret_cast<EnemyBulletPatternView *>(
+        reinterpret_cast<unsigned int>(&runtime->bulletPatterns[0]) +
         static_cast<unsigned int>(patternIndex) *
-        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
-        static_cast<unsigned int>(runtimeAddress)));
+        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)));
 }
 
 // A script index selects a 12-byte XYZ offset in the same runtime record.
 // Original i386 IMUL/LEA form low 32-bit words, without an index clamp.
 static __forceinline PlayerFloat3 *EnemyPatternOffsetAtRuntimeIndex(
-    int runtimeAddress, int index)
+    EnemyRuntimeView *runtime, int index)
 {
     return reinterpret_cast<PlayerFloat3 *>(
-        static_cast<unsigned int>(runtimeAddress) +
-        static_cast<unsigned int>(offsetof(EnemyRuntimeView, bulletPatternOffsets)) +
+        reinterpret_cast<unsigned int>(&runtime->bulletPatternOffsets[0]) +
         static_cast<unsigned int>(index) *
         static_cast<unsigned int>(sizeof(PlayerFloat3)));
 }
@@ -2012,21 +2011,21 @@ dispatch_difficulty_float_index_4_a:
       puVar5 = reinterpret_cast<unsigned int *>(
           reinterpret_cast<unsigned int>(puVar5) + sizeof(unsigned int));
     }
-    EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.countA = 1;
-    EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.countB = 1;
-    EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.angleABits = 0;
-    EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.speedABits = 0x40000000u;
-    EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.soundId = 7;
-    EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.soundVariant = 0x18;
-    EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.flags1FC = 0x203;
-    reinterpret_cast<EnemyPositionDwordView *>(EnemyPatternOffsetAtRuntimeIndex(runtimeAddress, iVar26))->word[0] = 0;
-    reinterpret_cast<EnemyPositionDwordView *>(EnemyPatternOffsetAtRuntimeIndex(runtimeAddress, iVar26))->word[1] = 0;
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countA = 1;
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countB = 1;
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.angleABits = 0;
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.speedABits = 0x40000000u;
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.soundId = 7;
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.soundVariant = 0x18;
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.flags1FC = 0x203;
+    reinterpret_cast<EnemyPositionDwordView *>(EnemyPatternOffsetAtRuntimeIndex(this, iVar26))->word[0] = 0;
+    reinterpret_cast<EnemyPositionDwordView *>(EnemyPatternOffsetAtRuntimeIndex(this, iVar26))->word[1] = 0;
     return 0;
   case ENEMY_ECL_COPY_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     uVar23 = ENEMY_READ_INT_DIRECT(0);
-    *EnemyPatternAtRuntimeIndex(runtimeAddress, static_cast<int>(uVar23)) =
-        *EnemyPatternAtRuntimeIndex(runtimeAddress, static_cast<int>(uVar22));
+    *EnemyPatternAtRuntimeIndex(this, static_cast<int>(uVar23)) =
+        *EnemyPatternAtRuntimeIndex(this, static_cast<int>(uVar22));
     return 0;
   case ENEMY_ECL_FIRE_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -2080,9 +2079,9 @@ dispatch_difficulty_float_index_4_a:
   case ENEMY_ECL_SET_BULLET_OFFSET:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     fVar19 = (ReadFloatArgument(1));
-    EnemyPatternOffsetAtRuntimeIndex(runtimeAddress, static_cast<int>(uVar22))->x = (float)fVar19;
+    EnemyPatternOffsetAtRuntimeIndex(this, static_cast<int>(uVar22))->x = (float)fVar19;
     fVar19 = (ReadFloatArgument(2));
-    EnemyPatternOffsetAtRuntimeIndex(runtimeAddress, static_cast<int>(uVar22))->y = (float)fVar19;
+    EnemyPatternOffsetAtRuntimeIndex(this, static_cast<int>(uVar22))->y = (float)fVar19;
     return 0;
   case ENEMY_ECL_SET_BULLET_ANGLE:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -2269,10 +2268,10 @@ dispatch_difficulty_float_index_4_a:
     float lowSpeedB = ReadFloatArgument(2);
     float highSpeedA = ReadFloatArgument(3);
     float highSpeedB = ReadFloatArgument(4);
-    EnemyPatternAtRuntimeIndex(runtimeAddress, patternIndex)->fields.speedA =
+    EnemyPatternAtRuntimeIndex(this, patternIndex)->fields.speedA =
          (highSpeedA - lowSpeedA) * ((float)g_EnemyChapterState.rank + 1024.0f) *
          0.00048828125f + lowSpeedA;
-    EnemyPatternAtRuntimeIndex(runtimeAddress, patternIndex)->fields.speedB =
+    EnemyPatternAtRuntimeIndex(this, patternIndex)->fields.speedB =
          (highSpeedB - lowSpeedB) * ((float)g_EnemyChapterState.rank + 1024.0f) *
          0.00048828125f + lowSpeedB;
     return 0;
@@ -2407,7 +2406,7 @@ dispatch_rank_count_lowest:
   case ENEMY_ECL_SET_BULLET_AIM_MODE:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     uVar23 = ENEMY_READ_INT_DIRECT(1);
-    EnemyPatternAtRuntimeIndex(runtimeAddress, static_cast<int>(uVar22))->fields.aimMode = static_cast<unsigned short>(uVar23);
+    EnemyPatternAtRuntimeIndex(this, static_cast<int>(uVar22))->fields.aimMode = static_cast<unsigned short>(uVar23);
     return 0;
   case ENEMY_ECL_SET_BULLET_SOUND:
     uVar22 = ENEMY_READ_INT_DIRECT(0);

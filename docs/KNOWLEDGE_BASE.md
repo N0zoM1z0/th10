@@ -341,6 +341,16 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   diagnostic 14,424/14,416 with 10,412. The 627-byte collision and
   44-byte bullet-clear owners remain exact. This restores natural C++
   receiver types without promoting the nonexact dispatch.
+  [2026-11-17] The unchecked bullet-pattern and pattern-offset helpers now
+  accept `EnemyRuntimeView*` and form their native 32-bit addresses
+  from the actual `bulletPatterns[0]` / `bulletPatternOffsets[0]`
+  members. Script indices remain unclamped and use unsigned low-word
+  multiplication, preserving i386 wraparound while removing the
+  runtime-owner integer round-trip from all helper call sites. A
+  fresh 36-TU and 12-TU A/B against HEAD produced identical complete
+  mismatch-offset sets (10,564 and 10,412 respectively), not merely
+  equal counts. The 627-byte collision and 44-byte bullet-clear
+  owners remain exact; the dispatcher itself remains nonexact.
   [2026-11-17] The SET_BOSS_SLOT handler also retains the real
   `EnemyManagerView*` through its slot-indexed write instead of converting
   that pointer to an integer and back. A scoped opcode case preserves the
