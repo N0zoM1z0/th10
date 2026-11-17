@@ -1,76 +1,102 @@
 # TH10 reconstruction — agent handoff
 
-**Updated 2026-11-16.** Resume from the current `main` HEAD. The source
-checkpoint before this documentation pass was `89729769`
-(`gpt-web: document TH10 ECL owner measurements`). The tree was clean before
-this pass; keep the work local and never push. [AGENTS.md](../AGENTS.md) is the
-operational authority, and [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) contains the
-durable reverse-engineering details.
+**Updated 2026-11-17.** The source baseline for the measurements below is
+`82bc4ab1` (`gpt-web: restore exact enemy runtime callback in C++`). This
+handoff/artifact cleanup is a documentation-only follow-up. Continue on
+`main`; keep work local and never push. [AGENTS.md](../AGENTS.md) is the
+operational authority. [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) contains the
+reverse-engineering details and rejected experiments worth retaining.
 
 ## First actions
 
-- Inspect `git status --short --branch`, `git diff` and `git log -8 --oneline`.
-  Preserve any work already present; do not reset it.
-- Before target-dependent work, run
-  `scripts/repo-python scripts/verify-target.py`.
-- `config/matches.csv`, `config/match-units.toml` and
-  `config/functions.csv` are the ownership/acceptance ledgers. `PROGRESS.md` is
-  generated; do not edit it by hand.
-- Use the commit identity and `gpt-web:` format specified in `AGENTS.md`.
-  Never push.
+1. Run `git status --short --branch`, `git diff --check` and `git log -8
+   --oneline`. Preserve any work already present.
+2. Before target-dependent work, run
+   `scripts/repo-python scripts/verify-target.py`. The only valid target is
+   the Japanese TH10 v1.00a executable with SHA-256
+   `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
+3. `config/functions.csv`, `config/matches.csv`, `config/match-units.toml` and
+   `config/frontiers.toml` are the current ledgers. `docs/PROGRESS.md` is
+   generated; do not edit it manually.
+4. Use `scripts/repo-python` for repository Python. Use the pinned VC7.1 SP1
+   profiles and LTCG `/GL`; do not run the historical full replay cohort for
+   routine work.
 
-## Current comparison baseline
+## Accepted exact owners
 
-The broad `player-handle-collision-hit` graph has 36 support TUs and writes to
-`build/match-linked/ClaudeReplayInitLoadScript/`. Its current PE/MAP/PDB was
-linked on 2026-11-16 at 14:43, after rebuilding `EclVm.cpp` from the restored
-clean source. The `AnmManager.cpp` support object also postdates its source.
-This is the useful shared graph for Player, Enemy, ANM and ECL comparisons.
+These owners have complete, selected-unit cold-replay evidence in the current
+ledgers. Their exactness is independent of the still-open larger owners.
 
-The canonical `PlayerHandleCollisionHit` owner remains accepted at 627/627
-bytes with 21 fields and a selected cold replay. In the current linked graph,
-the ECL stack leaves compare byte-exact: `Pop` 122/122, `Push` 96/96,
-`EnterFrame` 64/64 and `LeaveFrame` 41/41.
+| Owner | Extent | Current evidence |
+| --- | ---: | --- |
+| `EnemyResolveRuntimeCallback @0x4127A0` | 593 | Pure C++; 593/593 bytes, 147 instructions and seven target-bound DIR32 fields. Canonical 17-support-TU VC7.1 SP1 `/GL /GS` replay. The timeout flag uses a size-checked 32-bit bit-field plus `_ReadWriteBarrier()`; no inline assembly. |
+| `PlayerHandleCollisionHit @0x426CF0` | 627 | 627/627 bytes and 21 fields in the real replay-init/load-script graph. |
+| `PlayerLoadOptionData @0x426520` | 229 | 229/229 bytes and six fields in the real `PlayerInitialize` / `EnemyReadIntOperand` graph (20 support TUs). |
+| `EnemyKillAll @0x40E6A0` | 182 | 182/182 bytes and six fields in the real `AnmLoadedView::InitializeVm` caller graph. |
+| `EnemyReadIntOperand @0x412350` | 820 | 820/820 bytes and 95 fields; retained as the exact dependency guard for the Player loader. |
+| `FrontEndControllerView::RefreshOptionsDisplay` | 3,999 | 3,999/3,999 bytes in the refreshed FrontEnd options graph. |
 
-## Open owners
+The ECL stack leaves also remain exact in the current 36-support-TU graph:
+`Pop` 122/122, `Push` 96/96, `EnterFrame` 64/64 and `LeaveFrame` 41/41.
+
+## Current open owners
+
+All measurements below were refreshed from the current source on 2026-11-17.
+`OK` means the recorded frontier did not regress; it does not mean exact.
+`REGRESSED` means the current residual offsets moved relative to the stored
+frontier, even when the raw mismatch count is unchanged or lower.
 
 | Owner | Current measurement | Next useful action |
 | --- | --- | --- |
-| `EnemyRuntimeView::DispatchEclInstruction @0x40E770` | In the current 36-TU graph: candidate extent 14,492 vs target 14,416; 10,568 differing bytes; `REGRESSED` vs the stored 10,416 residual set. Best separate 12-TU `/GS` diagnostic: 1,545/11,568 comparable bytes. | Continue the rank-five lower bands and operand/register schedule in `build/gpt-web/20261108-enemy-dispatch-rank-tail-final/`. Keep the 12-TU score diagnostic-only; reconcile with the complete 36-TU graph. |
-| `AnmRenderManagerView::ExecuteScript @0x43EE30` | Full 9,964-byte extent, two residual bytes at +0x113/+0x115; frontier `OK` (no regression). Retail loads `[ebp+0x20]` into EDX and pushes EDX; candidate uses ECX. | Isolate opcode 91's call-site register lifetime without changing adjacent opcode bodies. The prior local/volatile/direct-read/inline-assembly trials were reverted. |
-| `EclVmContext::Run @0x44E1A0` | Full 7,020-byte extent, 23 differing bytes; frontier `REGRESSED` because residual offsets moved. Current examples: +0xEB/+0xF1 register choice, +0x129/+0x12B pointer register, +0x1F9/+0x241 SIB order, +0x403..+0x4CD spill homes, +0xE6D/+0xE79/+0x1584 SIB order and +0x19E5/+0x19E7 tail register. | Reconcile the current residual set against the stored frontier. Do not use `--update` just to accept moved mismatches. Preserve the exact ECL stack leaves. |
-| `BulletRuntimeView::UpdateAbsoluteDirectionChange @0x4078E0` | Full 335-byte extent, two residual bytes at +0xD7/+0xDD; frontier `OK`. Retail uses EDX for the angle argument; candidate uses EAX. | Revisit only with a new, falsifiable register-liveness hypothesis. `register` hints were neutral; removing the angle-copy local added two differences; inline assembly regressed the whole owner. All trials were reverted. |
-| `GuiMessageVmView::Run @0x415E90` | Latest recorded candidate: 4,463 bytes against a 4,480-byte target; 1,047/1,219 normalized instructions. Measurement epoch 2026-11-14. | Continue portrait operand order, inline clear-count increments and the stage-6/7 merged tails. See the detailed note in `KNOWLEDGE_BASE.md`. |
-| `ResultMenuUpdateResult @0x4236F0` | Latest recorded candidate: 3,228 bytes against a 3,227-byte target; 784/907 normalized instructions. Measurement epoch 2026-11-13. | Keep the separate state bodies and resolve the GUI score receiver/frame without adding copies. See `KNOWLEDGE_BASE.md`. |
+| `EnemyRuntimeView::DispatchEclInstruction @0x40E770` | In the real 36-support-TU graph: candidate 14,492 vs target 14,416 bytes, 10,568 differing bytes; `REGRESSED` vs the stored 10,416-byte residual set. Separate 12-TU `/GS` diagnostic: 14,496 bytes, 10,574 differences; its frontier is `OK`, but it is not a close or exact match. | Continue rank-five lower bands and operand/register scheduling. Keep the 12-TU result diagnostic-only and reconcile every change against the 36-TU graph. Do not refresh a frontier merely to accept moved bytes. |
+| `AnmRenderManagerView::ExecuteScript @0x43EE30` | 9,964/9,964 bytes; two differences at +0x112/+0x115. Retail loads `[ebp+0x20]` into EDX and pushes EDX; candidate uses ECX. | Isolate opcode 91's call-site register lifetime without changing adjacent opcode bodies. The current source uses `AnmChildScriptLayer` with `script` and `layer` fields. Register, volatile, direct-argument and field-order trials did not improve it; all were reverted. |
+| `EclVmContext::Run @0x44E1A0` | 7,020/7,020 bytes, 23 differences; frontier `REGRESSED` because the residual offsets moved. Main clusters: +0x0EB/+0x0F1 register choice, +0x129/+0x12B pointer register, +0x0403..+0x04CD spill homes, +0x0E6F/+0x0E7B and +0x1586 operand/address ordering, and the late +0x19E6/+0x19E8 register choice. | Reconcile the current residual set before changing the VM. The two float opcodes still have opposite spill-home preferences; previous declaration/result-local and case-order variants either moved differences or regressed the owner. Preserve the exact ECL stack leaves. |
+| `GameResetGui @0x413BC0` | 1,965/1,965 bytes, 47 differences; frontier `OK`. | Continue the life-loop register schedule and stage-VM creation ordering. The previous manual stage-VM expansion worsened the owner and was reverted. |
+| `BulletRuntimeView::UpdateAbsoluteDirectionChange @0x4078E0` | 335/335 bytes, two differences at +0xD7/+0xDD; target passes the angle in EDX while the candidate uses EAX. Frontier `OK`. | Revisit only with a new, falsifiable register-liveness hypothesis. `register` hints were neutral; direct angle passing and volatile forms regressed. |
+| `ReplayPlaybackFrameControlCallback @0x42A3E0` | 68/68 bytes, four conditional-branch destination bytes at +0x13/+0x18/+0x22/+0x37. The adjacent 3,999-byte FrontEnd options owner is exact. Frontier `OK`. | Keep the natural runtime/flag/control-flow split; investigate shared return-tail layout without disturbing the exact FrontEnd owner. It remains nonexact. |
+| `ResultMenuUpdateResult @0x4236F0` | Latest retained measurement: 3,216 vs 3,227 bytes, 2,285 differences; frontier `OK`. | Rebuild its graph before trusting the measurement; then continue the score receiver/frame and state-body layout. |
 
-`check-frontier` status `OK` means only that the recorded residual set did not
-regress; it does not mean the owner is exact. `REGRESSED` means the current
-candidate differs from the recorded residual offsets, even if the raw mismatch
-count is unchanged or lower. Do not refresh a frontier to conceal moved bytes.
+`GuiMessageVmView::Run @0x415E90` has an older 2026-11-14 measurement
+(4,463 vs 4,480 bytes). It has not been refreshed in this handoff; rebuild its
+current graph before using that number.
 
-## Bounded rebuild and comparison loop
+## Rebuild only the affected graph
 
-For the shared graph, rebuild only changed translation units:
+The following bounded commands refresh the shared inputs and the relevant
+comparison outputs. Pass every changed source TU after `--dirty`; omitted
+sources can silently reuse stale LTCG objects.
 
 ```sh
-scripts/repo-python scripts/diagnostics/triage/quick-relink.py player-handle-collision-hit --dirty src/Changed.cpp
-scripts/repo-python scripts/check-frontier.py --no-build --show ecl-run
-scripts/repo-python scripts/compare-linked-function.py --unit player-handle-collision-hit --json
+# Main 36-support-TU graph: ANM, ECL, dispatcher and GUI owners.
+scripts/repo-python scripts/diagnostics/triage/quick-relink.py player-handle-collision-hit --dirty src/AnmManager.cpp src/EclVm.cpp src/EnemyEclDispatcher.cpp src/Gui.cpp src/ReplayManager.cpp
+scripts/repo-python scripts/check-frontier.py --no-build --show anm-execute-script ecl-run enemy-dispatch-ecl game-reset-gui
+
+# Separate 12-TU dispatcher diagnostic; never treat this as canonical acceptance.
+scripts/repo-python scripts/diagnostics/triage/quick-relink.py enemy-apply-bullet-clear --dirty src/AnmManager.cpp src/EclVm.cpp src/EnemyEclDispatcher.cpp
+scripts/repo-python scripts/check-frontier.py --no-build --show enemy-dispatch-ecl-12tu
+
+# FrontEnd callback and its exact 3,999-byte owner.
+scripts/repo-python scripts/diagnostics/triage/quick-relink.py frontend-options-refresh --dirty src/ReplayManager.cpp src/AnmManager.cpp src/EnemyEclDispatcher.cpp
+scripts/repo-python scripts/compare-linked-function.py --unit frontend-options-refresh --json
+
+# Bullet angle leaf.
+scripts/repo-python scripts/diagnostics/triage/quick-relink.py bullet-update-absolute-direction --dirty src/BulletManager.cpp
+scripts/repo-python scripts/check-frontier.py --no-build --show bullet-update-absolute-direction
+
+# Strict owner comparison and selected cold replay for a completed candidate.
+scripts/repo-python scripts/compare-linked-function.py --unit UNIT --json
+scripts/repo-python scripts/replay-exact-units.py --unit UNIT --json
 ```
 
-List every changed TU after source edits; if a shared header changes, include
-every affected TU. The relinker reuses all other cached objects, so an omitted
-source can silently test stale code. Compare the complete owner, including
-resolved fields and relocations. Only a zero-difference candidate proceeds to
-an explicit `scripts/repo-python scripts/replay-exact-units.py --unit UNIT
---json` replay. Do not run the full historical cohort or a full cold replay
-for routine iteration.
+Do not run the full historical cohort for ordinary iterations. A frontier is a
+regression guard only; exact acceptance requires the complete owner, all
+resolved fields/relocations and the selected canonical cold replay.
 
-## Retained artifacts
+## Storage and retained diagnostics
 
-Preserve the original target, `.tools/` and this game's Wine prefix,
-`ghidra-project/`, `_reference/`, canonical ledgers, maintained source/scripts,
-`build/match/`, `build/match-linked/`, the five diagnostic contexts under
-`build/gpt-web/`, the four trial drivers under `.analysis/gpt-web/`, the
-independent origin-review result and unrelated `.analysis/d3d-*` work. The
-precise retention and scratch-cleanup policy is in [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
+`docs/RE_ARTIFACTS.md` lists the protected inputs and the five retained
+noncanonical diagnostic contexts. `build/match-linked/` has 271 manifest-backed
+output directories and no orphan directories; preserve it and the object-backed
+`build/match/` inputs. The 2026-11-17 cleanup removed superseded ANM aggregate
+trial outputs and scratch reports while retaining the original target, toolchain,
+Ghidra project, D3D evidence, origin review and four optional trial drivers.

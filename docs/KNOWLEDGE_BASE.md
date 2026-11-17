@@ -292,25 +292,24 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   14,480, but introduces new offsets (+0xBA/+0xF8) and moves many residuals;
   the frontier correctly rejects it. Volatile host/runtime reload variants
   expand to 14,512 bytes and 10,630-10,647 differences. Do not promote a
-  smaller raw count when the new-offset ratchet fails. The current 36-support
-  `player-handle-collision-hit` image is a separate measurement: candidate
-  extent 14,492 against the 14,416-byte target, 10,568 differing bytes, and
-  `REGRESSED` against the stored 10,416-byte residual set. Keep the 1,545/11,568
-  result labelled as the best 12-TU diagnostic, not a complete-owner match.
-- **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: the current
-  `player-handle-collision-hit` graph has the full 9,964-byte extent and two
-  residual bytes at +0x113/+0x115. A 2026-11-16 relink rebuilt both
-  `src/AnmManager.cpp` and `src/EclVm.cpp` support objects; the frontier still
-  reports the same two differences. Retail loads `[ebp+0x20]` into EDX and
-  pushes EDX; the candidate uses ECX. The current opcode-91 source uses a local
-  `AnmChildScriptLayer` with separate `script` and `layer` assignments. Keep
-  the surrounding opcode bodies intact while investigating this call-site
-  register lifetime. Register/const/volatile layer locals, field-order changes
-  and direct `renderLayer` argument rewrites did not produce a safe improvement;
-  an inline-assembly rewrite damaged the whole owner. All trials were reverted.
-  [2026-11-16]
+  smaller raw count when the new-offset ratchet fails. The refreshed 2026-11-17 36-support-TU `player-handle-collision-hit` image
+  remains 14,492 against the 14,416-byte target with 10,568 differing bytes;
+  its frontier is `REGRESSED` against the stored 10,416-byte residual set. The
+  separate 12-TU `/GS` graph is 14,496 bytes with 10,574 differences and an
+  unchanged diagnostic frontier. Keep these measurements separate; neither
+  is close to exact or a canonical owner replay.
+- **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
+  2026-11-17 rebuild of the five changed support TUs in the real
+  `player-handle-collision-hit` graph confirms the full 9,964-byte extent and
+  two differences at +0x112/+0x115. Retail loads `[ebp+0x20]` into EDX and
+  pushes EDX; the candidate uses ECX. Opcode 91 currently uses an
+  `AnmChildScriptLayer` with separate `script` and `layer` fields. Register,
+  volatile, direct-argument and field-order trials did not improve the owner;
+  an inline-assembly rewrite damaged the complete function. All experiments
+  were reverted. Keep adjacent opcode bodies intact while investigating the
+  call-site register lifetime. [2026-11-17]
 - **EclVmContext::Run @0x44E1A0 (7,020)**: rooted at the real caller
-  `EclVmHost::Run`; the fresh 2026-11-16 36-support-TU relink has the full
+  `EclVmHost::Run`; the fresh 2026-11-17 36-support-TU relink has the full
   7,020-byte extent and 23 differing bytes. `check-frontier --no-build --show
   ecl-run` reports `REGRESSED`: the count remains 23, but the differing
   offsets moved relative to the stored residual set. Current examples include
@@ -327,9 +326,12 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   companion ECL leaf units (Push, EnterFrame, LeaveFrame, ReadIntValue,
   ReadInt, ReadFloatValue, ReadFloat, FindThread, Host::Run, SpawnThread,
   StopAllThreads, FindSubroutine and PolarVector::FromAngleMagnitude) each
-  compare with zero differing bytes; Pop is separately exact at 122/122.
-  A STOP_THREAD inline-assembly trial matches the local EAX reload at
-  +0x129/+0x12B but raises the parent to 53 differences. Replacing Pop's
+  compare with zero differing bytes; Pop is separately exact at 122/122. A
+  fresh 2026-11-17 graph rebuild preserves all four stack-leaf exact results;
+  `Run` remains 7,020 bytes with 23 moved residuals and a regressed frontier.
+  A rejected STOP_THREAD inline-assembly experiment matched the local EAX
+  reload at +0x129/+0x12B but raised the parent to 53 differences; it was
+  reverted and is not part of the current C++ source. Replacing Pop's
   value/type addresses with explicit native-word arithmetic keeps the leaf
   exact but raises the parent to 100 differences (both addresses) or 42
   (type address only); `&data[stackTop]` leaves the 23-byte parent residual
@@ -379,8 +381,10 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   scheduling still differ. [2026-11-14]
 - **ExportAutomaticHints @0x41A200 (2,247)**: native inlines all 24 writer uses;
   the target makes 9 calls and inlines 15. [2026-10-25]
-- **GameResetGui @0x413BC0 (1,965)**: 534/543 normalized instructions.
-  [2026-11-14]
+- **GameResetGui @0x413BC0 (1,965)**: fresh 2026-11-17 linked graph has the
+  full 1,965-byte extent and 47 residual bytes; the frontier remains `OK`.
+  Previous stage-VM manual expansion increased the residual to 175 bytes and
+  was reverted.
 - **StageExecuteScript @0x403C80 (1,868)**: full size, nonexact. Opcodes 10-13
   register choice; opcode 14's VM input is ESI in the target and EDX native.
   [2026-10-29]
@@ -448,12 +452,11 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   RNG draw). [2026-11-14]
 - **TransitionShakeEnvelope @0x43C710 (349)**: 115/118 normalized; block order
   and a phase-limit spill. [2026-11-14]
-- **BulletRuntimeView::UpdateAbsoluteDirectionChange @0x4078E0 (335)**: 333/335;
-  the angle argument register at +0xD7/+0xDD (target EDX, ours EAX). `register`
-  hints on the speed/angle locals are byte-neutral. Removing the angle-copy local
-  and passing `angle` directly adds two differences; an inline-assembly call
-  damages the whole function. All trials were reverted; the baseline remains
-  333/335. [2026-11-16]
+- **BulletRuntimeView::UpdateAbsoluteDirectionChange @0x4078E0 (335)**: fresh
+  2026-11-17 rebuild remains 333/335, with two differences at +0xD7/+0xDD
+  (target EDX, candidate EAX). `register` hints were byte-neutral; removing the
+  angle-copy local and passing `angle` directly adds two differences; volatile
+  forms also regress. All trials were reverted.
 - **Player::~Player @0x424ED0 (325)**: 333. [2026-10-31]
 - **FrontEndInsertScore @0x421FA0 (316)**: 263; the helper uses 64-bit `100.0`
   where the target uses 32-bit. [2026-10-15]
@@ -464,8 +467,8 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   VC7.1 /GL cold replay in the real `EnemyReadIntOperand`/`PlayerInitialize`
   caller graph. The complete 229-byte `src/Player.cpp` PDB contribution
   normalizes all six reviewed external REL32/DIR32 fields with zero residual.
-  This proves this compiler context, not the original source spelling,
-  production TU, game runtime or product binary. [2026-11-16]
+  The canonical 2026-11-16 replay is 229/229 bytes with all six fields exact;
+  the former float-order/alignment caveat no longer applies. [2026-11-17]
 - **GamePrepareAnimationSlots @0x404450 (214)**: the target uses a stack owner
   and RET4; the real graph gives EDI and plain RET. [2026-10-31]
 - **StartEntityScript_00404f30 @0x404F30 (202)**: now natural source (the naked
@@ -492,14 +495,15 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   loads it first because the ChainElem constructor uses `_ReadWriteBarrier`.
   Try a barrier-free constructor in the ReplayInit graph. [2026-11-15]
 - **ReplayPlaybackFrameControlCallback @0x42A3E0 (68)**: the complete
-  `src/ReplayManager.cpp` callback now naturally inlines its runtime/flag
-  guard and the frame-skip decision in the real `frontend-options-refresh`
-  graph. Before the explicit split the compiler emitted 62/68 bytes with
-  38 ordinary differences. The revised 68/68 body has two bound DIR32
-  operands and **four** remaining conditional-branch destination bytes at
-  +0x13/+0x18/+0x22/+0x37 (target shared RET, candidate late return-1).
-  Independent 3,999-byte FrontEnd owner stays canonical exact; callback
-  remains a **nonexact** ratcheted frontier. [2026-11-16]
+  `src/ReplayManager.cpp` callback naturally inlines its runtime/flag guard
+  and frame-skip decision in the real `frontend-options-refresh` graph. Before
+  the explicit split the compiler emitted 62/68 bytes with 38 ordinary
+  differences. The revised 68/68 body has two bound DIR32 operands and four
+  remaining conditional-branch destination bytes at +0x13/+0x18/+0x22/+0x37
+  (target shared RET, candidate late return-1). The independent 3,999-byte
+  FrontEnd owner stays canonical exact. A fresh 2026-11-17 relink reconfirmed
+  the same four branch bytes; the callback remains a nonexact frontier.
+  [2026-11-17]
 - **th10::leaf::Fn0041FD90 @0x41FD90 (63)**: no callers or stored pointers; its
   EDX input ABI cannot be recovered from a caller.
 
