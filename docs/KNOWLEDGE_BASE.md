@@ -820,6 +820,17 @@ register preservation or mod-ref assumptions) where our builds exploit it
 - `0x474C48/0x474C4C/0x474C70` are fields of one escaped globals object at `0x474C40` (the `Add` receiver), not separate globals.
 - `GameCreateOwner42B660` is `new` (null-checked constructor call), `Initialize`, and on failure a null-checked destructor plus `operator delete`, which is what `delete owner;` emits for a non-virtual destructor.
 - `GuiMessageVmView::Run` indexes 4-byte `textColors` and 12-byte `textPositions` by `message->activeSide`.
+  [2026-11-17] All 36 portrait sprite script IDs in the 4,480-byte
+  GUI stage-message interpreter now add the literal sprite offset as
+  an unsigned i386 DWORD before converting back to the signed script
+  argument. A single ordinary `__forceinline` C++ helper preserves the
+  actual field read and native integer wraparound without ASM or padding.
+  Rebuilding the 16-support-TU `gui-message-run-candidate` graph yields
+  4,464/4,480 bytes and 1,935 differences, identical to its fresh
+  baseline (still nonexact and REGRESSED against the older 1,910-byte
+  residual ledger). The independently linked 3,836-byte GUI stage
+  updater remains exactly matched with all 72 target-bound fields.
+  This is a semantic overflow repair, not extra exact byte credit.
 - Persistent stage counter address: `(stage*3+shot)*0x437C + 0x4D0 + difficulty*4`.
   [2026-11-17] The shared `GuiStageClearCount` helper now expresses this
   as native unsigned DWORD arithmetic on the serialized stage, shot and
