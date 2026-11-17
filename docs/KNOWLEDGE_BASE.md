@@ -607,8 +607,11 @@ trusting a number. Owners without an entry have no useful recorded attempt.
 - **EnemyFireLaser @0x41C510 (153)**: target ESI manager, EDI request, stack
   type, RET4; forms give 157/RET8 or 153 with plain RET. The laser vtable split
   is the likely lever. [2026-11-14]
-- **CreateFpsCounter @0x413350 (151)**: zero and object registers swapped (EBP
-  and EBX). [2026-11-11]
+- **CreateFpsCounter @0x413350 (151)**: exact 151/151 in the real WinMain
+  `/GL /GS` graph. The factory allocates/publishes the shared 0x8c FPS/replay
+  timing owner, initializes a 0x24 ChainElem, assigns its draw callback,
+  registers priority 47 and stores the task. Both independent scoped cold
+  builds reproduce all six original-bound relocation fields. [2026-11-17]
 - **GameStatisticsOwner ctor @0x42AE60 (132)** and **CreateStatistics42AF20
   @0x42AF20 (97)**: 137 and 98. [2026-11-13]
 - **ScriptViewerPopupOwnerView::Initialize @0x42B4D0 (145)** and

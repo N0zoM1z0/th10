@@ -1,12 +1,12 @@
 # TH10 reconstruction — next-agent handoff
 
-**Updated 2026-11-17.** Continue on the repository's local `main` branch; do not push. Start with [AGENTS.md](../AGENTS.md). This brief tracks the current typed ECL and Chain allocator source, including the new `chain-alloc-elem` exact owner. Git history is the provenance record; do not assume a clean tree without checking it.
+**Updated 2026-11-17.** Continue on the repository's local `main` branch; do not push. Start with [AGENTS.md](../AGENTS.md). This brief tracks the current typed ECL and Chain allocator source, including the `chain-alloc-elem` and `main-create-fps-counter` exact owners. Git history is the provenance record; do not assume a clean tree without checking it.
 
 ## First five minutes
 
 Run `git status --short --branch`, `git diff --check` and `git log -8 --oneline`. Preserve any dirty changes and resolve them before switching owners. Verify the only valid target with `scripts/repo-python scripts/verify-target.py`: original Japanese TH10 v1.00a, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`. Use `scripts/repo-python scripts/verify-toolchain.py --check` for compiler declarations, not a repeated full toolchain smoke.
 
-The count authority is generated [PROGRESS.md](PROGRESS.md), not an old narrative or an aggregate match-size guess. As of this handoff, the 1,831 reviewed candidates include **1,553 exact functions / 214,492 exact codegen bytes**; among 750 reviewed authored functions, 637 functions / 144,163 bytes are exact and 113 mapped authored functions remain. Both seven-byte GUI callback entries are exact **with indeterminate original authorship**. Separate source mapping, original authorship, compilation and whole-game runtime closure.
+The count authority is generated [PROGRESS.md](PROGRESS.md), not an old narrative or an aggregate match-size guess. As of this handoff, the 1,831 reviewed candidates include **1,554 exact functions / 214,643 exact codegen bytes**; among 750 reviewed authored functions, 638 functions / 144,314 bytes are exact and 112 mapped authored functions remain. Both seven-byte GUI callback entries are exact **with indeterminate original authorship**. Separate source mapping, original authorship, compilation and whole-game runtime closure.
 
 ## Complete exact owners to protect
 
