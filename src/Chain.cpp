@@ -29,15 +29,15 @@ extern u8 g_ChainNestCounter;
 ChainElem::ChainElem()
 {
     const unsigned int previousFlags = flags;
-    _ReadWriteBarrier();
     callback = NULL;
     addedCallback = NULL;
     deletedCallback = NULL;
     prio = 0;
-    // Preserve unrelated flags after the callback stores.
-    _ReadWriteBarrier();
+    // Preserve every flag except the allocation bit.
     flags = previousFlags & ~1u;
-    self = this;
+    // Publish the self link after preserving the non-allocation flags.
+    ChainElem *volatile *const publishedSelf = &self;
+    *publishedSelf = this;
     next = NULL;
     prev = NULL;
 }
@@ -71,8 +71,11 @@ __declspec(noinline) ChainElem * __stdcall Chain::AllocElem(ChainCallback callba
     cb = callback;
     elem->addedCallback = NULL;
     elem->deletedCallback = NULL;
+    // Capture the stored flags before publishing heap ownership.
+    const volatile unsigned int &oldFlags = elem->flags;
+    const unsigned int heapFlags = oldFlags | 1u;
     elem->callback = cb;
-    elem->flagBits.heapAllocated = 1;
+    elem->flags = heapFlags;
     return elem;
 }
 

@@ -499,12 +499,21 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   `AnmVmInitialize` as an external, so Initialize takes `this` in EBX instead
   of EAX. Build them in a graph with AnmVmInitialize.cpp; an earlier trial with
   `delete owner;` and that TU reached 141/145 and 67/71. [2026-11-15]
-- **th10::Chain::AllocElem @0x449ED0 (74)**: 74/74 in the ReplayInit graph; only
-  the zero/flags registers (ECX/EDX swapped) and the tail store order differ.
-  **th10::Chain::Chain @0x449AA0 (59)**: inlines two ChainElem constructors;
-  retail clears the second element's flag bit with an in-place `and`, ours
-  loads it first because the ChainElem constructor uses `_ReadWriteBarrier`.
-  Try a barrier-free constructor in the ReplayInit graph. [2026-11-15]
+- **Chain::Chain @0x449AA0 (59)** and **Chain::AllocElem @0x449ED0 (74)**:
+  [2026-11-17] Removing the two unnecessary barriers from the real ChainElem
+  constructor and publishing its self-link through a volatile member reference
+  restores the complete 59-byte constructor extent (formerly 66), with only
+  six bytes at +16..+1B different: the first self-store and second-sentinel
+  `LEA` are scheduled in the opposite order. Reading the allocator's existing
+  flags through a const volatile reference before publishing the callback
+  restores the complete 74-byte AllocElem extent, with nine ordinary bytes
+  different after masking its single allocator call field. Its `AND` on the
+  first flags word still precedes four zero stores instead of following them.
+  Both outcomes reproduce in the selected four-TU popup graph and the
+  30-input ChainLifetime graph. The same images retain exact popup Update
+  (134 bytes) and ChainElem destructor (12 bytes). Both Chain owners remain
+  nonexact; avoid barriers inside the member constructor, which reintroduce
+  a saved ESI register and increase the constructor to 66 bytes.
 - **ReplayPlaybackFrameControlCallback @0x42A3E0 (68)**: the complete
   `src/ReplayManager.cpp` callback naturally inlines its runtime/flag guard
   and frame-skip decision in the real `frontend-options-refresh` graph. Before
