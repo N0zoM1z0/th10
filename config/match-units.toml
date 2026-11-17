@@ -31712,7 +31712,6 @@ linkages = [
 
 # Canonical exact 593-byte callback, cold-replayed in its real 17-support-TU graph.
 [units.enemy-resolve-runtime-callback]
-candidate = false
 artifact_kind = "linked-pe"
 source = "src/EnemyCallback.cpp"
 support_sources = ["src/Enemy.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/EclVm.cpp", "src/Player.cpp", "src/PlayerCollision.cpp", "src/EnemyEclDispatcher.cpp", "src/VmIdInterrupt.cpp", "src/FrontEnd.cpp", "src/ItemManager.cpp", "src/Main.cpp", "src/Sound.cpp", "src/Gui.cpp", "src/Hint.cpp"]
