@@ -244,13 +244,14 @@ static int __fastcall TransitionShakeEnvelope(void *argument)
         (game->flags58 & 0x72u) != 0)
         return 1;
     effect->timer.Tick();
+    const volatile unsigned int &phaseTail = effect->value2;
     float envelope;
     if (effect->timer.current < static_cast<int>(effect->value0))
         envelope = effect->timer.subframe / static_cast<int>(effect->value0);
     else if (effect->timer.current < static_cast<int>(effect->value0 + effect->value1))
         envelope = 1.0f;
     else if (effect->timer.current <
-        static_cast<int>(effect->value0 + effect->value1 + effect->value2))
+        static_cast<int>(phaseTail + effect->value1 + effect->value0))
         envelope = (static_cast<float>(effect->value0 + effect->value1 + effect->value2) -
             effect->timer.subframe) / static_cast<float>(effect->value2);
     else

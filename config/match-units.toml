@@ -22494,7 +22494,7 @@ linkages = [
   { offset = 0xdb, type = "REL32", target = 0x44a000, symbol = "?RegisterCalc@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z" },
   { offset = 0xe3, type = "DIR32", target = 0x43c410, symbol = "?TransitionDrawDimPlayfield@@YIHPAX@Z", static_address_source = "src/TransitionEffect.cpp", static_address_candidate_size = 0x44, static_address_target_size = 0x44 },
   { offset = 0xeb, type = "REL32", target = 0x44a030, symbol = "?RegisterDraw@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z" },
-  { offset = 0xf5, type = "DIR32", target = 0x43c710, symbol = "?TransitionShakeEnvelope@@YIHPAX@Z", static_address_source = "src/TransitionEffect.cpp", static_address_candidate_size = 0x15e, static_address_target_size = 0x15d },
+  { offset = 0xf5, type = "DIR32", target = 0x43c710, symbol = "?TransitionShakeEnvelope@@YIHPAX@Z", static_address_source = "src/TransitionEffect.cpp", static_address_candidate_size = 0x15d, static_address_target_size = 0x15d },
   { offset = 0x100, type = "REL32", target = 0x44a000, symbol = "?RegisterCalc@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z" },
   { offset = 0x10e, type = "DIR32", target = 0x43c870, symbol = "?TransitionDelete@@YIHPAX@Z", static_address_source = "src/TransitionEffect.cpp", static_address_candidate_size = 0x1a, static_address_target_size = 0x1a },
   { offset = 0x12e, type = "DIR32", target = 0x476f78, symbol = "?g_AnmGameSpeed@@3MA" },
@@ -32326,7 +32326,6 @@ linkages = [
 ]
 
 [units.transition-shake-envelope]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/Gui.cpp"
 support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/Player.cpp", "src/FrontEnd.cpp", "src/DecomphelpLeafAccessors.cpp", "src/Main.cpp", "src/Sound.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/AnmRectangle.cpp"]
@@ -32342,6 +32341,22 @@ symbol = "?TransitionShakeEnvelope@@YIHPAX@Z"
 target_address = 0x0043C710
 size = 349
 linkages = [
+  { offset = 0x002, type = "DIR32", symbol = "?g_GameStartupCounter@@3HA", target = 0x004918A4 },
+  { offset = 0x017, type = "DIR32", symbol = "?g_ResultGameManager@@3PAUResultGameManagerView@@A", target = 0x00477810 },
+  { offset = 0x043, type = "REL32", symbol = "?Tick@AnmVmTimerView@@QAEXXZ", target = 0x00404ED0 },
+  { offset = 0x06A, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x094, type = "DIR32", symbol = "__real@4f800000", target = 0x00470B98 },
+  { offset = 0x0A9, type = "DIR32", symbol = "__real@4f800000", target = 0x00470B98 },
+  { offset = 0x0B8, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0 },
+  { offset = 0x0C5, type = "REL32", symbol = "?AnmRandomU32InRange@@YIIPAURngView@@I@Z", target = 0x0043CB80 },
+  { offset = 0x0DC, type = "DIR32", symbol = "?g_TransitionShakeX@@3MA", target = 0x00491E64 },
+  { offset = 0x0E8, type = "DIR32", symbol = "?g_TransitionShakeX@@3MA", target = 0x00491E64 },
+  { offset = 0x0F0, type = "DIR32", symbol = "?g_TransitionShakeX@@3MA", target = 0x00491E64 },
+  { offset = 0x0FE, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0 },
+  { offset = 0x103, type = "REL32", symbol = "?AnmRandomU32InRange@@YIIPAURngView@@I@Z", target = 0x0043CB80 },
+  { offset = 0x120, type = "DIR32", symbol = "?g_TransitionShakeY@@3MA", target = 0x00491E68 },
+  { offset = 0x12D, type = "DIR32", symbol = "?g_TransitionShakeY@@3MA", target = 0x00491E68 },
+  { offset = 0x13B, type = "DIR32", symbol = "?g_TransitionShakeY@@3MA", target = 0x00491E68 },
 ]
 
 

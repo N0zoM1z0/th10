@@ -469,8 +469,17 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   linkage positions, but its strict guard is blocked by the older static
   selector expecting ShakeEnvelope size 350, while the current envelope is
   352/349. Neither shake callback is exact. [2026-11-17]
-- **TransitionShakeEnvelope @0x43C710 (349)**: 115/118 normalized; block order
-  and a phase-limit spill. [2026-11-14]
+- **TransitionShakeEnvelope @0x43C710 (349)**: exact in the actual
+  Transition/GUI 14-input `/GL` graph, including 16 complete REL32/DIR32
+  fields. A volatile reference to the real `effect->value2` phase tail,
+  added after the timer tick, and summing that value before `value1` and
+  `value0` recover the target phase-limit instruction schedule. The source
+  still computes the unsigned 32-bit phase endpoint and preserves the
+  ramp/hold/decay envelope, both RNG calls, and camera X/Y updates.
+  Two independent selected colds pass this whole 349-byte PDB owner plus
+  `TransitionEffectView::Initialize` 396/396 with 37 fields. A separate
+  selected 17-unit cold of this graph passes 2,477 bytes in total.
+  [2026-11-17]
 - **BulletRuntimeView::UpdateAbsoluteDirectionChange @0x4078E0 (335)**: fresh
   2026-11-17 rebuild remains 333/335, with two differences at +0xD7/+0xDD
   (target EDX, candidate EAX). `register` hints were byte-neutral; removing the
