@@ -583,6 +583,16 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   (134 bytes) and ChainElem destructor (12 bytes). Both Chain owners remain
   nonexact; avoid barriers inside the member constructor, which reintroduce
   a saved ESI register and increase the constructor to 66 bytes.
+- **ReplayManager::ProcessFrame @0x4297D0 (596)**: [2026-11-17]
+  The frame counter now advances through an unsigned 32-bit word and
+  bit-preserving `memcpy` instead of a potentially overflowing signed
+  `frameCounter++`. This models the target i386 DWORD increment even at
+  `INT_MAX`, leaving its playback modulo-30 FPS sampling, input records
+  and frame-control handling unchanged. The selected ReplayFrame `/GL`
+  source graph reproduces all 596 bytes and all 33 target-bound fields;
+  the separate frame callback remains 10/10 and one bound REL32 field.
+  Selected two-unit cold replay passes all 606 bytes and 34 fields.
+  This repairs overflow semantics, not the already-exact byte count.
 - **ReplayPlaybackFrameControlCallback @0x42A3E0 (68)**: the complete
   `src/ReplayManager.cpp` callback naturally inlines its runtime/flag guard
   and frame-skip decision in the real `frontend-options-refresh` graph. Before

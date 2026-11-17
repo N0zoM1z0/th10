@@ -566,7 +566,11 @@ int ReplayManager::ProcessFrame()
         g_FrontEndInput.frameMask034 = 0;
     }
 
-    frameCounter++;
+    // A replay frame counter advances in native 32-bit i386 words.
+    // Retain INT_MAX -> INT_MIN wrap instead of signed-overflow UB.
+    const unsigned int nextFrameBits =
+        static_cast<unsigned int>(frameCounter) + 1u;
+    memcpy(&frameCounter, &nextFrameBits, sizeof frameCounter);
     return 1;
 }
 
