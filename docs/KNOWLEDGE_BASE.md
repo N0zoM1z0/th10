@@ -622,6 +622,10 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   timing owner, initializes a 0x24 ChainElem, assigns its draw callback,
   registers priority 47 and stores the task. Both independent scoped cold
   builds reproduce all six original-bound relocation fields. [2026-11-17]
+  Its adjacent `FpsCounterDrawCallback @0x413690` is now separately exact
+  at 10/10 bytes with the REL32 call to `DrawFpsCounter` bound at +4.
+  The `src/Main.cpp` __fastcall wrapper is PDB-owned in the real FPS
+  draw graph and passes its complete scoped cold replay. [2026-11-17]
 - **GameStatisticsOwner ctor @0x42AE60 (132)** and **CreateStatistics42AF20
   @0x42AF20 (97)**: 137 and 98. [2026-11-13]
 - **ScriptViewerPopupOwnerView::Initialize @0x42B4D0 (145)** and

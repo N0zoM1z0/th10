@@ -1,4 +1,5 @@
 name,address,type
+FpsCounterDrawCallback,0x00413690,function
 GuiMessageVmView::~GuiMessageVmView,0x004136C0,function
 GuiCleanupResources,0x00414370,function
 GuiView::~GuiView,0x004145F0,function

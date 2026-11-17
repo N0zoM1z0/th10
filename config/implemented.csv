@@ -969,6 +969,7 @@ CreateHintOwner
 HintOwnerView::OnUpdate
 GameManagerCleanup
 GameFinalizeStatistics42B1E0
+FpsCounterDrawCallback
 GuiMessageVmView::~GuiMessageVmView
 GuiCleanupResources
 GuiView::~GuiView
