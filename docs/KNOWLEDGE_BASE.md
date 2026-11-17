@@ -626,6 +626,11 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   at 10/10 bytes with the REL32 call to `DrawFpsCounter` bound at +4.
   The `src/Main.cpp` __fastcall wrapper is PDB-owned in the real FPS
   draw graph and passes its complete scoped cold replay. [2026-11-17]
+  [2026-11-17] The adjacent source-authored `FpsCounterDrawCallback @0x413690`
+  is now independently exact: the real Main.cpp + AnmManager.cpp LTCG graph
+  reproduces all 10 bytes and its sole REL32 call to DrawFpsCounter at +0x04.
+  Two separate scoped canonical cold links both passed; this closes the
+  callback bridge without inferring the original physical TU.
 - **GameStatisticsOwner ctor @0x42AE60 (132)** and **CreateStatistics42AF20
   @0x42AF20 (97)**: 137 and 98. [2026-11-13]
 - **ScriptViewerPopupOwnerView::Initialize @0x42B4D0 (145)** and

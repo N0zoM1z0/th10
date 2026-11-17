@@ -12,6 +12,7 @@ The count authority is generated [PROGRESS.md](PROGRESS.md), not an old narrativ
 
 | Owner / target | Strict current evidence |
 | --- | --- |
+| `FpsCounterDrawCallback @0x413690` | 10/10 bytes, one REL32 field to `DrawFpsCounter @0x4135D0`; two independent scoped canonical cold links. | Keep the source-authored __fastcall adapter in the Main.cpp + AnmManager.cpp graph. |
 | `GuiView::UpdateStageElements @0x414900` | 3,836/3,836 bytes, 72 bound fields; the separate update callback `0x415AE0` is 7/7 with one call field. |
 | `GuiView::DrawStageElements @0x415800` | 724/724 bytes, 33 fields; the separate draw callback `0x415AF0` is 7/7 with one call field. |
 | `TransitionShakeEnvelope @0x43C710` | 349/349 bytes, 16 fields; adjacent Transition initializer 396/396, 37 fields. |
