@@ -431,6 +431,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004148E0,unknown,ScriptViewer,indeterminate,unknown,script-viewer-native-lifecycle-2026-10-19
 0x00414900,authored_game,Gui,authored,high,gui-core-2026-09-15
 0x00415800,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
+0x00415AE0,unknown,Gui,indeterminate,unknown,target-gui-update-callback-review-2026-11-17-adapter-origin-unresolved
+0x00415AF0,unknown,Gui,indeterminate,unknown,target-gui-draw-callback-review-2026-11-17-adapter-origin-unresolved
 0x00415B00,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x00415DB0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-middle-game-2026-09-17
 0x00415E90,authored_game,Gui,authored,high,gui-core-2026-09-15

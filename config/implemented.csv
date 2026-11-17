@@ -973,6 +973,8 @@ GuiMessageVmView::~GuiMessageVmView
 GuiCleanupResources
 GuiView::~GuiView
 GuiView::DrawStageElements
+GuiUpdateCallback
+GuiDrawCallback
 DrawColoredRectangle
 GuiMessageVmView::GuiMessageVmView
 EnemyKillAll

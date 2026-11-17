@@ -974,6 +974,8 @@ CleanupHintOwner,0x00418EE0,function
 CreateHintOwner,0x00419090,function
 HintOwnerView::OnUpdate,0x004198A0,function
 GuiView::DrawStageElements,0x00415800,function
+GuiUpdateCallback,0x00415AE0,function
+GuiDrawCallback,0x00415AF0,function
 DrawColoredRectangle,0x0043BDA0,function
 GuiMessageVmView::GuiMessageVmView,0x00415B00,function
 EnemyKillAll,0x0040E6A0,function
