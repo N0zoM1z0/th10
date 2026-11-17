@@ -41,7 +41,12 @@ void __stdcall EnemyKillAll(EnemyManagerView *manager)
     manager->timer.previous = manager->timer.current;
     if (*timerScale > 0.99f && *timerScale < 1.01f)
     {
-        ++manager->timer.current;
+        // The original i386 timer advances one 32-bit word, including
+        // the INT_MAX to INT_MIN transition.
+        const unsigned int nextTimeBits =
+            static_cast<unsigned int>(manager->timer.current) + 1u;
+        memcpy(&manager->timer.current, &nextTimeBits,
+            sizeof manager->timer.current);
         manager->timer.subframe += 1.0f;
     }
     else

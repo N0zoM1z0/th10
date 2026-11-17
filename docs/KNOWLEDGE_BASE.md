@@ -502,6 +502,14 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   `AnmLoadedView::InitializeVm` caller graph owns the `src/GuiMessage.cpp`
   contribution; a volatile scale pointer preserves the retail x87 operand
   order in the timer fallback. [2026-11-16]
+  [2026-11-17] The timer-fast-path `++current` now publishes an unsigned
+  modulo-32-bit increment through a four-byte `memcpy`, so it also models
+  the target i386 increment when the signed current value is `INT_MAX`.
+  This makes the native word transition explicit without signed-overflow
+  undefined behavior, ASM or filler. The affected 22-support-TU canonical
+  caller graph retains the full 182/182 exact target and six fields; the
+  separate six-input EnemyReadDialog graph preserves its 124/124 exact
+  owner. No new exact byte credit from the semantically repaired spelling.
 - **TransitionShakeLinear @0x43C550 (439)**: capturing the signed duration
   and initial amplitude offset into ordinary C++ locals recovers the target
   stack-operand lifetime across the RNG calls. The selected 14-input GUI /
