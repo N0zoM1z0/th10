@@ -2567,11 +2567,8 @@ dispatch_rank_count_lowest:
     return 0;
   case ENEMY_ECL_FIRE_LASER_A:
   case ENEMY_ECL_FIRE_LASER_A_WITH_PATTERN:
-    pfVar15 = reinterpret_cast<float *>(&local_288);
-    for (iVar27 = 0x77; iVar27 != 0; iVar27 = iVar27 + -1) {
-      *pfVar15 = 0.0;
-      pfVar15 = pfVar15 + 1;
-    }
+    // The 0x1DC-byte type-0 request is cleared before its fields are set.
+    memset(&local_288.type0, 0, sizeof(local_288.type0));
     if (opcode == 0x1af) {
       memcpy(local_288.type0.patternWords,
              &bulletPatterns[0].words[8],
@@ -2604,11 +2601,8 @@ dispatch_rank_count_lowest:
     return 0;
   case ENEMY_ECL_FIRE_STRAIGHT_LASER:
   case ENEMY_ECL_FIRE_STRAIGHT_LASER_WITH_PATTERN:
-    pfVar15 = reinterpret_cast<float *>(&local_288);
-    for (iVar26 = 0x7e; iVar26 != 0; iVar26 = iVar26 + -1) {
-      *pfVar15 = 0.0;
-      pfVar15 = pfVar15 + 1;
-    }
+    // Clear the actual request type before publishing its opcode fields.
+    memset(&local_288.type1, 0, sizeof(local_288.type1));
     local_288.type1.fixed2C = 8.0f;
     puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
     if (instruction->opcode == 0x1b0) {
@@ -2652,11 +2646,8 @@ dispatch_rank_count_lowest:
     break;
   case ENEMY_ECL_FIRE_LASER:
   case ENEMY_ECL_FIRE_LASER_WITH_PATTERN:
-    pfVar15 = reinterpret_cast<float *>(&local_288);
-    for (iVar26 = 0x77; iVar26 != 0; iVar26 = iVar26 + -1) {
-      *pfVar15 = 0.0;
-      pfVar15 = pfVar15 + 1;
-    }
+    // Clear the actual request type before publishing its opcode fields.
+    memset(&local_288.type0, 0, sizeof(local_288.type0));
     if (opcode == 0x1b1) {
       memcpy(
           local_288.type0.patternWords,
