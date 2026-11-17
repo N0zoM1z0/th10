@@ -446,8 +446,8 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   All 173 original instructions and the 23 local control destinations
   remain whole; no code padding or inline assembly was introduced.
 - **GuiMessageVmView ctor @0x415B00 (683)**: [2026-11-17] in the real
-  `EnemyReadDialogEh` caller graph, the candidate is now 684 bytes, down
-  from 702. Six four-byte VM ID slots use a typed storage view with an empty
+  `EnemyReadDialogEh` caller graph, the candidate is now the full 683-byte target extent, down
+  from 702 (but still nonexact). Six four-byte VM ID slots use a typed storage view with an empty
   default constructor; the 0x90-byte whole-object clear supplies their initial
   zeroes, instead of six redundant `AnmVmIdView` constructor writes. The
   2,000-record bullet cleanup uses an advancing `BulletRuntimeView*` and
@@ -456,8 +456,14 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   but not exact: receiver registers, returned ID temporary homes, color
   publication and the last manager reload still differ. Independent affected
   linked owners remain exact: `EnemyReadDialog` 124/124, `EnemyKillAll`
-  182/182, and GUI stage update 3836/3836. Keep the nonexact 683-byte target
-  boundary unchanged; follow up on ID return homes and final register reuse.
+  182/182, and GUI stage update 3836/3836. Reordering the real source
+  writes of `alternatingLine`, both text colors, and `activeSide` to match
+  the target's publication sequence reduces the 683-byte constructor's
+  non-linkage mismatches from 231 to 227, without changing its extent or
+  the exact callers. The four-byte VM ID storage view now also asserts that
+  its `value` word starts at byte zero. The constructor is not exact;
+  remaining differences include register selection, ID temporary homes,
+  text-position publication, and manager reloads.
 - **GuiShowScoreNotice @0x4172E0 (668)**: 660. [2026-10-25]
 - **MainSupervisorView::UpdateGameMode @0x4218D0 (666)**: 678. [2026-10-29]
 - **CStreamingSound::HandleWaveStreamNotification @0x44D850 (637)**: 634. The

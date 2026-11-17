@@ -99,9 +99,9 @@ GuiMessageVmView::GuiMessageVmView(const unsigned char *record)
     message->textPositions[0] = AnmFloat3View(8.0f, 0.0f, 0.0f);
     message->textPositions[1] = AnmFloat3View(24.0f, 0.0f, 0.0f);
     message->alternatingLine = 0;
-    message->activeSide = 0;
     message->textColors[0] = 0x00f8f08fu;
     message->textColors[1] = 0x008088ffu;
+    message->activeSide = 0;
 
     BulletManagerView *bullets = reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager);
     BulletRuntimeView *bullet = &bullets->bullets[0];

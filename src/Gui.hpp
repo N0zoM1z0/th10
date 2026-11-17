@@ -77,7 +77,8 @@ struct GuiMessageVmIdStorageView
     int value;
 };
 typedef char GuiMessageVmIdStorageSizeIs04[
-    (sizeof(GuiMessageVmIdStorageView) == 4) ? 1 : -1];
+    (sizeof(GuiMessageVmIdStorageView) == 4 &&
+     offsetof(GuiMessageVmIdStorageView, value) == 0) ? 1 : -1];
 
 // Target 0x00415B00 constructs this exact 0x90-byte message interpreter.
 // The three timers and every named field below are independently consumed by
