@@ -320,6 +320,12 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   use typed `memset` on the 0x1DC-byte type-0 or 0x1F8-byte type-1
   request. Both 36-TU and 12-TU codegen comparisons are byte-neutral
   after this cleanup, including the 44- and 627-byte exact guards.
+  [2026-11-17] The rank-selected float result writers (opcodes 0x15D/0x15E)
+  now obtain the context through `EnemyFullObjectView::activeEclContext`
+  (verified member +0x004), not by dereferencing a cast integer address.
+  Keeping the full-owner word live preserves the shared result-tail codegen.
+  The real 36-support-TU build remains 14,480/14,416 with 10,564 differing
+  bytes, and the exact 627-byte PlayerHandleCollisionHit guard still passes.
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and

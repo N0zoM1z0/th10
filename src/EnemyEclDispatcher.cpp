@@ -2838,8 +2838,10 @@ dispatch_rank_count_lowest:
     }
     fVar19 = ReadFloatArgument(1);
     iVar26 = reinterpret_cast<int>(owner);
+    // The full owner carries the ECL context at its verified +0x004 field.
+    // Retain the original owner-word lifetime used by the shared rank tail.
     pfVar15 = reinterpret_cast<EclVmContext *>(
-        *reinterpret_cast<int *>(static_cast<unsigned int>(iVar26) + 4u))->ResolveFloat(0);
+        reinterpret_cast<EnemyFullObjectView *>(iVar26)->activeEclContext)->ResolveFloat(0);
     *pfVar15 = (float)fVar19;
     return 0;
 dispatch_rank_float_tail_b:
@@ -2848,8 +2850,10 @@ dispatch_store_float_result:
     // Keep this owner lifetime explicit: the shipped shared tail reuses EBX
     // as the full owner immediately before ResolveFloat.
     iVar26 = reinterpret_cast<int>(owner);
+    // The full owner carries the ECL context at its verified +0x004 field.
+    // Retain the original owner-word lifetime used by the shared rank tail.
     pfVar15 = reinterpret_cast<EclVmContext *>(
-        *reinterpret_cast<int *>(static_cast<unsigned int>(iVar26) + 4u))->ResolveFloat(0);
+        reinterpret_cast<EnemyFullObjectView *>(iVar26)->activeEclContext)->ResolveFloat(0);
     *pfVar15 = (float)fVar19;
     return 0;
 dispatch_rank_float_tail_a:
