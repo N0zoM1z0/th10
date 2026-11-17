@@ -163,8 +163,14 @@ static AnmVmView *ResolveVm(AnmVmIdView *id)
 // data. Run writes the address expression out at both read and increment.
 static __forceinline int *GuiStageClearCount(const int *stageState)
 {
-    return reinterpret_cast<int *>(g_GuiPersistentData + 0x4d0 +
-        ((stageState[11] + stageState[10] * 3) * 0x10df + stageState[13]) * 4);
+    // Serialized stage counters use the native wrapping 32-bit byte
+    // address: (stage * 3 + shot) * 0x437C + difficulty * 4 + 0x4D0.
+    const unsigned int stageSlot = static_cast<unsigned int>(stageState[11]) +
+        static_cast<unsigned int>(stageState[10]) * 3u;
+    const unsigned int offset = stageSlot * 0x437Cu +
+        static_cast<unsigned int>(stageState[13]) * 4u + 0x4D0u;
+    return reinterpret_cast<int *>(
+        reinterpret_cast<unsigned int>(g_GuiPersistentData) + offset);
 }
 
 int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)

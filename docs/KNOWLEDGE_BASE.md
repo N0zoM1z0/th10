@@ -792,6 +792,15 @@ register preservation or mod-ref assumptions) where our builds exploit it
 - `GameCreateOwner42B660` is `new` (null-checked constructor call), `Initialize`, and on failure a null-checked destructor plus `operator delete`, which is what `delete owner;` emits for a non-virtual destructor.
 - `GuiMessageVmView::Run` indexes 4-byte `textColors` and 12-byte `textPositions` by `message->activeSide`.
 - Persistent stage counter address: `(stage*3+shot)*0x437C + 0x4D0 + difficulty*4`.
+  [2026-11-17] The shared `GuiStageClearCount` helper now expresses this
+  as native unsigned DWORD arithmetic on the serialized stage, shot and
+  difficulty words before flat 32-bit base-address addition. This removes
+  signed-multiplication/offset overflow and out-of-array pointer arithmetic
+  from the C++ address derivation; it preserves the target modulo-32
+  indexing, including malformed inputs. A focused 16-support-TU
+  `gui-message-run-candidate` relink remains 4464/4480 and 1935 residual
+  bytes (still nonexact), while the corresponding 3836/3836 GUI stage
+  updater strict-linked guard stays exact. No new exact credit.
 - Stage-bonus score terms:
   - `g_GuiPowerLevel * {20M, 25M, 35M}` and `g_GuiPowerLevel * 40M`;
   - `g_GuiPower * {100k, 200k, 300k, 400k}`;
