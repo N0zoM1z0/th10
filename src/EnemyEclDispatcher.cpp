@@ -820,7 +820,11 @@ void EnemySoundQueueView::QueueSoundCue(int soundId, float positionX)
         activeSoundIds[slot] = soundId;
         *EnemyNativeWordIndex(&cueValues[0], soundId) = cueValue;
         samples[slot][0] = sample;
-        ++sampleCounts[slot];
+        // The unchecked count uses native 32-bit INC wrap, even when an
+        // empty slot retains the most-positive signed count word.
+        const unsigned int nextCountBits =
+            static_cast<unsigned int>(sampleCounts[slot]) + 1u;
+        memcpy(&sampleCounts[slot], &nextCountBits, sizeof nextCountBits);
     }
 }
 void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)
@@ -850,7 +854,11 @@ void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)
         activeSoundIds[slot] = soundId;
         *EnemyNativeWordIndex(&cueValues[0], soundId) = cueValue;
         samples[slot][0] = sample;
-        ++sampleCounts[slot];
+        // The unchecked count uses native 32-bit INC wrap, even when an
+        // empty slot retains the most-positive signed count word.
+        const unsigned int nextCountBits =
+            static_cast<unsigned int>(sampleCounts[slot]) + 1u;
+        memcpy(&sampleCounts[slot], &nextCountBits, sizeof nextCountBits);
     }
 }
 

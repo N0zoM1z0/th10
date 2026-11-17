@@ -774,6 +774,16 @@ register preservation or mod-ref assumptions) where our builds exploit it
 
 - Sound queue: only `count >= 128` is rejected, so negative counts pass. soundId metadata records are 8 bytes, with the cue at +6.
 - Sound queue: QueueSoundSample 0x0043DC90 (ECX queue, EDI id, stack sample RET 4); QueueSoundCue 0x0043DD10 (ESI queue, EBX id, float pos ×5.2083335). 12 slots, 128 samples, cue table 0x004749C8+6.
+  [2026-11-17] The first-free-slot branch does not validate the old signed
+  sample count, unlike the existing-ID branch which rejects `count >= 128`.
+  Both new-slot count increments now perform unsigned DWORD `+1` followed
+  by bit-preserving `memcpy` to the signed field. This models the retail
+  unconditional i386 increment at `INT_MAX` without signed-overflow UB.
+  A fresh four-source `EnemyDispatcherHelpers` linked-PE graph retains both
+  exact whole owners (123/123, 149/149) and all four total linkages. The
+  refreshed 36-support-TU parent retains exact `PlayerHandleCollisionHit`
+  (627 bytes); the 14,416-byte dispatcher remains nonexact, and its residual
+  count is 10,570 in the current graph.
 - SoundPlayerView: 32 command slots at +0x1F88, stride 0x10C (opcode/arg/step/path at 0/4/8/12), QueueCommand @0x43E460 scans only 31, drops when full. FrontEndLoadMusic @0x420A90 replaces three extension bytes after last dot; FrontEndPlayMusic @0x420B10 publishes profile track byte even when the queue is full.
 - LoadBgm keeps the 16-bit alignment in EBP and uses `DIV EBP`.
 - BGM format records are 0x34 bytes; there are 16 preload slots; command records are 0x10C bytes.
