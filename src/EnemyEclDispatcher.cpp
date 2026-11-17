@@ -603,18 +603,18 @@ typedef char EnemyLaserControlFloatAt440Layout[
      sizeof(EnemyLaserControlFloatAt440View) == 0x444) ? 1 : -1];
 
 static __declspec(noinline) void EnemySetLaserPosition(
-    int laser, const PlayerFloat3 *position)
+    EnemyLaserNodeView *laser, const PlayerFloat3 *position)
 {
     reinterpret_cast<EnemyLaserPositionAt430View *>(laser)->position430 =
         *position;
 }
-static __declspec(noinline) int EnemyFindLaser(
+static __declspec(noinline) EnemyLaserNodeView *EnemyFindLaser(
     EnemyLaserManagerView *manager, int id)
 {
     EnemyLaserNodeView *laser = manager->head;
     while (laser != 0) {
         if (laser->id == id) {
-            return reinterpret_cast<int>(laser);
+            return laser;
         }
         laser = laser->next;
     }
@@ -1069,6 +1069,7 @@ int EnemyRuntimeView::DispatchEclInstruction()
   int uVar25;
   int iVar26;
   int iVar27;
+  EnemyLaserNodeView *laserReceiver;
   const EnemyEclInstructionView *instruction;
   int secondLowBulletCount;
   unsigned int uVar28;
@@ -2728,65 +2729,65 @@ dispatch_rank_count_lowest:
     break;
   case ENEMY_ECL_SET_LASER_OFFSET:
     uVar22 = ReadIntArgument(0);
-    iVar26 = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
-    if (iVar26 != 0) {
+    laserReceiver = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
+    if (laserReceiver != NULL) {
       fVar19 = (ReadFloatArgument(2));
       fVar21 = (ReadFloatArgument(1));
       vectorScratch.x = (float)fVar21;
       vectorScratch.y = (float)fVar19;
       vectorScratch.z = 0.0f;
-      reinterpret_cast<EnemyLaserConstructionBaseView *>(iVar26)->eclPosition =
+      reinterpret_cast<EnemyLaserConstructionBaseView *>(laserReceiver)->eclPosition =
           *reinterpret_cast<const EnemyLaserVectorView *>(&vectorScratch);
       return 0;
     }
     break;
   case ENEMY_ECL_SET_LASER_ANGLE:
     uVar22 = ReadIntArgument(0);
-    iVar26 = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
-    if (iVar26 != 0) {
+    laserReceiver = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
+    if (laserReceiver != NULL) {
       fVar19 = (ReadFloatArgument(2));
       fVar21 = (ReadFloatArgument(1));
       vectorScratch.x = (float)fVar21;
       vectorScratch.z = 0.0;
       vectorScratch.y = (float)fVar19;
       EnemySetLaserPosition(
-          iVar26, reinterpret_cast<const PlayerFloat3 *>(&vectorScratch.x));
+          laserReceiver, reinterpret_cast<const PlayerFloat3 *>(&vectorScratch.x));
       return 0;
     }
     break;
   case ENEMY_ECL_SET_LASER_SPEED:
     uVar22 = ReadIntArgument(0);
-    iVar26 = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
-    if (iVar26 != 0) {
+    laserReceiver = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
+    if (laserReceiver != NULL) {
       fVar19 = (ReadFloatArgument(1));
-      reinterpret_cast<EnemyLaserConstructionBaseView *>(iVar26)->eclValue48 = (float)fVar19;
+      reinterpret_cast<EnemyLaserConstructionBaseView *>(laserReceiver)->eclValue48 = (float)fVar19;
       return 0;
     }
     break;
   case ENEMY_ECL_SET_LASER_COUNT:
     uVar22 = ReadIntArgument(0);
-    iVar26 = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
-    if (iVar26 != 0) {
+    laserReceiver = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
+    if (laserReceiver != NULL) {
       fVar19 = (ReadFloatArgument(1));
-      reinterpret_cast<EnemyLaserConstructionBaseView *>(iVar26)->eclValue44 = (float)fVar19;
+      reinterpret_cast<EnemyLaserConstructionBaseView *>(laserReceiver)->eclValue44 = (float)fVar19;
       return 0;
     }
     break;
   case ENEMY_ECL_SET_LASER_AIM:
     uVar22 = ReadIntArgument(0);
-    iVar26 = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
-    if (iVar26 != 0) {
+    laserReceiver = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
+    if (laserReceiver != NULL) {
       fVar19 = (ReadFloatArgument(1));
-      reinterpret_cast<EnemyLaserConstructionBaseView *>(iVar26)->eclAngle = (float)fVar19;
+      reinterpret_cast<EnemyLaserConstructionBaseView *>(laserReceiver)->eclAngle = (float)fVar19;
       return 0;
     }
     break;
   case ENEMY_ECL_SET_LASER_SOUND:
     uVar22 = ReadIntArgument(0);
-    iVar26 = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
-    if (iVar26 != 0) {
+    laserReceiver = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
+    if (laserReceiver != NULL) {
       fVar19 = (ReadFloatArgument(1));
-      reinterpret_cast<EnemyLaserControlFloatAt440View *>(iVar26)->value440 =
+      reinterpret_cast<EnemyLaserControlFloatAt440View *>(laserReceiver)->value440 =
           (float)fVar19;
       return 0;
     }

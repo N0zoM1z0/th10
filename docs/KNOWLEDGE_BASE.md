@@ -332,6 +332,15 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   Both 36-TU and 12-TU byte comparisons remain at their prior sizes and
   mismatch counts; the 627-byte collision and 44-byte bullet-clear owners
   remain exact under the affected graphs. [2026-11-17]
+  [2026-11-17] Laser control opcodes 0x19E–0x1A3 now retain a typed
+  `EnemyLaserNodeView*` from the manager's actual linked-list lookup instead
+  of round-tripping laser receivers through `int`. The independent position
+  writer also accepts that pointer. The subtype offsets still use their
+  verified narrow views. On the real 36-TU graph the dispatch remains
+  14,480/14,416 with 10,564 differing bytes, and on the 12-TU `/GS`
+  diagnostic 14,424/14,416 with 10,412. The 627-byte collision and
+  44-byte bullet-clear owners remain exact. This restores natural C++
+  receiver types without promoting the nonexact dispatch.
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and
