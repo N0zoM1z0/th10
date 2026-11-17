@@ -26,10 +26,10 @@ void ItemVectorView::FromAngleMagnitude(float angle, float magnitude)
         fstp dword ptr [eax + 4]
     }
 #else
-    (void)angle;
-    (void)magnitude;
-    x = 0.0f;
-    y = 0.0f;
+    // The natural C++ path implements the same polar XY projection as the
+    // target's x87 FSINCOS path; preserve the existing Z component.
+    x = static_cast<float>(cos(angle)) * magnitude;
+    y = static_cast<float>(sin(angle)) * magnitude;
 #endif
 }
 
