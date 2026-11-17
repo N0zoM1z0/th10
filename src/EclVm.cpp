@@ -861,7 +861,12 @@ static __forceinline int PopReturnTimeWord(
         return -1;
     unsigned char *const stackData = stack->data;
     stack->stackTop -= size;
-    unsigned char *const valueAddress = stackData + stack->stackTop;
+    // Native ECL return-time words use a flat 32-bit stack address.
+    // An untrusted serialized top is not a bounded C++ array index.
+    const unsigned char *const valueAddress =
+        reinterpret_cast<const unsigned char *>(
+            reinterpret_cast<unsigned int>(stackData) +
+            static_cast<unsigned int>(stack->stackTop));
     memcpy(value, valueAddress, size);
     return 0;
 }
