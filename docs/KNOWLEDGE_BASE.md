@@ -445,8 +445,19 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   `FSTP`, resolving the earlier 6-byte `LEA`/`FMUL` inversion at +0xD0.
   All 173 original instructions and the 23 local control destinations
   remain whole; no code padding or inline assembly was introduced.
-- **GuiMessageVmView ctor @0x415B00 (683)**: 702; the excess comes from ID
-  default constructors. [2026-11-11]
+- **GuiMessageVmView ctor @0x415B00 (683)**: [2026-11-17] in the real
+  `EnemyReadDialogEh` caller graph, the candidate is now 684 bytes, down
+  from 702. Six four-byte VM ID slots use a typed storage view with an empty
+  default constructor; the 0x90-byte whole-object clear supplies their initial
+  zeroes, instead of six redundant `AnmVmIdView` constructor writes. The
+  2,000-record bullet cleanup uses an advancing `BulletRuntimeView*` and
+  decrementing count, preserving its active-state filter and the target's
+  `ADD ESI,0x7F0; DEC EBX; JNE` tail. The current 684-byte result is close
+  but not exact: receiver registers, returned ID temporary homes, color
+  publication and the last manager reload still differ. Independent affected
+  linked owners remain exact: `EnemyReadDialog` 124/124, `EnemyKillAll`
+  182/182, and GUI stage update 3836/3836. Keep the nonexact 683-byte target
+  boundary unchanged; follow up on ID return homes and final register reuse.
 - **GuiShowScoreNotice @0x4172E0 (668)**: 660. [2026-10-25]
 - **MainSupervisorView::UpdateGameMode @0x4218D0 (666)**: 678. [2026-10-29]
 - **CStreamingSound::HandleWaveStreamNotification @0x44D850 (637)**: 634. The

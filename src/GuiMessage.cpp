@@ -71,7 +71,8 @@ GuiMessageVmView::GuiMessageVmView(const unsigned char *record)
     vm->flags35C |= 0x40000000u;
     text->InitializeVm(vm, 0);
     anm = g_AnmRenderManagerView;
-    message->vmIds[GUI_MESSAGE_TEXT_LINE_0] = anm->AddVmVariant0(vm);
+    AnmVmIdView firstTextId = anm->AddVmVariant0(vm);
+    message->vmIds[GUI_MESSAGE_TEXT_LINE_0].value = firstTextId.value;
 
     text = g_AsciiManagerView->textAnm;
     vm = anm->AllocateVm();
@@ -79,7 +80,8 @@ GuiMessageVmView::GuiMessageVmView(const unsigned char *record)
     vm->flags35C |= 0x40000000u;
     text->InitializeVm(vm, 1);
     anm = g_AnmRenderManagerView;
-    message->vmIds[GUI_MESSAGE_TEXT_LINE_1] = anm->AddVmVariant0(vm);
+    firstTextId = anm->AddVmVariant0(vm);
+    message->vmIds[GUI_MESSAGE_TEXT_LINE_1].value = firstTextId.value;
 
     vm = anm->FindVm(message->vmIds[GUI_MESSAGE_TEXT_LINE_0]);
     if (vm == 0) message->vmIds[GUI_MESSAGE_TEXT_LINE_0].value = 0;
@@ -102,12 +104,14 @@ GuiMessageVmView::GuiMessageVmView(const unsigned char *record)
     message->textColors[1] = 0x008088ffu;
 
     BulletManagerView *bullets = reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager);
-    for (int i = 0; i < 2000; ++i)
+    BulletRuntimeView *bullet = &bullets->bullets[0];
+    int remainingBullets = 2000;
+    do
     {
-        BulletRuntimeView *bullet = &bullets->bullets[i];
         if (bullet->state != 0 && bullet->state != 3)
             EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(bullet));
-    }
+        ++bullet;
+    } while (--remainingBullets != 0);
 
     EnemyEffectWaitNode *laser = reinterpret_cast<EnemyEffectWaitManager *>(
         g_EnemyLaserManager)->head;

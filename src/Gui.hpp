@@ -54,6 +54,31 @@ enum GuiMessageVmIdSlot
 };
 
 
+// Message VM slots are cleared by the whole-object initialization, not
+// by six preliminary AnmVmIdView default-constructor stores. Keep the
+// same four-byte ID and forward existing VM-id operations to its view.
+struct GuiMessageVmIdStorageView
+{
+    GuiMessageVmIdStorageView() {}
+    GuiMessageVmIdStorageView &operator=(AnmVmIdView id)
+    {
+        value = id.value;
+        return *this;
+    }
+    operator AnmVmIdView() const { return AnmVmIdView(value); }
+    AnmVmIdView *operator&()
+    {
+        return reinterpret_cast<AnmVmIdView *>(this);
+    }
+    void SetInterrupt(short interrupt)
+    {
+        reinterpret_cast<AnmVmIdView *>(this)->SetInterrupt(interrupt);
+    }
+    int value;
+};
+typedef char GuiMessageVmIdStorageSizeIs04[
+    (sizeof(GuiMessageVmIdStorageView) == 4) ? 1 : -1];
+
 // Target 0x00415B00 constructs this exact 0x90-byte message interpreter.
 // The three timers and every named field below are independently consumed by
 // Run at 0x00415E90 or by the owning GUI updater at 0x00414900.
@@ -63,7 +88,7 @@ struct GuiMessageVmView
     AnmVmTimerView lifetimeTimer;
     AnmVmTimerView instructionTimer;
     AnmVmTimerView waitTimer;
-    AnmVmIdView vmIds[GUI_MESSAGE_VM_COUNT];
+    GuiMessageVmIdStorageView vmIds[GUI_MESSAGE_VM_COUNT];
     int unknown58;
     GuiMessageInstructionView *currentInstruction;
     AnmFloat3View textPositions[2];
