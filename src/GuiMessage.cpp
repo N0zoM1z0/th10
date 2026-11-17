@@ -71,8 +71,10 @@ GuiMessageVmView::GuiMessageVmView(const unsigned char *record)
     vm->flags35C |= 0x40000000u;
     text->InitializeVm(vm, 0);
     anm = g_AnmRenderManagerView;
-    AnmVmIdView firstTextId = anm->AddVmVariant0(vm);
-    message->vmIds[GUI_MESSAGE_TEXT_LINE_0].value = firstTextId.value;
+    {
+        AnmVmIdView createdId = anm->AddVmVariant0(vm);
+        message->vmIds[GUI_MESSAGE_TEXT_LINE_0].value = createdId.value;
+    }
 
     text = g_AsciiManagerView->textAnm;
     vm = anm->AllocateVm();
@@ -80,8 +82,10 @@ GuiMessageVmView::GuiMessageVmView(const unsigned char *record)
     vm->flags35C |= 0x40000000u;
     text->InitializeVm(vm, 1);
     anm = g_AnmRenderManagerView;
-    firstTextId = anm->AddVmVariant0(vm);
-    message->vmIds[GUI_MESSAGE_TEXT_LINE_1].value = firstTextId.value;
+    {
+        AnmVmIdView createdId = anm->AddVmVariant0(vm);
+        message->vmIds[GUI_MESSAGE_TEXT_LINE_1].value = createdId.value;
+    }
 
     vm = anm->FindVm(message->vmIds[GUI_MESSAGE_TEXT_LINE_0]);
     if (vm == 0) message->vmIds[GUI_MESSAGE_TEXT_LINE_0].value = 0;

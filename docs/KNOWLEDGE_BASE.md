@@ -464,6 +464,18 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   its `value` word starts at byte zero. The constructor is not exact;
   remaining differences include register selection, ID temporary homes,
   text-position publication, and manager reloads.
+  [2026-11-17] Further native C++ recovery scopes each returned
+  `AnmVmIdView` to its own child-registration call. In the actual
+  six-input `EnemyReadDialogEh` /GL /GS /EHsc graph this restores the
+  target's return-value stack home and most intermediate registers: the
+  constructor is 684/683 bytes with 81 remaining ordinary mismatches,
+  versus 227 in the prior 683/683-byte candidate. The one-byte excess
+  arises near the final enemy-manager load (`MOV ECX,[addr]` instead of
+  target `MOV EAX,[addr]`). The function is **not exact**. Six alternate
+  source-order, laser-manager and enemy-manager captures did not further
+  improve this 81-byte residual, and were rejected. Local affected-owner
+  relinks retain `EnemyReadDialog` exact 124/124 and `EnemyKillAll` exact
+  182/182. Keep both independent ID scopes; avoid source-size-only scoring.
 - **GuiShowScoreNotice @0x4172E0 (668)**: 660. [2026-10-25]
 - **MainSupervisorView::UpdateGameMode @0x4218D0 (666)**: 678. [2026-10-29]
 - **CStreamingSound::HandleWaveStreamNotification @0x44D850 (637)**: 634. The
