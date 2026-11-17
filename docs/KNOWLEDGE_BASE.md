@@ -326,6 +326,12 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   Keeping the full-owner word live preserves the shared result-tail codegen.
   The real 36-support-TU build remains 14,480/14,416 with 10,564 differing
   bytes, and the exact 627-byte PlayerHandleCollisionHit guard still passes.
+  The same dispatcher now keeps the real `int*`/`float*` addresses returned
+  by the ECL variable resolvers through the rank, difficulty and laser
+  opcode families; it no longer round-trips ten destinations through `int`.
+  Both 36-TU and 12-TU byte comparisons remain at their prior sizes and
+  mismatch counts; the 627-byte collision and 44-byte bullet-clear owners
+  remain exact under the affected graphs. [2026-11-17]
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and

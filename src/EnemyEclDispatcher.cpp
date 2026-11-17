@@ -1966,7 +1966,7 @@ dispatch_initialize_polar_interpolation:
     default:
       goto dispatch_complete;
     }
-    puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
+    puVar5 = reinterpret_cast<unsigned int *>(ResolveIntArgument(0));
     *puVar5 = (int)uVar22;
     return 0;
   case ENEMY_ECL_SELECT_FLOAT_BY_DIFFICULTY:
@@ -2604,7 +2604,7 @@ dispatch_rank_count_lowest:
     // Clear the actual request type before publishing its opcode fields.
     memset(&local_288.type1, 0, sizeof(local_288.type1));
     local_288.type1.fixed2C = 8.0f;
-    puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
+    puVar5 = reinterpret_cast<unsigned int *>(ResolveIntArgument(0));
     if (instruction->opcode == 0x1b0) {
       memcpy(local_288.type1.patternWords,
              &bulletPatterns[0].words[8],
@@ -2682,7 +2682,7 @@ dispatch_rank_count_lowest:
   case ENEMY_ECL_FIRE_STRAIGHT_LASER_2:
   case ENEMY_ECL_FIRE_STRAIGHT_LASER_2_WITH_PATTERN:
     EnemyInitializeLaserConfig(&local_288);
-    puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
+    puVar5 = reinterpret_cast<unsigned int *>(ResolveIntArgument(0));
     if (instruction->opcode == 0x1b2) {
       puVar14 = &bulletPatterns[0].words[8];
       puVar13 = local_288.type1.patternWords;
@@ -2862,18 +2862,20 @@ dispatch_store_float_result_a:
     positionInterpolationValues = ResolveFloatArgument(0);
     *positionInterpolationValues = (float)fVar21;
     return 0;
+  // Resolved variable slots already have typed addresses; do not round-trip
+  // them through implementation-defined pointer-to-int conversions.
   case ENEMY_ECL_INTERPOLATE_FLOAT_BY_RANK:
     fVar19 = (ReadFloatArgument(1));
     fVar21 = (ReadFloatArgument(2));
     local_2a8 = (float)fVar21;
-    pfVar15 = (float *)((int)ResolveFloatArgument(0));
+    pfVar15 = ResolveFloatArgument(0);
     *pfVar15 = (local_2a8 - (float)fVar19) * ((float)g_EnemyChapterState.rank + 1024.0f) * 0.00048828125f +
                (float)fVar19;
     return 0;
   case ENEMY_ECL_SELECT_INT_BY_RANK_3:
     if (0x1ff < g_EnemyChapterState.rank) {
 dispatch_rank_int_high:
-      puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
+      puVar5 = reinterpret_cast<unsigned int *>(ResolveIntArgument(0));
       uVar22 = ReadIntArgument(2);
       *puVar5 = (int)uVar22;
       return 0;
@@ -2881,26 +2883,26 @@ dispatch_rank_int_high:
     goto dispatch_rank_int_low;
   case ENEMY_ECL_SELECT_INT_BY_RANK_5:
     if (599 < g_EnemyChapterState.rank) {
-      puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
+      puVar5 = reinterpret_cast<unsigned int *>(ResolveIntArgument(0));
       uVar22 = ReadIntArgument(4);
       *puVar5 = (int)uVar22;
       return 0;
     }
     if (199 < g_EnemyChapterState.rank) {
-      puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
+      puVar5 = reinterpret_cast<unsigned int *>(ResolveIntArgument(0));
       uVar22 = ReadIntArgument(3);
       *puVar5 = (int)uVar22;
       return 0;
     }
     if (-0xc9 < g_EnemyChapterState.rank) goto dispatch_rank_int_high;
     if (-0x191 < g_EnemyChapterState.rank) {
-      puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
+      puVar5 = reinterpret_cast<unsigned int *>(ResolveIntArgument(0));
       uVar22 = ReadIntArgument(1);
       *puVar5 = (int)uVar22;
       return 0;
     }
 dispatch_rank_int_low:
-    puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
+    puVar5 = reinterpret_cast<unsigned int *>(ResolveIntArgument(0));
     uVar22 = ReadIntArgument(0);
     *puVar5 = (int)uVar22;
     return 0;
@@ -2909,7 +2911,7 @@ dispatch_rank_int_low:
     // final 32-bit value publication, without widening the product.
     uVar22 = ReadIntArgument(1);
     uVar23 = ReadIntArgument(2);
-    piVar7 = (int *)((int)ResolveIntArgument(0));
+    piVar7 = ResolveIntArgument(0);
     iVar26 = static_cast<int>((static_cast<unsigned int>(uVar23) -
         static_cast<unsigned int>(uVar22)) *
         (static_cast<unsigned int>(g_EnemyChapterState.rank) + 0x400u));
