@@ -589,6 +589,13 @@ register preservation or mod-ref assumptions) where our builds exploit it
   callback. It caches the next node first.
 - GUI Run's code ends at 0x416F61, then 2 alignment bytes and 43 table pointers
   (24 opcodes, 7+7 stage cases, 5 difficulty).
+- `GuiUpdateCallback @0x415AE0` is the independent seven-byte fastcall
+  adapter `push ecx; call 0x414900; ret`. The existing ordinary C++
+  `GuiView::UpdateStageElements` forwarding wrapper reproduces the complete
+  PDB-owned seven bytes and its sole target-bound REL32 field. Two selected
+  17-input `/GL` colds reproduce this owner together with exact GUI draw
+  (724 bytes) and its separate draw callback (7 bytes), for 738 exact bytes
+  and 35 complete target-bound fields in one image. [2026-11-17]
 - `GuiDrawCallback @0x415AF0` is the reviewed, seven-byte
   `push ecx; call 0x415800; ret` adapter forwarding the native ECX GUI
   owner to the stdcall draw function. The existing natural C++ callback in
