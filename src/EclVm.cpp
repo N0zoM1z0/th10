@@ -1006,7 +1006,7 @@ jump_instruction:
 
             case ECL_VM_STORE_INT:
                 stack.Pop('i', sizeof(EclVmScalar),
-                    &reinterpret_cast<EclVmScalar *>(ResolveInt(0))->integer);
+                    ResolveInt(0));
                 break;
 
             case ECL_VM_PUSH_FLOAT:
@@ -1015,7 +1015,7 @@ jump_instruction:
 
             case ECL_VM_STORE_FLOAT:
                 stack.Pop('f', sizeof(EclVmScalar),
-                    &reinterpret_cast<EclVmScalar *>(ResolveFloat(0))->real);
+                    ResolveFloat(0));
                 break;
 
             case ECL_VM_ADD_INT:

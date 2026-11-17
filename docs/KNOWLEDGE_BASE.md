@@ -400,6 +400,13 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   +0xAF/+0x1FB SIBs but moves differences to +0x97/+0x1E7 and nets 6,227/6,264.
   Keep the exact typed leaf and solve the inlined parent schedule separately.
   [2026-11-15]
+  [2026-11-17] The STORE_INT and STORE_FLOAT opcodes now pass the real
+  `ResolveInt(0)` / `ResolveFloat(0)` scalar pointers directly to
+  `stack.Pop`, rather than round-tripping them through an unrelated
+  `EclVmScalar*` union view. The real 36-TU Run graph remains
+  7,020/7,020 with the same 23 residual bytes; its 627-byte collision
+  caller and 122-byte Pop / 96-byte Push leaves remain exact. This is
+  a natural pointer-type correction, not a new exact-byte claim.
 - **GuiMessageVmView::Run @0x415E90 (4,480)**: [2026-11-17]
   The current `gui-message-run-candidate` 16-support-TU linked graph
   produces 4,464/4,480 bytes with 1,935 differences. Its recorded
