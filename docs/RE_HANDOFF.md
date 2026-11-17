@@ -34,6 +34,7 @@ ledgers. Their exactness is independent of the still-open larger owners.
 | `PlayerLoadOptionData @0x426520` | 229 | 229/229 bytes and six fields in the real `PlayerInitialize` / `EnemyReadIntOperand` graph (20 support TUs). |
 | `EnemyKillAll @0x40E6A0` | 182 | 182/182 bytes and six fields in the real `AnmLoadedView::InitializeVm` caller graph. |
 | `TransitionShakeEnvelope @0x43C710` | 349 | 349/349 bytes and all 16 bound fields in two independent selected `/GL` Transition/GUI colds; the associated 396-byte Transition initializer and other same-image exact guards remain exact. |
+| `GuiView::DrawStageElements @0x415800` | 724 | 724/724 bytes and 33 bound fields in the selected 17-input `/GL` GUI draw graph. Native score rectangle compound assignments restore exact x87 instruction scheduling. |
 | `EnemyReadIntOperand @0x412350` | 820 | 820/820 bytes and 95 fields; retained as the exact dependency guard for the Player loader. |
 | `FrontEndControllerView::RefreshOptionsDisplay` | 3,999 | 3,999/3,999 bytes in the refreshed FrontEnd options graph. |
 

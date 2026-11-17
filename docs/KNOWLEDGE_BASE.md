@@ -435,8 +435,16 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   ECX position and RET16; branch and tail layout differ. [2026-10-21]
 - **SoundPlayerView::Initialize @0x43CD30 (786)**: 755; the target saves EBX
   conditionally. [2026-10-29]
-- **GuiView::DrawStageElements @0x415800 (724)**: 172/173 normalized; one
-  `LEA`/`FMUL` order tie in the first score rectangle. [2026-11-14]
+- **GuiView::DrawStageElements @0x415800 (724)**: [2026-11-17] exact
+  across the complete 724-byte function and 33 original-bound DIR32/REL32
+  fields in the 17-input GUI draw `/GL` graph. The recovered natural C++
+  first rectangle uses staged updates to `rectangle.right`: first the
+  converted state integer, then `*= 0.2923077f`, then `+= 51.0f` after
+  storing the bottom edge. That expression/order yields the retail
+  `FILD`, color `MOVZX/SHL`, `FMUL`, rectangle `LEA`, `FADD` and final
+  `FSTP`, resolving the earlier 6-byte `LEA`/`FMUL` inversion at +0xD0.
+  All 173 original instructions and the 23 local control destinations
+  remain whole; no code padding or inline assembly was introduced.
 - **GuiMessageVmView ctor @0x415B00 (683)**: 702; the excess comes from ID
   default constructors. [2026-11-11]
 - **GuiShowScoreNotice @0x4172E0 (668)**: 660. [2026-10-25]
