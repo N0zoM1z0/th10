@@ -572,8 +572,14 @@ register preservation or mod-ref assumptions) where our builds exploit it
   callback. It caches the next node first.
 - GUI Run's code ends at 0x416F61, then 2 alignment bytes and 43 table pointers
   (24 opcodes, 7+7 stage cases, 5 difficulty).
-- `GuiDrawCallback @0x415AF0` is `push ecx; call 0x415800; ret`: a fastcall
-  callback forwarding to stdcall `DrawStageElements`.
+- `GuiDrawCallback @0x415AF0` is the reviewed, seven-byte
+  `push ecx; call 0x415800; ret` adapter forwarding the native ECX GUI
+  owner to the stdcall draw function. The existing natural C++ callback in
+  `src/GuiDraw.cpp` reproduces all seven bytes and the target-bound REL32
+  call in the same 17-input graph as the now-exact 724-byte draw owner.
+  A selected cold build passes both units (731 bytes, 34 fields).
+  The original explicit-versus-compiler-generated source origin is unknown.
+  [2026-11-17]
 - `GuiView::~GuiView @0x4145F0` uses FuncInfo 0x471740 with seven unwind states
   and the vector destructor iterator for six arrays; it needs `/EHsc`.
 - Statistics: factory 0x42AF20 allocates 0x1DCB4 bytes and publishes to
