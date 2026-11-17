@@ -290,14 +290,9 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   10,574 differing bytes. For opcode 0x1AB, routing operands 1-4 through one
   local `EclVmHost*` lowers the raw count to 10,542 and candidate extent to
   14,480, but introduces new offsets (+0xBA/+0xF8) and moves many residuals;
-  the frontier correctly rejects it. Volatile host/runtime reload variants
-  expand to 14,512 bytes and 10,630-10,647 differences. Do not promote a
-  smaller raw count when the new-offset ratchet fails. The refreshed 2026-11-17 36-support-TU `player-handle-collision-hit` image
-  remains 14,492 against the 14,416-byte target with 10,568 differing bytes;
-  its frontier is `REGRESSED` against the stored 10,416-byte residual set. The
-  separate 12-TU `/GS` graph is 14,496 bytes with 10,574 differences and an
-  unchanged diagnostic frontier. Keep these measurements separate; neither
-  is close to exact or a canonical owner replay.
+  the frontier correctly rejects it. The 14,496-byte / 10,574-difference
+  baseline is from the November 16 source epoch; it is not the current
+  post-laser-recovery candidate. Use the newer measurements below.
   [2026-11-17] Opcode `0x199` uses 22 overlapping `0x18`-byte extra
   records inside each `0x210`-byte bullet pattern. The final float is the
   typed `EnemyBulletExtraView::floatB` member at +4 of the same record as
@@ -305,10 +300,9 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   four integer stores. Replacing the later eight-byte-scaled address
   expression with that member is semantically equivalent for all 32-bit
   index words and makes the source model the actual record. The selected
-  12-TU `/GS` diagnostic remains nonexact (14,496/14,416 bytes, 10,576
-  differences versus 10,574 before this change); the exact
-  `EnemyApplyBulletClear` 44-byte owner remains unchanged in the graph.
-  No dispatcher exactness is claimed from this type recovery.
+  intermediate 12-TU `/GS` diagnostic remained nonexact (14,496/14,416,
+  10,576 differences versus 10,574 beforehand); the current graph has
+  moved on. The `EnemyApplyBulletClear` 44-byte owner stayed exact.
   [2026-11-17] In opcodes `0x19C/0x1AF` and `0x19D/0x1B0`,
   the three-component laser spawn position is now assigned through
   the correct `EnemyLaserType0/1RequestView::position.x/y/z` members,
@@ -322,7 +316,10 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   canonical acceptance. Exact PlayerHandleCollisionHit 627/627 and
   EnemyApplyBulletClear 44/44 guards pass; ANM ExecuteScript remains
   9,964/9,964 with two differences and GameResetGui stays 1,965/1,965
-  with 47 differences. No dispatcher exactness is implied.
+  with 47 differences. The three opcode laser-request clears now
+  use typed `memset` on the 0x1DC-byte type-0 or 0x1F8-byte type-1
+  request. Both 36-TU and 12-TU codegen comparisons are byte-neutral
+  after this cleanup, including the 44- and 627-byte exact guards.
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and
@@ -374,14 +371,19 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   +0xAF/+0x1FB SIBs but moves differences to +0x97/+0x1E7 and nets 6,227/6,264.
   Keep the exact typed leaf and solve the inlined parent schedule separately.
   [2026-11-15]
-- **GuiMessageVmView::Run @0x415E90 (4,480)**: unit `gui-message-run-candidate`
-  (14-TU transition graph plus GuiMessageLeaves.cpp and VmIdInterrupt.cpp,
-  entry `UpdateStageElements`), 4,463 bytes, 1,047/1,219 normalized
-  instructions. Remaining: portrait operand registers (retail EDX/ECX, ours
-  EAX); resource loaded before the operand in each second enemy-portrait call;
-  inline clear-count increments and merged `SetNextGameMode(4)` tails at stages
-  6/7; `guiFlags |= 0x20` before the score reads. Next: model 0x474C40 as one
-  escaped struct. [2026-11-14]
+- **GuiMessageVmView::Run @0x415E90 (4,480)**: [2026-11-17]
+  The current `gui-message-run-candidate` 16-support-TU linked graph
+  produces 4,464/4,480 bytes with 1,935 differences. Its recorded
+  1,910-byte residual frontier is older, so `REGRESSED` describes
+  moved offsets, not a current exactness result. All 36 portrait sprite
+  script-offset additions now use unsigned 32-bit arithmetic, with no
+  machine-byte change. Collapsing the eight syntactically identical
+  player-character branches shrank the body to 3,796 bytes and was
+  rejected; they must stay separate for the target branch layout.
+  Remaining work: portrait operand register lifetimes, second enemy
+  portrait resource-load order, inline clear-count increments and the
+  shared stage 6/7 game-mode tails. The separately owned 3,836-byte
+  GUI stage updater remains exact.
 - **ResultMenuUpdateResult @0x4236F0 (3,227)**: four-TU graph (FrontEnd `/GL /GS
   /EHs`, VmIdInterrupt, real Enemy sound callee, AnmVmId), 3,228 bytes,
   784/907 normalized, 173 fields. Open: states 7/8 and 10-13, the GUI score
@@ -459,37 +461,21 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   `FSTP`, resolving the earlier 6-byte `LEA`/`FMUL` inversion at +0xD0.
   All 173 original instructions and the 23 local control destinations
   remain whole; no code padding or inline assembly was introduced.
-- **GuiMessageVmView ctor @0x415B00 (683)**: [2026-11-17] in the real
-  `EnemyReadDialogEh` caller graph, the candidate is now the full 683-byte target extent, down
-  from 702 (but still nonexact). Six four-byte VM ID slots use a typed storage view with an empty
-  default constructor; the 0x90-byte whole-object clear supplies their initial
-  zeroes, instead of six redundant `AnmVmIdView` constructor writes. The
-  2,000-record bullet cleanup uses an advancing `BulletRuntimeView*` and
-  decrementing count, preserving its active-state filter and the target's
-  `ADD ESI,0x7F0; DEC EBX; JNE` tail. The current 684-byte result is close
-  but not exact: receiver registers, returned ID temporary homes, color
-  publication and the last manager reload still differ. Independent affected
-  linked owners remain exact: `EnemyReadDialog` 124/124, `EnemyKillAll`
-  182/182, and GUI stage update 3836/3836. Reordering the real source
-  writes of `alternatingLine`, both text colors, and `activeSide` to match
-  the target's publication sequence reduces the 683-byte constructor's
-  non-linkage mismatches from 231 to 227, without changing its extent or
-  the exact callers. The four-byte VM ID storage view now also asserts that
-  its `value` word starts at byte zero. The constructor is not exact;
-  remaining differences include register selection, ID temporary homes,
-  text-position publication, and manager reloads.
-  [2026-11-17] Further native C++ recovery scopes each returned
-  `AnmVmIdView` to its own child-registration call. In the actual
-  six-input `EnemyReadDialogEh` /GL /GS /EHsc graph this restores the
-  target's return-value stack home and most intermediate registers: the
-  constructor is 684/683 bytes with 81 remaining ordinary mismatches,
-  versus 227 in the prior 683/683-byte candidate. The one-byte excess
-  arises near the final enemy-manager load (`MOV ECX,[addr]` instead of
-  target `MOV EAX,[addr]`). The function is **not exact**. Six alternate
-  source-order, laser-manager and enemy-manager captures did not further
-  improve this 81-byte residual, and were rejected. Local affected-owner
-  relinks retain `EnemyReadDialog` exact 124/124 and `EnemyKillAll` exact
-  182/182. Keep both independent ID scopes; avoid source-size-only scoring.
+- **GuiMessageVmView ctor @0x415B00 (683)**: [2026-11-17]
+  In the six-input `EnemyReadDialogEh` graph the current candidate is
+  684/683 bytes, with 81 ordinary (non-linkage) byte differences.
+  That improves on the 702-byte initial candidate: six VM ID slots
+  now use four-byte storage with no pre-memset zero stores, the 2,000
+  bullet records use the original advancing pointer walk, and both
+  `AddVmVariant0` return values have independent C++ scopes.
+  An intermediate 683-byte candidate had 227 ordinary differences;
+  choosing that size alone would regress the actual comparison. The
+  one-byte extra instruction in the better 684-byte build is near the
+  final enemy-manager reload. Four-byte storage and offset-zero
+  assertions are retained. Alternate field orders, manager captures
+  and ID temporary placements did not improve this residual.
+  `EnemyReadDialog` (124/124), `EnemyKillAll` (182/182) and the GUI
+  stage updater (3,836/3,836) remain exact in affected graphs.
 - **GuiShowScoreNotice @0x4172E0 (668)**: 660. [2026-10-25]
 - **MainSupervisorView::UpdateGameMode @0x4218D0 (666)**: 678. [2026-10-29]
 - **CStreamingSound::HandleWaveStreamNotification @0x44D850 (637)**: 634. The
@@ -509,7 +495,9 @@ trusting a number. Owners without an entry have no useful recorded attempt.
 - **ReplayManager::BeginStage @0x42A450 (582)**: 566. [2026-10-31] Porting
   LoadReplay together with it broke `replay-manager-create`.
 - **EclVmContext::StartSubroutine @0x44DF70 (550)**: 551. [2026-11-07]
-- **ScriptViewerPopupOwnerView::Draw @0x42B780 (540)**: 537, 211/480 ordinary.
+- **ScriptViewerPopupOwnerView::Draw @0x42B780 (540)**: current
+  four-source linked graph yields 537/540 bytes and 266 non-linkage
+  differences; the 10-byte draw callback is also nonexact.
   [2026-11-17] The count-dependent digit cursor now uses native
   modulo-32-bit address addition to `record->digits` and decrements the
   byte cursor through the same unsigned word representation. This avoids
