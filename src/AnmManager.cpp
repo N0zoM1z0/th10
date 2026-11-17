@@ -4224,7 +4224,10 @@ int AsciiManagerView::ResetStrings()
 {
     numStrings = 0;
     numGuiStrings = 0;
-    ++frameCounter;
+    // The ASCII update counter advances as one native 32-bit word.
+    const unsigned int nextFrameBits =
+        static_cast<unsigned int>(frameCounter) + 1u;
+    memcpy(&frameCounter, &nextFrameBits, sizeof frameCounter);
     return 1;
 }
 
@@ -4233,7 +4236,11 @@ int __fastcall AsciiManagerView::OnUpdate(AsciiManagerView *manager)
 {
     manager->numStrings = 0;
     manager->numGuiStrings = 0;
-    ++manager->frameCounter;
+    // The callback publishes the same unsigned DWORD increment.
+    const unsigned int nextFrameBits =
+        static_cast<unsigned int>(manager->frameCounter) + 1u;
+    memcpy(&manager->frameCounter, &nextFrameBits,
+        sizeof manager->frameCounter);
     return 1;
 }
 

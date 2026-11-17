@@ -1007,6 +1007,15 @@ register preservation or mod-ref assumptions) where our builds exploit it
 
 ### ANM
 
+- **AsciiManagerView::ResetStrings @0x4014D0 (26)** and **OnUpdate
+  @0x4014F0 (26)**: [2026-11-17] both natural C++ queue-reset owners now
+  publish the frame counter through an unsigned 32-bit increment and
+  `memcpy`. This models the retail `INC` even across `INT_MAX` without
+  signed-overflow undefined behavior, while preserving both regular and
+  GUI string-count resets. The two selected VC7.1 SP1 unit cold links
+  reproduce all 26+26 bytes exactly, with no relocated fields. The
+  existing exact-byte tally is unchanged by this source-semantic fix.
+
 - ANM render vertices are 0x1C bytes.
 - `StartPositionInterpolation`: EAX VM, EDX initial, ECX final, duration/mode on stack, RET8. Tangent vector at 491C14.
 - ANM VM: scriptIndex +0x38A, activeSpriteIndex +0x384, pending interrupt +0x304, delete mark +0x35C.
