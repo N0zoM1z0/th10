@@ -1922,6 +1922,7 @@ dispatch_initialize_polar_interpolation:
     lifeToNextCallback = static_cast<unsigned int>(life);
     return 0;
   case ENEMY_ECL_SET_BOSS_SLOT:
+  {
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar27 = (int)uVar22;
     if (iVar27 < 0) {
@@ -1932,12 +1933,13 @@ dispatch_initialize_polar_interpolation:
       return 0;
     }
     uVar4 = flags;
-    iVar26 = reinterpret_cast<int>(g_EnemyManager);
+    EnemyManagerView *const manager = g_EnemyManager;
     uVar4 |= 0x8000;
     flags = uVar4;
-    *EnemyNativeWordIndex(&reinterpret_cast<EnemyManagerView *>(iVar26)->specialEnemySlots[0], iVar27) = owner;
+    *EnemyNativeWordIndex(&manager->specialEnemySlots[0], iVar27) = owner;
     managerSlot = iVar27;
     return 0;
+  }
   case ENEMY_ECL_SET_INVULNERABILITY:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     damageReductionTimer.SetCurrent((int)uVar22);

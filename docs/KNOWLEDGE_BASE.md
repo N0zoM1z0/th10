@@ -341,6 +341,14 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   diagnostic 14,424/14,416 with 10,412. The 627-byte collision and
   44-byte bullet-clear owners remain exact. This restores natural C++
   receiver types without promoting the nonexact dispatch.
+  [2026-11-17] The SET_BOSS_SLOT handler also retains the real
+  `EnemyManagerView*` through its slot-indexed write instead of converting
+  that pointer to an integer and back. A scoped opcode case preserves the
+  C++ lifetime without changing dispatch. The 36-TU /GL owner remains
+  14,480/14,416 (10,564 differences), and the 12-TU /GS diagnostic
+  remains 14,424/14,416 (10,412 differences). The affected 627- and
+  44-byte exact collision/clear owners both remain unchanged. Neither
+  dispatch graph is exact.
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and
