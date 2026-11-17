@@ -2580,7 +2580,9 @@ dispatch_rank_count_lowest:
     vectorScratch.x = bulletPatternOffsets[0].x + worldMotion.position.x;
     vectorScratch.y = bulletPatternOffsets[0].y + worldMotion.position.y;
     vectorScratch.z = bulletPatternOffsets[0].z + worldMotion.position.z;
-    *reinterpret_cast<PlayerFloat3 *>(&local_288) = vectorScratch;
+    local_288.type0.position.x = vectorScratch.x;
+    local_288.type0.position.y = vectorScratch.y;
+    local_288.type0.position.z = vectorScratch.z;
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     local_288.type0.type = (unsigned short)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
@@ -2617,7 +2619,9 @@ dispatch_rank_count_lowest:
     vectorScratch.x = bulletPatternOffsets[0].x + worldMotion.position.x;
     vectorScratch.y = bulletPatternOffsets[0].y + worldMotion.position.y;
     vectorScratch.z = bulletPatternOffsets[0].z + worldMotion.position.z;
-    *reinterpret_cast<PlayerFloat3 *>(&local_288) = vectorScratch;
+    local_288.type1.position.x = vectorScratch.x;
+    local_288.type1.position.y = vectorScratch.y;
+    local_288.type1.position.z = vectorScratch.z;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     local_288.type1.type = (unsigned short)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(2);

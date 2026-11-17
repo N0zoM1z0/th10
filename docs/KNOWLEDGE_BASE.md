@@ -309,6 +309,20 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   differences versus 10,574 before this change); the exact
   `EnemyApplyBulletClear` 44-byte owner remains unchanged in the graph.
   No dispatcher exactness is claimed from this type recovery.
+  [2026-11-17] In opcodes `0x19C/0x1AF` and `0x19D/0x1B0`,
+  the three-component laser spawn position is now assigned through
+  the correct `EnemyLaserType0/1RequestView::position.x/y/z` members,
+  rather than an unrelated `PlayerFloat3*` alias of the entire union.
+  The original caller data layout asserts both position members at +0.
+  The real 36-support-TU `/GL` dispatch graph moves from 14,492 to
+  14,480 candidate bytes against the 14,416-byte target, and raw wrong
+  bytes decrease from 10,568 to 10,564. The independent 12-support-TU
+  diagnostic now reports 14,424/14,416 bytes and 10,412 wrong, but
+  remains `REGRESSED` against its older offset frontier and is not
+  canonical acceptance. Exact PlayerHandleCollisionHit 627/627 and
+  EnemyApplyBulletClear 44/44 guards pass; ANM ExecuteScript remains
+  9,964/9,964 with two differences and GameResetGui stays 1,965/1,965
+  with 47 differences. No dispatcher exactness is implied.
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and
