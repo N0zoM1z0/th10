@@ -1764,7 +1764,11 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
         timer.previous = timer.current;
         if (*scale > 0.99f && *scale < 1.01f)
         {
-            ++timer.current;
+            // Retail advances this timer as a native 32-bit DWORD.
+            // Preserve the INT_MAX -> INT_MIN bit pattern without UB.
+            const unsigned int nextFrameTime =
+                static_cast<unsigned int>(timer.current) + 1u;
+            memcpy(&timer.current, &nextFrameTime, sizeof timer.current);
             timer.subframe += 1.0f;
         }
         else

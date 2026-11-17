@@ -796,6 +796,17 @@ register preservation or mod-ref assumptions) where our builds exploit it
 
 ### GUI
 
+- **GuiView::UpdateStageElements @0x414900 (3,836)**: [2026-11-17]
+  its frame-timer fast path now increments the stored `current` word
+  using unsigned modulo-32-bit arithmetic and bit-preserving `memcpy`,
+  so `INT_MAX` wraps to `INT_MIN` just as the target i386 `INC` does.
+  This eliminates undefined signed overflow from the natural C++ source
+  without adding ASM, padding or changing the prior compiler schedule.
+  The real 16-support-TU linked graph compares the complete 3,836-byte
+  function and all 72 original-bound relocation fields as exact; a
+  targeted selected VC7.1 SP1 `/GL` cold replay independently confirms
+  3,836/3,836. This is a semantic repair, not newly recovered exact bytes.
+
 - `0x474C48/0x474C4C/0x474C70` are fields of one escaped globals object at `0x474C40` (the `Add` receiver), not separate globals.
 - `GameCreateOwner42B660` is `new` (null-checked constructor call), `Initialize`, and on failure a null-checked destructor plus `operator delete`, which is what `delete owner;` emits for a non-virtual destructor.
 - `GuiMessageVmView::Run` indexes 4-byte `textColors` and 12-byte `textPositions` by `message->activeSide`.
