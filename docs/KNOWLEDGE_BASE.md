@@ -881,6 +881,15 @@ register preservation or mod-ref assumptions) where our builds exploit it
   complete 3,836-byte / 72-field strict comparison and selected cold
   replay. Rewriting the five color accesses through a shared helper
   shortened the message owner to 4,460 bytes and was rejected.
+  [2026-11-17] The five message text-color reads now use the actual
+  `GuiMessageVmView::textColors` array instead of repeated integer
+  base-address and stride casts. `activeSide` starts at zero and is
+  explicitly set to zero or one by the two side-selection opcodes.
+  The complete 16-support-TU interpreter candidate stays exactly
+  4,464/4,480 bytes with the same 1,935 differing offsets as before.
+  GUI stage Update 3,836/3,836 (72 fields) and Draw 724/724
+  (33 fields) retain strict whole-owner comparisons after rebuilding
+  both affected TU graphs. This is source recovery, not new exact credit.
 - Persistent stage counter address: `(stage*3+shot)*0x437C + 0x4D0 + difficulty*4`.
   [2026-11-17] The shared `GuiStageClearCount` helper now expresses this
   as native unsigned DWORD arithmetic on the serialized stage, shot and

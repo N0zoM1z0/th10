@@ -230,10 +230,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 textLineId->value = 0;
             unsigned char *text = th10::leaf::Fn00417010(
                 GuiMessageInstructionPayload(message->currentInstruction));
-            manager->DrawTextLeft(line, *reinterpret_cast<const unsigned int *>(
-                    reinterpret_cast<unsigned int>(&message->textColors[0]) +
-                    static_cast<unsigned int>(message->activeSide) *
-                    static_cast<unsigned int>(sizeof(message->textColors[0]))),
+            manager->DrawTextLeft(line, message->textColors[static_cast<unsigned int>(message->activeSide)],
                 reinterpret_cast<const char *>(text));
             PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&textLineId->value));
             break;
@@ -250,10 +247,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                     AnmVmView *line = manager->FindVm(lineId);
                     if (line == NULL)
                         id->value = 0;
-                    manager->DrawTextLeft(line, *reinterpret_cast<const unsigned int *>(
-                            reinterpret_cast<unsigned int>(&message->textColors[0]) +
-                            static_cast<unsigned int>(message->activeSide) *
-                            static_cast<unsigned int>(sizeof(message->textColors[0]))), " ");
+                    manager->DrawTextLeft(line, message->textColors[static_cast<unsigned int>(message->activeSide)], " ");
                 }
                 {
                     AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_1];
@@ -261,10 +255,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                     AnmVmView *line = manager->FindVm(*id);
                     if (line == NULL)
                         id->value = 0;
-                    manager->DrawTextLeft(line, *reinterpret_cast<const unsigned int *>(
-                            reinterpret_cast<unsigned int>(&message->textColors[0]) +
-                            static_cast<unsigned int>(message->activeSide) *
-                            static_cast<unsigned int>(sizeof(message->textColors[0]))), " ");
+                    manager->DrawTextLeft(line, message->textColors[static_cast<unsigned int>(message->activeSide)], " ");
                 }
                 {
                     AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_0];
@@ -275,10 +266,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                     unsigned char *text = th10::leaf::Fn00417010(
                         GuiMessageInstructionPayload(message->currentInstruction));
                     manager = g_AnmRenderManagerView;
-                    manager->DrawTextLeft(line, *reinterpret_cast<const unsigned int *>(
-                            reinterpret_cast<unsigned int>(&message->textColors[0]) +
-                            static_cast<unsigned int>(message->activeSide) *
-                            static_cast<unsigned int>(sizeof(message->textColors[0]))),
+                    manager->DrawTextLeft(line, message->textColors[static_cast<unsigned int>(message->activeSide)],
                         reinterpret_cast<const char *>(text));
                 }
                 PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&message->vmIds[GUI_MESSAGE_TEXT_LINE_0].value));
@@ -295,10 +283,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                         id->value = 0;
                     unsigned char *text = th10::leaf::Fn00417010(
                         GuiMessageInstructionPayload(message->currentInstruction));
-                    manager->DrawTextLeft(line, *reinterpret_cast<const unsigned int *>(
-                            reinterpret_cast<unsigned int>(&message->textColors[0]) +
-                            static_cast<unsigned int>(message->activeSide) *
-                            static_cast<unsigned int>(sizeof(message->textColors[0]))),
+                    manager->DrawTextLeft(line, message->textColors[static_cast<unsigned int>(message->activeSide)],
                         reinterpret_cast<const char *>(text));
                 }
                 PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&message->vmIds[GUI_MESSAGE_TEXT_LINE_1].value));
