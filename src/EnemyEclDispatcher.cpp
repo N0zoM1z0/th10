@@ -2029,14 +2029,18 @@ dispatch_difficulty_float_index_4_a:
     EnemyPatternOffsetAtRuntimeIndex(this, iVar26)->y = 0.0f;
     return 0;
   case ENEMY_ECL_COPY_BULLET_PATTERN:
+  {
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     uVar23 = ENEMY_READ_INT_DIRECT(0);
-    // A complete 0x210-byte pattern record is copied, including bitwise
-    // float payloads and its packed flags, not copied field by field.
-    memcpy(EnemyPatternAtRuntimeIndex(this, static_cast<int>(uVar23)),
-        EnemyPatternAtRuntimeIndex(this, static_cast<int>(uVar22)),
-        sizeof(EnemyBulletPatternView));
+    // The two script indices may select the same pattern. A typed complete
+    // record assignment preserves self-copy semantics as well as float bits.
+    EnemyBulletPatternView *destination =
+        EnemyPatternAtRuntimeIndex(this, static_cast<int>(uVar23));
+    const EnemyBulletPatternView *source =
+        EnemyPatternAtRuntimeIndex(this, static_cast<int>(uVar22));
+    *destination = *source;
     return 0;
+  }
   case ENEMY_ECL_FIRE_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     // The original IMUL/LEA form treats both the three-word offset index
