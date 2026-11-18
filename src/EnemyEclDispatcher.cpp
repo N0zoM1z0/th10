@@ -3017,9 +3017,11 @@ dispatch_create_enemy_absolute_mirrored:
   local_90.spawnRequest.setFlag0800 = 1;
   goto dispatch_spawn_enemy;
 dispatch_copy_player_to_motion:
+  // This opcode copies the XYZ storage words unchanged, including NaN
+  // payloads and the sign of zero; it does not perform vector arithmetic.
   iVar26 = reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]);
-  reinterpret_cast<EnemyPositionDwordView *>(&offsetMotion.position)->word[0] = reinterpret_cast<const EnemyPositionDwordView *>(&reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position)->word[0];
-  reinterpret_cast<EnemyPositionDwordView *>(&offsetMotion.position)->word[1] = reinterpret_cast<const EnemyPositionDwordView *>(&reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position)->word[1];
-  reinterpret_cast<EnemyPositionDwordView *>(&offsetMotion.position)->word[2] = reinterpret_cast<const EnemyPositionDwordView *>(&reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position)->word[2];
+  memcpy(&offsetMotion.position,
+      &reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position,
+      sizeof(offsetMotion.position));
   return 0;
 }
