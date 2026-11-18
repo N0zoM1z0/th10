@@ -175,6 +175,18 @@ int EclVmStackView::LeaveFrame()
 }
 
 
+// A counted thread name is followed by a variable-length sequence of
+// scalar DWORDs. Its native cursor is an unsigned i386 word address, even if
+// the count wraps; do not index the one-element C++ wire prefix as an array.
+static __forceinline int EclSpawnScalarWordAt(
+    const EclVmInstruction *instruction, unsigned int wordIndex)
+{
+    return reinterpret_cast<const EclVmScalar *>(
+        reinterpret_cast<unsigned int>(instruction) +
+        static_cast<unsigned int>(offsetof(EclVmInstruction, scalarOperands)) +
+        wordIndex * static_cast<unsigned int>(sizeof(EclVmScalar)))->integer;
+}
+
 // The target selector table at 0x0044FCB4 covers opcodes 0x00-0x57.  Values
 // omitted here route to the host's extended dispatcher.
 enum EclVmOpcode
@@ -924,7 +936,7 @@ int EclVmContext::Run(float timeDelta)
                     (static_cast<unsigned int>(current->spawnThreadOperands.inlineBytes)
                         + 4u) >> 2;
                 host->SpawnThread(
-                    ReadIntValue(1, OperandInt(current, operandIndex)), 1);
+                    ReadIntValue(1, EclSpawnScalarWordAt(current, operandIndex)), 1);
                 break;
             }
 
