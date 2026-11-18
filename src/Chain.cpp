@@ -35,14 +35,13 @@ ChainElem::ChainElem()
     prio = 0;
     // Preserve every flag except the allocation bit.
     flags = previousFlags & ~1u;
-    // Publish the self link after preserving the non-allocation flags.
-    ChainElem *volatile *const publishedSelf = &self;
-    *publishedSelf = this;
-    // Link clearance follows self-publication in the native list constructor.
-    ChainElem *volatile *const publishedNext = &next;
-    *publishedNext = NULL;
-    ChainElem *volatile *const publishedPrev = &prev;
-    *publishedPrev = NULL;
+    // Publish the self link before clearing the two remaining list links.
+    ChainElem *volatile &publishedSelf = self;
+    publishedSelf = this;
+    ChainElem *volatile &publishedNext = next;
+    publishedNext = NULL;
+    ChainElem *volatile &publishedPrev = prev;
+    publishedPrev = NULL;
 }
 
 ChainElem::~ChainElem()
