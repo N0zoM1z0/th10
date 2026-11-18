@@ -734,7 +734,7 @@ EnemyLaserRequestScratch *EnemyInitializeLaserConfig(
 // Target 0x0041C510. Allocation failure still reaches the target's null write;
 // no new failure recovery is invented. Unknown types consume an ID but do not
 // allocate or insert. The existing tail is a required sentinel/list node.
-unsigned int EnemyFireLaser(
+__declspec(noinline) unsigned int EnemyFireLaser(
     void *managerStorage, EnemyLaserRequestScratch *request, int type)
 {
     EnemyLaserManagerStorageView *manager =
