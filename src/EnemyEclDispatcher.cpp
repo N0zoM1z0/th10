@@ -2364,14 +2364,17 @@ dispatch_rank5_minus_200:
 
 dispatch_rank_count_low:
   {
-    register EnemyRuntimeView *patternRuntime = reinterpret_cast<EnemyRuntimeView *>(
-          static_cast<unsigned int>(runtimeAddress) + static_cast<unsigned int>(iVar26));
+    // This cursor is already a byte-scaled native 0x210-pattern address,
+    // not a new EnemyRuntimeView object at the selected pattern offset.
+    register EnemyBulletPatternView *pattern = EnemyPatternAtRuntimeByte(
+        static_cast<int>(static_cast<unsigned int>(runtimeAddress) +
+            static_cast<unsigned int>(iVar26)));
     EclVmContext *const firstContext = reinterpret_cast<EclVmContext *>(owner->activeEclContext);
     uVar22 = firstContext->ReadInt(3);
-    patternRuntime->bulletPatterns[0].fields.countA = (short)uVar22;
+    pattern->fields.countA = (short)uVar22;
     runtimeAddress = reinterpret_cast<int>(owner);
     uVar22 = reinterpret_cast<EclVmContext *>(reinterpret_cast<EnemyFullObjectView *>(runtimeAddress)->activeEclContext)->ReadInt(4);
-    patternRuntime->bulletPatterns[0].fields.countB = (short)uVar22;
+    pattern->fields.countB = (short)uVar22;
     return 0;
   }
 dispatch_rank_count_lowest:
