@@ -323,8 +323,9 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
     // conversion or a redundant signed-word temporary.
     float outgoingAngle;
     memcpy(&outgoingAngle, &angleBits, sizeof(outgoingAngle));
-    reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
-        FromAngleMagnitude(outgoingAngle, nextSpeed);
+    AnmOpcodeVectorView &nextVelocity =
+        *reinterpret_cast<AnmOpcodeVectorView *>(&velocity);
+    nextVelocity.FromAngleMagnitude(outgoingAngle, nextSpeed);
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
         // Retail INC advances the timer's low DWORD modulo 2^32. Publish
