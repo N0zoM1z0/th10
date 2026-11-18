@@ -2031,8 +2031,11 @@ dispatch_difficulty_float_index_4_a:
   case ENEMY_ECL_COPY_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     uVar23 = ENEMY_READ_INT_DIRECT(0);
-    *EnemyPatternAtRuntimeIndex(this, static_cast<int>(uVar23)) =
-        *EnemyPatternAtRuntimeIndex(this, static_cast<int>(uVar22));
+    // A complete 0x210-byte pattern record is copied, including bitwise
+    // float payloads and its packed flags, not copied field by field.
+    memcpy(EnemyPatternAtRuntimeIndex(this, static_cast<int>(uVar23)),
+        EnemyPatternAtRuntimeIndex(this, static_cast<int>(uVar22)),
+        sizeof(EnemyBulletPatternView));
     return 0;
   case ENEMY_ECL_FIRE_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
