@@ -239,6 +239,16 @@ static __forceinline PlayerFloat3 *EnemyPatternOffsetAtRuntimeIndex(
         static_cast<unsigned int>(sizeof(PlayerFloat3)));
 }
 
+// Some ECL opcodes carry the offset index as a native DWORD index (rather
+// than a 12-byte record index). Retain that intermediate cursor across the
+// X/Y reads and the pattern selection before the final Z read.
+static __forceinline const PlayerFloat3 *EnemyPatternOffsetAtWordCursor(
+    unsigned int runtimeAddress, unsigned int offsetDwordCursor)
+{
+    return reinterpret_cast<const PlayerFloat3 *>(
+        runtimeAddress + offsetDwordCursor * sizeof(unsigned int));
+}
+
 // Scalar values after a counted inline spawn name are a variable-length
 // four-byte stream. Unchecked ECL offsets use native low 32-bit addresses.
 static __forceinline const EclVmScalar *EnemySpawnScalarWordAt(
@@ -2038,19 +2048,19 @@ dispatch_difficulty_float_index_4_a:
         static_cast<unsigned int>(sizeof(PlayerFloat3) / sizeof(unsigned int)) +
         static_cast<unsigned int>(offsetof(EnemyRuntimeView, bulletPatternOffsets) /
                                   sizeof(unsigned int)));
-    vectorScratch.x = reinterpret_cast<const PlayerFloat3 *>(
-        static_cast<unsigned int>(runtimeAddress) +
-        static_cast<unsigned int>(iVar27) * sizeof(unsigned int))->x + worldMotion.position.x;
-    vectorScratch.y = reinterpret_cast<const PlayerFloat3 *>(
-        static_cast<unsigned int>(runtimeAddress) +
-        static_cast<unsigned int>(iVar27) * sizeof(unsigned int))->y + worldMotion.position.y;
+    vectorScratch.x = EnemyPatternOffsetAtWordCursor(
+        static_cast<unsigned int>(runtimeAddress),
+        static_cast<unsigned int>(iVar27))->x + worldMotion.position.x;
+    vectorScratch.y = EnemyPatternOffsetAtWordCursor(
+        static_cast<unsigned int>(runtimeAddress),
+        static_cast<unsigned int>(iVar27))->y + worldMotion.position.y;
     iVar26 = static_cast<int>(
         static_cast<unsigned int>(uVar22) *
         static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
         static_cast<unsigned int>(runtimeAddress));
-    vectorScratch.z = reinterpret_cast<const PlayerFloat3 *>(
-        static_cast<unsigned int>(runtimeAddress) +
-        static_cast<unsigned int>(iVar27) * sizeof(unsigned int))->z + worldMotion.position.z;
+    vectorScratch.z = EnemyPatternOffsetAtWordCursor(
+        static_cast<unsigned int>(runtimeAddress),
+        static_cast<unsigned int>(iVar27))->z + worldMotion.position.z;
     EnemyPatternAtRuntimeByte(iVar26)->fields.spawnPositionX = vectorScratch.x;
     EnemyPatternAtRuntimeByte(iVar26)->fields.spawnPositionY = vectorScratch.y;
     fVar9 = 0.0f;
