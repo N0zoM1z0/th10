@@ -359,6 +359,20 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   remains 14,424/14,416 (10,412 differences). The affected 627- and
   44-byte exact collision/clear owners both remain unchanged. Neither
   dispatch graph is exact.
+  [2026-11-18] In opcode `dispatch_copy_player_to_motion`, the target copies
+  twelve raw XYZ bytes from the active special enemy's world position to the
+  current enemy's offset position. Replacing three explicit DWORD stores with
+  one typed `memcpy` keeps NaN payloads and signed zeros intact and improves
+  the 36-TU linked owner from 10,564 to **10,537** different bytes at
+  14,480/14,416; the independent 12-TU diagnostic improves from 10,412 to
+  **10,385** at 14,424/14,416. Neither is exact; both still have newly
+  differing offsets relative to the old frontier. Player collision remains
+  627/627 exact and bullet clear 44/44 exact. The same rewrite at an ANM
+  VM position assignment expands the owner to 14,544 or 14,592, and rewriting
+  a type-0 laser position into `memcpy` gives 14,484 and 10,590 differences;
+  these variants were rejected. Keep the successful motion copy separate from
+  other paths. [2026-11-18]
+
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and
