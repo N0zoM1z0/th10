@@ -305,10 +305,9 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
 
         // The transform's next angle is a 32-bit IEEE-754 bit payload.
         // Copy its representation without imposing a float conversion.
-        const int nextAngleBits = state.value1Bits;
         float newSpeed = state.value0;
         speed = newSpeed;
-        angleBits = nextAngleBits;
+        angleBits = state.value1Bits;
         nextSpeed = newSpeed;
         state.timer.SetCurrent(0);
     }
@@ -319,12 +318,8 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
                 static_cast<float>(state.int0);
     }
 
-    // Forward the current angle as an IEEE-754 word, without an arithmetic
-    // conversion or a redundant signed-word temporary.
-    float outgoingAngle;
-    memcpy(&outgoingAngle, &angleBits, sizeof(outgoingAngle));
     reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
-        FromAngleMagnitude(outgoingAngle, nextSpeed);
+        FromAngleMagnitude(angle, nextSpeed);
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
         // Retail INC advances the timer's low DWORD modulo 2^32. Publish

@@ -733,7 +733,9 @@ void EnemyMotionView::AdvanceMotion()
         motion->position = polarPosition + motion->velocity;
     }
     motion->position.x = static_cast<float>(floor(motion->position.x * 100.0f) * 0.01f);
-    motion->position.y = static_cast<float>(floor(motion->position.y * 100.0f) * 0.01f);
+    // Retail multiplies the Y-axis floor result by a 32-bit float constant,
+    // not the double-width constant that the final-result cast would select.
+    motion->position.y = static_cast<float>(floor(motion->position.y * 100.0f)) * 0.01f;
 }
 
 // Maintained source for the reviewed 0x0040DC80-0x0040E5EB hostile runtime
