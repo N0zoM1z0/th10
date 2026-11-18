@@ -2292,6 +2292,9 @@ dispatch_difficulty_float_index_4_a:
       goto dispatch_rank_count_lowest;
     goto dispatch_rank_count_low;
   }
+  // The three upper-rank bands address an unchecked script-selected
+  // 0x210-byte pattern. Use native DWORD stride arithmetic rather than
+  // undefined signed C++ array indexing, as in the other pattern opcodes.
   case ENEMY_ECL_SET_BULLET_COUNT_BY_RANK_5:
   {
     EclVmHost *const initialHost = reinterpret_cast<EclVmHost *>(owner);
@@ -2300,19 +2303,19 @@ dispatch_difficulty_float_index_4_a:
     if (g_EnemyChapterState.rank >= 600) {
       EclVmHost *const firstHost = reinterpret_cast<EclVmHost *>(owner);
       uVar22 = firstHost->activeContext->ReadInt(9);
-      bulletPatterns[iVar26].fields.countA = (short)uVar22;
+      EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countA = (short)uVar22;
       runtimeAddress = reinterpret_cast<int>(owner);
       uVar22 = reinterpret_cast<EclVmContext *>(reinterpret_cast<EnemyFullObjectView *>(runtimeAddress)->activeEclContext)->ReadInt(10);
-      bulletPatterns[iVar26].fields.countB = (short)uVar22;
+      EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countB = (short)uVar22;
       return 0;
     }
     if (g_EnemyChapterState.rank >= 200) {
       EclVmHost *const firstHost = reinterpret_cast<EclVmHost *>(owner);
       uVar22 = firstHost->activeContext->ReadInt(7);
-      bulletPatterns[iVar26].fields.countA = (short)uVar22;
+      EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countA = (short)uVar22;
       runtimeAddress = reinterpret_cast<int>(owner);
       uVar22 = reinterpret_cast<EclVmContext *>(reinterpret_cast<EnemyFullObjectView *>(runtimeAddress)->activeEclContext)->ReadInt(8);
-      bulletPatterns[iVar26].fields.countB = (short)uVar22;
+      EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countB = (short)uVar22;
       return 0;
     }
   }
@@ -2320,10 +2323,10 @@ dispatch_rank5_minus_200:
   if (g_EnemyChapterState.rank >= -200) {
     EclVmHost *const firstHost = reinterpret_cast<EclVmHost *>(owner);
     uVar22 = firstHost->activeContext->ReadInt(5);
-    bulletPatterns[iVar26].fields.countA = (short)uVar22;
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countA = (short)uVar22;
     runtimeAddress = reinterpret_cast<int>(owner);
     uVar22 = reinterpret_cast<EclVmContext *>(reinterpret_cast<EnemyFullObjectView *>(runtimeAddress)->activeEclContext)->ReadInt(6);
-    bulletPatterns[iVar26].fields.countB = (short)uVar22;
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countB = (short)uVar22;
     return 0;
   }
   iVar26 = static_cast<int>(static_cast<unsigned int>(iVar26) *
