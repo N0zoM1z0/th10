@@ -218,6 +218,16 @@ template <class T> static __forceinline T *EnemyNativeWordIndex(T *first, int in
         static_cast<unsigned int>(index) * static_cast<unsigned int>(sizeof(T)));
 }
 
+// Managed ANM IDs occupy native four-byte slots. Script-indexed VM ops use
+// the target's unchecked modulo-DWORD addressing, while SET_FLAGS and
+// CLEAR_FLAGS visit all ten valid slots. Centralize the VM handle overlay.
+static __forceinline AnmVmIdView *EnemyManagedVmIdAt(
+    EnemyManagedVmIdSlotsView &slots, int index)
+{
+    return reinterpret_cast<AnmVmIdView *>(
+        EnemyNativeWordIndex(&slots.views[0], index));
+}
+
 // Native 0x210-byte pattern index/address word for unchecked ECL operands.
 static __forceinline EnemyBulletPatternView *EnemyPatternAtRuntimeIndex(
     EnemyRuntimeView *runtime, int patternIndex)
@@ -1286,7 +1296,7 @@ dispatch_create_enemy_mirrored:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
-    reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->Release();
+    EnemyManagedVmIdAt(managedVmIds, iVar26)->Release();
     if ((int)uVar22 < 0) {
       return 0;
     }
@@ -1305,7 +1315,7 @@ dispatch_create_enemy_mirrored:
       uVar6 = static_cast<unsigned int>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value);
     }
     iVar27 = reinterpret_cast<int>(
-        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->GetVm());
+        EnemyManagedVmIdAt(managedVmIds, iVar26)->GetVm());
     goto dispatch_update_primary_anm_bounds;
   case ENEMY_ECL_PLAY_ANM:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -1414,7 +1424,7 @@ dispatch_create_enemy_mirrored:
     iVar26 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     iVar27 = (int)uVar22;
-    reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->Release();
+    EnemyManagedVmIdAt(managedVmIds, iVar26)->Release();
     {
       AnmVmIdView createdVm =
           (*EnemyNativeWordIndex(&g_EnemyManager->loadedAnmResources[0], value0E8))->
@@ -1423,13 +1433,13 @@ dispatch_create_enemy_mirrored:
     }
     uVar6 = static_cast<unsigned int>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value);
     iVar11 = reinterpret_cast<int>(
-        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->GetVm());
+        EnemyManagedVmIdAt(managedVmIds, iVar26)->GetVm());
     if (iVar26 == 0) {
       visibilityExtentX = reinterpret_cast<const AnmVmView *>(iVar11)->spriteHeight * reinterpret_cast<const AnmVmView *>(iVar11)->scaleY;
       visibilityExtentY = reinterpret_cast<const AnmVmView *>(iVar11)->spriteWidth * reinterpret_cast<const AnmVmView *>(iVar11)->scaleX;
     }
     if ((*reinterpret_cast<const unsigned char *>(&flags) & 0x10) != 0) {
-      reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->ClearFlag2();
+      EnemyManagedVmIdAt(managedVmIds, iVar26)->ClearFlag2();
     }
     if (iVar26 == 0) {
       flags = flags | 0x1000;
@@ -1443,7 +1453,7 @@ dispatch_create_enemy_mirrored:
   case ENEMY_ECL_PLAY_SELECTED_ANM:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
-    reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->Release();
+    EnemyManagedVmIdAt(managedVmIds, iVar26)->Release();
     {
       AnmVmIdView createdVm =
           (*EnemyNativeWordIndex(&g_EnemyManager->loadedAnmResources[0], value0E8))->
@@ -1451,14 +1461,14 @@ dispatch_create_enemy_mirrored:
       EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value = createdVm.value;
     }
     iVar27 = reinterpret_cast<int>(
-        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->GetVm());
+        EnemyManagedVmIdAt(managedVmIds, iVar26)->GetVm());
 dispatch_update_primary_anm_bounds:
     if (iVar26 == 0) {
       visibilityExtentX = reinterpret_cast<const AnmVmView *>(iVar27)->spriteHeight * reinterpret_cast<const AnmVmView *>(iVar27)->scaleY;
       visibilityExtentY = reinterpret_cast<const AnmVmView *>(iVar27)->spriteWidth * reinterpret_cast<const AnmVmView *>(iVar27)->scaleX;
     }
     if ((*reinterpret_cast<const unsigned char *>(&flags) & 0x10) != 0) {
-      reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->ClearFlag2();
+      EnemyManagedVmIdAt(managedVmIds, iVar26)->ClearFlag2();
       return 0;
     }
     break;
@@ -1861,7 +1871,7 @@ dispatch_initialize_polar_interpolation:
     flags = uVar8;
     if ((uVar8 & 0x10) != 0) {
       for (iVar26 = 0; iVar26 < 10; ++iVar26)
-        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->ClearFlag2();
+        EnemyManagedVmIdAt(managedVmIds, iVar26)->ClearFlag2();
       return 0;
     }
     break;
@@ -1871,7 +1881,7 @@ dispatch_initialize_polar_interpolation:
     flags = uVar8;
     if ((uVar8 & 0x10) == 0) {
       for (iVar26 = 0; iVar26 < 10; ++iVar26)
-        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26))->SetFlag2();
+        EnemyManagedVmIdAt(managedVmIds, iVar26)->SetFlag2();
       return 0;
     }
     break;
@@ -2013,17 +2023,17 @@ dispatch_difficulty_float_index_4_a:
         static_cast<unsigned int>(iVar26) *
         static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
         static_cast<unsigned int>(runtimeAddress));
-    // Clear the full 0x210-byte native bullet pattern before publishing its
-    // defaults. The indexed address already uses the target's wrapping word.
-    memset(EnemyPatternAtRuntimeByte(iVar11), 0,
-        sizeof(EnemyBulletPatternView));
-    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countA = 1;
-    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countB = 1;
-    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.angleABits = 0;
-    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.speedABits = 0x40000000u;
-    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.soundId = 7;
-    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.soundVariant = 0x18;
-    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.flags1FC = 0x203;
+    // Reuse the recovered pattern constructor for the full zero/default state;
+    // the opcode then applies its own per-pattern launch defaults.
+    EnemyBulletPatternView *const pattern = EnemyPatternAtRuntimeByte(iVar11);
+    *pattern = EnemyBulletPatternView();
+    pattern->fields.countA = 1;
+    pattern->fields.countB = 1;
+    pattern->fields.angleABits = 0;
+    pattern->fields.speedABits = 0x40000000u;
+    pattern->fields.soundId = 7;
+    pattern->fields.soundVariant = 0x18;
+    pattern->fields.flags1FC = 0x203;
     // These are zeroed XYZ offset components, not independent word storage.
     EnemyPatternOffsetAtRuntimeIndex(this, iVar26)->x = 0.0f;
     EnemyPatternOffsetAtRuntimeIndex(this, iVar26)->y = 0.0f;
