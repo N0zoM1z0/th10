@@ -187,6 +187,13 @@ static __forceinline int EclSpawnScalarWordAt(
         wordIndex * static_cast<unsigned int>(sizeof(EclVmScalar)))->integer;
 }
 
+// Both thread-control paths invalidate the same instruction cursor in the
+// context owned by a thread-list node. Keep the node and its context typed.
+static __forceinline void EclStopThreadContext(EclVmThreadNode *thread)
+{
+    thread->context->instruction = NULL;
+}
+
 // The target selector table at 0x0044FCB4 covers opcodes 0x00-0x57.  Values
 // omitted here route to the host's extended dispatcher.
 enum EclVmOpcode
@@ -844,7 +851,7 @@ void EclVmHost::StopAllThreads()
     while (node != NULL)
     {
         EclVmThreadNode *next = node->next;
-        node->context->instruction = NULL;
+        EclStopThreadContext(node);
         node = next;
     }
 }
@@ -944,7 +951,7 @@ int EclVmContext::Run(float timeDelta)
             {
                 EclVmThreadNode *thread = host->FindThread(ReadInt(0));
                 if (thread != NULL)
-                    thread->context->instruction = NULL;
+                    EclStopThreadContext(thread);
                 break;
             }
 
