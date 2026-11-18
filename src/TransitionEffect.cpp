@@ -202,11 +202,12 @@ static int __fastcall TransitionShakeLinear(void *argument)
     if (g_GameStartupCounter != 0)
         return 7;
     effect->timer.Tick();
-    if (effect->timer.current >= effect->frames)
+    // The target retains the frame-duration word through the terminal gate
+    // and the subsequent x87 amplitude evaluation.
+    const int duration = effect->frames;
+    if (effect->timer.current >= duration)
         return 7;
     const int difference = static_cast<int>(effect->value1 - effect->value0);
-    // The duration and initial offset remain fixed for both axis samples.
-    const int duration = effect->frames;
     const int initialOffset = static_cast<int>(effect->value0);
     const float amplitude = difference * effect->timer.subframe / duration +
         initialOffset;
