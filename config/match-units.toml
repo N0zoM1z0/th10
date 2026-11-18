@@ -3176,6 +3176,7 @@ linkages = [
 [units.anm-vm-layer-node-insert-after]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3190,6 +3191,7 @@ linkages = []
 [units.anm-start-scale-interpolation]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3206,6 +3208,7 @@ linkages = [
 [units.anm-loaded-set-sprite]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3223,6 +3226,7 @@ linkages = [
 [units.anm-vm-timer-add]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3242,6 +3246,7 @@ linkages = [
 [units.anm-add-normalize-angle]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3263,6 +3268,7 @@ linkages = [
 [units.anm-start-secondary-color-interpolation]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3279,6 +3285,7 @@ linkages = [
 [units.anm-start-secondary-alpha-interpolation]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3295,6 +3302,7 @@ linkages = [
 [units.anm-start-primary-color-interpolation]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3427,6 +3435,7 @@ relocations = [
 [units.anm-get-float-var]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3575,6 +3584,7 @@ linkages = [
 [units.anm-loaded-set-and-execute-script-index]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3593,6 +3603,7 @@ linkages = [
 [units.anm-manager-add-vm-primary-tail]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3607,6 +3618,7 @@ linkages = []
 [units.anm-manager-add-vm-primary-head]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3621,6 +3633,7 @@ linkages = []
 [units.anm-manager-add-vm-secondary-tail]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3635,6 +3648,7 @@ linkages = []
 [units.anm-manager-add-vm-secondary-head]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3760,6 +3774,7 @@ linkages = [
 [units.anm-manager-draw-layer]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3776,6 +3791,7 @@ linkages = [
 [units.anm-manager-remove-vm]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3787,7 +3803,7 @@ target_address = 0x00448BB0
 size = 268
 linkages = [
   { offset = 0xCA, type = "REL32", symbol = "_free", target = 0x00452422 },
-  { offset = 0xDA, type = "REL32", symbol = "?Initialize@AnmVmView@@QAEXXZ", target = 0x00401DE0 },
+  { offset = 0xDA, type = "REL32", symbol = "?AnmVmInitialize@@YIXPAXPAUAnmVmView@@@Z", target = 0x00401DE0 },
   { offset = 0xF2, type = "REL32", symbol = "_free", target = 0x00452422 },
   { offset = 0x101, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
 ]
@@ -4005,6 +4021,7 @@ linkages = [
 [units.anm-manager-update-primary-vms]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -4023,6 +4040,7 @@ linkages = [
 [units.anm-manager-update-secondary-vms]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -28206,6 +28224,7 @@ linkages = [
 [units.anm-vm-timer-decrement]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
+support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
