@@ -11,6 +11,9 @@
 #include <stddef.h>
 #include <string.h>
 
+static __declspec(noinline) unsigned int EnemyFireLaserInternal(
+    void *managerStorage, EnemyLaserRequestScratch *request, int type);
+
 void EnemyLaserVectorView::FromAngleMagnitude(float angle, float magnitude)
 {
 #if defined(_MSC_VER) && defined(_M_IX86)
@@ -264,7 +267,7 @@ int EnemyLaserType0CollisionView::CheckCollisionBox(
             args.position.x = originalPosition.x + step.x * start;
             args.position.y = originalPosition.y + step.y * start;
             args.position.z = originalPosition.z + step.z * start;
-            EnemyFireLaser(
+            EnemyFireLaserInternal(
                 g_EnemyLaserManager,
                 reinterpret_cast<EnemyLaserRequestScratch *>(&args),
                 0);
@@ -411,7 +414,7 @@ int EnemyLaserType0CollisionView::CheckCollisionCircle(
             args.position.x = originalPosition.x + step.x * start;
             args.position.y = originalPosition.y + step.y * start;
             args.position.z = originalPosition.z + step.z * start;
-            EnemyFireLaser(
+            EnemyFireLaserInternal(
                 g_EnemyLaserManager,
                 reinterpret_cast<EnemyLaserRequestScratch *>(&args),
                 0);
@@ -525,7 +528,7 @@ int EnemyLaserType1View::CheckCollisionBox(
             args.type = request.type;
             args.color = request.color;
             args.terminalDistance = request.maximumLength - gapStart * 12.0f;
-            EnemyFireLaser(g_EnemyLaserManager,
+            EnemyFireLaserInternal(g_EnemyLaserManager,
                 reinterpret_cast<EnemyLaserRequestScratch *>(&args), 0);
         }
     }
@@ -637,7 +640,7 @@ int EnemyLaserType1View::CheckCollisionCircle(
             args.type = request.type;
             args.color = request.color;
             args.terminalDistance = request.maximumLength - gapStart * 12.0f;
-            EnemyFireLaser(g_EnemyLaserManager,
+            EnemyFireLaserInternal(g_EnemyLaserManager,
                 reinterpret_cast<EnemyLaserRequestScratch *>(&args), 0);
         }
     }
@@ -734,7 +737,7 @@ EnemyLaserRequestScratch *EnemyInitializeLaserConfig(
 // Target 0x0041C510. Allocation failure still reaches the target's null write;
 // no new failure recovery is invented. Unknown types consume an ID but do not
 // allocate or insert. The existing tail is a required sentinel/list node.
-__declspec(noinline) unsigned int EnemyFireLaser(
+static __declspec(noinline) unsigned int EnemyFireLaserInternal(
     void *managerStorage, EnemyLaserRequestScratch *request, int type)
 {
     EnemyLaserManagerStorageView *manager =
@@ -769,6 +772,13 @@ __declspec(noinline) unsigned int EnemyFireLaser(
     return manager->nextId;
 }
 
+// Cross-TU dispatcher entry; laser-owned callers use the TU-local helper.
+unsigned int EnemyFireLaser(
+    void *managerStorage, EnemyLaserRequestScratch *request, int type)
+{
+    return EnemyFireLaserInternal(managerStorage, request, type);
+}
+
 // Target41CFD0: actual type-0 construction virtual, slot3C of46DA60.
 void EnemyLaserType0StorageView::Bounce()
 {
@@ -797,7 +807,7 @@ void EnemyLaserType0StorageView::Bounce()
         state.request.position = projected;
         state.request.angle = EnemyWrapAngle(-state.angle - 3.1415927f);
         state.request.speed = state.patterns[4].values[0].scalar;
-        EnemyFireLaser(g_EnemyLaserManager,
+        EnemyFireLaserInternal(g_EnemyLaserManager,
             reinterpret_cast<EnemyLaserRequestScratch *>(&state.request), 0);
         fired = 1;
     }
@@ -809,7 +819,7 @@ void EnemyLaserType0StorageView::Bounce()
         state.request.position = projected;
         state.request.angle = -state.angle;
         state.request.speed = state.patterns[4].values[0].scalar;
-        EnemyFireLaser(g_EnemyLaserManager,
+        EnemyFireLaserInternal(g_EnemyLaserManager,
             reinterpret_cast<EnemyLaserRequestScratch *>(&state.request), 0);
     }
     else if (!fired) {
