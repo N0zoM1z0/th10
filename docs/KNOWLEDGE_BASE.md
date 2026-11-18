@@ -465,6 +465,14 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   candidate bytes. The remaining differences are still life-loop register
   allocation and stage-VM call scheduling. An earlier manual expansion of
   the stage-VM path grew the residual to 175 bytes and was reverted.
+  [2026-11-18 handoff] The sole dirty `src/Gui.cpp` experiment changes the
+  life loop to a register pointer and decrementing do/while. Its
+  current parent comparison has 45 mismatches, but the frontier is
+  `REGRESSED` because +0x1D2..+0x1D9 are newly different. The helper
+  PDB contribution is 66 bytes versus the 77-byte manifest extent,
+  so the committed-HEAD 77/77 exact helper claim does not apply to
+  the dirty source. Preserve and resolve this experiment before
+  relying on the helper ledger.
 - **StageExecuteScript @0x403C80 (1,868)**: full size, nonexact. Opcodes 10-13
   register choice; opcode 14's VM input is ESI in the target and EDX native.
   [2026-10-29]
@@ -626,11 +634,6 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   at 10/10 bytes with the REL32 call to `DrawFpsCounter` bound at +4.
   The `src/Main.cpp` __fastcall wrapper is PDB-owned in the real FPS
   draw graph and passes its complete scoped cold replay. [2026-11-17]
-  [2026-11-17] The adjacent source-authored `FpsCounterDrawCallback @0x413690`
-  is now independently exact: the real Main.cpp + AnmManager.cpp LTCG graph
-  reproduces all 10 bytes and its sole REL32 call to DrawFpsCounter at +0x04.
-  Two separate scoped canonical cold links both passed; this closes the
-  callback bridge without inferring the original physical TU.
 - **GameStatisticsOwner ctor @0x42AE60 (132)** and **CreateStatistics42AF20
   @0x42AF20 (97)**: 137 and 98. [2026-11-13]
 - **ScriptViewerPopupOwnerView::Initialize @0x42B4D0 (145)** and

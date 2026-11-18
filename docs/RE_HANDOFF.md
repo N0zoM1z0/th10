@@ -1,6 +1,6 @@
 # TH10 reconstruction — next-agent handoff
 
-**Updated 2026-11-17.** Continue on the repository's local `main` branch; do not push. Start with [AGENTS.md](../AGENTS.md). This brief tracks the current typed ECL and Chain allocator source, including the `chain-alloc-elem`, `main-create-fps-counter`, and `main-fps-callback` exact owners. Git history is the provenance record; do not assume a clean tree without checking it.
+**Updated 2026-11-18.** Continue on the repository's local `main` branch; do not push. Start with [AGENTS.md](../AGENTS.md). This brief tracks the current typed ECL and Chain allocator source, including the `chain-alloc-elem`, `main-create-fps-counter`, and `main-fps-callback` exact owners. Git history is the provenance record; do not assume a clean tree without checking it.
 
 ## First five minutes
 
@@ -8,11 +8,21 @@ Run `git status --short --branch`, `git diff --check` and `git log -8 --oneline`
 
 The count authority is generated [PROGRESS.md](PROGRESS.md), not an old narrative or an aggregate match-size guess. As of this handoff, the 1,832 reviewed candidates include **1,555 exact functions / 214,653 exact codegen bytes**; among 751 reviewed authored functions, 639 functions / 144,324 bytes are exact and 112 mapped authored functions remain. Both seven-byte GUI callback entries are exact **with indeterminate original authorship**. Separate source mapping, original authorship, compilation and whole-game runtime closure.
 
+## Live worktree state — preserve before changing
+
+The source baseline is `8d5275f1` (the current `origin/main`); there is exactly one unstaged tracked change, in `src/Gui.cpp`, inside `GuiSetLivesDisplayCount`. It introduces `activeCount`, a `register AnmVmView* display`, a pointer-stepping `do/while` that decrements `count`, and a second loop clearing the remaining slots. Do not silently discard this experiment.
+
+The current dirty-source player-handle-collision-hit rebuild gives GameResetGui its full 1,965-byte extent with 45 differing bytes, but check-frontier.py reports REGRESSED: offsets +0x1D2..+0x1D9 are newly different from the recorded 47-byte frontier. More importantly, the dirty helper no longer matches its committed manifest extent: gui-set-lives-display-count now has a 66-byte PDB contribution while the unit expects 77 bytes, so its strict comparison returns an extent error. The 77/77 exact ledger entry applies to committed HEAD, not this dirty helper. The 627/627 PlayerHandleCollisionHit owner remains exact.
+
+Next: retain the dirty diff, compare it against the committed-HEAD helper and parent, and either recover a natural 77-byte helper or deliberately revert the experiment. Do not change the frontier residual list to bless moved bytes.
+
 ## Complete exact owners to protect
 
 | Owner / target | Strict current evidence |
 | --- | --- |
+| `CreateFpsCounter @0x413350` | 151/151 bytes, six target-bound relocation fields; two independent scoped canonical cold replays. | Real WinMain /GL /GS graph; preserve FPS/replay owner publication and Chain draw-task registration. |
 | `FpsCounterDrawCallback @0x413690` | 10/10 bytes, one REL32 field to `DrawFpsCounter @0x4135D0`; two independent scoped canonical cold links. | Keep the source-authored __fastcall adapter in the Main.cpp + AnmManager.cpp graph. |
+| `GuiSetLivesDisplayCount @0x413790` | Committed HEAD: 77/77 bytes, no relocations. Current dirty source: 66-byte PDB contribution and manifest extent error. | Preserve the 77-byte exact helper; do not credit the dirty variant until its complete extent is restored. |
 | `GuiView::UpdateStageElements @0x414900` | 3,836/3,836 bytes, 72 bound fields; the separate update callback `0x415AE0` is 7/7 with one call field. |
 | `GuiView::DrawStageElements @0x415800` | 724/724 bytes, 33 fields; the separate draw callback `0x415AF0` is 7/7 with one call field. |
 | `TransitionShakeEnvelope @0x43C710` | 349/349 bytes, 16 fields; adjacent Transition initializer 396/396, 37 fields. |
@@ -34,11 +44,11 @@ All sizes below are **candidate / target**. `OK` and `REGRESSED` are comparisons
 | Owner | Latest bounded measurement | Useful next attack |
 | --- | --- | --- |
 | `EnemyRuntimeView::DispatchEclInstruction @0x40E770` | Main 36-support-TU graph: **14,480 / 14,416**, 10,564 differing bytes, frontier `REGRESSED`. Separate 12-TU `/GS` diagnostic: **14,424 / 14,416**, 10,412 differences, also `REGRESSED`. | Rank-5 lower-band control flow and operand scheduling. The latest typed `EnemyLaserType0/1RequestView::position` stores, typed `memset` initialization, and `EnemyRuntimeView*`-based unchecked pattern/offset indexing are retained; both 36-TU and 12-TU byte-difference sets are unchanged from HEAD. Never confuse the smaller 12-TU diagnostic with canonical acceptance. |
-| `AnmRenderManagerView::ExecuteScript @0x43EE30` | **9,964 / 9,964**, two differing bytes at +0x112/+0x115. | Opcode 91: original passes the child layer in EDX, current compiler selects ECX. Most obvious direct arguments, local/volatile qualifiers and field-order variants were tried without improvement. |
-| `EclVmContext::Run @0x44E1A0` | **7,020 / 7,020**, 23 differing bytes; frontier `REGRESSED` on moved offsets. | Focus the thread spawn/stop register choices, integer ADD/SUB stack slots and the handful of addressing forms. Changing stack-leaf spelling may preserve leaf exactness but badly regress the parent; compare both. |
+| `AnmRenderManagerView::ExecuteScript @0x43EE30` | Full 9,964-byte extent; two differing bytes at +0x112/+0x115. | Opcode 91: original passes the child layer in EDX, current compiler selects ECX. Most obvious direct arguments, local/volatile qualifiers and field-order variants were tried without improvement. |
+| `EclVmContext::Run @0x44E1A0` | Full 7,020-byte extent; 23 differing bytes; frontier `REGRESSED` on moved offsets. | Focus the thread spawn/stop register choices, integer ADD/SUB stack slots and the handful of addressing forms. Changing stack-leaf spelling may preserve leaf exactness but badly regress the parent; compare both. |
 | `GuiMessageVmView::Run @0x415E90` | **4,464 / 4,480**, 1,935 differences, versus older frontier's 1,910 offset set. | Portrait operand register lifetimes and resource-read ordering, inline clear-count increments, stage 6/7 tail sharing. Do not collapse the eight apparently duplicate character branches: that shrinks code to 3,796 bytes and loses target layout. All 36 portrait script-ID additions now have explicit native 32-bit wrap semantics. |
 | `ResultMenuUpdateResult @0x4236F0` | Last retained check: **3,216 / 3,227**, 2,285 differences. | Rebuild the graph before using this older measurement; inspect state 7/8 and 10–13, score receiver and stack-home layout. |
-| `GameResetGui @0x413BC0` | **1,965 / 1,965**, 47 differences, `OK`. | Life-count loop register schedule, two stage VM-creation call sites. Wrapped DWORD stage script IDs are already retained; manual loop expansion regressed. |
+| `GameResetGui @0x413BC0` | Committed-HEAD baseline: full 1,965-byte extent, 47 differences (`OK`). Current dirty GUI experiment: full extent, 45 differences but `REGRESSED` because +0x1D2..+0x1D9 moved. | Resolve the life-count loop register schedule first; the dirty helper currently emits 66 bytes against its 77-byte manifest extent. Then revisit the two stage VM-creation call sites. |
 | `GuiMessageVmView` constructor `@0x415B00` | **684 / 683**, 81 ordinary byte mismatches. | Preserve scoped VM ID return values and storage layout; the extra byte is near the final enemy-manager register reload. A 683-byte spelling had 227 mismatches and is worse. |
 | `ScriptViewerPopupOwnerView::Draw @0x42B780` | **537 / 540**, 266 non-linkage differences; draw callback 10/10 length but nonexact. | Owner/digit-cursor register allocation and alpha lifetime. The advancing digit address is now native DWORD arithmetic; Update stays 134/134 exact. |
 | `TransitionShakeLinear @0x43C550` | **439 / 439**, 27 differences. | The floating divide is scheduled before the second RNG state update; naive source movement breaks the entire function. Preserve the separate exact 349-byte envelope. |
