@@ -39,3 +39,11 @@ The previous documented cleanup removed approximately **4.97 MiB** of obsolete A
 - Kept all 244 present `build/match-linked/` directories because every one is referenced by the current manifest; the other 27 configured contexts have not yet been built. Kept all five unresolved `build/gpt-web/` diagnostic workspaces, the four root-level optional trial scripts, D3D evidence, Ghidra projects/runtime and origin-review inputs. The cleanup reclaimed about 2.96 MiB in total. No manifest-backed build context or private input was deleted.
 
 Continue to keep scratch below `.analysis/` and builds below `build/`. Old one-off reports and duplicate source snapshots may be removed after their findings are preserved in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md). Do not remove the retained contexts above or manufacture replacement archives or cleanup manifests.
+
+## Current inventory and cleanup — 2026-11-18
+
+The manifest currently names **271** distinct `build/match-linked/` output directories: **244** are present, **27** have not yet been built, and **zero present directories are orphaned**. Keep all present linked PE/MAP/PDB contexts. The five unresolved workspaces under `build/gpt-web/` occupy about **4.22 MiB** and remain useful for the Enemy dispatcher, ANM child opcode, ECL pointer ordering and player HUD investigations. The four small scripts under `.analysis/gpt-web/` are reusable trial generators, not generated build output; keep them with their recorded context.
+
+The active decompiler exports in `.analysis/` (`anm-execute-script.c`, `ecl-vm-run.c`, the Enemy dispatcher C/listings, `game-reset-gui.c`, `bullet-update-absolute-direction.c` and `transition-shake-linear.c`) are retained because they support current open owners. Preserve the D3D adapter evidence, origin review, Ghidra project/runtime, target, Wine prefix and compiler contexts.
+
+This sweep removed only the ignored, reproducible `scripts/__pycache__/` directory (**868,292 bytes, about 0.83 MiB**). No manifest-backed linked context, target input, source, Ghidra data or unresolved diagnostic workspace was deleted. A fresh repository script run may recreate the bytecode cache. No Git object pruning or reflog expiry was performed.

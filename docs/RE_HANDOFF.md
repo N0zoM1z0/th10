@@ -1,88 +1,73 @@
 # TH10 reconstruction — next-agent handoff
 
-**Updated 2026-11-18.** Continue on the repository's local `main` branch; do not push. Start with [AGENTS.md](../AGENTS.md). This brief tracks the current typed ECL and Chain allocator source, including the `chain-alloc-elem`, `main-create-fps-counter`, and `main-fps-callback` exact owners. Git history is the provenance record; do not assume a clean tree without checking it.
+**Updated 2026-11-18.** Start with [AGENTS.md](../AGENTS.md), then this brief and the relevant sections of [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md). Keep work local; do not push.
 
-## First five minutes
+## Repository checkpoint
 
-Run `git status --short --branch`, `git diff --check` and `git log -8 --oneline`. Preserve any dirty changes and resolve them before switching owners. Verify the only valid target with `scripts/repo-python scripts/verify-target.py`: original Japanese TH10 v1.00a, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`. Use `scripts/repo-python scripts/verify-toolchain.py --check` for compiler declarations, not a repeated full toolchain smoke.
+- Code baseline: `e3e51850` — `gpt-web: restore compilable ECL pattern initialization`; this handoff refresh is a documentation-only checkpoint layered above it.
+- Continue on local `main`. The local branch is ahead of `origin/main`; nothing has been pushed.
+- The leftover pair of braces in the ECL pattern-initialization switch case was removed: it only remained from a failed local-pointer experiment and no longer scoped a declaration.
+- The only valid target is the original Japanese TH10 v1.00a executable, `resources/th10.exe`, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`. Keep it read-only and uncommitted.
+- Use `scripts/repo-python scripts/verify-target.py` before target-dependent work and `scripts/repo-python scripts/verify-toolchain.py --check` to inspect compiler declarations. Do not repeat the full toolchain smoke unless setup or a compiler/Wine issue requires it.
 
-The count authority is generated [PROGRESS.md](PROGRESS.md), not an old narrative or an aggregate match-size guess. As of this handoff, the 1,832 reviewed candidates include **1,555 exact functions / 214,653 exact codegen bytes**; among 751 reviewed authored functions, 639 functions / 144,324 bytes are exact and 112 mapped authored functions remain. Both seven-byte GUI callback entries are exact **with indeterminate original authorship**. Separate source mapping, original authorship, compilation and whole-game runtime closure.
+The generated [PROGRESS.md](PROGRESS.md) is the count authority. At this checkpoint it reports 1,555 canonical exact functions / 214,653 exact codegen bytes; 639 authored exact functions / 144,324 authored exact bytes. Inventory and authorship denominators remain provisional as described in that file.
 
-## Live worktree state — preserve before changing
+## Exact owners to preserve
 
-The source baseline is `8d5275f1` (the current `origin/main`); there is exactly one unstaged tracked change, in `src/Gui.cpp`, inside `GuiSetLivesDisplayCount`. It introduces `activeCount`, a `register AnmVmView* display`, a pointer-stepping `do/while` that decrements `count`, and a second loop clearing the remaining slots. Do not silently discard this experiment.
+Strict linked-function checks currently pass for:
 
-The current dirty-source player-handle-collision-hit rebuild gives GameResetGui its full 1,965-byte extent with 45 differing bytes, but check-frontier.py reports REGRESSED: offsets +0x1D2..+0x1D9 are newly different from the recorded 47-byte frontier. More importantly, the dirty helper no longer matches its committed manifest extent: gui-set-lives-display-count now has a 66-byte PDB contribution while the unit expects 77 bytes, so its strict comparison returns an extent error. The 77/77 exact ledger entry applies to committed HEAD, not this dirty helper. The 627/627 PlayerHandleCollisionHit owner remains exact.
+- `PlayerHandleCollisionHit` — 627 bytes.
+- `EnemyApplyBulletClear` — 44 bytes.
+- `GuiSetLivesDisplayCount` — 77 bytes.
+- ECL stack `Pop`, `Push`, `EnterFrame`, `LeaveFrame` — 122, 96, 64 and 41 bytes.
+- `Chain::AllocElem` — 74 bytes; `Chain::~Chain` — 103 bytes.
 
-Next: retain the dirty diff, compare it against the committed-HEAD helper and parent, and either recover a natural 77-byte helper or deliberately revert the experiment. Do not change the frontier residual list to bless moved bytes.
+The authoritative unit definitions and linkage fields are in `config/match-units.toml` and accepted exact rows in `config/matches.csv`. Preserve full extents and relocations; a matching leaf does not make its larger caller exact.
 
-## Complete exact owners to protect
+## Current open owners
 
-| Owner / target | Strict current evidence |
-| --- | --- |
-| `CreateFpsCounter @0x413350` | 151/151 bytes, six target-bound relocation fields; two independent scoped canonical cold replays. | Real WinMain /GL /GS graph; preserve FPS/replay owner publication and Chain draw-task registration. |
-| `FpsCounterDrawCallback @0x413690` | 10/10 bytes, one REL32 field to `DrawFpsCounter @0x4135D0`; two independent scoped canonical cold links. | Keep the source-authored __fastcall adapter in the Main.cpp + AnmManager.cpp graph. |
-| `GuiSetLivesDisplayCount @0x413790` | Committed HEAD: 77/77 bytes, no relocations. Current dirty source: 66-byte PDB contribution and manifest extent error. | Preserve the 77-byte exact helper; do not credit the dirty variant until its complete extent is restored. |
-| `GuiView::UpdateStageElements @0x414900` | 3,836/3,836 bytes, 72 bound fields; the separate update callback `0x415AE0` is 7/7 with one call field. |
-| `GuiView::DrawStageElements @0x415800` | 724/724 bytes, 33 fields; the separate draw callback `0x415AF0` is 7/7 with one call field. |
-| `TransitionShakeEnvelope @0x43C710` | 349/349 bytes, 16 fields; adjacent Transition initializer 396/396, 37 fields. |
-| `ReplayManager::ProcessFrame @0x4297D0` | 596/596 bytes, 33 fields; `ReplayProcessFrameCallback` 10/10, one field. |
-| `EnemyResolveRuntimeCallback @0x4127A0` | 593/593 bytes, seven fields, natural C++ with retained bit-field logic. |
-| `PlayerHandleCollisionHit @0x426CF0` | 627/627 bytes, 21 fields; `EnemyApplyBulletClear` in its own 12-TU graph is 44/44. |
-| `EnemyKillAll @0x40E6A0`, `EnemyReadDialog @0x415DB0` | 182/182 and 124/124 bytes, respectively, in their affected owner graphs. |
-| `PlayerLoadOptionData @0x426520`, `EnemyReadIntOperand @0x412350` | 229/229 and 820/820 bytes, respectively; preserve the existing caller bindings. |
-| `FrontEndControllerView::RefreshOptionsDisplay` | 3,999/3,999 bytes in `frontend-options-refresh`. |
-| `th10::Chain::AllocElem @0x449ED0` | 74/74 bytes and one target-bound `operator new` REL32 in four-TU ScriptViewer popup graph; targeted cold replay exact. |
-| ECL stack `Pop` / `Push` / `EnterFrame` / `LeaveFrame` | 122 / 96 / 64 / 41 exact bytes, respectively; the complete `Run` owner is **not** exact. |
+All measurements below are the latest bounded local linked comparisons. They are not canonical replay receipts.
 
-All exact entries are tracked in `config/matches.csv`. Source-presence and original-source origin are separate in `config/reccmp-functions.csv`, `config/implemented.csv` and `config/function-origins.csv`. Do not promote a partial byte count or nonexact parent because an exact leaf survived.
+| Owner | Current candidate / target | Current differences | State / next focus |
+| --- | ---: | ---: | --- |
+| `EnemyRuntimeView::DispatchEclInstruction` (36-TU graph) | 14,468 / 14,416 | 10,515 bytes | `REGRESSED` against the older recorded residual offsets. Keep the current typed pattern/VM access and bulk-copy semantics; attack the remaining scheduling and extent surplus without refreshing the frontier to bless moved offsets. |
+| Same dispatcher (12-TU diagnostic graph) | 14,472 / 14,416 | 10,534 bytes | Also `REGRESSED`; this graph is a useful secondary check, not a replacement for the 36-TU owner. |
+| `EclVmContext::Run` | 7,020 / 7,020 | 23 bytes | Full extent, but residual offsets moved from the recorded set. Focus operand/stack homes and thread spawn/stop register scheduling. The four stack leaves above remain exact. |
+| `AnmRenderManagerView::ExecuteScript` | 9,964 / 9,964 | 2 bytes | Residuals at +0x112/+0x115; opcode 91 child-layer argument is the key register-allocation issue (target EDX, candidate ECX). |
+| `GameResetGui` | 1,965 / 1,965 | 47 bytes | Full extent. Its separate lives-display helper remains 77/77 exact. |
+| `TransitionShakeLinear` | 439 / 439 | 27 bytes | Preserve the separate exact transition-envelope owner; naive RNG/division reordering regresses this function. |
+| `BulletRuntimeView::UpdateAbsoluteDirectionChange` | 335 / 335 | 2 bytes | Remaining difference is the angle argument register (target EDX versus candidate EAX). |
+| `ReplayPlaybackFrameControlCallback` | 68 / 68 | 4 bytes | Branch destinations differ; preserve the exact 3,999-byte FrontEnd options owner. |
+| `Chain::Chain` | 59 / 59 | 8 bytes | Constructor remains nonexact; keep the separately exact allocator. |
 
-## Current nonexact work — measured source epoch
+### Enemy ECL source decisions already retained
 
-All sizes below are **candidate / target**. `OK` and `REGRESSED` are comparisons against *older recorded residual-offset frontiers*, not exactness labels. A lower mismatch count can still fail the frontier if offsets moved.
+- `dispatch_copy_player_to_motion` copies the 12-byte XYZ record with `memcpy`. This preserves NaN payloads and signed zero; the earlier bounded 36-TU comparison improved by 27 differing bytes.
+- `ENEMY_ECL_INITIALIZE_BULLET_PATTERN` clears the complete 0x210-byte record before setting opcode defaults. A temporary `EnemyBulletPatternView()` assignment expanded the owner and caused MSVC switch-label initialization errors; the retained form is `memset` plus explicit fields.
+- `ENEMY_ECL_COPY_BULLET_PATTERN` uses complete typed record assignment, not `memcpy`, because source and destination script indices may be equal (self-copy).
+- Type-0/type-1 laser request paths copy the serialized pattern words into their request records with fixed-size `memcpy`; keep the request layouts and offsets in `src/EnemyLaser.hpp`.
+- `EnemyManagedVmIdAt` expresses the ten four-byte ANM VM handles with the target's unchecked modulo-32-bit index arithmetic. Script-supplied indices remain unchecked; the flag loops are bounded to slots 0..9.
 
-| Owner | Latest bounded measurement | Useful next attack |
-| --- | --- | --- |
-| `EnemyRuntimeView::DispatchEclInstruction @0x40E770` | Current 36-TU linked graph: **14,480 / 14,416**, **10,537** differing bytes; secondary 12-TU `/GS` graph: **14,424 / 14,416**, **10,385**. Both remain `REGRESSED` against older residual-offset sets, but each improves by 27 bytes against the previous clean-source build. | The `dispatch_copy_player_to_motion` 12-byte `memcpy` keeps raw XYZ bits and reduces mismatches in both graphs. Retain typed rank-pattern and ECL operand cursors; tackle lower-rank scheduling and 64-byte extent surplus next. Alternate ANM VM/laser XYZ `memcpy` attempts grew the function and were rejected. The 12-TU diagnostic is not a canonical acceptance result. |
-| `AnmRenderManagerView::ExecuteScript @0x43EE30` | Full 9,964-byte extent; two differing bytes at +0x112/+0x115. | Opcode 91: original passes the child layer in EDX, current compiler selects ECX. Most obvious direct arguments, local/volatile qualifiers and field-order variants were tried without improvement. |
-| `EclVmContext::Run @0x44E1A0` | Full 7,020-byte extent; 23 differing bytes; frontier `REGRESSED` on moved offsets. | Focus the thread spawn/stop register choices, integer ADD/SUB stack slots and the handful of addressing forms. Changing stack-leaf spelling may preserve leaf exactness but badly regress the parent; compare both. |
-| `GuiMessageVmView::Run @0x415E90` | **4,464 / 4,480**, 1,935 differences, versus older frontier's 1,910 offset set. | Portrait operand register lifetimes and resource-read ordering, inline clear-count increments, stage 6/7 tail sharing. Do not collapse the eight apparently duplicate character branches: that shrinks code to 3,796 bytes and loses target layout. All 36 portrait script-ID additions now have explicit native 32-bit wrap semantics. |
-| `ResultMenuUpdateResult @0x4236F0` | Last retained check: **3,216 / 3,227**, 2,285 differences. | Rebuild the graph before using this older measurement; inspect state 7/8 and 10–13, score receiver and stack-home layout. |
-| `GameResetGui @0x413BC0` | Current clean-source baseline: **1,965 / 1,965**, 47 differences (`OK`). The lives-display helper is separately **77 / 77 exact**. | Focus the life-count loop register schedule and the two stage VM-creation argument lifetimes. Direct GuiSetLivesDisplayCount calls, count-local hints and manual VM creation did not improve the complete owner. |
-| `GuiMessageVmView` constructor `@0x415B00` | **684 / 683**, 81 ordinary byte mismatches. | Preserve scoped VM ID return values and storage layout; the extra byte is near the final enemy-manager register reload. A 683-byte spelling had 227 mismatches and is worse. |
-| `ScriptViewerPopupOwnerView::Draw @0x42B780` | **537 / 540**, 266 non-linkage differences; draw callback 10/10 length but nonexact. | Owner/digit-cursor register allocation and alpha lifetime. The advancing digit address is now native DWORD arithmetic; Update stays 134/134 exact. |
-| `TransitionShakeLinear @0x43C550` | **439 / 439**, 27 differences. | The floating divide is scheduled before the second RNG state update; naive source movement breaks the entire function. Preserve the separate exact 349-byte envelope. |
-| `Chain::Chain @0x449AA0` | **59/59**, eight residual bytes; `Chain::AllocElem` is now separately canonical exact. | First self-link/second sentinel register scheduling remains nonexact; preserve the new allocator exactness and three exact destructor/popup guards. |
-| `BulletRuntimeView::UpdateAbsoluteDirectionChange @0x4078E0` | **335 / 335**, two register bytes at +0xD7/+0xDD. | Angle parameter EDX versus EAX; multiple earlier type/`register` hints were neutral or worse. |
-| `ReplayPlaybackFrameControlCallback @0x42A3E0` | **68 / 68**, four conditional-branch destinations. | Shared return tail; preserve the exact 3,999-byte FrontEnd owner. Explicit `goto` variants severely regressed. |
+Detailed offsets and earlier compiler experiments are in the Enemy, ECL VM, ANM and Chain sections of [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md). Do not promote the 36-TU or 12-TU dispatcher frontier to exact.
 
-Detailed target observations, meaningful failed trials and source-layout notes live in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md). **Do not refresh** `config/frontiers.toml` simply to make a changed residual offset set pass; compare the full original and candidate.
+## Short validation loop
 
-## Small, repeatable validation commands
-
-Every command below builds only its named graph. Pass the **actual changed translation units** after `--dirty`; missing one silently reuses its previous LTCG object. Rebuild the graph after experimenting with code, even if the source was subsequently restored.
+Use only the affected linked graph and pass every changed translation unit after `--dirty`:
 
 ```sh
-# Main large-owner graph; specify additional changed TUs when relevant.
+# Main Enemy/ECL graph
 scripts/repo-python scripts/diagnostics/triage/quick-relink.py player-handle-collision-hit --dirty src/EnemyEclDispatcher.cpp
-scripts/repo-python scripts/check-frontier.py --no-build enemy-dispatch-ecl anm-execute-script ecl-run game-reset-gui
+scripts/repo-python scripts/check-frontier.py --no-build enemy-dispatch-ecl ecl-run anm-execute-script game-reset-gui
 scripts/repo-python scripts/compare-linked-function.py --unit player-handle-collision-hit --json
 
-# Smaller ECL dispatch diagnostic and its strict leaf guard.
+# Secondary Enemy dispatcher graph and its exact leaf guard
 scripts/repo-python scripts/diagnostics/triage/quick-relink.py enemy-apply-bullet-clear --dirty src/EnemyEclDispatcher.cpp
 scripts/repo-python scripts/check-frontier.py --no-build enemy-dispatch-ecl-12tu
 scripts/repo-python scripts/compare-linked-function.py --unit enemy-apply-bullet-clear --json
 
-# Alternative individual owner graphs.
-scripts/repo-python scripts/diagnostics/triage/quick-relink.py gui-message-run-candidate --dirty src/Gui.cpp
-scripts/repo-python scripts/diagnostics/triage/quick-relink.py enemy-read-dialog --dirty src/GuiMessage.cpp
-scripts/repo-python scripts/diagnostics/triage/quick-relink.py transition-shake-linear --dirty src/TransitionEffect.cpp
-scripts/repo-python scripts/diagnostics/triage/quick-relink.py script-viewer-popup-update --dirty src/ScriptViewerPopupCreate.cpp
-scripts/repo-python scripts/diagnostics/triage/quick-relink.py frontend-options-refresh --dirty src/ReplayManager.cpp
-
-# Only once a new or modified exact owner passes strict whole-owner checks:
-scripts/repo-python scripts/compare-linked-function.py --unit UNIT --json
-scripts/repo-python scripts/replay-exact-units.py --unit UNIT --json
+# ECL VM changes: include EclVm.cpp in --dirty and inspect the full Run owner
+scripts/repo-python scripts/diagnostics/triage/quick-relink.py player-handle-collision-hit --dirty src/EclVm.cpp
+scripts/repo-python scripts/compare-linked-function.py --unit ecl-vm-stack-pop --json
 ```
 
-The canonical target executable, Wine/VC7.1 setup, local Ghidra project and current manifest-backed `build/match-linked/` contexts are kept. See [RE_ARTIFACTS.md](RE_ARTIFACTS.md) for the retained scratch scope and storage cleanup. Documentation-only changes do **not** need game builds: run `scripts/repo-python scripts/ci.py`, `scripts/repo-python scripts/progress.py --check` when ledgers change, and `git diff --check`.
+Do not run the full cold replay for ordinary iterations. Do not edit `config/frontiers.toml` to turn a moved residual set into an `OK` result. Keep commits local with the `gpt-web: ...` prefix and the repository's required co-author trailer.

@@ -795,6 +795,13 @@ register preservation or mod-ref assumptions) where our builds exploit it
   - the pattern clear is `LEA EDI,[EDX+0x2C4]` then `REP STOSD` of 0x84 dwords at +0x19DE;
   - the pattern-initialize record is 0x210 bytes; there are 22 overlapping extra records of 24 bytes;
   - the spell-name cipher XORs with a key that adds 0x10 per byte as an unsigned char; its SIB `8A 0C 31` is at +0x273B.
+- ECL dispatcher source decisions retained on 2026-11-18 (VC7.1 SP1 /GL):
+  - `dispatch_copy_player_to_motion` copies the 12-byte XYZ position record with `memcpy`. This is a bit-preserving transfer (including NaN payloads and signed zero), not vector arithmetic; the bounded main owner improved by 27 differing bytes after this change.
+  - `ENEMY_ECL_INITIALIZE_BULLET_PATTERN` clears the full 0x210-byte pattern, then publishes its count, angle/speed bit patterns, sound and flag defaults. A temporary value-initialized pattern assignment expanded the owner; a local declared directly in the unbraced switch case also triggered MSVC C2360 at following labels. The retained implementation is the complete `memset` followed by explicit field stores.
+  - `ENEMY_ECL_COPY_BULLET_PATTERN` uses a complete `EnemyBulletPatternView` assignment. The two unchecked script indices can be equal, so replacing it with `memcpy` would give overlapping/self-copy undefined behavior.
+  - Type-0 and type-1 laser request paths copy their serialized pattern-word arrays into the corresponding request layouts. Type-1 carries 0x6C DWORDs; keep the offsets and sizes tied to `EnemyLaserType0RequestView` / `EnemyLaserType1RequestView`, not to a guessed common struct.
+  - `EnemyManagedVmIdAt` centralizes the four-byte managed-VM handle overlay. Script-selected slots are unchecked and use modulo-32-bit address arithmetic; only the SET_FLAGS/CLEAR_FLAGS loops have a proven 0..9 bound.
+- Latest bounded dispatcher measurements: the main linked graph is 14,468/14,416 bytes with 10,515 differing bytes; the secondary 12-TU graph is 14,472/14,416 with 10,534 differing bytes. Both currently report `REGRESSED` against older recorded residual-offset sets; neither is exact. Do not update the frontier to bless offset movement.
 - The interpolation timer is 20 bytes (`INC` at +0x3B, `DEC` at +0x99 in the 652-byte evaluator).
 - Bomb owner: Owner `+0x2C` is the VM id; `+0x28` is the mode; `+0x3C` is a float radius.
   - `EmitAuxiliary` tests `spellId == 109` as an OR alternative to `(flags&1) && 93<=spellId<=96`, re-reading the id from game state for the 109 test.
