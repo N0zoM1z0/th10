@@ -2018,8 +2018,9 @@ dispatch_difficulty_float_index_4_a:
     EnemyPatternAtRuntimeIndex(this, iVar26)->fields.soundId = 7;
     EnemyPatternAtRuntimeIndex(this, iVar26)->fields.soundVariant = 0x18;
     EnemyPatternAtRuntimeIndex(this, iVar26)->fields.flags1FC = 0x203;
-    reinterpret_cast<EnemyPositionDwordView *>(EnemyPatternOffsetAtRuntimeIndex(this, iVar26))->word[0] = 0;
-    reinterpret_cast<EnemyPositionDwordView *>(EnemyPatternOffsetAtRuntimeIndex(this, iVar26))->word[1] = 0;
+    // These are zeroed XYZ offset components, not independent word storage.
+    EnemyPatternOffsetAtRuntimeIndex(this, iVar26)->x = 0.0f;
+    EnemyPatternOffsetAtRuntimeIndex(this, iVar26)->y = 0.0f;
     return 0;
   case ENEMY_ECL_COPY_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(1);
