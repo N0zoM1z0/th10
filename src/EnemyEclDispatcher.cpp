@@ -2013,14 +2013,10 @@ dispatch_difficulty_float_index_4_a:
         static_cast<unsigned int>(iVar26) *
         static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
         static_cast<unsigned int>(runtimeAddress));
-    puVar5 = EnemyPatternAtRuntimeByte(iVar11)->words;
-    for (iVar27 = 0x84; iVar27 != 0; iVar27 = iVar27 + -1) {
-      *puVar5 = 0;
-      // The original STOSD-style loop advances a native 32-bit address
-      // word, including when an unchecked ECL pattern index wraps.
-      puVar5 = reinterpret_cast<unsigned int *>(
-          reinterpret_cast<unsigned int>(puVar5) + sizeof(unsigned int));
-    }
+    // Clear the full 0x210-byte native bullet pattern before publishing its
+    // defaults. The indexed address already uses the target's wrapping word.
+    memset(EnemyPatternAtRuntimeByte(iVar11), 0,
+        sizeof(EnemyBulletPatternView));
     EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countA = 1;
     EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countB = 1;
     EnemyPatternAtRuntimeIndex(this, iVar26)->fields.angleABits = 0;
@@ -2707,13 +2703,10 @@ dispatch_rank_count_lowest:
     EnemyInitializeLaserConfig(&local_288);
     puVar5 = reinterpret_cast<unsigned int *>(ResolveIntArgument(0));
     if (instruction->opcode == 0x1b2) {
-      puVar14 = &bulletPatterns[0].words[8];
-      puVar13 = local_288.type1.patternWords;
-      for (iVar26 = 0x6c; iVar26 != 0; iVar26 = iVar26 + -1) {
-        *puVar13 = *puVar14;
-        puVar14 = puVar14 + 1;
-        puVar13 = puVar13 + 1;
-      }
+      // The type-1 request copies all 0x6c native pattern DWORDs, including
+      // their exact serialized bit patterns, before filling laser fields.
+      memcpy(local_288.type1.patternWords, &bulletPatterns[0].words[8],
+          sizeof(local_288.type1.patternWords));
     }
     vectorScratch.x = bulletPatternOffsets[0].x + worldMotion.position.x;
     vectorScratch.y = bulletPatternOffsets[0].y + worldMotion.position.y;
