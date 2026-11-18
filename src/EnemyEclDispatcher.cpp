@@ -2023,17 +2023,17 @@ dispatch_difficulty_float_index_4_a:
         static_cast<unsigned int>(iVar26) *
         static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
         static_cast<unsigned int>(runtimeAddress));
-    // Reuse the recovered pattern constructor for the full zero/default state;
-    // the opcode then applies its own per-pattern launch defaults.
-    EnemyBulletPatternView *const pattern = EnemyPatternAtRuntimeByte(iVar11);
-    *pattern = EnemyBulletPatternView();
-    pattern->fields.countA = 1;
-    pattern->fields.countB = 1;
-    pattern->fields.angleABits = 0;
-    pattern->fields.speedABits = 0x40000000u;
-    pattern->fields.soundId = 7;
-    pattern->fields.soundVariant = 0x18;
-    pattern->fields.flags1FC = 0x203;
+    // Clear the full 0x210-byte native bullet pattern before publishing its
+    // defaults. The indexed address already uses the target's wrapping word.
+    memset(EnemyPatternAtRuntimeByte(iVar11), 0,
+        sizeof(EnemyBulletPatternView));
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countA = 1;
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countB = 1;
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.angleABits = 0;
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.speedABits = 0x40000000u;
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.soundId = 7;
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.soundVariant = 0x18;
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.flags1FC = 0x203;
     // These are zeroed XYZ offset components, not independent word storage.
     EnemyPatternOffsetAtRuntimeIndex(this, iVar26)->x = 0.0f;
     EnemyPatternOffsetAtRuntimeIndex(this, iVar26)->y = 0.0f;
