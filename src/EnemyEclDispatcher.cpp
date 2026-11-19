@@ -2198,6 +2198,7 @@ dispatch_difficulty_float_index_4_a:
         static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
         static_cast<unsigned int>(runtimeAddress));
     EnemyPatternAtRuntimeByte(iVar26)->fields.countA = (short)uVar23;
+    EnemyBulletPatternView *const countPattern = EnemyPatternAtRuntimeByte(iVar26);
     if (g_EnemyDifficulty == 0) {
       countIndex = 5;
     }
@@ -2211,7 +2212,7 @@ dispatch_difficulty_float_index_4_a:
       }
     }
     uVar22 = ENEMY_READ_INT_DIRECT(countIndex);
-    EnemyPatternAtRuntimeByte(iVar26)->fields.countB = (short)uVar22;
+    countPattern->fields.countB = (short)uVar22;
     return 0;
   }
   case ENEMY_ECL_SET_BULLET_SPEED_BY_RANK_3:
@@ -2236,8 +2237,10 @@ dispatch_difficulty_float_index_4_a:
           static_cast<unsigned int>(runtimeAddress));
       fVar19 = ReadFloatArgument(9);
       EnemyPatternAtRuntimeByte(iVar26)->fields.speedA = (float)fVar19;
+      // After publishing speedA, retain the native record for speedB.
+      EnemyBulletPatternView *const rankPattern = EnemyPatternAtRuntimeByte(iVar26);
       fVar19 = ReadFloatArgument(10);
-      EnemyPatternAtRuntimeByte(iVar26)->fields.speedB = (float)fVar19;
+      rankPattern->fields.speedB = (float)fVar19;
       return 0;
     }
     if (g_EnemyChapterState.rank >= 200) {
@@ -2247,8 +2250,10 @@ dispatch_difficulty_float_index_4_a:
           static_cast<unsigned int>(runtimeAddress));
       fVar19 = ReadFloatArgument(7);
       EnemyPatternAtRuntimeByte(iVar26)->fields.speedA = (float)fVar19;
+      // After publishing speedA, retain the native record for speedB.
+      EnemyBulletPatternView *const rankPattern = EnemyPatternAtRuntimeByte(iVar26);
       fVar19 = ReadFloatArgument(8);
-      EnemyPatternAtRuntimeByte(iVar26)->fields.speedB = (float)fVar19;
+      rankPattern->fields.speedB = (float)fVar19;
       return 0;
     }
     if (g_EnemyChapterState.rank >= -200)
@@ -2442,6 +2447,7 @@ dispatch_rank_count_lowest:
     EnemyPatternAtRuntimeIndex(this, static_cast<int>(uVar22))->fields.aimMode = static_cast<unsigned short>(uVar23);
     return 0;
   case ENEMY_ECL_SET_BULLET_SOUND:
+  {
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = static_cast<int>(
         static_cast<unsigned int>(uVar22) *
@@ -2449,9 +2455,11 @@ dispatch_rank_count_lowest:
         static_cast<unsigned int>(runtimeAddress));
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     EnemyPatternAtRuntimeByte(iVar26)->fields.soundId = (int)uVar22;
+    EnemyBulletPatternView *const soundPattern = EnemyPatternAtRuntimeByte(iVar26);
     uVar22 = ENEMY_READ_INT_DIRECT(2);
-    EnemyPatternAtRuntimeByte(iVar26)->fields.soundVariant = (int)uVar22;
+    soundPattern->fields.soundVariant = (int)uVar22;
     return 0;
+  }
   // Opcode 0x199 uses 22 overlapping 0x18-byte records per pattern.
   // Keep the two index words and final eight-byte-scaled float store as
   // modulo-32-bit arithmetic, even when script inputs exceed signed int.

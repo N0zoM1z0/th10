@@ -411,6 +411,17 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   unrelated 627-byte collision owner and 44-byte bullet-clear leaf remain
   exact. This is main-function progress, not new exact credit.
 
+  [2026-11-19] Rank-five bullet-speed bands 600+ and 200..599, the
+  difficulty-selected bullet counts, and the bullet sound descriptor now
+  retain their typed `EnemyBulletPatternView*` *after* writing the first
+  field, through the second independent script-operand read. The script
+  index still follows the target's unchecked native 32-bit 0x210 stride.
+  This preserves the real 36-TU dispatch (14,468/14,416, 10,497 wrong)
+  and the separate 12-TU diagnostic (14,472/14,416, 10,532 wrong), while
+  the 627-byte collision and 44-byte bullet clear owners remain exact.
+  Hoisting the record cursor *before* the first script read changed
+  register lifetime and regressed the large owner; do not hoist it.
+
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and
