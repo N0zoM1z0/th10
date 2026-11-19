@@ -252,9 +252,9 @@ without AnmVmId support). Raw-equal spans earn no partial credit.
 
 ## Open owners
 
-Newest known state of the nonexact authored owners, largest first. Dates are the
-measurement epoch; sources have changed since some of them, so rebuild before
-trusting a number. Owners without an entry have no useful recorded attempt.
+Latest useful linked-owner state, largest first. Rebuild the affected graph after
+source changes. `REGRESSED` means residual offsets moved relative to the stored
+frontier; do not refresh a baseline merely to accept the new positions.
 
 - **EnemyRuntimeView::DispatchEclInstruction @0x40E770 (14,416)**: the
   current primary 36-support-TU `/GL` candidate is 14,452 bytes with 10,414
@@ -349,10 +349,11 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   [2026-10-30]
 - **RebuildPlayerOptions @0x426F70 (2,520)**: about 2,404, plain RET instead of
   RET4 even with all nine callers present. [2026-10-19]
-- **EnemyGameStateView::StartSpell @0x409280 (2,432)**: 2,404/2,432, 1,129 differences; 14 receiver LEAs
-  use EDX instead of ESI and 8 PUSH schedules differ. [2026-10-31]
-- **ItemManagerUpdateBody @0x41AFD0 (2,320)**: 2,220/2,320, 1,639 differences;
-  array fix. [2026-10-15]
+- **EnemyGameStateView::StartSpell @0x409280 (2,432)**: current linked
+  candidate 2,404/2,432 with 1,129 differing bytes; 14 receiver LEAs use
+  EDX instead of ESI and eight PUSH schedules differ.
+- **ItemManagerUpdateBody @0x41AFD0 (2,320)**: current linked candidate
+  2,220/2,320 with 1,639 differing bytes; the array layout is fixed.
 - **AnmRenderManagerView ctor @0x445900 (2,315)**: 655/670 normalized
   instructions after setting `element->arg = this` before `flags |= 3` and
   resetting the capture surface index first; the EH frame, VM flag loop and Chain

@@ -1,49 +1,24 @@
 # TH10 private inputs and reclaimable storage
 
-**Updated 2026-11-18.** This is the storage handoff for the next reconstruction agent. The short task and unit-selection brief is [RE_HANDOFF.md](RE_HANDOFF.md). Preserve active reconstruction inputs; only discard reproducible scratch after recording useful conclusions.
+**Updated 2026-11-19.** The current task brief is [RE_HANDOFF.md](RE_HANDOFF.md). Keep the original target and active reconstruction contexts; remove reproducible scratch only after its useful findings have been recorded.
 
-## Protect these inputs and contexts
+## Preserve
 
-- `resources/th10.exe` — original Japanese v1.00a target, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`; keep ignored and read-only.
-- `.tools/`, especially `.tools/wineprefix-msvc710-sp1/`, shared-runtime links, pinned VC7.1 compiler/linker and related Wine setup. The approximately 585 MiB tool tree is **not** disposable scratch.
-- `ghidra-project/`, `_reference/`, maintained `src/`, `scripts/`, `config/`, original resources, Git history and its reflogs.
-- `build/match-linked/`: **271 distinct configured output-directory names**, of which **244 directories are currently present** and 27 have not been built. No existing directory is orphaned. Keep these reusable linked-PE/MAP/PDB and support-object contexts, plus `build/match/` inputs.
-- `build/anm-caller-abi-test/caller.cpp`, `docs/evidence/anm-loaded-start-script-wave11-20261109/compiler-context.cpp` and `docs/evidence/anm-child-request-record/binding-contract.json`.
-- `build/probe-backlog/` — object cache consumed by `scripts/probe-exact-backlog.py`; keep it for that repeatable triage lane.
-- D3D adapter work under `.analysis/d3d-*` and its evidence, the original target origin review at `.analysis/gpt-5.6-sol/20260917-origin-review/runtime-origin-review.json`, and the private analyzer runtime. Some older D3D evidence pages reference historical private paths that are no longer present; those paths are archival provenance, not current build inputs.
-- The handful of root-level ECL Ghidra exports: `dispatch-ecl-0040e770.c`, `dispatch-ecl-0040e770-listing.txt`, `dispatch-ecl-full-listing.txt` and `ecl-read-int-0044fdb0.c`, all below `.analysis/`.
+- `resources/th10.exe` — original Japanese v1.00a target, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`. Keep read-only and uncommitted.
+- `.tools/` (about 585 MiB), including this game's Wine prefix, pinned VC7.1 compiler/linker and shared-runtime links.
+- `ghidra-project/` (about 9.7 MiB), `_reference/`, maintained `src/`, `scripts/`, `config/`, Git history and reflogs.
+- `build/match-linked/` (about 183 MiB): 271 configured output directories, 244 present and 27 not yet built. Keep every present linked PE/MAP/PDB and support-object context. Also keep `build/match/` and `build/probe-backlog/`.
+- Five unresolved diagnostic workspaces under `build/gpt-web/` (about 4.5 MiB):
+  - `20261108-enemy-dispatch-rank-tail-final/`
+  - `20261108-enemy-runtime-aggregate-sum/`
+  - `20261109/anm-execute-child91-aggregate/`
+  - `20261109/ecl-run-length-pointer-order/`
+  - `20261109/playerhud-restored-natural-loader/`
+- `.analysis/` (about 6.4 MiB), including active ANM/ECL/Enemy decompiler exports, `.analysis/factory-runtime/`, the D3D adapter work and evidence, `.analysis/gpt-5.6-sol/20260917-origin-review/runtime-origin-review.json`, and the four optional trial generators in `.analysis/gpt-web/`.
+- `docs/evidence/` compiler contexts and binding contracts referenced by the reconstruction workflow.
 
-Five noncanonical, small diagnostic workspaces remain under `build/gpt-web/` because they cover unresolved native scheduling:
+## Cleanup on 2026-11-19
 
-| Problem | Retained relative path under `build/gpt-web/` |
-| --- | --- |
-| Enemy dispatcher rank-tail | `20261108-enemy-dispatch-rank-tail-final/` |
-| Enemy runtime aggregate | `20261108-enemy-runtime-aggregate-sum/` |
-| ANM opcode 91 | `20261109/anm-execute-child91-aggregate/` |
-| ECL pointer ordering | `20261109/ecl-run-length-pointer-order/pointer-y-first/` |
-| Player HUD loader | `20261109/playerhud-restored-natural-loader/` |
+Removed **232** superseded experiment files (230 top-level `build/try-*` logs/source snapshots/reproducible comparisons plus two temporary camera relink logs), reclaiming **322,448 bytes**. Kept the two selected cold-link result JSON files for `EnemyMotionView::AdvanceMotion` and `EclVmScriptDatabase::AddScriptData`; their findings are summarized in `KNOWLEDGE_BASE.md` and `RE_HANDOFF.md`. No `build/match-linked/` context, target, toolchain, analyzer project, D3D work or canonical ledger was deleted.
 
-Four narrowly scoped optional trial scripts remain in `.analysis/gpt-web/`: `20261110-anm-child91-aggregate-initializers.py`, `20261110-bullet-absolute-speed-liveness.py`, `20261110-ecl-format-cursor-allocation-schedule.py` and `20261110-seek-tail-control-flow-trials.py`. Their presence does not make their unsuccessful results current evidence.
-
-## Space reclaimed on 2026-11-17
-
-The previous documented cleanup removed approximately **4.97 MiB** of obsolete ANM trial variants and reports. The **additional handoff cleanup** performed now:
-
-- Deleted **430 top-level generated files** from `.analysis/` (old build logs, duplicate strict/selected comparison JSON, temporary host executables and discarded trial scripts), reclaiming **1,988,757 bytes (~1.90 MiB)**. Protected subdirectories, the Ghidra exports and the lockfile were left alone.
-- Repacked Git **without pruning any object or expiring any reflog** (`git -c gc.reflogExpire=never -c gc.reflogExpireUnreachable=never gc --prune=never`). `.git/` shrank from **130,440 KiB** to **20,072 KiB**, saving **110,368 KiB (~107.78 MiB)**. All 22,588 Git objects are preserved in two packs; the connectivity check completed successfully.
-- **Additional savings this sweep: approximately 109.68 MiB**. The complete checked-out repository now occupies about **881 MiB**, including protected toolchain, reference and build contexts. No tracked game source, protected private input, referenced build context or acceptance record was deleted.
-
-## Handoff cleanup on 2026-11-18
-
-- Removed the superseded `.analysis/gpt-web/th10-20261117/` session scratch directory: 223 generated probe, log, comparison and duplicate-source files occupying 2,430,618 bytes (about 2.32 MiB). The relevant FPS exact results, ECL A/B conclusions and current dirty GUI state are summarized in `RE_HANDOFF.md` and `KNOWLEDGE_BASE.md`; failed trial scripts and duplicate source snapshots were not retained. Also removed the empty top-level `authored-backlog-20261117.txt` redirection artifact, the unreferenced 649,280-byte `build/match-linked/ScriptViewerPopupInitializeProbe/` graph from a failed popup-initializer trial, a stale 25,923-byte diagnostic JSON marked acceptance_authority=none, and an empty rank-window scratch file.
-- Kept all 244 present `build/match-linked/` directories because every one is referenced by the current manifest; the other 27 configured contexts have not yet been built. Kept all five unresolved `build/gpt-web/` diagnostic workspaces, the four root-level optional trial scripts, D3D evidence, Ghidra projects/runtime and origin-review inputs. The cleanup reclaimed about 2.96 MiB in total. No manifest-backed build context or private input was deleted.
-
-Continue to keep scratch below `.analysis/` and builds below `build/`. Old one-off reports and duplicate source snapshots may be removed after their findings are preserved in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md). Do not remove the retained contexts above or manufacture replacement archives or cleanup manifests.
-
-## Current inventory and cleanup — 2026-11-18
-
-The manifest currently names **271** distinct `build/match-linked/` output directories: **244** are present, **27** have not yet been built, and **zero present directories are orphaned**. Keep all present linked PE/MAP/PDB contexts. The five unresolved workspaces under `build/gpt-web/` occupy about **4.22 MiB** and remain useful for the Enemy dispatcher, ANM child opcode, ECL pointer ordering and player HUD investigations. The four small scripts under `.analysis/gpt-web/` are reusable trial generators, not generated build output; keep them with their recorded context.
-
-The active decompiler exports in `.analysis/` (`anm-execute-script.c`, `ecl-vm-run.c`, the Enemy dispatcher C/listings, `game-reset-gui.c`, `bullet-update-absolute-direction.c` and `transition-shake-linear.c`) are retained because they support current open owners. Preserve the D3D adapter evidence, origin review, Ghidra project/runtime, target, Wine prefix and compiler contexts.
-
-This sweep removed only the ignored, reproducible `scripts/__pycache__/` directory (**868,292 bytes, about 0.83 MiB**). No manifest-backed linked context, target input, source, Ghidra data or unresolved diagnostic workspace was deleted. A fresh repository script run may recreate the bytecode cache. No Git object pruning or reflog expiry was performed.
+Do not remove the five diagnostic workspaces or the four `.analysis/gpt-web/` trial generators without first replacing the current unresolved-owner evidence. Do not run Git garbage collection or expire reflogs for storage cleanup. Keep new scratch below `.analysis/` and build outputs below `build/`; no replacement archives, deletion manifests or recurring cleanup reports are needed.
