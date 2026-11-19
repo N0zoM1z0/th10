@@ -459,6 +459,16 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   14,468/14,416 with 10,495 differing bytes, 12-TU 14,472/14,416 with
   10,531. The 44-byte clear and 627-byte collision owners remain exact.
 
+  [2026-11-19] The `SET_BULLET_SPRITES`, `SET_BULLET_OFFSET` and
+  `SET_BULLET_ANGLE` ECL script cases now carry the real typed pattern or
+  3D offset receiver across their second operand read. Each pointer is
+  captured only after the first store, preserving the target-observed
+  register allocation and full integer-address semantics. The real 36-TU
+  dispatcher remains 14,468/14,416 with 10,495 differing bytes and the
+  12-TU diagnostic remains 14,472/14,416 with 10,531 differing bytes.
+  The separate 627-byte collision and 44-byte clear owners remain exact.
+  The script dispatcher remains nonexact; these are source-type repairs.
+
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and

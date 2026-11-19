@@ -2088,6 +2088,7 @@ dispatch_difficulty_float_index_4_a:
     }
     break;
   case ENEMY_ECL_SET_BULLET_SPRITES:
+  {
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = static_cast<int>(
         static_cast<unsigned int>(uVar22) *
@@ -2095,17 +2096,23 @@ dispatch_difficulty_float_index_4_a:
         static_cast<unsigned int>(runtimeAddress));
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     EnemyPatternAtRuntimeByte(iVar26)->fields.spriteId = static_cast<unsigned short>(uVar22);
+    EnemyBulletPatternView *const spritePattern = EnemyPatternAtRuntimeByte(iVar26);
     uVar22 = ENEMY_READ_INT_DIRECT(2);
-    EnemyPatternAtRuntimeByte(iVar26)->fields.spriteVariant = static_cast<unsigned short>(uVar22);
+    spritePattern->fields.spriteVariant = static_cast<unsigned short>(uVar22);
     return 0;
+  }
   case ENEMY_ECL_SET_BULLET_OFFSET:
+  {
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     fVar19 = (ReadFloatArgument(1));
     EnemyPatternOffsetAtRuntimeIndex(this, static_cast<int>(uVar22))->x = (float)fVar19;
+    PlayerFloat3 *const offset = EnemyPatternOffsetAtRuntimeIndex(this, static_cast<int>(uVar22));
     fVar19 = (ReadFloatArgument(2));
-    EnemyPatternOffsetAtRuntimeIndex(this, static_cast<int>(uVar22))->y = (float)fVar19;
+    offset->y = (float)fVar19;
     return 0;
+  }
   case ENEMY_ECL_SET_BULLET_ANGLE:
+  {
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = static_cast<int>(
         static_cast<unsigned int>(uVar22) *
@@ -2113,9 +2120,11 @@ dispatch_difficulty_float_index_4_a:
         static_cast<unsigned int>(runtimeAddress));
     fVar19 = (ReadFloatArgument(1));
     EnemyPatternAtRuntimeByte(iVar26)->fields.angleA = (float)fVar19;
+    EnemyBulletPatternView *const anglePattern = EnemyPatternAtRuntimeByte(iVar26);
     fVar19 = (ReadFloatArgument(2));
-    EnemyPatternAtRuntimeByte(iVar26)->fields.angleB = (float)fVar19;
+    anglePattern->fields.angleB = (float)fVar19;
     return 0;
+  }
   case ENEMY_ECL_SET_BULLET_SPEED:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = static_cast<int>(
