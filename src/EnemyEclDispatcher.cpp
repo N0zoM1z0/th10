@@ -2972,13 +2972,17 @@ dispatch_rank_int_low:
     g_AnmGameSpeed = (float)fVar19;
     return 0;
   case ENEMY_ECL_AIM_BULLET_AT_PLAYER:
+  {
+    // Retain the X address acquired before reading operand one, then
+    // reload the owning player after that read for the Y component.
     pfVar15 = &g_Player->drawPosition.x;
-    fVar19 = (ReadFloatArgument(1));
-    iVar26 = reinterpret_cast<int>(g_Player);
-    fVar21 = (ReadFloatArgument(2));
-    fVar19 = atan2(reinterpret_cast<Player *>(iVar26)->drawPosition.y - fVar21,
-                   *pfVar15 - (float)fVar19);
+    fVar19 = ReadFloatArgument(1);
+    Player *const playerForY = g_Player;
+    fVar21 = ReadFloatArgument(2);
+    fVar19 = atan2(playerForY->drawPosition.y - fVar21,
+                   *pfVar15 - fVar19);
     goto dispatch_store_float_result;
+  }
   case ENEMY_ECL_SUBTRACT_DIFFICULTY_VALUE:
     if (g_EnemyDifficulty == 0) {
       uVar22 = ReadIntArgument(0);

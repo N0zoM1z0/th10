@@ -373,6 +373,16 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   these variants were rejected. Keep the successful motion copy separate from
   other paths. [2026-11-18]
 
+  [2026-11-19] The AIM_BULLET_AT_PLAYER case keeps the previously
+  acquired player-X address across its first script operand read, then
+  captures a typed `Player*` for Y before the second operand read. This
+  removes the lossy Player* -> int -> Player* round trip and improves the
+  36-support-TU dispatcher from 10,515 to 10,513 differing bytes at
+  14,468/14,416. The independent 12-support-TU diagnostic changes in the
+  opposite direction (10,534 to 10,536 at 14,472/14,416); the real 36-TU
+  graph is the deciding one. The 627-byte collision and 44-byte clear
+  owners remain exact. Neither dispatcher candidate is exact.
+
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and
