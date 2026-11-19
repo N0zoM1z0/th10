@@ -441,6 +441,16 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   at 14,472/14,416. The 44-byte bullet-clear and 627-byte collision owner
   comparisons remain exact. Neither dispatcher is exact.
 
+  [2026-11-19] The rank-interpolated bullet count opcode preserves its
+  original native wrapped pattern byte cursor, and now retains the typed
+  `EnemyBulletPatternView*` *after* publishing count A, across the independent
+  count-B interpolation. This explicitly names the same existing pattern
+  record without changing the original two-stage integer operations.
+  The full 36-support-TU dispatcher remains 14,468/14,416 (10,495 differing
+  bytes) and the 12-TU diagnostic remains 14,472/14,416 (10,531 differing
+  bytes). The 627-byte collision and 44-byte bullet-clear exact guards pass.
+  This is a source-semantic checkpoint, not a new exact claim.
+
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and

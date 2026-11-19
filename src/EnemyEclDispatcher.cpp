@@ -2433,12 +2433,13 @@ dispatch_rank_count_lowest:
         static_cast<unsigned int>(iVar27) +
         static_cast<unsigned int>(runtimeAddress)))->fields.countA =
          (short)(iVar26 / 2048) + (short)uVar23;
+    EnemyBulletPatternView *const interpolatedPattern = EnemyPatternAtRuntimeByte(
+        static_cast<int>(static_cast<unsigned int>(iVar27) +
+            static_cast<unsigned int>(runtimeAddress)));
     iVar26 = static_cast<int>((static_cast<unsigned int>(uVar25) -
         static_cast<unsigned int>(secondLowBulletCount)) *
         (static_cast<unsigned int>(g_EnemyChapterState.rank) + 0x400u));
-    EnemyPatternAtRuntimeByte(static_cast<int>(
-        static_cast<unsigned int>(iVar27) +
-        static_cast<unsigned int>(runtimeAddress)))->fields.countB =
+    interpolatedPattern->fields.countB =
          (short)(iVar26 / 2048) +
          (short)secondLowBulletCount;
     return 0;
