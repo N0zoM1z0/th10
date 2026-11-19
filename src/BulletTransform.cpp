@@ -1,6 +1,5 @@
 #include "BulletManager.hpp"
 #include "EnemySoundQueue.hpp"
-#include "EnemySoundQueue.hpp"
 
 #include <string.h>
 
@@ -135,10 +134,13 @@ void BulletRuntimeView::AdvanceTransformProgram()
         {
             if (kind == BULLET_TRANSFORM_SPAWN_CHILD_PATTERN)
             {
+                BulletManagerView *manager =
+                    reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager);
+
                 memset(&pattern, 0, sizeof(pattern));
                 pattern.position = this->position;
                 packedPattern = static_cast<unsigned int>(record->payload.int0);
-                const int fadeParent = static_cast<int>(packedPattern & 0x80000000u);
+                const unsigned int fadeParent = packedPattern & 0x80000000u;
                 pattern.bulletType = 0;
                 pattern.color = reinterpret_cast<const signed char *>(
                     &record->payload.int0)[1];
@@ -158,11 +160,11 @@ void BulletRuntimeView::AdvanceTransformProgram()
                 pattern.transformSound = -1;
                 memcpy(pattern.transforms, this->transforms, sizeof(pattern.transforms));
 
-                reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->
-                    SpawnBulletPattern(&pattern);
+                manager->SpawnBulletPattern(&pattern);
                 ++this->transformIndex;
-                if (fadeParent != 0)
-                    EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));
+                if (fadeParent == 0)
+                    goto loopTail;
+                EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));
                 goto loopTail;
             }
             else if (kind <= 0x20000u)
