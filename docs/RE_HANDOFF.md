@@ -22,9 +22,9 @@ All 15 complete affected owners compare exact after relinking the changed transl
 
 ## Latest source checkpoint: typed Enemy ANM script state
 
-`EnemyRuntimeView` runtime +0xE8..+0xF8 is now represented by `EnemyAnmScriptStateView`, a five-DWORD record with asserted size 0x14 and asserted offsets for selected resource, primary VM resource/script, base script and direction. The ECL dispatcher, `EnemyRuntimeUpdate` and `EnemySpawn` now share these semantic fields. The separate `StageCameraStateView::value0E8/value0EC` fields remain untouched; they are camera shake values, not Enemy ANM selectors.
+`EnemyRuntimeView` runtime +0xE8..+0xF8 is a five-DWORD ANM script-state region. `EnemyAnmScriptStateView` documents the selected resource, primary VM resource/script, base script and direction, with asserted size 0x14 and asserted member offsets. `EnemyRuntimeView::GetAnimationScriptState()` exposes that semantic view to lifecycle code while retaining the original direct members for the large ECL dispatcher. The separate `StageCameraStateView::value0E8/value0EC` fields remain untouched; they are camera shake values, not Enemy ANM selectors.
 
-Targeted linked exact replays after the change pass for `EnemyRuntimeUpdate` (2,412/2,412) and `EnemySpawn` (577/577). The primary 36-support-TU dispatcher remains nonexact: current local comparison is 14,452/14,416 bytes with 10,610 differing bytes, and its residual set has moved. Do not refresh the stored frontier to accept it.
+Targeted linked exact replays after the change pass for `EnemyRuntimeUpdate` (2,412/2,412) and `EnemySpawn` (577/577). The primary 36-support-TU dispatcher remains nonexact: current local comparison is 14,452/14,416 bytes with 10,414 differing bytes. Its residual offsets have moved relative to the stored frontier; do not refresh the baseline to accept them.
 
 ## Exact owners to preserve
 
@@ -44,7 +44,7 @@ These are bounded local linked comparisons, not cold-replay receipts. `REGRESSED
 
 | Owner | Candidate / target | Differing bytes | Current state / focus |
 | --- | ---: | ---: | --- |
-| Enemy ECL dispatcher, primary 36-TU `/GL` graph | 14,452 / 14,416 | 10,610 | `REGRESSED`; typed pattern/VM access and firing-pattern receiver are retained. Continue with dispatch scheduling and the 36-TU graph. |
+| Enemy ECL dispatcher, primary 36-TU `/GL` graph | 14,452 / 14,416 | 10,414 | `REGRESSED` by residual position; typed pattern/VM access and firing-pattern receiver are retained. Continue with dispatch scheduling and the 36-TU graph. |
 | Enemy ECL dispatcher, secondary 12-TU `/GS` graph | 14,456 / 14,416 | 10,240 | `REGRESSED`; diagnostic only, not a replacement for the primary graph. |
 | `EclVmContext::Run` | 7,020 / 7,020 | 23 | `REGRESSED` because residual positions moved. The four stack leaves remain exact. |
 | `AnmRenderManagerView::ExecuteScript` | 9,964 / 9,964 | 2 | Opcode 91 argument register: target EDX, candidate ECX at +0x112/+0x115. |

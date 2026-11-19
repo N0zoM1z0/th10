@@ -429,18 +429,19 @@ struct EnemyRuntimeView
     EnemyFloat2 damageHitbox;
     EnemyFloat2 playerCollisionHitbox;
     EnemyManagedVmIdSlotsView managedVmIds;
-    union
+    EnemyAnmResourceIndex value0E8;
+    EnemyAnmResourceIndex value0EC;
+    EnemyAnmScriptIndex value0F0;
+    EnemyAnmScriptIndex animationBaseScript;
+    int animationDirection;
+
+    // The five adjacent words form the animation-script state. Keep the
+    // original direct members for the opcode dispatcher, and expose the
+    // reviewed semantic view to lifecycle code without changing layout.
+    EnemyAnmScriptStateView *GetAnimationScriptState()
     {
-        EnemyAnmScriptStateView animationScriptState;
-        struct
-        {
-            EnemyAnmResourceIndex value0E8;
-            EnemyAnmResourceIndex value0EC;
-            EnemyAnmScriptIndex value0F0;
-            EnemyAnmScriptIndex animationBaseScript;
-            int animationDirection;
-        };
-    };
+        return reinterpret_cast<EnemyAnmScriptStateView *>(&value0E8);
+    }
     // Target operand lvalue resolvers prove four writable integer variables at
     // full Enemy +0x1138..+0x1144 and four writable float variables at
     // +0x1148..+0x1154. This exact 0x20-byte block begins runtime +0x0FC.
@@ -508,17 +509,16 @@ typedef char EnemyRuntimePlayerHitboxAt0B8[
 typedef char EnemyRuntimeManagedVmsAt0C0[
     (offsetof(EnemyRuntimeView, managedVmIds) == 0x0c0) ? 1 : -1];
 typedef char EnemyRuntimeAnmScriptStateAt0E8[
-    (offsetof(EnemyRuntimeView, animationScriptState) == 0x0e8 &&
-     offsetof(EnemyRuntimeView, value0E8) == 0x0e8 &&
+    (offsetof(EnemyRuntimeView, value0E8) == 0x0e8 &&
      offsetof(EnemyRuntimeView, value0EC) == 0x0ec &&
      offsetof(EnemyRuntimeView, value0F0) == 0x0f0 &&
      offsetof(EnemyRuntimeView, animationBaseScript) == 0x0f4 &&
      offsetof(EnemyRuntimeView, animationDirection) == 0x0f8 &&
-     offsetof(EnemyRuntimeView, animationScriptState) +
+     offsetof(EnemyRuntimeView, value0E8) +
          offsetof(EnemyAnmScriptStateView, primaryResourceIndex) == 0x0ec &&
-     offsetof(EnemyRuntimeView, animationScriptState) +
+     offsetof(EnemyRuntimeView, value0E8) +
          offsetof(EnemyAnmScriptStateView, primaryScriptIndex) == 0x0f0 &&
-     offsetof(EnemyRuntimeView, animationScriptState) +
+     offsetof(EnemyRuntimeView, value0E8) +
          offsetof(EnemyAnmScriptStateView, direction) == 0x0f8) ? 1 : -1];
 typedef char EnemyRuntimeEclVariablesAt0FC[
     (offsetof(EnemyRuntimeView, eclVariables) == 0x0fc) ? 1 : -1];
