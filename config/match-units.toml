@@ -4990,8 +4990,8 @@ profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
 entry_symbol = "?ReadFloatOperand@EnemyFullObjectView@@UAEMH@Z"
-functions = ["EnemyAngleFromPlayer"]
-symbol = "?EnemyAngleFromPlayer@@YAMPAUPlayer@@PBUPlayerFloat3@@@Z"
+functions = ["AngleFromPosition"]
+symbol = "?AngleFromPosition@Player@@QBEMPBUPlayerFloat3@@@Z"
 target_address = 0x00426660
 size = 67
 linkages = [
@@ -33191,3 +33191,8 @@ linkages = [
   { offset = 0x5BC, type = "DIR32", local = true, target = 0x00406F64 },
   { offset = 0x5C0, type = "DIR32", local = true, target = 0x0040731C },
 ]
+
+
+# The player-angle leaf is called with ECX=Player and EAX=position.
+# Keep its 67-byte body independently comparable while the larger
+# transform-program owner continues to recover its dispatch and cases.
