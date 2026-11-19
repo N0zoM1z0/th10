@@ -39,7 +39,7 @@ void BulletRuntimeView::AdvanceTransformProgram()
         index = this->transformIndex;
         const unsigned char *bulletBytes =
             reinterpret_cast<const unsigned char *>(this);
-        kind = *reinterpret_cast<const unsigned int *>(
+        kind = *reinterpret_cast<const volatile unsigned int *>(
             bulletBytes + 0x474 + index * 0x18);
         record = reinterpret_cast<BulletTransformRecordView *>(
             const_cast<unsigned char *>(bulletBytes + 0x464 + index * 0x18));
@@ -186,14 +186,14 @@ void BulletRuntimeView::AdvanceTransformProgram()
                 memset(&pattern, 0, sizeof(pattern));
                 pattern.position = this->position;
                 packedPattern = static_cast<unsigned int>(record->payload.int0);
-                const unsigned int fadeParent = packedPattern & 0x80000000u;
+                pattern.count1 = static_cast<short>(record->payload.int1);
                 pattern.bulletType = 0;
                 pattern.color = reinterpret_cast<const signed char *>(
                     &record->payload.int0)[1];
                 pattern.transformStartIndex = packedPattern & 0xff;
-                pattern.count1 = static_cast<short>(record->payload.int1);
                 pattern.speed1 = record->payload.float0;
                 pattern.speed2 = record->payload.float1;
+                packedPattern &= 0x80000000u;
 
                 record = reinterpret_cast<BulletTransformRecordView *>(
                     reinterpret_cast<unsigned int>(record) +
@@ -208,7 +208,7 @@ void BulletRuntimeView::AdvanceTransformProgram()
 
                 manager->SpawnBulletPattern(&pattern);
                 ++this->transformIndex;
-                if (fadeParent == 0)
+                if (packedPattern == 0)
                     goto loopTail;
                 EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));
                 goto loopTail;
