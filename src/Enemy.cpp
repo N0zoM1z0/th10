@@ -1775,15 +1775,20 @@ int __stdcall EnemyFinalizeDeath(EnemyFullObjectView *enemy)
     return 1;
 }
 
-// TH10 0x00426660. Kept late in this TU so the new exact helper does not
-// perturb compiler-local label numbering in earlier canonical COFF units.
-float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position)
+// TH10 0x00426660. The player is the ECX receiver and the position is
+// passed in EAX by the LTCG-internal member-call convention.
+float Player::AngleFromPosition(const PlayerFloat3 *position) const
 {
-    float dx = player->drawPosition.x - position->x;
-    float dy = player->drawPosition.y - position->y;
+    float dx = this->drawPosition.x - position->x;
+    float dy = this->drawPosition.y - position->y;
     if (dy == 0.0f && dx == 0.0f)
         return 1.5707964f;
     return (float)atan2(dy, dx);
+}
+
+float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position)
+{
+    return player->AngleFromPosition(position);
 }
 
 // Small Enemy-zone accessors independently reconstructed in

@@ -4,7 +4,6 @@
 
 #include <string.h>
 
-extern float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position);
 extern int g_BulletSpriteScriptBase[];
 extern unsigned int EnemyCancelBulletRecord(unsigned char *bullet);
 extern void *g_EnemyBulletManager;
@@ -33,16 +32,17 @@ nextRecord:
     if (this->transformIndex >= 18)
         return;
 
-    // The upper bound is checked above, but a negative script jump can
-    // still select a signed index. Native i386 forms the record address
-    // as one low 32-bit word even if it points before the array.
-    const unsigned int recordAddress =
-        reinterpret_cast<unsigned int>(this) +
-        static_cast<unsigned int>(offsetof(BulletRuntimeView, transforms)) +
-        static_cast<unsigned int>(this->transformIndex) *
-        static_cast<unsigned int>(sizeof(BulletTransformRecordView));
-    record = reinterpret_cast<BulletTransformRecordView *>(recordAddress);
-    kind = record->kind;
+    // The opcode lives at record + 0x10; derive the record view from that
+    // word after the volatile read so the two target accesses stay ordered.
+    const unsigned char *runtimeBytes =
+        reinterpret_cast<const unsigned char *>(this);
+    const int recordStrideIndex = this->transformIndex * 3;
+    const volatile unsigned int *kindAddress =
+        reinterpret_cast<const volatile unsigned int *>(
+            runtimeBytes + recordStrideIndex * 8 + 0x474);
+    kind = *kindAddress;
+    record = reinterpret_cast<BulletTransformRecordView *>(
+        const_cast<unsigned int *>(kindAddress) - 4);
 
     if (kind == BULLET_TRANSFORM_NONE)
         return;
@@ -72,7 +72,7 @@ nextRecord:
                 this->exStates[1].value1 = this->angle;
             else if (requestedAngle >= 990.0f)
                 this->exStates[1].value1 =
-                    EnemyAngleFromPlayer(g_Player, &this->position);
+                    g_Player->AngleFromPosition(&this->position);
             else
                 this->exStates[1].value1 = requestedAngle;
         }
@@ -107,7 +107,7 @@ nextRecord:
                 this->exStates[3].value1 = this->angle;
             else if (requestedAngle >= 990.0f)
                 this->exStates[3].value1 =
-                    EnemyAngleFromPlayer(g_Player, &this->position);
+                    g_Player->AngleFromPosition(&this->position);
             else
                 this->exStates[3].value1 = requestedAngle;
         }

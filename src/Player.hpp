@@ -68,6 +68,7 @@ typedef char PlayerOptionRuntimeCallbackAt90[
 typedef char PlayerOptionRuntimeDrawCallbackAt94[
     (offsetof(PlayerOptionRuntime, drawCallback) == 0x94) ? 1 : -1];
 
+struct Player;
 struct PlayerFloat3Value;
 
 struct PlayerFloat3
@@ -464,6 +465,8 @@ struct Player
 
     Player();
     ~Player();
+    __declspec(noinline) float AngleFromPosition(
+        const PlayerFloat3 *position) const;
     int CheckLaserContact(const PlayerFloat3 *origin, float angle, float width, float length);
     PlayerEffectRowView *SpawnEffectRow(
         const PlayerFloat3 *position,
