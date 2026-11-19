@@ -393,15 +393,13 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   improvement, not a new exact claim. The exact collision/clear guards
   are unchanged.
 
-  [2026-11-19] The rank-five count opcode's top three bands now reread
-  the host through `EclVmHost*` for their second `ReadInt` operand instead
-  of round-tripping `EnemyFullObjectView*` through an integer address. In
-  the real 36-support-TU graph the dispatcher retains 14,468 bytes and
-  improves from 10,513 to 10,508 differing bytes; the diagnostic 12-TU
-  graph retains 14,472 bytes but moves from 10,536 to 10,544 differences.
-  The 627-byte collision caller and 44-byte bullet-clear leaf remain exact.
-  Both dispatcher images remain nonexact; use the 36-TU graph for the
-  primary comparison.
+  [2026-11-19] Both low-band rank-count routes now use typed `EclVmHost*`
+  and its `EclVmContext*` for operand pairs 3/4 and 1/2. The native
+  pattern-byte cursor and two short count stores are unchanged. The real
+  36-TU dispatcher remains 14,468/14,416 with 10,508 differences;
+  the independent 12-TU diagnostic becomes 14,472/14,416 with 10,545
+  differences. Both exact collision and clear callers still pass. This
+  removes unnecessary integer owner casts but does not earn exact credit.
 
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real

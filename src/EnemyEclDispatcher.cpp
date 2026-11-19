@@ -2386,8 +2386,8 @@ dispatch_rank_count_low:
     EclVmContext *const firstContext = reinterpret_cast<EclVmContext *>(owner->activeEclContext);
     uVar22 = firstContext->ReadInt(3);
     pattern->fields.countA = (short)uVar22;
-    runtimeAddress = reinterpret_cast<int>(owner);
-    uVar22 = reinterpret_cast<EclVmContext *>(reinterpret_cast<EnemyFullObjectView *>(runtimeAddress)->activeEclContext)->ReadInt(4);
+    EclVmHost *const secondHost = reinterpret_cast<EclVmHost *>(owner);
+    uVar22 = secondHost->activeContext->ReadInt(4);
     pattern->fields.countB = (short)uVar22;
     return 0;
   }
@@ -2397,11 +2397,12 @@ dispatch_rank_count_lowest:
     register EnemyBulletPatternView *pattern = EnemyPatternAtRuntimeByte(
         static_cast<int>(static_cast<unsigned int>(runtimeAddress) +
             static_cast<unsigned int>(iVar26)));
-    EclVmContext *const firstContext = reinterpret_cast<EclVmContext *>(owner->activeEclContext);
+    EclVmHost *const firstHost = reinterpret_cast<EclVmHost *>(owner);
+    EclVmContext *const firstContext = firstHost->activeContext;
     uVar22 = firstContext->ReadInt(1);
     pattern[0].fields.countA = (short)uVar22;
-    runtimeAddress = reinterpret_cast<int>(owner);
-    uVar22 = reinterpret_cast<EclVmContext *>(reinterpret_cast<EnemyFullObjectView *>(runtimeAddress)->activeEclContext)->ReadInt(2);
+    EclVmHost *const secondHost = reinterpret_cast<EclVmHost *>(owner);
+    uVar22 = secondHost->activeContext->ReadInt(2);
     pattern[0].fields.countB = (short)uVar22;
     return 0;
   }
