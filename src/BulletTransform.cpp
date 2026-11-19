@@ -54,17 +54,7 @@ void BulletRuntimeView::AdvanceTransformProgram()
 
         if (kind <= 0x4000u)
         {
-            if (kind == BULLET_TRANSFORM_SET_SPRITE)
-            {
-                const int scriptIndex =
-                    g_BulletSpriteScriptBase[record->payload.int0] +
-                    record->payload.int1;
-                StartEntityScript_00404f30(
-                    &vm, scriptIndex,
-                    reinterpret_cast<BulletManagerView *>(
-                        g_EnemyBulletManager)->bulletAnm);
-            }
-            else if (kind <= 0x100u)
+            if (kind <= 0x100u)
             {
                 if (kind == BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE)
                     goto directionChange;
@@ -117,17 +107,32 @@ void BulletRuntimeView::AdvanceTransformProgram()
             }
             else if (kind <= 0x1000u)
             {
-                if (kind == BULLET_TRANSFORM_SET_CANCEL_BEHAVIOR)
+                if (kind != BULLET_TRANSFORM_SET_CANCEL_BEHAVIOR)
+                {
+                    if (kind == BULLET_TRANSFORM_BOUNCE_ALL_EDGES ||
+                        kind == BULLET_TRANSFORM_BOUNCE_EXCEPT_BOTTOM)
+                        goto bounce;
+                }
+                else
+                {
                     this->cancelBehavior = record->payload.int0;
-                else if (kind == BULLET_TRANSFORM_BOUNCE_ALL_EDGES ||
-                         kind == BULLET_TRANSFORM_BOUNCE_EXCEPT_BOTTOM)
-                    goto bounce;
+                }
             }
             else if (kind == BULLET_TRANSFORM_SET_CULL_DELAY)
             {
                 this->offscreenCullDelayFrames = record->payload.int0;
                 this->transformIndex = index + 1;
                 goto loopTail;
+            }
+            else if (kind == BULLET_TRANSFORM_SET_SPRITE)
+            {
+                const int scriptIndex =
+                    g_BulletSpriteScriptBase[record->payload.int0] +
+                    record->payload.int1;
+                StartEntityScript_00404f30(
+                    &vm, scriptIndex,
+                    reinterpret_cast<BulletManagerView *>(
+                        g_EnemyBulletManager)->bulletAnm);
             }
         }
         else if (kind <= 0x400000u)
