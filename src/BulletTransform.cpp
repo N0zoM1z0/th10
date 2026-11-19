@@ -37,9 +37,12 @@ void BulletRuntimeView::AdvanceTransformProgram()
             return;
 
         index = this->transformIndex;
-        kind = reinterpret_cast<const unsigned int *>(this->transforms)[
-            index * 6 + 4];
-        record = &this->transforms[index];
+        const unsigned char *bulletBytes =
+            reinterpret_cast<const unsigned char *>(this);
+        kind = *reinterpret_cast<const unsigned int *>(
+            bulletBytes + 0x474 + index * 0x18);
+        record = reinterpret_cast<BulletTransformRecordView *>(
+            const_cast<unsigned char *>(bulletBytes + 0x464 + index * 0x18));
 
         if (kind == BULLET_TRANSFORM_NONE)
             return;
@@ -137,7 +140,45 @@ void BulletRuntimeView::AdvanceTransformProgram()
         }
         else if (kind <= 0x400000u)
         {
-            if (kind == BULLET_TRANSFORM_SPAWN_CHILD_PATTERN)
+            if (kind != BULLET_TRANSFORM_SPAWN_CHILD_PATTERN)
+            {
+                if (kind <= 0x20000u)
+                {
+                    if (kind != BULLET_TRANSFORM_PLAY_SOUND)
+                    {
+                        if (kind != BULLET_TRANSFORM_WAIT)
+                        {
+                            if (kind == BULLET_TRANSFORM_DESPAWN)
+                                EnemyCancelBulletRecord(
+                                    reinterpret_cast<unsigned char *>(this));
+                        }
+                        else
+                        {
+                            this->activeTransformFlags |= kind;
+                            this->exStates[5].timer.SetCurrent(record->payload.int0);
+                        }
+                    }
+                    else
+                    {
+                        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                            QueueSoundCue(record->payload.int0, this->position.x);
+                    }
+                }
+                else if (kind != BULLET_TRANSFORM_WRAP_X)
+                {
+                    if (kind == BULLET_TRANSFORM_WRAP_Y)
+                    {
+                        this->activeTransformFlags |= kind;
+                        this->exStates[7].timer.SetCurrent(record->payload.int0);
+                    }
+                }
+                else
+                {
+                    this->activeTransformFlags |= kind;
+                    this->exStates[6].timer.SetCurrent(record->payload.int0);
+                }
+            }
+            else
             {
                 BulletManagerView *manager =
                     reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager);
@@ -171,33 +212,6 @@ void BulletRuntimeView::AdvanceTransformProgram()
                     goto loopTail;
                 EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));
                 goto loopTail;
-            }
-            else if (kind <= 0x20000u)
-            {
-                if (kind == BULLET_TRANSFORM_PLAY_SOUND)
-                {
-                    reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
-                        QueueSoundCue(record->payload.int0, this->position.x);
-                }
-                else if (kind == BULLET_TRANSFORM_WAIT)
-                {
-                    this->activeTransformFlags |= kind;
-                    this->exStates[5].timer.SetCurrent(record->payload.int0);
-                }
-                else if (kind == BULLET_TRANSFORM_DESPAWN)
-                {
-                    EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));
-                }
-            }
-            else if (kind == BULLET_TRANSFORM_WRAP_X)
-            {
-                this->activeTransformFlags |= kind;
-                this->exStates[6].timer.SetCurrent(record->payload.int0);
-            }
-            else if (kind == BULLET_TRANSFORM_WRAP_Y)
-            {
-                this->activeTransformFlags |= kind;
-                this->exStates[7].timer.SetCurrent(record->payload.int0);
             }
         }
         else if (kind > 0x4000000u)
