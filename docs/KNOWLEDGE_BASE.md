@@ -469,6 +469,16 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   The separate 627-byte collision and 44-byte clear owners remain exact.
   The script dispatcher remains nonexact; these are source-type repairs.
 
+  [2026-11-19] The ECL sprite-id/variant, pattern-offset X/Y, and
+  pattern-angle A/B pairs now retain a typed record receiver after the first
+  write and across the second script operand fetch. All three rely on the
+  existing unbounded 32-bit script index and original field layout. In the
+  complete selected 36-TU and 12-TU dispatcher graphs they are byte-neutral:
+  14,468/14,416 with 10,495 differences and 14,472/14,416 with 10,531
+  differences respectively. The 627-byte collision owner and 44-byte clear
+  leaf remain strict exact. Applying the same receiver lifetime to ordinary
+  `SET_BULLET_COUNT` worsened the 36-TU graph and was not retained.
+
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and
