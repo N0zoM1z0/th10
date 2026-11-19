@@ -433,6 +433,14 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   Capturing the pointer before the first store in these cases instead
   regresses the 36-TU owner, so preserve the post-store lifetime.
 
+  [2026-11-19] The rank-interpolated bullet speed opcode now obtains a
+  single `EnemyBulletPatternView*` after its four script float arguments,
+  retaining the same unchecked 32-bit pattern address for the A/B stores.
+  The complete 36-TU linked dispatcher improves 10,497 -> 10,495 differing
+  bytes at 14,468/14,416; the 12-TU diagnostic improves 10,532 -> 10,531
+  at 14,472/14,416. The 44-byte bullet-clear and 627-byte collision owner
+  comparisons remain exact. Neither dispatcher is exact.
+
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and

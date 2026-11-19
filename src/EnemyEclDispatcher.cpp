@@ -2294,10 +2294,12 @@ dispatch_difficulty_float_index_4_a:
     float lowSpeedB = ReadFloatArgument(2);
     float highSpeedA = ReadFloatArgument(3);
     float highSpeedB = ReadFloatArgument(4);
-    EnemyPatternAtRuntimeIndex(this, patternIndex)->fields.speedA =
+    EnemyBulletPatternView *const interpolationPattern =
+        EnemyPatternAtRuntimeIndex(this, patternIndex);
+    interpolationPattern->fields.speedA =
          (highSpeedA - lowSpeedA) * ((float)g_EnemyChapterState.rank + 1024.0f) *
          0.00048828125f + lowSpeedA;
-    EnemyPatternAtRuntimeIndex(this, patternIndex)->fields.speedB =
+    interpolationPattern->fields.speedB =
          (highSpeedB - lowSpeedB) * ((float)g_EnemyChapterState.rank + 1024.0f) *
          0.00048828125f + lowSpeedB;
     return 0;
