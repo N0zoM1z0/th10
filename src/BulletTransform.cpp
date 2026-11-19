@@ -1,4 +1,6 @@
 #include "BulletManager.hpp"
+#include "EnemySoundQueue.hpp"
+#include "EnemySoundQueue.hpp"
 
 #include <string.h>
 
@@ -6,19 +8,17 @@ extern float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position);
 extern int g_BulletSpriteScriptBase[];
 extern unsigned int EnemyCancelBulletRecord(unsigned char *bullet);
 extern void *g_EnemyBulletManager;
-extern void BulletQueueSoundAtPosition(int soundId, float positionX);
+extern unsigned char g_MainSoundOwner[];
 
-static float BulletResolveTransformAngle(
-    BulletRuntimeView *bullet, float requestedAngle)
+// The transform program uses the native opcode-vector primitive, distinct
+// from the general ANM float-vector helper despite identical storage.
+struct AnmOpcodeVectorView
 {
-    // TH10 uses two sentinels: <= -990 means keep the current bullet angle;
-    // >= 990 means aim at the player; values in between are literal angles.
-    if (requestedAngle <= -990.0f)
-        return bullet->angle;
-    if (requestedAngle >= 990.0f)
-        return EnemyAngleFromPlayer(g_Player, &bullet->position);
-    return requestedAngle;
-}
+    float x;
+    float y;
+    float z;
+    void FromAngleMagnitude(float angle, float magnitude);
+};
 
 // Target 0x00406D90-0x0040733D. TH08/TH095 were consulted only after the
 // TH10-local record stride, 18-entry bound, field offsets and branch values
@@ -66,14 +66,24 @@ nextRecord:
     case BULLET_TRANSFORM_ACCELERATE_VECTOR:
         this->activeTransformFlags |= BULLET_TRANSFORM_ACCELERATE_VECTOR;
         this->exStates[1].value0 = record->payload.float0;
-        this->exStates[1].value1 =
-            BulletResolveTransformAngle(this, record->payload.float1);
+        {
+            const float requestedAngle = record->payload.float1;
+            if (requestedAngle <= -990.0f)
+                this->exStates[1].value1 = this->angle;
+            else if (requestedAngle >= 990.0f)
+                this->exStates[1].value1 =
+                    EnemyAngleFromPlayer(g_Player, &this->position);
+            else
+                this->exStates[1].value1 = requestedAngle;
+        }
         this->exStates[1].timer.SetCurrent(0);
         this->exStates[1].int0 = record->payload.int0;
-        this->exStates[1].vector.FromAngleMagnitude(
-            this->exStates[1].value1, this->exStates[1].value0);
+        reinterpret_cast<AnmOpcodeVectorView *>(&this->exStates[1].vector)->
+            FromAngleMagnitude(
+                this->exStates[1].value1, this->exStates[1].value0);
         if (this->transformIndex != 0 && this->transformSound >= 0)
-            BulletQueueSoundAtPosition(this->transformSound, 0.0f);
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                QueueSoundSample(this->transformSound, 0);
         break;
 
     case BULLET_TRANSFORM_ACCELERATE_POLAR:
@@ -83,7 +93,8 @@ nextRecord:
         this->exStates[2].timer.SetCurrent(0);
         this->exStates[2].int0 = record->payload.int0;
         if (this->transformIndex != 0 && this->transformSound >= 0)
-            BulletQueueSoundAtPosition(this->transformSound, 0.0f);
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                QueueSoundSample(this->transformSound, 0);
         break;
 
     case BULLET_TRANSFORM_CHANGE_DIRECTION_RELATIVE:
@@ -152,8 +163,8 @@ nextRecord:
         break;
 
     case BULLET_TRANSFORM_PLAY_SOUND:
-        BulletQueueSoundAtPosition(
-            record->payload.int0, this->position.x);
+        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+            QueueSoundCue(record->payload.int0, this->position.x);
         break;
 
     case BULLET_TRANSFORM_WRAP_X:
