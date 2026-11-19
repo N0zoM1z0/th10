@@ -915,7 +915,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
         if (g_EnemyAnimationMode->value28 != 0 &&
             (enemy->flags & 0x200000u) == 0)
         {
-            enemy->animationBaseScript = enemy->animationScriptPrimary;
+            enemy->animationScriptState.baseScriptIndex = enemy->animationScriptPrimary;
             AnmSetVmScriptIndexAndExecute(
                 reinterpret_cast<unsigned int *>(&enemy->managedVmIds.words[0]), enemy->animationScriptPrimary);
             enemy->flags |= 0x200001u;
@@ -923,7 +923,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
         else if (g_EnemyAnimationMode->value28 == 0 &&
             (enemy->flags & 0x200000u) != 0)
         {
-            enemy->animationBaseScript = enemy->animationScriptAlternate;
+            enemy->animationScriptState.baseScriptIndex = enemy->animationScriptAlternate;
             AnmSetVmScriptIndexAndExecute(
                 reinterpret_cast<unsigned int *>(&enemy->managedVmIds.words[0]), enemy->animationScriptAlternate);
             enemy->flags &= 0xffdffffeu;
@@ -1015,7 +1015,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
         else
             direction = 0;
 
-        const int previousDirection = enemy->animationDirection;
+        const int previousDirection = enemy->animationScriptState.direction;
         if (previousDirection != direction)
         {
             switch (previousDirection)
@@ -1031,12 +1031,12 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
                 break;
             }
 
-            enemy->animationDirection = direction;
+            enemy->animationScriptState.direction = direction;
             AnmSetVmScriptIndexAndExecute(
                 reinterpret_cast<unsigned int *>(&enemy->managedVmIds.words[0]),
                 // Original ADD EDX,ECX publishes the low 32-bit script word.
                 static_cast<int>(
-                    static_cast<unsigned int>(enemy->animationBaseScript) +
+                    static_cast<unsigned int>(enemy->animationScriptState.baseScriptIndex) +
                     static_cast<unsigned int>(scriptOffset)));
         }
     }
@@ -1537,9 +1537,9 @@ EnemyFullObjectView *__stdcall EnemySpawn(
 
     enemy->runtime.deathSoundId = (manager->spawnCounter & 1) + 2;
     enemy->runtime.deathEffectScript = 0x167;
-    if (enemy->runtime.value0EC == 1)
+    if (enemy->runtime.animationScriptState.primaryResourceIndex == 1)
     {
-        switch (enemy->runtime.value0F0)
+        switch (enemy->runtime.animationScriptState.primaryScriptIndex)
         {
         case 0:
         case 20:
