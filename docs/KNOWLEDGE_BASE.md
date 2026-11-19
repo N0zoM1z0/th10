@@ -316,6 +316,8 @@ frontier; do not refresh a baseline merely to accept the new positions.
   `EclVmContext*`; `Pop` keeps the typed `stackData + stackTop` address.
   Rewriting the pointer arithmetic or spawning-operand address expanded the
   parent residual and was reverted.
+- **EclVmHost::StopAllThreads @0x450190 (31)**: exact 31/31 after making the stop helper accept the already-resolved `EclVmContext*`; both STOP_THREAD and STOP_ALL_THREADS now pass the context explicitly. The parent `EclVmContext::Run` schedule remains at its existing 23-byte residual. [2026-11-19]
+
 - **EclVmStackView::Pop @0x450610 (122)**: exact 122/122 with the typed
   stored-type view and private EAX/ECX/BL ABI. The adjacent stack owners are
   also exact: `Push` 96/96, `EnterFrame` 64/64 and `LeaveFrame` 41/41.

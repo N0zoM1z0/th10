@@ -189,9 +189,8 @@ static __forceinline int EclSpawnScalarWordAt(
 
 // Both thread-control paths invalidate the same instruction cursor in the
 // context owned by a thread-list node. Keep the node and its context typed.
-static __forceinline void EclStopThreadContext(EclVmThreadNode *thread)
+static __forceinline void EclStopThreadContext(EclVmContext *stoppedContext)
 {
-    EclVmContext *const stoppedContext = thread->context;
     stoppedContext->instruction = NULL;
 }
 
@@ -853,7 +852,7 @@ void EclVmHost::StopAllThreads()
     while (node != NULL)
     {
         EclVmThreadNode *next = node->next;
-        EclStopThreadContext(node);
+        EclStopThreadContext(node->context);
         node = next;
     }
 }
@@ -953,7 +952,7 @@ int EclVmContext::Run(float timeDelta)
             {
                 EclVmThreadNode *thread = host->FindThread(ReadInt(0));
                 if (thread != NULL)
-                    EclStopThreadContext(thread);
+                    EclStopThreadContext(thread->context);
                 break;
             }
 
