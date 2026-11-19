@@ -4,13 +4,27 @@
 
 ## Repository checkpoint
 
-- Code baseline: `e3e51850` — `gpt-web: restore compilable ECL pattern initialization`; this handoff refresh is a documentation-only checkpoint layered above it.
-- Continue on local `main`. The local branch is ahead of `origin/main`; nothing has been pushed.
-- The leftover pair of braces in the ECL pattern-initialization switch case was removed: it only remained from a failed local-pointer experiment and no longer scoped a declaration.
-- The only valid target is the original Japanese TH10 v1.00a executable, `resources/th10.exe`, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`. Keep it read-only and uncommitted.
-- Use `scripts/repo-python scripts/verify-target.py` before target-dependent work and `scripts/repo-python scripts/verify-toolchain.py --check` to inspect compiler declarations. Do not repeat the full toolchain smoke unless setup or a compiler/Wine issue requires it.
+- Continue from the local `main` HEAD; the branch has local-only checkpoints and must not be pushed.
+- On 2026-11-19, the natural Enemy motion source was restored to a complete
+  171/171-byte, seven-field exact linked PDB contribution using a shared
+  inlined quantization tail with a volatile post-write X reload. Its targeted
+  `enemy-advance-motion` cold replay passes; the `EnemyRuntimeUpdate` (2,412),
+  `PlayerUpdateShots` (876), `EnemyApplyBulletClear` (44), and
+  `PlayerHandleCollisionHit` (627) strict checks are unchanged in their
+  affected graphs.
+- The enemy ECL dispatcher now carries typed `AnmVmView*` receivers in three
+  child-animation paths; both 36-TU and 12-TU graph sizes and mismatch counts
+  remain unchanged. It is not yet an exact owner.
+- The only valid target is the original Japanese TH10 v1.00a executable,
+  `resources/th10.exe`, SHA-256
+  `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
+  Keep it read-only and uncommitted. Use the scoped target and compiler checks
+  described in `AGENTS.md` rather than rerunning setup checks every iteration.
 
-The generated [PROGRESS.md](PROGRESS.md) is the count authority. At this checkpoint it reports 1,555 canonical exact functions / 214,653 exact codegen bytes; 639 authored exact functions / 144,324 authored exact bytes. Inventory and authorship denominators remain provisional as described in that file.
+The generated [PROGRESS.md](PROGRESS.md) is the count authority. The current
+canonical exact total is 1,556 functions / 214,824 codegen bytes, of which
+640 functions / 144,495 bytes have confirmed authored origin. The provisional
+inventory and authorship denominator remain open.
 
 ## Exact owners to preserve
 
