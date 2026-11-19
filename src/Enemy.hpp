@@ -3,6 +3,7 @@
 
 #include "Player.hpp"
 #include "AnmManager.hpp" // Defines the embedded AnmFloat3View layout.
+#include "BulletTransform.hpp" // Shares the native bullet transform record.
 #include "EclVm.hpp"
 
 #include <stddef.h>
@@ -243,15 +244,25 @@ struct EnemyBulletPatternFieldsView
         unsigned int speedABits;
     };                  // +0x018
     float speedB;                  // +0x01c
-    unsigned char unknown020[0x1f4 - 0x020];
+    BulletTransformRecordView transforms[18]; // +0x020, SET_BULLET_EXTRA / spawn
+    float laserStartOffset;       // +0x1d0
+    float laserEndOffset;         // +0x1d4
+    float laserStartLength;       // +0x1d8
+    float laserWidth;             // +0x1dc
+    int laserStartTime;           // +0x1e0
+    int laserDuration;            // +0x1e4
+    int laserDespawnDuration;     // +0x1e8
+    int laserHitboxStartTime;     // +0x1ec
+    int laserHitboxEndDelay;      // +0x1f0
     unsigned short countA;        // +0x1f4, SET_BULLET_COUNT(1)
     unsigned short countB;        // +0x1f6, SET_BULLET_COUNT(2)
     unsigned short aimMode;       // +0x1f8, SET_BULLET_AIM_MODE
-    unsigned char unknown1FA[2];
-    unsigned int flags1FC;        // +0x1fc, INITIALIZE_BULLET_PATTERN
-    int soundId;                  // +0x200, SET_BULLET_SOUND(1)
-    int soundVariant;             // +0x204, SET_BULLET_SOUND(2)
-    unsigned char unknown208[0x210 - 0x208];
+    unsigned short unknown1FA;
+    unsigned int transformFlags;  // +0x1fc, INITIALIZE_BULLET_PATTERN
+    int spawnSound;               // +0x200, SET_BULLET_SOUND(1)
+    int transformSound;           // +0x204, SET_BULLET_SOUND(2)
+    int transformStartIndex;      // +0x208
+    void *templateSprites;        // +0x20c
 };
 typedef char EnemyBulletPatternFieldsViewSizeIs210[
     (sizeof(EnemyBulletPatternFieldsView) == 0x210) ? 1 : -1];
@@ -267,13 +278,27 @@ typedef char EnemyBulletPatternHeaderOffsets[
      offsetof(EnemyBulletPatternFieldsView, speedA) == 0x18 &&
      offsetof(EnemyBulletPatternFieldsView, speedABits) == 0x18 &&
      offsetof(EnemyBulletPatternFieldsView, speedB) == 0x1c) ? 1 : -1];
+typedef char EnemyBulletPatternTransformAndLaserOffsets[
+    (offsetof(EnemyBulletPatternFieldsView, transforms) == 0x020 &&
+     sizeof(((EnemyBulletPatternFieldsView *)0)->transforms) == 0x1b0 &&
+     offsetof(EnemyBulletPatternFieldsView, laserStartOffset) == 0x1d0 &&
+     offsetof(EnemyBulletPatternFieldsView, laserEndOffset) == 0x1d4 &&
+     offsetof(EnemyBulletPatternFieldsView, laserStartLength) == 0x1d8 &&
+     offsetof(EnemyBulletPatternFieldsView, laserWidth) == 0x1dc &&
+     offsetof(EnemyBulletPatternFieldsView, laserStartTime) == 0x1e0 &&
+     offsetof(EnemyBulletPatternFieldsView, laserDuration) == 0x1e4 &&
+     offsetof(EnemyBulletPatternFieldsView, laserDespawnDuration) == 0x1e8 &&
+     offsetof(EnemyBulletPatternFieldsView, laserHitboxStartTime) == 0x1ec &&
+     offsetof(EnemyBulletPatternFieldsView, laserHitboxEndDelay) == 0x1f0) ? 1 : -1];
 typedef char EnemyBulletPatternTailOffsets[
     (offsetof(EnemyBulletPatternFieldsView, countA) == 0x1f4 &&
      offsetof(EnemyBulletPatternFieldsView, countB) == 0x1f6 &&
      offsetof(EnemyBulletPatternFieldsView, aimMode) == 0x1f8 &&
-     offsetof(EnemyBulletPatternFieldsView, flags1FC) == 0x1fc &&
-     offsetof(EnemyBulletPatternFieldsView, soundId) == 0x200 &&
-     offsetof(EnemyBulletPatternFieldsView, soundVariant) == 0x204) ? 1 : -1];
+     offsetof(EnemyBulletPatternFieldsView, transformFlags) == 0x1fc &&
+     offsetof(EnemyBulletPatternFieldsView, spawnSound) == 0x200 &&
+     offsetof(EnemyBulletPatternFieldsView, transformSound) == 0x204 &&
+     offsetof(EnemyBulletPatternFieldsView, transformStartIndex) == 0x208 &&
+     offsetof(EnemyBulletPatternFieldsView, templateSprites) == 0x20c) ? 1 : -1];
 
 struct EnemyBulletPatternView
 {

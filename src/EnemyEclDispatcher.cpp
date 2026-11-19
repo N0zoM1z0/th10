@@ -153,34 +153,14 @@ enum EnemyEclOpcode
 };
 
 
-// ENEMY_ECL_SET_BULLET_EXTRA indexes six consecutive 32-bit fields using
-// a 0x18-byte stride. Their semantic names are intentionally provisional.
-struct EnemyBulletExtraView
-{
-    float floatA;
-    float floatB;
-    int value08;
-    int value0C;
-    int value10;
-    int value14;
-};
-typedef char EnemyBulletExtraSizeIs18[
-    (sizeof(EnemyBulletExtraView) == 0x18) ? 1 : -1];
-typedef char EnemyBulletExtraFieldsNativeOffsets[
-    (offsetof(EnemyBulletExtraView, floatA) == 0x00 &&
-     offsetof(EnemyBulletExtraView, floatB) == 0x04 &&
-     offsetof(EnemyBulletExtraView, value08) == 0x08 &&
-     offsetof(EnemyBulletExtraView, value0C) == 0x0c &&
-     offsetof(EnemyBulletExtraView, value10) == 0x10 &&
-     offsetof(EnemyBulletExtraView, value14) == 0x14) ? 1 : -1];
 // ECL opcode 0x199 addresses these 0x18-byte slots from the first
 // pattern's +0x20. There are 0x16 slots per 0x210-byte pattern stride.
 // This is an *overlapping* view of pattern storage, not a second array:
 // entries 20/21 alias the normal pattern tail and the next pattern's head.
 typedef char EnemyBulletExtraPatternOverlayLayout[
     (offsetof(EnemyRuntimeView, bulletPatterns) +
-         offsetof(EnemyBulletPatternFieldsView, unknown020) == 0x2e4 &&
-     sizeof(EnemyBulletPatternView) == 0x16 * sizeof(EnemyBulletExtraView))
+         offsetof(EnemyBulletPatternFieldsView, transforms) == 0x2e4 &&
+     sizeof(EnemyBulletPatternView) == 0x16 * sizeof(BulletTransformRecordView))
         ? 1 : -1];
 
 // Multiple ECL opcode families use a signed, byte-scaled pattern cursor.
@@ -202,12 +182,56 @@ typedef char EnemyPatternBulletSpawnDescriptorOverlap[
     (sizeof(EnemyBulletPatternView) == sizeof(BulletSpawnDescriptorView) &&
      offsetof(EnemyBulletPatternFieldsView, spriteId) ==
          offsetof(BulletSpawnDescriptorView, bulletType) &&
+     offsetof(EnemyBulletPatternFieldsView, spriteVariant) ==
+         offsetof(BulletSpawnDescriptorView, color) &&
      offsetof(EnemyBulletPatternFieldsView, spawnPositionX) ==
          offsetof(BulletSpawnDescriptorView, position) &&
+     offsetof(EnemyBulletPatternFieldsView, angleA) ==
+         offsetof(BulletSpawnDescriptorView, angle) &&
+     offsetof(EnemyBulletPatternFieldsView, angleB) ==
+         offsetof(BulletSpawnDescriptorView, angleStep) &&
+     offsetof(EnemyBulletPatternFieldsView, speedA) ==
+         offsetof(BulletSpawnDescriptorView, speed1) &&
+     offsetof(EnemyBulletPatternFieldsView, speedB) ==
+         offsetof(BulletSpawnDescriptorView, speed2) &&
+     offsetof(EnemyBulletPatternFieldsView, transforms) ==
+         offsetof(BulletSpawnDescriptorView, transforms) &&
+     offsetof(EnemyBulletPatternFieldsView, laserStartOffset) ==
+         offsetof(BulletSpawnDescriptorView, laserStartOffset) &&
+     offsetof(EnemyBulletPatternFieldsView, laserEndOffset) ==
+         offsetof(BulletSpawnDescriptorView, laserEndOffset) &&
+     offsetof(EnemyBulletPatternFieldsView, laserStartLength) ==
+         offsetof(BulletSpawnDescriptorView, laserStartLength) &&
+     offsetof(EnemyBulletPatternFieldsView, laserWidth) ==
+         offsetof(BulletSpawnDescriptorView, laserWidth) &&
+     offsetof(EnemyBulletPatternFieldsView, laserStartTime) ==
+         offsetof(BulletSpawnDescriptorView, laserStartTime) &&
+     offsetof(EnemyBulletPatternFieldsView, laserDuration) ==
+         offsetof(BulletSpawnDescriptorView, laserDuration) &&
+     offsetof(EnemyBulletPatternFieldsView, laserDespawnDuration) ==
+         offsetof(BulletSpawnDescriptorView, laserDespawnDuration) &&
+     offsetof(EnemyBulletPatternFieldsView, laserHitboxStartTime) ==
+         offsetof(BulletSpawnDescriptorView, laserHitboxStartTime) &&
+     offsetof(EnemyBulletPatternFieldsView, laserHitboxEndDelay) ==
+         offsetof(BulletSpawnDescriptorView, laserHitboxEndDelay) &&
      offsetof(EnemyBulletPatternFieldsView, countA) ==
          offsetof(BulletSpawnDescriptorView, count1) &&
-     offsetof(EnemyBulletPatternFieldsView, flags1FC) ==
-         offsetof(BulletSpawnDescriptorView, transformFlags)) ? 1 : -1];
+     offsetof(EnemyBulletPatternFieldsView, countB) ==
+         offsetof(BulletSpawnDescriptorView, count2) &&
+     offsetof(EnemyBulletPatternFieldsView, aimMode) ==
+         offsetof(BulletSpawnDescriptorView, aimMode) &&
+     offsetof(EnemyBulletPatternFieldsView, unknown1FA) ==
+         offsetof(BulletSpawnDescriptorView, unknown1FA) &&
+     offsetof(EnemyBulletPatternFieldsView, transformFlags) ==
+         offsetof(BulletSpawnDescriptorView, transformFlags) &&
+     offsetof(EnemyBulletPatternFieldsView, spawnSound) ==
+         offsetof(BulletSpawnDescriptorView, spawnSound) &&
+     offsetof(EnemyBulletPatternFieldsView, transformSound) ==
+         offsetof(BulletSpawnDescriptorView, transformSound) &&
+     offsetof(EnemyBulletPatternFieldsView, transformStartIndex) ==
+         offsetof(BulletSpawnDescriptorView, transformStartIndex) &&
+     offsetof(EnemyBulletPatternFieldsView, templateSprites) ==
+         offsetof(BulletSpawnDescriptorView, templateSprites)) ? 1 : -1];
 
 // Native ECL index arithmetic uses a flat 32-bit base plus a typed stride.
 // The script operands are not clamped by the original dispatcher.
@@ -273,13 +297,13 @@ static __forceinline const EclVmScalar *EnemySpawnScalarWordAt(
 // The five direct opcode stores use one checked overlapping-record address.
 // Keep each access expression local to its original argument read. Hoisting
 // this pointer across those reads changes the full dispatcher's LTCG liveness.
-static __forceinline EnemyBulletExtraView *EnemyExtraRecordAt(int baseAddress)
+static __forceinline BulletTransformRecordView *EnemyExtraRecordAt(int baseAddress)
 {
-    return reinterpret_cast<EnemyBulletExtraView *>(
+    return reinterpret_cast<BulletTransformRecordView *>(
         static_cast<unsigned int>(baseAddress) +
         static_cast<unsigned int>(
             offsetof(EnemyRuntimeView, bulletPatterns) +
-            offsetof(EnemyBulletPatternFieldsView, unknown020)));
+            offsetof(EnemyBulletPatternFieldsView, transforms)));
 }
 
 
@@ -2029,9 +2053,9 @@ dispatch_difficulty_float_index_4_a:
     EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countB = 1;
     EnemyPatternAtRuntimeIndex(this, iVar26)->fields.angleABits = 0;
     EnemyPatternAtRuntimeIndex(this, iVar26)->fields.speedABits = 0x40000000u;
-    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.soundId = 7;
-    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.soundVariant = 0x18;
-    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.flags1FC = 0x203;
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.spawnSound = 7;
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.transformSound = 0x18;
+    EnemyPatternAtRuntimeIndex(this, iVar26)->fields.transformFlags = 0x203;
     // These are zeroed XYZ offset components, not independent word storage.
     EnemyPatternOffsetAtRuntimeIndex(this, iVar26)->x = 0.0f;
     EnemyPatternOffsetAtRuntimeIndex(this, iVar26)->y = 0.0f;
@@ -2469,10 +2493,10 @@ dispatch_rank_count_lowest:
         static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
         static_cast<unsigned int>(runtimeAddress));
     uVar22 = ENEMY_READ_INT_DIRECT(1);
-    EnemyPatternAtRuntimeByte(iVar26)->fields.soundId = (int)uVar22;
+    EnemyPatternAtRuntimeByte(iVar26)->fields.spawnSound = (int)uVar22;
     EnemyBulletPatternView *const soundPattern = EnemyPatternAtRuntimeByte(iVar26);
     uVar22 = ENEMY_READ_INT_DIRECT(2);
-    soundPattern->fields.soundVariant = (int)uVar22;
+    soundPattern->fields.transformSound = (int)uVar22;
     return 0;
   }
   // Opcode 0x199 uses 22 overlapping 0x18-byte records per pattern.
@@ -2484,26 +2508,26 @@ dispatch_rank_count_lowest:
     iVar26 = static_cast<int>(
         static_cast<unsigned int>(uVar22) *
         static_cast<unsigned int>(
-            sizeof(EnemyBulletPatternView) / sizeof(EnemyBulletExtraView)) +
+            sizeof(EnemyBulletPatternView) / sizeof(BulletTransformRecordView)) +
         static_cast<unsigned int>(uVar23));
     iVar27 = static_cast<int>(
         static_cast<unsigned int>(runtimeAddress) +
         static_cast<unsigned int>(iVar26) *
-        static_cast<unsigned int>(sizeof(EnemyBulletExtraView)));
+        static_cast<unsigned int>(sizeof(BulletTransformRecordView)));
     uVar22 = ENEMY_READ_INT_DIRECT(2);
-    EnemyExtraRecordAt(iVar27)->value14 = (int)uVar22;
+    EnemyExtraRecordAt(iVar27)->allowWhileActive = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(3);
-    EnemyExtraRecordAt(iVar27)->value10 = (int)uVar22;
+    EnemyExtraRecordAt(iVar27)->kind = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(4);
-    EnemyExtraRecordAt(iVar27)->value08 = (int)uVar22;
+    EnemyExtraRecordAt(iVar27)->payload.int0 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(5);
-    EnemyExtraRecordAt(iVar27)->value0C = (int)uVar22;
+    EnemyExtraRecordAt(iVar27)->payload.int1 = (int)uVar22;
     fVar19 = (ReadFloatArgument(6));
-    EnemyExtraRecordAt(iVar27)->floatA = (float)fVar19;
+    EnemyExtraRecordAt(iVar27)->payload.float0 = (float)fVar19;
     fVar19 = (ReadFloatArgument(7));
     // The second float belongs to the same 0x18-byte extra record.
     // Retain the shared record address computed above.
-    EnemyExtraRecordAt(iVar27)->floatB = (float)fVar19;
+    EnemyExtraRecordAt(iVar27)->payload.float1 = (float)fVar19;
     return 0;
   case ENEMY_ECL_RESET_UPDATE_TIMER:
     updateTimer.SetCurrent(0);

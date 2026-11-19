@@ -26,6 +26,10 @@ All 15 complete affected owners compare exact after relinking the changed transl
 
 Targeted linked exact replays after the change pass for `EnemyRuntimeUpdate` (2,412/2,412) and `EnemySpawn` (577/577). The primary 36-support-TU dispatcher remains nonexact: current local comparison is 14,452/14,416 bytes with 10,414 differing bytes. Its residual offsets have moved relative to the stored frontier; do not refresh the baseline to accept them.
 
+## Latest source checkpoint: enemy bullet-pattern transform layout
+
+`EnemyBulletPatternFieldsView` now names the full +0x20..+0x1F3 transform/laser configuration area: 18 shared `BulletTransformRecordView` records followed by laser offsets, width and timing words. The +0x1FC..+0x20C tail is named from the matching `BulletSpawnDescriptorView`; +0x1FA remains explicitly unknown. ECL SET_BULLET_EXTRA (0x199) is typed against the same six-field transform record, retaining its 22-slot overlapping 0x18-byte indexing semantics. Size and cross-view member offsets are asserted.
+
 ## Exact owners to preserve
 
 - `EnemyMotionView::AdvanceMotion` — 171/171 bytes, seven bound REL32/DIR32 fields; selected 17-source VC7.1 SP1 `/GL` cold replay passes.
