@@ -1759,9 +1759,8 @@ dispatch_update_primary_anm_bounds:
   case ENEMY_ECL_COPY_PLAYER_TO_OFFSET:
     goto dispatch_copy_player_to_motion;
   case ENEMY_ECL_COPY_PLAYER_TO_BASE:
-    iVar26 = reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]);
     baseMotion.position =
-        reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position;
+        g_EnemyManager->specialEnemySlots[0]->runtime.worldMotion.position;
     return 0;
   case ENEMY_ECL_SET_MOVEMENT_BOUNDS:
     flags = flags | 0x200;
@@ -3028,9 +3027,8 @@ dispatch_create_enemy_absolute_mirrored:
 dispatch_copy_player_to_motion:
   // This opcode copies the XYZ storage words unchanged, including NaN
   // payloads and the sign of zero; it does not perform vector arithmetic.
-  iVar26 = reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]);
-  memcpy(&offsetMotion.position,
-      &reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position,
+  const EnemyFullObjectView *boss = g_EnemyManager->specialEnemySlots[0];
+  memcpy(&offsetMotion.position, &boss->runtime.worldMotion.position,
       sizeof(offsetMotion.position));
   return 0;
 }
