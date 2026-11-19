@@ -3160,11 +3160,17 @@ union AnmAxisFlagWord
 };
 typedef char AnmAxisFlagWordSizeIs4[(sizeof(AnmAxisFlagWord) == 4) ? 1 : -1];
 
-struct AnmChildScriptLayer
+// CREATE_CHILD_91 passes this script/layer pair to the stdcall VM factory.
+struct AnmChildVmCreationArguments
 {
-    int script;
-    unsigned int layer;
+    int scriptIndex;
+    unsigned int renderLayer;
 };
+typedef char AnmChildVmCreationArgumentsSizeIs8[
+    (sizeof(AnmChildVmCreationArguments) == 8) ? 1 : -1];
+typedef char AnmChildVmCreationArgumentsOffsets[
+    (offsetof(AnmChildVmCreationArguments, scriptIndex) == 0 &&
+     offsetof(AnmChildVmCreationArguments, renderLayer) == 4) ? 1 : -1];
 
 static __forceinline void TickScriptTimerScale(AnmVmTimerView *timer)
 {
@@ -3280,11 +3286,11 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
         }
         case ANM_OP_CREATE_CHILD_91:
         {
-            AnmChildScriptLayer childArguments;
-            childArguments.script = GET_INT_VAR(0);
-            childArguments.layer = vm->renderLayer;
+            AnmChildVmCreationArguments childArguments;
+            childArguments.scriptIndex = GET_INT_VAR(0);
+            childArguments.renderLayer = vm->renderLayer;
             AnmVmIdView childId = vm->anmFile->CreateVmVariant2(
-                childArguments.script, childArguments.layer);
+                childArguments.scriptIndex, childArguments.renderLayer);
             createdChild = childId.GetVm();
             goto child_variant_2_or_3;
         }

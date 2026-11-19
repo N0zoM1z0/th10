@@ -302,10 +302,11 @@ frontier; do not refresh a baseline merely to accept the new positions.
 
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: the current
   36-support-TU graph is 9,964/9,964 with two differences at +0x112/+0x115.
-  Retail loads `[ebp+0x20]` into EDX and pushes EDX; the candidate uses ECX.
-  Opcode 91's child-layer argument lifetime is the remaining lever. Natural
-  field-order, direct-argument and local-value trials did not improve it;
-  all experiments were reverted. Keep adjacent opcode bodies intact.
+  Opcode 91 now uses `AnmChildVmCreationArguments` with asserted 8-byte size
+  and `scriptIndex`/`renderLayer` offsets, preserving script-before-layer
+  evaluation order. Retail loads `[ebp+0x20]` into EDX and pushes EDX; the
+  candidate uses ECX. Reversed field assignment and direct-argument trials
+  regressed the body and were reverted. Keep adjacent opcode bodies intact.
 - **EclVmContext::Run @0x44E1A0 (7,020)**: current linked owner is 7,020/7,020
   with 23 differing bytes. The frontier is `REGRESSED` because residual offsets
   moved, not because the count changed. The remaining schedule includes
