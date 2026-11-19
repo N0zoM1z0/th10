@@ -62,6 +62,7 @@ All measurements below are the latest bounded local linked comparisons. They are
 - `ENEMY_ECL_COPY_BULLET_PATTERN` uses complete typed record assignment, not `memcpy`, because source and destination script indices may be equal (self-copy).
 - Type-0/type-1 laser request paths copy the serialized pattern words into their request records with fixed-size `memcpy`; keep the request layouts and offsets in `src/EnemyLaser.hpp`.
 - `EnemyManagedVmIdAt` expresses the ten four-byte ANM VM handles with the target's unchecked modulo-32-bit index arithmetic. Script-supplied indices remain unchecked; the flag loops are bounded to slots 0..9.
+- The SET_ANM_SCRIPT, SET_MAIN_ANM_SCRIPT and PLAY_SELECTED_ANM paths now keep the resolved animation VM as a typed `AnmVmView*` across shared sprite-bound calculations, instead of treating a pointer as an integer. Both current 36-TU and 12-TU dispatcher sizes/residual counts remain unchanged, and the exact collision/bullet-clear owners are preserved.
 
 Detailed offsets and earlier compiler experiments are in the Enemy, ECL VM, ANM and Chain sections of [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md). Do not promote the 36-TU or 12-TU dispatcher frontier to exact.
 

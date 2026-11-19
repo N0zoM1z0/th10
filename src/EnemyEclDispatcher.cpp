@@ -1063,6 +1063,7 @@ int EnemyRuntimeView::DispatchEclInstruction()
   // member, independently layout-checked in Enemy.hpp. Preserve the
   // target's byte-wide tests by explicitly reading its low byte.
   AnmVmView *vmForPosition;
+  AnmVmView *vmForBounds;
   int runtimeAddress = reinterpret_cast<int>(this);
   short opcode;
   float fVar2;
@@ -1315,8 +1316,7 @@ dispatch_create_enemy_mirrored:
       value0EC = value0E8;
       uVar6 = static_cast<unsigned int>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value);
     }
-    iVar27 = reinterpret_cast<int>(
-        EnemyManagedVmIdAt(managedVmIds, iVar26)->GetVm());
+    vmForBounds = EnemyManagedVmIdAt(managedVmIds, iVar26)->GetVm();
     goto dispatch_update_primary_anm_bounds;
   case ENEMY_ECL_PLAY_ANM:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -1433,11 +1433,10 @@ dispatch_create_enemy_mirrored:
       EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value = createdVm.value;
     }
     uVar6 = static_cast<unsigned int>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value);
-    iVar11 = reinterpret_cast<int>(
-        EnemyManagedVmIdAt(managedVmIds, iVar26)->GetVm());
+    vmForBounds = EnemyManagedVmIdAt(managedVmIds, iVar26)->GetVm();
     if (iVar26 == 0) {
-      visibilityExtentX = reinterpret_cast<const AnmVmView *>(iVar11)->spriteHeight * reinterpret_cast<const AnmVmView *>(iVar11)->scaleY;
-      visibilityExtentY = reinterpret_cast<const AnmVmView *>(iVar11)->spriteWidth * reinterpret_cast<const AnmVmView *>(iVar11)->scaleX;
+      visibilityExtentX = vmForBounds->spriteHeight * vmForBounds->scaleY;
+      visibilityExtentY = vmForBounds->spriteWidth * vmForBounds->scaleX;
     }
     if ((*reinterpret_cast<const unsigned char *>(&flags) & 0x10) != 0) {
       EnemyManagedVmIdAt(managedVmIds, iVar26)->ClearFlag2();
@@ -1461,12 +1460,11 @@ dispatch_create_enemy_mirrored:
               CreateVmVariant2(animationBaseScript + 5, 5);
       EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value = createdVm.value;
     }
-    iVar27 = reinterpret_cast<int>(
-        EnemyManagedVmIdAt(managedVmIds, iVar26)->GetVm());
+    vmForBounds = EnemyManagedVmIdAt(managedVmIds, iVar26)->GetVm();
 dispatch_update_primary_anm_bounds:
     if (iVar26 == 0) {
-      visibilityExtentX = reinterpret_cast<const AnmVmView *>(iVar27)->spriteHeight * reinterpret_cast<const AnmVmView *>(iVar27)->scaleY;
-      visibilityExtentY = reinterpret_cast<const AnmVmView *>(iVar27)->spriteWidth * reinterpret_cast<const AnmVmView *>(iVar27)->scaleX;
+      visibilityExtentX = vmForBounds->spriteHeight * vmForBounds->scaleY;
+      visibilityExtentY = vmForBounds->spriteWidth * vmForBounds->scaleX;
     }
     if ((*reinterpret_cast<const unsigned char *>(&flags) & 0x10) != 0) {
       EnemyManagedVmIdAt(managedVmIds, iVar26)->ClearFlag2();
