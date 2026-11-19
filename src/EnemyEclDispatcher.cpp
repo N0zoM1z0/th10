@@ -1056,7 +1056,9 @@ int EnemyRuntimeView::DispatchEclInstruction()
   // duplicate pointer-arithmetic field projections.
   // Native motion coordinates at +0x2c/+0x30/+0x34 are the typed world
   // position; view their bits as words only at the target's bit-copy sites.
-  // The animation state +0xe8..+0xf8 is the existing named runtime storage.
+  // SELECT_ANM_RESOURCE writes the unchecked selector at +0xe8. Creating
+  // managed VM slot zero publishes the primary resource/script pair at
+  // +0xec/+0xf0; Enemy.cpp consumes that pair for death-animation selection.
   // Runtime flags at +0x1444 are the native EnemyRuntimeView::flags
   // member, independently layout-checked in Enemy.hpp. Preserve the
   // target's byte-wide tests by explicitly reading its low byte.
@@ -1308,7 +1310,7 @@ dispatch_create_enemy_mirrored:
       EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value = createdVm.value;
     }
     uVar6 = static_cast<unsigned int>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value);
-    if (iVar26 == 0) {
+    if (iVar26 == ENEMY_PRIMARY_MANAGED_VM_SLOT) {
       uVar22 = ENEMY_READ_INT_DIRECT(1);
       value0F0 = (int)uVar22;
       value0EC = value0E8;
@@ -1432,14 +1434,14 @@ dispatch_create_enemy_mirrored:
     }
     uVar6 = static_cast<unsigned int>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value);
     vmForBounds = EnemyManagedVmIdAt(managedVmIds, iVar26)->GetVm();
-    if (iVar26 == 0) {
+    if (iVar26 == ENEMY_PRIMARY_MANAGED_VM_SLOT) {
       visibilityExtentX = vmForBounds->spriteHeight * vmForBounds->scaleY;
       visibilityExtentY = vmForBounds->spriteWidth * vmForBounds->scaleX;
     }
     if ((*reinterpret_cast<const unsigned char *>(&flags) & 0x10) != 0) {
       EnemyManagedVmIdAt(managedVmIds, iVar26)->ClearFlag2();
     }
-    if (iVar26 == 0) {
+    if (iVar26 == ENEMY_PRIMARY_MANAGED_VM_SLOT) {
       flags = flags | 0x1000;
       animationBaseScript = iVar27;
       value0F0 = iVar27;
@@ -1460,7 +1462,7 @@ dispatch_create_enemy_mirrored:
     }
     vmForBounds = EnemyManagedVmIdAt(managedVmIds, iVar26)->GetVm();
 dispatch_update_primary_anm_bounds:
-    if (iVar26 == 0) {
+    if (iVar26 == ENEMY_PRIMARY_MANAGED_VM_SLOT) {
       visibilityExtentX = vmForBounds->spriteHeight * vmForBounds->scaleY;
       visibilityExtentY = vmForBounds->spriteWidth * vmForBounds->scaleX;
     }

@@ -261,8 +261,12 @@ frontier; do not refresh a baseline merely to accept the new positions.
   differing bytes; the secondary 12-TU `/GS` diagnostic is 14,456 bytes with
   10,240 differing bytes. Both frontiers report `REGRESSED` because the full
   residual-offset sets moved (their stored counts are 10,416 and 10,574);
-  keep those baselines unchanged. The 627-byte collision owner and 44-byte
-  bullet-clear owner remain exact in the affected graphs.
+  keep those baselines unchanged. Runtime +0xE8/+0xEC/+0xF0 now use explicit
+  ANM resource/script index typedefs and independent offset assertions. The
+  ten managed-VM slots have a named count, and slot zero is identified as the
+  primary ANM VM. This is semantic layout recovery, not an exactness claim.
+  The 627-byte collision owner and 44-byte bullet-clear owner remain exact in
+  the affected graphs.
   - The 181-byte opcode map selects 108 handlers; the main table starts at
     +0x35C0. The owner extent ends at 0x411FBF. Rank-3 thresholds are +/-512;
     rank-5 thresholds are +/-600 and +/-200. The spell-name cipher's

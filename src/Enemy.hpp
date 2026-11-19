@@ -371,10 +371,18 @@ struct EnemyManagedVmIdSlotView
 typedef char EnemyManagedVmIdSlotViewSizeIs4[
     (sizeof(EnemyManagedVmIdSlotView) == 4) ? 1 : -1];
 
+typedef int EnemyAnmResourceIndex;
+typedef int EnemyAnmScriptIndex;
+enum EnemyManagedVmSlotIndex
+{
+    ENEMY_PRIMARY_MANAGED_VM_SLOT = 0,
+    ENEMY_MANAGED_VM_SLOT_COUNT = 10
+};
+
 union EnemyManagedVmIdSlotsView
 {
-    EnemyManagedVmIdSlotView views[10];
-    unsigned int words[10];
+    EnemyManagedVmIdSlotView views[ENEMY_MANAGED_VM_SLOT_COUNT];
+    unsigned int words[ENEMY_MANAGED_VM_SLOT_COUNT];
 
     EnemyManagedVmIdSlotsView() {}
 };
@@ -401,10 +409,12 @@ struct EnemyRuntimeView
     EnemyFloat2 damageHitbox;
     EnemyFloat2 playerCollisionHitbox;
     EnemyManagedVmIdSlotsView managedVmIds;
-    int value0E8;
-    int value0EC;
-    int value0F0;
-    int animationBaseScript;
+    // SELECT_ANM_RESOURCE's unchecked selector and the primary managed VM's
+    // published resource/script pair, consumed by Enemy.cpp's death ANM path.
+    EnemyAnmResourceIndex value0E8; // SELECT_ANM_RESOURCE selection
+    EnemyAnmResourceIndex value0EC; // primary managed VM resource
+    EnemyAnmScriptIndex value0F0; // primary managed VM script
+    EnemyAnmScriptIndex animationBaseScript;
     int animationDirection;
     // Target operand lvalue resolvers prove four writable integer variables at
     // full Enemy +0x1138..+0x1144 and four writable float variables at
@@ -472,8 +482,12 @@ typedef char EnemyRuntimePlayerHitboxAt0B8[
     (offsetof(EnemyRuntimeView, playerCollisionHitbox) == 0x0b8) ? 1 : -1];
 typedef char EnemyRuntimeManagedVmsAt0C0[
     (offsetof(EnemyRuntimeView, managedVmIds) == 0x0c0) ? 1 : -1];
-typedef char EnemyRuntimeValue0ECAt0EC[
+typedef char EnemyRuntimeSelectedAnmResourceAt0E8[
+    (offsetof(EnemyRuntimeView, value0E8) == 0x0e8) ? 1 : -1];
+typedef char EnemyRuntimePrimaryAnmResourceAt0EC[
     (offsetof(EnemyRuntimeView, value0EC) == 0x0ec) ? 1 : -1];
+typedef char EnemyRuntimePrimaryAnmScriptAt0F0[
+    (offsetof(EnemyRuntimeView, value0F0) == 0x0f0) ? 1 : -1];
 typedef char EnemyRuntimeEclVariablesAt0FC[
     (offsetof(EnemyRuntimeView, eclVariables) == 0x0fc) ? 1 : -1];
 typedef char EnemyRuntimeEclFloatVariablesAt10C[
