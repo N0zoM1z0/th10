@@ -658,9 +658,18 @@ trusting a number. Owners without an entry have no useful recorded attempt.
 - **Player::~Player @0x424ED0 (325)**: 333. [2026-10-31]
 - **FrontEndInsertScore @0x421FA0 (316)**: 263; the helper uses 64-bit `100.0`
   where the target uses 32-bit. [2026-10-15]
-- **InitializeGameStatisticsRecord @0x42ACB0 (274)**: full size, 25 ordinary
-  differences (zero register, name-copy register pair, group counter).
-  [2026-11-13]
+- **InitializeGameStatisticsRecord @0x42ACB0 (274)**: the pinned five-source
+  `/GL` statistics graph produces the complete 274-byte PDB function with
+  75 decoded instructions. Expressing rank-kind lookup through the natural
+  signed-byte table pointer (`*(g_GameStatisticsRankKind + index)`) improves
+  normalized instruction agreement from 45/75 to 58/75 without changing
+  the two 4-byte name copies or the nine-byte destination. The remaining
+  differences concern the zero-word register, name-copy register allocation,
+  group-count register and two commutative SIB byte encodings; the complete
+  function is not yet exact. Its separate 142-byte tail initializer, 423-byte
+  statistics loader and 564-byte finalizer remain exact in the same image.
+  The selected function has its own residual ratchet, not exact credit.
+  [2026-11-19]
 - **PlayerLoadOptionData @0x426520 (229)**: canonical scoped 20-support-TU
   VC7.1 /GL cold replay in the real `EnemyReadIntOperand`/`PlayerInitialize`
   caller graph. The complete 229-byte `src/Player.cpp` PDB contribution

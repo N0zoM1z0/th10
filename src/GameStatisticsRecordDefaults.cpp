@@ -71,7 +71,7 @@ void __stdcall InitializeGameStatisticsRecord(GameStatisticsRecord *record)
     for (int index = 0; index < 110; ++index)
     {
         kindData[-1] = index;
-        kindData[0] = g_GameStatisticsRankKind[index];
+        kindData[0] = *(g_GameStatisticsRankKind + index);
         kindData += 0x90 / sizeof(int);
     }
 }
