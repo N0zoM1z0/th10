@@ -383,6 +383,16 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   graph is the deciding one. The 627-byte collision and 44-byte clear
   owners remain exact. Neither dispatcher candidate is exact.
 
+  [2026-11-19] Three rank-five bullet-count bands now reread the
+  ECL context via typed `EclVmHost::activeContext` instead of a temporary
+  Enemy owner address integer. They preserve all operand indices (9/10,
+  7/8 and 5/6) and the original two stores per pattern. In the 36-TU
+  linked dispatcher this reduces differing bytes from 10,513 to 10,508
+  without changing its 14,468-byte extent. The independent 12-TU graph
+  moves from 10,536 to 10,544 differences, so this is a main-graph
+  improvement, not a new exact claim. The exact collision/clear guards
+  are unchanged.
+
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and

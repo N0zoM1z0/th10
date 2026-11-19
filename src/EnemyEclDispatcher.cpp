@@ -2326,8 +2326,9 @@ dispatch_difficulty_float_index_4_a:
       EclVmHost *const firstHost = reinterpret_cast<EclVmHost *>(owner);
       uVar22 = firstHost->activeContext->ReadInt(9);
       EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countA = (short)uVar22;
-      runtimeAddress = reinterpret_cast<int>(owner);
-      uVar22 = reinterpret_cast<EclVmContext *>(reinterpret_cast<EnemyFullObjectView *>(runtimeAddress)->activeEclContext)->ReadInt(10);
+      // Keep the live host pointer typed while reloading the active ECL VM.
+      EclVmHost *const secondHost = reinterpret_cast<EclVmHost *>(owner);
+      uVar22 = secondHost->activeContext->ReadInt(10);
       EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countB = (short)uVar22;
       return 0;
     }
@@ -2335,8 +2336,8 @@ dispatch_difficulty_float_index_4_a:
       EclVmHost *const firstHost = reinterpret_cast<EclVmHost *>(owner);
       uVar22 = firstHost->activeContext->ReadInt(7);
       EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countA = (short)uVar22;
-      runtimeAddress = reinterpret_cast<int>(owner);
-      uVar22 = reinterpret_cast<EclVmContext *>(reinterpret_cast<EnemyFullObjectView *>(runtimeAddress)->activeEclContext)->ReadInt(8);
+      EclVmHost *const secondHost = reinterpret_cast<EclVmHost *>(owner);
+      uVar22 = secondHost->activeContext->ReadInt(8);
       EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countB = (short)uVar22;
       return 0;
     }
@@ -2346,8 +2347,8 @@ dispatch_rank5_minus_200:
     EclVmHost *const firstHost = reinterpret_cast<EclVmHost *>(owner);
     uVar22 = firstHost->activeContext->ReadInt(5);
     EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countA = (short)uVar22;
-    runtimeAddress = reinterpret_cast<int>(owner);
-    uVar22 = reinterpret_cast<EclVmContext *>(reinterpret_cast<EnemyFullObjectView *>(runtimeAddress)->activeEclContext)->ReadInt(6);
+    EclVmHost *const secondHost = reinterpret_cast<EclVmHost *>(owner);
+    uVar22 = secondHost->activeContext->ReadInt(6);
     EnemyPatternAtRuntimeIndex(this, iVar26)->fields.countB = (short)uVar22;
     return 0;
   }
