@@ -2156,9 +2156,10 @@ dispatch_difficulty_float_index_4_a:
     iVar26 = static_cast<int>(
         static_cast<unsigned int>(uVar22) *
         static_cast<unsigned int>(sizeof(EnemyBulletPatternView)));
-    EnemyPatternAtRuntimeByte(static_cast<int>(
-        static_cast<unsigned int>(iVar26) +
-        static_cast<unsigned int>(runtimeAddress)))->fields.speedA = (float)fVar19;
+    EnemyBulletPatternView *const selectedPattern = EnemyPatternAtRuntimeByte(
+        static_cast<int>(static_cast<unsigned int>(iVar26) +
+            static_cast<unsigned int>(runtimeAddress)));
+    selectedPattern->fields.speedA = (float)fVar19;
     if (g_EnemyDifficulty == 0) {
       speedIndex = 5;
     }
@@ -2172,9 +2173,7 @@ dispatch_difficulty_float_index_4_a:
       }
     }
     fVar19 = ReadFloatArgument(speedIndex);
-    EnemyPatternAtRuntimeByte(static_cast<int>(
-        static_cast<unsigned int>(iVar26) +
-        static_cast<unsigned int>(runtimeAddress)))->fields.speedB = (float)fVar19;
+    selectedPattern->fields.speedB = (float)fVar19;
     return 0;
   }
   case ENEMY_ECL_SET_BULLET_COUNT_BY_DIFFICULTY:

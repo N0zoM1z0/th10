@@ -401,6 +401,16 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   differences. Both exact collision and clear callers still pass. This
   removes unnecessary integer owner casts but does not earn exact credit.
 
+  [2026-11-19] The difficulty-selected speed opcode now retains one
+  `EnemyBulletPatternView*` across the two independently read float operands.
+  Its address is still formed from the original wrapped 32-bit `0x210` stride
+  and runtime word, so the two stores target the same record even for unchecked
+  script indices. The complete 36-TU dispatcher remains 14,468/14,416 bytes
+  and improves from 10,508 to 10,497 differing bytes. The selected 12-TU
+  diagnostic also improves from 10,545 to 10,532 at 14,472/14,416. The
+  unrelated 627-byte collision owner and 44-byte bullet-clear leaf remain
+  exact. This is main-function progress, not new exact credit.
+
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and
