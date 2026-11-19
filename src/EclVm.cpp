@@ -546,7 +546,7 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
     }
     int *data = reinterpret_cast<int *>(
         reinterpret_cast<char *>(files[fileCount]) +
-        files[fileCount]->includeLength + 0x24);
+        files[fileCount]->includeLength + sizeof(EclVmScriptFileHeader));
     const char *names = reinterpret_cast<const char *>(
         data + files[fileCount]->subroutineCount);
     EclVmSubroutineEntry *oldEntries = subroutines;
@@ -592,7 +592,8 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
     }
     const int registered = fileCount++;
     if (files[registered]->includeLength != 0)
-        LoadPackage(reinterpret_cast<unsigned char *>(files[registered]) + 0x24);
+        LoadPackage(reinterpret_cast<unsigned char *>(files[registered]) +
+                    sizeof(EclVmScriptFileHeader));
     return registered;
 }
 

@@ -490,6 +490,13 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   The 44-byte bullet-clear and 627-byte collision owners remain exact.
   Both dispatchers are still nonexact; no frontier baseline was relaxed.
 
+- **EclVmScriptDatabase::AddScriptData @0x450220 (589)**: the SCPT file
+  header is a verified 0x24-byte native layout. Both the subroutine-offset
+  table base and optional include-package payload now derive from
+  `sizeof(EclVmScriptFileHeader)` rather than repeating the literal `0x24`.
+  The selected five-source `/GL` graph re-links to the complete 589/589-byte
+  exact function, including both malloc/free REL32 fields. [2026-11-19]
+
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and
