@@ -1143,7 +1143,7 @@ int EnemyRuntimeView::DispatchEclInstruction()
   opcode = instruction->opcode;
   switch(opcode) {
   case ENEMY_ECL_CREATE_ENEMY_IF_NO_BOSS:
-    if (reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]) != 0) {
+    if (g_EnemyManager->specialEnemySlots[0] != NULL) {
       return 0;
     }
   // Inline SCPT name byte counts are advanced by one native dword
@@ -1193,7 +1193,7 @@ dispatch_spawn_enemy:
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_IF_NO_BOSS:
-    if (reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]) != 0) {
+    if (g_EnemyManager->specialEnemySlots[0] != NULL) {
       return 0;
     }
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE:
@@ -1248,7 +1248,7 @@ dispatch_create_enemy_global:
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_AT_GLOBAL_OFFSET_IF_NO_BOSS:
-    if (reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]) == 0) goto dispatch_create_enemy_global;
+    if (g_EnemyManager->specialEnemySlots[0] == NULL) goto dispatch_create_enemy_global;
     break;
   case ENEMY_ECL_CREATE_ENEMY_MIRRORED:
 dispatch_create_enemy_mirrored:
@@ -1281,10 +1281,10 @@ dispatch_create_enemy_mirrored:
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_MIRRORED:
     goto dispatch_create_enemy_absolute_mirrored;
   case ENEMY_ECL_CREATE_ENEMY_MIRRORED_IF_NO_BOSS:
-    if (reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]) == 0) goto dispatch_create_enemy_mirrored;
+    if (g_EnemyManager->specialEnemySlots[0] == NULL) goto dispatch_create_enemy_mirrored;
     break;
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_MIRRORED_IF_NO_BOSS:
-    if (reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]) != 0) {
+    if (g_EnemyManager->specialEnemySlots[0] != NULL) {
       return 0;
     }
     goto dispatch_create_enemy_absolute_mirrored;
@@ -2532,7 +2532,7 @@ dispatch_rank_count_lowest:
     }
     break;
   case ENEMY_ECL_WAIT_BOSS_CLEAR:
-    if (reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]) != 0) {
+    if (g_EnemyManager->specialEnemySlots[0] != NULL) {
       return 0xffffffff;
     }
     break;
