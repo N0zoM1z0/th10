@@ -451,6 +451,14 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   bytes). The 627-byte collision and 44-byte bullet-clear exact guards pass.
   This is a source-semantic checkpoint, not a new exact claim.
 
+  [2026-11-19] `INTERPOLATE_BULLET_COUNT_BY_RANK` now holds its actual
+  `EnemyBulletPatternView*` after writing count A, so count B uses the
+  same native wrapped 0x210-byte record address while the two independent
+  integer interpolation expressions and truncations are unchanged.
+  Both complete diagnostic candidates remain byte-neutral: 36-TU
+  14,468/14,416 with 10,495 differing bytes, 12-TU 14,472/14,416 with
+  10,531. The 44-byte clear and 627-byte collision owners remain exact.
+
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and
