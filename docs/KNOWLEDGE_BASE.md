@@ -479,6 +479,17 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   leaf remain strict exact. Applying the same receiver lifetime to ordinary
   `SET_BULLET_COUNT` worsened the 36-TU graph and was not retained.
 
+  [2026-11-19] `FIRE_BULLET_PATTERN` now retains a single native
+  `EnemyBulletPatternView*` for its position XYZ stores, protection-radius
+  test and `SpawnBulletPattern` descriptor. The native unchecked index and
+  wrapped 32-bit record/offset cursors remain unchanged; all six previous
+  record lookups refer to the identical script-selected pattern. The real
+  36-TU graph improves from 14,468/14,416 with 10,495 differences to
+  14,452/14,416 with 10,414 differences. The separate 12-TU graph improves
+  from 14,472/14,416 (10,531 different) to 14,456/14,416 (10,240 different).
+  The 44-byte bullet-clear and 627-byte collision owners remain exact.
+  Both dispatchers are still nonexact; no frontier baseline was relaxed.
+
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and

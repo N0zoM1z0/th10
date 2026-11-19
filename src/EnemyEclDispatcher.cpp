@@ -2050,6 +2050,7 @@ dispatch_difficulty_float_index_4_a:
     return 0;
   }
   case ENEMY_ECL_FIRE_BULLET_PATTERN:
+  {
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     // The original IMUL/LEA form treats both the three-word offset index
     // and its final byte-address as modulo-2^32 words. A negative or very
@@ -2072,21 +2073,23 @@ dispatch_difficulty_float_index_4_a:
     vectorScratch.z = EnemyPatternOffsetAtWordCursor(
         static_cast<unsigned int>(runtimeAddress),
         static_cast<unsigned int>(iVar27))->z + worldMotion.position.z;
-    EnemyPatternAtRuntimeByte(iVar26)->fields.spawnPositionX = vectorScratch.x;
-    EnemyPatternAtRuntimeByte(iVar26)->fields.spawnPositionY = vectorScratch.y;
+    EnemyBulletPatternView *const firePattern = EnemyPatternAtRuntimeByte(iVar26);
+    firePattern->fields.spawnPositionX = vectorScratch.x;
+    firePattern->fields.spawnPositionY = vectorScratch.y;
     fVar9 = 0.0f;
-    EnemyPatternAtRuntimeByte(iVar26)->fields.spawnPositionZ = vectorScratch.z;
+    firePattern->fields.spawnPositionZ = vectorScratch.z;
     if ((bulletProtectionRadiusSquared == fVar9) ||
-       (fVar9 = EnemyPatternAtRuntimeByte(iVar26)->fields.spawnPositionY - g_Player->drawPosition.y,
-       fVar10 = EnemyPatternAtRuntimeByte(iVar26)->fields.spawnPositionX - g_Player->drawPosition.x,
+       (fVar9 = firePattern->fields.spawnPositionY - g_Player->drawPosition.y,
+       fVar10 = firePattern->fields.spawnPositionX - g_Player->drawPosition.x,
        fVar9 = fVar9 * fVar9 + fVar10 * fVar10,
        bulletProtectionRadiusSquared <= fVar9)) {
       reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->
           SpawnBulletPattern(reinterpret_cast<BulletSpawnDescriptorView *>(
-              EnemyPatternAtRuntimeByte(iVar26)));
+              firePattern));
       return 0;
     }
     break;
+  }
   case ENEMY_ECL_SET_BULLET_SPRITES:
   {
     uVar22 = ENEMY_READ_INT_DIRECT(0);

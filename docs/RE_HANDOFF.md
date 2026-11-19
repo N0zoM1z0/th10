@@ -45,8 +45,8 @@ All measurements below are the latest bounded local linked comparisons. They are
 
 | Owner | Current candidate / target | Current differences | State / next focus |
 | --- | ---: | ---: | --- |
-| `EnemyRuntimeView::DispatchEclInstruction` (36-TU graph) | 14,468 / 14,416 | 10,495 bytes | `REGRESSED` against the older recorded residual offsets. Keep the current typed pattern/VM access and bulk-copy semantics; attack the remaining scheduling and extent surplus without refreshing the frontier to bless moved offsets. |
-| Same dispatcher (12-TU diagnostic graph) | 14,472 / 14,416 | 10,531 bytes | Also `REGRESSED`; this graph is a useful secondary check, not a replacement for the 36-TU owner. |
+| `EnemyRuntimeView::DispatchEclInstruction` (36-TU graph) | 14,452 / 14,416 | 10,414 bytes | `REGRESSED` against the older recorded residual offsets. Keep the current typed pattern/VM access and bulk-copy semantics; attack the remaining scheduling and extent surplus without refreshing the frontier to bless moved offsets. |
+| Same dispatcher (12-TU diagnostic graph) | 14,456 / 14,416 | 10,240 bytes | Also `REGRESSED`; this graph is a useful secondary check, not a replacement for the 36-TU owner. |
 | `EclVmContext::Run` | 7,020 / 7,020 | 23 bytes | Full extent, but residual offsets moved from the recorded set. Focus operand/stack homes and thread spawn/stop register scheduling. The four stack leaves above remain exact. |
 | `AnmRenderManagerView::ExecuteScript` | 9,964 / 9,964 | 2 bytes | Residuals at +0x112/+0x115; opcode 91 child-layer argument is the key register-allocation issue (target EDX, candidate ECX). |
 | `GameResetGui` | 1,965 / 1,965 | 47 bytes | Full extent. Its separate lives-display helper remains 77/77 exact. |
