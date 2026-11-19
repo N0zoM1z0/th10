@@ -1062,6 +1062,7 @@ int EnemyRuntimeView::DispatchEclInstruction()
   // Runtime flags at +0x1444 are the native EnemyRuntimeView::flags
   // member, independently layout-checked in Enemy.hpp. Preserve the
   // target's byte-wide tests by explicitly reading its low byte.
+  AnmVmView *vmForPosition;
   int runtimeAddress = reinterpret_cast<int>(this);
   short opcode;
   float fVar2;
@@ -1324,27 +1325,27 @@ dispatch_create_enemy_mirrored:
       AnmVmIdView createdVm =
           (*EnemyNativeWordIndex(&g_EnemyManager->loadedAnmResources[0], static_cast<int>(uVar22)))->
               CreateVmVariant2((int)uVar23, 6);
-      iVar26 = reinterpret_cast<int>(createdVm.GetVm());
+      vmForPosition = createdVm.GetVm();
     }
     if ((flags & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
           PublishEclWorldAnchor(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
       reinterpret_cast<EnemyPositionDwordView *>(
-          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[0] = puVar5[0];
+          &vmForPosition->positionOffset)->word[0] = puVar5[0];
       reinterpret_cast<EnemyPositionDwordView *>(
-          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[1] = puVar5[1];
+          &vmForPosition->positionOffset)->word[1] = puVar5[1];
       reinterpret_cast<EnemyPositionDwordView *>(
-          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[2] = puVar5[2];
+          &vmForPosition->positionOffset)->word[2] = puVar5[2];
       return 0;
     }
     reinterpret_cast<EnemyPositionDwordView *>(
-        &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[0] =
+        &vmForPosition->positionOffset)->word[0] =
         reinterpret_cast<const EnemyPositionDwordView *>(&worldMotion.position)->word[0];
     reinterpret_cast<EnemyPositionDwordView *>(
-        &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[1] =
+        &vmForPosition->positionOffset)->word[1] =
         reinterpret_cast<const EnemyPositionDwordView *>(&worldMotion.position)->word[1];
     reinterpret_cast<EnemyPositionDwordView *>(
-        &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[2] =
+        &vmForPosition->positionOffset)->word[2] =
         reinterpret_cast<const EnemyPositionDwordView *>(&worldMotion.position)->word[2];
     return 0;
   case ENEMY_ECL_PLAY_ANM_HIGH:
@@ -1354,27 +1355,27 @@ dispatch_create_enemy_mirrored:
       AnmVmIdView createdVm =
           (*EnemyNativeWordIndex(&g_EnemyManager->loadedAnmResources[0], static_cast<int>(uVar22)))->
               CreateVmVariant0((int)uVar23, 6);
-      iVar26 = reinterpret_cast<int>(createdVm.GetVm());
+      vmForPosition = createdVm.GetVm();
     }
     if ((flags & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
           PublishEclWorldAnchor(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
       reinterpret_cast<EnemyPositionDwordView *>(
-          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[0] = puVar5[0];
+          &vmForPosition->positionOffset)->word[0] = puVar5[0];
       reinterpret_cast<EnemyPositionDwordView *>(
-          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[1] = puVar5[1];
+          &vmForPosition->positionOffset)->word[1] = puVar5[1];
       reinterpret_cast<EnemyPositionDwordView *>(
-          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[2] = puVar5[2];
+          &vmForPosition->positionOffset)->word[2] = puVar5[2];
       return 0;
     }
     reinterpret_cast<EnemyPositionDwordView *>(
-        &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[0] =
+        &vmForPosition->positionOffset)->word[0] =
         reinterpret_cast<const EnemyPositionDwordView *>(&worldMotion.position)->word[0];
     reinterpret_cast<EnemyPositionDwordView *>(
-        &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[1] =
+        &vmForPosition->positionOffset)->word[1] =
         reinterpret_cast<const EnemyPositionDwordView *>(&worldMotion.position)->word[1];
     reinterpret_cast<EnemyPositionDwordView *>(
-        &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[2] =
+        &vmForPosition->positionOffset)->word[2] =
         reinterpret_cast<const EnemyPositionDwordView *>(&worldMotion.position)->word[2];
     return 0;
   case ENEMY_ECL_PLAY_ANM_ABSOLUTE:
@@ -1390,32 +1391,32 @@ dispatch_create_enemy_mirrored:
       AnmVmIdView createdVm =
           (*EnemyNativeWordIndex(&g_EnemyManager->loadedAnmResources[0], static_cast<int>(uVar22)))->
               CreateVmVariant2((int)uVar23, 6);
-      iVar26 = reinterpret_cast<int>(createdVm.GetVm());
+      vmForPosition = createdVm.GetVm();
     }
     if ((flags & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
           PublishEclWorldAnchor(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
       reinterpret_cast<EnemyPositionDwordView *>(
-          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[0] = puVar5[0];
+          &vmForPosition->positionOffset)->word[0] = puVar5[0];
       reinterpret_cast<EnemyPositionDwordView *>(
-          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[1] = puVar5[1];
+          &vmForPosition->positionOffset)->word[1] = puVar5[1];
       reinterpret_cast<EnemyPositionDwordView *>(
-          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[2] = puVar5[2];
+          &vmForPosition->positionOffset)->word[2] = puVar5[2];
     }
     else {
       reinterpret_cast<EnemyPositionDwordView *>(
-          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[0] =
+          &vmForPosition->positionOffset)->word[0] =
           reinterpret_cast<const EnemyPositionDwordView *>(&worldMotion.position)->word[0];
       reinterpret_cast<EnemyPositionDwordView *>(
-          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[1] =
+          &vmForPosition->positionOffset)->word[1] =
           reinterpret_cast<const EnemyPositionDwordView *>(&worldMotion.position)->word[1];
       reinterpret_cast<EnemyPositionDwordView *>(
-          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[2] =
+          &vmForPosition->positionOffset)->word[2] =
           reinterpret_cast<const EnemyPositionDwordView *>(&worldMotion.position)->word[2];
     }
     fVar19 = (ReadFloatArgument(2));
-    reinterpret_cast<AnmVmView *>(iVar26)->rotation.z = (float)fVar19;
-    reinterpret_cast<AnmVmView *>(iVar26)->flags35C |= 4u;
+    vmForPosition->rotation.z = (float)fVar19;
+    vmForPosition->flags35C |= 4u;
     return 0;
   case ENEMY_ECL_SET_MAIN_ANM_SCRIPT:
     // Script-selected VM IDs are unchecked in the target. Address all slots
