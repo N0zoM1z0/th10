@@ -509,6 +509,15 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   owners. The 627-byte collision caller also stays exact; no new
   exactness is claimed for Run.
 
+  [2026-11-19] `PopInt` now uses the actual four-byte `EclVmScalar`
+  storage for a typed VM stack word, and the stop-thread helper retains
+  a typed `EclVmContext*` before invalidating its instruction pointer.
+  Both are natural C++ source refinements, not codegen-only register
+  shims: the selected 36-support-TU `Run` candidate remains 7,020/7,020
+  with 23 differing bytes. Its 627-byte collision caller is still exact;
+  the selected ECL stack graph also preserves exact Pop 122, Push 96,
+  EnterFrame 64 and LeaveFrame 41 byte owners. No new exact credit.
+
 - **GuiMessageVmView::Run @0x415E90 (4,480)**: [2026-11-17]
   The current `gui-message-run-candidate` 16-support-TU linked graph
   produces 4,464/4,480 bytes with 1,935 differences. Its recorded

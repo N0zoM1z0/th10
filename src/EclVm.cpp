@@ -191,7 +191,8 @@ static __forceinline int EclSpawnScalarWordAt(
 // context owned by a thread-list node. Keep the node and its context typed.
 static __forceinline void EclStopThreadContext(EclVmThreadNode *thread)
 {
-    thread->context->instruction = NULL;
+    EclVmContext *const stoppedContext = thread->context;
+    stoppedContext->instruction = NULL;
 }
 
 // The target selector table at 0x0044FCB4 covers opcodes 0x00-0x57.  Values
@@ -297,7 +298,7 @@ static bool IsOperandIndirect(
 static __forceinline int PopInt(EclVmContext *context)
 {
     EclVmScalar value;
-    context->stack.Pop('i', sizeof(value.integer), &value.integer);
+    context->stack.Pop('i', sizeof(value), &value);
     return value.integer;
 }
 
