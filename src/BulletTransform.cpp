@@ -27,221 +27,239 @@ void BulletRuntimeView::AdvanceTransformProgram()
 {
     BulletTransformRecordView *record;
     unsigned int kind;
+    int index = this->transformIndex;
+    unsigned int packedPattern;
+    float selectedAngle;
+    BulletSpawnDescriptorView pattern;
 
-nextRecord:
-    if (this->transformIndex >= 18)
-        return;
-
-    // The opcode lives at record + 0x10; derive the record view from that
-    // word after the volatile read so the two target accesses stay ordered.
-    const unsigned char *runtimeBytes =
-        reinterpret_cast<const unsigned char *>(this);
-    const int recordStrideIndex = this->transformIndex * 3;
-    const volatile unsigned int *kindAddress =
-        reinterpret_cast<const volatile unsigned int *>(
-            runtimeBytes + recordStrideIndex * 8 + 0x474);
-    kind = *kindAddress;
-    record = reinterpret_cast<BulletTransformRecordView *>(
-        const_cast<unsigned int *>(kindAddress) - 4);
-
-    if (kind == BULLET_TRANSFORM_NONE)
-        return;
-    if (record->allowWhileActive == 0 && this->activeTransformFlags != 0)
-        return;
-
-    if (kind == BULLET_TRANSFORM_SKIP)
+    do
     {
-        ++this->transformIndex;
-        goto nextRecord;
-    }
+        if (this->transformIndex >= 18)
+            return;
 
-    switch (kind)
-    {
-    case BULLET_TRANSFORM_DECELERATE:
-        this->activeTransformFlags |= BULLET_TRANSFORM_DECELERATE;
-        this->exStates[0].timer.SetCurrent(0);
-        this->exStates[0].vector.z = 0.0f;
-        break;
+        index = this->transformIndex;
+        kind = reinterpret_cast<const unsigned int *>(this->transforms)[
+            index * 6 + 4];
+        record = &this->transforms[index];
 
-    case BULLET_TRANSFORM_ACCELERATE_VECTOR:
-        this->activeTransformFlags |= BULLET_TRANSFORM_ACCELERATE_VECTOR;
-        this->exStates[1].value0 = record->payload.float0;
+        if (kind == BULLET_TRANSFORM_NONE)
+            return;
+        if (record->allowWhileActive == 0 && this->activeTransformFlags != 0)
+            return;
+
+        if (kind == BULLET_TRANSFORM_SKIP)
         {
-            const float requestedAngle = record->payload.float1;
-            if (requestedAngle <= -990.0f)
-                this->exStates[1].value1 = this->angle;
-            else if (requestedAngle >= 990.0f)
-                this->exStates[1].value1 =
-                    g_Player->AngleFromPosition(&this->position);
-            else
-                this->exStates[1].value1 = requestedAngle;
+            this->transformIndex = index + 1;
+            goto loopTail;
         }
-        this->exStates[1].timer.SetCurrent(0);
-        this->exStates[1].int0 = record->payload.int0;
-        reinterpret_cast<AnmOpcodeVectorView *>(&this->exStates[1].vector)->
-            FromAngleMagnitude(
-                this->exStates[1].value1, this->exStates[1].value0);
-        if (this->transformIndex != 0 && this->transformSound >= 0)
-            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
-                QueueSoundSample(this->transformSound, 0);
-        break;
 
-    case BULLET_TRANSFORM_ACCELERATE_POLAR:
-        this->activeTransformFlags |= BULLET_TRANSFORM_ACCELERATE_POLAR;
-        this->exStates[2].value0 = record->payload.float0;
-        this->exStates[2].value1 = record->payload.float1;
-        this->exStates[2].timer.SetCurrent(0);
-        this->exStates[2].int0 = record->payload.int0;
-        if (this->transformIndex != 0 && this->transformSound >= 0)
-            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
-                QueueSoundSample(this->transformSound, 0);
-        break;
+        if (kind <= 0x4000u)
+        {
+            if (kind == BULLET_TRANSFORM_SET_SPRITE)
+            {
+                const int scriptIndex =
+                    g_BulletSpriteScriptBase[record->payload.int0] +
+                    record->payload.int1;
+                StartEntityScript_00404f30(
+                    &vm, scriptIndex,
+                    reinterpret_cast<BulletManagerView *>(
+                        g_EnemyBulletManager)->bulletAnm);
+            }
+            else if (kind <= 0x100u)
+            {
+                if (kind == BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE)
+                    goto directionChange;
 
-    case BULLET_TRANSFORM_CHANGE_DIRECTION_RELATIVE:
-    case BULLET_TRANSFORM_CHANGE_DIRECTION_AIMED:
-    case BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE:
+                switch (kind)
+                {
+                case BULLET_TRANSFORM_DECELERATE:
+                    this->activeTransformFlags |= BULLET_TRANSFORM_DECELERATE;
+                    this->exStates[0].timer.SetCurrent(0);
+                    this->exStates[0].vector.z = 0.0f;
+                    break;
+
+                case BULLET_TRANSFORM_ACCELERATE_VECTOR:
+                    this->activeTransformFlags |= BULLET_TRANSFORM_ACCELERATE_VECTOR;
+                    this->exStates[1].value0 = record->payload.float0;
+                    if (record->payload.float1 <= -990.0f)
+                        selectedAngle = this->angle;
+                    else if (record->payload.float1 >= 990.0f)
+                        selectedAngle =
+                            g_Player->AngleFromPosition(&this->position);
+                    else
+                        selectedAngle = record->payload.float1;
+                    this->exStates[1].value1 = selectedAngle;
+                    this->exStates[1].timer.SetCurrent(0);
+                    this->exStates[1].int0 = record->payload.int0;
+                    reinterpret_cast<AnmOpcodeVectorView *>(
+                        &this->exStates[1].vector)->FromAngleMagnitude(
+                            this->exStates[1].value1,
+                            this->exStates[1].value0);
+                    if (this->transformIndex != 0 && this->transformSound >= 0)
+                        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                            QueueSoundSample(this->transformSound, 0);
+                    break;
+
+                case BULLET_TRANSFORM_ACCELERATE_POLAR:
+                    this->activeTransformFlags |= BULLET_TRANSFORM_ACCELERATE_POLAR;
+                    this->exStates[2].value0 = record->payload.float0;
+                    this->exStates[2].value1 = record->payload.float1;
+                    this->exStates[2].timer.SetCurrent(0);
+                    this->exStates[2].int0 = record->payload.int0;
+                    if (this->transformIndex != 0 && this->transformSound >= 0)
+                        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                            QueueSoundSample(this->transformSound, 0);
+                    break;
+
+                case BULLET_TRANSFORM_CHANGE_DIRECTION_RELATIVE:
+                case BULLET_TRANSFORM_CHANGE_DIRECTION_AIMED:
+                    goto directionChange;
+                }
+            }
+            else if (kind <= 0x1000u)
+            {
+                if (kind == BULLET_TRANSFORM_SET_CANCEL_BEHAVIOR)
+                    this->cancelBehavior = record->payload.int0;
+                else if (kind == BULLET_TRANSFORM_BOUNCE_ALL_EDGES ||
+                         kind == BULLET_TRANSFORM_BOUNCE_EXCEPT_BOTTOM)
+                    goto bounce;
+            }
+            else if (kind == BULLET_TRANSFORM_SET_CULL_DELAY)
+            {
+                this->offscreenCullDelayFrames = record->payload.int0;
+                this->transformIndex = index + 1;
+                goto loopTail;
+            }
+        }
+        else if (kind <= 0x400000u)
+        {
+            if (kind == BULLET_TRANSFORM_SPAWN_CHILD_PATTERN)
+            {
+                memset(&pattern, 0, sizeof(pattern));
+                pattern.position = this->position;
+                packedPattern = static_cast<unsigned int>(record->payload.int0);
+                const int fadeParent = static_cast<int>(packedPattern & 0x80000000u);
+                pattern.bulletType = 0;
+                pattern.color = reinterpret_cast<const signed char *>(
+                    &record->payload.int0)[1];
+                pattern.transformStartIndex = packedPattern & 0xff;
+                pattern.count1 = static_cast<short>(record->payload.int1);
+                pattern.speed1 = record->payload.float0;
+                pattern.speed2 = record->payload.float1;
+
+                record = reinterpret_cast<BulletTransformRecordView *>(
+                    reinterpret_cast<unsigned int>(record) +
+                    sizeof(BulletTransformRecordView));
+                this->transformIndex = index + 1;
+                pattern.count2 = record->payload.int0LowSigned16;
+                pattern.transformFlags = static_cast<unsigned int>(record->payload.int1);
+                pattern.angleStep = record->payload.float1;
+                pattern.angle = record->payload.float0;
+                pattern.transformSound = -1;
+                memcpy(pattern.transforms, this->transforms, sizeof(pattern.transforms));
+
+                reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->
+                    SpawnBulletPattern(&pattern);
+                ++this->transformIndex;
+                if (fadeParent != 0)
+                    EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));
+                goto loopTail;
+            }
+            else if (kind <= 0x20000u)
+            {
+                if (kind == BULLET_TRANSFORM_PLAY_SOUND)
+                {
+                    reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                        QueueSoundCue(record->payload.int0, this->position.x);
+                }
+                else if (kind == BULLET_TRANSFORM_WAIT)
+                {
+                    this->activeTransformFlags |= kind;
+                    this->exStates[5].timer.SetCurrent(record->payload.int0);
+                }
+                else if (kind == BULLET_TRANSFORM_DESPAWN)
+                {
+                    EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));
+                }
+            }
+            else if (kind == BULLET_TRANSFORM_WRAP_X)
+            {
+                this->activeTransformFlags |= kind;
+                this->exStates[6].timer.SetCurrent(record->payload.int0);
+            }
+            else if (kind == BULLET_TRANSFORM_WRAP_Y)
+            {
+                this->activeTransformFlags |= kind;
+                this->exStates[7].timer.SetCurrent(record->payload.int0);
+            }
+        }
+        else if (kind > 0x4000000u)
+        {
+            if (kind == BULLET_TRANSFORM_BOUNCE_VARIANT)
+                goto bounce;
+        }
+        else if (kind == BULLET_TRANSFORM_STATE_8)
+        {
+            this->activeTransformFlags |= BULLET_TRANSFORM_STATE_8;
+            BulletExStateView &state = this->exStates[8];
+            state.value0 = record->payload.float0;
+            state.value1 = record->payload.float1;
+            if ((state.timer.flags & 1u) == 0)
+            {
+                state.timer.current = 0;
+                state.timer.previous = -999999;
+                state.timer.subframe = 0.0f;
+                state.timer.scale = &g_AnmGameSpeed;
+                state.timer.flags |= 1u;
+            }
+            state.timer.current = 0;
+            state.timer.subframe = 0.0f;
+            state.timer.previous = -1;
+            state.int0 = record->payload.int0;
+        }
+        else if (kind == BULLET_TRANSFORM_SET_OWNER_TAG)
+        {
+            this->ownerTag = record->payload.int0;
+            this->transformIndex = index + 1;
+            goto loopTail;
+        }
+        else if (kind == BULLET_TRANSFORM_JUMP)
+        {
+            this->transformIndex = record->payload.int0;
+            goto loopTail;
+        }
+
+        goto advanceRecord;
+
+directionChange:
         this->activeTransformFlags |= kind;
-        {
-            float requestedAngle = record->payload.float0;
-            if (requestedAngle <= -990.0f)
-                this->exStates[3].value1 = this->angle;
-            else if (requestedAngle >= 990.0f)
-                this->exStates[3].value1 =
-                    g_Player->AngleFromPosition(&this->position);
-            else
-                this->exStates[3].value1 = requestedAngle;
-        }
-        this->exStates[3].value0 =
-            record->payload.float1 > -999.0f
-                ? record->payload.float1
-                : this->speed;
-        // This timer reset is inlined in the target for the direction-change
-        // state rather than emitted through 0x00405410.
+        if (record->payload.float0 <= -990.0f)
+            selectedAngle = this->angle;
+        else if (record->payload.float0 >= 990.0f)
+            selectedAngle =
+                g_Player->AngleFromPosition(&this->position);
+        else
+            selectedAngle = record->payload.float0;
+        this->exStates[3].value1 = selectedAngle;
+        if (record->payload.float1 > -999.0f)
+            this->exStates[3].value0 = record->payload.float1;
+        else
+            this->exStates[3].value0 = this->speed;
         this->exStates[3].timer.SetCurrent(0);
         this->exStates[3].int0 = record->payload.int0;
         this->exStates[3].int1 = record->payload.int1;
         this->exStates[3].int2 = 0;
-        break;
+        goto advanceRecord;
 
-    case BULLET_TRANSFORM_BOUNCE_ALL_EDGES:
-    case BULLET_TRANSFORM_BOUNCE_EXCEPT_BOTTOM:
-    case BULLET_TRANSFORM_BOUNCE_VARIANT:
+bounce:
         this->activeTransformFlags |= kind;
         this->exStates[4].value0 = record->payload.float0;
         this->exStates[4].int1 = record->payload.int0;
         this->exStates[4].int0 = 0;
-        break;
 
-    case BULLET_TRANSFORM_SET_CANCEL_BEHAVIOR:
-        this->cancelBehavior = record->payload.int0;
-        break;
-
-    case BULLET_TRANSFORM_SET_CULL_DELAY:
-        this->offscreenCullDelayFrames = record->payload.int0;
+advanceRecord:
         ++this->transformIndex;
-        goto nextRecord;
-
-    case BULLET_TRANSFORM_SET_SPRITE:
-        {
-            const unsigned int scriptBaseAddress =
-                reinterpret_cast<unsigned int>(g_BulletSpriteScriptBase) +
-                static_cast<unsigned int>(record->payload.int0) * sizeof(int);
-            int scriptIndex = static_cast<int>(
-                static_cast<unsigned int>(*reinterpret_cast<const int *>(scriptBaseAddress)) +
-                static_cast<unsigned int>(record->payload.int1));
-            StartEntityScript_00404f30(&vm, scriptIndex, reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->bulletAnm);
-        }
-        break;
-
-    case BULLET_TRANSFORM_WAIT:
-        this->activeTransformFlags |= kind;
-        this->exStates[5].timer.SetCurrent(record->payload.int0);
-        break;
-
-    case BULLET_TRANSFORM_DESPAWN:
-        EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));
-        break;
-
-    case BULLET_TRANSFORM_PLAY_SOUND:
-        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
-            QueueSoundCue(record->payload.int0, this->position.x);
-        break;
-
-    case BULLET_TRANSFORM_WRAP_X:
-        this->activeTransformFlags |= kind;
-        this->exStates[6].timer.SetCurrent(record->payload.int0);
-        break;
-
-    case BULLET_TRANSFORM_WRAP_Y:
-        this->activeTransformFlags |= kind;
-        this->exStates[7].timer.SetCurrent(record->payload.int0);
-        break;
-
-    case BULLET_TRANSFORM_SPAWN_CHILD_PATTERN:
-        {
-            BulletSpawnDescriptorView pattern;
-            unsigned int packedPattern;
-            int fadeParent;
-
-            memset(&pattern, 0, sizeof(pattern));
-            pattern.position = this->position;
-
-            packedPattern =
-                static_cast<unsigned int>(record->payload.int0);
-            fadeParent = packedPattern & 0x80000000u;
-            pattern.bulletType = 0;
-            pattern.color =
-                static_cast<signed char>((packedPattern >> 8) & 0xff);
-            pattern.transformStartIndex = packedPattern & 0xff;
-            pattern.count1 =
-                static_cast<short>(record->payload.int1);
-            pattern.speed1 = record->payload.float0;
-            pattern.speed2 = record->payload.float1;
-
-            record = reinterpret_cast<BulletTransformRecordView *>(
-                reinterpret_cast<unsigned int>(record) +
-                static_cast<unsigned int>(sizeof(BulletTransformRecordView)));
-            ++this->transformIndex;
-            pattern.count2 = record->payload.int0LowSigned16;
-            pattern.transformFlags =
-                static_cast<unsigned int>(record->payload.int1);
-            pattern.angle = record->payload.float0;
-            pattern.angleStep = record->payload.float1;
-            pattern.transformSound = -1;
-            memcpy(
-                pattern.transforms,
-                this->transforms,
-                sizeof(pattern.transforms));
-
-            reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->
-                SpawnBulletPattern(&pattern);
-            ++this->transformIndex;
-            if (fadeParent != 0)
-                EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));
-            goto nextRecord;
-        }
-
-    case BULLET_TRANSFORM_SET_OWNER_TAG:
-        this->ownerTag = record->payload.int0;
-        ++this->transformIndex;
-        goto nextRecord;
-
-    case BULLET_TRANSFORM_JUMP:
-        this->transformIndex = record->payload.int0;
-        goto nextRecord;
-
-    case BULLET_TRANSFORM_STATE_8:
-        this->activeTransformFlags |= BULLET_TRANSFORM_STATE_8;
-        this->exStates[8].value0 = record->payload.float0;
-        this->exStates[8].value1 = record->payload.float1;
-        this->exStates[8].timer.SetCurrent(0);
-        this->exStates[8].int0 = record->payload.int0;
-        break;
-
-    default:
-        break;
-    }
-
-    ++this->transformIndex;
-    goto nextRecord;
+loopTail:
+        index = this->transformIndex;
+    } while (true);
 }
