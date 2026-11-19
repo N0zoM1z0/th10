@@ -360,9 +360,7 @@ __declspec(noinline) void EnemyConfigureViewportOwner(
 __declspec(noinline) void EnemyPrepareProjection(
     MainSupervisorView *supervisor, int viewportIndex)
 {
-    MainCameraRecordView *record =
-        reinterpret_cast<MainCameraRecordView *>(supervisor->unknown154) +
-        viewportIndex;
+    MainCameraRecordView *record = &supervisor->cameraRecords[viewportIndex];
     AnmViewportOwnerView *viewport = &record->prefix;
     supervisor->activeViewport = viewport;
     EnemyConfigureViewportOwner(viewport);

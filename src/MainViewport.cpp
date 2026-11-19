@@ -40,8 +40,7 @@ void MainConfigureCamera(AnmViewportOwnerView *camera)
 // Target405300/60. No index check is added; target callers use0/1.
 void MainConfigureGameplayViewport(MainSupervisorView *supervisor, int index)
 {
-    MainCameraRecordView *cameraRecord =
-        reinterpret_cast<MainCameraRecordView *>(supervisor->unknown154) + index;
+    MainCameraRecordView *cameraRecord = &supervisor->cameraRecords[index];
     AnmViewportOwnerView *camera = &cameraRecord->prefix;
     supervisor->activeViewport = camera;
     MainConfigureCamera(camera);

@@ -36,8 +36,8 @@ ANM_PLAIN_LAYER_CALLBACK(13)
 // Target448620/115 uses Main's first screen-camera record, then disables fog.
 int __fastcall AnmRenderManagerView::DrawLayer3(AnmRenderManagerView *manager)
 {
-    AnmViewportOwnerView *camera = reinterpret_cast<AnmViewportOwnerView *>(
-        g_MainSupervisorView.unknown154);
+    AnmViewportOwnerView *camera =
+        &g_MainSupervisorView.cameraRecords[0].prefix;
     g_MainSupervisorView.activeViewport = camera;
     MainConfigureCamera(camera);
     g_MainSupervisorView.d3dDevice->vtable->SetViewport(
@@ -56,10 +56,9 @@ int __fastcall AnmRenderManagerView::DrawLayer3(AnmRenderManagerView *manager)
 // Target448740/48 clears both the published camera and active renderer shake.
 int __fastcall AnmRenderManagerView::DrawLayer14(AnmRenderManagerView *manager)
 {
-    StageCameraStateView *camera = reinterpret_cast<StageCameraStateView *>(
-        g_MainSupervisorView.unknown154);
-    camera->value0E8 = 0;
-    camera->value0EC = 0;
+    MainCameraRecordView *camera = &g_MainSupervisorView.cameraRecords[0];
+    camera->screenShakeX = 0.0f;
+    camera->screenShakeY = 0.0f;
     g_AnmRenderManagerView->screenShakeX = 0;
     g_AnmRenderManagerView->screenShakeY = 0;
     return manager->DrawLayer(14);
@@ -70,7 +69,7 @@ int __fastcall AnmRenderManagerView::DrawLayer14(AnmRenderManagerView *manager)
 #define ANM_SCREEN_LAYER_CALLBACK(layer) \
 int __fastcall AnmRenderManagerView::DrawLayer##layer(AnmRenderManagerView *manager) \
 { \
-    AnmViewportOwnerView *camera = &g_MainSupervisorView.gameplayViewport; \
+    AnmViewportOwnerView *camera = &g_MainSupervisorView.cameraRecords[1].prefix; \
     g_MainSupervisorView.activeViewport = camera; \
     MainConfigureCamera(camera); \
     g_MainSupervisorView.d3dDevice->vtable->SetViewport( \

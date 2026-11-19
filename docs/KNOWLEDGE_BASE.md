@@ -256,239 +256,42 @@ Newest known state of the nonexact authored owners, largest first. Dates are the
 measurement epoch; sources have changed since some of them, so rebuild before
 trusting a number. Owners without an entry have no useful recorded attempt.
 
-- **EnemyRuntimeView::DispatchEclInstruction @0x40E770 (14,416)**: full extent,
-  table boundary +0x35C0 and the 181-slot map match; 800 fields. Residuals: the
-  private ReadIntArgument register pair, x87 homes, branch layout and the
-  rank-five lower bands. Keep the spell-cipher SIB `8A 0C 31` at +0x273B.
-  Native-word rewrites are neutral. [2026-11-14]
-  [2026-11-15] A focused 12-TU anchored diagnostic must use `/GS` without
-  `/Oy-`: it reproduces the target's aligned 0x2C4 frame and EBX runtime base;
-  `/Oy-` instead changes the frame and leaves the base in EBP. Spelling the
-  rank-5 cursor as `bulletPatterns[index]` and the first operand through
-  `EclVmHost*` now reproduces the 0x1AA `rank >= 600` and `rank >= 200` bands:
-  the `IMUL`/`LEA`, context loads, argument pushes and count stores align with
-  retail. The `rank >= -200` band still hoists `IMUL` before its comparison;
-  the `rank < -200` paths retain cursor and operand scheduling differences.
-  This anchored probe still has 206 unresolved symbols and 55 unowned code
-  contributions, so it is diagnostic only, not exactness evidence.
-  [2026-11-15] Sharing `firstHost`, `firstContext` and one runtime-base pattern
-  cursor across the `rank >= -600` split is the best measured low-band source
-  shape so far: 1,541 comparable bytes / 1,849 raw bytes match in the 12-TU
-  `/GS` diagnostic. Duplicating both branch setups falls to 1,019 / 1,264.
-  Remaining low-band schedule differs: retail compares rank first, then loads
-  owner into ECX, context into EDX, forms `LEA ESI,[EAX+EBX]`, and branches;
-  the candidate hoists owner/context and uses an ADD plus a separate cursor
-  move. The second read and lower branch are still nonexact.
-  [2026-11-15] For opcode 0x1AB, a volatile view of the full Enemy owner for
-  operand zero forces the retail `MOV EDX,[EDX+4]; PUSH 0; CALL` reload
-  and immediate ESI save. The selected 12-TU `/GS` diagnostic rises from
-  1,541/11,568 to 1,545/11,568 comparable bytes (1,852 raw bytes).
-  Remaining operands 1-4 still have delayed register saves and different
-  stack homes; the graph remains diagnostic-only (206 unresolved, 55
-  unowned code contributions), not an exact owner replay.
-  [2026-11-16] The clean 12-TU `/GS` baseline is 14,496/14,416 bytes with
-  10,574 differing bytes. For opcode 0x1AB, routing operands 1-4 through one
-  local `EclVmHost*` lowers the raw count to 10,542 and candidate extent to
-  14,480, but introduces new offsets (+0xBA/+0xF8) and moves many residuals;
-  the frontier correctly rejects it. The 14,496-byte / 10,574-difference
-  baseline is from the November 16 source epoch; it is not the current
-  post-laser-recovery candidate. Use the newer measurements below.
-  [2026-11-17] Opcode `0x199` uses 22 overlapping `0x18`-byte extra
-  records inside each `0x210`-byte bullet pattern. The final float is the
-  typed `EnemyBulletExtraView::floatB` member at +4 of the same record as
-  `floatA`, with the native byte-address cursor already computed for the
-  four integer stores. Replacing the later eight-byte-scaled address
-  expression with that member is semantically equivalent for all 32-bit
-  index words and makes the source model the actual record. The selected
-  intermediate 12-TU `/GS` diagnostic remained nonexact (14,496/14,416,
-  10,576 differences versus 10,574 beforehand); the current graph has
-  moved on. The `EnemyApplyBulletClear` 44-byte owner stayed exact.
-  [2026-11-17] In opcodes `0x19C/0x1AF` and `0x19D/0x1B0`,
-  the three-component laser spawn position is now assigned through
-  the correct `EnemyLaserType0/1RequestView::position.x/y/z` members,
-  rather than an unrelated `PlayerFloat3*` alias of the entire union.
-  The original caller data layout asserts both position members at +0.
-  The real 36-support-TU `/GL` dispatch graph moves from 14,492 to
-  14,480 candidate bytes against the 14,416-byte target, and raw wrong
-  bytes decrease from 10,568 to 10,564. The independent 12-support-TU
-  diagnostic now reports 14,424/14,416 bytes and 10,412 wrong, but
-  remains `REGRESSED` against its older offset frontier and is not
-  canonical acceptance. Exact PlayerHandleCollisionHit 627/627 and
-  EnemyApplyBulletClear 44/44 guards pass; ANM ExecuteScript remains
-  9,964/9,964 with two differences and GameResetGui stays 1,965/1,965
-  with 47 differences. The three opcode laser-request clears now
-  use typed `memset` on the 0x1DC-byte type-0 or 0x1F8-byte type-1
-  request. Both 36-TU and 12-TU codegen comparisons are byte-neutral
-  after this cleanup, including the 44- and 627-byte exact guards.
-  [2026-11-17] The rank-selected float result writers (opcodes 0x15D/0x15E)
-  now obtain the context through `EnemyFullObjectView::activeEclContext`
-  (verified member +0x004), not by dereferencing a cast integer address.
-  Keeping the full-owner word live preserves the shared result-tail codegen.
-  The real 36-support-TU build remains 14,480/14,416 with 10,564 differing
-  bytes, and the exact 627-byte PlayerHandleCollisionHit guard still passes.
-  The same dispatcher now keeps the real `int*`/`float*` addresses returned
-  by the ECL variable resolvers through the rank, difficulty and laser
-  opcode families; it no longer round-trips ten destinations through `int`.
-  Both 36-TU and 12-TU byte comparisons remain at their prior sizes and
-  mismatch counts; the 627-byte collision and 44-byte bullet-clear owners
-  remain exact under the affected graphs. [2026-11-17]
-  [2026-11-17] Laser control opcodes 0x19E–0x1A3 now retain a typed
-  `EnemyLaserNodeView*` from the manager's actual linked-list lookup instead
-  of round-tripping laser receivers through `int`. The independent position
-  writer also accepts that pointer. The subtype offsets still use their
-  verified narrow views. On the real 36-TU graph the dispatch remains
-  14,480/14,416 with 10,564 differing bytes, and on the 12-TU `/GS`
-  diagnostic 14,424/14,416 with 10,412. The 627-byte collision and
-  44-byte bullet-clear owners remain exact. This restores natural C++
-  receiver types without promoting the nonexact dispatch.
-  [2026-11-17] The unchecked bullet-pattern and pattern-offset helpers now
-  accept `EnemyRuntimeView*` and form their native 32-bit addresses
-  from the actual `bulletPatterns[0]` / `bulletPatternOffsets[0]`
-  members. Script indices remain unclamped and use unsigned low-word
-  multiplication, preserving i386 wraparound while removing the
-  runtime-owner integer round-trip from all helper call sites. A
-  fresh 36-TU and 12-TU A/B against HEAD produced identical complete
-  mismatch-offset sets (10,564 and 10,412 respectively), not merely
-  equal counts. The 627-byte collision and 44-byte bullet-clear
-  owners remain exact; the dispatcher itself remains nonexact.
-  [2026-11-17] The SET_BOSS_SLOT handler also retains the real
-  `EnemyManagerView*` through its slot-indexed write instead of converting
-  that pointer to an integer and back. A scoped opcode case preserves the
-  C++ lifetime without changing dispatch. The 36-TU /GL owner remains
-  14,480/14,416 (10,564 differences), and the 12-TU /GS diagnostic
-  remains 14,424/14,416 (10,412 differences). The affected 627- and
-  44-byte exact collision/clear owners both remain unchanged. Neither
-  dispatch graph is exact.
-  [2026-11-18] In opcode `dispatch_copy_player_to_motion`, the target copies
-  twelve raw XYZ bytes from the active special enemy's world position to the
-  current enemy's offset position. Replacing three explicit DWORD stores with
-  one typed `memcpy` keeps NaN payloads and signed zeros intact and improves
-  the 36-TU linked owner from 10,564 to **10,537** different bytes at
-  14,480/14,416; the independent 12-TU diagnostic improves from 10,412 to
-  **10,385** at 14,424/14,416. Neither is exact; both still have newly
-  differing offsets relative to the old frontier. Player collision remains
-  627/627 exact and bullet clear 44/44 exact. The same rewrite at an ANM
-  VM position assignment expands the owner to 14,544 or 14,592, and rewriting
-  a type-0 laser position into `memcpy` gives 14,484 and 10,590 differences;
-  these variants were rejected. Keep the successful motion copy separate from
-  other paths. [2026-11-18]
-
-  [2026-11-19] The AIM_BULLET_AT_PLAYER case keeps the previously
-  acquired player-X address across its first script operand read, then
-  captures a typed `Player*` for Y before the second operand read. This
-  removes the lossy Player* -> int -> Player* round trip and improves the
-  36-support-TU dispatcher from 10,515 to 10,513 differing bytes at
-  14,468/14,416. The independent 12-support-TU diagnostic changes in the
-  opposite direction (10,534 to 10,536 at 14,472/14,416); the real 36-TU
-  graph is the deciding one. The 627-byte collision and 44-byte clear
-  owners remain exact. Neither dispatcher candidate is exact.
-
-  [2026-11-19] Three rank-five bullet-count bands now reread the
-  ECL context via typed `EclVmHost::activeContext` instead of a temporary
-  Enemy owner address integer. They preserve all operand indices (9/10,
-  7/8 and 5/6) and the original two stores per pattern. In the 36-TU
-  linked dispatcher this reduces differing bytes from 10,513 to 10,508
-  without changing its 14,468-byte extent. The independent 12-TU graph
-  moves from 10,536 to 10,544 differences, so this is a main-graph
-  improvement, not a new exact claim. The exact collision/clear guards
-  are unchanged.
-
-  [2026-11-19] Both low-band rank-count routes now use typed `EclVmHost*`
-  and its `EclVmContext*` for operand pairs 3/4 and 1/2. The native
-  pattern-byte cursor and two short count stores are unchanged. The real
-  36-TU dispatcher remains 14,468/14,416 with 10,508 differences;
-  the independent 12-TU diagnostic becomes 14,472/14,416 with 10,545
-  differences. Both exact collision and clear callers still pass. This
-  removes unnecessary integer owner casts but does not earn exact credit.
-
-  [2026-11-19] The difficulty-selected speed opcode now retains one
-  `EnemyBulletPatternView*` across the two independently read float operands.
-  Its address is still formed from the original wrapped 32-bit `0x210` stride
-  and runtime word, so the two stores target the same record even for unchecked
-  script indices. The complete 36-TU dispatcher remains 14,468/14,416 bytes
-  and improves from 10,508 to 10,497 differing bytes. The selected 12-TU
-  diagnostic also improves from 10,545 to 10,532 at 14,472/14,416. The
-  unrelated 627-byte collision owner and 44-byte bullet-clear leaf remain
-  exact. This is main-function progress, not new exact credit.
-
-  [2026-11-19] Rank-five bullet-speed bands 600+ and 200..599, the
-  difficulty-selected bullet counts, and the bullet sound descriptor now
-  retain their typed `EnemyBulletPatternView*` *after* writing the first
-  field, through the second independent script-operand read. The script
-  index still follows the target's unchecked native 32-bit 0x210 stride.
-  This preserves the real 36-TU dispatch (14,468/14,416, 10,497 wrong)
-  and the separate 12-TU diagnostic (14,472/14,416, 10,532 wrong), while
-  the 627-byte collision and 44-byte bullet clear owners remain exact.
-  Hoisting the record cursor *before* the first script read changed
-  register lifetime and regressed the large owner; do not hoist it.
-
-  [2026-11-19] The adjacent `SET_BULLET_COUNT_BY_DIFFICULTY`,
-  rank-five speed bands 600/200, and `SET_BULLET_SOUND` now keep a typed
-  `EnemyBulletPatternView*` between their first and second field writes.
-  The cursor is captured only after the first store, preserving the target's
-  register scheduling and its native wrapped 32-bit address arithmetic.
-  Both current linked dispatchers remain unchanged (36-TU: 14,468/14,416,
-  10,497 differences; 12-TU: 14,472/14,416, 10,532 differences). The
-  627-byte collision and 44-byte bullet-clear exact guards remain exact.
-  Capturing the pointer before the first store in these cases instead
-  regresses the 36-TU owner, so preserve the post-store lifetime.
-
-  [2026-11-19] The rank-interpolated bullet speed opcode now obtains a
-  single `EnemyBulletPatternView*` after its four script float arguments,
-  retaining the same unchecked 32-bit pattern address for the A/B stores.
-  The complete 36-TU linked dispatcher improves 10,497 -> 10,495 differing
-  bytes at 14,468/14,416; the 12-TU diagnostic improves 10,532 -> 10,531
-  at 14,472/14,416. The 44-byte bullet-clear and 627-byte collision owner
-  comparisons remain exact. Neither dispatcher is exact.
-
-  [2026-11-19] The rank-interpolated bullet count opcode preserves its
-  original native wrapped pattern byte cursor, and now retains the typed
-  `EnemyBulletPatternView*` *after* publishing count A, across the independent
-  count-B interpolation. This explicitly names the same existing pattern
-  record without changing the original two-stage integer operations.
-  The full 36-support-TU dispatcher remains 14,468/14,416 (10,495 differing
-  bytes) and the 12-TU diagnostic remains 14,472/14,416 (10,531 differing
-  bytes). The 627-byte collision and 44-byte bullet-clear exact guards pass.
-  This is a source-semantic checkpoint, not a new exact claim.
-
-  [2026-11-19] `INTERPOLATE_BULLET_COUNT_BY_RANK` now holds its actual
-  `EnemyBulletPatternView*` after writing count A, so count B uses the
-  same native wrapped 0x210-byte record address while the two independent
-  integer interpolation expressions and truncations are unchanged.
-  Both complete diagnostic candidates remain byte-neutral: 36-TU
-  14,468/14,416 with 10,495 differing bytes, 12-TU 14,472/14,416 with
-  10,531. The 44-byte clear and 627-byte collision owners remain exact.
-
-  [2026-11-19] The `SET_BULLET_SPRITES`, `SET_BULLET_OFFSET` and
-  `SET_BULLET_ANGLE` ECL script cases now carry the real typed pattern or
-  3D offset receiver across their second operand read. Each pointer is
-  captured only after the first store, preserving the target-observed
-  register allocation and full integer-address semantics. The real 36-TU
-  dispatcher remains 14,468/14,416 with 10,495 differing bytes and the
-  12-TU diagnostic remains 14,472/14,416 with 10,531 differing bytes.
-  The separate 627-byte collision and 44-byte clear owners remain exact.
-  The script dispatcher remains nonexact; these are source-type repairs.
-
-  [2026-11-19] The ECL sprite-id/variant, pattern-offset X/Y, and
-  pattern-angle A/B pairs now retain a typed record receiver after the first
-  write and across the second script operand fetch. All three rely on the
-  existing unbounded 32-bit script index and original field layout. In the
-  complete selected 36-TU and 12-TU dispatcher graphs they are byte-neutral:
-  14,468/14,416 with 10,495 differences and 14,472/14,416 with 10,531
-  differences respectively. The 627-byte collision owner and 44-byte clear
-  leaf remain strict exact. Applying the same receiver lifetime to ordinary
-  `SET_BULLET_COUNT` worsened the 36-TU graph and was not retained.
-
-  [2026-11-19] `FIRE_BULLET_PATTERN` now retains a single native
-  `EnemyBulletPatternView*` for its position XYZ stores, protection-radius
-  test and `SpawnBulletPattern` descriptor. The native unchecked index and
-  wrapped 32-bit record/offset cursors remain unchanged; all six previous
-  record lookups refer to the identical script-selected pattern. The real
-  36-TU graph improves from 14,468/14,416 with 10,495 differences to
-  14,452/14,416 with 10,414 differences. The separate 12-TU graph improves
-  from 14,472/14,416 (10,531 different) to 14,456/14,416 (10,240 different).
-  The 44-byte bullet-clear and 627-byte collision owners remain exact.
-  Both dispatchers are still nonexact; no frontier baseline was relaxed.
+- **EnemyRuntimeView::DispatchEclInstruction @0x40E770 (14,416)**: the
+  current primary 36-support-TU `/GL` candidate is 14,452 bytes with 10,414
+  differing bytes; the secondary 12-TU `/GS` diagnostic is 14,456 bytes with
+  10,240 differing bytes. Both frontiers report `REGRESSED` because the full
+  residual-offset sets moved (their stored counts are 10,416 and 10,574);
+  keep those baselines unchanged. The 627-byte collision owner and 44-byte
+  bullet-clear owner remain exact in the affected graphs.
+  - The 181-byte opcode map selects 108 handlers; the main table starts at
+    +0x35C0. The owner extent ends at 0x411FBF. Rank-3 thresholds are +/-512;
+    rank-5 thresholds are +/-600 and +/-200. The spell-name cipher's
+    `8A 0C 31` SIB remains at +0x273B.
+  - `FIRE_BULLET_PATTERN` now keeps one `EnemyBulletPatternView*` across
+    XYZ publication, the protection-radius check and `SpawnBulletPattern`.
+    This was the largest recent improvement: 36-TU 14,468/14,416 with 10,495
+    differences became 14,452/14,416 with 10,414; 12-TU 14,472/14,416 with
+    10,531 became 14,456/14,416 with 10,240. The owner is still nonexact.
+  - Paired script writes for bullet sprite IDs, offsets, angles, counts,
+    speeds, sounds and rank interpolation retain the typed pattern/offset
+    receiver after the first store. Preserve the original unchecked
+    modulo-32-bit index arithmetic and operand-read order; hoisting receivers
+    before the first store changed register lifetimes and regressed the owner.
+  - Rank-count and rank-speed branches use typed `EclVmHost*` / active-context
+    access for the second operand read. `AIM_BULLET_AT_PLAYER` retains the
+    original X address and a typed `Player*` for Y. These are natural source
+    repairs; the dispatcher remains nonexact.
+  - `dispatch_copy_player_to_motion` transfers all 12 XYZ bytes with
+    `memcpy`, preserving NaN payloads and signed zero. Pattern initialization
+    clears the complete 0x210-byte record before explicit defaults;
+    `COPY_BULLET_PATTERN` uses complete typed assignment because source and
+    destination indices may be equal. Opcode 0x199 has 22 overlapping
+    0x18-byte extra records per pattern.
+  - Type-0/type-1 laser request paths copy the serialized pattern words into
+    their verified request layouts. Keep their distinct 0x1DC/0x1F8 request
+    sizes and the `EnemyLaserType0/1RequestView` field offsets.
+  - `EnemyManagedVmIdAt` retains the ten four-byte VM handles with unchecked
+    32-bit address arithmetic. Only the flag loops have a proven 0..9 bound.
 
 - **EclVmScriptDatabase::AddScriptData @0x450220 (589)**: the SCPT file
   header is a verified 0x24-byte native layout. Both the subroutine-offset
@@ -497,82 +300,27 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   The selected five-source `/GL` graph re-links to the complete 589/589-byte
   exact function, including both malloc/free REL32 fields. [2026-11-19]
 
-- **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
-  2026-11-17 rebuild of the five changed support TUs in the real
-  `player-handle-collision-hit` graph confirms the full 9,964-byte extent and
-  two differences at +0x112/+0x115. Retail loads `[ebp+0x20]` into EDX and
-  pushes EDX; the candidate uses ECX. Opcode 91 currently uses an
-  `AnmChildScriptLayer` with separate `script` and `layer` fields. Register,
-  volatile, direct-argument and field-order trials did not improve the owner;
-  an inline-assembly rewrite damaged the complete function. All experiments
-  were reverted. Keep adjacent opcode bodies intact while investigating the
-  call-site register lifetime. [2026-11-17]
-- **EclVmContext::Run @0x44E1A0 (7,020)**: rooted at the real caller
-  `EclVmHost::Run`; the fresh 2026-11-17 36-support-TU relink has the full
-  7,020-byte extent and 23 differing bytes. `check-frontier --no-build --show
-  ecl-run` reports `REGRESSED`: the count remains 23, but the differing
-  offsets moved relative to the stored residual set. Current examples include
-  EDX/EDI selection at +0xEB/+0xF1, pointer-register selection at
-  +0x129/+0x12B, commutative SIB order at +0x1F9/+0x241, spill homes in
-  +0x403..+0x4CD, SIB order at +0xE6D/+0xE79/+0x1584, and EDX/EAX selection
-  at +0x19E5/+0x19E7. Do not update the frontier baseline merely to accept the
-  moved residuals. The earlier isolated probe measured 6,241/6,264 comparable
-  bytes and found the two Return-pop SIBs plus the `POINT_ANGLE` and
-  `LENGTH_SQUARED` x87 schedules exact; recheck those sequences in the fresh
-  linked image before relying on that local result. [2026-11-16]
-  [2026-11-16] A clean-source relink through the real 36-support-TU caller
-  graph reconfirms 7,020/7,020 bytes and 23 differing bytes. Thirteen
-  companion ECL leaf units (Push, EnterFrame, LeaveFrame, ReadIntValue,
-  ReadInt, ReadFloatValue, ReadFloat, FindThread, Host::Run, SpawnThread,
-  StopAllThreads, FindSubroutine and PolarVector::FromAngleMagnitude) each
-  compare with zero differing bytes; Pop is separately exact at 122/122. A
-  fresh 2026-11-17 graph rebuild preserves all four stack-leaf exact results;
-  `Run` remains 7,020 bytes with 23 moved residuals and a regressed frontier.
-  A rejected STOP_THREAD inline-assembly experiment matched the local EAX
-  reload at +0x129/+0x12B but raised the parent to 53 differences; it was
-  reverted and is not part of the current C++ source. Replacing Pop's
-  value/type addresses with explicit native-word arithmetic keeps the leaf
-  exact but raises the parent to 100 differences (both addresses) or 42
-  (type address only); `&data[stackTop]` leaves the 23-byte parent residual
-  unchanged. A PopInt rewrite in MULTIPLY_INT shrinks Run to 6,992 bytes and
-  5,087 differences. Reject these parent regressions; retain the typed Pop
-  spelling and do not refresh the 23-byte frontier merely to accept moved
-  offsets. The current linked graph also compares the four stack leaves exactly:
-  Pop 122/122, Push 96/96, EnterFrame 64/64 and LeaveFrame 41/41. [2026-11-16]
-- **EclVmStackView::Pop @0x450610 (122)**: both the typed
-  `typeAddress->type` access and `stackData[stackTop]` produce an exact
-  122/122-byte linked contribution with the real `Run` entry and preserve the
-  private EAX/ECX/BL ABI. Prefer the typed spelling: it keeps the parent
-  `Run` diagnostic at 6,241/6,264 comparable bytes; byte indexing drops it to
-  5,973. An explicit native 32-bit type-byte address fixes the parent's
-  +0xAF/+0x1FB SIBs but moves differences to +0x97/+0x1E7 and nets 6,227/6,264.
-  Keep the exact typed leaf and solve the inlined parent schedule separately.
-  [2026-11-15]
-  [2026-11-17] The STORE_INT and STORE_FLOAT opcodes now pass the real
-  `ResolveInt(0)` / `ResolveFloat(0)` scalar pointers directly to
-  `stack.Pop`, rather than round-tripping them through an unrelated
-  `EclVmScalar*` union view. The real 36-TU Run graph remains
-  7,020/7,020 with the same 23 residual bytes; its 627-byte collision
-  caller and 122-byte Pop / 96-byte Push leaves remain exact. This is
-  a natural pointer-type correction, not a new exact-byte claim.
-  [2026-11-19] The `PopInt` inline wrapper now uses the native
-  four-byte `EclVmScalar::integer` view rather than an unrelated bare
-  `int`. `EclVmStackView::Pop` also forms its typed stored-type address
-  as the natural `stackData + stackTop` pointer expression. Both changes
-  preserve the 7,020/7,020-byte Run candidate with its existing 23
-  different bytes. The separately relinked `Pop` (122), `Push` (96),
-  `EnterFrame` (64), and `LeaveFrame` (41) all remain complete exact
-  owners. The 627-byte collision caller also stays exact; no new
-  exactness is claimed for Run.
-
-  [2026-11-19] `PopInt` now uses the actual four-byte `EclVmScalar`
-  storage for a typed VM stack word, and the stop-thread helper retains
-  a typed `EclVmContext*` before invalidating its instruction pointer.
-  Both are natural C++ source refinements, not codegen-only register
-  shims: the selected 36-support-TU `Run` candidate remains 7,020/7,020
-  with 23 differing bytes. Its 627-byte collision caller is still exact;
-  the selected ECL stack graph also preserves exact Pop 122, Push 96,
-  EnterFrame 64 and LeaveFrame 41 byte owners. No new exact credit.
+- **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: the current
+  36-support-TU graph is 9,964/9,964 with two differences at +0x112/+0x115.
+  Retail loads `[ebp+0x20]` into EDX and pushes EDX; the candidate uses ECX.
+  Opcode 91's child-layer argument lifetime is the remaining lever. Natural
+  field-order, direct-argument and local-value trials did not improve it;
+  all experiments were reverted. Keep adjacent opcode bodies intact.
+- **EclVmContext::Run @0x44E1A0 (7,020)**: current linked owner is 7,020/7,020
+  with 23 differing bytes. The frontier is `REGRESSED` because residual offsets
+  moved, not because the count changed. The remaining schedule includes
+  commutative SIB order at +0x1F9/+0x241, operand/register choices near
+  +0xEB/+0xF1 and +0x129/+0x12B, and several spill-home differences. Do not
+  update the frontier to accept moved offsets. `PopInt` uses the native
+  `EclVmScalar::integer` word; `EclStopThreadContext` retains a typed
+  `EclVmContext*`; `Pop` keeps the typed `stackData + stackTop` address.
+  Rewriting the pointer arithmetic or spawning-operand address expanded the
+  parent residual and was reverted.
+- **EclVmStackView::Pop @0x450610 (122)**: exact 122/122 with the typed
+  stored-type view and private EAX/ECX/BL ABI. The adjacent stack owners are
+  also exact: `Push` 96/96, `EnterFrame` 64/64 and `LeaveFrame` 41/41.
+  Keep the leaf spelling that preserves the parent `Run` schedule; solve the
+  23-byte parent residual independently.
 
 - **GuiMessageVmView::Run @0x415E90 (4,480)**: [2026-11-17]
   The current `gui-message-run-candidate` 16-support-TU linked graph
@@ -601,9 +349,9 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   [2026-10-30]
 - **RebuildPlayerOptions @0x426F70 (2,520)**: about 2,404, plain RET instead of
   RET4 even with all nine callers present. [2026-10-19]
-- **EnemyGameStateView::StartSpell @0x409280 (2,432)**: 2,424; 14 receiver LEAs
+- **EnemyGameStateView::StartSpell @0x409280 (2,432)**: 2,404/2,432, 1,129 differences; 14 receiver LEAs
   use EDX instead of ESI and 8 PUSH schedules differ. [2026-10-31]
-- **ItemManagerUpdateBody @0x41AFD0 (2,320)**: 2,272 after the sound-owner
+- **ItemManagerUpdateBody @0x41AFD0 (2,320)**: 2,220/2,320, 1,639 differences;
   array fix. [2026-10-15]
 - **AnmRenderManagerView ctor @0x445900 (2,315)**: 655/670 normalized
   instructions after setting `element->arg = this` before `flags |= 3` and
@@ -635,7 +383,8 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   [2026-10-29]
 - **PlayerUpdateMovementAndOptions @0x4250B0 (1,656)**: 1,616; both direction
   table bases 40 bytes early. [2026-11-12]
-- **GameManagerUpdateBody @0x418190 (1,544)**: full extent in the 23-input
+- **GameManagerUpdateBody @0x418190 (1,544)**: current linked candidate
+  1,538/1,544 with 1,022 differing bytes; the owner remains nonexact.
   `GameStageSlots` graph, 114 fields, nonexact. [2026-11-12]
 - **LoadHintFile @0x419960 (1,498)**: 1,533. [2026-10-20]
 - **UpdateReplaySave @0x433570 (1,460)**: 1,444; the target reloads the pressed
@@ -755,8 +504,8 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   `TransitionEffectView::Initialize` 396/396 with 37 fields. A separate
   selected 17-unit cold of this graph passes 2,477 bytes in total.
   [2026-11-17]
-- **BulletRuntimeView::UpdateAbsoluteDirectionChange @0x4078E0 (335)**: fresh
-  2026-11-17 rebuild remains 333/335, with two differences at +0xD7/+0xDD
+- **BulletRuntimeView::UpdateAbsoluteDirectionChange @0x4078E0 (335)**: current
+  linked candidate is 335/335, with two differences at +0xD7/+0xDD
   (target EDX, candidate EAX). `register` hints were byte-neutral; removing the
   angle-copy local and passing `angle` directly adds two differences; volatile
   forms also regress. All trials were reverted.
@@ -961,7 +710,11 @@ register preservation or mod-ref assumptions) where our builds exploit it
   - `ENEMY_ECL_COPY_BULLET_PATTERN` uses a complete `EnemyBulletPatternView` assignment. The two unchecked script indices can be equal, so replacing it with `memcpy` would give overlapping/self-copy undefined behavior.
   - Type-0 and type-1 laser request paths copy their serialized pattern-word arrays into the corresponding request layouts. Type-1 carries 0x6C DWORDs; keep the offsets and sizes tied to `EnemyLaserType0RequestView` / `EnemyLaserType1RequestView`, not to a guessed common struct.
   - `EnemyManagedVmIdAt` centralizes the four-byte managed-VM handle overlay. Script-selected slots are unchecked and use modulo-32-bit address arithmetic; only the SET_FLAGS/CLEAR_FLAGS loops have a proven 0..9 bound.
-- Latest bounded dispatcher measurements: the main linked graph is 14,468/14,416 bytes with 10,515 differing bytes; the secondary 12-TU graph is 14,472/14,416 with 10,534 differing bytes. Both currently report `REGRESSED` against older recorded residual-offset sets; neither is exact. Do not update the frontier to bless offset movement.
+- Current bounded dispatcher measurements: the primary 36-TU `/GL` graph is
+  14,452/14,416 bytes with 10,414 differing bytes; the secondary 12-TU `/GS`
+  graph is 14,456/14,416 with 10,240 differing bytes. Both report `REGRESSED`
+  because residual offsets moved from the stored sets. Neither is exact; do not
+  update the frontier merely to bless offset movement.
 - The interpolation timer is 20 bytes (`INC` at +0x3B, `DEC` at +0x99 in the 652-byte evaluator).
 - Bomb owner: Owner `+0x2C` is the VM id; `+0x28` is the mode; `+0x3C` is a float radius.
   - `EmitAuxiliary` tests `spellId == 109` as an OR alternative to `(flags&1) && 93<=spellId<=96`, re-reading the id from game state for the 109 test.
@@ -1331,7 +1084,17 @@ register preservation or mod-ref assumptions) where our builds exploit it
 - MainSupervisorView @0x00491C28: next mode +0x390, flags +0x3CC (bit 0x1000 forces mode 2), critical section +0x64C, lock depth +0x6F4. SetNextGameMode @0x0040AC90 takes EAX as the receiver. MainAllocationRegistryView is 0xA004 bytes.
 - Private ABIs: CreateGameWindow takes HINSTANCE in EBX. ResolveShortcut takes the destination in EBX, 0x104 in EDI, the path on the stack, RET4. 0x0043A1B0 takes HWND in EAX. The frame dispatcher @0x00439390 takes a stack pointer 0x4924F0, RET4. The checksum is stored at 0x492380/0x492384.
 - Shared data: g_GameScoreState base 0x474C40 (+4 used by replay), RNG 0x4918B0, g_AnmGameSpeed 0x00476F78 (also the shared 1.0f constant), g_GameErrorContext 0x474F70 (Fatal @0x0044B8E0), Player lives 0x474C70 (volatile).
-- Cameras: secondary 0x491E94 and published 0x491D7C. Each has an unknown dword at +0xE4.
+- Cameras: `MainCameraRecordView` is 0x118 bytes: an 0xE4-byte
+  `AnmViewportOwnerView` prefix, `unknown0E4`, screen-shake X/Y at +0xE8/+0xEC,
+  and 0x28 trailing bytes. `MainSupervisorView::cameraRecords[0/1]` start at
+  +0x154/+0x26C; slot 1 ends exactly at `activeViewport` +0x384. Slot 0 is
+  the published camera (0x491D7C), slot 1 the secondary camera (0x491E94).
+  `MainConfigureGameplayViewport` and `EnemyPrepareProjection` index these
+  records directly; ANM layer 3/14 use slot 0 and layers 15/16/19 plus
+  `GameWindowView::Render` use slot 1. The complete affected owners all pass:
+  Main ctor/dtor, SetNextGameMode, OnUpdate, ReleaseGame, StartModeThread,
+  LeaveLock, Render, MainConfigureGameplayViewport, EnemyPrepareProjection,
+  and ANM DrawLayer 3/14/15/16/19 (15 functions total).
 - FPS sampler @0x004134B0 treats >65 FPS as an anomaly and is gated by gameplay state +0x58. Its display @0x004135D0 uses EDI owner, ESI ASCII manager and EBX position.
 - Error log: `GameErrorContext::Log/Fatal` use critical section 0x4922BC, depth 0x49231F, and a fatal flag at +0x2004.
 - RNG (8 bytes: u16 seed, saved seed, u32 counter): GetRandomU16 @0x44B9B0 = ((seed^0x9630)-0x6553) rotated left 2, counter++. U32 @0x44B9E0 concatenates two; F32 @0x44BB20 /UINT_MAX; F32Signed @0x44BB90 /INT_MAX-1. 0x44BA30 is an unreferenced 78-byte duplicate body.
@@ -1344,4 +1107,10 @@ register preservation or mod-ref assumptions) where our builds exploit it
   - Format 22 allocates 44+921600 bytes and converts bottom-up 640x480 BGRA to BGR. Format 23 logs; default logs and returns 1.
   - The worker 0x420540 (302 bytes) is a cdecl(void*) `_beginthread` entry, published at 42083F.
   - Capture request: +0 surface index, +4 ANM index, +8..24 source then destination rects, +28 texture entry, +2C..48 surface coordinates. Texture is at manager+3AD06C, entry +120.
-- Supervisor: device +8; screen cameras +0x154 + i*0x118 (aliases 0x491D7C/0x491E94); active camera +0x384; viewport index +0x388; nextGameMode +0x390 (= 0x491FB8); mode +0x38C; config view (52 bytes, real member) +0x120, constructed before worker +0x62C (shared 0x1C worker layout, running at +0x63C); fog cache is a full DWORD at +0x750 (not a byte); clearColor +0x780; disableVsync +0x3B4; temp storage +0x764; ctor clears 0x784 bytes and sets flags 0x140. Static init 0x4658F0; dtor 0x41FF60 stops worker +0x62C.
+- Supervisor: device +8; `cameraRecords[2]` at +0x154 (stride 0x118),
+  active camera +0x384, viewport index +0x388; nextGameMode +0x390 (=0x491FB8),
+  mode +0x38C; config view (52 bytes) +0x120, worker +0x62C (running +0x63C);
+  fog cache is a full DWORD at +0x750; clearColor +0x780; disableVsync +0x3B4;
+  temp storage +0x764; ctor clears 0x784 bytes and sets flags 0x140. Static
+  init 0x4658F0; dtor 0x41FF60 stops worker +0x62C. The two camera records are
+  now explicit `MainCameraRecordView` members rather than anonymous byte arrays.

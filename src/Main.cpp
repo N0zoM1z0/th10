@@ -641,7 +641,7 @@ int __stdcall GameWindowView::Render()
 
         g_AnmRenderManagerView->FlushVertexBuffer();
         g_MainSupervisorView.activeViewport =
-            &g_MainSupervisorView.gameplayViewport;
+            &g_MainSupervisorView.cameraRecords[1].prefix;
         MainConfigureCamera(g_MainSupervisorView.activeViewport);
         g_MainSupervisorView.d3dDevice->vtable->SetViewport(
             g_MainSupervisorView.d3dDevice,

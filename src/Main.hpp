@@ -262,10 +262,13 @@ struct MainCameraRecordView
     unsigned char unknown0F0[0x28];
 };
 typedef char MainCameraRecordLayout[
-    (sizeof(MainCameraRecordView) == 0x118 &&
+    (sizeof(AnmViewportOwnerView) == 0xe4 &&
+     sizeof(MainCameraRecordView) == 0x118 &&
      offsetof(MainCameraRecordView, prefix) == 0x00 &&
+     offsetof(MainCameraRecordView, unknown0E4) == 0xe4 &&
      offsetof(MainCameraRecordView, screenShakeX) == 0xe8 &&
-     offsetof(MainCameraRecordView, screenShakeY) == 0xec) ? 1 : -1];
+     offsetof(MainCameraRecordView, screenShakeY) == 0xec &&
+     offsetof(MainCameraRecordView, unknown0F0) == 0xf0) ? 1 : -1];
 
 // Target constructor clears784 bytes through clearColor; preserve that view extent.
 #pragma pack(push, 4)
@@ -303,9 +306,7 @@ struct MainSupervisorView
     MainD3d9PresentParametersView presentParameters; // +0x0E4
     MidiTimerView *timerOwner;                 // +0x11C
     GameConfigurationView configuration;          // +0x120
-    unsigned char unknown154[0x118];
-    AnmViewportOwnerView gameplayViewport;      // +0x26C
-    unsigned char unknown350[0x034];
+    MainCameraRecordView cameraRecords[2];      // +0x154, +0x26C
     AnmViewportOwnerView *activeViewport;       // +0x384
     int viewportConfigured;                     // +0x388
     int currentGameMode;                        // +0x38C
@@ -376,12 +377,14 @@ typedef char MainSupervisorConfigurationOffsets[
      offsetof(MainSupervisorView, configuration) +
      offsetof(GameConfigurationView, options) == 0x150) ? 1 : -1];
 typedef char MainSupervisorViewportAt26C[
-    (offsetof(MainSupervisorView, gameplayViewport) == 0x26c &&
+    (offsetof(MainSupervisorView, cameraRecords) + sizeof(MainCameraRecordView) == 0x26c &&
      offsetof(MainSupervisorView, activeViewport) == 0x384) ? 1 : -1];
 typedef char MainSupervisorCameraSlotsAt154[
-    (offsetof(MainSupervisorView, unknown154) == 0x154 &&
-     offsetof(MainSupervisorView, gameplayViewport) -
-         offsetof(MainSupervisorView, unknown154) == sizeof(MainCameraRecordView))
+    (offsetof(MainSupervisorView, cameraRecords) == 0x154 &&
+     sizeof(((MainSupervisorView *)0)->cameraRecords) ==
+         2 * sizeof(MainCameraRecordView) &&
+     offsetof(MainSupervisorView, activeViewport) -
+         offsetof(MainSupervisorView, cameraRecords) == sizeof(((MainSupervisorView *)0)->cameraRecords))
         ? 1 : -1];
 typedef char MainSupervisorFlagsAt3CC[
     (offsetof(MainSupervisorView, nextGameMode) == 0x390 &&
