@@ -103,7 +103,7 @@ int EclVmStackView::Pop(unsigned char type, int size, void *value)
         stackTop -= static_cast<int>(sizeof(EclVmStackTypeSlotView));
         const EclVmStackTypeSlotView *const typeAddress =
             reinterpret_cast<const EclVmStackTypeSlotView *>(
-                stackTop + stackData);
+                stackData + stackTop);
         const unsigned char storedType = typeAddress->type;
         if (storedType != 'f')
         {
@@ -296,9 +296,9 @@ static bool IsOperandIndirect(
 
 static __forceinline int PopInt(EclVmContext *context)
 {
-    int value;
-    context->stack.Pop('i', sizeof(value), &value);
-    return value;
+    EclVmScalar value;
+    context->stack.Pop('i', sizeof(value.integer), &value.integer);
+    return value.integer;
 }
 
 static __forceinline float PopFloat(EclVmContext *context)

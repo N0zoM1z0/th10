@@ -499,6 +499,16 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   7,020/7,020 with the same 23 residual bytes; its 627-byte collision
   caller and 122-byte Pop / 96-byte Push leaves remain exact. This is
   a natural pointer-type correction, not a new exact-byte claim.
+  [2026-11-19] The `PopInt` inline wrapper now uses the native
+  four-byte `EclVmScalar::integer` view rather than an unrelated bare
+  `int`. `EclVmStackView::Pop` also forms its typed stored-type address
+  as the natural `stackData + stackTop` pointer expression. Both changes
+  preserve the 7,020/7,020-byte Run candidate with its existing 23
+  different bytes. The separately relinked `Pop` (122), `Push` (96),
+  `EnterFrame` (64), and `LeaveFrame` (41) all remain complete exact
+  owners. The 627-byte collision caller also stays exact; no new
+  exactness is claimed for Run.
+
 - **GuiMessageVmView::Run @0x415E90 (4,480)**: [2026-11-17]
   The current `gui-message-run-candidate` 16-support-TU linked graph
   produces 4,464/4,480 bytes with 1,935 differences. Its recorded
