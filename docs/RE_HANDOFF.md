@@ -22,7 +22,7 @@ All 15 complete affected owners compare exact after relinking the changed transl
 
 ## Latest source checkpoint: typed Enemy ANM script state
 
-`EnemyRuntimeView` runtime +0xE8..+0xF8 is a five-DWORD ANM script-state region. `EnemyAnmScriptStateView` documents the selected resource, primary VM resource/script, base script and direction, with asserted size 0x14 and asserted member offsets. `EnemyRuntimeView::GetAnimationScriptState()` exposes that semantic view to lifecycle code while retaining the original direct members for the large ECL dispatcher. The separate `StageCameraStateView::value0E8/value0EC` fields remain untouched; they are camera shake values, not Enemy ANM selectors.
+`EnemyRuntimeView` runtime +0xE8..+0xF8 is a five-DWORD ANM script-state region. `EnemyAnmScriptStateLayout` documents selected resource, primary VM resource/script, base script and direction, with asserted size 0x14 and member offsets. The runtime keeps descriptive direct members so the large ECL dispatcher retains its existing LTCG lowering. The separate `StageCameraStateView::value0E8/value0EC` fields remain untouched; they are camera shake values, not Enemy ANM selectors.
 
 Targeted linked exact replays after the change pass for `EnemyRuntimeUpdate` (2,412/2,412) and `EnemySpawn` (577/577). The primary 36-support-TU dispatcher remains nonexact: current local comparison is 14,452/14,416 bytes with 10,414 differing bytes. Its residual offsets have moved relative to the stored frontier; do not refresh the baseline to accept them.
 

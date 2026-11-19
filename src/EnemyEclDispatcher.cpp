@@ -1292,7 +1292,7 @@ dispatch_create_enemy_mirrored:
   // clamped by the target. Preserve the flat i386 dword index arithmetic.
   case ENEMY_ECL_SELECT_ANM_RESOURCE:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    value0E8 = (int)uVar22;
+    selectedAnmResourceIndex = (int)uVar22;
     return 0;
   case ENEMY_ECL_SET_ANM_SCRIPT:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -1305,15 +1305,15 @@ dispatch_create_enemy_mirrored:
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     {
       AnmVmIdView createdVm =
-          (*EnemyNativeWordIndex(&g_EnemyManager->loadedAnmResources[0], value0E8))->
+          (*EnemyNativeWordIndex(&g_EnemyManager->loadedAnmResources[0], selectedAnmResourceIndex))->
               CreateVmVariant2((int)uVar22, 5);
       EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value = createdVm.value;
     }
     uVar6 = static_cast<unsigned int>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value);
     if (iVar26 == ENEMY_PRIMARY_MANAGED_VM_SLOT) {
       uVar22 = ENEMY_READ_INT_DIRECT(1);
-      value0F0 = (int)uVar22;
-      value0EC = value0E8;
+      primaryAnmScriptIndex = (int)uVar22;
+      primaryAnmResourceIndex = selectedAnmResourceIndex;
       uVar6 = static_cast<unsigned int>(EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value);
     }
     vmForBounds = EnemyManagedVmIdAt(managedVmIds, iVar26)->GetVm();
@@ -1428,7 +1428,7 @@ dispatch_create_enemy_mirrored:
     EnemyManagedVmIdAt(managedVmIds, iVar26)->Release();
     {
       AnmVmIdView createdVm =
-          (*EnemyNativeWordIndex(&g_EnemyManager->loadedAnmResources[0], value0E8))->
+          (*EnemyNativeWordIndex(&g_EnemyManager->loadedAnmResources[0], selectedAnmResourceIndex))->
               CreateVmVariant2(iVar27, 5);
       EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value = createdVm.value;
     }
@@ -1444,9 +1444,9 @@ dispatch_create_enemy_mirrored:
     if (iVar26 == ENEMY_PRIMARY_MANAGED_VM_SLOT) {
       flags = flags | 0x1000;
       animationBaseScript = iVar27;
-      value0F0 = iVar27;
+      primaryAnmScriptIndex = iVar27;
       animationDirection = 0;
-      value0EC = value0E8;
+      primaryAnmResourceIndex = selectedAnmResourceIndex;
       return 0;
     }
     break;
@@ -1456,7 +1456,7 @@ dispatch_create_enemy_mirrored:
     EnemyManagedVmIdAt(managedVmIds, iVar26)->Release();
     {
       AnmVmIdView createdVm =
-          (*EnemyNativeWordIndex(&g_EnemyManager->loadedAnmResources[0], value0E8))->
+          (*EnemyNativeWordIndex(&g_EnemyManager->loadedAnmResources[0], selectedAnmResourceIndex))->
               CreateVmVariant2(animationBaseScript + 5, 5);
       EnemyNativeWordIndex(&managedVmIds.views[0], iVar26)->value = createdVm.value;
     }

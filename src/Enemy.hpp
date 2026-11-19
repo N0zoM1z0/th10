@@ -374,9 +374,10 @@ typedef char EnemyManagedVmIdSlotViewSizeIs4[
 typedef int EnemyAnmResourceIndex;
 typedef int EnemyAnmScriptIndex;
 
-// Runtime +0xE8..+0xF8 tracks the ECL-selected resource and the primary
-// managed VM's published resource/script, base script and direction state.
-struct EnemyAnmScriptStateView
+// Layout schema for the five contiguous EnemyRuntimeView ANM state words at
+// +0xE8..+0xF8. EnemyRuntimeView keeps direct members to preserve the native
+// dispatcher's established LTCG lowering.
+struct EnemyAnmScriptStateLayout
 {
     EnemyAnmResourceIndex selectedResourceIndex;
     EnemyAnmResourceIndex primaryResourceIndex;
@@ -384,14 +385,14 @@ struct EnemyAnmScriptStateView
     EnemyAnmScriptIndex baseScriptIndex;
     int direction;
 };
-typedef char EnemyAnmScriptStateViewSizeIs14[
-    (sizeof(EnemyAnmScriptStateView) == 0x14) ? 1 : -1];
-typedef char EnemyAnmScriptStateViewOffsets[
-    (offsetof(EnemyAnmScriptStateView, selectedResourceIndex) == 0x00 &&
-     offsetof(EnemyAnmScriptStateView, primaryResourceIndex) == 0x04 &&
-     offsetof(EnemyAnmScriptStateView, primaryScriptIndex) == 0x08 &&
-     offsetof(EnemyAnmScriptStateView, baseScriptIndex) == 0x0c &&
-     offsetof(EnemyAnmScriptStateView, direction) == 0x10) ? 1 : -1];
+typedef char EnemyAnmScriptStateLayoutSizeIs14[
+    (sizeof(EnemyAnmScriptStateLayout) == 0x14) ? 1 : -1];
+typedef char EnemyAnmScriptStateLayoutOffsets[
+    (offsetof(EnemyAnmScriptStateLayout, selectedResourceIndex) == 0x00 &&
+     offsetof(EnemyAnmScriptStateLayout, primaryResourceIndex) == 0x04 &&
+     offsetof(EnemyAnmScriptStateLayout, primaryScriptIndex) == 0x08 &&
+     offsetof(EnemyAnmScriptStateLayout, baseScriptIndex) == 0x0c &&
+     offsetof(EnemyAnmScriptStateLayout, direction) == 0x10) ? 1 : -1];
 
 enum EnemyManagedVmSlotIndex
 {
@@ -429,19 +430,11 @@ struct EnemyRuntimeView
     EnemyFloat2 damageHitbox;
     EnemyFloat2 playerCollisionHitbox;
     EnemyManagedVmIdSlotsView managedVmIds;
-    EnemyAnmResourceIndex value0E8;
-    EnemyAnmResourceIndex value0EC;
-    EnemyAnmScriptIndex value0F0;
+    EnemyAnmResourceIndex selectedAnmResourceIndex;
+    EnemyAnmResourceIndex primaryAnmResourceIndex;
+    EnemyAnmScriptIndex primaryAnmScriptIndex;
     EnemyAnmScriptIndex animationBaseScript;
     int animationDirection;
-
-    // The five adjacent words form the animation-script state. Keep the
-    // original direct members for the opcode dispatcher, and expose the
-    // reviewed semantic view to lifecycle code without changing layout.
-    EnemyAnmScriptStateView *GetAnimationScriptState()
-    {
-        return reinterpret_cast<EnemyAnmScriptStateView *>(&value0E8);
-    }
     // Target operand lvalue resolvers prove four writable integer variables at
     // full Enemy +0x1138..+0x1144 and four writable float variables at
     // +0x1148..+0x1154. This exact 0x20-byte block begins runtime +0x0FC.
@@ -509,17 +502,20 @@ typedef char EnemyRuntimePlayerHitboxAt0B8[
 typedef char EnemyRuntimeManagedVmsAt0C0[
     (offsetof(EnemyRuntimeView, managedVmIds) == 0x0c0) ? 1 : -1];
 typedef char EnemyRuntimeAnmScriptStateAt0E8[
-    (offsetof(EnemyRuntimeView, value0E8) == 0x0e8 &&
-     offsetof(EnemyRuntimeView, value0EC) == 0x0ec &&
-     offsetof(EnemyRuntimeView, value0F0) == 0x0f0 &&
+    (offsetof(EnemyRuntimeView, selectedAnmResourceIndex) == 0x0e8 &&
+     offsetof(EnemyRuntimeView, primaryAnmResourceIndex) == 0x0ec &&
+     offsetof(EnemyRuntimeView, primaryAnmScriptIndex) == 0x0f0 &&
      offsetof(EnemyRuntimeView, animationBaseScript) == 0x0f4 &&
      offsetof(EnemyRuntimeView, animationDirection) == 0x0f8 &&
-     offsetof(EnemyRuntimeView, value0E8) +
-         offsetof(EnemyAnmScriptStateView, primaryResourceIndex) == 0x0ec &&
-     offsetof(EnemyRuntimeView, value0E8) +
-         offsetof(EnemyAnmScriptStateView, primaryScriptIndex) == 0x0f0 &&
-     offsetof(EnemyRuntimeView, value0E8) +
-         offsetof(EnemyAnmScriptStateView, direction) == 0x0f8) ? 1 : -1];
+     offsetof(EnemyRuntimeView, primaryAnmResourceIndex) -
+         offsetof(EnemyRuntimeView, selectedAnmResourceIndex) ==
+         offsetof(EnemyAnmScriptStateLayout, primaryResourceIndex) &&
+     offsetof(EnemyRuntimeView, primaryAnmScriptIndex) -
+         offsetof(EnemyRuntimeView, selectedAnmResourceIndex) ==
+         offsetof(EnemyAnmScriptStateLayout, primaryScriptIndex) &&
+     offsetof(EnemyRuntimeView, animationDirection) -
+         offsetof(EnemyRuntimeView, selectedAnmResourceIndex) ==
+         offsetof(EnemyAnmScriptStateLayout, direction)) ? 1 : -1];
 typedef char EnemyRuntimeEclVariablesAt0FC[
     (offsetof(EnemyRuntimeView, eclVariables) == 0x0fc) ? 1 : -1];
 typedef char EnemyRuntimeEclFloatVariablesAt10C[
