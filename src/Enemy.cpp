@@ -1365,7 +1365,7 @@ EnemyManagerView * __stdcall EnemyManagerCreate(
 EnemyBulletPatternView::EnemyBulletPatternView()
 {
     memset(this, 0, sizeof(*this));
-    words[0x81] = 0xffffffffu;
+    fields.transformSound = -1;
 }
 
 // Maintained logical constructor for target 0x0040D830-0x0040DAD0. The target
