@@ -422,6 +422,17 @@ trusting a number. Owners without an entry have no useful recorded attempt.
   Hoisting the record cursor *before* the first script read changed
   register lifetime and regressed the large owner; do not hoist it.
 
+  [2026-11-19] The adjacent `SET_BULLET_COUNT_BY_DIFFICULTY`,
+  rank-five speed bands 600/200, and `SET_BULLET_SOUND` now keep a typed
+  `EnemyBulletPatternView*` between their first and second field writes.
+  The cursor is captured only after the first store, preserving the target's
+  register scheduling and its native wrapped 32-bit address arithmetic.
+  Both current linked dispatchers remain unchanged (36-TU: 14,468/14,416,
+  10,497 differences; 12-TU: 14,472/14,416, 10,532 differences). The
+  627-byte collision and 44-byte bullet-clear exact guards remain exact.
+  Capturing the pointer before the first store in these cases instead
+  regresses the 36-TU owner, so preserve the post-store lifetime.
+
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: a fresh
   2026-11-17 rebuild of the five changed support TUs in the real
   `player-handle-collision-hit` graph confirms the full 9,964-byte extent and
