@@ -1743,17 +1743,17 @@ dispatch_update_primary_anm_bounds:
   // Movement and game-state instructions in target case order.
   case ENEMY_ECL_ADD_OFFSET_VELOCITY:
   case ENEMY_ECL_ADD_BASE_VELOCITY:
-    iVar26 = reinterpret_cast<int>(&offsetMotion);
+    selectedMotion = &offsetMotion;
     if (opcode != 0x12a) {
-      iVar26 = reinterpret_cast<int>(&baseMotion);
+      selectedMotion = &baseMotion;
     }
     fVar19 = (ReadFloatArgument(0));
     fVar21 = (ReadFloatArgument(1));
     if (-999999.0 < (float)fVar19) {
-      reinterpret_cast<EnemyMotionView *>(iVar26)->velocity.x = (float)fVar19;
+      selectedMotion->velocity.x = (float)fVar19;
     }
     if (fVar21 > -999999.0) {
-      reinterpret_cast<EnemyMotionView *>(iVar26)->velocity.y = (float)fVar21;
+      selectedMotion->velocity.y = (float)fVar21;
     }
     goto dispatch_copy_player_to_motion;
   case ENEMY_ECL_COPY_PLAYER_TO_OFFSET:
