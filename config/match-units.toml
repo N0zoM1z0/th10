@@ -32379,7 +32379,6 @@ linkages = [
 
 
 [units.enemy-advance-motion]
-candidate = true
 source = "src/Enemy.cpp"
 artifact_kind = "linked-pe"
 output_dir = "build/match-linked/PlayerCalculateDamage"
@@ -32393,6 +32392,13 @@ symbol = "?AdvanceMotion@EnemyMotionView@@QAEXXZ"
 target_address = 0x0044C2A0
 size = 171
 linkages = [
+  { offset = 0x32, type = "REL32", symbol = "?FromAngleMagnitude@EnemyRuntimeVectorView@@QAEXMM@Z", target = 0x0044C5D0 },
+  { offset = 0x76, type = "DIR32", symbol = "__real@42c80000", target = 0x00470B44 },
+  { offset = 0x7E, type = "REL32", symbol = "_floor", target = 0x00452FF0 },
+  { offset = 0x84, type = "DIR32", symbol = "__real@3c23d70a", target = 0x00470B00 },
+  { offset = 0x8F, type = "DIR32", symbol = "__real@42c80000", target = 0x00470B44 },
+  { offset = 0x97, type = "REL32", symbol = "_floor", target = 0x00452FF0 },
+  { offset = 0x9D, type = "DIR32", symbol = "__real@3c23d70a", target = 0x00470B00 },
 ]
 
 [units.enemy-advance-motion.support_profiles]

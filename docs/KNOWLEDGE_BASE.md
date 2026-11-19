@@ -634,8 +634,16 @@ trusting a number. Owners without an entry have no useful recorded attempt.
 - **StartEntityScript_00404f30 @0x404F30 (202)**: now natural source (the naked
   asm is gone); 45/45 normalized plus one extra `xor ecx,ecx` from the
   `AnmVmInitialize` call. [2026-11-14]
-- **EnemyAdvanceMotion @0x44C2A0 (171)**: 168; retail releases 8 stack bytes
-  before the final Y `FSTP`, ours merges into `ADD ESP,0x20`. [2026-11-13]
+- **EnemyMotionView::AdvanceMotion @0x44C2A0 (171)**: canonical selected
+  17-source `/GL` VC7.1 SP1 cold replay matches the complete PDB-owned 171
+  bytes, including all seven bound REL32/DIR32 operands. The original first
+  motion branch returns after snapping, whereas the polar branch snaps at its
+  tail; a shared inlined `SnapEnemyMotionToHundredths` helper lets LTCG merge
+  those tails. Reading the newly published X position through a genuine
+  `const volatile float&` makes the compiler reload that field, retaining the
+  target `FSTP` and `SUB ESP,8` before multiplication instead of an extra
+  live x87 value. This closes the earlier 168-byte / 10-difference candidate
+  with natural C++; the independent strict comparator also passes. [2026-11-19]
 - **EnemyFireLaser @0x41C510 (153)**: target ESI manager, EDI request, stack
   type, RET4; forms give 157/RET8 or 153 with plain RET. The laser vtable split
   is the likely lever. [2026-11-14]

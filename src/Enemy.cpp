@@ -708,6 +708,15 @@ EnemyFloat2 *EnemyScalarInterpolationView::Evaluate(EnemyFloat2 *output)
     return output;
 }
 
+// Both motion paths snap positions to hundredths. Keep the quantizer as a
+// shared native operation; the original optimizer merges the two call tails.
+static __forceinline void SnapEnemyMotionToHundredths(EnemyMotionView *motion)
+{
+    const volatile float &xPosition = motion->position.x;
+    motion->position.x = static_cast<float>(floor(xPosition * 100.0f) * 0.01f);
+    motion->position.y = static_cast<float>(floor(motion->position.y * 100.0f)) * 0.01f;
+}
+
 // Target 0x0044C2A0: polar mode replaces the position, Cartesian mode adds
 // velocity. X/Y are then floored to hundredths, including negative values.
 void EnemyMotionView::AdvanceMotion()
@@ -720,6 +729,8 @@ void EnemyMotionView::AdvanceMotion()
         motion->position.x = motion->velocity.x + positionX;
         motion->position.y = motion->velocity.y + motion->position.y;
         motion->position.z = motion->velocity.z + motion->position.z;
+        SnapEnemyMotionToHundredths(motion);
+        return;
     }
     else
     {
@@ -732,10 +743,7 @@ void EnemyMotionView::AdvanceMotion()
             *reinterpret_cast<const PlayerFloat3 *>(&polar);
         motion->position = polarPosition + motion->velocity;
     }
-    motion->position.x = static_cast<float>(floor(motion->position.x * 100.0f) * 0.01f);
-    // Retail multiplies the Y-axis floor result by a 32-bit float constant,
-    // not the double-width constant that the final-result cast would select.
-    motion->position.y = static_cast<float>(floor(motion->position.y * 100.0f)) * 0.01f;
+    SnapEnemyMotionToHundredths(motion);
 }
 
 // Maintained source for the reviewed 0x0040DC80-0x0040E5EB hostile runtime

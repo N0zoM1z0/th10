@@ -1,6 +1,6 @@
 # TH10 reconstruction — next-agent handoff
 
-**Updated 2026-11-18.** Start with [AGENTS.md](../AGENTS.md), then this brief and the relevant sections of [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md). Keep work local; do not push.
+**Updated 2026-11-19.** Start with [AGENTS.md](../AGENTS.md), then this brief and the relevant sections of [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md). Keep work local; do not push.
 
 ## Repository checkpoint
 
@@ -16,6 +16,7 @@ The generated [PROGRESS.md](PROGRESS.md) is the count authority. At this checkpo
 
 Strict linked-function checks currently pass for:
 
+- `EnemyMotionView::AdvanceMotion` — 171 bytes, seven bound REL32/DIR32 operands; selected 17-source cold exact on 2026-11-19.
 - `PlayerHandleCollisionHit` — 627 bytes.
 - `EnemyApplyBulletClear` — 44 bytes.
 - `GuiSetLivesDisplayCount` — 77 bytes.
