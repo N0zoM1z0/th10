@@ -31189,7 +31189,7 @@ linkages = [
   { offset = 0x05, type = "DIR32", symbol = "?g_Player@@3PAUPlayer@@A", target = 0x00477834 },
   { offset = 0x1E, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
   { offset = 0x2F, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
-  { offset = 0x79, type = "REL32", symbol = "?SpawnSingleBullet@BulletManagerView@@QAEHPAUBulletSpawnDescriptorView@@HHM@Z", target = 0x004067D0 },
+  { offset = 0x79, type = "REL32", symbol = "?SpawnSingleBullet@BulletSpawnDescriptorView@@QAEHPAUBulletManagerView@@HHM@Z", target = 0x004067D0 },
   { offset = 0xB1, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x00492590 },
   { offset = 0xB6, type = "REL32", symbol = "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z", target = 0x0043DD10 },
 ]
@@ -32726,7 +32726,6 @@ linkages = [
 ]
 
 [units.entity-start-script]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/BulletRuntime.cpp"
 support_sources = ["src/BulletManager.cpp", "src/BulletTransform.cpp", "src/PlayerCollision.cpp", "src/AnmManager.cpp", "src/EnemyEclDispatcher.cpp", "src/Enemy.cpp", "src/AnmVmStartScript.cpp", "src/AnmLoadedStartScript.cpp"]
@@ -33195,3 +33194,21 @@ linkages = [
 # The player-angle leaf is called with ECX=Player and EAX=position.
 # Keep its 67-byte body independently comparable while the larger
 # transform-program owner continues to recover its dispatch and cases.
+
+[units.bullet-spawn-single-exact]
+artifact_kind = "linked-pe"
+source = "src/BulletManager.cpp"
+support_sources = ["src/AnmManager.cpp","src/EnemyEclDispatcher.cpp","src/Enemy.cpp","src/RandomMath.cpp","src/BulletTransform.cpp","src/PlayerCollision.cpp","src/AnmVmStartScript.cpp","src/AnmLoadedStartScript.cpp"]
+pdb_source = "src/BulletManager.cpp"
+output_dir = "build/match-linked/BulletSpawnSingleExact"
+profile = ["/TP","/MT","/O2","/Gy","/GF","/Oi","/DNDEBUG","/Isrc","/GL","/GS"]
+link_profile = ["/ltcg","/nodefaultlib","/subsystem:console","/incremental:no","/fixed:no","/base:0x00400000","/debug","/debugtype:cv","/opt:noref","/opt:noicf","/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?SpawnBulletPattern@BulletSpawnDescriptorView@@QAEHPAUBulletManagerView@@@Z"
+functions = ["BulletSpawnDescriptorView::SpawnSingleBullet"]
+symbol = "?SpawnSingleBullet@BulletSpawnDescriptorView@@QAEHPAUBulletManagerView@@HHM@Z"
+target_address = 4220880
+size = 1413
+linkages = []
+compare_size = 1472
+data_spans = []

@@ -400,7 +400,7 @@ frontier; do not refresh a baseline merely to accept the new positions.
 - **BulletRuntimeView::AdvanceTransformProgram @0x406D90 (1,454 code bytes)**: the `bullet-transform-program` unit uses VC7.1 SP1 LTCG `/GL` + `/GS` and a 0x644-byte complete code/local-table comparison extent, including five local switch-table destinations at +0x5B0..+0x5C0 and the 128-byte selector span at +0x5C4. A fresh build against the current source still has a 0x640 PDB contribution; strict comparison stops with `PDB contribution size 0x640 differs from manifest 0x644` before comparing the complete owner. The target computes `index * 3` in EAX, loads kind into ECX, and forms the record pointer in ESI; the current baseline candidate assigns scaled index to ECX and kind to EAX. Several natural C++ type/scope/expression variants were explored without improving the complete owner. The source models 18 records of stride 0x18 at runtime +0x464, kind +0x10, allow-while-active +0x14, active flags +0x43C, cursor +0x45C, and nine extension-state slots at +0x614. Next focus is EAX/ECX/ESI lifetimes, child descriptor initialization order, both loop tails, and complete local tables. Do not shrink the comparison extent or claim partial exactness. The historical `bullet-runtime-update` source-epoch caveat remains separate. [2026-11-20]
 - **PlayerInitialize @0x4247F0 (1,435)**: 1,380 with 49 fields; current source
   carries five barriers and a scoped volatile manager capture. [2026-10-23]
-- **BulletManagerView::SpawnSingleBullet @0x4067D0 (1,413)**: 1,504.
+- **BulletSpawnDescriptorView::SpawnSingleBullet @0x4067D0 (1,413)**: 1,504.
   [2026-11-07]
 - **EnemyLaserLineView::RunCommands @0x41CA80 (1,356)**: 1,368; embedded VM
   receiver EDX versus ESI. [2026-10-20]

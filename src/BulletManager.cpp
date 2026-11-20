@@ -686,18 +686,16 @@ int __fastcall BulletManagerUpdateCallback(BulletManagerView *manager)
 
 
 #pragma var_order(speed, scanned, bullet, angle, transformFlags, this)
-int BulletManagerView::SpawnSingleBullet(
-    BulletSpawnDescriptorView *descriptor,
-    int index1, int index2, float angleToPlayer)
+int BulletSpawnDescriptorView::SpawnSingleBullet(
+    BulletManagerView *manager, int index1, int index2, float angleToPlayer)
 {
     float speed;
     int scanned;
     BulletRuntimeView *bullet;
     float angle;
     unsigned int transformFlags;
-
     scanned = 0;
-    bullet = bulletCursor;
+    bullet = manager->bulletCursor;
     for (scanned = 0; scanned < 2000; ++scanned)
     {
         if (bullet->state == 0)
@@ -708,89 +706,89 @@ int BulletManagerView::SpawnSingleBullet(
             reinterpret_cast<unsigned int>(bullet) +
             static_cast<unsigned int>(sizeof(BulletRuntimeView)));
         if (bullet->state == 5)
-            bullet = &bullets[0];
+            bullet = &manager->bullets[0];
     }
     if (scanned >= 2000)
         return 1;
 
     angle = 0.0f;
-    if (descriptor->count2 > 1)
+    if (this->count2 > 1)
     {
-        speed = descriptor->speed1 -
-            (descriptor->speed1 - descriptor->speed2) *
+        speed = this->speed1 -
+            (this->speed1 - this->speed2) *
                 static_cast<float>(index2) /
-                static_cast<float>(descriptor->count2);
+                static_cast<float>(this->count2);
     }
     else
     {
-        speed = descriptor->speed1;
+        speed = this->speed1;
     }
 
-    switch (descriptor->aimMode)
+    switch (this->aimMode)
     {
     case 0:
     case 1:
         // Retail LEA EAX,[ECX+1] uses the low 32-bit word before
         // the original signed rounding/division of an odd spawn index.
-        if ((descriptor->count1 & 1) != 0)
+        if ((this->count1 & 1) != 0)
         {
             const unsigned int nextIndexBits = static_cast<unsigned int>(index1) + 1u;
             const int nextIndex = *reinterpret_cast<const int *>(&nextIndexBits);
             angle += static_cast<float>((nextIndex) / 2) *
-                descriptor->angleStep;
+                this->angleStep;
         }
         else
             angle += static_cast<float>(index1 / 2) *
-                descriptor->angleStep + descriptor->angleStep * 0.5f;
+                this->angleStep + this->angleStep * 0.5f;
         if ((index1 & 1) != 0)
             angle *= -1.0f;
-        if (descriptor->aimMode == 0)
+        if (this->aimMode == 0)
             angle += angleToPlayer;
-        angle += descriptor->angle;
+        angle += this->angle;
         break;
 
     case 2:
         angle = angleToPlayer;
     case 3:
         angle += static_cast<float>(index1) * 6.2831855f /
-            static_cast<float>(descriptor->count1);
-        angle += static_cast<float>(index2) * descriptor->angleStep +
-            descriptor->angle;
+            static_cast<float>(this->count1);
+        angle += static_cast<float>(index2) * this->angleStep +
+            this->angle;
         break;
 
     case 4:
         angle = angleToPlayer;
     case 5:
-        angle += 3.1415927f / static_cast<float>(descriptor->count1);
+        angle += 3.1415927f / static_cast<float>(this->count1);
         angle += static_cast<float>(index1) * 6.2831855f /
-            static_cast<float>(descriptor->count1);
-        angle += static_cast<float>(index2) * descriptor->angleStep;
-        angle += descriptor->angle;
+            static_cast<float>(this->count1);
+        angle += static_cast<float>(index2) * this->angleStep;
+        angle += this->angle;
         break;
 
     case 6:
-        angle = descriptor->angle - descriptor->angleStep;
+        angle = this->angle - this->angleStep;
         angle *= g_RngView.GetRandomF32();
-        angle += descriptor->angleStep;
+        angle += this->angleStep;
         break;
 
     case 7:
-        speed = descriptor->speed1 - descriptor->speed2;
+        speed = this->speed1 - this->speed2;
         speed *= g_RngView.GetRandomF32();
-        speed += descriptor->speed2;
+        speed += this->speed2;
         angle += static_cast<float>(index1) * 6.2831855f /
-            static_cast<float>(descriptor->count1);
-        angle += static_cast<float>(index2) * descriptor->angleStep +
-            descriptor->angle;
+            static_cast<float>(this->count1);
+        angle += static_cast<float>(index2) * this->angleStep +
+            this->angle;
         break;
 
     case 8:
-        angle = descriptor->angle - descriptor->angleStep;
+        angle = this->angle - this->angleStep;
         angle *= g_RngView.GetRandomF32();
-        angle += descriptor->angleStep;
-        speed = descriptor->speed1 - descriptor->speed2;
+        angle += this->angleStep;
+        speed = this->speed1 - this->speed2;
         speed *= g_RngView.GetRandomF32();
-        speed += descriptor->speed2;
+        speed += this->speed2;
         break;
 
     default:
@@ -803,14 +801,14 @@ int BulletManagerView::SpawnSingleBullet(
     bullet->activeTimer.SetCurrent(0);
     bullet->speed = speed;
     bullet->angle = AddNormalizeAngle(angle, 0.0f);
-    bullet->position = descriptor->position;
+    bullet->position = this->position;
     bullet->position.z = 0.1f;
     reinterpret_cast<AnmFloat3View *>(&bullet->velocity)->
         FromAngleMagnitude(angle, speed);
 
-    bullet->activeTransformFlags = descriptor->transformFlags;
-    bullet->color = descriptor->color;
-    bullet->bulletType = descriptor->bulletType;
+    bullet->activeTransformFlags = this->transformFlags;
+    bullet->color = this->color;
+    bullet->bulletType = this->bulletType;
     bullet->flags = (bullet->flags & ~0x0cu) | 2u;
     bullet->value454 = 0;
 
@@ -818,21 +816,21 @@ int BulletManagerView::SpawnSingleBullet(
     // fetching the ANM resource passed to StartScript.
     const int scriptIndex = static_cast<int>(
         static_cast<unsigned int>(BulletNativeTableRead(
-            g_BulletSpriteScriptBase, static_cast<int>(descriptor->bulletType))) +
-        static_cast<unsigned int>(static_cast<int>(descriptor->color)));
+            g_BulletSpriteScriptBase, static_cast<int>(this->bulletType))) +
+        static_cast<unsigned int>(static_cast<int>(this->color)));
     _ReadWriteBarrier();
-    AnmLoadedView *resource = bulletAnm;
-    bullet->vm.StartScript(scriptIndex, resource, this);
+    AnmLoadedView *resource = manager->bulletAnm;
+    bullet->vm.StartScript(scriptIndex, resource, manager);
 
     // The effect-script ID also uses retail LEA EAX*2+0x11 word wrap.
-    switch (BulletNativeTableRead(g_BulletEffectMode, static_cast<int>(descriptor->bulletType)))
+    switch (BulletNativeTableRead(g_BulletEffectMode, static_cast<int>(this->bulletType)))
     {
     case 0:
         *reinterpret_cast<unsigned int *>(&bullet->effectScript) =
-            static_cast<unsigned int>(static_cast<int>(descriptor->color)) * 2u + 0x11u;
+            static_cast<unsigned int>(static_cast<int>(this->color)) * 2u + 0x11u;
         break;
     case 1:
-        bullet->effectScript = BulletNativeTableRead(g_BulletEffectScriptByColor, static_cast<int>(descriptor->color));
+        bullet->effectScript = BulletNativeTableRead(g_BulletEffectScriptByColor, static_cast<int>(this->color));
         break;
     case 2:
         bullet->effectScript = -1;
@@ -847,13 +845,13 @@ int BulletManagerView::SpawnSingleBullet(
         break;
     }
 
-    bullet->drawBucketIndex = BulletNativeTableRead(g_BulletDrawBucket, static_cast<int>(descriptor->bulletType));
-    bullet->transformSound = descriptor->transformSound;
+    bullet->drawBucketIndex = BulletNativeTableRead(g_BulletDrawBucket, static_cast<int>(this->bulletType));
+    bullet->transformSound = this->transformSound;
     bullet->offscreenCullDelayFrames = 10;
-    bullet->collisionWidth = BulletNativeTableRead(g_BulletCollisionSize, static_cast<int>(descriptor->bulletType));
+    bullet->collisionWidth = BulletNativeTableRead(g_BulletCollisionSize, static_cast<int>(this->bulletType));
     bullet->collisionHeight = bullet->collisionWidth;
 
-    transformFlags = descriptor->transformFlags;
+    transformFlags = this->transformFlags;
     if ((transformFlags & 2u) == 0)
         goto checkOtherInterrupts;
     bullet->vm.pendingInterrupt = 7;
@@ -877,11 +875,11 @@ checkOtherInterrupts:
 afterSpawnBackstep:
 
     memcpy(
-        bullet->transforms, descriptor->transforms,
-        sizeof(descriptor->transforms));
-    bullet->transformFlags = descriptor->transformFlags;
+        bullet->transforms, this->transforms,
+        sizeof(this->transforms));
+    bullet->transformFlags = this->transformFlags;
     bullet->activeTransformFlags = 0;
-    bullet->transformIndex = descriptor->transformStartIndex;
+    bullet->transformIndex = this->transformStartIndex;
     bullet->AdvanceTransformProgram();
     AnmRenderManagerView::ExecuteScript(&bullet->vm);
 
@@ -889,11 +887,13 @@ afterSpawnBackstep:
     bullet = reinterpret_cast<BulletRuntimeView *>(
         reinterpret_cast<unsigned int>(bullet) +
         static_cast<unsigned int>(sizeof(BulletRuntimeView)));
-    if (bullet->state == 5)
-        bulletCursor = &bullets[0];
-    else
-        bulletCursor = bullet;
+    if (bullet->state != 5)
+    {
+        manager->bulletCursor = bullet;
+        return 0;
+    }
 
+    manager->bulletCursor = &manager->bullets[0];
     return 0;
 }
 
@@ -916,8 +916,8 @@ int BulletSpawnDescriptorView::SpawnBulletPattern(BulletManagerView *manager)
     {
         for (index1 = 0; index1 < descriptor->count1; ++index1)
         {
-            if (manager->SpawnSingleBullet(
-                    descriptor, index1, index2, angleToPlayer) != 0)
+            if (descriptor->SpawnSingleBullet(
+                    manager, index1, index2, angleToPlayer) != 0)
                 goto doneSpawning;
         }
     }

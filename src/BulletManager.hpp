@@ -102,6 +102,8 @@ struct BulletSpawnDescriptorView
     int transformStartIndex;
     void *templateSprites;
 
+    int SpawnSingleBullet(
+        BulletManagerView *manager, int index1, int index2, float angleToPlayer);
     int SpawnBulletPattern(BulletManagerView *manager);
 };
 
@@ -239,9 +241,6 @@ struct BulletManagerView
     ~BulletManagerView();
     int Initialize();
 
-    int SpawnSingleBullet(
-        BulletSpawnDescriptorView *descriptor,
-        int index1, int index2, float angleToPlayer);
     int UpdateBullets();
     int DrawBucket(int bucketIndex);
     void ResetPool();
