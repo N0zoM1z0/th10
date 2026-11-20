@@ -28,7 +28,7 @@ struct AnmOpcodeVectorView
 void BulletRuntimeView::AdvanceTransformProgram()
 {
     unsigned int kind;
-    unsigned int dispatchKind;
+    int dispatchKind;
     BulletTransformRecordView *record;
     int index;
     int scaledIndex;
@@ -67,7 +67,7 @@ void BulletRuntimeView::AdvanceTransformProgram()
             goto loopTail;
         }
 
-        dispatchKind = kind;
+        dispatchKind = static_cast<int>(kind);
         if (dispatchKind <= 0x4000u)
         {
             if (dispatchKind != BULLET_TRANSFORM_SET_SPRITE)
