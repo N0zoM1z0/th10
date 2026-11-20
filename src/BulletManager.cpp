@@ -764,6 +764,7 @@ int BulletManagerView::SpawnSingleBullet(
         angle += 3.1415927f / static_cast<float>(descriptor->count1);
         angle += static_cast<float>(index1) * 6.2831855f /
             static_cast<float>(descriptor->count1);
+        angle += static_cast<float>(index2) * descriptor->angleStep;
         angle += descriptor->angle;
         break;
 
