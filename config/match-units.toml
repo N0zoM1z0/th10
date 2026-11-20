@@ -29669,7 +29669,7 @@ linkages = [
   { offset = 0x74, type = "REL32", symbol = "?AnmVmInitialize@@YIXPAXPAUAnmVmView@@@Z", target = 0x00401DE0 },
 ]
 
-# Complete 127-byte transition-effect cleanup under the actual StageCreate graph.
+# Complete 202-byte native ANM VM script-start member under the bullet-transform LTCG graph.
 [units.stage-transition-effect-cleanup]
 artifact_kind = "linked-pe"
 source = "src/StageScript.cpp"
@@ -32728,22 +32728,21 @@ linkages = [
 [units.entity-start-script]
 candidate = true
 artifact_kind = "linked-pe"
-source = "src/ScriptViewer.cpp"
-support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp", "src/AnmVmInitialize.cpp", "src/AnmVmStartScript.cpp", "src/AnmLoadedStartScript.cpp"]
-output_dir = "build/match-linked/EntityStartScript"
-profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+source = "src/BulletRuntime.cpp"
+support_sources = ["src/BulletManager.cpp", "src/BulletTransform.cpp", "src/PlayerCollision.cpp", "src/AnmManager.cpp", "src/EnemyEclDispatcher.cpp", "src/Enemy.cpp", "src/AnmVmStartScript.cpp", "src/AnmLoadedStartScript.cpp"]
+output_dir = "build/match-linked/BulletTransformProgram"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
-support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+entry_symbol = "?AdvanceTransformProgram@BulletRuntimeView@@QAEXXZ"
+functions = ["AnmVmView::StartScript"]
 pdb_source = "src/AnmVmStartScript.cpp"
-
-# Complete 127-byte transition-effect cleanup under the actual StageCreate graph.
-functions = ["StartEntityScript_00404f30"]
-symbol = "?StartEntityScript_00404f30@@YGXPAUAnmVmView@@HPAUAnmLoadedView@@@Z"
+symbol = "?StartScript@AnmVmView@@QAEXHPAUAnmLoadedView@@PAX@Z"
 target_address = 0x00404F30
 size = 202
 linkages = [
+  { offset = 0x009, type = "REL32", symbol = "?AnmVmInitialize@@YIXPAXPAUAnmVmView@@@Z", target = 0x00401DE0 },
+  { offset = 0x0BF, type = "REL32", symbol = "_LoadScript_0043e710@12", target = 0x0043E710 },
 ]
 
 [units.enemy-start-spell]
@@ -33152,46 +33151,45 @@ size = 1454
 compare_size = 1604
 data_spans = [{ offset = 0x5C4, width = 0x80 }]
 linkages = [
-  { offset = 0x94, type = "DIR32", local = true, target = 0x00407354 },
-  { offset = 0x9B, type = "DIR32", local = true, target = 0x00407340 },
-  { offset = 0xB6, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
-  { offset = 0xDD, type = "DIR32", symbol = "__real@c4778000", target = 0x00470B50 },
-  { offset = 0xFA, type = "DIR32", symbol = "__real@44778000", target = 0x00470CCC },
-  { offset = 0x107, type = "DIR32", symbol = "?g_Player@@3PAUPlayer@@A", target = 0x00477834 },
-  { offset = 0x114, type = "REL32", symbol = "?AngleFromPosition@Player@@QBEMPBUPlayerFloat3@@@Z", target = 0x00426660 },
-  { offset = 0x126, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
-  { offset = 0x148, type = "REL32", symbol = "?FromAngleMagnitude@AnmOpcodeVectorView@@QAEXMM@Z", target = 0x00408750 },
-  { offset = 0x16B, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x00492590 },
-  { offset = 0x170, type = "REL32", symbol = "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z", target = 0x0043DC90 },
-  { offset = 0x199, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
-  { offset = 0x1C5, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x00492590 },
-  { offset = 0x1CA, type = "REL32", symbol = "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z", target = 0x0043DC90 },
-  { offset = 0x1E5, type = "DIR32", symbol = "__real@c4778000", target = 0x00470B50 },
-  { offset = 0x202, type = "DIR32", symbol = "__real@44778000", target = 0x00470CCC },
-  { offset = 0x20F, type = "DIR32", symbol = "?g_Player@@3PAUPlayer@@A", target = 0x00477834 },
-  { offset = 0x21C, type = "REL32", symbol = "?AngleFromPosition@Player@@QBEMPBUPlayerFloat3@@@Z", target = 0x00426660 },
-  { offset = 0x22B, type = "DIR32", symbol = "__real@c479c000", target = 0x00470CC8 },
-  { offset = 0x270, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
-  { offset = 0x2FE, type = "DIR32", symbol = "?g_EnemyBulletManager@@3PAXA", target = 0x004776F0 },
-  { offset = 0x311, type = "DIR32", symbol = "?g_BulletSpriteScriptBase@@3PAHA", target = 0x00474170 },
-  { offset = 0x31C, type = "REL32", symbol = "?StartEntityScript_00404f30@@YGXPAUAnmVmView@@HPAUAnmLoadedView@@@Z", target = 0x00404F30 },
-  { offset = 0x354, type = "REL32", symbol = "?EnemyCancelBulletRecord@@YAIPAE@Z", target = 0x00408030 },
-  { offset = 0x372, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
-  { offset = 0x386, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x00492590 },
-  { offset = 0x38B, type = "REL32", symbol = "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z", target = 0x0043DD10 },
-  { offset = 0x3B7, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
-  { offset = 0x3D5, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
-  { offset = 0x494, type = "DIR32", symbol = "?g_EnemyBulletManager@@3PAXA", target = 0x004776F0 },
-  { offset = 0x49A, type = "REL32", symbol = "?SpawnBulletPattern@BulletManagerView@@QAEHPAUBulletSpawnDescriptorView@@@Z", target = 0x004073E0 },
-  { offset = 0x4B6, type = "REL32", symbol = "?EnemyCancelBulletRecord@@YAIPAE@Z", target = 0x00408030 },
-  { offset = 0x53F, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
+  { offset = 0x097, type = "DIR32", local = true, target = 0x00407354 },
+  { offset = 0x09E, type = "DIR32", local = true, target = 0x00407340 },
+  { offset = 0x0B9, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
+  { offset = 0x0E0, type = "DIR32", symbol = "__real@c4778000", target = 0x00470B50 },
+  { offset = 0x0F8, type = "DIR32", symbol = "__real@44778000", target = 0x00470CCC },
+  { offset = 0x105, type = "DIR32", symbol = "?g_Player@@3PAUPlayer@@A", target = 0x00477834 },
+  { offset = 0x110, type = "REL32", symbol = "?AngleFromPosition@Player@@QBEMPBUPlayerFloat3@@@Z", target = 0x00426660 },
+  { offset = 0x127, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
+  { offset = 0x149, type = "REL32", symbol = "?FromAngleMagnitude@AnmOpcodeVectorView@@QAEXMM@Z", target = 0x00408750 },
+  { offset = 0x16C, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x00492590 },
+  { offset = 0x171, type = "REL32", symbol = "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z", target = 0x0043DC90 },
+  { offset = 0x19A, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
+  { offset = 0x1C6, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x00492590 },
+  { offset = 0x1CB, type = "REL32", symbol = "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z", target = 0x0043DC90 },
+  { offset = 0x1E6, type = "DIR32", symbol = "__real@c4778000", target = 0x00470B50 },
+  { offset = 0x1FD, type = "DIR32", symbol = "__real@44778000", target = 0x00470CCC },
+  { offset = 0x20A, type = "DIR32", symbol = "?g_Player@@3PAUPlayer@@A", target = 0x00477834 },
+  { offset = 0x215, type = "REL32", symbol = "?AngleFromPosition@Player@@QBEMPBUPlayerFloat3@@@Z", target = 0x00426660 },
+  { offset = 0x228, type = "DIR32", symbol = "__real@c479c000", target = 0x00470CC8 },
+  { offset = 0x26D, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
+  { offset = 0x2FF, type = "DIR32", symbol = "?g_BulletSpriteScriptBase@@3PAHA", target = 0x00474170 },
+  { offset = 0x308, type = "DIR32", symbol = "?g_EnemyBulletManager@@3PAXA", target = 0x004776F0 },
+  { offset = 0x319, type = "REL32", symbol = "?StartScript@AnmVmView@@QAEXHPAUAnmLoadedView@@PAX@Z", target = 0x00404F30 },
+  { offset = 0x351, type = "REL32", symbol = "?EnemyCancelBulletRecord@@YAIPAE@Z", target = 0x00408030 },
+  { offset = 0x36B, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
+  { offset = 0x37F, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x00492590 },
+  { offset = 0x384, type = "REL32", symbol = "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z", target = 0x0043DD10 },
+  { offset = 0x3B0, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
+  { offset = 0x3CA, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
+  { offset = 0x46A, type = "DIR32", symbol = "?g_EnemyBulletManager@@3PAXA", target = 0x004776F0 },
+  { offset = 0x498, type = "REL32", symbol = "?SpawnBulletPattern@BulletManagerView@@QAEHPAUBulletSpawnDescriptorView@@@Z", target = 0x004073E0 },
+  { offset = 0x4B4, type = "REL32", symbol = "?EnemyCancelBulletRecord@@YAIPAE@Z", target = 0x00408030 },
+  { offset = 0x53D, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
   { offset = 0x5B0, type = "DIR32", local = true, target = 0x00406E32 },
   { offset = 0x5B4, type = "DIR32", local = true, target = 0x00406E5C },
   { offset = 0x5B8, type = "DIR32", local = true, target = 0x00406F0A },
   { offset = 0x5BC, type = "DIR32", local = true, target = 0x00406F64 },
   { offset = 0x5C0, type = "DIR32", local = true, target = 0x0040731C },
 ]
-
 
 # The player-angle leaf is called with ECX=Player and EAX=position.
 # Keep its 67-byte body independently comparable while the larger

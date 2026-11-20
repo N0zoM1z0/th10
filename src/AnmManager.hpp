@@ -658,6 +658,9 @@ struct AnmVmView
     AnmVmView();
     ~AnmVmView();
     void Initialize() { AnmVmInitialize(0, this); }
+    void Initialize(void *unused) { AnmVmInitialize(unused, this); }
+    __declspec(noinline) void StartScript(
+        int scriptIndex, AnmLoadedView *resource, void *unused);
     int InitializePulsingRadialTrail();
     float GetFloatVar(float variable);
     int GetIntVar(int variable);

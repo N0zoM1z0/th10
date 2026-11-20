@@ -140,10 +140,11 @@ void BulletRuntimeView::AdvanceTransformProgram()
                 const int scriptIndex =
                     g_BulletSpriteScriptBase[record->payload.int0] +
                     record->payload.int1;
-                StartEntityScript_00404f30(
-                    &vm, scriptIndex,
-                    reinterpret_cast<BulletManagerView *>(
-                        g_EnemyBulletManager)->bulletAnm);
+                _ReadWriteBarrier();
+                BulletManagerView *manager =
+                    reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager);
+                AnmLoadedView *resource = manager->bulletAnm;
+                vm.StartScript(scriptIndex, resource, manager);
             }
         }
         else if (dispatchKind <= 0x400000u)
