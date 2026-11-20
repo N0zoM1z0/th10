@@ -219,12 +219,12 @@ void BulletRuntimeView::AdvanceTransformProgram()
                 pattern.angleStep = record->payload.float1;
                 pattern.angle = record->payload.float0;
                 pattern.transformSound = -1;
+                BulletManagerView *manager =
+                    reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager);
                 _ReadWriteBarrier();
                 memcpy(pattern.transforms, this->transforms, sizeof(pattern.transforms));
 
-                BulletManagerView *manager =
-                    reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager);
-                manager->SpawnBulletPattern(&pattern, manager);
+                manager->SpawnBulletPattern(&pattern);
                 ++*cursor;
                 if (packedPattern == 0)
                     goto loopTail;
