@@ -41,9 +41,6 @@ void BulletRuntimeView::AdvanceTransformProgram()
     // again before forming the record address. Keep those memory operations
     // distinct; several opcode paths also update the cursor before the tail.
     cursor = &this->transformIndex;
-    if (*cursor >= 18)
-        return;
-
     do
     {
         index = *cursor;
@@ -219,12 +216,12 @@ void BulletRuntimeView::AdvanceTransformProgram()
                 pattern.angleStep = record->payload.float1;
                 pattern.angle = record->payload.float0;
                 pattern.transformSound = -1;
-                BulletManagerView *manager =
-                    reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager);
                 _ReadWriteBarrier();
                 memcpy(pattern.transforms, this->transforms, sizeof(pattern.transforms));
 
-                manager->SpawnBulletPattern(&pattern);
+                BulletManagerView *manager =
+                    reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager);
+                manager->SpawnBulletPattern(&pattern, manager);
                 ++*cursor;
                 if (packedPattern == 0)
                     goto loopTail;
