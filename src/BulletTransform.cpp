@@ -26,16 +26,19 @@ void BulletRuntimeView::AdvanceTransformProgram()
 {
     BulletTransformRecordView *record;
     unsigned int kind;
-    int index = this->transformIndex;
+    int index;
     unsigned int packedPattern;
     float selectedAngle;
     BulletSpawnDescriptorView pattern;
 
+    // The retail loop checks the record bound both before the first
+    // iteration and at the shared tail. Paths that set the index themselves
+    // skip the normal advance; a fading child additionally advances once.
+    if (this->transformIndex >= 18)
+        return;
+
     do
     {
-        if (this->transformIndex >= 18)
-            return;
-
         index = this->transformIndex;
         const unsigned char *bulletBytes =
             reinterpret_cast<const unsigned char *>(this);
@@ -211,16 +214,28 @@ void BulletRuntimeView::AdvanceTransformProgram()
                 if (packedPattern == 0)
                     goto loopTail;
                 EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));
-                goto loopTail;
+                goto advanceRecord;
             }
         }
-        else if (kind > 0x4000000u)
+        else if (kind <= 0x4000000u)
         {
-            if (kind == BULLET_TRANSFORM_BOUNCE_VARIANT)
-                goto bounce;
-        }
-        else if (kind == BULLET_TRANSFORM_STATE_8)
-        {
+            if (kind == BULLET_TRANSFORM_STATE_8)
+                goto state8;
+
+            if (kind == BULLET_TRANSFORM_SET_OWNER_TAG)
+            {
+                this->ownerTag = record->payload.int0;
+                this->transformIndex = index + 1;
+                goto loopTail;
+            }
+            if (kind == BULLET_TRANSFORM_JUMP)
+            {
+                this->transformIndex = record->payload.int0;
+                goto loopTail;
+            }
+            goto advanceRecord;
+
+        state8:
             this->activeTransformFlags |= BULLET_TRANSFORM_STATE_8;
             BulletExStateView &state = this->exStates[8];
             state.value0 = record->payload.float0;
@@ -238,18 +253,10 @@ void BulletRuntimeView::AdvanceTransformProgram()
             state.timer.previous = -1;
             state.int0 = record->payload.int0;
         }
-        else if (kind == BULLET_TRANSFORM_SET_OWNER_TAG)
+        else if (kind == BULLET_TRANSFORM_BOUNCE_VARIANT)
         {
-            this->ownerTag = record->payload.int0;
-            this->transformIndex = index + 1;
-            goto loopTail;
+            goto bounce;
         }
-        else if (kind == BULLET_TRANSFORM_JUMP)
-        {
-            this->transformIndex = record->payload.int0;
-            goto loopTail;
-        }
-
         goto advanceRecord;
 
 directionChange:
@@ -279,8 +286,9 @@ bounce:
         this->exStates[4].int0 = 0;
 
 advanceRecord:
-        ++this->transformIndex;
+        index = this->transformIndex + 1;
+        this->transformIndex = index;
 loopTail:
-        index = this->transformIndex;
-    } while (true);
+        ;
+    } while (this->transformIndex < 18);
 }
