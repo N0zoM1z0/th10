@@ -1,5 +1,8 @@
 #include "BulletManager.hpp"
 
+extern "C" void _ReadWriteBarrier();
+#pragma intrinsic(_ReadWriteBarrier)
+
 #include <math.h>
 #include <string.h>
 
@@ -682,7 +685,7 @@ int __fastcall BulletManagerUpdateCallback(BulletManagerView *manager)
 
 
 
-#pragma var_order(speed, scanned, bullet, angle, transformFlags, pendingInterrupt, this)
+#pragma var_order(speed, scanned, bullet, angle, transformFlags, this)
 int BulletManagerView::SpawnSingleBullet(
     BulletSpawnDescriptorView *descriptor,
     int index1, int index2, float angleToPlayer)
@@ -692,7 +695,6 @@ int BulletManagerView::SpawnSingleBullet(
     BulletRuntimeView *bullet;
     float angle;
     unsigned int transformFlags;
-    unsigned short pendingInterrupt;
 
     scanned = 0;
     bullet = bulletCursor;
@@ -811,12 +813,15 @@ int BulletManagerView::SpawnSingleBullet(
     bullet->flags = (bullet->flags & ~0x0cu) | 2u;
     bullet->value454 = 0;
 
-    // Original ADD EAX,[table+type*4] uses low 32-bit ANM script words.
-    bullet->vm.StartScript(static_cast<int>(
+    // Preserve the retail order: form the sprite script index before
+    // fetching the ANM resource passed to StartScript.
+    const int scriptIndex = static_cast<int>(
         static_cast<unsigned int>(BulletNativeTableRead(
             g_BulletSpriteScriptBase, static_cast<int>(descriptor->bulletType))) +
-        static_cast<unsigned int>(static_cast<int>(descriptor->color))),
-        bulletAnm, this);
+        static_cast<unsigned int>(static_cast<int>(descriptor->color)));
+    _ReadWriteBarrier();
+    AnmLoadedView *resource = bulletAnm;
+    bullet->vm.StartScript(scriptIndex, resource, this);
 
     // The effect-script ID also uses retail LEA EAX*2+0x11 word wrap.
     switch (BulletNativeTableRead(g_BulletEffectMode, static_cast<int>(descriptor->bulletType)))
@@ -848,24 +853,29 @@ int BulletManagerView::SpawnSingleBullet(
     bullet->collisionHeight = bullet->collisionWidth;
 
     transformFlags = descriptor->transformFlags;
-    if ((transformFlags & 2u) != 0)
-        pendingInterrupt = 7;
-    else if ((transformFlags & 4u) != 0)
-        pendingInterrupt = 8;
-    else if ((transformFlags & 8u) != 0)
-        pendingInterrupt = 9;
-    else
-        pendingInterrupt = 2;
-    bullet->vm.pendingInterrupt = pendingInterrupt;
-    if (pendingInterrupt != 2)
-        bullet->state = 2;
-
-    if (bullet->state == 2)
+    if ((transformFlags & 2u) == 0)
+        goto checkOtherInterrupts;
+    bullet->vm.pendingInterrupt = 7;
+setBulletStateTwo:
+    bullet->state = 2;
+    _ReadWriteBarrier();
+    bullet->position.x -= bullet->velocity.x * 4.0f;
+    bullet->position.y -= bullet->velocity.y * 4.0f;
+    bullet->position.z -= bullet->velocity.z * 4.0f;
+    goto afterSpawnBackstep;
+checkOtherInterrupts:
+    if ((transformFlags & 4u) != 0)
     {
-        bullet->position.x -= bullet->velocity.x * 4.0f;
-        bullet->position.y -= bullet->velocity.y * 4.0f;
-        bullet->position.z -= bullet->velocity.z * 4.0f;
+        bullet->vm.pendingInterrupt = 8;
+        goto setBulletStateTwo;
     }
+    if ((transformFlags & 8u) != 0)
+    {
+        bullet->vm.pendingInterrupt = 9;
+        goto setBulletStateTwo;
+    }
+    bullet->vm.pendingInterrupt = 2;
+afterSpawnBackstep:
 
     memcpy(
         bullet->transforms, descriptor->transforms,
