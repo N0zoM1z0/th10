@@ -682,7 +682,7 @@ int __fastcall BulletManagerUpdateCallback(BulletManagerView *manager)
 
 
 
-#pragma var_order(speed, scanned, bullet, angle, transformFlags, this)
+#pragma var_order(speed, scanned, bullet, angle, transformFlags, pendingInterrupt, this)
 int BulletManagerView::SpawnSingleBullet(
     BulletSpawnDescriptorView *descriptor,
     int index1, int index2, float angleToPlayer)
@@ -692,6 +692,7 @@ int BulletManagerView::SpawnSingleBullet(
     BulletRuntimeView *bullet;
     float angle;
     unsigned int transformFlags;
+    unsigned short pendingInterrupt;
 
     scanned = 0;
     bullet = bulletCursor;
@@ -848,14 +849,15 @@ int BulletManagerView::SpawnSingleBullet(
 
     transformFlags = descriptor->transformFlags;
     if ((transformFlags & 2u) != 0)
-        bullet->vm.pendingInterrupt = 7;
+        pendingInterrupt = 7;
     else if ((transformFlags & 4u) != 0)
-        bullet->vm.pendingInterrupt = 8;
+        pendingInterrupt = 8;
     else if ((transformFlags & 8u) != 0)
-        bullet->vm.pendingInterrupt = 9;
+        pendingInterrupt = 9;
     else
-        bullet->vm.pendingInterrupt = 2;
-    if ((transformFlags & 0x0eu) != 0)
+        pendingInterrupt = 2;
+    bullet->vm.pendingInterrupt = pendingInterrupt;
+    if (pendingInterrupt != 2)
         bullet->state = 2;
 
     if (bullet->state == 2)
