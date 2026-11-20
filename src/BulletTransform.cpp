@@ -251,7 +251,8 @@ void BulletRuntimeView::AdvanceTransformProgram()
             goto advanceRecord;
 
         state8:
-            this->activeTransformFlags |= BULLET_TRANSFORM_STATE_8;
+            // The state-8 opcode value is also its active-transform flag bit.
+            this->activeTransformFlags |= kind;
             BulletExStateView &state = this->exStates[8];
             state.value0 = record->payload.float0;
             state.value1 = record->payload.float1;
