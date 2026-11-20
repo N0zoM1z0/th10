@@ -65,77 +65,80 @@ void BulletRuntimeView::AdvanceTransformProgram()
         dispatchKind = kind;
         if (dispatchKind <= 0x4000u)
         {
-            if (dispatchKind <= 0x100u)
+            if (dispatchKind != BULLET_TRANSFORM_SET_SPRITE)
             {
-                if (dispatchKind == BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE)
-                    goto directionChange;
-
-                switch (dispatchKind)
+                if (dispatchKind <= 0x100u)
                 {
-                case BULLET_TRANSFORM_DECELERATE:
-                    this->activeTransformFlags |= BULLET_TRANSFORM_DECELERATE;
-                    this->exStates[0].timer.SetCurrent(0);
-                    this->exStates[0].vector.z = 0.0f;
-                    break;
+                    if (dispatchKind == BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE)
+                        goto directionChange;
 
-                case BULLET_TRANSFORM_ACCELERATE_VECTOR:
-                    this->activeTransformFlags |= BULLET_TRANSFORM_ACCELERATE_VECTOR;
-                    this->exStates[1].value0 = record->payload.float0;
-                    if (record->payload.float1 <= -990.0f)
-                        selectedAngle = this->angle;
-                    else if (record->payload.float1 >= 990.0f)
-                        selectedAngle =
-                            g_Player->AngleFromPosition(&this->position);
+                    switch (dispatchKind)
+                    {
+                    case BULLET_TRANSFORM_DECELERATE:
+                        this->activeTransformFlags |= BULLET_TRANSFORM_DECELERATE;
+                        this->exStates[0].timer.SetCurrent(0);
+                        this->exStates[0].vector.z = 0.0f;
+                        break;
+
+                    case BULLET_TRANSFORM_ACCELERATE_VECTOR:
+                        this->activeTransformFlags |= BULLET_TRANSFORM_ACCELERATE_VECTOR;
+                        this->exStates[1].value0 = record->payload.float0;
+                        if (record->payload.float1 <= -990.0f)
+                            selectedAngle = this->angle;
+                        else if (record->payload.float1 >= 990.0f)
+                            selectedAngle =
+                                g_Player->AngleFromPosition(&this->position);
+                        else
+                            selectedAngle = record->payload.float1;
+                        this->exStates[1].value1 = selectedAngle;
+                        this->exStates[1].timer.SetCurrent(0);
+                        this->exStates[1].int0 = record->payload.int0;
+                        reinterpret_cast<AnmOpcodeVectorView *>(
+                            &this->exStates[1].vector)->FromAngleMagnitude(
+                                this->exStates[1].value1,
+                                this->exStates[1].value0);
+                        if (*cursor != 0 && this->transformSound >= 0)
+                            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                                QueueSoundSample(this->transformSound, 0);
+                        break;
+
+                    case BULLET_TRANSFORM_ACCELERATE_POLAR:
+                        this->activeTransformFlags |= BULLET_TRANSFORM_ACCELERATE_POLAR;
+                        this->exStates[2].value0 = record->payload.float0;
+                        this->exStates[2].value1 = record->payload.float1;
+                        this->exStates[2].timer.SetCurrent(0);
+                        this->exStates[2].int0 = record->payload.int0;
+                        if (*cursor != 0 && this->transformSound >= 0)
+                            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                                QueueSoundSample(this->transformSound, 0);
+                        break;
+
+                    case BULLET_TRANSFORM_CHANGE_DIRECTION_RELATIVE:
+                    case BULLET_TRANSFORM_CHANGE_DIRECTION_AIMED:
+                        goto directionChange;
+                    }
+                }
+                else if (dispatchKind <= 0x1000u)
+                {
+                    if (dispatchKind != BULLET_TRANSFORM_SET_CANCEL_BEHAVIOR)
+                    {
+                        if (dispatchKind == BULLET_TRANSFORM_BOUNCE_ALL_EDGES ||
+                            dispatchKind == BULLET_TRANSFORM_BOUNCE_EXCEPT_BOTTOM)
+                            goto bounce;
+                    }
                     else
-                        selectedAngle = record->payload.float1;
-                    this->exStates[1].value1 = selectedAngle;
-                    this->exStates[1].timer.SetCurrent(0);
-                    this->exStates[1].int0 = record->payload.int0;
-                    reinterpret_cast<AnmOpcodeVectorView *>(
-                        &this->exStates[1].vector)->FromAngleMagnitude(
-                            this->exStates[1].value1,
-                            this->exStates[1].value0);
-                    if (*cursor != 0 && this->transformSound >= 0)
-                        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
-                            QueueSoundSample(this->transformSound, 0);
-                    break;
-
-                case BULLET_TRANSFORM_ACCELERATE_POLAR:
-                    this->activeTransformFlags |= BULLET_TRANSFORM_ACCELERATE_POLAR;
-                    this->exStates[2].value0 = record->payload.float0;
-                    this->exStates[2].value1 = record->payload.float1;
-                    this->exStates[2].timer.SetCurrent(0);
-                    this->exStates[2].int0 = record->payload.int0;
-                    if (*cursor != 0 && this->transformSound >= 0)
-                        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
-                            QueueSoundSample(this->transformSound, 0);
-                    break;
-
-                case BULLET_TRANSFORM_CHANGE_DIRECTION_RELATIVE:
-                case BULLET_TRANSFORM_CHANGE_DIRECTION_AIMED:
-                    goto directionChange;
+                    {
+                        this->cancelBehavior = record->payload.int0;
+                    }
                 }
-            }
-            else if (dispatchKind <= 0x1000u)
-            {
-                if (dispatchKind != BULLET_TRANSFORM_SET_CANCEL_BEHAVIOR)
+                else if (dispatchKind == BULLET_TRANSFORM_SET_CULL_DELAY)
                 {
-                    if (dispatchKind == BULLET_TRANSFORM_BOUNCE_ALL_EDGES ||
-                        dispatchKind == BULLET_TRANSFORM_BOUNCE_EXCEPT_BOTTOM)
-                        goto bounce;
-                }
-                else
-                {
-                    this->cancelBehavior = record->payload.int0;
+                    this->offscreenCullDelayFrames = record->payload.int0;
+                    *cursor = index + 1;
+                    goto loopTail;
                 }
             }
-            else if (dispatchKind == BULLET_TRANSFORM_SET_CULL_DELAY)
-            {
-                this->offscreenCullDelayFrames = record->payload.int0;
-                *cursor = index + 1;
-                goto loopTail;
-            }
-            else if (dispatchKind == BULLET_TRANSFORM_SET_SPRITE)
+            else
             {
                 const int scriptIndex =
                     g_BulletSpriteScriptBase[record->payload.int0] +
