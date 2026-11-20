@@ -224,7 +224,7 @@ void BulletRuntimeView::AdvanceTransformProgram()
                 _ReadWriteBarrier();
                 memcpy(pattern.transforms, this->transforms, sizeof(pattern.transforms));
 
-                manager->SpawnBulletPattern(&pattern);
+                pattern.SpawnBulletPattern(manager);
                 ++*cursor;
                 if (packedPattern == 0)
                     goto loopTail;

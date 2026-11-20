@@ -2107,9 +2107,9 @@ dispatch_difficulty_float_index_4_a:
        fVar10 = firePattern->fields.spawnPositionX - g_Player->drawPosition.x,
        fVar9 = fVar9 * fVar9 + fVar10 * fVar10,
        bulletProtectionRadiusSquared <= fVar9)) {
-      reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->
-          SpawnBulletPattern(reinterpret_cast<BulletSpawnDescriptorView *>(
-              firePattern));
+      reinterpret_cast<BulletSpawnDescriptorView *>(firePattern)->
+          SpawnBulletPattern(
+              reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager));
       return 0;
     }
     break;

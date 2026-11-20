@@ -928,37 +928,3 @@ doneSpawning:
     }
     return 0;
 }
-
-
-int BulletManagerView::SpawnBulletPattern(
-    BulletSpawnDescriptorView *descriptor, BulletManagerView *manager)
-{
-    int index2;
-    int index1;
-    float angleToPlayer;
-    float dx = g_Player->drawPosition.x - descriptor->position.x;
-    float dy = g_Player->drawPosition.y - descriptor->position.y;
-
-    if (dy == 0.0f && dx == 0.0f)
-        angleToPlayer = 1.5707964f;
-    else
-        angleToPlayer = (float)atan2(dy, dx);
-
-    for (index2 = 0; index2 < descriptor->count2; ++index2)
-    {
-        for (index1 = 0; index1 < descriptor->count1; ++index1)
-        {
-            if (manager->SpawnSingleBullet(
-                    descriptor, index1, index2, angleToPlayer) != 0)
-                goto doneSpawning;
-        }
-    }
-
-doneSpawning:
-    if ((descriptor->transformFlags & 0x200u) != 0)
-    {
-        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
-            QueueSoundCue(descriptor->spawnSound, descriptor->position.x);
-    }
-    return 0;
-}
