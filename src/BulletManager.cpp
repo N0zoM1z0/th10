@@ -811,9 +811,11 @@ int BulletManagerView::SpawnSingleBullet(
     bullet->value454 = 0;
 
     // Original ADD EAX,[table+type*4] uses low 32-bit ANM script words.
-    StartEntityScript_00404f30(&bullet->vm, static_cast<int>(
-            static_cast<unsigned int>(BulletNativeTableRead(g_BulletSpriteScriptBase, static_cast<int>(descriptor->bulletType))) +
-            static_cast<unsigned int>(static_cast<int>(descriptor->color))), bulletAnm);
+    bullet->vm.StartScript(static_cast<int>(
+        static_cast<unsigned int>(BulletNativeTableRead(
+            g_BulletSpriteScriptBase, static_cast<int>(descriptor->bulletType))) +
+        static_cast<unsigned int>(static_cast<int>(descriptor->color))),
+        bulletAnm, this);
 
     // The effect-script ID also uses retail LEA EAX*2+0x11 word wrap.
     switch (BulletNativeTableRead(g_BulletEffectMode, static_cast<int>(descriptor->bulletType)))
