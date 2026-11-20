@@ -286,10 +286,7 @@ directionChange:
         else
             selectedAngle = record->payload.float0;
         this->exStates[3].value1 = static_cast<float>(selectedAngle);
-        if (record->payload.float1 > -999.0f)
-            this->exStates[3].value0 = record->payload.float1;
-        else
-            this->exStates[3].value0 = this->speed;
+        this->exStates[3].value0 = record->payload.float1 > -999.0f ? record->payload.float1 : this->speed;
         this->exStates[3].timer.SetCurrent(0);
         this->exStates[3].int0 = record->payload.int0;
         this->exStates[3].int1 = record->payload.int1;
