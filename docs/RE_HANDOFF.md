@@ -1,72 +1,75 @@
 # TH10 reconstruction — next-agent handoff
 
-**Updated 2026-11-20.** Start with [AGENTS.md](../AGENTS.md), this brief, and the relevant part of [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md). The current work is natural C/C++ exact reconstruction, not whole-product/runtime closure. Work on `main`, inspect `git status --short --branch` and `git log -5 --oneline`, commit locally with `gpt-web:`, and do not push.
+**Updated 2026-11-20.** Start with [AGENTS.md](../AGENTS.md), this brief, and the relevant source/ledger rows. The current phase is natural C/C++ reconstruction with targeted VC7.1 codegen comparison. Product closure, semantic runtime validation and portability are later phases.
 
-## Target and source of truth
+## Checkpoint and worktree
 
-- Original Japanese TH10 v1.00a: `resources/th10.exe`, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`. Keep this private input uncommitted and unmodified.
-- `config/match-units.toml` holds comparison recipes; `config/matches.csv` is the historical canonical exact ledger; `config/frontiers.toml` stores nonexact diagnostics. **A ledger entry is not automatically a fresh exact comparison against the latest source.** Do not change target sizes, relocation bindings or frontier residuals simply to obtain a pass.
-- [PROGRESS.md](PROGRESS.md) is generated from those ledgers, not manually maintained. At this checkpoint it reports **1,556 canonical exact functions / 214,824 codegen bytes**, of which **640 functions / 144,495 bytes** have confirmed authored origin. Full-game origin and inventory closure remain open.
+- Code baseline: `7c93f291` — `gpt-web: use state opcode for active flag`. Latest metadata checkpoint: `a0ca57dc` — `gpt-web: align bullet pattern owner mapping`. Continue on `main`; do not push.
+- The committed state-8 action publishes `this->activeTransformFlags |= kind`. It has been rebuilt in the current source graph; the complete owner remains nonexact at the PDB-extent gate below.
+- The previous random-mode experiment in `src/BulletManager.cpp` was reviewed against the retail x87 sequence and reverted. Explicit float temporaries introduced `fstp`/`fmul` stack spills absent from the target. `BulletManager.cpp` is back at its committed source state; do not reintroduce that rewrite without new target evidence.
+- The current worktree has documentation/handoff edits only; C/C++ sources and comparison recipes are clean. No original target or toolchain inputs were modified.
+- The original target remains the private, ignored `resources/th10.exe`, Japanese TH10 v1.00a, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`. Keep it read-only and uncommitted.
+- `config/match-units.toml` contains linked-PE recipes; `config/matches.csv` is the canonical exact ledger; `config/frontiers.toml` is diagnostic only. A local strict comparison is not a substitute for a selected canonical cold replay.
 
-## Immediate focus: bullet transform interpreter
+## Main owner: `AdvanceTransformProgram`
 
-**`BulletRuntimeView::AdvanceTransformProgram`**, target `0x00406D90`, lives in `src/BulletTransform.cpp`. This is a substantial, **nonexact** owner, not a completed leaf. The target has `0x5AE` (1,454) code bytes and a `0x644` (1,604) byte code-and-local-table comparison extent. The current `bullet-transform-program` recipe uses VC7.1 SP1 LTCG `/GL`, a 128-byte selector data span at `+0x5C4`, and five local switch-table destinations. The old description of this function as a non-`/GL` normal-COFF owner is obsolete.
+`BulletRuntimeView::AdvanceTransformProgram`, target `0x00406D90`, is the substantial nonexact owner in `src/BulletTransform.cpp`.
 
-The source currently implements the 18-record transform loop, size-`0x18` records at runtime `+0x464`, kind at record `+0x10`, allow-while-active at `+0x14`, active flags at runtime `+0x43C`, and cursor at `+0x45C`. It uses a smaller switch nested inside range dispatch, the real ANM and sound-queue calls, the typed child-pattern descriptor, and nine transform state slots. In commit `306639a9`, the previously dirty code was preserved as a reviewed **work-in-progress**: there is an entry bound check and a shared loop-tail bound check; already-advanced actions skip normal advancement; a spawned child with the fade-parent flag follows an extra advance after cancelling the parent. This was checked against the target control-flow addresses, but the overall function has **not** achieved exact codegen.
+- Target code extent: `0x5AE` / 1,454 bytes.
+- Full code-and-local-data comparison extent: `0x644` / 1,604 bytes.
+- Unit: `bullet-transform-program`, rooted at `?AdvanceTransformProgram@BulletRuntimeView@@QAEXXZ`, built with VC7.1 SP1 LTCG `/GL` and `/GS` in `build/match-linked/BulletTransformProgramNormal`.
+- The suffix includes five local switch-table destinations at `+0x5B0..+0x5C0` and the 128-byte selector span at `+0x5C4`.
+- Runtime layout: up to 18 records, stride `0x18`, first record at `+0x464`, kind at record `+0x10`, allow-while-active at `+0x14`, active flags at `+0x43C`, cursor at `+0x45C`, and nine extension-state slots beginning at `+0x614`.
 
-Current targeted build:
+A fresh targeted build from the current committed C++ body produces a PDB contribution of `0x640` / 1,600 bytes. The strict comparator stops with `PDB contribution size 0x640 differs from manifest 0x644`; it therefore has not compared the complete owner. Do not lower `compare_size`, shrink the selector span, or claim exactness from a partial prefix.
 
-```sh
-scripts/repo-python scripts/build-match-unit.py --unit bullet-transform-program
-scripts/repo-python scripts/compare-linked-function.py --unit bullet-transform-program --json
+The target's first indexed loop load is:
+
+```asm
+mov edx, [ebp+45Ch]
+lea eax, [edx+edx*2]
+mov ecx, [ebp+eax*8+474h]
+lea esi, [ebp+eax*8+464h]
 ```
 
-The latest candidate has a **`0x634`-byte PDB contribution versus the manifest's `0x644`**. The strict comparator reports that extent mismatch, so a byte-match percentage would be misleading. An earlier committed baseline also failed (`0x61C` versus `0x644`). Next: preserve the nested opcode order, match the first record load / EAX-ECX-ESI lifetimes, child descriptor store order, the two distinct loop tails, and the local jump-table boundaries; compare the *whole* owner rather than stopping at the first `RET`. The retail entry uses two indexed addresses (`[ebp+eax*8+0x474]` and `LEA [ebp+eax*8+0x464]`); present C++ still lowers them differently. Do not use ASM, register fakery or padding.
+The current natural C++ candidate still allocates the scaled index and loaded opcode to different registers/order than the target. Repeated targeted experiments with raw byte-offset arithmetic, direct array indexing, volatile opcode loads, local declaration ordering and register hints did not resolve this. Keep those failed experiments reverted. Next, explore C++ expression/lifetime shapes that recover EAX as the scaled index and ECX as the opcode without inline assembly or fake ABI tricks. Then continue through child descriptor initialization, the distinct loop tails, local jump tables and selector bytes.
 
-**Affected exact-owner caveat:** `bullet-runtime-update` has a historical `885/885` row in `config/matches.csv`, but its current mixed-profile graph produces a `0x36E` PDB contribution against manifest `0x375`. The same `0x36E` result occurs when compiling the previous committed `BulletTransform.cpp` (before the `306639a9` loop changes); it is **not established as a new regression from that dirty change**. The next agent should reconcile the complete root graph and source epoch before claiming its current exactness or changing the canonical ledger.
+The child-pattern call at `+0x498` is now bound to the descriptor-owned symbol `?SpawnBulletPattern@BulletSpawnDescriptorView@@QAEHPAUBulletManagerView@@@Z`; the earlier `BulletManagerView::SpawnBulletPattern` mapping was stale.
 
-Adjacent previously verified independent leaves: `enemy-angle-from-player` (`Player::AngleFromPosition`, **67/67**) and `bullet-spawn-pattern-exact` (**194/194**). These are scoped historical checks; rerun them when relevant input graphs change. `EnemyRuntimeUpdate` (**2,412/2,412**) and `EnemySpawn` (**577/577**) were likewise exact in the earlier Enemy ANM-state graph. A matching callee never makes the parent exact.
+Do not use inline assembly, naked functions, fake ABI declarations, copied target bytes, padding, inert locals or comparator cropping. A matching leaf never makes this parent exact.
 
-## Other major frontiers
+## Relevant leaf owners
 
-These are the last useful bounded diagnostics, not fresh acceptance receipts:
+| Target owner | Fresh/current result | Canonical status |
+| --- | --- | --- |
+| `0x004073E0` `BulletSpawnDescriptorView::SpawnBulletPattern` | Fresh targeted build: 194/194 bytes, 6/6 target-bound fields | Accepted 194-byte row in `config/matches.csv`; source mapping and linked symbol now consistently use the descriptor-owned method. |
+| `0x00404F30` `AnmVmView::StartScript` | Fresh targeted build: 202/202 bytes, 2/2 REL32 fields | Strong exact candidate, but not in `config/matches.csv`; no canonical cold replay/promotion is claimed. |
+| `0x004067D0` `BulletManagerView::SpawnSingleBullet` | Current expanded bullet graph: PDB contribution 1,504 bytes vs 1,413 target bytes; many ordinary-byte differences | Large nonexact leaf frontier. Preserve the real x87 stack lifetime and recover the target private register/context ABI; do not replace it with a trivial wrapper. |
+| `0x00408030` `EnemyCancelBulletRecord` | Existing strict linked result: 199/199 bytes, 4 target-bound fields | Accepted historical row in `config/matches.csv`; no new replay was needed for this session. |
 
-| Owner / unit | Candidate / target | Residual | Next focus |
-| --- | ---: | ---: | --- |
-| Enemy ECL dispatcher, `enemy-dispatch-ecl` (36-TU LTCG) | 14,452 / 14,416 | 10,414 | Large opcode scheduler, operand lifetimes and typed pattern firing; current frontier `REGRESSED` by offset placement |
-| ECL interpreter, `ecl-run` | 7,020 / 7,020 | 23 | Remaining register/SIB and spill order; keep the four exact ECL stack leaves |
-| ANM executor, `anm-execute-script` | 9,964 / 9,964 | 2 | Opcode 91 argument register EDX vs ECX |
-| GUI message VM, `gui-message-run-candidate` | 4,464 / 4,480 | 1,935 | Portrait operand lifetimes, branch ordering |
-| `GameResetGui` | 1,965 / 1,965 | 47 | Preserve the exact lives-display helper |
+For `0x00404F30`, the maintained definition is `AnmVmView::StartScript(int, AnmLoadedView *, void *)` in `src/AnmVmStartScript.cpp`; the global `StartEntityScript_00404f30` wrapper remains for ordinary source-order callers. Its fresh 202/202 result is not yet a canonical exact-ledger promotion.
 
-The Enemy dispatcher source now shares an asserted `BulletTransformRecordView` with `BulletManager`, plus the 18-record/laser layout in `EnemyBulletPatternFieldsView` and the five-word `EnemyAnmScriptStateLayout` at Enemy runtime `+0xE8..+0xF8`. Opcode `0x199` indexes 22 overlapping transform slots, not just the 18 ordinary pattern slots. The Stage camera `value0E8/value0EC` words are unrelated shake coordinates. See the Enemy/Bullet sections of the knowledge base before changing layouts; the larger dispatcher still requires its own complete strict comparison.
-
-Other earlier exact guards include `EclVmHost::StopAllThreads` (31), ECL stack Pop/Push/EnterFrame/LeaveFrame (122/96/64/41), `PlayerHandleCollisionHit` (627), `EnemyApplyBulletClear` (44), and the reviewed Main camera owners. Their retained results belong to their original source graphs.
-
-## Short reproducible workflow
+## Bounded workflow
 
 ```sh
-scripts/repo-python scripts/verify-target.py
-scripts/repo-python scripts/verify-toolchain.py --check
-
-# Current large Bullet owner: build first, then read the strict mismatch.
+# Main nonexact owner
 scripts/repo-python scripts/build-match-unit.py --unit bullet-transform-program
 scripts/repo-python scripts/compare-linked-function.py --unit bullet-transform-program --json
 
-# Only when touching their source or linked graph:
-scripts/repo-python scripts/replay-exact-units.py \
-  --unit enemy-angle-from-player --unit bullet-spawn-pattern-exact --json
+# Relevant leaves
+scripts/repo-python scripts/build-match-unit.py --unit bullet-spawn-pattern-exact
+scripts/repo-python scripts/compare-linked-function.py --unit bullet-spawn-pattern-exact --json
+scripts/repo-python scripts/build-match-unit.py --unit entity-start-script
+scripts/repo-python scripts/compare-linked-function.py --unit entity-start-script --json
 
-# Existing large-frontier outputs; --no-build does not recompile.
-scripts/repo-python scripts/check-frontier.py --no-build ecl-run enemy-dispatch-ecl
+# Only for a deliberate canonical promotion, not ordinary iteration
+scripts/repo-python scripts/replay-exact-units.py --unit NAME --json
 
-# For documentation changes, only lightweight syntax/whitespace checks:
-scripts/repo-python scripts/ci.py
 git diff --check
 ```
 
-For a changed LTCG source, validate its actual entry graph and guard only the relevant exact owner(s); do not run full all-unit cold replay. The `bullet-runtime-update` source-epoch mismatch above must be resolved before treating its historical exact row as a current guard. Ghidra target observations remain reproducible with `scripts/repo-python scripts/ghidra.py`; the original executable and Ghidra project must stay private.
+`entity-start-script` and `bullet-transform-program` share `build/match-linked/BulletTransformProgramNormal`; rebuild the selected recipe before trusting that directory's PDB/PE/MAP artifacts. Do not run the full historical cold replay for ordinary bounded work.
 
-## Storage / retained evidence
+## Retained context
 
-The duplicate analysis dumps, unconfigured throwaway links and stale scratch were removed without touching the target, toolchain, Ghidra project, D3D adapter evidence, the origin-review input, or any **configured** `build/match-linked/` output. See [RE_ARTIFACTS.md](RE_ARTIFACTS.md) for what remains and what can be regenerated. The current code and this brief are in Git; no deleted scratch export is needed to continue.
+Keep `resources/th10.exe`, `.tools/` and the TH10 Wine prefix, `ghidra-project/`, `_reference/`, canonical ledgers, `docs/evidence/`, selected original Ghidra exports in `.analysis/`, configured `build/match-linked/` outputs, and unresolved `build/gpt-web/` contexts. See [RE_ARTIFACTS.md](RE_ARTIFACTS.md) for the retained artifact inventory. The adjacent `_reference/th10-decomp` project is a separate historical reference, not this repository's build or status authority.

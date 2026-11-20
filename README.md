@@ -51,10 +51,9 @@ and ledger rows. [PROGRESS.md](docs/PROGRESS.md) is generated from the ledgers
 and is the count authority. The inventory and origin classifications remain
 provisional; the Windows i386 product, runtime semantics and portability are open.
 
-The largest remaining nonexact owners are the 14,416-byte enemy ECL
-dispatcher, the 9,964-byte ANM executor, the 7,020-byte ECL interpreter and the
-4,480-byte GUI message interpreter. The handoff lists the current open-owner
-frontiers and their units.
+Current owner priorities and source-epoch-specific diagnostics are maintained in
+[RE_HANDOFF.md](docs/RE_HANDOFF.md) and [KNOWLEDGE_BASE.md](docs/KNOWLEDGE_BASE.md);
+the generated [PROGRESS.md](docs/PROGRESS.md) remains the count authority.
 
 For a new agent, read [AGENTS.md](AGENTS.md), then
 [RE_HANDOFF.md](docs/RE_HANDOFF.md), followed by the selected owner's source/ledger rows,
