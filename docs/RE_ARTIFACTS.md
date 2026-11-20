@@ -1,24 +1,17 @@
 # TH10 private inputs and reclaimable storage
 
-**Updated 2026-11-19.** The current task brief is [RE_HANDOFF.md](RE_HANDOFF.md). Keep the original target and active reconstruction contexts; remove reproducible scratch only after its useful findings have been recorded.
+**Updated 2026-11-20.** Start with [RE_HANDOFF.md](RE_HANDOFF.md). Temporary compiler logs, duplicate decompiles and unused experimental artifacts can be regenerated; keep the actual target and current verification inputs.
 
-## Preserve
+## Retain
 
-- `resources/th10.exe` — original Japanese v1.00a target, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`. Keep read-only and uncommitted.
-- `.tools/` (about 585 MiB), including this game's Wine prefix, pinned VC7.1 compiler/linker and shared-runtime links.
-- `ghidra-project/` (about 9.7 MiB), `_reference/`, maintained `src/`, `scripts/`, `config/`, Git history and reflogs.
-- `build/match-linked/` (about 183 MiB): 271 configured output directories, 244 present and 27 not yet built. Keep every present linked PE/MAP/PDB and support-object context. Also keep `build/match/` and `build/probe-backlog/`.
-- Five unresolved diagnostic workspaces under `build/gpt-web/` (about 4.5 MiB):
-  - `20261108-enemy-dispatch-rank-tail-final/`
-  - `20261108-enemy-runtime-aggregate-sum/`
-  - `20261109/anm-execute-child91-aggregate/`
-  - `20261109/ecl-run-length-pointer-order/`
-  - `20261109/playerhud-restored-natural-loader/`
-- `.analysis/` (about 6.4 MiB), including active ANM/ECL/Enemy decompiler exports, `.analysis/factory-runtime/`, the D3D adapter work and evidence, `.analysis/gpt-5.6-sol/20260917-origin-review/runtime-origin-review.json`, and the four optional trial generators in `.analysis/gpt-web/`.
-- `docs/evidence/` compiler contexts and binding contracts referenced by the reconstruction workflow.
+- `resources/th10.exe`: private original Japanese TH10 v1.00a target (SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`), read-only and ignored.
+- `.tools/` (roughly 585 MiB), including the VC7.1 SP1 toolchain and this game's Wine prefix; `ghidra-project/` (roughly 10 MiB) and the shared Ghidra runtime config; `_reference/` (roughly 68 MiB).
+- Maintained `src/`, `scripts/`, `config/`, Git history and `docs/evidence/`, including D3D adapter/binding evidence; the origin-review input under `.analysis/gpt-5.6-sol/20260917-origin-review/`.
+- All **configured** `build/match-linked/` linked PE/MAP/PDB and object contexts: 272 configured output directories, **245 currently present**, 27 not yet built. Retain `build/match/`, `build/probe-backlog/` and the five active unresolved `build/gpt-web/` diagnostic workspaces. Preserve the four optional `.analysis/gpt-web/` generators and the active `.analysis/d3d-*` evidence.
+- Selected original Ghidra exports in `.analysis/` remain available, including `th10-bullet-transform-decomp.c`, `th10-bullet-transform-disasm.txt`, `th10-run-decomp.c` and `th10-dispatch-decomp.c`. All can also be regenerated read-only from the retained target project.
 
-## Cleanup on 2026-11-19
+## Cleanup performed
 
-Removed **232** superseded experiment files (230 top-level `build/try-*` logs/source snapshots/reproducible comparisons plus two temporary camera relink logs), reclaiming **322,448 bytes**. Kept the two selected cold-link result JSON files for `EnemyMotionView::AdvanceMotion` and `EclVmScriptDatabase::AddScriptData`; their findings are summarized in `KNOWLEDGE_BASE.md` and `RE_HANDOFF.md`. No `build/match-linked/` context, target, toolchain, analyzer project, D3D work or canonical ledger was deleted.
+The 2026-11-20 handoff cleanup reclaimed approximately **3.5 MiB (3,674,270 regular-file bytes)**: two unconfigured, unreferenced linked-output experiments (`BulletRuntimeUpdateTransform`, `AnmManagerRemoveVm`); identical duplicate top-level decompiler exports; obsolete transform alignment/trial scripts and reports; old Python bytecode; and old Ghidra application-log content (retaining the final 64 KiB). No configured match unit, game input, toolchain, analyzer project, D3D evidence, or canonical ledger was deleted.
 
-Do not remove the five diagnostic workspaces or the four `.analysis/gpt-web/` trial generators without first replacing the current unresolved-owner evidence. Do not run Git garbage collection or expire reflogs for storage cleanup. Keep new scratch below `.analysis/` and build outputs below `build/`; no replacement archives, deletion manifests or recurring cleanup reports are needed.
+The remaining dominant storage is required reconstruction context: the toolchain/Wine prefix, configured linked comparison contexts, and reference source. Do not run Git GC, expire reflogs, or purge those directories just to make the repository smaller. If a future owner replaces a private comparison context, record the actionable finding in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) first and clean only demonstrably unreferenced temporary outputs. Do not create replacement archives or deletion manifests.

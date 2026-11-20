@@ -1,103 +1,72 @@
 # TH10 reconstruction — next-agent handoff
 
-**Updated 2026-11-19.** Read [AGENTS.md](../AGENTS.md), this brief, and the relevant topic in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md). Keep commits local; do not push.
+**Updated 2026-11-20.** Start with [AGENTS.md](../AGENTS.md), this brief, and the relevant part of [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md). The current work is natural C/C++ exact reconstruction, not whole-product/runtime closure. Work on `main`, inspect `git status --short --branch` and `git log -5 --oneline`, commit locally with `gpt-web:`, and do not push.
 
-## Repository and target
+## Target and source of truth
 
-- Continue on `main`. Local checkpoints are ahead of `origin/main`; do not push. Check `git status --short --branch` before starting.
-- The only valid target is the original Japanese TH10 v1.00a executable at `resources/th10.exe`, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`. Keep it read-only and uncommitted.
-- `docs/PROGRESS.md` is generated from the canonical ledgers. Current totals: 1,556 exact functions / 214,824 codegen bytes; 640 exact functions / 144,495 bytes have confirmed authored origin. The complete inventory and authored denominator remain provisional.
+- Original Japanese TH10 v1.00a: `resources/th10.exe`, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`. Keep this private input uncommitted and unmodified.
+- `config/match-units.toml` holds comparison recipes; `config/matches.csv` is the historical canonical exact ledger; `config/frontiers.toml` stores nonexact diagnostics. **A ledger entry is not automatically a fresh exact comparison against the latest source.** Do not change target sizes, relocation bindings or frontier residuals simply to obtain a pass.
+- [PROGRESS.md](PROGRESS.md) is generated from those ledgers, not manually maintained. At this checkpoint it reports **1,556 canonical exact functions / 214,824 codegen bytes**, of which **640 functions / 144,495 bytes** have confirmed authored origin. Full-game origin and inventory closure remain open.
 
-## Earlier source checkpoint: typed supervisor cameras
+## Immediate focus: bullet transform interpreter
 
-`MainSupervisorView::cameraRecords[2]` is now an explicit pair of `MainCameraRecordView` records at +0x154 and +0x26C, each 0x118 bytes. Each record contains an 0xE4-byte `AnmViewportOwnerView` prefix, `unknown0E4`, screen-shake X/Y at +0xE8/+0xEC, and 0x28 trailing bytes. Slot 1 ends exactly at `activeViewport` +0x384.
+**`BulletRuntimeView::AdvanceTransformProgram`**, target `0x00406D90`, lives in `src/BulletTransform.cpp`. This is a substantial, **nonexact** owner, not a completed leaf. The target has `0x5AE` (1,454) code bytes and a `0x644` (1,604) byte code-and-local-table comparison extent. The current `bullet-transform-program` recipe uses VC7.1 SP1 LTCG `/GL`, a 128-byte selector data span at `+0x5C4`, and five local switch-table destinations. The old description of this function as a non-`/GL` normal-COFF owner is obsolete.
 
-The first slot is the published camera (0x491D7C); the second is the secondary camera (0x491E94). `MainConfigureGameplayViewport` and `EnemyPrepareProjection` index the records directly. ANM layer 3/14 use slot 0; layers 15/16/19 and `GameWindowView::Render` use slot 1.
+The source currently implements the 18-record transform loop, size-`0x18` records at runtime `+0x464`, kind at record `+0x10`, allow-while-active at `+0x14`, active flags at runtime `+0x43C`, and cursor at `+0x45C`. It uses a smaller switch nested inside range dispatch, the real ANM and sound-queue calls, the typed child-pattern descriptor, and nine transform state slots. In commit `306639a9`, the previously dirty code was preserved as a reviewed **work-in-progress**: there is an entry bound check and a shared loop-tail bound check; already-advanced actions skip normal advancement; a spawned child with the fade-parent flag follows an extra advance after cancelling the parent. This was checked against the target control-flow addresses, but the overall function has **not** achieved exact codegen.
 
-All 15 complete affected owners compare exact after relinking the changed translation units:
-
-- Main supervisor constructor/destructor, `SetNextGameMode`, `OnUpdate`, `ReleaseGame`, `StartModeThread`, and `LeaveLock` (71, 22, 37, 113, 293, 118 and 25 bytes).
-- `GameWindowView::Render` (425), `MainConfigureGameplayViewport` (60), and `EnemyPrepareProjection` (60).
-- ANM `DrawLayer3/14/15/16/19` (115, 48, 72, 72 and 72 bytes).
-
-## Latest source checkpoint: typed Enemy ANM script state
-
-`EnemyRuntimeView` runtime +0xE8..+0xF8 is a five-DWORD ANM script-state region. `EnemyAnmScriptStateLayout` documents selected resource, primary VM resource/script, base script and direction, with asserted size 0x14 and member offsets. The runtime keeps descriptive direct members so the large ECL dispatcher retains its existing LTCG lowering. The separate `StageCameraStateView::value0E8/value0EC` fields remain untouched; they are camera shake values, not Enemy ANM selectors.
-
-Targeted linked exact replays after the change pass for `EnemyRuntimeUpdate` (2,412/2,412) and `EnemySpawn` (577/577). The primary 36-support-TU dispatcher remains nonexact: current local comparison is 14,452/14,416 bytes with 10,414 differing bytes. Its residual offsets have moved relative to the stored frontier; do not refresh the baseline to accept them.
-
-## Latest source checkpoint: enemy bullet-pattern transform layout
-
-`EnemyBulletPatternFieldsView` now names the full +0x20..+0x1F3 transform/laser configuration area: 18 shared `BulletTransformRecordView` records followed by laser offsets, width and timing words. The +0x1FC..+0x20C tail is named from the matching `BulletSpawnDescriptorView`; +0x1FA remains explicitly unknown. ECL SET_BULLET_EXTRA (0x199) is typed against the same six-field transform record, retaining its 22-slot overlapping 0x18-byte indexing semantics. Size and cross-view member offsets are asserted.
-
-## Exact owners to preserve
-
-- `EnemyMotionView::AdvanceMotion` — 171/171 bytes, seven bound REL32/DIR32 fields; selected 17-source VC7.1 SP1 `/GL` cold replay passes.
-- `EclVmScriptDatabase::AddScriptData` — 589/589 bytes; SCPT payload/table bases derive from `sizeof(EclVmScriptFileHeader)`.
-- `PlayerHandleCollisionHit` 627/627; `EnemyApplyBulletClear` 44/44; `GuiSetLivesDisplayCount` 77/77.
-- `EnemyRuntimeUpdate` 2,412/2,412 and `EnemySpawn` 577/577; targeted exact replays after the ANM state record migration remain byte-identical.
-- ECL stack `Pop`, `Push`, `EnterFrame`, `LeaveFrame` — 122/122, 96/96, 64/64, 41/41.
-- `Chain::AllocElem` 74/74 and `Chain::~Chain` 103/103.
-- The 15 camera-related owners listed above are exact in their complete linked extents.
-
-The unit definitions and relocation bindings are in `config/match-units.toml`; accepted exact rows are in `config/matches.csv`. A matching leaf does not make its larger caller exact.
-
-## Current open owners
-
-These are bounded local linked comparisons, not cold-replay receipts. `REGRESSED` means the residual offsets moved relative to the stored frontier; it does not necessarily mean the raw difference count increased. Do not update `config/frontiers.toml` just to bless moved offsets.
-
-| Owner | Candidate / target | Differing bytes | Current state / focus |
-| --- | ---: | ---: | --- |
-| Enemy ECL dispatcher, primary 36-TU `/GL` graph | 14,452 / 14,416 | 10,414 | `REGRESSED` by residual position; typed pattern/VM access and firing-pattern receiver are retained. Continue with dispatch scheduling and the 36-TU graph. |
-| Enemy ECL dispatcher, secondary 12-TU `/GS` graph | 14,456 / 14,416 | 10,240 | `REGRESSED`; diagnostic only, not a replacement for the primary graph. |
-| `EclVmContext::Run` | 7,020 / 7,020 | 23 | `REGRESSED` because residual positions moved. The four stack leaves remain exact. |
-| `AnmRenderManagerView::ExecuteScript` | 9,964 / 9,964 | 2 | Opcode 91 argument register: target EDX, candidate ECX at +0x112/+0x115. |
-| `GameResetGui` | 1,965 / 1,965 | 47 | Lives-display helper remains exact at 77/77. |
-| `TransitionShakeLinear` | 439 / 439 | 27 | Separate `TransitionShakeEnvelope` 349/349 is exact; naive RNG/division reordering regresses. |
-| `BulletRuntimeView::UpdateAbsoluteDirectionChange` | 335 / 335 | 2 | Remaining angle argument register differs (target EDX, candidate EAX). |
-| `ReplayPlaybackFrameControlCallback` | 68 / 68 | 4 | Branch destinations differ; FrontEnd options owner remains exact. |
-| `Chain::Chain` | 59 / 59 | 8 | Keep separate from the exact allocator/destructor. |
-| `EnemyFullObjectView::ReadFloatOperand` | 876 / 884 | 262 | Eight-byte extent short. |
-| `InitializeGameStatisticsRecord` | 274 / 274 | 25 | Full extent; register allocation for zero/name/group loop remains. |
-| `EnemyGameStateView::StartSpell` | 2,404 / 2,432 | 1,129 | Nonexact. |
-| `GameManagerUpdateBody` | 1,538 / 1,544 | 1,022 | Nonexact. |
-| `ItemManagerUpdateBody` | 2,220 / 2,320 | 1,639 | Nonexact. |
-
-## Enemy/ECL decisions already in source
-
-- `FIRE_BULLET_PATTERN` retains one `EnemyBulletPatternView*` across XYZ stores, the protection-radius check and `SpawnBulletPattern`. This reduced the primary dispatcher from 10,495 to 10,414 differing bytes and the secondary graph from 10,531 to 10,240; both residual sets moved and remain nonexact.
-- Paired bullet sprite/offset/angle/count/speed/sound and rank-interpolation writes retain typed record pointers after the first store. Preserve unchecked modulo-32-bit script indexing and operand-read order; hoisting pointers earlier changes register lifetimes.
-- `dispatch_copy_player_to_motion` uses a 12-byte `memcpy` to preserve NaN payloads and signed zero. Pattern initialization clears the complete 0x210-byte record before explicit defaults; pattern copy uses typed assignment because indices may be equal. Opcode 0x199 has 22 overlapping 0x18-byte extra records per pattern.
-- Type-0/type-1 laser request layouts remain distinct (0x1DC/0x1F8). `EnemyManagedVmIdAt` retains unchecked 32-bit arithmetic for ten four-byte VM handles; only flag loops are bounded to 0..9.
-- Enemy ANM script state is the asserted five-DWORD `EnemyAnmScriptStateView` at runtime +0xE8. Keep the selected resource separate from the primary VM resource/script pair and from the base script/direction consumed by runtime update.
-- `EclVmScriptDatabase::AddScriptData` uses the verified 0x24-byte header size for both subroutine-table and include-payload bases.
-
-See the Enemy, ECL VM, ANM and Main sections of [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) for the supporting offsets and failed experiments.
-
-## Short validation loop
+Current targeted build:
 
 ```sh
-# Primary Enemy/ECL graph and its complete exact leaf guard
-scripts/repo-python scripts/diagnostics/triage/quick-relink.py player-handle-collision-hit --dirty src/EnemyEclDispatcher.cpp
-scripts/repo-python scripts/check-frontier.py --no-build enemy-dispatch-ecl ecl-run anm-execute-script game-reset-gui
-scripts/repo-python scripts/compare-linked-function.py --unit player-handle-collision-hit --json
-
-# Secondary Enemy graph
-scripts/repo-python scripts/diagnostics/triage/quick-relink.py enemy-apply-bullet-clear --dirty src/EnemyEclDispatcher.cpp
-scripts/repo-python scripts/check-frontier.py --no-build enemy-dispatch-ecl-12tu
-scripts/repo-python scripts/compare-linked-function.py --unit enemy-apply-bullet-clear --json
-
-# Enemy runtime and spawn state
-scripts/repo-python scripts/replay-exact-units.py --unit enemy-runtime-update --unit enemy-spawn --json
-
-# ECL VM
-scripts/repo-python scripts/diagnostics/triage/quick-relink.py player-handle-collision-hit --dirty src/EclVm.cpp
-scripts/repo-python scripts/check-frontier.py --no-build ecl-run
-scripts/repo-python scripts/compare-linked-function.py --unit ecl-vm-stack-pop --json
+scripts/repo-python scripts/build-match-unit.py --unit bullet-transform-program
+scripts/repo-python scripts/compare-linked-function.py --unit bullet-transform-program --json
 ```
 
-Pass every changed translation unit after `--dirty`. Do not run the full cold replay for ordinary iterations. Keep commits local with the `gpt-web: ...` prefix and the required co-author trailer.
+The latest candidate has a **`0x634`-byte PDB contribution versus the manifest's `0x644`**. The strict comparator reports that extent mismatch, so a byte-match percentage would be misleading. An earlier committed baseline also failed (`0x61C` versus `0x644`). Next: preserve the nested opcode order, match the first record load / EAX-ECX-ESI lifetimes, child descriptor store order, the two distinct loop tails, and the local jump-table boundaries; compare the *whole* owner rather than stopping at the first `RET`. The retail entry uses two indexed addresses (`[ebp+eax*8+0x474]` and `LEA [ebp+eax*8+0x464]`); present C++ still lowers them differently. Do not use ASM, register fakery or padding.
 
-## Storage
+**Affected exact-owner caveat:** `bullet-runtime-update` has a historical `885/885` row in `config/matches.csv`, but its current mixed-profile graph produces a `0x36E` PDB contribution against manifest `0x375`. The same `0x36E` result occurs when compiling the previous committed `BulletTransform.cpp` (before the `306639a9` loop changes); it is **not established as a new regression from that dirty change**. The next agent should reconcile the complete root graph and source epoch before claiming its current exactness or changing the canonical ledger.
 
-See [RE_ARTIFACTS.md](RE_ARTIFACTS.md). Preserve `resources/`, `.tools/`, `ghidra-project/`, `_reference/`, `build/match-linked/`, `build/match/`, `build/probe-backlog/`, the five unresolved `build/gpt-web/` diagnostic workspaces, D3D evidence, the origin-review input and the private analyzer runtime.
+Adjacent previously verified independent leaves: `enemy-angle-from-player` (`Player::AngleFromPosition`, **67/67**) and `bullet-spawn-pattern-exact` (**194/194**). These are scoped historical checks; rerun them when relevant input graphs change. `EnemyRuntimeUpdate` (**2,412/2,412**) and `EnemySpawn` (**577/577**) were likewise exact in the earlier Enemy ANM-state graph. A matching callee never makes the parent exact.
+
+## Other major frontiers
+
+These are the last useful bounded diagnostics, not fresh acceptance receipts:
+
+| Owner / unit | Candidate / target | Residual | Next focus |
+| --- | ---: | ---: | --- |
+| Enemy ECL dispatcher, `enemy-dispatch-ecl` (36-TU LTCG) | 14,452 / 14,416 | 10,414 | Large opcode scheduler, operand lifetimes and typed pattern firing; current frontier `REGRESSED` by offset placement |
+| ECL interpreter, `ecl-run` | 7,020 / 7,020 | 23 | Remaining register/SIB and spill order; keep the four exact ECL stack leaves |
+| ANM executor, `anm-execute-script` | 9,964 / 9,964 | 2 | Opcode 91 argument register EDX vs ECX |
+| GUI message VM, `gui-message-run-candidate` | 4,464 / 4,480 | 1,935 | Portrait operand lifetimes, branch ordering |
+| `GameResetGui` | 1,965 / 1,965 | 47 | Preserve the exact lives-display helper |
+
+The Enemy dispatcher source now shares an asserted `BulletTransformRecordView` with `BulletManager`, plus the 18-record/laser layout in `EnemyBulletPatternFieldsView` and the five-word `EnemyAnmScriptStateLayout` at Enemy runtime `+0xE8..+0xF8`. Opcode `0x199` indexes 22 overlapping transform slots, not just the 18 ordinary pattern slots. The Stage camera `value0E8/value0EC` words are unrelated shake coordinates. See the Enemy/Bullet sections of the knowledge base before changing layouts; the larger dispatcher still requires its own complete strict comparison.
+
+Other earlier exact guards include `EclVmHost::StopAllThreads` (31), ECL stack Pop/Push/EnterFrame/LeaveFrame (122/96/64/41), `PlayerHandleCollisionHit` (627), `EnemyApplyBulletClear` (44), and the reviewed Main camera owners. Their retained results belong to their original source graphs.
+
+## Short reproducible workflow
+
+```sh
+scripts/repo-python scripts/verify-target.py
+scripts/repo-python scripts/verify-toolchain.py --check
+
+# Current large Bullet owner: build first, then read the strict mismatch.
+scripts/repo-python scripts/build-match-unit.py --unit bullet-transform-program
+scripts/repo-python scripts/compare-linked-function.py --unit bullet-transform-program --json
+
+# Only when touching their source or linked graph:
+scripts/repo-python scripts/replay-exact-units.py \
+  --unit enemy-angle-from-player --unit bullet-spawn-pattern-exact --json
+
+# Existing large-frontier outputs; --no-build does not recompile.
+scripts/repo-python scripts/check-frontier.py --no-build ecl-run enemy-dispatch-ecl
+
+# For documentation changes, only lightweight syntax/whitespace checks:
+scripts/repo-python scripts/ci.py
+git diff --check
+```
+
+For a changed LTCG source, validate its actual entry graph and guard only the relevant exact owner(s); do not run full all-unit cold replay. The `bullet-runtime-update` source-epoch mismatch above must be resolved before treating its historical exact row as a current guard. Ghidra target observations remain reproducible with `scripts/repo-python scripts/ghidra.py`; the original executable and Ghidra project must stay private.
+
+## Storage / retained evidence
+
+The duplicate analysis dumps, unconfigured throwaway links and stale scratch were removed without touching the target, toolchain, Ghidra project, D3D adapter evidence, the origin-review input, or any **configured** `build/match-linked/` output. See [RE_ARTIFACTS.md](RE_ARTIFACTS.md) for what remains and what can be regenerated. The current code and this brief are in Git; no deleted scratch export is needed to continue.

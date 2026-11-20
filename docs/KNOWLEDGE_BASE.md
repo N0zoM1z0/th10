@@ -397,8 +397,7 @@ frontier; do not refresh a baseline merely to accept the new positions.
 - **LoadHintFile @0x419960 (1,498)**: 1,533. [2026-10-20]
 - **UpdateReplaySave @0x433570 (1,460)**: 1,444; the target reloads the pressed
   input after the movement sound. [2026-10-30]
-- **BulletRuntimeView::AdvanceTransformProgram @0x406D90 (1,454)**: lives in a
-  non-`/GL` TU; normal COFF 1,540. [2026-11-07]
+- **BulletRuntimeView::AdvanceTransformProgram @0x406D90 (1,454 code bytes)**: the current `bullet-transform-program` unit uses VC7.1 SP1 LTCG `/GL` and a 0x644-byte complete code/local-table comparison extent. At the 2026-11-20 checkpoint, the candidate PDB contribution is 0x634, not the required 0x644; strict comparison reports an extent error. The prior source baseline is also nonexact (0x61C contribution). The older normal-COFF 1,540-byte measurement is superseded. The source has layered opcode-range dispatch with a low-kind switch and two shared loop-tail paths: normal actions advance the cursor, while jump/cull/owner/skip paths arrive after setting it; fading child patterns take a further advance after parent cancellation. Verify the actual record load, register lifetime, child descriptor store order and jump-table boundaries before any exactness claim. `bullet-runtime-update` historically matched 885/885 but its current and preceding baseline graphs both have 0x36E PDB contributions against manifest 0x375, so that historical row is not a current source-epoch proof. [2026-11-20]
 - **PlayerInitialize @0x4247F0 (1,435)**: 1,380 with 49 fields; current source
   carries five barriers and a scoped volatile manager capture. [2026-10-23]
 - **BulletManagerView::SpawnSingleBullet @0x4067D0 (1,413)**: 1,504.
@@ -767,7 +766,7 @@ register preservation or mod-ref assumptions) where our builds exploit it
 - DrawBucket uses a private ABI (EAX = manager, ECX = bucket) and reads `manager + 0x14 + bucket*4`.
   - world offset X = 0x470B4C, Y = 0x470B48;
   - AddNormalizeAngle = 0x44BC10; render-manager global = 0x491C10; ANM Draw = 0x4451C0.
-- Transform-program records are 0x18 bytes.
+- Transform-program records are 0x18 bytes. The current large `AdvanceTransformProgram` owner is reconstructed as C++ in `src/BulletTransform.cpp`; compare all 0x5AE code bytes plus its local switch/selector data through the configured 0x644 owner extent. The two tail paths and parent-fade extra advance are described in `RE_HANDOFF.md`. This owner remains nonexact.
 - The pool holds 2001 BulletRuntimeView records with a 0x7F0 stride, at manager +0x60. SpawnSingle +0x152 computes `LEA EAX,[ECX+1]` and then a signed `/2` for the alternating aim. UpdateVerticalWrap takes EBX as its receiver.
 - Runtime transform program: ≤18 0x18-byte records at +0x464, active flags +0x43C, cursor +0x45C, nine 0x34 exState slots at +0x614. Cancel pool 2000 × 0x7F0 rows, position +0x3B4. Wrap bounds Y [0,448] vs cull [-64,448].
 - Bullet callback 0x00406770 is a single 40-byte owner (0x0040678E is an interior tail entry).
