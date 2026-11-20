@@ -417,7 +417,7 @@ BulletRuntimeView::AdvanceTransformProgram
 EnemyCancelBulletRecord
 EntityStartScript_00404f30
 BulletManagerView::SpawnSingleBullet
-BulletManagerView::SpawnBulletPattern
+BulletSpawnDescriptorView::SpawnBulletPattern
 BulletRuntimeView::Deactivate
 BulletPositionView::IsOutsidePlayfield
 BulletUpdateRuntime
