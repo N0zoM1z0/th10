@@ -859,9 +859,7 @@ int BulletManagerView::SpawnSingleBullet(
 setBulletStateTwo:
     bullet->state = 2;
     _ReadWriteBarrier();
-    bullet->position.x -= bullet->velocity.x * 4.0f;
-    bullet->position.y -= bullet->velocity.y * 4.0f;
-    bullet->position.z -= bullet->velocity.z * 4.0f;
+    bullet->position -= bullet->velocity * 4.0f;
     goto afterSpawnBackstep;
 checkOtherInterrupts:
     if ((transformFlags & 4u) != 0)

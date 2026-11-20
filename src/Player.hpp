@@ -80,6 +80,13 @@ struct PlayerFloat3
     PlayerFloat3Value operator-(const PlayerFloat3 &other) const;
     PlayerFloat3Value operator+(const PlayerFloat3 &other) const;
     PlayerFloat3Value operator*(float scale) const;
+    PlayerFloat3 &operator-=(const PlayerFloat3 &other)
+    {
+        x -= other.x;
+        y -= other.y;
+        z -= other.z;
+        return *this;
+    }
 
     void GetPlanarBounds(PlayerFloat3 *minimum, PlayerFloat3 *maximum,
         const float *extent) const;
