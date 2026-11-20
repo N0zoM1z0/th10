@@ -1,4 +1,7 @@
 #include "BulletManager.hpp"
+
+extern "C" void _ReadWriteBarrier();
+#pragma intrinsic(_ReadWriteBarrier)
 #include "EnemySoundQueue.hpp"
 
 #include <string.h>
@@ -26,26 +29,27 @@ void BulletRuntimeView::AdvanceTransformProgram()
 {
     BulletTransformRecordView *record;
     unsigned int kind;
+    unsigned int dispatchKind;
     int index;
+    volatile int *cursor;
     unsigned int packedPattern;
     float selectedAngle;
     BulletSpawnDescriptorView pattern;
 
-    // The retail loop checks the record bound both before the first
-    // iteration and at the shared tail. Paths that set the index themselves
-    // skip the normal advance; a fading child additionally advances once.
-    if (this->transformIndex >= 18)
+    // The retail loop observes the cursor for the outer bound, then reads it
+    // again before forming the record address. Keep those memory operations
+    // distinct; several opcode paths also update the cursor before the tail.
+    cursor = &this->transformIndex;
+    if (*cursor >= 18)
         return;
 
     do
     {
-        index = this->transformIndex;
-        const unsigned char *bulletBytes =
-            reinterpret_cast<const unsigned char *>(this);
+        index = *cursor;
         kind = *reinterpret_cast<const volatile unsigned int *>(
-            bulletBytes + 0x474 + index * 0x18);
-        record = reinterpret_cast<BulletTransformRecordView *>(
-            const_cast<unsigned char *>(bulletBytes + 0x464 + index * 0x18));
+            &this->transforms[index].kind);
+        _ReadWriteBarrier();
+        record = &this->transforms[index];
 
         if (kind == BULLET_TRANSFORM_NONE)
             return;
@@ -54,18 +58,19 @@ void BulletRuntimeView::AdvanceTransformProgram()
 
         if (kind == BULLET_TRANSFORM_SKIP)
         {
-            this->transformIndex = index + 1;
+            *cursor = index + 1;
             goto loopTail;
         }
 
-        if (kind <= 0x4000u)
+        dispatchKind = kind;
+        if (dispatchKind <= 0x4000u)
         {
-            if (kind <= 0x100u)
+            if (dispatchKind <= 0x100u)
             {
-                if (kind == BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE)
+                if (dispatchKind == BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE)
                     goto directionChange;
 
-                switch (kind)
+                switch (dispatchKind)
                 {
                 case BULLET_TRANSFORM_DECELERATE:
                     this->activeTransformFlags |= BULLET_TRANSFORM_DECELERATE;
@@ -90,7 +95,7 @@ void BulletRuntimeView::AdvanceTransformProgram()
                         &this->exStates[1].vector)->FromAngleMagnitude(
                             this->exStates[1].value1,
                             this->exStates[1].value0);
-                    if (this->transformIndex != 0 && this->transformSound >= 0)
+                    if (*cursor != 0 && this->transformSound >= 0)
                         reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                             QueueSoundSample(this->transformSound, 0);
                     break;
@@ -101,7 +106,7 @@ void BulletRuntimeView::AdvanceTransformProgram()
                     this->exStates[2].value1 = record->payload.float1;
                     this->exStates[2].timer.SetCurrent(0);
                     this->exStates[2].int0 = record->payload.int0;
-                    if (this->transformIndex != 0 && this->transformSound >= 0)
+                    if (*cursor != 0 && this->transformSound >= 0)
                         reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                             QueueSoundSample(this->transformSound, 0);
                     break;
@@ -111,12 +116,12 @@ void BulletRuntimeView::AdvanceTransformProgram()
                     goto directionChange;
                 }
             }
-            else if (kind <= 0x1000u)
+            else if (dispatchKind <= 0x1000u)
             {
-                if (kind != BULLET_TRANSFORM_SET_CANCEL_BEHAVIOR)
+                if (dispatchKind != BULLET_TRANSFORM_SET_CANCEL_BEHAVIOR)
                 {
-                    if (kind == BULLET_TRANSFORM_BOUNCE_ALL_EDGES ||
-                        kind == BULLET_TRANSFORM_BOUNCE_EXCEPT_BOTTOM)
+                    if (dispatchKind == BULLET_TRANSFORM_BOUNCE_ALL_EDGES ||
+                        dispatchKind == BULLET_TRANSFORM_BOUNCE_EXCEPT_BOTTOM)
                         goto bounce;
                 }
                 else
@@ -124,13 +129,13 @@ void BulletRuntimeView::AdvanceTransformProgram()
                     this->cancelBehavior = record->payload.int0;
                 }
             }
-            else if (kind == BULLET_TRANSFORM_SET_CULL_DELAY)
+            else if (dispatchKind == BULLET_TRANSFORM_SET_CULL_DELAY)
             {
                 this->offscreenCullDelayFrames = record->payload.int0;
-                this->transformIndex = index + 1;
+                *cursor = index + 1;
                 goto loopTail;
             }
-            else if (kind == BULLET_TRANSFORM_SET_SPRITE)
+            else if (dispatchKind == BULLET_TRANSFORM_SET_SPRITE)
             {
                 const int scriptIndex =
                     g_BulletSpriteScriptBase[record->payload.int0] +
@@ -141,17 +146,17 @@ void BulletRuntimeView::AdvanceTransformProgram()
                         g_EnemyBulletManager)->bulletAnm);
             }
         }
-        else if (kind <= 0x400000u)
+        else if (dispatchKind <= 0x400000u)
         {
-            if (kind != BULLET_TRANSFORM_SPAWN_CHILD_PATTERN)
+            if (dispatchKind != BULLET_TRANSFORM_SPAWN_CHILD_PATTERN)
             {
-                if (kind <= 0x20000u)
+                if (dispatchKind <= 0x20000u)
                 {
-                    if (kind != BULLET_TRANSFORM_PLAY_SOUND)
+                    if (dispatchKind != BULLET_TRANSFORM_PLAY_SOUND)
                     {
-                        if (kind != BULLET_TRANSFORM_WAIT)
+                        if (dispatchKind != BULLET_TRANSFORM_WAIT)
                         {
-                            if (kind == BULLET_TRANSFORM_DESPAWN)
+                            if (dispatchKind == BULLET_TRANSFORM_DESPAWN)
                                 EnemyCancelBulletRecord(
                                     reinterpret_cast<unsigned char *>(this));
                         }
@@ -167,9 +172,9 @@ void BulletRuntimeView::AdvanceTransformProgram()
                             QueueSoundCue(record->payload.int0, this->position.x);
                     }
                 }
-                else if (kind != BULLET_TRANSFORM_WRAP_X)
+                else if (dispatchKind != BULLET_TRANSFORM_WRAP_X)
                 {
-                    if (kind == BULLET_TRANSFORM_WRAP_Y)
+                    if (dispatchKind == BULLET_TRANSFORM_WRAP_Y)
                     {
                         this->activeTransformFlags |= kind;
                         this->exStates[7].timer.SetCurrent(record->payload.int0);
@@ -183,17 +188,15 @@ void BulletRuntimeView::AdvanceTransformProgram()
             }
             else
             {
-                BulletManagerView *manager =
-                    reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager);
-
                 memset(&pattern, 0, sizeof(pattern));
                 pattern.position = this->position;
                 packedPattern = static_cast<unsigned int>(record->payload.int0);
-                pattern.count1 = static_cast<short>(record->payload.int1);
+                pattern.aimMode = 0;
                 pattern.bulletType = 0;
                 pattern.color = reinterpret_cast<const signed char *>(
                     &record->payload.int0)[1];
                 pattern.transformStartIndex = packedPattern & 0xff;
+                pattern.count1 = static_cast<short>(record->payload.int1);
                 pattern.speed1 = record->payload.float0;
                 pattern.speed2 = record->payload.float1;
                 packedPattern &= 0x80000000u;
@@ -201,36 +204,39 @@ void BulletRuntimeView::AdvanceTransformProgram()
                 record = reinterpret_cast<BulletTransformRecordView *>(
                     reinterpret_cast<unsigned int>(record) +
                     sizeof(BulletTransformRecordView));
-                this->transformIndex = index + 1;
+                *cursor = index + 1;
                 pattern.count2 = record->payload.int0LowSigned16;
                 pattern.transformFlags = static_cast<unsigned int>(record->payload.int1);
                 pattern.angleStep = record->payload.float1;
                 pattern.angle = record->payload.float0;
                 pattern.transformSound = -1;
+                BulletManagerView *manager =
+                    reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager);
+                _ReadWriteBarrier();
                 memcpy(pattern.transforms, this->transforms, sizeof(pattern.transforms));
 
                 manager->SpawnBulletPattern(&pattern);
-                ++this->transformIndex;
+                ++*cursor;
                 if (packedPattern == 0)
                     goto loopTail;
                 EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));
                 goto advanceRecord;
             }
         }
-        else if (kind <= 0x4000000u)
+        else if (dispatchKind <= 0x4000000u)
         {
-            if (kind == BULLET_TRANSFORM_STATE_8)
+            if (dispatchKind == BULLET_TRANSFORM_STATE_8)
                 goto state8;
 
-            if (kind == BULLET_TRANSFORM_SET_OWNER_TAG)
+            if (dispatchKind == BULLET_TRANSFORM_SET_OWNER_TAG)
             {
                 this->ownerTag = record->payload.int0;
-                this->transformIndex = index + 1;
+                *cursor = index + 1;
                 goto loopTail;
             }
-            if (kind == BULLET_TRANSFORM_JUMP)
+            if (dispatchKind == BULLET_TRANSFORM_JUMP)
             {
-                this->transformIndex = record->payload.int0;
+                *cursor = record->payload.int0;
                 goto loopTail;
             }
             goto advanceRecord;
@@ -240,6 +246,7 @@ void BulletRuntimeView::AdvanceTransformProgram()
             BulletExStateView &state = this->exStates[8];
             state.value0 = record->payload.float0;
             state.value1 = record->payload.float1;
+            _ReadWriteBarrier();
             if ((state.timer.flags & 1u) == 0)
             {
                 state.timer.current = 0;
@@ -253,7 +260,7 @@ void BulletRuntimeView::AdvanceTransformProgram()
             state.timer.previous = -1;
             state.int0 = record->payload.int0;
         }
-        else if (kind == BULLET_TRANSFORM_BOUNCE_VARIANT)
+        else if (dispatchKind == BULLET_TRANSFORM_BOUNCE_VARIANT)
         {
             goto bounce;
         }
@@ -286,9 +293,9 @@ bounce:
         this->exStates[4].int0 = 0;
 
 advanceRecord:
-        index = this->transformIndex + 1;
-        this->transformIndex = index;
+        index = *cursor + 1;
+        *cursor = index;
 loopTail:
         ;
-    } while (this->transformIndex < 18);
+    } while (*cursor < 18);
 }
