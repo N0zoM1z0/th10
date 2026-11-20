@@ -765,15 +765,15 @@ int BulletManagerView::SpawnSingleBullet(
         break;
 
     case 6:
-        angle = g_RngView.GetRandomF32InRange(
-            descriptor->angle - descriptor->angleStep) +
-            descriptor->angleStep;
+        angle = descriptor->angle - descriptor->angleStep;
+        angle *= g_RngView.GetRandomF32();
+        angle += descriptor->angleStep;
         break;
 
     case 7:
-        speed = g_RngView.GetRandomF32InRange(
-            descriptor->speed1 - descriptor->speed2) +
-            descriptor->speed2;
+        speed = descriptor->speed1 - descriptor->speed2;
+        speed *= g_RngView.GetRandomF32();
+        speed += descriptor->speed2;
         angle += static_cast<float>(index1) * 6.2831855f /
             static_cast<float>(descriptor->count1);
         angle += static_cast<float>(index2) * descriptor->angleStep +
@@ -781,12 +781,12 @@ int BulletManagerView::SpawnSingleBullet(
         break;
 
     case 8:
-        angle = g_RngView.GetRandomF32InRange(
-            descriptor->angle - descriptor->angleStep) +
-            descriptor->angleStep;
-        speed = g_RngView.GetRandomF32InRange(
-            descriptor->speed1 - descriptor->speed2) +
-            descriptor->speed2;
+        angle = descriptor->angle - descriptor->angleStep;
+        angle *= g_RngView.GetRandomF32();
+        angle += descriptor->angleStep;
+        speed = descriptor->speed1 - descriptor->speed2;
+        speed *= g_RngView.GetRandomF32();
+        speed += descriptor->speed2;
         break;
 
     default:
@@ -848,24 +848,15 @@ int BulletManagerView::SpawnSingleBullet(
 
     transformFlags = descriptor->transformFlags;
     if ((transformFlags & 2u) != 0)
-    {
         bullet->vm.pendingInterrupt = 7;
-        bullet->state = 2;
-    }
     else if ((transformFlags & 4u) != 0)
-    {
         bullet->vm.pendingInterrupt = 8;
-        bullet->state = 2;
-    }
     else if ((transformFlags & 8u) != 0)
-    {
         bullet->vm.pendingInterrupt = 9;
-        bullet->state = 2;
-    }
     else
-    {
         bullet->vm.pendingInterrupt = 2;
-    }
+    if ((transformFlags & 0x0eu) != 0)
+        bullet->state = 2;
 
     if (bullet->state == 2)
     {
