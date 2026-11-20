@@ -27,10 +27,11 @@ struct AnmOpcodeVectorView
 // TH10-only actions whose gameplay semantics remain unproven.
 void BulletRuntimeView::AdvanceTransformProgram()
 {
-    BulletTransformRecordView *record;
     unsigned int kind;
     unsigned int dispatchKind;
+    BulletTransformRecordView *record;
     int index;
+    int scaledIndex;
     volatile int *cursor;
     unsigned int packedPattern;
     float selectedAngle;
@@ -46,10 +47,14 @@ void BulletRuntimeView::AdvanceTransformProgram()
     do
     {
         index = *cursor;
+        scaledIndex = index * 3;
         kind = *reinterpret_cast<const volatile unsigned int *>(
-            &this->transforms[index].kind);
+            reinterpret_cast<const unsigned char *>(this) +
+            0x474 + scaledIndex * 8);
         _ReadWriteBarrier();
-        record = &this->transforms[index];
+        record = reinterpret_cast<BulletTransformRecordView *>(
+            reinterpret_cast<unsigned char *>(this) +
+            0x464 + scaledIndex * 8);
 
         if (kind == BULLET_TRANSFORM_NONE)
             return;
@@ -90,7 +95,7 @@ void BulletRuntimeView::AdvanceTransformProgram()
                                 g_Player->AngleFromPosition(&this->position);
                         else
                             selectedAngle = record->payload.float1;
-                        this->exStates[1].value1 = selectedAngle;
+                        this->exStates[1].value1 = static_cast<float>(selectedAngle);
                         this->exStates[1].timer.SetCurrent(0);
                         this->exStates[1].int0 = record->payload.int0;
                         reinterpret_cast<AnmOpcodeVectorView *>(
@@ -279,7 +284,7 @@ directionChange:
                 g_Player->AngleFromPosition(&this->position);
         else
             selectedAngle = record->payload.float0;
-        this->exStates[3].value1 = selectedAngle;
+        this->exStates[3].value1 = static_cast<float>(selectedAngle);
         if (record->payload.float1 > -999.0f)
             this->exStates[3].value0 = record->payload.float1;
         else
