@@ -246,7 +246,7 @@ void BulletRuntimeView::AdvanceTransformProgram()
             if (dispatchKind == BULLET_TRANSFORM_JUMP)
             {
                 index = record->payload.int0;
-                goto advanceIndex;
+                goto storeIndex;
             }
             goto advanceRecord;
 
@@ -304,8 +304,8 @@ bounce:
 
 advanceRecord:
         index = *cursor;
-advanceIndex:
         ++index;
+storeIndex:
         *cursor = index;
 loopTail:
         ;
