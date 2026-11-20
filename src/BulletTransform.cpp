@@ -41,6 +41,9 @@ void BulletRuntimeView::AdvanceTransformProgram()
     // again before forming the record address. Keep those memory operations
     // distinct; several opcode paths also update the cursor before the tail.
     cursor = &this->transformIndex;
+    if (*cursor >= 18)
+        return;
+
     do
     {
         index = *cursor;

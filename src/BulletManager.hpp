@@ -71,8 +71,6 @@ typedef char BulletExStateVectorAt1C[
 typedef char BulletExStateInt0At28[
     (offsetof(BulletExStateView, int0) == 0x28) ? 1 : -1];
 
-struct BulletManagerView;
-
 struct BulletSpawnDescriptorView
 {
     short bulletType;
@@ -101,8 +99,6 @@ struct BulletSpawnDescriptorView
     int transformSound;
     int transformStartIndex;
     void *templateSprites;
-
-    int SpawnBulletPattern(BulletManagerView *manager);
 };
 
 typedef char BulletSpawnDescriptorViewSizeIs210[
@@ -242,6 +238,9 @@ struct BulletManagerView
     int SpawnSingleBullet(
         BulletSpawnDescriptorView *descriptor,
         int index1, int index2, float angleToPlayer);
+    int SpawnBulletPattern(BulletSpawnDescriptorView *descriptor);
+    int SpawnBulletPattern(
+        BulletSpawnDescriptorView *descriptor, BulletManagerView *manager);
     int UpdateBullets();
     int DrawBucket(int bucketIndex);
     void ResetPool();
