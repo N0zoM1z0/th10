@@ -2517,7 +2517,8 @@ dispatch_rank_count_lowest:
     uVar22 = ENEMY_READ_INT_DIRECT(2);
     EnemyExtraRecordAt(iVar27)->allowWhileActive = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(3);
-    EnemyExtraRecordAt(iVar27)->kind = (int)uVar22;
+    EnemyExtraRecordAt(iVar27)->kind =
+        static_cast<BulletTransformKindView>(static_cast<unsigned int>(uVar22));
     uVar22 = ENEMY_READ_INT_DIRECT(4);
     EnemyExtraRecordAt(iVar27)->payload.int0 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(5);

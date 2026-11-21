@@ -27,7 +27,7 @@ struct AnmOpcodeVectorView
 // TH10-only actions whose gameplay semantics remain unproven.
 void BulletRuntimeView::AdvanceTransformProgram()
 {
-    unsigned int kind;
+    BulletTransformKindView kind;
     int dispatchKind;
     BulletTransformRecordView *record;
     int index;
