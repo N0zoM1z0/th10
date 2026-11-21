@@ -48,13 +48,8 @@ void BulletRuntimeView::AdvanceTransformProgram()
     {
         index = *cursor;
         scaledIndex = index * 3;
-        kind = *reinterpret_cast<const volatile unsigned int *>(
-            reinterpret_cast<const unsigned char *>(this) +
-            0x474 + scaledIndex * 8);
-        _ReadWriteBarrier();
-        record = reinterpret_cast<BulletTransformRecordView *>(
-            reinterpret_cast<unsigned char *>(this) +
-            0x464 + scaledIndex * 8);
+        kind = this->transforms[index].kind;
+        record = this->transforms + index;
 
         if (kind == BULLET_TRANSFORM_NONE)
             return;
@@ -234,21 +229,20 @@ void BulletRuntimeView::AdvanceTransformProgram()
         }
         else if (dispatchKind <= 0x4000000u)
         {
-            if (dispatchKind == BULLET_TRANSFORM_STATE_8)
-                goto state8;
-
-            if (dispatchKind == BULLET_TRANSFORM_SET_OWNER_TAG)
+            if (dispatchKind != BULLET_TRANSFORM_STATE_8)
             {
+                if (dispatchKind != BULLET_TRANSFORM_SET_OWNER_TAG)
+                {
+                    if (dispatchKind != BULLET_TRANSFORM_JUMP)
+                        goto advanceRecord;
+                    index = record->payload.int0;
+                    goto storeIndex;
+                }
+
                 this->ownerTag = record->payload.int0;
                 *cursor = index + 1;
                 goto loopTail;
             }
-            if (dispatchKind == BULLET_TRANSFORM_JUMP)
-            {
-                index = record->payload.int0;
-                goto storeIndex;
-            }
-            goto advanceRecord;
 
         state8:
             // The state-8 opcode value is also its active-transform flag bit.
