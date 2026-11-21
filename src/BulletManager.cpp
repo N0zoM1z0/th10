@@ -822,17 +822,18 @@ int BulletSpawnDescriptorView::SpawnSingleBullet(
         static_cast<unsigned int>(static_cast<int>(this->color)));
     _ReadWriteBarrier();
     AnmLoadedView *resource = manager->bulletAnm;
-    bullet->vm.StartScript(scriptIndex, resource, manager);
+    // Retail 0x406BA9 passes the loaded resource in both the VM-init context
+    // register and the StartScript stack argument; the manager only supplies it.
+    bullet->vm.StartScript(scriptIndex, resource, resource);
 
     // The effect-script ID also uses retail LEA EAX*2+0x11 word wrap.
-    switch (BulletNativeTableRead(g_BulletEffectMode, static_cast<int>(this->bulletType)))
+    switch (g_BulletEffectMode[this->bulletType])
     {
     case 0:
-        *reinterpret_cast<unsigned int *>(&bullet->effectScript) =
-            static_cast<unsigned int>(static_cast<int>(this->color)) * 2u + 0x11u;
+        bullet->effectScript = static_cast<int>(this->color) * 2 + 0x11;
         break;
     case 1:
-        bullet->effectScript = BulletNativeTableRead(g_BulletEffectScriptByColor, static_cast<int>(this->color));
+        bullet->effectScript = g_BulletEffectScriptByColor[this->color];
         break;
     case 2:
         bullet->effectScript = -1;
@@ -847,33 +848,38 @@ int BulletSpawnDescriptorView::SpawnSingleBullet(
         break;
     }
 
-    bullet->drawBucketIndex = BulletNativeTableRead(g_BulletDrawBucket, static_cast<int>(this->bulletType));
+    bullet->drawBucketIndex = g_BulletDrawBucket[this->bulletType];
     bullet->transformSound = this->transformSound;
     bullet->offscreenCullDelayFrames = 10;
-    bullet->collisionWidth = BulletNativeTableRead(g_BulletCollisionSize, static_cast<int>(this->bulletType));
-    bullet->collisionHeight = bullet->collisionWidth;
+    bullet->collisionHeight = g_BulletCollisionSize[this->bulletType];
+    bullet->collisionWidth = bullet->collisionHeight;
 
     transformFlags = this->transformFlags;
-    if ((transformFlags & 2u) == 0)
-        goto checkOtherInterrupts;
-    bullet->vm.pendingInterrupt = 7;
-setBulletStateTwo:
-    bullet->state = 2;
-    _ReadWriteBarrier();
-    bullet->position -= bullet->velocity * 4.0f;
-    goto afterSpawnBackstep;
-checkOtherInterrupts:
-    if ((transformFlags & 4u) != 0)
+    if ((transformFlags & 2u) != 0)
+    {
+        bullet->vm.pendingInterrupt = 7;
+        bullet->state = 2;
+        _ReadWriteBarrier();
+        bullet->position -= bullet->velocity * 4.0f;
+    }
+    else if ((transformFlags & 4u) != 0)
     {
         bullet->vm.pendingInterrupt = 8;
-        goto setBulletStateTwo;
+        bullet->state = 2;
+        _ReadWriteBarrier();
+        bullet->position -= bullet->velocity * 4.0f;
     }
-    if ((transformFlags & 8u) != 0)
+    else if ((transformFlags & 8u) != 0)
     {
         bullet->vm.pendingInterrupt = 9;
-        goto setBulletStateTwo;
+        bullet->state = 2;
+        _ReadWriteBarrier();
+        bullet->position -= bullet->velocity * 4.0f;
     }
-    bullet->vm.pendingInterrupt = 2;
+    else
+    {
+        bullet->vm.pendingInterrupt = 2;
+    }
 afterSpawnBackstep:
 
     memcpy(
