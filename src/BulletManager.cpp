@@ -79,7 +79,6 @@ extern BulletUpdateGateView *g_BulletUpdateGate;
 extern void BulletUpdateBoundaryBounce(BulletRuntimeView *bullet);
 extern void BulletUpdateHorizontalWrap(BulletRuntimeView *bullet);
 extern void BulletUpdateVerticalWrap(BulletRuntimeView *bullet);
-extern void BulletUpdateState8(BulletRuntimeView *bullet);
 
 struct AnmOpcodeVectorView
 {
@@ -448,7 +447,7 @@ void BulletRuntimeView::UpdateBoundaryBounce()
                 position.x = 384.0f - position.x;
         }
 
-        if ((activeTransformFlags & BULLET_TRANSFORM_BOUNCE_VARIANT) == 0 &&
+        if ((activeTransformFlags & BULLET_TRANSFORM_BOUNCE_HORIZONTAL_ONLY) == 0 &&
             (position.y < 0.0f ||
              (position.y >= g_BulletCullBottom &&
               (activeTransformFlags &
@@ -481,7 +480,7 @@ void BulletRuntimeView::UpdateBoundaryBounce()
             activeTransformFlags &=
                 ~(BULLET_TRANSFORM_BOUNCE_ALL_EDGES |
                   BULLET_TRANSFORM_BOUNCE_EXCEPT_BOTTOM |
-                  BULLET_TRANSFORM_BOUNCE_VARIANT);
+                  BULLET_TRANSFORM_BOUNCE_HORIZONTAL_ONLY);
         }
     }
 }
@@ -551,12 +550,13 @@ void BulletRuntimeView::UpdateVerticalWrap()
 
 
 // Target 0x00407EF0. Retail LTCG keeps the BulletRuntimeView owner in ESI.
-void BulletRuntimeView::UpdateState8()
+void BulletRuntimeView::UpdateHoming()
 {
-    BulletExStateView &state = exStates[8];
+    BulletHomingStateView &state =
+        *reinterpret_cast<BulletHomingStateView *>(&exStates[8]);
 
-    if (state.timer.current >= state.int0) {
-        activeTransformFlags &= ~BULLET_TRANSFORM_STATE_8;
+    if (state.timer.current >= state.durationFrames) {
+        activeTransformFlags &= ~BULLET_TRANSFORM_HOMING;
         goto tickTimer;
     }
 
@@ -572,8 +572,8 @@ void BulletRuntimeView::UpdateState8()
         angle = AddNormalizeAngle(
             angle,
             BulletAngleDifference(
-                AddNormalizeAngle(state.value1, aimedAngle), angle) *
-                state.value0 * g_AnmGameSpeed);
+                AddNormalizeAngle(state.targetAngleOffset, aimedAngle), angle) *
+                state.turnFactor * g_AnmGameSpeed);
         reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
             FromAngleMagnitude(angle, speed);
     }

@@ -5692,7 +5692,7 @@ linkages = [
 ]
 
 
-[units.bullet-update-state8]
+[units.bullet-update-homing]
 artifact_kind = "linked-pe"
 source = "src/BulletManager.cpp"
 support_sources = ["src/AnmManager.cpp", "src/EnemyEclDispatcher.cpp"]
@@ -5701,8 +5701,8 @@ profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL",
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
 entry_symbol = "?BulletManagerUpdateCallback@@YIHPAUBulletManagerView@@@Z"
-functions = ["BulletRuntimeView::UpdateState8"]
-symbol = "?UpdateState8@BulletRuntimeView@@QAEXXZ"
+functions = ["BulletRuntimeView::UpdateHoming"]
+symbol = "?UpdateHoming@BulletRuntimeView@@QAEXXZ"
 target_address = 0x00407EF0
 size = 306
 linkages = [
@@ -5810,7 +5810,7 @@ linkages = [
   { offset = 0x192, type = "REL32", symbol = "?UpdateAbsoluteDirectionChange@BulletRuntimeView@@QAEXXZ", target = 0x004078E0 },
   { offset = 0x1A3, type = "REL32", symbol = "?UpdateAimedDirectionChange@BulletRuntimeView@@QAEXXZ", target = 0x00407A30 },
   { offset = 0x1B6, type = "REL32", symbol = "?UpdateBoundaryBounce@BulletRuntimeView@@QAEXXZ", target = 0x00407BE0 },
-  { offset = 0x1C9, type = "REL32", symbol = "?UpdateState8@BulletRuntimeView@@QAEXXZ", target = 0x00407EF0 },
+  { offset = 0x1C9, type = "REL32", symbol = "?UpdateHoming@BulletRuntimeView@@QAEXXZ", target = 0x00407EF0 },
   { offset = 0x1FA, type = "REL32", symbol = "?Add@AnmVmTimerView@@QAEXM@Z", target = 0x0044BF40 },
   { offset = 0x200, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
   { offset = 0x213, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },

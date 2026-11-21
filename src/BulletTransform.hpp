@@ -26,11 +26,11 @@ enum BulletTransformKindView
     BULLET_TRANSFORM_SET_OWNER_TAG = 0x01000000,
     BULLET_TRANSFORM_JUMP = 0x02000000,
 
-    // TH10-only transform-state kinds. Their exact gameplay names are not
-    // established yet; the state slots and payload fields below are target
-    // proven, so keep the numeric names until callers/scripts identify them.
-    BULLET_TRANSFORM_STATE_8 = 0x04000000,
-    BULLET_TRANSFORM_BOUNCE_VARIANT = 0x08000000,
+    // Steers toward the player's draw position using a turn factor, angle
+    // offset and duration stored in extension state 8.
+    BULLET_TRANSFORM_HOMING = 0x04000000,
+    // Reflects at the horizontal playfield bounds without vertical bounces.
+    BULLET_TRANSFORM_BOUNCE_HORIZONTAL_ONLY = 0x08000000,
 
     // Program control marker: advance to the next record without executing
     // an action.

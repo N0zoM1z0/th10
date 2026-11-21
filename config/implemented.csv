@@ -433,7 +433,7 @@ BulletAngleDifference
 BulletRuntimeView::UpdateBoundaryBounce
 BulletRuntimeView::UpdateHorizontalWrap
 BulletRuntimeView::UpdateVerticalWrap
-BulletRuntimeView::UpdateState8
+BulletRuntimeView::UpdateHoming
 PlayerCollisionPositionView::CheckPlayerCollision
 AnmRandomU32InRange
 th10::leaf::Fn0040CC10

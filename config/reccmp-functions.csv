@@ -445,7 +445,7 @@ BulletAngleDifference,0x00408660,function
 BulletRuntimeView::UpdateBoundaryBounce,0x00407BE0,function
 BulletRuntimeView::UpdateHorizontalWrap,0x00407DA0,function
 BulletRuntimeView::UpdateVerticalWrap,0x00407E40,function
-BulletRuntimeView::UpdateState8,0x00407EF0,function
+BulletRuntimeView::UpdateHoming,0x00407EF0,function
 PlayerCollisionPositionView::CheckPlayerCollision,0x004266B0,function
 AnmRandomU32InRange,0x0043CB80,function
 th10::leaf::Fn0040C460,0x0040C460,function

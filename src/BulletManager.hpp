@@ -37,6 +37,25 @@ typedef char BulletExStateVectorAt1C[
 typedef char BulletExStateInt0At28[
     (offsetof(BulletExStateView, int0) == 0x28) ? 1 : -1];
 
+struct BulletHomingStateView
+{
+    AnmVmTimerView timer;                  // +0x00
+    float turnFactor;                      // +0x14
+    float targetAngleOffset;               // +0x18
+    unsigned char unknown01C[0x0c];        // +0x1c
+    int durationFrames;                    // +0x28
+    unsigned char unknown02C[0x08];        // +0x2c
+};
+
+typedef char BulletHomingStateViewSizeIs34[
+    (sizeof(BulletHomingStateView) == 0x34) ? 1 : -1];
+typedef char BulletHomingTurnFactorAt14[
+    (offsetof(BulletHomingStateView, turnFactor) == 0x14) ? 1 : -1];
+typedef char BulletHomingAngleOffsetAt18[
+    (offsetof(BulletHomingStateView, targetAngleOffset) == 0x18) ? 1 : -1];
+typedef char BulletHomingDurationAt28[
+    (offsetof(BulletHomingStateView, durationFrames) == 0x28) ? 1 : -1];
+
 struct BulletManagerView;
 
 struct BulletSpawnDescriptorView
@@ -139,7 +158,7 @@ struct BulletRuntimeView
     void UpdateBoundaryBounce();
     void UpdateHorizontalWrap();
     void UpdateVerticalWrap();
-    void UpdateState8();
+    void UpdateHoming();
 };
 
 typedef char BulletRuntimeAngleBitOverlayAt3E4[

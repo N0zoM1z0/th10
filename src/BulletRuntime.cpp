@@ -97,8 +97,8 @@ __declspec(noinline) int __stdcall BulletUpdateRuntime(BulletRuntimeView *bullet
                 bullet->UpdateAimedDirectionChange();
             if ((bullet->activeTransformFlags & 0x08000c00u) != 0)
                 bullet->UpdateBoundaryBounce();
-            if ((bullet->activeTransformFlags & 0x04000000u) != 0)
-                bullet->UpdateState8();
+            if ((bullet->activeTransformFlags & BULLET_TRANSFORM_HOMING) != 0)
+                bullet->UpdateHoming();
             if ((bullet->activeTransformFlags & 0x00008000u) != 0) {
                 if (bullet->exStates[5].timer.current <= 0)
                     bullet->activeTransformFlags ^= 0x00008000u;

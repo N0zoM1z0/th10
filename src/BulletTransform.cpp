@@ -229,7 +229,7 @@ void BulletRuntimeView::AdvanceTransformProgram()
         }
         else if (dispatchKind <= 0x4000000u)
         {
-            if (dispatchKind != BULLET_TRANSFORM_STATE_8)
+            if (dispatchKind != BULLET_TRANSFORM_HOMING)
             {
                 if (dispatchKind != BULLET_TRANSFORM_SET_OWNER_TAG)
                 {
@@ -244,12 +244,13 @@ void BulletRuntimeView::AdvanceTransformProgram()
                 goto loopTail;
             }
 
-        state8:
-            // The state-8 opcode value is also its active-transform flag bit.
+        homing:
+            // The homing opcode value is also its active-transform flag bit.
             this->activeTransformFlags |= kind;
-            BulletExStateView &state = this->exStates[8];
-            state.value0 = record->payload.float0;
-            state.value1 = record->payload.float1;
+            BulletHomingStateView &state =
+                *reinterpret_cast<BulletHomingStateView *>(&this->exStates[8]);
+            state.turnFactor = record->payload.float0;
+            state.targetAngleOffset = record->payload.float1;
             _ReadWriteBarrier();
             if ((state.timer.flags & 1u) == 0)
             {
@@ -262,9 +263,9 @@ void BulletRuntimeView::AdvanceTransformProgram()
             state.timer.current = 0;
             state.timer.subframe = 0.0f;
             state.timer.previous = -1;
-            state.int0 = record->payload.int0;
+            state.durationFrames = record->payload.int0;
         }
-        else if (dispatchKind == BULLET_TRANSFORM_BOUNCE_VARIANT)
+        else if (dispatchKind == BULLET_TRANSFORM_BOUNCE_HORIZONTAL_ONLY)
         {
             goto bounce;
         }
