@@ -807,9 +807,11 @@ int BulletSpawnDescriptorView::SpawnSingleBullet(
         FromAngleMagnitude(angle, speed);
 
     bullet->activeTransformFlags = this->transformFlags;
+    const unsigned int bulletFlags = bullet->flags & ~0x0cu;
     bullet->color = this->color;
     bullet->bulletType = this->bulletType;
-    bullet->flags = (bullet->flags & ~0x0cu) | 2u;
+    _ReadWriteBarrier();
+    bullet->flags = bulletFlags | 2u;
     bullet->value454 = 0;
 
     // Preserve the retail order: form the sprite script index before
