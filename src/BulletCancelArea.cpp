@@ -26,12 +26,14 @@ int BulletManagerView::CancelBulletsInArea(int spawnItems)
         if (bullet->state == 0 || bullet->state == 3)
             continue;
 
-        float halfWidth = bullet->collisionWidth * 0.5f;
-        float halfHeight = bullet->collisionHeight * 0.5f;
-        if (bullet->position.x + halfWidth < lower.x ||
-            bullet->position.x - halfWidth > upper.x ||
-            bullet->position.y + halfHeight < lower.y ||
-            bullet->position.y - halfHeight > upper.y)
+        PlayerFloat3 bulletHalf;
+        bulletHalf.x = bullet->collisionWidth * 0.5f;
+        bulletHalf.y = bullet->collisionHeight * 0.5f;
+        bulletHalf.z = 0.0f;
+        PlayerFloat3Value bulletLower = bullet->position - bulletHalf;
+        PlayerFloat3Value bulletUpper = bullet->position + bulletHalf;
+        if (bulletUpper.x < lower.x || bulletLower.x > upper.x ||
+            bulletUpper.y < lower.y || bulletLower.y > upper.y)
             continue;
 
         bullet->flags |= 8;
@@ -44,7 +46,7 @@ int BulletManagerView::CancelBulletsInArea(int spawnItems)
         AnmVmIdView vmId = bulletAnm->CreateVmAtWorldVariant0(
             0x173, reinterpret_cast<const AnmFloat3View *>(
                 &bullet->position));
-        AnmVmView *effectVm = vmId.GetVm();
+        AnmVmView *effectVm = g_AnmRenderManagerView->FindVm(vmId);
         AnmSpriteView *sprite = bullet->vm.loadedSprite;
         if (sprite != NULL)
         {
