@@ -73,3 +73,31 @@ git diff --check
 ## Retained context
 
 Keep `resources/th10.exe`, `.tools/` and the TH10 Wine prefix, `ghidra-project/`, `_reference/`, canonical ledgers, `docs/evidence/`, selected original Ghidra exports in `.analysis/`, configured `build/match-linked/` outputs, and unresolved `build/gpt-web/` contexts. See [RE_ARTIFACTS.md](RE_ARTIFACTS.md) for the retained artifact inventory. The adjacent `_reference/th10-decomp` project is a separate historical reference, not this repository's build or status authority.
+
+## 2026-11-21 bullet-runtime follow-up
+
+This section supersedes stale status statements above where they conflict with the two newer commits. Latest source checkpoint is `1e5630b9` (`gpt-web: use explicit planar bullet bounds`), preceded by `3eadb55b` (`gpt-web: reconstruct bullet cancel bounds and VM lookup`). The branch is `main`, two commits ahead of `origin/main`; no full cold replay was run in this iteration.
+
+### `BulletManagerView::CancelBulletsInArea`
+
+- Target: `0x00408210`, manifest extent `0x249` (585 bytes).
+- Current source: `src/BulletCancelArea.cpp`; it iterates 2,000 slots, skips states 0 and 3, computes explicit XY lower/upper bullet bounds, sets the cancel flag, optionally spawns an item, creates the ANM cancellation VM, resolves it through `AnmRenderManagerView::FindVm`, selects the size-based palette, and clears the trailing state word.
+- Current targeted linked contribution: `0x23B` (571 bytes), so strict comparison stops at the extent gate. This is a semantic/source checkpoint, not exact.
+- Target x87 order is known: width half -> lower X -> height half -> lower Y -> upper X -> upper Y, followed by the four overlap comparisons. Keep the XY math as natural C++; do not use volatile locals just to force spills. The compiler still schedules/reuses some temporaries differently from retail.
+
+### `BulletRuntimeView::UpdateAbsoluteDirectionChange`
+
+- Target: `0x004078E0`, extent `0x14F` (335 bytes).
+- Current targeted result: candidate extent is also 335 bytes; 333/335 bytes match. The only differences are at offsets `0xD7` and `0xDD`: retail loads the angle word into EDX and pushes EDX, while the candidate uses EAX. The current bit-preserving `memcpy` source is retained; direct union reads and local-union/register variants did not improve the result.
+- Do not call this exact until the two-byte register-selection difference is resolved by a natural C++ expression.
+
+### `BulletRuntimeView::AdvanceTransformProgram`
+
+- Target: `0x00406D90`, full extent `0x644` (1,604 bytes).
+- The committed natural C++ body currently contributes `0x640` (1,600 bytes); the strict comparator therefore stops before comparing the full owner.
+- A temporary `const unsigned int&` opcode-field variant reached the `0x644` extent but failed the target-bound relocation-field check: the indexed kind load and record pointer were formed in the wrong order/registers. A typed enum reference produced only `0x638`. These experiments are retained under `.analysis/` and are not part of the source tree.
+- Keep the current source reverted to its natural enum local. Continue with the indexed-load/register-allocation and jump-table structure; do not use inline assembly, copied bytes, padding, or comparator cropping.
+
+### `SpawnSingleBullet` status correction
+
+The fresh `bullet-spawn-single-exact` build from the current committed `src/BulletManager.cpp` contributes `0x585` (1,413 bytes) against the `0x5C0` (1,472-byte) manifest extent, with 1,359/1,418 bytes matching in the compared prefix. This supersedes the older 54-byte-difference note in the earlier leaf table; re-establish that frontier from current source before resuming it.
