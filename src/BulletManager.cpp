@@ -827,13 +827,13 @@ int BulletSpawnDescriptorView::SpawnSingleBullet(
     bullet->vm.StartScript(scriptIndex, resource, resource);
 
     // The effect-script ID also uses retail LEA EAX*2+0x11 word wrap.
-    switch (g_BulletEffectMode[this->bulletType])
+    switch (BulletNativeTableRead(g_BulletEffectMode, static_cast<int>(this->bulletType)))
     {
     case 0:
         bullet->effectScript = static_cast<int>(this->color) * 2 + 0x11;
         break;
     case 1:
-        bullet->effectScript = g_BulletEffectScriptByColor[this->color];
+        bullet->effectScript = BulletNativeTableRead(g_BulletEffectScriptByColor, static_cast<int>(this->color));
         break;
     case 2:
         bullet->effectScript = -1;
@@ -848,10 +848,10 @@ int BulletSpawnDescriptorView::SpawnSingleBullet(
         break;
     }
 
-    bullet->drawBucketIndex = g_BulletDrawBucket[this->bulletType];
+    bullet->drawBucketIndex = BulletNativeTableRead(g_BulletDrawBucket, static_cast<int>(this->bulletType));
     bullet->transformSound = this->transformSound;
     bullet->offscreenCullDelayFrames = 10;
-    bullet->collisionHeight = g_BulletCollisionSize[this->bulletType];
+    bullet->collisionHeight = BulletNativeTableRead(g_BulletCollisionSize, static_cast<int>(this->bulletType));
     bullet->collisionWidth = bullet->collisionHeight;
 
     transformFlags = this->transformFlags;
