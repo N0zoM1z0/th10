@@ -26,12 +26,14 @@ int BulletManagerView::CancelBulletsInArea(int spawnItems)
         if (bullet->state == 0 || bullet->state == 3)
             continue;
 
-        PlayerFloat3 bulletHalf;
-        bulletHalf.x = bullet->collisionWidth * 0.5f;
-        bulletHalf.y = bullet->collisionHeight * 0.5f;
-        bulletHalf.z = 0.0f;
-        PlayerFloat3Value bulletLower = bullet->position - bulletHalf;
-        PlayerFloat3Value bulletUpper = bullet->position + bulletHalf;
+        PlayerFloat3 bulletLower;
+        PlayerFloat3 bulletUpper;
+        float halfWidth = bullet->collisionWidth * 0.5f;
+        bulletLower.x = bullet->position.x - halfWidth;
+        float halfHeight = bullet->collisionHeight * 0.5f;
+        bulletLower.y = bullet->position.y - halfHeight;
+        bulletUpper.x = bullet->position.x + halfWidth;
+        bulletUpper.y = bullet->position.y + halfHeight;
         if (bulletUpper.x < lower.x || bulletLower.x > upper.x ||
             bulletUpper.y < lower.y || bulletLower.y > upper.y)
             continue;
