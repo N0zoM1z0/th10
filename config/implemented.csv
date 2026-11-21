@@ -415,8 +415,8 @@ CSound::Unpause
 AnmVmTimerView::SetCurrent
 BulletRuntimeView::AdvanceTransformProgram
 EnemyCancelBulletRecord
-EntityStartScript_00404f30
-BulletManagerView::SpawnSingleBullet
+AnmVmView::StartScript
+BulletSpawnDescriptorView::SpawnSingleBullet
 BulletSpawnDescriptorView::SpawnBulletPattern
 BulletRuntimeView::Deactivate
 BulletPositionView::IsOutsidePlayfield

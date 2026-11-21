@@ -43,11 +43,11 @@ Do not use inline assembly, naked functions, fake ABI declarations, copied targe
 | Target owner | Fresh/current result | Canonical status |
 | --- | --- | --- |
 | `0x004073E0` `BulletSpawnDescriptorView::SpawnBulletPattern` | Fresh targeted build: 194/194 bytes, 6/6 target-bound fields | Accepted 194-byte row in `config/matches.csv`; source mapping and linked symbol now consistently use the descriptor-owned method. |
-| `0x00404F30` `AnmVmView::StartScript` | Fresh targeted build: 202/202 bytes, 2/2 REL32 fields | Strong exact candidate, but not in `config/matches.csv`; no canonical cold replay/promotion is claimed. |
+| `0x00404F30` `AnmVmView::StartScript` | Independent selected cold replay: 202/202 bytes, 2/2 REL32 fields | Accepted 202-byte exact row in `config/matches.csv`; maintained source and reccmp mapping now point to the native member method, while the global wrapper remains an adapter. |
 | `0x004067D0` `BulletSpawnDescriptorView::SpawnSingleBullet` | Current expanded bullet graph: PDB contribution 1,504 bytes vs 1,413 target bytes; many ordinary-byte differences | Large nonexact leaf frontier. Preserve the real x87 stack lifetime and recover the target private register/context ABI; do not replace it with a trivial wrapper. |
 | `0x00408030` `EnemyCancelBulletRecord` | Existing strict linked result: 199/199 bytes, 4 target-bound fields | Accepted historical row in `config/matches.csv`; no new replay was needed for this session. |
 
-For `0x00404F30`, the maintained definition is `AnmVmView::StartScript(int, AnmLoadedView *, void *)` in `src/AnmVmStartScript.cpp`; the global `StartEntityScript_00404f30` wrapper remains for ordinary source-order callers. Its fresh 202/202 result is not yet a canonical exact-ledger promotion.
+For `0x00404F30`, the maintained owner is `AnmVmView::StartScript(int, AnmLoadedView *, void *)` in `src/AnmVmStartScript.cpp`; the global `StartEntityScript_00404f30` wrapper remains for ordinary source-order callers. The selected independent cold replay now reproduces the full 202-byte owner, including the two declared REL32 calls, and the canonical exact/source mappings use the member method name. The target-private entry ABI is VM in ESI, script index in EAX, loaded resource on the stack, and `RET 4`; this exact codegen result does not claim original-TU or product/runtime closure.
 
 ## Bounded workflow
 

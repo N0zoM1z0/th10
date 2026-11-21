@@ -1064,6 +1064,7 @@ register preservation or mod-ref assumptions) where our builds exploit it
 - ANM render vertices are 0x1C bytes.
 - `StartPositionInterpolation`: EAX VM, EDX initial, ECX final, duration/mode on stack, RET8. Tangent vector at 491C14.
 - ANM VM: scriptIndex +0x38A, activeSpriteIndex +0x384, pending interrupt +0x304, delete mark +0x35C.
+- **AnmVmView::StartScript @0x00404F30 (202 bytes)**: the `entity-start-script` unit independently cold-replays the complete linked-PE owner (202/202 bytes) in the eight-source VC7.1 SP1 `/GL` graph. The target-private entry uses VM in ESI, script index in EAX, and the loaded resource as one stack argument (`RET 4`); its two declared REL32 calls bind `AnmVmInitialize @0x00401DE0` and `LoadScript_0043E710 @0x0043E710`. The maintained native C++ owner is `AnmVmView::StartScript(int, AnmLoadedView *, void *)`; `StartEntityScript_00404f30` remains a convenience adapter, not the owner mapping. [2026-11-21]
 - ASCII manager: managed VM id +0x89A4, asciiAnm +0x8994.
 - `AnmRenderManagerView::AddVmVariant0 @0x004489D0` returns `AnmVmIdView` through the hidden struct-return pointer in EAX. Ghidra's `in_EAX` is that pointer, not an explicit parameter.
 - Timer flags at +0x6C/+0xB0/+0xFC/+0x128/+0x174/+0x1B0/+0x1FC/+0x228/+0x378; owner +0x20 (also the layer value); manager node +0x04; layer node +0x10; nextInDrawLayer +0x1C; scale +0x3C/+0x40; scroll +0x54/+0x58; matrices +0x23C/+0x27C; colors +0x2FC/+0x300; pending interrupt +0x304 (short); anmFile +0x308.

@@ -33196,6 +33196,7 @@ linkages = [
 # transform-program owner continues to recover its dispatch and cases.
 
 [units.bullet-spawn-single-exact]
+candidate = true
 artifact_kind = "linked-pe"
 source = "src/BulletManager.cpp"
 support_sources = ["src/AnmManager.cpp","src/EnemyEclDispatcher.cpp","src/Enemy.cpp","src/RandomMath.cpp","src/BulletTransform.cpp","src/PlayerCollision.cpp","src/AnmVmStartScript.cpp","src/AnmLoadedStartScript.cpp"]
