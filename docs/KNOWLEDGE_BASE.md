@@ -443,6 +443,13 @@ frontier; do not refresh a baseline merely to accept the new positions.
   `EclVmContext*`; `Pop` keeps the typed `stackData + stackTop` address.
   Rewriting the pointer arithmetic or spawning-operand address expanded the
   parent residual and was reverted.
+  A complete comparison in the `16572e6b` player-collision graph confirms
+  all 189 fields and 62 fixed local destinations. Direct typed stack pops
+  for bitwise OR, primitive word locals for add and subtract, and relocating
+  the real `ReadFloatValue` implementation to a separate `/GL` TU all leave
+  the same 23 differences. The relocated resolver still matches 171/171.
+  Separating FORMAT's integer and floating conversions into two typed
+  source branches instead emits a 6,956-byte owner.
 - **EclVmHost::StopAllThreads @0x450190 (31)**: exact 31/31 after making the stop helper accept the already-resolved `EclVmContext*`; both STOP_THREAD and STOP_ALL_THREADS now pass the context explicitly. The parent `EclVmContext::Run` schedule remains at its existing 23-byte residual. [2026-11-19]
 
 - **EclVmStackView::Pop @0x450610 (122)**: exact 122/122 with the typed
@@ -502,7 +509,9 @@ frontier; do not refresh a baseline merely to accept the new positions.
   standalone setter shortened it to 66 bytes. Keep its original two-loop
   implementation. Reset entry as a member was byte-neutral before the split.
   The direct caller `script-viewer-update` passes a selected 1,251-byte
-  cold replay.
+  cold replay. A named count snapshot and a consistent plain count
+  declaration across GUI, Player and GameManager both preserve the
+  remaining branch displacement in private links.
   [2026-11-22]
 - **StageExecuteScript @0x403C80 (1,868)**: full size, nonexact. Opcodes 10-13
   register choice; opcode 14's VM input is ESI in the target and EDX native.
