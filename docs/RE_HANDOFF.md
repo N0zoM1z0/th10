@@ -32,6 +32,18 @@ All three LTCG convention questions share one pattern: a register choice that de
 
 Never use inline assembly, naked functions, fake ABI declarations, stand-in callee bodies, copied target bytes, padding, inert locals or comparator cropping. An exact leaf does not make its parent exact.
 
+## Strategy for the remaining authored bytes
+
+`_reference/th10-decomp` has MSVC C++ for all 109 authored owners that are
+not exact here (128,407 bytes), excluding its GCC/Clang profiles. Audit each
+one before borrowing: copy natural statement order, case structure and
+helper visibility. Do not borrow its stand-in callee bodies, context callers,
+`#pragma code_seg` placement or assembly fallbacks. Large near owners to try
+first: `ExecuteScript` (2 bytes; keep its two merged child tails),
+`EclVmContext::Run` (23 bytes), `GameResetGui` (13 residual ranges) and
+`TransitionShakeLinear` (one FIDIV placement). The reference shapes already
+tried for the shake are recorded in the knowledge base.
+
 ## Commands
 
 ```sh

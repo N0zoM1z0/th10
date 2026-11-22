@@ -596,7 +596,13 @@ frontier; do not refresh a baseline merely to accept the new positions.
   Transition graph improves from 427/439 bytes with 346 differences to the
   complete 439/439-byte owner with 27 differences; its recorded frontier
   passes unchanged. The remaining cluster schedules `FIDIV` before, rather
-  than inside, the second RNG update. Fifteen whole same-image exact guards
+  than inside, the second RNG update. On 2026-11-22 three more shapes left that single FIDIV
+  misplaced (+0xAA against retail +0xCE) with every other instruction
+  aligned: the `_reference/th10-decomp` order (`start` first, then
+  `delta = value1 - start`, then a named `(float)((float)delta * elapsed)`
+  product); the packed draw written as `half | (half << 16)`; and a
+  front-end `__forceinline` RNG word instead of `RngView::GetRandomU16`.
+  All were reverted. Fifteen whole same-image exact guards
   pass (1,732 bytes); initializer @0x43C970 retains 396/396 code and 37
   linkage positions, but its strict guard is blocked by the older static
   selector expecting ShakeEnvelope size 350, while the current envelope is
