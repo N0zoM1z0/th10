@@ -489,17 +489,21 @@ frontier; do not refresh a baseline merely to accept the new positions.
   scheduling still differ. [2026-11-14]
 - **ExportAutomaticHints @0x41A200 (2,247)**: native inlines all 24 writer uses;
   the target makes 9 calls and inlines 15. [2026-10-25]
-- **GameResetGui @0x413BC0 (1,965)**: 10 differing bytes (was 47) in the
-  `player-handle-collision-hit` graph as of 2026-11-22. Following
-  `_reference/th10-decomp`'s `AllocateFrontObject`, the two stage captions
-  use a local `CreateFrontCaptionVm(anm, script, offset)`. It allocates the
-  VM and reads its flags before `script += offset`, which moves
-  `ADD EBP,0x66` and `ADD EBX,0x6B` to retail's positions. The score loop now
-  uses the reference `script = 20; count = 10` form. The remaining 10 bytes
-  are the inlined life-icon loop at +0x1CC..+0x204, where EDX and EBX are
-  swapped. Adding the reference's `if (index >= 9) return;` between the two
-  loops was neutral and was reverted. The exact caller
-  `script-viewer-update` (1,251 bytes) is unchanged. [2026-11-22]
+- **GameResetGui @0x413BC0 (1,965)**: the reset's separate inlined show and
+  hide phases compare 1,964/1,965 bytes with all 52 target fields bound in
+  the `player-handle-collision-hit` graph. Returning the first hidden
+  index from the show pass recovers the register choices and loop counters across
+  both loops. At +0x1D1 the non-positive-count branch goes to the upper-bound
+  check at +0x1EB. The target goes directly to +0x1F0 because its first
+  hidden index is zero on that path. The frontier retains the earlier
+  ten-byte baseline because the one remaining offset is new.
+  The out-of-line `GuiSetLivesDisplayCount` still compares 77/77 bytes in
+  the same image. Sharing the split show/hide implementation with that
+  standalone setter shortened it to 66 bytes. Keep its original two-loop
+  implementation. Reset entry as a member was byte-neutral before the split.
+  The direct caller `script-viewer-update` passes a selected 1,251-byte
+  cold replay.
+  [2026-11-22]
 - **StageExecuteScript @0x403C80 (1,868)**: full size, nonexact. Opcodes 10-13
   register choice; opcode 14's VM input is ESI in the target and EDX native.
   [2026-10-29]

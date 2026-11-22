@@ -7,7 +7,7 @@
 - Branch `main`, local commits only. Do not push.
 - The original target is the private, ignored `resources/th10.exe`, Japanese TH10 v1.00a, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`. Keep it read-only and uncommitted.
 - `config/match-units.toml` holds the recipes, `config/matches.csv` is the canonical exact ledger, and `config/frontiers.toml` is a diagnostic ratchet only. A local strict comparison is not a canonical cold replay.
-- The worktree is clean. The superseded raw-offset `AdvanceTransformProgram` experiment from the previous session was deleted; it only reached 0x640.
+- The superseded raw-offset `AdvanceTransformProgram` experiment only reached 0x640.
 
 ## What changed on 2026-11-22
 
@@ -32,7 +32,7 @@ All three LTCG convention questions share one pattern: a register choice that de
 
 Never use inline assembly, naked functions, fake ABI declarations, stand-in callee bodies, copied target bytes, padding, inert locals or comparator cropping. An exact leaf does not make its parent exact.
 
-## Open ANM owner
+## Open ANM and GUI owners
 
 `ExecuteScript` at 0x0043EE30 currently compares 9,962/9,964 bytes in the
 `player-handle-collision-hit` graph at `16572e6b`, including all 350 fields
@@ -43,14 +43,19 @@ for the measured controls and compiler entry points. Reopen this owner
 with a source or real-callee change that affects the layer's global live
 range while preserving the late resource load and both shared tails.
 
+`GameResetGui` at 0x00413BC0 compares 1,964/1,965 bytes with all 52 fields
+bound. Only +0x1D1 differs. The target's zero-life branch skips the hide
+loop's upper-bound test and the candidate performs it. The standalone
+77-byte life setter has its own source body and should be checked when
+consolidating the loops.
+
 ## Strategy for the remaining authored bytes
 
 `_reference/th10-decomp` has MSVC C++ for all 109 authored owners that are
 not exact here (128,407 bytes), excluding its GCC/Clang profiles. Audit each
 one before borrowing: copy natural statement order, case structure and
 helper visibility. Do not borrow its stand-in callee bodies, context callers,
-`#pragma code_seg` placement or assembly fallbacks. Other large near owners include `EclVmContext::Run` (23 bytes),
-`GameResetGui` (10 bytes in the inlined life-icon loop) and
+`#pragma code_seg` placement or assembly fallbacks. Other large near owners include `EclVmContext::Run` (23 bytes) and
 `TransitionShakeLinear` (one FIDIV placement). The reference shapes already
 tried for the shake are recorded in the knowledge base.
 
