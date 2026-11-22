@@ -263,17 +263,20 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
             reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->
                 QueueCommand("dummy", 3, 0);
         FrontEndPlayMusic(0, g_GameStageUpdate->musicIndex);
-        GameEffectUpdateView *effect = g_GameEffectUpdate;
-        EnemyMarkPendingInterrupt(&effect->secondVmId);
-        effect->secondVmId = 0;
+        int *secondVmId = &g_GameEffectUpdate->secondVmId;
+        EnemyMarkPendingInterrupt(secondVmId);
+        *secondVmId = 0;
         manager->stageTimer.SetCurrent(0);
     }
 
-    GameMenuView *menu = g_GameMenu;
-    if (menu != NULL && (menu->flags2A18 & 8) != 0)
+    if (g_GameMenu != NULL && (g_GameMenu->flags2A18 & 8) != 0)
     {
-        reinterpret_cast<StageScriptView *>(menu)->~StageScriptView();
-        ::operator delete(menu);
+        StageScriptView *menu = reinterpret_cast<StageScriptView *>(g_GameMenu);
+        if (menu != NULL)
+        {
+            menu->~StageScriptView();
+            ::operator delete(menu);
+        }
     }
     if ((manager->m_Flags & 4) != 0)
     {
@@ -290,9 +293,10 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
 #if defined(_MSC_VER)
 #pragma inline_depth(0)
 #endif
-        if (manager->stageTimer.current == 2940)
+        const int elapsed = manager->stageTimer.current;
+        if (elapsed == 2940)
             StageCreateTransitionEffect(43, 5, 60, 0, 0, 0);
-        else if (manager->stageTimer.current == 3000)
+        else if (elapsed == 3000)
             g_MainSupervisorView.SetNextGameMode(4);
 #if defined(_MSC_VER)
 #pragma inline_depth(16)
@@ -312,11 +316,9 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
         const unsigned int recordIndex =
             static_cast<unsigned int>(g_GameStatisticsIndex1) +
             static_cast<unsigned int>(g_GameStatisticsIndex0) * 3u;
-        GameStatisticsRecord &row = *reinterpret_cast<GameStatisticsRecord *>(
-            reinterpret_cast<unsigned int>(&g_GameStatisticsRows->records[0]) +
-            recordIndex * static_cast<unsigned int>(sizeof(GameStatisticsRecord)));
-        if (row.activeFrames < 215999999)
-            ++row.activeFrames;
+        int &frames = g_GameStatisticsRows->records[recordIndex].activeFrames;
+        if (frames < 215999999)
+            ++frames;
     }
     // The target reads EnemyManager+0x10, which is the first special enemy
     // pointer, not the manager's activeEnemyCount at +0x60.

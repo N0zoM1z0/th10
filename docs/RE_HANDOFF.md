@@ -11,6 +11,10 @@
 
 ## What changed on 2026-11-22
 
+- `game-manager-update-body` is exact at 1,544 bytes with 114 bound fields
+  and 60 fixed local branches. Its real `GamePrepareAnimationSlots` link entry
+  retains the stack call and restores the update context to EDI. A local
+  pointer to the second VM ID closes the delayed reset's address calculation.
 - `game-manager-cleanup` is exact at 1,105 bytes with 110 bound fields. The
   recipe links the real statistics finalizer and compiles `Player.cpp` with
   `/EHs`. The statistics declaration uses explicit `__stdcall` across

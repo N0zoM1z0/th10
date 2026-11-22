@@ -518,9 +518,17 @@ frontier; do not refresh a baseline merely to accept the new positions.
   [2026-10-29]
 - **PlayerUpdateMovementAndOptions @0x4250B0 (1,656)**: 1,616; both direction
   table bases 40 bytes early. [2026-11-12]
-- **GameManagerUpdateBody @0x418190 (1,544)**: current linked candidate
-  1,538/1,544 with 1,022 differing bytes; the owner remains nonexact.
-  `GameStageSlots` graph, 114 fields, nonexact. [2026-11-12]
+- **GameManagerUpdateBody @0x418190 (1,544)**: exact with 114 bound fields
+  and 60 fixed local branches in `game-manager-update-body`. Choosing the real
+  `GamePrepareAnimationSlots` as the LTCG entry keeps its stack receiver. With
+  the same update source, the usual ANM entry gave that callee EDI and the
+  update kept its context in EBX. The stage entry returns the update context to
+  EDI and reduces the remaining mismatch to the delayed reset's second VM ID.
+  Naming the VM ID pointer restores `mov esi` followed by `add esi, 0x89a4`.
+  A reference to the ID also matches. The disposal guard and typed `activeFrames`
+  access preserve the retail code shape. Snapshotting the elapsed time inside
+  the demo branch preserves its two tests. An entry-wide frame snapshot added
+  a four-byte stack slot. [2026-11-22]
 - **LoadHintFile @0x419960 (1,498)**: 1,533. [2026-10-20]
 - **UpdateReplaySave @0x433570 (1,460)**: 1,444; the target reloads the pressed
   input after the movement sound. [2026-10-30]
