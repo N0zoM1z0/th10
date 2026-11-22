@@ -204,10 +204,11 @@ versus target size unless it says ordinary bytes or normalized instructions.
   slot, so declaring it earlier does not move its loads.
   `AdvanceTransformProgram`'s sprite case computes the script index first
   (`mov edx,[esi+8]` … `mov edx,[esi+0xc]` … `add eax,edx`), and only then
-  reads the bullet manager. With `AnmVmView::StartScript(int scriptIndex,
-  AnmLoadedView *, void *)` the index is the leftmost argument. It is therefore
-  evaluated last and folded into `add eax,[esi+0xc]`, which costs 2 code bytes
-  plus the 2 alignment bytes before the jump table: 0x640 instead of 0x644.
+  reads the bullet manager. The former `AnmVmView::StartScript(int
+  scriptIndex, AnmLoadedView *, void *)` made the index the leftmost argument.
+  It was therefore evaluated last and folded into `add eax,[esi+0xc]`, which
+  cost 2 code bytes plus the 2 alignment bytes before the jump table: 0x640
+  instead of 0x644.
 - 0x404F30 is now the free function
   `__stdcall AnmVmStartScript(AnmLoadedView *resource, AnmVmView *vm, int
   scriptIndex)` calling `AnmVmInitialize(0, vm)`, following

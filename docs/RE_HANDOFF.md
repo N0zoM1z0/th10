@@ -7,7 +7,7 @@
 - Branch `main`, local commits only. Do not push.
 - The original target is the private, ignored `resources/th10.exe`, Japanese TH10 v1.00a, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`. Keep it read-only and uncommitted.
 - `config/match-units.toml` holds the recipes, `config/matches.csv` is the canonical exact ledger, and `config/frontiers.toml` is a diagnostic ratchet only. A local strict comparison is not a canonical cold replay.
-- The raw-offset `AdvanceTransformProgram` experiment from the previous session is kept only as `.analysis/BulletTransform.cpp.uncommitted-raw-offset-experiment-2026-11-22`. It reached 0x640 and is superseded.
+- The worktree is clean. The superseded raw-offset `AdvanceTransformProgram` experiment from the previous session was deleted; it only reached 0x640.
 
 ## What changed on 2026-11-22
 
@@ -40,7 +40,7 @@ one before borrowing: copy natural statement order, case structure and
 helper visibility. Do not borrow its stand-in callee bodies, context callers,
 `#pragma code_seg` placement or assembly fallbacks. Large near owners to try
 first: `ExecuteScript` (2 bytes; keep its two merged child tails),
-`EclVmContext::Run` (23 bytes), `GameResetGui` (13 residual ranges) and
+`EclVmContext::Run` (23 bytes), `GameResetGui` (10 bytes in the inlined life-icon loop) and
 `TransitionShakeLinear` (one FIDIV placement). The reference shapes already
 tried for the shake are recorded in the knowledge base.
 
@@ -60,4 +60,4 @@ scripts/repo-python scripts/ci.py && git diff --check
 
 ## Retained context
 
-Keep `resources/th10.exe`, `.tools/` and the TH10 Wine prefix, `ghidra-project/`, `_reference/` (`th10-decomp` was fast-forwarded on 2026-11-22), canonical ledgers, `docs/evidence/`, the selected original Ghidra exports in `.analysis/`, configured `build/match-linked/` outputs, and unresolved `build/gpt-web/` contexts. See [RE_ARTIFACTS.md](RE_ARTIFACTS.md). `_reference/th10-decomp` is a hypothesis source for natural C++ shapes, not a build or status authority. Its LTCG context drivers and stand-in callees are not admissible here.
+Keep `resources/th10.exe`, `.tools/` and the TH10 Wine prefix, `ghidra-project/`, `_reference/` (`th10-decomp` was fast-forwarded on 2026-11-22), canonical ledgers, `docs/evidence/`, the selected original Ghidra exports in `.analysis/`, and configured `build/match-linked/` outputs. See [RE_ARTIFACTS.md](RE_ARTIFACTS.md). `_reference/th10-decomp` is a hypothesis source for natural C++ shapes, not a build or status authority. Its LTCG context drivers and stand-in callees are not admissible here.
