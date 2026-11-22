@@ -64,6 +64,12 @@ consolidating the loops.
 
 ## Strategy for the remaining authored bytes
 
+`ItemManagerUpdateBody` at 0x0041AFD0 has a local 2,316-byte candidate against
+the 2,320-byte target. The `0x58` frame and all 44 direct calls are restored.
+The `AddFaith` COFF control isolates three caller reloads. The helper's exact
+profile and the timer receiver after `AddRank` remain open. The working
+source and incremental link command are under `.analysis/item-update/`.
+
 `_reference/th10-decomp` has MSVC C++ bodies for the remaining authored
 owners. Use its statement order, case structure and helper visibility as
 hypotheses and verify them in the maintained TH10 graph. Stand-in callee

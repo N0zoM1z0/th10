@@ -488,8 +488,20 @@ frontier; do not refresh a baseline merely to accept the new positions.
 - **EnemyGameStateView::StartSpell @0x409280 (2,432)**: current linked
   candidate 2,404/2,432 with 1,129 differing bytes; 14 receiver LEAs use
   EDX instead of ESI and eight PUSH schedules differ.
-- **ItemManagerUpdateBody @0x41AFD0 (2,320)**: current linked candidate
-  2,220/2,320 with 1,639 differing bytes; the array layout is fixed.
+- **ItemManagerUpdateBody @0x41AFD0 (2,320)**: the best local trial emits
+  2,316 bytes with 593/600 normalized instructions through `RET`, 44 direct
+  calls and 153 linkage fields against the target's 154. The 2,220-byte baseline
+  emits 38 calls. Retail case order and branch-local faith timer calls restore
+  the call sequence. Linking the real `AnmVmStartScript` and
+  `ScriptViewerPopupCreate.cpp` restores their private arguments. Using
+  `g_GameScoreState.power` and passing saved coordinates to a box rejection
+  predicate restores the `0x58` frame and the contact tests.
+  The all-`/GL` trial emits 2,304 bytes. Compiling the real `AddFaith` body as
+  normal COFF restores three immediate EDI receiver loads and produces a
+  48-byte helper. The separate `/GL` body matches the target's 46 bytes and
+  leaves all three reloads missing. The short extent and the timer receiver
+  after `AddRank` at +0x49E, point-payout scheduling and conversion flag store
+  remain open. [2026-11-22]
 - **AnmRenderManagerView ctor @0x445900 (2,315)**: 655/670 normalized
   instructions after setting `element->arg = this` before `flags |= 3` and
   resetting the capture surface index first; the EH frame, VM flag loop and Chain
