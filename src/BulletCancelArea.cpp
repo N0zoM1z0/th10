@@ -45,17 +45,17 @@ int BulletManagerView::CancelBulletsInArea(int spawnItems)
                 8, static_cast<unsigned int>(-1),
                 -1.5707964f, 0.6f);
 
-        AnmVmIdView vmId = bulletAnm->CreateVmAtWorldVariant0(
-            0x173, reinterpret_cast<const AnmFloat3View *>(
-                &bullet->position));
-        AnmVmView *effectVm = g_AnmRenderManagerView->FindVm(vmId);
+        AnmVmView *effectVm = g_AnmRenderManagerView->FindVm(
+            bulletAnm->CreateVmAtWorldVariant0(
+                0x173, reinterpret_cast<const AnmFloat3View *>(
+                    &bullet->position)));
         AnmSpriteView *sprite = bullet->vm.loadedSprite;
         if (sprite != NULL)
         {
-            if (!(sprite->width > 16.0f))
+            if (sprite->width <= 16.0f)
                 effectVm->primaryColor.value =
                     g_BulletCancelPaletteSmall[bullet->color];
-            else if (!(sprite->width > 32.0f))
+            else if (sprite->width <= 32.0f)
                 effectVm->primaryColor.value =
                     g_BulletCancelPaletteMedium[bullet->color];
             else
