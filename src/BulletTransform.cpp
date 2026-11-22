@@ -27,11 +27,10 @@ struct AnmOpcodeVectorView
 // TH10-only actions whose gameplay semantics remain unproven.
 void BulletRuntimeView::AdvanceTransformProgram()
 {
-    BulletTransformKindView kind;
-    int dispatchKind;
+    unsigned int kind;
     BulletTransformRecordView *record;
     int index;
-    int scaledIndex;
+    register int scaledIndex;
     volatile int *cursor;
     unsigned int packedPattern;
     float selectedAngle;
@@ -62,17 +61,16 @@ void BulletRuntimeView::AdvanceTransformProgram()
             goto loopTail;
         }
 
-        dispatchKind = static_cast<int>(kind);
-        if (dispatchKind <= 0x4000u)
+        if (kind <= 0x4000u)
         {
-            if (dispatchKind != BULLET_TRANSFORM_SET_SPRITE)
+            if (kind != BULLET_TRANSFORM_SET_SPRITE)
             {
-                if (dispatchKind <= 0x100u)
+                if (kind <= 0x100u)
                 {
-                    if (dispatchKind == BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE)
+                    if (kind == BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE)
                         goto directionChange;
 
-                    switch (dispatchKind)
+                    switch (kind)
                     {
                     case BULLET_TRANSFORM_DECELERATE:
                         this->activeTransformFlags |= BULLET_TRANSFORM_DECELERATE;
@@ -118,12 +116,12 @@ void BulletRuntimeView::AdvanceTransformProgram()
                         goto directionChange;
                     }
                 }
-                else if (dispatchKind <= 0x1000u)
+                else if (kind <= 0x1000u)
                 {
-                    if (dispatchKind != BULLET_TRANSFORM_SET_CANCEL_BEHAVIOR)
+                    if (kind != BULLET_TRANSFORM_SET_CANCEL_BEHAVIOR)
                     {
-                        if (dispatchKind == BULLET_TRANSFORM_BOUNCE_ALL_EDGES ||
-                            dispatchKind == BULLET_TRANSFORM_BOUNCE_EXCEPT_BOTTOM)
+                        if (kind == BULLET_TRANSFORM_BOUNCE_ALL_EDGES ||
+                            kind == BULLET_TRANSFORM_BOUNCE_EXCEPT_BOTTOM)
                             goto bounce;
                     }
                     else
@@ -131,7 +129,7 @@ void BulletRuntimeView::AdvanceTransformProgram()
                         this->cancelBehavior = record->payload.int0;
                     }
                 }
-                else if (dispatchKind == BULLET_TRANSFORM_SET_CULL_DELAY)
+                else if (kind == BULLET_TRANSFORM_SET_CULL_DELAY)
                 {
                     this->offscreenCullDelayFrames = record->payload.int0;
                     *cursor = index + 1;
@@ -150,17 +148,17 @@ void BulletRuntimeView::AdvanceTransformProgram()
                 vm.StartScript(scriptIndex, resource, manager);
             }
         }
-        else if (dispatchKind <= 0x400000u)
+        else if (kind <= 0x400000u)
         {
-            if (dispatchKind != BULLET_TRANSFORM_SPAWN_CHILD_PATTERN)
+            if (kind != BULLET_TRANSFORM_SPAWN_CHILD_PATTERN)
             {
-                if (dispatchKind <= 0x20000u)
+                if (kind <= 0x20000u)
                 {
-                    if (dispatchKind != BULLET_TRANSFORM_PLAY_SOUND)
+                    if (kind != BULLET_TRANSFORM_PLAY_SOUND)
                     {
-                        if (dispatchKind != BULLET_TRANSFORM_WAIT)
+                        if (kind != BULLET_TRANSFORM_WAIT)
                         {
-                            if (dispatchKind == BULLET_TRANSFORM_DESPAWN)
+                            if (kind == BULLET_TRANSFORM_DESPAWN)
                                 EnemyCancelBulletRecord(
                                     reinterpret_cast<unsigned char *>(this));
                         }
@@ -176,9 +174,9 @@ void BulletRuntimeView::AdvanceTransformProgram()
                             QueueSoundCue(record->payload.int0, this->position.x);
                     }
                 }
-                else if (dispatchKind != BULLET_TRANSFORM_WRAP_X)
+                else if (kind != BULLET_TRANSFORM_WRAP_X)
                 {
-                    if (dispatchKind == BULLET_TRANSFORM_WRAP_Y)
+                    if (kind == BULLET_TRANSFORM_WRAP_Y)
                     {
                         this->activeTransformFlags |= kind;
                         this->exStates[7].timer.SetCurrent(record->payload.int0);
@@ -227,13 +225,13 @@ void BulletRuntimeView::AdvanceTransformProgram()
                 goto advanceRecord;
             }
         }
-        else if (dispatchKind <= 0x4000000u)
+        else if (kind <= 0x4000000u)
         {
-            if (dispatchKind != BULLET_TRANSFORM_HOMING)
+            if (kind != BULLET_TRANSFORM_HOMING)
             {
-                if (dispatchKind != BULLET_TRANSFORM_SET_OWNER_TAG)
+                if (kind != BULLET_TRANSFORM_SET_OWNER_TAG)
                 {
-                    if (dispatchKind != BULLET_TRANSFORM_JUMP)
+                    if (kind != BULLET_TRANSFORM_JUMP)
                         goto advanceRecord;
                     index = record->payload.int0;
                     goto storeIndex;
@@ -265,7 +263,7 @@ void BulletRuntimeView::AdvanceTransformProgram()
             state.timer.previous = -1;
             state.durationFrames = record->payload.int0;
         }
-        else if (dispatchKind == BULLET_TRANSFORM_BOUNCE_HORIZONTAL_ONLY)
+        else if (kind == BULLET_TRANSFORM_BOUNCE_HORIZONTAL_ONLY)
         {
             goto bounce;
         }
