@@ -65,10 +65,12 @@ consolidating the loops.
 ## Strategy for the remaining authored bytes
 
 `ItemManagerUpdateBody` at 0x0041AFD0 has a local 2,316-byte candidate against
-the 2,320-byte target. The `0x58` frame and all 44 direct calls are restored.
-The `AddFaith` COFF control isolates three caller reloads. The helper's exact
-profile and the timer receiver after `AddRank` remain open. The working
-source and incremental link command are under `.analysis/item-update/`.
+the 2,320-byte target. The `timer-view` trial restores the timer receiver
+after `AddRank` and preserves the exact GUI callers. The `life-member` trial
+fixes one more item instruction and changes the GUI call order. An opaque
+`AddFaith` declaration restores the caller reloads. The separately linked
+`/GL` callee matches all 46 bytes.
+See `.analysis/item-update/results.txt` for both retained probes and commands.
 
 `_reference/th10-decomp` has MSVC C++ bodies for the remaining authored
 owners. Use its statement order, case structure and helper visibility as

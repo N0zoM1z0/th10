@@ -488,20 +488,27 @@ frontier; do not refresh a baseline merely to accept the new positions.
 - **EnemyGameStateView::StartSpell @0x409280 (2,432)**: current linked
   candidate 2,404/2,432 with 1,129 differing bytes; 14 receiver LEAs use
   EDX instead of ESI and eight PUSH schedules differ.
-- **ItemManagerUpdateBody @0x41AFD0 (2,320)**: the best local trial emits
-  2,316 bytes with 593/600 normalized instructions through `RET`, 44 direct
-  calls and 153 linkage fields against the target's 154. The 2,220-byte baseline
-  emits 38 calls. Retail case order and branch-local faith timer calls restore
-  the call sequence. Linking the real `AnmVmStartScript` and
-  `ScriptViewerPopupCreate.cpp` restores their private arguments. Using
-  `g_GameScoreState.power` and passing saved coordinates to a box rejection
-  predicate restores the `0x58` frame and the contact tests.
-  The all-`/GL` trial emits 2,304 bytes. Compiling the real `AddFaith` body as
-  normal COFF restores three immediate EDI receiver loads and produces a
-  48-byte helper. The separate `/GL` body matches the target's 46 bytes and
-  leaves all three reloads missing. The short extent and the timer receiver
-  after `AddRank` at +0x49E, point-payout scheduling and conversion flag store
-  remain open. [2026-11-22]
+- **ItemManagerUpdateBody @0x41AFD0 (2,320)**: `timer-view` emits 2,316
+  bytes with 594/600 normalized instructions through `RET`, all 44 direct
+  calls in order and 154 linkage fields. Retail case order, branch-local
+  timer calls and the real animation and popup bodies recover the calls.
+  Using `g_GameScoreState.power` and passing saved box coordinates recovers
+  the `0x58` frame. The timer call through `g_GameStartupState.score` rematerializes
+  EDI after `AddRank`. Both score names resolve to target `0x474C40`.
+  A declaration-only `AddFaith` gives the same caller as the normal COFF
+  body. Separately, the `/GL` helper emits 46 raw-identical bytes when linked
+  as a callee. Making it the link entry gives the 48-byte form with an extra
+  EDX argument load, as does normal COFF.
+  `life-member` brings the item body to 595/600 by changing `AddLives` to a
+  natural member. The 141-byte helper matches exactly. The `GameUpdateGui`
+  caller now loads ECX before EAX at +0x286. An inlineable
+  forwarding function leaves that order in place. `timer-view` preserves
+  both existing exact owners, the item callback and `GameManagerUpdateBody`.
+  In `life-member`, the case 5 load into EAX at +0x567 is one byte shorter
+  than the retail load into EBX. The resulting table starts four bytes early
+  at +0x8CC. Both tables retain their case order. The x87 operation
+  at +0x523, popup argument order and conversion flag store also differ.
+  [2026-11-22]
 - **AnmRenderManagerView ctor @0x445900 (2,315)**: 655/670 normalized
   instructions after setting `element->arg = this` before `flags |= 3` and
   resetting the capture surface index first; the EH frame, VM flag loop and Chain
