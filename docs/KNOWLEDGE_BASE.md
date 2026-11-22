@@ -469,25 +469,17 @@ frontier; do not refresh a baseline merely to accept the new positions.
   scheduling still differ. [2026-11-14]
 - **ExportAutomaticHints @0x41A200 (2,247)**: native inlines all 24 writer uses;
   the target makes 9 calls and inlines 15. [2026-10-25]
-- **GameResetGui @0x413BC0 (1,965)**: the 2026-11-17 real
-  `player-handle-collision-hit` 36-support-TU graph retains the complete
-  1,965-byte function with 47 residual bytes and its exact 627-byte caller.
-  The target builds both stage-script indices by adding `0x66` and `0x6B`
-  to the stored 32-bit starting-stage word (`ADD EBP,0x66` and
-  `ADD EBX,0x6B`); source now uses unsigned-word addition before converting
-  to the signed `CreateVmVariant0` argument. This removes signed-overflow
-  undefined behavior for unchecked stage numbers without changing any
-  candidate bytes. The remaining differences are still life-loop register
-  allocation and stage-VM call scheduling. An earlier manual expansion of
-  the stage-VM path grew the residual to 175 bytes and was reverted.
-  [2026-11-18 handoff] The sole dirty `src/Gui.cpp` experiment changes the
-  life loop to a register pointer and decrementing do/while. Its
-  current parent comparison has 45 mismatches, but the frontier is
-  `REGRESSED` because +0x1D2..+0x1D9 are newly different. The helper
-  PDB contribution is 66 bytes versus the 77-byte manifest extent,
-  so the committed-HEAD 77/77 exact helper claim does not apply to
-  the dirty source. Preserve and resolve this experiment before
-  relying on the helper ledger.
+- **GameResetGui @0x413BC0 (1,965)**: 10 differing bytes (was 47) in the
+  `player-handle-collision-hit` graph as of 2026-11-22. Following
+  `_reference/th10-decomp`'s `AllocateFrontObject`, the two stage captions
+  use a local `CreateFrontCaptionVm(anm, script, offset)`. It allocates the
+  VM and reads its flags before `script += offset`, which moves
+  `ADD EBP,0x66` and `ADD EBX,0x6B` to retail's positions. The score loop now
+  uses the reference `script = 20; count = 10` form. The remaining 10 bytes
+  are the inlined life-icon loop at +0x1CC..+0x204, where EDX and EBX are
+  swapped. Adding the reference's `if (index >= 9) return;` between the two
+  loops was neutral and was reverted. The exact caller
+  `script-viewer-update` (1,251 bytes) is unchanged. [2026-11-22]
 - **StageExecuteScript @0x403C80 (1,868)**: full size, nonexact. Opcodes 10-13
   register choice; opcode 14's VM input is ESI in the target and EDX native.
   [2026-10-29]

@@ -173,8 +173,7 @@ address = 0x00413BC0
 size = 1965
 candidate_size = 1965
 target_sha256 = "513d2b620d6f816514a93548a7c0b03e068c65a0d2295a38e96336e705dc7ad9"
-residual = ["1CD", "1DA-1DE", "1E8", "1EC", "1F1", "205", "561", "567-56A", "56C-573", "579-57E", "580-585", "68C-68F", "694-69B"]
-
+residual = ["1CD", "1DA-1DE", "1E8", "1EC", "1F1", "205"]
 [frontier.game-manager-cleanup]
 function = "GameManagerCleanup"
 unit = "player-handle-collision-hit"
