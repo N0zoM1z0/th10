@@ -11,6 +11,10 @@
 
 ## What changed on 2026-11-22
 
+- `game-manager-cleanup` is exact at 1,105 bytes with 110 bound fields. The
+  recipe links the real statistics finalizer and compiles `Player.cpp` with
+  `/EHs`. The statistics declaration uses explicit `__stdcall` across
+  compiler profiles. `game-statistics-finalize` also passes selected replay.
 - `transition-shake-linear` is exact at 439 bytes with 20 bound fields. The
   wide RNG seed read and named float product restore the late x87 divide.
   The same selected cold link preserves `transition-effect-initialize`

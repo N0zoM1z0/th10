@@ -7,7 +7,7 @@
 // Target42B1E0..42B413, complete564-byte owner. Physical private EBX receiver
 // does not establish a source calling convention. Preserve the target's failure
 // behavior; this routine saves but never destroys the statistics owner.
-int GameFinalizeStatistics42B1E0(GameStatisticsOwner *statistics)
+int __stdcall GameFinalizeStatistics42B1E0(GameStatisticsOwner *statistics)
 {
     if (statistics->header == NULL)
         return -1;

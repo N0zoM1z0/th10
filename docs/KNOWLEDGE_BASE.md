@@ -535,8 +535,15 @@ frontier; do not refresh a baseline merely to accept the new positions.
 - **EnemyLaserType1View::CheckCollisionBox @0x41EB00 (1,171)** and
   **CheckCollisionCircle @0x41EFA0 (1,108)**: 1,209 and 1,178; the type-0
   factory branch still inlines. [2026-11-06]
-- **GameManagerCleanup @0x417C80 (1,105)**: 1,098; a whole switch gives 1,120.
-  [2026-10-31]
+- **GameManagerCleanup @0x417C80 (1,105)**: the selected VC7.1 SP1 LTCG replay
+  matches the complete owner and all 110 fields. A named animation resource,
+  a shared byte-sized replay flag and separate mode 4 and 15 arms recover the
+  branch layout. The previous switch emitted 1,120 bytes. Adding the real
+  statistics finalizer initially left the caller unchanged because the caller
+  declared cdecl and the `/Gz` definition emitted stdcall. A shared explicit
+  `__stdcall` declaration lets LTCG pass the statistics owner in EBX. Compiling
+  the real `Player.cpp` with `/EHs` restores the destructor's stack receiver
+  and the cleanup function's ESI allocation around the delete. [2026-11-22]
 - **EnemyFullObjectView::ReadFloatOperand @0x412350 (884)**: 876. [2026-10-30]
 - **MergeJoystickInput @0x44A190 (833)**: 235/282 normalized in
   `input-controller-buttons`. [2026-11-14]

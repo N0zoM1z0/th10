@@ -678,6 +678,7 @@ void __stdcall GameManagerCleanup(GameManager *manager)
     GameFinalizeStatistics42B1E0(g_GameStatisticsRows);
     g_GameStartupState.runtimeFlags &= ~3u;
     g_PlayerTimerScale = 1.0f;
+    unsigned char replayModeFlag = 2;
     if (g_MainSupervisorView.nextGameMode == 10)
     {
         AsciiManagerView *ascii = g_AsciiManagerView;
@@ -685,8 +686,8 @@ void __stdcall GameManagerCleanup(GameManager *manager)
         AnmFloat3View position(480.0f, 392.0f, 0.0f);
         if (vmId == 0)
         {
-            vmId =
-                g_AsciiManagerView->asciiAnm->CreateVmAtScreenVariant0(6, &position).value;
+            AnmLoadedView *resource = g_AsciiManagerView->asciiAnm;
+            vmId = resource->CreateVmAtScreenVariant0(6, &position).value;
         }
         if (g_GameStartupState.score.nextStage == g_GameStartupState.score.selectedStage)
             g_GameStartupState.runtimeFlags |= 1u;
@@ -694,9 +695,13 @@ void __stdcall GameManagerCleanup(GameManager *manager)
     else if (g_MainSupervisorView.nextGameMode == 11)
     {
         g_AsciiManagerView->EnsureSelectionVm(224.0f, 416.0f);
-        g_GameStartupState.runtimeFlags |= 2u;
+        g_GameStartupState.runtimeFlags |= replayModeFlag;
     }
-    else if (g_MainSupervisorView.nextGameMode == 4 || g_MainSupervisorView.nextGameMode == 15)
+    else if (g_MainSupervisorView.nextGameMode == 4)
+    {
+        g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f);
+    }
+    else if (g_MainSupervisorView.nextGameMode == 15)
     {
         g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f);
     }
@@ -711,7 +716,7 @@ void __stdcall GameManagerCleanup(GameManager *manager)
         g_GameStartupState.runtimeFlags |= 1u;
     }
 
-    if ((g_GameStartupState.runtimeFlags & 2u) == 0)
+    if ((g_GameStartupState.runtimeFlags & replayModeFlag) == 0)
     {
         if (g_MainSupervisorView.nextGameMode != 14 && g_MainSupervisorView.nextGameMode != 15)
         {

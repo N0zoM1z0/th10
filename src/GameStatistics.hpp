@@ -143,7 +143,7 @@ typedef char GameStatisticsOwnerSize1DCB4[(sizeof(GameStatisticsOwner) == 0x1dcb
 // One canonical slot47783C; Enemy's existing byte-view alias remains an explicit
 // physical alias obligation, not a second definition/allocation here.
 extern GameStatisticsOwner *g_GameStatisticsRows;
-int GameFinalizeStatistics42B1E0(GameStatisticsOwner *statistics);
+int __stdcall GameFinalizeStatistics42B1E0(GameStatisticsOwner *statistics);
 
 GameStatisticsOwner *CreateStatistics42AF20();
 void ReleaseGameStatistics();
