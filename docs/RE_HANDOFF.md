@@ -32,15 +32,25 @@ All three LTCG convention questions share one pattern: a register choice that de
 
 Never use inline assembly, naked functions, fake ABI declarations, stand-in callee bodies, copied target bytes, padding, inert locals or comparator cropping. An exact leaf does not make its parent exact.
 
+## Open ANM owner
+
+`ExecuteScript` at 0x0043EE30 currently compares 9,962/9,964 bytes in the
+`player-handle-collision-hit` graph at `16572e6b`, including all 350 fields
+and 95 fixed local destinations. Opcode 91's layer load uses ECX before
+C2's local register pass. Later instruction scheduling preserves that
+choice. See the ExecuteScript entry in the [knowledge base](KNOWLEDGE_BASE.md)
+for the measured controls and compiler entry points. Reopen this owner
+with a source or real-callee change that affects the layer's global live
+range while preserving the late resource load and both shared tails.
+
 ## Strategy for the remaining authored bytes
 
 `_reference/th10-decomp` has MSVC C++ for all 109 authored owners that are
 not exact here (128,407 bytes), excluding its GCC/Clang profiles. Audit each
 one before borrowing: copy natural statement order, case structure and
 helper visibility. Do not borrow its stand-in callee bodies, context callers,
-`#pragma code_seg` placement or assembly fallbacks. Large near owners to try
-first: `ExecuteScript` (2 bytes; keep its two merged child tails),
-`EclVmContext::Run` (23 bytes), `GameResetGui` (10 bytes in the inlined life-icon loop) and
+`#pragma code_seg` placement or assembly fallbacks. Other large near owners include `EclVmContext::Run` (23 bytes),
+`GameResetGui` (10 bytes in the inlined life-icon loop) and
 `TransitionShakeLinear` (one FIDIV placement). The reference shapes already
 tried for the shake are recorded in the knowledge base.
 

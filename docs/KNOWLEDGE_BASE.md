@@ -408,12 +408,31 @@ frontier; do not refresh a baseline merely to accept the new positions.
   exact function, including both malloc/free REL32 fields. [2026-11-19]
 
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: the current
-  36-support-TU graph is 9,964/9,964 with two differences at +0x112/+0x115.
-  Opcode 91 now uses `AnmChildVmCreationArguments` with asserted 8-byte size
-  and `scriptIndex`/`renderLayer` offsets, preserving script-before-layer
-  evaluation order. Retail loads `[ebp+0x20]` into EDX and pushes EDX; the
-  candidate uses ECX. Reversed field assignment and direct-argument trials
-  regressed the body and were reverted. Keep adjacent opcode bodies intact.
+  `player-handle-collision-hit` graph at `16572e6b` strictly compares
+  9,962/9,964 bytes using the 350-field [binding contract](evidence/anm-child-request-record/binding-contract.json),
+  including 95 fixed local destinations. At +0x113 and +0x115, opcode 91
+  loads and pushes the layer through ECX where retail uses EDX.
+  - In pinned C2 13.10.6030 under `link.exe /LTCG`, opcode 91's layer
+    destination is already ECX at `RegSimpleAssign` (0x1079BD18). The
+    layer loads in opcodes 88, 90 and 92 still have virtual destinations
+    at that point. `RegAssign` selects ECX, ECX and EDX for those loads,
+    respectively. The opcode 91 resource load also reaches this pass
+    with a virtual destination and gets EAX. `Riscify` leaves these
+    assignments untouched.
+  - Splitting the child pointer into separate locals for the front and
+    back tails preserves the opcode 91 mismatch and reverses the two
+    radial Z operands at +0x2476/+0x247C. Expanding the operand ternary
+    into an if/else inside the request is byte-neutral. Moving the real
+    `CreateVmVariant2` definition to `AnmVmCreate.cpp` also preserves all
+    9,962 matching bytes and every field.
+  - The default member convention with direct arguments still generates
+    the exact 73-byte factory in this link, but moves the resource load
+    before the first argument push, leaving ten caller differences. The
+    reference's inlined attachment helper changes the call and tail
+    layout in this graph. Its explicit result-pointer shape also changes
+    layout because the maintained handle's default constructor zeros
+    the result slot. The maintained source retains both shared tails
+    and the value-returning factory.
 - **EclVmContext::Run @0x44E1A0 (7,020)**: current linked owner is 7,020/7,020
   with 23 differing bytes. The frontier is `REGRESSED` because residual offsets
   moved, not because the count changed. The remaining schedule includes
