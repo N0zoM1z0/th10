@@ -46,19 +46,15 @@ downloaded tools are private and never committed.
 
 ## Current status
 
-Start with [the current handoff](docs/RE_HANDOFF.md), the selected owner's source
-and ledger rows. [PROGRESS.md](docs/PROGRESS.md) is generated from the ledgers
-and is the count authority. The inventory and origin classifications remain
-provisional; the Windows i386 product, runtime semantics and portability are open.
+[PROGRESS.md](docs/PROGRESS.md) is generated from the ledgers and is the count
+authority. The inventory and origin classifications remain provisional; the
+Windows i386 product, runtime semantics and portability are open.
 
-Current owner priorities and source-epoch-specific diagnostics are maintained in
-[RE_HANDOFF.md](docs/RE_HANDOFF.md) and [KNOWLEDGE_BASE.md](docs/KNOWLEDGE_BASE.md);
-the generated [PROGRESS.md](docs/PROGRESS.md) remains the count authority.
-
-For a new agent, read [AGENTS.md](AGENTS.md), then
-[RE_HANDOFF.md](docs/RE_HANDOFF.md), followed by the selected owner's source/ledger rows,
-and the relevant comparison lane. Use [RE_ARTIFACTS.md](docs/RE_ARTIFACTS.md)
-for private inputs, the few retained unresolved contexts and cleanup policy.
+A new agent reads [AGENTS.md](AGENTS.md), then [the current handoff](docs/RE_HANDOFF.md)
+for owner priorities, then the selected owner's source and ledger rows.
+[KNOWLEDGE_BASE.md](docs/KNOWLEDGE_BASE.md) holds durable TH10 findings and
+[RE_ARTIFACTS.md](docs/RE_ARTIFACTS.md) covers private inputs, retained
+contexts and cleanup.
 
 Use `scripts/repo-python`; it enforces the locked Capstone package. Verify the
 private target before target work. Check toolchain declarations and run the

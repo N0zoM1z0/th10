@@ -1,12 +1,6 @@
 # Tool routing
 
-> Current workflow: follow the **Highest priority** section in `AGENTS.md`.
-> Prefer affected exact comparisons and useful Markdown knowledge. Ordinary
-> notes do not require full CI, native replay or document-hash/pin refreshes.
-> Older broad validation instructions apply only when their impact is relevant.
-
-
-| Need | Command or provider | Authority |
+| Need | Command | Authority |
 | --- | --- | --- |
 | Verify the private target | `scripts/repo-python scripts/verify-target.py` | Target identity, PE structure, and Rich record stream |
 | Verify shared analyzer surfaces | `scripts/repo-python scripts/verify-analysis-tools.py` | Selected Ghidra/JDK file identity |
@@ -18,7 +12,7 @@
 | Build a canonical compiler unit | `scripts/repo-python scripts/build-match-unit.py --unit NAME` | Cold normal-COFF compile or `/GL` compile/link, no exactness by itself |
 | Compare a canonical normal-COFF unit | `scripts/repo-python scripts/compare-coff-function.py --unit NAME --json` | Complete target bytes and declared relocation replay |
 | Compare a canonical linked-PE unit | `scripts/repo-python scripts/compare-linked-function.py --unit NAME --json` | PE/map/PDB-bound complete extent, exhaustive linked-field validation and target replay |
-| Cold-replay canonical exact units | `scripts/repo-python scripts/replay-exact-units.py --unit NAME [--unit NAME...]` | One cold build per shared artifact context followed by strict comparison of every selected COFF or linked-PE unit |
+| Cold-replay canonical exact units | `scripts/repo-python scripts/replay-exact-units.py --unit NAME [--unit NAME...]` | One cold build per shared artifact context followed by strict comparison of every selected COFF or linked-PE unit ; refuses units still marked `candidate = true` |
 | List the source-present exact backlog | `scripts/repo-python scripts/report-exact-backlog.py [--source SOURCE] [--module MODULE] [--state authored\|origin-review\|origin-indeterminate\|excluded\|all] [--json]` | Triage-only joined view of non-exact source mappings; default excludes origin-pending entries |
 | Rank the exact backlog in both codegen lanes | `scripts/repo-python scripts/rank-exact-backlog.py [--source SOURCE] [--limit N] [--json]` | Fresh normal-COFF and LTCG probes joined to the same current backlog and ranked by explicit size/byte distance; no acceptance authority |
 | Batch-probe the authored exact backlog | `scripts/repo-python scripts/probe-exact-backlog.py [--source SOURCE] [--show RESULT] [--json]` | One cold normal-COFF compile per source plus strict diagnostic comparison; no acceptance authority |
@@ -30,7 +24,8 @@
 | Query local Ghidra | `scripts/repo-python scripts/ghidra.py query .analysis/query.txt OPERATION ARG...` | Read-only target-attested provisional semantic analysis |
 | Decompile local functions | `scripts/repo-python scripts/ghidra.py decompile .analysis/functions.txt ADDRESS...` | Bounded source hypotheses, no exactness credit |
 | Validate ledgers | `scripts/repo-python scripts/validate-tracking.py --require-target` | Internal consistency and target binding |
-| Report progress | `scripts/repo-python scripts/report-reconstruction-status.py` | Ledger-derived status |
+| Regenerate progress | `scripts/repo-python scripts/progress.py [--check]` | Writes `docs/PROGRESS.md` and `resources/progress.svg` from the ledgers; the count authority |
+| Report status | `scripts/repo-python scripts/report-reconstruction-status.py` | Ledger-derived stage summary |
 | Validate public checkout | `scripts/repo-python scripts/ci.py` | Small target-independent checks |
 | Track nonexact owners | `scripts/repo-python scripts/check-frontier.py [NAME...] [--no-build] [--update] [--show]` | Ratchet over `config/frontiers.toml`; fails when a matched byte regresses; record new owners with `--add NAME --unit UNIT --function F [--symbol S --address A --size N]`; diagnostic only |
 | Run the tooling self-tests | `scripts/repo-python scripts/ci.py --full` | Basic checks plus every `scripts/test-*.py` and the ledger validator (about 15 s; needs the private target and built EH fixture graphs) |
