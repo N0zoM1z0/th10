@@ -74,30 +74,31 @@ git diff --check
 
 Keep `resources/th10.exe`, `.tools/` and the TH10 Wine prefix, `ghidra-project/`, `_reference/`, canonical ledgers, `docs/evidence/`, selected original Ghidra exports in `.analysis/`, configured `build/match-linked/` outputs, and unresolved `build/gpt-web/` contexts. See [RE_ARTIFACTS.md](RE_ARTIFACTS.md) for the retained artifact inventory. The adjacent `_reference/th10-decomp` project is a separate historical reference, not this repository's build or status authority.
 
-## 2026-11-21 bullet-runtime follow-up
+## 2026-11-22 bullet reconstruction follow-up
 
-This section supersedes stale status statements above where they conflict with the two newer commits. Latest source checkpoint is `1e5630b9` (`gpt-web: use explicit planar bullet bounds`), preceded by `3eadb55b` (`gpt-web: reconstruct bullet cancel bounds and VM lookup`). The branch is `main`, two commits ahead of `origin/main`; no full cold replay was run in this iteration.
+The latest source checkpoint is `b8c79a96` (`gpt-web: match bullet cancellation bounds and VM palette`), following `1e5630b9` and `3eadb55b`. The branch is `main`, four commits ahead of `origin/main`. Work in this iteration used only the selected linked-function units; no full cold replay was run.
 
 ### `BulletManagerView::CancelBulletsInArea`
 
-- Target: `0x00408210`, manifest extent `0x249` (585 bytes).
-- Current source: `src/BulletCancelArea.cpp`; it iterates 2,000 slots, skips states 0 and 3, computes explicit XY lower/upper bullet bounds, sets the cancel flag, optionally spawns an item, creates the ANM cancellation VM, resolves it through `AnmRenderManagerView::FindVm`, selects the size-based palette, and clears the trailing state word.
-- Current targeted linked contribution: `0x23B` (571 bytes), so strict comparison stops at the extent gate. This is a semantic/source checkpoint, not exact.
-- Target x87 order is known: width half -> lower X -> height half -> lower Y -> upper X -> upper Y, followed by the four overlap comparisons. Keep the XY math as natural C++; do not use volatile locals just to force spills. The compiler still schedules/reuses some temporaries differently from retail.
+- Target: `0x00408210`, full extent `0x249` (585 bytes).
+- Current source: `src/BulletCancelArea.cpp`; it iterates the 2,000-slot pool, skips states 0 and 3, computes the rectangle bounds, sets the cancellation flag, optionally spawns an item, creates and resolves the ANM cancellation VM, chooses the size-based palette, and clears the trailing state word.
+- The width thresholds are expressed as `width <= 16`, then `width <= 32`, then the large palette. This reproduces the target's two x87 `jp` branches.
+- The focused linked-function replay is **exact: 585/585 bytes**, with all 15 target/candidate linkage fields aligned. This result is recorded by commit `b8c79a96`.
 
 ### `BulletRuntimeView::UpdateAbsoluteDirectionChange`
 
 - Target: `0x004078E0`, extent `0x14F` (335 bytes).
-- Current targeted result: candidate extent is also 335 bytes; 333/335 bytes match. The only differences are at offsets `0xD7` and `0xDD`: retail loads the angle word into EDX and pushes EDX, while the candidate uses EAX. The current bit-preserving `memcpy` source is retained; direct union reads and local-union/register variants did not improve the result.
-- Do not call this exact until the two-byte register-selection difference is resolved by a natural C++ expression.
+- The current source builds to the correct 335-byte contribution and matches 333/335 bytes. The remaining differences are at offsets `0xD7` and `0xDD`: retail loads the angle word into EDX and pushes EDX, while the candidate uses EAX.
+- Direct union reads, local union temporaries, volatile reads, register hints, and local-order pragmas were tested. None produced a better natural C++ match. Keep the bit-preserving source; do not call this exact until those two bytes match.
 
 ### `BulletRuntimeView::AdvanceTransformProgram`
 
-- Target: `0x00406D90`, full extent `0x644` (1,604 bytes).
-- The committed natural C++ body currently contributes `0x640` (1,600 bytes); the strict comparator therefore stops before comparing the full owner.
-- A temporary `const unsigned int&` opcode-field variant reached the `0x644` extent but failed the target-bound relocation-field check: the indexed kind load and record pointer were formed in the wrong order/registers. A typed enum reference produced only `0x638`. These experiments are retained under `.analysis/` and are not part of the source tree.
-- Keep the current source reverted to its natural enum local. Continue with the indexed-load/register-allocation and jump-table structure; do not use inline assembly, copied bytes, padding, or comparator cropping.
+- Target: `0x00406D90`, full extent `0x644` (1,604 bytes); target code body ends at `0x5AE` and the switch table/data follows.
+- The natural typed-enum source currently contributes `0x640` (1,600 bytes), so the strict comparator stops at the extent gate. Explicit raw-offset/register variants reached `0x63C`; a conditional record-pointer variant reached `0x648`. None is exact or retained in the source tree.
+- The first target block loads the opcode into ECX and forms the record pointer in ESI from the same scaled index. Candidate variants have assigned the scaled index/opcode to different registers or formed the record pointer too late. Continue with natural local lifetimes, typed record access, and the jump-table/switch structure; do not use inline assembly, copied bytes, padding, or comparator cropping.
 
-### `SpawnSingleBullet` status correction
+### Related leaf frontiers
 
-The fresh `bullet-spawn-single-exact` build from the current committed `src/BulletManager.cpp` contributes `0x585` (1,413 bytes) against the `0x5C0` (1,472-byte) manifest extent, with 1,359/1,418 bytes matching in the compared prefix. This supersedes the older 54-byte-difference note in the earlier leaf table; re-establish that frontier from current source before resuming it.
+The previously verified exact leaves remain `BulletManagerUpdateCallback` (40 bytes), `SpawnBulletPattern` (194 bytes), `UpdateHoming` (306 bytes), `UpdateVectorAcceleration` (305 bytes), and `UpdateAimedDirectionChange` (431 bytes). Rebuild only the affected unit when changing their shared source.
+
+`SpawnSingleBullet` remains a separate unresolved leaf: the current committed source contributes `0x585` (1,413 bytes) against its `0x5C0` manifest extent. Re-establish its current frontier before resuming it.
