@@ -11,6 +11,11 @@
 
 ## What changed on 2026-11-22
 
+- `transition-shake-linear` is exact at 439 bytes with 20 bound fields. The
+  wide RNG seed read and named float product restore the late x87 divide.
+  The same selected cold link preserves `transition-effect-initialize`
+  and `transition-shake-envelope`.
+
 Read [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) sections "Write a plain `switch`", "Argument evaluation order", "`AnmVmStartScript` and `AnmVmInitialize` visibility (open)" and "Non-local regressions through calling conventions".
 
 - `AdvanceTransformProgram` is now a single natural `switch`. The hand-built branch tree, `volatile` cursor, `register` hints and barriers are gone.
@@ -51,13 +56,12 @@ consolidating the loops.
 
 ## Strategy for the remaining authored bytes
 
-`_reference/th10-decomp` has MSVC C++ for all 109 authored owners that are
-not exact here (128,407 bytes), excluding its GCC/Clang profiles. Audit each
-one before borrowing: copy natural statement order, case structure and
-helper visibility. Do not borrow its stand-in callee bodies, context callers,
-`#pragma code_seg` placement or assembly fallbacks. Other large near owners include `EclVmContext::Run` (23 bytes) and
-`TransitionShakeLinear` (one FIDIV placement). The reference shapes already
-tried for the shake are recorded in the knowledge base.
+`_reference/th10-decomp` has MSVC C++ bodies for the remaining authored
+owners. Use its statement order, case structure and helper visibility as
+hypotheses and verify them in the maintained TH10 graph. Stand-in callee
+bodies, context callers, `#pragma code_seg` placement and assembly
+fallbacks are inadmissible here. `EclVmContext::Run` remains a close large
+owner with 23 differing bytes.
 
 ## Commands
 

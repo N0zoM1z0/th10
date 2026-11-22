@@ -12,13 +12,6 @@ candidate_size = 335
 target_sha256 = "e20984dc1778b1bfcdc3a91d44db88057c326184264be1fa698cd9df1284bc8f"
 residual = ["D7", "DD"]
 
-[frontier.transition-shake-linear]
-function = "TransitionShakeLinear"
-unit = "transition-shake-linear"
-candidate_size = 439
-target_sha256 = "ce3e4112ea53c56eb4532e630abe5ee26682aed39d2c09f018a7cb0a7a47240d"
-residual = ["B6-BD", "BF-D1"]
-
 [frontier.gui-message-run-candidate]
 function = "GuiMessageVmView::Run"
 unit = "gui-message-run-candidate"

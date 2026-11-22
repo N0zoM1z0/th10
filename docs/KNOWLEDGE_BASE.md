@@ -606,23 +606,15 @@ frontier; do not refresh a baseline merely to accept the new positions.
   caller graph retains the full 182/182 exact target and six fields; the
   separate six-input EnemyReadDialog graph preserves its 124/124 exact
   owner. No new exact byte credit from the semantically repaired spelling.
-- **TransitionShakeLinear @0x43C550 (439)**: capturing the signed duration
-  and initial amplitude offset into ordinary C++ locals recovers the target
-  stack-operand lifetime across the RNG calls. The selected 14-input GUI /
-  Transition graph improves from 427/439 bytes with 346 differences to the
-  complete 439/439-byte owner with 27 differences; its recorded frontier
-  passes unchanged. The remaining cluster schedules `FIDIV` before, rather
-  than inside, the second RNG update. On 2026-11-22 three more shapes left that single FIDIV
-  misplaced (+0xAA against retail +0xCE) with every other instruction
-  aligned: the `_reference/th10-decomp` order (`start` first, then
-  `delta = value1 - start`, then a named `(float)((float)delta * elapsed)`
-  product); the packed draw written as `half | (half << 16)`; and a
-  front-end `__forceinline` RNG word instead of `RngView::GetRandomU16`.
-  All were reverted. Fifteen whole same-image exact guards
-  pass (1,732 bytes); initializer @0x43C970 retains 396/396 code and 37
-  linkage positions, but its strict guard is blocked by the older static
-  selector expecting ShakeEnvelope size 350, while the current envelope is
-  352/349. Neither shake callback is exact. [2026-11-17]
+- **TransitionShakeLinear @0x43C550 (439)** is exact in the 14-input GUI
+  transition link. At 0x43C5CA and 0x43C601 the target reads both RNG seed
+  halfwords as one 32-bit word. The callback copies that word with
+  `memcpy` and updates only the live halfword. This representation and the
+  reference's named, explicitly converted float product move `FIDIV` from
+  +0xAA to +0xCE, inside the second RNG update. The earlier product-only
+  change kept the divide early with `RngView::GetRandomU16`.
+  A selected cold replay binds all 20 fields and preserves the 396-byte
+  initializer and 349-byte envelope callback. [2026-11-22]
 - **TransitionShakeEnvelope @0x43C710 (349)**: exact in the actual
   Transition/GUI 14-input `/GL` graph, including 16 complete REL32/DIR32
   fields. A volatile reference to the real `effect->value2` phase tail,

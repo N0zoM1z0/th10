@@ -194,6 +194,19 @@ static int __fastcall TransitionDrawPulse(void *argument)
     return 1;
 }
 
+// The linear callback reads both seed halfwords and updates the live one.
+static __forceinline unsigned short AdvanceShakeRng()
+{
+    unsigned int state;
+    memcpy(&state, &g_RngView, sizeof(state));
+    state = (state ^ 0x9630u) - 0x6553u;
+    unsigned short result = static_cast<unsigned short>(
+        (static_cast<unsigned short>(state) >> 14) + (state << 2));
+    g_RngView.seed = result;
+    ++g_RngView.generationCount;
+    return result;
+}
+
 // 43C550-43C706. Each axis advances twice and duplicates the SECOND half.
 // Deliberately not equivalent to GetRandomU32 or AnmRandomU32InRange.
 static int __fastcall TransitionShakeLinear(void *argument)
@@ -207,12 +220,13 @@ static int __fastcall TransitionShakeLinear(void *argument)
     const int duration = effect->frames;
     if (effect->timer.current >= duration)
         return 7;
-    const int difference = static_cast<int>(effect->value1 - effect->value0);
-    const int initialOffset = static_cast<int>(effect->value0);
-    const float amplitude = difference * effect->timer.subframe / duration +
-        initialOffset;
-    g_RngView.GetRandomU16();
-    unsigned int half = g_RngView.GetRandomU16();
+    int initialOffset = static_cast<int>(effect->value0);
+    int difference = static_cast<int>(
+        effect->value1 - static_cast<unsigned int>(initialOffset));
+    float scaled = (float)((float)difference * effect->timer.subframe);
+    float amplitude = scaled / duration + initialOffset;
+    AdvanceShakeRng();
+    unsigned int half = AdvanceShakeRng();
     unsigned int choice = ((half << 16) | half) % 3u;
     switch (choice)
     {
@@ -220,8 +234,8 @@ static int __fastcall TransitionShakeLinear(void *argument)
     case 1: g_TransitionShakeX = amplitude; break;
     case 2: g_TransitionShakeX = -amplitude; break;
     }
-    g_RngView.GetRandomU16();
-    half = g_RngView.GetRandomU16();
+    AdvanceShakeRng();
+    half = AdvanceShakeRng();
     choice = ((half << 16) | half) % 3u;
     switch (choice)
     {
