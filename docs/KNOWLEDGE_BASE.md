@@ -397,7 +397,7 @@ frontier; do not refresh a baseline merely to accept the new positions.
 - **LoadHintFile @0x419960 (1,498)**: 1,533. [2026-10-20]
 - **UpdateReplaySave @0x433570 (1,460)**: 1,444; the target reloads the pressed
   input after the movement sound. [2026-10-30]
-- **BulletRuntimeView::AdvanceTransformProgram @0x406D90 (1,454 code bytes)**: the `bullet-transform-program` unit uses VC7.1 SP1 LTCG `/GL` + `/GS` and a 0x644-byte complete code/local-table comparison extent, including five local switch-table destinations at +0x5B0..+0x5C0 and the 128-byte selector span at +0x5C4. A fresh build against the current source still has a 0x640 PDB contribution; strict comparison stops with `PDB contribution size 0x640 differs from manifest 0x644` before comparing the complete owner. The target computes `index * 3` in EAX, loads kind into ECX, and forms the record pointer in ESI; the current baseline candidate assigns scaled index to ECX and kind to EAX. Several natural C++ type/scope/expression variants were explored without improving the complete owner. The source models 18 records of stride 0x18 at runtime +0x464, kind +0x10, allow-while-active +0x14, active flags +0x43C, cursor +0x45C, and nine extension-state slots at +0x614. Next focus is EAX/ECX/ESI lifetimes, child descriptor initialization order, both loop tails, and complete local tables. Do not shrink the comparison extent or claim partial exactness. The historical `bullet-runtime-update` source-epoch caveat remains separate. [2026-11-20]
+- **BulletRuntimeView::AdvanceTransformProgram @0x406D90 (1,454 code bytes)**: the `bullet-transform-program` unit uses VC7.1 SP1 LTCG `/GL` + `/GS` and a 0x644-byte complete code/local-table comparison extent, including five local switch-table destinations at +0x5B0..+0x5C0 and the 128-byte selector span at +0x5C4. A fresh build against the current source still has a 0x640 PDB contribution; strict comparison stops with `PDB contribution size 0x640 differs from manifest 0x644` before comparing the complete owner. The target computes `index * 3` in EAX, loads kind into ECX, and forms the record pointer in ESI; the current baseline candidate assigns scaled index to ECX and kind to EAX. Several natural C++ type/scope/expression variants were explored without improving the complete owner. The source models 18 records of stride 0x18 at runtime +0x464, kind +0x10, allow-while-active +0x14, active flags +0x43C, cursor +0x45C, and nine extension-state slots at +0x614. Next focus is EAX/ECX/ESI lifetimes, child descriptor initialization order, both loop tails, and complete local tables. Do not shrink the comparison extent or claim partial exactness. The historical `bullet-runtime-update` source-epoch caveat remains separate. [2026-11-20] On 2026-11-22 both the committed `9957cd86` register-lifetime source and an uncommitted raw-offset record-access variant still produced 0x640, so the extent gate is unchanged. [2026-11-22]
 - **PlayerInitialize @0x4247F0 (1,435)**: 1,380 with 49 fields; current source
   carries five barriers and a scoped volatile manager capture. [2026-10-23]
 - **BulletSpawnDescriptorView::SpawnSingleBullet @0x4067D0 (1,413 code + 59 local-table bytes)**: fresh selected VC7.1 SP1 `/GL` build owns the complete 1,472-byte comparison extent. The target-derived manifest now binds all 44 DIR32/REL32 fields, including nine external calls, two local jump-table pointers and all 14 table destinations; candidate and target field offsets agree exactly. The bullet-spawn call to `AnmVmView::StartScript` passes the loaded bullet ANM resource in both the VM-init context register and the single stack argument, matching target callsite `0x406BA9`. Rewriting the interrupt selection as ordered `if/else if` branches restores the target's fall-through state-2/backstep block and aligns all three `4.0f` references; swapping the collision-height/width stores aligns their x87 store order. The current complete comparison has 1,418/1,472 bytes matched (1,359/1,413 code bytes); 54 ordinary bytes remain, concentrated in effect-script register allocation/table dispatch and the post-spawn manager-cursor/return tail. This is not exact yet. [2026-11-21]
@@ -510,6 +510,13 @@ frontier; do not refresh a baseline merely to accept the new positions.
   `TransitionEffectView::Initialize` 396/396 with 37 fields. A separate
   selected 17-unit cold of this graph passes 2,477 bytes in total.
   [2026-11-17]
+- **BulletManagerView::CancelBulletsInArea @0x408210 (585)**: the
+  `bullet-cancel-in-area` linked-PE unit (VC7.1 SP1 `/GL /GS`, nine-source
+  bullet graph including `ItemManager.cpp`) is strict 585/585 with all 15
+  fields bound. Writing the size thresholds as `width <= 16`, then
+  `width <= 32`, then the large palette reproduces the target's two x87 `jp`
+  branches. The unit is still `candidate = true` with no `matches.csv` row;
+  promote it only after a selected cold replay. [2026-11-22]
 - **BulletRuntimeView::UpdateAbsoluteDirectionChange @0x4078E0 (335)**: current
   linked candidate is 335/335, with two differences at +0xD7/+0xDD
   (target EDX, candidate EAX). `register` hints were byte-neutral; removing the
@@ -538,9 +545,9 @@ frontier; do not refresh a baseline merely to accept the new positions.
   the former float-order/alignment caveat no longer applies. [2026-11-17]
 - **GamePrepareAnimationSlots @0x404450 (214)**: the target uses a stack owner
   and RET4; the real graph gives EDI and plain RET. [2026-10-31]
-- **StartEntityScript_00404f30 @0x404F30 (202)**: now natural source (the naked
-  asm is gone); 45/45 normalized plus one extra `xor ecx,ecx` from the
-  `AnmVmInitialize` call. [2026-11-14]
+- **AnmVmView::StartScript @0x404F30 (202)**: exact since 2026-11-21 (the
+  former `StartEntityScript_00404f30` note with an extra `xor ecx,ecx` is
+  superseded); see the ANM entry below. [2026-11-22]
 - **EnemyMotionView::AdvanceMotion @0x44C2A0 (171)**: canonical selected
   17-source `/GL` VC7.1 SP1 cold replay matches the complete PDB-owned 171
   bytes, including all seven bound REL32/DIR32 operands. The original first
