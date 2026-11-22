@@ -1,7 +1,5 @@
 #include "BulletManager.hpp"
 
-extern "C" void _ReadWriteBarrier();
-#pragma intrinsic(_ReadWriteBarrier)
 
 #include <math.h>
 #include <string.h>
@@ -14,17 +12,6 @@ extern int g_BulletEffectMode[];
 extern int g_BulletEffectScriptByColor[];
 extern int g_BulletDrawBucket[];
 extern float g_BulletCollisionSize[];
-// Original bullet tables are indexed by signed ECL-provided shorts. The
-// i386 address calculation uses a low-32-bit word, including out-of-range
-// offsets; do not form a C++ out-of-bounds pointer through array indexing.
-template <class T> static __forceinline T BulletNativeTableRead(
-    const T *base, int index)
-{
-    return *reinterpret_cast<const T *>(
-        reinterpret_cast<unsigned int>(base) +
-        static_cast<unsigned int>(index) * sizeof(T));
-}
-
 
 extern unsigned int EnemyCancelBulletRecord(unsigned char *bullet);
 extern void *g_EnemyBulletManager;
@@ -143,10 +130,7 @@ void BulletRuntimeView::UpdateDeceleration()
     }
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        // Native INC wraps this signed timer as one low 32-bit word.
-        const unsigned int nextFrame =
-            static_cast<unsigned int>(state.timer.current) + 1u;
-        memcpy(&state.timer.current, &nextFrame, sizeof nextFrame);
+        ++state.timer.current;
         state.timer.subframe += 1.0f;
     }
     else {
@@ -184,10 +168,7 @@ void BulletRuntimeView::UpdateVectorAcceleration()
     }
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        // Native INC wraps this signed timer as one low 32-bit word.
-        const unsigned int nextFrame =
-            static_cast<unsigned int>(state.timer.current) + 1u;
-        memcpy(&state.timer.current, &nextFrame, sizeof nextFrame);
+        ++state.timer.current;
         state.timer.subframe += 1.0f;
     }
     else {
@@ -217,10 +198,7 @@ void BulletRuntimeView::UpdatePolarAcceleration()
     }
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        // Native INC wraps this signed timer as one low 32-bit word.
-        const unsigned int nextFrame =
-            static_cast<unsigned int>(state.timer.current) + 1u;
-        memcpy(&state.timer.current, &nextFrame, sizeof nextFrame);
+        ++state.timer.current;
         state.timer.subframe += 1.0f;
     }
     else {
@@ -248,11 +226,7 @@ void BulletRuntimeView::UpdateRelativeDirectionChange()
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                 QueueSoundSample(transformSound, 0);
         }
-        // Relative direction cycles publish the full wrapped DWORD before
-        // applying their signed cycle-count termination condition.
-        const unsigned int nextCycleBits =
-            static_cast<unsigned int>(state.int2) + 1u;
-        memcpy(&state.int2, &nextCycleBits, sizeof state.int2);
+        ++state.int2;
         if (state.int2 >= state.int1)
             activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_RELATIVE;
 
@@ -272,10 +246,7 @@ void BulletRuntimeView::UpdateRelativeDirectionChange()
         FromAngleMagnitude(angle, nextSpeed);
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        // Native INC wraps this signed timer as one low 32-bit word.
-        const unsigned int nextFrame =
-            static_cast<unsigned int>(state.timer.current) + 1u;
-        memcpy(&state.timer.current, &nextFrame, sizeof nextFrame);
+        ++state.timer.current;
         state.timer.subframe += 1.0f;
     }
     else {
@@ -295,13 +266,7 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                 QueueSoundSample(transformSound, 0);
         }
-        // The native cycle word wraps on UINT32 overflow before the signed
-        // comparison against int1, without aliasing it through another type.
-        // Absolute direction-change cycle counts are native i386 words.
-        // Preserve the wrapped signed bit pattern before the int1 guard.
-        const unsigned int nextCycleBits =
-            static_cast<unsigned int>(state.int2) + 1u;
-        memcpy(&state.int2, &nextCycleBits, sizeof state.int2);
+        ++state.int2;
         if (state.int2 >= state.int1)
             activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE;
 
@@ -330,11 +295,7 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
     nextVelocity.FromAngleMagnitude(outgoingAngle, nextSpeed);
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        // Retail INC advances the timer's low DWORD modulo 2^32. Publish
-        // the signed field through its bit representation, not an alias.
-        const unsigned int nextFrame =
-            static_cast<unsigned int>(state.timer.current) + 1u;
-        memcpy(&state.timer.current, &nextFrame, sizeof nextFrame);
+        ++state.timer.current;
         state.timer.subframe += 1.0f;
     }
     else {
@@ -369,11 +330,7 @@ void BulletRuntimeView::UpdateAimedDirectionChange()
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                 QueueSoundSample(transformSound, 0);
         }
-        // Aimed-change cycles advance one signed native DWORD before
-        // testing the terminal count; publish its wrapped representation.
-        const unsigned int nextCycleBits =
-            static_cast<unsigned int>(state.int2) + 1u;
-        memcpy(&state.int2, &nextCycleBits, sizeof state.int2);
+        ++state.int2;
         if (state.int2 >= state.int1)
             activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_AIMED;
 
@@ -403,11 +360,7 @@ void BulletRuntimeView::UpdateAimedDirectionChange()
     // The relative-direction sibling uses the opposite x87 operand order.
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        // Native fast tick increments the timer DWORD modulo 2^32;
-        // publish the bit pattern into the signed field without aliasing.
-        const unsigned int nextFrame =
-            static_cast<unsigned int>(state.timer.current) + 1u;
-        memcpy(&state.timer.current, &nextFrame, sizeof nextFrame);
+        ++state.timer.current;
         state.timer.subframe += 1.0f;
     }
     else {
@@ -470,11 +423,7 @@ void BulletRuntimeView::UpdateBoundaryBounce()
 
         if (bounced != 0)
         {
-            // Retail increments the bounce count as one native signed
-            // DWORD before comparing it against its terminal bound.
-            const unsigned int nextBounceCountBits =
-                static_cast<unsigned int>(state.int0) + 1u;
-            memcpy(&state.int0, &nextBounceCountBits, sizeof state.int0);
+            ++state.int0;
         }
         if (state.int0 >= state.int1) {
             activeTransformFlags &=
@@ -581,10 +530,7 @@ void BulletRuntimeView::UpdateHoming()
 tickTimer:
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        // Preserve native modulo-DWORD tick, including signed rollover.
-        const unsigned int nextBits =
-            static_cast<unsigned int>(state.timer.current) + 1u;
-        memcpy(&state.timer.current, &nextBits, sizeof nextBits);
+        ++state.timer.current;
         state.timer.subframe += 1.0f;
     }
     else {
@@ -594,15 +540,6 @@ tickTimer:
     }
 }
 
-
-// This target's bucket index is an unchecked native 32-bit word, not
-// an abstract C++ in-range array offset.
-template <class T> static __forceinline T *BulletBucketAtWord(T *base, int index)
-{
-    return reinterpret_cast<T *>(
-        reinterpret_cast<unsigned int>(base) +
-        static_cast<unsigned int>(index) * sizeof(T));
-}
 
 // Target 0x004065C0. Retail LTCG keeps the manager in private ESI.
 int BulletManagerView::UpdateBullets()
@@ -622,11 +559,7 @@ int BulletManagerView::UpdateBullets()
     drawBucketTails[0] = 0;
 
     BulletRuntimeView *bullet = &bullets[0];
-    // The original i386 walks the fixed bullet pool by 0x7f0-byte words.
-    for (int remaining = 2000; remaining != 0;
-         --remaining, bullet = reinterpret_cast<BulletRuntimeView *>(
-             reinterpret_cast<unsigned int>(bullet) +
-             sizeof(BulletRuntimeView))) {
+    for (int remaining = 2000; remaining != 0; --remaining, ++bullet) {
         if (bullet->state == 0)
             continue;
 
@@ -639,12 +572,11 @@ int BulletManagerView::UpdateBullets()
         }
 
         int bucket = bullet->drawBucketIndex;
-        if (*BulletBucketAtWord(&drawBucketHeads[0], bucket) != 0)
-            (*BulletBucketAtWord(&drawBucketTails[0], bucket))->nextInDrawBucket = bullet;
+        if (drawBucketHeads[bucket] != 0)
+            drawBucketTails[bucket]->nextInDrawBucket = bullet;
         else
-            *BulletBucketAtWord(&drawBucketHeads[0], bucket) = bullet;
-        *BulletBucketAtWord(&drawBucketTails[0],
-            bullet->drawBucketIndex) = bullet;
+            drawBucketHeads[bucket] = bullet;
+        drawBucketTails[bullet->drawBucketIndex] = bullet;
         bullet->nextInDrawBucket = 0;
         ++activeBulletCount;
         // Original stateTimer increment is a native 32-bit word, even
@@ -652,10 +584,7 @@ int BulletManagerView::UpdateBullets()
         AnmVmTimerView &timer = bullet->stateTimer;
         timer.previous = timer.current;
         if (*timer.scale > 0.99f && *timer.scale < 1.01f) {
-            // The original signed manager timer advances modulo 2^32.
-            const unsigned int nextBits =
-                static_cast<unsigned int>(timer.current) + 1u;
-            memcpy(&timer.current, &nextBits, sizeof nextBits);
+            ++timer.current;
             timer.subframe += 1.0f;
         }
         else {
@@ -685,7 +614,6 @@ int __fastcall BulletManagerUpdateCallback(BulletManagerView *manager)
 
 
 
-#pragma var_order(speed, scanned, bullet, angle, transformFlags, this)
 int BulletSpawnDescriptorView::SpawnSingleBullet(
     BulletManagerView *manager, int index1, int index2, float angleToPlayer)
 {
@@ -700,11 +628,7 @@ int BulletSpawnDescriptorView::SpawnSingleBullet(
     {
         if (bullet->state == 0)
             break;
-        // Original pool scanning uses an i386 ADD of one 0x7F0-byte
-        // row, including the existing final sentinel record.
-        bullet = reinterpret_cast<BulletRuntimeView *>(
-            reinterpret_cast<unsigned int>(bullet) +
-            static_cast<unsigned int>(sizeof(BulletRuntimeView)));
+        ++bullet;
         if (bullet->state == 5)
             bullet = &manager->bullets[0];
     }
@@ -807,24 +731,21 @@ int BulletSpawnDescriptorView::SpawnSingleBullet(
         FromAngleMagnitude(angle, speed);
 
     bullet->activeTransformFlags = this->transformFlags;
-    const unsigned int bulletFlags = bullet->flags & ~0x0cu;
     bullet->color = this->color;
     bullet->bulletType = this->bulletType;
-    _ReadWriteBarrier();
-    bullet->flags = bulletFlags | 2u;
+    bullet->flags = (bullet->flags & ~0x0cu) | 2u;
     bullet->value454 = 0;
 
     AnmVmStartScript(manager->bulletAnm, &bullet->vm,
         g_BulletSpriteScriptBase[this->bulletType] + this->color);
 
-    // The effect-script ID also uses retail LEA EAX*2+0x11 word wrap.
-    switch (BulletNativeTableRead(g_BulletEffectMode, static_cast<int>(this->bulletType)))
+    switch (g_BulletEffectMode[this->bulletType])
     {
     case 0:
         bullet->effectScript = static_cast<int>(this->color) * 2 + 0x11;
         break;
     case 1:
-        bullet->effectScript = BulletNativeTableRead(g_BulletEffectScriptByColor, static_cast<int>(this->color));
+        bullet->effectScript = g_BulletEffectScriptByColor[this->color];
         break;
     case 2:
         bullet->effectScript = -1;
@@ -839,10 +760,10 @@ int BulletSpawnDescriptorView::SpawnSingleBullet(
         break;
     }
 
-    bullet->drawBucketIndex = BulletNativeTableRead(g_BulletDrawBucket, static_cast<int>(this->bulletType));
+    bullet->drawBucketIndex = g_BulletDrawBucket[this->bulletType];
     bullet->transformSound = this->transformSound;
     bullet->offscreenCullDelayFrames = 10;
-    bullet->collisionHeight = BulletNativeTableRead(g_BulletCollisionSize, static_cast<int>(this->bulletType));
+    bullet->collisionHeight = g_BulletCollisionSize[this->bulletType];
     bullet->collisionWidth = bullet->collisionHeight;
 
     transformFlags = this->transformFlags;
@@ -850,28 +771,24 @@ int BulletSpawnDescriptorView::SpawnSingleBullet(
     {
         bullet->vm.pendingInterrupt = 7;
         bullet->state = 2;
-        _ReadWriteBarrier();
         bullet->position -= bullet->velocity * 4.0f;
     }
     else if ((transformFlags & 4u) != 0)
     {
         bullet->vm.pendingInterrupt = 8;
         bullet->state = 2;
-        _ReadWriteBarrier();
         bullet->position -= bullet->velocity * 4.0f;
     }
     else if ((transformFlags & 8u) != 0)
     {
         bullet->vm.pendingInterrupt = 9;
         bullet->state = 2;
-        _ReadWriteBarrier();
         bullet->position -= bullet->velocity * 4.0f;
     }
     else
     {
         bullet->vm.pendingInterrupt = 2;
     }
-afterSpawnBackstep:
 
     memcpy(
         bullet->transforms, this->transforms,

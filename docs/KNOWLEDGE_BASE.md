@@ -262,6 +262,26 @@ starter keep its VM in ESI. [2026-11-22]
   `RandomMath.cpp` or making `BulletManager.cpp` the first `/GL` input did not
   change it. [2026-11-22]
 
+### Byte-neutral steering removed from `BulletManager.cpp` (2026-11-22)
+
+Each of these was removed and the ten owners they touched stayed exact. Do
+not reintroduce them as exactness tools:
+
+- `memcpy` "wrapped INC" (`unsigned next = (unsigned)x + 1u; memcpy(&x, …)`); use `++x`;
+- `BulletNativeTableRead` and `BulletBucketAtWord` unsigned-address indexing; use `table[index]`;
+- pointer advance through `reinterpret_cast<unsigned int>`; use `++bullet`;
+- the four `_ReadWriteBarrier()` calls in `SpawnSingleBullet`;
+- `#pragma var_order(...)`.
+
+The ten owners are `SpawnSingleBullet`, `UpdateBullets`, the update callback,
+deceleration, vector and polar acceleration, relative and aimed direction
+change, homing and boundary bounce.
+
+The same idea does not apply blindly. Splitting `ExecuteScript`'s two merged
+child-creation tails (opcodes 88/90 and 91/92) into four self-contained cases
+made LTCG inline `InsertAfter` and regressed the owner from 9,962/9,964 to
+9,884 bytes, so the two shared tails are retail structure. [2026-11-22]
+
 ### Neutral controls (do not retry without new evidence)
 
 Operand, XOR and addend order; local declaration order and renames; naming float
