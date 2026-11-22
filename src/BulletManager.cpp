@@ -814,17 +814,8 @@ int BulletSpawnDescriptorView::SpawnSingleBullet(
     bullet->flags = bulletFlags | 2u;
     bullet->value454 = 0;
 
-    // Preserve the retail order: form the sprite script index before
-    // fetching the ANM resource passed to StartScript.
-    const int scriptIndex = static_cast<int>(
-        static_cast<unsigned int>(BulletNativeTableRead(
-            g_BulletSpriteScriptBase, static_cast<int>(this->bulletType))) +
-        static_cast<unsigned int>(static_cast<int>(this->color)));
-    _ReadWriteBarrier();
-    AnmLoadedView *resource = manager->bulletAnm;
-    // Retail 0x406BA9 passes the loaded resource in both the VM-init context
-    // register and the StartScript stack argument; the manager only supplies it.
-    bullet->vm.StartScript(scriptIndex, resource, resource);
+    AnmVmStartScript(manager->bulletAnm, &bullet->vm,
+        g_BulletSpriteScriptBase[this->bulletType] + this->color);
 
     // The effect-script ID also uses retail LEA EAX*2+0x11 word wrap.
     switch (BulletNativeTableRead(g_BulletEffectMode, static_cast<int>(this->bulletType)))
@@ -891,17 +882,13 @@ afterSpawnBackstep:
     bullet->AdvanceTransformProgram();
     AnmRenderManagerView::ExecuteScript(&bullet->vm);
 
-    // Original post-spawn cursor also advances by the native 0x7F0 word.
-    bullet = reinterpret_cast<BulletRuntimeView *>(
-        reinterpret_cast<unsigned int>(bullet) +
-        static_cast<unsigned int>(sizeof(BulletRuntimeView)));
-    if (bullet->state != 5)
-    {
+    // Advance the cursor past the new bullet, wrapping to the first slot
+    // when the next one is the end-of-pool sentinel.
+    ++bullet;
+    if (bullet->state == 5)
+        manager->bulletCursor = &manager->bullets[0];
+    else
         manager->bulletCursor = bullet;
-        return 0;
-    }
-
-    manager->bulletCursor = &manager->bullets[0];
     return 0;
 }
 

@@ -415,7 +415,7 @@ CSound::Unpause
 AnmVmTimerView::SetCurrent
 BulletRuntimeView::AdvanceTransformProgram
 EnemyCancelBulletRecord
-AnmVmView::StartScript
+AnmVmStartScript
 BulletSpawnDescriptorView::SpawnSingleBullet
 BulletSpawnDescriptorView::SpawnBulletPattern
 BulletRuntimeView::Deactivate

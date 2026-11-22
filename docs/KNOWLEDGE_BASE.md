@@ -180,6 +180,88 @@ versus target size unless it says ordinary bytes or normalized instructions.
   `AddAutomaticEntry @0x41A120`, `SetSubroutine @0x450700`). Elsewhere
   `volatile` usually grows or disturbs code.
 
+### Write a plain `switch`; do not hand-build the compiler's tree
+
+- Hand-writing the compiler's decision tree (nested range tests, `goto`
+  labels, `volatile` cursors, `_ReadWriteBarrier`, `register` hints) locks the
+  allocator into the wrong registers. `AdvanceTransformProgram @0x406D90`
+  stayed at 318/409 aligned instructions in that form. Rewritten as one
+  `while (index < 18)` loop and a single `switch` over every opcode, with
+  `continue` for opcodes that set the index themselves, the first 0x2F9 bytes
+  match retail (372/409 instructions), including the
+  `mov eax,ecx; dec eax; cmp eax,0x7f` dispatch and both jump tables. With
+  the natural `AnmVmStartScript` order the owner reaches the full 0x644
+  extent and 395/409 instructions; only the child-spawn block differs.
+- The retail dispatch copies the opcode (kept in ECX for the range tests) into
+  EAX for the table index. That shape comes from a `switch` over a separately
+  read operand, `switch (record->kind)`, with the earlier tests on a
+  `const unsigned int kind` copy. [2026-11-22]
+
+### Argument evaluation order follows the callee's parameter order
+
+- VC7.1 evaluates call arguments right to left, and the scheduler keeps that
+  IL order when loads tie. A one-use local is forwarded into its argument
+  slot, so declaring it earlier does not move its loads.
+  `AdvanceTransformProgram`'s sprite case computes the script index first
+  (`mov edx,[esi+8]` … `mov edx,[esi+0xc]` … `add eax,edx`), and only then
+  reads the bullet manager. With `AnmVmView::StartScript(int scriptIndex,
+  AnmLoadedView *, void *)` the index is the leftmost argument. It is therefore
+  evaluated last and folded into `add eax,[esi+0xc]`, which costs 2 code bytes
+  plus the 2 alignment bytes before the jump table: 0x640 instead of 0x644.
+- 0x404F30 is now the free function
+  `__stdcall AnmVmStartScript(AnmLoadedView *resource, AnmVmView *vm, int
+  scriptIndex)` calling `AnmVmInitialize(0, vm)`, following
+  `_reference/th10-decomp`. All 28 callers pass the script index last.
+  `SpawnSingleBullet` and the interpreter's sprite case now form the index
+  before the resource load without `_ReadWriteBarrier`. The old
+  `AnmVmView::StartScript(int, AnmLoadedView *, void *unused)` forwarded
+  whatever each caller left in ECX (the manager in one caller, the resource
+  in another). That was a fake ABI parameter compensating for an opaque
+  `AnmVmInitialize`, and it is gone. [2026-11-22]
+
+### `AnmVmStartScript` and `AnmVmInitialize` visibility (open)
+
+Retail 0x404F30 calls 0x401DE0 with `mov edx, esi` and never sets ECX. None
+of the 10 retail call sites of 0x401DE0 sets ECX, and none takes its address.
+LTCG therefore saw the initializer's dead first parameter. Yet it kept the VM
+in ESI across the call. Our natural source cannot reproduce both at once:
+
+| Graph for `entity-start-script` | Result |
+| --- | --- |
+| `AnmVmInitialize.cpp` absent (opaque), source passes `0` | 204 bytes: retail plus one `xor ecx, ecx` |
+| `AnmVmInitialize.cpp` present, appended or first in `/GL` input order | 200 bytes: VM arrives in EDX because LTCG knows EDX survives the call |
+| Present, initializer redeclared as one-parameter `AnmVmInitialize(AnmVmView *)` | 200 bytes, the same as above |
+
+Neither our build nor retail writes EDX inside the 273-byte initializer.
+`_reference/th10-decomp` reaches 202 bytes only by linking a 23-byte
+stand-in initializer that "hides its register kill set behind an external
+call". That is build-context engineering, not source, so we do not use it.
+The owner stays a candidate. The interpreter and `SpawnSingleBullet` match
+retail with the opaque graph, which suggests that retail's callers saw the
+starter keep its VM in ESI. [2026-11-22]
+
+### Non-local regressions through calling conventions
+
+- `e569a902` (2026-11-19) added a `QueueSoundCue` call to
+  `src/BulletTransform.cpp`. `bullet-runtime-update` compiled that file as a
+  normal (non-`/GL`) support object, so `QueueSoundCue @0x43DD10` lost its
+  private EBX/ESI ABI. `BulletUpdateRuntime @0x406240` silently dropped from
+  885 to 878 bytes while its `matches.csv` row still said exact. After
+  compiling every support source with `/GL` and adding the `StartScript`
+  sources, it is 884/885. The one remaining difference is
+  `mov ecx, ebp` (retail) against `push ebp`: in this two-caller graph LTCG
+  passes the interpreter's `this` on the stack. Retail has exactly those two
+  call sites and no address reference, so the cause is still unknown.
+  Adding `RandomMath.cpp` was neutral.
+- When a support file gains a call to a private-ABI callee, replay every exact
+  unit whose graph compiles that file as normal COFF.
+- `SpawnBulletPattern @0x4073E0` takes its descriptor in EAX in its own exact
+  graph and in retail, but in ECX inside the interpreter's graph. This is the
+  interpreter's last structural gap (+0x3E0..+0x495, child spawn; its only
+  field mismatch is the manager load at +0x46A). Adding
+  `RandomMath.cpp` or making `BulletManager.cpp` the first `/GL` input did not
+  change it. [2026-11-22]
+
 ### Neutral controls (do not retry without new evidence)
 
 Operand, XOR and addend order; local declaration order and renames; naming float
@@ -400,7 +482,7 @@ frontier; do not refresh a baseline merely to accept the new positions.
 - **BulletRuntimeView::AdvanceTransformProgram @0x406D90 (1,454 code bytes)**: the `bullet-transform-program` unit uses VC7.1 SP1 LTCG `/GL` + `/GS` and a 0x644-byte complete code/local-table comparison extent, including five local switch-table destinations at +0x5B0..+0x5C0 and the 128-byte selector span at +0x5C4. A fresh build against the current source still has a 0x640 PDB contribution; strict comparison stops with `PDB contribution size 0x640 differs from manifest 0x644` before comparing the complete owner. The target computes `index * 3` in EAX, loads kind into ECX, and forms the record pointer in ESI; the current baseline candidate assigns scaled index to ECX and kind to EAX. Several natural C++ type/scope/expression variants were explored without improving the complete owner. The source models 18 records of stride 0x18 at runtime +0x464, kind +0x10, allow-while-active +0x14, active flags +0x43C, cursor +0x45C, and nine extension-state slots at +0x614. Next focus is EAX/ECX/ESI lifetimes, child descriptor initialization order, both loop tails, and complete local tables. Do not shrink the comparison extent or claim partial exactness. The historical `bullet-runtime-update` source-epoch caveat remains separate. [2026-11-20] On 2026-11-22 both the committed `9957cd86` register-lifetime source and an uncommitted raw-offset record-access variant still produced 0x640, so the extent gate is unchanged. [2026-11-22]
 - **PlayerInitialize @0x4247F0 (1,435)**: 1,380 with 49 fields; current source
   carries five barriers and a scoped volatile manager capture. [2026-10-23]
-- **BulletSpawnDescriptorView::SpawnSingleBullet @0x4067D0 (1,413 code + 59 local-table bytes)**: fresh selected VC7.1 SP1 `/GL` build owns the complete 1,472-byte comparison extent. The target-derived manifest now binds all 44 DIR32/REL32 fields, including nine external calls, two local jump-table pointers and all 14 table destinations; candidate and target field offsets agree exactly. The bullet-spawn call to `AnmVmView::StartScript` passes the loaded bullet ANM resource in both the VM-init context register and the single stack argument, matching target callsite `0x406BA9`. Rewriting the interrupt selection as ordered `if/else if` branches restores the target's fall-through state-2/backstep block and aligns all three `4.0f` references; swapping the collision-height/width stores aligns their x87 store order. The current complete comparison has 1,418/1,472 bytes matched (1,359/1,413 code bytes); 54 ordinary bytes remain, concentrated in effect-script register allocation/table dispatch and the post-spawn manager-cursor/return tail. This is not exact yet. [2026-11-21]
+- **BulletSpawnDescriptorView::SpawnSingleBullet @0x4067D0 (1,413 code + 59 local-table bytes)**: exact since 2026-11-22. A selected cold replay reproduces 1,472/1,472 bytes with all 44 fields. The last 54 bytes closed through three natural changes. First, the call became `AnmVmStartScript(manager->bulletAnm, &bullet->vm, table[type] + color)`, which removed a `_ReadWriteBarrier` and the fake ECX argument. Second, the callee `AdvanceTransformProgram` became a plain switch, which fixed the effect-switch registers; this is a non-local effect through LTCG. Third, the cursor tail was written as `++bullet; if (bullet->state == 5) cursor = &bullets[0]; else cursor = bullet;` instead of an inverted early return. Earlier fixes still hold: the ordered `if/else if` interrupt selection and the collision-height/width store order. [2026-11-22]
 - **EnemyLaserLineView::RunCommands @0x41CA80 (1,356)**: 1,368; embedded VM
   receiver EDX versus ESI. [2026-10-20]
 - **HintOwnerView::ConsumeEntries @0x419120 (1,317)**: 1,308 with all 34
@@ -522,6 +604,9 @@ frontier; do not refresh a baseline merely to accept the new positions.
   (target EDX, candidate EAX). `register` hints were byte-neutral; removing the
   angle-copy local and passing `angle` directly adds two differences; volatile
   forms also regress. All trials were reverted.
+  The `_reference/th10-decomp` `EaseStep` shape (plain float fields, direct
+  `++int2`, `angle = value1`, reset speed copied before the timer reset)
+  regressed to 320/335 on 2026-11-22 and was reverted.
 - **Player::~Player @0x424ED0 (325)**: 333. [2026-10-31]
 - **FrontEndInsertScore @0x421FA0 (316)**: 263; the helper uses 64-bit `100.0`
   where the target uses 32-bit. [2026-10-15]
@@ -545,9 +630,10 @@ frontier; do not refresh a baseline merely to accept the new positions.
   the former float-order/alignment caveat no longer applies. [2026-11-17]
 - **GamePrepareAnimationSlots @0x404450 (214)**: the target uses a stack owner
   and RET4; the real graph gives EDI and plain RET. [2026-10-31]
-- **AnmVmView::StartScript @0x404F30 (202)**: exact since 2026-11-21 (the
-  former `StartEntityScript_00404f30` note with an extra `xor ecx,ecx` is
-  superseded); see the ANM entry below. [2026-11-22]
+- **AnmVmStartScript @0x404F30 (202)**: candidate again since 2026-11-22.
+  The natural `(resource, vm, scriptIndex)` body is retail plus one
+  `xor ecx,ecx` while `AnmVmInitialize` stays opaque; see "`AnmVmStartScript`
+  and `AnmVmInitialize` visibility (open)" above. [2026-11-22]
 - **EnemyMotionView::AdvanceMotion @0x44C2A0 (171)**: canonical selected
   17-source `/GL` VC7.1 SP1 cold replay matches the complete PDB-owned 171
   bytes, including all seven bound REL32/DIR32 operands. The original first
@@ -1070,7 +1156,7 @@ register preservation or mod-ref assumptions) where our builds exploit it
 - ANM render vertices are 0x1C bytes.
 - `StartPositionInterpolation`: EAX VM, EDX initial, ECX final, duration/mode on stack, RET8. Tangent vector at 491C14.
 - ANM VM: scriptIndex +0x38A, activeSpriteIndex +0x384, pending interrupt +0x304, delete mark +0x35C.
-- **AnmVmView::StartScript @0x00404F30 (202 bytes)**: the `entity-start-script` unit independently cold-replays the complete linked-PE owner (202/202 bytes) in the eight-source VC7.1 SP1 `/GL` graph. The target-private entry uses VM in ESI, script index in EAX, and the loaded resource as one stack argument (`RET 4`); its two declared REL32 calls bind `AnmVmInitialize @0x00401DE0` and `LoadScript_0043E710 @0x0043E710`. The maintained native C++ owner is `AnmVmView::StartScript(int, AnmLoadedView *, void *)`; `StartEntityScript_00404f30` remains a convenience adapter, not the owner mapping. [2026-11-21]
+- **AnmVmStartScript @0x00404F30 (202 bytes)**: target-private entry with the VM in ESI, the script index in EAX and the loaded resource as the only stack argument (`RET 4`). Its REL32 calls bind `AnmVmInitialize @0x00401DE0` and `LoadScript_0043E710 @0x0043E710`. The 2026-11-21 exact result used a fake ECX context parameter. It was withdrawn when the owner became the natural free function on 2026-11-22. [2026-11-22]
 - ASCII manager: managed VM id +0x89A4, asciiAnm +0x8994.
 - `AnmRenderManagerView::AddVmVariant0 @0x004489D0` returns `AnmVmIdView` through the hidden struct-return pointer in EAX. Ghidra's `in_EAX` is that pointer, not an explicit parameter.
 - Timer flags at +0x6C/+0xB0/+0xFC/+0x128/+0x174/+0x1B0/+0x1FC/+0x228/+0x378; owner +0x20 (also the layer value); manager node +0x04; layer node +0x10; nextInDrawLayer +0x1C; scale +0x3C/+0x40; scroll +0x54/+0x58; matrices +0x23C/+0x27C; colors +0x2FC/+0x300; pending interrupt +0x304 (short); anmFile +0x308.

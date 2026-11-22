@@ -80,7 +80,7 @@ void EnemyLaserLineView::RunCommands()
             {
                 int script = g_BulletSpriteScriptBase[command.arguments[2].integer] +
                     command.arguments[3].integer;
-                StartEntityScript_00404f30(&primaryVm, script, g_EnemyPrimaryResourceOwner->primaryEnemyResource);
+                AnmVmStartScript(g_EnemyPrimaryResourceOwner->primaryEnemyResource, &primaryVm, script);
             }
             break;
         case 0x8000u:

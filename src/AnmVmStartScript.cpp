@@ -2,25 +2,17 @@
 #include "AnmManager.hpp"
 #include "AnmLoadedStartScript.hpp"
 
-// Target 0x00404F30 is the VM's script-start operation. In the retail
-// internal call graph the VM receiver is kept in ESI, the script index is
-// forwarded in EAX, and the loaded resource is the single stack argument.
-__declspec(noinline) void AnmVmView::StartScript(
-    int scriptIndex, AnmLoadedView *resource, void *unused)
+// Target 0x00404F30: reset a VM, clear its three position vectors and start
+// one script of a loaded ANM resource. Under LTCG the VM arrives in ESI and
+// the script index in EAX; the resource is the only stack argument (RET 4).
+__declspec(noinline) void __stdcall AnmVmStartScript(
+    AnmLoadedView *resource, AnmVmView *vm, int scriptIndex)
 {
-    this->Initialize(unused);
-    this->positionOffset = AnmFloat3View(0.0f, 0.0f, 0.0f);
-    this->position = AnmFloat3View(0.0f, 0.0f, 0.0f);
-    this->alternatePosition = AnmFloat3View(0.0f, 0.0f, 0.0f);
-    this->glyphWidth = this->glyphHeight = 0x10;
-    this->scriptIndex = static_cast<short>(scriptIndex);
-    StartAnmLoadedScript(resource, this, scriptIndex);
-}
-
-// Keep the descriptive adapter for older call sites while the native VM
-// method owns the internal ESI/EAX/stack ABI used by the bullet interpreter.
-__declspec(noinline) void __stdcall StartEntityScript_00404f30(
-    AnmVmView *entity, int scriptIndex, AnmLoadedView *resource)
-{
-    entity->StartScript(scriptIndex, resource, 0);
+    AnmVmInitialize(0, vm);
+    vm->positionOffset = AnmFloat3View(0.0f, 0.0f, 0.0f);
+    vm->position = AnmFloat3View(0.0f, 0.0f, 0.0f);
+    vm->alternatePosition = AnmFloat3View(0.0f, 0.0f, 0.0f);
+    vm->glyphWidth = vm->glyphHeight = 0x10;
+    vm->scriptIndex = static_cast<short>(scriptIndex);
+    StartAnmLoadedScript(resource, vm, scriptIndex);
 }

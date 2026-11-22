@@ -658,9 +658,6 @@ struct AnmVmView
     AnmVmView();
     ~AnmVmView();
     void Initialize() { AnmVmInitialize(0, this); }
-    void Initialize(void *unused) { AnmVmInitialize(unused, this); }
-    __declspec(noinline) void StartScript(
-        int scriptIndex, AnmLoadedView *resource, void *unused);
     int InitializePulsingRadialTrail();
     float GetFloatVar(float variable);
     int GetIntVar(int variable);
@@ -1571,8 +1568,11 @@ inline void AnmVmIdView::MarkForDeletionAndClear()
     g_AnmRenderManagerView->MarkVmForDeletion(*this);
     value = 0;
 }
-__declspec(noinline) void __stdcall StartEntityScript_00404f30(
-    AnmVmView *entity, int scriptIndex, AnmLoadedView *resource);
+// Retail 0x404F30 resets a VM and starts one script of a loaded resource.
+// Under LTCG the VM arrives in ESI and the script index in EAX; the resource
+// is the only stack argument (RET 4).
+__declspec(noinline) void __stdcall AnmVmStartScript(
+    AnmLoadedView *resource, AnmVmView *vm, int scriptIndex);
 extern D3d9DeviceView *g_Direct3DDevice;
 extern AnmRenderVertexView g_AnmQuadVertices[4];
 extern AnmRenderVertexNoDiffuseView g_AnmQuadVerticesNoDiffuse[4];

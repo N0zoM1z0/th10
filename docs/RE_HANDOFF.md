@@ -4,59 +4,48 @@
 
 ## Checkpoint and worktree
 
-- Branch `main`, local commits ahead of `origin/main` (`9957cd86`). Do not push.
-- Uncommitted: `src/BulletTransform.cpp` holds a raw-offset record-access experiment for `AdvanceTransformProgram` (byte offsets computed from `offsetof`, the record held as `float *`, and a separate `dispatchKind`). It still builds to 0x640 and fails the extent gate, so it is not an improvement. Revert it unless it is a deliberate base for the next attempt. `src/BulletManager.cpp` shows as modified only because the working copy has LF line endings and `.gitattributes` wants CRLF; its content is unchanged.
+- Branch `main`, local commits only. Do not push.
 - The original target is the private, ignored `resources/th10.exe`, Japanese TH10 v1.00a, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`. Keep it read-only and uncommitted.
 - `config/match-units.toml` holds the recipes, `config/matches.csv` is the canonical exact ledger, and `config/frontiers.toml` is a diagnostic ratchet only. A local strict comparison is not a canonical cold replay.
+- The raw-offset `AdvanceTransformProgram` experiment from the previous session is kept only as `.analysis/BulletTransform.cpp.uncommitted-raw-offset-experiment-2026-11-22`. It reached 0x640 and is superseded.
 
-## Open bullet runtime owners
+## What changed on 2026-11-22
 
-Measured on 2026-11-22 against the current worktree:
+Read [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) sections "Write a plain `switch`", "Argument evaluation order", "`AnmVmStartScript` and `AnmVmInitialize` visibility (open)" and "Non-local regressions through calling conventions".
 
-| Target owner | Unit | Current result | Ledger status |
+- `AdvanceTransformProgram` is now a single natural `switch`. The hand-built branch tree, `volatile` cursor, `register` hints and barriers are gone.
+- 0x404F30 is now the free function `__stdcall AnmVmStartScript(AnmLoadedView *resource, AnmVmView *vm, int scriptIndex)`, following `_reference/th10-decomp`. All 28 callers were updated. The old member's `void *unused` parameter, which forwarded whatever a caller left in ECX, and the `StartEntityScript_00404f30` adapter are removed.
+- `SpawnSingleBullet` became exact (1,472/1,472 bytes, selected cold replay) through those two changes plus a natural cursor tail.
+- `BulletUpdateRuntime` (0x406240) had silently regressed. Since `e569a902`, the normal-COFF `BulletTransform.cpp` support call stripped `QueueSoundCue`'s private ABI. Its recipe now compiles all support under `/GL`, and its row was withdrawn from `matches.csv`.
+- `AnmVmStartScript` lost its exact row because it was exact only through the fake parameter.
+
+## Open bullet owners
+
+| Target owner | Unit | Current result | Next step |
 | --- | --- | --- | --- |
-| `0x004078E0` `BulletRuntimeView::UpdateAbsoluteDirectionChange` | `bullet-update-absolute-direction` | 333/335 (+0xD7, +0xDD: target EDX, candidate EAX) | Nonexact; recorded in `frontiers.toml` |
-| `0x004067D0` `BulletSpawnDescriptorView::SpawnSingleBullet` | `bullet-spawn-single-exact` | Complete 1,472-byte extent (1,413 code + 59 table); 1,418/1,472 matched, 44/44 fields | Nonexact |
-| `0x00406D90` `BulletRuntimeView::AdvanceTransformProgram` | `bullet-transform-program` | PDB contribution 0x640 vs manifest 0x644; not comparable | Nonexact |
+| `0x00406D90` `AdvanceTransformProgram` | `bullet-transform-program` | Full 0x644 extent; 395/409 aligned instructions; the only field mismatch is the manager load at +0x46A (ours +0x46E) | Child-spawn block +0x3E0..+0x495. `SpawnBulletPattern` gets its descriptor in ECX in this graph but in EAX in retail and in its own exact graph; find which graph difference causes that. |
+| `0x00404F30` `AnmVmStartScript` | `entity-start-script` | 204/202: retail plus one `xor ecx,ecx` with `AnmVmInitialize` opaque; 200 bytes with it visible (VM in EDX) | Open LTCG question; see the knowledge base. Do not reintroduce a forwarded ECX parameter or a stand-in initializer. |
+| `0x00406240` `BulletUpdateRuntime` | `bullet-runtime-update` | 884/885: retail `mov ecx, ebp` against our `push ebp` (the interpreter's `this` goes on the stack in this graph) | Same family as the `SpawnBulletPattern` question: LTCG convention choice in a partial graph. |
+| `0x004078E0` `UpdateAbsoluteDirectionChange` | `bullet-update-absolute-direction` | 333/335 (+0xD7, +0xDD: EDX against EAX) | Parked; the reference `EaseStep` shape regressed to 320. |
 
-Exact and accepted in `matches.csv`: `CancelBulletsInArea` (585, promoted 2026-11-22 after a selected cold replay), `BulletManagerUpdateCallback` (40), `UpdateBullets` (249), `SpawnBulletPattern` (194), `UpdateVectorAcceleration` (305), `UpdatePolarAcceleration` (209), `UpdateAimedDirectionChange` (431), `UpdateHorizontalWrap` (148), `UpdateHoming` (306), `EnemyCancelBulletRecord` (199) and `AnmVmView::StartScript` (202). When you change their shared source, rebuild only the affected units.
+All three LTCG convention questions share one pattern: a register choice that depends on which callees and callers are visible in the link. th09 broke similar cases by tracing C2 inside the compiler; under `/GL` the backend runs inside `link.exe`. Use `scripts/diagnostics/triage/idiff.py` for fast alignment, and change one graph input at a time.
 
-### Next actions
-
-1. **`SpawnSingleBullet`.** 54 ordinary bytes remain, concentrated in effect-script register allocation and table dispatch (first difference at +0x3EE) and in the post-spawn manager-cursor/return tail. The `StartScript` context, state-2/backstep order, the three `4.0f` references and the collision x87 store order already match.
-2. **`AdvanceTransformProgram`.** The extent gate has to close first. Do not lower `compare_size` or shrink the selector span. The target's first loop block is:
-
-   ```asm
-   mov edx, [ebp+45Ch]
-   lea eax, [edx+edx*2]
-   mov ecx, [ebp+eax*8+474h]
-   lea esi, [ebp+eax*8+464h]
-   ```
-
-   Candidates so far either swap EAX/ECX between the scaled index and the opcode, or form the record pointer too late. These attempts landed at 0x640, 0x63C or 0x648 without resolving it: raw byte-offset arithmetic, direct indexing, volatile opcode loads, declaration order, register hints, the `9957cd86` lifetime tuning, a conditional record pointer, and the current uncommitted raw-offset variant. Untried directions are natural local lifetimes around the switch, the jump-table/switch structure itself, and child descriptor initialization order. The child-pattern call at +0x498 binds `?SpawnBulletPattern@BulletSpawnDescriptorView@@QAEHPAUBulletManagerView@@@Z`.
-
-   Runtime layout: 18 records with stride 0x18 at +0x464, kind at record +0x10, allow-while-active at +0x14, active flags at +0x43C, cursor at +0x45C, and nine extension-state slots from +0x614. The 0x644 extent covers 0x5AE code bytes, five local switch-table destinations at +0x5B0..+0x5C0, and a 128-byte selector span at +0x5C4.
-
-3. **`UpdateAbsoluteDirectionChange`.** Direct union reads, local union temporaries, volatile reads, register hints and local-order pragmas are all byte-neutral or worse. Park it until a new observation distinguishes a model.
-
-Never use inline assembly, naked functions, fake ABI declarations, copied target bytes, padding, inert locals or comparator cropping. An exact leaf does not make its parent exact.
-
-`AnmVmView::StartScript(int, AnmLoadedView *, void *)` in `src/AnmVmStartScript.cpp` is the maintained owner. The global `StartEntityScript_00404f30` wrapper remains as an adapter for source-order callers. Its target-private ABI takes the VM in ESI and the script index in EAX, passes the loaded resource on the stack, and returns with `RET 4`.
+Never use inline assembly, naked functions, fake ABI declarations, stand-in callee bodies, copied target bytes, padding, inert locals or comparator cropping. An exact leaf does not make its parent exact.
 
 ## Commands
 
 ```sh
 scripts/repo-python scripts/verify-target.py
-scripts/repo-python scripts/build-match-unit.py --unit UNIT      # serial; ~3 min each under nice 10
+scripts/repo-python scripts/build-match-unit.py --unit UNIT      # serial; about 3 min each under nice 10
 scripts/repo-python scripts/compare-linked-function.py --unit UNIT --json
-scripts/repo-python scripts/check-frontier.py NAME               # diagnostic ratchet
-scripts/repo-python scripts/replay-exact-units.py --unit UNIT --json   # promotion; unit must not be candidate = true
+scripts/repo-python scripts/diagnostics/triage/idiff.py IMAGE SYMBOL ADDRESS SIZE
+scripts/repo-python scripts/replay-exact-units.py --unit UNIT --json   # promotion; the unit must not be candidate = true
 scripts/repo-python scripts/progress.py                          # when ledgers change
 scripts/repo-python scripts/ci.py && git diff --check
 ```
 
-`entity-start-script` and `bullet-transform-program` share `build/match-linked/BulletTransformProgramNormal`, so rebuild the selected recipe before trusting that directory's PE/MAP/PDB. Do not run the full historical cold replay for bounded work.
+`entity-start-script` and `bullet-transform-program` share `build/match-linked/BulletTransformProgramNormal`, and `bullet-runtime-update` and `player-collision-check` share `build/match-linked/BulletRuntimeUpdate`. Recipes that share a directory must stay identical. Rebuild the selected recipe before trusting a shared directory. When `src/BulletManager.cpp`, `src/BulletTransform.cpp` or `src/AnmVmStartScript.cpp` changes, replay the 22 exact units that compile them (`.analysis/startscript/replay-units.txt` holds the selector list).
 
 ## Retained context
 
-Keep `resources/th10.exe`, `.tools/` and the TH10 Wine prefix, `ghidra-project/`, `_reference/`, canonical ledgers, `docs/evidence/`, the selected original Ghidra exports in `.analysis/`, configured `build/match-linked/` outputs, and unresolved `build/gpt-web/` contexts. See [RE_ARTIFACTS.md](RE_ARTIFACTS.md). `_reference/th10-decomp` is a separate historical reference, not a build or status authority.
+Keep `resources/th10.exe`, `.tools/` and the TH10 Wine prefix, `ghidra-project/`, `_reference/` (`th10-decomp` was fast-forwarded on 2026-11-22), canonical ledgers, `docs/evidence/`, the selected original Ghidra exports in `.analysis/`, configured `build/match-linked/` outputs, and unresolved `build/gpt-web/` contexts. See [RE_ARTIFACTS.md](RE_ARTIFACTS.md). `_reference/th10-decomp` is a hypothesis source for natural C++ shapes, not a build or status authority. Its LTCG context drivers and stand-in callees are not admissible here.

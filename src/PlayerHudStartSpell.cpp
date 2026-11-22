@@ -182,12 +182,12 @@ void __stdcall EnemyGameStateView::StartSpell(
     switch (g_GameScoreState.selectedStage)
     {
     case 1:
-        StartEntityScript_00404f30(
-            &stageVms[0], 12,
-            g_EnemyManager->typedEffectResources.stageAnimationAnm);
-        StartEntityScript_00404f30(
-            &stageVms[1], 11,
-            g_EnemyManager->typedEffectResources.stageAnimationAnm);
+        AnmVmStartScript(
+            g_EnemyManager->typedEffectResources.stageAnimationAnm,
+            &stageVms[0], 12);
+        AnmVmStartScript(
+            g_EnemyManager->typedEffectResources.stageAnimationAnm,
+            &stageVms[1], 11);
         if (spellIndex >= 2)
             CreatePanelAnimation(
                 g_EnemyManager->typedEffectResources.stageAnimationAnm, 14);
@@ -196,72 +196,72 @@ void __stdcall EnemyGameStateView::StartSpell(
                 g_EnemyManager->typedEffectResources.stageAnimationAnm, 15);
         break;
     case 2:
-        StartEntityScript_00404f30(
-            &stageVms[0], 14,
-            g_EnemyManager->typedEffectResources.stageAnimationAnm);
-        StartEntityScript_00404f30(
-            &stageVms[1], 15,
-            g_EnemyManager->typedEffectResources.stageAnimationAnm);
+        AnmVmStartScript(
+            g_EnemyManager->typedEffectResources.stageAnimationAnm,
+            &stageVms[0], 14);
+        AnmVmStartScript(
+            g_EnemyManager->typedEffectResources.stageAnimationAnm,
+            &stageVms[1], 15);
         CreatePanelAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 17);
         break;
     case 3:
-        StartEntityScript_00404f30(
-            &stageVms[0], 18,
-            g_EnemyManager->typedEffectResources.stageAnimationAnm);
-        StartEntityScript_00404f30(
-            &stageVms[1], 19,
-            g_EnemyManager->typedEffectResources.stageAnimationAnm);
+        AnmVmStartScript(
+            g_EnemyManager->typedEffectResources.stageAnimationAnm,
+            &stageVms[0], 18);
+        AnmVmStartScript(
+            g_EnemyManager->typedEffectResources.stageAnimationAnm,
+            &stageVms[1], 19);
         CreatePanelAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 21);
         break;
     case 4:
-        StartEntityScript_00404f30(
-            &stageVms[0], 19,
-            g_EnemyManager->typedEffectResources.stageAnimationAnm);
-        StartEntityScript_00404f30(
-            &stageVms[1], 20,
-            g_EnemyManager->typedEffectResources.stageAnimationAnm);
+        AnmVmStartScript(
+            g_EnemyManager->typedEffectResources.stageAnimationAnm,
+            &stageVms[0], 19);
+        AnmVmStartScript(
+            g_EnemyManager->typedEffectResources.stageAnimationAnm,
+            &stageVms[1], 20);
         CreatePanelAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 22);
         break;
     case 5:
-        StartEntityScript_00404f30(
-            &stageVms[0], 12,
-            g_EnemyManager->typedEffectResources.stageAnimationAnm);
-        StartEntityScript_00404f30(
-            &stageVms[1], 13,
-            g_EnemyManager->typedEffectResources.stageAnimationAnm);
+        AnmVmStartScript(
+            g_EnemyManager->typedEffectResources.stageAnimationAnm,
+            &stageVms[0], 12);
+        AnmVmStartScript(
+            g_EnemyManager->typedEffectResources.stageAnimationAnm,
+            &stageVms[1], 13);
         CreatePanelAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 15);
         break;
     case 6:
-        StartEntityScript_00404f30(
-            &stageVms[0], 33,
-            g_EnemyManager->typedEffectResources.stageAnimationAnm);
-        StartEntityScript_00404f30(
-            &stageVms[1], 34,
-            g_EnemyManager->typedEffectResources.stageAnimationAnm);
+        AnmVmStartScript(
+            g_EnemyManager->typedEffectResources.stageAnimationAnm,
+            &stageVms[0], 33);
+        AnmVmStartScript(
+            g_EnemyManager->typedEffectResources.stageAnimationAnm,
+            &stageVms[1], 34);
         CreatePanelAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 36);
         break;
     case 7:
         if (g_EnemyChapterState.chapter < 24)
         {
-            StartEntityScript_00404f30(
-                &stageVms[0], 38,
-                g_EnemyManager->typedEffectResources.stageAnimationAnm);
+            AnmVmStartScript(
+                g_EnemyManager->typedEffectResources.stageAnimationAnm,
+                &stageVms[0], 38);
             CreatePanelAnimation(
                 g_EnemyManager->typedEffectResources.stageAnimationAnm, 40);
         }
         else
         {
-            StartEntityScript_00404f30(
-                &stageVms[0], 27,
-                g_EnemyManager->typedEffectResources.stageAnimationAnm);
-            StartEntityScript_00404f30(
-                &stageVms[1], 28,
-                g_EnemyManager->typedEffectResources.stageAnimationAnm);
+            AnmVmStartScript(
+                g_EnemyManager->typedEffectResources.stageAnimationAnm,
+                &stageVms[0], 27);
+            AnmVmStartScript(
+                g_EnemyManager->typedEffectResources.stageAnimationAnm,
+                &stageVms[1], 28);
             CreatePanelAnimation(
                 g_EnemyManager->typedEffectResources.stageAnimationAnm, 30);
         }

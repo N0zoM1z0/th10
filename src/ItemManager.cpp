@@ -220,7 +220,7 @@ int __stdcall ItemManagerUpdateBody(ItemManagerView *manager)
             if (--item->delayFrames < 0)
             {
                 item->active = 2;
-                StartEntityScript_00404f30(&item->vm, item->kind + 0x176, g_EnemyPrimaryResourceOwner->primaryEnemyResource);
+                AnmVmStartScript(g_EnemyPrimaryResourceOwner->primaryEnemyResource, &item->vm, item->kind + 0x176);
             }
             continue;
         }
@@ -745,7 +745,7 @@ int ItemManagerView::Spawn(const AnmFloat3View *position, int kind,
     if (kind == 10)
     {
         item->spriteKind = 1;
-        StartEntityScript_00404f30(&item->vm, 0x177, g_EnemyPrimaryResourceOwner->primaryEnemyResource);
+        AnmVmStartScript(g_EnemyPrimaryResourceOwner->primaryEnemyResource, &item->vm, 0x177);
     }
     else
     {
@@ -757,7 +757,7 @@ int ItemManagerView::Spawn(const AnmFloat3View *position, int kind,
         }
         else
             script = kind + 0x176;
-        StartEntityScript_00404f30(&item->vm, script, g_EnemyPrimaryResourceOwner->primaryEnemyResource);
+        AnmVmStartScript(g_EnemyPrimaryResourceOwner->primaryEnemyResource, &item->vm, script);
     }
     item->vm.primaryColor.value = color;
     return 0;
