@@ -4,29 +4,27 @@
 
 ## Checkpoint and worktree
 
-- Branch `main` at `9957cd86` (`gpt-web: tune transform program register lifetimes`); `origin/main` points at the same commit. Do not push.
+- Branch `main`, local commits ahead of `origin/main` (`9957cd86`). Do not push.
 - Uncommitted: `src/BulletTransform.cpp` holds a raw-offset record-access experiment for `AdvanceTransformProgram` (byte offsets computed from `offsetof`, the record held as `float *`, and a separate `dispatchKind`). It still builds to 0x640 and fails the extent gate, so it is not an improvement. Revert it unless it is a deliberate base for the next attempt. `src/BulletManager.cpp` shows as modified only because the working copy has LF line endings and `.gitattributes` wants CRLF; its content is unchanged.
 - The original target is the private, ignored `resources/th10.exe`, Japanese TH10 v1.00a, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`. Keep it read-only and uncommitted.
 - `config/match-units.toml` holds the recipes, `config/matches.csv` is the canonical exact ledger, and `config/frontiers.toml` is a diagnostic ratchet only. A local strict comparison is not a canonical cold replay.
 
-## Bullet runtime owners
+## Open bullet runtime owners
 
 Measured on 2026-11-22 against the current worktree:
 
 | Target owner | Unit | Current result | Ledger status |
 | --- | --- | --- | --- |
-| `0x00408210` `BulletManagerView::CancelBulletsInArea` | `bullet-cancel-in-area` | Strict 585/585, 15/15 fields | **Promotion candidate.** Still `candidate = true` with no `matches.csv` row. |
 | `0x004078E0` `BulletRuntimeView::UpdateAbsoluteDirectionChange` | `bullet-update-absolute-direction` | 333/335 (+0xD7, +0xDD: target EDX, candidate EAX) | Nonexact; recorded in `frontiers.toml` |
 | `0x004067D0` `BulletSpawnDescriptorView::SpawnSingleBullet` | `bullet-spawn-single-exact` | Complete 1,472-byte extent (1,413 code + 59 table); 1,418/1,472 matched, 44/44 fields | Nonexact |
 | `0x00406D90` `BulletRuntimeView::AdvanceTransformProgram` | `bullet-transform-program` | PDB contribution 0x640 vs manifest 0x644; not comparable | Nonexact |
 
-Exact and accepted in `matches.csv`: `BulletManagerUpdateCallback` (40), `UpdateBullets` (249), `SpawnBulletPattern` (194), `UpdateVectorAcceleration` (305), `UpdatePolarAcceleration` (209), `UpdateAimedDirectionChange` (431), `UpdateHorizontalWrap` (148), `UpdateHoming` (306), `EnemyCancelBulletRecord` (199) and `AnmVmView::StartScript` (202). When you change their shared source, rebuild only the affected units.
+Exact and accepted in `matches.csv`: `CancelBulletsInArea` (585, promoted 2026-11-22 after a selected cold replay), `BulletManagerUpdateCallback` (40), `UpdateBullets` (249), `SpawnBulletPattern` (194), `UpdateVectorAcceleration` (305), `UpdatePolarAcceleration` (209), `UpdateAimedDirectionChange` (431), `UpdateHorizontalWrap` (148), `UpdateHoming` (306), `EnemyCancelBulletRecord` (199) and `AnmVmView::StartScript` (202). When you change their shared source, rebuild only the affected units.
 
 ### Next actions
 
-1. **Promote `CancelBulletsInArea`.** Run `scripts/repo-python scripts/replay-exact-units.py --unit bullet-cancel-in-area --json`. If the cold replay passes, add the `matches.csv` row, drop `candidate = true`, and regenerate progress. The size thresholds written as `width <= 16`, then `width <= 32`, then the large palette are what reproduce the target's two x87 `jp` branches.
-2. **`SpawnSingleBullet`.** 54 ordinary bytes remain, concentrated in effect-script register allocation and table dispatch (first difference at +0x3EE) and in the post-spawn manager-cursor/return tail. The `StartScript` context, state-2/backstep order, the three `4.0f` references and the collision x87 store order already match.
-3. **`AdvanceTransformProgram`.** The extent gate has to close first. Do not lower `compare_size` or shrink the selector span. The target's first loop block is:
+1. **`SpawnSingleBullet`.** 54 ordinary bytes remain, concentrated in effect-script register allocation and table dispatch (first difference at +0x3EE) and in the post-spawn manager-cursor/return tail. The `StartScript` context, state-2/backstep order, the three `4.0f` references and the collision x87 store order already match.
+2. **`AdvanceTransformProgram`.** The extent gate has to close first. Do not lower `compare_size` or shrink the selector span. The target's first loop block is:
 
    ```asm
    mov edx, [ebp+45Ch]
@@ -39,7 +37,7 @@ Exact and accepted in `matches.csv`: `BulletManagerUpdateCallback` (40), `Update
 
    Runtime layout: 18 records with stride 0x18 at +0x464, kind at record +0x10, allow-while-active at +0x14, active flags at +0x43C, cursor at +0x45C, and nine extension-state slots from +0x614. The 0x644 extent covers 0x5AE code bytes, five local switch-table destinations at +0x5B0..+0x5C0, and a 128-byte selector span at +0x5C4.
 
-4. **`UpdateAbsoluteDirectionChange`.** Direct union reads, local union temporaries, volatile reads, register hints and local-order pragmas are all byte-neutral or worse. Park it until a new observation distinguishes a model.
+3. **`UpdateAbsoluteDirectionChange`.** Direct union reads, local union temporaries, volatile reads, register hints and local-order pragmas are all byte-neutral or worse. Park it until a new observation distinguishes a model.
 
 Never use inline assembly, naked functions, fake ABI declarations, copied target bytes, padding, inert locals or comparator cropping. An exact leaf does not make its parent exact.
 
@@ -52,7 +50,7 @@ scripts/repo-python scripts/verify-target.py
 scripts/repo-python scripts/build-match-unit.py --unit UNIT      # serial; ~3 min each under nice 10
 scripts/repo-python scripts/compare-linked-function.py --unit UNIT --json
 scripts/repo-python scripts/check-frontier.py NAME               # diagnostic ratchet
-scripts/repo-python scripts/replay-exact-units.py --unit UNIT --json   # only for promotion
+scripts/repo-python scripts/replay-exact-units.py --unit UNIT --json   # promotion; unit must not be candidate = true
 scripts/repo-python scripts/progress.py                          # when ledgers change
 scripts/repo-python scripts/ci.py && git diff --check
 ```

@@ -515,8 +515,8 @@ frontier; do not refresh a baseline merely to accept the new positions.
   bullet graph including `ItemManager.cpp`) is strict 585/585 with all 15
   fields bound. Writing the size thresholds as `width <= 16`, then
   `width <= 32`, then the large palette reproduces the target's two x87 `jp`
-  branches. The unit is still `candidate = true` with no `matches.csv` row;
-  promote it only after a selected cold replay. [2026-11-22]
+  branches. A selected cold replay passed and the owner is canonical exact.
+  [2026-11-22]
 - **BulletRuntimeView::UpdateAbsoluteDirectionChange @0x4078E0 (335)**: current
   linked candidate is 335/335, with two differences at +0xD7/+0xDD
   (target EDX, candidate EAX). `register` hints were byte-neutral; removing the

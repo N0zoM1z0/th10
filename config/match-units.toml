@@ -32851,7 +32851,6 @@ linkages = [
 ]
 
 [units.bullet-cancel-in-area]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/BulletManager.cpp"
 support_sources = ["src/ItemManager.cpp", "src/BulletRuntime.cpp", "src/BulletTransform.cpp", "src/PlayerCollision.cpp", "src/AnmManager.cpp", "src/EnemyEclDispatcher.cpp", "src/Enemy.cpp", "src/BulletCancelArea.cpp"]
