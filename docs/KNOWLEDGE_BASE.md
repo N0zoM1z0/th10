@@ -515,22 +515,31 @@ frontier; do not refresh a baseline merely to accept the new positions.
   scheduling still differ. [2026-11-14]
 - **ExportAutomaticHints @0x41A200 (2,247)**: native inlines all 24 writer uses;
   the target makes 9 calls and inlines 15. [2026-10-25]
-- **GameResetGui @0x413BC0 (1,965)**: the reset's separate inlined show and
-  hide phases compare 1,964/1,965 bytes with all 52 target fields bound in
-  the `player-handle-collision-hit` graph. Returning the first hidden
-  index from the show pass recovers the register choices and loop counters across
-  both loops. At +0x1D1 the non-positive-count branch goes to the upper-bound
-  check at +0x1EB. The target goes directly to +0x1F0 because its first
-  hidden index is zero on that path. The frontier retains the earlier
-  ten-byte baseline because the one remaining offset is new.
-  The out-of-line `GuiSetLivesDisplayCount` still compares 77/77 bytes in
-  the same image. Sharing the split show/hide implementation with that
-  standalone setter shortened it to 66 bytes. Keep its original two-loop
-  implementation. Reset entry as a member was byte-neutral before the split.
-  The direct caller `script-viewer-update` passes a selected 1,251-byte
-  cold replay. A named count snapshot and a consistent plain count
-  declaration across GUI, Player and GameManager both preserve the
-  remaining branch displacement in private links.
+- **GameResetGui @0x413BC0 (1,965)** — The split show and hide phases
+  match 1,964/1,965 bytes and bind all 52 fields in both the
+  `player-handle-collision-hit` and `game-manager-update-body` graphs.
+  The non-positive-count jump at +0x1D0 lands on the hide loop's upper-bound
+  check at +0x1EB. The original jumps directly to +0x1F0, where both paths
+  enter the hide loop. The existing frontier records the earlier ten-byte
+  baseline with a different residual.
+
+  An explicit upper-bound return between the two loops recovers the jump
+  to +0x1F0 and matches 1,955/1,965 bytes with all 52 fields. A VC7.1 C2
+  trace at the entry to block-local register allocation (`0x1079BD18`)
+  shows that the early-return version keeps the input count in ECX for the
+  upper-bound test, decrements EDX in the show loop, and uses EBX for the
+  first hidden index. The split version decrements ECX and uses EDX for
+  both the upper-bound test and the first hidden index, matching the
+  original's register choices. A new source hypothesis needs to preserve
+  the index across both uses while routing the zero path past the check.
+
+  Inlining the existing setter from `GuiScoreDisplay.cpp` via LTCG also
+  gives 1,955/1,965, while its out-of-line body still matches 77/77. Moving
+  the reset into a member or changing the adjacent score-state access
+  leaves the early-return register split unchanged. Sharing the maintained
+  split loop implementation with the standalone setter shortened it to
+  66 bytes. The maintained two-loop setter and the 1,251-byte
+  `script-viewer-update` direct caller have their own exact units.
   [2026-11-22]
 - **StageExecuteScript @0x403C80 (1,868)**: full size, nonexact. Opcodes 10-13
   register choice; opcode 14's VM input is ESI in the target and EDX native.

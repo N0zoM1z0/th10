@@ -57,10 +57,14 @@ with a source or real-callee change that affects the layer's global live
 range while preserving the late resource load and both shared tails.
 
 `GameResetGui` at 0x00413BC0 compares 1,964/1,965 bytes with all 52 fields
-bound. Only +0x1D1 differs. The target's zero-life branch skips the hide
-loop's upper-bound test and the candidate performs it. The standalone
-77-byte life setter has its own source body and should be checked when
-consolidating the loops.
+bound. At +0x1D1 the target skips the hide loop's upper-bound test for a
+non-positive count. The early-return candidate recovers this jump. In that
+candidate C2 keeps the original count, loop countdown, and first hidden
+index in three registers before block-local allocation. Moving the setter
+to another TU gives the same 1,955/1,965-byte result while its standalone
+77 bytes still match. Reopen with a control-flow change that lets the
+upper-bound test and the hide loop share the first hidden index. The local
+trace and scoped comparison commands are in `.analysis/gui-guard/results.txt`.
 
 ## Strategy for the remaining authored bytes
 
