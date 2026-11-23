@@ -47,8 +47,10 @@ downloaded tools are private and never committed.
 ## Current status
 
 [PROGRESS.md](docs/PROGRESS.md) is generated from the ledgers and is the count
-authority. The inventory and origin classifications remain provisional; the
-Windows i386 product, runtime semantics and portability are open.
+authority. Every tracked boundary has been reviewed, and some functions still
+have indeterminate origin. Exact coverage refers to the currently classified
+authored code. The Windows i386 product, runtime semantics and portability
+remain open.
 
 A new agent reads [AGENTS.md](AGENTS.md), then [the current handoff](docs/RE_HANDOFF.md)
 for owner priorities, then the selected owner's source and ledger rows.
@@ -72,10 +74,9 @@ Default CI checks changed Python/JSON/TOML/CSV/Shell syntax and whitespace,
 including staged changes. It uses only Python 3.11+ and Git. Regenerate progress with
 `scripts/repo-python scripts/progress.py` when ledger inputs change. Historical
 host fixtures, failure/lifecycle simulations, sanitizer sweeps and mutation
-reports are not current gates. `scripts/repo-python scripts/ci.py --full` adds
-the comparator self-tests and the ledger validator (about 15 seconds); run it
-when shared tooling changes. Nonexact owners are tracked by the diagnostic
-ratchet `scripts/check-frontier.py` (data in `config/frontiers.toml`).
+reports are not current gates. Run the affected comparator self-tests
+directly when changing comparison infrastructure. The diagnostic ratchet
+`scripts/check-frontier.py` reads nonexact baselines in `config/frontiers.toml`.
 
 Exact work compares complete native owners, every relocation/resolved field,
 fixed local destinations, actual ABI and required callee bindings. Select only
@@ -119,7 +120,7 @@ and old reports can be deleted after recording useful findings.
   lock.
 - [`docs/RE_WORKFLOW.md`](docs/RE_WORKFLOW.md) — reconstruction loop and gates.
 - [`docs/ORACLES.md`](docs/ORACLES.md) — claim-specific falsification rules.
-- [`docs/RE_HANDOFF.md`](docs/RE_HANDOFF.md) — current resume brief, unresolved owners, and source-epoch checks.
+- [`docs/RE_HANDOFF.md`](docs/RE_HANDOFF.md) — current owners, retained comparisons and resume commands.
 - [`docs/RE_ARTIFACTS.md`](docs/RE_ARTIFACTS.md) — required private inputs, current unresolved contexts, and cleanup policy.
 - [`docs/KNOWLEDGE_BASE.md`](docs/KNOWLEDGE_BASE.md) — TH10-only knowledge.
 

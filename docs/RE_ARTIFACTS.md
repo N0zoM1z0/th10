@@ -1,25 +1,33 @@
-# TH10 private inputs and reclaimable storage
+# TH10 private inputs and retained artifacts
 
-**Updated 2026-11-22.** Start with [RE_HANDOFF.md](RE_HANDOFF.md). Keep the private target, the toolchain, the analyzer database and the configured comparison outputs. Remove only unconfigured or reproducible trials, after checking `config/match-units.toml` and the worktree.
+[RE_HANDOFF.md](RE_HANDOFF.md) identifies the current comparison lanes.
+A Git checkout supplies the source, recipes and ledgers. The original
+executable and local compiler and analyzer state are private inputs.
 
-## Retain
+- Keep the read-only Japanese TH10 v1.00a executable at
+  `resources/th10.exe`. Verify the target with
+  `scripts/repo-python scripts/verify-target.py` before target-dependent work.
+- Keep `.tools/`, including the TH10 Wine prefix and shared runtime links,
+  `ghidra-project/`, the game's analyzer runtime state and `_reference/`.
+  See [SHARED_TOOLS.md](SHARED_TOOLS.md) for runtime setup.
+- Keep `build/match-linked/` (about 199 MiB), `build/match/` and
+  `build/probe-backlog/`. The linked comparator uses the PE, map and PDB
+  together. The support objects let the next probe reuse the reviewed
+  compiler graph.
+- Keep `docs/evidence/`, private D3D evidence, original origin-review
+  inputs and the working notes, selected traces and source probes under
+  `.analysis/`. The open ANM, ECL, MIDI, music room, spell and statistics
+  lanes retain their selected compiler contexts under `build/`.
+  The stage loader context retains the real-initializer comparison.
 
-- `resources/th10.exe`: the private original Japanese TH10 v1.00a target (SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`), read-only and ignored.
-- `.tools/` (about 585 MiB), including the VC7.1 SP1 toolchain and this game's Wine prefix; `ghidra-project/` (about 10 MiB) and the shared Ghidra runtime config; `_reference/` (about 70 MiB, source only).
-- Maintained `src/`, `scripts/`, `config/`, Git history and `docs/evidence/`, including the D3D adapter/binding evidence and `.analysis/d3d-*`; the origin-review input under `.analysis/gpt-5.6-sol/20260917-origin-review/`; the optional `.analysis/gpt-web/` generators.
-- `build/match-linked/` (about 185 MiB): 273 configured output directories, 246 of them built, and no unconfigured directory. The comparator reads each directory's `source.exe`, map, PDB and objects, so keep them whole. Also keep `build/match/` and `build/probe-backlog/`.
-- In `.analysis/` (about 6 MiB): the read-only Ghidra exports (`th10-*`, `dispatch-ecl-*`, `game-reset-gui.c`, `transition-shake-linear.c`) and `startscript/replay-units.txt`, the replay selector list cited by the handoff. All exports can be regenerated from the Ghidra project.
+The 2026-11-23 handoff cleanup reclaimed about 88 MiB from `.analysis/` and
+`build/`. The exact Result menu, GUI reset, Item update and score-display
+owners now use their canonical outputs. Superseded candidate links,
+duplicate trial source and generated comparison reports were removed after
+the relevant findings were recorded. The retained working directories use
+about 21 MiB for `.analysis/` and 206 MiB for `build/`.
 
-## Reclaimed
-
-- 2026-11-20: about 14 MiB of unconfigured linked-PE trials, duplicate Ghidra exports, stale assembly dumps, Python bytecode and old Ghidra log content.
-- 2026-11-22: about 33 MiB in total:
-  - two unconfigured linked-PE trial outputs;
-  - about 900 loose experiment files in `.analysis/`: source snapshots, build logs, compare JSON and candidate disassembly for bullet, transform, ECL and ANM trials;
-  - the `runtime-baseline-backup` source copy;
-  - the three dated `build/gpt-web/` diagnostic workspaces;
-  - the `build/anm-caller-abi-test` probe.
-
-  The useful findings are in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md).
-
-Do not run Git GC, expire reflogs, or purge the retained directories just to shrink the repository. Do not create replacement archives or deletion manifests.
+Check the worktree and manifest before deleting a trial. Keep the source,
+objects and comparison inputs needed by current probes. Git keeps tracked
+history. Avoid replacement archives, reflog expiry and Git GC during routine
+artifact cleanup.

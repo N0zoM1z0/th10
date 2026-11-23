@@ -57,7 +57,8 @@ Call local tools directly. Do not route through Factory providers, require
 Factory receipts, or read Factory guidance as a session prerequisite. Use
 `scripts/ghidra.py` for read-only local Ghidra analysis when needed.
 
-Use English local commits prefixed `gpt-web:`, author
+Use English local commits with the operator-specified prefix
+(`gpt-6.2-sol:` for the current work), author
 `N0zoM1z0 <1705004398@qq.com>`, with trailer
 `Co-authored-by: gensokyo-dev <342580529+gensokyo-dev@users.noreply.github.com>`.
 Never push. Preserve unrelated work, including D3D adapter evidence.
@@ -129,9 +130,8 @@ reports to finish an exact unit. Do not claim these phases from exactness.
 ## Agent handoff and reclaimable storage
 
 The short, authoritative continuation brief is docs/RE_HANDOFF.md.
-Its current-source six-TU score-file graph supersedes older five-TU
-caller assumptions; earlier independent exact-owner receipts remain valid
-for the source epoch they actually compile.
+Use the link recipe in `config/match-units.toml` for each current owner.
+Earlier exact-owner receipts apply to the source and graph they compiled.
 Do not append repetitive chronological exact claims to its top;
 consolidate into the accepted-owners table and current open-owner
 frontiers, with unit names and useful commands. Generated PROGRESS.md is the count

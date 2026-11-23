@@ -856,6 +856,21 @@ frontier; do not refresh a baseline merely to accept the new positions.
     remaining local absolute field differences. The phase 1 and 2
     parity masks use ECX and EDX, respectively. The retail EAX encoding
     saves a byte at each mask.
+  - The scratch cursor at C2 `0x1079C39D` first diverges at the phase 0
+    row setup. Before the shared offset, the second y-offset LEA reuses
+    EDX and leaves the cursor on EAX. In the current source, the shift
+    keeps EDX and a separate LEA takes EAX for the first row index. The
+    signed remainder's two local scratch requests, 28 and 37 in both traces,
+    move from EAX/EAX to ECX/EDX. The source before the shared offset
+    has the extra row-entry jump and 846 matching ordinary bytes.
+  - The same shared-offset source in the `GameManagerUpdate` graph puts
+    the comment cursor in ESI and its countdown in EBX as in retail. The
+    link passes the `OpenFile` size pointer in EBX, while retail pushes
+    it. The zero value shared by the browse and close blocks moves to
+    ESI and 891 ordinary bytes match. Both graphs bind all 101 external
+    fields. Adding `StageLifecycle.cpp` alone to `MusicRoomHelpers`
+    leaves the owner unchanged. Test other real callers while checking
+    the complete `OpenFile` call and both parser registers.
   - Both inlined factories enter C2's `Riscify` at `0x107AD4FE` with a
     memory OR for VM flag `0x40000000`. At `0x107AD5FB` both have a
     load, register OR and store. The scheduler at `0x107B0D2F` puts
