@@ -102,14 +102,13 @@ controls](KNOWLEDGE_BASE.md).
 ## Open result-menu owner
 
 `ResultMenuUpdateResult` at 0x004236F0 owns 3,260 bytes including its
-eight-entry switch table. The ranking path in state 7 now returns
-after the inlined choice setup, restoring its layout and the state 8
-entry at +0x1AB. The `game-manager-update-body` link aligns 792/908
-instructions. Swapping in the historical `EnemyEclDispatcher` object
-in the four-TU score link restores 0x4C by retaining a return copy.
-Retail uses the return slot directly. State 12 also has one more
-timer-reset call site in its cancel clamp. Reproduction commands
-and allocation traces are in `.analysis/result-update/`.
+eight-entry switch table. Passing the exact lookup overload's return
+by const reference restores the 0x4C frame and forwards the state 8
+return slot straight to the interrupt call. The
+`game-manager-update-body` link aligns 831/908 instructions. State 12
+still has one fewer timer-reset call site in its cancel clamp.
+Reproduction commands and field comparisons are in
+`.analysis/result-update/`.
 See the [compiler notes](KNOWLEDGE_BASE.md).
 
 ## Strategy for the remaining authored bytes

@@ -739,45 +739,41 @@ frontier; do not refresh a baseline merely to accept the new positions.
   before the resource load and restores the handle writeback. Selected
   replay is `scripts/repo-python scripts/replay-exact-units.py --unit
   gui-message-run`. [2026-11-23]
-- **ResultMenuUpdateResult @0x4236F0 (3,260)**: the retail contribution
-  ends with an alignment NOP and eight absolute switch entries at +0xC9C.
-  In the `game-manager-update-body` link, direct initialization of the VM ID
-  in state 8 removes the extra aggregate copy and changes register allocation
-  through state 10. The naming states call `FrontEndCursorSetCurrent`
-  directly, restoring both merged calls to 0x40AD20. State 12 tests AX for
-  all four directions. In state 7 the ranking path initializes the
-  three-row choice and returns. The ordinary path prepares the score
-  first and enters the same choice only when name entry is unavailable.
-  The inlined setup with `Select(2)` lets VC7.1 merge the shared tail
-  and restores state 8's entry at +0x1AB. State 7 aligns at 70/74
-  instructions, with the four mismatches in its two stack epilogues.
-  The complete candidate now aligns at 792/908 instructions and spans
-  3,232 bytes with 173 resolved fields. Retail has one additional
-  timer-reset call site at 0x405410 in the state 12 cancel clamp. An
-  early cancel guard leaves the output unchanged. `Select(0)` and its
-  explicit C++ clamp both shorten the tail without restoring the call.
-  - The same pre-change source gives 3,216 bytes in the broader link and
-    3,264 in the four-TU score synchronization link. Changing only the
-    broader link's entry to the real `ResultMenuUpdate` leaves the owner
-    unchanged. A shared state 8 cursor pointer costs seven aligned
-    instructions in that graph. Re-reading the state 8 selection into one
-    named local does not change its child-lookup ADD on this source.
-  - At C2's stack allocation phase (0x1076953F), the cleanup count
-    and `selected` have weights 3 and 2. They land in one 4-byte
-    group before sorting, so both use [ESP+0x10]. Retail uses
-    [ESP+0x14] for the VM return in a 0x4C frame. The indexed cleanup
-    loop, a by-value wrapper around `ResultMenuPendingSix` and hiding
-    either VM callee independently all keep the 0x48 frame.
-  - Rebuilding all four inputs of the score-synchronization link from
-    `587292dd` recovers its historical 0x4C frame. With the historical
-    FrontEnd object held fixed, replacing only the cached
-    `EnemyEclDispatcher` object also recovers it. Swapping the other
-    two support objects leaves 0x48. The 0x4C trace still groups the
-    count and `selected`. An extra aggregate return temporary at
-    [ESP+0x14] accounts for the extra word, and the old build copies
-    it to [ESP+0x10] before the pending-interrupt call. Retail uses
-    the return storage directly. The frame and copy need to be
-    resolved together. [2026-11-23]
+- **ResultMenuUpdateResult @0x4236F0 (3,260)** ends with an alignment
+  NOP and eight absolute switch entries at +0xC9C. The 3,228-byte
+  candidate in the `game-manager-update-body` link aligns 831/908
+  instructions. In state 8, pass the result of the
+  `ResultMenuFindScript(AnmVmIdView *, int)` overload directly to
+  `ResultMenuPendingSix(const AnmVmIdView &)`. VC7.1 puts the return
+  in [ESP+0x14] and forwards its address in EAX to the next call,
+  reproducing the 0x4C frame. C2 assigns separate stack groups to
+  the return with weight 1 and the cleanup count with weight 3.
+  The cleanup count stays at [ESP+0x10].
+  Using the storage-wrapper overload, or giving the return its own
+  named value before passing it, keeps the smaller frame. With the
+  direct call in place, reading the selection again into `choice`
+  before the switch restores `lea ebx,[eax+0x7c]`.
+  - State 7's ranking path returns after the inlined three-row setup.
+    The ordinary path prepares the score and enters the choice when
+    name entry is unavailable. `Select(2)` restores the state 8 entry
+    at +0x1AB. With the restored frame, all 74 state 7 instructions
+    align. A cursor pointer limited to state 8 navigation and a
+    keyboard pointer in state 11 recover four cursor-relative
+    accesses. The naming states call 0x40AD20 directly for their
+    shared clamp, and state 12 tests AX for all four directions.
+  - The 173 resolved fields have the same destination inventory as
+    retail except for one additional call to 0x405410 in the state 12
+    cancel clamp. In the 0x48 build, the early cancel guard and an
+    explicit confirm-to-cancel edge left the call count unchanged.
+    `Select(0)` and the equivalent C++ clamp shortened the tail
+    without recovering the call.
+  - The older four-TU link built from `587292dd` also emitted 0x4C,
+    with the return temporarily at [ESP+0x14] and a subsequent copy
+    to [ESP+0x10]. Replacing only the `EnemyEclDispatcher` object
+    in the historical FrontEnd link enables this copy. Before the
+    direct-return change, C2 at 0x1076953F grouped the cleanup count
+    and named `selected` in one four-byte stack slot with weights
+    3 and 2. [2026-11-23]
 - **FrontEndControllerView::UpdateOptions @0x42D920 (3,188 incl. 5-entry
   table)**: 3,196; three interrupt adapters still expand. [2026-10-29]
 - **PlayerUpdateCallbackBody @0x425730 (3,112)**: 3,100. `FLD 1.0; FMUL scale`

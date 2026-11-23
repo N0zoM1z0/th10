@@ -3975,9 +3975,9 @@ static void ResultMenuSound(int soundId)
 }
 
 // Target 0x4243F0 and 0x40C4D0. Pending publication only, no script execution.
-void ResultMenuPendingSix(AnmVmIdView *id)
+void ResultMenuPendingSix(const AnmVmIdView &id)
 {
-    AnmVmView *vm = g_AnmRenderManagerView->FindVm(AnmVmIdView(id->value));
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(AnmVmIdView(id.value));
     if (vm != NULL)
     {
         vm->pendingInterrupt = 6;
@@ -4151,26 +4151,31 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         ResultMenuEnterSaveChoice(menu);
         return;
     case 8:
-        menu->cursor.previous = menu->cursor.current;
-        if ((g_FrontEndInput.pressed & 0x10) != 0 || (g_FrontEndInput.repeated & 0x10) != 0)
-            menu->cursor.Move(-1);
-        if ((g_FrontEndInput.pressed & 0x20) != 0 || (g_FrontEndInput.repeated & 0x20) != 0)
-            menu->cursor.Move(1);
-        if (menu->cursor.previous != menu->cursor.current)
         {
-            menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
-            ResultMenuSound(12);
+            FrontEndCursorView *rows = &menu->cursor;
+            rows->previous = rows->current;
+            if ((g_FrontEndInput.pressed & 0x10) != 0 || (g_FrontEndInput.repeated & 0x10) != 0)
+                rows->Move(-1);
+            if ((g_FrontEndInput.pressed & 0x20) != 0 || (g_FrontEndInput.repeated & 0x20) != 0)
+                rows->Move(1);
+            if (rows->previous != rows->current)
+            {
+                menu->mainVm.SetInterrupt(static_cast<short>(rows->current + 7));
+                ResultMenuSound(12);
+            }
         }
         if ((g_FrontEndInput.pressed & 0x1001) != 0)
         {
-            AnmVmIdView selected = ResultMenuFindScript(
-                &menu->mainVm, menu->cursor.current + 0x7c);
-            ResultMenuPendingSix(&selected);
+            int choice = menu->cursor.current;
+            ResultMenuPendingSix(ResultMenuFindScript(
+                reinterpret_cast<AnmVmIdView *>(&menu->mainVm),
+                choice + 0x7c));
             ResultMenuSound(10);
             menu->state = 13;
             menu->timer.SetCurrent(0);
             ResultMenuSynchronizeScore(g_GuiView);
-            switch (menu->cursor.current)
+            choice = menu->cursor.current;
+            switch (choice)
             {
             case 1: {
                 menu->state = 10;
@@ -4270,26 +4275,28 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         }
         break;
     case 11: // Replay-file naming: distinct from the score-entry state.
+    {
         // Preserve the same native 16-bit input-result tests here.
         if (menu->timer.current < 10) break;
-        menu->keyboard.previous = menu->keyboard.current;
-        if (static_cast<short>(g_FrontEndInput.IsRepeated(0x10))) menu->keyboard.Move(-13);
-        if (static_cast<short>(g_FrontEndInput.IsRepeated(0x20))) menu->keyboard.Move(13);
+        FrontEndCursorView *keyboard = &menu->keyboard;
+        keyboard->previous = keyboard->current;
+        if (static_cast<short>(g_FrontEndInput.IsRepeated(0x10))) keyboard->Move(-13);
+        if (static_cast<short>(g_FrontEndInput.IsRepeated(0x20))) keyboard->Move(13);
         if (static_cast<short>(g_FrontEndInput.IsRepeated(0x40)))
         {
-            if (menu->keyboard.current % 13 != 0) menu->keyboard.Move(-1);
-            else menu->keyboard.Move(12);
+            if (keyboard->current % 13 != 0) keyboard->Move(-1);
+            else keyboard->Move(12);
         }
         if (static_cast<short>(g_FrontEndInput.IsRepeated(0x80)))
         {
-            if (menu->keyboard.current % 13 != 12) menu->keyboard.Move(1);
-            else menu->keyboard.Move(-12);
+            if (keyboard->current % 13 != 12) keyboard->Move(1);
+            else keyboard->Move(-12);
         }
-        if (menu->keyboard.previous != menu->keyboard.current) ResultMenuSound(12);
+        if (keyboard->previous != keyboard->current) ResultMenuSound(12);
         if ((g_FrontEndInput.pressed & 0x1001) != 0)
         {
             int length = strlen(g_FrontEndScoreEntryAlphabet);
-            int key = menu->keyboard.current;
+            int key = keyboard->current;
             if (key < length - 3)
             {
                 if (menu->nameIndex < 8)
@@ -4297,7 +4304,7 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
                     menu->name[menu->nameIndex] = g_FrontEndScoreEntryAlphabet[key];
                     ++menu->nameIndex;
                     if (menu->nameIndex >= 8)
-                        FrontEndCursorSetCurrent(length - 1, &menu->keyboard);
+                        FrontEndCursorSetCurrent(length - 1, keyboard);
                 }
                 else menu->name[menu->nameIndex - 1] = g_FrontEndScoreEntryAlphabet[key];
             }
@@ -4308,7 +4315,7 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
                     menu->name[menu->nameIndex] = ' ';
                     ++menu->nameIndex;
                     if (menu->nameIndex >= 8)
-                        FrontEndCursorSetCurrent(length - 1, &menu->keyboard);
+                        FrontEndCursorSetCurrent(length - 1, keyboard);
                 }
                 else menu->name[menu->nameIndex - 1] = ' ';
             }
@@ -4350,6 +4357,7 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
             return;
         }
         break;
+    }
     case 12: // Score-entry naming: a separately dispatched state in retail.
         if (menu->timer.current < 10) break;
         if (menu->scoreUnavailable == 0)
@@ -4885,14 +4893,14 @@ void __stdcall ResultMenuUpdatePause(ResultMenuView *menu)
             case 1:
                 {
                     AnmVmIdView id = ResultMenuFindScript(&menu->mainVm, 116);
-                    ResultMenuPendingSix(&id);
+                    ResultMenuPendingSix(id);
                     menu->state = g_ResultGameManager->initializationMode != 0 ? 3 : 4;
                 }
                 break;
             case 2:
                 {
                     AnmVmIdView id = ResultMenuFindScript(&menu->mainVm, 117);
-                    ResultMenuPendingSix(&id);
+                    ResultMenuPendingSix(id);
                     menu->state = 4;
                 }
                 break;
@@ -4903,7 +4911,7 @@ void __stdcall ResultMenuUpdatePause(ResultMenuView *menu)
         {
             ResultMenuSound(10);
             AnmVmIdView id = ResultMenuFindScript(&menu->mainVm, 117);
-            ResultMenuPendingSix(&id);
+            ResultMenuPendingSix(id);
             menu->state = 3;
             menu->timer.SetCurrent(0);
             menu->cursor.SetCurrent(2);
@@ -4913,7 +4921,7 @@ void __stdcall ResultMenuUpdatePause(ResultMenuView *menu)
         {
             ResultMenuSound(10);
             AnmVmIdView id = ResultMenuFindScript(&menu->mainVm, 116);
-            ResultMenuPendingSix(&id);
+            ResultMenuPendingSix(id);
             menu->state = 3;
             menu->timer.SetCurrent(0);
             menu->cursor.SetCurrent(1);
@@ -4946,7 +4954,7 @@ void __stdcall ResultMenuUpdatePause(ResultMenuView *menu)
             if (menu->cursor.current == 0 || menu->cursor.current == 1)
             {
                 AnmVmIdView id = ResultMenuFindScript(&menu->mainVm, menu->cursor.current == 0 ? 119 : 120);
-                ResultMenuPendingSix(&id);
+                ResultMenuPendingSix(id);
                 menu->state = 5;
             }
             menu->timer.SetCurrent(0);
