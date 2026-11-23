@@ -135,6 +135,11 @@ the script argument's scheduling while preserving both factory
 expansions. In the parser, the weight-56 countdown takes ESI
 before the weight-36 comment cursor reaches the allocator. Check
 whether a new source form makes ESI available to the cursor.
+Declaration-only controls for the interpolation and exit interrupt
+helpers change their private calling conventions. The interpolation
+control moves both middle table entries one byte toward retail while
+passing the three register arguments on the stack. Keep those helpers
+visible and check register arguments alongside table offsets.
 The compiler traces and full comparison commands are in
 `.analysis/music-room/results.txt`.
 

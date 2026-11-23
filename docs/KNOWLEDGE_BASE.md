@@ -768,6 +768,19 @@ frontier; do not refresh a baseline merely to accept the new positions.
     guarded `do` form of the initial row loop keeps both factory
     expansions but inlines the row's `FindVm` and leaves the phase 0
     `SetScreenState` out of line. It emits 2,780 bytes and 105 fields.
+  - A TH09-style declaration-only control isolates callee visibility.
+    Both `StartMusicRowInterpolation` calls stay out of line. Hiding
+    its body under LTCG moves the middle table destinations from
+    `+0x454/+0x529` to `+0x455/+0x52A` and keeps the 2,796-byte extent
+    and 106 fields. Both call sites now push all five arguments.
+    Retail passes the VM and vectors in EAX, EDX and ECX. Hiding
+    `MarkVmInterrupt` similarly changes its two exit-phase calls to
+    the public member convention and shrinks the owner to 2,788 bytes.
+    The parser keeps its register allocation in both controls. A normal
+    `UpdateMusicRoom` member under LTCG retains the same stack receiver
+    and produces identical owned bytes after rebasing fields. Passing
+    the remaining-byte count by reference also preserves the caller
+    and both exact line readers.
   [2026-11-23]
 - **RebuildPlayerOptions @0x426F70 (2,520)**: about 2,404, plain RET instead of
   RET4 even with all nine callers present. [2026-10-19]
