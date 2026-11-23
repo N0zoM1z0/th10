@@ -105,10 +105,11 @@ probe uses a three-field opcode 88 request, an opcode 91 layer reference
 and a snapshot of the instruction pointer, instruction time and timer
 current value. It recovers the entire opcode 91 sequence with the scoped
 interrupt scan and radial code intact. Its remaining differences are
-+0x7C/+0x7F, where tied global register costs put the signed timestamp
-in EAX. A useful next control would give EDX a cost advantage or constrain
-the earlier choices while keeping the timer word folded into CMP.
-See the [compiler traces and controls](KNOWLEDGE_BASE.md).
++0x7C/+0x7F, where the timestamp has an empty affinity list and tied
+global register costs put it in EAX. Preloading the opcode or splitting
+the speed handling shifts the code. Reopen with a live range or real
+caller context that predicts a different allocation while preserving the
+folded timer operand. See the [compiler traces and controls](KNOWLEDGE_BASE.md).
 
 ## Strategy for the remaining authored bytes
 

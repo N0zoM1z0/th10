@@ -549,15 +549,24 @@ frontier; do not refresh a baseline merely to accept the new positions.
     the two-field capture changes two additional x87 operand bytes at
     +0x24BF and +0x24C3. The three-field capture returns to 9,962/9,964,
     with opcode 91 exact and only the timestamp register differing.
-    Its widened timestamp feeds a global candidate of weight 32 and
-    EAX, ECX, EDX, ESI and EDI still tie at zero cost. Keeping a 16-bit
-    timestamp instead adds a register load before the sign extension.
+    Its widened timestamp feeds a global candidate of weight 32. The
+    affinity list at candidate +0x38 is empty. C2 13.10.6030 subtracts
+    the weights from that list at `0x107B2D77`. The VM receiver has
+    affinities, but the time candidate has zero cost for all five
+    available registers. Preloading the opcode leaves the timestamp in
+    EAX and changes the entry schedule. Keeping a 16-bit timestamp instead
+    adds a register load before the sign extension.
     With a reference to the timer word, the 16-bit trial recovers the
     clock bytes but changes opcode 91 and the radial tail. Component
     assignments that remove the volatile Z read from the second vertex
     alone can reverse an x87 operand pair in the first.
     Putting the opcode 88 factory call in both the literal and the
     variable-operand branches shortens the contribution by 224 bytes.
+  - With the local clock comparison and the three-field opcode 88
+    request, saving the game speed in each branch shortens the owner
+    by four bytes. Explicitly advancing the cursor in opcode 86
+    shortens it by 16. Capturing the opcode 91 layer before decoding
+    the script index changes linker field positions.
   - In the layer-reference trial, capturing the script index and
     animation resource together gives the resource ECX before local
     allocation. The layer then takes EDX, matching the first target
