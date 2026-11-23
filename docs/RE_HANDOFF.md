@@ -89,11 +89,15 @@ bodies, context callers, `#pragma code_seg` placement and assembly
 fallbacks are inadmissible here.
 
 `EclVmContext::Run` compares 6,997/7,020 bytes in the current GameManager
-graph with 189 bound fields. The integer add and subtract result words
-have equal stack-colour weight. C2's sort puts subtract before add, which
-accounts for twelve residual bytes. Separate-TU trials retain the exact
-`Pop` and `Push` bodies and the same parent slot order. The trace and
-scoped comparison are in `.analysis/ecl-run/results.txt`.
+graph with 189 bound fields. Twelve residual bytes come from the
+equal-weight integer add and subtract result words taking reversed stack
+slots. The 6030 sort model reproduces the order of all 65 stack colours
+from the trace. Raising the add result's weight from six to seven in the
+model exchanges just those two colours. Changing case order moved local
+destinations, and the scoped declaration and scalar-form trials preserved
+all 23 differences. Reopen with an operand-lifetime change that can affect
+the weights before sorting. The model and comparison recipes are in
+`.analysis/ecl-run/results.txt`.
 
 ## Commands
 

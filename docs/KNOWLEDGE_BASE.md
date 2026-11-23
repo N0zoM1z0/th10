@@ -263,6 +263,40 @@ starter keep its VM in ESI. [2026-11-22]
   `RandomMath.cpp` or making `BulletManager.cpp` the first `/GL` input did not
   change it. [2026-11-22]
 
+### Compiler evidence from TH09
+
+TH09 pins VC7.1 13.10.3077. Its `c2-analysis/c2.dll` matches that
+checkout's tool lock. TH10 pins 13.10.6030, so recover breakpoint
+addresses and record layouts from TH10's backend.
+
+- TH09's `RunEcl` recovered 30 residual bytes in two handlers by restoring
+  direct assignments, a bitfield store and ordinary switch flow across
+  the dispatch. C2 still merged the common tails. TH10's Run trials move
+  dispatch-table destinations when the arithmetic case bodies are reordered.
+  Compare the whole owner after changes to neighboring cases.
+  [TH09 RunEcl register coupling](../../../th09-reconstruction/th09/docs/KNOWLEDGE_BASE.md#runecl-register-coupling-across-handlers)
+- TH09's enemy update needed both the real timer definition and a
+  draw-list append in each source branch. The extra scratch allocation
+  persisted after the compiler merged the appends. When a register change
+  survives scheduling or tail merging, check the allocation trace for
+  earlier requests in the same owner.
+  [TH09 Enemy update](../../../th09-reconstruction/th09/docs/KNOWLEDGE_BASE.md#2026-11-21-enemy-update-exact)
+- The TH09 movement trace identifies a load introduced by the allocator.
+  Its order was already set when the equal-priority loads reached
+  scheduling. In the title menu, changing the index's later float
+  conversion moved it from global to local allocation. A shared field
+  reference also restored the stack operand of the conversion and
+  matched the whole draw routine. Compare the operands and liveness
+  at allocator entry before editing their final instruction order.
+  [TH09 Player movement](../../../th09-reconstruction/th09/docs/KNOWLEDGE_BASE.md#replacement-of-the-configuration-load)
+  [TH09 selected-row conversion](../../../th09-reconstruction/th09/docs/KNOWLEDGE_BASE.md#selected-row-conversion)
+
+In TH10's C2, the stack-colour comparator at `0x1078E2D9` orders by
+class, then by signed integer `weight * 1000 / size`. The midpoint
+pivot in the sort at `0x1078CB20` can reorder equal-priority records.
+An isolated stack-slot difference can therefore originate before the
+sort, when C2 groups values and counts their uses.
+
 ### Byte-neutral steering removed from `BulletManager.cpp` (2026-11-22)
 
 Each of these was removed and the ten owners they touched stayed exact. Do
