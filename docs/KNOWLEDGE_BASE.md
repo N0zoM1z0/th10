@@ -909,25 +909,25 @@ frontier; do not refresh a baseline merely to accept the new positions.
   Rebinding the pointer at 0x477838 to `g_ReplayManager` preserves the
   complete extent, all field positions and the 66 differing bytes.
 
-  The VC7.1 6030 global allocator gives the maintained name a weight of
-  31 with only EBX available. Advancing the formal name argument in the
-  aggregate copy lets LTCG pass it in a register and emit `RET 0xC`.
-  Making `StartSpell` the link entry for diagnosis restores the retail
-  four stack arguments and exposes a different conflict. The advancing
-  name has weight 79 and takes EAX ahead of the record offset at 78.
-  Recomputing the aggregate counter address drops the name to 77 and
-  gives the offset EAX and the name ECX, as in retail. It also adds a
-  stack store of the name and replaces the counter access through ESI
-  with indexed addressing. The real dispatcher entry and default member
-  convention leave the maintained residual unchanged. Changing the
-  registration result also changes the independently matching 118-byte
-  `AddVmVariant0`. A normal two-pointer copy advancing the formal name
-  restores the first copy and per-shot statistics registers. LTCG then
-  passes the incoming name in ECX. An advancing cursor shared across
-  the copies keeps the stack ABI but shifts the extent to 2,424 bytes.
-  A cursor scoped to the final copy preserves the baseline bytes.
-  The paired allocator traces are under
-  `.analysis/start-spell/`. [2026-11-23]
+  Restoring the formal name from a saved pointer immediately after
+  the aggregate copy gives 2,402 matching bytes in the same graph.
+  The first two copies and the per-shot attempt update agree with retail.
+  The real dispatcher still pushes four arguments and the callee returns
+  with `RET 0x10`. The loop uses two advancing pointers, while retail
+  indexes through an address offset. C2 also stores the saved name back
+  to the argument slot before the attempt branch. Together these repairs
+  and new differences leave 30 differing bytes, including bytes inside
+  the previously matching counter tail. Both the real dispatcher entry
+  and a named name-buffer pointer in that caller reproduce the result.
+
+  Indexing the destination by the source cursor's distance from its
+  start recovers the relative address but reverses the SIB terms.
+  In this 2,399-byte match, the index offset has weight 80 and takes EAX.
+  The name at weight 79 takes ECX. C2 preserves its original value in
+  EDI, then copies it back to the stack at +0x135. Moving the restoration
+  to the common path or using a saved pointer directly at the draw call
+  changes the contribution. The two natural probes and the allocator
+  trace are in `.analysis/start-spell/`.
 - **ItemManagerUpdateBody @0x41AFD0 (2,320)** is exact in the registration-rooted
   `/GL` link, with 154 bound fields, 73 direct local branches and both jump
   tables at their target offsets. Expressing the distance scale as

@@ -173,19 +173,16 @@ time guard, whose last local allocation starts at EAX while retail
 uses EDX. The model, compiler traces and recipes are in
 `.analysis/ecl-run/results.txt`.
 
-`EnemyGameStateView::StartSpell` matches 2,366 of 2,432 bytes in
-`enemy-start-spell`. The real script starter restores the 15 call
-setups, and reading the VM through the matched list node restores
-the layout through the seven-entry stage table. All 108 fields
-are bound, including the shared `g_ReplayManager` pointer used
-by the playback check. The remaining differences are in the first 0x128
-bytes. Advancing the name in the aggregate loop changes the private
-calling convention. With the stack ABI held for diagnosis, lowering
-the name's allocation weight below the record offset puts both in the
-retail registers but changes the counter addressing and adds a stack
-store. Reopen with a lifetime change that keeps the counter on its
-existing record pointer and preserves the four stack arguments. The
-paired controls are in `.analysis/start-spell/results.txt`.
+`EnemyGameStateView::StartSpell` matches 2,366/2,432 bytes in maintained
+source. The retained `spell-restore-aggregate-name` probe matches
+2,402/2,432 with all 108 fields and eight fixed destinations. Restoring
+the name just after the aggregate copy keeps the four stack arguments
+and reproduces the entry, first two copies and per-shot count. The
+aggregate now needs retail's relative store and a name lifetime that
+leaves the original argument in its stack slot. The indexed probe
+reaches that address form with reversed SIB terms and a redundant
+stack store. Both maintain the seven stage destinations. See the
+[probe commands](../.analysis/start-spell/results.txt).
 
 `InitializeGameStatisticsRecord` matches 249 of 274 bytes with all eight
 DIR32 fields bound in `game-statistics-initialize-record`. The allocator
