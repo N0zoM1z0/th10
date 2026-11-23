@@ -4093,7 +4093,17 @@ void __stdcall ResultMenuPrepareScore(ResultMenuView *menu)
     }
 }
 
-// Target 0x4236F0: 3227 code bytes plus separately audited jump-table data.
+static __forceinline void ResultMenuEnterSaveChoice(ResultMenuView *menu)
+{
+    menu->state = 8;
+    menu->cursor.count = 3;
+    menu->cursor.wraps = 1;
+    menu->cursor.Select(2);
+    ResultMenuPendingThree(&menu->mainVm);
+    menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
+}
+
+// Target 0x4236F0: 3260 bytes including the eight-entry switch table.
 void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
 {
     char replayPath[64];
@@ -4126,25 +4136,20 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
                 shotWord * 0x437cu + 0x4dcu + stageWord * 8u);
             if (g_GameScoreState.score > *record)
                 *record = g_GameScoreState.score;
+            ResultMenuEnterSaveChoice(menu);
+            return;
         }
-        else
+
+        ResultMenuPrepareScore(menu);
+        menu->timer.SetCurrent(0);
+        if (menu->scoreUnavailable == 0)
         {
-            ResultMenuPrepareScore(menu);
-            menu->timer.SetCurrent(0);
-            if (menu->scoreUnavailable != 0)
-                goto result_state8;
             menu->state = 12;
             menu->mainVm.ClearFlag2();
             return;
         }
-    result_state8:
-        menu->state = 8;
-        menu->cursor.count = 3;
-        menu->cursor.wraps = 1;
-        menu->cursor.SetCurrent(2);
-        ResultMenuPendingThree(&menu->mainVm);
-        menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
-        break;
+        ResultMenuEnterSaveChoice(menu);
+        return;
     case 8:
         menu->cursor.previous = menu->cursor.current;
         if ((g_FrontEndInput.pressed & 0x10) != 0 || (g_FrontEndInput.repeated & 0x10) != 0)

@@ -102,13 +102,15 @@ controls](KNOWLEDGE_BASE.md).
 ## Open result-menu owner
 
 `ResultMenuUpdateResult` at 0x004236F0 owns 3,260 bytes including its
-eight-entry switch table. The `game-manager-update-body` link aligns
-780/908 instructions after scoping the state 8 VM ID and restoring the
-keyboard clamp calls and AX test. The candidate shares one stack slot
-between the VM ID and replay cleanup count. Retail keeps them separate,
-and its state 12 cancel clamp has one more timer-reset call site.
-The warm link and per-state comparison are in `.analysis/result-update/`.
-See the [compiler notes](KNOWLEDGE_BASE.md) for the graph comparison.
+eight-entry switch table. The ranking path in state 7 now returns
+after the inlined choice setup, restoring its layout and the state 8
+entry at +0x1AB. The `game-manager-update-body` link aligns 792/908
+instructions. Swapping in the historical `EnemyEclDispatcher` object
+in the four-TU score link restores 0x4C by retaining a return copy.
+Retail uses the return slot directly. State 12 also has one more
+timer-reset call site in its cancel clamp. Reproduction commands
+and allocation traces are in `.analysis/result-update/`.
+See the [compiler notes](KNOWLEDGE_BASE.md).
 
 ## Strategy for the remaining authored bytes
 

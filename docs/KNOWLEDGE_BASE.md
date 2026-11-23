@@ -745,23 +745,39 @@ frontier; do not refresh a baseline merely to accept the new positions.
   in state 8 removes the extra aggregate copy and changes register allocation
   through state 10. The naming states call `FrontEndCursorSetCurrent`
   directly, restoring both merged calls to 0x40AD20. State 12 tests AX for
-  all four directions. Aligning by switch entry gives 780/908 instructions,
-  up from 762, and the complete candidate is 3,212 bytes. The candidate
-  has 173 resolved fields to retail's 174. VC7.1 emits two call sites
-  for the state 12 cancel path's timer reset. Retail emits three and
-  joins the state 10 confirm-sound tail after each call to 0x405410.
+  all four directions. In state 7 the ranking path initializes the
+  three-row choice and returns. The ordinary path prepares the score
+  first and enters the same choice only when name entry is unavailable.
+  The inlined setup with `Select(2)` lets VC7.1 merge the shared tail
+  and restores state 8's entry at +0x1AB. State 7 aligns at 70/74
+  instructions, with the four mismatches in its two stack epilogues.
+  The complete candidate now aligns at 792/908 instructions and spans
+  3,232 bytes with 173 resolved fields. Retail has one additional
+  timer-reset call site at 0x405410 in the state 12 cancel clamp. An
+  early cancel guard leaves the output unchanged. `Select(0)` and its
+  explicit C++ clamp both shorten the tail without restoring the call.
   - The same pre-change source gives 3,216 bytes in the broader link and
     3,264 in the four-TU score synchronization link. Changing only the
     broader link's entry to the real `ResultMenuUpdate` leaves the owner
     unchanged. A shared state 8 cursor pointer costs seven aligned
     instructions in that graph. Re-reading the state 8 selection into one
     named local does not change its child-lookup ADD on this source.
-  - The broader link puts both the replay cleanup count and the state 8
-    VM return at [ESP+0x10]. Retail uses [ESP+0x10] for the count and
-    [ESP+0x14] for the return in a 0x4C frame. Trace that stack-slot
-    allocation and the state 12 clamp while keeping the real callees
-    visible. The older 3,227-byte range stopped before the table.
-    [2026-11-23]
+  - At C2's stack allocation phase (0x1076953F), the cleanup count
+    and `selected` have weights 3 and 2. They land in one 4-byte
+    group before sorting, so both use [ESP+0x10]. Retail uses
+    [ESP+0x14] for the VM return in a 0x4C frame. The indexed cleanup
+    loop, a by-value wrapper around `ResultMenuPendingSix` and hiding
+    either VM callee independently all keep the 0x48 frame.
+  - Rebuilding all four inputs of the score-synchronization link from
+    `587292dd` recovers its historical 0x4C frame. With the historical
+    FrontEnd object held fixed, replacing only the cached
+    `EnemyEclDispatcher` object also recovers it. Swapping the other
+    two support objects leaves 0x48. The 0x4C trace still groups the
+    count and `selected`. An extra aggregate return temporary at
+    [ESP+0x14] accounts for the extra word, and the old build copies
+    it to [ESP+0x10] before the pending-interrupt call. Retail uses
+    the return storage directly. The frame and copy need to be
+    resolved together. [2026-11-23]
 - **FrontEndControllerView::UpdateOptions @0x42D920 (3,188 incl. 5-entry
   table)**: 3,196; three interrupt adapters still expand. [2026-10-29]
 - **PlayerUpdateCallbackBody @0x425730 (3,112)**: 3,100. `FLD 1.0; FMUL scale`
