@@ -4097,8 +4097,6 @@ void __stdcall ResultMenuPrepareScore(ResultMenuView *menu)
 void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
 {
     char replayPath[64];
-    // Keep the selected animation VM value live across the result-state arms.
-    AnmVmIdView selected;
     const int entryState = menu->state;
     switch (entryState)
     {
@@ -4160,7 +4158,8 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         }
         if ((g_FrontEndInput.pressed & 0x1001) != 0)
         {
-            selected = ResultMenuFindScript(&menu->mainVm, menu->cursor.current + 0x7c);
+            AnmVmIdView selected = ResultMenuFindScript(
+                &menu->mainVm, menu->cursor.current + 0x7c);
             ResultMenuPendingSix(&selected);
             ResultMenuSound(10);
             menu->state = 13;
@@ -4292,7 +4291,8 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
                 {
                     menu->name[menu->nameIndex] = g_FrontEndScoreEntryAlphabet[key];
                     ++menu->nameIndex;
-                    if (menu->nameIndex >= 8) menu->keyboard.SetCurrent(length - 1);
+                    if (menu->nameIndex >= 8)
+                        FrontEndCursorSetCurrent(length - 1, &menu->keyboard);
                 }
                 else menu->name[menu->nameIndex - 1] = g_FrontEndScoreEntryAlphabet[key];
             }
@@ -4302,7 +4302,8 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
                 {
                     menu->name[menu->nameIndex] = ' ';
                     ++menu->nameIndex;
-                    if (menu->nameIndex >= 8) menu->keyboard.SetCurrent(length - 1);
+                    if (menu->nameIndex >= 8)
+                        FrontEndCursorSetCurrent(length - 1, &menu->keyboard);
                 }
                 else menu->name[menu->nameIndex - 1] = ' ';
             }
@@ -4356,7 +4357,7 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
                 if (menu->keyboard.current % 13 != 0) menu->keyboard.Move(-1);
                 else menu->keyboard.Move(12);
             }
-            if (g_FrontEndInput.IsRepeated(0x80))
+            if (static_cast<short>(g_FrontEndInput.IsRepeated(0x80)))
             {
                 if (menu->keyboard.current % 13 != 12) menu->keyboard.Move(1);
                 else menu->keyboard.Move(-12);
@@ -4375,7 +4376,8 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
                     {
                         menu->name[menu->nameIndex] = g_FrontEndScoreEntryAlphabet[key];
                         ++menu->nameIndex;
-                        if (menu->nameIndex >= 8) menu->keyboard.SetCurrent(length - 1);
+                        if (menu->nameIndex >= 8)
+                            FrontEndCursorSetCurrent(length - 1, &menu->keyboard);
                     }
                     else menu->name[menu->nameIndex - 1] = g_FrontEndScoreEntryAlphabet[key];
                 }
@@ -4385,7 +4387,8 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
                     {
                         menu->name[menu->nameIndex] = ' ';
                         ++menu->nameIndex;
-                        if (menu->nameIndex >= 8) menu->keyboard.SetCurrent(length - 1);
+                        if (menu->nameIndex >= 8)
+                            FrontEndCursorSetCurrent(length - 1, &menu->keyboard);
                     }
                     else menu->name[menu->nameIndex - 1] = ' ';
                 }

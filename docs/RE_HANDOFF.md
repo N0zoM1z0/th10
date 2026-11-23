@@ -99,6 +99,17 @@ Combining it with the timing probe's nonvolatile radial constructor
 changes the x87 operand order. See the [compiler traces and
 controls](KNOWLEDGE_BASE.md).
 
+## Open result-menu owner
+
+`ResultMenuUpdateResult` at 0x004236F0 owns 3,260 bytes including its
+eight-entry switch table. The `game-manager-update-body` link aligns
+780/908 instructions after scoping the state 8 VM ID and restoring the
+keyboard clamp calls and AX test. The candidate shares one stack slot
+between the VM ID and replay cleanup count. Retail keeps them separate,
+and its state 12 cancel clamp has one more timer-reset call site.
+The warm link and per-state comparison are in `.analysis/result-update/`.
+See the [compiler notes](KNOWLEDGE_BASE.md) for the graph comparison.
+
 ## Strategy for the remaining authored bytes
 
 `_reference/th10-decomp` has MSVC C++ bodies for the remaining authored

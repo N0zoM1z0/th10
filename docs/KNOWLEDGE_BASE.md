@@ -739,11 +739,29 @@ frontier; do not refresh a baseline merely to accept the new positions.
   before the resource load and restores the handle writeback. Selected
   replay is `scripts/repo-python scripts/replay-exact-units.py --unit
   gui-message-run`. [2026-11-23]
-- **ResultMenuUpdateResult @0x4236F0 (3,227)**: four-TU graph (FrontEnd `/GL /GS
-  /EHs`, VmIdInterrupt, real Enemy sound callee, AnmVmId), 3,228 bytes,
-  784/907 normalized, 173 fields. Open: states 7/8 and 10-13, the GUI score
-  receiver and the 0x48 versus 0x4C frame. Next: a faithful separate DWORD
-  lifetime with no extra copy. [2026-11-13]
+- **ResultMenuUpdateResult @0x4236F0 (3,260)**: the retail contribution
+  ends with an alignment NOP and eight absolute switch entries at +0xC9C.
+  In the `game-manager-update-body` link, direct initialization of the VM ID
+  in state 8 removes the extra aggregate copy and changes register allocation
+  through state 10. The naming states call `FrontEndCursorSetCurrent`
+  directly, restoring both merged calls to 0x40AD20. State 12 tests AX for
+  all four directions. Aligning by switch entry gives 780/908 instructions,
+  up from 762, and the complete candidate is 3,212 bytes. The candidate
+  has 173 resolved fields to retail's 174. VC7.1 emits two call sites
+  for the state 12 cancel path's timer reset. Retail emits three and
+  joins the state 10 confirm-sound tail after each call to 0x405410.
+  - The same pre-change source gives 3,216 bytes in the broader link and
+    3,264 in the four-TU score synchronization link. Changing only the
+    broader link's entry to the real `ResultMenuUpdate` leaves the owner
+    unchanged. A shared state 8 cursor pointer costs seven aligned
+    instructions in that graph. Re-reading the state 8 selection into one
+    named local does not change its child-lookup ADD on this source.
+  - The broader link puts both the replay cleanup count and the state 8
+    VM return at [ESP+0x10]. Retail uses [ESP+0x10] for the count and
+    [ESP+0x14] for the return in a 0x4C frame. Trace that stack-slot
+    allocation and the state 12 clamp while keeping the real callees
+    visible. The older 3,227-byte range stopped before the table.
+    [2026-11-23]
 - **FrontEndControllerView::UpdateOptions @0x42D920 (3,188 incl. 5-entry
   table)**: 3,196; three interrupt adapters still expand. [2026-10-29]
 - **PlayerUpdateCallbackBody @0x425730 (3,112)**: 3,100. `FLD 1.0; FMUL scale`
@@ -1611,13 +1629,11 @@ register preservation or mod-ref assumptions) where our builds exploit it
 
 - `UpdateReplaySave` 433570: 1440 code bytes plus five table words at 433B10.
 - `ResultMenuUpdateResult` has a 0x4C frame: `char replayPath[64]`, two temporary DWORDs (one is the 25-item replay-list cleanup countdown) and the `/GS` cookie. The state-8 VM id is built through hidden-return storage `[ESP+0x14]` before `ResultMenuPendingSix`.
-  - States 11 (replay name) and 12 (score name) are separate switch bodies.
   - The table index is `shot + character*3`.
   - `GuiView::value9E78` holds the published score.
-- ResultMenuUpdateResult has a /GS frame of 0x4C.
   - State 6 calls `QueueSoundSample(owner=ECX, EDI=10, stack sample 0)`.
   - State 10 releases 25 replay-file objects, trims up to 8 trailing spaces from the replay name, and writes the timestamp/completion value (8 or `g_FrontEndSelectedStage`).
-  - States 11 and 12 are replay naming and score naming. The keyboard has 12 columns: left checks `rem != 0` (Move -1 / Move 12), right checks `rem != 12` (Move 1 / Move -12).
+  - States 11 and 12 are replay naming and score naming. The keyboard wraps across 13 columns. Left tests remainder 0 and moves by 12 at the edge. Right tests remainder 12 and moves by -12 at the edge.
   - The close path (12 ticks) stores state 21, then option 0 → game transition and options 1/2 → `SetNextGameMode(4)`.
 - Profile/score layout:
   - shot group stride 0x437C;
