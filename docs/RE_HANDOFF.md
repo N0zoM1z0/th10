@@ -71,9 +71,13 @@ non-positive count. The early-return candidate recovers this jump. In that
 candidate C2 keeps the original count, loop countdown, and first hidden
 index in three registers before block-local allocation. Moving the setter
 to another TU gives the same 1,955/1,965-byte result while its standalone
-77 bytes still match. Reopen with a control-flow change that lets the
-upper-bound test and the hide loop share the first hidden index. The local
-trace and scoped comparison commands are in `.analysis/gui-guard/results.txt`.
+77 bytes still match. A shared countdown gives the target's ECX and EDX
+allocation and zero-count destination. C2 keeps a separate icon-array
+base in EBX for that pointer loop. The indexed form folds the base into
+the flags address and swaps ECX and EDX. Reopen with a source shape that
+preserves the folded address and calculates it before the hide countdown.
+The local traces and comparison commands are in
+`.analysis/gui-guard/results.txt`.
 
 ## Strategy for the remaining authored bytes
 

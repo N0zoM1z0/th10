@@ -551,7 +551,19 @@ frontier; do not refresh a baseline merely to accept the new positions.
   split loop implementation with the standalone setter shortened it to
   66 bytes. The maintained two-loop setter and the 1,251-byte
   `script-viewer-update` direct caller have their own exact units.
-  [2026-11-22]
+
+  A shared countdown for the show and hide pointer loops recovers the
+  target's ECX countdown and EDX index along with the zero-count jump to
+  +0x1F0. It compares 1,938/1,965 bytes. In this form C2 retains a common
+  +0x4980 icon-array base in EBX and adds the +0x35C flags offset separately.
+  The indexed hide loop folds those offsets into the target's +0x4CDC LEA.
+  It computes `9 - firstHidden` before the address and assigns the two
+  counters to the opposite registers. Both forms start global allocation
+  with the +0x4980 base in the predecessor. The difference is already
+  visible on entry to block-local allocation. Moving the entire reset
+  to its own `/GL` source preserves the one-byte residual for the
+  maintained loops and the ten-byte residual for the early-exit loops.
+  [2026-11-23]
 - **StageExecuteScript @0x403C80 (1,868)**: full size, nonexact. Opcodes 10-13
   register choice; opcode 14's VM input is ESI in the target and EDX native.
   [2026-10-29]
