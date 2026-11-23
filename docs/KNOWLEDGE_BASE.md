@@ -624,6 +624,19 @@ frontier; do not refresh a baseline merely to accept the new positions.
   119 bytes. Publishing the wrapped sum through a named word retains the
   home order and changes four SIB encodings elsewhere in `Run`.
 
+  In the current GameManager link, C2's operand scan at
+  `0x107ACE03` calls `0x107B501A` once for each of the six references to
+  each left result word. The references are the raw pop store, float
+  conversion load and store, arithmetic load and store, and the address
+  passed to `Push`. Each adds one to the weight. The right operand words
+  have four references apiece. Taking the address of the compound
+  assignment in `Push`, using a result reference or expressing subtraction
+  as modulo addition preserves the full 19-byte residual. A scalar
+  reference common to the two type-conversion branches in `Pop` does
+  recover both conditional-jump tag addresses, but leaves 6,963 matching
+  bytes. The weighting trace and complete comparison are in
+  `.analysis/ecl-run/results.txt`.
+
   The anonymous `FORMAT` tag-byte cursor stays at `ESP+0x18`, the same
   home as the named `x` in `LENGTH_SQUARED`. The cursor has weight six
   and `x` has weight three. C2 groups them in pre-sort colour four, just

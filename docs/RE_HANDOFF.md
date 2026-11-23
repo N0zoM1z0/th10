@@ -148,10 +148,14 @@ graph with 189 bound fields. Reading the packed spawn operand directly
 gives the length ECX and the operand EDX. The next local choice gives
 the stopped context EAX. Both handlers now match. Twelve residual bytes
 come from the equal-weight integer add and subtract result words taking
-reversed stack slots. The 6030 sort model reproduces all 65 traced colours.
-Raising the add result's weight from six to seven exchanges just the two homes in
-the model. Moving the shared `FORMAT` cursor and `LENGTH_SQUARED` colour
-ahead of the subtract result yields the same exchange. Separate tag and
+reversed stack slots. C2's operand scan counts six references for each
+result word. It includes the float conversion and the address passed
+to `Push`. Expression variants of the add and subtract preserve the
+same emitted instructions and residual. The 6030 sort model reproduces
+all 65 traced colours. Raising the add result's weight to seven
+exchanges just the two homes in the model. Moving the shared `FORMAT`
+cursor and `LENGTH_SQUARED` colour ahead of the subtract result yields
+the same exchange. Separate tag and
 payload cursors move fields in `FORMAT`. Reopen with a source lifetime
 that can change initial colour order while keeping the existing field
 positions. A direct left-operand pop in `EQUAL_FLOAT` shifts its two
