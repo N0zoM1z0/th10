@@ -408,8 +408,8 @@ frontier; do not refresh a baseline merely to accept the new positions.
   exact function, including both malloc/free REL32 fields. [2026-11-19]
 
 - **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: the current
-  `player-handle-collision-hit` graph at `16572e6b` strictly compares
-  9,962/9,964 bytes using the 350-field [binding contract](evidence/anm-child-request-record/binding-contract.json),
+  GameManager and player-collision graphs strictly compare 9,962/9,964
+  bytes using the 350-field [binding contract](evidence/anm-child-request-record/binding-contract.json),
   including 95 fixed local destinations. At +0x113 and +0x115, opcode 91
   loads and pushes the layer through ECX where retail uses EDX.
   - In pinned C2 13.10.6030 under `link.exe /LTCG`, opcode 91's layer
@@ -419,6 +419,17 @@ frontier; do not refresh a baseline merely to accept the new positions.
     respectively. The opcode 91 resource load also reaches this pass
     with a virtual destination and gets EAX. `Riscify` leaves these
     assignments untouched.
+  - The load's destination operand points to the allocation symbol at
+    `+0x18`. At `0x107AAC16` that symbol is candidate 45, with weight 32
+    and ECX, EDX, ESI and EDI available. The compiler selects ECX.
+    Moving either `GetIntVar` or the whole
+    interpreter to a separate `/GL` translation unit preserves the two
+    differences. The moved `GetIntVar` independently matches all 144 bytes
+    and 15 fields. Aggregate initialization of the script/layer pair also
+    preserves the residual. Capturing just the script index moves the
+    resource load before the argument pushes. Keeping the returned IDs
+    alive until an explicit shared resolve call shortens the interpreter
+    by 64 bytes with two IDs and 80 bytes with one.
   - Splitting the child pointer into separate locals for the front and
     back tails preserves the opcode 91 mismatch and reverses the two
     radial Z operands at +0x2476/+0x247C. Expanding the operand ternary

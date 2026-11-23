@@ -56,14 +56,15 @@ Never use inline assembly, naked functions, fake ABI declarations, stand-in call
 
 ## Open ANM and GUI owners
 
-`ExecuteScript` at 0x0043EE30 currently compares 9,962/9,964 bytes in the
-`player-handle-collision-hit` graph at `16572e6b`, including all 350 fields
-and 95 fixed local destinations. Opcode 91's layer load uses ECX before
-C2's local register pass. Later instruction scheduling preserves that
-choice. See the ExecuteScript entry in the [knowledge base](KNOWLEDGE_BASE.md)
-for the measured controls and compiler entry points. Reopen this owner
-with a source or real-callee change that affects the layer's global live
-range while preserving the late resource load and both shared tails.
+`ExecuteScript` at 0x0043EE30 compares 9,962/9,964 bytes in the current
+GameManager graph and the earlier player-collision graph. All 350 fields
+and 95 fixed local destinations bind. C2 considers both ECX and EDX for
+opcode 91's layer at global allocation and selects ECX. Separating the
+integer accessor or the interpreter into its own `/GL` source leaves
+that choice in place. Reopen when a source or real-callee change can
+alter the layer's allocation while preserving the late resource load
+and both shared tails. See the [knowledge base](KNOWLEDGE_BASE.md) for
+the measured compiler entry points.
 
 `GameResetGui` at 0x00413BC0 compares 1,964/1,965 bytes with all 52 fields
 bound. At +0x1D1 the target skips the hide loop's upper-bound test for a
