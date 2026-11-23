@@ -62,6 +62,32 @@ void MidiOutputView::ReleaseTracks()
     trackCount = 0;
 }
 
+struct MidiChunkHeader
+{
+    unsigned char tag[4];
+    unsigned int length;
+};
+
+static inline unsigned int MidiSwap32(unsigned int native)
+{
+    const unsigned char *bytes = reinterpret_cast<const unsigned char *>(&native);
+    const unsigned char reversed[4] = {bytes[3], bytes[2], bytes[1], bytes[0]};
+    unsigned int result;
+    memcpy(&result, reversed, sizeof result);
+    return result;
+}
+
+static inline unsigned short MidiReadBigEndian16(const unsigned char *source)
+{
+    unsigned short native;
+    memcpy(&native, source, sizeof native);
+    const unsigned char *bytes = reinterpret_cast<const unsigned char *>(&native);
+    const unsigned char reversed[2] = {bytes[1], bytes[0]};
+    unsigned short result;
+    memcpy(&result, reversed, sizeof result);
+    return result;
+}
+
 // Target 0x0043AAD0. This method uses the MIDI file slot already held by
 // the output owner, not a filesystem read. The target does not validate the
 // MThd/MTrk magic, reject allocation failures, or skip invalid track chunks;
@@ -69,43 +95,32 @@ void MidiOutputView::ReleaseTracks()
 int MidiOutputView::LoadTrackFile(int fileIndex)
 {
     ReleaseTracks();
-    const unsigned char *header = fileData[fileIndex];
-    if (header == NULL)
+    const unsigned char *cursor = fileData[fileIndex];
+    if (cursor == NULL)
         return -1;
 
-    unsigned char reversed[4];
-    unsigned int headerWord = *reinterpret_cast<const unsigned int *>(header + 4);
-    reversed[0] = static_cast<unsigned char>(headerWord >> 24);
-    reversed[1] = static_cast<unsigned char>(headerWord >> 16);
-    reversed[2] = static_cast<unsigned char>(headerWord >> 8);
-    reversed[3] = static_cast<unsigned char>(headerWord);
-    unsigned int headerLength = *reinterpret_cast<const unsigned int *>(reversed);
-    reversed[0] = header[9];
-    reversed[1] = header[8];
-    unknown11C = *reinterpret_cast<const unsigned short *>(reversed);
-    reversed[0] = header[11];
-    reversed[1] = header[10];
-    trackCount = *reinterpret_cast<const unsigned short *>(reversed);
-    reversed[0] = header[13];
-    reversed[1] = header[12];
-    ticksPerQuarterNote = *reinterpret_cast<const unsigned short *>(reversed);
-    const unsigned char *cursor = header + 8 + headerLength;
+    MidiChunkHeader header;
+    memcpy(&header, cursor, sizeof header);
+    cursor += sizeof header;
+    const unsigned int headerLength = MidiSwap32(header.length);
+    const unsigned char *format = cursor;
+    cursor += headerLength;
+    unknown11C = MidiReadBigEndian16(format);
+    ticksPerQuarterNote = MidiReadBigEndian16(format + 4);
+    trackCount = MidiReadBigEndian16(format + 2);
 
     tracks = static_cast<MidiTrackView *>(malloc(trackCount * sizeof(MidiTrackView)));
     memset(tracks, 0, trackCount * sizeof(MidiTrackView));
     for (int i = 0; i < trackCount; ++i) {
-        unsigned int rawSize = *reinterpret_cast<const unsigned int *>(cursor + 4);
-        reversed[0] = static_cast<unsigned char>(rawSize >> 24);
-        reversed[1] = static_cast<unsigned char>(rawSize >> 16);
-        reversed[2] = static_cast<unsigned char>(rawSize >> 8);
-        reversed[3] = static_cast<unsigned char>(rawSize);
-        unsigned int size = *reinterpret_cast<const unsigned int *>(reversed);
-        MidiTrackView *track = &tracks[i];
-        track->dataSize = size;
-        track->data = static_cast<unsigned char *>(malloc(size));
-        track->active = 1;
-        memcpy(track->data, cursor + 8, size);
-        cursor += 8 + size;
+        unsigned int nativeSize;
+        memcpy(&nativeSize, cursor + offsetof(MidiChunkHeader, length), sizeof nativeSize);
+        cursor += sizeof(MidiChunkHeader);
+        const unsigned int size = MidiSwap32(nativeSize);
+        tracks[i].dataSize = size;
+        tracks[i].data = static_cast<unsigned char *>(malloc(size));
+        tracks[i].active = 1;
+        memcpy(tracks[i].data, cursor, size);
+        cursor += size;
     }
     activeFileIndex = fileIndex;
     tempoMicroseconds = 1000000;

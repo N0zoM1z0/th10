@@ -110,6 +110,12 @@ and cursor allocation. See `.analysis/midi-event/results.txt` for the
 compiler traces. Compare the complete owner with
 `scripts/repo-python .analysis/midi-event/compare.py build/match-linked/MidiEventTick`.
 
+`MidiOutputView::LoadTrackFile` now reproduces the complete MIDI chunk
+header copy, the `/GS` frame and the indexed track stores in a 446-byte
+candidate for the 448-byte owner. Two copies exchange order at `+0x46`,
+and the length load folds at `+0x103`. See the
+[knowledge base](KNOWLEDGE_BASE.md) for the pointer-order control.
+
 `FrontEndUpdateMusicRoom` now has the complete 2,796-byte extent.
 `Select(0)`, the browse cursor pointer and the duration-first interpolation
 call recover the corresponding code sequences. The exact interpolation
