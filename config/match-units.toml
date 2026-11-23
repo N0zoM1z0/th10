@@ -23269,6 +23269,36 @@ target_address = 0x0042C850
 size = 69
 linkages = []
 
+[units.midi-event-tick]
+source = "src/Midi.cpp"
+support_sources = []
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+entry_symbol = "?Tick@MidiOutputView@@UAEXXZ"
+artifact_kind = "linked-pe"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+output_dir = "build/match-linked/MidiEventTick"
+functions = ["MidiOutputView::Tick"]
+symbol = "?Tick@MidiOutputView@@UAEXXZ"
+target_address = 0x0043AF30
+size = 473
+linkages = [
+  { offset = 0x027, type = "REL32", symbol = "__allmul", target = 0x00456640 },
+  { offset = 0x034, type = "REL32", symbol = "__allmul", target = 0x00456640 },
+  { offset = 0x048, type = "REL32", symbol = "__aulldiv", target = 0x00456B80 },
+  { offset = 0x090, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x09C, type = "DIR32", symbol = "__real@43000000", target = 0x00470BF4 },
+  { offset = 0x0A1, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0x0AF, type = "REL32", symbol = "?ApplyChannelVolumes@MidiOutputView@@QAEXH@Z", target = 0x0043B7A0 },
+  { offset = 0x0BB, type = "DIR32", symbol = "__real@43000000", target = 0x00470BF4 },
+  { offset = 0x0C0, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0x11A, type = "REL32", symbol = "?ProcessEvent@MidiOutputView@@SGXPAV1@PAUMidiTrackView@@@Z", target = 0x0043B110 },
+  { offset = 0x136, type = "REL32", symbol = "__allmul", target = 0x00456640 },
+  { offset = 0x144, type = "REL32", symbol = "__allmul", target = 0x00456640 },
+  { offset = 0x158, type = "REL32", symbol = "__aulldiv", target = 0x00456B80 },
+  { offset = 0x1BF, type = "REL32", symbol = "?ResetTracks@MidiOutputView@@QAEXXZ", target = 0x0043ACE0 },
+]
+
 # Full MIDI helper; independent origin/product gates.
 [units.midi-reset-tracks]
 source = "src/Midi.cpp"

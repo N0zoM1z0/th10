@@ -11,6 +11,10 @@
 
 ## Recent reconstruction
 
+- `midi-event-tick` is exact at 473 bytes with 14 bound fields and 12
+  fixed local branches. The next event tick comes directly from the
+  track array, and the parser takes the address of that same entry. The
+  `MidiEventTick` link preserves the complete parser candidate.
 - `game-reset-gui` is exact at 1,965 bytes with 52 bound fields and
   73 fixed local branches. Both life-icon loops walk the flags word at
   the VM stride. The non-positive count bypasses the upper-bound check

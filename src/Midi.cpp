@@ -224,34 +224,34 @@ void MidiOutputView::Tick()
         static_cast<unsigned __int64>(
             static_cast<__int64>(this->tempoMicroseconds)));
     if (fadeActive != 0) {
-        if (fadePosition >= fadeDuration) {
+        if (fadePosition < fadeDuration) {
+            float level = 1.0f - static_cast<float>(fadePosition) / fadeDuration;
+            fadeVolume = level;
+            int step = static_cast<int>(level * 128.0f);
+            if (step != fadeStep)
+                ApplyChannelVolumes(0);
+            fadeStep = static_cast<int>(fadeVolume * 128.0f);
+            ++fadePosition;
+        } else {
             fadeVolume = 0.0f;
             return;
         }
-        float level = 1.0f - static_cast<float>(fadePosition) / fadeDuration;
-        fadeVolume = level;
-        int step = static_cast<int>(level * 128.0f);
-        if (step != fadeStep)
-            ApplyChannelVolumes(0);
-        fadeStep = static_cast<int>(fadeVolume * 128.0f);
-        ++fadePosition;
     }
     for (int i = 0; i < trackCount; ++i) {
-        if (tracks[i].active == 0)
-            continue;
-        anyActive = 1;
-        do {
-            MidiTrackView *track = &tracks[i];
-            if (static_cast<unsigned __int64>(
-                    static_cast<__int64>(track->nextEventTick)) > eventTime)
+        if (tracks[i].active != 0) {
+            anyActive = 1;
+            while (tracks[i].active != 0) {
+                const int nextEvent = tracks[i].nextEventTick;
+                if (static_cast<unsigned __int64>(static_cast<__int64>(nextEvent)) <= eventTime) {
+                    ProcessEvent(this, &tracks[i]);
+                    eventTime = eventTickBase + ((static_cast<unsigned __int64>(
+                        static_cast<__int64>(ticksPerQuarterNote)) * elapsedTimerTicks * 1000) /
+                        static_cast<unsigned __int64>(static_cast<__int64>(tempoMicroseconds)));
+                    continue;
+                }
                 break;
-            ProcessEvent(this, track);
-            eventTime = eventTickBase + ((static_cast<unsigned __int64>(
-                static_cast<__int64>(this->ticksPerQuarterNote)) *
-            this->elapsedTimerTicks * 1000) /
-        static_cast<unsigned __int64>(
-            static_cast<__int64>(this->tempoMicroseconds)));
-        } while (tracks[i].active != 0);
+            }
+        }
     }
     ++elapsedTimerTicks;
     if (anyActive == 0)

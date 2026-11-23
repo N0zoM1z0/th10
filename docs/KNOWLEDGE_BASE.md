@@ -1241,6 +1241,18 @@ register preservation or mod-ref assumptions) where our builds exploit it
 - Sound (`g_MainSoundOwner @0x492590`, view 0x52D0): BGM volume 0x497854, loader allocations +0x5230 (37 se_.wav), state +0x5224 (2 = cancel), finished flag +0x522C, thread handles +0x5218/+0x521C, BGM event +0x520C, BGM flag +0x5208. The load-thread handle is at 0x4977AC.
 - `CSound` is 0x5C bytes: DSBUFFERDESC at +0x34, manager at +0x58. `CStreamingSound` is 0x78 bytes. `CWaveFile` is 0x94 bytes: flags +0x78, HANDLE +0x8C, format +0x90. Vtables: CSound 0x4705D8, CStreamingSound 0x4705D4. The BGM format row is 0x34 bytes.
 - Sample buffer flags are 0x80C8, and LoadSoundSample copies 18 format bytes.
+- `MidiOutputView::Tick` at `0x43AF30` matches all 473 bytes, 14 bound
+  fields and 12 fixed local branch targets in `midi-event-tick`. Testing
+  the active fade path first and using the nested active-track loop
+  from TH09 restores the target's branch layout, x87 fade conversion
+  and post-callback clock recalculation. In the loop, reading
+  `tracks[i].nextEventTick` directly and passing `&tracks[i]` to
+  `ProcessEvent` restores the track-address LEA before the tick load.
+  Keeping a named track pointer leaves seven differences because C2
+  combines the base and index in the load and advances the pointer
+  afterwards. A volatile track-pointer read has the same residual.
+  The same link preserves the parser's previous 1,670-byte candidate,
+  including all 37 field positions and references. [2026-11-23]
 - `MidiOutputView::ProcessEvent` at `0x43B110` has a 1,670-byte owner
   including 1,323 code bytes and three compressed switch tables. The
   `Tick` link originally emitted 1,690 bytes. An inline long-message
