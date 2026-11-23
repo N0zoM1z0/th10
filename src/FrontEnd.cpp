@@ -4093,12 +4093,12 @@ void __stdcall ResultMenuPrepareScore(ResultMenuView *menu)
     }
 }
 
-static __forceinline void ResultMenuEnterSaveChoice(ResultMenuView *menu)
+static __forceinline void ResultMenuEnterSaveChoice(ResultMenuView *menu, int selection)
 {
     menu->state = 8;
     menu->cursor.count = 3;
     menu->cursor.wraps = 1;
-    menu->cursor.Select(2);
+    menu->cursor.Select(selection);
     ResultMenuPendingThree(&menu->mainVm);
     menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
 }
@@ -4136,7 +4136,7 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
                 shotWord * 0x437cu + 0x4dcu + stageWord * 8u);
             if (g_GameScoreState.score > *record)
                 *record = g_GameScoreState.score;
-            ResultMenuEnterSaveChoice(menu);
+            ResultMenuEnterSaveChoice(menu, 2);
             return;
         }
 
@@ -4148,7 +4148,7 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
             menu->mainVm.ClearFlag2();
             return;
         }
-        ResultMenuEnterSaveChoice(menu);
+        ResultMenuEnterSaveChoice(menu, 2);
         return;
     case 8:
         {
@@ -4184,7 +4184,7 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
                 menu->cursor.Push();
                 menu->cursor.count = 25;
                 menu->cursor.wraps = 1;
-                menu->cursor.SetCurrent(0);
+                menu->cursor.Select(0);
                 for (int slot = 1; slot <= 25; ++slot)
                 {
                     sprintf(replayPath, "th10_%.2d.rpy", slot);
@@ -4208,7 +4208,7 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
             ResultMenuSound(11);
             if (menu->cursor.current != 2)
             {
-                menu->cursor.SetCurrent(2);
+                menu->cursor.Select(2);
                 menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
             }
         }
@@ -4217,15 +4217,18 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         // Retail branches on AX, not the full EAX input-helper return.
         if (menu->timer.current < 10)
             break;
-        menu->cursor.previous = menu->cursor.current;
-        if (static_cast<short>(g_FrontEndInput.IsRepeated(0x10))) menu->cursor.Move(-1);
-        if (static_cast<short>(g_FrontEndInput.IsRepeated(0x20))) menu->cursor.Move(1);
-        if (menu->cursor.previous != menu->cursor.current) ResultMenuSound(12);
+        {
+            FrontEndCursorView *rows = &menu->cursor;
+            rows->previous = rows->current;
+            if (static_cast<short>(g_FrontEndInput.IsRepeated(0x10))) rows->Move(-1);
+            if (static_cast<short>(g_FrontEndInput.IsRepeated(0x20))) rows->Move(1);
+            if (rows->previous != rows->current) ResultMenuSound(12);
+        }
         if ((g_FrontEndInput.pressed & 0x1001) != 0)
         {
             menu->state = 11;
             menu->timer.SetCurrent(0);
-            menu->keyboard.SetCurrent(0);
+            menu->keyboard.Select(0);
             menu->keyboard.count = strlen(g_FrontEndScoreEntryAlphabet);
             menu->keyboard.wraps = 1;
             if (menu->completed != 0 && (g_GameRuntimeFlags & 0x10) == 0)
@@ -4295,18 +4298,19 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         if (keyboard->previous != keyboard->current) ResultMenuSound(12);
         if ((g_FrontEndInput.pressed & 0x1001) != 0)
         {
-            int length = strlen(g_FrontEndScoreEntryAlphabet);
+            const char *alphabet = g_FrontEndScoreEntryAlphabet;
+            int length = strlen(alphabet);
             int key = keyboard->current;
             if (key < length - 3)
             {
                 if (menu->nameIndex < 8)
                 {
-                    menu->name[menu->nameIndex] = g_FrontEndScoreEntryAlphabet[key];
+                    menu->name[menu->nameIndex] = alphabet[key];
                     ++menu->nameIndex;
                     if (menu->nameIndex >= 8)
                         FrontEndCursorSetCurrent(length - 1, keyboard);
                 }
-                else menu->name[menu->nameIndex - 1] = g_FrontEndScoreEntryAlphabet[key];
+                else menu->name[menu->nameIndex - 1] = alphabet[key];
             }
             else if (key == length - 3)
             {
@@ -4362,37 +4366,39 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
         if (menu->timer.current < 10) break;
         if (menu->scoreUnavailable == 0)
         {
-            menu->keyboard.previous = menu->keyboard.current;
-            if (static_cast<short>(g_FrontEndInput.IsRepeated(0x10))) menu->keyboard.Move(-13);
-            if (static_cast<short>(g_FrontEndInput.IsRepeated(0x20))) menu->keyboard.Move(13);
+            FrontEndCursorView *keyboard = &menu->keyboard;
+            keyboard->previous = keyboard->current;
+            if (static_cast<short>(g_FrontEndInput.IsRepeated(0x10))) keyboard->Move(-13);
+            if (static_cast<short>(g_FrontEndInput.IsRepeated(0x20))) keyboard->Move(13);
             if (static_cast<short>(g_FrontEndInput.IsRepeated(0x40)))
             {
-                if (menu->keyboard.current % 13 != 0) menu->keyboard.Move(-1);
-                else menu->keyboard.Move(12);
+                if (keyboard->current % 13 != 0) keyboard->Move(-1);
+                else keyboard->Move(12);
             }
             if (static_cast<short>(g_FrontEndInput.IsRepeated(0x80)))
             {
-                if (menu->keyboard.current % 13 != 12) menu->keyboard.Move(1);
-                else menu->keyboard.Move(-12);
+                if (keyboard->current % 13 != 12) keyboard->Move(1);
+                else keyboard->Move(-12);
             }
-            if (menu->keyboard.previous != menu->keyboard.current) ResultMenuSound(12);
+            if (keyboard->previous != keyboard->current) ResultMenuSound(12);
         }
         if ((g_FrontEndInput.pressed & 0x1001) != 0)
         {
             if (menu->scoreUnavailable == 0)
             {
-                int length = strlen(g_FrontEndScoreEntryAlphabet);
+                const char *alphabet = g_FrontEndScoreEntryAlphabet;
+                int length = strlen(alphabet);
                 int key = menu->keyboard.current;
                 if (key < length - 3)
                 {
                     if (menu->nameIndex < 8)
                     {
-                        menu->name[menu->nameIndex] = g_FrontEndScoreEntryAlphabet[key];
+                        menu->name[menu->nameIndex] = alphabet[key];
                         ++menu->nameIndex;
                         if (menu->nameIndex >= 8)
                             FrontEndCursorSetCurrent(length - 1, &menu->keyboard);
                     }
-                    else menu->name[menu->nameIndex - 1] = g_FrontEndScoreEntryAlphabet[key];
+                    else menu->name[menu->nameIndex - 1] = alphabet[key];
                 }
                 else if (key == length - 3)
                 {
@@ -4413,36 +4419,25 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
                 }
                 else if (key == length - 1)
                 {
-                    unsigned char *profile = g_FrontEndProfileData;
                     // Score-profile addresses are flat native DWORDs.
                     strcpy(reinterpret_cast<char *>(
-                        reinterpret_cast<unsigned int>(profile) +
+                        reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
                         (static_cast<unsigned int>(g_ReplayCharacter) * 3u +
                          static_cast<unsigned int>(g_ReplayShotType)) * 0x437cu +
                         0x1eu +
                         (static_cast<unsigned int>(menu->cursor.current) +
                          static_cast<unsigned int>(g_ReplayDifficulty) * 10u) * 0x18u),
                         menu->name);
-                    strcpy(reinterpret_cast<char *>(profile + 0x1d878), menu->name);
+                    strcpy(reinterpret_cast<char *>(g_FrontEndProfileData + 0x1d878), menu->name);
                     menu->mainVm.SetFlag2();
-                    menu->state = 8;
-                    menu->cursor.count = 3;
-                    menu->cursor.wraps = 1;
-                    menu->cursor.SetCurrent(0);
-                    ResultMenuPendingThree(&menu->mainVm);
-                    menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
+                    ResultMenuEnterSaveChoice(menu, 0);
                 }
                 ResultMenuSound(10);
             }
             else
             {
                 menu->mainVm.SetFlag2();
-                menu->state = 8;
-                menu->cursor.count = 3;
-                menu->cursor.wraps = 1;
-                menu->cursor.SetCurrent(0);
-                ResultMenuPendingThree(&menu->mainVm);
-                menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
+                ResultMenuEnterSaveChoice(menu, 0);
             }
         }
         if ((g_FrontEndInput.pressed & 0x0a) != 0)
@@ -4460,7 +4455,7 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
             {
                 menu->state = 8;
                 menu->cursor.count = 3;
-                menu->cursor.SetCurrent(0);
+                menu->cursor.Select(0);
                 menu->timer.SetCurrent(0);
                 ResultMenuSound(10);
                 return;

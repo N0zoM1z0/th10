@@ -101,15 +101,14 @@ controls](KNOWLEDGE_BASE.md).
 
 ## Open result-menu owner
 
-`ResultMenuUpdateResult` at 0x004236F0 owns 3,260 bytes including its
-eight-entry switch table. Passing the exact lookup overload's return
-by const reference restores the 0x4C frame and forwards the state 8
-return slot straight to the interrupt call. The
-`game-manager-update-body` link aligns 831/908 instructions. State 12
-still has one fewer timer-reset call site in its cancel clamp.
-Reproduction commands and field comparisons are in
-`.analysis/result-update/`.
-See the [compiler notes](KNOWLEDGE_BASE.md).
+`ResultMenuUpdateResult` at 0x004236F0 has the full 3,260-byte
+extent, 174 bound fields, 128 direct local branches and eight
+switch entries. The `game-manager-update-body` link differs in
+one SIB byte at +0xAB8 in the second score-name copy. Inlining the
+upper-only cursor clamp restored state 12's third timer call and
+the three jumps to the state 10 sound tail. The remaining address
+terms and their C2 hashes are in the [compiler notes](KNOWLEDGE_BASE.md).
+The full comparison commands are in `.analysis/result-update/`.
 
 ## Strategy for the remaining authored bytes
 

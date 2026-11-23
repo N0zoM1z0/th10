@@ -740,33 +740,40 @@ frontier; do not refresh a baseline merely to accept the new positions.
   replay is `scripts/repo-python scripts/replay-exact-units.py --unit
   gui-message-run`. [2026-11-23]
 - **ResultMenuUpdateResult @0x4236F0 (3,260)** ends with an alignment
-  NOP and eight absolute switch entries at +0xC9C. The 3,228-byte
-  candidate in the `game-manager-update-body` link aligns 831/908
-  instructions. In state 8, pass the result of the
-  `ResultMenuFindScript(AnmVmIdView *, int)` overload directly to
-  `ResultMenuPendingSix(const AnmVmIdView &)`. VC7.1 puts the return
-  in [ESP+0x14] and forwards its address in EAX to the next call,
-  reproducing the 0x4C frame. C2 assigns separate stack groups to
-  the return with weight 1 and the cleanup count with weight 3.
-  The cleanup count stays at [ESP+0x10].
-  Using the storage-wrapper overload, or giving the return its own
-  named value before passing it, keeps the smaller frame. With the
-  direct call in place, reading the selection again into `choice`
-  before the switch restores `lea ebx,[eax+0x7c]`.
-  - State 7's ranking path returns after the inlined three-row setup.
-    The ordinary path prepares the score and enters the choice when
-    name entry is unavailable. `Select(2)` restores the state 8 entry
-    at +0x1AB. With the restored frame, all 74 state 7 instructions
-    align. A cursor pointer limited to state 8 navigation and a
-    keyboard pointer in state 11 recover four cursor-relative
-    accesses. The naming states call 0x40AD20 directly for their
-    shared clamp, and state 12 tests AX for all four directions.
-  - The 173 resolved fields have the same destination inventory as
-    retail except for one additional call to 0x405410 in the state 12
-    cancel clamp. In the 0x48 build, the early cancel guard and an
-    explicit confirm-to-cancel edge left the call count unchanged.
-    `Select(0)` and the equivalent C++ clamp shortened the tail
-    without recovering the call.
+  NOP and eight absolute switch entries at +0xC9C. The current
+  `game-manager-update-body` link has the full extent, all 174 bound
+  fields and all 128 direct local destinations. The only differing byte
+  is the SIB at +0xAB8 in the score name's second `strcpy`. VC7.1
+  encodes [EAX+EDX] where retail encodes [EDX+EAX].
+  - In state 8, pass the result of the
+    `ResultMenuFindScript(AnmVmIdView *, int)` overload directly to
+    `ResultMenuPendingSix(const AnmVmIdView &)`. VC7.1 puts the return
+    in [ESP+0x14] and forwards its address in EAX to the next call,
+    reproducing the 0x4C frame. C2 assigns separate stack groups to
+    the return with weight 1 and the cleanup count with weight 3.
+    The cleanup count stays at [ESP+0x10].
+    Using the storage-wrapper overload, or giving the return its own
+    named value before passing it, keeps the smaller frame. With the
+    direct call in place, reading the selection again into `choice`
+    before the switch restores `lea ebx,[eax+0x7c]`.
+  - Use the upper-only `Select` in states 7, 8, 10 and 12, and
+    keep it inlined. Sharing the state 7 choice setup with the
+    state 12 confirm path restores its three-way clamp. The inline
+    form also restores the third timer call in the negative-cursor
+    cancel path, with all three paths jumping to state 10's confirm
+    tail at +0x50A.
+  - Keep the profile pointer load in each of the two score-name
+    copies. Caching it changes registers back through state 11.
+    Bind the row cursors in their navigation blocks and bind the
+    alphabet in each name entry handler. The direct input calls
+    still test AX and both name clamps call 0x40AD20.
+  - At `OptCmpHashVal` (0x10795BC5), the walked pointer's symbol is
+    0x294 with hash 0x1A500. The loop-derived destination difference
+    is 0x66F with hash 0x19BC0. It needs a relative increase of 38
+    symbols in the current hash window to sort first. Naming the
+    editor predicates or extracting the two copies into an inline
+    helper preserves the remaining SIB. Explicit pointer loops
+    for either copy change other instructions.
   - The older four-TU link built from `587292dd` also emitted 0x4C,
     with the return temporarily at [ESP+0x14] and a subsequent copy
     to [ESP+0x10]. Replacing only the `EnemyEclDispatcher` object
