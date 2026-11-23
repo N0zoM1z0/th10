@@ -1318,20 +1318,26 @@ register preservation or mod-ref assumptions) where our builds exploit it
   afterwards. A volatile track-pointer read has the same residual.
   The same link carries the complete 1,670-byte parser candidate.
   [2026-11-23]
-- `MidiOutputView::LoadTrackFile` at `0x43AAD0` compiles to 446 bytes
-  with `/GL /GS` and aligns 127 of the target's 130 instructions. Copying
-  the complete eight-byte MIDI chunk header restores the cookie frame.
-  Copying the native words with `memcpy` preserves unaligned reads.
-  Publishing format, division and track count in that order, then
-  indexing the owner's track array after each allocation, restores the
-  corresponding retail loads and stores. All six linkage identities
-  and four direct branch destinations correspond. Two fields move
-  by two bytes because the length read folds `mov eax,ebp` into
-  `mov eax,[ebp+4]`. The two independent copies at `+0x46` also
-  exchange order. Advancing the stream before reading the saved chunk
-  restores the EAX copy and changes the byte extraction and spill
-  order. Linking a reconstruction of the slot-31 caller at `0x43AC90`
-  reproduces the 446-byte candidate. [2026-11-23]
+- `MidiOutputView::LoadTrackFile` at `0x43AAD0` compares 442 of 448
+  bytes with all six linkage fields at their original offsets.
+  The full chunk-header copy restores the `/GS` frame and the indexed
+  track stores reload the array after allocation. Saving the chunk
+  pointer before advancing the cursor makes both the EAX copy and
+  the indirect length load appear before global allocation. Using a
+  shift for the high length byte and the byte representation for the
+  other three preserves the original pair of shifts.
+
+  In the earlier 446-byte graph, the load uses the cursor directly
+  at global allocation entry and the cursor gets EBP. The raw length is a named
+  stack element of weight three and shares no colour. The 448-byte
+  graph lowers the raw length to an unnamed element of weight two.
+  This element shares the eight-byte SMF header colour in place of
+  the index, changing four stack displacements. Named references,
+  inline decoding and reusing a byte buffer all preserve that
+  exchange. The other two differences are the register copies at
+  `+0x46` and `+0x48`. Use `midi-load-track-file` for the complete
+  comparison and `.analysis/midi-event/` for the allocator traces.
+  [2026-11-23]
 - `MidiOutputView::ProcessEvent` at `0x43B110` has a 1,670-byte owner
   including 1,323 code bytes and three compressed switch tables. The
   current `Tick` link matches 1,644 bytes, all 37 linkage fields,

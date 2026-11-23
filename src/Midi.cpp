@@ -88,6 +88,19 @@ static inline unsigned short MidiReadBigEndian16(const unsigned char *source)
     return result;
 }
 
+static inline unsigned int MidiReadTrackLength(const unsigned char *source)
+{
+    unsigned int native;
+    memcpy(&native, source, sizeof native);
+    const unsigned char *bytes = reinterpret_cast<const unsigned char *>(&native);
+    const unsigned char reversed[4] = {
+        static_cast<unsigned char>(native >> 24), bytes[2], bytes[1], bytes[0],
+    };
+    unsigned int length;
+    memcpy(&length, reversed, sizeof length);
+    return length;
+}
+
 // Target 0x0043AAD0. This method uses the MIDI file slot already held by
 // the output owner, not a filesystem read. The target does not validate the
 // MThd/MTrk magic, reject allocation failures, or skip invalid track chunks;
@@ -112,10 +125,9 @@ int MidiOutputView::LoadTrackFile(int fileIndex)
     tracks = static_cast<MidiTrackView *>(malloc(trackCount * sizeof(MidiTrackView)));
     memset(tracks, 0, trackCount * sizeof(MidiTrackView));
     for (int i = 0; i < trackCount; ++i) {
-        unsigned int nativeSize;
-        memcpy(&nativeSize, cursor + offsetof(MidiChunkHeader, length), sizeof nativeSize);
+        const unsigned char *chunk = cursor;
         cursor += sizeof(MidiChunkHeader);
-        const unsigned int size = MidiSwap32(nativeSize);
+        const unsigned int size = MidiReadTrackLength(chunk + offsetof(MidiChunkHeader, length));
         tracks[i].dataSize = size;
         tracks[i].data = static_cast<unsigned char *>(malloc(size));
         tracks[i].active = 1;
