@@ -1464,14 +1464,26 @@ register preservation or mod-ref assumptions) where our builds exploit it
   Splitting the byte reader into a real `/GL` support source and
   including the slot-31 caller both preserve the six differences.
 
-  At `0x1079BBF9` the two header loads appear in EDX, ECX order.
-  The scheduler appends them at `0x107B0D2F`
-  as two copies from EAX in ECX, EDX order. This is the remaining
-  pair at `+0x46` and `+0x48`. The TH09 analysis copy of C2 is
-  13.10.3077. Its scheduler hook `0x107B54CC` corresponds to
-  `0x107B0D2F` in the pinned TH10 13.10.6030 binary. Use
-  `midi-load-track-file` for the complete comparison and
-  `.analysis/midi-event/` for the traces.
+  Returning the payload cursor from an inline reader and writing the
+  native length through an out reference restores both retail stack
+  homes. That variant matches 127 of 130 aligned instructions, with
+  six bound fields and four corresponding branches. Its 446-byte
+  body folds the pointer copy and `[eax+4]` load at +0x103 into one
+  load from `[ebp+4]`. The current 448-byte version retains both
+  instructions. Staging the file prefix as integer words instead of
+  retaining its character tag gives a 418-byte body without the
+  original `/GS` cookie path.
+
+  At the scheduling graph hook `0x107B0B9B`, the copy to EDX
+  precedes the copy to ECX with ordinals 7 and 10. The respective
+  priorities are `0xF000` and `0xF400`, so the scheduler puts ECX first
+  at +0x46. The corresponding per-track copies tie at `0xB800`
+  and retain their incoming order. Compiling different orders of
+  the source byte stores leaves the header pair or changes other
+  instructions. Revisit the dependencies on the high and middle
+  byte consumers rather than the copies' incoming order. TH09's
+  C2 13.10.3077 scheduler append hook `0x107B54CC` corresponds
+  to `0x107B0D2F` in TH10's pinned 13.10.6030 binary.
   [2026-11-23]
 - `MidiOutputView::ProcessEvent` at `0x43B110` matches all 1,670
   owned bytes in the VC7.1 SP1 build 6030 `/GL` graph rooted at

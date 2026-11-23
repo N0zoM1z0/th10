@@ -108,13 +108,15 @@ bodies, context callers, `#pragma code_seg` placement and assembly
 fallbacks are inadmissible here.
 
 `MidiOutputView::LoadTrackFile` matches 442 of 448 bytes in
-`midi-load-track-file`, with all six linkage fields bound. Saving the
-chunk pointer and decoding the high byte separately restores the
-full extent. Two copies exchange order at `+0x46` during scheduling.
-The raw length is visited after the index during stack allocation and
-reuses the header's colour. Independent links preserve the residual
-with the slot-31 caller visible and with the byte reader in a separate
-`/GL` source. [Compiler notes](KNOWLEDGE_BASE.md)
+`midi-load-track-file` with all six fields bound. The header copies
+enter scheduling in retail order, with priorities `0xF000` for EDX
+and `0xF400` for ECX. The higher ECX priority reverses the pair at
++0x46. The raw length also reuses the header's stack colour.
+The reader that returns the advanced cursor and writes the length
+by reference restores both stack homes but folds the pointer copy
+at +0x103 into the length load, leaving 446 bytes. The source and
+trace commands are in `.analysis/midi-event/results.txt`.
+[Compiler notes](KNOWLEDGE_BASE.md)
 
 `FrontEndUpdateMusicRoom` now has the complete 2,796-byte extent.
 `Select(0)`, the browse cursor pointer and the duration-first interpolation
