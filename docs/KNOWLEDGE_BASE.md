@@ -558,8 +558,22 @@ frontier; do not refresh a baseline merely to accept the new positions.
 - **PlayerUpdateCallbackBody @0x425730 (3,112)**: 3,100. `FLD 1.0; FMUL scale`
   operand order is reversed, the table base is 4 bytes early and the effect-loop
   EDI subframe differs. [2026-11-12]
-- **FrontEndUpdateMusicRoom @0x433EF0 (2,796)**: 2,788; 104 fields versus 106.
-  [2026-10-30]
+- **FrontEndUpdateMusicRoom @0x433EF0 (2,796)** now has the full target
+  extent and all 106 fields. The phase 1 and 2 table entries start two
+  bytes early. The current sound helper restores both queue receivers that
+  were missing in the older 2,788-byte build.
+  `Select(0)` recovers both count-dependent cursor stores. A shared cursor
+  pointer keeps the browse selection and previous value on the same base.
+  Testing the near-row condition first gives the target x87 branch.
+  `StartMusicRowInterpolation` places duration before the vector
+  parameters and restores both PUSH sequences while preserving its exact
+  206 bytes and seven fields. Guarding the parser with an explicit first
+  iteration test aligns its early block but grows the owner by 16 bytes.
+  The parser's comment cursor selects EBX at global allocation
+  (`0x107AAC16`), with weight 36 and EBX as its sole available register.
+  The target uses ESI there. Check the competing saved-register lifetimes
+  before local allocation. The prologue and phase offsets also remain open.
+  [2026-11-23]
 - **RebuildPlayerOptions @0x426F70 (2,520)**: about 2,404, plain RET instead of
   RET4 even with all nine callers present. [2026-10-19]
 - **EnemyGameStateView::StartSpell @0x409280 (2,432)**: current linked

@@ -3585,17 +3585,17 @@ static char *__stdcall FrontEndMusicCopyLine(
 }
 
 // Target 0x00434A80, used by both music-room row animation sites.
-void AnmVmView::StartPositionInterpolation(
-    const AnmFloat3View *initial, const AnmFloat3View *final,
-    int duration, unsigned char mode)
+__declspec(noinline) void __stdcall StartMusicRowInterpolation(
+    AnmVmView *vm, int duration, const AnmFloat3View *initial,
+    const AnmFloat3View *final, unsigned char mode)
 {
-    positionInterpolation.duration = duration;
-    positionInterpolation.initialTangent = g_AnmZeroVector491C14;
-    positionInterpolation.finalTangent = g_AnmZeroVector491C14;
-    positionInterpolation.mode = mode;
-    positionInterpolation.initial = *initial;
-    positionInterpolation.final = *final;
-    positionInterpolation.timer.SetCurrent(0);
+    vm->positionInterpolation.duration = duration;
+    vm->positionInterpolation.initialTangent = g_AnmZeroVector491C14;
+    vm->positionInterpolation.finalTangent = g_AnmZeroVector491C14;
+    vm->positionInterpolation.mode = mode;
+    vm->positionInterpolation.initial = *initial;
+    vm->positionInterpolation.final = *final;
+    vm->positionInterpolation.timer.SetCurrent(0);
 }
 
 // Target 0x00420A90. The original assumes a dot and a bounded path; it
@@ -3673,7 +3673,7 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
         if (controller->stateTimer.current == 1)
         {
             controller->cursor.count = 6;
-            controller->cursor.SetCurrent(0);
+            controller->cursor.Select(0);
             if (g_AnmRenderManagerView->FindVm(controller->vmIds[0x5f]) == NULL)
             {
                 controller->CreateVm(0x5f);
@@ -3712,7 +3712,7 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
                 }
             }
             controller->cursor.count = count;
-            controller->cursor.SetCurrent(0);
+            controller->cursor.Select(0);
             controller->musicListOffset = 0;
             controller->musicTrackCount = count;
             for (int i = 0; i < 8; ++i)
@@ -3755,7 +3755,7 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
                     vm->flags35C &= ~2u;
                 if (i == controller->cursor.current)
                     position.x = static_cast<float>(position.x - 4.0);
-                vm->StartPositionInterpolation(&vm->position, &position, 4, 0);
+                StartMusicRowInterpolation(vm, 4, &vm->position, &position, 0);
                 if (i == controller->cursor.current)
                     position.x = static_cast<float>(position.x + 4.0);
                 position.y += 20.0f;
@@ -3800,41 +3800,43 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
             vm->pendingInterrupt = 2;
             ++controller->musicCommentLine;
         }
-        controller->cursor.previous = controller->cursor.current;
-        if (InputRepeated(0x10)) controller->cursor.Move(-1);
-        if (InputRepeated(0x20)) controller->cursor.Move(1);
-        if (controller->cursor.previous != controller->cursor.current)
         {
-            FrontEndPlaySound(12);
-            if (controller->cursor.current < controller->musicListOffset)
-                controller->musicListOffset = controller->cursor.current;
-            else if (controller->cursor.current >= controller->musicListOffset + 10)
-                controller->musicListOffset = controller->cursor.current - 9;
-            AnmFloat3View position(64.0f, 96.0f - controller->musicListOffset * 20.0f, 0.0f);
-            for (int i = 0; i < controller->musicTrackCount; ++i)
+            FrontEndCursorView *menuCursor = &controller->cursor;
+            menuCursor->previous = menuCursor->current;
+            if (InputRepeated(0x10)) menuCursor->Move(-1);
+            if (InputRepeated(0x20)) menuCursor->Move(1);
+            if (menuCursor->previous != menuCursor->current)
             {
-                FrontEndVmIdStorageView *rowId = &controller->musicRowVmIds[i];
-                AnmRenderManagerView *manager = g_AnmRenderManagerView;
-                AnmVmView *vm = manager->FindVm(*rowId);
-                if (vm == NULL)
-                    rowId->value = 0;
-                if (i >= controller->musicListOffset && i < controller->musicListOffset + 10)
-                    vm->flags35C |= 2;
-                else
-                    vm->flags35C &= ~2u;
-                if (i == controller->cursor.current)
-                    position.x = static_cast<float>(position.x - 4.0);
-                // JP after the target x87 status test includes unordered.
-                if (!(fabs(vm->position.y - position.y) < 40.0f))
-                    vm->position = position;
-                else
-                    vm->StartPositionInterpolation(&vm->position, &position, 4, 0);
-                if (i == controller->cursor.current)
-                    position.x = static_cast<float>(position.x + 4.0);
-                position.y += 20.0f;
-                vm->pendingInterrupt = i != controller->cursor.current ? 3 : 2;
+                FrontEndPlaySound(12);
+                if (menuCursor->current < controller->musicListOffset)
+                    controller->musicListOffset = menuCursor->current;
+                else if (menuCursor->current >= controller->musicListOffset + 10)
+                    controller->musicListOffset = menuCursor->current - 9;
+                AnmFloat3View position(64.0f, 96.0f - controller->musicListOffset * 20.0f, 0.0f);
+                for (int i = 0; i < controller->musicTrackCount; ++i)
+                {
+                    FrontEndVmIdStorageView *rowId = &controller->musicRowVmIds[i];
+                    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+                    AnmVmView *vm = manager->FindVm(*rowId);
+                    if (vm == NULL)
+                        rowId->value = 0;
+                    if (i >= controller->musicListOffset && i < controller->musicListOffset + 10)
+                        vm->flags35C |= 2;
+                    else
+                        vm->flags35C &= ~2u;
+                    if (i == menuCursor->current)
+                        position.x = static_cast<float>(position.x - 4.0);
+                    if (fabs(vm->position.y - position.y) < 40.0f)
+                        StartMusicRowInterpolation(vm, 4, &vm->position, &position, 0);
+                    else
+                        vm->position = position;
+                    if (i == menuCursor->current)
+                        position.x = static_cast<float>(position.x + 4.0);
+                    position.y += 20.0f;
+                    vm->pendingInterrupt = i != menuCursor->current ? 3 : 2;
+                }
+                controller->musicWarning = 0;
             }
-            controller->musicWarning = 0;
         }
         if ((g_FrontEndInput.pressed & 0x1001) != 0)
         {

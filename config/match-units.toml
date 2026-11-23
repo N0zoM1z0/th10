@@ -29028,8 +29028,8 @@ harness = "unresolved-symbol-data-anchors-v1"
 artifact_kind = "linked-pe"
 output_dir = "build/match-linked/MusicRoomHelpers"
 pdb_source = "src/FrontEnd.cpp"
-functions = ["AnmVmView::StartPositionInterpolation"]
-symbol = "?StartPositionInterpolation@AnmVmView@@QAEXPBUAnmFloat3View@@0HE@Z"
+functions = ["StartMusicRowInterpolation"]
+symbol = "?StartMusicRowInterpolation@@YGXPAUAnmVmView@@HPBUAnmFloat3View@@1E@Z"
 target_address = 0x434a80
 size = 206
 

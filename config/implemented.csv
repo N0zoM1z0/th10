@@ -907,7 +907,7 @@ GameResetGui
 FrontEndUpdateMusicRoom
 FrontEndMusicSkipLine
 FrontEndMusicCopyLine
-AnmVmView::StartPositionInterpolation
+StartMusicRowInterpolation
 FrontEndControllerView::MarkVmInterrupt
 FrontEndLoadMusic
 FrontEndPlayMusic

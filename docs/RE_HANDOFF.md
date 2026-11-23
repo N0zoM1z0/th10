@@ -98,6 +98,12 @@ hypotheses and verify them in the maintained TH10 graph. Stand-in callee
 bodies, context callers, `#pragma code_seg` placement and assembly
 fallbacks are inadmissible here.
 
+`FrontEndUpdateMusicRoom` now has the complete 2,796-byte extent.
+`Select(0)`, the browse cursor pointer and the duration-first interpolation
+call recover the corresponding code sequences. The exact interpolation
+helper keeps its 206 bytes. The remaining phase 1 and 2 table entries
+are two bytes early, and the prologue and parser still differ.
+
 `EclVmContext::Run` compares 6,997/7,020 bytes in the current GameManager
 graph with 189 bound fields. Twelve residual bytes come from the
 equal-weight integer add and subtract result words taking reversed stack
