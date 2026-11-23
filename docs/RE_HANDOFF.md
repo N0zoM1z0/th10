@@ -86,8 +86,14 @@ The local traces and comparison commands are in
 owners. Use its statement order, case structure and helper visibility as
 hypotheses and verify them in the maintained TH10 graph. Stand-in callee
 bodies, context callers, `#pragma code_seg` placement and assembly
-fallbacks are inadmissible here. `EclVmContext::Run` remains a close large
-owner with 23 differing bytes.
+fallbacks are inadmissible here.
+
+`EclVmContext::Run` compares 6,997/7,020 bytes in the current GameManager
+graph with 189 bound fields. The integer add and subtract result words
+have equal stack-colour weight. C2's sort puts subtract before add, which
+accounts for twelve residual bytes. Separate-TU trials retain the exact
+`Pop` and `Push` bodies and the same parent slot order. The trace and
+scoped comparison are in `.analysis/ecl-run/results.txt`.
 
 ## Commands
 

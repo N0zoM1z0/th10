@@ -461,6 +461,20 @@ frontier; do not refresh a baseline merely to accept the new positions.
   the same 23 differences. The relocated resolver still matches 171/171.
   Separating FORMAT's integer and floating conversions into two typed
   source branches instead emits a 6,956-byte owner.
+
+  The current GameManager link reproduces the same complete comparison.
+  Renaming the two arithmetic locals preserves every byte and identifies
+  the twelve stack-offset differences as the left/result words for integer
+  addition and subtraction. They both have weight six. At C2's stack-colour
+  sort (`0x10768DBA` to `0x10768DF7`), the pair moves from colours 2 and 3
+  to 6 and 5. The final homes are `ESP+0x24` for add and `ESP+0x20` for
+  subtract. The target puts add at `ESP+0x20` and subtract at `ESP+0x24`.
+  The offsets after two argument pushes refer to the same words.
+  Separate `/GL` units for `Pop` and `Push` preserve the parent residual
+  and the exact 122-byte and 96-byte leaf bodies, respectively. Extracting
+  `Pop`'s raw copy into an inline helper expands the parent residual to
+  119 bytes. Publishing the wrapped sum through a named word retains the
+  home order and changes four SIB encodings elsewhere in `Run`. [2026-11-23]
 - **EclVmHost::StopAllThreads @0x450190 (31)**: exact 31/31 after making the stop helper accept the already-resolved `EclVmContext*`; both STOP_THREAD and STOP_ALL_THREADS now pass the context explicitly. The parent `EclVmContext::Run` schedule remains at its existing 23-byte residual. [2026-11-19]
 
 - **EclVmStackView::Pop @0x450610 (122)**: exact 122/122 with the typed
