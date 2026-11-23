@@ -642,6 +642,22 @@ frontier; do not refresh a baseline merely to accept the new positions.
   cannot reproduce all retail orders.
   A variadic FORMAT sink with both `BITWISE_OR` pops called directly
   preserves all 23 baseline differences in the maintained graph.
+
+  `LENGTH_SQUARED` now uses ordinary float locals while computing
+  `y * y + x * x`. The source still reads x before y and resolves the
+  destination before the products. This yields the same x87 sequence
+  without a volatile local and preserves all 23 residual bytes and
+  189 bindings in the GameManager graph.
+
+  At `RegSimpleAssign` (`0x1079BD18`), the thread-spawn script operand
+  already has EDI. The inline-name length takes ECX locally, leaving
+  the cursor at EDX for the next local load, the context in the stop
+  case. A local operand read after the length would use that EDX
+  and leave EAX for the context, in the same order as retail. The
+  packed operand still uses EDI. A representation copy also retains
+  that register and changes the same four distant SIB encodings as
+  naming the length at the common instruction advance. The trace is
+  `.analysis/ecl-run/ecl-arithmetic-names-entry-registers.trace`.
 - **EclVmHost::StopAllThreads @0x450190 (31)**: exact 31/31 after making the stop helper accept the already-resolved `EclVmContext*`; both STOP_THREAD and STOP_ALL_THREADS now pass the context explicitly. The parent `EclVmContext::Run` schedule remains at its existing 23-byte residual. [2026-11-19]
 
 - **EclVmStackView::Pop @0x450610 (122)**: exact 122/122 with the typed

@@ -1379,9 +1379,9 @@ jump_instruction:
                 // expression leaves that side-effect ordering implicit.
                 // The original x87 sequence multiplies y first, then x.
                 const float x = ReadFloat(1);
-                const volatile float y = ReadFloat(2);
+                const float y = ReadFloat(2);
                 float *const output = ResolveFloat(0);
-                *output = x * x + y * y;
+                *output = y * y + x * x;
                 break;
             }
 

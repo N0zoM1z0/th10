@@ -159,6 +159,12 @@ A named `LENGTH_SQUARED` accumulator restores the earlier
 `BITWISE_AND` address and introduces three other SIB differences.
 The stack-offset hash wraps before global allocation. A common
 ordinal shift fails the 37 bound tag-address comparisons.
+Writing the squared-length sum in y-then-x order removes the volatile
+local and keeps the full baseline comparison. In the early thread cases,
+the spawn length takes ECX locally and the script operand already has
+EDI. The following stop context takes EDX from the local cursor. A
+source form that keeps the spawn operand local would test the target
+EDX-to-EAX sequence across both handlers.
 The model, compiler traces and recipes are in `.analysis/ecl-run/results.txt`.
 
 `EnemyGameStateView::StartSpell` matches 2,366 of 2,432 bytes in
