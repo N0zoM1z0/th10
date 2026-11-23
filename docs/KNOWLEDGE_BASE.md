@@ -299,6 +299,13 @@ addresses and record layouts from TH10's backend.
   survives scheduling or tail merging, check the allocation trace for
   earlier requests in the same owner.
   [TH09 Enemy update](../../../th09-reconstruction/th09/docs/KNOWLEDGE_BASE.md#2026-11-21-enemy-update-exact)
+- TH09's playback restore needed the exact seed setter visible in the
+  same translation unit. The call stayed in place. The visible body
+  removed the dependency from the side-pointer load and retained the
+  dependency from the lives store. For a TH10 scheduling difference
+  around a call, compare those dependencies with the real callee visible
+  under `/GL`.
+  [TH09 playback restore](../../../th09-reconstruction/th09/docs/KNOWLEDGE_BASE.md#2026-11-21-co-visible-replay-seed-and-exact-playback)
 - The TH09 movement trace identifies a load introduced by the allocator.
   Its order was already set when the equal-priority loads reached
   scheduling. In the title menu, changing the index's later float
@@ -617,44 +624,20 @@ frontier; do not refresh a baseline merely to accept the new positions.
   scheduling still differ. [2026-11-14]
 - **ExportAutomaticHints @0x41A200 (2,247)**: native inlines all 24 writer uses;
   the target makes 9 calls and inlines 15. [2026-10-25]
-- **GameResetGui @0x413BC0 (1,965)** — The split show and hide phases
-  match 1,964/1,965 bytes and bind all 52 fields in both the
-  `player-handle-collision-hit` and `game-manager-update-body` graphs.
-  The non-positive-count jump at +0x1D0 lands on the hide loop's upper-bound
-  check at +0x1EB. The original jumps directly to +0x1F0, where both paths
-  enter the hide loop. The existing frontier records the earlier ten-byte
-  baseline with a different residual.
-
-  An explicit upper-bound return between the two loops recovers the jump
-  to +0x1F0 and matches 1,955/1,965 bytes with all 52 fields. A VC7.1 C2
-  trace at the entry to block-local register allocation (`0x1079BD18`)
-  shows that the early-return version keeps the input count in ECX for the
-  upper-bound test, decrements EDX in the show loop, and uses EBX for the
-  first hidden index. The split version decrements ECX and uses EDX for
-  both the upper-bound test and the first hidden index, matching the
-  original's register choices. A new source hypothesis needs to preserve
-  the index across both uses while routing the zero path past the check.
-
-  Inlining the existing setter from `GuiScoreDisplay.cpp` via LTCG also
-  gives 1,955/1,965, while its out-of-line body still matches 77/77. Moving
-  the reset into a member or changing the adjacent score-state access
-  leaves the early-return register split unchanged. Sharing the maintained
-  split loop implementation with the standalone setter shortened it to
-  66 bytes. The maintained two-loop setter and the 1,251-byte
-  `script-viewer-update` direct caller have their own exact units.
-
-  A shared countdown for the show and hide pointer loops recovers the
-  target's ECX countdown and EDX index along with the zero-count jump to
-  +0x1F0. It compares 1,938/1,965 bytes. In this form C2 retains a common
-  +0x4980 icon-array base in EBX and adds the +0x35C flags offset separately.
-  The indexed hide loop folds those offsets into the target's +0x4CDC LEA.
-  It computes `9 - firstHidden` before the address and assigns the two
-  counters to the opposite registers. Both forms start global allocation
-  with the +0x4980 base in the predecessor. The difference is already
-  visible on entry to block-local allocation. Moving the entire reset
-  to its own `/GL` source preserves the one-byte residual for the
-  maintained loops and the ten-byte residual for the early-exit loops.
-  [2026-11-23]
+- **GameResetGui @0x413BC0 (1,965)** is exact with 52 bound fields and
+  73 fixed local branches in the GameManager update graph. Each loop
+  walks flag-word addresses with a stride of `sizeof(AnmVmView)`. C2
+  folds the array and flags offsets into +0x4CDC in both loops, and
+  preserves the EDX first-hidden index and ECX countdown. The JLE at
+  +0x1D0 enters the hide setup at +0x1F0 for a non-positive count.
+  The upper-bound test at +0x1EB remains on the positive path after the
+  show loop. With an `AnmVmView *` in the hide loop, C2 calculates the VM
+  address first and adds +0x35C separately. Using a flags address only in
+  the hide loop restores the folded LEA but reverses the show address
+  and count-copy order. The standalone life setter still matches all
+  77 bytes in the reset graph. The `script-viewer-update` direct caller
+  retains 1,251 bytes and all 83 fields after relinking with the new GUI
+  object. [2026-11-23]
 - **StageExecuteScript @0x403C80 (1,868)** is exact with 36 bound fields,
   including the switch base and all 15 table entries. In opcode 9, write
   the fog interpolation mode before copying its initial and final records,

@@ -11,6 +11,10 @@
 
 ## Recent reconstruction
 
+- `game-reset-gui` is exact at 1,965 bytes with 52 bound fields and
+  73 fixed local branches. Both life-icon loops walk the flags word at
+  the VM stride. The non-positive count bypasses the upper-bound check
+  and enters the hide loop at +0x1F0.
 - `stage-execute-script` reproduces 1,868 bytes with 36 bound fields,
   including all 15 jump-table entries. Publishing the fog interpolation
   mode before the two record copies restores the register rotation in
@@ -64,7 +68,7 @@ All three LTCG convention questions share one pattern: a register choice that de
 
 Never use inline assembly, naked functions, fake ABI declarations, stand-in callee bodies, copied target bytes, padding, inert locals or comparator cropping. An exact leaf does not make its parent exact.
 
-## Open ANM and GUI owners
+## Open ANM script owner
 
 `ExecuteScript` at 0x0043EE30 compares 9,962/9,964 bytes in the current
 GameManager graph and the earlier player-collision graph. All 350 fields
@@ -75,20 +79,6 @@ that choice in place. Reopen when a source or real-callee change can
 alter the layer's allocation while preserving the late resource load
 and both shared tails. See the [knowledge base](KNOWLEDGE_BASE.md) for
 the measured compiler entry points.
-
-`GameResetGui` at 0x00413BC0 compares 1,964/1,965 bytes with all 52 fields
-bound. At +0x1D1 the target skips the hide loop's upper-bound test for a
-non-positive count. The early-return candidate recovers this jump. In that
-candidate C2 keeps the original count, loop countdown, and first hidden
-index in three registers before block-local allocation. Moving the setter
-to another TU gives the same 1,955/1,965-byte result while its standalone
-77 bytes still match. A shared countdown gives the target's ECX and EDX
-allocation and zero-count destination. C2 keeps a separate icon-array
-base in EBX for that pointer loop. The indexed form folds the base into
-the flags address and swaps ECX and EDX. Reopen with a source shape that
-preserves the folded address and calculates it before the hide countdown.
-The local traces and comparison commands are in
-`.analysis/gui-guard/results.txt`.
 
 ## Strategy for the remaining authored bytes
 

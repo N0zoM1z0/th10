@@ -1839,18 +1839,32 @@ static __forceinline AnmVmIdView CreateFrontCaptionVm(
     return g_AnmRenderManagerView->AddVmVariant0(vm);
 }
 
-static __forceinline int ShowLifeIcons(AnmVmView *icons, int count)
+// The shown and hidden spans advance through native flag-word addresses.
+static __forceinline void ResetLifeIcons(GuiView *gui, int count)
 {
-    int i = 0;
-    for (; i < count; ++i)
-        icons[i].flags35C |= 2;
-    return i;
-}
+    int firstHidden = 0;
+    if (count > 0)
+    {
+        unsigned int flags = reinterpret_cast<unsigned int>(
+            &gui->displayVms2[0].flags35C);
+        firstHidden = count;
+        do
+        {
+            *reinterpret_cast<unsigned int *>(flags) |= 2;
+            flags += sizeof(AnmVmView);
+        } while (--count != 0);
+        if (firstHidden >= 9)
+            return;
+    }
 
-static __forceinline void HideLifeIcons(AnmVmView *icons, int firstHidden)
-{
-    for (int i = firstHidden; i < 9; ++i)
-        icons[i].flags35C &= ~2u;
+    unsigned int flags = reinterpret_cast<unsigned int>(
+        &gui->displayVms2[firstHidden].flags35C);
+    count = 9 - firstHidden;
+    do
+    {
+        *reinterpret_cast<unsigned int *>(flags) &= ~2u;
+        flags += sizeof(AnmVmView);
+    } while (--count != 0);
 }
 
 void GameResetGui(GuiView *gui)
@@ -1890,8 +1904,7 @@ void GameResetGui(GuiView *gui)
     }
 
     // The target does not clamp the life count to the nine-element array.
-    int firstHidden = ShowLifeIcons(gui->displayVms2, g_PlayerLivesDisplayCount);
-    HideLifeIcons(gui->displayVms2, firstHidden);
+    ResetLifeIcons(gui, g_PlayerLivesDisplayCount);
     int power = g_GuiPower;
     int fraction = (power % 20) * 100 / 20;
     gui->frontAnm->SetSprite(&gui->displayVms3[0], power / 20 + 8);
