@@ -79,10 +79,12 @@ GameManager graph and the earlier player-collision graph. All 350 fields
 and 95 fixed local destinations bind. In opcode 91, ECX and EDX tie in
 global allocation, and ECX comes first. A reference to the layer moves
 it to local allocation, where the two loads get ECX and EDX and the
-resource load moves early. Reopen with evidence for a local scratch
-request between opcode 88's resource load and opcode 91's layer, or
-for a change in global ECX liveness. See the [knowledge base](KNOWLEDGE_BASE.md)
-for the measured compiler entry points.
+resource load moves early. A three-field request for opcode 88 keeps
+its original ECX and EDX loads and removes both local requests. In that
+graph the timestamp check is the last local EDX assignment before
+opcode 91. A global EDX assignment for that load would let the layer
+try EDX first. The [knowledge base](KNOWLEDGE_BASE.md) identifies the
+measured allocator entry points.
 
 ## Strategy for the remaining authored bytes
 

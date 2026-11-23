@@ -495,6 +495,18 @@ frontier; do not refresh a baseline merely to accept the new positions.
     opcode 88 resource and opcode 91 layer. With an EDX layer and an EAX
     resource, the resource load must follow the script index's push
     because both values use EAX.
+  - Giving opcode 88 a request with script index, layer and resource
+    makes its layer and resource global allocations in ECX and EDX.
+    The opcode 88 bytes agree with retail, and both of its local
+    allocation requests disappear. The local cursor still starts opcode
+    91 at `0x108AB740` because the preceding signed timestamp load from
+    `[ebx+4]` takes EDX. EAX holds the script index, so the layer takes
+    ECX. A request containing only index and resource gives the resource
+    ECX globally and the layer EDX locally. This swaps four bytes in
+    opcode 88. Reusing a request in the two front-spawn cases merges
+    code and shortens the owner by 96 bytes. Naming the timestamp or
+    sharing its local with the interrupt handler leaves the same
+    ten differences as the three-field request.
   - Moving either `GetIntVar` or the whole
     interpreter to a separate `/GL` translation unit preserves the two
     differences. The moved `GetIntVar` independently matches all 144 bytes
