@@ -103,10 +103,13 @@ index before rebinding its resource restores the portrait case layout.
 Reading instruction time in the `while` condition restores the table base.
 The shared replay exit, typed faith load and scalar transition handle
 reference restore the complete suffix from `+0xB5C`. The frontier has
-224 differences, with 17 external fields still displaced. Trace the
-second portrait load's EAX/ECX/EDX lifetimes, the text lookup and the
-two side-position handlers. The direct caller remains exact. See
-`.analysis/gui-message-run/results.txt` for the retained controls.
+219 differences after removing the alternating-text barriers. All 16
+displaced external fields are the second portrait manager loads. The
+resource-first trace leaves EAX free at the local scratch choice. Reopen
+when a source shape can keep the resource in EAX while selecting ECX
+for its owner and EDX for the command pointer. The two side-position
+handlers still reverse their handle registers. The direct caller remains
+exact. See `.analysis/gui-message-run/results.txt` for the controls.
 
 `MidiOutputView::ProcessEvent` matches 1,644 of 1,670 bytes and all
 37 linkage fields in the `MidiEventTick` graph. Using a guarded `do`

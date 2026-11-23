@@ -638,20 +638,25 @@ frontier; do not refresh a baseline merely to accept the new positions.
   bytes. Putting the instruction time directly in the `while` condition
   also restores the pointer copy at the loop tail and the complete extent.
   All 43 switch destinations and four table references agree in place.
-  The frontier has 224 differences through `+0xB5B`. The external
-  inventory has 290 fields, of which 273 match their retail type,
+  The frontier has 219 differences through `+0xB5B`. The external
+  inventory has 290 fields, of which 274 match their retail type,
   address and position.
   The 3,836-byte `GuiView::UpdateStageElements` caller and the sprite
   helpers compare exactly in the same linked image.
 
-  The VC7.1 6030 trace of the resource-first control places the resource
-  load before the script read at local allocation entry. The scratch
-  allocator can choose EAX for the absolute manager load in the second
-  expression, shortening it by one byte. Naming the index before the
-  resource moves that load to ECX and restores the longer encoding. The
-  script read still precedes the resource in the emitted code. A two-field
-  resource/index aggregate also reaches 4,476 bytes and changes more
-  register choices. Keep the character branches separate. Collapsing them
+  The first alternating-text lookup reaches its retail load order when
+  the two compiler barriers are removed. The fixed manager field is
+  at `+0xEF`.
+
+  At the VC7.1 6030 local scratch choice (`0x1079C39D`), the index-first
+  portrait sequence already holds the script word in EAX. The absolute
+  manager load uses ECX and follows the script read. The resource-first
+  packed-field and `memcpy` forms leave EAX available for that load and
+  shrink the owner to 4,464 bytes. Retail takes the manager in ECX, its
+  resource in EAX, the command pointer in EDX and the operand in ECX.
+  Moving the real child lookup into an `AnmVmIdView` member preserves
+  all 70 callee bytes and leaves the index-first caller byte-identical
+  after binding. Keep the character branches separate. Collapsing them
   removes target case bodies.
 
   Sharing the mode-4 destination restores the stage-six increment test

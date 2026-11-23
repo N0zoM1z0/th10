@@ -240,11 +240,9 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             if (message->alternatingLine == 0)
             {
                 {
-                    _ReadWriteBarrier();
                     AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_0];
                     AnmVmIdView lineId = *id;
                     AnmRenderManagerView *manager = g_AnmRenderManagerView;
-                    _ReadWriteBarrier();
                     AnmVmView *line = manager->FindVm(lineId);
                     if (line == NULL)
                         id->value = 0;
