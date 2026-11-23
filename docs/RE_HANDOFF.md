@@ -97,6 +97,15 @@ hypotheses and verify them in the maintained TH10 graph. Stand-in callee
 bodies, context callers, `#pragma code_seg` placement and assembly
 fallbacks are inadmissible here.
 
+`GuiMessageVmView::Run` has the full 4,480-byte extent and all 47 fixed
+table fields in `gui-message-run-candidate`. Computing each second sprite
+index before rebinding its resource restores the portrait case layout.
+Reading instruction time in the `while` condition restores the table base.
+The frontier has 436 differences and 42 external fields still move.
+Trace the second portrait load's EAX/ECX/EDX lifetimes and the shared
+stage 6/7 increment and mode-4 tails. The direct caller remains exact.
+See `.analysis/gui-message-run/results.txt` for the retained controls.
+
 `MidiOutputView::ProcessEvent` matches 1,644 of 1,670 bytes and all
 37 linkage fields in the `MidiEventTick` graph. Using a guarded `do`
 loop for both track checkpoint updates restores the entry, long-send

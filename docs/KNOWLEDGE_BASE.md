@@ -632,19 +632,28 @@ frontier; do not refresh a baseline merely to accept the new positions.
   Keep the leaf spelling that preserves the parent `Run` schedule; solve the
   23-byte parent residual independently.
 
-- **GuiMessageVmView::Run @0x415E90 (4,480)**: [2026-11-17]
-  The current `gui-message-run-candidate` 16-support-TU linked graph
-  produces 4,464/4,480 bytes with 1,935 differences. Its recorded
-  1,910-byte residual frontier is older, so `REGRESSED` describes
-  moved offsets, not a current exactness result. All 36 portrait sprite
-  script-offset additions now use unsigned 32-bit arithmetic, with no
-  machine-byte change. Collapsing the eight syntactically identical
-  player-character branches shrank the body to 3,796 bytes and was
-  rejected; they must stay separate for the target branch layout.
-  Remaining work: portrait operand register lifetimes, second enemy
-  portrait resource-load order, inline clear-count increments and the
-  shared stage 6/7 game-mode tails. The separately owned 3,836-byte
-  GUI stage updater remains exact.
+- **GuiMessageVmView::Run @0x415E90 (4,480)**: computing the second
+  sprite index before rebinding the animation resource restores all seven
+  portrait stage destinations and grows the candidate from 4,464 to 4,476
+  bytes. Putting the instruction time directly in the `while` condition
+  also restores the pointer copy at the loop tail and the complete extent.
+  All 43 switch destinations and four table references agree in place.
+  The frontier has 436 differences. The external inventory has 290
+  fields, of which 248 match their retail type, address and position.
+  The 3,836-byte `GuiView::UpdateStageElements` caller and the sprite
+  helpers compare exactly in the same linked image.
+
+  The VC7.1 6030 trace of the resource-first control places the resource
+  load before the script read at local allocation entry. The scratch
+  allocator can choose EAX for the absolute manager load in the second
+  expression, shortening it by one byte. Naming the index before the
+  resource moves that load to ECX and restores the longer encoding. The
+  script read still precedes the resource in the emitted code. A two-field
+  resource/index aggregate also reaches 4,476 bytes and changes more
+  register choices. Keep the character branches separate. Collapsing them
+  removes target case bodies. The remaining stage-clear differences include
+  the shared increment test and the mode-4 tail. The source and trace
+  recipes are in `.analysis/gui-message-run/results.txt`. [2026-11-23]
 - **ResultMenuUpdateResult @0x4236F0 (3,227)**: four-TU graph (FrontEnd `/GL /GS
   /EHs`, VmIdInterrupt, real Enemy sound callee, AnmVmId), 3,228 bytes,
   784/907 normalized, 173 fields. Open: states 7/8 and 10-13, the GUI score

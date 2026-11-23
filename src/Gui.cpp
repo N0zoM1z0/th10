@@ -208,8 +208,8 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
         message->instructionTimer.SetCurrent(GuiMessageInstructionTime(message->currentInstruction));
     }
 
-    int instructionTime = GuiMessageInstructionTime(message->currentInstruction);
-    while (message->instructionTimer.current >= instructionTime)
+    while (message->instructionTimer.current >=
+        GuiMessageInstructionTime(message->currentInstruction))
     {
         GuiMessageInstructionView *instruction = message->currentInstruction;
         AnmVmIdView *textLineId;
@@ -482,9 +482,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(
                             resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0xfu));
-                        resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const int spriteIndex =
+                            GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x17u);
+                        resource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(
-                            resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x17u));
+                            resource, spriteIndex);
                         break;
                     }
                     case 1:
@@ -492,9 +494,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(
                             resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0xfu));
-                        resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const int spriteIndex =
+                            GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x17u);
+                        resource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(
-                            resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x17u));
+                            resource, spriteIndex);
                         break;
                     }
                     }
@@ -509,9 +513,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(
                             resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x15u));
-                        resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const int spriteIndex =
+                            GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x1eu);
+                        resource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(
-                            resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x1eu));
+                            resource, spriteIndex);
                         break;
                     }
                     case 1:
@@ -519,9 +525,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(
                             resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x15u));
-                        resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const int spriteIndex =
+                            GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x1eu);
+                        resource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(
-                            resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x1eu));
+                            resource, spriteIndex);
                         break;
                     }
                     }
@@ -536,9 +544,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(
                             resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x22u));
-                        resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const int spriteIndex =
+                            GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x2bu);
+                        resource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(
-                            resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x2bu));
+                            resource, spriteIndex);
                         break;
                     }
                     case 1:
@@ -546,9 +556,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(
                             resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x22u));
-                        resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const int spriteIndex =
+                            GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x2bu);
+                        resource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(
-                            resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x2bu));
+                            resource, spriteIndex);
                         break;
                     }
                     }
@@ -563,9 +575,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(
                             resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x25u));
-                        resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const int spriteIndex =
+                            GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x2eu);
+                        resource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(
-                            resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x2eu));
+                            resource, spriteIndex);
                         break;
                     }
                     case 1:
@@ -573,9 +587,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(
                             resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x25u));
-                        resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const int spriteIndex =
+                            GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x2eu);
+                        resource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(
-                            resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x2eu));
+                            resource, spriteIndex);
                         break;
                     }
                     }
@@ -590,9 +606,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(
                             resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x16u));
-                        resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const int spriteIndex =
+                            GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x1fu);
+                        resource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(
-                            resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x1fu));
+                            resource, spriteIndex);
                         break;
                     }
                     case 1:
@@ -600,9 +618,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(
                             resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x16u));
-                        resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const int spriteIndex =
+                            GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x1fu);
+                        resource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(
-                            resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x1fu));
+                            resource, spriteIndex);
                         break;
                     }
                     }
@@ -617,9 +637,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1c).SetSpriteWithAnm(
                             resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x30u));
-                        resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const int spriteIndex =
+                            GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x39u);
+                        resource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1f).SetSpriteWithAnm(
-                            resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x39u));
+                            resource, spriteIndex);
                         break;
                     }
                     case 1:
@@ -627,9 +649,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1c).SetSpriteWithAnm(
                             resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x30u));
-                        resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const int spriteIndex =
+                            GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x39u);
+                        resource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1f).SetSpriteWithAnm(
-                            resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x39u));
+                            resource, spriteIndex);
                         break;
                     }
                     }
@@ -646,9 +670,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                             AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                             ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x21).SetSpriteWithAnm(
                                 resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x44u));
-                            resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                            const int spriteIndex =
+                                GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x4du);
+                            resource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
                             ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x24).SetSpriteWithAnm(
-                                resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x4du));
+                                resource, spriteIndex);
                             break;
                         }
                         case 1:
@@ -656,9 +682,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                             AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                             ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x21).SetSpriteWithAnm(
                                 resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x44u));
-                            resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                            const int spriteIndex =
+                                GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x4du);
+                            resource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
                             ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x24).SetSpriteWithAnm(
-                                resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x4du));
+                                resource, spriteIndex);
                             break;
                         }
                         }
@@ -672,9 +700,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                             AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                             ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(
                                 resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x2eu));
-                            resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                            const int spriteIndex =
+                                GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x37u);
+                            resource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
                             ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(
-                                resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x37u));
+                                resource, spriteIndex);
                             break;
                         }
                         case 1:
@@ -682,9 +712,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                             AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                             ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(
                                 resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x2eu));
-                            resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                            const int spriteIndex =
+                                GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x37u);
+                            resource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
                             ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(
-                                resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x37u));
+                                resource, spriteIndex);
                             break;
                         }
                         }
@@ -902,7 +934,6 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
         }
 
         message->currentInstruction = GuiMessageInstructionNext(message->currentInstruction);
-        instructionTime = GuiMessageInstructionTime(message->currentInstruction);
     }
 
     message->instructionTimer.Tick();
