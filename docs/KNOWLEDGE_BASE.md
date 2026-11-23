@@ -567,6 +567,25 @@ frontier; do not refresh a baseline merely to accept the new positions.
     by four bytes. Explicitly advancing the cursor in opcode 86
     shortens it by 16. Capturing the opcode 91 layer before decoding
     the script index changes linker field positions.
+  - Keeping the scheduled time as a signed short and borrowing the
+    timer's current word gives the retail timestamp MOVSX into EDX and
+    folded CMP. With opcode 88's three-field request, its two factory
+    inputs are both assigned globally. The timestamp is the last local
+    allocation before opcode 91, so that opcode uses ECX for the layer
+    and EDX for the resource. The full probe matches 9,954 of 9,964
+    bytes and binds all 350 fields.
+  - Reading the opcode 88 resource before resolving the script operand
+    leaves the layer as a local ECX request. That advances the scratch
+    cursor and restores opcode 91's layer in EDX and resource in EAX,
+    with the target argument order. The early resource now crosses
+    `GetIntVar`, so it uses ESI and moves the opcode 88 link fields.
+    Reading it after resolution in the script/resource pair leaves the
+    global resource candidate with no affinities and tied costs for ECX
+    and EDX. It picks ECX and the local layer takes EDX. In the three-field
+    request the global layer takes ECX first, leaving EDX for the
+    resource. Look for a resource lifetime that gets EDX while leaving
+    the layer to local allocation. The traces and commands are under
+    `.analysis/anm-execute/`.
   - In the layer-reference trial, capturing the script index and
     animation resource together gives the resource ECX before local
     allocation. The layer then takes EDX, matching the first target
