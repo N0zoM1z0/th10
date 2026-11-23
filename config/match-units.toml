@@ -22448,6 +22448,58 @@ linkages = [
   { offset = 0x54, type = "REL32", symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z", target = 0x0043EE30 },
 ]
 
+[units.stage-execute-script]
+artifact_kind = "linked-pe"
+source = "src/StageScript.cpp"
+support_sources = ["src/StageLifecycle.cpp", "src/StageDraw.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/FileSystem.cpp", "src/AnmVmStartScript.cpp", "src/AnmLoadedStartScript.cpp"]
+output_dir = "build/match-linked/StageExecuteScript"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+functions = ["StageExecuteScript"]
+symbol = "?StageExecuteScript@@YGHPAUStageScriptView@@@Z"
+target_address = 0x00403C80
+size = 1868
+linkages = [
+  { offset = 0x037, type = "DIR32", target = 0x00404390, local = true },
+  { offset = 0x05A, type = "DIR32", target = 0x00476F78, symbol = "?g_AnmGameSpeed@@3MA" },
+  { offset = 0x2C1, type = "REL32", target = 0x00405040, symbol = "??0StageFogView@@QAE@MMMMMM@Z" },
+  { offset = 0x325, type = "DIR32", target = 0x00476F78, symbol = "?g_AnmGameSpeed@@3MA" },
+  { offset = 0x42D, type = "DIR32", target = 0x00476F78, symbol = "?g_AnmGameSpeed@@3MA" },
+  { offset = 0x529, type = "DIR32", target = 0x00476F78, symbol = "?g_AnmGameSpeed@@3MA" },
+  { offset = 0x56C, type = "DIR32", target = 0x00476F78, symbol = "?g_AnmGameSpeed@@3MA" },
+  { offset = 0x586, type = "DIR32", target = 0x00491C28, symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", addend = 0x780 },
+  { offset = 0x5AB, type = "REL32", target = 0x00404F30, symbol = "?AnmVmStartScript@@YGXPAUAnmLoadedView@@PAUAnmVmView@@H@Z" },
+  { offset = 0x5F8, type = "DIR32", target = 0x00470B68, symbol = "__real@3f7d70a4" },
+  { offset = 0x607, type = "DIR32", target = 0x00470B64, symbol = "__real@3f8147ae" },
+  { offset = 0x618, type = "DIR32", target = 0x00470AFC, symbol = "__real@3f800000" },
+  { offset = 0x62D, type = "REL32", target = 0x00463B2C, symbol = "__ftol2" },
+  { offset = 0x646, type = "REL32", target = 0x00404610, symbol = "?Evaluate@AnmVmFloat3InterpolationView@@QAEPAUAnmFloat3View@@PAU2@@Z" },
+  { offset = 0x675, type = "REL32", target = 0x00404610, symbol = "?Evaluate@AnmVmFloat3InterpolationView@@QAEPAUAnmFloat3View@@PAU2@@Z" },
+  { offset = 0x6A8, type = "REL32", target = 0x004049A0, symbol = "?Evaluate@StageFogInterpolationView@@QAEPAUStageFogView@@PAU2@@Z" },
+  { offset = 0x6D0, type = "DIR32", target = 0x00470CB0, symbol = "__real@3c490fdb" },
+  { offset = 0x6D6, type = "DIR32", target = 0x00470B18, symbol = "__real@40490fdb" },
+  { offset = 0x6DE, type = "DIR32", target = 0x00470CAC, symbol = "__real@c2c80000" },
+  { offset = 0x6E9, type = "REL32", target = 0x00404ED0, symbol = "?Tick@AnmVmTimerView@@QAEXXZ" },
+  { offset = 0x6FB, type = "REL32", target = 0x00405410, symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z" },
+  { offset = 0x710, type = "DIR32", target = 0x004042B4, local = true },
+  { offset = 0x714, type = "DIR32", target = 0x00403CBB, local = true },
+  { offset = 0x718, type = "DIR32", target = 0x00403D02, local = true },
+  { offset = 0x71C, type = "DIR32", target = 0x00403D73, local = true },
+  { offset = 0x720, type = "DIR32", target = 0x00403DD5, local = true },
+  { offset = 0x724, type = "DIR32", target = 0x00403DF5, local = true },
+  { offset = 0x728, type = "DIR32", target = 0x00403E51, local = true },
+  { offset = 0x72C, type = "DIR32", target = 0x00403E71, local = true },
+  { offset = 0x730, type = "DIR32", target = 0x00403E7F, local = true },
+  { offset = 0x734, type = "DIR32", target = 0x00403EEF, local = true },
+  { offset = 0x738, type = "DIR32", target = 0x00403FCA, local = true },
+  { offset = 0x73C, type = "DIR32", target = 0x004040D2, local = true },
+  { offset = 0x740, type = "DIR32", target = 0x004041CE, local = true },
+  { offset = 0x744, type = "DIR32", target = 0x00404202, local = true },
+  { offset = 0x748, type = "DIR32", target = 0x0040420C, local = true },
+]
+
 [units.stage-update]
 artifact_kind = "linked-pe"
 source = "src/StageScript.cpp"

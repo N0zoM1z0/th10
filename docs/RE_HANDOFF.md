@@ -11,6 +11,11 @@
 
 ## Recent reconstruction
 
+- `stage-execute-script` reproduces 1,868 bytes with 36 bound fields,
+  including all 15 jump-table entries. Publishing the fog interpolation
+  mode before the two record copies restores the register rotation in
+  opcodes 10–13. The real stage-creation graph includes the script
+  starter, which takes the VM in ESI and the script index in EAX.
 - `gui-update-score-display` is exact at 671 bytes with 36 bound fields.
   Each difficulty branch awards the life after its own threshold check.
   VC7.1 merges the calls and restores the EAX-then-ECX loads. The shared

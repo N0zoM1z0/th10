@@ -120,10 +120,9 @@ int __stdcall StageExecuteScript(StageScriptView *stage)
                 static_cast<float>(bytes[0]), static_cast<float>(bytes[1]),
                 static_cast<float>(bytes[2]), static_cast<float>(bytes[3]));
             stage->fogInterpolation.duration = integers[0];
-            int mode = integers[1];
+            stage->fogInterpolation.mode = integers[1];
             stage->fogInterpolation.initial = stage->camera.fog;
             stage->fogInterpolation.final = final;
-            stage->fogInterpolation.mode = mode;
             stage->fogInterpolation.timer.SetCurrent(0);
             break;
         }

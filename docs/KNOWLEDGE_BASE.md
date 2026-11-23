@@ -623,9 +623,21 @@ frontier; do not refresh a baseline merely to accept the new positions.
   to its own `/GL` source preserves the one-byte residual for the
   maintained loops and the ten-byte residual for the early-exit loops.
   [2026-11-23]
-- **StageExecuteScript @0x403C80 (1,868)**: full size, nonexact. Opcodes 10-13
-  register choice; opcode 14's VM input is ESI in the target and EDX native.
-  [2026-10-29]
+- **StageExecuteScript @0x403C80 (1,868)** is exact with 36 bound fields,
+  including the switch base and all 15 table entries. In opcode 9, write
+  the fog interpolation mode before copying its initial and final records,
+  as in the reference background script. The earlier source held the mode
+  in EAX across both copies at C2's local allocation entry (`0x1079BD18`).
+  With the direct store, its load is still virtual at entry and gets EAX
+  locally, advancing the scratch cursor at `0x1079C39D` to ECX. The opcode 9
+  instructions before the exit jump remain equal after address binding.
+  The extra request restores the register rotation in opcodes 10–12 and
+  the five-byte EAX store to `Main.clearColor` in opcode 13. The shorter
+  store restores the following branch destinations and the table alignment.
+  Opcode 14 calls the real `AnmVmStartScript` with ESI for the VM, EAX
+  for the script index and the resource on the stack. In this StageCreate
+  link the starter itself remains 204/202 bytes with the extra ECX clear
+  before `AnmVmInitialize`. [2026-11-23]
 - **PlayerUpdateMovementAndOptions @0x4250B0 (1,656)**: 1,616; both direction
   table bases 40 bytes early. [2026-11-12]
 - **GameManagerUpdateBody @0x418190 (1,544)**: exact with 114 bound fields
