@@ -241,6 +241,24 @@ The owner stays a candidate. The interpreter and `SpawnSingleBullet` match
 retail with the opaque graph, which suggests that retail's callers saw the
 starter keep its VM in ESI. [2026-11-22]
 
+The StageCreate graph has two independently checked configurations. With
+the initializer opaque, the script loader at `0x43E710` matches all 203
+bytes and four fields using the actual `ExecuteScript` call and the shared
+game-speed and renderer declarations. Its receiver and arguments are
+ECX resource, EAX VM and EBX script index. The stage dispatcher also
+matches, with the starter accepting its VM in ESI.
+
+Adding the real initializer gives 273 exact bytes for that body and
+changes all three owners above it. The starter takes the VM in EDX and
+shrinks to 200 bytes. The loader shrinks to 197 bytes and receives the
+resource in ESI, the VM in EDX and the index in EAX. The stage dispatcher
+then matches 1,850/1,868 bytes with all 36 fields. Adding
+`GamePrepareAnimationSlots` and selecting it as entry preserves this
+result, as do the additional real StartSpell and popup callers. A named
+reference to each of the three starter position fields is byte-neutral.
+Sharing one zero vector lets C2 collapse their copies and shortens the
+starter to 130 bytes. [2026-11-23]
+
 ### Non-local regressions through calling conventions
 
 - `e569a902` (2026-11-19) added a `QueueSoundCue` call to

@@ -1,17 +1,6 @@
 #include <string.h>
 #include "AnmLoadedStartScript.hpp"
 
-struct AnimationManager_0043E710
-{
-    unsigned char reserved00[0x4c];
-    int script_tick_counter;
-};
-
-extern "C" AnimationManager_0043E710 *data_00491c10;
-extern "C" float data_00476f78;
-extern "C" void __stdcall asm_FUN_0043ee30_0043ee30(
-    AnimationObject_0043E710 *object);
-
 #define Entity_Init AnmVmInitialize
 
 #pragma code_seg(".text$01accessor")
@@ -44,7 +33,7 @@ extern "C" __declspec(noinline) void __stdcall LoadScript_0043e710(
         object->scriptTimer.current = 0;
         object->scriptTimer.previous = static_cast<int>(0xFFF0BDC1u);
         object->scriptTimer.subframe = 0.0f;
-        object->scriptTimer.scale = &data_00476f78;
+        object->scriptTimer.scale = &g_AnmGameSpeed;
         object->scriptTimer.flags |= 1;
     }
 
@@ -55,7 +44,7 @@ extern "C" __declspec(noinline) void __stdcall LoadScript_0043e710(
     unsigned int *flag_word = &object->AnimationFlags();
     *flag_word &= ~1u;
 
-    asm_FUN_0043ee30_0043ee30(object);
-    ++data_00491c10->script_tick_counter;
+    AnmRenderManagerView::ExecuteScript(object);
+    ++g_AnmRenderManagerView->scriptsStartedThisFrame;
 }
 #pragma code_seg()

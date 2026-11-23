@@ -16,6 +16,11 @@
   mode before the two record copies restores the register rotation in
   opcodes 10–13. The real stage-creation graph includes the script
   starter, which takes the VM in ESI and the script index in EAX.
+- The 203-byte ANM script loader replays from the same StageCreate graph.
+  It calls the real `ExecuteScript` and uses the shared game speed and
+  renderer counter. Linking the real initializer still changes the ABI
+  of both loader and starter. See the knowledge base for the measured
+  StageCreate and additional-caller configurations.
 - `gui-update-score-display` is exact at 671 bytes with 36 bound fields.
   Each difficulty branch awards the life after its own threshold check.
   VC7.1 merges the calls and restores the EAX-then-ECX loads. The shared
