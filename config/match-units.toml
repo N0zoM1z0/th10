@@ -23299,6 +23299,60 @@ linkages = [
   { offset = 0x1BF, type = "REL32", symbol = "?ResetTracks@MidiOutputView@@QAEXXZ", target = 0x0043ACE0 },
 ]
 
+[units.midi-process-event]
+source = "src/Midi.cpp"
+support_sources = []
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+entry_symbol = "?Tick@MidiOutputView@@UAEXXZ"
+artifact_kind = "linked-pe"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+output_dir = "build/match-linked/MidiEventTick"
+functions = ["MidiOutputView::ProcessEvent"]
+symbol = "?ProcessEvent@MidiOutputView@@SGXPAV1@PAUMidiTrackView@@@Z"
+target_address = 0x0043B110
+size = 1670
+data_spans = [{ offset = 0x628, width = 94 }]
+linkages = [
+  { offset = 0x5D, type = "DIR32", target = 0x0043B64C, local = true },
+  { offset = 0x64, type = "DIR32", target = 0x0043B63C, local = true },
+  { offset = 0x82, type = "REL32", symbol = "?UnprepareHeader@MidiOutputView@@QAEHPAUmidihdr_tag@@@Z", target = 0x0043AEB0 },
+  { offset = 0x89, type = "REL32", symbol = "_malloc", target = 0x00452706 },
+  { offset = 0xA7, type = "REL32", symbol = "?MidiReadVariableLength@@YGIPAPAE@Z", target = 0x0043A730 },
+  { offset = 0xBD, type = "REL32", symbol = "_malloc", target = 0x00452706 },
+  { offset = 0x101, type = "DIR32", symbol = "__imp__midiOutPrepareHeader@12", target = 0x004662A0 },
+  { offset = 0x115, type = "DIR32", symbol = "__imp__midiOutLongMsg@12", target = 0x0046629C },
+  { offset = 0x12D, type = "REL32", symbol = "_free", target = 0x00452422 },
+  { offset = 0x13C, type = "REL32", symbol = "_free", target = 0x00452422 },
+  { offset = 0x187, type = "DIR32", target = 0x0043B6D4, local = true },
+  { offset = 0x18E, type = "DIR32", target = 0x0043B6C0, local = true },
+  { offset = 0x1A5, type = "REL32", symbol = "?MidiReadVariableLength@@YGIPAPAE@Z", target = 0x0043A730 },
+  { offset = 0x1EB, type = "REL32", symbol = "__allmul", target = 0x00456640 },
+  { offset = 0x1F9, type = "REL32", symbol = "__allmul", target = 0x00456640 },
+  { offset = 0x20D, type = "REL32", symbol = "__aulldiv", target = 0x00456B80 },
+  { offset = 0x330, type = "DIR32", target = 0x0043B738, local = true },
+  { offset = 0x337, type = "DIR32", target = 0x0043B718, local = true },
+  { offset = 0x376, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0x4F2, type = "DIR32", symbol = "__imp__midiOutShortMsg@8", target = 0x00466298 },
+  { offset = 0x52C, type = "DIR32", target = 0x0043B38D, local = true },
+  { offset = 0x530, type = "DIR32", target = 0x0043B3A6, local = true },
+  { offset = 0x534, type = "DIR32", target = 0x0043B178, local = true },
+  { offset = 0x538, type = "DIR32", target = 0x0043B287, local = true },
+  { offset = 0x5B0, type = "DIR32", target = 0x0043B3EE, local = true },
+  { offset = 0x5B4, type = "DIR32", target = 0x0043B3BB, local = true },
+  { offset = 0x5B8, type = "DIR32", target = 0x0043B431, local = true },
+  { offset = 0x5BC, type = "DIR32", target = 0x0043B41F, local = true },
+  { offset = 0x5C0, type = "DIR32", target = 0x0043B5D8, local = true },
+  { offset = 0x608, type = "DIR32", target = 0x0043B44B, local = true },
+  { offset = 0x60C, type = "DIR32", target = 0x0043B502, local = true },
+  { offset = 0x610, type = "DIR32", target = 0x0043B56E, local = true },
+  { offset = 0x614, type = "DIR32", target = 0x0043B461, local = true },
+  { offset = 0x618, type = "DIR32", target = 0x0043B4EC, local = true },
+  { offset = 0x61C, type = "DIR32", target = 0x0043B4C0, local = true },
+  { offset = 0x620, type = "DIR32", target = 0x0043B4D6, local = true },
+  { offset = 0x624, type = "DIR32", target = 0x0043B5D8, local = true },
+]
+
 # Full MIDI helper; independent origin/product gates.
 [units.midi-reset-tracks]
 source = "src/Midi.cpp"

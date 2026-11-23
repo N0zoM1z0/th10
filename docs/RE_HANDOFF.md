@@ -11,6 +11,11 @@
 
 ## Recent reconstruction
 
+- `midi-process-event` is exact at 1,670 bytes with 37 bound fields
+  and all three compressed switch tables. Naming the SysEx allocation
+  before publishing it to the ring slot, then reading the slot back,
+  restores the parser's register allocation with the two ordinary
+  checkpoint `for` loops.
 - `gui-message-run` is exact at 4,480 bytes with 337 bound fields,
   including all 43 switch entries and four fixed references to the tables.
   The two text cases inline the same helper in the order that restores the
@@ -101,19 +106,6 @@ owners. Use its statement order, case structure and helper visibility as
 hypotheses and verify them in the maintained TH10 graph. Stand-in callee
 bodies, context callers, `#pragma code_seg` placement and assembly
 fallbacks are inadmissible here.
-
-`MidiOutputView::ProcessEvent` matches 1,644 of 1,670 bytes and all
-37 linkage fields in the `MidiEventTick` graph. Using a guarded `do`
-loop for both track checkpoint updates restores the entry, long-send
-result store and loop tails together. The two initial loop counts at
-+0x3F2 and +0x45E are folded memory comparisons until `Riscify` inserts
-the loads into ECX. The counter's zero definition is in the guarded
-successor. Moving it into the first block restores the older 1,690-byte
-layout, including with TH09's shared index. Reopen with a source shape
-that keeps that definition in the first block and preserves the header
-and cursor allocation. See `.analysis/midi-event/results.txt` for the
-compiler traces. Compare the complete owner with
-`scripts/repo-python .analysis/midi-event/compare.py build/match-linked/MidiEventTick`.
 
 `MidiOutputView::LoadTrackFile` matches 442 of 448 bytes in
 `midi-load-track-file`, with all six linkage fields bound. Saving the

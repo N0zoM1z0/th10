@@ -333,9 +333,9 @@ void __stdcall MidiOutputView::ProcessEvent(
             if (output->pendingLongHeaders[output->pendingLongHeaderIndex] != NULL)
                 output->UnprepareHeader(
                     output->pendingLongHeaders[output->pendingLongHeaderIndex]);
-            output->pendingLongHeaders[output->pendingLongHeaderIndex] =
-                static_cast<MIDIHDR *>(malloc(sizeof(MIDIHDR)));
-            MIDIHDR *header = output->pendingLongHeaders[output->pendingLongHeaderIndex];
+            MIDIHDR *header = static_cast<MIDIHDR *>(malloc(sizeof(MIDIHDR)));
+            output->pendingLongHeaders[output->pendingLongHeaderIndex] = header;
+            header = output->pendingLongHeaders[output->pendingLongHeaderIndex];
             int length = static_cast<int>(MidiReadVariableLength(&track->cursor));
             memset(header, 0, sizeof(*header));
             unsigned int bufferLength = static_cast<unsigned int>(length) + 1;
@@ -442,14 +442,9 @@ void __stdcall MidiOutputView::ProcessEvent(
         case 2:
         {
             MidiTrackView *saved = output->tracks;
-            if (output->trackCount > 0) {
-                int i = 0;
-                do {
-                    saved->loopCursor = saved->cursor;
-                    saved->loopEventTick = saved->nextEventTick;
-                    ++i;
-                    ++saved;
-                } while (i < output->trackCount);
+            for (int i = 0; i < output->trackCount; ++i, ++saved) {
+                saved->loopCursor = saved->cursor;
+                saved->loopEventTick = saved->nextEventTick;
             }
             output->loopTempoMicroseconds = output->tempoMicroseconds;
             output->loopElapsedTimerTicks = output->elapsedTimerTicks;
@@ -459,14 +454,9 @@ void __stdcall MidiOutputView::ProcessEvent(
         case 4:
         {
             MidiTrackView *saved = output->tracks;
-            if (output->trackCount > 0) {
-                int i = 0;
-                do {
-                    saved->cursor = saved->loopCursor;
-                    saved->nextEventTick = saved->loopEventTick;
-                    ++i;
-                    ++saved;
-                } while (i < output->trackCount);
+            for (int i = 0; i < output->trackCount; ++i, ++saved) {
+                saved->cursor = saved->loopCursor;
+                saved->nextEventTick = saved->loopEventTick;
             }
             output->tempoMicroseconds = output->loopTempoMicroseconds;
             output->elapsedTimerTicks = output->loopElapsedTimerTicks;

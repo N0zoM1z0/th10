@@ -1473,66 +1473,41 @@ register preservation or mod-ref assumptions) where our builds exploit it
   `midi-load-track-file` for the complete comparison and
   `.analysis/midi-event/` for the traces.
   [2026-11-23]
-- `MidiOutputView::ProcessEvent` at `0x43B110` has a 1,670-byte owner
-  including 1,323 code bytes and three compressed switch tables. The
-  current `Tick` link matches 1,644 bytes, all 37 linkage fields,
-  three selector streams and 17 jump-table destinations. Both track
-  loop heads at +0x3F2 and +0x45E account for the 26 residual bytes.
-  The entry, SysEx result store, tempo loop and track loop backedges
-  match after expressing both track updates as guarded `do` loops.
+- `MidiOutputView::ProcessEvent` at `0x43B110` matches all 1,670
+  owned bytes in the VC7.1 SP1 build 6030 `/GL` graph rooted at
+  `MidiOutputView::Tick`. The extent includes 1,323 code bytes and
+  three compressed switch tables. The recipe binds 14 external
+  fields and 23 fixed local fields, including 17 table destinations.
+
+  Both checkpoint loops advance a track pointer and a signed index.
+  Guarded `do` loops had the same extent but put both initial counts
+  in ECX and initialized the index after the branch. In those loops
+  the first comparison reaches `Riscify` with a free ECX. The ordinary
+  pointer `for` loops keep the index live before the guard. On their
+  own, they put the long header in EDI and the track cursor in EBX,
+  growing the owner to 1,690 bytes.
+
+  Naming the allocation result before publishing it to
+  `pendingLongHeaders` gives the header EBX and the cursor EDI. That
+  recovers the extent and both checkpoint heads, where the count
+  now takes EDI. Reading the active ring slot after the store restores
+  the original index reload and the following SysEx and meta fields.
+  The ordering fits the original device calls and lets the two ordinary
+  loops work together with the early input-byte initializations.
+
+  The `__stdcall` variable-length decoder defines ESP at global
+  allocation entry (`0x107A5471`). That dependency keeps the SysEx
+  cleanup ahead of the length read. LTCG still passes the cursor in ESI
+  in the exact 26-byte decoder. The device handle reference preserves
+  the reload after header preparation. The inline short-message helper
+  keeps `FILD` after the channel-volume store. The tempo recurrence uses
+  `IMUL 0x101`, and the elapsed-tick calculation sign-extends the clock
+  parameters before converting them to unsigned 64-bit values.
   [2026-11-23]
-  - Declaring `MidiReadVariableLength` as `__stdcall` restores both
-    SysEx allocation cleanups. Following the C2 pass tracing used in
-    TH09, the TH10 VC7.1 trace shows the call already defines ESP at
-    global allocation entry (`0x107A5471`). That dependency keeps the
-    first cleanup before the length read. LTCG still passes the cursor
-    in ESI, and the complete 26-byte reader matches.
-  - With early data initialization and the two pointer `for` loops,
-    the `BOOL` build gives the cursor EBX with weight 135. The long
-    header then gets EDI with weight 97. The result shares a stack slot
-    with the header, and the meta type and channel get separate byte
-    slots. Delaying both initializations until the status join gives
-    the header EBX and the cursor EDI. That 1,613-byte match restores
-    the long-send store at `[esp+0x14]` and moves the initial zeroes.
-  - Indexing both loop updates directly through `output->tracks[i]`
-    also gives the header EBX and the cursor EDI with early zeroes.
-    At `0x107AAC16` the header has weight 133 and the cursor has
-    weight 170. The indexed loops reload the tracks pointer and grow
-    the owner to 1,678 bytes. Indexing one loop or capturing the array
-    base for both loses that entry schedule. The guarded `do` loops
-    restore both pointer strides and count reloads. Incrementing the
-    counter before the pointer also restores the branch tails. At
-    the remaining heads, the initial count goes in ECX and is tested
-    before the pointer load. The target loads it into EDI, loads the
-    pointer and clears ECX before the test.
-  - Both initial comparisons still use `[ebp+0x118]` at local allocation
-    entry and before `Riscify` (`0x107AD4FE`). `Riscify` inserts the load
-    into ECX, which is free because the zero counter definition is in
-    the guarded successor. The backedge already has the counter in ECX
-    and gets EDI for its count load. Moving the zero definition before the guard
-    makes it reach global allocation in the initial block. In that
-    configuration the cursor takes EBX, the MIDI header takes EDI and
-    `Riscify` loads the count into ESI. TH09's shared index and combined
-    `for` initializers reproduce this same 1,690-byte body. So do the
-    signed variable-length reader and a reference parameter to that
-    reader. The StopPlayback and WinMain link roots both reproduce
-    1,670 bytes with the guarded form and 1,690 bytes with early zeroes.
-    Reopen with a source change that keeps the counter in the initial
-    block alongside the current header and cursor allocation.
-  - Checking for successful preparation and returning the long-send
-    result before the error path recovers the original entry with early
-    data initialization. In that build, `NEG/SBB/NEG` already writes
-    EAX directly at local allocation entry and the stack store is gone.
-    A named result and a reference output parameter leave that result
-    unchanged.
-  - The device handle reference keeps the reload after preparation.
-    The inline short-message helper also restores the volume handler's
-    `FILD` after the channel-volume store. TH09's `MidiDevice` methods
-    suggest separating those device operations from event parsing.
-  - Tempo uses IMUL 0x101.
-  - Clock parameters are sign-extended to u64.
-  - Timer base is 16 bytes; vtable 46F810 slot 0 is default Tick @0x43B8B0, and derived slot 46F80C names Tick @0x43AF30.
-  - Trampoline @0x43A6E0 dispatches vptr slot 0.
+- The MIDI timer base is 16 bytes. Vtable slot zero at `0x46F810`
+  names the default tick at `0x43B8B0`. The derived slot at
+  `0x46F80C` names `MidiOutputView::Tick` at `0x43AF30`. The
+  trampoline at `0x43A6E0` dispatches slot zero.
 - ProcessQueues 0x43DDF0 is 1452 owned bytes, with an 8-entry table and selector opcode-1 ≤ 7. PreparePlayback metadata is 47 rows of 8 bytes at 0x4749C8. Volume attenuation reads signed bgmVolume but the zero gate tests sfxVolume (keep it). Fades in 0x421E00 use current CSound+0x5208. SetPrimaryBufferFormat's private ABI is stack owner, EBX channels, EDI rate, ECX bits.
 - `QueueCommand`: EAX owner, EDX path, opcode/arg on stack, RET8. 0x10C-byte records at owner+1F88, slots 0..30.
 - Dummy music 420C00 uses opcode 4 or 3 with dummy 46DF98.
