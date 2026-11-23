@@ -132,14 +132,16 @@ trace commands are in `.analysis/midi-event/results.txt`.
 
 `FrontEndUpdateMusicRoom` now has the complete 2,796-byte extent.
 `Select(0)`, the browse cursor pointer and the duration-first interpolation
-call recover the corresponding code sequences. The exact interpolation
-helper keeps its 206 bytes. The remaining phase 1 and 2 table entries
-are two bytes early. The parser and preview setup leave the initial row
-block seven bytes early. An extra entry jump and alignment account for
-five of those bytes. Recheck both inlined `CreateVmVariant0` sites when
-changing the loop form. The parser's `do` countdown loses both expansions
-and six linker fields. The countdown `for` keeps them. At
-`0x107AD5FB`, VC7.1 has split the flag OR in both factories. The row
+call recover the corresponding code sequences. Sharing the row pair
+offset between the first index and its y coordinate removes the extra
+jump into the row loop. The complete comparison matches 1,360 of 2,372
+ordinary bytes and binds all 101 external fields. The phase 1 and 2
+table entries are still two bytes and one byte early, respectively.
+The signed parity masks use ECX and EDX where retail uses EAX. Check
+the register allocation at those entries and both `CreateVmVariant0`
+expansions when changing the loop form. The parser's `do` countdown
+loses both expansions and six linker fields. The countdown `for` keeps
+them. At `0x107AD5FB`, VC7.1 has split the flag OR in both factories. The row
 matches retail's split sequence. In the preview, scheduling inserts the
 script LEA and PUSH before the lower-weight flag store. Retail emits
 a memory OR before the LEA. Reopen with a source form that changes

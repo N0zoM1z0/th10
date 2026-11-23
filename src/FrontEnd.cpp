@@ -3724,11 +3724,12 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
         }
         if (controller->stateTimer.current < 10)
         {
+            const int rowPair = controller->stateTimer.current - 1;
             AnmFloat3View position(64.0f,
                 (96.0f - controller->musicListOffset * 20.0f) +
-                    static_cast<float>(controller->stateTimer.current * 40 - 40),
+                    static_cast<float>(rowPair * 40),
                 0.0f);
-            for (int i = controller->stateTimer.current * 2 - 2;
+            for (int i = rowPair * 2;
                  i < controller->stateTimer.current * 2; ++i)
             {
                 if (i >= controller->musicTrackCount)

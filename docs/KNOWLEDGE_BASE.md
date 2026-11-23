@@ -822,8 +822,8 @@ frontier; do not refresh a baseline merely to accept the new positions.
   EDI subframe differs. [2026-11-12]
 - **FrontEndUpdateMusicRoom @0x433EF0 (2,796)** now has the full target
   extent and all 106 fields. The phase 1 and 2 table entries start two
-  bytes early. The current sound helper restores both queue receivers that
-  were missing in the older 2,788-byte build.
+  bytes and one byte early, respectively. The current sound helper restores
+  both queue receivers that were missing in the older 2,788-byte build.
   `Select(0)` recovers both count-dependent cursor stores. A shared cursor
   pointer keeps the browse selection and previous value on the same base.
   Testing the near-row condition first gives the target x87 branch.
@@ -847,13 +847,15 @@ frontier; do not refresh a baseline merely to accept the new positions.
     2,588 bytes. A countdown `for` loop preserves the baseline extent
     and field positions. Changing only preview registration to `do`
     turns that factory expansion into a call and leaves 103 fields.
-  - In the maintained layout the initial row block starts seven bytes
-    early. An extra short jump and its alignment add five bytes before
-    the first row-count check. Naming the row-ID pointer before the
-    factory shifts the phase 1 and 2 entries another three bytes
-    earlier and changes the ID writeback registers. Explicit `default`,
-    an unsigned phase selector and early returns from the phase 0
-    transition leave the original offsets.
+  - Sharing `stateTimer.current - 1` between the first row index and its
+    y coordinate removes a short jump over alignment before the first
+    row-count check. Applying either expression by itself preserves the
+    earlier layout. Using both raises the ordinary byte count from
+    846 to 1,360 of 2,372 and the number of matching relative branches
+    from 35 to 60. The two displaced table destinations are the
+    remaining local absolute field differences. The phase 1 and 2
+    parity masks use ECX and EDX, respectively. The retail EAX encoding
+    saves a byte at each mask.
   - Both inlined factories enter C2's `Riscify` at `0x107AD4FE` with a
     memory OR for VM flag `0x40000000`. At `0x107AD5FB` both have a
     load, register OR and store. The scheduler at `0x107B0D2F` puts
@@ -881,9 +883,10 @@ frontier; do not refresh a baseline merely to accept the new positions.
     `SetScreenState` out of line. It emits 2,780 bytes and 105 fields.
   - A TH09-style declaration-only control isolates callee visibility.
     Both `StartMusicRowInterpolation` calls stay out of line. Hiding
-    its body under LTCG moves the middle table destinations from
-    `+0x454/+0x529` to `+0x455/+0x52A` and keeps the 2,796-byte extent
-    and 106 fields. Both call sites now push all five arguments.
+    its body under LTCG in the earlier source moves the middle table
+    destinations from `+0x454/+0x529` to `+0x455/+0x52A` and keeps the
+    2,796-byte extent and 106 fields. Both call sites now push all five
+    arguments.
     Retail passes the VM and vectors in EAX, EDX and ECX. Hiding
     `MarkVmInterrupt` similarly changes its two exit-phase calls to
     the public member convention and shrinks the owner to 2,788 bytes.
