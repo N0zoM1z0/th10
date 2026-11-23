@@ -711,13 +711,16 @@ frontier; do not refresh a baseline merely to accept the new positions.
   [2026-11-23]
 - **RebuildPlayerOptions @0x426F70 (2,520)**: about 2,404, plain RET instead of
   RET4 even with all nine callers present. [2026-10-19]
-- **EnemyGameStateView::StartSpell @0x409280 (2,432)**: the retained
-  comparison is from the 2,404-byte build before the script-starter
-  rewrite. It had 1,129 differing bytes, 14 receiver LEAs in EDX
-  instead of ESI, and eight differing PUSH schedules. Retail has 15
-  calls to `AnmVmStartScript`. Include the real starter in a fresh
-  StartSpell graph before comparing the reference's direct name
-  copy and by-value panel appearance.
+- **EnemyGameStateView::StartSpell @0x409280 (2,432)**: the current
+  candidate matches 2,366 bytes and all 108 linked fields, including
+  the table reference and all seven stage destinations. Linking the
+  real `AnmVmStartScript` restores the argument setup at its 15 calls.
+  Returning the VM through the matching node in both handle lists
+  and the child-script lookup restores the complete extent. The
+  remaining 66 bytes are within `+0x000..+0x127`, in the entry and
+  the name and attempt updates. The reference's by-value panel
+  appearance and direct first name copy preserve those differences.
+  The `enemy-start-spell` recipe binds the full candidate. [2026-11-23]
 - **ItemManagerUpdateBody @0x41AFD0 (2,320)** is exact in the registration-rooted
   `/GL` link, with 154 bound fields, 73 direct local branches and both jump
   tables at their target offsets. Expressing the distance scale as

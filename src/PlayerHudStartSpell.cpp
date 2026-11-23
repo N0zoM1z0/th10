@@ -64,18 +64,16 @@ static __forceinline AnmVmView *FindInline(int handle)
     AnmVmLayerNodeView *node = g_AnmRenderManagerView->primaryVmListHead;
     while (node != 0)
     {
-        AnmVmView *object = static_cast<AnmVmView *>(node->owner);
-        if (object->id == handle)
-            return object;
+        if (static_cast<AnmVmView *>(node->owner)->id == handle)
+            return static_cast<AnmVmView *>(node->owner);
         node = node->next;
     }
 
     node = g_AnmRenderManagerView->secondaryVmListHead;
     while (node != 0)
     {
-        AnmVmView *object = static_cast<AnmVmView *>(node->owner);
-        if (object->id == handle)
-            return object;
+        if (static_cast<AnmVmView *>(node->owner)->id == handle)
+            return static_cast<AnmVmView *>(node->owner);
         node = node->next;
     }
     return 0;
@@ -95,9 +93,8 @@ static __forceinline AnmVmView *FindPanelChild(int &handle, int script)
     AnmVmLayerNodeView *link = &object->layerNode;
     for (; link != 0; link = link->next)
     {
-        AnmVmView *candidate = static_cast<AnmVmView *>(link->owner);
-        if (candidate->scriptIndex == script)
-            return candidate;
+        if (static_cast<AnmVmView *>(link->owner)->scriptIndex == script)
+            return static_cast<AnmVmView *>(link->owner);
     }
     return 0;
 }

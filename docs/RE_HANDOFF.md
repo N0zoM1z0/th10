@@ -156,6 +156,14 @@ The stack-offset hash wraps before global allocation. A common
 ordinal shift fails the 37 bound tag-address comparisons.
 The model, compiler traces and recipes are in `.analysis/ecl-run/results.txt`.
 
+`EnemyGameStateView::StartSpell` matches 2,366 of 2,432 bytes in
+`enemy-start-spell`. The real script starter restores the 15 call
+setups, and reading the VM through the matched list node restores
+the layout through the seven-entry stage table. All 108 fields
+are bound. The remaining differences are in the first 0x128
+bytes. Check the lifetimes of the name, index and statistics base
+in the prologue and the three name copies.
+
 `InitializeGameStatisticsRecord` matches 249 of 274 bytes with all eight
 DIR32 fields bound in `game-statistics-initialize-record`. The allocator
 trace explains why the ninth name byte takes EDX from zero. The
