@@ -643,10 +643,13 @@ frontier; do not refresh a baseline merely to accept the new positions.
   parameters and restores both PUSH sequences while preserving its exact
   206 bytes and seven fields. Guarding the parser with an explicit first
   iteration test aligns its early block but grows the owner by 16 bytes.
-  The parser's comment cursor selects EBX at global allocation
-  (`0x107AAC16`), with weight 36 and EBX as its sole available register.
-  The target uses ESI there. Check the competing saved-register lifetimes
-  before local allocation. The prologue and phase offsets also remain open.
+  At global allocation (`0x107AAC16`), the eight-line countdown has
+  weight 56 and can use EBX or ESI. It takes ESI at cost zero while
+  EBX costs 4,400. The comment cursor comes later at weight 36 with
+  EBX as its sole choice. Retail uses EBX for the countdown and ESI
+  for the cursor. Advancing the marker separately, using an early
+  `continue`, and indexing a typed comment array all preserve this
+  code. The prologue and phase offsets also remain open.
   - The guarded parser moves its remaining-byte test before the pointer
     setup and shifts the later phases by 16 bytes. The `do` form of the
     eight-line countdown also changes which VM factories are inlined.
@@ -683,6 +686,11 @@ frontier; do not refresh a baseline merely to accept the new positions.
     decisions. It leaves 98 fields as both VM factories become calls
     and two line-reader calls disappear. Keep the two factory
     expansions in scope when comparing parser changes.
+  - Expanding the preview factory in source with the same three real
+    calls preserves the split flag update and every linkage field. The
+    guarded `do` form of the initial row loop keeps both factory
+    expansions but inlines the row's `FindVm` and leaves the phase 0
+    `SetScreenState` out of line. It emits 2,780 bytes and 105 fields.
   [2026-11-23]
 - **RebuildPlayerOptions @0x426F70 (2,520)**: about 2,404, plain RET instead of
   RET4 even with all nine callers present. [2026-10-19]

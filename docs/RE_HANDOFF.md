@@ -133,8 +133,11 @@ matches retail's split sequence. In the preview, scheduling inserts the
 script LEA and PUSH before the lower-weight flag store. Retail emits
 a memory OR before the LEA. Reopen with a source form that changes
 the script argument's scheduling while preserving both factory
-expansions. The compiler traces and full comparison commands are
-in `.analysis/music-room/results.txt`.
+expansions. In the parser, the weight-56 countdown takes ESI
+before the weight-36 comment cursor reaches the allocator. Check
+whether a new source form makes ESI available to the cursor.
+The compiler traces and full comparison commands are in
+`.analysis/music-room/results.txt`.
 
 `EclVmContext::Run` compares 6,997/7,020 bytes in the current GameManager
 graph with 189 bound fields. Twelve residual bytes come from the
