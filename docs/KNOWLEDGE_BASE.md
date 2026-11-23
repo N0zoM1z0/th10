@@ -561,8 +561,37 @@ frontier; do not refresh a baseline merely to accept the new positions.
   At `0x1079C23B`, the reload of the next instruction through EBX
   is the final local allocation and starts at the EAX entry of the
   scratch list (0x108AB740). EAX feeds the FILD address, where retail
-  uses EDX. Storing the next instruction through the member directly
-  preserves the allocation and the full 19-byte residual.
+  uses EDX. Separate pointer writebacks for the relative jump and
+  ordinary instruction advance let C2 merge the common tail later.
+  The unsigned instruction-size load stays local and takes ECX,
+  leaving EDX for the final reload. The complete probe matches
+  7,003 of 7,020 bytes, with the other 17 residuals at the same offsets.
+
+  The local TH10 reference trace gives the anonymous FORMAT tag cursor
+  weight seven instead of six. It sorts ahead of both arithmetic result
+  words and shares the colour of `LENGTH_SQUARED`'s x. The exact
+  cursor placement predicted by the earlier sort model follows from
+  separate `%d` and `%f` paths with their typed numeric arguments and
+  one increment per argument. In the GameManager graph this restores
+  both integer result homes and all twelve corresponding bytes.
+  The typed FORMAT helper, direct bitwise pops and separate pointer
+  writebacks compare 7,009 of 7,020 bytes with all fields bound.
+  Putting the real context first in `ReadFloatValue`'s declaration
+  restores the two FORMAT register moves. The member form also
+  restores that order. Both preserve the 171-byte float reader and
+  yield 7,011 matching bytes in the complete comparison.
+
+  The nine residuals in the receiver-first probe are SIB encodings in
+  the bitwise cases, both negate cases and sine. At the three mismatched
+  integer tag sites, C2's temporary ordinals are 0x1803, 0x1816 and
+  0x1829, thirteen higher than in the reference trace. The reference OR
+  also gives its stack base locals much earlier ordinals, 0x804 and
+  0x80E. A common ordinal shift fails the full set of tag constraints.
+  Giving XOR and AND their own stack view restores four more addresses
+  and reinstates three earlier address differences. The net result is
+  7,012 matching bytes. The context-first comparison and the stack-view
+  comparison expose different constraints around the late stack loads.
+  The traces and complete comparisons are in `.analysis/ecl-run/`.
 
   The anonymous `FORMAT` tag-byte cursor stays at `ESP+0x18`, the same
   home as the named `x` in `LENGTH_SQUARED`. The cursor has weight six
