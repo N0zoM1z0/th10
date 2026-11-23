@@ -663,6 +663,26 @@ frontier; do not refresh a baseline merely to accept the new positions.
     earlier and changes the ID writeback registers. Explicit `default`,
     an unsigned phase selector and early returns from the phase 0
     transition leave the original offsets.
+  - Both inlined factories enter C2's `Riscify` at `0x107AD4FE` with a
+    memory OR for VM flag `0x40000000`. At `0x107AD5FB` both have a
+    load, register OR and store. The scheduler at `0x107B0D2F` puts
+    the preview script LEA and PUSH between the OR and its store.
+    Retail uses the memory OR at `+0x1B6`, before the script LEA. The
+    initial row already matches retail's split sequence. The dependency
+    hook at `0x107B0B9B` corresponds to TH09's `0x107B5338` in C2
+    13.10.3077. The preview's OR and script LEA both have weight
+    `0x4C00`, while the script PUSH has `0x4400` and the flag store
+    has `0x4000`. The script instructions and flag store have no
+    dependency edge between them. Spelling the flag as its named
+    bitfield in the shared factory gives identical music-room code.
+    Moving the flag assignment before the layer store changes nine
+    ordinary bytes and leaves both sequences split.
+  - TH09's shared loop index and the TH10 reference's shared position
+    and comment reveal helper leave the machine code identical. Giving
+    the parser its own inlined helper changes the whole owner's inlining
+    decisions. It leaves 98 fields as both VM factories become calls
+    and two line-reader calls disappear. Keep the two factory
+    expansions in scope when comparing parser changes.
   [2026-11-23]
 - **RebuildPlayerOptions @0x426F70 (2,520)**: about 2,404, plain RET instead of
   RET4 even with all nine callers present. [2026-10-19]

@@ -127,7 +127,14 @@ are two bytes early. The parser and preview setup leave the initial row
 block seven bytes early. An extra entry jump and alignment account for
 five of those bytes. Recheck both inlined `CreateVmVariant0` sites when
 changing the loop form. The parser's `do` countdown loses both expansions
-and six linker fields. The countdown `for` keeps them.
+and six linker fields. The countdown `for` keeps them. At
+`0x107AD5FB`, VC7.1 has split the flag OR in both factories. The row
+matches retail's split sequence. In the preview, scheduling inserts the
+script LEA and PUSH before the lower-weight flag store. Retail emits
+a memory OR before the LEA. Reopen with a source form that changes
+the script argument's scheduling while preserving both factory
+expansions. The compiler traces and full comparison commands are
+in `.analysis/music-room/results.txt`.
 
 `EclVmContext::Run` compares 6,997/7,020 bytes in the current GameManager
 graph with 189 bound fields. Twelve residual bytes come from the
