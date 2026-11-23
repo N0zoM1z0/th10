@@ -175,18 +175,6 @@ int EclVmStackView::LeaveFrame()
 }
 
 
-// A counted thread name is followed by a variable-length sequence of
-// scalar DWORDs. Its native cursor is an unsigned i386 word address, even if
-// the count wraps; do not index the one-element C++ wire prefix as an array.
-static __forceinline int EclSpawnScalarWordAt(
-    const EclVmInstruction *instruction, unsigned int wordIndex)
-{
-    return reinterpret_cast<const EclVmScalar *>(
-        reinterpret_cast<unsigned int>(instruction) +
-        static_cast<unsigned int>(offsetof(EclVmInstruction, scalarOperands)) +
-        wordIndex * static_cast<unsigned int>(sizeof(EclVmScalar)))->integer;
-}
-
 // Both thread-control paths invalidate the same instruction cursor in the
 // context owned by a thread-list node. Keep the node and its context typed.
 static __forceinline void EclStopThreadContext(EclVmContext *stoppedContext)
@@ -938,13 +926,18 @@ int EclVmContext::Run(float timeDelta)
 
             case ECL_VM_SPAWN_THREAD_WITH_ID:
             {
-                // Retail ADD ECX,4 then SHR ECX,2 uses the low 32-bit word
-                // even if the encoded signed inline length would overflow.
-                const unsigned int operandIndex =
-                    (static_cast<unsigned int>(current->spawnThreadOperands.inlineBytes)
-                        + 4u) >> 2;
+                // Round the counted name to a word index using the native
+                // unsigned addition before dividing by four.
+                const unsigned int operandBase =
+                    reinterpret_cast<unsigned int>(current->scalarOperands);
                 host->SpawnThread(
-                    ReadIntValue(1, EclSpawnScalarWordAt(current, operandIndex)), 1);
+                    ReadIntValue(
+                        1, reinterpret_cast<const EclVmScalar *>(
+                            operandBase +
+                            ((static_cast<unsigned int>(
+                                current->spawnThreadOperands.inlineBytes) + 4u) >> 2) *
+                                sizeof(EclVmScalar))->integer),
+                    1);
                 break;
             }
 

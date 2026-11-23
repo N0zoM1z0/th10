@@ -143,11 +143,13 @@ visible and check register arguments alongside table offsets.
 The compiler traces and full comparison commands are in
 `.analysis/music-room/results.txt`.
 
-`EclVmContext::Run` compares 6,997/7,020 bytes in the current GameManager
-graph with 189 bound fields. Twelve residual bytes come from the
-equal-weight integer add and subtract result words taking reversed stack
-slots. The 6030 sort model reproduces all 65 traced colours. Raising the
-add result's weight from six to seven exchanges just the two homes in
+`EclVmContext::Run` compares 7,001/7,020 bytes in the current GameManager
+graph with 189 bound fields. Reading the packed spawn operand directly
+gives the length ECX and the operand EDX. The next local choice gives
+the stopped context EAX. Both handlers now match. Twelve residual bytes
+come from the equal-weight integer add and subtract result words taking
+reversed stack slots. The 6030 sort model reproduces all 65 traced colours.
+Raising the add result's weight from six to seven exchanges just the two homes in
 the model. Moving the shared `FORMAT` cursor and `LENGTH_SQUARED` colour
 ahead of the subtract result yields the same exchange. Separate tag and
 payload cursors move fields in `FORMAT`. Reopen with a source lifetime
@@ -159,11 +161,7 @@ A named `LENGTH_SQUARED` accumulator restores the earlier
 The stack-offset hash wraps before global allocation. A common
 ordinal shift fails the 37 bound tag-address comparisons.
 Writing the squared-length sum in y-then-x order removes the volatile
-local and keeps the full baseline comparison. In the early thread cases,
-the spawn length takes ECX locally and the script operand already has
-EDI. The following stop context takes EDX from the local cursor. A
-source form that keeps the spawn operand local would test the target
-EDX-to-EAX sequence across both handlers.
+local and keeps the full baseline comparison.
 The model, compiler traces and recipes are in `.analysis/ecl-run/results.txt`.
 
 `EnemyGameStateView::StartSpell` matches 2,366 of 2,432 bytes in

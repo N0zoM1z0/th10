@@ -588,16 +588,20 @@ frontier; do not refresh a baseline merely to accept the new positions.
     the returned ID through the output pointer adds a copy inside the
     factory. The value-returning form forwards the result storage and
     matches the complete 73-byte contribution with all five fields.
-- **EclVmContext::Run @0x44E1A0 (7,020)**: current linked owner is 7,020/7,020
-  with 23 differing bytes. The frontier is `REGRESSED` because residual offsets
-  moved, not because the count changed. The remaining schedule includes
-  commutative SIB order at +0x1F9/+0x241, operand/register choices near
-  +0xEB/+0xF1 and +0x129/+0x12B, and several spill-home differences. Do not
-  update the frontier to accept moved offsets. `PopInt` uses the native
-  `EclVmScalar::integer` word; `EclStopThreadContext` retains a typed
-  `EclVmContext*`; `Pop` keeps the typed `stackData + stackTop` address.
-  Rewriting the pointer arithmetic or spawning-operand address expanded the
-  parent residual and was reverted.
+- **EclVmContext::Run @0x44E1A0 (7,020)**: the current GameManager
+  and player-collision links match 7,001 bytes, with 189 bound fields and
+  62 fixed local destinations. The direct read from the packed spawn
+  operand recovers +0xEC/+0xF1 and +0x12A/+0x12C without moving the other
+  19 differences.
+  The helper returning an integer gave the operand a global candidate
+  with weight 40 and an EDI cost of -1. Returning a reference removed
+  that candidate but added a global index copy with weight 100 that
+  took EAX. Keeping the native byte-count calculation inside the typed
+  operand read leaves the length and operand to local allocation. They
+  take ECX and EDX, so the following stop context takes EAX.
+  `PopInt` uses the native `EclVmScalar::integer` word.
+  `EclStopThreadContext` retains a typed `EclVmContext*` and `Pop`
+  keeps the typed `stackData + stackTop` address.
   A complete comparison in the `16572e6b` player-collision graph confirms
   all 189 fields and 62 fixed local destinations. Direct typed stack pops
   for bitwise OR, primitive word locals for add and subtract, and relocating
@@ -606,7 +610,7 @@ frontier; do not refresh a baseline merely to accept the new positions.
   Separating FORMAT's integer and floating conversions into two typed
   source branches instead emits a 6,956-byte owner.
 
-  The current GameManager link reproduces the same complete comparison.
+  The earlier GameManager link reproduced the 23-byte residual.
   Renaming the two arithmetic locals preserves every byte and identifies
   the twelve stack-offset differences as the left/result words for integer
   addition and subtraction. They both have weight six. At C2's stack-colour
@@ -669,8 +673,8 @@ frontier; do not refresh a baseline merely to accept the new positions.
   `LENGTH_SQUARED` now uses ordinary float locals while computing
   `y * y + x * x`. The source still reads x before y and resolves the
   destination before the products. This yields the same x87 sequence
-  without a volatile local and preserves all 23 residual bytes and
-  189 bindings in the GameManager graph.
+  without a volatile local. That change preserved the then-current
+  23 residual bytes and 189 bindings in the GameManager graph.
 
   At `RegSimpleAssign` (`0x1079BD18`), the thread-spawn script operand
   already has EDI. The inline-name length takes ECX locally, leaving
