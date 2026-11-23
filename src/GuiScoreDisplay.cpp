@@ -127,12 +127,16 @@ void GameUpdateGui(GuiView *gui)
     {
         if (g_GuiDifficulty != 4)
         {
-            if (gui->value9E78 < g_GuiNormalExtendScores[g_GuiValue4C9C])
-                return;
+            if (gui->value9E78 >= g_GuiNormalExtendScores[g_GuiValue4C9C])
+            {
+                g_GameScoreState.AddLives(1);
+                ++g_GuiValue4C9C;
+            }
         }
-        else if (gui->value9E78 < g_GuiExtraExtendScores[g_GuiValue4C9C])
-            return;
-        g_GameScoreState.AddLives(1);
-        ++g_GuiValue4C9C;
+        else if (gui->value9E78 >= g_GuiExtraExtendScores[g_GuiValue4C9C])
+        {
+            g_GameScoreState.AddLives(1);
+            ++g_GuiValue4C9C;
+        }
     }
 }

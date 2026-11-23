@@ -509,11 +509,16 @@ frontier; do not refresh a baseline merely to accept the new positions.
   an extra EDX load. The reload after `AddRank` uses the distinct
   `g_GameStartupState.score` view of the same target storage.
 
-  The 141-byte `AddLives` member retains the private EAX and ECX arguments.
-  Its GUI caller (`GameUpdateGui`, 671 bytes) loads the count before the
-  receiver at +0x286. The free-function interface reverses the loads in the
-  item caller. The GUI caller's earlier exact entry belongs to that
-  free-function source epoch.
+  The 141-byte `AddLives` member retains the private EAX and ECX arguments
+  required by this caller and the score HUD.
+  [2026-11-23]
+- **GameUpdateGui @0x417040 (671)** is exact with 36 bound fields using the
+  same `AddLives` member as the item update. Keep the complete award within
+  each qualifying difficulty branch, as in the reference score HUD. VC7.1
+  merges the shared tail and loads the receiver before the amount. A single
+  award reached by two early threshold exits reverses those loads at +0x286.
+  The item update, the 141-byte member and GameManager's update also match
+  with the branch-local awards.
   [2026-11-23]
 - **AnmRenderManagerView ctor @0x445900 (2,315)**: 655/670 normalized
   instructions after setting `element->arg = this` before `flags |= 3` and

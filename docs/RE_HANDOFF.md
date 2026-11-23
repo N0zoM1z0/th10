@@ -11,6 +11,10 @@
 
 ## Recent reconstruction
 
+- `gui-update-score-display` is exact at 671 bytes with 36 bound fields.
+  Each difficulty branch awards the life after its own threshold check.
+  VC7.1 merges the calls and restores the EAX-then-ECX loads. The shared
+  `AddLives` body, Item update and GameManager update still match.
 - `item-manager-update-body` is exact at 2,320 bytes with 154 bound fields
   and 73 fixed local branches. It compiles separately from its registration
   callback and real score helpers. Forming the distance scale from the
@@ -72,12 +76,6 @@ upper-bound test and the hide loop share the first hidden index. The local
 trace and scoped comparison commands are in `.analysis/gui-guard/results.txt`.
 
 ## Strategy for the remaining authored bytes
-
-`GameUpdateGui` at 0x00417040 still has the full 671-byte extent. The
-`AddLives` member call loads ECX before EAX at +0x286. Restore the target's
-EAX-then-ECX order while preserving the member's 141-byte body and the
-exact item caller. The former free-function interface gives the original
-GUI order and reverses the loads in the item caller.
 
 `_reference/th10-decomp` has MSVC C++ bodies for the remaining authored
 owners. Use its statement order, case structure and helper visibility as
