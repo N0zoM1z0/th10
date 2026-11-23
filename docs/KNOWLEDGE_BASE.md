@@ -638,8 +638,8 @@ frontier; do not refresh a baseline merely to accept the new positions.
   bytes. Putting the instruction time directly in the `while` condition
   also restores the pointer copy at the loop tail and the complete extent.
   All 43 switch destinations and four table references agree in place.
-  The frontier has 219 differences through `+0xB5B`. The external
-  inventory has 290 fields, of which 274 match their retail type,
+  The frontier has 54 differences through `+0x5DB`. The external
+  inventory has 290 fields, of which 289 match their retail type,
   address and position.
   The 3,836-byte `GuiView::UpdateStageElements` caller and the sprite
   helpers compare exactly in the same linked image.
@@ -648,16 +648,17 @@ frontier; do not refresh a baseline merely to accept the new positions.
   the two compiler barriers are removed. The fixed manager field is
   at `+0xEF`.
 
-  At the VC7.1 6030 local scratch choice (`0x1079C39D`), the index-first
-  portrait sequence already holds the script word in EAX. The absolute
-  manager load uses ECX and follows the script read. The resource-first
-  packed-field and `memcpy` forms leave EAX available for that load and
-  shrink the owner to 4,464 bytes. Retail takes the manager in ECX, its
-  resource in EAX, the command pointer in EDX and the operand in ECX.
-  Moving the real child lookup into an `AnmVmIdView` member preserves
-  all 70 callee bytes and leaves the index-first caller byte-identical
-  after binding. Keep the character branches separate. Collapsing them
-  removes target case bodies.
+  The VC7.1 6030 scratch selector (`0x1079C39D`) walks EAX, ECX and
+  EDX, skipping occupied registers. The direct packed-field read keeps
+  both the second command pointer and its operand local. Taking the first
+  operand through a named command view adds one local request between the
+  two manager loads. When the first load starts at EDX, the five choices
+  are EDX, EAX, ECX, EDX and ECX. The next branch starts at EDX again.
+  Keeping the index-first form in stage one's character-1 branch, which
+  is laid out first, reaches that sequence in all 15 later branches.
+  The only displaced external field is the first branch's second
+  manager load, `+0x5CA` in retail and `+0x5D0` in the candidate.
+  The side-position and player portrait register choices also remain open.
 
   Sharing the mode-4 destination restores the stage-six increment test
   and the stage-seven branch back to it. With the standalone faith

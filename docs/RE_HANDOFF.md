@@ -102,13 +102,13 @@ table fields in `gui-message-run-candidate`. Computing each second sprite
 index before rebinding its resource restores the portrait case layout.
 Reading instruction time in the `while` condition restores the table base.
 The shared replay exit, typed faith load and scalar transition handle
-reference restore the complete suffix from `+0xB5C`. The frontier has
-219 differences after removing the alternating-text barriers. All 16
-displaced external fields are the second portrait manager loads. The
-resource-first trace leaves EAX free at the local scratch choice. Reopen
-when a source shape can keep the resource in EAX while selecting ECX
-for its owner and EDX for the command pointer. The two side-position
-handlers still reverse their handle registers. The direct caller remains
+reference restore the stage-clear tail. Packed operand reads leave the
+first word of each enemy portrait pair in the local scratch pass.
+Stage one's character-1 branch is emitted first and starts the sequence
+that matches the other 15 pairs. The frontier has 54 differences through
+`+0x5DB`. The first pair's second manager field is the only displaced
+external field. Trace the preceding side-position and player-portrait
+choices for an EDX start at the first pair. The direct caller remains
 exact. See `.analysis/gui-message-run/results.txt` for the controls.
 
 `MidiOutputView::ProcessEvent` matches 1,644 of 1,670 bytes and all
