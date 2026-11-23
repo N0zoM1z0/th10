@@ -1285,6 +1285,18 @@ register preservation or mod-ref assumptions) where our builds exploit it
     the remaining heads, the initial count goes in ECX and is tested
     before the pointer load. The target loads it into EDI, loads the
     pointer and clears ECX before the test.
+  - Both initial comparisons still use `[ebp+0x118]` at local allocation
+    entry and before `Riscify` (`0x107AD4FE`). `Riscify` inserts the load
+    into ECX, which is free because the zero counter definition is in
+    the guarded successor. The backedge already has the counter in ECX
+    and gets EDI for its count load. Moving the zero definition before the guard
+    makes it reach global allocation in the initial block. In that
+    configuration the cursor takes EBX, the MIDI header takes EDI and
+    `Riscify` loads the count into ESI. TH09's shared index and combined
+    `for` initializers reproduce this same 1,690-byte body. So do the
+    signed variable-length reader and a reference parameter to that
+    reader. Reopen with a source change that keeps the counter in the
+    initial block alongside the current header and cursor allocation.
   - Checking for successful preparation and returning the long-send
     result before the error path recovers the original entry with early
     data initialization. In that build, `NEG/SBB/NEG` already writes

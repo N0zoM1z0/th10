@@ -96,10 +96,13 @@ fallbacks are inadmissible here.
 37 linkage fields in the `MidiEventTick` graph. Using a guarded `do`
 loop for both track checkpoint updates restores the entry, long-send
 result store and loop tails together. The two initial loop counts at
-+0x3F2 and +0x45E choose ECX and are tested early. Reopen with a way
-to keep the track count in EDI through the first test and retain the
-current header and cursor allocation. See `.analysis/midi-event/results.txt`
-for the compiler traces. Compare the complete owner with
++0x3F2 and +0x45E are folded memory comparisons until `Riscify` inserts
+the loads into ECX. The counter's zero definition is in the guarded
+successor. Moving it into the first block restores the older 1,690-byte
+layout, including with TH09's shared index. Reopen with a source shape
+that keeps that definition in the first block and preserves the header
+and cursor allocation. See `.analysis/midi-event/results.txt` for the
+compiler traces. Compare the complete owner with
 `scripts/repo-python .analysis/midi-event/compare.py build/match-linked/MidiEventTick`.
 
 `FrontEndUpdateMusicRoom` now has the complete 2,796-byte extent.
