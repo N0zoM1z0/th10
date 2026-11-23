@@ -82,9 +82,12 @@ it to local allocation, where the two loads get ECX and EDX and the
 resource load moves early. A three-field request for opcode 88 keeps
 its original ECX and EDX loads and removes both local requests. In that
 graph the timestamp check is the last local EDX assignment before
-opcode 91. A global EDX assignment for that load would let the layer
-try EDX first. The [knowledge base](KNOWLEDGE_BASE.md) identifies the
-measured allocator entry points.
+opcode 91. The signed widening node survives global allocation with
+the same virtual destination.
+Naming the timestamp and changing the guard spelling leave it local.
+The [knowledge base](KNOWLEDGE_BASE.md) records which data and callee
+visibility changes preserved the residual and where to trace a new
+allocation lifetime.
 
 ## Strategy for the remaining authored bytes
 

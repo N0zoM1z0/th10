@@ -504,17 +504,27 @@ frontier; do not refresh a baseline merely to accept the new positions.
     ECX. A request containing only index and resource gives the resource
     ECX globally and the layer EDX locally. This swaps four bytes in
     opcode 88. Reusing a request in the two front-spawn cases merges
-    code and shortens the owner by 96 bytes. Naming the timestamp or
-    sharing its local with the interrupt handler leaves the same
-    ten differences as the three-field request.
-  - Moving either `GetIntVar` or the whole
-    interpreter to a separate `/GL` translation unit preserves the two
-    differences. The moved `GetIntVar` independently matches all 144 bytes
-    and 15 fields. Aggregate initialization of the script/layer pair also
-    preserves the residual. Capturing just the script index moves the
-    resource load before the argument pushes. Keeping the returned IDs
-    alive until an explicit shared resolve call shortens the interpreter
-    by 64 bytes with two IDs and 80 bytes with one.
+    code and shortens the owner by 96 bytes.
+  - The timestamp's signed widening node already exists at global
+    allocation entry (`0x107A5471`). In the three-field request trace,
+    node `41bd240` defines the same virtual destination `4120dbc` on
+    both sides of global allocation. The choice hook at `0x107AAC16`
+    records no assignment for that destination. The timer's current field
+    folds into the comparison, while the timestamp reaches local
+    allocation as a single-block temporary. Naming it, sharing its
+    local with the interrupt path and moving the clock comparison into
+    an inlined predicate leave the layer in ECX. The next source
+    hypothesis needs a different allocation lifetime or an earlier
+    local choice. See `.analysis/anm-execute/anm88-resource-full-timestamp-global.trace`.
+  - The GameManager graph retains 9,962 matching bytes with either
+    the real `AnmVmInitialize` or a definition of `g_AnmGameSpeed`
+    initialized to the original image's `1.0f`. Moving `GetIntVar` out,
+    making it const or sharing its return leaves the same two differences.
+    The shared return also preserves all 144 bytes and 15 fields of the
+    getter. A scan of 116 built graphs identified the call to
+    `CreateVmVariant2` by its actual destination. All 116 load and push
+    the layer through ECX even though the call appears at four different
+    offsets.
   - Splitting the child pointer into separate locals for the front and
     back tails preserves the opcode 91 mismatch and reverses the two
     radial Z operands at +0x2476/+0x247C. Expanding the operand ternary
@@ -525,10 +535,12 @@ frontier; do not refresh a baseline merely to accept the new positions.
     the exact 73-byte factory in this link, but moves the resource load
     before the first argument push, leaving ten caller differences. The
     reference's inlined attachment helper changes the call and tail
-    layout in this graph. Its explicit result-pointer shape also changes
-    layout because the maintained handle's default constructor zeros
-    the result slot. The maintained source retains both shared tails
-    and the value-returning factory.
+    layout in this graph. With an explicit result pointer and an
+    uninitialized caller-side handle, the interpreter has ten byte
+    differences and the factory grows from 73 to 81 bytes. Assigning
+    the returned ID through the output pointer adds a copy inside the
+    factory. The value-returning form forwards the result storage and
+    matches the complete 73-byte contribution with all five fields.
 - **EclVmContext::Run @0x44E1A0 (7,020)**: current linked owner is 7,020/7,020
   with 23 differing bytes. The frontier is `REGRESSED` because residual offsets
   moved, not because the count changed. The remaining schedule includes
