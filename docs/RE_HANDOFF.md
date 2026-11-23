@@ -122,7 +122,9 @@ the model. Moving the shared `FORMAT` cursor and `LENGTH_SQUARED` colour
 ahead of the subtract result yields the same exchange. Separate tag and
 payload cursors move fields in `FORMAT`. Reopen with a source lifetime
 that can change initial colour order while keeping the existing field
-positions. The model and recipes are in `.analysis/ecl-run/results.txt`.
+positions. A direct left-operand pop in `EQUAL_FLOAT` shifts its two
+SIB differences to `NOT_EQUAL_FLOAT` with the same complete count.
+The model and recipes are in `.analysis/ecl-run/results.txt`.
 
 ## Commands
 

@@ -567,14 +567,28 @@ frontier; do not refresh a baseline merely to accept the new positions.
   after the two arithmetic colours. In the traced sort model, raising
   the cursor's weight to seven and moving its group ahead of the
   subtract result exchanges just the add and subtract homes. All other
-  homes stay fixed in that model. A named `tagByteOffset` confirms the
-  anonymous cursor's identity and preserves every weight and colour
-  membership. It changes instruction and field positions in `FORMAT`.
+  homes stay fixed in that model. Swapping the two presort arithmetic
+  colours also exchanges just those homes. In the current trace,
+  increasing the add colour from six to seven is the only isolated
+  weight change of one or two that produces this exchange. A named
+  `tagByteOffset` confirms the cursor's identity and preserves every
+  weight and colour membership. It changes instruction and field
+  positions in `FORMAT`.
   The separate payload-word cursor changes the owner extent, and a
   signed source index leaves the original 23 differences.
   Moving `ReadIntValue` and `FindThread` to separate `/GL` sources in
   independent trials retains the 23 differences and both leaves' exact
   124- and 36-byte bodies. [2026-11-23]
+
+  Moving `Pop`'s scalar destination into `EQUAL_FLOAT` restores the
+  stack-data base and index operands at +0xE6F and +0xE7B. The same
+  two differences move to the first pop in `NOT_EQUAL_FLOAT` at
+  +0xEE9 and +0xEF5. The owner still matches 6,997 of 7,020 bytes
+  and all 189 fields. Making the next pop's destination explicit
+  keeps the moved differences and can change the later `BITWISE_AND`
+  address at +0x15BE. Commuting the source pointer additions in `Pop`
+  leaves the original encodings. Compare the neighboring handlers
+  when changing an inlined pop's operand lifetime.
 - **EclVmHost::StopAllThreads @0x450190 (31)**: exact 31/31 after making the stop helper accept the already-resolved `EclVmContext*`; both STOP_THREAD and STOP_ALL_THREADS now pass the context explicitly. The parent `EclVmContext::Run` schedule remains at its existing 23-byte residual. [2026-11-19]
 
 - **EclVmStackView::Pop @0x450610 (122)**: exact 122/122 with the typed
