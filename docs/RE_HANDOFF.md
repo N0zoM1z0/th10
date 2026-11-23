@@ -92,12 +92,14 @@ hypotheses and verify them in the maintained TH10 graph. Stand-in callee
 bodies, context callers, `#pragma code_seg` placement and assembly
 fallbacks are inadmissible here.
 
-`MidiOutputView::ProcessEvent` has the complete 1,670-byte extent and
-all three original selector streams in the `MidiEventTick` graph.
-Declaring `MidiReadVariableLength` as `__stdcall` restores both SysEx
-allocation cleanups while preserving the exact reader and `Tick`.
-The long-send result conversion shifts six external fields by three
-bytes before the tempo entry realigns. Compare the complete owner with
+`MidiOutputView::ProcessEvent` matches 1,613 of 1,670 bytes and all
+37 linkage fields in the `MidiEventTick` graph. A `BOOL` long-send
+result and zeroing the two data bytes after resolving running status
+restore the long-send result store and tempo entry. Only +0x13 through +0x4B
+differs. Returning the long-send result before the prepare-error path
+preserves the original prologue with early zeroing and loses the result
+store before local allocation. See `.analysis/midi-event/results.txt`
+for the paired compiler traces. Compare the complete owner with
 `scripts/repo-python .analysis/midi-event/compare.py build/match-linked/MidiEventTick`.
 
 `FrontEndUpdateMusicRoom` now has the complete 2,796-byte extent.

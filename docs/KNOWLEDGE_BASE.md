@@ -1255,32 +1255,34 @@ register preservation or mod-ref assumptions) where our builds exploit it
   [2026-11-23]
 - `MidiOutputView::ProcessEvent` at `0x43B110` has a 1,670-byte owner
   including 1,323 code bytes and three compressed switch tables. The
-  `Tick` link originally emitted 1,690 bytes. An inline long-message
-  helper that returns `bool` restores the 1,670-byte extent and the
-  parser's prologue and cursor registers. Giving short-message packing
-  and sending its own inline helper restores the volume handler's `FILD`
-  after the channel-volume store.
-  The helper takes the device handle by reference so the long send
-  reloads it after the prepare call. TH09's `MidiDevice` methods suggest
-  this split. [2026-11-23]
+  current `Tick` link matches 1,613 bytes and all 37 linkage fields.
+  The 57 differing bytes span +0x13 through +0x4B, where the candidate
+  compares the status before zeroing the two data bytes at the join.
+  All three selector streams and all 17 jump-table destinations match.
+  [2026-11-23]
   - Declaring `MidiReadVariableLength` as `__stdcall` restores both
     SysEx allocation cleanups. Following the C2 pass tracing used in
     TH09, the TH10 VC7.1 trace shows the call already defines ESP at
     global allocation entry (`0x107A5471`). That dependency keeps the
     first cleanup before the length read. LTCG still passes the cursor
     in ESI, and the complete 26-byte reader matches.
-  - The parser aligns 386 of 391 instructions. All 14 external symbols
-    bind in order and all three selector streams match. Six external
-    fields and both second dispatch references are three bytes early.
-    The only displaced table destination is system status at +0x174,
-    with original offset +0x177.
-  - The long-send helper's `bool` emits `SETNE` and `TEST`. Returning
-    `BOOL` recovers the original `NEG/SBB/NEG` conversion and 32-bit
-    store, with a different spill slot and a 1,690-byte extent. Changing
-    the status-nibble locals' declaration order or width and sharing
-    the length local across system messages did not recover the frame.
-    The tempo loop's entry agrees after a different jump and alignment
-    sequence absorbs the displacement.
+  - Returning Win32 `BOOL` and initializing both data bytes after
+    reading the status restores `NEG/SBB/NEG`, the store at `[esp+0x14]`
+    and the original tempo-loop entry. With both initializations before
+    the status read, the same helper gives the result a stack slot shared
+    with the MIDI header pointer and separates the meta-type and channel
+    slots. The compiler then emits a 1,690-byte owner.
+  - Checking for successful preparation and returning the long-send
+    result before the error path recovers the original entry with early
+    data initialization. In that build, `NEG/SBB/NEG` already writes
+    EAX directly at local allocation entry and the stack store is gone.
+    A named result and a reference output parameter leave that result
+    unchanged. Preserve the original entry stores while retaining a
+    result spill shared with the metadata length.
+  - The device handle reference keeps the reload after preparation.
+    The inline short-message helper also restores the volume handler's
+    `FILD` after the channel-volume store. TH09's `MidiDevice` methods
+    suggest separating those device operations from event parsing.
   - Tempo uses IMUL 0x101.
   - Clock parameters are sign-extended to u64.
   - Timer base is 16 bytes; vtable 46F810 slot 0 is default Tick @0x43B8B0, and derived slot 46F80C names Tick @0x43AF30.

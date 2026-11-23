@@ -258,13 +258,13 @@ void MidiOutputView::Tick()
         ResetTracks();
 }
 
-static __forceinline bool MidiLongMessageRefused(const HMIDIOUT &handle, MIDIHDR *header)
+static __forceinline BOOL MidiLongMessageRefused(const HMIDIOUT &handle, MIDIHDR *header)
 {
     if (handle == NULL)
-        return false;
-    if (midiOutPrepareHeader(handle, header, sizeof(*header)) != 0)
-        return true;
-    return midiOutLongMsg(handle, header, sizeof(*header)) != 0;
+        return FALSE;
+    if (midiOutPrepareHeader(handle, header, sizeof(*header)) != MMSYSERR_NOERROR)
+        return TRUE;
+    return midiOutLongMsg(handle, header, sizeof(*header)) != MMSYSERR_NOERROR;
 }
 
 static __forceinline void MidiSendShortMessage(
@@ -289,13 +289,14 @@ static __forceinline void MidiSendShortMessage(
 void __stdcall MidiOutputView::ProcessEvent(
     MidiOutputView *output, MidiTrackView *track)
 {
-    unsigned char data1 = 0;
-    unsigned char data2 = 0;
     unsigned char status = *track->cursor;
     if (status < 0x80)
         status = track->runningStatus;
     else
         ++track->cursor;
+
+    unsigned char data1 = 0;
+    unsigned char data2 = 0;
     unsigned char channel = status & 0x0f;
     unsigned char type = status & 0xf0;
 
