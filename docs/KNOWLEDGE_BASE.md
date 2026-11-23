@@ -635,6 +635,22 @@ frontier; do not refresh a baseline merely to accept the new positions.
   (`0x107AAC16`), with weight 36 and EBX as its sole available register.
   The target uses ESI there. Check the competing saved-register lifetimes
   before local allocation. The prologue and phase offsets also remain open.
+  - The guarded parser moves its remaining-byte test before the pointer
+    setup and shifts the later phases by 16 bytes. The `do` form of the
+    eight-line countdown also changes which VM factories are inlined.
+    Both the preview and row sites call `CreateVmVariant0` directly,
+    replacing the target's two `AllocateVm`/`InitializeVm`/`AddVmVariant0`
+    sequences. This drops six linkage fields and shortens the owner to
+    2,588 bytes. A countdown `for` loop preserves the baseline extent
+    and field positions. Changing only preview registration to `do`
+    turns that factory expansion into a call and leaves 103 fields.
+  - In the maintained layout the initial row block starts seven bytes
+    early. An extra short jump and its alignment add five bytes before
+    the first row-count check. Naming the row-ID pointer before the
+    factory shifts the phase 1 and 2 entries another three bytes
+    earlier and changes the ID writeback registers. Explicit `default`,
+    an unsigned phase selector and early returns from the phase 0
+    transition leave the original offsets.
   [2026-11-23]
 - **RebuildPlayerOptions @0x426F70 (2,520)**: about 2,404, plain RET instead of
   RET4 even with all nine callers present. [2026-10-19]

@@ -111,7 +111,11 @@ compiler traces. Compare the complete owner with
 `Select(0)`, the browse cursor pointer and the duration-first interpolation
 call recover the corresponding code sequences. The exact interpolation
 helper keeps its 206 bytes. The remaining phase 1 and 2 table entries
-are two bytes early, and the prologue and parser still differ.
+are two bytes early. The parser and preview setup leave the initial row
+block seven bytes early. An extra entry jump and alignment account for
+five of those bytes. Recheck both inlined `CreateVmVariant0` sites when
+changing the loop form. The parser's `do` countdown loses both expansions
+and six linker fields. The countdown `for` keeps them.
 
 `EclVmContext::Run` compares 6,997/7,020 bytes in the current GameManager
 graph with 189 bound fields. Twelve residual bytes come from the
