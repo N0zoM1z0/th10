@@ -315,6 +315,12 @@ addresses and record layouts from TH10's backend.
   at allocator entry before editing their final instruction order.
   [TH09 Player movement](../../../th09-reconstruction/th09/docs/KNOWLEDGE_BASE.md#replacement-of-the-configuration-load)
   [TH09 selected-row conversion](../../../th09-reconstruction/th09/docs/KNOWLEDGE_BASE.md#selected-row-conversion)
+- TH09's `ChargeAttack` recovered its entry registers and all 70 field
+  positions by capturing a two-byte configuration row with the side
+  index. Capturing the whole configuration pointer changed later
+  register selection. Trace the liveness of the specific row or field
+  needed by the caller when a broader snapshot changes the allocation.
+  [TH09 ChargeAttack](../../../th09-reconstruction/th09/docs/KNOWLEDGE_BASE.md#2026-11-21-chargeattack-input-and-timer-allocation)
 
 In TH10's C2, the stack-colour comparator at `0x1078E2D9` orders by
 class, then by signed integer `weight * 1000 / size`. The midpoint
@@ -720,7 +726,22 @@ frontier; do not refresh a baseline merely to accept the new positions.
   remaining 66 bytes are within `+0x000..+0x127`, in the entry and
   the name and attempt updates. The reference's by-value panel
   appearance and direct first name copy preserve those differences.
-  The `enemy-start-spell` recipe binds the full candidate. [2026-11-23]
+  The `enemy-start-spell` recipe binds the full candidate.
+
+  The VC7.1 6030 global allocator gives the maintained name a weight of
+  31 with only EBX available. Advancing the formal name argument in the
+  aggregate copy lets LTCG pass it in a register and emit `RET 0xC`.
+  Making `StartSpell` the link entry for diagnosis restores the retail
+  four stack arguments and exposes a different conflict. The advancing
+  name has weight 79 and takes EAX ahead of the record offset at 78.
+  Recomputing the aggregate counter address drops the name to 77 and
+  gives the offset EAX and the name ECX, as in retail. It also adds a
+  stack store of the name and replaces the counter access through ESI
+  with indexed addressing. The real dispatcher entry and default member
+  convention leave the maintained residual unchanged. Changing the
+  registration result also changes the independently matching 118-byte
+  `AddVmVariant0`. The paired allocator traces are under
+  `.analysis/start-spell/`. [2026-11-23]
 - **ItemManagerUpdateBody @0x41AFD0 (2,320)** is exact in the registration-rooted
   `/GL` link, with 154 bound fields, 73 direct local branches and both jump
   tables at their target offsets. Expressing the distance scale as

@@ -161,8 +161,13 @@ The model, compiler traces and recipes are in `.analysis/ecl-run/results.txt`.
 setups, and reading the VM through the matched list node restores
 the layout through the seven-entry stage table. All 108 fields
 are bound. The remaining differences are in the first 0x128
-bytes. Check the lifetimes of the name, index and statistics base
-in the prologue and the three name copies.
+bytes. Advancing the name in the aggregate loop changes the private
+calling convention. With the stack ABI held for diagnosis, lowering
+the name's allocation weight below the record offset puts both in the
+retail registers but changes the counter addressing and adds a stack
+store. Reopen with a lifetime change that keeps the counter on its
+existing record pointer and preserves the four stack arguments. The
+paired controls are in `.analysis/start-spell/results.txt`.
 
 `InitializeGameStatisticsRecord` matches 249 of 274 bytes with all eight
 DIR32 fields bound in `game-statistics-initialize-record`. The allocator
