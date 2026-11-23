@@ -12,12 +12,6 @@ candidate_size = 335
 target_sha256 = "e20984dc1778b1bfcdc3a91d44db88057c326184264be1fa698cd9df1284bc8f"
 residual = ["D7", "DD"]
 
-[frontier.gui-message-run-candidate]
-function = "GuiMessageVmView::Run"
-unit = "gui-message-run-candidate"
-candidate_size = 4480
-target_sha256 = "13c80eaec4d7e90718b107f1e37ea8de7bd57d8ac3f86f0af4b6269644614c35"
-residual = ["9D-9F", "430", "43D", "451-459", "45E", "482", "48D", "4A5-4AD", "4B0", "4B2", "4F5", "4F8", "4FD", "512", "515", "518", "51A", "537", "53A", "53F", "557", "55A", "55C", "5A5", "5AB", "5C9-5CD", "5CF", "5D5-5D6", "5D8", "5DA-5DB"]
 [frontier.enemy-read-float-operand]
 function = "EnemyFullObjectView::ReadFloatOperand"
 unit = "enemy-read-float-operand"

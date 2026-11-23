@@ -11,6 +11,12 @@
 
 ## Recent reconstruction
 
+- `gui-message-run` is exact at 4,480 bytes with 337 bound fields,
+  including all 43 switch entries and four fixed references to the tables.
+  The two text cases inline the same helper in the order that restores the
+  shared lookup schedule. Both player portrait handlers set up the scratch
+  allocation for all 16 enemy portrait pairs. See the
+  [compiler notes](KNOWLEDGE_BASE.md) for the code shapes and trace points.
 - `midi-event-tick` is exact at 473 bytes with 14 bound fields and 12
   fixed local branches. The next event tick comes directly from the
   track array, and the parser takes the address of that same entry. The
@@ -96,20 +102,6 @@ owners. Use its statement order, case structure and helper visibility as
 hypotheses and verify them in the maintained TH10 graph. Stand-in callee
 bodies, context callers, `#pragma code_seg` placement and assembly
 fallbacks are inadmissible here.
-
-`GuiMessageVmView::Run` has the full 4,480-byte extent and all 47 fixed
-table fields in `gui-message-run-candidate`. Computing each second sprite
-index before rebinding its resource restores the portrait case layout.
-Reading instruction time in the `while` condition restores the table base.
-The shared replay exit, typed faith load and scalar transition handle
-reference restore the stage-clear tail. Packed operand reads leave the
-first word of each enemy portrait pair in the local scratch pass.
-Stage one's character-1 branch is emitted first and starts the sequence
-that matches the other 15 pairs. The frontier has 54 differences through
-`+0x5DB`. The first pair's second manager field is the only displaced
-external field. Trace the preceding side-position and player-portrait
-choices for an EDX start at the first pair. The direct caller remains
-exact. See `.analysis/gui-message-run/results.txt` for the controls.
 
 `MidiOutputView::ProcessEvent` matches 1,644 of 1,670 bytes and all
 37 linkage fields in the `MidiEventTick` graph. Using a guarded `do`

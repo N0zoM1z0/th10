@@ -632,45 +632,39 @@ frontier; do not refresh a baseline merely to accept the new positions.
   Keep the leaf spelling that preserves the parent `Run` schedule; solve the
   23-byte parent residual independently.
 
-- **GuiMessageVmView::Run @0x415E90 (4,480)**: computing the second
-  sprite index before rebinding the animation resource restores all seven
-  portrait stage destinations and grows the candidate from 4,464 to 4,476
-  bytes. Putting the instruction time directly in the `while` condition
-  also restores the pointer copy at the loop tail and the complete extent.
-  All 43 switch destinations and four table references agree in place.
-  The frontier has 54 differences through `+0x5DB`. The external
-  inventory has 290 fields, of which 289 match their retail type,
-  address and position.
-  The 3,836-byte `GuiView::UpdateStageElements` caller and the sprite
-  helpers compare exactly in the same linked image.
+- **GuiMessageVmView::Run @0x415E90 (4,480)** matches its complete
+  extent in the 16-TU VC7.1 SP1 build 6030 `/GL` graph. The
+  `gui-message-run` recipe binds 150 relative calls, 140 external absolute
+  fields and 47 fixed local fields. Putting the time read in the
+  `while` condition and computing the second enemy sprite index before
+  rebinding the animation resource recover the switch layout.
 
-  The first alternating-text lookup reaches its retail load order when
-  the two compiler barriers are removed. The fixed manager field is
-  at `+0xEF`.
+  C2's local scratch selector at `0x1079C39D` rotates through EAX, ECX
+  and EDX across the emitted blocks. In both player portrait cases, a
+  named packed command for the first sprite and a direct packed operand
+  for the second choose EDX, EAX and ECX. The first enemy portrait pair
+  can then start at EDX. Its five assignments leave the next pair
+  starting at EDX again, which gives all 16 pairs the same source shape.
+  The analogous player-movement traces in TH09 prompted checking the
+  preceding blocks. For the side opcodes, passing each existing
+  `AnmVmIdView` by value from its slot restores all four position calls.
 
-  The VC7.1 6030 scratch selector (`0x1079C39D`) walks EAX, ECX and
-  EDX, skipping occupied registers. The direct packed-field read keeps
-  both the second command pointer and its operand local. Taking the first
-  operand through a named command view adds one local request between the
-  two manager loads. When the first load starts at EDX, the five choices
-  are EDX, EAX, ECX, EDX and ECX. The next branch starts at EDX again.
-  Keeping the index-first form in stage one's character-1 branch, which
-  is laid out first, reaches that sequence in all 15 later branches.
-  The only displaced external field is the first branch's second
-  manager load, `+0x5CA` in retail and `+0x5D0` in the candidate.
-  The side-position and player portrait register choices also remain open.
+  The last difference was the order of `mov edx, ebx` and `push eax`
+  before the first text VM lookup. Both had priority `0x2400` at the
+  scheduler trace point `0x107B0B9B`. A shared source label feeding one
+  lookup put the push first. Inlining the same draw helper for both
+  cases, with the second line's invocation before the first line's in
+  source, lets C2 merge them with the retail order and both original
+  switch destinations. The two WAIT reset paths also stay separate with
+  ordinary timer and line resets, so the compiler barrier was removed.
 
-  Sharing the mode-4 destination restores the stage-six increment test
-  and the stage-seven branch back to it. With the standalone faith
-  scalar, the shared tail grows the owner by eight bytes because the
-  stage-seven flag update stays split. Reading `GameScoreStateView::faith`
-  at `0x474C40 + 0x0C` adds a scheduler edge from the flag store to the
-  faith load at `0x107B0B9B`. The contiguous update folds to the original
-  memory OR. Keeping a reference to the scalar transition ID restores its
-  clear before the resource load and the result register used for the
-  handle writeback. The complete suffix from `+0xB5C` now agrees after
-  field binding. The source and trace recipes are in
-  `.analysis/gui-message-run/results.txt`. [2026-11-23]
+  The stage-clear suffix uses a shared mode-4 exit. Reading faith from
+  `GameScoreStateView` at `0x474C40 + 0x0C` gives the scheduler an edge
+  from the flag store to that load, folding the flag update to a memory
+  OR. Keeping a reference to the scalar transition ID orders the clear
+  before the resource load and restores the handle writeback. Selected
+  replay is `scripts/repo-python scripts/replay-exact-units.py --unit
+  gui-message-run`. [2026-11-23]
 - **ResultMenuUpdateResult @0x4236F0 (3,227)**: four-TU graph (FrontEnd `/GL /GS
   /EHs`, VmIdInterrupt, real Enemy sound callee, AnmVmId), 3,228 bytes,
   784/907 normalized, 173 fields. Open: states 7/8 and 10-13, the GUI score

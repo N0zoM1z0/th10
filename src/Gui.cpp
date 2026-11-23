@@ -174,7 +174,7 @@ static __forceinline int *GuiStageClearCount(const int *stageState)
         reinterpret_cast<unsigned int>(g_GuiPersistentData) + offset);
 }
 
-// Portrait commands carry a four-byte scalar immediately after the header.
+// Portrait commands carry a four-byte operand after the packed header.
 #pragma pack(push, 1)
 struct GuiMessageSpriteCommandView
 {
@@ -187,16 +187,6 @@ struct GuiMessageSpriteCommandView
 typedef char GuiMessageSpriteCommandOperandAt04[
     (offsetof(GuiMessageSpriteCommandView, operand) == 4) ? 1 : -1];
 
-// A portrait sprite index is formed by a 32-bit i386 ADD on a serialized
-// script operand. Use unsigned arithmetic for the native wraparound.
-static __forceinline int GuiPortraitSpriteScriptIndex(
-    const GuiMessageInstructionView *instruction, unsigned int offset)
-{
-    return static_cast<int>(
-        static_cast<unsigned int>(GuiMessageInstructionIntArgument(instruction)) +
-        offset);
-}
-
 // The dialogue side selects a real twelve-byte text-position record.
 // Form the unchecked native address as a wrapping i386 word.
 static __forceinline const AnmFloat3View *GuiMessageSideTextPosition(
@@ -207,6 +197,22 @@ static __forceinline const AnmFloat3View *GuiMessageSideTextPosition(
         static_cast<unsigned int>(sizeof(message->textPositions[0]));
     return reinterpret_cast<const AnmFloat3View *>(
         reinterpret_cast<unsigned int>(&message->textPositions[0]) + offset);
+}
+
+static __forceinline void DrawGuiMessageTextLine(
+    GuiMessageVmView *message, AnmVmIdView *textLineId)
+{
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    AnmVmView *line = manager->FindVm(*textLineId);
+    if (line == NULL)
+        textLineId->value = 0;
+    unsigned char *text = th10::leaf::Fn00417010(
+        GuiMessageInstructionPayload(message->currentInstruction));
+    manager->DrawTextLeft(line,
+        message->textColors[static_cast<unsigned int>(message->activeSide)],
+        reinterpret_cast<const char *>(text));
+    PlayerSetShotVmInterrupt2(
+        reinterpret_cast<unsigned int *>(&textLineId->value));
 }
 
 int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
@@ -226,29 +232,20 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
         GuiMessageInstructionTime(message->currentInstruction))
     {
         GuiMessageInstructionView *instruction = message->currentInstruction;
-        AnmVmIdView *textLineId;
         // Retain the target's physical dispatch groups, starting with text output.
+        AnmVmIdView *textLineId;
         switch (GuiMessageInstructionOpcode(instruction))
         {
         // Both text entries share the lookup/decode/draw body.
         case GUI_MSG_TEXT_LINE_0:
             textLineId = &message->vmIds[GUI_MESSAGE_TEXT_LINE_0];
-            goto DrawMessageTextLine;
+            goto DrawFirstMessageLine;
         case GUI_MSG_TEXT_LINE_1:
-            textLineId = &message->vmIds[GUI_MESSAGE_TEXT_LINE_1];
-        DrawMessageTextLine:
-        {
-            AnmRenderManagerView *manager = g_AnmRenderManagerView;
-            AnmVmView *line = manager->FindVm(*textLineId);
-            if (line == NULL)
-                textLineId->value = 0;
-            unsigned char *text = th10::leaf::Fn00417010(
-                GuiMessageInstructionPayload(message->currentInstruction));
-            manager->DrawTextLeft(line, message->textColors[static_cast<unsigned int>(message->activeSide)],
-                reinterpret_cast<const char *>(text));
-            PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&textLineId->value));
+            DrawGuiMessageTextLine(message, &message->vmIds[GUI_MESSAGE_TEXT_LINE_1]);
             break;
-        }
+        DrawFirstMessageLine:
+            DrawGuiMessageTextLine(message, textLineId);
+            break;
         case GUI_MSG_TEXT_LINE_ALTERNATING:
             if (message->alternatingLine == 0)
             {
@@ -422,11 +419,12 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value));
             message->activeSide = 0;
             AnmRenderManagerView *manager = g_AnmRenderManagerView;
+            // The slot's address operator exposes its AnmVmIdView.
             manager->SetVmPosition(
-                message->vmIds[GUI_MESSAGE_TEXT_LINE_0],
+                *message->vmIds[GUI_MESSAGE_TEXT_LINE_0].operator&(),
                 &message->textPositions[0]);
             manager->SetVmPosition(
-                message->vmIds[GUI_MESSAGE_TEXT_LINE_1],
+                *message->vmIds[GUI_MESSAGE_TEXT_LINE_1].operator&(),
                 GuiMessageSideTextPosition(message));
             message->alternatingLine = 0;
             break;
@@ -439,10 +437,10 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             message->activeSide = 1;
             AnmRenderManagerView *manager = g_AnmRenderManagerView;
             manager->SetVmPosition(
-                message->vmIds[GUI_MESSAGE_TEXT_LINE_0],
+                *message->vmIds[GUI_MESSAGE_TEXT_LINE_0].operator&(),
                 &message->textPositions[1]);
             manager->SetVmPosition(
-                message->vmIds[GUI_MESSAGE_TEXT_LINE_1],
+                *message->vmIds[GUI_MESSAGE_TEXT_LINE_1].operator&(),
                 GuiMessageSideTextPosition(message));
             message->alternatingLine = 0;
             break;
@@ -459,22 +457,30 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             {
                 case 0:
                 {
+                    const GuiMessageSpriteCommandView *firstCommand =
+                        reinterpret_cast<const GuiMessageSpriteCommandView *>(message->currentInstruction);
                     ResultMenuFindScript(
                         &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x17).SetSprite(
-                            GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x34u));
+                            static_cast<int>(static_cast<unsigned int>(firstCommand->operand) + 0x34u));
                     ResultMenuFindScript(
                         &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x1a).SetSprite(
-                            GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x3cu));
+                            static_cast<int>(static_cast<unsigned int>(
+                                reinterpret_cast<const GuiMessageSpriteCommandView *>(
+                                    message->currentInstruction)->operand) + 0x3cu));
                     break;
                 }
                 case 1:
                 {
+                    const GuiMessageSpriteCommandView *firstCommand =
+                        reinterpret_cast<const GuiMessageSpriteCommandView *>(message->currentInstruction);
                     ResultMenuFindScript(
                         &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x17).SetSprite(
-                            GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x2du));
+                            static_cast<int>(static_cast<unsigned int>(firstCommand->operand) + 0x2du));
                     ResultMenuFindScript(
                         &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x1a).SetSprite(
-                            GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x35u));
+                            static_cast<int>(static_cast<unsigned int>(
+                                reinterpret_cast<const GuiMessageSpriteCommandView *>(
+                                    message->currentInstruction)->operand) + 0x35u));
                     break;
                 }
             }
@@ -506,12 +512,15 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                     case 1:
                     {
                         AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const GuiMessageSpriteCommandView *firstCommand =
+                            reinterpret_cast<const GuiMessageSpriteCommandView *>(message->currentInstruction);
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18).SetSpriteWithAnm(
-                            resource, GuiPortraitSpriteScriptIndex(message->currentInstruction, 0xfu));
-                        const int spriteIndex = GuiPortraitSpriteScriptIndex(message->currentInstruction, 0x17u);
+                            resource, static_cast<int>(static_cast<unsigned int>(firstCommand->operand) + 0xfu));
                         resource = g_EnemyManager->typedEffectResources.stageAnimationAnm;
                         ResultMenuFindScript(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b).SetSpriteWithAnm(
-                            resource, spriteIndex);
+                            resource, static_cast<int>(static_cast<unsigned int>(
+                                reinterpret_cast<const GuiMessageSpriteCommandView *>(
+                                    message->currentInstruction)->operand) + 0x17u));
                         break;
                     }
                     }
@@ -782,8 +791,6 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 }
 
                 message->waitTimer.SetCurrent(0);
-                // Keep the observed skip reset separate from the audio-path reset.
-                _ReadWriteBarrier();
                 message->alternatingLine = 0;
             }
             else
