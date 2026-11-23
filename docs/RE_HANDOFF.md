@@ -72,13 +72,13 @@ Never use inline assembly, naked functions, fake ABI declarations, stand-in call
 
 `ExecuteScript` at 0x0043EE30 compares 9,962/9,964 bytes in the current
 GameManager graph and the earlier player-collision graph. All 350 fields
-and 95 fixed local destinations bind. C2 considers both ECX and EDX for
-opcode 91's layer at global allocation and selects ECX. Separating the
-integer accessor or the interpreter into its own `/GL` source leaves
-that choice in place. Reopen when a source or real-callee change can
-alter the layer's allocation while preserving the late resource load
-and both shared tails. See the [knowledge base](KNOWLEDGE_BASE.md) for
-the measured compiler entry points.
+and 95 fixed local destinations bind. In opcode 91, ECX and EDX tie in
+global allocation, and ECX comes first. A reference to the layer moves
+it to local allocation, where the two loads get ECX and EDX and the
+resource load moves early. Reopen with evidence for a local scratch
+request between opcode 88's resource load and opcode 91's layer, or
+for a change in global ECX liveness. See the [knowledge base](KNOWLEDGE_BASE.md)
+for the measured compiler entry points.
 
 ## Strategy for the remaining authored bytes
 

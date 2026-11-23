@@ -480,8 +480,22 @@ frontier; do not refresh a baseline merely to accept the new positions.
     assignments untouched.
   - The load's destination operand points to the allocation symbol at
     `+0x18`. At `0x107AAC16` that symbol is candidate 45, with weight 32
-    and ECX, EDX, ESI and EDI available. The compiler selects ECX.
-    Moving either `GetIntVar` or the whole
+    and ECX, EDX, ESI and EDI available. All four costs are zero in the
+    array at `0x10882678`. The chooser walks EAX, ECX, EDX, ESI, EDI,
+    EBX, EBP and replaces its choice only for a strictly smaller signed
+    cost. ECX wins the tie.
+  - A reference to the render-layer field removes the layer's global
+    candidate. The resource load still follows the first two pushes
+    on entry to local allocation. After opcode 88's resource takes EDX,
+    opcode 91's layer takes ECX and its resource takes EDX. The emitted
+    resource load then precedes both pushes. This compares 9,954/9,964
+    with all 350 fields bound. Copying the layer word with `memcpy` into
+    the existing request retains the 9,962-byte baseline. Look for a
+    source operation that adds a local scratch request between the
+    opcode 88 resource and opcode 91 layer. With an EDX layer and an EAX
+    resource, the resource load must follow the script index's push
+    because both values use EAX.
+  - Moving either `GetIntVar` or the whole
     interpreter to a separate `/GL` translation unit preserves the two
     differences. The moved `GetIntVar` independently matches all 144 bytes
     and 15 fields. Aggregate initialization of the script/layer pair also
