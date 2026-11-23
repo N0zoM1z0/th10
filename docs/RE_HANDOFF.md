@@ -97,13 +97,13 @@ are two bytes early, and the prologue and parser still differ.
 `EclVmContext::Run` compares 6,997/7,020 bytes in the current GameManager
 graph with 189 bound fields. Twelve residual bytes come from the
 equal-weight integer add and subtract result words taking reversed stack
-slots. The 6030 sort model reproduces the order of all 65 stack colours
-from the trace. Raising the add result's weight from six to seven in the
-model exchanges just those two colours. Changing case order moved local
-destinations, and the scoped declaration and scalar-form trials preserved
-all 23 differences. Reopen with an operand-lifetime change that can affect
-the weights before sorting. The model and comparison recipes are in
-`.analysis/ecl-run/results.txt`.
+slots. The 6030 sort model reproduces all 65 traced colours. Raising the
+add result's weight from six to seven exchanges just the two homes in
+the model. Moving the shared `FORMAT` cursor and `LENGTH_SQUARED` colour
+ahead of the subtract result yields the same exchange. Separate tag and
+payload cursors move fields in `FORMAT`. Reopen with a source lifetime
+that can change initial colour order while keeping the existing field
+positions. The model and recipes are in `.analysis/ecl-run/results.txt`.
 
 ## Commands
 

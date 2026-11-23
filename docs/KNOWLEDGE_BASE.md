@@ -547,7 +547,22 @@ frontier; do not refresh a baseline merely to accept the new positions.
   and the exact 122-byte and 96-byte leaf bodies, respectively. Extracting
   `Pop`'s raw copy into an inline helper expands the parent residual to
   119 bytes. Publishing the wrapped sum through a named word retains the
-  home order and changes four SIB encodings elsewhere in `Run`. [2026-11-23]
+  home order and changes four SIB encodings elsewhere in `Run`.
+
+  The anonymous `FORMAT` tag-byte cursor stays at `ESP+0x18`, the same
+  home as the named `x` in `LENGTH_SQUARED`. The cursor has weight six
+  and `x` has weight three. C2 groups them in pre-sort colour four, just
+  after the two arithmetic colours. In the traced sort model, raising
+  the cursor's weight to seven and moving its group ahead of the
+  subtract result exchanges just the add and subtract homes. All other
+  homes stay fixed in that model. A named `tagByteOffset` confirms the
+  anonymous cursor's identity and preserves every weight and colour
+  membership. It changes instruction and field positions in `FORMAT`.
+  The separate payload-word cursor changes the owner extent, and a
+  signed source index leaves the original 23 differences.
+  Moving `ReadIntValue` and `FindThread` to separate `/GL` sources in
+  independent trials retains the 23 differences and both leaves' exact
+  124- and 36-byte bodies. [2026-11-23]
 - **EclVmHost::StopAllThreads @0x450190 (31)**: exact 31/31 after making the stop helper accept the already-resolved `EclVmContext*`; both STOP_THREAD and STOP_ALL_THREADS now pass the context explicitly. The parent `EclVmContext::Run` schedule remains at its existing 23-byte residual. [2026-11-19]
 
 - **EclVmStackView::Pop @0x450610 (122)**: exact 122/122 with the typed
