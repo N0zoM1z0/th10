@@ -876,18 +876,29 @@ frontier; do not refresh a baseline merely to accept the new positions.
 - **Player::~Player @0x424ED0 (325)**: 333. [2026-10-31]
 - **FrontEndInsertScore @0x421FA0 (316)**: 263; the helper uses 64-bit `100.0`
   where the target uses 32-bit. [2026-10-15]
-- **InitializeGameStatisticsRecord @0x42ACB0 (274)**: the pinned five-source
-  `/GL` statistics graph produces the complete 274-byte PDB function with
-  75 decoded instructions. Expressing rank-kind lookup through the natural
-  signed-byte table pointer (`*(g_GameStatisticsRankKind + index)`) improves
-  normalized instruction agreement from 45/75 to 58/75 without changing
-  the two 4-byte name copies or the nine-byte destination. The remaining
-  differences concern the zero-word register, name-copy register allocation,
-  group-count register and two commutative SIB byte encodings; the complete
-  function is not yet exact. Its separate 142-byte tail initializer, 423-byte
-  statistics loader and 564-byte finalizer remain exact in the same image.
-  The selected function has its own residual ratchet, not exact credit.
-  [2026-11-19]
+- **InitializeGameStatisticsRecord @0x42ACB0 (274)**. The six-TU
+  `GameStatisticsTail` graph matches 249 bytes and binds all eight DIR32
+  fields in the complete PDB contribution. Three read the nine-byte
+  default name at `0x46E858`; five refer to the signed rank-kind table at
+  `0x4743C0`. The strict recipe is `game-statistics-initialize-record`.
+
+  In VC7.1 SP1 C2, the name destination has global allocation weight 192
+  and chooses ESI. The live ninth byte scores 128 and claims EDX before
+  the zero constant (59), leaving EBX for zero and EDI for the outer
+  count. Reading the ninth byte at its store makes EDX hold zero and EBX
+  hold the name, with 65 of 75 normalized instructions matching. The
+  field for that load moves from `+0x5C` to `+0x62`, or `+0x5F` when
+  the read follows just the first zero store. Changing the outer loop
+  between count-up and countdown gives the same displacement.
+
+  The reference's `strcpy(name, "--------")` intrinsic gives both word
+  stores the same destination register and assigns zero to EDX. C2
+  creates a second induction cursor and spills the outer count. Advancing
+  from the return of `strcpy` keeps the active cursor in EAX, while the
+  count stays spilled and the name uses a second register. The next
+  source shape should keep the intrinsic copy and a single live cursor.
+  The traces and controls are under `.analysis/statistics-record/`.
+  [2026-11-23]
 - **PlayerLoadOptionData @0x426520 (229)**: canonical scoped 20-support-TU
   VC7.1 /GL cold replay in the real `EnemyReadIntOperand`/`PlayerInitialize`
   caller graph. The complete 229-byte `src/Player.cpp` PDB contribution

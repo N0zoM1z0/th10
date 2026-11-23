@@ -130,6 +130,14 @@ positions. A direct left-operand pop in `EQUAL_FLOAT` shifts its two
 SIB differences to `NOT_EQUAL_FLOAT` with the same complete count.
 The model and recipes are in `.analysis/ecl-run/results.txt`.
 
+`InitializeGameStatisticsRecord` matches 249 of 274 bytes with all eight
+DIR32 fields bound in `game-statistics-initialize-record`. The allocator
+trace explains why the ninth name byte takes EDX from zero. The
+reference's literal `strcpy` restores both name word stores through the
+same register and gives zero EDX, then spills the outer count. Reopen
+with a single-cursor source form that keeps the literal copy. See the
+[knowledge base](KNOWLEDGE_BASE.md) for the measured field movement.
+
 ## Commands
 
 ```sh
