@@ -1251,30 +1251,36 @@ register preservation or mod-ref assumptions) where our builds exploit it
   Keeping a named track pointer leaves seven differences because C2
   combines the base and index in the load and advances the pointer
   afterwards. A volatile track-pointer read has the same residual.
-  The same link preserves the parser's previous 1,670-byte candidate,
-  including all 37 field positions and references. [2026-11-23]
+  The same link carries the complete 1,670-byte parser candidate.
+  [2026-11-23]
 - `MidiOutputView::ProcessEvent` at `0x43B110` has a 1,670-byte owner
   including 1,323 code bytes and three compressed switch tables. The
   `Tick` link originally emitted 1,690 bytes. An inline long-message
   helper that returns `bool` restores the 1,670-byte extent and the
-  parser's prologue and cursor registers. Returning `BOOL` brings back
-  the 1,690-byte layout. Giving short-message packing and sending
-  its own inline helper also restores the volume handler's `FILD` after
-  the channel-volume store, even though that handler stays unchanged.
+  parser's prologue and cursor registers. Giving short-message packing
+  and sending its own inline helper restores the volume handler's `FILD`
+  after the channel-volume store.
   The helper takes the device handle by reference so the long send
   reloads it after the prepare call. TH09's `MidiDevice` methods suggest
   this split. [2026-11-23]
-  - All 14 external symbols bind in instruction order, and all three
-    selector streams match. Ten external fields and the second dispatch
-    table's two references move within the first half of the code. Of 17
-    table destinations, only the system-status target is displaced,
-    from +0x177 to +0x171.
-  - The two SysEx allocation calls share one stack cleanup in the
-    current build. The original pops the first argument before reading
-    the variable-length size. The long-send result also uses an 8-bit
-    `SETNE` sequence where the target normalizes and spills a 32-bit
-    value. The tempo loop starts at the original address after the
-    compiler adds a different jump and alignment sequence.
+  - Declaring `MidiReadVariableLength` as `__stdcall` restores both
+    SysEx allocation cleanups. Following the C2 pass tracing used in
+    TH09, the TH10 VC7.1 trace shows the call already defines ESP at
+    global allocation entry (`0x107A5471`). That dependency keeps the
+    first cleanup before the length read. LTCG still passes the cursor
+    in ESI, and the complete 26-byte reader matches.
+  - The parser aligns 386 of 391 instructions. All 14 external symbols
+    bind in order and all three selector streams match. Six external
+    fields and both second dispatch references are three bytes early.
+    The only displaced table destination is system status at +0x174,
+    with original offset +0x177.
+  - The long-send helper's `bool` emits `SETNE` and `TEST`. Returning
+    `BOOL` recovers the original `NEG/SBB/NEG` conversion and 32-bit
+    store, with a different spill slot and a 1,690-byte extent. Changing
+    the status-nibble locals' declaration order or width and sharing
+    the length local across system messages did not recover the frame.
+    The tempo loop's entry agrees after a different jump and alignment
+    sequence absorbs the displacement.
   - Tempo uses IMUL 0x101.
   - Clock parameters are sign-extended to u64.
   - Timer base is 16 bytes; vtable 46F810 slot 0 is default Tick @0x43B8B0, and derived slot 46F80C names Tick @0x43AF30.

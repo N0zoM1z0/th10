@@ -93,7 +93,7 @@ public:
     static void __stdcall ProcessEvent(MidiOutputView *output, MidiTrackView *track);
 };
 
-unsigned int MidiReadVariableLength(unsigned char **cursor);
+unsigned int __stdcall MidiReadVariableLength(unsigned char **cursor);
 
 typedef char MidiTrackSizeIs20[(sizeof(MidiTrackView) == 0x20) ? 1 : -1];
 typedef char MidiTrackCursorAt14[

@@ -158,7 +158,7 @@ int MidiOutputView::StopPlayback()
 
 // TH10 0x0043A730: unsigned accumulation wraps at 32 bits. Input bounds and
 // a terminating byte are caller preconditions in the target.
-unsigned int MidiReadVariableLength(unsigned char **cursor)
+unsigned int __stdcall MidiReadVariableLength(unsigned char **cursor)
 {
     unsigned int value = 0;
     unsigned char byte;
