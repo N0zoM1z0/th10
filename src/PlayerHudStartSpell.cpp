@@ -89,7 +89,6 @@ static __forceinline AnmVmView *FindPanelChild(int &handle, int script)
     return 0;
 }
 
-#pragma code_seg(".text$00409280_fn")
 void __stdcall EnemyGameStateView::StartSpell(
     int index, const char *name, int duration)
 {
@@ -254,4 +253,3 @@ void __stdcall EnemyGameStateView::StartSpell(
         break;
     }
 }
-#pragma code_seg()

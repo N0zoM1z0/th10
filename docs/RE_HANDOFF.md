@@ -173,9 +173,9 @@ time guard, whose last local allocation starts at EAX while retail
 uses EDX. The model, compiler traces and recipes are in
 `.analysis/ecl-run/results.txt`.
 
-`EnemyGameStateView::StartSpell` matches 2,366/2,432 bytes in maintained
-source. The retained `spell-restore-aggregate-name` probe matches
-2,402/2,432 with all 108 fields and eight fixed destinations. Restoring
+`EnemyGameStateView::StartSpell` matches 2,366/2,432 bytes in the default
+code section. The retained `spell-restore-default-code-section` probe
+matches 2,402/2,432 with all 108 fields and eight fixed destinations. Restoring
 the name just after the aggregate copy keeps the four stack arguments
 and reproduces the entry, first two copies and per-shot count. The
 aggregate now needs retail's relative store and a name lifetime that

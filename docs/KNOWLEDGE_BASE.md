@@ -908,6 +908,10 @@ frontier; do not refresh a baseline merely to accept the new positions.
   uses the same `ReplayManager::mode` at +0x10 as `EnemyEndSpell`.
   Rebinding the pointer at 0x477838 to `g_ReplayManager` preserves the
   complete extent, all field positions and the 66 differing bytes.
+  The default code section produces the same complete bound body, so
+  the source needs no private section directive. The real dispatcher
+  still pushes four words. The same link preserves the complete primary
+  back registrar and right-aligned text renderer.
 
   Restoring the formal name from a saved pointer immediately after
   the aggregate copy gives 2,402 matching bytes in the same graph.
@@ -926,8 +930,12 @@ frontier; do not refresh a baseline merely to accept the new positions.
   The name at weight 79 takes ECX. C2 preserves its original value in
   EDI, then copies it back to the stack at +0x135. Moving the restoration
   to the common path or using a saved pointer directly at the draw call
-  changes the contribution. The two natural probes and the allocator
-  trace are in `.analysis/start-spell/`.
+  changes the contribution. Moving the advancing cursor into an inline
+  history helper keeps the stack ABI and copies the name into the index
+  argument slot before the per-shot work. It shortens the owner to 2,424
+  bytes. The default code section preserves the 2,402-byte match of the
+  two-pointer probe. Its source and trace commands are in
+  `.analysis/start-spell/results.txt`.
 - **ItemManagerUpdateBody @0x41AFD0 (2,320)** is exact in the registration-rooted
   `/GL` link, with 154 bound fields, 73 direct local branches and both jump
   tables at their target offsets. Expressing the distance scale as
