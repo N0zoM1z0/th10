@@ -53,6 +53,11 @@
   and 60 fixed local branches. Its real `GamePrepareAnimationSlots` link entry
   retains the stack call and restores the update context to EDI. A local
   pointer to the second VM ID closes the delayed reset's address calculation.
+- `result-menu-update-result` is exact in the same selected cold link.
+  It reproduces all 3,260 physical bytes, 174 bound fields and eight
+  switch entries. The final score-name copy shares the source pointer
+  with the first copy and indexes the saved name by the position in
+  that array. [Compiler notes](KNOWLEDGE_BASE.md)
 - `game-manager-cleanup` is exact at 1,105 bytes with 110 bound fields. The
   recipe links the real statistics finalizer and compiles `Player.cpp` with
   `/EHs`. The statistics declaration uses explicit `__stdcall` across
@@ -98,17 +103,6 @@ into CMP. The scoped interrupt scan preserves the maintained comparison.
 Combining it with the timing probe's nonvolatile radial constructor
 changes the x87 operand order. See the [compiler traces and
 controls](KNOWLEDGE_BASE.md).
-
-## Open result-menu owner
-
-`ResultMenuUpdateResult` at 0x004236F0 has the full 3,260-byte
-extent, 174 bound fields, 128 direct local branches and eight
-switch entries. The `game-manager-update-body` link differs in
-one SIB byte at +0xAB8 in the second score-name copy. Inlining the
-upper-only cursor clamp restored state 12's third timer call and
-the three jumps to the state 10 sound tail. The remaining address
-terms and their C2 hashes are in the [compiler notes](KNOWLEDGE_BASE.md).
-The full comparison commands are in `.analysis/result-update/`.
 
 ## Strategy for the remaining authored bytes
 

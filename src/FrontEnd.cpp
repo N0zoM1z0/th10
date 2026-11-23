@@ -4419,6 +4419,7 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
                 }
                 else if (key == length - 1)
                 {
+                    const char *name = menu->name;
                     // Score-profile addresses are flat native DWORDs.
                     strcpy(reinterpret_cast<char *>(
                         reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
@@ -4427,8 +4428,16 @@ void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
                         0x1eu +
                         (static_cast<unsigned int>(menu->cursor.current) +
                          static_cast<unsigned int>(g_ReplayDifficulty) * 10u) * 0x18u),
-                        menu->name);
-                    strcpy(reinterpret_cast<char *>(g_FrontEndProfileData + 0x1d878), menu->name);
+                        name);
+                    char *lastName = reinterpret_cast<char *>(g_FrontEndProfileData + 0x1d878);
+                    const char *cursor = name;
+                    char letter;
+                    do
+                    {
+                        letter = *cursor;
+                        lastName[cursor - name] = letter;
+                        ++cursor;
+                    } while (letter != '\0');
                     menu->mainVm.SetFlag2();
                     ResultMenuEnterSaveChoice(menu, 0);
                 }

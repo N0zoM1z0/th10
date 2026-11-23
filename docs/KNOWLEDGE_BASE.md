@@ -739,12 +739,14 @@ frontier; do not refresh a baseline merely to accept the new positions.
   before the resource load and restores the handle writeback. Selected
   replay is `scripts/repo-python scripts/replay-exact-units.py --unit
   gui-message-run`. [2026-11-23]
-- **ResultMenuUpdateResult @0x4236F0 (3,260)** ends with an alignment
-  NOP and eight absolute switch entries at +0xC9C. The current
-  `game-manager-update-body` link has the full extent, all 174 bound
-  fields and all 128 direct local destinations. The only differing byte
-  is the SIB at +0xAB8 in the score name's second `strcpy`. VC7.1
-  encodes [EAX+EDX] where retail encodes [EDX+EAX].
+- **ResultMenuUpdateResult @0x4236F0 (3,260)** is exact in the cold
+  GameManager link. The comparison covers all 174 bound fields,
+  128 direct local destinations, the alignment NOP and the eight
+  switch entries at +0xC9C. The last byte was the second score-name
+  copy's SIB at +0xAB8. Both copies now share the name pointer.
+  The second copy indexes the saved name with the distance walked
+  within the menu's name array. VC7.1 preserves the original
+  source base in ESI for the offset calculation and emits [EDX+EAX].
   - In state 8, pass the result of the
     `ResultMenuFindScript(AnmVmIdView *, int)` overload directly to
     `ResultMenuPendingSix(const AnmVmIdView &)`. VC7.1 puts the return
@@ -763,17 +765,18 @@ frontier; do not refresh a baseline merely to accept the new positions.
     cancel path, with all three paths jumping to state 10's confirm
     tail at +0x50A.
   - Keep the profile pointer load in each of the two score-name
-    copies. Caching it changes registers back through state 11.
+    copies. Caching that pointer changes registers back through state 11.
     Bind the row cursors in their navigation blocks and bind the
     alphabet in each name entry handler. The direct input calls
     still test AX and both name clamps call 0x40AD20.
-  - At `OptCmpHashVal` (0x10795BC5), the walked pointer's symbol is
-    0x294 with hash 0x1A500. The loop-derived destination difference
-    is 0x66F with hash 0x19BC0. It needs a relative increase of 38
-    symbols in the current hash window to sort first. Naming the
-    editor predicates or extracting the two copies into an inline
-    helper preserves the remaining SIB. Explicit pointer loops
-    for either copy change other instructions.
+  - With two `strcpy` calls, `OptCmpHashVal` (0x10795BC5) ranked the
+    walked pointer (symbol 0x294, hash 0x1A500) before the
+    loop-derived destination difference (symbol 0x66F, hash 0x19BC0).
+    An indexed second copy by itself restored the SIB but selected
+    EAX for the subtraction at +0xAB3. Sharing the source pointer
+    with the first copy restores the ESI operand. A pointer local
+    and a reference to the nine-byte name array both produce the
+    same exact result.
   - The older four-TU link built from `587292dd` also emitted 0x4C,
     with the return temporarily at [ESP+0x14] and a subsequent copy
     to [ESP+0x10]. Replacing only the `EnemyEclDispatcher` object
