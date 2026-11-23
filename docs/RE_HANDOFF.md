@@ -92,14 +92,14 @@ hypotheses and verify them in the maintained TH10 graph. Stand-in callee
 bodies, context callers, `#pragma code_seg` placement and assembly
 fallbacks are inadmissible here.
 
-`MidiOutputView::ProcessEvent` matches 1,613 of 1,670 bytes and all
-37 linkage fields in the `MidiEventTick` graph. A `BOOL` long-send
-result and zeroing the two data bytes after resolving running status
-restore the long-send result store and tempo entry. Only +0x13 through +0x4B
-differs. Returning the long-send result before the prepare-error path
-preserves the original prologue with early zeroing and loses the result
-store before local allocation. See `.analysis/midi-event/results.txt`
-for the paired compiler traces. Compare the complete owner with
+`MidiOutputView::ProcessEvent` matches 1,644 of 1,670 bytes and all
+37 linkage fields in the `MidiEventTick` graph. Using a guarded `do`
+loop for both track checkpoint updates restores the entry, long-send
+result store and loop tails together. The two initial loop counts at
++0x3F2 and +0x45E choose ECX and are tested early. Reopen with a way
+to keep the track count in EDI through the first test and retain the
+current header and cursor allocation. See `.analysis/midi-event/results.txt`
+for the compiler traces. Compare the complete owner with
 `scripts/repo-python .analysis/midi-event/compare.py build/match-linked/MidiEventTick`.
 
 `FrontEndUpdateMusicRoom` now has the complete 2,796-byte extent.

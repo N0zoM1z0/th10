@@ -289,14 +289,14 @@ static __forceinline void MidiSendShortMessage(
 void __stdcall MidiOutputView::ProcessEvent(
     MidiOutputView *output, MidiTrackView *track)
 {
+    unsigned char data1 = 0;
+    unsigned char data2 = 0;
     unsigned char status = *track->cursor;
     if (status < 0x80)
         status = track->runningStatus;
     else
         ++track->cursor;
 
-    unsigned char data1 = 0;
-    unsigned char data2 = 0;
     unsigned char channel = status & 0x0f;
     unsigned char type = status & 0xf0;
 
@@ -415,9 +415,14 @@ void __stdcall MidiOutputView::ProcessEvent(
         case 2:
         {
             MidiTrackView *saved = output->tracks;
-            for (int i = 0; i < output->trackCount; ++i, ++saved) {
-                saved->loopCursor = saved->cursor;
-                saved->loopEventTick = saved->nextEventTick;
+            if (output->trackCount > 0) {
+                int i = 0;
+                do {
+                    saved->loopCursor = saved->cursor;
+                    saved->loopEventTick = saved->nextEventTick;
+                    ++i;
+                    ++saved;
+                } while (i < output->trackCount);
             }
             output->loopTempoMicroseconds = output->tempoMicroseconds;
             output->loopElapsedTimerTicks = output->elapsedTimerTicks;
@@ -427,9 +432,14 @@ void __stdcall MidiOutputView::ProcessEvent(
         case 4:
         {
             MidiTrackView *saved = output->tracks;
-            for (int i = 0; i < output->trackCount; ++i, ++saved) {
-                saved->cursor = saved->loopCursor;
-                saved->nextEventTick = saved->loopEventTick;
+            if (output->trackCount > 0) {
+                int i = 0;
+                do {
+                    saved->cursor = saved->loopCursor;
+                    saved->nextEventTick = saved->loopEventTick;
+                    ++i;
+                    ++saved;
+                } while (i < output->trackCount);
             }
             output->tempoMicroseconds = output->loopTempoMicroseconds;
             output->elapsedTimerTicks = output->loopElapsedTimerTicks;

@@ -1255,10 +1255,11 @@ register preservation or mod-ref assumptions) where our builds exploit it
   [2026-11-23]
 - `MidiOutputView::ProcessEvent` at `0x43B110` has a 1,670-byte owner
   including 1,323 code bytes and three compressed switch tables. The
-  current `Tick` link matches 1,613 bytes and all 37 linkage fields.
-  The 57 differing bytes span +0x13 through +0x4B, where the candidate
-  compares the status before zeroing the two data bytes at the join.
-  All three selector streams and all 17 jump-table destinations match.
+  current `Tick` link matches 1,644 bytes, all 37 linkage fields,
+  three selector streams and 17 jump-table destinations. Both track
+  loop heads at +0x3F2 and +0x45E account for the 26 residual bytes.
+  The entry, SysEx result store, tempo loop and track loop backedges
+  match after expressing both track updates as guarded `do` loops.
   [2026-11-23]
   - Declaring `MidiReadVariableLength` as `__stdcall` restores both
     SysEx allocation cleanups. Following the C2 pass tracing used in
@@ -1266,19 +1267,30 @@ register preservation or mod-ref assumptions) where our builds exploit it
     global allocation entry (`0x107A5471`). That dependency keeps the
     first cleanup before the length read. LTCG still passes the cursor
     in ESI, and the complete 26-byte reader matches.
-  - Returning Win32 `BOOL` and initializing both data bytes after
-    reading the status restores `NEG/SBB/NEG`, the store at `[esp+0x14]`
-    and the original tempo-loop entry. With both initializations before
-    the status read, the same helper gives the result a stack slot shared
-    with the MIDI header pointer and separates the meta-type and channel
-    slots. The compiler then emits a 1,690-byte owner.
+  - With early data initialization and the two pointer `for` loops,
+    the `BOOL` build gives the cursor EBX with weight 135. The long
+    header then gets EDI with weight 97. The result shares a stack slot
+    with the header, and the meta type and channel get separate byte
+    slots. Delaying both initializations until the status join gives
+    the header EBX and the cursor EDI. That 1,613-byte match restores
+    the long-send store at `[esp+0x14]` and moves the initial zeroes.
+  - Indexing both loop updates directly through `output->tracks[i]`
+    also gives the header EBX and the cursor EDI with early zeroes.
+    At `0x107AAC16` the header has weight 133 and the cursor has
+    weight 170. The indexed loops reload the tracks pointer and grow
+    the owner to 1,678 bytes. Indexing one loop or capturing the array
+    base for both loses that entry schedule. The guarded `do` loops
+    restore both pointer strides and count reloads. Incrementing the
+    counter before the pointer also restores the branch tails. At
+    the remaining heads, the initial count goes in ECX and is tested
+    before the pointer load. The target loads it into EDI, loads the
+    pointer and clears ECX before the test.
   - Checking for successful preparation and returning the long-send
     result before the error path recovers the original entry with early
     data initialization. In that build, `NEG/SBB/NEG` already writes
     EAX directly at local allocation entry and the stack store is gone.
     A named result and a reference output parameter leave that result
-    unchanged. Preserve the original entry stores while retaining a
-    result spill shared with the metadata length.
+    unchanged.
   - The device handle reference keeps the reload after preparation.
     The inline short-message helper also restores the volume handler's
     `FILD` after the channel-volume store. TH09's `MidiDevice` methods
