@@ -1241,7 +1241,28 @@ register preservation or mod-ref assumptions) where our builds exploit it
 - Sound (`g_MainSoundOwner @0x492590`, view 0x52D0): BGM volume 0x497854, loader allocations +0x5230 (37 se_.wav), state +0x5224 (2 = cancel), finished flag +0x522C, thread handles +0x5218/+0x521C, BGM event +0x520C, BGM flag +0x5208. The load-thread handle is at 0x4977AC.
 - `CSound` is 0x5C bytes: DSBUFFERDESC at +0x34, manager at +0x58. `CStreamingSound` is 0x78 bytes. `CWaveFile` is 0x94 bytes: flags +0x78, HANDLE +0x8C, format +0x90. Vtables: CSound 0x4705D8, CStreamingSound 0x4705D4. The BGM format row is 0x34 bytes.
 - Sample buffer flags are 0x80C8, and LoadSoundSample copies 18 format bytes.
-- Parser @0x43B110 is 1670 bytes (1323 code + tables).
+- `MidiOutputView::ProcessEvent` at `0x43B110` has a 1,670-byte owner
+  including 1,323 code bytes and three compressed switch tables. The
+  `Tick` link originally emitted 1,690 bytes. An inline long-message
+  helper that returns `bool` restores the 1,670-byte extent and the
+  parser's prologue and cursor registers. Returning `BOOL` brings back
+  the 1,690-byte layout. Giving short-message packing and sending
+  its own inline helper also restores the volume handler's `FILD` after
+  the channel-volume store, even though that handler stays unchanged.
+  The helper takes the device handle by reference so the long send
+  reloads it after the prepare call. TH09's `MidiDevice` methods suggest
+  this split. [2026-11-23]
+  - All 14 external symbols bind in instruction order, and all three
+    selector streams match. Ten external fields and the second dispatch
+    table's two references move within the first half of the code. Of 17
+    table destinations, only the system-status target is displaced,
+    from +0x177 to +0x171.
+  - The two SysEx allocation calls share one stack cleanup in the
+    current build. The original pops the first argument before reading
+    the variable-length size. The long-send result also uses an 8-bit
+    `SETNE` sequence where the target normalizes and spills a 32-bit
+    value. The tempo loop starts at the original address after the
+    compiler adds a different jump and alignment sequence.
   - Tempo uses IMUL 0x101.
   - Clock parameters are sign-extended to u64.
   - Timer base is 16 bytes; vtable 46F810 slot 0 is default Tick @0x43B8B0, and derived slot 46F80C names Tick @0x43AF30.

@@ -258,8 +258,34 @@ void MidiOutputView::Tick()
         ResetTracks();
 }
 
-// TH10 0x0043B110: complete owned extent includes the three compressed
-// selector tables through 0x0043B795, separate from the executable body.
+static __forceinline bool MidiLongMessageRefused(const HMIDIOUT &handle, MIDIHDR *header)
+{
+    if (handle == NULL)
+        return false;
+    if (midiOutPrepareHeader(handle, header, sizeof(*header)) != 0)
+        return true;
+    return midiOutLongMsg(handle, header, sizeof(*header)) != 0;
+}
+
+static __forceinline void MidiSendShortMessage(
+    const HMIDIOUT &handle, unsigned char status,
+    unsigned char data1, unsigned char data2)
+{
+    if (handle == NULL)
+        return;
+    // The device consumes the three MIDI bytes in the native word.
+    union {
+        unsigned int word;
+        unsigned char bytes[4];
+    } message;
+    message.bytes[1] = data1;
+    message.bytes[0] = status;
+    message.bytes[2] = data2;
+    midiOutShortMsg(handle, message.word);
+}
+
+// TH10 0x0043B110: the owner includes three compressed switch tables
+// through 0x0043B795.
 void __stdcall MidiOutputView::ProcessEvent(
     MidiOutputView *output, MidiTrackView *track)
 {
@@ -293,14 +319,7 @@ void __stdcall MidiOutputView::ProcessEvent(
                 header->lpData[i + 1] = *track->cursor;
                 ++track->cursor;
             }
-            int failed = 0;
-            if (output->outputHandle != NULL) {
-                if (midiOutPrepareHeader(output->outputHandle, header, sizeof(*header)) != 0)
-                    failed = 1;
-                else
-                    failed = midiOutLongMsg(output->outputHandle, header, sizeof(*header)) != 0;
-            }
-            if (failed != 0) {
+            if (MidiLongMessageRefused(output->outputHandle, header)) {
                 if (header->lpData != NULL) {
                     free(header->lpData);
                     header->lpData = NULL;
@@ -419,14 +438,8 @@ void __stdcall MidiOutputView::ProcessEvent(
         }
         break;
     }
-    if (status < 0xf0 && output->outputHandle != NULL) {
-        unsigned int message;
-        unsigned char *bytes = reinterpret_cast<unsigned char *>(&message);
-        bytes[1] = data1;
-        bytes[0] = status;
-        bytes[2] = data2;
-        midiOutShortMsg(output->outputHandle, message);
-    }
+    if (status < 0xf0)
+        MidiSendShortMessage(output->outputHandle, status, data1, data2);
     track->runningStatus = status;
     track->nextEventTick = static_cast<int>(
         static_cast<unsigned int>(track->nextEventTick) + MidiReadVariableLength(&track->cursor));

@@ -88,6 +88,13 @@ hypotheses and verify them in the maintained TH10 graph. Stand-in callee
 bodies, context callers, `#pragma code_seg` placement and assembly
 fallbacks are inadmissible here.
 
+`MidiOutputView::ProcessEvent` has the complete 1,670-byte extent and
+all three original selector streams in the `MidiEventTick` graph. The
+long- and short-message helpers restore the cursor and volume schedules.
+The remaining differences are the SysEx stack cleanup, the long-send
+result conversion and the tempo-loop entry. Compare the complete owner
+with `.analysis/midi-event/compare.py build/match-linked/MidiEventTick`.
+
 `FrontEndUpdateMusicRoom` now has the complete 2,796-byte extent.
 `Select(0)`, the browse cursor pointer and the duration-first interpolation
 call recover the corresponding code sequences. The exact interpolation
