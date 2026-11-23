@@ -80,20 +80,19 @@ Never use inline assembly, naked functions, fake ABI declarations, stand-in call
 
 ## Open ANM script owner
 
-`ExecuteScript` at 0x0043EE30 compares 9,962/9,964 bytes in the current
-GameManager graph and the earlier player-collision graph. All 350 fields
-and 95 fixed local destinations bind. In opcode 91, ECX and EDX tie in
-global allocation, and ECX comes first. A reference to the layer moves
-it to local allocation, where the two loads get ECX and EDX and the
-resource load moves early. A three-field request for opcode 88 keeps
-its original ECX and EDX loads and removes both local requests. In that
-graph the timestamp check is the last local EDX assignment before
-opcode 91. The signed widening node survives global allocation with
-the same virtual destination.
-Naming the timestamp and changing the guard spelling leave it local.
-The [knowledge base](KNOWLEDGE_BASE.md) records which data and callee
-visibility changes preserved the residual and where to trace a new
-allocation lifetime.
+`ExecuteScript` at 0x0043EE30 compares 9,962/9,964 bytes with 350
+bound fields and 95 fixed local destinations. The result holds after
+recompiling the exact GUI interpreter in the GameManager graph. Opcode
+91's layer takes ECX when globally allocated. Binding it by reference
+lets the local allocator choose. Capturing the script index and resource
+together gives the resource ECX globally, which makes the layer take the
+retail EDX but moves the resource load ahead of the two pushes. Reopen
+with a source form that keeps the resource load after the index push
+and arrives at the layer with the local cursor at EDX. A three-field
+opcode 88 request already removes its two local choices. The preceding
+timestamp read still takes EDX locally, including when expressed as a
+two-byte representation read. See the [compiler traces and
+controls](KNOWLEDGE_BASE.md) for the tested shapes.
 
 ## Strategy for the remaining authored bytes
 

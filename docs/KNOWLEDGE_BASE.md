@@ -522,6 +522,24 @@ frontier; do not refresh a baseline merely to accept the new positions.
     an inlined predicate leave the layer in ECX. The next source
     hypothesis needs a different allocation lifetime or an earlier
     local choice. See `.analysis/anm-execute/anm88-resource-full-timestamp-global.trace`.
+  - Copying the signed timestamp through a two-byte representation read
+    or spelling its sign extension with shifts preserves the local
+    assignment. The same signed widening node reaches local allocation
+    after C2 folds the shifts. Recompiling the real GUI interpreter
+    after its exact reconstruction also preserves the two-byte baseline
+    in the GameManager graph.
+  - In the layer-reference trial, capturing the script index and
+    animation resource together gives the resource ECX before local
+    allocation. The layer then takes EDX, matching the first target
+    instruction of the factory setup. The global resource range also
+    makes the load precede both pushes. Retail instead loads the
+    resource into EAX after pushing the index. This variant matches
+    9,953 of 9,964 bytes with all 350 bindings, with two differences in
+    the later generated-vertex path. The focused traces are
+    `anm88-resource-full-entry-scratch` and
+    `layer-reference-resource-request-entry-scratch` in
+    `.analysis/anm-execute/`. A by-value factory argument record across
+    the real dispatcher calls retains the two-byte baseline.
   - The GameManager graph retains 9,962 matching bytes with either
     the real `AnmVmInitialize` or a definition of `g_AnmGameSpeed`
     initialized to the original image's `1.0f`. Moving `GetIntVar` out,
