@@ -543,6 +543,14 @@ frontier; do not refresh a baseline merely to accept the new positions.
     preserves that result. Loading the clock first adds a register
     load and shifts the fields. The reproducible timing-pair probe
     and trace are in `.analysis/anm-execute/results.txt`.
+  - The interrupt search uses a scoped cursor and fallback with
+    `ANM_OP_END` as its terminator. This replaces the mutable sentinel
+    without moving any residuals or bindings in the maintained graph.
+    In the timing-pair probe, explicit XYZ construction for the second
+    radial vertex removes its volatile Z read and keeps 9,962 matching
+    bytes. Applying both source changes to that probe moves six x87
+    operand bytes in the radial tail. Check the full tail when combining
+    a clock or interrupt change with the radial arithmetic.
   - In the layer-reference trial, capturing the script index and
     animation resource together gives the resource ECX before local
     allocation. The layer then takes EDX, matching the first target

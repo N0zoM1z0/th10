@@ -94,7 +94,10 @@ variant keeps the full extent and bindings. The only two differences
 move to +0x7C/+0x7F, where the global allocator assigns EAX to the
 timestamp. EAX, ECX and EDX tie on cost. Reopen with a timestamp lifetime
 that gives EDX globally while keeping the current-time operand folded
-into CMP. See the [compiler traces and controls](KNOWLEDGE_BASE.md).
+into CMP. The scoped interrupt scan preserves the maintained comparison.
+Combining it with the timing probe's nonvolatile radial constructor
+changes the x87 operand order. See the [compiler traces and
+controls](KNOWLEDGE_BASE.md).
 
 ## Strategy for the remaining authored bytes
 

@@ -3220,10 +3220,8 @@ static __forceinline int AnmSignedCountMinusOne(int count)
 int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 {
     AnmRawInstructionView *currentInstruction;
-    AnmRawInstructionView *fallbackInterrupt;
     AnmVmView *createdChild;
     float savedGameSpeed;
-    int interruptSentinel;
 
     if (vm->currentInstruction == NULL)
         return 1;
@@ -3234,7 +3232,6 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
     if (vm->useUnitSpeed)
         g_AnmGameSpeed = 1.0f;
 
-    interruptSentinel = -1;
     if (vm->pendingInterrupt != 0)
         goto handleInterrupt;
 
@@ -3448,40 +3445,39 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
                 goto stop;
             }
         handleInterrupt:
-            fallbackInterrupt = NULL;
-            currentInstruction = vm->beginningOfScript;
-            while (!((currentInstruction->opcode == ANM_OP_INTERRUPT_LABEL) &&
-                     (vm->pendingInterrupt ==
-                      currentInstruction->interruptLabel.labelId)) &&
-                   currentInstruction->opcode !=
-                       static_cast<short>(interruptSentinel))
+        {
+            AnmRawInstructionView *cursor = vm->beginningOfScript;
+            AnmRawInstructionView *fallback = NULL;
+            for (;;)
             {
-                if (currentInstruction->opcode == ANM_OP_INTERRUPT_LABEL &&
-                    currentInstruction->interruptLabel.labelId == interruptSentinel)
-                {
-                    fallbackInterrupt = currentInstruction;
-                }
-                currentInstruction =
-                    currentInstruction->Next();
+                if (cursor->opcode == ANM_OP_INTERRUPT_LABEL &&
+                    vm->pendingInterrupt == cursor->interruptLabel.labelId)
+                    break;
+                if (cursor->opcode == ANM_OP_END)
+                    break;
+                if (cursor->opcode == ANM_OP_INTERRUPT_LABEL &&
+                    cursor->interruptLabel.labelId == -1)
+                    fallback = cursor;
+                cursor = cursor->Next();
             }
             vm->pendingInterrupt = 0;
             vm->stopped = 0;
-            if (currentInstruction->opcode != ANM_OP_INTERRUPT_LABEL)
+            if (cursor->opcode != ANM_OP_INTERRUPT_LABEL)
             {
-                if (fallbackInterrupt == NULL)
+                if (fallback == NULL)
                 {
                     vm->scriptTimer.Add(-1.0f);
                     goto stop;
                 }
-                currentInstruction = fallbackInterrupt;
+                cursor = fallback;
             }
             vm->interruptReturnTimer = vm->scriptTimer;
             vm->interruptReturnInstruction = vm->currentInstruction;
-            vm->scriptTimer.SetCurrent(currentInstruction->time);
-            vm->currentInstruction =
-                currentInstruction->Next();
+            vm->scriptTimer.SetCurrent(cursor->time);
+            vm->currentInstruction = cursor->Next();
             vm->visible = 1;
             continue;
+        }
 
         case ANM_OP_RETURN:
             vm->scriptTimer = vm->interruptReturnTimer;
@@ -3813,7 +3809,6 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 #undef GET_INT_VAR
 
         vm->currentInstruction = currentInstruction->Next();
-        interruptSentinel = -1;
         continue;
     }
 
