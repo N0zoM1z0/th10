@@ -609,8 +609,13 @@ frontier; do not refresh a baseline merely to accept the new positions.
   `BITWISE_AND` tag operand at +0x1586. `NEGATE_INT`,
   `NEGATE_FLOAT_STORAGE` and `SINE` then each gain a SIB difference.
   The two `BITWISE_AND` address terms are already in the opposite
-  order at global-allocation entry (`0x107A5471`). Check source changes
-  against that ordering before investigating local register choice.
+  order at global-allocation entry (`0x107A5471`). At `OptCmpHashVal`
+  (`0x10795BC5`), the stack-offset temporary moves from ordinal
+  `0x17F1` to `0x1810`. Its hash wraps from `0x1FC40` to
+  `0x10400`. The stack-base hash goes from `0x16041` to `0x16061`,
+  so the base now sorts first. Across 37 tag comparisons with bound
+  SIB terms, a common ordinal shift for temporaries, locals or both
+  cannot reproduce all retail orders.
   A variadic FORMAT sink with both `BITWISE_OR` pops called directly
   preserves all 23 baseline differences in the maintained graph.
 - **EclVmHost::StopAllThreads @0x450190 (31)**: exact 31/31 after making the stop helper accept the already-resolved `EclVmContext*`; both STOP_THREAD and STOP_ALL_THREADS now pass the context explicitly. The parent `EclVmContext::Run` schedule remains at its existing 23-byte residual. [2026-11-19]
@@ -706,9 +711,13 @@ frontier; do not refresh a baseline merely to accept the new positions.
   [2026-11-23]
 - **RebuildPlayerOptions @0x426F70 (2,520)**: about 2,404, plain RET instead of
   RET4 even with all nine callers present. [2026-10-19]
-- **EnemyGameStateView::StartSpell @0x409280 (2,432)**: current linked
-  candidate 2,404/2,432 with 1,129 differing bytes; 14 receiver LEAs use
-  EDX instead of ESI and eight PUSH schedules differ.
+- **EnemyGameStateView::StartSpell @0x409280 (2,432)**: the retained
+  comparison is from the 2,404-byte build before the script-starter
+  rewrite. It had 1,129 differing bytes, 14 receiver LEAs in EDX
+  instead of ESI, and eight differing PUSH schedules. Retail has 15
+  calls to `AnmVmStartScript`. Include the real starter in a fresh
+  StartSpell graph before comparing the reference's direct name
+  copy and by-value panel appearance.
 - **ItemManagerUpdateBody @0x41AFD0 (2,320)** is exact in the registration-rooted
   `/GL` link, with 154 bound fields, 73 direct local branches and both jump
   tables at their target offsets. Expressing the distance scale as

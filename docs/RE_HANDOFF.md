@@ -152,7 +152,8 @@ positions. A direct left-operand pop in `EQUAL_FLOAT` shifts its two
 SIB differences to `NOT_EQUAL_FLOAT` with the same complete count.
 A named `LENGTH_SQUARED` accumulator restores the earlier
 `BITWISE_AND` address and introduces three other SIB differences.
-The address terms are already reversed at global-allocation entry.
+The stack-offset hash wraps before global allocation. A common
+ordinal shift fails the 37 bound tag-address comparisons.
 The model, compiler traces and recipes are in `.analysis/ecl-run/results.txt`.
 
 `InitializeGameStatisticsRecord` matches 249 of 274 bytes with all eight
