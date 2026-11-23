@@ -3160,18 +3160,6 @@ union AnmAxisFlagWord
 };
 typedef char AnmAxisFlagWordSizeIs4[(sizeof(AnmAxisFlagWord) == 4) ? 1 : -1];
 
-// CREATE_CHILD_91 passes this script/layer pair to the stdcall VM factory.
-struct AnmChildVmCreationArguments
-{
-    int scriptIndex;
-    unsigned int renderLayer;
-};
-typedef char AnmChildVmCreationArgumentsSizeIs8[
-    (sizeof(AnmChildVmCreationArguments) == 8) ? 1 : -1];
-typedef char AnmChildVmCreationArgumentsOffsets[
-    (offsetof(AnmChildVmCreationArguments, scriptIndex) == 0 &&
-     offsetof(AnmChildVmCreationArguments, renderLayer) == 4) ? 1 : -1];
-
 static __forceinline void TickScriptTimerScale(AnmVmTimerView *timer)
 {
     timer->previous = timer->current;
@@ -3217,10 +3205,24 @@ static __forceinline int AnmSignedCountMinusOne(int count)
     return static_cast<int>(nativeBits);
 }
 
+static __forceinline void AttachScriptChild(AnmVmView *vm, AnmVmIdView &childId)
+{
+    AnmVmView *child = childId.GetVm();
+    // The interpreter calls the list insertion routine out of line.
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
+    vm->layerNode.InsertAfter(&child->layerNode);
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
+    child->alternatePosition = vm->position;
+    child->positionOffset = vm->positionOffset;
+}
+
 int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 {
     AnmRawInstructionView *currentInstruction;
-    AnmVmView *createdChild;
     float savedGameSpeed;
 
     if (vm->currentInstruction == NULL)
@@ -3274,45 +3276,35 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
         case ANM_OP_UNIT_SPEED:
             vm->useUnitSpeed = GET_INT_VAR(0);
             break;
+        // The primary-list spawns branch directly to the common instruction advance.
         case ANM_OP_CREATE_CHILD_88:
         {
             AnmVmIdView childId = vm->anmFile->CreateVmVariant0(
                 GET_INT_VAR(0), vm->renderLayer);
-            createdChild = childId.GetVm();
-            goto child_variant_0_or_1;
+            AttachScriptChild(vm, childId);
+            goto advanceScriptInstruction;
         }
         case ANM_OP_CREATE_CHILD_91:
         {
-            AnmChildVmCreationArguments childArguments;
-            childArguments.scriptIndex = GET_INT_VAR(0);
-            childArguments.renderLayer = vm->renderLayer;
             AnmVmIdView childId = vm->anmFile->CreateVmVariant2(
-                childArguments.scriptIndex, childArguments.renderLayer);
-            createdChild = childId.GetVm();
-            goto child_variant_2_or_3;
+                GET_INT_VAR(0), vm->renderLayer);
+            AttachScriptChild(vm, childId);
+            goto advanceScriptInstruction;
         }
         case ANM_OP_CREATE_CHILD_90:
         {
             AnmVmIdView childId = vm->anmFile->CreateVmVariant1(
                 GET_INT_VAR(0), vm->renderLayer);
-            createdChild = childId.GetVm();
-        }
-        child_variant_0_or_1:
-            vm->layerNode.InsertAfter(&createdChild->layerNode);
-            createdChild->alternatePosition = vm->position;
-            createdChild->positionOffset = vm->positionOffset;
+            AttachScriptChild(vm, childId);
             break;
+        }
         case ANM_OP_CREATE_CHILD_92:
         {
             AnmVmIdView childId = vm->anmFile->CreateVmVariant3(
                 GET_INT_VAR(0), vm->renderLayer);
-            createdChild = childId.GetVm();
-        }
-        child_variant_2_or_3:
-            vm->layerNode.InsertAfter(&createdChild->layerNode);
-            createdChild->alternatePosition = vm->position;
-            createdChild->positionOffset = vm->positionOffset;
+            AttachScriptChild(vm, childId);
             break;
+        }
         case ANM_OP_SPRITE:
             vm->visible = 1;
             vm->anmFile->SetSprite(vm, GET_INT_VAR(0));
@@ -3808,6 +3800,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 #undef GET_FLOAT_VAR
 #undef GET_INT_VAR
 
+    advanceScriptInstruction:
         vm->currentInstruction = currentInstruction->Next();
         continue;
     }

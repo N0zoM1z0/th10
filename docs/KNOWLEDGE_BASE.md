@@ -343,10 +343,10 @@ The ten owners are `SpawnSingleBullet`, `UpdateBullets`, the update callback,
 deceleration, vector and polar acceleration, relative and aimed direction
 change, homing and boundary bounce.
 
-The same idea does not apply blindly. Splitting `ExecuteScript`'s two merged
-child-creation tails (opcodes 88/90 and 91/92) into four self-contained cases
-made LTCG inline `InsertAfter` and regressed the owner from 9,962/9,964 to
-9,884 bytes, so the two shared tails are retail structure. [2026-11-22]
+In the earlier `ExecuteScript` probe, expanding the four child-creation cases
+made LTCG inline `InsertAfter` and reduced the extent to 9,884 bytes.
+The exact source keeps that call and leaves C2 to merge the attachment
+tails after allocation. [2026-11-22, 2026-11-23]
 
 ### Neutral controls (do not retry without new evidence)
 
@@ -472,157 +472,34 @@ frontier; do not refresh a baseline merely to accept the new positions.
   The selected five-source `/GL` graph re-links to the complete 589/589-byte
   exact function, including both malloc/free REL32 fields. [2026-11-19]
 
-- **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)**: the current
-  GameManager and player-collision graphs strictly compare 9,962/9,964
-  bytes using the 350-field [binding contract](evidence/anm-child-request-record/binding-contract.json),
-  including 95 fixed local destinations. At +0x113 and +0x115, opcode 91
-  loads and pushes the layer through ECX where retail uses EDX.
-  - In pinned C2 13.10.6030 under `link.exe /LTCG`, opcode 91's layer
-    destination is already ECX at `RegSimpleAssign` (0x1079BD18). The
-    layer loads in opcodes 88, 90 and 92 still have virtual destinations
-    at that point. `RegAssign` selects ECX, ECX and EDX for those loads,
-    respectively. The opcode 91 resource load also reaches this pass
-    with a virtual destination and gets EAX. `Riscify` leaves these
-    assignments untouched.
-  - The load's destination operand points to the allocation symbol at
-    `+0x18`. At `0x107AAC16` that symbol is candidate 45, with weight 32
-    and ECX, EDX, ESI and EDI available. All four costs are zero in the
-    array at `0x10882678`. The chooser walks EAX, ECX, EDX, ESI, EDI,
-    EBX, EBP and replaces its choice only for a strictly smaller signed
-    cost. ECX wins the tie.
-  - A reference to the render-layer field removes the layer's global
-    candidate. The resource load still follows the first two pushes
-    on entry to local allocation. After opcode 88's resource takes EDX,
-    opcode 91's layer takes ECX and its resource takes EDX. The emitted
-    resource load then precedes both pushes. This compares 9,954/9,964
-    with all 350 fields bound. Copying the layer word with `memcpy` into
-    the existing request retains the 9,962-byte baseline. Look for a
-    source operation that adds a local scratch request between the
-    opcode 88 resource and opcode 91 layer. With an EDX layer and an EAX
-    resource, the resource load must follow the script index's push
-    because both values use EAX.
-  - Giving opcode 88 a request with script index, layer and resource
-    makes its layer and resource global allocations in ECX and EDX.
-    The opcode 88 bytes agree with retail, and both of its local
-    allocation requests disappear. The local cursor still starts opcode
-    91 at `0x108AB740` because the preceding signed timestamp load from
-    `[ebx+4]` takes EDX. EAX holds the script index, so the layer takes
-    ECX. A request containing only index and resource gives the resource
-    ECX globally and the layer EDX locally. This swaps four bytes in
-    opcode 88. Reusing a request in the two front-spawn cases merges
-    code and shortens the owner by 96 bytes.
-  - The timestamp's signed widening node already exists at global
-    allocation entry (`0x107A5471`). In the three-field request trace,
-    node `41bd240` defines the same virtual destination `4120dbc` on
-    both sides of global allocation. The choice hook at `0x107AAC16`
-    records no assignment for that destination. The timer's current field
-    folds into the comparison, while the timestamp reaches local
-    allocation as a single-block temporary. Naming it, sharing its
-    local with the interrupt path and moving the clock comparison into
-    an inlined predicate leave the layer in ECX. The next source
-    hypothesis needs a different allocation lifetime or an earlier
-    local choice. See `.analysis/anm-execute/anm88-resource-full-timestamp-global.trace`.
-  - Copying the signed timestamp through a two-byte representation read
-    or spelling its sign extension with shifts preserves the local
-    assignment. The same signed widening node reaches local allocation
-    after C2 folds the shifts. Recompiling the real GUI interpreter
-    after its exact reconstruction also preserves the two-byte baseline
-    in the GameManager graph.
-  - In the three-field opcode 88 carrier, omitting the time check in
-    scratch isolates the local register conflict. The saved game speed
-    takes ECX, then opcode 91 takes EDX for the layer and EAX for the
-    resource after pushing the script index. A natural aggregate of
-    the signed timestamp and timer current value recovers that same
-    sequence with the time check intact. It still compares 9,962/9,964
-    with all 350 fields bound. The residual moves to the timestamp
-    MOVSX and CMP at +0x7C/+0x7F. C2 gives the aggregate's timestamp
-    candidate 42 a weight of 32. EAX, ECX and EDX are available at
-    equal cost, so the global pass selects EAX. The timer's current
-    value still folds into the memory operand of CMP. Swapping the
-    pair's field declarations or using its inline readiness predicate
-    preserves that result. Loading the clock first adds a register
-    load and shifts the fields. The reproducible timing-pair probe
-    and trace are in `.analysis/anm-execute/results.txt`.
-  - Capturing the instruction pointer alongside the two clock values
-    and using that pointer for dispatch preserves the scoped interrupt
-    search and the entire radial tail. In the fresh GameManager link,
-    the two-field capture changes two additional x87 operand bytes at
-    +0x24BF and +0x24C3. The three-field capture returns to 9,962/9,964,
-    with opcode 91 exact and only the timestamp register differing.
-    Its widened timestamp feeds a global candidate of weight 32. The
-    affinity list at candidate +0x38 is empty. C2 13.10.6030 subtracts
-    the weights from that list at `0x107B2D77`. The VM receiver has
-    affinities, but the time candidate has zero cost for all five
-    available registers. Preloading the opcode leaves the timestamp in
-    EAX and changes the entry schedule. Keeping a 16-bit timestamp instead
-    adds a register load before the sign extension.
-    With a reference to the timer word, the 16-bit trial recovers the
-    clock bytes but changes opcode 91 and the radial tail. Component
-    assignments that remove the volatile Z read from the second vertex
-    alone can reverse an x87 operand pair in the first.
-    Putting the opcode 88 factory call in both the literal and the
-    variable-operand branches shortens the contribution by 224 bytes.
-  - With the local clock comparison and the three-field opcode 88
-    request, saving the game speed in each branch shortens the owner
-    by four bytes. Explicitly advancing the cursor in opcode 86
-    shortens it by 16. Capturing the opcode 91 layer before decoding
-    the script index changes linker field positions.
-  - Keeping the scheduled time as a signed short and borrowing the
-    timer's current word gives the retail timestamp MOVSX into EDX and
-    folded CMP. With opcode 88's three-field request, its two factory
-    inputs are both assigned globally. The timestamp is the last local
-    allocation before opcode 91, so that opcode uses ECX for the layer
-    and EDX for the resource. The full probe matches 9,954 of 9,964
-    bytes and binds all 350 fields.
-  - Reading the opcode 88 resource before resolving the script operand
-    leaves the layer as a local ECX request. That advances the scratch
-    cursor and restores opcode 91's layer in EDX and resource in EAX,
-    with the target argument order. The early resource now crosses
-    `GetIntVar`, so it uses ESI and moves the opcode 88 link fields.
-    Reading it after resolution in the script/resource pair leaves the
-    global resource candidate with no affinities and tied costs for ECX
-    and EDX. It picks ECX and the local layer takes EDX. In the three-field
-    request the global layer takes ECX first, leaving EDX for the
-    resource. Look for a resource lifetime that gets EDX while leaving
-    the layer to local allocation. The traces and commands are under
-    `.analysis/anm-execute/`.
-  - In the layer-reference trial, capturing the script index and
-    animation resource together gives the resource ECX before local
-    allocation. The layer then takes EDX, matching the first target
-    instruction of the factory setup. The global resource range also
-    makes the load precede both pushes. Retail instead loads the
-    resource into EAX after pushing the index. This variant matches
-    9,953 of 9,964 bytes with all 350 bindings, with two differences in
-    the later generated-vertex path. The focused traces are
-    `anm88-resource-full-entry-scratch` and
-    `layer-reference-resource-request-entry-scratch` in
-    `.analysis/anm-execute/`. A by-value factory argument record across
-    the real dispatcher calls retains the two-byte baseline.
-  - The GameManager graph retains 9,962 matching bytes with either
-    the real `AnmVmInitialize` or a definition of `g_AnmGameSpeed`
-    initialized to the original image's `1.0f`. Moving `GetIntVar` out,
-    making it const or sharing its return leaves the same two differences.
-    The shared return also preserves all 144 bytes and 15 fields of the
-    getter. A scan of 116 built graphs identified the call to
-    `CreateVmVariant2` by its actual destination. All 116 load and push
-    the layer through ECX even though the call appears at four different
-    offsets.
-  - Splitting the child pointer into separate locals for the front and
-    back tails preserves the opcode 91 mismatch and reverses the two
-    radial Z operands at +0x2476/+0x247C. Expanding the operand ternary
-    into an if/else inside the request is byte-neutral. Moving the real
-    `CreateVmVariant2` definition to `AnmVmCreate.cpp` also preserves all
-    9,962 matching bytes and every field.
-  - The default member convention with direct arguments still generates
-    the exact 73-byte factory in this link, but moves the resource load
-    before the first argument push, leaving ten caller differences. The
-    reference's inlined attachment helper changes the call and tail
-    layout in this graph. With an explicit result pointer and an
-    uninitialized caller-side handle, the interpreter has ten byte
-    differences and the factory grows from 73 to 81 bytes. Assigning
-    the returned ID through the output pointer adds a copy inside the
-    factory. The value-returning form forwards the result storage and
-    matches the complete 73-byte contribution with all five fields.
+- **AnmRenderManagerView::ExecuteScript @0x43EE30 (9,964)** is exact in
+  `anm-execute-script` with VC7.1 SP1 build 6030 and the
+  `GamePrepareAnimationSlots` link entry. The PDB contribution includes
+  9,587 code bytes, one alignment byte and the 94-entry switch table.
+  The [binding contract](evidence/anm-child-request-record/binding-contract.json)
+  covers all 350 link fields, including 95 fixed local destinations.
+  - Each child-spawn case resolves the ID, calls the real list insertion
+    routine and copies the parent position and offset through
+    `AttachScriptChild`. Keep the insertion call out of line within this
+    helper. In the reference probe, C2's local pass visits opcode 88's
+    position copies between the opcode 88 and 91 factory setups. Those
+    copies leave the scratch cursor at EDX. Opcode 91 then loads its layer
+    in EDX and its resource in EAX after pushing the script index.
+  - Sharing the attachment tail in C++ put the copies after opcode 91
+    during allocation. Duplicating the attachment through the inline
+    helper restores the register choices. With all four cases ending in
+    `break`, C2 puts each merged tail after its first factory call.
+    Jumping directly to the common instruction advance from the two
+    primary-list cases places the tails after the corresponding
+    secondary-list cases as in the original executable.
+  - The timing-pair probe recovered the opcode 91 setup by moving the
+    timestamp out of local allocation, but its global candidate had
+    tied costs and chose EAX. Reading the opcode 88 resource before
+    resolving the operand also restored opcode 91, but kept the
+    resource live across `GetIntVar` in ESI. The final source keeps the
+    direct signed timestamp comparison and the real by-value factories.
+    The focused traces and comparisons are in
+    `.analysis/anm-execute/results.txt`. [2026-11-23]
 - **EclVmContext::Run @0x44E1A0 (7,020)**: the current GameManager
   and player-collision links match 7,001 bytes, with 189 bound fields and
   62 fixed local destinations. The direct read from the packed spawn

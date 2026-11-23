@@ -30,6 +30,7 @@ the compiler observations behind the source changes.
 
 | Unit | Bytes | Relevant context |
 | --- | ---: | --- |
+| `anm-execute-script` | 9,964 | `GameManagerUpdate` link, 350 fields and 95 fixed local destinations. Per-case child attachment restores allocation before C2 merges the two spawn tails. |
 | `result-menu-update-result` | 3,260 | `GameManagerUpdate` link, 174 fields and eight switch entries. The two score-name copies share a source pointer. |
 | `game-manager-update-body` | 1,544 | `GamePrepareAnimationSlots` link entry, 114 fields and 60 fixed local branches. |
 | `game-reset-gui` | 1,965 | Same link, 52 fields and 73 fixed local branches. Both life-icon loops walk the flags word at the VM stride. |
@@ -80,7 +81,6 @@ memory OR precedes them. Build `front-end-music-skip-line` to refresh the
 
 | Owner | Current comparison and next action |
 | --- | --- |
-| `ExecuteScript` at `0x43EE30` | The rebuilt source matches 9,962 of 9,964 bytes. Only the layer load and push at +0x113/+0x115 differ. The `current-clock-pc` probe restores opcode 91 and moves the residuals to +0x7C/+0x7F. A signed-short clock snapshot restores the timestamp. With the resource read before the script operand is resolved, opcode 88's local ECX layer then restores opcode 91's schedule, but the resource moves to ESI and opcode 88's fields shift. Look for a way to keep that local layer while assigning the resource to EDX after operand resolution. See `.analysis/anm-execute/results.txt`. |
 | `EclVmContext::Run` | The GameManager graph matches 7,001 of 7,020 bytes with 189 fields and 62 fixed destinations. Twelve differences exchange equal-weight add and subtract stack slots. Five are tag addresses and two are the closing time guard's scratch register. A different initial stack-colour order remains the useful lead. See `.analysis/ecl-run/results.txt`. |
 | `EnemyGameStateView::StartSpell` | The default-section source matches 2,366 of 2,432 bytes. The retained `spell-restore-default-code-section` probe matches 2,402 with 108 fields and eight fixed destinations. Preserve the four stack arguments and seven stage targets while restoring the relative aggregate store and original name argument lifetime. See `.analysis/start-spell/results.txt`. |
 | `MidiOutputView::LoadTrackFile` | `midi-load-track-file` matches 442 of 448 bytes with six bound fields. The ECX header copy's larger priority reverses two loads and the length reuses the header's stack colour. The retained cursor-returning reader recovers the stack homes in a 446-byte probe. See `.analysis/midi-event/results.txt`. |
