@@ -601,6 +601,18 @@ frontier; do not refresh a baseline merely to accept the new positions.
   address at +0x15BE. Commuting the source pointer additions in `Pop`
   leaves the original encodings. Compare the neighboring handlers
   when changing an inlined pop's operand lifetime.
+
+  Factoring the integer add/subtract pops into a shared inline function
+  preserves all 65 stack colours and offsets and introduces eight SIB
+  differences. In contrast, evaluating `LENGTH_SQUARED` with a named
+  accumulator preserves its own x87 bytes and restores the earlier
+  `BITWISE_AND` tag operand at +0x1586. `NEGATE_INT`,
+  `NEGATE_FLOAT_STORAGE` and `SINE` then each gain a SIB difference.
+  The two `BITWISE_AND` address terms are already in the opposite
+  order at global-allocation entry (`0x107A5471`). Check source changes
+  against that ordering before investigating local register choice.
+  A variadic FORMAT sink with both `BITWISE_OR` pops called directly
+  preserves all 23 baseline differences in the maintained graph.
 - **EclVmHost::StopAllThreads @0x450190 (31)**: exact 31/31 after making the stop helper accept the already-resolved `EclVmContext*`; both STOP_THREAD and STOP_ALL_THREADS now pass the context explicitly. The parent `EclVmContext::Run` schedule remains at its existing 23-byte residual. [2026-11-19]
 
 - **EclVmStackView::Pop @0x450610 (122)**: exact 122/122 with the typed
