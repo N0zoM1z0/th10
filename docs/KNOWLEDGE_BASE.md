@@ -615,6 +615,12 @@ frontier; do not refresh a baseline merely to accept the new positions.
   took EAX. Keeping the native byte-count calculation inside the typed
   operand read leaves the length and operand to local allocation. They
   take ECX and EDX, so the following stop context takes EAX.
+  The standalone `EclVmStack` link selects ECX for the receiver and
+  matches 6,998 bytes. The real Enemy-rooted `EclVmHostRunEnemy` link
+  restores EAX and matches 6,999, with extra SIB differences at +0x3CC
+  and +0x15BE relative to GameManager. Its 146-byte host and 171-byte
+  float reader both match. Moving `Run` before the operand readers
+  preserves every compared byte in the standalone and GameManager links.
   `PopInt` uses the native `EclVmScalar::integer` word.
   `EclStopThreadContext` retains a typed `EclVmContext*` and `Pop`
   keeps the typed `stackData + stackTop` address.
@@ -623,8 +629,10 @@ frontier; do not refresh a baseline merely to accept the new positions.
   for bitwise OR, primitive word locals for add and subtract, and relocating
   the real `ReadFloatValue` implementation to a separate `/GL` TU all leave
   the same 23 differences. The relocated resolver still matches 171/171.
-  Separating FORMAT's integer and floating conversions into two typed
-  source branches instead emits a 6,956-byte owner.
+  Adapting the reference's separate FORMAT `d` and `f` cases and
+  explicit casts emits a 6,956-byte owner. Its dispatch tables lead to
+  the same reversed add and subtract homes. Writing named comparison
+  results directly through the stack also retains the home order.
 
   The earlier GameManager link reproduced the 23-byte residual.
   Renaming the two arithmetic locals preserves every byte and identifies
@@ -652,6 +660,13 @@ frontier; do not refresh a baseline merely to accept the new positions.
   recover both conditional-jump tag addresses, but leaves 6,963 matching
   bytes. The weighting trace and complete comparison are in
   `.analysis/ecl-run/results.txt`.
+
+  The loop's closing time guard contributes +0x19E6 and +0x19E8.
+  At `0x1079C23B`, the reload of the next instruction through EBX
+  is the final local allocation and starts at the EAX entry of the
+  scratch list (0x108AB740). EAX feeds the FILD address, where retail
+  uses EDX. Storing the next instruction through the member directly
+  preserves the allocation and the full 19-byte residual.
 
   The anonymous `FORMAT` tag-byte cursor stays at `ESP+0x18`, the same
   home as the named `x` in `LENGTH_SQUARED`. The cursor has weight six

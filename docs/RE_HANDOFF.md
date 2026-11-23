@@ -155,30 +155,23 @@ visible and check register arguments alongside table offsets.
 The compiler traces and full comparison commands are in
 `.analysis/music-room/results.txt`.
 
-`EclVmContext::Run` compares 7,001/7,020 bytes in the current GameManager
-graph with 189 bound fields. Reading the packed spawn operand directly
-gives the length ECX and the operand EDX. The next local choice gives
-the stopped context EAX. Both handlers now match. Twelve residual bytes
-come from the equal-weight integer add and subtract result words taking
-reversed stack slots. C2's operand scan counts six references for each
-result word. It includes the float conversion and the address passed
-to `Push`. Expression variants of the add and subtract preserve the
-same emitted instructions and residual. The 6030 sort model reproduces
-all 65 traced colours. Raising the add result's weight to seven
-exchanges just the two homes in the model. Moving the shared `FORMAT`
-cursor and `LENGTH_SQUARED` colour ahead of the subtract result yields
-the same exchange. Separate tag and
-payload cursors move fields in `FORMAT`. Reopen with a source lifetime
-that can change initial colour order while keeping the existing field
-positions. A direct left-operand pop in `EQUAL_FLOAT` shifts its two
-SIB differences to `NOT_EQUAL_FLOAT` with the same complete count.
-A named `LENGTH_SQUARED` accumulator restores the earlier
-`BITWISE_AND` address and introduces three other SIB differences.
-The stack-offset hash wraps before global allocation. A common
-ordinal shift fails the 37 bound tag-address comparisons.
-Writing the squared-length sum in y-then-x order removes the volatile
-local and keeps the full baseline comparison.
-The model, compiler traces and recipes are in `.analysis/ecl-run/results.txt`.
+`EclVmContext::Run` compares 7,001/7,020 bytes in the GameManager graph
+with 189 bound fields and 62 fixed destinations. The Enemy-rooted host
+link adds two SIB differences. The standalone link also passes the
+receiver in ECX. Keep the GameManager context for the next comparison.
+Twelve differences are the swapped integer add and subtract result
+homes. Both words have six references. The 65-colour sort model
+exchanges the two homes if the add word gains a reference. The same
+exchange occurs if the FORMAT tag cursor gains a reference and its
+colour moves before the subtract word.
+Splitting the reference's FORMAT specifiers shortens the owner by 64
+bytes and leaves the homes reversed. Source-order and direct result
+writes also preserve the tie. Reopen with a lifetime change that predicts
+a different initial colour order.
+Five differences are in tag addresses. The final two are the closing
+time guard, whose last local allocation starts at EAX while retail
+uses EDX. The model, compiler traces and recipes are in
+`.analysis/ecl-run/results.txt`.
 
 `EnemyGameStateView::StartSpell` matches 2,366 of 2,432 bytes in
 `enemy-start-spell`. The real script starter restores the 15 call
