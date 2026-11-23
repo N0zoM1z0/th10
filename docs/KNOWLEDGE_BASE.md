@@ -1327,16 +1327,24 @@ register preservation or mod-ref assumptions) where our builds exploit it
   shift for the high length byte and the byte representation for the
   other three preserves the original pair of shifts.
 
-  In the earlier 446-byte graph, the load uses the cursor directly
-  at global allocation entry and the cursor gets EBP. The raw length is a named
-  stack element of weight three and shares no colour. The 448-byte
-  graph lowers the raw length to an unnamed element of weight two.
-  This element shares the eight-byte SMF header colour in place of
-  the index, changing four stack displacements. Named references,
-  inline decoding and reusing a byte buffer all preserve that
-  exchange. The other two differences are the register copies at
-  `+0x46` and `+0x48`. Use `midi-load-track-file` for the complete
-  comparison and `.analysis/midi-event/` for the allocator traces.
+  In the 446-byte graph, the load uses the cursor directly at global
+  allocation entry and the cursor gets EBP. In the complete graph, C2
+  visits the index before the anonymous raw length at `0x10768CE2`.
+  They get colours 3 and 4. The eight-byte header is visited last and
+  joins colour 4. In the 446-byte graph the named raw length is visited
+  first, then the index, which puts the header and index together.
+  Both graphs preserve those memberships through the final sort.
+  Splitting the byte reader into a real `/GL` support source and
+  including the slot-31 caller both preserve the six differences.
+
+  At `0x1079BBF9` the two header loads appear in EDX, ECX order.
+  The scheduler appends them at `0x107B0D2F`
+  as two copies from EAX in ECX, EDX order. This is the remaining
+  pair at `+0x46` and `+0x48`. The TH09 analysis copy of C2 is
+  13.10.3077. Its scheduler hook `0x107B54CC` corresponds to
+  `0x107B0D2F` in the pinned TH10 13.10.6030 binary. Use
+  `midi-load-track-file` for the complete comparison and
+  `.analysis/midi-event/` for the traces.
   [2026-11-23]
 - `MidiOutputView::ProcessEvent` at `0x43B110` has a 1,670-byte owner
   including 1,323 code bytes and three compressed switch tables. The

@@ -113,9 +113,11 @@ compiler traces. Compare the complete owner with
 `MidiOutputView::LoadTrackFile` matches 442 of 448 bytes in
 `midi-load-track-file`, with all six linkage fields bound. Saving the
 chunk pointer and decoding the high byte separately restores the
-full extent. Two copies exchange order at `+0x46`. The trace identifies
-the stack-colour assignment responsible for the other four differences.
-[Read the compiler notes](KNOWLEDGE_BASE.md).
+full extent. Two copies exchange order at `+0x46` during scheduling.
+The raw length is visited after the index during stack allocation and
+reuses the header's colour. Independent links preserve the residual
+with the slot-31 caller visible and with the byte reader in a separate
+`/GL` source. [Compiler notes](KNOWLEDGE_BASE.md)
 
 `FrontEndUpdateMusicRoom` now has the complete 2,796-byte extent.
 `Select(0)`, the browse cursor pointer and the duration-first interpolation
