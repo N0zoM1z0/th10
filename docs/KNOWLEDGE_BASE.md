@@ -793,7 +793,10 @@ frontier; do not refresh a baseline merely to accept the new positions.
   remaining 66 bytes are within `+0x000..+0x127`, in the entry and
   the name and attempt updates. The reference's by-value panel
   appearance and direct first name copy preserve those differences.
-  The `enemy-start-spell` recipe binds the full candidate.
+  The `enemy-start-spell` recipe binds the full candidate. The replay gate
+  uses the same `ReplayManager::mode` at +0x10 as `EnemyEndSpell`.
+  Rebinding the pointer at 0x477838 to `g_ReplayManager` preserves the
+  complete extent, all field positions and the 66 differing bytes.
 
   The VC7.1 6030 global allocator gives the maintained name a weight of
   31 with only EBX available. Advancing the formal name argument in the
@@ -807,7 +810,12 @@ frontier; do not refresh a baseline merely to accept the new positions.
   with indexed addressing. The real dispatcher entry and default member
   convention leave the maintained residual unchanged. Changing the
   registration result also changes the independently matching 118-byte
-  `AddVmVariant0`. The paired allocator traces are under
+  `AddVmVariant0`. A normal two-pointer copy advancing the formal name
+  restores the first copy and per-shot statistics registers. LTCG then
+  passes the incoming name in ECX. An advancing cursor shared across
+  the copies keeps the stack ABI but shifts the extent to 2,424 bytes.
+  A cursor scoped to the final copy preserves the baseline bytes.
+  The paired allocator traces are under
   `.analysis/start-spell/`. [2026-11-23]
 - **ItemManagerUpdateBody @0x41AFD0 (2,320)** is exact in the registration-rooted
   `/GL` link, with 154 bound fields, 73 direct local branches and both jump

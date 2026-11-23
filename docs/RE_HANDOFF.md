@@ -170,7 +170,8 @@ The model, compiler traces and recipes are in `.analysis/ecl-run/results.txt`.
 `enemy-start-spell`. The real script starter restores the 15 call
 setups, and reading the VM through the matched list node restores
 the layout through the seven-entry stage table. All 108 fields
-are bound. The remaining differences are in the first 0x128
+are bound, including the shared `g_ReplayManager` pointer used
+by the playback check. The remaining differences are in the first 0x128
 bytes. Advancing the name in the aggregate loop changes the private
 calling convention. With the stack ABI held for diagnosis, lowering
 the name's allocation weight below the record offset puts both in the

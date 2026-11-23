@@ -33792,7 +33792,7 @@ target_address = 0x00409280
 size = 2432
 linkages = [
   { offset = 0x03B, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
-  { offset = 0x082, type = "DIR32", symbol = "?g_EnemySpellPlaybackState@@3PAEA", target = 0x00477838 },
+  { offset = 0x082, type = "DIR32", symbol = "?g_ReplayManager@@3PAVReplayManager@@A", target = 0x00477838 },
   { offset = 0x09E, type = "DIR32", symbol = "?g_GameScoreState@@3UGameScoreStateView@@A", target = 0x00474C40, addend = 0x28 },
   { offset = 0x0A4, type = "DIR32", symbol = "?g_GameStatisticsRows@@3PAUGameStatisticsOwner@@A", target = 0x0047783C },
   { offset = 0x0AD, type = "DIR32", symbol = "?g_GameScoreState@@3UGameScoreStateView@@A", target = 0x00474C40, addend = 0x2C },

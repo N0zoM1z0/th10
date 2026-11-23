@@ -7,19 +7,9 @@
 #include "GameScoreState.hpp"
 #include "Gui.hpp"
 #include "AnmLoadedStartScript.hpp"
-
-#include <stddef.h>
+#include "ReplayManager.hpp"
 
 extern EnemyManagerView *g_EnemyManager;
-extern unsigned char *g_EnemySpellPlaybackState;
-
-struct EnemySpellPlaybackGateView
-{
-    unsigned char unknown000[0x10];
-    int stateCode10;
-};
-typedef char EnemySpellPlaybackStateAt10[
-    (offsetof(EnemySpellPlaybackGateView, stateCode10) == 0x10) ? 1 : -1];
 
 static __forceinline void CountSpellAttempt(GameStatisticsSpellHistoryEntryView *record)
 {
@@ -112,8 +102,7 @@ void __stdcall EnemyGameStateView::StartSpell(
 
     flags378C = (flags378C & ~0x18u) | 3u;
 
-    if (reinterpret_cast<const EnemySpellPlaybackGateView *>(
-            g_EnemySpellPlaybackState)->stateCode10 != 1)
+    if (g_ReplayManager->mode != REPLAY_MANAGER_PLAYBACK)
     {
         GameStatisticsOwner *statistics = g_GameStatisticsRows;
         GameStatisticsSpellHistoryEntryView *record =
