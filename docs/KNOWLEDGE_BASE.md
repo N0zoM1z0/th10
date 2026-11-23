@@ -528,6 +528,21 @@ frontier; do not refresh a baseline merely to accept the new positions.
     after C2 folds the shifts. Recompiling the real GUI interpreter
     after its exact reconstruction also preserves the two-byte baseline
     in the GameManager graph.
+  - In the three-field opcode 88 carrier, omitting the time check in
+    scratch isolates the local register conflict. The saved game speed
+    takes ECX, then opcode 91 takes EDX for the layer and EAX for the
+    resource after pushing the script index. A natural aggregate of
+    the signed timestamp and timer current value recovers that same
+    sequence with the time check intact. It still compares 9,962/9,964
+    with all 350 fields bound. The residual moves to the timestamp
+    MOVSX and CMP at +0x7C/+0x7F. C2 gives the aggregate's timestamp
+    candidate 42 a weight of 32. EAX, ECX and EDX are available at
+    equal cost, so the global pass selects EAX. The timer's current
+    value still folds into the memory operand of CMP. Swapping the
+    pair's field declarations or using its inline readiness predicate
+    preserves that result. Loading the clock first adds a register
+    load and shifts the fields. The reproducible timing-pair probe
+    and trace are in `.analysis/anm-execute/results.txt`.
   - In the layer-reference trial, capturing the script index and
     animation resource together gives the resource ECX before local
     allocation. The layer then takes EDX, matching the first target

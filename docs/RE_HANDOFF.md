@@ -86,18 +86,15 @@ Never use inline assembly, naked functions, fake ABI declarations, stand-in call
 ## Open ANM script owner
 
 `ExecuteScript` at 0x0043EE30 compares 9,962/9,964 bytes with 350
-bound fields and 95 fixed local destinations. The result holds after
-recompiling the exact GUI interpreter in the GameManager graph. Opcode
-91's layer takes ECX when globally allocated. Binding it by reference
-lets the local allocator choose. Capturing the script index and resource
-together gives the resource ECX globally, which makes the layer take the
-retail EDX but moves the resource load ahead of the two pushes. Reopen
-with a source form that keeps the resource load after the index push
-and arrives at the layer with the local cursor at EDX. A three-field
-opcode 88 request already removes its two local choices. The preceding
-timestamp read still takes EDX locally, including when expressed as a
-two-byte representation read. See the [compiler traces and
-controls](KNOWLEDGE_BASE.md) for the tested shapes.
+bound fields and 95 fixed local destinations. The maintained residual is
+opcode 91's use of ECX for the layer. A three-field opcode 88 request,
+an opcode 91 layer reference and an aggregate of the instruction time
+and timer current value recover the entire opcode 91 sequence. This
+variant keeps the full extent and bindings. The only two differences
+move to +0x7C/+0x7F, where the global allocator assigns EAX to the
+timestamp. EAX, ECX and EDX tie on cost. Reopen with a timestamp lifetime
+that gives EDX globally while keeping the current-time operand folded
+into CMP. See the [compiler traces and controls](KNOWLEDGE_BASE.md).
 
 ## Strategy for the remaining authored bytes
 
