@@ -1212,7 +1212,7 @@ ResultMenuOpenGameOver
 PlayerHandleCollisionHit
 PlayerDrawCallbackBody
 GameUpdateGui
-GameAddLives
+GameScoreStateView::AddLives
 EnemyEndSpell
 GuiShowScoreNotice
 GamePrepareAnimationSlots

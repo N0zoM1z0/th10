@@ -9,7 +9,12 @@
 - `config/match-units.toml` holds the recipes, `config/matches.csv` is the canonical exact ledger, and `config/frontiers.toml` is a diagnostic ratchet only. A local strict comparison is not a canonical cold replay.
 - The superseded raw-offset `AdvanceTransformProgram` experiment only reached 0x640.
 
-## What changed on 2026-11-22
+## Recent reconstruction
+
+- `item-manager-update-body` is exact at 2,320 bytes with 154 bound fields
+  and 73 fixed local branches. It compiles separately from its registration
+  callback and real score helpers. Forming the distance scale from the
+  collection line and playfield extent restores the x87 `FSUB` sequence.
 
 - `game-manager-update-body` is exact at 1,544 bytes with 114 bound fields
   and 60 fixed local branches. Its real `GamePrepareAnimationSlots` link entry
@@ -68,14 +73,11 @@ trace and scoped comparison commands are in `.analysis/gui-guard/results.txt`.
 
 ## Strategy for the remaining authored bytes
 
-`ItemManagerUpdateBody` at 0x0041AFD0 has a full 2,320-byte candidate.
-All 73 direct local branches and both jump tables match their target offsets.
-At +0x523 it adds `-5000.0f` where the target subtracts `5000.0f`. C2 chooses
-the two floating-point expression orders before global allocation. The next
-source change should recover `FSUB` while emitting the distance expression
-first. Keep the original GUI score-display argument order in view when
-changing `AddLives`. See `.analysis/item-update/results.txt` for the scoped
-comparisons and compiler traces.
+`GameUpdateGui` at 0x00417040 still has the full 671-byte extent. The
+`AddLives` member call loads ECX before EAX at +0x286. Restore the target's
+EAX-then-ECX order while preserving the member's 141-byte body and the
+exact item caller. The former free-function interface gives the original
+GUI order and reverses the loads in the item caller.
 
 `_reference/th10-decomp` has MSVC C++ bodies for the remaining authored
 owners. Use its statement order, case structure and helper visibility as

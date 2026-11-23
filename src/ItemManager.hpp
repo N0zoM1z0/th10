@@ -93,6 +93,7 @@ typedef char ItemManagerDelayedCursorAt21CEB8[
 typedef char ItemManagerViewSizeIs21CEC0[
     (sizeof(ItemManagerView) == 0x21cec0) ? 1 : -1];
 
+int __stdcall ItemManagerUpdateBody(ItemManagerView *manager);
 extern ItemManagerView *g_ItemManager;
 
 #endif

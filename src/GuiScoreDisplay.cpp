@@ -17,10 +17,10 @@ extern void GuiSetLivesDisplayCount(GuiView *gui, int count);
 
 // Target 0x004188A0: cap lives at nine, publish a successful extend notice,
 // then refresh the life display from the shared global state.
-void GameAddLives(int amount, GameScoreStateView *state)
+void GameScoreStateView::AddLives(int amount)
 {
     int &lives = *reinterpret_cast<int *>(
-        reinterpret_cast<unsigned char *>(state) + 0x30);
+        reinterpret_cast<unsigned char *>(this) + 0x30);
     lives += amount;
     if (lives > 9)
     {
@@ -132,7 +132,7 @@ void GameUpdateGui(GuiView *gui)
         }
         else if (gui->value9E78 < g_GuiExtraExtendScores[g_GuiValue4C9C])
             return;
-        GameAddLives(1, &g_GameScoreState);
+        g_GameScoreState.AddLives(1);
         ++g_GuiValue4C9C;
     }
 }

@@ -1,13 +1,11 @@
-#include "EnemySoundQueue.hpp"
-#include "GuiScore.hpp"
 #include <stddef.h>
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "ItemManager.hpp"
+#include "ItemResources.hpp"
 #include "Chain.hpp"
-#include "ScriptViewerOwners.hpp"
 #include "ItemPowerDisplay.hpp"
 #include "GameScoreState.hpp"
 #include "Player.hpp"
@@ -111,44 +109,14 @@ void GameScoreStateView::AddRank(int amount)
 // owners: each 0x3F0-byte row starts with a complete AnmVmView, then keeps
 // its world-space position at +0x3AC, active state at +0x3DC and the
 // sprite-selection value at +0x3E4.
-struct ItemPrimaryResourceOwnerView
-{
-    unsigned char unknown000000[0x3e0b50];
-    AnmLoadedView *primaryEnemyResource;
-};
-
 struct FpsSampleGateView
 {
     unsigned char unknown000[0x58];
     unsigned int flags58;
 };
 
-extern ItemPrimaryResourceOwnerView *g_EnemyPrimaryResourceOwner;
 extern FpsSampleGateView *g_FpsSampleGateView;
-
-// Shared maintained definitions used by the independently reconstructed Gui
-// and Enemy owners. These views do not establish original class/TU identities.
-
-
-
-
-struct ItemAutoCollectGateView
-{
-    unsigned char unknown000[0x28];
-    int value28;
-};
-extern ItemAutoCollectGateView *g_ItemAutoCollectGate;
-extern void *g_ScriptViewerPopups;
-extern unsigned char g_MainSoundOwner[0x52d0];
-extern unsigned int g_PlayerInputBits;
 extern short g_PlayerPower;
-extern int g_EnemyDifficulty;
-
-// Shared score/life operation reconstructed in GuiScoreDisplay.cpp.
-extern void GameAddLives(int amount, GameScoreStateView *state); // 0x4188A0
-
-// The target-private interface of the remaining source-absent callee is open.
-extern float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position);
 
 // Target 0x4054B0 binds sprites for the integer and two fractional power
 // digits. The intervening VM is not changed by this helper.
@@ -198,279 +166,6 @@ int GameScoreStateView::AddPower(short amount)
     }
     return (static_cast<int>(power) - static_cast<int>(amount)) / 20 !=
         static_cast<int>(power) / 20;
-}
-
-// Complete update body 0x41AFD0-0x41B89C; its two selector tables extend
-// physical ownership through 0x41B8DF. Names remain descriptive views.
-int __stdcall ItemManagerUpdateBody(ItemManagerView *manager)
-{
-    int convertPowerItems = 0;
-    int pickupScore;
-    int rankDelta;
-    manager->delayedSpawnRequests = 0;
-    manager->animatedItemCount = 0;
-    ItemRecordView *item = &manager->items[0];
-    for (int remaining = 0x896; remaining != 0; --remaining, ++item)
-    {
-        if (item->active == 0)
-            continue;
-
-        if (item->active == 5)
-        {
-            if (--item->delayFrames < 0)
-            {
-                item->active = 2;
-                AnmVmStartScript(g_EnemyPrimaryResourceOwner->primaryEnemyResource, &item->vm, item->kind + 0x176);
-            }
-            continue;
-        }
-
-        if (item->active == 1)
-        {
-            if ((g_Player->runtimeState != 2 && g_Player->runtimeState != 4 &&
-                 g_Player->drawPosition.y < 128.0f) ||
-                g_ItemAutoCollectGate->value28 != 0)
-            {
-                item->attractionSpeed = g_Player->optionData->value08;
-                item->active = 3;
-                goto attract;
-            }
-            item->worldPosition += item->velocity * g_PlayerTimerScale;
-            item->velocity.y += g_PlayerTimerScale * 0.03f;
-            if (item->velocity.y >= 0.0f)
-                item->velocity.x = 0.0f;
-            if (item->velocity.y > 2.0f)
-                item->velocity.y = 2.0f;
-            if (item->worldPosition.y > 472.0f)
-            {
-                item->active = 0;
-                continue;
-            }
-        }
-        else if (item->active == 2)
-        {
-            item->worldPosition += item->velocity * g_PlayerTimerScale;
-            item->velocity.y += g_PlayerTimerScale * 0.03f;
-            if (item->velocity.y >= 0.0f)
-            {
-                item->attractionSpeed = g_Player->optionData->value08;
-                item->active = 3;
-                goto attract;
-            }
-            if (item->worldPosition.y > 472.0f)
-            {
-                item->active = 0;
-                g_GameScoreState.AddRank(-4);
-                continue;
-            }
-        }
-        else if (item->active == 3)
-        {
-attract:
-            float dx = g_Player->drawPosition.x - item->worldPosition.x;
-            float dy = g_Player->drawPosition.y - item->worldPosition.y;
-            float angle;
-            if (dy == 0.0f && dx == 0.0f)
-                angle = 1.5707963705062866f;
-            else
-                angle = static_cast<float>(atan2(dy, dx));
-            item->velocity.FromAngleMagnitude(angle, item->attractionSpeed);
-            item->worldPosition += item->velocity * g_PlayerTimerScale;
-            if (item->attractionSpeed < 12.0f)
-                item->attractionSpeed += 0.2f;
-            if (g_Player->runtimeState == 4)
-            {
-                item->active = 1;
-                item->velocity.x = 0.0f;
-                item->velocity.y = 0.0f;
-            }
-        }
-        else if (item->active == 4)
-        {
-            float speed = item->attractionSpeed;
-            float angle = EnemyAngleFromPlayer(g_Player,
-                reinterpret_cast<const PlayerFloat3 *>(&item->worldPosition));
-            item->velocity.FromAngleMagnitude(angle, speed);
-            item->worldPosition += item->velocity * g_PlayerTimerScale;
-            if (item->attractionSpeed < 12.0f)
-                item->attractionSpeed += 0.2f;
-            if (g_Player->runtimeState == 4)
-            {
-                item->active = 1;
-                item->velocity.x = 0.0f;
-                item->velocity.y = 0.0f;
-            }
-        }
-
-        if (g_Player->runtimeState == 2)
-            goto animate;
-
-        if (item->worldPosition.x < g_Player->derivedVectors[0].x ||
-            item->worldPosition.y < g_Player->derivedVectors[0].y ||
-            g_Player->derivedVectors[1].x < item->worldPosition.x ||
-            g_Player->derivedVectors[1].y < item->worldPosition.y)
-        {
-            if (item->active != 4 && item->active != 3)
-            {
-                unsigned int focused = g_PlayerInputBits & 4;
-                if ((focused != 0 &&
-                     g_Player->derivedVectors[2].x <= item->worldPosition.x &&
-                     g_Player->derivedVectors[2].y <= item->worldPosition.y &&
-                     item->worldPosition.x <= g_Player->derivedVectors[3].x &&
-                     item->worldPosition.y <= g_Player->derivedVectors[3].y) ||
-                    (static_cast<short>(focused) == 0 &&
-                     g_Player->derivedVectors[4].x <= item->worldPosition.x &&
-                     g_Player->derivedVectors[4].y <= item->worldPosition.y &&
-                     item->worldPosition.x <= g_Player->derivedVectors[5].x &&
-                     item->worldPosition.y <= g_Player->derivedVectors[5].y))
-                {
-                    item->attractionSpeed = g_Player->optionData->value08 *
-                        0.3333333432674408f;
-                    item->active = 4;
-                }
-            }
-            goto animate;
-        }
-
-        switch (item->kind)
-        {
-        case 1:
-        case 10:
-        {
-            int changed = g_GameScoreState.AddPower(1);
-            int power = g_PlayerPower;
-            g_ItemPowerDisplayOwner->UpdatePowerDisplay(power / 20,
-                ((power % 20) * 100) / 20);
-            if (changed != 0)
-            {
-                RebuildPlayerOptions(g_Player);
-                static_cast<ScriptViewerPopupOwnerView *>(g_ScriptViewerPopups)->EmitValuePopup(&item->worldPosition,
-                    -1, 0xffffff40);
-                reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
-                    QueueSoundCue(29, item->worldPosition.x);
-                if (g_PlayerPower >= 100)
-                    convertPowerItems = 1;
-                g_GameScoreState.AddRank(12);
-            }
-            else
-            {
-                static_cast<ScriptViewerPopupOwnerView *>(g_ScriptViewerPopups)->EmitValuePopup(&item->worldPosition,
-                    g_PlayerPower / 2, 0xffff4040);
-            }
-            g_GameScoreState.ExtendFaithTimer(60);
-            break;
-        }
-        case 2:
-            if (g_Player->drawPosition.y < 144.0f)
-            {
-                pickupScore = g_GameScoreState.faith * 10;
-                pickupScore -= pickupScore % 10;
-                goto maximumScore;
-            }
-            else
-            {
-                int reduction = static_cast<int>(
-                    (g_Player->drawPosition.y - 144.0f) *
-                    0.003289473708719015f *
-                    (g_GameScoreState.faith * 0.5f - 5000.0f));
-                pickupScore = g_GameScoreState.faith * 10 / 2 - reduction;
-                pickupScore -= pickupScore % 10;
-                static_cast<ScriptViewerPopupOwnerView *>(g_ScriptViewerPopups)->EmitValuePopup(&item->worldPosition,
-                    pickupScore, 0xffffffff);
-                rankDelta = 1;
-                goto addScore;
-            }
-        case 5:
-            pickupScore = g_GameScoreState.faith * 10;
-maximumScore:
-            static_cast<ScriptViewerPopupOwnerView *>(g_ScriptViewerPopups)->EmitValuePopup(&item->worldPosition,
-                pickupScore, 0xffffff00);
-            rankDelta = 8;
-addScore:
-            g_GameScoreState.AddRank(rankDelta);
-            reinterpret_cast<GuiScoreView *>(&g_GameScoreState)->Add(pickupScore);
-            g_GameScoreState.ExtendFaithTimer(100);
-            break;
-        case 3:
-        {
-            int amount = 5000;
-            switch (g_EnemyDifficulty)
-            {
-            case 0: case 1: amount = 5000; break;
-            case 2: amount = 8000; break;
-            case 3: case 4: amount = 10000; break;
-            }
-            static_cast<ScriptViewerPopupOwnerView *>(g_ScriptViewerPopups)->EmitValuePopup(&item->worldPosition,
-                amount, 0xff00ff00);
-            g_GameScoreState.AddFaith(amount);
-            g_GameScoreState.ExtendFaithTimer(120);
-            break;
-        }
-        case 4:
-        case 11:
-        {
-            int changed = g_GameScoreState.AddPower(20);
-            int power = g_PlayerPower;
-            g_ItemPowerDisplayOwner->UpdatePowerDisplay(power / 20,
-                ((power % 20) * 100) / 20);
-            if (changed != 0)
-            {
-                RebuildPlayerOptions(g_Player);
-                reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
-                    QueueSoundCue(29, item->worldPosition.x);
-                static_cast<ScriptViewerPopupOwnerView *>(g_ScriptViewerPopups)->EmitValuePopup(&item->worldPosition,
-                    -1, 0xffffff40);
-                g_GameScoreState.AddRank(24);
-                if (g_PlayerPower >= 100)
-                    convertPowerItems = 1;
-            }
-            else
-            {
-                static_cast<ScriptViewerPopupOwnerView *>(g_ScriptViewerPopups)->EmitValuePopup(&item->worldPosition,
-                    g_PlayerPower / 2, 0xffff4040);
-            }
-            g_GameScoreState.ExtendFaithTimer(20);
-            break;
-        }
-        case 7:
-            GameAddLives(1, &g_GameScoreState);
-            g_GameScoreState.AddRank(256);
-            break;
-        case 8:
-            g_GameScoreState.AddFaith(10);
-            g_GameScoreState.ExtendFaithTimer(3);
-            reinterpret_cast<GuiScoreView *>(&g_GameScoreState)->Add(10);
-            break;
-        case 9:
-            static_cast<ScriptViewerPopupOwnerView *>(g_ScriptViewerPopups)->EmitValuePopup(&item->worldPosition,
-                100, 0xff00ff00);
-            g_GameScoreState.AddFaith(100);
-            g_GameScoreState.ExtendFaithTimer(60);
-            break;
-        }
-        item->active = 0;
-        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
-            QueueSoundCue(20, item->worldPosition.x);
-        continue;
-
-animate:
-        AnmRenderManagerView::ExecuteScript(&item->vm);
-        item->timer.previous = item->timer.current;
-        if (*item->timer.scale > 0.99f && *item->timer.scale < 1.01f)
-        {
-            ++item->timer.current;
-            item->timer.subframe += 1.0f;
-        }
-        else
-        {
-            item->timer.subframe += *item->timer.scale;
-            item->timer.current = static_cast<int>(item->timer.subframe);
-        }
-        ++manager->animatedItemCount;
-    }
-    if (convertPowerItems != 0)
-        manager->ConvertPowerItems();
-    return 1;
 }
 
 int __fastcall ItemManagerView::OnUpdate(ItemManagerView *manager)

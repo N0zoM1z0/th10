@@ -43,6 +43,7 @@ struct GameScoreStateView
     int rank;
 
     void SelectNextStage();
+    void AddLives(int amount);
     void AddFaith(int amount);
     void DecayFaith(int amount);
     void SetFaith(int amount);
