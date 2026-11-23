@@ -84,7 +84,15 @@ Read [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) sections "Write a plain `switch`", "
 | `0x00406240` `BulletUpdateRuntime` | `bullet-runtime-update` | 884/885: retail `mov ecx, ebp` against our `push ebp` (the interpreter's `this` goes on the stack in this graph) | Same family as the `SpawnBulletPattern` question: LTCG convention choice in a partial graph. |
 | `0x004078E0` `UpdateAbsoluteDirectionChange` | `bullet-update-absolute-direction` | 333/335 (+0xD7, +0xDD: EDX against EAX) | Parked; the reference `EaseStep` shape regressed to 320. |
 
-All three LTCG convention questions share one pattern: a register choice that depends on which callees and callers are visible in the link. th09 broke similar cases by tracing C2 inside the compiler; under `/GL` the backend runs inside `link.exe`. Use `scripts/diagnostics/triage/idiff.py` for fast alignment, and change one graph input at a time.
+All three LTCG convention questions depend on which callees and callers
+are visible in the link. TH09's 13.10.3077 Enemy update matched after
+making the real timer body visible and keeping an early list read that
+advanced the local scratch cursor before C2 merged the two paths. Trace
+both allocation passes for TH10's 13.10.6030 inside `link.exe` and
+change one graph input at a time. TH09's separate Type29 draw carrier
+needed to see `SetPolar2D`, while moving that helper changed 24 other
+owners. Compare both sides of a proposed carrier split. Use
+`scripts/diagnostics/triage/idiff.py` for alignment.
 
 Never use inline assembly, naked functions, fake ABI declarations, stand-in callee bodies, copied target bytes, padding, inert locals or comparator cropping. An exact leaf does not make its parent exact.
 
@@ -92,17 +100,15 @@ Never use inline assembly, naked functions, fake ABI declarations, stand-in call
 
 `ExecuteScript` at 0x0043EE30 compares 9,962/9,964 bytes with 350
 bound fields and 95 fixed local destinations. The maintained residual is
-opcode 91's use of ECX for the layer. A three-field opcode 88 request,
-an opcode 91 layer reference and an aggregate of the instruction time
-and timer current value recover the entire opcode 91 sequence. This
-variant keeps the full extent and bindings. The only two differences
-move to +0x7C/+0x7F, where the global allocator assigns EAX to the
-timestamp. EAX, ECX and EDX tie on cost. Reopen with a timestamp lifetime
-that gives EDX globally while keeping the current-time operand folded
-into CMP. The scoped interrupt scan preserves the maintained comparison.
-Combining it with the timing probe's nonvolatile radial constructor
-changes the x87 operand order. See the [compiler traces and
-controls](KNOWLEDGE_BASE.md).
+opcode 91's use of ECX for the layer. The retained `current-clock-pc`
+probe uses a three-field opcode 88 request, an opcode 91 layer reference
+and a snapshot of the instruction pointer, instruction time and timer
+current value. It recovers the entire opcode 91 sequence with the scoped
+interrupt scan and radial code intact. Its remaining differences are
++0x7C/+0x7F, where tied global register costs put the signed timestamp
+in EAX. A useful next control would give EDX a cost advantage or constrain
+the earlier choices while keeping the timer word folded into CMP.
+See the [compiler traces and controls](KNOWLEDGE_BASE.md).
 
 ## Strategy for the remaining authored bytes
 

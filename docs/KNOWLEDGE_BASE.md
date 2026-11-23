@@ -543,14 +543,21 @@ frontier; do not refresh a baseline merely to accept the new positions.
     preserves that result. Loading the clock first adds a register
     load and shifts the fields. The reproducible timing-pair probe
     and trace are in `.analysis/anm-execute/results.txt`.
-  - The interrupt search uses a scoped cursor and fallback with
-    `ANM_OP_END` as its terminator. This replaces the mutable sentinel
-    without moving any residuals or bindings in the maintained graph.
-    In the timing-pair probe, explicit XYZ construction for the second
-    radial vertex removes its volatile Z read and keeps 9,962 matching
-    bytes. Applying both source changes to that probe moves six x87
-    operand bytes in the radial tail. Check the full tail when combining
-    a clock or interrupt change with the radial arithmetic.
+  - Capturing the instruction pointer alongside the two clock values
+    and using that pointer for dispatch preserves the scoped interrupt
+    search and the entire radial tail. In the fresh GameManager link,
+    the two-field capture changes two additional x87 operand bytes at
+    +0x24BF and +0x24C3. The three-field capture returns to 9,962/9,964,
+    with opcode 91 exact and only the timestamp register differing.
+    Its widened timestamp feeds a global candidate of weight 32 and
+    EAX, ECX, EDX, ESI and EDI still tie at zero cost. Keeping a 16-bit
+    timestamp instead adds a register load before the sign extension.
+    With a reference to the timer word, the 16-bit trial recovers the
+    clock bytes but changes opcode 91 and the radial tail. Component
+    assignments that remove the volatile Z read from the second vertex
+    alone can reverse an x87 operand pair in the first.
+    Putting the opcode 88 factory call in both the literal and the
+    variable-operand branches shortens the contribution by 224 bytes.
   - In the layer-reference trial, capturing the script index and
     animation resource together gives the resource ECX before local
     allocation. The layer then takes EDX, matching the first target
