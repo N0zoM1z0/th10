@@ -1,4 +1,5 @@
 #include "GuiScore.hpp"
+#include "GameScoreState.hpp"
 #include "EnemySoundQueue.hpp"
 #include "Main.hpp"
 #include "AnmLoadedStartScript.hpp"
@@ -847,7 +848,8 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             if (stageState[15] == 6)
             {
                 g_GuiView->guiFlags |= 0x20;
-                g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiCounter4C4C) * 1000u));
+                g_GuiScore.Add(static_cast<int>(
+                    static_cast<unsigned int>(g_GameScoreState.faith) * 1000u));
                 switch (stageState[13])
                 {
                 case 0:
@@ -882,13 +884,14 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 }
                 else
                 {
-                    g_MainSupervisorView.SetNextGameMode(4);
+                    goto SetReplayStageResult;
                 }
             }
             else if (stageState[15] == 7)
             {
                 g_GuiView->guiFlags |= 0x20;
-                g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiCounter4C4C) * 1000u));
+                g_GuiScore.Add(static_cast<int>(
+                    static_cast<unsigned int>(g_GameScoreState.faith) * 1000u));
                 g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiPowerLevel) * 40000000u));
                 g_GuiScore.Add(static_cast<int>(static_cast<unsigned int>(g_GuiPower) * 400000u));
                 if (g_ReplayManager->mode != 1)
@@ -900,21 +903,23 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 }
                 else
                 {
-                    g_MainSupervisorView.SetNextGameMode(4);
+                    goto SetReplayStageResult;
                 }
             }
             else
             {
                 GuiView *gui = g_GuiView;
+                int &transitionId = gui->specialVmId9E14.value;
                 g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E14);
-                gui->specialVmId9E14.value = 0;
-                {
-                    AnmLoadedView *loaded = gui->frontAnm;
-                    gui->specialVmId9E14.value = loaded->CreateVmVariant0(0x4c, GUI_VM_RENDER_LAYER).value;
-                }
+                transitionId = 0;
+                transitionId = gui->frontAnm->CreateVmVariant0(0x4c, GUI_VM_RENDER_LAYER).value;
                 g_MainSupervisorView.SetNextGameMode(0x0b);
                 th10::leaf::Fn004175E0(g_GameStageState);
             }
+            break;
+
+        SetReplayStageResult:
+            g_MainSupervisorView.SetNextGameMode(4);
             break;
         }
 

@@ -101,10 +101,12 @@ fallbacks are inadmissible here.
 table fields in `gui-message-run-candidate`. Computing each second sprite
 index before rebinding its resource restores the portrait case layout.
 Reading instruction time in the `while` condition restores the table base.
-The frontier has 436 differences and 42 external fields still move.
-Trace the second portrait load's EAX/ECX/EDX lifetimes and the shared
-stage 6/7 increment and mode-4 tails. The direct caller remains exact.
-See `.analysis/gui-message-run/results.txt` for the retained controls.
+The shared replay exit, typed faith load and scalar transition handle
+reference restore the complete suffix from `+0xB5C`. The frontier has
+224 differences, with 17 external fields still displaced. Trace the
+second portrait load's EAX/ECX/EDX lifetimes, the text lookup and the
+two side-position handlers. The direct caller remains exact. See
+`.analysis/gui-message-run/results.txt` for the retained controls.
 
 `MidiOutputView::ProcessEvent` matches 1,644 of 1,670 bytes and all
 37 linkage fields in the `MidiEventTick` graph. Using a guarded `do`
