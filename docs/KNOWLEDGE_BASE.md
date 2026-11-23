@@ -488,27 +488,33 @@ frontier; do not refresh a baseline merely to accept the new positions.
 - **EnemyGameStateView::StartSpell @0x409280 (2,432)**: current linked
   candidate 2,404/2,432 with 1,129 differing bytes; 14 receiver LEAs use
   EDX instead of ESI and eight PUSH schedules differ.
-- **ItemManagerUpdateBody @0x41AFD0 (2,320)**: `timer-view` emits 2,316
-  bytes with 594/600 normalized instructions through `RET`, all 44 direct
-  calls in order and 154 linkage fields. Retail case order, branch-local
-  timer calls and the real animation and popup bodies recover the calls.
-  Using `g_GameScoreState.power` and passing saved box coordinates recovers
-  the `0x58` frame. The timer call through `g_GameStartupState.score` rematerializes
-  EDI after `AddRank`. Both score names resolve to target `0x474C40`.
-  A declaration-only `AddFaith` gives the same caller as the normal COFF
-  body. Separately, the `/GL` helper emits 46 raw-identical bytes when linked
-  as a callee. Making it the link entry gives the 48-byte form with an extra
-  EDX argument load, as does normal COFF.
-  `life-member` brings the item body to 595/600 by changing `AddLives` to a
-  natural member. The 141-byte helper matches exactly. The `GameUpdateGui`
-  caller now loads ECX before EAX at +0x286. An inlineable
-  forwarding function leaves that order in place. `timer-view` preserves
-  both existing exact owners, the item callback and `GameManagerUpdateBody`.
-  In `life-member`, the case 5 load into EAX at +0x567 is one byte shorter
-  than the retail load into EBX. The resulting table starts four bytes early
-  at +0x8CC. Both tables retain their case order. The x87 operation
-  at +0x523, popup argument order and conversion flag store also differ.
-  [2026-11-22]
+- **ItemManagerUpdateBody @0x41AFD0 (2,320)** — The `power-label-fresh`
+  trial has the full PDB extent, all 73 direct local branches and both
+  jump tables at the target offsets. Above the collection line, the point-item
+  branch removes the remainder from a named intermediate and passes it to its
+  own popup call. C2 merges this call with case 5 while keeping the case 2
+  intermediate load in EAX and the case 5 load in EBX. A shared timer
+  label reached from both large-power paths with no conversion puts the
+  conversion store after the pushed duration on the conversion path.
+
+  The 154-field diagnostic comparison leaves +0x524 as the only
+  different instruction byte. The same field position at +0x525 names
+  `-5000.0f` in the candidate `FADD` and `5000.0f` in the target `FSUB`.
+  Passing both inputs to an inlined point-penalty function recovers `FSUB`
+  and moves the entire faith subexpression ahead of the distance subexpression.
+  In C2 the two orders are already present at global allocation entry
+  (`0x107A5471`), with operation `0x45` for the add and `0x47` for the
+  subtract. A named constant visible under `/GL` still folds to negative 5000.
+
+  The trial retains the exact 48-byte callback and `GameManagerUpdateBody`.
+  Its 141-byte `AddLives` member is exact, and its GUI score-display caller
+  reverses the receiver and count loads at +0x286. `timer-view` retains the
+  original GUI argument order. Its `g_GameStartupState.score` receiver
+  rematerializes EDI after `AddRank`. A separate `/GL` `AddFaith` emits the
+  46-byte target body when linked as a callee. Making it the link entry
+  or compiling it as normal COFF produces a 48-byte body with an extra EDX
+  load. The caller needs the reloads observed with the opaque declaration.
+  [2026-11-23]
 - **AnmRenderManagerView ctor @0x445900 (2,315)**: 655/670 normalized
   instructions after setting `element->arg = this` before `flags |= 3` and
   resetting the capture surface index first; the EH frame, VM flag loop and Chain

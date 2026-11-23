@@ -1,6 +1,6 @@
 # TH10 reconstruction — next-agent handoff
 
-**Updated 2026-11-22.** Start with [AGENTS.md](../AGENTS.md), this brief, and the relevant source and ledger rows. The current phase is natural C/C++ reconstruction with targeted VC7.1 codegen comparison. Product closure, semantic runtime validation and portability are later phases. Counts come from the generated [PROGRESS.md](PROGRESS.md).
+**Updated 2026-11-23.** Start with [AGENTS.md](../AGENTS.md), this brief, and the relevant source and ledger rows. The current phase is natural C/C++ reconstruction with targeted VC7.1 codegen comparison. Product closure, semantic runtime validation and portability are later phases. Counts come from the generated [PROGRESS.md](PROGRESS.md).
 
 ## Checkpoint and worktree
 
@@ -68,13 +68,14 @@ trace and scoped comparison commands are in `.analysis/gui-guard/results.txt`.
 
 ## Strategy for the remaining authored bytes
 
-`ItemManagerUpdateBody` at 0x0041AFD0 has a local 2,316-byte candidate against
-the 2,320-byte target. The `timer-view` trial restores the timer receiver
-after `AddRank` and preserves the exact GUI callers. The `life-member` trial
-fixes one more item instruction and changes the GUI call order. An opaque
-`AddFaith` declaration restores the caller reloads. The separately linked
-`/GL` callee matches all 46 bytes.
-See `.analysis/item-update/results.txt` for both retained probes and commands.
+`ItemManagerUpdateBody` at 0x0041AFD0 has a full 2,320-byte candidate.
+All 73 direct local branches and both jump tables match their target offsets.
+At +0x523 it adds `-5000.0f` where the target subtracts `5000.0f`. C2 chooses
+the two floating-point expression orders before global allocation. The next
+source change should recover `FSUB` while emitting the distance expression
+first. Keep the original GUI score-display argument order in view when
+changing `AddLives`. See `.analysis/item-update/results.txt` for the scoped
+comparisons and compiler traces.
 
 `_reference/th10-decomp` has MSVC C++ bodies for the remaining authored
 owners. Use its statement order, case structure and helper visibility as
