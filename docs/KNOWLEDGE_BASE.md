@@ -1368,6 +1368,16 @@ register preservation or mod-ref assumptions) where our builds exploit it
 - Bullet-pattern records are 0x210 bytes. Pattern offsets at +0x1344 are 12-byte xyz entries. The opcode-0x199 extra records are 24 bytes, 22 per pattern. Life is at +0x13C0 (`SUB`); the damage-flash counter at +0x1414 is decremented as a signed value. The circle opcodes copy motion +0x20/+0x24 as raw binary32 bits.
 - EnemyMarkPendingInterrupt is @0x00409E50.
 - Full object 0x2518 (EnemySpawn allocs); runtime tail at +0x103C, size 0x14DC, owner back-pointer runtime +0x14D8. Runtime: four 0x2C motion records +0/+0x2C/+0x58/+0x84; collision pairs +0xB0/+0xB8; ten VM ids +0xC0 (update uses 8); spawn params +0xFC (4 int then 4 float, writable lvalues); timer +0x11C; list node +0x130; two 0x4C pos interps +0x13C; four 0x3C scalar interps +0x1D4; reward/life +0x13BC/+0x13C0; drop type +0x13CC, 11 counts +0x13D0; 32.0f at +0x1400/+0x1404; death sound/effect +0x1408; flash +0x1414; timers +0x141C/+0x1430; flags +0x1444; manager slot +0x1450; eight 0x10 callback-threshold records +0x1458.
+- `EnemyFullObjectView::EnemyFullObjectView` at `0x0040D830` passes all
+  673 bytes and five fields through the two-source `EnemySpawn` link.
+  Its embedded context uses the existing 0x1008-byte ECL stack, with the
+  stack top and frame base at context +0x1008 and +0x100C. VC7.1 then
+  clears the cursors from the full object before installing the derived
+  vtable. Resetting through the shared ECL context retains the thread flags
+  in ECX, and the three life counter stores precede the two callback
+  initialization passes. The MIT-licensed reference suggested retaining
+  the flag word and separating the threshold stores.
+  [Reference license](licenses/th10-decomp-MIT.txt)
 - Enemy derives from a 0x103C ECL host (base vtable 0x0046D0D8, five slots + deleting dtor 0x0040C7B0; derived 0x0046D0C0, deleting 0x0040CC50, virtual delete via slot +0x14). Execution ctx full +0x008..+0x101F (0x1018); full +4 active ctx; resolver at ctx +0x1014 = Enemy; alloc list +0x1034; mirror +0x1030. Instruction: opcode +4, operand mask +8, operands from +0x10.
 - EnemyManagerView 0x68: timer +0x40, script DB +0x54, list head/tail +0x58/+0x5C, count +0x60, spawn counter +0x64; callbacks priority 0x12 (update 0x0040D810) / 0x14 (draw 0x0040D820), 0x24-byte nodes with owner at +0x20.
 - `EnemyRuntimeView::DispatchEclInstruction` at 0x0040E770 matches all

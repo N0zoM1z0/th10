@@ -1972,7 +1972,6 @@ functions = ["EnemyFullObjectView::EnemyFullObjectView"]
 symbol = "??0EnemyFullObjectView@@QAE@PBD@Z"
 target_address = 0x0040D830
 size = 673
-candidate = true
 linkages = [
   { offset = 0x01B, type = "DIR32", symbol = "??_7EnemyFullObjectView@@6B@", target = 0x0046D0C0 },
   { offset = 0x020, type = "REL32", symbol = "??0EnemyRuntimeView@@QAE@XZ", target = 0x0040CC70 },

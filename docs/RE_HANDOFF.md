@@ -17,6 +17,7 @@ comparison only for its source and link graph.
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
 | `spt-test-update` | 926 B | `SptTestUpdate`, 39 fields, VM lifetime and two-pass file enumeration. The registered callback and the interpreter, factory and worker calls match in the same image. |
+| `enemy-full-constructor` | 673 B | Two-source `EnemyFullConstructor` link through `EnemySpawn`, five fields and the ESI receiver. The base, embedded context and runtime constructors pass independent replays. The caller passes in its own link. |
 | `gui-message-constructor` | 683 B | `EnemyEclDispatcher`, 21 fields, four stored-ID lookups and the 2,000-record bullet sweep. The actual allocation caller, its EH binding and the ECL dispatcher match in the same image. |
 | `frontend-practice-draw` | 689 B | `FrontEndReplaySaveDraw`, 24 fields and the EDI receiver. The score rows, play totals and three neighboring draw paths pass. The score-entry update also passes in its own graph. |
 | `ascii-manager-draw-strings` | 738 B | `StageViewport`, 30 fields, both fonts, shadow drawing and viewport restoration. The callback, camera, flush and renderer pass in the same image. |
@@ -64,16 +65,6 @@ comparison only for its source and link graph.
 | `enemy-dispatch-ecl` | 14,416 B | `EnemyEclDispatcher`, 726 fields, 118 jump destinations and 181 opcode selectors. The selected replay includes dialog EH and the drop-flush body. |
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
-
-## Open owner
-
-`EnemyFullObjectView::EnemyFullObjectView` at `0x0040D830` is active.
-The dispatcher link matches all 673 bytes and five fields with the shared
-ECL stack, typed context reset and separate threshold stores. The actual
-spawn caller, base and runtime constructors, script lookup and ECL
-thread spawn also match there. The candidate `EnemyFullConstructor`
-recipe links just the Enemy and ECL sources through `EnemySpawn`. Cold
-replay that recipe and check the original base-constructor link.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
