@@ -446,13 +446,15 @@ frontier; do not refresh a baseline merely to accept the new positions.
     `.analysis/enemy-ecl-dispatch/results.txt`.
   - With the actual spell and bullet callees, the reference probe retains
     the 14,416-byte extent, 118 jump destinations and 726 field bindings.
-    Six ordinary bytes differ where the descriptor `LEA` and manager
-    `PUSH` trade places before `SpawnBulletPattern`. An unused fourth
-    source operand on `StartSpell` restores the spell branch and shared
-    tails. The spell body still matches 2,432 bytes and consumes 16 stack
-    bytes. Retargeting the reference body to the actual runtime entry and
-    using the maintained scalar members retains the full layout. The XOR
-    loop adds one difference at +0x273D, where ECX and ESI exchange SIB roles.
+    An unused fourth source operand on `StartSpell` restores the spell
+    branch and shared tails. The spell body still matches 2,432 bytes and
+    consumes 16 stack bytes. Putting the manager first in the spawner's
+    source signature restores the descriptor `LEA` before the manager
+    `PUSH`. The physical ABI and all three bullet bodies still match in
+    that image. The co-located runtime probe retains the full layout with
+    actual scalar fields, float reads, timers, argument helpers, chapter
+    state and factory calls. Its sole ordinary difference is at +0x273D,
+    where ECX and ESI exchange SIB roles in the spell-name XOR loop.
   - Scoped rank-3 and rank-5 count assignments give a 14,408-byte probe
     in the maintained-source graph with real callees. The 181 selectors
     and 18 fixed main destinations survive. The low-rank tail still needs
@@ -466,7 +468,7 @@ frontier; do not refresh a baseline merely to accept the new positions.
     `INC`. The full laser translation unit produces all 153 bytes and four
     fields with its existing callers in the probe graph. The runtime-entry
     probe also binds all four original call sites directly to that exact
-    body and retains the same seven dispatcher byte differences.
+    body without changing the dispatcher bytes.
   - Rank-3 thresholds are +/-512. Rank-5 uses +/-600 and +/-200.
     The target spell-name loop initializes its destination at ESP+0x248
     and forms the source address as a displacement from that cursor.
