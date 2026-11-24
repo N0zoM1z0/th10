@@ -620,6 +620,39 @@ frontier; do not refresh a baseline merely to accept the new positions.
   The 37 bound tag comparisons accept an upward shift of 15 to 31.
   A source change needs to move those ranges independently. [2026-11-24]
 
+  A full typed-pop comparison uses the same relative temporary order as
+  the TH10 reference for all 60 observed pairs. In the complete source
+  port, the raw and tag ordinals start 128 and 130 slots later. The
+  split translation unit preserves those offsets. Using a signed tag
+  stride removes 186 conversion requests, three per affected tag pop,
+  and brings the offsets to +32 and +34. This probe matches 7,016
+  bytes. With the less extensive port, the signed stride moves the
+  raw range to -4 and brings every late raw load into alignment.
+
+  The aliased XOR stack receiver in the complete signed-stride port
+  aligns all stack address encodings. Its eight differences occupy
+  FORMAT's initial tag lookup at +0x1951 through +0x195D. The target
+  loads the inline length before the tag cursor and adds those values
+  before indexing from the instruction header. The candidate loads
+  the cursor first and adds the header to it. The typed FORMAT helper
+  restores that sequence in the same probe and shifts eight address
+  bytes in the preceding float comparisons and bitwise OR. Using the
+  generic word pops in OR and separate stack receivers in the two
+  float comparisons restores those addresses. This gives 7,017/7,020.
+  The residuals are both bitwise AND tag reads and the raw cosine read.
+  The AND tag temporaries are 0x17DC and 0x17EF. The raw sine and cosine
+  temporaries are 0xFD5 and 0xFE9. A uniform shift of +36 to +42 with
+  the bases held fixed satisfies the 56 bound raw and 37 bound tag
+  comparisons in this probe.
+  Using the unsigned tag stride only in `PopInt` moves both ranges
+  by 32 and matches 7,019/7,020. The first AND tag temporary is
+  0x17FC and the second is 0x180F. The raw sine temporary is 0xFF5
+  and the raw cosine temporary is 0x1009. A further shift of four
+  to ten would cross the first AND boundary and keep sine below its
+  wrap point.
+  The full comparisons and compiler traces are in `.analysis/ecl-run/`.
+  [2026-11-24]
+
   The anonymous `FORMAT` tag-byte cursor stays at `ESP+0x18`, the same
   home as the named `x` in `LENGTH_SQUARED`. The cursor has weight six
   and `x` has weight three. C2 groups them in pre-sort colour four, just
