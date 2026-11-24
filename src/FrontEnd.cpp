@@ -3013,8 +3013,7 @@ int FrontEndControllerView::RefreshPracticeRecords()
         if (record >= FRONT_END_PRACTICE_RECORD_COUNT)
         {
             FrontEndVmIdStorageView *unusedRow = &practiceRowVmIds[row];
-            for (int remaining = FRONT_END_PRACTICE_ROWS_PER_PAGE - row;
-                 remaining != 0; --remaining, ++unusedRow)
+            for (; row < FRONT_END_PRACTICE_ROWS_PER_PAGE; ++row, ++unusedRow)
             {
                 AnmRenderManagerView *manager = g_AnmRenderManagerView;
                 AnmVmView *vm = FindPracticeRecordVm(manager, unusedRow->value);
@@ -3027,12 +3026,11 @@ int FrontEndControllerView::RefreshPracticeRecords()
 
         GameStatisticsOwner *profile =
             reinterpret_cast<GameStatisticsOwner *>(g_FrontEndProfileData);
-        GameStatisticsSpellHistoryEntryView *catalog =
-            profile->records[6].SpellHistoryAt(record);
-        if (catalog->attempts != 0)
+        GameStatisticsRecord &catalog = profile->records[6];
+        if (catalog.SpellHistoryAt(record)->attempts != 0)
         {
-            strcpy(name, catalog->name);
-            size_t length = strlen(name);
+            strcpy(name, catalog.SpellHistoryAt(record)->name);
+            int length = static_cast<int>(strlen(name));
             if (length < 42)
             {
                 size_t padding = 42 - length;
@@ -3040,9 +3038,9 @@ int FrontEndControllerView::RefreshPracticeRecords()
                 length += padding;
             }
 
+            name[length] = '\0';
             GameStatisticsRecord &shot = profile->records[cursor.current];
             AnmRenderManagerView *manager = g_AnmRenderManagerView;
-            name[length] = '\0';
             AnmVmView *vm = FindPracticeRecordVm(manager, rowId->value);
             if (vm == NULL)
                 rowId->value = 0;
