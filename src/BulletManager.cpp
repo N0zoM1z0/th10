@@ -810,9 +810,9 @@ int BulletSpawnDescriptorView::SpawnSingleBullet(
 }
 
 
-int BulletSpawnDescriptorView::SpawnBulletPattern(BulletManagerView *manager)
+int __stdcall SpawnBulletPattern(
+    BulletSpawnDescriptorView *descriptor, BulletManagerView *manager)
 {
-    BulletSpawnDescriptorView *descriptor = this;
     int index2;
     int index1;
     float angleToPlayer;

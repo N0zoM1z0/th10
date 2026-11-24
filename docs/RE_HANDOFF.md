@@ -11,12 +11,6 @@ and portability remain open.
 - Use the original Japanese TH10 v1.00a executable at the private,
   read-only `resources/th10.exe`. The SHA-256 is
   `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
-- The worktree has a pending `SpawnBulletPattern` signature change in
-  `BulletManager.cpp`, `BulletManager.hpp`, `BulletTransform.cpp` and
-  `EnemyEclDispatcher.cpp`. It makes the descriptor an explicit first
-  parameter and updates two callers. The existing `bullet-spawn-pattern-exact`
-  recipe still names the member symbol. Treat the free-function form as
-  pending verification and preserve the diff when resuming.
 - `config/match-units.toml` defines the compiler recipes and
   `config/matches.csv` records accepted exact owners. The residuals in
   `config/frontiers.toml` belong to the recipes named there. Results in a
@@ -30,6 +24,8 @@ the compiler observations behind the source changes.
 
 | Unit | Bytes | Relevant context |
 | --- | ---: | --- |
+| `bullet-transform-program` | 1,604 | UpdateBullets-rooted link, 38 fields, five absolute switch entries and 128 selectors. Credits 1,454 code bytes. |
+| `bullet-spawn-pattern-exact` | 194 | Same link, six fields. EAX descriptor and stack manager at both real callers. |
 | `enemy-start-spell` | 2,432 | `EnemyStartSpell` link, 108 fields and eight fixed local destinations. The real dispatcher passes four stack arguments. |
 | `ecl-vm-run` | 7,020 | `GameManagerUpdate` link, 189 fields and 62 fixed local destinations. The complete switch data and the context-first float reader are covered by the scoped replay. |
 | `anm-execute-script` | 9,964 | `GameManagerUpdate` link, 350 fields and 95 fixed local destinations. Per-case child attachment restores allocation before C2 merges the two spawn tails. |
@@ -45,7 +41,7 @@ the compiler observations behind the source changes.
 | `gui-update-score-display` | 671 | 36 fields. Branch-local awards retain the exact `AddLives` body. |
 | `game-manager-cleanup` | 1,105 | 110 fields. The recipe links the real statistics finalizer and gives `Player.cpp` its reviewed `/EHs` profile. |
 | `transition-shake-linear` | 439 | 20 fields. The wide RNG seed read and named float product restore the x87 divide. |
-| `bullet-spawn-single-exact` | 1,472 | 1,413 credited code bytes plus owned tables. The replay predates the pending bullet signature change. |
+| `bullet-spawn-single-exact` | 1,472 | UpdateBullets-rooted link, 44 fields. Credits 1,413 code bytes. |
 
 ## Open owners
 
@@ -88,13 +84,11 @@ memory OR precedes them. Build `front-end-music-skip-line` to refresh the
 
 ### Bullet frontiers
 
-These measurements describe the committed member-signature baseline. Review
-the pending signature change with its actual callers before applying them to
-the worktree.
+These measurements come from the member-signature source epoch.
+Retest each candidate in its reviewed link graph.
 
 | Unit | Residual at the baseline |
 | --- | --- |
-| `bullet-transform-program` | Complete 0x644-byte extent. The child-spawn manager field is four bytes late, and the pattern descriptor goes in ECX instead of the retail EAX. |
 | `entity-start-script` | 204 bytes against 202 with the real initializer opaque, and 200 bytes with it visible and the VM in EDX. The natural starter is now `AnmVmStartScript(resource, vm, scriptIndex)`. |
 | `bullet-runtime-update` | 884 bytes against 885. The interpreter receives its pointer on the stack. Retail uses ECX. |
 | `bullet-update-absolute-direction` | Both extents are 335 bytes. Only +0xD7 and +0xDD differ, with EDX in place of EAX. The reference `EaseStep` form shrinks the candidate to 320. |

@@ -274,12 +274,14 @@ starter to 130 bytes. [2026-11-23]
   Adding `RandomMath.cpp` was neutral.
 - When a support file gains a call to a private-ABI callee, replay every exact
   unit whose graph compiles that file as normal COFF.
-- `SpawnBulletPattern @0x4073E0` takes its descriptor in EAX in its own exact
-  graph and in retail, but in ECX inside the interpreter's graph. This is the
-  interpreter's last structural gap (+0x3E0..+0x495, child spawn; its only
-  field mismatch is the manager load at +0x46A). Adding
-  `RandomMath.cpp` or making `BulletManager.cpp` the first `/GL` input did not
-  change it. [2026-11-22]
+- `SpawnBulletPattern @0x4073E0` receives the descriptor in EAX and
+  the manager on the stack, and returns with `RET 4`. The context is
+  the `BulletManagerView::UpdateBullets` link entry with both real
+  callers. The interpreter-entry graph puts both parameters on the
+  stack and emits a 209-byte pattern function with `RET 8`. Changing
+  the declaration to a free function exposes the descriptor explicitly.
+  The reviewed link graph gives both callers the retail register and
+  stack homes. [2026-11-24]
 
 ### Compiler evidence from TH09
 
@@ -844,7 +846,17 @@ frontier; do not refresh a baseline merely to accept the new positions.
 - **LoadHintFile @0x419960 (1,498)**: 1,533. [2026-10-20]
 - **UpdateReplaySave @0x433570 (1,460)**: 1,444; the target reloads the pressed
   input after the movement sound. [2026-10-30]
-- **BulletRuntimeView::AdvanceTransformProgram @0x406D90 (1,454 code bytes)**: the `bullet-transform-program` unit uses VC7.1 SP1 LTCG `/GL` + `/GS` and a 0x644-byte complete code/local-table comparison extent, including five local switch-table destinations at +0x5B0..+0x5C0 and the 128-byte selector span at +0x5C4. A fresh build against the current source still has a 0x640 PDB contribution; strict comparison stops with `PDB contribution size 0x640 differs from manifest 0x644` before comparing the complete owner. The target computes `index * 3` in EAX, loads kind into ECX, and forms the record pointer in ESI; the current baseline candidate assigns scaled index to ECX and kind to EAX. Several natural C++ type/scope/expression variants were explored without improving the complete owner. The source models 18 records of stride 0x18 at runtime +0x464, kind +0x10, allow-while-active +0x14, active flags +0x43C, cursor +0x45C, and nine extension-state slots at +0x614. Next focus is EAX/ECX/ESI lifetimes, child descriptor initialization order, both loop tails, and complete local tables. Do not shrink the comparison extent or claim partial exactness. The historical `bullet-runtime-update` source-epoch caveat remains separate. [2026-11-20] On 2026-11-22 both the committed `9957cd86` register-lifetime source and an uncommitted raw-offset record-access variant still produced 0x640, so the extent gate is unchanged. [2026-11-22]
+- **BulletRuntimeView::AdvanceTransformProgram @0x406D90 (1,604 compared bytes)**:
+  the `bullet-transform-program` unit cold replays with the two spawners
+  in the UpdateBullets-rooted link. Its 1,454 instruction bytes, two alignment
+  bytes, five absolute case destinations and 128 selectors match with
+  all 38 bound fields. The child pattern's manager load is at +0x46A
+  and the EAX descriptor and stack manager go to the call at +0x497.
+  In the previous interpreter-entry graph the manager load aligned
+  after the signature change, but passing both arguments on the stack
+  shifted the child call and the following cases. The shared graph
+  restores the whole extent with the same interpreter source.
+  [2026-11-24]
 - **PlayerInitialize @0x4247F0 (1,435)**: 1,380 with 49 fields; current source
   carries five barriers and a scoped volatile manager capture. [2026-10-23]
 - **BulletSpawnDescriptorView::SpawnSingleBullet @0x4067D0 (1,413 code + 59 local-table bytes)**: exact since 2026-11-22. A selected cold replay reproduces 1,472/1,472 bytes with all 44 fields. The last 54 bytes closed through three natural changes. First, the call became `AnmVmStartScript(manager->bulletAnm, &bullet->vm, table[type] + color)`, which removed a `_ReadWriteBarrier` and the fake ECX argument. Second, the callee `AdvanceTransformProgram` became a plain switch, which fixed the effect-switch registers; this is a non-local effect through LTCG. Third, the cursor tail was written as `++bullet; if (bullet->state == 5) cursor = &bullets[0]; else cursor = bullet;` instead of an inverted early return. Earlier fixes still hold: the ordered `if/else if` interrupt selection and the collision-height/width store order. [2026-11-22]
@@ -1239,7 +1251,7 @@ register preservation or mod-ref assumptions) where our builds exploit it
 - DrawBucket uses a private ABI (EAX = manager, ECX = bucket) and reads `manager + 0x14 + bucket*4`.
   - world offset X = 0x470B4C, Y = 0x470B48;
   - AddNormalizeAngle = 0x44BC10; render-manager global = 0x491C10; ANM Draw = 0x4451C0.
-- Transform-program records are 0x18 bytes. The large `AdvanceTransformProgram` owner in `src/BulletTransform.cpp` has 0x5AE code bytes plus local switch/selector data in the configured 0x644 owner extent. The latest current-source linked image is 0x640 and fails the complete-extent gate; the strict comparator cannot assess the full owner. See `RE_HANDOFF.md` for the current register-lifetime and descriptor-store investigations. This owner remains nonexact.
+- Transform-program records are 0x18 bytes. The complete `bullet-transform-program` extent in the UpdateBullets-rooted link is 0x644, with 0x5AE bytes credited as code. Five table entries start at +0x5B0 and the 128-byte selector span starts at +0x5C4.
 - The pool holds 2001 BulletRuntimeView records with a 0x7F0 stride, at manager +0x60. SpawnSingle +0x152 computes `LEA EAX,[ECX+1]` and then a signed `/2` for the alternating aim. UpdateVerticalWrap takes EBX as its receiver.
 - Runtime transform program: ≤18 0x18-byte records at +0x464, active flags +0x43C, cursor +0x45C, nine 0x34 exState slots at +0x614. Cancel pool 2000 × 0x7F0 rows, position +0x3B4. Wrap bounds Y [0,448] vs cull [-64,448].
 - Bullet callback 0x00406770 is a single 40-byte owner (0x0040678E is an interior tail entry).

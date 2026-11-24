@@ -89,8 +89,12 @@ struct BulletSpawnDescriptorView
 
     int SpawnSingleBullet(
         BulletManagerView *manager, int index1, int index2, float angleToPlayer);
-    int SpawnBulletPattern(BulletManagerView *manager);
 };
+
+// The native pattern scanner receives its descriptor as an explicit first
+// argument; LTCG lowers that pointer to EAX and keeps the manager on the stack.
+int __stdcall SpawnBulletPattern(
+    BulletSpawnDescriptorView *descriptor, BulletManagerView *manager);
 
 typedef char BulletSpawnDescriptorViewSizeIs210[
     (sizeof(BulletSpawnDescriptorView) == 0x210) ? 1 : -1];
