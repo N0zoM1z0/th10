@@ -169,11 +169,9 @@ def require_decode_coverage(
     decoded = int(field_report["decoded_bytes"])
     if not 0 <= decoded <= size:
         raise ValueError("linked decoder extent leaves the compared contribution")
-    if not data_spans:
-        raise ValueError(f"Capstone decoded {decoded} of {size} bytes")
     covered = set(range(decoded))
-    # Authoritative PE relocations cover absolute jump entries on either
-    # side of a declared selector span.
+    # Absolute jump entries can cover the tail on their own or alongside
+    # declared selector data. The caller still checks every field binding.
     for field in field_report["fields"]:
         if field["type"] == "DIR32" and int(field["width"]) == 4:
             covered.update(range(int(field["offset"]), int(field["offset"]) + 4))

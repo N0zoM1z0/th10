@@ -110,7 +110,24 @@ class TrailingCoverage(unittest.TestCase):
 
     def test_missing_data_annotation_is_rejected(self):
         self.fixture.unit.pop("data_spans")
-        with self.assertRaisesRegex(ValueError, "Capstone decoded"):
+        with self.assertRaisesRegex(ValueError, "do not cover.*undecoded"):
+            self.compare()
+
+    def test_relocated_jump_entries_can_cover_the_entire_tail(self):
+        f = self.fixture
+        f.unit.pop("data_spans")
+        for path, address in ((f.image, 0x501007), (f.target_path, 0x401007)):
+            data = bytearray(path.read_bytes())
+            struct.pack_into("<H", data, 0x38C, 0x3014)
+            struct.pack_into("<I", data, 0x214, address)
+            path.write_bytes(data)
+        f.fields.append(dict(offset=20, type="DIR32", local=True, target=0x401007))
+        self.report = f.c.linked_code_fields(PEImage(f.image), [], 0x501000, 24, 16)
+        self.assertEqual(self.compare()["result"], "exact")
+
+        f.pointer(20, 0x501006)
+        self.report["fields"][-1]["candidate_target"] = 0x501006
+        with self.assertRaisesRegex(ValueError, "local.*destination"):
             self.compare()
 
 
