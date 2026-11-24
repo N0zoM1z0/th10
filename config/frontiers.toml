@@ -60,10 +60,3 @@ unit = "game-statistics-initialize-record"
 candidate_size = 274
 target_sha256 = "62905fe172fb66ca164498ab8964b6d0f9e8b09d783ceca25ebe2a1062712953"
 residual = ["14", "1D", "29", "47", "4D", "50", "52", "58-59", "5B", "61", "64", "70", "72", "76", "8B-8E", "90-93", "A6", "C8"]
-
-[frontier.player-initialize]
-function = "PlayerInitialize"
-unit = "player-initialize"
-candidate_size = 1435
-target_sha256 = "d7afacbf04a5b593f0d22ba7d4878f94755ca85a00673ea8b17c22921ccfc607"
-residual = ["337-338", "33A-341", "4AD-4B3"]

@@ -1035,11 +1035,9 @@ int PlayerInitialize(Player *player)
     }
     player->updateTimer0.subframe = -1.0f;
     player->updateTimer0.previous = -2;
-    // Complete the preceding stores before publishing the current timer value.
-    _ReadWriteBarrier();
-    player->updateTimer0.current = -1;
-    // Keep the observed timer publication before following data reads.
-    _ReadWriteBarrier();
+    // Publish the reset frame before reloading the current option data.
+    volatile int &current = player->updateTimer0.current;
+    current = -1;
 
     player->optionData->value04 = g_PlayerOptionValue04ByCharacter[character];
     player->optionData->value0C = g_PlayerOptionValue0CByCharacter[character];

@@ -878,15 +878,18 @@ frontier; do not refresh a baseline merely to accept the new positions.
   restores the whole extent with the same interpreter source.
   [2026-11-24]
 - **PlayerInitialize @0x4247F0 (1,435)**: the `player-initialize` graph
-  produces the full body with 49 fields and a 17-byte residual. Linking the
-  maintained logger and `AnmVmStartScript` preserves their private calling
-  conventions. The upper bounds use one component-wise sum and read the
-  extent before the position for each x87 add. A typed shot-file selector
-  preserves the character and shot index loads in the failure branch.
-  Direct publication through `th10::g_Chain` preserves both registrations.
-  `PlayerFloat3` preserves the typed aggregate result. The two remaining
-  z stores sit at C2's scheduling windows for the long vector sequence.
-  [2026-11-24]
+  covers the full body and 49 fields. Linking the maintained logger and
+  `AnmVmStartScript` preserves their private calling conventions. The upper
+  bounds read the extent before the position for each x87 add. A typed
+  shot-file selector preserves the character and shot index loads in the
+  failure branch. Direct publication through `th10::g_Chain` preserves both
+  registrations. `PlayerFloat3` retains the 12-byte aggregate scratch result.
+
+  The two z stores occur at the boundaries of C2's scheduling windows.
+  Removing the barriers around the first timer's current-frame store restores
+  both z stores and moves the first option-data pointer load ahead of the
+  timer writes. Publishing the current-frame field through a volatile
+  reference preserves all three positions. [2026-11-24]
 - **BulletSpawnDescriptorView::SpawnSingleBullet @0x4067D0 (1,413 code + 59 local-table bytes)**: exact since 2026-11-22. A selected cold replay reproduces 1,472/1,472 bytes with all 44 fields. The last 54 bytes closed through three natural changes. First, the call became `AnmVmStartScript(manager->bulletAnm, &bullet->vm, table[type] + color)`, which removed a `_ReadWriteBarrier` and the fake ECX argument. Second, the callee `AdvanceTransformProgram` became a plain switch, which fixed the effect-switch registers; this is a non-local effect through LTCG. Third, the cursor tail was written as `++bullet; if (bullet->state == 5) cursor = &bullets[0]; else cursor = bullet;` instead of an inverted early return. Earlier fixes still hold: the ordered `if/else if` interrupt selection and the collision-height/width store order. [2026-11-22]
 - **EnemyLaserLineView::RunCommands @0x41CA80 (1,356)**: 1,368; embedded VM
   receiver EDX versus ESI. [2026-10-20]

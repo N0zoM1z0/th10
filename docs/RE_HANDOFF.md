@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `player-initialize` | 1,435 B | `PlayerInitialize`, 49 fields, the EBX receiver from `PlayerCreate` and both callback registrations. The factory and option-file loader compare in their own link graphs. |
 | `frontend-replay-save-update` | 1,460 B | `FrontEndReplay`, 86 fields and five phase destinations. Replay loading, saving, slot destruction and both music calls also pass in the same link. |
 | `frontend-replay-update` | 1,492 B | `FrontEndReplay`, 91 fields and six phase destinations. The `/EHs` link preserves the two calls to the exact replay-file loader. |
 | `hint-load-file` | 1,498 B | `HintReadLine`, 70 fields and the complete split, color, and duplicate-entry paths. The reader, splitter, constructor and list append pass in the same link. |
@@ -33,14 +34,6 @@ comparison only for its source and link graph.
 | `enemy-dispatch-ecl` | 14,416 B | `EnemyEclDispatcher`, 726 fields, 118 jump destinations and 181 opcode selectors. The selected replay includes dialog EH and the drop-flush body. |
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
-
-## Open owner
-
-`PlayerInitialize` at `0x004247F0` is the active owner. Compare the full
-1,435-byte initializer through `player-initialize`. The real logger and VM
-initializer restore both private call boundaries. The current residual is
-17 bytes across two staged z stores. The native player vector type retains
-the 12-byte scratch result, and both callback registrations match.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
