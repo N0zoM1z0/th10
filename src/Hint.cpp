@@ -7,18 +7,16 @@
 #include <time.h>
 #include <direct.h>
 
-namespace
-{
 struct HintNameValue
 {
     const char *name;
     int value;
 };
-// Target474494 and4744B0. Logical tables only: physical storage still open.
-const HintNameValue alignmentNames[] = {
+// Target 0x00474494 and 0x004744B0 are name/value tables for hint output.
+extern const HintNameValue g_HintAlignmentNames[] = {
     {"center", 0}, {"left", 1}, {"right", 2}
 };
-const HintNameValue baseNames[] = {
+extern const HintNameValue g_HintBaseNames[] = {
     {"start",0},
     {"converse_1",1}, {"converse_2",2}, {"converse_3",3},
     {"converse_4",4}, {"converse_5",5},
@@ -38,14 +36,27 @@ const HintNameValue baseNames[] = {
     {"boss_card_14",55}, {"boss_card_15",56}, {"boss_card_16",57},
     {"boss_card_17",58}, {"boss_card_18",59}, {"boss_card_19",60}
 };
+
+static __forceinline const char *FindHintName(
+    const HintNameValue *names, int count, int value)
+{
+    for (int i = 0; i < count; ++i)
+        if (names[i].value == value)
+            return names[i].name;
+    return NULL;
 }
 
 int __stdcall ExportAutomaticHints(HintOwnerView *owner, const char *path)
 {
+    int stage;
+    int emitted;
+    HintLinkView *slot;
+    HintLinkView *next = NULL;
     char *buffer = static_cast<char *>(malloc(4096));
     _mkdir("hint");
     if (FileSystem::OpenWriteFile(path) == 0)
     {
+#pragma inline_depth(0)
         sprintf(buffer, "# ========================================================= \r\n");
         FileSystem::WriteToOpenFile(buffer, strlen(buffer));
         // CP932 literals46D510,46D4D8,46D490, not UTF-8 replacements.
@@ -59,88 +70,90 @@ int __stdcall ExportAutomaticHints(HintOwnerView *owner, const char *path)
         FileSystem::WriteToOpenFile(buffer, strlen(buffer));
         sprintf(buffer, "#\r\n");
         FileSystem::WriteToOpenFile(buffer, strlen(buffer));
-        time_t now;
-        time(&now);
-        tm *stamp = localtime(&now);
-        sprintf(buffer, "#                                Time-stamp: <%.4d/%.2d/%.2d %.2d:%.2d>\r\n",
-                stamp->tm_year + 1900, stamp->tm_mon + 1, stamp->tm_mday,
-                stamp->tm_hour, stamp->tm_min);
+        {
+            time_t now;
+            time(&now);
+            tm *stamp = localtime(&now);
+            sprintf(buffer, "#                                Time-stamp: <%.4d/%.2d/%.2d %.2d:%.2d>\r\n",
+                    stamp->tm_year + 1900, stamp->tm_mon + 1, stamp->tm_mday,
+                    stamp->tm_hour, stamp->tm_min);
+        }
         FileSystem::WriteToOpenFile(buffer, strlen(buffer));
         sprintf(buffer, "\r\n\r\n");
         FileSystem::WriteToOpenFile(buffer, strlen(buffer));
         sprintf(buffer, "Version = %s\r\n\r\n", "0.0");
         FileSystem::WriteToOpenFile(buffer, strlen(buffer));
 
-        for (int stage = 0; stage < 8; ++stage)
+#pragma inline_depth(16)
+        stage = 0;
+        slot = owner->exportStageLists;
+        do
         {
-            int emitted = 0;
-            for (HintLinkView *node = owner->exportStageLists[stage].next; node; )
+            HintLinkView *node = slot->next;
+            emitted = 0;
+            if (node != NULL)
             {
-                HintLinkView *next = node->next;
-                HintEntryView *entry = static_cast<HintEntryView *>(node->payload);
-                if (entry->remaining != 0)
+                do
                 {
-                    if (emitted == 0)
+                    next = node->next;
+                    HintEntryView *entry = static_cast<HintEntryView *>(node->payload);
+                    if (entry->remaining == 0)
                     {
-                        sprintf(buffer, "# ================================== \r\n");
-                        FileSystem::WriteToOpenFile(buffer, strlen(buffer));
-                        sprintf(buffer, "Stage : %d\r\n\r\n", stage);
-                        FileSystem::WriteToOpenFile(buffer, strlen(buffer));
+                        node = next;
                     }
-                    sprintf(buffer, "Tips\r\n", stage);
-                    FileSystem::WriteToOpenFile(buffer, strlen(buffer));
-                    if (entry->remaining > 0)
-                        sprintf(buffer, "\tRemain\t: %d\r\n", entry->remaining);
-                    // Native negative-remaining path writes the prior Tips again.
-                    FileSystem::WriteToOpenFile(buffer, strlen(buffer));
-                    sprintf(buffer, "\tText\t: \"%s\"\r\n", entry->text);
-                    FileSystem::WriteToOpenFile(buffer, strlen(buffer));
-                    sprintf(buffer, "\tPos\t\t: %d, %d\r\n",
-                            static_cast<int>(entry->position.x), static_cast<int>(entry->position.y));
-                    FileSystem::WriteToOpenFile(buffer, strlen(buffer));
-                    sprintf(buffer, "\tCount\t: %d\r\n", entry->count);
-                    FileSystem::WriteToOpenFile(buffer, strlen(buffer));
-                    const char *baseName = 0;
-                    for (int baseIndex = 0; baseIndex < 61; ++baseIndex)
-                        if (baseNames[baseIndex].value == entry->base)
+                    else
+                    {
+                        if (emitted == 0)
                         {
-                            baseName = baseNames[baseIndex].name;
-                            break;
+                            sprintf(buffer, "# ================================== \r\n");
+                            FileSystem::WriteToOpenFile(buffer, strlen(buffer));
+                            sprintf(buffer, "Stage : %d\r\n\r\n", stage);
+                            FileSystem::WriteToOpenFile(buffer, strlen(buffer));
                         }
-                    sprintf(buffer, "\tBase\t: %s\r\n", baseName);
-                    FileSystem::WriteToOpenFile(buffer, strlen(buffer));
-                    const char *alignmentName = 0;
-                    for (int alignmentIndex = 0; alignmentIndex < 3; ++alignmentIndex)
-                        if (alignmentNames[alignmentIndex].value == entry->alignment)
-                        {
-                            alignmentName = alignmentNames[alignmentIndex].name;
+                        sprintf(buffer, "Tips\r\n", stage);
+                        FileSystem::WriteToOpenFile(buffer, strlen(buffer));
+                        if (entry->remaining > 0)
+                            sprintf(buffer, "\tRemain\t: %d\r\n", entry->remaining);
+                        // Native negative-remaining path writes the prior Tips again.
+                        FileSystem::WriteToOpenFile(buffer, strlen(buffer));
+                        sprintf(buffer, "\tText\t: \"%s\"\r\n", entry->text);
+                        FileSystem::WriteToOpenFile(buffer, strlen(buffer));
+                        sprintf(buffer, "\tPos\t\t: %d, %d\r\n",
+                                static_cast<int>(entry->position.x), static_cast<int>(entry->position.y));
+                        FileSystem::WriteToOpenFile(buffer, strlen(buffer));
+                        sprintf(buffer, "\tCount\t: %d\r\n", entry->count);
+                        FileSystem::WriteToOpenFile(buffer, strlen(buffer));
+                        sprintf(buffer, "\tBase\t: %s\r\n",
+                            FindHintName(g_HintBaseNames, 61, entry->base));
+                        FileSystem::WriteToOpenFile(buffer, strlen(buffer));
+                        sprintf(buffer, "\tAlign\t: %s\r\n",
+                            FindHintName(g_HintAlignmentNames, 3, entry->alignment));
+                        FileSystem::WriteToOpenFile(buffer, strlen(buffer));
+                        sprintf(buffer, "\tTime\t: %d\r\n", entry->time);
+                        FileSystem::WriteToOpenFile(buffer, strlen(buffer));
+                        sprintf(buffer, "\tAlpha\t: %d\r\n", static_cast<int>(entry->alpha));
+                        FileSystem::WriteToOpenFile(buffer, strlen(buffer));
+                        sprintf(buffer, "\tColor\t: %d, %d, %d\r\n", static_cast<int>(entry->red),
+                                static_cast<int>(entry->green), static_cast<int>(entry->blue));
+                        FileSystem::WriteToOpenFile(buffer, strlen(buffer));
+                        sprintf(buffer, "\tScale\t: %.1f\r\n", static_cast<double>(entry->scale));
+                        FileSystem::WriteToOpenFile(buffer, strlen(buffer));
+                        sprintf(buffer, "End\r\n\r\n", stage);
+                        FileSystem::WriteToOpenFile(buffer, strlen(buffer));
+                        if (++emitted >= 255)
                             break;
-                        }
-                    sprintf(buffer, "\tAlign\t: %s\r\n", alignmentName);
+                        node = next;
+                    }
+                } while (next != NULL);
+                if (emitted != 0)
+                {
+                    sprintf(buffer, "StageEnd\r\n");
                     FileSystem::WriteToOpenFile(buffer, strlen(buffer));
-                    sprintf(buffer, "\tTime\t: %d\r\n", entry->time);
-                    FileSystem::WriteToOpenFile(buffer, strlen(buffer));
-                    sprintf(buffer, "\tAlpha\t: %d\r\n", static_cast<int>(entry->alpha));
-                    FileSystem::WriteToOpenFile(buffer, strlen(buffer));
-                    sprintf(buffer, "\tColor\t: %d, %d, %d\r\n", static_cast<int>(entry->red),
-                            static_cast<int>(entry->green), static_cast<int>(entry->blue));
-                    FileSystem::WriteToOpenFile(buffer, strlen(buffer));
-                    sprintf(buffer, "\tScale\t: %.1f\r\n", static_cast<double>(entry->scale));
-                    FileSystem::WriteToOpenFile(buffer, strlen(buffer));
-                    sprintf(buffer, "End\r\n\r\n", stage);
-                    FileSystem::WriteToOpenFile(buffer, strlen(buffer));
-                    ++emitted;
-                    if (emitted >= 255)
-                        break;
                 }
-                node = next;
             }
-            if (emitted != 0)
-            {
-                sprintf(buffer, "StageEnd\r\n");
-                FileSystem::WriteToOpenFile(buffer, strlen(buffer));
-            }
-        }
+            ++stage;
+            ++slot;
+        } while (stage < 8);
     }
     FileSystem::CloseWriteFile();
     free(buffer);

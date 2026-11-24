@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `hint-export-automatic` | 2,247 B | `HintWriteToOpenFile`, 181 fields, both name lookup tails and the nine outlined writer calls. The 76-byte writer also passes. |
 | `player-update-movement` | 1,656 B | `ClaudeReplayInitLoadScript`, 54 fields and two eight-entry direction tables. Player update, hit response, option rebuild and state transition also pass. |
 | `midi-load-track-file` | 448 B | `MidiStopPlayback`, six fields and the direct `ReleaseTracks` callee. Direct byte accesses in the endian helpers preserve the header copies and track loop. |
 | `player-handle-collision-hit` | 627 B | `ClaudeReplayInitLoadScript`, 21 fields and two inline hit-effect creation sites. Player update, option rebuild and state transition pass in the same link. |

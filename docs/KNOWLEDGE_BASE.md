@@ -739,8 +739,23 @@ frontier; do not refresh a baseline merely to accept the new positions.
   embedded VM and layer array cleanup actions in one 79-byte region.
   The [MIT-licensed reference](licenses/th10-decomp-MIT.txt) provided the
   inline initializer lead. [2026-11-24]
-- **ExportAutomaticHints @0x41A200 (2,247)**: native inlines all 24 writer uses;
-  the target makes 9 calls and inlines 15. [2026-10-25]
+- **ExportAutomaticHints @0x41A200 (2,247)**: exact in
+  `HintWriteToOpenFile`, with 181 bound fields and both name lookup tails.
+  Limit inlining through the file header to keep its nine calls to the
+  real writer. The fifteen calls in the stage loop inline the same
+  implementation. The first nonzero entry emits both lines of the
+  stage banner. A negative remaining count keeps the previous Tips
+  line available for the unconditional write.
+
+  Scope the timestamp's `time_t` to its formatting block so the
+  compiler can reuse the walker slot at `ESP+0x18`. With the timestamp
+  live through the entire open-file block, VC7.1 reserved eight more
+  stack bytes and shifted the write-count locals. The scoped temporary,
+  shared next-link test and inline name lookup match the complete
+  instruction layout. Both name tables and the 26 direct string
+  references were checked against the target, including the CP932 header
+  literals. The MIT-licensed reference exporter suggested the split
+  between outlined and inlined writes and the cursor form. [2026-11-24]
 - **GameResetGui @0x413BC0 (1,965)** is exact with 52 bound fields and
   73 fixed local branches in the GameManager update graph. Each loop
   walks flag-word addresses with a stride of `sizeof(AnmVmView)`. C2
