@@ -648,10 +648,15 @@ frontier; do not refresh a baseline merely to accept the new positions.
   and their strings compare byte for byte. The MIT-licensed
   `_reference/th10-decomp` music room provided source and compiler-context
   leads. [2026-11-24]
-- **RebuildPlayerOptions @0x426F70 (2,520)** has a recorded 2,424-byte
-  candidate in the `ClaudeReplayInitLoadScript` graph. The target consumes
-  a stack Player pointer and returns with RET 4. Use `rebuild-player-options`
-  in `config/frontiers.toml` for the baseline and its recipe.
+- **RebuildPlayerOptions @0x426F70 (2,520)** has a 2,424-byte candidate in
+  the `ClaudeReplayInitLoadScript` graph. A fresh build reproduces all 1,983
+  diagnostic differences in `rebuild-player-options`, starting at +0x22.
+  The original jump table occupies the final 24 bytes at +0x9C0. Its six
+  destinations relative to the owner are +0xE5, +0xFC, +0x113, +0x119,
+  +0x130 and +0x147. The candidate table starts at +0x960 with six different
+  owner-relative destinations. The frontier masks the candidate table relocations.
+  The same PE, MAP and PDB pass the strict `player-update-callback-body`
+  comparison for all 3,112 bytes and 112 fields. [2026-11-24]
 - **EnemyGameStateView::StartSpell @0x409280 (2,432)** uses the
   `enemy-start-spell` recipe with real `AnmVmStartScript` support.
   The cold replay covers 108 linked fields, including the table
