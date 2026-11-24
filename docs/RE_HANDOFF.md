@@ -47,6 +47,12 @@ comparison only for its source and link graph.
 
 ## Open owner
 
+`FrontEndControllerView::Update` at `0x0042CDF0` is the active owner.
+Use `frontend-update-dispatcher` in the `FrontEndReplay` graph to compare
+all 1,128 bytes. The initialization branches, timer and 17 dispatch
+destinations now line up. Continue with register and store ordering in
+the idle-demo path. Keep the registered callback's EAX receiver.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.

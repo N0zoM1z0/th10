@@ -969,46 +969,51 @@ int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller)
 }
 
 
-// TH10_FRONTEND_FUNCTION: 0x0042CDF0 FrontEndControllerView::Update
-int FrontEndControllerView::Update()
+static __forceinline int FrontEndUpdateIdleDemo(FrontEndControllerView *controller)
 {
-    if (screen == FRONT_END_SCREEN_MAIN_MENU ||
-        screen == FRONT_END_SCREEN_MAIN_MENU_RETURN)
+    if (controller->screen == FRONT_END_SCREEN_MAIN_MENU ||
+        controller->screen == FRONT_END_SCREEN_MAIN_MENU_RETURN)
     {
         ++g_FrontEndDemoFrames;
         if ((g_FrontEndInput.current & 0x160b) != 0)
+        {
             g_FrontEndDemoFrames = 0;
+        }
         else if (g_FrontEndDemoFrames >= 900)
         {
-            ReplayManager *replay;
-            int stage;
-            g_FrontEndFlags &= ~0x40u;
-            g_FrontEndFlags |= FRONT_END_FLAG_DEMO_TRANSITION;
+            g_FrontEndFlags = (g_FrontEndFlags & ~0x40u) |
+                FRONT_END_FLAG_DEMO_TRANSITION;
             strcpy(g_FrontEndDemoPath, g_FrontEndDemoPaths[g_FrontEndDemoIndex]);
-            replay = ReplayManager::Load(g_FrontEndDemoPath);
+            ReplayManager *replay = ReplayManager::Load(g_FrontEndDemoPath);
             g_FrontEndDemoIndex = (g_FrontEndDemoIndex + 1) % 4;
 
-            for (stage = 0; stage < 8; ++stage)
-            {
-                if (replay->stageStates[stage].header != NULL)
-                    break;
-            }
+            int stage = 0;
+            while (stage < 8 && replay->stageStates[stage].header == NULL)
+                ++stage;
+
+            g_FrontEndSelectedStageRecord = g_FrontEndStageRecords[stage];
             g_FrontEndSelectedStage = stage;
             g_FrontEndSelectedStageMirror = stage;
             g_MainSupervisorView.nextGameMode = 12;
-            g_ReplayCharacter = replay->replayData->character;
-            g_FrontEndSelectedStageRecord = g_FrontEndStageRecords[stage];
-            g_ReplayShotType = replay->replayData->shotType;
+            ReplayDataHeader *header = replay->replayData;
+            g_ReplayCharacter = header->character;
+            g_ReplayShotType = header->shotType;
             g_FrontEndSavedDifficulty = g_ReplayDifficulty;
-            g_ReplayDifficulty = replay->replayData->difficulty;
+            g_ReplayDifficulty = header->difficulty;
             ReplayManager::Destroy(replay);
 
+            int screen = controller->screen;
             g_FrontEndDemoFrames = 0;
-            g_MainModeTransitionCounter = screen != FRONT_END_SCREEN_MAIN_MENU;
+            return g_MainModeTransitionCounter = screen != FRONT_END_SCREEN_MAIN_MENU;
         }
     }
+    return g_MainModeTransitionCounter;
+}
 
-    int mode = g_MainModeTransitionCounter;
+// TH10_FRONTEND_FUNCTION: 0x0042CDF0 FrontEndControllerView::Update
+int FrontEndControllerView::Update()
+{
+    int mode = FrontEndUpdateIdleDemo(this);
     switch (screen)
     {
     case FRONT_END_SCREEN_INITIALIZE:
@@ -1016,16 +1021,11 @@ int FrontEndControllerView::Update()
         FrontEndControllerView *controller = this;
         AnmRenderManagerView *manager = g_AnmRenderManagerView;
 
-        manager->MarkLoadedVmsForDeletion(
-            manager->loadedAnms[6]);
-        manager->MarkLoadedVmsForDeletion(
-            manager->loadedAnms[7]);
-        manager->MarkLoadedVmsForDeletion(
-            manager->loadedAnms[2]);
-        manager->MarkLoadedVmsForDeletion(
-            manager->loadedAnms[3]);
-        manager->MarkLoadedVmsForDeletion(
-            manager->loadedAnms[0]);
+        manager->MarkLoadedVmsForDeletion(manager->loadedAnms[6]);
+        manager->MarkLoadedVmsForDeletion(manager->loadedAnms[7]);
+        manager->MarkLoadedVmsForDeletion(manager->loadedAnms[2]);
+        manager->MarkLoadedVmsForDeletion(manager->loadedAnms[3]);
+        manager->MarkLoadedVmsForDeletion(manager->loadedAnms[0]);
 
         int *asciiAuxiliary = &g_AsciiManagerView->auxiliaryVm89A4;
         EnemyMarkPendingInterrupt(asciiAuxiliary);
@@ -1033,16 +1033,16 @@ int FrontEndControllerView::Update()
 
         if (mode == 3)
         {
+            FrontEndCursorView *cursor = &controller->cursor;
             controller->cursor.count = 10;
-            controller->cursor.SetCurrent(0);
-            controller->cursor.Push();
+            cursor->Select(0);
+            cursor->Push();
             controller->SetScreenTarget(FRONT_END_SCREEN_SCORE_ENTRY);
             controller->CreateVm(0x5b);
             controller->MarkVmInterrupt(0x5b, 9);
-            controller->drawTask->flags |= FRONT_END_DRAW_CALLBACK_UNLOCKED;
             g_MainModeTransitionCounter = 1;
-            FrontEndControllerView::UpdateScoreEntry(controller);
-            break;
+            controller->drawTask->flags |= FRONT_END_DRAW_CALLBACK_UNLOCKED;
+            goto score_entry;
         }
 
         if ((g_FrontEndFlags & FRONT_END_FLAG_DEMO_TRANSITION) == 0)
@@ -1059,61 +1059,54 @@ int FrontEndControllerView::Update()
 
         if (mode == 0)
         {
-            controller->SetScreenTarget(FRONT_END_SCREEN_MAIN_MENU);
+            controller->SetScreenTarget(mode + 1);
             g_MainModeTransitionCounter = 1;
-            FrontEndUpdateMainMenu(controller);
         }
         else if (mode == 1)
         {
             if (g_ReplayDifficulty == 4)
-            {
-                if (controller->cursor.count == 0)
-                    controller->cursor.current = 1;
-                else if (controller->cursor.count <= 1)
-                    controller->cursor.current = controller->cursor.count - 1;
-                else
-                    controller->cursor.current = 1;
-            }
+                controller->cursor.Select(1);
             controller->SetScreenTarget(FRONT_END_SCREEN_MAIN_MENU_RETURN);
             controller->CreateVm(0x5b);
-            controller->drawTask->flags |= FRONT_END_DRAW_CALLBACK_UNLOCKED;
-            FrontEndUpdateMainMenuReturn(controller);
+            goto main_menu_return;
         }
         else if (mode == 2)
         {
+            FrontEndCursorView *cursor = &controller->cursor;
             controller->cursor.count = 10;
-            controller->cursor.SetCurrent(3);
-            controller->cursor.Push();
+            cursor->Select(3);
+            cursor->Push();
             controller->SetScreenTarget(FRONT_END_SCREEN_REPLAY);
             controller->CreateVm(0x5b);
             controller->MarkVmInterrupt(0x5b, 9);
-            controller->drawTask->flags |= FRONT_END_DRAW_CALLBACK_UNLOCKED;
             g_MainModeTransitionCounter = 1;
-            FrontEndControllerView::UpdateReplay(controller);
+            controller->drawTask->flags |= FRONT_END_DRAW_CALLBACK_UNLOCKED;
+            goto replay_menu;
         }
-        else
-        {
-            FrontEndUpdateMainMenu(controller);
-        }
+        FrontEndUpdateMainMenu(controller);
         break;
     }
     case FRONT_END_SCREEN_MAIN_MENU:
         FrontEndUpdateMainMenu(this);
         break;
     case FRONT_END_SCREEN_MAIN_MENU_RETURN:
+main_menu_return:
         drawTask->flags |= FRONT_END_DRAW_CALLBACK_UNLOCKED;
         FrontEndUpdateMainMenuReturn(this);
-        break;
-    case FRONT_END_SCREEN_START_GAME:
-        g_MainSupervisorView.nextGameMode =
-            ((~(g_MainSupervisorView.flags >> 12)) & 1) | 2;
-        GamePrepareDummyMusic();
         break;
     case FRONT_END_SCREEN_OPTIONS:
         UpdateOptions(this);
         break;
     case FRONT_END_SCREEN_KEY_CONFIG:
         UpdateKeyConfig(this);
+        break;
+    case FRONT_END_SCREEN_START_GAME:
+        g_MainSupervisorView.nextGameMode =
+            ((~(g_MainSupervisorView.flags >> 12)) & 1) | 2;
+        // Fall through to the music setup shared by the launch paths.
+    case FRONT_END_SCREEN_START_GAME_10:
+    case FRONT_END_SCREEN_START_GAME_13:
+        GamePrepareDummyMusic();
         break;
     case FRONT_END_SCREEN_DIFFICULTY:
         UpdateDifficulty(this);
@@ -1127,20 +1120,18 @@ int FrontEndControllerView::Update()
     case FRONT_END_SCREEN_STAGE:
         UpdateStage(this);
         break;
-    case FRONT_END_SCREEN_START_GAME_10:
-    case FRONT_END_SCREEN_START_GAME_13:
-        GamePrepareDummyMusic();
-        break;
-    case FRONT_END_SCREEN_REPLAY:
-        UpdateReplay(this);
+    case FRONT_END_SCREEN_MUSIC_ROOM:
+        FrontEndUpdateMusicRoom(this);
         break;
     case FRONT_END_SCREEN_PRACTICE:
         UpdatePractice(this);
         break;
-    case FRONT_END_SCREEN_MUSIC_ROOM:
-        FrontEndUpdateMusicRoom(this);
+    case FRONT_END_SCREEN_REPLAY:
+replay_menu:
+        UpdateReplay(this);
         break;
     case FRONT_END_SCREEN_SCORE_ENTRY:
+score_entry:
         UpdateScoreEntry(this);
         break;
     case FRONT_END_SCREEN_REPLAY_SAVE:
