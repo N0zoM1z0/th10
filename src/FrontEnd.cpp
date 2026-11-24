@@ -8,6 +8,7 @@
 #include "FileSystem.hpp"
 #include "VmIdInterrupt.hpp"
 #include "GameScoreState.hpp"
+#include "GameStatistics.hpp"
 #include <stdlib.h>
 #include <math.h>
 
@@ -410,21 +411,6 @@ static FrontEndStageScoreRecordView *GetFrontEndStageScoreRecord(int stage)
 static __forceinline int CountPracticeRecordsForDifficulty(int difficulty)
 {
     return CountGameStatisticsRankKind(0, difficulty);
-}
-
-static unsigned char *GetPracticeCatalogRecord(int record)
-{
-    return reinterpret_cast<unsigned char *>(
-        reinterpret_cast<unsigned int>(g_FrontEndProfileData) + 0x19a8cu +
-        static_cast<unsigned int>(record) * 0x90u);
-}
-
-static int *GetPracticeResultRecord(int shot, int record)
-{
-    return reinterpret_cast<int *>(
-        reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
-        static_cast<unsigned int>(shot) * 0x437cu + 0x624u +
-        static_cast<unsigned int>(record) * 0x90u);
 }
 
 static FrontEndScoreRecordView *GetPracticeScoreRecord(
@@ -3001,25 +2987,21 @@ int __stdcall FrontEndControllerView::UpdatePractice(
 // TH10_FRONTEND_FUNCTION: 0x00432690 FrontEndControllerView::RefreshPracticeRecords
 int FrontEndControllerView::RefreshPracticeRecords()
 {
+    char name[168];
     int record = 0;
-    int matchingRecords = 0;
-    int recordsToSkip =
-        practicePageCursor.current * FRONT_END_PRACTICE_ROWS_PER_PAGE -
-        FRONT_END_PRACTICE_ROWS_PER_PAGE;
-
-    while (matchingRecords < recordsToSkip)
+    for (int skipped = 0;
+         skipped < practicePageCursor.current * FRONT_END_PRACTICE_ROWS_PER_PAGE
+                       - FRONT_END_PRACTICE_ROWS_PER_PAGE;
+         ++record)
     {
         if (g_FrontEndPracticeDifficulties[record] ==
             practiceDifficultyCursor.current)
-        {
-            ++matchingRecords;
-        }
-        ++record;
+            ++skipped;
     }
 
     practiceDisplayedEntries = 0;
-    int row = 0;
-    for (; row < FRONT_END_PRACTICE_ROWS_PER_PAGE; ++row)
+    FrontEndVmIdStorageView *rowId = practiceRowVmIds;
+    for (int row = 0; row < FRONT_END_PRACTICE_ROWS_PER_PAGE; ++row, ++rowId)
     {
         while (record < FRONT_END_PRACTICE_RECORD_COUNT &&
                g_FrontEndPracticeDifficulties[record] !=
@@ -3027,46 +3009,65 @@ int FrontEndControllerView::RefreshPracticeRecords()
         {
             ++record;
         }
-        if (record >= FRONT_END_PRACTICE_RECORD_COUNT)
-            break;
 
-        unsigned char *catalog = GetPracticeCatalogRecord(record);
-        int *result = GetPracticeResultRecord(cursor.current, record);
-        AnmVmView *vm = ResolveVm(&practiceRowVmIds[row]);
-        if (*reinterpret_cast<int *>(catalog + 0x84) != 0)
+        if (record >= FRONT_END_PRACTICE_RECORD_COUNT)
         {
-            char name[168];
-            strcpy(name, reinterpret_cast<char *>(catalog));
-            int length = strlen(name);
+            FrontEndVmIdStorageView *unusedRow = &practiceRowVmIds[row];
+            for (int remaining = FRONT_END_PRACTICE_ROWS_PER_PAGE - row;
+                 remaining != 0; --remaining, ++unusedRow)
+            {
+                AnmRenderManagerView *manager = g_AnmRenderManagerView;
+                AnmVmView *vm = FindPracticeRecordVm(manager, unusedRow->value);
+                if (vm == NULL)
+                    unusedRow->value = 0;
+                manager->DrawTextCentered(vm, 0xffffffffu, " ");
+            }
+            break;
+        }
+
+        GameStatisticsOwner *profile =
+            reinterpret_cast<GameStatisticsOwner *>(g_FrontEndProfileData);
+        GameStatisticsSpellHistoryEntryView *catalog =
+            profile->records[6].SpellHistoryAt(record);
+        if (catalog->attempts != 0)
+        {
+            strcpy(name, catalog->name);
+            size_t length = strlen(name);
             if (length < 42)
             {
-                memset(name + length, ' ', 42 - length);
-                length = 42;
+                size_t padding = 42 - length;
+                memset(name + length, ' ', padding);
+                length += padding;
             }
-            name[length] = '\0';
 
-            unsigned int color = result[0] != 0
-                ? 0x00ffff80u : 0x00efefefu;
-            g_AnmRenderManagerView->DrawTextCentered(
-                vm, color, "No.%3d %s %4d/%4d",
-                row + 1, name, result[0], result[1]);
+            GameStatisticsRecord &shot = profile->records[cursor.current];
+            AnmRenderManagerView *manager = g_AnmRenderManagerView;
+            name[length] = '\0';
+            AnmVmView *vm = FindPracticeRecordVm(manager, rowId->value);
+            if (vm == NULL)
+                rowId->value = 0;
+            GameStatisticsSpellHistoryEntryView *result = shot.SpellHistoryAt(record);
+            manager->DrawTextCentered(
+                vm, result->captures != 0 ? 0x00ffff80u : 0x00efefefu,
+                "No.%3d %s %4d/%4d", record + 1, name,
+                result->captures, result->attempts);
+            ++record;
         }
         else
         {
-            g_AnmRenderManagerView->DrawTextCentered(
+            GameStatisticsRecord &shot = profile->records[cursor.current];
+            AnmRenderManagerView *manager = g_AnmRenderManagerView;
+            AnmVmView *vm = FindPracticeRecordVm(manager, rowId->value);
+            if (vm == NULL)
+                rowId->value = 0;
+            GameStatisticsSpellHistoryEntryView *result = shot.SpellHistoryAt(record);
+            manager->DrawTextCentered(
                 vm, 0x00808080u, g_FrontEndPracticeUnavailableFormat,
-                row + 1, result[0], result[1]);
+                record + 1, result->captures, result->attempts);
+            ++record;
         }
 
-        ++record;
         ++practiceDisplayedEntries;
-    }
-
-    for (; row < FRONT_END_PRACTICE_ROWS_PER_PAGE; ++row)
-    {
-        AnmVmView *vm = ResolveVm(&practiceRowVmIds[row]);
-        g_AnmRenderManagerView->DrawTextCentered(
-            vm, 0xffffffffu, " ");
     }
     return 0;
 }

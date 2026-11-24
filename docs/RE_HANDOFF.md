@@ -58,6 +58,14 @@ comparison only for its source and link graph.
 
 ## Open owner
 
+`FrontEndControllerView::RefreshPracticeRecords` at `0x00432690` is
+active. Compare the complete 850-byte helper through its three calls in
+`UpdatePractice`, including record filtering, text formatting and the
+unused-row clear.
+The candidate now reads typed spell history, uses the catalog index in
+both formats, and clears stale row handles in all three lookup paths.
+The current comparison emits 837 of the target's 850 bytes.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.

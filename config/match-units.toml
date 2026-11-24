@@ -38588,6 +38588,24 @@ linkages = [
   { offset = 0x5D0, type = "DIR32", local = true, target = 0x00431A9E },
 ]
 
+[units.frontend-practice-records]
+candidate = true
+artifact_kind = "linked-pe"
+source = "src/FrontEnd.cpp"
+support_sources = ["src/ReplayManager.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/EnemyEclDispatcher.cpp", "src/Sound.cpp", "src/Player.cpp", "src/VmIdInterrupt.cpp", "src/GameStatisticsRankCount.cpp", "src/InputKeyboardSnapshot.cpp"]
+pdb_source = "src/FrontEnd.cpp"
+output_dir = "build/match-linked/FrontEndPractice"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?UpdatePractice@FrontEndControllerView@@SGHPAU1@@Z"
+support_profiles = { "src/InputKeyboardSnapshot.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["FrontEndControllerView::RefreshPracticeRecords"]
+symbol = "?RefreshPracticeRecords@FrontEndControllerView@@QAEHXZ"
+target_address = 0x00432690
+size = 850
+linkages = []
+
 [units.frontend-practice-update]
 artifact_kind = "linked-pe"
 source = "src/FrontEnd.cpp"
