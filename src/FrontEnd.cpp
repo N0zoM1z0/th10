@@ -1540,10 +1540,11 @@ static __forceinline void HandleKeyConfigInput(FrontEndControllerView *controlle
             FRONT_END_KEY_CONFIG_ROOT_VM, cursor->current + 7);
     }
 
-    signed char *buttons = FrontEndGetControllerState(0);
+    const unsigned char *buttons =
+        reinterpret_cast<const unsigned char *>(FrontEndGetControllerState(0));
     for (int button = 0; button < FRONT_END_CONTROLLER_BUTTON_COUNT; ++button)
     {
-        if (buttons[button] < 0)
+        if ((buttons[button] & 0x80u) != 0)
         {
             if (cursor->current <= FRONT_END_KEY_CONFIG_BINDING_COUNT - 1)
                 controller->AssignKeyConfigBinding(cursor->current, button);
@@ -1745,22 +1746,22 @@ void FrontEndControllerView::AssignKeyConfigBinding(
     if (bindingIndex != FRONT_END_KEY_CONFIG_BOMB &&
         keyConfigBindings[FRONT_END_KEY_CONFIG_BOMB] == controllerButton)
     {
-        keyConfigBindings[FRONT_END_KEY_CONFIG_BOMB] = previousBinding;
+        keyConfigBindings[FRONT_END_KEY_CONFIG_BOMB] = keyConfigBindings[bindingIndex];
     }
     if (bindingIndex != FRONT_END_KEY_CONFIG_FOCUS &&
         keyConfigBindings[FRONT_END_KEY_CONFIG_FOCUS] == controllerButton)
     {
-        keyConfigBindings[FRONT_END_KEY_CONFIG_FOCUS] = previousBinding;
+        keyConfigBindings[FRONT_END_KEY_CONFIG_FOCUS] = keyConfigBindings[bindingIndex];
     }
     if (bindingIndex != FRONT_END_KEY_CONFIG_MENU &&
         keyConfigBindings[FRONT_END_KEY_CONFIG_MENU] == controllerButton)
     {
-        keyConfigBindings[FRONT_END_KEY_CONFIG_MENU] = previousBinding;
+        keyConfigBindings[FRONT_END_KEY_CONFIG_MENU] = keyConfigBindings[bindingIndex];
     }
     if (bindingIndex != FRONT_END_KEY_CONFIG_SKIP &&
         keyConfigBindings[FRONT_END_KEY_CONFIG_SKIP] == controllerButton)
     {
-        keyConfigBindings[FRONT_END_KEY_CONFIG_SKIP] = previousBinding;
+        keyConfigBindings[FRONT_END_KEY_CONFIG_SKIP] = keyConfigBindings[bindingIndex];
     }
 
     keyConfigBindings[bindingIndex] = static_cast<short>(controllerButton);

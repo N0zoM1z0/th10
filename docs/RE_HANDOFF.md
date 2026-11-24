@@ -17,6 +17,7 @@ comparison only for its source and link graph.
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
 | `spt-test-update` | 926 B | `SptTestUpdate`, 39 fields, VM lifetime and two-pass file enumeration. The registered callback and the interpreter, factory and worker calls match in the same image. |
+| `frontend-keyconfig-update` | 880 B | `FrontEndKeyConfig`, 67 fields and five phase destinations. The EBX callback path, pad poller, 200-byte binding editor and display refresh match. The practice update passes its own link. |
 | `enemy-read-float-operand` | 884 B | `EnemyReadIntOperand`, 84 fields and 51 selector destinations. The integer reader, three RNG helpers, angle helper and both lvalue resolvers match. All four operand vtable slots retain their bindings. |
 | `bullet-runtime-update` | 885 B | `BulletRuntimeTick`, 39 fields and the ECX transform call. The registered callback, manager update, transform and both spawners also match in the same image. |
 | `frontend-difficulty-update` | 888 B | `FrontEndStageSelect`, 62 fields and five phase destinations. The caller-owned backdrop output and both child-VM paths match. The factory and registrar, character and stage updates also match in the same image. |
@@ -56,12 +57,6 @@ comparison only for its source and link graph.
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
 ## Open owner
-
-`FrontEndControllerView::UpdateKeyConfig` at `0x0042F540` is active.
-Use `frontend-keyconfig-update` in `FrontEndKeyConfig` to compare all
-880 bytes and five phase destinations from the registered title callback.
-The native extent and 67 fields align. The pad scan and binding-editor
-call still need the original EDX button and ECX selection registers.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

@@ -1623,6 +1623,18 @@ register preservation or mod-ref assumptions) where our builds exploit it
 
 ### FrontEnd and result menu
 
+- `FrontEndControllerView::UpdateKeyConfig` at 0x0042F540 receives the
+  controller in EBX. Its five phases share the function's final return,
+  leaving the ESI save after the phase bound check. The nine live mapping
+  words begin at input offset 0x58. The nine saved words begin in the main
+  supervisor at 0x124. Accessing both through their owning objects preserves
+  the interleaved word loads and stores. Cancel samples the pressed field,
+  while confirm reads the four-byte word beginning at the same target
+  address, 0x00474E36. Keep the outlined slot interrupt at 0x0042C770 for
+  the shared close path. Testing the pad button's high bit yields the
+  original signed branch. The editor reloads the selected binding for
+  duplicate checks after the first, leaving the slot in ECX and button in
+  EDX at the call.
 - `FrontEndControllerView::DrawReplaySave` at `0x00433B30` owns the
   25-slot list and the sliding name-entry preview. The 13-column grid uses
   separate formatter calls for a signed alphabet byte and the three control
