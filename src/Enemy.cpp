@@ -283,8 +283,6 @@ int EnemyRunEcl(EnemyFullObjectView *owner, float scale);
 const unsigned char *__fastcall EnemyResolveRuntimeCallback(
     EnemyFullObjectView *owner);
 float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position);
-EnemyEclInstructionView *EnemyLookupEclSubroutine(
-    EnemyEclResourceView *scriptDatabase, const char *name);
 void __stdcall EnemyDropItemCountsCore(
     const PlayerFloat3 *position, int *itemDropBlock);
 
@@ -1417,6 +1415,17 @@ EnemyBulletPatternView::EnemyBulletPatternView()
     fields.transformSound = -1;
 }
 
+static __forceinline void InitializeConstructedEnemyContext(
+    EnemyEclHostBaseView *enemy, unsigned int retainedFlags)
+{
+    enemy->embeddedEclContext.currentTime = 0.0f;
+    enemy->embeddedEclContext.currentInstruction = NULL;
+    enemy->embeddedEclContext.operandResolver = enemy;
+    enemy->flags1028 = retainedFlags & ~1u;
+    int *contextValue = &enemy->value1020;
+    *contextValue = 0;
+}
+
 // Maintained logical constructor for target 0x0040D830-0x0040DAD0. The target
 // machine boundary carries the full object in ESI and one stack subroutine-name
 // argument with RET 4. The ordinary C++ spelling recovers the target's
@@ -1427,25 +1436,28 @@ EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
 
     memset(&enemy->runtime, 0, sizeof(enemy->runtime));
 
-    enemy->embeddedEclContext.currentTime = 0.0f;
-    enemy->embeddedEclContext.currentInstruction = NULL;
-    enemy->embeddedEclContext.operandResolver = enemy;
-    enemy->flags1028 &= ~1u;
-    enemy->value1020 = 0;
+    InitializeConstructedEnemyContext(enemy, enemy->flags1028);
     enemy->activeEclContext = &enemy->embeddedEclContext;
-    enemy->embeddedEclContext.unknown1010 = -1;
+    int *bindingState = &enemy->embeddedEclContext.unknown1010;
+    *bindingState = -1;
     enemy->eclContextMirror = &enemy->embeddedEclContext;
     enemy->ownedAllocations = NULL;
     enemy->value1038 = 0;
 
     enemy->runtime.owner = enemy;
 
-    enemy->runtime.positionInterpolation0.duration = 0;
-    enemy->runtime.positionInterpolation1.duration = 0;
-    enemy->runtime.scalarInterpolation0.duration = 0;
-    enemy->runtime.scalarInterpolation1.duration = 0;
-    enemy->runtime.scalarInterpolation2.duration = 0;
-    enemy->runtime.scalarInterpolation3.duration = 0;
+    int *positionInterpolation0Duration = &enemy->runtime.positionInterpolation0.duration;
+    *positionInterpolation0Duration = 0;
+    int *positionInterpolation1Duration = &enemy->runtime.positionInterpolation1.duration;
+    *positionInterpolation1Duration = 0;
+    int *scalarInterpolation0Duration = &enemy->runtime.scalarInterpolation0.duration;
+    *scalarInterpolation0Duration = 0;
+    int *scalarInterpolation1Duration = &enemy->runtime.scalarInterpolation1.duration;
+    *scalarInterpolation1Duration = 0;
+    int *scalarInterpolation2Duration = &enemy->runtime.scalarInterpolation2.duration;
+    *scalarInterpolation2Duration = 0;
+    int *scalarInterpolation3Duration = &enemy->runtime.scalarInterpolation3.duration;
+    *scalarInterpolation3Duration = 0;
 
     memset(&enemy->runtime.baseMotion, 0, sizeof(enemy->runtime.baseMotion));
     memset(&enemy->runtime.offsetMotion, 0, sizeof(enemy->runtime.offsetMotion));
@@ -1456,7 +1468,8 @@ EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
     enemy->runtime.playerCollisionHitbox.x = 24.0f;
     enemy->runtime.playerCollisionHitbox.y = 24.0f;
 
-    enemy->runtime.managerSlot = -1;
+    int *managerSlot = &enemy->runtime.managerSlot;
+    *managerSlot = -1;
 
     enemy->runtime.listNode.enemy = enemy;
     enemy->runtime.listNode.next = NULL;
@@ -1468,45 +1481,16 @@ EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
     itemDropState->radiusY = 32.0f;
     itemDropState->radiusX = 32.0f;
 
-    if ((enemy->runtime.updateTimer.flags & 1u) == 0)
-    {
-        enemy->runtime.updateTimer.current = 0;
-        enemy->runtime.updateTimer.previous = -999999;
-        enemy->runtime.updateTimer.subframe = 0.0f;
-        enemy->runtime.updateTimer.scale = &g_PlayerTimerScale;
-        enemy->runtime.updateTimer.flags |= 1u;
-    }
-    enemy->runtime.updateTimer.current = 0;
-    enemy->runtime.updateTimer.subframe = 0.0f;
-    enemy->runtime.updateTimer.previous = -1;
-
-    if ((enemy->runtime.damageReductionTimer.flags & 1u) == 0)
-    {
-        enemy->runtime.damageReductionTimer.current = 0;
-        enemy->runtime.damageReductionTimer.previous = -999999;
-        enemy->runtime.damageReductionTimer.subframe = 0.0f;
-        enemy->runtime.damageReductionTimer.scale = &g_PlayerTimerScale;
-        enemy->runtime.damageReductionTimer.flags |= 1u;
-    }
-    enemy->runtime.damageReductionTimer.current = 0;
-    enemy->runtime.damageReductionTimer.subframe = 0.0f;
-    enemy->runtime.damageReductionTimer.previous = -1;
-
-    if ((enemy->runtime.playerCollisionTimer.flags & 1u) == 0)
-    {
-        enemy->runtime.playerCollisionTimer.current = 0;
-        enemy->runtime.playerCollisionTimer.previous = -999999;
-        enemy->runtime.playerCollisionTimer.subframe = 0.0f;
-        enemy->runtime.playerCollisionTimer.scale = &g_PlayerTimerScale;
-        enemy->runtime.playerCollisionTimer.flags |= 1u;
-    }
-    enemy->runtime.playerCollisionTimer.current = 0;
-    enemy->runtime.playerCollisionTimer.subframe = 0.0f;
-    enemy->runtime.playerCollisionTimer.previous = -1;
+    enemy->runtime.updateTimer.SetCurrent(0);
+    enemy->runtime.damageReductionTimer.SetCurrent(0);
+    enemy->runtime.playerCollisionTimer.SetCurrent(0);
 
     enemy->scriptDatabase = g_EnemyManager->scriptDatabase;
-    enemy->activeEclContext->currentInstruction =
-        EnemyLookupEclSubroutine(enemy->scriptDatabase, eclSubroutineName);
+    EclVmScriptDatabase *database =
+        reinterpret_cast<EclVmScriptDatabase *>(enemy->scriptDatabase);
+    EnemyEclInstructionView *instruction =
+        reinterpret_cast<EnemyEclInstructionView *>(database->FindSubroutine(eclSubroutineName));
+    enemy->activeEclContext->currentInstruction = instruction;
     enemy->activeEclContext->currentTime = 0.0f;
 
     enemy->runtime.life = 0;
@@ -1517,9 +1501,9 @@ EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
     {
         enemy->runtime.callbackThresholds[i].lifeThreshold = -1;
         enemy->runtime.callbackThresholds[i].timerThreshold = -1;
-        enemy->runtime.callbackThresholds[i].lifeCallbackName = NULL;
     }
-
+    for (int i = 0; i < 8; ++i)
+        enemy->runtime.callbackThresholds[i].lifeCallbackName = NULL;
 }
 
 // Maintained source for target 0x0040CFB0 plus its compiler-owned alignment and
