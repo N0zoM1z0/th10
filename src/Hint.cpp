@@ -7,16 +7,11 @@
 #include <time.h>
 #include <direct.h>
 
-struct HintNameValue
-{
-    const char *name;
-    int value;
-};
-// Target 0x00474494 and 0x004744B0 are name/value tables for hint output.
-extern const HintNameValue g_HintAlignmentNames[] = {
+// Target 0x00474494 and 0x004744B0 are shared by the parser and exporter.
+const HintNameValue g_HintAlignmentNames[] = {
     {"center", 0}, {"left", 1}, {"right", 2}
 };
-extern const HintNameValue g_HintBaseNames[] = {
+const HintNameValue g_HintBaseNames[] = {
     {"start",0},
     {"converse_1",1}, {"converse_2",2}, {"converse_3",3},
     {"converse_4",4}, {"converse_5",5},

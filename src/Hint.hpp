@@ -7,11 +7,25 @@
 // Fields are established by the exporter, loader, constructor and frame owners.
 struct PlayerFloat3;
 struct HintEntryView;
+struct HintNameValue
+{
+    const char *name;
+    int value;
+};
+extern const HintNameValue g_HintAlignmentNames[3];
+extern const HintNameValue g_HintBaseNames[61];
+
 struct HintLinkView
 {
     void *payload; // Entry on real nodes; HintOwnerView on list sentinels.
     HintLinkView *next;
     HintLinkView *previous;
+
+    void ClearLinks()
+    {
+        next = 0;
+        previous = 0;
+    }
 
     void Append(HintLinkView *node);
 };
@@ -20,7 +34,7 @@ struct HintEntryView
     HintEntryView(); // Constructor-shaped target 0x00418D00; origin remains indeterminate.
     AnmFloat3View position;
     HintLinkView link;
-    unsigned char unknown18[4];
+    unsigned int reserved18;
     // Storage through +0x5F includes constructor-zeroed bytes after the 65-byte copy.
     // The original array size is unknown.
     char text[68];

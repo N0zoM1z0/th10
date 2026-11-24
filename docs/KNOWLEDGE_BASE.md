@@ -831,7 +831,16 @@ frontier; do not refresh a baseline merely to accept the new positions.
   access preserve the retail code shape. Snapshotting the elapsed time inside
   the demo branch preserves its two tests. An entry-wide frame snapshot added
   a four-byte stack slot. [2026-11-22]
-- **LoadHintFile @0x419960 (1,498)**: 1,533. [2026-10-20]
+- **LoadHintFile @0x419960 (1,498)**: the four-argument inline reader
+  forwarding function gives the two outer splitter copies the target's
+  opposite `strcpy` induction directions. Declaring the splitter with output
+  pointers first restores the local slots and the ESI line-buffer load in
+  the inner loop. The trim helper's `__stdcall` declaration separates the
+  two `atol` stack cleanups in `Color`. The guarded `do` loop, the float
+  conversion before scale comparisons, and the copy followed by `ClearLinks`
+  preserve the record paths. The loader and exporter use the same 61 base
+  entries at `0x004744B0` and three alignment entries at `0x00474494`.
+  The MIT-licensed reference parser suggested these source forms. [2026-11-24]
 - **UpdateReplaySave @0x433570 (1,460)**: 1,444; the target reloads the pressed
   input after the movement sound. [2026-10-30]
 - **BulletRuntimeView::AdvanceTransformProgram @0x406D90 (1,604 compared bytes)**:
