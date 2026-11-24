@@ -1564,6 +1564,17 @@ register preservation or mod-ref assumptions) where our builds exploit it
 
 ### FrontEnd and result menu
 
+- `ResultMenuUpdatePause` at 0x00422C80 includes 1,338 bytes of code, two
+  alignment bytes and five phase destinations. The complete linked extent
+  binds 79 fields and keeps the stack receiver and `ret 4`.
+  The pause input word begins at 0x00474E36, the same address as the repeat
+  view's pressed field. The pause paths use the word for confirm, quick quit,
+  quick retry and escape, while the navigation paths still use the repeat
+  object. Declaring the word separately keeps the confirmation cursor in
+  EBX across sound and animation calls. Loading the same word through the
+  repeat view left the cursor in ESI and forced a later reload.
+  The upper-only cursor clamp and the direct child-handle returns preserve
+  all five scratch destinations in the 0x14-byte stack frame.
 - `UpdateReplaySave` 433570: 1440 code bytes plus five table words at 433B10.
 - `UpdateScoreEntry` 432CB0 owns 1,382 code bytes, the compiler's two-byte
   alignment and four phase destinations. Borrowing the incoming controller

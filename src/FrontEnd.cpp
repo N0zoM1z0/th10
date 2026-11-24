@@ -5112,6 +5112,9 @@ static __forceinline short PauseMenuInputActive(
     return 0;
 }
 
+// The pause input word starts at FrontEndInputView::pressed (0x00474E36).
+extern unsigned int g_ResultMenuHeldInputWord;
+
 // Target 0x00422C80. The two shortcuts and escape can override an
 // earlier choice during the same input update.
 void __stdcall ResultMenuUpdatePause(ResultMenuView *menu)
@@ -5143,7 +5146,7 @@ void __stdcall ResultMenuUpdatePause(ResultMenuView *menu)
             menu->mainVm.SetInterrupt(static_cast<short>(cursor->current + 7));
             ResultMenuSound(FRONT_END_SOUND_MOVE);
         }
-        if ((ReadReplayMenuPressedInput() & FRONT_END_INPUT_CONFIRM) != 0)
+        if ((g_ResultMenuHeldInputWord & FRONT_END_INPUT_CONFIRM) != 0)
         {
             ResultMenuSound(FRONT_END_SOUND_SELECT);
             switch (cursor->current)
@@ -5168,7 +5171,7 @@ void __stdcall ResultMenuUpdatePause(ResultMenuView *menu)
             }
             menu->timer.SetCurrent(0);
         }
-        if ((ReadReplayMenuPressedInput() & 0x4000) != 0)
+        if ((g_ResultMenuHeldInputWord & 0x4000) != 0)
         {
             ResultMenuSound(FRONT_END_SOUND_SELECT);
             ResultMenuPendingSix(ResultMenuFindScript(
@@ -5178,7 +5181,7 @@ void __stdcall ResultMenuUpdatePause(ResultMenuView *menu)
             menu->cursor.Select(2);
             EnemyMarkPendingInterrupt(&menu->secondaryVm.value);
         }
-        if ((ReadReplayMenuPressedInput() & 0x200) != 0)
+        if ((g_ResultMenuHeldInputWord & 0x200) != 0)
         {
             ResultMenuSound(FRONT_END_SOUND_SELECT);
             ResultMenuPendingSix(ResultMenuFindScript(
@@ -5218,7 +5221,7 @@ void __stdcall ResultMenuUpdatePause(ResultMenuView *menu)
             menu->mainVm.SetInterrupt(static_cast<short>(cursor->current + 15));
             ResultMenuSound(FRONT_END_SOUND_MOVE);
         }
-        if ((ReadReplayMenuPressedInput() & FRONT_END_INPUT_CONFIRM) != 0)
+        if ((g_ResultMenuHeldInputWord & FRONT_END_INPUT_CONFIRM) != 0)
         {
             ResultMenuSound(FRONT_END_SOUND_SELECT);
             switch (cursor->current)
@@ -5288,7 +5291,7 @@ void __stdcall ResultMenuUpdatePause(ResultMenuView *menu)
     return;
 
 escape:
-    if ((ReadReplayMenuPressedInput() & 8) != 0)
+    if ((g_ResultMenuHeldInputWord & 8) != 0)
     {
         menu->cursor.Select(0);
         EnemyMarkPendingInterrupt(&menu->secondaryVm.value);
