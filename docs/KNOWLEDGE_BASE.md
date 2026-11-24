@@ -469,6 +469,14 @@ frontier; do not refresh a baseline merely to accept the new positions.
     fields with its existing callers in the probe graph. The runtime-entry
     probe also binds all four original call sites directly to that exact
     body without changing the dispatcher bytes.
+  - The standalone probe uses the repository's actual VM and animation
+    methods, spawn and clear helpers. It keeps the 14,416-byte extent,
+    all 118 jump destinations and all 726 field offsets. Initializing
+    the launch position from origin and displacement in a three-component
+    constructor gives the target x87 operand order in the bullet fire
+    case and most of the laser paths. The remaining differences are the
+    line lasers' X loads and the rank interpolation's pattern address
+    calculation. The spell-name loop matches in this source form.
   - Rank-3 thresholds are +/-512. Rank-5 uses +/-600 and +/-200.
     The target spell-name loop initializes its destination at ESP+0x248
     and forms the source address as a displacement from that cursor.
