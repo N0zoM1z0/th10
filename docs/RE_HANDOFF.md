@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `laser-type1-box-split` | 1,171 B | `LaserType1BoxSplit`, 19 fields, the virtual ECX receiver and the zeroed fragment request. Polar, playfield bounds and the world-VM creator also match in the same image. |
 | `laser-line-circle-trim` | 1,238 B | `LaserLineCircleTrim`, 33 fields, inline viewport tests and the VM allocation, script load, and registration calls. The rectangle trim, allocator and three direct Player consumers also match in their own links. |
 | `laser-line-box-trim` | 1,269 B | `LaserLineBoxTrim`, 23 fields, the ECX receiver, the XYZ sample loop and all 476 bytes of each fragment request. Polar, bounds and world-VM creation also match in the same link. |
 | `frontend-main-menu-return` | 1,280 B | `FrontEndReplay`, 103 fields, the EBX receiver and three complete switch tables. The phase setter and eight known exact units pass their affected comparisons. |

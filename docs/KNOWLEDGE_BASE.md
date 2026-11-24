@@ -1244,6 +1244,13 @@ register preservation or mod-ref assumptions) where our builds exploit it
     the fragment start. Vector-first multiplication changed the two x87
     instructions for the prefix Y product by five bytes.
 - Type-1 laser (table 46DA10, D74 layout, VMs 61C/9C8):
+  - Box split (slot +0x18, `0x0041EB00`) uses a strict end-of-sample
+    test. A hit at the front sets the current length to zero. Each
+    later gap clears a type-0 request, sets its initial length from the
+    sample count, and copies that value to maximum length. The original
+    x87 code stores the initial field first, at request +0x14. The
+    `laser-type1-box-split` link keeps the actual spawn call and both
+    capture side effects.
   - Request fields: 18/1C angle/angular velocity, 20/24 max/initial length, 28 width, 2C growth, 30..3C signed durations, 40 type, 42 color.
   - Init copies 126 dwords and sets state 3.
   - Update table at 0x41EA30 covers states 2..5. Update attaches to Enemy 477704 slot 0 (+1068).
