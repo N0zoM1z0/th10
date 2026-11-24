@@ -609,6 +609,17 @@ frontier; do not refresh a baseline merely to accept the new positions.
   difference. These changes preserve the full extent, all 189 fields
   and the 171-byte float resolver. [2026-11-24]
 
+  Typed logical OR and AND operand pops move both temporary ranges down
+  by 24 in the late stack operations. The second bitwise AND word moves
+  from 0x100A to 0xFF2 and integer negate from 0x1016 to 0xFFE, restoring
+  both encodings. This moves the first AND tag back below 0x1800 and
+  the first jump tag below 0x1400. The two tag addresses and the raw
+  float negate and sine reads are the only residuals in that probe.
+  With bases held fixed in a uniform-shift model, moving the raw temporary
+  ordinals down by 26 first satisfies the 38 bound raw comparisons.
+  The 37 bound tag comparisons accept an upward shift of 15 to 31.
+  A source change needs to move those ranges independently. [2026-11-24]
+
   The anonymous `FORMAT` tag-byte cursor stays at `ESP+0x18`, the same
   home as the named `x` in `LENGTH_SQUARED`. The cursor has weight six
   and `x` has weight three. C2 groups them in pre-sort colour four, just
