@@ -1751,93 +1751,107 @@ void FrontEndControllerView::AssignKeyConfigBinding(
 }
 
 
+static __forceinline unsigned int ReadReplayMenuPressedInput();
+static __forceinline AnmVmIdView FindAnimationChild(AnmVmIdView &id, int scriptIndex);
+
+static __forceinline void StopConfirmedDifficultyChild(
+    FrontEndControllerView *controller, int rootIndex)
+{
+    if (g_ReplayDifficulty < 4)
+    {
+        AnmVmIdView child = controller->vmIds[rootIndex].FindChild(
+            controller->cursor.current + 0x6d);
+        child.SetInterrupt(2);
+    }
+    else
+    {
+        AnmVmIdView child = FindAnimationChild(
+            static_cast<AnmVmIdView &>(controller->vmIds[rootIndex]), 0x71);
+        child.SetInterrupt(2);
+    }
+}
+
 // TH10_FRONTEND_FUNCTION: 0x00430320 FrontEndControllerView::UpdateDifficulty
 int __stdcall FrontEndControllerView::UpdateDifficulty(
     FrontEndControllerView *controller)
 {
     int rootIndex = 0x77 + (g_ReplayDifficulty >= 4);
+    AnmVmIdView backdrop((AnmVmIdView::Uninitialized()));
 
     switch (controller->screenState)
     {
     case FRONT_END_SELECTION_INITIALIZE:
-        if (ResolveVm(&controller->vmIds[0x5e]) == NULL)
+        if (g_AnmRenderManagerView->FindVm(controller->vmIds[0x5e]) == NULL)
         {
             controller->CreateVm(0x5e);
-            controller->difficultyAuxVmId =
-                g_AsciiManagerView->asciiAnm->CreateVmVariant0(
-                    8, FRONT_END_RENDER_LAYER);
+            AnmLoadedView &resource = *g_AsciiManagerView->asciiAnm;
+            backdrop = resource.CreateVmVariant0(8, FRONT_END_RENDER_LAYER);
+            controller->difficultyAuxVmId = backdrop;
         }
 
         controller->cursor.count = g_ReplayDifficulty < 4 ? 4 : 1;
-        DeleteVm(controller, 0x62);
+        DeleteVm(controller, rootIndex);
         controller->CreateVm(rootIndex);
-        InterruptVmNow(controller, rootIndex, 3);
-        InterruptVm(
-            controller, rootIndex,
+        g_AnmRenderManagerView->SetVmPendingInterruptAndExecute(
+            static_cast<const AnmVmIdView &>(controller->vmIds[rootIndex]), 3);
+        controller->MarkVmInterrupt(rootIndex,
             static_cast<short>(controller->cursor.current + 0x11));
         controller->CreateVm(0x62);
-        SetScreenState(controller, FRONT_END_SELECTION_OPENING);
-        break;
+        controller->SetScreenStateTarget(FRONT_END_SELECTION_OPENING);
+        // Check the opening timer on the initialization frame.
 
     case FRONT_END_SELECTION_OPENING:
         if (controller->stateTimer.current > 6)
-        {
-            SetScreenState(controller, FRONT_END_SELECTION_ACTIVE);
-            return 1;
-        }
+            controller->SetScreenStateTarget(FRONT_END_SELECTION_ACTIVE);
         break;
 
     case FRONT_END_SELECTION_ACTIVE:
+    {
         if (g_ReplayDifficulty < 4)
         {
-            controller->cursor.previous = controller->cursor.current;
-            if (InputRepeated(FRONT_END_INPUT_UP))
-                controller->cursor.Move(-1);
-            if (InputRepeated(FRONT_END_INPUT_DOWN))
-                controller->cursor.Move(1);
+            FrontEndCursorView *cursor = &controller->cursor;
+            cursor->previous = cursor->current;
+            if (static_cast<short>(g_FrontEndInput.IsRepeated(FRONT_END_INPUT_UP)))
+                cursor->Move(-1);
+            if (static_cast<short>(g_FrontEndInput.IsRepeated(FRONT_END_INPUT_DOWN)))
+                cursor->Move(1);
 
-            if (controller->cursor.previous != controller->cursor.current)
+            if (cursor->previous != cursor->current)
             {
                 FrontEndPlaySound(FRONT_END_SOUND_MOVE);
                 controller->InterruptVmNowThree(rootIndex);
-                InterruptVm(
-                    controller, rootIndex,
-                    static_cast<short>(controller->cursor.current + 7));
+                controller->MarkVmInterrupt(rootIndex,
+                    static_cast<short>(cursor->current) + 7);
             }
         }
 
-        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
+        const unsigned int pressed = ReadReplayMenuPressedInput();
+        if ((pressed & FRONT_END_INPUT_CANCEL) != 0)
         {
-            SetScreenState(controller, FRONT_END_SELECTION_CLOSING);
+            controller->SetScreenStateTarget(FRONT_END_SELECTION_CLOSING);
             FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
             DeleteVm(controller, rootIndex);
-            return 1;
         }
-
-        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
+        else if ((pressed & FRONT_END_INPUT_CONFIRM) != 0)
         {
-            short childScript = g_ReplayDifficulty < 4
-                ? static_cast<short>(controller->cursor.current + 0x6d)
-                : static_cast<short>(0x71);
-            InterruptVm(controller, rootIndex, 6);
-            InterruptChildVm(controller, rootIndex, childScript, 2);
-            SetScreenState(controller, FRONT_END_SELECTION_CONFIRMED);
+            controller->MarkVmInterrupt(rootIndex, 6);
+            StopConfirmedDifficultyChild(controller, rootIndex);
+            controller->SetScreenStateTarget(FRONT_END_SELECTION_CONFIRMED);
             FrontEndPlaySound(FRONT_END_SOUND_SELECT);
-            return 1;
         }
         break;
+    }
 
     case FRONT_END_SELECTION_CONFIRMED:
         if (controller->stateTimer.current >= 14)
         {
             DeleteVm(controller, 0x62);
-            SetScreen(controller, FRONT_END_SCREEN_CHARACTER);
+            controller->SetScreenTarget(FRONT_END_SCREEN_CHARACTER);
             if (g_ReplayDifficulty < 4)
                 g_ReplayDifficulty = controller->cursor.current;
             controller->cursor.Push();
             controller->cursor.count = 2;
             controller->cursor.SetCurrent(g_ReplayCharacter);
-            return 1;
         }
         break;
 
@@ -1845,11 +1859,11 @@ int __stdcall FrontEndControllerView::UpdateDifficulty(
         if (controller->stateTimer.current >= 6)
         {
             DeleteVm(controller, 0x62);
-            InterruptVm(controller, 0x5a, 8);
-            InterruptVm(controller, 0x5b, 8);
+            controller->MarkVmInterrupt(0x5a, 8);
+            controller->MarkVmInterrupt(0x5b, 8);
             DeleteVm(controller, 0x5e);
-            InterruptVmId(controller->difficultyAuxVmId.value, 1);
-            SetScreen(controller, FRONT_END_SCREEN_MAIN_MENU_RETURN);
+            EnemyMarkPendingInterrupt(&controller->difficultyAuxVmId.value);
+            controller->SetScreenTarget(FRONT_END_SCREEN_MAIN_MENU_RETURN);
             if (g_ReplayDifficulty < 4)
                 g_ReplayDifficulty = controller->cursor.current;
             else
@@ -1863,7 +1877,6 @@ int __stdcall FrontEndControllerView::UpdateDifficulty(
 
 
 AnmVmIdView ResultMenuFindScript(AnmVmIdView *id, int scriptIndex);
-static __forceinline unsigned int ReadReplayMenuPressedInput();
 
 static __forceinline AnmVmIdView FindAnimationChild(AnmVmIdView &id, int scriptIndex)
 {

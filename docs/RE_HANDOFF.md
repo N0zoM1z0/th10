@@ -54,6 +54,11 @@ comparison only for its source and link graph.
 
 ## Open owner
 
+`FrontEndControllerView::UpdateDifficulty` at `0x00430320` is the
+active owner. Use `frontend-difficulty-update` in `FrontEndStageSelect`
+to compare all 888 bytes, five phase destinations, the backdrop and the
+normal and Extra child-VM paths.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.
