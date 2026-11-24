@@ -427,20 +427,25 @@ source changes. `REGRESSED` means residual offsets moved relative to the stored
 frontier; do not refresh a baseline merely to accept the new positions.
 
 - **EnemyRuntimeView::DispatchEclInstruction @0x40E770 (14,416)**: the
-  current primary 36-support-TU `/GL` candidate is 14,452 bytes with 10,414
-  differing bytes; the secondary 12-TU `/GS` diagnostic is 14,456 bytes with
-  10,240 differing bytes. Both frontiers report `REGRESSED` because the full
-  residual-offset sets moved (their stored counts are 10,416 and 10,574);
-  keep those baselines unchanged. Runtime +0xE8/+0xEC/+0xF0 now use explicit
-  ANM resource/script index typedefs and independent offset assertions. The
-  ten managed-VM slots have a named count, and slot zero is identified as the
-  primary ANM VM. This is semantic layout recovery, not an exactness claim.
-  The 627-byte collision owner and 44-byte bullet-clear owner remain exact in
-  the affected graphs.
-  - The 181-byte opcode map selects 108 handlers; the main table starts at
-    +0x35C0. The owner extent ends at 0x411FBF. Rank-3 thresholds are +/-512;
-    rank-5 thresholds are +/-600 and +/-200. The spell-name cipher's
-    `8A 0C 31` SIB remains at +0x273B.
+  maintained `EnemyStartSpell` graph with the reviewed bullet spawner
+  produces 14,452 bytes. It matches the 181 selector bytes and six of
+  the 108 main destinations. Motion scopes and a typed aim result give
+  14,424 bytes in a local probe. Earlier residual ledgers measure their
+  recorded source and link contexts.
+
+  - The main jump table starts at +0x35C0. The 181 selectors at +0x3770
+    and three alignment bytes precede two five-entry tables at +0x3828
+    and +0x383C. The nested switches belong to difficulty opcodes 0x163
+    and 0x164. The linked comparator checks this layout with one ordinary
+    data span and the actual PE relocations covering both tables.
+  - The local th10-decomp reference diagnostic reproduces the 14,416-byte
+    extent, all 118 table destinations and all ordinary bytes. Use its
+    case scopes and shared tails to guide maintained-source work. The
+    retained images, compare commands and source probes are in
+    `.analysis/enemy-ecl-dispatch/`.
+  - Rank-3 thresholds are +/-512. Rank-5 uses +/-600 and +/-200.
+    The target spell-name loop initializes its destination at ESP+0x248
+    and forms the source address as a displacement from that cursor.
   - `FIRE_BULLET_PATTERN` now keeps one `EnemyBulletPatternView*` across
     XYZ publication, the protection-radius check and `SpawnBulletPattern`.
     This was the largest recent improvement: 36-TU 14,468/14,416 with 10,495

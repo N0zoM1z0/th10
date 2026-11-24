@@ -44,6 +44,7 @@ def validate_fields(name: str, unit: dict[str, object], compare_size: int) -> No
     if not isinstance(fields, list):
         raise ValueError(f"unit {name!r} linkages must be a list")
     occupied: set[int] = set()
+    covered_data: set[int] = set()
     for field in fields:
         if not isinstance(field, dict):
             raise ValueError(f"unit {name!r} has an invalid linkage row")
@@ -68,6 +69,8 @@ def validate_fields(name: str, unit: dict[str, object], compare_size: int) -> No
         if offset < 0 or offset + width > compare_size or occupied & extent:
             raise ValueError(f"unit {name!r} has an invalid linkage extent")
         occupied.update(extent)
+        if kind == "DIR32":
+            covered_data.update(extent)
         symbol = field.get("symbol")
         if local:
             if symbol is not None or int(field.get("addend", 0)) != 0:
@@ -88,7 +91,7 @@ def validate_fields(name: str, unit: dict[str, object], compare_size: int) -> No
     raw_spans = unit.get("data_spans", [])
     if not isinstance(raw_spans, list):
         raise ValueError(f"unit {name!r} data_spans must be a list")
-    spans: list[tuple[int, int]] = []
+    first_span = compare_size
     for span in raw_spans:
         if not isinstance(span, dict):
             raise ValueError(f"unit {name!r} has an invalid data span")
@@ -103,18 +106,10 @@ def validate_fields(name: str, unit: dict[str, object], compare_size: int) -> No
         ):
             raise ValueError(f"unit {name!r} has an invalid data-span extent")
         occupied.update(extent)
-        spans.append((offset, width))
-    spans.sort()
-    if spans:
-        cursor = compare_size - sum(width for _, width in spans)
-        for offset, width in spans:
-            if offset != cursor:
-                raise ValueError(
-                    f"unit {name!r} data spans must form one contiguous trailing extent"
-                )
-            cursor += width
-        if cursor != compare_size:
-            raise ValueError(f"unit {name!r} data spans leave a trailing gap")
+        covered_data.update(extent)
+        first_span = min(first_span, offset)
+    if not covered_data.issuperset(range(first_span, compare_size)):
+        raise ValueError(f"unit {name!r} data spans and DIR32 fields leave an uncovered tail")
 
 
 def load() -> dict[str, object]:

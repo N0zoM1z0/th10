@@ -90,9 +90,8 @@ requires one uniquely owned PDB contribution for the declared `pdb_source`
 (primary or support source), checks its full size, requires the pinned Capstone
 decoder to consume the instruction extent,
 and accepts an undecoded suffix only when every byte is covered by complete,
-authoritative PE base-relocation fields or explicitly reviewed trailing data
-annotations. This supports PDB code contributions ending in absolute jump tables
-and selectors while rejecting unannotated undecoded bytes. The comparator
+authoritative PE base-relocation fields or explicitly reviewed data annotations.
+Selector bytes may precede or follow relocated jump-table entries. The comparator
 rejects any undeclared
 base-relocation or external control-flow field, validates each declared semantic
 symbol through the linker map or its unique data-anchor alias, and rewrites that

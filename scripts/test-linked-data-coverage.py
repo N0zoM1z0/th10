@@ -64,6 +64,30 @@ class TrailingCoverage(unittest.TestCase):
         self.assertEqual(result["matched_bytes"], 23)
         self.assertEqual(result["first_differences"][0]["offset"], "0x15")
 
+    def test_selectors_before_a_second_jump_table(self):
+        f = self.fixture
+        for path, destination in ((f.image, 0x501007), (f.target_path, 0x401007)):
+            data = bytearray(path.read_bytes())
+            struct.pack_into("<HH", data, 0x38A, 0x3014, 0)
+            data[0x210:0x214] = bytes([1, 2, 3, 4])
+            struct.pack_into("<I", data, 0x214, destination)
+            path.write_bytes(data)
+        f.fields[-1].update(offset=20, target=0x401007)
+        f.unit["data_spans"] = [{"offset": 16, "width": 4}]
+        self.report = f.c.linked_code_fields(PEImage(f.image), [], 0x501000, 24, 16)
+        builder = module("build-match-unit.py")
+        builder.validate_fields("local", f.unit, 24)
+        self.assertEqual(self.compare()["result"], "exact")
+
+        f.pointer(20, 0x501006)
+        self.report["fields"][-1]["candidate_target"] = 0x501006
+        with self.assertRaisesRegex(ValueError, "local.*destination"):
+            self.compare()
+
+        f.fields.pop()
+        with self.assertRaisesRegex(ValueError, "uncovered tail"):
+            builder.validate_fields("local", f.unit, 24)
+
     def test_missing_pe_word_leaves_an_uncovered_gap(self):
         self.report["fields"].pop()
         with self.assertRaisesRegex(ValueError, "do not cover.*undecoded"):

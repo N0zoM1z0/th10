@@ -154,16 +154,6 @@ def expected_data_spans(
         occupied.update(extent)
         result.append({"offset": offset, "width": width})
     result.sort(key=lambda row: int(row["offset"]))
-    if result:
-        cursor = compare_size - sum(int(row["width"]) for row in result)
-        for row in result:
-            if int(row["offset"]) != cursor:
-                raise ValueError(
-                    "linked unit data spans must form one contiguous trailing extent"
-                )
-            cursor += int(row["width"])
-        if cursor != compare_size:
-            raise ValueError("linked unit data spans leave a trailing gap")
     return result
 
 
@@ -182,8 +172,8 @@ def require_decode_coverage(
     if not data_spans:
         raise ValueError(f"Capstone decoded {decoded} of {size} bytes")
     covered = set(range(decoded))
-    # Absolute table entries are already accounted for by authoritative PE
-    # relocations. An unlinked selector suffix may follow those entries.
+    # Authoritative PE relocations cover absolute jump entries on either
+    # side of a declared selector span.
     for field in field_report["fields"]:
         if field["type"] == "DIR32" and int(field["width"]) == 4:
             covered.update(range(int(field["offset"]), int(field["offset"]) + 4))
@@ -434,7 +424,7 @@ def compare_unit(name: str, *, _active_units=(), _unit_manifest=None) -> dict[st
         for offset in range(int(row["offset"]), int(row["offset"]) + int(row["width"]))
     }
     data_spans = expected_data_spans(unit, compared_size, occupied)
-    # Declared trailing data is not an instruction stream; stop decoding there.
+    # Stop instruction decoding at the first declared data span.
     field_report = linked_code_fields(
         candidate_image, publics, candidate_address, compared_size,
         min((int(span["offset"]) for span in data_spans), default=None),
