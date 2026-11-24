@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `frontend-replay-save-update` | 1,460 B | `FrontEndReplay`, 86 fields and five phase destinations. Replay loading, saving, slot destruction and both music calls also pass in the same link. |
 | `frontend-replay-update` | 1,492 B | `FrontEndReplay`, 91 fields and six phase destinations. The `/EHs` link preserves the two calls to the exact replay-file loader. |
 | `hint-load-file` | 1,498 B | `HintReadLine`, 70 fields and the complete split, color, and duplicate-entry paths. The reader, splitter, constructor and list append pass in the same link. |
 | `frontend-practice-update` | 1,968 B | `FrontEndPractice`, 125 fields, four phase destinations and the complete keyboard and cancellation loops. The existing Options update passes its own graph. |

@@ -3328,198 +3328,224 @@ int __stdcall FrontEndControllerView::DrawScoreEntry(
 int __stdcall FrontEndControllerView::UpdateReplaySave(
     FrontEndControllerView *controller)
 {
+    FrontEndControllerView &screen = *controller;
     char replayPath[64];
-    switch (controller->screenState)
+    switch (screen.screenState)
     {
     case FRONT_END_REPLAY_SAVE_INITIALIZE:
-        controller->cursor.count = 25;
-        controller->cursor.wraps = 1;
-        controller->cursor.SetCurrent(0);
-        g_FrontEndSelectedStageRecord = g_FrontEndStageRecords[8];
-        g_FrontEndSelectedStage = 8;
-        g_FrontEndSelectedStageMirror = 8;
+        screen.cursor.count = 25;
+        screen.cursor.wraps = 1;
+        screen.cursor.Select(0);
+        g_FrontEndSelectedStageRecord = g_ScriptViewerRouteDescriptor +
+            8 * sizeof(g_FrontEndStageRecords[0]);
+        g_GameScoreState.selectedStage = 8;
+        g_GameScoreState.nextStage = 8;
         for (int replayNumber = 1; replayNumber <= 25; ++replayNumber)
         {
             sprintf(replayPath, "th10_%.2d.rpy", replayNumber);
-            controller->replayFiles[replayNumber - 1] =
+            screen.replayFiles[replayNumber - 1] =
                 ReplayManager::Load(replayPath);
         }
-        controller->CreateVm(0x69);
-        controller->SetScreenStateTarget(FRONT_END_REPLAY_SAVE_OPENING);
+        screen.CreateVm(0x69);
+        screen.SetScreenStateTarget(FRONT_END_REPLAY_SAVE_OPENING);
         // The opening timer is tested on the initialization frame too.
     case FRONT_END_REPLAY_SAVE_OPENING:
-        if (controller->stateTimer.current > 6)
-            controller->SetScreenStateTarget(FRONT_END_REPLAY_SAVE_SELECT_SLOT);
+    {
+        const bool openingDelayDone = screen.stateTimer.current > 6;
+        if (openingDelayDone)
+            screen.SetScreenStateTarget(FRONT_END_REPLAY_SAVE_SELECT_SLOT);
         break;
+    }
 
     case FRONT_END_REPLAY_SAVE_SELECT_SLOT:
     {
-        FrontEndCursorView *cursor = &controller->cursor;
+        FrontEndCursorView *cursor = &screen.cursor;
         cursor->previous = cursor->current;
-        if (g_FrontEndInput.IsRepeated(FRONT_END_INPUT_UP))
+        const volatile unsigned char *pressedByte =
+            reinterpret_cast<const volatile unsigned char *>(
+                &g_FrontEndInput.pressed);
+        const bool slotUp = (*pressedByte & FRONT_END_INPUT_UP) != 0 ||
+            (g_FrontEndInput.repeated & FRONT_END_INPUT_UP) != 0;
+        if (slotUp)
             cursor->Move(-1);
-        if (g_FrontEndInput.IsRepeated(FRONT_END_INPUT_DOWN))
+        const bool slotDown = (*pressedByte & FRONT_END_INPUT_DOWN) != 0 ||
+            (g_FrontEndInput.repeated & FRONT_END_INPUT_DOWN) != 0;
+        if (slotDown)
             cursor->Move(1);
-        if (cursor->previous != cursor->current)
+        const bool slotChanged = cursor->previous != cursor->current;
+        if (slotChanged)
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
                 FRONT_END_SOUND_MOVE, 0);
 
-        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
+        const unsigned int pressed = ReadReplayMenuPressedInput();
+        const bool cancelSlot = (pressed & FRONT_END_INPUT_CANCEL) != 0;
+        if (cancelSlot)
         {
-            controller->SetScreenStateTarget(FRONT_END_REPLAY_SAVE_CLOSING);
+            screen.SetScreenStateTarget(FRONT_END_REPLAY_SAVE_CLOSING);
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
                 FRONT_END_SOUND_CANCEL, 0);
         }
-        else if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
+        else if ((pressed & FRONT_END_INPUT_CONFIRM) != 0)
         {
-            FrontEndCursorView *keyboard = &controller->scoreEntryKeyboardCursor;
-            controller->selectedReplay = cursor->current;
-            keyboard->SetCurrent(0);
-            keyboard->count = strlen(g_FrontEndScoreEntryAlphabet);
-            keyboard->wraps = 1;
-            // Keep this replay owner across time(), but reload its header.
-            ReplayManager *recorded = g_ReplayManager;
-            time(reinterpret_cast<time_t *>(&recorded->replayData->timestamp));
-            recorded->replayData->completionState = 8;
-            strcpy(controller->scoreEntryName,
+            FrontEndCursorView *keyboard = &screen.scoreEntryKeyboardCursor;
+            screen.selectedReplay = cursor->current;
+            keyboard->Select(0);
+            screen.scoreEntryKeyboardCursor.count = strlen(g_FrontEndScoreEntryAlphabet);
+            screen.scoreEntryKeyboardCursor.wraps = 1;
+            ReplayDataHeader *&header = g_ReplayManager->replayData;
+            time(reinterpret_cast<time_t *>(&header->timestamp));
+            header->completionState = 8;
+            strcpy(screen.scoreEntryName,
                 reinterpret_cast<char *>(g_FrontEndProfileData + 0x1d878));
-            controller->scoreEntryNameCursor = 0;
-            if (strcmp(controller->scoreEntryName, "        ") != 0)
+            screen.scoreEntryNameCursor = 0;
+            const bool hasPreviousName = strcmp(screen.scoreEntryName, "        ") != 0;
+            if (hasPreviousName)
                 keyboard->Move(-1);
             int length;
             for (length = FRONT_END_SCORE_ENTRY_NAME_LENGTH; length > 0; --length)
             {
-                if (controller->scoreEntryName[length - 1] != ' ')
+                const bool hasNameCharacter = screen.scoreEntryName[length - 1] != ' ';
+                if (hasNameCharacter)
                     break;
             }
-            controller->scoreEntryNameCursor = length;
+            screen.scoreEntryNameCursor = length;
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
                 FRONT_END_SOUND_SELECT, 0);
-            controller->SetScreenStateTarget(FRONT_END_REPLAY_SAVE_ENTER_NAME);
+            screen.SetScreenStateTarget(FRONT_END_REPLAY_SAVE_ENTER_NAME);
         }
         break;
     }
 
     case FRONT_END_REPLAY_SAVE_ENTER_NAME:
     {
-        FrontEndCursorView *keyboard = &controller->scoreEntryKeyboardCursor;
+        FrontEndCursorView *keyboard = &screen.scoreEntryKeyboardCursor;
         keyboard->previous = keyboard->current;
-        if (g_FrontEndInput.IsRepeated(FRONT_END_INPUT_UP))
+        const bool gridUp = g_FrontEndInput.IsRepeated(FRONT_END_INPUT_UP) != 0;
+        if (gridUp)
             keyboard->Move(-FRONT_END_SCORE_ENTRY_COLUMNS);
-        if (g_FrontEndInput.IsRepeated(FRONT_END_INPUT_DOWN))
+        const bool gridDown = g_FrontEndInput.IsRepeated(FRONT_END_INPUT_DOWN) != 0;
+        if (gridDown)
             keyboard->Move(FRONT_END_SCORE_ENTRY_COLUMNS);
-        if (g_FrontEndInput.IsRepeated(FRONT_END_INPUT_LEFT))
+        const bool gridLeft = g_FrontEndInput.IsRepeated(FRONT_END_INPUT_LEFT) != 0;
+        if (gridLeft)
         {
-            if (keyboard->current % FRONT_END_SCORE_ENTRY_COLUMNS != 0)
+            const bool canMoveLeft = keyboard->current % FRONT_END_SCORE_ENTRY_COLUMNS != 0;
+            if (canMoveLeft)
                 keyboard->Move(-1);
             else
                 keyboard->Move(FRONT_END_SCORE_ENTRY_COLUMNS - 1);
         }
-        if (g_FrontEndInput.IsRepeated(FRONT_END_INPUT_RIGHT))
+        const bool gridRight = g_FrontEndInput.IsRepeated(FRONT_END_INPUT_RIGHT) != 0;
+        if (gridRight)
         {
-            if (keyboard->current % FRONT_END_SCORE_ENTRY_COLUMNS !=
-                FRONT_END_SCORE_ENTRY_COLUMNS - 1)
+            const bool canMoveRight = keyboard->current % FRONT_END_SCORE_ENTRY_COLUMNS !=
+                FRONT_END_SCORE_ENTRY_COLUMNS - 1;
+            if (canMoveRight)
                 keyboard->Move(1);
             else
                 keyboard->Move(1 - FRONT_END_SCORE_ENTRY_COLUMNS);
         }
-        if (keyboard->previous != keyboard->current)
+        const bool gridChanged = keyboard->previous != keyboard->current;
+        if (gridChanged)
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
                 FRONT_END_SOUND_MOVE, 0);
 
-        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
+        const bool confirmCharacter = (g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0;
+        if (confirmCharacter)
         {
             const char *alphabet = g_FrontEndScoreEntryAlphabet;
             int alphabetLength = strlen(alphabet);
             int key = keyboard->current;
-            if (key < alphabetLength - 3)
+            const bool isCharacter = key < alphabetLength - 3;
+            if (isCharacter)
             {
-                int cursor = controller->scoreEntryNameCursor;
+                int cursor = screen.scoreEntryNameCursor;
                 if (cursor < FRONT_END_SCORE_ENTRY_NAME_LENGTH)
                 {
-                    controller->scoreEntryName[cursor] = alphabet[key];
-                    ++controller->scoreEntryNameCursor;
-                    if (controller->scoreEntryNameCursor >= FRONT_END_SCORE_ENTRY_NAME_LENGTH)
-                        keyboard->SetCurrent(alphabetLength - 1);
+                    screen.scoreEntryName[cursor] = alphabet[key];
+                    ++screen.scoreEntryNameCursor;
+                    if (screen.scoreEntryNameCursor >= FRONT_END_SCORE_ENTRY_NAME_LENGTH)
+                        FrontEndCursorSetCurrent(alphabetLength - 1, keyboard);
                 }
                 else
-                    controller->scoreEntryName[cursor - 1] = alphabet[key];
+                    screen.scoreEntryName[cursor - 1] = alphabet[key];
             }
             else if (key == alphabetLength - 3)
             {
-                int cursor = controller->scoreEntryNameCursor;
+                int cursor = screen.scoreEntryNameCursor;
                 if (cursor < FRONT_END_SCORE_ENTRY_NAME_LENGTH)
                 {
-                    controller->scoreEntryName[cursor] = ' ';
-                    ++controller->scoreEntryNameCursor;
-                    if (controller->scoreEntryNameCursor >= FRONT_END_SCORE_ENTRY_NAME_LENGTH)
-                        keyboard->SetCurrent(alphabetLength - 1);
+                    screen.scoreEntryName[cursor] = ' ';
+                    ++screen.scoreEntryNameCursor;
+                    if (screen.scoreEntryNameCursor >= FRONT_END_SCORE_ENTRY_NAME_LENGTH)
+                        FrontEndCursorSetCurrent(alphabetLength - 1, keyboard);
                 }
                 else
-                    controller->scoreEntryName[cursor - 1] = ' ';
+                    screen.scoreEntryName[cursor - 1] = ' ';
             }
             else if (key == alphabetLength - 2)
             {
-                if (controller->scoreEntryNameCursor == 0)
+                if (screen.scoreEntryNameCursor == 0)
                     break;
-                --controller->scoreEntryNameCursor;
-                controller->scoreEntryName[controller->scoreEntryNameCursor] = ' ';
+                --screen.scoreEntryNameCursor;
+                screen.scoreEntryName[screen.scoreEntryNameCursor] = ' ';
             }
             else if (key == alphabetLength - 1)
             {
                 reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
                     FRONT_END_SOUND_UNLOCK, 0);
-                sprintf(replayPath, "th10_%.2d.rpy", controller->cursor.current + 1);
-                ReplayManager::Destroy(controller->replayFiles[controller->cursor.current]);
-                g_ReplayManager->SaveReplay(replayPath, controller->scoreEntryName);
+                sprintf(replayPath, "th10_%.2d.rpy", screen.cursor.current + 1);
+                ReplayManager::Destroy(screen.replayFiles[screen.cursor.current]);
+                g_ReplayManager->SaveReplay(replayPath, screen.scoreEntryName);
                 // Saving may change the slot; loading keeps this sampled slot.
-                int slot = controller->cursor.current;
-                controller->replayFiles[slot] = ReplayManager::Load(replayPath);
+                int slot = screen.cursor.current;
+                screen.replayFiles[slot] = ReplayManager::Load(replayPath);
                 strcpy(reinterpret_cast<char *>(g_FrontEndProfileData + 0x1d878),
-                    controller->scoreEntryName);
-                controller->SetScreenStateTarget(FRONT_END_REPLAY_SAVE_SELECT_SLOT);
+                    screen.scoreEntryName);
+                screen.SetScreenStateTarget(FRONT_END_REPLAY_SAVE_SELECT_SLOT);
             }
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
                 FRONT_END_SOUND_SELECT, 0);
         }
         if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
         {
-            if (controller->scoreEntryNameCursor == 0)
-                controller->SetScreenStateTarget(FRONT_END_REPLAY_SAVE_SELECT_SLOT);
+            if (screen.scoreEntryNameCursor == 0)
+                screen.SetScreenStateTarget(FRONT_END_REPLAY_SAVE_SELECT_SLOT);
             else
             {
                 reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
                     FRONT_END_SOUND_CANCEL, 0);
-                --controller->scoreEntryNameCursor;
-                controller->scoreEntryName[controller->scoreEntryNameCursor] = ' ';
+                --screen.scoreEntryNameCursor;
+                screen.scoreEntryName[screen.scoreEntryNameCursor] = ' ';
             }
         }
         break;
     }
 
     case FRONT_END_REPLAY_SAVE_CLOSING:
-        if (controller->stateTimer.current >= 6)
+        if (screen.stateTimer.current >= 6)
         {
             DeleteVm(controller, 0x69);
-            controller->MarkVmInterrupt(0x5a, 8);
-            controller->MarkVmInterrupt(0x5b, 8);
+            screen.MarkVmInterrupt(0x5a, 8);
+            screen.MarkVmInterrupt(0x5b, 8);
             DeleteVm(controller, 0x5e);
-            EnemyMarkPendingInterrupt(&controller->difficultyAuxVmId.value);
-            controller->SetScreenTarget(FRONT_END_SCREEN_MAIN_MENU_RETURN);
-            controller->cursor.Pop();
+            EnemyMarkPendingInterrupt(&screen.difficultyAuxVmId.value);
+            screen.SetScreenTarget(FRONT_END_SCREEN_MAIN_MENU_RETURN);
+            screen.cursor.Pop();
             ReplayManager *recorded = g_ReplayManager;
             if (recorded != NULL)
                 delete recorded;
             FrontEndLoadMusic(0, "bgm/th10_02.wav");
             FrontEndPlayMusic(0, 0);
-            for (int slot = 0; slot < 25; ++slot)
+            ReplayManager **files = screen.replayFiles;
+            ReplayManager **slot = files;
+            for (int remaining = 25; remaining != 0; --remaining, ++slot)
             {
-                ReplayManager *replay = controller->replayFiles[slot];
+                ReplayManager *replay = *slot;
                 if (replay != NULL)
                     delete replay;
             }
-            // Only numbered slots are destroyed, but all fifty are cleared.
-            memset(controller->replayFiles, 0, sizeof(controller->replayFiles));
+            memset(files, 0, sizeof(screen.replayFiles));
         }
         break;
     }

@@ -856,8 +856,16 @@ frontier; do not refresh a baseline merely to accept the new positions.
   in `ClaudeReplayInitLoadScript`. The MIT-licensed replay-selection model
   supplied the phase and loop leads.
   [2026-11-24]
-- **UpdateReplaySave @0x433570 (1,460)**: 1,444; the target reloads the pressed
-  input after the movement sound. [2026-10-30]
+- **FrontEndControllerView::UpdateReplaySave @0x433570 (1,460)**: the
+  `FrontEndReplay` graph preserves both replay-load calls, the save call
+  and the two inlined name copies. The numbered-slot phase reloads the
+  pressed input after the movement sound. The replay-header reference
+  keeps its address across `time` and reads the header again before setting
+  completion. The two inline cursor selections clamp only at the upper
+  bound. The character-grid clamps call `FrontEndCursorSetCurrent`.
+  Cleanup keeps the array base while it destroys 25 numbered slots and then
+  clears all 50 pointers. The MIT-licensed replay-save model supplied the
+  named predicates and pointer-lifetime leads. [2026-11-24]
 - **BulletRuntimeView::AdvanceTransformProgram @0x406D90 (1,604 compared bytes)**:
   the `bullet-transform-program` unit cold replays with the two spawners
   in the UpdateBullets-rooted link. Its 1,454 instruction bytes, two alignment
