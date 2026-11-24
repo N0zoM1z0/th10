@@ -1862,6 +1862,9 @@ int __stdcall FrontEndControllerView::UpdateDifficulty(
 }
 
 
+AnmVmIdView ResultMenuFindScript(AnmVmIdView *id, int scriptIndex);
+static __forceinline unsigned int ReadReplayMenuPressedInput();
+
 // TH10_FRONTEND_FUNCTION: 0x004306A0 FrontEndControllerView::UpdateCharacter
 int __stdcall FrontEndControllerView::UpdateCharacter(
     FrontEndControllerView *controller)
@@ -1872,20 +1875,17 @@ int __stdcall FrontEndControllerView::UpdateCharacter(
         controller->cursor.count = 2;
         if (g_ReplayDifficulty == 4)
         {
-            if (g_FrontEndProfileData[0x1d888] == 0 &&
-                g_FrontEndProfileData[0x1d889] == 0 &&
-                g_FrontEndProfileData[0x1d88a] == 0)
+            const unsigned char *profile = g_FrontEndProfileData;
+            if (!profile[0x1d888] && !profile[0x1d889] && !profile[0x1d88a])
             {
                 if (controller->cursor.current == 0)
-                    controller->cursor.SetCurrent(1);
+                    controller->cursor.Select(1);
                 controller->cursor.DisableEntry(0);
             }
-            if (g_FrontEndProfileData[0x1d88b] == 0 &&
-                g_FrontEndProfileData[0x1d88c] == 0 &&
-                g_FrontEndProfileData[0x1d88d] == 0)
+            if (!profile[0x1d88b] && !profile[0x1d88c] && !profile[0x1d88d])
             {
                 if (controller->cursor.current == 1)
-                    controller->cursor.SetCurrent(0);
+                    controller->cursor.Select(0);
                 controller->cursor.DisableEntry(1);
             }
         }
@@ -1893,79 +1893,88 @@ int __stdcall FrontEndControllerView::UpdateCharacter(
         controller->CreateVm(0x63);
         DeleteVm(controller, 0x7d);
         controller->CreateVm(0x7d);
-        InterruptVmNow(controller, 0x7d, 3);
-        InterruptVm(
-            controller, 0x7d,
+        g_AnmRenderManagerView->SetVmPendingInterruptAndExecute(
+            static_cast<const AnmVmIdView &>(controller->vmIds[0x7d]), 3);
+        controller->MarkVmInterrupt(0x7d,
             static_cast<short>(controller->cursor.current + 0x11));
-        SetScreenState(controller, FRONT_END_SELECTION_OPENING);
-        break;
+        controller->SetScreenStateTarget(FRONT_END_SELECTION_OPENING);
+        // Check the opening timer on the initialization frame.
 
     case FRONT_END_SELECTION_OPENING:
         if (controller->stateTimer.current > 6)
-        {
-            SetScreenState(controller, FRONT_END_SELECTION_ACTIVE);
-            return 1;
-        }
+            controller->SetScreenStateTarget(FRONT_END_SELECTION_ACTIVE);
         break;
 
     case FRONT_END_SELECTION_ACTIVE:
-        controller->cursor.previous = controller->cursor.current;
-        if (InputRepeated(FRONT_END_INPUT_LEFT))
-            controller->cursor.Move(-1);
-        if (InputRepeated(FRONT_END_INPUT_RIGHT))
-            controller->cursor.Move(1);
+    {
+        FrontEndCursorView *cursor = &controller->cursor;
+        cursor->previous = cursor->current;
+        const volatile unsigned char *pressedByte =
+            reinterpret_cast<const volatile unsigned char *>(&g_FrontEndInput.pressed);
+        if ((*pressedByte & FRONT_END_INPUT_LEFT) != 0 ||
+            (g_FrontEndInput.repeated & FRONT_END_INPUT_LEFT) != 0)
+            cursor->Move(-1);
+        if ((*pressedByte & FRONT_END_INPUT_RIGHT) != 0 ||
+            (g_FrontEndInput.repeated & FRONT_END_INPUT_RIGHT) != 0)
+            cursor->Move(1);
 
-        if (controller->cursor.previous != controller->cursor.current)
+        if (cursor->previous != cursor->current)
         {
             FrontEndPlaySound(FRONT_END_SOUND_MOVE);
             controller->InterruptVmNowThree(0x7d);
-            InterruptVm(
-                controller, 0x7d,
-                static_cast<short>(controller->cursor.current + 7));
+            controller->MarkVmInterrupt(0x7d,
+                static_cast<short>(cursor->current + 7));
         }
 
-        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
+        const unsigned int pressed = ReadReplayMenuPressedInput();
+        if ((pressed & FRONT_END_INPUT_CANCEL) != 0)
         {
-            SetScreenState(controller, FRONT_END_SELECTION_CLOSING);
+            controller->SetScreenStateTarget(FRONT_END_SELECTION_CLOSING);
             FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
-            return 1;
         }
-
-        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
+        else if ((pressed & FRONT_END_INPUT_CONFIRM) != 0)
         {
-            int current = controller->cursor.current;
-            InterruptChildVm(
-                controller, 0x7d,
-                static_cast<short>(current + 0x79), 6);
-            InterruptChildVm(
-                controller, 0x7d,
-                static_cast<short>(current + 0x7b), 6);
-            InterruptChildVm(
-                controller, 0x7d,
-                static_cast<short>(0x7a - current), 1);
-            InterruptChildVm(
-                controller, 0x7d,
-                static_cast<short>(0x7c - current), 1);
+            AnmVmIdView *root =
+                &static_cast<AnmVmIdView &>(controller->vmIds[0x7d]);
+            {
+                AnmVmIdView child = ResultMenuFindScript(root, cursor->current + 0x79);
+                child.SetInterrupt(6);
+            }
+            {
+                AnmVmIdView child = ResultMenuFindScript(
+                    root, controller->cursor.current + 0x7b);
+                child.SetInterrupt(6);
+            }
+            {
+                AnmVmIdView child = ResultMenuFindScript(
+                    root, 0x7a - controller->cursor.current);
+                child.SetInterrupt(1);
+            }
+            {
+                AnmVmIdView child = ResultMenuFindScript(
+                    root, 0x7c - controller->cursor.current);
+                child.SetInterrupt(1);
+            }
             FrontEndPlaySound(FRONT_END_SOUND_SELECT);
-            SetScreenState(controller, FRONT_END_SELECTION_CONFIRMED);
-            return 1;
+            controller->SetScreenStateTarget(FRONT_END_SELECTION_CONFIRMED);
         }
         break;
+    }
 
     case FRONT_END_SELECTION_CONFIRMED:
         if (controller->stateTimer.current >= 14)
         {
-            int previousCharacter = g_ReplayCharacter;
             DeleteVm(controller, 0x63);
-            SetScreen(controller, FRONT_END_SCREEN_SHOT_TYPE);
-            g_ReplayCharacter = controller->cursor.current;
+            controller->SetScreenTarget(FRONT_END_SCREEN_SHOT_TYPE);
+            int selected = controller->cursor.current;
+            int previous = g_ReplayCharacter;
+            g_ReplayCharacter = selected;
             controller->cursor.Push();
             controller->cursor.count = 3;
-            if (previousCharacter == g_ReplayCharacter)
-                controller->cursor.SetCurrent(g_ReplayShotType);
+            if (previous != selected)
+                controller->cursor.Select(0);
             else
-                controller->cursor.SetCurrent(0);
-            return 1;
+                controller->cursor.SetCurrent(g_ReplayShotType);
         }
         break;
 
@@ -1974,7 +1983,7 @@ int __stdcall FrontEndControllerView::UpdateCharacter(
         {
             DeleteVm(controller, 0x7d);
             DeleteVm(controller, 0x63);
-            SetScreen(controller, FRONT_END_SCREEN_DIFFICULTY);
+            controller->SetScreenTarget(FRONT_END_SCREEN_DIFFICULTY);
             g_ReplayCharacter = controller->cursor.current;
             controller->cursor.Pop();
         }
@@ -1982,10 +1991,6 @@ int __stdcall FrontEndControllerView::UpdateCharacter(
     }
     return 1;
 }
-
-
-AnmVmIdView ResultMenuFindScript(AnmVmIdView *id, int scriptIndex);
-static __forceinline unsigned int ReadReplayMenuPressedInput();
 
 static __forceinline void HideUnclearedShotMark(
     FrontEndControllerView *controller, int shot)

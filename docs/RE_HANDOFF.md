@@ -51,6 +51,12 @@ comparison only for its source and link graph.
 
 ## Open owner
 
+`FrontEndControllerView::UpdateCharacter` at `0x004306A0` is the active
+owner. The `frontend-character-update` candidate in
+`FrontEndStageSelect` has the full 956-byte extent and five phase
+destinations. The three later child-VM lookups still calculate the
+root and result addresses in reverse order.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.
