@@ -2115,11 +2115,11 @@ symbol = "?ResolveIntOperand@EnemyFullObjectView@@UAEPAHH@Z"
 target_address = 0x00412300
 size = 80
 relocations = [
-  { offset = 17, type = "DIR32", symbol = "$L7043", target = 0x00412340 },
-  { offset = 64, type = "DIR32", symbol = "$L6211", target = 0x00412315 },
-  { offset = 68, type = "DIR32", symbol = "$L6212", target = 0x0041231E },
-  { offset = 72, type = "DIR32", symbol = "$L6213", target = 0x00412327 },
-  { offset = 76, type = "DIR32", symbol = "$L6214", target = 0x00412330 },
+  { offset = 17, type = "DIR32", symbol = "$L9129", target = 0x00412340 },
+  { offset = 64, type = "DIR32", symbol = "$L8118", target = 0x00412315 },
+  { offset = 68, type = "DIR32", symbol = "$L8119", target = 0x0041231E },
+  { offset = 72, type = "DIR32", symbol = "$L8120", target = 0x00412327 },
+  { offset = 76, type = "DIR32", symbol = "$L8121", target = 0x00412330 },
 ]
 
 [units.enemy-ecl-float-lvalue-resolver]
@@ -2132,11 +2132,11 @@ symbol = "?ResolveFloatOperand@EnemyFullObjectView@@UAEPAMH@Z"
 target_address = 0x004126D0
 size = 80
 relocations = [
-  { offset = 17, type = "DIR32", symbol = "$L7046", target = 0x00412710 },
-  { offset = 64, type = "DIR32", symbol = "$L6289", target = 0x004126E5 },
-  { offset = 68, type = "DIR32", symbol = "$L6290", target = 0x004126EE },
-  { offset = 72, type = "DIR32", symbol = "$L6291", target = 0x004126F7 },
-  { offset = 76, type = "DIR32", symbol = "$L6292", target = 0x00412700 },
+  { offset = 17, type = "DIR32", symbol = "$L9132", target = 0x00412710 },
+  { offset = 64, type = "DIR32", symbol = "$L8203", target = 0x004126E5 },
+  { offset = 68, type = "DIR32", symbol = "$L8204", target = 0x004126EE },
+  { offset = 72, type = "DIR32", symbol = "$L8205", target = 0x004126F7 },
+  { offset = 76, type = "DIR32", symbol = "$L8206", target = 0x00412700 },
 ]
 
 [units.pbgfile-constructor]
@@ -35267,7 +35267,6 @@ linkages = [
 ]
 
 [units.enemy-read-float-operand]
-candidate = true
 source = "src/Enemy.cpp"
 support_sources = ["src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/EclVm.cpp", "src/Player.cpp", "src/PlayerCollision.cpp", "src/EnemyEclDispatcher.cpp", "src/VmIdInterrupt.cpp", "src/FrontEnd.cpp", "src/ItemManager.cpp", "src/Main.cpp", "src/Sound.cpp", "src/Gui.cpp", "src/Hint.cpp", "src/GuiMessageLeaves.cpp", "src/FileSystem.cpp", "src/PbgArchive.cpp", "src/ReplayManager.cpp"]
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]

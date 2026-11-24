@@ -17,6 +17,7 @@ comparison only for its source and link graph.
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
 | `spt-test-update` | 926 B | `SptTestUpdate`, 39 fields, VM lifetime and two-pass file enumeration. The registered callback and the interpreter, factory and worker calls match in the same image. |
+| `enemy-read-float-operand` | 884 B | `EnemyReadIntOperand`, 84 fields and 51 selector destinations. The integer reader, three RNG helpers, angle helper and both lvalue resolvers match. All four operand vtable slots retain their bindings. |
 | `bullet-runtime-update` | 885 B | `BulletRuntimeTick`, 39 fields and the ECX transform call. The registered callback, manager update, transform and both spawners also match in the same image. |
 | `frontend-difficulty-update` | 888 B | `FrontEndStageSelect`, 62 fields and five phase destinations. The caller-owned backdrop output and both child-VM paths match. The factory and registrar, character and stage updates also match in the same image. |
 | `frontend-replay-save-draw` | 955 B | `FrontEndReplaySaveDraw`, 42 fields, the animated name entry and 25 replay rows. The draw callback, formatter and string queue match in the same image. |
@@ -55,12 +56,6 @@ comparison only for its source and link graph.
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
 ## Open owner
-
-`EnemyFullObjectView::ReadFloatOperand` at `0x00412350` is active.
-Compare all 884 bytes, including its 51-entry selector table, with
-`enemy-read-float-operand` in the native animation initializer link.
-The live link matches all 884 bytes and 84 fields with separate player
-coordinate cases and one result variable. The integer reader also matches.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

@@ -922,7 +922,12 @@ frontier; do not refresh a baseline merely to accept the new positions.
   `__stdcall` declaration lets LTCG pass the statistics owner in EBX. Compiling
   the real `Player.cpp` with `/EHs` restores the destructor's stack receiver
   and the cleanup function's ESI allocation around the delete. [2026-11-22]
-- **EnemyFullObjectView::ReadFloatOperand @0x412350 (884)**: 876. [2026-10-30]
+- **EnemyFullObjectView::ReadFloatOperand @0x412350 (884)**: all 84
+  native fields and 51 selectors match in the same cold link as the integer
+  reader. The four operand vtable entries resolve to their maintained
+  methods. The adjacent COFF lvalue resolvers keep their five local
+  destinations at the reviewed offsets under the current compiler labels.
+  [2026-11-24]
 - **MergeJoystickInput @0x44A190 (833)**: 235/282 normalized in
   `input-controller-buttons`. [2026-11-14]
 - **ItemManagerView::Spawn @0x41BB00 (819)**: 795 with the right EAX manager,
@@ -1345,7 +1350,14 @@ register preservation or mod-ref assumptions) where our builds exploit it
 - Spell start 0x00409280: four stack args RET 0x10, owned extent 2432 incl. NOP + 7-entry table 0x00409BE4 (switch on 0x00474C7C-1); Ghidra decompile drops private args (QueueSoundSample EDI id 14).
 - Spell bonus fields: current 3790, initial 3794, duration 3798; BeginSpell caps only 3794. Digit calls @0x43E5A0 are SetSprite.
 - `ReadIntOperand` 411FC0: a 51-entry table at 412228 gated by unsigned(sel+10000)<=50. The VM selector calls GetVm 449450 with ESI and reads signed short +38A.
-- `ReadFloatOperand` 412350: 679 code bytes, NOP, then a 204-byte table at 4125F8.
+- `ReadFloatOperand` at 0x00412350 has 679 instruction bytes, one
+  alignment byte and 51 destinations at 0x004125F8. Keep both sets of player
+  coordinate selectors as separate switch arms and assign one result local.
+  Their early evaluations preserve temporary register allocation. The common
+  return lets VC7.1 retain the later player-coordinate bodies as the shared
+  table destinations. Each difficulty test returns the integer equality
+  result converted to float. The resolver retains the public ECX receiver,
+  one stack selector and the x87 result.
 - `EnemyRuntimeUpdate` literals: -192, 192, 0, 448, ±0.1.
 - Teardown 40D530 (EAX): 32 script frees, ANM slots 9..12 released through the slot protocol.
 - Manager fields: +0x38 = effectResources[2] (stage ANM), timer +40, list +58/+5C.
