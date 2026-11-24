@@ -107,6 +107,7 @@ int FrontEndInputView::IsRepeated(unsigned short mask)
 }
 
 extern FrontEndInputView g_FrontEndInput;
+extern unsigned int g_ResultMenuHeldInputWord;
 extern unsigned int g_FrontEndFlags;
 extern int g_MainModeTransitionCounter;
 extern int g_FrontEndDemoFrames;
@@ -150,8 +151,6 @@ extern int g_ReplayDifficulty;
 extern int g_FrontEndSoundBgmVolume;
 extern int g_FrontEndSoundSfxVolume;
 extern int g_FrontEndSoundBgmAttenuation;
-extern FrontEndControllerMappingView g_FrontEndControllerMapping;
-extern FrontEndControllerMappingView g_FrontEndSavedControllerMapping;
 
 extern void FrontEndQueueSoundCommand(
     const char *command, int parameter0, int parameter1);
@@ -626,35 +625,48 @@ static __forceinline void SetHintModeSprites(
     }
 }
 
-static void CopyKeyConfigBindingsFromGlobal(
-    FrontEndControllerView *controller)
+static __forceinline FrontEndControllerMappingView &GetLiveControllerMapping()
 {
-    controller->keyConfigBindings[FRONT_END_KEY_CONFIG_SHOT] =
-        g_FrontEndControllerMapping.shotButton;
-    controller->keyConfigBindings[FRONT_END_KEY_CONFIG_BOMB] =
-        g_FrontEndControllerMapping.bombButton;
-    controller->keyConfigBindings[FRONT_END_KEY_CONFIG_FOCUS] =
-        g_FrontEndControllerMapping.focusButton;
-    controller->keyConfigBindings[FRONT_END_KEY_CONFIG_MENU] =
-        g_FrontEndControllerMapping.menuButton;
-    controller->keyConfigBindings[FRONT_END_KEY_CONFIG_SKIP] =
-        g_FrontEndControllerMapping.skipButton;
+    InputBindingSetView &input =
+        reinterpret_cast<InputBindingSetView &>(g_FrontEndInput);
+    return *reinterpret_cast<FrontEndControllerMappingView *>(input.controllerMappings);
 }
 
-static void CommitKeyConfigBindings(FrontEndControllerView *controller)
+static __forceinline void LoadKeyConfigBindings(
+    FrontEndControllerView *controller)
 {
-    g_FrontEndControllerMapping.shotButton =
+    const FrontEndControllerMappingView &mapping = GetLiveControllerMapping();
+    controller->keyConfigBindings[FRONT_END_KEY_CONFIG_SHOT] =
+        mapping.shotButton;
+    controller->keyConfigBindings[FRONT_END_KEY_CONFIG_BOMB] =
+        mapping.bombButton;
+    controller->keyConfigBindings[FRONT_END_KEY_CONFIG_FOCUS] =
+        mapping.focusButton;
+    controller->keyConfigBindings[FRONT_END_KEY_CONFIG_MENU] =
+        mapping.menuButton;
+    controller->keyConfigBindings[FRONT_END_KEY_CONFIG_SKIP] =
+        mapping.skipButton;
+    controller->RefreshKeyConfigDisplay();
+}
+
+static __forceinline void CommitKeyConfigBindings(FrontEndControllerView *controller)
+{
+    FrontEndControllerMappingView &mapping = GetLiveControllerMapping();
+    mapping.shotButton =
         controller->keyConfigBindings[FRONT_END_KEY_CONFIG_SHOT];
-    g_FrontEndControllerMapping.bombButton =
+    mapping.bombButton =
         controller->keyConfigBindings[FRONT_END_KEY_CONFIG_BOMB];
-    g_FrontEndControllerMapping.focusButton =
+    mapping.focusButton =
         controller->keyConfigBindings[FRONT_END_KEY_CONFIG_FOCUS];
-    g_FrontEndControllerMapping.menuButton =
+    mapping.menuButton =
         controller->keyConfigBindings[FRONT_END_KEY_CONFIG_MENU];
-    g_FrontEndControllerMapping.skipButton =
+    mapping.skipButton =
         controller->keyConfigBindings[FRONT_END_KEY_CONFIG_SKIP];
 
-    g_FrontEndSavedControllerMapping = g_FrontEndControllerMapping;
+    FrontEndControllerMappingView &saved =
+        *reinterpret_cast<FrontEndControllerMappingView *>(
+            GetOptionsConfiguration().keyBindings);
+    saved = mapping;
 }
 
 // Key-config display retains its manager, but samples root slot 2 per label.
@@ -1494,107 +1506,113 @@ void FrontEndControllerView::RefreshOptionsDisplay()
 }
 
 
+static __forceinline void SelectKeyConfigItem(FrontEndCursorView &cursor, int index)
+{
+    if (cursor.count != 0)
+        cursor.current = index >= cursor.count ? cursor.count - 1 : index;
+    else
+        cursor.current = 0;
+}
+
+static __forceinline void RunKeyConfigCursor(FrontEndControllerView *controller)
+{
+    g_AnmRenderManagerView->SetVmPendingInterruptAndExecute(
+        static_cast<const AnmVmIdView &>(
+            controller->vmIds[FRONT_END_KEY_CONFIG_ROOT_VM]), 3);
+}
+
+static __forceinline void HandleKeyConfigInput(FrontEndControllerView *controller)
+{
+    enum { RestoreBindings = 5, ExitBindings = 6 };
+
+    FrontEndCursorView *cursor = &controller->cursor;
+    cursor->previous = cursor->current;
+    if (g_FrontEndInput.IsRepeated(FRONT_END_INPUT_UP))
+        cursor->Move(-1);
+    if (g_FrontEndInput.IsRepeated(FRONT_END_INPUT_DOWN))
+        cursor->Move(1);
+
+    if (cursor->previous != cursor->current)
+    {
+        FrontEndPlaySound(FRONT_END_SOUND_MOVE);
+        RunKeyConfigCursor(controller);
+        controller->MarkVmInterrupt(
+            FRONT_END_KEY_CONFIG_ROOT_VM, cursor->current + 7);
+    }
+
+    signed char *buttons = FrontEndGetControllerState(0);
+    for (int button = 0; button < FRONT_END_CONTROLLER_BUTTON_COUNT; ++button)
+    {
+        if (buttons[button] < 0)
+        {
+            if (cursor->current <= FRONT_END_KEY_CONFIG_BINDING_COUNT - 1)
+                controller->AssignKeyConfigBinding(cursor->current, button);
+            break;
+        }
+    }
+
+    if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0 &&
+        cursor->current == ExitBindings)
+    {
+        LoadKeyConfigBindings(controller);
+    }
+    else
+    {
+        if ((g_ResultMenuHeldInputWord & FRONT_END_INPUT_CONFIRM) == 0)
+            return;
+
+        switch (cursor->current)
+        {
+        case RestoreBindings:
+            LoadKeyConfigBindings(controller);
+            FrontEndPlaySound(FRONT_END_SOUND_SELECT);
+            return;
+        case ExitBindings:
+            CommitKeyConfigBindings(controller);
+            break;
+        default:
+            return;
+        }
+    }
+
+    FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
+    controller->MarkVmInterrupt(FRONT_END_KEY_CONFIG_ROOT_VM, 6);
+    controller->SetScreenStateTarget(FRONT_END_KEY_CONFIG_CLOSING);
+}
+
+
 // TH10_FRONTEND_FUNCTION: 0x0042F540 FrontEndControllerView::UpdateKeyConfig
 int __stdcall FrontEndControllerView::UpdateKeyConfig(
     FrontEndControllerView *controller)
 {
-    int controllerButton;
-    signed char *controllerState;
-
     switch (controller->screenState)
     {
     case FRONT_END_KEY_CONFIG_INITIALIZE:
         controller->cursor.count = 7;
-        controller->cursor.SetCurrent(0);
+        SelectKeyConfigItem(controller->cursor, 0);
         controller->CreateVm(FRONT_END_KEY_CONFIG_ROOT_VM);
-        SetScreenState(controller, FRONT_END_KEY_CONFIG_OPENING);
-        CopyKeyConfigBindingsFromGlobal(controller);
-        controller->RefreshKeyConfigDisplay();
-        // The target intentionally falls through into the opening wait.
+        controller->SetScreenStateTarget(FRONT_END_KEY_CONFIG_OPENING);
+        LoadKeyConfigBindings(controller);
+        // Check the opening timer on the initialization frame.
 
     case FRONT_END_KEY_CONFIG_OPENING:
         if (controller->stateTimer.current > 6)
         {
-            SetScreenState(controller, FRONT_END_KEY_CONFIG_ACTIVE);
-            InterruptVmNow(controller, FRONT_END_KEY_CONFIG_ROOT_VM, 3);
-            InterruptVm(
-                controller, FRONT_END_KEY_CONFIG_ROOT_VM,
-                static_cast<short>(controller->cursor.current + 0x11));
-            return 1;
+            controller->SetScreenStateTarget(FRONT_END_KEY_CONFIG_ACTIVE);
+            RunKeyConfigCursor(controller);
+            controller->MarkVmInterrupt(
+                FRONT_END_KEY_CONFIG_ROOT_VM, controller->cursor.current + 0x11);
         }
         break;
 
     case FRONT_END_KEY_CONFIG_ACTIVE:
-        controller->cursor.previous = controller->cursor.current;
-        if (InputRepeated(FRONT_END_INPUT_UP))
-            controller->cursor.Move(-1);
-        if (InputRepeated(FRONT_END_INPUT_DOWN))
-            controller->cursor.Move(1);
-
-        if (controller->cursor.previous != controller->cursor.current)
-        {
-            FrontEndPlaySound(FRONT_END_SOUND_MOVE);
-            InterruptVmNow(controller, FRONT_END_KEY_CONFIG_ROOT_VM, 3);
-            InterruptVm(
-                controller, FRONT_END_KEY_CONFIG_ROOT_VM,
-                static_cast<short>(controller->cursor.current + 7));
-        }
-
-        controllerState = FrontEndGetControllerState(0);
-        for (controllerButton = 0;
-             controllerButton < FRONT_END_CONTROLLER_BUTTON_COUNT;
-             ++controllerButton)
-        {
-            if (controllerState[controllerButton] < 0)
-            {
-                if (controller->cursor.current <
-                    FRONT_END_KEY_CONFIG_BINDING_COUNT)
-                {
-                    controller->AssignKeyConfigBinding(
-                        controller->cursor.current, controllerButton);
-                }
-                break;
-            }
-        }
-
-        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0 &&
-            controller->cursor.current == 6)
-        {
-            CopyKeyConfigBindingsFromGlobal(controller);
-            controller->RefreshKeyConfigDisplay();
-            FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
-            InterruptVm(controller, FRONT_END_KEY_CONFIG_ROOT_VM, 6);
-            SetScreenState(controller, FRONT_END_KEY_CONFIG_CLOSING);
-            return 1;
-        }
-
-        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
-        {
-            if (controller->cursor.current == 5)
-            {
-                CopyKeyConfigBindingsFromGlobal(controller);
-                controller->RefreshKeyConfigDisplay();
-                FrontEndPlaySound(FRONT_END_SOUND_SELECT);
-                return 1;
-            }
-            if (controller->cursor.current == 6)
-            {
-                CommitKeyConfigBindings(controller);
-                FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
-                InterruptVm(controller, FRONT_END_KEY_CONFIG_ROOT_VM, 6);
-                SetScreenState(controller, FRONT_END_KEY_CONFIG_CLOSING);
-                return 1;
-            }
-        }
-        break;
-
-    case FRONT_END_KEY_CONFIG_UNUSED:
+        HandleKeyConfigInput(controller);
         break;
 
     case FRONT_END_KEY_CONFIG_CLOSING:
         if (controller->stateTimer.current >= 10)
         {
-            SetScreen(controller, FRONT_END_SCREEN_OPTIONS);
+            controller->SetScreenTarget(FRONT_END_SCREEN_OPTIONS);
             controller->cursor.Pop();
         }
         break;
@@ -3979,7 +3997,8 @@ int __stdcall GameQueueScaledSoundCommand(float magnitude)
 
 // Target 0x0042C770 marks pending interrupts only; ANM execution is deferred.
 // Other historical InterruptVmNow callers have not been audited in this batch.
-void FrontEndControllerView::MarkVmInterrupt(int index, short interrupt)
+__declspec(noinline) void FrontEndControllerView::MarkVmInterrupt(
+    int index, short interrupt)
 {
     AnmVmIdView id(vmIds[index].value);
     AnmVmView *vm = g_AnmRenderManagerView->FindVm(id);
@@ -5237,7 +5256,6 @@ static __forceinline short PauseMenuInputActive(
 }
 
 // The pause input word starts at FrontEndInputView::pressed (0x00474E36).
-extern unsigned int g_ResultMenuHeldInputWord;
 
 // Target 0x00422C80. The two shortcuts and escape can override an
 // earlier choice during the same input update.

@@ -57,6 +57,12 @@ comparison only for its source and link graph.
 
 ## Open owner
 
+`FrontEndControllerView::UpdateKeyConfig` at `0x0042F540` is active.
+Use `frontend-keyconfig-update` in `FrontEndKeyConfig` to compare all
+880 bytes and five phase destinations from the registered title callback.
+The native extent and 67 fields align. The pad scan and binding-editor
+call still need the original EDX button and ECX selection registers.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.
