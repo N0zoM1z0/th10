@@ -41,6 +41,17 @@ comparison only for its source and link graph.
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
+## Open owner
+
+`EnemyLaserType0CollisionView::CheckCollisionBox` at `0x0041D880` is the
+active owner. Build `laser-line-box-trim` for the complete 1,269-byte target.
+The current 1,315-byte candidate samples the inclusive 12-unit boundary,
+uses the target's ordered loop and per-axis selection tests, updates XYZ,
+and copies all 476 request bytes before setting each surviving run's two
+length fields. The remaining differences span vector temporary storage,
+argument and receiver scheduling, and the local branches that depend on
+those layouts.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.

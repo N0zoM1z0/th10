@@ -23942,6 +23942,22 @@ linkages = [
   { offset = 0x33c, type = "DIR32", local = true, target = 0x41e845 },
 ]
 
+[units.laser-line-box-trim]
+candidate = true
+artifact_kind = "linked-pe"
+source = "src/EnemyLaser.cpp"
+support_sources = ["src/AnmManager.cpp", "src/ItemManager.cpp", "src/AnmLoadedStartScript.cpp", "src/AnmVmCreate.cpp", "src/EnemyEclDispatcher.cpp"]
+output_dir = "build/match-linked/LaserLineBoxTrim"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?CheckCollisionBox@EnemyLaserType0CollisionView@@QAEHPAUEnemyLaserVectorView@@0H@Z"
+functions = ["EnemyLaserType0CollisionView::CheckCollisionBox"]
+symbol = "?CheckCollisionBox@EnemyLaserType0CollisionView@@QAEHPAUEnemyLaserVectorView@@0H@Z"
+target_address = 0x0041D880
+size = 1269
+linkages = []
+
 [units.laser-line-run-commands]
 artifact_kind = "linked-pe"
 source = "src/LaserScript.cpp"

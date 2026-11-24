@@ -126,150 +126,126 @@ int EnemyLaserType0CollisionView::CheckCollisionBox(
     unsigned char hits[256];
     memset(hits, 0, sizeof(hits));
 
-    int sampleCount = 0;
     int hitCount = 0;
+    int sampleCount = 0;
     float distance = 6.0f;
-
-    EnemyLaserVectorView halfSize;
-    halfSize.x = size->x * 0.5f;
-    halfSize.y = size->y * 0.5f;
-    halfSize.z = size->z * 0.5f;
-
-    EnemyLaserVectorView minimum;
-    minimum.x = center->x - halfSize.x;
-    minimum.y = center->y - halfSize.y;
-    minimum.z = center->z - halfSize.z;
-
     EnemyLaserVectorView maximum;
-    maximum.x = center->x + halfSize.x;
-    maximum.y = center->y + halfSize.y;
-    maximum.z = center->z + halfSize.z;
+    maximum = *size * 0.5f;
+    EnemyLaserVectorView minimum;
+    minimum = *center - maximum;
+    maximum = maximum + *center;
 
     EnemyLaserVectorView step;
     step.z = 0.0f;
     step.FromAngleMagnitude(angle, 6.0f);
-
     EnemyLaserVectorView sample;
-    sample.x = position.x + step.x;
-    sample.y = position.y + step.y;
-    sample.z = position.z + step.z;
+    sample = step + position;
+    sample.z = 0.0f;
+    step *= 2.0f;
 
-    step.x += step.x;
-    step.y += step.y;
-    step.z += step.z;
-
-    while (distance + 6.0f < length)
     {
-        if (minimum.x <= sample.x && sample.x <= maximum.x &&
-            minimum.y <= sample.y && sample.y <= maximum.y)
+        while (distance + 6.0f <= length)
         {
-            hits[sampleCount] = 1;
-            ++hitCount;
-
-            if (capture != 0 &&
-                sample.IsOutsidePlayfield(32.0f, 32.0f) == 0)
+            if (!(sample.x < minimum.x) && !(sample.x > maximum.x) &&
+                !(sample.y < minimum.y) && !(sample.y > maximum.y))
             {
-                g_ItemManager->Spawn(
-                    reinterpret_cast<const AnmFloat3View *>(&sample),
-                    8, 0xffffffffu, -1.5707964f, 0.6f);
+                hits[sampleCount] = 1;
+                ++hitCount;
+                EnemyLaserVectorView *samplePosition = &sample;
+                if (capture && !samplePosition->IsOutsidePlayfield(32.0f, 32.0f))
+                {
+                    g_ItemManager->Spawn(
+                        reinterpret_cast<const AnmFloat3View *>(samplePosition),
+                        8, 0xffffffffu, -1.5707964f, 0.6f);
+                }
+
+                int effectScript = request.color * 2 + 0x11;
+                EnemyLaserManagerResourceView *manager =
+                    reinterpret_cast<EnemyLaserManagerResourceView *>(
+                        g_EnemyLaserManager);
+                manager->effectResource->CreateVmAtWorldVariant0(
+                    effectScript, reinterpret_cast<const AnmFloat3View *>(&sample));
             }
 
-            EnemyLaserManagerResourceView *manager =
-                reinterpret_cast<EnemyLaserManagerResourceView *>(
-                    g_EnemyLaserManager);
-            manager->effectResource->CreateVmAtWorldVariant0(
-                static_cast<int>(request.color) * 2 + 0x11,
-                reinterpret_cast<const AnmFloat3View *>(&sample));
+            sample += step;
+            distance += 12.0f;
+            ++sampleCount;
         }
 
-        ++sampleCount;
-        sample.x += step.x;
-        sample.y += step.y;
-        sample.z += step.z;
-        distance += 12.0f;
-    }
-
-    if (hitCount == 0)
-        return 0;
-
-    if (sampleCount <= hitCount)
-    {
-        deletionCounter = 1;
-        return hitCount;
-    }
-
-    int sampleIndex = 0;
-    while (sampleIndex < sampleCount && hits[sampleIndex] != 0)
-        ++sampleIndex;
-
-    if (sampleIndex != 0)
-    {
-        const float prefixDistance =
-            static_cast<float>(sampleIndex) * 12.0f;
-        const float prefixScale = static_cast<float>(sampleIndex);
-        position.x += step.x * prefixScale;
-        position.y += step.y * prefixScale;
-        position.z += step.z * prefixScale;
-        length -= prefixDistance;
-        if (length <= 18.0f)
+        if (hitCount == 0)
+            goto done;
+        if (hitCount >= sampleCount)
         {
             deletionCounter = 1;
             return hitCount;
         }
-        request.maximumLength = length;
-        tailOffset = prefixDistance;
-    }
 
-    int gapLength = 0;
-    while (sampleIndex < sampleCount && hits[sampleIndex] == 0)
-    {
-        ++sampleIndex;
-        ++gapLength;
-    }
-
-    if (sampleIndex >= sampleCount)
-        return hitCount;
-
-    const float firstGapLength =
-        static_cast<float>(gapLength) * 12.0f;
-    request.maximumLength -= length - firstGapLength;
-    length = firstGapLength;
-    if (firstGapLength < 18.0f)
-        deletionCounter = 1;
-
-    while (sampleIndex < sampleCount)
-    {
-        while (sampleIndex < sampleCount && hits[sampleIndex] != 0)
+        int sampleIndex = 0;
+        while (sampleIndex < sampleCount && hits[sampleIndex])
             ++sampleIndex;
+
+        if (sampleIndex)
+        {
+            position += step * static_cast<float>(sampleIndex);
+            float prefixDistance = static_cast<float>(sampleIndex) * 12.0f;
+            length -= prefixDistance;
+            if (length > 18.0f)
+            {
+                request.maximumLength = length;
+                tailOffset = prefixDistance;
+            }
+            else
+            {
+                deletionCounter = 1;
+                return hitCount;
+            }
+        }
+
+        int firstRun = 0;
+        while (sampleIndex < sampleCount && !hits[sampleIndex])
+        {
+            ++sampleIndex;
+            ++firstRun;
+        }
+
         if (sampleIndex >= sampleCount)
-            return hitCount;
+            goto done;
 
-        gapLength = 0;
-        const int gapStart = sampleIndex;
-        while (sampleIndex < sampleCount && hits[sampleIndex] == 0)
+        float firstLength = firstRun * 12.0f;
+        request.maximumLength -= length - firstLength;
+        length = firstLength;
+        if (firstLength < 18.0f)
+            deletionCounter = 1;
+
+        while (sampleIndex < sampleCount)
         {
-            ++sampleIndex;
-            ++gapLength;
-        }
+            while (sampleIndex < sampleCount && hits[sampleIndex])
+                ++sampleIndex;
+            if (sampleIndex >= sampleCount)
+                break;
 
-        EnemyLaserType0RequestView args = request;
-        const float segmentLength =
-            static_cast<float>(gapLength) * 12.0f;
-        args.maximumLength = segmentLength;
-        args.initialLength = segmentLength;
+            int run = 0;
+            int runStart = sampleIndex;
+            while (sampleIndex < sampleCount && !hits[sampleIndex])
+            {
+                ++sampleIndex;
+                ++run;
+            }
 
-        if (18.0f < segmentLength)
-        {
-            const float start = static_cast<float>(gapStart);
-            args.position.x = originalPosition.x + step.x * start;
-            args.position.y = originalPosition.y + step.y * start;
-            args.position.z = originalPosition.z + step.z * start;
-            reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->Spawn(
-                reinterpret_cast<EnemyLaserRequestScratch *>(&args),
-                0);
+            float runLength = run * 12.0f;
+            EnemyLaserType0RequestView args = request;
+            args.initialLength = runLength;
+            args.maximumLength = runLength;
+            if (runLength > 18.0f)
+            {
+                args.position = originalPosition + step * static_cast<float>(runStart);
+                reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->Spawn(
+                    reinterpret_cast<EnemyLaserRequestScratch *>(&args), 0);
+            }
         }
     }
 
+done:
     return hitCount;
 }
 
