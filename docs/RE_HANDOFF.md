@@ -40,6 +40,17 @@ comparison only for its source and link graph.
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
+## Open owner
+
+`FrontEndUpdateMainMenuReturn` at `0x0042D420` is the active owner.
+The `frontend-main-menu-return` recipe uses the title update dispatcher
+in `FrontEndReplay`. Compare the full 1,280-byte owner, including the
+phase table and both eight-entry item tables. The current build restores
+the private EBX receiver and all three tables. The remaining instruction
+is the EAX receiver reload after setting the Options transition phase.
+The shorter body shifts the remaining code and changes the final compiler
+alignment.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.

@@ -37468,6 +37468,23 @@ linkages = [
   { offset = 0x574, type = "DIR32", local = true, target = 0x004331AC },
 ]
 
+[units.frontend-main-menu-return]
+candidate = true
+source = "src/FrontEnd.cpp"
+support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/ReplayManager.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/FileSystem.cpp", "src/Main.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/DecomphelpLeafAccessors.cpp", "src/TransitionEffect.cpp", "src/Sound.cpp", "src/Player.cpp", "src/GameErrorContext.cpp", "src/PbgArchive.cpp", "src/VmIdInterrupt.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+entry_symbol = "?FrontEndUpdateCallback@@YIHPAUFrontEndControllerView@@@Z"
+artifact_kind = "linked-pe"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+output_dir = "build/match-linked/FrontEndReplay"
+pdb_source = "src/FrontEnd.cpp"
+functions = ["FrontEndUpdateMainMenuReturn"]
+symbol = "?FrontEndUpdateMainMenuReturn@@YGHPAUFrontEndControllerView@@@Z"
+target_address = 0x0042D420
+size = 1280
+linkages = []
+
 [units.frontend-replay-update]
 source = "src/FrontEnd.cpp"
 support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/ReplayManager.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/FileSystem.cpp", "src/Main.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/DecomphelpLeafAccessors.cpp", "src/TransitionEffect.cpp", "src/Sound.cpp", "src/Player.cpp", "src/GameErrorContext.cpp", "src/PbgArchive.cpp", "src/VmIdInterrupt.cpp"]

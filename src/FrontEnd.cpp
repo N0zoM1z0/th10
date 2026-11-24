@@ -822,7 +822,7 @@ int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller)
             controller->cursor.DisableEntry(1);
         if ((g_FrontEndFlags & 0x10) != 0)
         {
-            controller->cursor.SetCurrent(2);
+            controller->cursor.Select(2);
             g_FrontEndFlags &= ~0x10u;
         }
         if (g_AnmRenderManagerView->FindVm(controller->vmIds[0x58]) == NULL)
@@ -833,7 +833,8 @@ int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller)
         if (controller->stateTimer.current > 10)
         {
             controller->SetScreenStateTarget(2);
-            InterruptVmNow(controller, 0, 3);
+            g_AnmRenderManagerView->SetVmPendingInterruptAndExecute(
+                controller->vmIds[0], 3);
             controller->MarkVmInterrupt(0, static_cast<short>(controller->cursor.current + 0x11));
         }
         break;
@@ -849,7 +850,8 @@ int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller)
         {
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
                 FRONT_END_SOUND_MOVE, 0);
-            InterruptVmNow(controller, 0, 3);
+            g_AnmRenderManagerView->SetVmPendingInterruptAndExecute(
+                controller->vmIds[0], 3);
             controller->MarkVmInterrupt(0, static_cast<short>(cursor->current + 7));
         }
         if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
@@ -858,7 +860,7 @@ int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller)
                 goto quit;
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
                 FRONT_END_SOUND_CANCEL, 0);
-            cursor->SetCurrent(7);
+            cursor->Select(7);
             controller->InterruptVmNowThree(0);
             controller->MarkVmInterrupt(0, static_cast<short>(cursor->current + 7));
         }
@@ -917,7 +919,7 @@ int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller)
                 cursor->Push();
                 if (g_ReplayDifficulty >= 4)
                     g_ReplayDifficulty = 1;
-                cursor->SetCurrent(g_ReplayDifficulty);
+                FrontEndCursorSetCurrent(g_ReplayDifficulty, cursor);
                 break;
             case 1:
                 g_FrontEndFlags &= ~0x10u;
@@ -926,7 +928,7 @@ int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller)
                 cursor->Push();
                 controller->savedDifficulty = g_ReplayDifficulty;
                 g_ReplayDifficulty = 4;
-                cursor->SetCurrent(0);
+                cursor->Select(0);
                 break;
             case 2:
                 g_FrontEndFlags |= 0x10;
@@ -935,7 +937,7 @@ int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller)
                 cursor->Push();
                 if (g_ReplayDifficulty >= 4)
                     g_ReplayDifficulty = 1;
-                cursor->SetCurrent(g_ReplayDifficulty);
+                FrontEndCursorSetCurrent(g_ReplayDifficulty, cursor);
                 break;
             case 3:
                 DeleteVm(controller, 0x58);
