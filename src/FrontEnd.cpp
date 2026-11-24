@@ -2592,29 +2592,27 @@ static __forceinline AnmVmView *FindPracticeRecordVm(
     AnmVmLayerNodeView *node;
     for (node = manager->primaryVmListHead; node != NULL; node = node->next)
     {
-        AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
-        if (vm->id == id)
-            return vm;
+        if (static_cast<AnmVmView *>(node->owner)->id == id)
+            return static_cast<AnmVmView *>(node->owner);
     }
     for (node = manager->secondaryVmListHead; node != NULL; node = node->next)
     {
-        AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
-        if (vm->id == id)
-            return vm;
+        if (static_cast<AnmVmView *>(node->owner)->id == id)
+            return static_cast<AnmVmView *>(node->owner);
     }
     return NULL;
 }
 
-static __forceinline void StopPracticeRowVm(AnmVmView *vm)
+static __forceinline void StopPracticeRowVm(AnmVmView *vm, unsigned short interrupt)
 {
     if (vm != NULL)
     {
-        vm->pendingInterrupt = 1;
+        vm->pendingInterrupt = interrupt;
         if (vm->layerNode.previous == NULL)
         {
             for (AnmVmLayerNodeView *child = vm->layerNode.next;
                  child != NULL; child = child->next)
-                static_cast<AnmVmView *>(child->owner)->pendingInterrupt = 1;
+                static_cast<AnmVmView *>(child->owner)->pendingInterrupt = interrupt;
         }
     }
 }
@@ -2658,9 +2656,9 @@ int __stdcall FrontEndControllerView::UpdatePractice(
                 controller->vmIds[0x5e]) == NULL)
         {
             controller->CreateVm(0x5e);
-            controller->difficultyAuxVmId =
-                g_AsciiManagerView->asciiAnm->CreateVmVariant0(
-                    8, FRONT_END_RENDER_LAYER);
+            AnmLoadedView &resource = *g_AsciiManagerView->asciiAnm;
+            controller->difficultyAuxVmId = resource.CreateVmVariant0(
+                8, FRONT_END_RENDER_LAYER);
         }
 
         controller->CreateVm(0x66);
@@ -2755,9 +2753,8 @@ int __stdcall FrontEndControllerView::UpdatePractice(
                 do
                 {
                     AnmLoadedView *resource = g_AsciiManagerView->textAnm;
-                    const AnmVmIdView id = resource->CreateVmVariant0(
+                    controller->practiceRowVmIds[row] = resource->CreateVmVariant0(
                         row + 0x17, FRONT_END_RENDER_LAYER);
-                    controller->practiceRowVmIds[row] = id;
                     ++row;
                 } while (row < FRONT_END_PRACTICE_ROWS_PER_PAGE);
             }
@@ -2795,11 +2792,9 @@ int __stdcall FrontEndControllerView::UpdatePractice(
             DeleteVm(controller, 0xa6);
             DeleteVm(controller, 0xa7);
             DeleteVm(controller, 0xac);
-            for (int row = 0; row < FRONT_END_PRACTICE_ROWS_PER_PAGE; ++row)
-            {
-                StopPracticeRowVm(FindPracticeRecordVm(g_AnmRenderManagerView,
-                    controller->practiceRowVmIds[row].value));
-            }
+            FrontEndVmIdStorageView *row = controller->practiceRowVmIds;
+            for (int remaining = FRONT_END_PRACTICE_ROWS_PER_PAGE; remaining != 0; --remaining, ++row)
+                StopPracticeRowVm(FindPracticeRecordVm(g_AnmRenderManagerView, row->value), 1);
         }
         break;
     }

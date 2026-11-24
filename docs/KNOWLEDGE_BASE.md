@@ -756,16 +756,24 @@ frontier; do not refresh a baseline merely to accept the new positions.
   references were checked against the target, including the CP932 header
   literals. The MIT-licensed reference exporter suggested the split
   between outlined and inlined writes and the cursor form. [2026-11-24]
-- **FrontEndControllerView::UpdatePractice @0x431EE0 (1,968)**: the
-  complete candidate calls the existing rank counter, keyboard snapshot,
-  screen transitions and pending-interrupt owner. The page record rows
-  use the ASCII manager's text animation at `+0x899C`, while the
-  backdrop uses its main animation at `+0x8994`. Returning to the page
-  summary calls the pending-interrupt helper for each row. Cancellation
-  inlines the primary and secondary VM searches and stops the located
-  tree. The candidate retains the switch table and the full keyboard
-  edge loop. Its remaining differences include the aggregate VM result
-  slots and the registers in the cancellation loop. [2026-11-24]
+- **FrontEndControllerView::UpdatePractice @0x431EE0 (1,968)**: exact
+  in `FrontEndPractice`, with 125 bound fields and four phase destinations.
+  The rank counter, keyboard snapshot, screen transitions and
+  pending-interrupt helper use their maintained owners. The practice rows
+  use the ASCII manager's text animation at `+0x899C`, and the backdrop
+  uses its main animation at `+0x8994`.
+
+  Assigning the row creation result directly restores the aggregate
+  return slot and the alignment before the keyboard edge loop. Naming the
+  backdrop resource as a reference restores its load and result copy.
+  Returning to the page summary calls the pending-interrupt helper for
+  each row. Cancellation walks both VM lists and applies the pending
+  interrupt to the located root and its children. Its pointer countdown
+  passes the manager global directly into the inline lookup. C2 holds the
+  manager in ESI and keeps the count in EDX. The same artifact preserves
+  the exact keyboard snapshot, rank counter and pending-interrupt bodies.
+  The MIT-licensed reference spell-record update supplied the loop and
+  call-boundary leads. [2026-11-24]
 - **GameResetGui @0x413BC0 (1,965)** is exact with 52 bound fields and
   73 fixed local branches in the GameManager update graph. Each loop
   walks flag-word addresses with a stride of `sizeof(AnmVmView)`. C2
