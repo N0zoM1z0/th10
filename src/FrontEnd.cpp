@@ -1,6 +1,7 @@
 #include "Main.hpp"
 #include "EnemySoundQueue.hpp"
 #include "FrontEnd.hpp"
+#include "Player.hpp"
 #include "InputState.hpp"
 #include "ReplayManager.hpp"
 #include "FileSystem.hpp"
@@ -314,24 +315,6 @@ static void InterruptVmNow(
         controller->vmIds[index].value, interrupt);
 }
 
-// The original FrontEnd retains two independent constant-interrupt helpers
-// at 0x42C730 (interrupt 2) and 0x42C750 (interrupt 3). Only the real
-// direct-call sites below use these wrappers; other calls stay generic.
-// The original's private EAX/ECX inputs are not source-level ABI claims.
-__declspec(noinline) void FrontEndInterruptVmNowTwo(
-    int index, FrontEndControllerView *controller)
-{
-    g_AnmRenderManagerView->SetVmPendingInterruptAndExecute(
-        static_cast<const AnmVmIdView &>(controller->vmIds[index]), 2);
-}
-
-__declspec(noinline) void FrontEndInterruptVmNowThree(
-    int index, FrontEndControllerView *controller)
-{
-    g_AnmRenderManagerView->SetVmPendingInterruptAndExecute(
-        static_cast<const AnmVmIdView &>(controller->vmIds[index]), 3);
-}
-
 static void InterruptVm(
     FrontEndControllerView *controller, int index, short interrupt)
 {
@@ -346,13 +329,6 @@ static void InterruptVmId(int id, short interrupt)
 static int InputRepeated(unsigned short mask)
 {
     return g_FrontEndInput.IsRepeated(mask);
-}
-
-static int TimerReachedMultiple(
-    const AnmVmTimerView *timer, int divisor)
-{
-    return timer->current != timer->previous &&
-        timer->current % divisor == 0;
 }
 
 static AnmVmView *ResolveVm(FrontEndVmIdStorageView *id)
@@ -573,10 +549,31 @@ static void SetChildSprite(
         vm->anmFile->SetSprite(vm, spriteIndex);
 }
 
-static void QueueOptionsSound(int soundId)
+// The options screen reaches the configuration and sound queue from the
+// supervisor at 0x00491C28. The queue at 0x00492590 is 0x968 bytes later.
+struct FrontEndOptionsApplicationView
 {
-    reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
-        soundId, 0);
+    MainSupervisorView supervisor;
+    unsigned char unknown784[0x968 - sizeof(MainSupervisorView)];
+    EnemySoundQueueView sound;
+};
+
+typedef char FrontEndOptionsSoundOffset[
+    (offsetof(FrontEndOptionsApplicationView, sound) == 0x968) ? 1 : -1];
+
+static __forceinline FrontEndOptionsApplicationView &GetOptionsApplication()
+{
+    return reinterpret_cast<FrontEndOptionsApplicationView &>(g_MainSupervisorView);
+}
+
+static __forceinline GameConfigurationView &GetOptionsConfiguration()
+{
+    return GetOptionsApplication().supervisor.configuration;
+}
+
+static __forceinline void QueueOptionsSound(int soundId)
+{
+    GetOptionsApplication().sound.QueueSoundSample(soundId, 0);
 }
 
 // Options owners keep the parent-lookup manager across label operations.
@@ -609,23 +606,37 @@ static __forceinline AnmVmView *FindOptionsChildVm(
     return manager->FindVm(FindOptionsChildId(controller, manager, scriptIndex));
 }
 
-static __forceinline void SetHintModeSprites(
-    FrontEndControllerView *controller, AnmRenderManagerView *manager)
+static __forceinline void RunOptionsCursor(FrontEndControllerView *controller)
 {
-    if (g_MainSupervisorView.configuration.hintMode == 0)
+    g_AnmRenderManagerView->SetVmPendingInterruptAndExecute(
+        static_cast<const AnmVmIdView &>(controller->vmIds[FRONT_END_ROOT_VM]), 3);
+}
+
+static __forceinline void SetOptionsLabelSprite(
+    AnmRenderManagerView *manager, FrontEndControllerView *controller,
+    int scriptIndex, int spriteIndex)
+{
+    AnmVmIdView child = FindOptionsChildId(controller, manager, scriptIndex);
+    child.SetSprite(spriteIndex);
+}
+
+static __forceinline void SetHintModeSprites(
+    AnmRenderManagerView *manager, FrontEndControllerView *controller)
+{
+    if (GetOptionsConfiguration().hintMode == 0)
     {
-        FindOptionsChildId(controller, manager, 0x1f).SetSprite(0x2e);
-        FindOptionsChildId(controller, manager, 0x20).SetSprite(0x2f);
+        SetOptionsLabelSprite(manager, controller, 0x1f, 0x2e);
+        SetOptionsLabelSprite(manager, controller, 0x20, 0x2f);
     }
-    else if (g_MainSupervisorView.configuration.hintMode == 1)
+    else if (GetOptionsConfiguration().hintMode == 1)
     {
-        FindOptionsChildId(controller, manager, 0x1f).SetSprite(0x30);
-        FindOptionsChildId(controller, manager, 0x20).SetSprite(0x31);
+        SetOptionsLabelSprite(manager, controller, 0x1f, 0x30);
+        SetOptionsLabelSprite(manager, controller, 0x20, 0x31);
     }
     else
     {
-        FindOptionsChildId(controller, manager, 0x1f).SetSprite(0x2c);
-        FindOptionsChildId(controller, manager, 0x20).SetSprite(0x2d);
+        SetOptionsLabelSprite(manager, controller, 0x1f, 0x2c);
+        SetOptionsLabelSprite(manager, controller, 0x20, 0x2d);
     }
 }
 
@@ -693,10 +704,31 @@ static __forceinline AnmVmView *FindKeyConfigChildVm(
 
 } // namespace
 
-// Target42C670..42C6CE retains the receiver on the stack and script in EDI.
-void FrontEndControllerView::CreateVm(int scriptIndex)
+// Target 0x0042C730 and 0x0042C750 retain separate constant-interrupt handlers.
+__declspec(noinline) void FrontEndControllerView::InterruptVmNowTwo(
+    int index)
 {
-    vmIds[scriptIndex] = frontAnm->CreateVmVariant0(scriptIndex, FRONT_END_RENDER_LAYER);
+    g_AnmRenderManagerView->SetVmPendingInterruptAndExecute(
+        static_cast<const AnmVmIdView &>(vmIds[index]), 2);
+}
+
+__declspec(noinline) void FrontEndControllerView::InterruptVmNowThree(
+    int index)
+{
+    g_AnmRenderManagerView->SetVmPendingInterruptAndExecute(
+        static_cast<const AnmVmIdView &>(vmIds[index]), 3);
+}
+
+// Target42C670..42C6CE retains the receiver on the stack and script in EDI.
+__declspec(noinline) void FrontEndControllerView::CreateVm(int scriptIndex)
+{
+    AnmLoadedView *resource = frontAnm;
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    vm->renderLayer = FRONT_END_RENDER_LAYER;
+    vm->flags35C |= 0x40000000u;
+    resource->InitializeVm(vm, scriptIndex);
+    AnmVmIdView id = g_AnmRenderManagerView->AddVmVariant0(vm);
+    vmIds[scriptIndex] = id;
 }
 
 
@@ -827,7 +859,7 @@ int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller)
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
                 FRONT_END_SOUND_CANCEL, 0);
             cursor->SetCurrent(7);
-            FrontEndInterruptVmNowThree(0, controller);
+            controller->InterruptVmNowThree(0);
             controller->MarkVmInterrupt(0, static_cast<short>(cursor->current + 7));
         }
         if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
@@ -859,8 +891,8 @@ int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller)
                 reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
                     FRONT_END_SOUND_SELECT, 0);
                 controller->SetScreenStateTarget(4);
-                FrontEndInterruptVmNowThree(0x5a, controller);
-                FrontEndInterruptVmNowThree(0x5b, controller);
+                controller->InterruptVmNowThree(0x5a);
+                controller->InterruptVmNowThree(0x5b);
                 break;
             case 7:
             quit:
@@ -1164,166 +1196,169 @@ int __stdcall FrontEndControllerView::UpdateOptions(
     {
     case FRONT_END_OPTIONS_INITIALIZE:
         controller->cursor.count = 6;
-        controller->cursor.SetCurrent(0);
+        controller->cursor.Select(0);
         controller->CreateVm(FRONT_END_ROOT_VM);
         controller->RefreshOptionsDisplay();
         controller->SetScreenStateTarget(FRONT_END_OPTIONS_OPENING);
-        // The target intentionally falls through into the opening wait.
-
+        // Initialization falls through to the opening timer check.
     case FRONT_END_OPTIONS_OPENING:
         if (controller->stateTimer.current > 6)
         {
             controller->SetScreenStateTarget(FRONT_END_OPTIONS_ACTIVE);
-            InterruptVmNow(controller, FRONT_END_ROOT_VM, 3);
-            SetHintModeSprites(controller, g_AnmRenderManagerView);
-            controller->MarkVmInterrupt(FRONT_END_ROOT_VM,
-                static_cast<short>(static_cast<short>(controller->cursor.current) + 0x11));
-            return 1;
+            RunOptionsCursor(controller);
+            SetHintModeSprites(g_AnmRenderManagerView, controller);
+            controller->MarkVmInterrupt(
+                FRONT_END_ROOT_VM, controller->cursor.current + 0x11);
         }
         break;
-
     case FRONT_END_OPTIONS_ACTIVE:
     {
-        controller->cursor.previous = controller->cursor.current;
-        if (InputRepeated(FRONT_END_INPUT_UP))
-            controller->cursor.Move(-1);
-        if (InputRepeated(FRONT_END_INPUT_DOWN))
-            controller->cursor.Move(1);
-
-        if (controller->cursor.previous != controller->cursor.current)
+        FrontEndCursorView *cursor = &controller->cursor;
+        cursor->previous = cursor->current;
+        if (static_cast<short>(g_FrontEndInput.IsRepeated(FRONT_END_INPUT_UP)))
+            cursor->Move(-1);
+        if (static_cast<short>(g_FrontEndInput.IsRepeated(FRONT_END_INPUT_DOWN)))
+            cursor->Move(1);
+        if (cursor->previous != cursor->current)
         {
             QueueOptionsSound(FRONT_END_SOUND_MOVE);
-            InterruptVmNow(controller, FRONT_END_ROOT_VM, 3);
-            controller->MarkVmInterrupt(FRONT_END_ROOT_VM,
-                static_cast<short>(static_cast<short>(controller->cursor.current) + 7));
+            RunOptionsCursor(controller);
+            controller->MarkVmInterrupt(
+                FRONT_END_ROOT_VM, controller->cursor.current + 7);
         }
-
-        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
+        if (g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL)
         {
-            if (controller->cursor.current != 5)
+            if (controller->cursor.current == 5)
             {
-                QueueOptionsSound(FRONT_END_SOUND_CANCEL);
-                controller->cursor.SetCurrent(5);
-                FrontEndInterruptVmNowThree(FRONT_END_ROOT_VM, controller);
-                controller->MarkVmInterrupt(FRONT_END_ROOT_VM,
-                    static_cast<short>(static_cast<short>(controller->cursor.current) + 7));
-                return 1;
-            }
-            controller->MarkVmInterrupt(FRONT_END_ROOT_VM, 6);
-            QueueOptionsSound(FRONT_END_SOUND_CANCEL);
-            controller->SetScreenStateTarget(FRONT_END_OPTIONS_CLOSING);
-            return 1;
-        }
-
-        if (controller->cursor.current == 2 &&
-            TimerReachedMultiple(&controller->stateTimer, 60))
-        {
-            QueueOptionsSound(FRONT_END_SOUND_PREVIEW);
-        }
-
-        int leftRepeated = InputRepeated(FRONT_END_INPUT_LEFT);
-        AnmRenderManagerView *manager = g_AnmRenderManagerView;
-        if (static_cast<unsigned short>(leftRepeated))
-        {
-            switch (controller->cursor.current)
-            {
-            case 0:
-                if (g_MainSupervisorView.configuration.hintMode == 0)
-                    g_MainSupervisorView.configuration.hintMode = 2;
-                else
-                    --g_MainSupervisorView.configuration.hintMode;
-                SetHintModeSprites(controller, manager);
-                QueueOptionsSound(FRONT_END_SOUND_MOVE);
-                break;
-            case 1:
-                if (g_MainSupervisorView.configuration.bgmVolume < 5)
-                    g_MainSupervisorView.configuration.bgmVolume = 0;
-                else
-                    g_MainSupervisorView.configuration.bgmVolume -= 5;
-                controller->RefreshOptionsDisplay();
-                break;
-            case 2:
-                if (g_MainSupervisorView.configuration.sfxVolume < 5)
-                    g_MainSupervisorView.configuration.sfxVolume = 0;
-                else
-                    g_MainSupervisorView.configuration.sfxVolume -= 5;
-                controller->RefreshOptionsDisplay();
-                break;
-            }
-        }
-
-        if (static_cast<unsigned short>(InputRepeated(FRONT_END_INPUT_RIGHT)))
-        {
-            switch (controller->cursor.current)
-            {
-            case 0:
-                if (static_cast<unsigned char>(g_MainSupervisorView.configuration.hintMode) < 2)
-                    ++g_MainSupervisorView.configuration.hintMode;
-                else
-                    g_MainSupervisorView.configuration.hintMode = 0;
-                QueueOptionsSound(FRONT_END_SOUND_MOVE);
-                SetHintModeSprites(controller, manager);
-                break;
-            case 1:
-                g_MainSupervisorView.configuration.bgmVolume += 5;
-                if (g_MainSupervisorView.configuration.bgmVolume > 100)
-                    g_MainSupervisorView.configuration.bgmVolume = 100;
-                controller->RefreshOptionsDisplay();
-                break;
-            case 2:
-                g_MainSupervisorView.configuration.sfxVolume += 5;
-                if (g_MainSupervisorView.configuration.sfxVolume > 100)
-                    g_MainSupervisorView.configuration.sfxVolume = 100;
-                controller->RefreshOptionsDisplay();
-                break;
-            }
-        }
-
-        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
-        {
-            switch (controller->cursor.current)
-            {
-            case 3:
-                controller->MarkVmInterrupt(FRONT_END_ROOT_VM, 6);
-                QueueOptionsSound(FRONT_END_SOUND_SELECT);
-                controller->SetScreenStateTarget(FRONT_END_OPTIONS_CLOSING);
-                return 1;
-            case 4:
-                g_MainSupervisorView.configuration.bgmVolume = 100;
-                g_MainSupervisorView.configuration.sfxVolume = 80;
-                g_MainSupervisorView.configuration.hintMode = 0;
-                controller->RefreshOptionsDisplay();
-                SetHintModeSprites(controller, manager);
-                QueueOptionsSound(FRONT_END_SOUND_SELECT);
-                return 1;
-            case 5:
                 controller->MarkVmInterrupt(FRONT_END_ROOT_VM, 6);
                 QueueOptionsSound(FRONT_END_SOUND_CANCEL);
                 controller->SetScreenStateTarget(FRONT_END_OPTIONS_CLOSING);
-                return 1;
+            }
+            else
+            {
+                QueueOptionsSound(FRONT_END_SOUND_CANCEL);
+                controller->cursor.Select(5);
+                controller->InterruptVmNowThree(FRONT_END_ROOT_VM);
+                controller->MarkVmInterrupt(
+                    FRONT_END_ROOT_VM, controller->cursor.current + 7);
+            }
+        }
+        else
+        {
+            if (controller->cursor.current == 2
+                    && reinterpret_cast<const PlayerTimerView &>(controller->stateTimer)
+                        .HasIntervalTick(60))
+                QueueOptionsSound(FRONT_END_SOUND_PREVIEW);
+            AnmRenderManagerView *manager;
+            if (static_cast<short>(g_FrontEndInput.IsRepeated(FRONT_END_INPUT_LEFT)))
+            {
+                manager = g_AnmRenderManagerView;
+                switch (controller->cursor.current)
+                {
+                case 0:
+                    if (static_cast<unsigned char>(GetOptionsConfiguration().hintMode) > 0)
+                        --GetOptionsConfiguration().hintMode;
+                    else
+                        GetOptionsConfiguration().hintMode = 2;
+                    SetHintModeSprites(manager, controller);
+                    QueueOptionsSound(FRONT_END_SOUND_MOVE);
+                    break;
+                case 1:
+                    if (GetOptionsConfiguration().bgmVolume < 5)
+                    {
+                        GetOptionsConfiguration().bgmVolume = 0;
+                        goto refresh_music;
+                    }
+                    GetOptionsConfiguration().bgmVolume += 0xFB;
+                refresh_music:
+                    controller->RefreshOptionsDisplay();
+                    break;
+                case 2:
+                    if (GetOptionsConfiguration().sfxVolume < 5)
+                    {
+                        GetOptionsConfiguration().sfxVolume = 0;
+                        goto refresh_sound;
+                    }
+                    GetOptionsConfiguration().sfxVolume += 0xFB;
+                refresh_sound:
+                    controller->RefreshOptionsDisplay();
+                    break;
+                }
+            }
+            else
+            {
+                manager = g_AnmRenderManagerView;
+            }
+
+            if (static_cast<short>(g_FrontEndInput.IsRepeated(FRONT_END_INPUT_RIGHT)))
+            {
+                switch (controller->cursor.current)
+                {
+                case 0:
+                    if (static_cast<unsigned char>(GetOptionsConfiguration().hintMode) < 2)
+                        ++GetOptionsConfiguration().hintMode;
+                    else
+                        GetOptionsConfiguration().hintMode = 0;
+                    QueueOptionsSound(FRONT_END_SOUND_MOVE);
+                    SetHintModeSprites(manager, controller);
+                    break;
+                case 1:
+                    GetOptionsConfiguration().bgmVolume += 5;
+                    if (GetOptionsConfiguration().bgmVolume > 100)
+                        GetOptionsConfiguration().bgmVolume = 100;
+                    controller->RefreshOptionsDisplay();
+                    break;
+                case 2:
+                    GetOptionsConfiguration().sfxVolume += 5;
+                    if (GetOptionsConfiguration().sfxVolume > 100)
+                        GetOptionsConfiguration().sfxVolume = 100;
+                    controller->RefreshOptionsDisplay();
+                    break;
+                }
+            }
+            if (g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM)
+            {
+                switch (controller->cursor.current)
+                {
+                case 5:
+                    controller->MarkVmInterrupt(FRONT_END_ROOT_VM, 6);
+                    QueueOptionsSound(FRONT_END_SOUND_CANCEL);
+                    controller->SetScreenStateTarget(FRONT_END_OPTIONS_CLOSING);
+                    break;
+                case 4:
+                    GetOptionsConfiguration().bgmVolume = 100;
+                    GetOptionsConfiguration().sfxVolume = 80;
+                    GetOptionsConfiguration().hintMode = 0;
+                    controller->RefreshOptionsDisplay();
+                    SetHintModeSprites(manager, controller);
+                    QueueOptionsSound(FRONT_END_SOUND_SELECT);
+                    break;
+                case 3:
+                    controller->MarkVmInterrupt(FRONT_END_ROOT_VM, 6);
+                    QueueOptionsSound(FRONT_END_SOUND_SELECT);
+                    controller->SetScreenStateTarget(FRONT_END_OPTIONS_CLOSING);
+                    break;
+                }
             }
         }
         break;
     }
-
-    case FRONT_END_OPTIONS_UNUSED:
-        break;
-
     case FRONT_END_OPTIONS_CLOSING:
         if (controller->stateTimer.current >= 10)
         {
-            if (controller->cursor.current == 3)
+            FrontEndCursorView *cursor = &controller->cursor;
+            switch (cursor->current)
             {
+            case 3:
                 controller->SetScreenTarget(FRONT_END_SCREEN_KEY_CONFIG);
-                controller->cursor.Push();
-            }
-            else if (controller->cursor.current == 5)
-            {
-                FrontEndInterruptVmNowTwo(0x5a, controller);
-                FrontEndInterruptVmNowTwo(0x5b, controller);
+                cursor->Push();
+                break;
+            case 5:
+                controller->InterruptVmNowTwo(0x5a);
+                controller->InterruptVmNowTwo(0x5b);
                 controller->SetScreenTarget(FRONT_END_SCREEN_MAIN_MENU_RETURN);
-                controller->cursor.Pop();
-                return 1;
+                cursor->Pop();
+                break;
             }
         }
         break;
@@ -1336,9 +1371,9 @@ void FrontEndControllerView::RefreshOptionsDisplay()
 {
     float volume;
 
-    g_FrontEndSoundBgmVolume = g_MainSupervisorView.configuration.bgmVolume;
+    g_FrontEndSoundBgmVolume = GetOptionsConfiguration().bgmVolume;
     FrontEndQueueSoundCommand("SetVol", 8, 0);
-    g_FrontEndSoundSfxVolume = g_MainSupervisorView.configuration.sfxVolume;
+    g_FrontEndSoundSfxVolume = GetOptionsConfiguration().sfxVolume;
 
     if (g_FrontEndSoundSfxVolume != 0)
     {
@@ -1361,61 +1396,61 @@ void FrontEndControllerView::RefreshOptionsDisplay()
     vm = FindOptionsChildVm(this, manager, 0x25);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.configuration.bgmVolume / 100 + 0x33);
+            vm, GetOptionsConfiguration().bgmVolume / 100 + 0x33);
     vm = FindOptionsChildVm(this, manager, 0x26);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.configuration.bgmVolume / 10 % 10 + 0x33);
+            vm, GetOptionsConfiguration().bgmVolume / 10 % 10 + 0x33);
     vm = FindOptionsChildVm(this, manager, 0x27);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.configuration.bgmVolume % 10 + 0x33);
+            vm, GetOptionsConfiguration().bgmVolume % 10 + 0x33);
     vm = FindOptionsChildVm(this, manager, 0x29);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.configuration.bgmVolume / 100 + 0x3d);
+            vm, GetOptionsConfiguration().bgmVolume / 100 + 0x3d);
     vm = FindOptionsChildVm(this, manager, 0x2a);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.configuration.bgmVolume / 10 % 10 + 0x3d);
+            vm, GetOptionsConfiguration().bgmVolume / 10 % 10 + 0x3d);
     vm = FindOptionsChildVm(this, manager, 0x2b);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.configuration.bgmVolume % 10 + 0x3d);
+            vm, GetOptionsConfiguration().bgmVolume % 10 + 0x3d);
 
     vm = FindOptionsChildVm(this, manager, 0x2d);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.configuration.sfxVolume / 100 + 0x33);
+            vm, GetOptionsConfiguration().sfxVolume / 100 + 0x33);
     vm = FindOptionsChildVm(this, manager, 0x2e);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.configuration.sfxVolume / 10 % 10 + 0x33);
+            vm, GetOptionsConfiguration().sfxVolume / 10 % 10 + 0x33);
     vm = FindOptionsChildVm(this, manager, 0x2f);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.configuration.sfxVolume % 10 + 0x33);
+            vm, GetOptionsConfiguration().sfxVolume % 10 + 0x33);
     vm = FindOptionsChildVm(this, manager, 0x31);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.configuration.sfxVolume / 100 + 0x3d);
+            vm, GetOptionsConfiguration().sfxVolume / 100 + 0x3d);
     vm = FindOptionsChildVm(this, manager, 0x32);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.configuration.sfxVolume / 10 % 10 + 0x3d);
+            vm, GetOptionsConfiguration().sfxVolume / 10 % 10 + 0x3d);
     vm = FindOptionsChildVm(this, manager, 0x33);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.configuration.sfxVolume % 10 + 0x3d);
+            vm, GetOptionsConfiguration().sfxVolume % 10 + 0x3d);
 
-    if (g_MainSupervisorView.configuration.bgmVolume < 10)
+    if (GetOptionsConfiguration().bgmVolume < 10)
     {
         FindOptionsChildVm(this, manager, 0x25)->drawEnabled = 0;
         FindOptionsChildVm(this, manager, 0x26)->drawEnabled = 0;
         FindOptionsChildVm(this, manager, 0x29)->drawEnabled = 0;
         FindOptionsChildVm(this, manager, 0x2a)->drawEnabled = 0;
     }
-    else if (g_MainSupervisorView.configuration.bgmVolume < 100)
+    else if (GetOptionsConfiguration().bgmVolume < 100)
     {
         FindOptionsChildVm(this, manager, 0x25)->drawEnabled = 0;
         FindOptionsChildVm(this, manager, 0x26)->drawEnabled = 1;
@@ -1430,14 +1465,14 @@ void FrontEndControllerView::RefreshOptionsDisplay()
         FindOptionsChildVm(this, manager, 0x2a)->drawEnabled = 1;
     }
 
-    if (g_MainSupervisorView.configuration.sfxVolume < 10)
+    if (GetOptionsConfiguration().sfxVolume < 10)
     {
         FindOptionsChildVm(this, manager, 0x2d)->drawEnabled = 0;
         FindOptionsChildVm(this, manager, 0x2e)->drawEnabled = 0;
         FindOptionsChildVm(this, manager, 0x31)->drawEnabled = 0;
         FindOptionsChildVm(this, manager, 0x32)->drawEnabled = 0;
     }
-    else if (g_MainSupervisorView.configuration.sfxVolume < 100)
+    else if (GetOptionsConfiguration().sfxVolume < 100)
     {
         FindOptionsChildVm(this, manager, 0x2d)->drawEnabled = 0;
         FindOptionsChildVm(this, manager, 0x2e)->drawEnabled = 1;
@@ -1759,7 +1794,7 @@ int __stdcall FrontEndControllerView::UpdateDifficulty(
             if (controller->cursor.previous != controller->cursor.current)
             {
                 FrontEndPlaySound(FRONT_END_SOUND_MOVE);
-                FrontEndInterruptVmNowThree(rootIndex, controller);
+                controller->InterruptVmNowThree(rootIndex);
                 InterruptVm(
                     controller, rootIndex,
                     static_cast<short>(controller->cursor.current + 7));
@@ -1878,7 +1913,7 @@ int __stdcall FrontEndControllerView::UpdateCharacter(
         if (controller->cursor.previous != controller->cursor.current)
         {
             FrontEndPlaySound(FRONT_END_SOUND_MOVE);
-            FrontEndInterruptVmNowThree(0x7d, controller);
+            controller->InterruptVmNowThree(0x7d);
             InterruptVm(
                 controller, 0x7d,
                 static_cast<short>(controller->cursor.current + 7));
@@ -2032,7 +2067,7 @@ int __stdcall FrontEndControllerView::UpdateShotType(
         if (controller->cursor.previous != controller->cursor.current)
         {
             FrontEndPlaySound(FRONT_END_SOUND_MOVE);
-            FrontEndInterruptVmNowThree(rootIndex, controller);
+            controller->InterruptVmNowThree(rootIndex);
             InterruptVm(
                 controller, rootIndex,
                 static_cast<short>(controller->cursor.current + 7));

@@ -24,6 +24,7 @@ the compiler observations behind the source changes.
 
 | Unit | Bytes | Relevant context |
 | --- | ---: | --- |
+| `frontend-options-update` | 3,188 | `FrontEndOptions` link, 129 fields and all five switch destinations. The supervisor-based configuration and queue view preserves the active phase's manager. The same link checks the refresh and both constant-interrupt members. |
 | `enemy-dispatch-ecl` | 14,416 | `EnemyEclDispatcher` link, 726 fields, 118 jump destinations and 181 opcode selectors. The cold replay also verifies the dialog EH and drop-flush bodies. |
 | `bullet-transform-program` | 1,604 | UpdateBullets-rooted link, 38 fields, five absolute switch entries and 128 selectors. Credits 1,454 code bytes. |
 | `bullet-spawn-pattern-exact` | 194 | Same link, six fields. EAX descriptor and stack manager at both real callers. |

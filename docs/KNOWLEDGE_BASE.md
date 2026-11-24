@@ -599,8 +599,21 @@ frontier; do not refresh a baseline merely to accept the new positions.
     direct-return change, C2 at 0x1076953F grouped the cleanup count
     and named `selected` in one four-byte stack slot with weights
     3 and 2. [2026-11-23]
-- **FrontEndControllerView::UpdateOptions @0x42D920 (3,188 incl. 5-entry
-  table)**: 3,196; three interrupt adapters still expand. [2026-10-29]
+- **FrontEndControllerView::UpdateOptions @0x42D920** matches the full
+  3,188-byte owner, including 129 resolved fields and the five-entry table.
+  Reading the configuration and queuing sound through the same supervisor
+  view preserves the cached animation manager, the 24 parent lookups and the
+  option branches. The configuration bytes are at supervisor `+0x140..+0x142`
+  and the sound queue starts at `+0x968`. Independent globals changed the
+  active-phase register allocation even with the correct queue ABI.
+  Making the constant-interrupt helpers controller members places the index
+  in ECX before the EAX receiver move at all three call sites. Reading
+  `frontAnm` before allocating the VM and naming `AddVmVariant0`'s result
+  preserves `CreateVm`'s body. The sound preview calls
+  `PlayerTimerView::HasIntervalTick` on the shared frame-pair layout.
+  The phase flow follows the reference implementation from
+  the MIT-licensed `_reference/th10-decomp` options source and was verified
+  in this repository's `frontend-options-update` link. [2026-11-24]
 - **PlayerUpdateCallbackBody @0x425730 (3,112)**: 3,100. `FLD 1.0; FMUL scale`
   operand order is reversed, the table base is 4 bytes early and the effect-loop
   EDI subframe differs. [2026-11-12]

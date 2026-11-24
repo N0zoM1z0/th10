@@ -1303,8 +1303,8 @@ CountGameStatisticsRankKind
 PlayerOptionTrailCallbackBody
 CWin32ResourcePbgFile::~CWin32ResourcePbgFile
 StampReplayHeaderTimeAndCompletion
-FrontEndInterruptVmNowTwo
-FrontEndInterruptVmNowThree
+FrontEndControllerView::InterruptVmNowTwo
+FrontEndControllerView::InterruptVmNowThree
 ArchiveEntrySuffix
 ScriptViewerNullableDelete
 StartupNullableDelete

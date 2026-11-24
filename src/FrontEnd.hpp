@@ -286,6 +286,8 @@ struct FrontEndControllerView
     int RegisterTasks();
     void CreateVm(int scriptIndex);
     void MarkVmInterrupt(int index, short interrupt);
+    __declspec(noinline) void InterruptVmNowTwo(int index);
+    __declspec(noinline) void InterruptVmNowThree(int index);
     int Update();
     int Draw();
     static int __stdcall UpdateOptions(FrontEndControllerView *controller);
