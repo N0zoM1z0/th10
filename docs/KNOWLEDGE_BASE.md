@@ -1604,6 +1604,16 @@ register preservation or mod-ref assumptions) where our builds exploit it
 
 ### FrontEnd and result menu
 
+- `FrontEndControllerView::Update` at `0x0042CDF0` receives the controller
+  in EAX from the registered callback. Its jump table has 17 entries.
+  The initialization branches share the score-entry, replay, and menu-return
+  tails with their regular dispatch cases. Writing those tails twice caused
+  the optimizer to keep the constant 2 in EBP before merging them.
+  The idle-demo state is one view of the game state at 0x474C40. Its
+  selected-stage words, character, shot type, saved difficulty, flags,
+  counter and demo index keep their established offsets. Separate externs
+  for each word changed register allocation and store ordering even after
+  the dispatch tails matched. Keep the exact stage scan and the timer tick.
 - `FrontEndUpdateMainMenuReturn` at 0x0042D420 occupies 1,280 bytes.
   Its five phase destinations and both eight-entry item tables account
   for 21 table words. Use the upper-only cursor clamp for the fixed

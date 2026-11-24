@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `frontend-update-dispatcher` | 1,128 B | `FrontEndReplay`, 99 fields, 17 jump destinations, the idle-demo state and the EAX callback. The five linked menus, the Practice menu and the replay destructor keep their exact code. |
 | `main-init-d3d-rendering` | 1,159 B | `MainInitD3dRendering`, 100 fields, the full HAL/REF fallback and selected back-buffer format. The logs, reset and screen-color functions match in the same image. WinMain matches in its own link. |
 | `laser-type1-box-split` | 1,171 B | `LaserType1BoxSplit`, 19 fields, the virtual ECX receiver and the zeroed fragment request. Polar, playfield bounds and the world-VM creator also match in the same image. |
 | `laser-line-circle-trim` | 1,238 B | `LaserLineCircleTrim`, 33 fields, inline viewport tests and the VM allocation, script load, and registration calls. The rectangle trim, allocator and three direct Player consumers also match in their own links. |
@@ -46,12 +47,6 @@ comparison only for its source and link graph.
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
 ## Open owner
-
-`FrontEndControllerView::Update` at `0x0042CDF0` is the active owner.
-Use `frontend-update-dispatcher` in the `FrontEndReplay` graph to compare
-all 1,128 bytes. The initialization branches, timer and 17 dispatch
-destinations now line up. Continue with register and store ordering in
-the idle-demo path. Keep the registered callback's EAX receiver.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

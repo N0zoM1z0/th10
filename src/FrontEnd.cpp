@@ -969,41 +969,65 @@ int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller)
 }
 
 
+struct FrontEndDemoStateView
+{
+    unsigned char unknown000[0x28];
+    int character;
+    int shotType;
+    unsigned char unknown030[4];
+    int difficulty;
+    int savedDifficulty;
+    int selectedStage;
+    int initialStage;
+    unsigned char unknown044[0x1c];
+    unsigned int flags;
+    int idleFrames;
+    int nextDemo;
+};
+
+typedef char FrontEndDemoStateOffsets[
+    (offsetof(FrontEndDemoStateView, selectedStage) == 0x3c &&
+     offsetof(FrontEndDemoStateView, flags) == 0x60 &&
+     offsetof(FrontEndDemoStateView, idleFrames) == 0x64 &&
+     offsetof(FrontEndDemoStateView, nextDemo) == 0x68) ? 1 : -1];
+
 static __forceinline int FrontEndUpdateIdleDemo(FrontEndControllerView *controller)
 {
+    FrontEndDemoStateView &demo =
+        reinterpret_cast<FrontEndDemoStateView &>(g_GameStartupState);
     if (controller->screen == FRONT_END_SCREEN_MAIN_MENU ||
         controller->screen == FRONT_END_SCREEN_MAIN_MENU_RETURN)
     {
-        ++g_FrontEndDemoFrames;
+        ++demo.idleFrames;
         if ((g_FrontEndInput.current & 0x160b) != 0)
         {
-            g_FrontEndDemoFrames = 0;
+            demo.idleFrames = 0;
         }
-        else if (g_FrontEndDemoFrames >= 900)
+        else if (demo.idleFrames >= 900)
         {
-            g_FrontEndFlags = (g_FrontEndFlags & ~0x40u) |
+            demo.flags = (demo.flags & ~0x40u) |
                 FRONT_END_FLAG_DEMO_TRANSITION;
-            strcpy(g_FrontEndDemoPath, g_FrontEndDemoPaths[g_FrontEndDemoIndex]);
+            strcpy(g_FrontEndDemoPath, g_FrontEndDemoPaths[demo.nextDemo]);
             ReplayManager *replay = ReplayManager::Load(g_FrontEndDemoPath);
-            g_FrontEndDemoIndex = (g_FrontEndDemoIndex + 1) % 4;
+            demo.nextDemo = (demo.nextDemo + 1) % 4;
 
             int stage = 0;
             while (stage < 8 && replay->stageStates[stage].header == NULL)
                 ++stage;
 
             g_FrontEndSelectedStageRecord = g_FrontEndStageRecords[stage];
-            g_FrontEndSelectedStage = stage;
-            g_FrontEndSelectedStageMirror = stage;
+            demo.selectedStage = stage;
+            demo.initialStage = stage;
             g_MainSupervisorView.nextGameMode = 12;
             ReplayDataHeader *header = replay->replayData;
-            g_ReplayCharacter = header->character;
-            g_ReplayShotType = header->shotType;
-            g_FrontEndSavedDifficulty = g_ReplayDifficulty;
-            g_ReplayDifficulty = header->difficulty;
+            demo.character = header->character;
+            demo.shotType = header->shotType;
+            demo.savedDifficulty = demo.difficulty;
+            demo.difficulty = header->difficulty;
             ReplayManager::Destroy(replay);
 
             int screen = controller->screen;
-            g_FrontEndDemoFrames = 0;
+            demo.idleFrames = 0;
             return g_MainModeTransitionCounter = screen != FRONT_END_SCREEN_MAIN_MENU;
         }
     }
@@ -1014,6 +1038,8 @@ static __forceinline int FrontEndUpdateIdleDemo(FrontEndControllerView *controll
 int FrontEndControllerView::Update()
 {
     int mode = FrontEndUpdateIdleDemo(this);
+    FrontEndDemoStateView &demo =
+        reinterpret_cast<FrontEndDemoStateView &>(g_GameStartupState);
     switch (screen)
     {
     case FRONT_END_SCREEN_INITIALIZE:
@@ -1045,7 +1071,7 @@ int FrontEndControllerView::Update()
             goto score_entry;
         }
 
-        if ((g_FrontEndFlags & FRONT_END_FLAG_DEMO_TRANSITION) == 0)
+        if ((demo.flags & FRONT_END_FLAG_DEMO_TRANSITION) == 0)
         {
             FrontEndLoadMusic(0, "bgm/th10_02.wav");
             FrontEndPlayMusic(0, 0);
@@ -1053,9 +1079,9 @@ int FrontEndControllerView::Update()
         }
         else
         {
-            g_ReplayDifficulty = g_FrontEndSavedDifficulty;
+            demo.difficulty = demo.savedDifficulty;
         }
-        g_FrontEndFlags &= ~FRONT_END_FLAG_DEMO_TRANSITION;
+        demo.flags &= ~FRONT_END_FLAG_DEMO_TRANSITION;
 
         if (mode == 0)
         {
@@ -1064,7 +1090,7 @@ int FrontEndControllerView::Update()
         }
         else if (mode == 1)
         {
-            if (g_ReplayDifficulty == 4)
+            if (demo.difficulty == 4)
                 controller->cursor.Select(1);
             controller->SetScreenTarget(FRONT_END_SCREEN_MAIN_MENU_RETURN);
             controller->CreateVm(0x5b);
