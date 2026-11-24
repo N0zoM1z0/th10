@@ -1785,8 +1785,9 @@ int __stdcall FrontEndControllerView::UpdateDifficulty(
         {
             controller->CreateVm(0x5e);
             AnmLoadedView &resource = *g_AsciiManagerView->asciiAnm;
-            backdrop = resource.CreateVmVariant0(8, FRONT_END_RENDER_LAYER);
-            controller->difficultyAuxVmId = backdrop;
+            const int *created = resource.CreateVmVariant0(
+                8, FRONT_END_RENDER_LAYER, backdrop);
+            controller->difficultyAuxVmId.value = *created;
         }
 
         controller->cursor.count = g_ReplayDifficulty < 4 ? 4 : 1;

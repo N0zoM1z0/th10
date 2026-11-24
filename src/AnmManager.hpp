@@ -984,6 +984,9 @@ struct AnmLoadedView
     void SetAndExecuteScriptIndex(AnmVmView *vm, int scriptIndex);
     void SetAndExecuteScriptIdx(AnmVmView *vm, int scriptIndex);
     AnmVmIdView CreateVmVariant0(int scriptIndex, unsigned int renderLayer);
+    // Write the ID to caller-owned storage and return the stored word.
+    const int *CreateVmVariant0(
+        int scriptIndex, unsigned int renderLayer, AnmVmIdView &result);
     AnmVmIdView CreateVmAtScreenVariant0(
         int scriptIndex, const AnmFloat3View *position);
     AnmVmIdView CreateVmAtWorldVariant0(
@@ -1373,6 +1376,7 @@ struct AnmRenderManagerView
     int RequestCaptureRectangle(AnmVmIdView id, int x, int y, int width, int height);
     AnmVmView *AllocateVm();
     AnmVmIdView AddVmVariant0(AnmVmView *vm);
+    const int *AddVmVariant0(AnmVmView *vm, int *result);
     AnmVmIdView AddVmVariant1(AnmVmView *vm);
     TH10_ANM_NOINLINE AnmVmIdView AddVmVariant2(AnmVmView *vm);
     TH10_ANM_NOINLINE AnmVmIdView AddVmVariant3(AnmVmView *vm);

@@ -37633,7 +37633,6 @@ linkages = [
 ]
 
 [units.frontend-difficulty-update]
-candidate = true
 source = "src/FrontEnd.cpp"
 support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/ReplayManager.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/FileSystem.cpp", "src/Main.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/DecomphelpLeafAccessors.cpp", "src/TransitionEffect.cpp", "src/Sound.cpp", "src/Player.cpp", "src/GameErrorContext.cpp", "src/PbgArchive.cpp", "src/VmIdInterrupt.cpp", "src/InputKeyboardSnapshot.cpp"]
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
@@ -37647,7 +37646,71 @@ functions = ["FrontEndControllerView::UpdateDifficulty"]
 symbol = "?UpdateDifficulty@FrontEndControllerView@@SGHPAU1@@Z"
 target_address = 0x00430320
 size = 888
-linkages = []
+data_spans = [{ offset = 0x361, width = 3 }]
+linkages = [
+  { offset = 0x00F, type = "DIR32", symbol = "?g_ReplayDifficulty@@3HA", target = 0x00474C74 },
+  { offset = 0x02D, type = "DIR32", local = true, target = 0x00430684 },
+  { offset = 0x039, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x03F, type = "REL32", symbol = "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z", target = 0x004491C0 },
+  { offset = 0x04E, type = "REL32", symbol = "?CreateVm@FrontEndControllerView@@QAEXH@Z", target = 0x0042C670 },
+  { offset = 0x054, type = "DIR32", symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A", target = 0x004776E0 },
+  { offset = 0x068, type = "REL32", symbol = "?CreateVmVariant0@AnmLoadedView@@QAEPBHHIAAUAnmVmIdView@@@Z", target = 0x00448D00 },
+  { offset = 0x076, type = "DIR32", symbol = "?g_ReplayDifficulty@@3HA", target = 0x00474C74 },
+  { offset = 0x08F, type = "REL32", symbol = "?DeleteVm@@YAXPAUFrontEndControllerView@@H@Z", target = 0x0042C6D0 },
+  { offset = 0x097, type = "REL32", symbol = "?CreateVm@FrontEndControllerView@@QAEXH@Z", target = 0x0042C670 },
+  { offset = 0x0A4, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x0AF, type = "REL32", symbol = "?SetVmPendingInterruptAndExecute@AnmRenderManagerView@@QAGXUAnmVmIdView@@F@Z", target = 0x00449250 },
+  { offset = 0x0C2, type = "REL32", symbol = "?MarkVmInterrupt@FrontEndControllerView@@QAEXHF@Z", target = 0x0042C770 },
+  { offset = 0x0CD, type = "REL32", symbol = "?CreateVm@FrontEndControllerView@@QAEXH@Z", target = 0x0042C670 },
+  { offset = 0x0D9, type = "REL32", symbol = "?SetScreenStateTarget@FrontEndControllerView@@QAEXH@Z", target = 0x0042C620 },
+  { offset = 0x0F2, type = "REL32", symbol = "?SetScreenStateTarget@FrontEndControllerView@@QAEXH@Z", target = 0x0042C620 },
+  { offset = 0x114, type = "DIR32", symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A", target = 0x00474E30 },
+  { offset = 0x11C, type = "REL32", symbol = "?IsRepeated@FrontEndInputView@@QAEHG@Z", target = 0x0040ACE0 },
+  { offset = 0x12A, type = "REL32", symbol = "?Move@FrontEndCursorView@@QAEHH@Z", target = 0x0044BEA0 },
+  { offset = 0x134, type = "DIR32", symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A", target = 0x00474E30 },
+  { offset = 0x139, type = "REL32", symbol = "?IsRepeated@FrontEndInputView@@QAEHG@Z", target = 0x0040ACE0 },
+  { offset = 0x147, type = "REL32", symbol = "?Move@FrontEndCursorView@@QAEHH@Z", target = 0x0044BEA0 },
+  { offset = 0x15A, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x00492590 },
+  { offset = 0x15F, type = "REL32", symbol = "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z", target = 0x0043DC90 },
+  { offset = 0x168, type = "REL32", symbol = "?InterruptVmNowThree@FrontEndControllerView@@QAEXH@Z", target = 0x0042C750 },
+  { offset = 0x178, type = "REL32", symbol = "?MarkVmInterrupt@FrontEndControllerView@@QAEXHF@Z", target = 0x0042C770 },
+  { offset = 0x17D, type = "DIR32", symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A", target = 0x00474E30, addend = 0x6 },
+  { offset = 0x18D, type = "REL32", symbol = "?SetScreenStateTarget@FrontEndControllerView@@QAEXH@Z", target = 0x0042C620 },
+  { offset = 0x199, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x00492590 },
+  { offset = 0x19E, type = "REL32", symbol = "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z", target = 0x0043DC90 },
+  { offset = 0x1A7, type = "REL32", symbol = "?DeleteVm@@YAXPAUFrontEndControllerView@@H@Z", target = 0x0042C6D0 },
+  { offset = 0x1CD, type = "REL32", symbol = "?MarkVmInterrupt@FrontEndControllerView@@QAEXHF@Z", target = 0x0042C770 },
+  { offset = 0x1D3, type = "DIR32", symbol = "?g_ReplayDifficulty@@3HA", target = 0x00474C74 },
+  { offset = 0x1F0, type = "REL32", symbol = "?FindChild@FrontEndVmIdStorageView@@QAE?AUAnmVmIdView@@H@Z", target = 0x004497D0 },
+  { offset = 0x200, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x205, type = "REL32", symbol = "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z", target = 0x004491C0 },
+  { offset = 0x242, type = "REL32", symbol = "?SetInterrupt@AnmVmIdView@@QAEXF@Z", target = 0x00449470 },
+  { offset = 0x24E, type = "REL32", symbol = "?SetScreenStateTarget@FrontEndControllerView@@QAEXH@Z", target = 0x0042C620 },
+  { offset = 0x25A, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x00492590 },
+  { offset = 0x25F, type = "REL32", symbol = "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z", target = 0x0043DC90 },
+  { offset = 0x28F, type = "REL32", symbol = "?DeleteVm@@YAXPAUFrontEndControllerView@@H@Z", target = 0x0042C6D0 },
+  { offset = 0x29B, type = "REL32", symbol = "?SetScreenTarget@FrontEndControllerView@@QAEXH@Z", target = 0x0042C5C0 },
+  { offset = 0x2A1, type = "DIR32", symbol = "?g_ReplayDifficulty@@3HA", target = 0x00474C74 },
+  { offset = 0x2AD, type = "DIR32", symbol = "?g_ReplayDifficulty@@3HA", target = 0x00474C74 },
+  { offset = 0x2B5, type = "REL32", symbol = "?Push@FrontEndCursorView@@QAEXXZ", target = 0x0044BE20 },
+  { offset = 0x2C2, type = "DIR32", symbol = "?g_ReplayCharacter@@3HA", target = 0x00474C68 },
+  { offset = 0x2C9, type = "REL32", symbol = "?FrontEndCursorSetCurrent@@YIHHPAUFrontEndCursorView@@@Z", target = 0x0040AD20 },
+  { offset = 0x2EB, type = "REL32", symbol = "?DeleteVm@@YAXPAUFrontEndControllerView@@H@Z", target = 0x0042C6D0 },
+  { offset = 0x2FC, type = "REL32", symbol = "?MarkVmInterrupt@FrontEndControllerView@@QAEXHF@Z", target = 0x0042C770 },
+  { offset = 0x308, type = "REL32", symbol = "?MarkVmInterrupt@FrontEndControllerView@@QAEXHF@Z", target = 0x0042C770 },
+  { offset = 0x312, type = "REL32", symbol = "?DeleteVm@@YAXPAUFrontEndControllerView@@H@Z", target = 0x0042C6D0 },
+  { offset = 0x31D, type = "REL32", symbol = "?EnemyMarkPendingInterrupt@@YAXPAH@Z", target = 0x00409E50 },
+  { offset = 0x329, type = "REL32", symbol = "?SetScreenTarget@FrontEndControllerView@@QAEXH@Z", target = 0x0042C5C0 },
+  { offset = 0x32F, type = "DIR32", symbol = "?g_ReplayDifficulty@@3HA", target = 0x00474C74 },
+  { offset = 0x33A, type = "DIR32", symbol = "?g_ReplayDifficulty@@3HA", target = 0x00474C74 },
+  { offset = 0x348, type = "DIR32", symbol = "?g_ReplayDifficulty@@3HA", target = 0x00474C74 },
+  { offset = 0x350, type = "REL32", symbol = "?Pop@FrontEndCursorView@@QAEXXZ", target = 0x0044BE70 },
+  { offset = 0x364, type = "DIR32", local = true, target = 0x00430351 },
+  { offset = 0x368, type = "DIR32", local = true, target = 0x004303FD },
+  { offset = 0x36C, type = "DIR32", local = true, target = 0x00430423 },
+  { offset = 0x370, type = "DIR32", local = true, target = 0x0043059A },
+  { offset = 0x374, type = "DIR32", local = true, target = 0x004305FA },
+]
 
 [units.frontend-character-update]
 source = "src/FrontEnd.cpp"

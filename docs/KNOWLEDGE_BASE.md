@@ -1623,6 +1623,13 @@ register preservation or mod-ref assumptions) where our builds exploit it
   calls on the shared result slot. Returning immediately from the node walk
   places the successful lookup out of line after the confirmation return.
   Both maintained 70-byte lookup entry points retain their exact code.
+  The backdrop factory writes to caller storage in EDI and returns a
+  pointer to the ID word. Reading that word as a scalar consumes a VC7.1
+  temporary register and restores the scratch registers across the rest
+  of the handler. The factory passes the same storage through to the
+  primary-back registrar. Returning the address of its own result after
+  registration keeps the 73-byte factory and 118-byte registrar exact
+  in the title link for both result forms.
 - `FrontEndControllerView::UpdateCharacter` at `0x004306A0` checks all
   six Extra unlock bytes, runs the opening timer on entry, and samples
   horizontal input before cancel and confirm. Four separately scoped

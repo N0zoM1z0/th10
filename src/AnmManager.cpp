@@ -923,29 +923,42 @@ AnmVmView *AnmRenderManagerView::AllocateVm()
     return vm;
 }
 
-__declspec(noinline) AnmVmIdView AnmRenderManagerView::AddVmVariant0(AnmVmView *vm)
+static __forceinline AnmVmIdView &AddVmToPrimaryBack(
+    AnmRenderManagerView &manager, AnmVmView *vm)
 {
     AnmVmLayerNodeView *node = &vm->managerNode;
     node->owner = vm;
     node->next = NULL;
     node->previous = NULL;
 
-    if (primaryVmListHead == NULL)
+    if (manager.primaryVmListHead == NULL)
     {
-        primaryVmListHead = node;
+        manager.primaryVmListHead = node;
     }
     else
     {
-        primaryVmListTail->InsertAfter(node);
+        manager.primaryVmListTail->InsertAfter(node);
     }
-    primaryVmListTail = node;
+    manager.primaryVmListTail = node;
 
-    AnmVmIdView *incrementReceiver = &nextVmId;
+    AnmVmIdView *incrementReceiver = &manager.nextVmId;
     (*incrementReceiver)++;
-    if (nextVmId == AnmVmIdView())
-        nextVmId++;
-    vm->id = nextVmId.value;
-    return nextVmId;
+    if (manager.nextVmId == AnmVmIdView())
+        manager.nextVmId++;
+    vm->id = manager.nextVmId.value;
+    return manager.nextVmId;
+}
+
+__declspec(noinline) AnmVmIdView AnmRenderManagerView::AddVmVariant0(AnmVmView *vm)
+{
+    return AddVmToPrimaryBack(*this, vm);
+}
+
+__declspec(noinline) const int *AnmRenderManagerView::AddVmVariant0(
+    AnmVmView *vm, int *result)
+{
+    *result = AddVmToPrimaryBack(*this, vm).value;
+    return result;
 }
 
 AnmVmIdView AnmRenderManagerView::AddVmVariant1(AnmVmView *vm)
@@ -2995,16 +3008,30 @@ void AnmLoadedView::SetAndExecuteScriptIdx(
     ++g_AnmRenderManagerView->scriptsStartedThisFrame;
 }
 
-__declspec(noinline) AnmVmIdView AnmLoadedView::CreateVmVariant0(
-    int scriptIndex, unsigned int renderLayer)
+static __forceinline AnmVmView *LoadPrimaryBackVm(
+    AnmLoadedView &resource, int scriptIndex, unsigned int renderLayer)
 {
     AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
     vm->renderLayer = renderLayer;
     vm->flags35C |= 0x40000000u;
-    InitializeVm(vm, scriptIndex);
+    resource.InitializeVm(vm, scriptIndex);
+    return vm;
+}
+
+__declspec(noinline) AnmVmIdView AnmLoadedView::CreateVmVariant0(
+    int scriptIndex, unsigned int renderLayer)
+{
+    AnmVmView *vm = LoadPrimaryBackVm(*this, scriptIndex, renderLayer);
     return g_AnmRenderManagerView->AddVmVariant0(vm);
 }
 
+__declspec(noinline) const int *AnmLoadedView::CreateVmVariant0(
+    int scriptIndex, unsigned int renderLayer, AnmVmIdView &result)
+{
+    AnmVmView *vm = LoadPrimaryBackVm(*this, scriptIndex, renderLayer);
+    g_AnmRenderManagerView->AddVmVariant0(vm, &result.value);
+    return &result.value;
+}
 
 AnmVmIdView AnmLoadedView::CreateVmAtScreenVariant0(
     int scriptIndex, const AnmFloat3View *position)
