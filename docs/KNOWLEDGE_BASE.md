@@ -866,6 +866,15 @@ frontier; do not refresh a baseline merely to accept the new positions.
   Cleanup keeps the array base while it destroys 25 numbered slots and then
   clears all 50 pointers. The MIT-licensed replay-save model supplied the
   named predicates and pointer-lifetime leads. [2026-11-24]
+- **FrontEndControllerView::UpdateShotType @0x430A60 (1,424)**: name each
+  `ResultMenuFindScript` result before using its VM ID methods. VC7.1 reuses
+  the incoming stack slot for the ID and removes the extra frame. The first
+  two Extra unlock checks address profile bytes directly. The third keeps a
+  character snapshot for both the test and its fallback. A volatile difficulty
+  read follows the cursor count store. Confirmation looks up
+  `selection + (character * 3 + 0x3f) * 2` before setting interrupt 6.
+  The MIT-licensed shot-selection model supplied the call and layout leads.
+  [2026-11-24]
 - **BulletRuntimeView::AdvanceTransformProgram @0x406D90 (1,604 compared bytes)**:
   the `bullet-transform-program` unit cold replays with the two spawners
   in the UpdateBullets-rooted link. Its 1,454 instruction bytes, two alignment
