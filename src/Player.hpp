@@ -17,6 +17,37 @@ struct PlayerPositionPair
         return PlayerPositionPair(x + other.x, y + other.y);
     }
 
+    PlayerPositionPair operator-(const PlayerPositionPair &other) const
+    {
+        return PlayerPositionPair(
+            static_cast<int>(static_cast<unsigned int>(x) - static_cast<unsigned int>(other.x)),
+            static_cast<int>(static_cast<unsigned int>(y) - static_cast<unsigned int>(other.y)));
+    }
+
+    PlayerPositionPair operator*(int scale) const
+    {
+        return PlayerPositionPair(
+            static_cast<int>(static_cast<unsigned int>(x) * static_cast<unsigned int>(scale)),
+            static_cast<int>(static_cast<unsigned int>(y) * static_cast<unsigned int>(scale)));
+    }
+
+    PlayerPositionPair operator/(int divisor) const
+    {
+        return PlayerPositionPair(x / divisor, y / divisor);
+    }
+
+    bool operator!=(const PlayerPositionPair &other) const
+    {
+        return x != other.x || y != other.y;
+    }
+
+    PlayerPositionPair &operator+=(const PlayerPositionPair &other)
+    {
+        x = static_cast<int>(static_cast<unsigned int>(x) + static_cast<unsigned int>(other.x));
+        y = static_cast<int>(static_cast<unsigned int>(y) + static_cast<unsigned int>(other.y));
+        return *this;
+    }
+
     PlayerPositionPair &operator=(const PlayerPositionPair &other)
     {
         x = other.x;

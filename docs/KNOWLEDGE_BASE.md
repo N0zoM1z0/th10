@@ -776,10 +776,15 @@ frontier; do not refresh a baseline merely to accept the new positions.
   IDs preserve both marker calls and leave ESI available for the shared
   constant 1 in the input path. The two lean checks preserve the reload
   after script 2, and the history guard tests vertical speed first.
-  The remaining 182 differing bytes concentrate in the option loop, where
-  C2 bases EBX at option +0x38 instead of +0x40 and schedules the coordinate
-  interpolation differently. The reference movement source suggested the
-  input, marker and lean expressions. [2026-11-24]
+  Separate references to the option's desired and current position give
+  the loop its EBX base at option +0x40. Pair operators keep the two
+  products together. The write barrier before applying the nonzero step
+  restores both reads of the current position and leaves the desired X in
+  EBP for the fallback assignment. The strict comparison binds all 54
+  fields and leaves nine ordinary bytes at the desired X-coordinate sum
+  and first translated-position VM ID. The MIT-licensed reference
+  movement source suggested the input, marker, lean and paired arithmetic
+  expressions. [2026-11-24]
 - **GameManagerUpdateBody @0x418190 (1,544)**: exact with 114 bound fields
   and 60 fixed local branches in `game-manager-update-body`. Choosing the real
   `GamePrepareAnimationSlots` as the LTCG entry keeps its stack receiver. With

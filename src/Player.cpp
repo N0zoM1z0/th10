@@ -1350,52 +1350,39 @@ int PlayerUpdateMovementAndOptions(Player *player)
 
         const PlayerPositionPair *offset =
             player->optionMode != 0 ? &option.replayPair3 : &option.replayPair2;
-        option.replayPair0 = PlayerPositionPair(
-            static_cast<int>(static_cast<unsigned int>(player->positionX) +
-                static_cast<unsigned int>(offset->x)),
-            static_cast<int>(static_cast<unsigned int>(player->positionY) +
-                static_cast<unsigned int>(offset->y)));
+        const PlayerPositionPair &origin =
+            *reinterpret_cast<const PlayerPositionPair *>(&player->positionX);
+        option.replayPair0 = origin + *offset;
 
         if (option.updateCallback != NULL)
             option.updateCallback(&option);
 
+        PlayerPositionPair &current = option.replayPair1;
+        const PlayerPositionPair &desired = option.replayPair0;
         if (option.resetFlag == 0)
         {
             if (player->optionTransitionFrames >= 30)
             {
-                const unsigned int transitionFrames =
-                    static_cast<unsigned int>(player->optionTransitionFrames);
-                const PlayerPositionPair scaledDelta(
-                    static_cast<int>((static_cast<unsigned int>(option.replayPair0.x) -
-                        static_cast<unsigned int>(option.replayPair1.x)) * transitionFrames),
-                    static_cast<int>((static_cast<unsigned int>(option.replayPair0.y) -
-                        static_cast<unsigned int>(option.replayPair1.y)) * transitionFrames));
-                const int stepX = scaledDelta.x / 100;
-                const int stepY = scaledDelta.y / 100;
-                if (stepX != 0 || stepY != 0)
+                const PlayerPositionPair step =
+                    (desired - current) * player->optionTransitionFrames / 100;
+                if (step != PlayerPositionPair(0, 0))
                 {
-                    option.replayPair1.x = static_cast<int>(
-                        static_cast<unsigned int>(option.replayPair1.x) +
-                        static_cast<unsigned int>(stepX));
-                    option.replayPair1.y = static_cast<int>(
-                        static_cast<unsigned int>(option.replayPair1.y) +
-                        static_cast<unsigned int>(stepY));
+                    _ReadWriteBarrier();
+                    current += step;
                 }
                 else
-                {
-                    option.replayPair1 = option.replayPair0;
-                }
+                    current = desired;
             }
         }
         else
         {
             option.resetFlag = 0;
-            option.replayPair1 = option.replayPair0;
+            current = desired;
         }
 
         AnmFloat3View optionPosition;
-        optionPosition.x = (float)option.replayPair1.x * 0.01f;
-        optionPosition.y = (float)option.replayPair1.y * 0.01f;
+        optionPosition.x = (float)current.x * 0.01f;
+        optionPosition.y = (float)current.y * 0.01f;
         optionPosition.z = 0.0f;
         AnmRenderManagerView *manager = g_AnmRenderManagerView;
         manager->SetVmWorldPosition(AnmVmIdView(option.primaryVmId), &optionPosition);

@@ -55,8 +55,7 @@ address = 0x004250B0
 size = 1656
 candidate_size = 1656
 target_sha256 = "4df6366829855fc4e83c7280aad543bbbce26619161710cb052126457cb2e844"
-residual = ["50B", "519", "51E", "52E-52F", "533-534", "536-53C", "53E", "540-547", "549", "54C", "54E-563", "565-572", "574", "576-58A", "58C-59B", "59D-59F", "5A1-5C8", "5CC-5DE", "5E3-5E5", "5EA-5F2", "5F4", "5F8-5FE", "610"]
-
+residual = ["536-53C", "5DC", "5E4"]
 [frontier.bullet-cancel-in-area]
 function = "BulletManagerView::CancelBulletsInArea"
 unit = "bullet-cancel-in-area"

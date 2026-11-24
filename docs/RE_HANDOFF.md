@@ -32,10 +32,11 @@ comparison only for its source and link graph.
 
 `PlayerUpdateMovementAndOptions` at `0x004250B0` is the active owner.
 The `ClaudeReplayInitLoadScript` graph reproduces the complete 1,656-byte
-extent and all 16 direction destinations. The frontier records 182
-differing bytes around the option loop and branches to it. Compare with
-`check-frontier.py --no-build player-update-movement` after rebuilding the
-Player translation unit and relinking this graph.
+extent and all 54 linkage fields, including the 16 direction destinations.
+The frontier records nine ordinary bytes across four instructions. Resolve
+the order of the two X-coordinate loads at `+0x535` and the first world
+position VM ID at `+0x5DB`. Compare with
+`check-frontier.py --no-build player-update-movement` after relinking.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
