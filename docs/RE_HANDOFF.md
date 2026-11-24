@@ -68,8 +68,10 @@ handles in all three lookup paths.
 The current 834-byte comparison aligns 242 of 267 instructions. Returning
 the manager and VM together leaves the VM in EAX and the row ID in EDX in
 the named lookup. The manager and score pointer still need ESI and ECX.
-Passing a capture/attempt pair gives 850 bytes and retains the same named
-register differences. The title callback root leaves the comparison unchanged.
+`frontend-practice-records` binds all 14 retail fields, including the three
+calls to the centered formatter. The strict comparison currently stops
+at the 16-byte size difference. Passing the two counts as a pair reaches
+850 bytes, with the named register differences still open.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

@@ -3043,8 +3043,7 @@ int FrontEndControllerView::RefreshPracticeRecords()
             break;
         }
 
-        GameStatisticsOwner *profile =
-            reinterpret_cast<GameStatisticsOwner *>(g_FrontEndProfileData);
+        GameStatisticsOwner *profile = g_GameStatisticsRows;
         GameStatisticsRecord &catalog = profile->records[6];
         if (catalog.spellHistory[record].attempts != 0)
         {
