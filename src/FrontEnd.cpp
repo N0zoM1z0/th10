@@ -2984,6 +2984,24 @@ int __stdcall FrontEndControllerView::UpdatePractice(
 }
 
 
+struct PracticeRowAnimation
+{
+    AnmRenderManagerView *manager;
+    AnmVmView *vm;
+};
+
+static __forceinline PracticeRowAnimation ResolvePracticeRowAnimation(
+    FrontEndVmIdStorageView &slot)
+{
+    PracticeRowAnimation animation;
+    animation.manager = g_AnmRenderManagerView;
+    animation.vm = FindPracticeRecordVm(animation.manager, slot.value);
+    if (animation.vm == NULL)
+        slot.value = 0;
+    return animation;
+}
+
+
 // TH10_FRONTEND_FUNCTION: 0x00432690 FrontEndControllerView::RefreshPracticeRecords
 int FrontEndControllerView::RefreshPracticeRecords()
 {
@@ -3041,37 +3059,10 @@ int FrontEndControllerView::RefreshPracticeRecords()
 
             name[length] = '\0';
             GameStatisticsRecord &shot = profile->records[cursor.current];
-            AnmRenderManagerView *manager = g_AnmRenderManagerView;
-            int id = rowId->value;
-            AnmVmView *vm;
-            if (id != 0)
-            {
-                for (AnmVmLayerNodeView *node = manager->primaryVmListHead;
-                     node != NULL; node = node->next)
-                {
-                    if (static_cast<AnmVmView *>(node->owner)->id == id)
-                    {
-                        vm = static_cast<AnmVmView *>(node->owner);
-                        goto resolvedPracticeVm;
-                    }
-                }
-                for (AnmVmLayerNodeView *node = manager->secondaryVmListHead;
-                     node != NULL; node = node->next)
-                {
-                    if (static_cast<AnmVmView *>(node->owner)->id == id)
-                    {
-                        vm = static_cast<AnmVmView *>(node->owner);
-                        goto resolvedPracticeVm;
-                    }
-                }
-            }
-            vm = NULL;
-        resolvedPracticeVm:
-            if (vm == NULL)
-                rowId->value = 0;
+            PracticeRowAnimation animation = ResolvePracticeRowAnimation(*rowId);
             GameStatisticsSpellHistoryEntryView *result = shot.SpellHistoryAt(record);
-            manager->DrawTextCentered(
-                vm, result->captures != 0 ? 0x00ffff80u : 0x00efefefu,
+            animation.manager->DrawTextCentered(
+                animation.vm, result->captures != 0 ? 0x00ffff80u : 0x00efefefu,
                 "No.%3d %s %4d/%4d", record + 1, name,
                 result->captures, result->attempts);
             ++record;
