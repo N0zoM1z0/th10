@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `frontend-main-menu-return` | 1,280 B | `FrontEndReplay`, 103 fields, the EBX receiver and three complete switch tables. The phase setter and eight known exact units pass their affected comparisons. |
 | `hint-consume-entries` | 1,317 B | `HintLifecycle`, 34 fields and all three world-VM paths. The per-frame update and registered callback replay in the same build. |
 | `result-menu-update-pause` | 1,360 B | `ResultMenuPause`, 79 fields and five phase destinations. The input word and repeat view share 0x474E36. The scheduler callback and dispatcher pass in the same link. |
 | `laser-line-run-commands` | 1,356 B | `LaserLineCommands`, 31 fields, five jump destinations and 64 selector bytes. The virtual receiver is ECX, and `laser-line-update` passes its own link. |
@@ -39,17 +40,6 @@ comparison only for its source and link graph.
 | `enemy-dispatch-ecl` | 14,416 B | `EnemyEclDispatcher`, 726 fields, 118 jump destinations and 181 opcode selectors. The selected replay includes dialog EH and the drop-flush body. |
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
-
-## Open owner
-
-`FrontEndUpdateMainMenuReturn` at `0x0042D420` is the active owner.
-The `frontend-main-menu-return` recipe uses the title update dispatcher
-in `FrontEndReplay`. Compare the full 1,280-byte owner, including the
-phase table and both eight-entry item tables. The current build restores
-the private EBX receiver and all three tables. The remaining instruction
-is the EAX receiver reload after setting the Options transition phase.
-The shorter body shifts the remaining code and changes the final compiler
-alignment.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

@@ -1570,6 +1570,15 @@ register preservation or mod-ref assumptions) where our builds exploit it
 
 ### FrontEnd and result menu
 
+- `FrontEndUpdateMainMenuReturn` at 0x0042D420 occupies 1,280 bytes.
+  Its five phase destinations and both eight-entry item tables account
+  for 21 table words. Use the upper-only cursor clamp for the fixed
+  selections and the outlined bounded setter for the selected difficulty.
+  Passing the existing VM handle directly retains the single stack
+  push for each cursor animation restart. The inline definition of
+  `SetScreenStateTarget` keeps the 80-byte outlined setter and makes
+  the Options branch reload the EBX controller into EAX after setting
+  the phase. The other exact setter callers pass their own comparisons.
 - `ResultMenuUpdatePause` at 0x00422C80 includes 1,338 bytes of code, two
   alignment bytes and five phase destinations. The complete linked extent
   binds 79 fields and keeps the stack receiver and `ret 4`.

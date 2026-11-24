@@ -732,7 +732,7 @@ __declspec(noinline) void FrontEndControllerView::CreateVm(int scriptIndex)
 }
 
 
-__declspec(noinline) void FrontEndControllerView::SetScreenStateTarget(
+__declspec(noinline) inline void FrontEndControllerView::SetScreenStateTarget(
     int state)
 {
     screenState = state;
