@@ -963,8 +963,15 @@ frontier; do not refresh a baseline merely to accept the new positions.
   the VM initializer. The box and circle callers match in the same image.
   The local TH10 reference supplied the normal and delayed branch shapes.
   [Reference license](licenses/th10-decomp-MIT.txt)
-- **SoundPlayerView::Initialize @0x43CD30 (786)**: 755; the target saves EBX
-  conditionally. [2026-10-29]
+- **SoundPlayerView::Initialize @0x43CD30 (786)**: `SoundSetupRealMain`
+  reproduces all 23 fields. Keep the primary format call inside the inline
+  device configuration success path so EBX is saved only there. Clear the
+  handle arrays by element, value-initialize both DirectSound descriptors,
+  then assign the buffer description before the PCM fields. Set `cbSize`
+  first in the PCM record. The startup thread, primary format setter,
+  sample loader, chunk walker and error log match in the same image.
+  The local TH10 reference supplied the configuration and descriptor leads.
+  [Reference license](licenses/th10-decomp-MIT.txt)
 - **GuiView::DrawStageElements @0x415800 (724)**: [2026-11-17] exact
   across the complete 724-byte function and 33 original-bound DIR32/REL32
   fields in the 17-input GUI draw `/GL` graph. The recovered natural C++

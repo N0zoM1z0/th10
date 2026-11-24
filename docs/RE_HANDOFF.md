@@ -17,6 +17,7 @@ comparison only for its source and link graph.
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
 | `spt-test-update` | 926 B | `SptTestUpdate`, 39 fields, VM lifetime and two-pass file enumeration. The registered callback and the interpreter, factory and worker calls match in the same image. |
+| `sound-player-initialize` | 786 B | `SoundSetupRealMain`, 23 fields, DirectSound device and buffer setup, and the 37-sample preload. The setup thread, sample loader and chunk walker pass. |
 | `item-manager-spawn` | 819 B | `ItemManagerSpawn`, 18 fields, three jump slots and eleven selector bytes. The normal pool and delayed ring match. Both laser callers, the polar helper, VM creator and loader pass. |
 | `frontend-replay-draw` | 825 B | `FrontEndReplaySaveDraw`, 33 fields, the 25-slot list and the seven-stage detail view. Both neighboring draw paths, the callback and the text helpers pass. |
 | `frontend-score-entry-draw` | 826 B | `FrontEndReplaySaveDraw`, 35 fields and the two keyboard text paths. The score reads, replay save draw, title callback, formatter and string queue match. |

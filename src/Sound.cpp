@@ -259,15 +259,27 @@ typedef char SoundPlayerBgmOffsets[
 char g_SoundInitSuccessFormat[] = "\x44\x69\x72\x65\x63\x74\x53\x6f\x75\x6e\x64\x20\x82\xcd\x90\xb3\x8f\xed\x82\xc9\x8f\x89\x8a\xfa\x89\xbb\x82\xb3\x82\xea\x82\xdc\x82\xb5\x82\xbd\x0d\x0a";
 char g_SoundInitFailureFormat[] = "\x44\x69\x72\x65\x63\x74\x53\x6f\x75\x6e\x64\x20\x83\x49\x83\x75\x83\x57\x83\x46\x83\x4e\x83\x67\x82\xcc\x8f\x89\x8a\xfa\x89\xbb\x82\xaa\x8e\xb8\x94\x73\x82\xb5\x82\xbd\x82\xe6\x0d\x0a";
 
+static __forceinline HRESULT ConfigureSoundPlayerDevice(
+    CSoundManager *owner, HWND window)
+{
+    const HRESULT result = owner->Initialize(window, DSSCL_PRIORITY);
+    if (FAILED(result))
+        return result;
+    owner->SetPrimaryBufferFormat(2, 44100, 16);
+    return S_OK;
+}
+
 // Target 0x0043CD30-0x0043D041.
 int SoundPlayerView::Initialize(HWND window)
 {
-    memset(unconsumedSoundMetadata, 0xff, sizeof(unconsumedSoundMetadata));
+    for (unsigned int index = 0;
+         index < sizeof(unconsumedSoundMetadata) / sizeof(unconsumedSoundMetadata[0]); ++index)
+        unconsumedSoundMetadata[index] = -1;
     for (int i = 0; i < 12; ++i)
         soundQueue[i] = -1;
     CSoundManager *createdManager = new CSoundManager;
     manager = createdManager;
-    if (FAILED(createdManager->Initialize(window, DSSCL_PRIORITY)))
+    if (FAILED(ConfigureSoundPlayerDevice(createdManager, window)))
     {
         th10::g_GameErrorContext.Log(g_SoundInitFailureFormat);
         if (manager != NULL)
@@ -277,24 +289,21 @@ int SoundPlayerView::Initialize(HWND window)
         }
         return -1;
     }
-    createdManager->SetPrimaryBufferFormat(2, 44100, 16);
     directSound = manager->directSound;
-    WAVEFORMATEX format;
-    DSBUFFERDESC description;
-    ZeroMemory(&format, sizeof(format));
-    ZeroMemory(&description, sizeof(description));
+    bgmThreadHandle = NULL;
+    DSBUFFERDESC description = {};
+    WAVEFORMATEX format = {};
+    description.dwSize = sizeof(description);
+    description.dwFlags = DSBCAPS_LOCSOFTWARE | DSBCAPS_GLOBALFOCUS;
+    description.dwBufferBytes = 0x8000;
+    description.lpwfxFormat = &format;
+    format.cbSize = 0;
     format.wFormatTag = WAVE_FORMAT_PCM;
     format.nChannels = 2;
     format.nSamplesPerSec = 44100;
     format.nAvgBytesPerSec = 176400;
     format.nBlockAlign = 4;
     format.wBitsPerSample = 16;
-    format.cbSize = 0;
-    description.dwSize = sizeof(description);
-    description.dwFlags = DSBCAPS_LOCSOFTWARE | DSBCAPS_GLOBALFOCUS;
-    description.dwBufferBytes = 0x8000;
-    description.lpwfxFormat = &format;
-    bgmThreadHandle = NULL;
     if (FAILED(static_cast<LPDIRECTSOUND>(directSound)->CreateSoundBuffer(
             &description, &initialSoundBuffer, NULL)))
         return -1;
