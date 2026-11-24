@@ -33921,7 +33921,6 @@ linkages = [
 ]
 
 [units.merge-joystick-input]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/InputPolling.cpp"
 output_dir = "build/match-linked/InputPolling"

@@ -60,9 +60,9 @@ versus target size unless it says ordinary bytes or normalized instructions.
   the 0x2C-byte motion record gets ESI; a plain const member gives
   `GetPlanarBounds @0x4285F0` its register-only ABI. Membership can also hurt:
   `HintLinkView::Append` is 52 bytes as a member and 40 as a free function.
-- Parameter lowering: `MergeJoystickInput`'s first parameter reaches ECX only
-  when the body copies it into a local before taking an address. An
-  address-taken parameter is never register-lowered.
+- The `PollInputFrame` link lowers `MergeJoystickInput`'s button mask to
+  ECX and keeps both indices on the stack. The inlined button helpers update
+  the parameter directly, and the merged mask lives in ESI during the poll.
 - Return the natural type: void when no caller consumes it (`AnmVmTimerView::Tick`
   with int adds `MOV EAX,EDX`), the merged `unsigned short` for
   `PollInputFrame`.
@@ -928,8 +928,14 @@ frontier; do not refresh a baseline merely to accept the new positions.
   methods. The adjacent COFF lvalue resolvers keep their five local
   destinations at the reviewed offsets under the current compiler labels.
   [2026-11-24]
-- **MergeJoystickInput @0x44A190 (833)**: 235/282 normalized in
-  `input-controller-buttons`. [2026-11-14]
+- **MergeJoystickInput @0x44A190 (833)**: the real `PollInputFrame` cold
+  link matches all 21 fields and four RET 8 exits. All three retail call
+  sites (`0x44A8B8`, `0x44AC96`, `0x44AFEA`) pass the mask in ECX. The
+  WinMM path updates that parameter, uses one unsigned dead-zone local
+  for both axes, and compares the upper Y bound to the sampled position.
+  The Y range is the negated unsigned minimum-minus-maximum difference.
+  The axis expressions follow the local MIT-licensed TH10 reference.
+  [Reference license](licenses/th10-decomp-MIT.txt)
 - **ItemManagerView::Spawn @0x41BB00 (819)**: 795 with the right EAX manager,
   ECX position and RET16; branch and tail layout differ. [2026-10-21]
 - **SoundPlayerView::Initialize @0x43CD30 (786)**: 755; the target saves EBX

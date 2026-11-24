@@ -17,6 +17,7 @@ comparison only for its source and link graph.
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
 | `spt-test-update` | 926 B | `SptTestUpdate`, 39 fields, VM lifetime and two-pass file enumeration. The registered callback and the interpreter, factory and worker calls match in the same image. |
+| `merge-joystick-input` | 833 B | `InputPolling`, 21 fields and four RET 8 exits. The WinMM midpoint and dead zone calculations match. The keyboard caller and both button helpers pass their comparisons. |
 | `frontend-practice-records` | 850 B | `FrontEndPractice`, 14 fields and all three centered text calls. The VM result uses an output reference, and the palette reads the capture counter independently. The practice update replays in the same image. |
 | `frontend-keyconfig-update` | 880 B | `FrontEndKeyConfig`, 67 fields and five phase destinations. The EBX callback path, pad poller, 200-byte binding editor and display refresh match. The practice update passes its own link. |
 | `enemy-read-float-operand` | 884 B | `EnemyReadIntOperand`, 84 fields and 51 selector destinations. The integer reader, three RNG helpers, angle helper and both lvalue resolvers match. All four operand vtable slots retain their bindings. |
@@ -56,18 +57,6 @@ comparison only for its source and link graph.
 | `enemy-dispatch-ecl` | 14,416 B | `EnemyEclDispatcher`, 726 fields, 118 jump destinations and 181 opcode selectors. The selected replay includes dialog EH and the drop-flush body. |
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
-
-## Open owner
-
-`MergeJoystickInput` at `0x0044A190` is active. Compare its complete
-833-byte extent through the actual `PollInputFrame` caller. The
-WinMM and DirectInput paths share the five binding merges. The target
-receives the button mask in ECX, reads the binding and pad indices
-from the stack, and returns the merged mask in AX.
-The `merge-joystick-input` candidate binds all 21 retail fields. The
-883-byte baseline aligns 235 of 282 instructions. The WinMM path needs
-register-only binding merges and the original grouping of its direction
-tests. The DirectInput axis tests already align.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
