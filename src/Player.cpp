@@ -508,6 +508,19 @@ static inline void SetPlayerHitEffectPosition(
     position->z = drawPosition->z;
 }
 
+static __forceinline void SpawnPlayerHitEffect(
+    AnmLoadedView *loaded, int scriptIndex, const AnmFloat3View *position)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    unsigned int flags = vm->flags35C;
+    vm->renderLayer = 0;
+    vm->flags35C = flags | 0x40000000u;
+    loaded->InitializeVm(vm, scriptIndex);
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    const AnmVmIdView effect = manager->AddVmVariant0(vm);
+    manager->SetVmPosition(effect, position);
+}
+
 void __stdcall PlayerHandleCollisionHit(Player *player)
 {
     player->runtimeState = 4;
@@ -517,16 +530,14 @@ void __stdcall PlayerHandleCollisionHit(Player *player)
     {
         AnmLoadedView *loaded = reinterpret_cast<BulletManagerView *>(
             g_EnemyPrimaryResourceOwner)->bulletAnm;
-        const AnmVmIdView effect = loaded->CreateVmVariant0(0x162, 0);
-        g_AnmRenderManagerView->SetVmPosition(effect, &position);
+        SpawnPlayerHitEffect(loaded, 0x162, &position);
     }
     // The resource owner is reread on every iteration in the target.
     for (int remaining = 32; remaining != 0; --remaining)
     {
         AnmLoadedView *loaded = reinterpret_cast<BulletManagerView *>(
             g_EnemyPrimaryResourceOwner)->bulletAnm;
-        const AnmVmIdView effect = loaded->CreateVmVariant0(0x163, 0);
-        g_AnmRenderManagerView->SetVmPosition(effect, &position);
+        SpawnPlayerHitEffect(loaded, 0x163, &position);
     }
 
     player->updateTimer1.SetCurrent(0);

@@ -632,12 +632,13 @@ frontier; do not refresh a baseline merely to accept the new positions.
   the later x87 operand order. The motion and timer layout was checked against
   the MIT-licensed `_reference/th10-decomp` Player update before comparison
   in the repository's own link recipe. [2026-11-24]
-- **PlayerHandleCollisionHit @0x426CF0 (627)** emits 526 bytes in the current
-  link. Both hit-effect factories stay outlined since `58e9e8eb` made
-  `CreateVmVariant0` non-inlined for the ECL dispatcher. The existing target
-  match at `462debf9` applies to the earlier compiler context. The two
-  current calls need the target's inline allocate, initialize and add
-  sequence. [2026-11-24]
+- **PlayerHandleCollisionHit @0x426CF0 (627)** creates both effects through
+  one inline helper. It captures the VM flags before setting the layer,
+  then uses the same manager pointer for registration and positioning.
+  The named ID result preserves its stack slot. The ECL dispatcher uses the
+  separate `CreateVmVariant0` entry. The
+  [MIT-licensed reference](licenses/th10-decomp-MIT.txt) provided the
+  inline factory shape. [2026-11-24]
 - **FrontEndUpdateMusicRoom @0x433EF0 (2,796)** matches the complete
   `MusicRoomHelpers` link, including 106 address fields, four phase entries
   and 96 fixed relative branches. Passing the destination first in the

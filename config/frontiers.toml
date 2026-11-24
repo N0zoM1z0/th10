@@ -70,10 +70,3 @@ unit = "game-statistics-initialize-record"
 candidate_size = 274
 target_sha256 = "62905fe172fb66ca164498ab8964b6d0f9e8b09d783ceca25ebe2a1062712953"
 residual = ["14", "1D", "29", "47", "4D", "50", "52", "58-59", "5B", "61", "64", "70", "72", "76", "8B-8E", "90-93", "A6", "C8"]
-
-[frontier.player-handle-collision-hit]
-function = "PlayerHandleCollisionHit"
-unit = "player-handle-collision-hit"
-candidate_size = 526
-target_sha256 = "85f61f685fbb35d9ce165d7754c691c65679082490151b896afb4dfcd64518c3"
-residual = ["2", "E", "26-29", "2B-36", "3D-40", "45-58", "5D-62", "67-6C", "71-76", "79-7C", "7E-81", "86-97", "9C-A1", "A6-AB", "B0-B9", "BB-BE", "C3-E1", "E4-E8", "EA", "EF-F4", "F6-106", "108-117", "11C", "121-124", "126-157", "15A-15D", "160-176", "17B", "180-1A6", "1A8-1AC", "1AE-1B2", "1B4-1B8", "1BA-1BD", "1BF-1CD", "1CF-1E9", "1EB-272"]
