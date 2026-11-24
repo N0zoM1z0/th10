@@ -2696,9 +2696,9 @@ void __stdcall RebuildPlayerOptions(Player *player)
 
             const PlayerPositionPair *offset = player->optionMode
                 ? &player->options[i].replayPair3 : &player->options[i].replayPair2;
-            PlayerPositionPair position;
-            position.x = player->positionX + offset->x;
-            position.y = player->positionY + offset->y;
+            const PlayerPositionPair &anchor =
+                *reinterpret_cast<const PlayerPositionPair *>(&player->positionX);
+            PlayerPositionPair position = anchor + *offset;
             CopyPlayerOptionPair(&player->options[i].replayPair0, position);
             CopyPlayerOptionPair(&player->options[i].replayPair1, position);
 
@@ -2759,9 +2759,8 @@ void __stdcall RebuildPlayerOptions(Player *player)
 
                 const PlayerPositionPair *offset = player->optionMode
                     ? &player->options[i].replayPair3 : &player->options[i].replayPair2;
-                PlayerPositionPair position;
-                position.x = offset->x + player->positionX;
-                position.y = offset->y + player->positionY;
+                PlayerPositionPair position(offset->x + player->positionX,
+                                            offset->y + player->positionY);
                 player->options[i].replayPair0 = position;
                 player->options[i].primaryVmId =
                     CreatePlayerOptionVm(player, PLAYER_OPTION_PRIMARY_SCRIPT_1);
@@ -2772,9 +2771,9 @@ void __stdcall RebuildPlayerOptions(Player *player)
                     GetPlayerOptionPosition(GetPlayerOptionData(player), 0x20, optionCount, i));
                 if (!player->optionMode || player->options[i].state == 0)
                 {
-                    PlayerPositionPair position;
-                    position.x = player->options[i].replayPair2.x + player->positionX;
-                    position.y = player->options[i].replayPair2.y + player->positionY;
+                    const PlayerPositionPair &anchor =
+                        *reinterpret_cast<const PlayerPositionPair *>(&player->positionX);
+                    PlayerPositionPair position = player->options[i].replayPair2 + anchor;
                     CopyPlayerOptionPair(&player->options[i].replayPair0, position);
                     CopyPlayerOptionPair(&player->options[i].replayPair3, position);
                 }

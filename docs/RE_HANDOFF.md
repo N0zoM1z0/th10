@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `rebuild-player-options` | 2,520 B | `ClaudeReplayInitLoadScript`, 96 fields and six switch destinations. The link also covers Player update and state transition. |
 | `front-end-update-music-room` | 2,796 B | `MusicRoomHelpers`, 106 fields and four phase destinations. The same link covers both line readers and row interpolation. |
 | `player-update-callback-body` | 3,112 B | `ClaudeReplayInitLoadScript`, 112 fields and five state entries. The separate seven-byte adapter also passed its replay. |
 | `frontend-options-update` | 3,188 B | `FrontEndOptions`, 129 fields and five switch destinations. Check the refresh and constant-interrupt members in the same link. |
@@ -25,12 +26,8 @@ comparison only for its source and link graph.
 
 ## Open owners
 
-Active owner is `RebuildPlayerOptions` at `0x00426F70`. Resume its
-`rebuild-player-options` comparison until the whole owner is exact.
-
 | Owner | Where to resume |
 | --- | --- |
-| `RebuildPlayerOptions` (2,520 B) | The strict `rebuild-player-options` comparison verifies all 96 address fields and leaves 15 byte differences in the X-coordinate loads at `+0x367`, `+0x4B7` and `+0x789`. The six table destinations at `+0x9C0` match. |
 | `AnmRenderManagerView::AnmRenderManagerView` (2,315 B) | Frontier `anm-render-manager-constructor` has a 2,313-byte baseline. Compare the whole constructor, including chain registration and resolved fields. |
 | `PlayerHandleCollisionHit` (627 B) | The saved current-graph candidate is 526 bytes. Commit `58e9e8eb` kept `CreateVmVariant0` outlined for the dispatcher. Restore the inline allocate, initialize and add sequence at the two hit-effect sites while preserving the dispatcher call. |
 | `MidiOutputView::LoadTrackFile` (448 B) | The 448-byte `midi-load-track-file` baseline has six differing ordinary bytes. The older 446-byte cursor-returning probe recovers the stack homes. See the MIDI notes in the [knowledge base](KNOWLEDGE_BASE.md) and the working notes at `.analysis/midi-event/results.txt`. |
@@ -44,7 +41,7 @@ source hypotheses and verify them in the repository's TH10 graph.
 ```sh
 scripts/repo-python scripts/verify-target.py
 scripts/repo-python scripts/verify-toolchain.py --check
-timeout -k 10s 540s taskset -c 2 nice -n 10 scripts/repo-python scripts/check-frontier.py rebuild-player-options
+timeout -k 10s 540s taskset -c 2 nice -n 10 scripts/repo-python scripts/check-frontier.py FRONTIER
 timeout -k 10s 540s taskset -c 2 nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit UNIT
 scripts/repo-python scripts/compare-linked-function.py --unit UNIT --json
 timeout -k 10s 540s taskset -c 2 nice -n 10 scripts/repo-python scripts/replay-exact-units.py --unit EXACT_UNIT --json

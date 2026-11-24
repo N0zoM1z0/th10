@@ -648,8 +648,8 @@ frontier; do not refresh a baseline merely to accept the new positions.
   and their strings compare byte for byte. The MIT-licensed
   `_reference/th10-decomp` music room provided source and compiler-context
   leads. [2026-11-24]
-- **RebuildPlayerOptions @0x426F70 (2,520)** reaches its full extent in the
-  `ClaudeReplayInitLoadScript` graph. The full-power sweep calls
+- **RebuildPlayerOptions @0x426F70 (2,520)** matches all 96 fields and the
+  complete extent in the `ClaudeReplayInitLoadScript` cold link. The full-power sweep calls
   `CreateVmVariant2 @0x448E30` and uses the power and selection fields in
   `g_GameScoreState`. Resolving the list node before marking its VM gives
   the target branch layout. Naming the primary VM registration result
@@ -657,11 +657,12 @@ frontier; do not refresh a baseline merely to accept the new positions.
   secondary result slots. The final 24 bytes hold the jump table at +0x9C0
   with destinations +0xE5, +0xFC, +0x113, +0x119, +0x130 and +0x147.
   Computing each coordinate directly in its case restores the manager
-  load at +0x4C2. The strict comparison validates all 96 address fields
-  and leaves 15 differences in three X-coordinate load groups. Swapping
-  the signed addends leaves those groups unchanged. The strict Player
-  update and state-transition comparisons pass on the same image. The MIT-licensed
-  `_reference/th10-decomp` model provided the loop and stack-home leads.
+  load at +0x4C2. Constructing the position pair gives shot 1 of character
+  1 its X-register order. The pair's member addition gives the other two
+  branches their X-load order. Exchanging signed addends and passing the
+  individual reads through inline getters left those loads unchanged.
+  The [MIT-licensed model](licenses/th10-decomp-MIT.txt) in
+  `_reference/th10-decomp` provided the loop and stack-home leads.
   [2026-11-24]
 - **EnemyGameStateView::StartSpell @0x409280 (2,432)** uses the
   `enemy-start-spell` recipe with real `AnmVmStartScript` support.

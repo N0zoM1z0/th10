@@ -9,6 +9,14 @@ struct PlayerPositionPair
     int x;
     int y;
 
+    PlayerPositionPair() {}
+    PlayerPositionPair(int x, int y) : x(x), y(y) {}
+
+    PlayerPositionPair operator+(const PlayerPositionPair &other) const
+    {
+        return PlayerPositionPair(x + other.x, y + other.y);
+    }
+
     PlayerPositionPair &operator=(const PlayerPositionPair &other)
     {
         x = other.x;

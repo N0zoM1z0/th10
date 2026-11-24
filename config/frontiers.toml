@@ -64,13 +64,6 @@ candidate_size = 1632
 target_sha256 = "4df6366829855fc4e83c7280aad543bbbce26619161710cb052126457cb2e844"
 residual = ["1F-29", "2B-2C", "30-42", "44-58", "5A-6E", "70-7E", "80-8E", "90-9A", "9C-9D", "A0-AA", "AC-AD", "B0-B6", "B8", "BD-CA", "CC-CF", "D4-D5", "DA-E3", "E5-E6", "1A7", "1B9", "1C6", "1D7", "1E6", "1F3", "202", "211", "21C", "221", "226-227", "22C", "235", "237", "23C-240", "242", "247-24B", "24D-255", "258-25E", "261-263", "268-26C", "26E-274", "276-27E", "280-28C", "28E-298", "29A-2A2", "2A4-2AE", "2B0-2BA", "2BC-2CE", "2D0-2DC", "2DF", "2E4-2F0", "2F2-2F8", "2FB-305", "307-313", "316", "31B-32A", "32C-334", "339-34B", "34D-34E", "353", "358-363", "368", "36D-377", "379-37D", "37F-383", "385-389", "38B-39E", "3A0-3BA", "3BC-3C5", "3C7-3CC", "3CE-3D8", "3DA-3E0", "3E2-3EB", "3ED-3F1", "3F3-3F4", "3F9", "401", "413-41C", "421-42B", "42D-430", "435-439", "43B-440", "445-453", "458-45C", "461-465", "467-474", "476-489", "48B-49D", "4A0-4A4", "4A6-4A8", "4AA-513", "515-524", "526-543", "545-56D", "56F-579", "57C-5C7", "5CC-5CE", "5D3-5E8", "5ED-5F1", "5F6-5FC", "601-61D", "61F", "660-677"]
 
-[frontier.rebuild-player-options]
-function = "RebuildPlayerOptions"
-unit = "rebuild-player-options"
-candidate_size = 2520
-target_sha256 = "7dfaf871a4841d67e6223b302fa56ceabdf9dbceaa37576aa6e7daab5f12c2fd"
-residual = ["368-36A", "36E-370", "4B8", "4BA", "78A-790"]
-
 [frontier.bullet-cancel-in-area]
 function = "BulletManagerView::CancelBulletsInArea"
 unit = "bullet-cancel-in-area"
