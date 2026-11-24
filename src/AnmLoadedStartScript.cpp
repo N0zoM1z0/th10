@@ -1,8 +1,6 @@
 #include <string.h>
 #include "AnmLoadedStartScript.hpp"
 
-#define Entity_Init AnmVmInitialize
-
 #pragma code_seg(".text$01accessor")
 extern "C" __declspec(noinline) void __stdcall LoadScript_0043e710(
     AnimationResource_0043E710 *resource,
@@ -16,7 +14,9 @@ extern "C" __declspec(noinline) void __stdcall LoadScript_0043e710(
         return;
     }
 
-    Entity_Init(script, object);
+    // Keep the declared initializer interface at this call site.
+    void (__fastcall *const initialize)(void *, AnmVmView *) = AnmVmInitialize;
+    initialize(script, object);
 
     unsigned int mask = object->AnimationFlags() & 0xFFFFF9FFu;
     object->ScriptIndex() = static_cast<short>(index);

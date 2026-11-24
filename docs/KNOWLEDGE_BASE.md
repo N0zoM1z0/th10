@@ -259,6 +259,12 @@ reference to each of the three starter position fields is byte-neutral.
 Sharing one zero vector lets C2 collapse their copies and shortens the
 starter to 130 bytes. [2026-11-23]
 
+With the header-inline initializer, a direct source call in the loader
+reassigns the script pointer to EAX and changes six bytes. Calling through
+a local pointer of the initializer's declared fastcall type restores the
+ECX load and the original prologue. LTCG still emits the direct call.
+[2026-11-24]
+
 ### Non-local regressions through calling conventions
 
 - `e569a902` (2026-11-19) added a `QueueSoundCue` call to
