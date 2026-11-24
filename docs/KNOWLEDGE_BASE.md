@@ -1372,46 +1372,27 @@ register preservation or mod-ref assumptions) where our builds exploit it
   afterwards. A volatile track-pointer read has the same residual.
   The same link carries the complete 1,670-byte parser candidate.
   [2026-11-23]
-- `MidiOutputView::LoadTrackFile` at `0x43AAD0` compares 442 of 448
-  bytes with all six linkage fields at their original offsets.
-  The full chunk-header copy restores the `/GS` frame and the indexed
-  track stores reload the array after allocation. Saving the chunk
-  pointer before advancing the cursor makes both the EAX copy and
-  the indirect length load appear before global allocation. Using a
-  shift for the high length byte and the byte representation for the
-  other three preserves the original pair of shifts.
+- `MidiOutputView::LoadTrackFile` at `0x43AAD0` matches 448 bytes and
+  six linkage fields in the VC7.1 SP1 `/GL /GS` destructor graph. The
+  receiver arrives in EBX and the slot arrives on the stack, as shown
+  by the call at `0x43ACAD` and the parser's `ret 4`.
 
-  In the 446-byte graph, the load uses the cursor directly at global
-  allocation entry and the cursor gets EBP. In the complete graph, C2
-  visits the index before the anonymous raw length at `0x10768CE2`.
-  They get colours 3 and 4. The eight-byte header is visited last and
-  joins colour 4. In the 446-byte graph the named raw length is visited
-  first, then the index, which puts the header and index together.
-  Both graphs preserve those memberships through the final sort.
-  Splitting the byte reader into a real `/GL` support source and
-  including the slot-31 caller both preserve the six differences.
+  The full chunk-header copy retains the character tag and the security
+  cookie. The file header contains three big-endian 16-bit fields.
+  The parser copies each track's possibly unaligned 32-bit length before
+  swapping it. Keeping the track-header pointer before advancing to the
+  payload preserves the EBP-to-EAX copy and the indirect load.
 
-  Returning the payload cursor from an inline reader and writing the
-  native length through an out reference restores both retail stack
-  homes. That variant matches 127 of 130 aligned instructions, with
-  six bound fields and four corresponding branches. Its 446-byte
-  body folds the pointer copy and `[eax+4]` load at +0x103 into one
-  load from `[ebp+4]`. The current 448-byte version retains both
-  instructions. Staging the file prefix as integer words instead of
-  retaining its character tag gives a 418-byte body without the
-  original `/GS` cookie path.
-
-  At the scheduling graph hook `0x107B0B9B`, the copy to EDX
-  precedes the copy to ECX with ordinals 7 and 10. The respective
-  priorities are `0xF000` and `0xF400`, so the scheduler puts ECX first
-  at +0x46. The corresponding per-track copies tie at `0xB800`
-  and retain their incoming order. Compiling different orders of
-  the source byte stores leaves the header pair or changes other
-  instructions. Revisit the dependencies on the high and middle
-  byte consumers rather than the copies' incoming order. TH09's
-  C2 13.10.3077 scheduler append hook `0x107B54CC` corresponds
-  to `0x107B0D2F` in TH10's pinned 13.10.6030 binary.
-  [2026-11-23]
+  The byte-order helpers access the byte representations of their
+  arguments and results directly. Naming an input byte pointer made C2
+  combine the per-track shifts, reverse three SIB operand orders and
+  change the stack homes for the loop index and raw length. Naming an
+  output byte pointer preserved the extent but reversed the first two
+  copies at `+0x46` and `+0x48`. The explicit accesses were suggested by
+  the parser in the [MIT-licensed reference](licenses/th10-decomp-MIT.txt)
+  at `matching2/msvc/src/core/midilib/midi_file.cpp`. The maintained
+  destructor graph reproduces the layout with the existing compiler flags.
+  [2026-11-24]
 - `MidiOutputView::ProcessEvent` at `0x43B110` matches all 1,670
   owned bytes in the VC7.1 SP1 build 6030 `/GL` graph rooted at
   `MidiOutputView::Tick`. The extent includes 1,323 code bytes and

@@ -62,49 +62,41 @@ void MidiOutputView::ReleaseTracks()
     trackCount = 0;
 }
 
+#pragma pack(push, 1)
 struct MidiChunkHeader
 {
     unsigned char tag[4];
     unsigned int length;
 };
 
-static inline unsigned int MidiSwap32(unsigned int native)
+struct MidiFileHeader
 {
-    const unsigned char *bytes = reinterpret_cast<const unsigned char *>(&native);
-    const unsigned char reversed[4] = {bytes[3], bytes[2], bytes[1], bytes[0]};
+    unsigned short format;
+    unsigned short trackCount;
+    unsigned short division;
+};
+#pragma pack(pop)
+
+static inline unsigned int MidiSwap32(unsigned int value)
+{
     unsigned int result;
-    memcpy(&result, reversed, sizeof result);
+    reinterpret_cast<unsigned char *>(&result)[0] = reinterpret_cast<const unsigned char *>(&value)[3];
+    reinterpret_cast<unsigned char *>(&result)[1] = reinterpret_cast<const unsigned char *>(&value)[2];
+    reinterpret_cast<unsigned char *>(&result)[2] = reinterpret_cast<const unsigned char *>(&value)[1];
+    reinterpret_cast<unsigned char *>(&result)[3] = reinterpret_cast<const unsigned char *>(&value)[0];
     return result;
 }
 
-static inline unsigned short MidiReadBigEndian16(const unsigned char *source)
+static inline unsigned short MidiSwap16(unsigned short value)
 {
-    unsigned short native;
-    memcpy(&native, source, sizeof native);
-    const unsigned char *bytes = reinterpret_cast<const unsigned char *>(&native);
-    const unsigned char reversed[2] = {bytes[1], bytes[0]};
     unsigned short result;
-    memcpy(&result, reversed, sizeof result);
+    reinterpret_cast<unsigned char *>(&result)[0] = reinterpret_cast<const unsigned char *>(&value)[1];
+    reinterpret_cast<unsigned char *>(&result)[1] = reinterpret_cast<const unsigned char *>(&value)[0];
     return result;
 }
 
-static inline unsigned int MidiReadTrackLength(const unsigned char *source)
-{
-    unsigned int native;
-    memcpy(&native, source, sizeof native);
-    const unsigned char *bytes = reinterpret_cast<const unsigned char *>(&native);
-    const unsigned char reversed[4] = {
-        static_cast<unsigned char>(native >> 24), bytes[2], bytes[1], bytes[0],
-    };
-    unsigned int length;
-    memcpy(&length, reversed, sizeof length);
-    return length;
-}
-
-// Target 0x0043AAD0. This method uses the MIDI file slot already held by
-// the output owner, not a filesystem read. The target does not validate the
-// MThd/MTrk magic, reject allocation failures, or skip invalid track chunks;
-// playback consumers assume callers supplied a complete MIDI file.
+// Target 0x0043AAD0 parses the MIDI buffer already loaded into the slot.
+// Playback callers supply a complete file.
 int MidiOutputView::LoadTrackFile(int fileIndex)
 {
     ReleaseTracks();
@@ -112,22 +104,24 @@ int MidiOutputView::LoadTrackFile(int fileIndex)
     if (cursor == NULL)
         return -1;
 
-    MidiChunkHeader header;
-    memcpy(&header, cursor, sizeof header);
-    cursor += sizeof header;
-    const unsigned int headerLength = MidiSwap32(header.length);
-    const unsigned char *format = cursor;
-    cursor += headerLength;
-    unknown11C = MidiReadBigEndian16(format);
-    ticksPerQuarterNote = MidiReadBigEndian16(format + 4);
-    trackCount = MidiReadBigEndian16(format + 2);
+    MidiChunkHeader chunk;
+    memcpy(&chunk, cursor, sizeof chunk);
+    cursor += sizeof chunk;
+    unsigned int size = MidiSwap32(chunk.length);
+    const MidiFileHeader *header = reinterpret_cast<const MidiFileHeader *>(cursor);
+    cursor += size;
+    unknown11C = MidiSwap16(header->format);
+    ticksPerQuarterNote = MidiSwap16(header->division);
+    trackCount = MidiSwap16(header->trackCount);
 
     tracks = static_cast<MidiTrackView *>(malloc(trackCount * sizeof(MidiTrackView)));
     memset(tracks, 0, trackCount * sizeof(MidiTrackView));
     for (int i = 0; i < trackCount; ++i) {
-        const unsigned char *chunk = cursor;
+        const unsigned char *trackHeader = cursor;
         cursor += sizeof(MidiChunkHeader);
-        const unsigned int size = MidiReadTrackLength(chunk + offsetof(MidiChunkHeader, length));
+        unsigned int nativeLength;
+        memcpy(&nativeLength, trackHeader + offsetof(MidiChunkHeader, length), sizeof nativeLength);
+        size = MidiSwap32(nativeLength);
         tracks[i].dataSize = size;
         tracks[i].data = static_cast<unsigned char *>(malloc(size));
         tracks[i].active = 1;

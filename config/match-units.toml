@@ -31856,7 +31856,6 @@ linkages = [
 ]
 
 [units.midi-load-track-file]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/Midi.cpp"
 pdb_source = "src/Midi.cpp"
