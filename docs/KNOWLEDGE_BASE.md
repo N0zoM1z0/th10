@@ -770,21 +770,23 @@ frontier; do not refresh a baseline merely to accept the new positions.
   for the script index and the resource on the stack. In this StageCreate
   link the starter itself remains 204/202 bytes with the extra ECX clear
   before `AnmVmInitialize`. [2026-11-23]
-- **PlayerUpdateMovementAndOptions @0x4250B0 (1,656)**: the complete
-  `ClaudeReplayInitLoadScript` candidate reaches both direction tables at
-  their original offsets and preserves all 16 destinations. Typed animation
-  IDs preserve both marker calls and leave ESI available for the shared
-  constant 1 in the input path. The two lean checks preserve the reload
-  after script 2, and the history guard tests vertical speed first.
+- **PlayerUpdateMovementAndOptions @0x4250B0 (1,656)**: exact with 54
+  bound fields in `ClaudeReplayInitLoadScript`, including both eight-entry
+  direction tables. The caller passes Player in EDI. Typed animation IDs
+  preserve the marker calls and leave ESI available for the shared input
+  constant 1. The two lean checks preserve the reload after script 2, and
+  the history guard tests vertical speed first.
+
   Separate references to the option's desired and current position give
   the loop its EBX base at option +0x40. Pair operators keep the two
   products together. The write barrier before applying the nonzero step
   restores both reads of the current position and leaves the desired X in
-  EBP for the fallback assignment. The strict comparison binds all 54
-  fields and leaves nine ordinary bytes at the desired X-coordinate sum
-  and first translated-position VM ID. The MIT-licensed reference
-  movement source suggested the input, marker, lean and paired arithmetic
-  expressions. [2026-11-24]
+  EBP for the fallback assignment. Passing the selected offset by reference
+  to the pair addition restores the field load order at `+0x535`. Copying
+  the first animation ID from its typed storage directly into the position
+  call preserves the EDX load and push. The MIT-licensed reference movement
+  source suggested the input, marker, lean and paired arithmetic expressions.
+  [2026-11-24]
 - **GameManagerUpdateBody @0x418190 (1,544)**: exact with 114 bound fields
   and 60 fixed local branches in `game-manager-update-body`. Choosing the real
   `GamePrepareAnimationSlots` as the LTCG entry keeps its stack receiver. With

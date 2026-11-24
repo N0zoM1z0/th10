@@ -47,15 +47,6 @@ candidate_size = 510
 target_sha256 = "9be793018926bde16b0e725a6ccab3da97d461af2c129e67ac0aa32a131dded7"
 residual = ["3", "5", "7", "A", "1C", "2F", "79", "7D", "80", "86", "8B", "9A-9B", "A0-AC", "B1-CA", "CF-E7", "EC-F9", "FE-101", "103-114", "116-127", "12C-136", "13B-148", "14A-157", "15B-15D", "162-172", "174-181", "186-192", "197-1FD"]
 
-[frontier.player-update-movement]
-function = "PlayerUpdateMovementAndOptions"
-unit = "player-handle-collision-hit"
-symbol = "?PlayerUpdateMovementAndOptions@@YAHPAUPlayer@@@Z"
-address = 0x004250B0
-size = 1656
-candidate_size = 1656
-target_sha256 = "4df6366829855fc4e83c7280aad543bbbce26619161710cb052126457cb2e844"
-residual = ["536-53C", "5DC", "5E4"]
 [frontier.bullet-cancel-in-area]
 function = "BulletManagerView::CancelBulletsInArea"
 unit = "bullet-cancel-in-area"

@@ -1348,11 +1348,11 @@ int PlayerUpdateMovementAndOptions(Player *player)
         if (option.state == 0)
             continue;
 
-        const PlayerPositionPair *offset =
-            player->optionMode != 0 ? &option.replayPair3 : &option.replayPair2;
+        const PlayerPositionPair &offset =
+            player->optionMode != 0 ? option.replayPair3 : option.replayPair2;
         const PlayerPositionPair &origin =
             *reinterpret_cast<const PlayerPositionPair *>(&player->positionX);
-        option.replayPair0 = origin + *offset;
+        option.replayPair0 = origin + offset;
 
         if (option.updateCallback != NULL)
             option.updateCallback(&option);
@@ -1385,7 +1385,8 @@ int PlayerUpdateMovementAndOptions(Player *player)
         optionPosition.y = (float)current.y * 0.01f;
         optionPosition.z = 0.0f;
         AnmRenderManagerView *manager = g_AnmRenderManagerView;
-        manager->SetVmWorldPosition(AnmVmIdView(option.primaryVmId), &optionPosition);
+        manager->SetVmWorldPosition(
+            *reinterpret_cast<AnmVmIdView *>(&option.primaryVmId), &optionPosition);
         manager->SetVmWorldPosition(AnmVmIdView(option.secondaryVmId), &optionPosition);
     }
 
