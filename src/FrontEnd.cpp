@@ -4854,14 +4854,13 @@ int __stdcall ResultMenuDrawRows(ResultMenuView *menu)
     case 11:
     case 18:
     {
-        int frame = menu->timer.current;
-        int selected = menu->cursor.current;
         AnmFloat3View position;
         position.z = 0.0f;
-        if (frame < 10)
+        int selected = menu->cursor.current;
+        if (menu->timer.current < 10)
         {
             float settled = selected * 15.0f + 64.0f;
-            position.y = settled + (224.0f - settled) * frame * 0.1f;
+            position.y = settled + (224.0f - settled) * menu->timer.current * 0.1f;
         }
         else
             position.y = 224.0f;
@@ -4881,8 +4880,11 @@ int __stdcall ResultMenuDrawRows(ResultMenuView *menu)
     case 12:
     case 19:
     {
+        AnmFloat3View position;
+        position.x = 48.0f;
+        position.z = 0.0f;
         int selected = menu->cursor.current;
-        AnmFloat3View position(48.0f, 64.0f, 0.0f);
+        position.y = 64.0f;
         g_AsciiManagerView->AddFormatText(&position, "            Score Ranking!!");
         position.x = 75.0f;
         position.y = selected * 18.0f + 96.0f;
@@ -4896,24 +4898,27 @@ int __stdcall ResultMenuDrawRows(ResultMenuView *menu)
         {
             g_AsciiManagerView->color = row == selected ?
                 0xffffff00u : 0xff808080u;
-            FrontEndScoreRecordView *record = GetPracticeScoreRecord(
-                g_ReplayCharacter * 3 + g_ReplayShotType, g_ReplayDifficulty, row);
-            if (record->timestamp != 0)
+            if (GetCurrentScoreEntryTable().records[g_ReplayDifficulty][row].timestamp != 0)
             {
-                tm *date = localtime(&record->timestamp);
-                // The target resamples the profile and selection after localtime.
-                record = GetPracticeScoreRecord(
-                    g_ReplayCharacter * 3 + g_ReplayShotType, g_ReplayDifficulty, row);
+                FrontEndScoreTableView *table = &GetCurrentScoreEntryTable();
+                tm *date = localtime(&table->records[g_ReplayDifficulty][row].timestamp);
+                // Resample the score selection after localtime.
+                FrontEndScoreRecordView &record =
+                    GetCurrentScoreEntryTable().records[g_ReplayDifficulty][row];
                 g_AsciiManagerView->AddFormatText(&position,
                     "%2d %s %.9ld%d %.2d/%.2d/%.2d %s", row + 1,
-                    record->name, static_cast<long>(record->score), record->scoreSuffix,
+                    record.name, static_cast<long>(record.score), record.scoreSuffix,
                     date->tm_year % 100, date->tm_mon + 1, date->tm_mday,
-                    g_FrontEndStageNames[record->stageNameIndex]);
+                    g_FrontEndStageNames[record.stageNameIndex]);
             }
             else
+            {
+                FrontEndScoreRecordView &record =
+                    GetCurrentScoreEntryTable().records[g_ReplayDifficulty][row];
                 g_AsciiManagerView->AddFormatText(&position,
                     "%2d %s %.9ld%d --/--/-- Stage -", row + 1,
-                    record->name, static_cast<long>(record->score), record->scoreSuffix);
+                    record.name, static_cast<long>(record.score), record.scoreSuffix);
+            }
             position.y += 18.0f;
         }
         g_AsciiManagerView->color = 0xffffffffu;

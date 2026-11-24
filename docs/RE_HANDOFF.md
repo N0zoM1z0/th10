@@ -49,6 +49,12 @@ comparison only for its source and link graph.
 
 ## Open owner
 
+`ResultMenuDrawRows` at `0x00422660` is the active owner. Use
+`result-menu-draw-rows` in `ResultMenuRows` to compare all 1,062 bytes.
+The replay rows and name-entry path line up, and typed score records
+restore the complete extent. Continue with selection loads and record
+addressing in the ranking loop.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.
