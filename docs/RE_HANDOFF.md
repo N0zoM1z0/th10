@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `hint-consume-entries` | 1,317 B | `HintLifecycle`, 34 fields and all three world-VM paths. The per-frame update and registered callback replay in the same build. |
 | `result-menu-update-pause` | 1,360 B | `ResultMenuPause`, 79 fields and five phase destinations. The input word and repeat view share 0x474E36. The scheduler callback and dispatcher pass in the same link. |
 | `laser-line-run-commands` | 1,356 B | `LaserLineCommands`, 31 fields, five jump destinations and 64 selector bytes. The virtual receiver is ECX, and `laser-line-update` passes its own link. |
 | `frontend-score-entry-update` | 1,400 B | `FrontEndReplay`, 80 fields and four phase destinations. The score insert uses the EDI receiver and both indexed name copies match. |

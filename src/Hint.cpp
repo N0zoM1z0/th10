@@ -317,16 +317,6 @@ int __fastcall HintOwnerView::OnDraw(void *)
 extern int g_GameStartupMode;          // 0x474C7C
 extern int g_GameFrameRestorePending;  // 0x474C84
 
-extern "C" void _ReadWriteBarrier();
-#pragma intrinsic(_ReadWriteBarrier)
-
-// Observe the selected branch's resource read; original qualifiers are unknown.
-static inline AnmLoadedView *ReadHintMessageResource()
-{
-    GameEffectUpdateView *effect = g_GameEffectUpdate;
-    return *static_cast<AnmLoadedView *volatile *>(&effect->loadedResource);
-}
-
 int HintOwnerView::ConsumeEntries(HintLinkView *first, int freeEntries)
 {
     if (first != 0)
@@ -381,11 +371,11 @@ int HintOwnerView::ConsumeEntries(HintLinkView *first, int freeEntries)
                 // Ordered comparisons select the branch before creation; NaN takes else.
                 // Native continues into VM writes even after failed resolution.
                 AnmVmView *vm;
-                const int scriptBase = nextVmSlot;
                 if (entry->scale <= 1.0f)
                 {
-                    vmIds[nextVmSlot] = ReadHintMessageResource()->CreateVmAtWorldVariant0(
-                        scriptBase + 2, &entry->position);
+                    AnmLoadedView *resource = g_GameEffectUpdate->loadedResource;
+                    vmIds[nextVmSlot] = resource->CreateVmAtWorldVariant0(
+                        nextVmSlot + 2, &entry->position);
                     manager = g_AnmRenderManagerView;
                     AnmVmIdView *id = &vmIds[nextVmSlot];
                     AnmVmView *createdVm = manager->FindVm(*id);
@@ -402,11 +392,11 @@ int HintOwnerView::ConsumeEntries(HintLinkView *first, int freeEntries)
                 }
                 else
                 {
-                    const int script = scriptBase + 12;
                     if (entry->scale <= 2.0f)
                     {
-                        vmIds[nextVmSlot] = ReadHintMessageResource()->CreateVmAtWorldVariant0(
-                            script, &entry->position);
+                        AnmLoadedView *resource = g_GameEffectUpdate->loadedResource;
+                        vmIds[nextVmSlot] = resource->CreateVmAtWorldVariant0(
+                            nextVmSlot + 12, &entry->position);
                         manager = g_AnmRenderManagerView;
                         AnmVmIdView *id = &vmIds[nextVmSlot];
                         AnmVmView *createdVm = manager->FindVm(*id);
@@ -425,9 +415,9 @@ int HintOwnerView::ConsumeEntries(HintLinkView *first, int freeEntries)
                     }
                     else
                     {
-                        _ReadWriteBarrier();
-                        vmIds[nextVmSlot] = ReadHintMessageResource()->CreateVmAtWorldVariant0(
-                            script, &entry->position);
+                        AnmLoadedView *resource = g_GameEffectUpdate->loadedResource;
+                        vmIds[nextVmSlot] = resource->CreateVmAtWorldVariant0(
+                            nextVmSlot + 12, &entry->position);
                         manager = g_AnmRenderManagerView;
                         AnmVmIdView *id = &vmIds[nextVmSlot];
                         AnmVmView *createdVm = manager->FindVm(*id);

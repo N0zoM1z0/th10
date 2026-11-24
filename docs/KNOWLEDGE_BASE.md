@@ -900,8 +900,14 @@ frontier; do not refresh a baseline merely to accept the new positions.
   timer writes. Publishing the current-frame field through a volatile
   reference preserves all three positions. [2026-11-24]
 - **BulletSpawnDescriptorView::SpawnSingleBullet @0x4067D0 (1,413 code + 59 local-table bytes)**: exact since 2026-11-22. A selected cold replay reproduces 1,472/1,472 bytes with all 44 fields. The last 54 bytes closed through three natural changes. First, the call became `AnmVmStartScript(manager->bulletAnm, &bullet->vm, table[type] + color)`, which removed a `_ReadWriteBarrier` and the fake ECX argument. Second, the callee `AdvanceTransformProgram` became a plain switch, which fixed the effect-switch registers; this is a non-local effect through LTCG. Third, the cursor tail was written as `++bullet; if (bullet->state == 5) cursor = &bullets[0]; else cursor = bullet;` instead of an inverted early return. Earlier fixes still hold: the ordered `if/else if` interrupt selection and the collision-height/width store order. [2026-11-22]
-- **HintOwnerView::ConsumeEntries @0x419120 (1,317)**: 1,308 with all 34
-  identities. [2026-10-31]
+- **HintOwnerView::ConsumeEntries @0x419120 (1,317)** matches the complete
+  owner and all 34 fields in `HintLifecycle`. Read the slot in each VM
+  creation call and bind the animation resource in that branch. This lets
+  VC7.1 hoist the slot read above the intensity test and share the push
+  for the two `slot + 12` paths. The three aggregate ID returns keep the
+  target stack destinations and failed-ID handling. The update still passes
+  the first link in EAX and the owner and release flag on the stack. The
+  scheduler adapter passes in the same image.
 - **EnemyLaserType1View::CheckCollisionBox @0x41EB00 (1,171)** and
   **CheckCollisionCircle @0x41EFA0 (1,108)**: 1,209 and 1,178; the type-0
   factory branch still inlines. [2026-11-06]
