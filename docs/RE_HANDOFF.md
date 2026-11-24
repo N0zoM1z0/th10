@@ -17,6 +17,7 @@ comparison only for its source and link graph.
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
 | `spt-test-update` | 926 B | `SptTestUpdate`, 39 fields, VM lifetime and two-pass file enumeration. The registered callback and the interpreter, factory and worker calls match in the same image. |
+| `item-manager-spawn` | 819 B | `ItemManagerSpawn`, 18 fields, three jump slots and eleven selector bytes. The normal pool and delayed ring match. Both laser callers, the polar helper, VM creator and loader pass. |
 | `frontend-replay-draw` | 825 B | `FrontEndReplaySaveDraw`, 33 fields, the 25-slot list and the seven-stage detail view. Both neighboring draw paths, the callback and the text helpers pass. |
 | `frontend-score-entry-draw` | 826 B | `FrontEndReplaySaveDraw`, 35 fields and the two keyboard text paths. The score reads, replay save draw, title callback, formatter and string queue match. |
 | `merge-joystick-input` | 833 B | `InputPolling`, 21 fields and four RET 8 exits. The WinMM midpoint and dead zone calculations match. The keyboard caller and both button helpers pass their comparisons. |
@@ -59,19 +60,6 @@ comparison only for its source and link graph.
 | `enemy-dispatch-ecl` | 14,416 B | `EnemyEclDispatcher`, 726 fields, 118 jump destinations and 181 opcode selectors. The selected replay includes dialog EH and the drop-flush body. |
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
-
-## Open owner
-
-`ItemManagerView::Spawn` at `0x0041BB00` is active. Compare the complete
-819-byte item spawn through `ItemManagerSpawn`, including the normal
-slot search, delayed ring, power conversion and switch tables. The caller
-supplies the manager in EAX, the position in ECX, and four stack arguments.
-The candidate aligns 205 of 208 code instructions with the real script
-starter in the link. The vertical velocity stores and the player power
-read still need their original order around timer initialization. The
-laser caller, polar helper, VM creator and script loader match in the same
-image. The script starter has the retail EAX/ESI/RET 4 interface and its
-own body is two bytes longer.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

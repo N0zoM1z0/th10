@@ -953,8 +953,16 @@ frontier; do not refresh a baseline merely to accept the new positions.
   The Y range is the negated unsigned minimum-minus-maximum difference.
   The axis expressions follow the local MIT-licensed TH10 reference.
   [Reference license](licenses/th10-decomp-MIT.txt)
-- **ItemManagerView::Spawn @0x41BB00 (819)**: 795 with the right EAX manager,
-  ECX position and RET16; branch and tail layout differ. [2026-10-21]
+- **ItemManagerView::Spawn @0x41BB00 (819)**: `ItemManagerSpawn` cold
+  reproduces all 18 fields, three jump destinations and eleven selector
+  bytes. The normal pool scan precedes the delayed ring. Use the real timer
+  setter after zeroing vertical velocity. Copying the two-byte power value
+  after resetting motion keeps the comparison after the timer stores.
+  Compile the real script starter to retain its EAX index, ESI VM, and
+  stack resource. Its linked body still has an extra `xor ecx, ecx` for
+  the VM initializer. The box and circle callers match in the same image.
+  The local TH10 reference supplied the normal and delayed branch shapes.
+  [Reference license](licenses/th10-decomp-MIT.txt)
 - **SoundPlayerView::Initialize @0x43CD30 (786)**: 755; the target saves EBX
   conditionally. [2026-10-29]
 - **GuiView::DrawStageElements @0x415800 (724)**: [2026-11-17] exact

@@ -358,19 +358,7 @@ static __forceinline ItemRecordView *FindFreeNormalItem(ItemRecordView *item)
 static __forceinline void ResetSpawnMotion(ItemRecordView &item)
 {
     item.velocity.z = 0.0f;
-    unsigned int flags = item.timer.flags;
-    if ((flags & 1u) == 0)
-    {
-        flags |= 1u;
-        item.timer.current = 0;
-        item.timer.previous = -999999;
-        item.timer.subframe = 0.0f;
-        item.timer.scale = &g_PlayerTimerScale;
-        item.timer.flags = flags;
-    }
-    item.timer.current = 0;
-    item.timer.subframe = 0.0f;
-    item.timer.previous = -1;
+    item.timer.SetCurrent(0);
     item.unknown3C4 = 0;
 }
 
@@ -393,7 +381,9 @@ int ItemManagerView::Spawn(const AnmFloat3View *position, int kind,
         item->velocity.FromAngleMagnitude(angle, magnitude);
         ResetSpawnMotion(*item);
 
-        if (g_PlayerPower >= 100)
+        short power;
+        memcpy(&power, &g_PlayerPower, sizeof power);
+        if (power >= 100)
         {
             switch (kind)
             {
