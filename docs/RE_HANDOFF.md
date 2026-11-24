@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `main-init-d3d-rendering` | 1,159 B | `MainInitD3dRendering`, 100 fields, the full HAL/REF fallback and selected back-buffer format. The logs, reset and screen-color functions match in the same image. WinMain matches in its own link. |
 | `laser-type1-box-split` | 1,171 B | `LaserType1BoxSplit`, 19 fields, the virtual ECX receiver and the zeroed fragment request. Polar, playfield bounds and the world-VM creator also match in the same image. |
 | `laser-line-circle-trim` | 1,238 B | `LaserLineCircleTrim`, 33 fields, inline viewport tests and the VM allocation, script load, and registration calls. The rectangle trim, allocator and three direct Player consumers also match in their own links. |
 | `laser-line-box-trim` | 1,269 B | `LaserLineBoxTrim`, 23 fields, the ECX receiver, the XYZ sample loop and all 476 bytes of each fragment request. Polar, bounds and world-VM creation also match in the same link. |
@@ -45,12 +46,6 @@ comparison only for its source and link graph.
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
 ## Open owner
-
-`GameWindowView::InitD3DRendering` at `0x00439890` is the active owner.
-Use `main-init-d3d-rendering` to compare all 1,159 bytes. The nested
-HAL/REF fallback and post-creation setup now match through the render-state
-reset. The 1,245-byte candidate still inlines the final screen-color call.
-Keep the `WinMain` call and the existing D3D adapter evidence.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

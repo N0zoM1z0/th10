@@ -1541,7 +1541,7 @@ static void MainClearPresentTwice(unsigned int color)
 
 // Target43BCD0 /108 bytes. The exposed stack contract is one DWORD, RET4.
 // No incoming register is consumed. Original source ownership/name unknown.
-void __stdcall MainSetScreenColor(unsigned int color)
+__declspec(noinline) void __stdcall MainSetScreenColor(unsigned int color)
 {
     AnmRenderManagerView *manager = g_AnmRenderManagerView;
     if (manager != NULL)

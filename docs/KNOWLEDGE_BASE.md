@@ -1766,6 +1766,16 @@ register preservation or mod-ref assumptions) where our builds exploit it
 
 ### Main and supervisor
 
+- `GameWindowView::InitD3DRendering` at `0x00439890` prepares the
+  56-byte presentation record, then tries hardware vertex processing,
+  software vertex processing, and the reference device. The force-no-vsync
+  branch goes directly to immediate presentation. On success, the selected
+  device can supply adjusted presentation parameters. The later texture
+  format check reads the resulting back-buffer format from that record.
+  The fixed camera uses the same single-precision field of view for
+  projection and the half-angle tangent. Retain the separate
+  `MainSetScreenColor` call, which takes one stack argument and leaves
+  the viewport and clear path in its own contribution.
 - Main worker stopRequested/running at 638/63C. Startup-state offsets 0/5C/60. 42B660 and StageCreate converge at 417B1C.
 - Mode-object globals `0x477810` (GameManager), `0x47784C` (FrontEnd), `0x477820` (StartupWorker), `0x477700` (Ending), `0x477838` (ReplayManager). Their cleanups are at `0x417C80/0x42CB60/0x41FB50/0x40B7B0/0x4294A0`; scalar delete is at `0x4524A1`.
   - `ResetRenderState` sends the float bits of `1.0f/1000.0f/5000.0f`.
