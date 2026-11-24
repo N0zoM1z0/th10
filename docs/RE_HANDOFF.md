@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `frontend-replay-save-draw` | 955 B | `FrontEndReplaySaveDraw`, 42 fields, the animated name entry and 25 replay rows. The draw callback, formatter and string queue match in the same image. |
 | `frontend-character-update` | 956 B | `FrontEndStageSelect`, 53 fields, five phases and four child calls sharing one result slot. Both lookup entry points, the title dispatcher, and the adjacent selection handlers pass. |
 | `frontend-stage-update` | 1,052 B | `FrontEndStageSelect`, 80 fields, five phases and two numeric-key ladders. The real EDX keyboard snapshot, title dispatcher and 12 other guards match in the same image. |
 | `result-menu-draw-rows` | 1,062 B | `ResultMenuRows`, 56 fields, four jump destinations and ten selector bytes. The callback, name-entry overlay, formatter and string queue also match in the same image. |

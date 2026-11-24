@@ -1609,6 +1609,12 @@ register preservation or mod-ref assumptions) where our builds exploit it
 
 ### FrontEnd and result menu
 
+- `FrontEndControllerView::DrawReplaySave` at `0x00433B30` owns the
+  25-slot list and the sliding name-entry preview. The 13-column grid uses
+  separate formatter calls for a signed alphabet byte and the three control
+  glyphs. A single shared glyph temporary changes register allocation in
+  both the grid and the replay list. The two-input draw-callback link keeps
+  the private formatter position in EBX.
 - `FrontEndControllerView::UpdateCharacter` at `0x004306A0` checks all
   six Extra unlock bytes, runs the opening timer on entry, and samples
   horizontal input before cancel and confirm. Four separately scoped

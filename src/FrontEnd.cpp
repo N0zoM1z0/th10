@@ -3782,16 +3782,17 @@ int __stdcall FrontEndControllerView::DrawReplaySave(
             {
                 g_AsciiManagerView->color = controller->scoreEntryKeyboardCursor.current == key
                     ? 0xffffff00u : 0xff808080u;
-                int glyph;
                 if (key < alphabetLength - 3)
-                    glyph = g_FrontEndScoreEntryAlphabet[key];
-                else if (key == alphabetLength - 3)
-                    glyph = 0x81;
-                else if (key == alphabetLength - 2)
-                    glyph = 0x7f;
+                {
+                    g_AsciiManagerView->AddFormatText(
+                        &position, "%c", g_FrontEndScoreEntryAlphabet[key]);
+                }
                 else
-                    glyph = 0x80;
-                g_AsciiManagerView->AddFormatText(&position, "%c", glyph);
+                {
+                    g_AsciiManagerView->AddFormatText(&position, "%c",
+                        key == alphabetLength - 3 ? 0x81 :
+                        key == alphabetLength - 2 ? 0x7f : 0x80);
+                }
                 if (static_cast<unsigned int>(key) % FRONT_END_SCORE_ENTRY_COLUMNS ==
                     FRONT_END_SCORE_ENTRY_COLUMNS - 1)
                 {
