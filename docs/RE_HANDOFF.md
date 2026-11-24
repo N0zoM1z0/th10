@@ -46,6 +46,12 @@ comparison only for its source and link graph.
 
 ## Open owner
 
+`GameWindowView::InitD3DRendering` at `0x00439890` is the active owner.
+Use `main-init-d3d-rendering` to compare all 1,159 bytes. The nested
+HAL/REF fallback and post-creation setup now match through the render-state
+reset. The 1,245-byte candidate still inlines the final screen-color call.
+Keep the `WinMain` call and the existing D3D adapter evidence.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.

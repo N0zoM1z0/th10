@@ -801,18 +801,16 @@ int GameWindowView::InitD3DInterface()
 // publishes the 14-dword presentation parameters only after device creation.
 int GameWindowView::InitD3DRendering()
 {
-    MainD3d9DisplayModeView displayMode;
     MainD3d9PresentParametersView presentParameters;
-    AnmFloat3View eye;
-    AnmFloat3View at;
-    AnmFloat3View up;
-    int failedToSetRefreshRate = 0;
-    bool usingHardwareRenderer = 1;
+    MainD3d9DisplayModeView displayMode;
+    AnmFloat3View eye, at, up;
+    bool usingHardwareRenderer;
+    int failedToSetRefreshRate;
 
     memset(&presentParameters, 0, sizeof(presentParameters));
+    usingHardwareRenderer = true;
     g_MainSupervisorView.d3dInterface->vtable->GetAdapterDisplayMode(
         g_MainSupervisorView.d3dInterface, 0, &displayMode);
-
     if (g_MainSupervisorView.configuration.windowed == 0)
     {
         if ((g_MainSupervisorView.configuration.options & 1) != 0)
@@ -829,23 +827,25 @@ int GameWindowView::InitD3DRendering()
         else
         {
             presentParameters.backBufferFormat =
-                MAIN_D3D_FORMAT_X8R8G8B8 +
-                (g_MainSupervisorView.configuration.colorMode != 0);
+                g_MainSupervisorView.configuration.colorMode == 0
+                    ? MAIN_D3D_FORMAT_X8R8G8B8 : MAIN_D3D_FORMAT_R5G6B5;
         }
 
-        if (g_GameWindowView.usesRelativePath != 0)
+        if (g_GameWindowView.usesRelativePath)
+        {
             g_MainSupervisorView.disableVsync = 1;
-
+            goto immediate;
+        }
         if (g_MainSupervisorView.disableVsync == 0)
         {
             presentParameters.fullScreenRefreshRate = 60;
-            presentParameters.presentationInterval =
-                MAIN_D3D_PRESENT_INTERVAL_ONE;
-            presentParameters.swapEffect = MAIN_D3D_SWAP_DISCARD;
+            presentParameters.presentationInterval = MAIN_D3D_PRESENT_INTERVAL_ONE;
             th10::g_GameErrorContext.Log(const_cast<char *>(g_MainD3dRefresh60Log));
+            presentParameters.swapEffect = MAIN_D3D_SWAP_DISCARD;
         }
         else
         {
+immediate:
             presentParameters.fullScreenRefreshRate = 0;
             presentParameters.swapEffect = MAIN_D3D_SWAP_DISCARD;
             presentParameters.presentationInterval =
@@ -860,112 +860,108 @@ int GameWindowView::InitD3DRendering()
         presentParameters.windowed = TRUE;
     }
 
-    g_MainSupervisorView.flags |= MAIN_FLAG_LOCKABLE_BACKBUFFER;
     presentParameters.backBufferWidth = 640;
     presentParameters.backBufferHeight = 480;
     presentParameters.enableAutoDepthStencil = TRUE;
     presentParameters.autoDepthStencilFormat = MAIN_D3D_FORMAT_D16;
     presentParameters.flags = MAIN_D3D_PRESENT_LOCKABLE_BACKBUFFER;
+    g_MainSupervisorView.flags |= MAIN_FLAG_LOCKABLE_BACKBUFFER;
     g_MainSupervisorView.couldSetRefreshRate = 1;
 
+    failedToSetRefreshRate = 0;
     for (;;)
     {
-        if ((g_MainSupervisorView.configuration.options & 2) == 0)
+        if (g_MainSupervisorView.configuration.options & 2)
+            goto reference;
+
+        if (MainD3dFailed(g_MainSupervisorView.d3dInterface->vtable->CreateDevice(
+                g_MainSupervisorView.d3dInterface, 0,
+                MAIN_D3D_DEVICE_HAL, g_GameWindowView.window,
+                MAIN_D3D_CREATE_HARDWARE_VERTEXPROCESSING,
+                &presentParameters, &g_MainSupervisorView.d3dDevice)))
         {
-            if (!MainD3dFailed(
-                    g_MainSupervisorView.d3dInterface->vtable->CreateDevice(
-                        g_MainSupervisorView.d3dInterface, 0,
-                        MAIN_D3D_DEVICE_HAL, g_GameWindowView.window,
-                        MAIN_D3D_CREATE_HARDWARE_VERTEXPROCESSING,
-                        &presentParameters,
-                        &g_MainSupervisorView.d3dDevice)))
-            {
-                th10::g_GameErrorContext.Log(const_cast<char *>(g_MainD3dHardwareLog));
-                g_MainSupervisorView.flags |=
-                    MAIN_FLAG_HARDWARE_VERTEX_PROCESSING;
-                break;
-            }
             if (failedToSetRefreshRate)
                 th10::g_GameErrorContext.Log(const_cast<char *>(g_MainD3dHardwareUnavailableLog));
 
-            if (!MainD3dFailed(
-                    g_MainSupervisorView.d3dInterface->vtable->CreateDevice(
+            if (MainD3dFailed(g_MainSupervisorView.d3dInterface->vtable->CreateDevice(
+                    g_MainSupervisorView.d3dInterface, 0,
+                    MAIN_D3D_DEVICE_HAL, g_GameWindowView.window,
+                    MAIN_D3D_CREATE_SOFTWARE_VERTEXPROCESSING,
+                    &presentParameters, &g_MainSupervisorView.d3dDevice)))
+            {
+                if (failedToSetRefreshRate)
+                    th10::g_GameErrorContext.Log(const_cast<char *>(g_MainD3dSoftwareUnavailableLog));
+
+reference:
+                if (MainD3dFailed(g_MainSupervisorView.d3dInterface->vtable->CreateDevice(
                         g_MainSupervisorView.d3dInterface, 0,
-                        MAIN_D3D_DEVICE_HAL, g_GameWindowView.window,
+                        MAIN_D3D_DEVICE_REF, g_GameWindowView.window,
                         MAIN_D3D_CREATE_SOFTWARE_VERTEXPROCESSING,
-                        &presentParameters,
-                        &g_MainSupervisorView.d3dDevice)))
+                        &presentParameters, &g_MainSupervisorView.d3dDevice)))
+                {
+                    if (g_MainSupervisorView.disableVsync == 0)
+                    {
+                        th10::g_GameErrorContext.Log(const_cast<char *>(g_MainD3dRefreshFailedLog));
+                        presentParameters.fullScreenRefreshRate = 0;
+                        g_MainSupervisorView.couldSetRefreshRate = 0;
+                        failedToSetRefreshRate = 1;
+                        continue;
+                    }
+                    if (presentParameters.presentationInterval ==
+                        (unsigned int)MAIN_D3D_PRESENT_INTERVAL_IMMEDIATE)
+                    {
+                        th10::g_GameErrorContext.Log(const_cast<char *>(g_MainD3dImmediateFailedLog));
+                        presentParameters.presentationInterval = MAIN_D3D_PRESENT_INTERVAL_ONE;
+                        presentParameters.swapEffect = MAIN_D3D_SWAP_COPY;
+                        continue;
+                    }
+
+                    th10::g_GameErrorContext.Fatal(const_cast<char *>(g_MainD3dFatalError));
+                    if (g_MainSupervisorView.d3dInterface != NULL)
+                    {
+                        g_MainSupervisorView.d3dInterface->vtable->Release(
+                            g_MainSupervisorView.d3dInterface);
+                        g_MainSupervisorView.d3dInterface = NULL;
+                    }
+                    return 1;
+                }
+                else
+                {
+                    th10::g_GameErrorContext.Log(const_cast<char *>(g_MainD3dReferenceLog));
+                    g_MainSupervisorView.flags &= ~MAIN_FLAG_HARDWARE_VERTEX_PROCESSING;
+                    usingHardwareRenderer = false;
+                }
+            }
+            else
             {
                 th10::g_GameErrorContext.Log(const_cast<char *>(g_MainD3dSoftwareLog));
-                g_MainSupervisorView.flags &=
-                    ~MAIN_FLAG_HARDWARE_VERTEX_PROCESSING;
-                break;
+                g_MainSupervisorView.flags &= ~MAIN_FLAG_HARDWARE_VERTEX_PROCESSING;
             }
-            if (failedToSetRefreshRate)
-                th10::g_GameErrorContext.Log(const_cast<char *>(g_MainD3dSoftwareUnavailableLog));
         }
-
-        if (!MainD3dFailed(
-                g_MainSupervisorView.d3dInterface->vtable->CreateDevice(
-                    g_MainSupervisorView.d3dInterface, 0,
-                    MAIN_D3D_DEVICE_REF, g_GameWindowView.window,
-                    MAIN_D3D_CREATE_SOFTWARE_VERTEXPROCESSING,
-                    &presentParameters,
-                    &g_MainSupervisorView.d3dDevice)))
+        else
         {
-            th10::g_GameErrorContext.Log(const_cast<char *>(g_MainD3dReferenceLog));
-            g_MainSupervisorView.flags &=
-                ~MAIN_FLAG_HARDWARE_VERTEX_PROCESSING;
-            usingHardwareRenderer = 0;
-            break;
+            th10::g_GameErrorContext.Log(const_cast<char *>(g_MainD3dHardwareLog));
+            g_MainSupervisorView.flags |= MAIN_FLAG_HARDWARE_VERTEX_PROCESSING;
         }
-
-        if (g_MainSupervisorView.disableVsync == 0)
-        {
-            th10::g_GameErrorContext.Log(const_cast<char *>(g_MainD3dRefreshFailedLog));
-            presentParameters.fullScreenRefreshRate = 0;
-            g_MainSupervisorView.couldSetRefreshRate = 0;
-            failedToSetRefreshRate = 1;
-            continue;
-        }
-        if (presentParameters.presentationInterval ==
-            (unsigned int)MAIN_D3D_PRESENT_INTERVAL_IMMEDIATE)
-        {
-            th10::g_GameErrorContext.Log(const_cast<char *>(g_MainD3dImmediateFailedLog));
-            presentParameters.presentationInterval =
-                MAIN_D3D_PRESENT_INTERVAL_ONE;
-            presentParameters.swapEffect = MAIN_D3D_SWAP_COPY;
-            continue;
-        }
-
-        th10::g_GameErrorContext.Fatal(const_cast<char *>(g_MainD3dFatalError));
-        if (g_MainSupervisorView.d3dInterface != NULL)
-        {
-            g_MainSupervisorView.d3dInterface->vtable->Release(
-                g_MainSupervisorView.d3dInterface);
-            g_MainSupervisorView.d3dInterface = NULL;
-        }
-        return 1;
+        break;
     }
 
-    memcpy(
-        &g_MainSupervisorView.presentParameters,
-        &presentParameters, sizeof(presentParameters));
-
+    g_MainSupervisorView.presentParameters = presentParameters;
+    const float fieldOfView = 0.5235988f;
+    eye.x = 320.0f;
+    eye.y = -240.0f;
     at.x = 320.0f;
     at.y = -240.0f;
     at.z = 0.0f;
     up.x = 0.0f;
     up.y = 1.0f;
     up.z = 0.0f;
-    eye.x = 320.0f;
-    eye.y = -240.0f;
-    eye.z = -(240.0f / (float)tan(3.1415927f / 12.0));
+    eye.z = -(240.0f / (float)tan(fieldOfView / 2.0f));
     D3DXMatrixLookAtLH(
         &g_MainSupervisorView.viewMatrix, &eye, &at, &up);
     D3DXMatrixPerspectiveFovLH(
         &g_MainSupervisorView.projectionMatrix,
-        3.1415927f / 6.0f, 4.0f / 3.0f, 100.0f, 10000.0f);
+        fieldOfView, 640.0f / 480.0f, 100.0f, 10000.0f);
     g_MainSupervisorView.d3dDevice->vtable->SetTransform(
         g_MainSupervisorView.d3dDevice, MAIN_D3D_TRANSFORM_VIEW,
         &g_MainSupervisorView.viewMatrix);
@@ -989,7 +985,7 @@ int GameWindowView::InitD3DRendering()
     {
         if (g_MainSupervisorView.d3dInterface->vtable->CheckDeviceFormat(
                 g_MainSupervisorView.d3dInterface, 0,
-                MAIN_D3D_DEVICE_HAL, displayMode.format, 0,
+                MAIN_D3D_DEVICE_HAL, presentParameters.backBufferFormat, 0,
                 MAIN_D3D_RESOURCE_TEXTURE,
                 MAIN_D3D_FORMAT_A8R8G8B8) == 0)
         {
@@ -997,8 +993,8 @@ int GameWindowView::InitD3DRendering()
         }
         else
         {
-            g_MainSupervisorView.configuration.options |= 1;
             g_MainSupervisorView.flags &= ~MAIN_FLAG_32BIT_TEXTURES;
+            g_MainSupervisorView.configuration.options |= 1;
             th10::g_GameErrorContext.Log(const_cast<char *>(g_MainD3dTextureFormatWarning));
         }
     }
