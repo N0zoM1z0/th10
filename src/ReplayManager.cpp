@@ -589,23 +589,30 @@ int __fastcall ReplayProcessFrameCallback(ReplayManager *manager)
     return manager->ProcessFrame();
 }
 
+extern "C" void _ReadWriteBarrier();
+#pragma intrinsic(_ReadWriteBarrier)
+
 // TH10_REPLAY_FUNCTION: 0x0042A3E0 ReplayPlaybackFrameControlCallback
 int __fastcall ReplayPlaybackFrameControlCallback(ReplayManager *manager)
 {
-    // The replay runtime may be absent even while the callback is registered.
-    // Keep that return separate from the initialized playback result: the
-    // native control path already has the success value in EAX.
-    ReplayRuntimeState *const runtime = g_ReplayRuntime;
+    const ReplayRuntimeState *runtime = g_ReplayRuntime;
     if (runtime != NULL)
     {
+        int result;
         if ((runtime->flags & 4u) != 0)
-            return 1;
-        int result = 1;
-        if (manager->mode == result && (g_FrontEndInput.current & 0x100u) != 0)
         {
-            if (manager->frameCounter % 4 != 0)
-                return 6;
+            result = 1;
         }
+        else
+        {
+            result = 1;
+            if (manager->mode == REPLAY_MANAGER_PLAYBACK &&
+                (g_FrontEndInput.current & 0x100u) != 0 && manager->frameCounter % 4 != 0)
+                result = 6;
+        }
+
+        // Keep the runtime-present decision joined before the null fallback.
+        _ReadWriteBarrier();
         return result;
     }
     return 1;

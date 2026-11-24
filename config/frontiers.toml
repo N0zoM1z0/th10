@@ -71,13 +71,6 @@ candidate_size = 564
 target_sha256 = "db89521d8d41ed987a728bfa2b80ff10e772c908a085a5347b6a8964de1d8559"
 residual = ["2", "DC", "E6", "FD-103", "108-110", "113-150", "153-163", "166-169", "16B-176", "17B-18A", "18F-1A0", "1A5-1A9", "1AE-1BE", "1C3-1D3", "1D8-1DE", "1E3-1F3", "1F8-1FC", "201-205", "207-20F", "212-21D", "21F-232", "234-248"]
 
-[frontier.replay-playback-frame-control]
-function = "ReplayPlaybackFrameControlCallback"
-unit = "replay-playback-frame-control-callback"
-candidate_size = 68
-target_sha256 = "fcad5e38ac142b4d3f8a5e492c4fd1a4bb75fddf3cb5214b384b52b712b85a1f"
-residual = ["13", "18", "22", "37"]
-
 [frontier.initialize-game-statistics-record]
 function = "InitializeGameStatisticsRecord"
 unit = "game-statistics-initialize-record"

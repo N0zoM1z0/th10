@@ -1007,16 +1007,14 @@ frontier; do not refresh a baseline merely to accept the new positions.
   the separate frame callback remains 10/10 and one bound REL32 field.
   Selected two-unit cold replay passes all 606 bytes and 34 fields.
   This repairs overflow semantics, not the already-exact byte count.
-- **ReplayPlaybackFrameControlCallback @0x42A3E0 (68)**: the complete
-  `src/ReplayManager.cpp` callback naturally inlines its runtime/flag guard
-  and frame-skip decision in the real `frontend-options-refresh` graph. Before
-  the explicit split the compiler emitted 62/68 bytes with 38 ordinary
-  differences. The revised 68/68 body has two bound DIR32 operands and four
-  remaining conditional-branch destination bytes at +0x13/+0x18/+0x22/+0x37
-  (target shared RET, candidate late return-1). The independent 3,999-byte
-  FrontEnd owner stays canonical exact. A fresh 2026-11-17 relink reconfirmed
-  the same four branch bytes; the callback remains a nonexact frontier.
-  [2026-11-17]
+- **ReplayPlaybackFrameControlCallback @0x42A3E0 (68)** matches the
+  complete `FrontEndOptionsRefresh` cold link and both DIR32 fields. The
+  separate flag arms and `_ReadWriteBarrier()` keep the runtime-present
+  result at the shared return at +0x3D. The null runtime takes its own
+  return-1 block at +0x3E. Calling `ControlPlaybackFrames()` from the
+  guarded callback shrank the owner to 62 bytes. The
+  [MIT-licensed reference](licenses/th10-decomp-MIT.txt) provided the
+  compiler barrier lead. [2026-11-24]
 - **th10::leaf::Fn0041FD90 @0x41FD90 (63)**: no callers or stored pointers; its
   EDX input ABI cannot be recovered from a caller.
 

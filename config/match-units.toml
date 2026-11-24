@@ -20031,11 +20031,7 @@ linkages = [
   { offset = 0x78, type = "DIR32", symbol = "?gReplayFileOpenCount@@3EA", target = 0x0049231E },
 ]
 
-# The original 68-byte replay frame-control chain callback is a complete
-# PDB-owned ReplayManager.cpp support contribution in the native front-end
-# options graph; it remains a near-exact candidate pending four branch targets.
 [units.replay-playback-frame-control-callback]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/FrontEnd.cpp"
 support_sources = ["src/ReplayManager.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/EnemyEclDispatcher.cpp", "src/Sound.cpp"]
