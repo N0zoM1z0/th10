@@ -44,72 +44,82 @@ int MainSupervisorView::UpdateGameMode()
     if (currentGameMode != nextGameMode)
     {
         ::EnterCriticalSection(&criticalSections[5]);
+        int previous = currentGameMode;
         ++criticalSectionLockCounts[5];
-        previousGameMode = currentGameMode;
+        previousGameMode = previous;
         clearColor = 0xff000000u;
         switch (nextGameMode)
         {
         case 0:
             nextGameMode = 1;
             startupWorker = CreateStartupWorker();
-            if (startupWorker == NULL)
-            {
-                nextGameMode = 3;
-                goto quit;
-            }
-            break;
-        case 3:
-    quit:
-            ReleaseModeOwners();
-            LeaveLock(5);
-            return 4;
-        case 4:
-            switch (previousGameMode)
-            {
-            case 1:
-            case 2:
+            if (startupWorker != NULL)
                 break;
+            nextGameMode = 3;
+            goto quit;
+        case 4:
+            switch (previous)
+            {
             case 7:
                 GameManagerDelete(g_GameManager);
+                // Fall through to recreate the title screen.
+            case 1:
+            case 2:
+                FrontEndCreate();
+                break;
+            case 14:
+                EndingDelete(g_EndingView);
+                FrontEndCreate();
+                break;
+            }
+            break;
+        case 15:
+            switch (previous)
+            {
+            case 2:
                 break;
             case 14:
                 EndingDelete(g_EndingView);
                 break;
+            case 7:
+                GameManagerDelete(g_GameManager);
+                break;
             default:
                 goto finish;
             }
-    createMenu:
+            nextGameMode = 4;
+            g_MainModeTransitionCounter = 3;
             FrontEndCreate();
             break;
         case 7:
-            if (previousGameMode == 4)
+            if (previous == 4)
                 FrontEndDelete(g_FrontEndControllerView);
             newGameSession = 1;
             GameManagerCreate(0);
             break;
+        case 12:
+            if (previous == 4)
+                FrontEndDelete(g_FrontEndControllerView);
+            nextGameMode = 7;
+            newGameSession = 1;
+            GameManagerCreate(1);
+            break;
+        case 11:
+        {
+            int mode = g_GameManager->initializationMode;
+            newGameSession = 0;
+            if (previous == 7)
+                GameManagerDelete(g_GameManager);
+            nextGameMode = 7;
+            GameManagerCreate(mode);
+            break;
+        }
         case 10:
             GameManagerDelete(g_GameManager);
             newGameSession = 1;
             nextGameMode = 7;
             g_GameScoreState.SelectNextStage();
             GameManagerCreate(0);
-            break;
-        case 11:
-            {
-                int mode = g_GameManager->initializationMode;
-                newGameSession = 0;
-                if (previousGameMode == 7)
-                    GameManagerDelete(g_GameManager);
-                nextGameMode = 7;
-                GameManagerCreate(mode);
-            }
-            break;
-        case 12:
-            if (previousGameMode == 4)
-                FrontEndDelete(g_FrontEndControllerView);
-            nextGameMode = 7;
-            newGameSession = 1;
-            GameManagerCreate(1);
             break;
         case 13:
             GameManagerDelete(g_GameManager);
@@ -118,27 +128,15 @@ int MainSupervisorView::UpdateGameMode()
             GameManagerCreate(0);
             break;
         case 14:
-            if (previousGameMode == 7)
+            if (previous == 7)
                 GameManagerDelete(g_GameManager);
             EndingCreate();
             break;
-        case 15:
-            switch (previousGameMode)
-            {
-            case 2:
-                break;
-            case 7:
-                GameManagerDelete(g_GameManager);
-                break;
-            case 14:
-                EndingDelete(g_EndingView);
-                break;
-            default:
-                goto finish;
-            }
-            nextGameMode = 4;
-            g_MainModeTransitionCounter = 3;
-            goto createMenu;
+        case 3:
+    quit:
+            ReleaseModeOwners();
+            LeaveLock(5);
+            return 4;
         }
     finish:
         currentGameMode = nextGameMode;

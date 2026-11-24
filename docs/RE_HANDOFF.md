@@ -67,6 +67,14 @@ comparison only for its source and link graph.
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
+## Open owner
+
+`MainSupervisorView::UpdateGameMode` at `0x004218D0` is active. Placing
+the terminating mode last in the source lets VC7.1 move the shared
+unlock-and-return block behind the menu case. The warm `SupervisorModes`
+link matches all 666 bytes, 60 fields and the 14 selector bytes. Replay
+this unit and its registered update and lifecycle guards in that graph.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.
