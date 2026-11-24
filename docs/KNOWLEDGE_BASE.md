@@ -1609,6 +1609,14 @@ register preservation or mod-ref assumptions) where our builds exploit it
 
 ### FrontEnd and result menu
 
+- `FrontEndControllerView::UpdateStage` at `0x00430FF0` has five phases
+  and shares the opening timer check with initialization. The inlined cursor
+  clamp handles count zero and both selection bounds. The practice unlock
+  byte is in the selected character/shot record at +0x4E9 before the
+  difficulty and cursor displacement. Confirm records the cursor and clears
+  the shortcut before calling the keyboard snapshot with its buffer in EDX.
+  Virtual keys and DirectInput scan codes use distinct numeric-key ladders.
+  Launch uses the one-based stage number for all three stage destinations.
 - `ResultMenuDrawRows` at `0x00422660` owns three pairs of phases, four
   jump destinations and a ten-byte selector map. Its ASCII formatter takes
   the text position in EBX. The score path reads the active profile and

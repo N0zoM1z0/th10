@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `frontend-stage-update` | 1,052 B | `FrontEndStageSelect`, 80 fields, five phases and two numeric-key ladders. The real EDX keyboard snapshot, title dispatcher and 12 other guards match in the same image. |
 | `result-menu-draw-rows` | 1,062 B | `ResultMenuRows`, 56 fields, four jump destinations and ten selector bytes. The callback, name-entry overlay, formatter and string queue also match in the same image. |
 | `laser-type1-circle-split` | 1,108 B | `LaserType1CircleSplit`, 29 fields, inlined viewport tests and the ordered fragment lengths. The script loader and primary VM registrar also match in the same image. |
 | `frontend-update-dispatcher` | 1,128 B | `FrontEndReplay`, 99 fields, 17 jump destinations, the idle-demo state and the EAX callback. The five linked menus, the Practice menu and the replay destructor keep their exact code. |
@@ -49,12 +50,6 @@ comparison only for its source and link graph.
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
 ## Open owner
-
-`FrontEndControllerView::UpdateStage` at `0x00430FF0` is the active
-owner. The warm `frontend-stage-update` link matches all 1,052 bytes
-and 80 fields, including five phase destinations and the real keyboard
-snapshot. Cold-replay the owner and compare the title dispatcher in the
-same link.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
