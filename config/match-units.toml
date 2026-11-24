@@ -38589,7 +38589,6 @@ linkages = [
 ]
 
 [units.frontend-practice-records]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/FrontEnd.cpp"
 support_sources = ["src/ReplayManager.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/EnemyEclDispatcher.cpp", "src/Sound.cpp", "src/Player.cpp", "src/VmIdInterrupt.cpp", "src/GameStatisticsRankCount.cpp", "src/InputKeyboardSnapshot.cpp"]

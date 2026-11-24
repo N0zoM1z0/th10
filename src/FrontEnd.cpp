@@ -2984,21 +2984,12 @@ int __stdcall FrontEndControllerView::UpdatePractice(
 }
 
 
-struct PracticeRowAnimation
+static __forceinline void ResolvePracticeRowVm(
+    AnmRenderManagerView *manager, FrontEndVmIdStorageView &slot, AnmVmView *&vm)
 {
-    AnmRenderManagerView *manager;
-    AnmVmView *vm;
-};
-
-static __forceinline PracticeRowAnimation ResolvePracticeRowAnimation(
-    FrontEndVmIdStorageView &slot)
-{
-    PracticeRowAnimation animation;
-    animation.manager = g_AnmRenderManagerView;
-    animation.vm = FindPracticeRecordVm(animation.manager, slot.value);
-    if (animation.vm == NULL)
+    vm = FindPracticeRecordVm(manager, slot.value);
+    if (vm == NULL)
         slot.value = 0;
-    return animation;
 }
 
 
@@ -3058,10 +3049,18 @@ int FrontEndControllerView::RefreshPracticeRecords()
 
             name[length] = '\0';
             GameStatisticsRecord &shot = profile->records[cursor.current];
-            PracticeRowAnimation animation = ResolvePracticeRowAnimation(*rowId);
+            AnmRenderManagerView *manager = g_AnmRenderManagerView;
+            AnmVmView *vm;
+            ResolvePracticeRowVm(manager, *rowId, vm);
             const GameStatisticsSpellHistoryEntryView &result = shot.spellHistory[record];
-            animation.manager->DrawTextCentered(
-                animation.vm, result.captures != 0 ? 0x00ffff80u : 0x00efefefu,
+            int captureCount;
+            const size_t captureField = offsetof(GameStatisticsRecord, spellHistory) +
+                record * sizeof(GameStatisticsSpellHistoryEntryView) +
+                offsetof(GameStatisticsSpellHistoryEntryView, captures);
+            memcpy(&captureCount, reinterpret_cast<const char *>(&shot) + captureField,
+                   sizeof captureCount);
+            manager->DrawTextCentered(
+                vm, captureCount != 0 ? 0x00ffff80u : 0x00efefefu,
                 "No.%3d %s %4d/%4d", record + 1, name,
                 result.captures, result.attempts);
             ++record;

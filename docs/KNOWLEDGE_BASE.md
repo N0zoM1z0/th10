@@ -1367,6 +1367,14 @@ register preservation or mod-ref assumptions) where our builds exploit it
   +0x88 and reads its difficulty from the signed catalog at `0x004743C0`
   for the field at +0x8C. The combined catalog in statistics slot six
   starts at +0x19A8C from the profile owner.
+- The practice record refresh at `0x00432690` displays the selected shot
+  type’s counters and takes the name from the combined catalog. Its named
+  row samples the capture count separately for the palette. In the VC7.1
+  `/GL` build, copying that word from the typed record offset keeps the
+  two counter loads. The lookup takes the caller’s renderer, writes the VM
+  through an output reference and clears a stale ID. That combination
+  leaves the renderer in ESI through argument setup and moves the VM from
+  EAX to ESI just before the call to `0x00447BB0`.
 - `EnemyBeginSpell` sets flag 0x40000000 and layer15.
 - Dispatcher: 181-byte opcode map onto 108 handlers; main table at +0x35C0. Rank-3 thresholds ±512, rank-5 ±600/±200.
 - Callback: `OR [ecx+0x2480],0x10000` precedes the timeout-global read. Player flags at +0x378C/+0x3790.

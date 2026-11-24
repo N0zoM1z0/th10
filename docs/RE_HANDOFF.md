@@ -17,6 +17,7 @@ comparison only for its source and link graph.
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
 | `spt-test-update` | 926 B | `SptTestUpdate`, 39 fields, VM lifetime and two-pass file enumeration. The registered callback and the interpreter, factory and worker calls match in the same image. |
+| `frontend-practice-records` | 850 B | `FrontEndPractice`, 14 fields and all three centered text calls. The VM result uses an output reference, and the palette reads the capture counter independently. The practice update replays in the same image. |
 | `frontend-keyconfig-update` | 880 B | `FrontEndKeyConfig`, 67 fields and five phase destinations. The EBX callback path, pad poller, 200-byte binding editor and display refresh match. The practice update passes its own link. |
 | `enemy-read-float-operand` | 884 B | `EnemyReadIntOperand`, 84 fields and 51 selector destinations. The integer reader, three RNG helpers, angle helper and both lvalue resolvers match. All four operand vtable slots retain their bindings. |
 | `bullet-runtime-update` | 885 B | `BulletRuntimeTick`, 39 fields and the ECX transform call. The registered callback, manager update, transform and both spawners also match in the same image. |
@@ -55,23 +56,6 @@ comparison only for its source and link graph.
 | `enemy-dispatch-ecl` | 14,416 B | `EnemyEclDispatcher`, 726 fields, 118 jump destinations and 181 opcode selectors. The selected replay includes dialog EH and the drop-flush body. |
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
-
-## Open owner
-
-`FrontEndControllerView::RefreshPracticeRecords` at `0x00432690` is
-active. Compare the complete 850-byte helper through its three calls in
-`UpdatePractice`, including record filtering, text formatting and the
-unused-row clear.
-The candidate uses the 110-entry spell history array at record offset
-`0x59C`, prints the catalog index in both formats, and clears stale row
-handles in all three lookup paths.
-The current 834-byte comparison aligns 242 of 267 instructions. Returning
-the manager and VM together leaves the VM in EAX and the row ID in EDX in
-the named lookup. The manager and score pointer still need ESI and ECX.
-`frontend-practice-records` binds all 14 retail fields, including the three
-calls to the centered formatter. The strict comparison currently stops
-at the 16-byte size difference. Passing the two counts as a pair reaches
-850 bytes, with the named register differences still open.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
