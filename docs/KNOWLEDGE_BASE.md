@@ -1557,6 +1557,15 @@ register preservation or mod-ref assumptions) where our builds exploit it
 ### FrontEnd and result menu
 
 - `UpdateReplaySave` 433570: 1440 code bytes plus five table words at 433B10.
+- `UpdateScoreEntry` 432CB0 owns 1,382 code bytes, the compiler's two-byte
+  alignment and four phase destinations. Borrowing the incoming controller
+  pointer and the animation handle through the inlined screen keeps the
+  handle separate from the dispatcher argument. Directly indexing the
+  score table's records by difficulty and rank lets VC7.1 keep the insertion
+  receiver in EDI. Converting the table receiver to a separate record-base
+  pointer makes LTCG receive it in EAX in the same link. The full-run
+  insertion publishes stage 8 and the route at 474908, then restores stage 0
+  and the route at 474788.
 - `ResultMenuUpdateResult` has a 0x4C frame: `char replayPath[64]`, two temporary DWORDs (one is the 25-item replay-list cleanup countdown) and the `/GS` cookie. The state-8 VM id is built through hidden-return storage `[ESP+0x14]` before `ResultMenuPendingSix`.
   - The table index is `shot + character*3`.
   - `GuiView::value9E78` holds the published score.

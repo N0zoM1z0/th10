@@ -64,6 +64,6 @@ residual = ["14", "1D", "29", "47", "4D", "50", "52", "58-59", "5B", "61", "64",
 [frontier.frontend-score-entry-update]
 function = "FrontEndControllerView::UpdateScoreEntry"
 unit = "frontend-score-entry-update"
-candidate_size = 1404
+candidate_size = 1400
 target_sha256 = "1c27414508c6e8cf36fd313405d424cb83f0cdc4ffc06123d2b227a093ae5d32"
-residual = ["E", "FC", "1B4", "233", "32C", "33A", "38E", "3AD-3B7", "3BA", "3C7", "3D3", "3DD", "3E8", "3EC-406", "40B-40C", "411-41E", "423-431", "436-469", "46E", "473-474", "476-478", "47A", "47F-480", "485-4A0", "4A2-4A4", "4A6-4AB", "4B0", "4B5-4D4", "4D6-4DD", "4E2", "4E4-4E9", "4EE", "4F3-510", "515-516", "51B-521", "526", "52B-52C", "531-53B", "540-541", "546-54C", "551-558", "55D-56B", "578-57B"]
+residual = ["1B4", "3AD-3B7", "458"]

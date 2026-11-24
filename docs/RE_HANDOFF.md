@@ -39,11 +39,13 @@ comparison only for its source and link graph.
 ## Open owner
 
 `FrontEndControllerView::UpdateScoreEntry` at `0x00432CB0` is the active
-owner. The `frontend-score-entry-update` recipe recovers the four phases
-through the title dispatcher and emits 1,404 of the target's 1,400 bytes.
-A caller-local animation handle restores the frame. Remaining differences
-include the private insertion argument, name-copy addressing and cursor
-publication in the name editor.
+owner. The `frontend-score-entry-update` recipe emits the full 1,400 bytes
+through the title dispatcher and binds all 80 fields. The typed score
+table restores the insertion receiver in EDI. The 13 remaining differences
+are the two string-copy addressing bytes and the order of the editor
+cursor write at `+0x3AD` through `+0x3B7`.
+Build the unit and run `scripts/repo-python scripts/check-frontier.py
+frontend-score-entry-update --no-build --show` to inspect this residual.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

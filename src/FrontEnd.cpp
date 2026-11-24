@@ -272,6 +272,7 @@ typedef char FrontEndScoreRecordSizeIs18[
 struct FrontEndScoreTableView
 {
     unsigned char unknown000[0x10];
+    FrontEndScoreRecordView records[5][10];
 };
 
 extern int FrontEndInsertScore(FrontEndScoreTableView *table);
@@ -3023,7 +3024,8 @@ static __forceinline void WriteScoreEntryCharacter(
     if (controller.scoreEntryNameCursor < FRONT_END_SCORE_ENTRY_NAME_LENGTH)
     {
         controller.scoreEntryName[controller.scoreEntryNameCursor] = character;
-        if (++controller.scoreEntryNameCursor >= FRONT_END_SCORE_ENTRY_NAME_LENGTH)
+        ++controller.scoreEntryNameCursor;
+        if (controller.scoreEntryNameCursor >= FRONT_END_SCORE_ENTRY_NAME_LENGTH)
             FrontEndCursorSetCurrent(alphabetLength - 1,
                 &controller.scoreEntryKeyboardCursor);
     }
@@ -3035,20 +3037,16 @@ static __forceinline void WriteScoreEntryCharacter(
 
 static __forceinline void EraseScoreEntryCharacter(FrontEndControllerView &controller)
 {
-    controller.scoreEntryName[--controller.scoreEntryNameCursor] = ' ';
+    int cursor = controller.scoreEntryNameCursor - 1;
+    controller.scoreEntryNameCursor = cursor;
+    controller.scoreEntryName[cursor] = ' ';
 }
-
-struct ScoreEntryTableView
-{
-    FrontEndScoreTableView header;
-    FrontEndScoreRecordView records[5][10];
-};
 
 struct ScoreEntryShotView
 {
     unsigned char prefix[8];
-    ScoreEntryTableView scores;
-    unsigned char remaining[0x437c - 8 - sizeof(ScoreEntryTableView)];
+    FrontEndScoreTableView scores;
+    unsigned char remaining[0x437c - 8 - sizeof(FrontEndScoreTableView)];
 };
 
 struct ScoreEntryProfileView
@@ -3058,7 +3056,12 @@ struct ScoreEntryProfileView
     char lastName[9];
 };
 
-static __forceinline ScoreEntryTableView &GetCurrentScoreEntryTable()
+typedef char ScoreEntryProfileOffsets[
+    (sizeof(ScoreEntryShotView) == 0x437c &&
+     offsetof(ScoreEntryShotView, scores.records) == 0x18 &&
+     offsetof(ScoreEntryProfileView, lastName) == 0x1d878) ? 1 : -1];
+
+static __forceinline FrontEndScoreTableView &GetCurrentScoreEntryTable()
 {
     ScoreEntryProfileView *profile =
         reinterpret_cast<ScoreEntryProfileView *>(g_FrontEndProfileData);
@@ -3072,7 +3075,7 @@ static __forceinline int InsertCompletedRunScore()
     g_FrontEndSelectedStageMirror = stageCount;
     g_FrontEndScoreFormatTable = g_ScriptViewerRouteDescriptor +
         stageCount * sizeof(g_FrontEndStageRecords[0]);
-    int rank = FrontEndInsertScore(&GetCurrentScoreEntryTable().header);
+    int rank = FrontEndInsertScore(&GetCurrentScoreEntryTable());
     g_FrontEndScoreFormatTable = g_ScriptViewerRouteDescriptor;
     g_FrontEndSelectedStage = 0;
     g_FrontEndSelectedStageMirror = 0;
@@ -3082,8 +3085,9 @@ static __forceinline int InsertCompletedRunScore()
 static __forceinline void SaveScoreEntryName(
     const FrontEndControllerView &controller, const char *name)
 {
-    strcpy(GetCurrentScoreEntryTable().records[g_ReplayDifficulty][controller.cursor.current].name,
-        name);
+    FrontEndScoreRecordView &record =
+        GetCurrentScoreEntryTable().records[g_ReplayDifficulty][controller.cursor.current];
+    strcpy(record.name, name);
     ScoreEntryProfileView *profile =
         reinterpret_cast<ScoreEntryProfileView *>(g_FrontEndProfileData);
     strcpy(profile->lastName, name);
@@ -3134,8 +3138,9 @@ static __forceinline int UpdateScoreEntryScreen(
             controller->scoreEntryKeyboardCursor.count = strlen(g_FrontEndScoreEntryAlphabet);
             controller->scoreEntryKeyboardCursor.wraps = 1;
 
-            strcpy(controller->scoreEntryName,
-                reinterpret_cast<char *>(g_FrontEndProfileData + 0x1d878));
+            const ScoreEntryProfileView *profile =
+                reinterpret_cast<ScoreEntryProfileView *>(g_FrontEndProfileData);
+            strcpy(controller->scoreEntryName, profile->lastName);
             if (strcmp(controller->scoreEntryName, "        ") != 0)
                 keyboard->Move(-1);
 
@@ -4902,30 +4907,28 @@ namespace
 // returns -1 without writing. Copy assignment preserves all24 record bytes.
 int FrontEndInsertScore(FrontEndScoreTableView *table)
 {
-    FrontEndScoreRecordView *records = reinterpret_cast<FrontEndScoreRecordView *>(
-        reinterpret_cast<unsigned char *>(table) + 0x10);
     int row = 0;
     while (row < 10)
     {
-        if (records[g_ReplayDifficulty * 10 + row].score <= g_GameScoreState.score)
+        if (table->records[g_ReplayDifficulty][row].score <= g_GameScoreState.score)
             break;
         ++row;
     }
     if (row >= 10)
         return -1;
     for (int index = 9; index > row; --index)
-        records[g_ReplayDifficulty * 10 + index] =
-            records[g_ReplayDifficulty * 10 + index - 1];
-    records[g_ReplayDifficulty * 10 + row].score = g_GameScoreState.score;
-    records[g_ReplayDifficulty * 10 + row].scoreSuffix =
+        table->records[g_ReplayDifficulty][index] =
+            table->records[g_ReplayDifficulty][index - 1];
+    table->records[g_ReplayDifficulty][row].score = g_GameScoreState.score;
+    table->records[g_ReplayDifficulty][row].scoreSuffix =
         static_cast<signed char>(g_GameStartupValue474C90);
-    records[g_ReplayDifficulty * 10 + row].stageNameIndex =
+    table->records[g_ReplayDifficulty][row].stageNameIndex =
         static_cast<signed char>(g_FrontEndSelectedStage);
-    time(&records[g_ReplayDifficulty * 10 + row].timestamp);
+    time(&table->records[g_ReplayDifficulty][row].timestamp);
     // The target reloads difficulty after time(), then writes exactly9 bytes,
     // leaving the tenth name byte untouched. There is no denominator guard.
-    strcpy(records[g_ReplayDifficulty * 10 + row].name, "        ");
-    records[g_ReplayDifficulty * 10 + row].slowdownRate = static_cast<float>(
+    strcpy(table->records[g_ReplayDifficulty][row].name, "        ");
+    table->records[g_ReplayDifficulty][row].slowdownRate = static_cast<float>(
         100.0 - (g_ReplayTimingSource->lagNumerator /
                  g_ReplayTimingSource->lagDenominator) * 100.0);
     return row;
