@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `spt-test-update` | 926 B | `SptTestUpdate`, 39 fields, VM lifetime and two-pass file enumeration. The registered callback and the interpreter, factory and worker calls match in the same image. |
 | `frontend-replay-save-draw` | 955 B | `FrontEndReplaySaveDraw`, 42 fields, the animated name entry and 25 replay rows. The draw callback, formatter and string queue match in the same image. |
 | `frontend-character-update` | 956 B | `FrontEndStageSelect`, 53 fields, five phases and four child calls sharing one result slot. Both lookup entry points, the title dispatcher, and the adjacent selection handlers pass. |
 | `frontend-stage-update` | 1,052 B | `FrontEndStageSelect`, 80 fields, five phases and two numeric-key ladders. The real EDX keyboard snapshot, title dispatcher and 12 other guards match in the same image. |

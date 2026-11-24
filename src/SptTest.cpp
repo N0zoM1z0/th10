@@ -143,12 +143,12 @@ int SptTestView::Update()
     {
     case 4:
         reinterpret_cast<EclVmHost *>(activeVm)->Run(1.0f);
-        if (!activeVm || !activeVm->activeEclContext->currentInstruction)
-        {
-            if (activeVm) delete activeVm;
-            activeVm = NULL;
-            state = 1;
-        }
+        if (activeVm && activeVm->activeEclContext->currentInstruction)
+            break;
+        if (activeVm)
+            delete activeVm;
+        activeVm = NULL;
+        state = 1;
         break;
     case 1:
         RememberScriptViewerCursor(&menu);
@@ -173,7 +173,8 @@ int SptTestView::Update()
                         delete activeVm;
                         activeVm = NULL;
                     }
-                    activeVm = scriptDatabase->CreateHost(scriptDatabase->subroutines[entries.current].name);
+                    const char *name = scriptDatabase->subroutines[entries.current].name;
+                    activeVm = scriptDatabase->CreateHost(name);
                     state = 4;
                 }
             }
@@ -192,6 +193,7 @@ int SptTestView::Update()
         }
         break;
     case 0:
+    {
         ClearScriptNames();
         int count = 0;
         HANDLE search = FindFirstFileA("../../data/*.ecl", &find);
@@ -228,6 +230,7 @@ int SptTestView::Update()
         position.z = 0.0f;
         value2D0 = 1000;
         break;
+    }
     }
     return 1;
 }

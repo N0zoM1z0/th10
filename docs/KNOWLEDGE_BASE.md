@@ -1764,6 +1764,15 @@ register preservation or mod-ref assumptions) where our builds exploit it
   - Registration uses flags |2 and priorities 5/39.
   - Draw @0x40A940 owns a 4-slot table at 0x40ABC8 (state-1 in 0..3).
   - MarkGameChains @0x409E20 sets node +4 |= 2 for the +8/+12 callbacks.
+- `SptTestView::Update` at `0x0042BFC0` retains the active VM until its
+  current instruction clears, then retires it and returns to the menu.
+  The loader takes the registered callback at 0x0042BE10. The file phase
+  counts matches first and then allocates and copies their names.
+  Naming the selected script string, keeping file enumeration in its own
+  case scope, and returning to the menu after the successful-run check
+  reproduce the register choices in the nine-input update callback link.
+  The existing inline input predicates already emit the target byte and
+  DWORD reads.
 - Ending: The interpreter's 18-way table runs 0x40C358..0x40C39F, giving a 1568-byte extent.
   - Records have a 4-byte header and a byte payload length.
   - Creation opcodes call primary CreateVmVariant0 @0x448D00, not Variant1.
