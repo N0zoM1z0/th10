@@ -121,40 +121,6 @@ struct EnemyLaserVectorView
     float y;
     float z;
 
-    EnemyLaserVectorView operator-(const EnemyLaserVectorView &other) const
-    {
-        EnemyLaserVectorView result = {x - other.x, y - other.y, z - other.z};
-        return result;
-    }
-
-    EnemyLaserVectorView operator+(const EnemyLaserVectorView &other) const
-    {
-        EnemyLaserVectorView result = {x + other.x, y + other.y, z + other.z};
-        return result;
-    }
-
-    EnemyLaserVectorView operator*(float scale) const
-    {
-        EnemyLaserVectorView result = {x * scale, y * scale, z * scale};
-        return result;
-    }
-
-    EnemyLaserVectorView &operator+=(const EnemyLaserVectorView &other)
-    {
-        x += other.x;
-        y += other.y;
-        z += other.z;
-        return *this;
-    }
-
-    EnemyLaserVectorView &operator*=(float scale)
-    {
-        x *= scale;
-        y *= scale;
-        z *= scale;
-        return *this;
-    }
-
     void FromAngleMagnitude(float angle, float magnitude);
     int IsOutsidePlayfield(float extentX, float extentY);
 };

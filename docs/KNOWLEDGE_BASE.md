@@ -1216,6 +1216,22 @@ register preservation or mod-ref assumptions) where our builds exploit it
   - Motion0040 fields: angular delta 10C, next speed 108, duration/limit/count 11C/120/124.
   - Scale divides sprite width 34 / height 30. Draw writes VM.position 334, not offset 340.
   - Clear (slot 14h): stack mode, RET4, EAX count; samples start at 6 with stride 12 and finish with stateC=1.
+  - Box trim (slot +0x18, `0x0041D880`) starts at six units and samples
+    while `distance + 6.0f <= length`. The X/Y tests reject only ordered
+    out-of-range coordinates. The sample starts at Z zero, then advances
+    all three components. Each hit optionally creates an item within the
+    playfield and creates a VM with script `2 * request.color + 0x11`.
+    After trimming the leading hit span, the first surviving run stays
+    in the current laser. Each later run copies the entire request at
+    +0x424 before replacing its position and two length fields. The
+    retirement and spawn paths compare against 18 units.
+  - In the VC7.1 box-trim link, returning constructed XYZ values restores
+    the stack homes and x87 evaluation order. Aggregate-initialized vector
+    results emitted 1,315 bytes, with extra stores in the prefix and
+    fragment-position arithmetic. Keep the prefix conversion in the
+    position multiplication and in the distance calculation. The
+    `laser-line-box-trim` graph binds the item spawn, both animation/vector
+    paths, the fragment spawn and the two stack-cookie checks.
 - Type-1 laser (table 46DA10, D74 layout, VMs 61C/9C8):
   - Request fields: 18/1C angle/angular velocity, 20/24 max/initial length, 28 width, 2C growth, 30..3C signed durations, 40 type, 42 color.
   - Init copies 126 dwords and sets state 3.

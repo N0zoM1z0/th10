@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `laser-line-box-trim` | 1,269 B | `LaserLineBoxTrim`, 23 fields, the ECX receiver, the XYZ sample loop and all 476 bytes of each fragment request. Polar, bounds and world-VM creation also match in the same link. |
 | `frontend-main-menu-return` | 1,280 B | `FrontEndReplay`, 103 fields, the EBX receiver and three complete switch tables. The phase setter and eight known exact units pass their affected comparisons. |
 | `hint-consume-entries` | 1,317 B | `HintLifecycle`, 34 fields and all three world-VM paths. The per-frame update and registered callback replay in the same build. |
 | `result-menu-update-pause` | 1,360 B | `ResultMenuPause`, 79 fields and five phase destinations. The input word and repeat view share 0x474E36. The scheduler callback and dispatcher pass in the same link. |
@@ -42,15 +43,6 @@ comparison only for its source and link graph.
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
 ## Open owner
-
-`EnemyLaserType0CollisionView::CheckCollisionBox` at `0x0041D880` is the
-active owner. Build `laser-line-box-trim` for the complete 1,269-byte target.
-The current 1,315-byte candidate samples the inclusive 12-unit boundary,
-uses the target's ordered loop and per-axis selection tests, updates XYZ,
-and copies all 476 request bytes before setting each surviving run's two
-length fields. The remaining differences span vector temporary storage,
-argument and receiver scheduling, and the local branches that depend on
-those layouts.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

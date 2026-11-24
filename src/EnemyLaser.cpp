@@ -73,6 +73,51 @@ struct EnemyLaserManagerResourceView
 typedef char EnemyLaserManagerResourceAt458[
     (offsetof(EnemyLaserManagerResourceView, effectResource) == 0x458) ? 1 : -1];
 
+struct EnemyLaserTrimVector : EnemyLaserVectorView
+{
+    EnemyLaserTrimVector() {}
+    EnemyLaserTrimVector(float x, float y, float z)
+    {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+    }
+
+    EnemyLaserTrimVector operator-(const EnemyLaserTrimVector &other) const
+    {
+        return EnemyLaserTrimVector(x - other.x, y - other.y, z - other.z);
+    }
+
+    EnemyLaserTrimVector operator+(const EnemyLaserTrimVector &other) const
+    {
+        return EnemyLaserTrimVector(x + other.x, y + other.y, z + other.z);
+    }
+
+    EnemyLaserTrimVector operator*(float scale) const
+    {
+        return EnemyLaserTrimVector(x * scale, y * scale, z * scale);
+    }
+
+    EnemyLaserTrimVector &operator+=(const EnemyLaserTrimVector &other)
+    {
+        x += other.x;
+        y += other.y;
+        z += other.z;
+        return *this;
+    }
+
+    EnemyLaserTrimVector &operator*=(float scale)
+    {
+        x *= scale;
+        y *= scale;
+        z *= scale;
+        return *this;
+    }
+};
+
+typedef char EnemyLaserTrimVectorSizeIs0C[
+    (sizeof(EnemyLaserTrimVector) == 0x0c) ? 1 : -1];
+
 // Target 0x0041D880 is the type-0 box-collision owner.  The same high-level
 // split algorithm appears in the neighboring laser family, but every field,
 // helper and request extent below is retained only where TH10 itself observes
@@ -83,7 +128,7 @@ struct EnemyLaserType0CollisionView
     void *previous;
     void *next;
     unsigned char unknown00C[0x24 - 0x0c];
-    EnemyLaserVectorView position;
+    EnemyLaserTrimVector position;
     unsigned char unknown030[0x3c - 0x30];
     float angle;
     float length;
@@ -95,8 +140,8 @@ struct EnemyLaserType0CollisionView
     EnemyLaserType0RequestView request;
 
     int CheckCollisionBox(
-        EnemyLaserVectorView *center,
-        EnemyLaserVectorView *size,
+        const EnemyLaserTrimVector *center,
+        const EnemyLaserTrimVector *size,
         int capture);
     int CheckCollisionCircle(
         EnemyLaserVectorView *center,
@@ -118,27 +163,27 @@ typedef char EnemyLaserType0CollisionRequestAt424[
     (offsetof(EnemyLaserType0CollisionView, request) == 0x424) ? 1 : -1];
 
 int EnemyLaserType0CollisionView::CheckCollisionBox(
-    EnemyLaserVectorView *center,
-    EnemyLaserVectorView *size,
+    const EnemyLaserTrimVector *center,
+    const EnemyLaserTrimVector *size,
     int capture)
 {
-    EnemyLaserVectorView originalPosition = position;
+    EnemyLaserTrimVector originalPosition = position;
     unsigned char hits[256];
     memset(hits, 0, sizeof(hits));
 
     int hitCount = 0;
     int sampleCount = 0;
     float distance = 6.0f;
-    EnemyLaserVectorView maximum;
+    EnemyLaserTrimVector maximum;
     maximum = *size * 0.5f;
-    EnemyLaserVectorView minimum;
+    EnemyLaserTrimVector minimum;
     minimum = *center - maximum;
     maximum = maximum + *center;
 
-    EnemyLaserVectorView step;
+    EnemyLaserTrimVector step;
     step.z = 0.0f;
     step.FromAngleMagnitude(angle, 6.0f);
-    EnemyLaserVectorView sample;
+    EnemyLaserTrimVector sample;
     sample = step + position;
     sample.z = 0.0f;
     step *= 2.0f;
