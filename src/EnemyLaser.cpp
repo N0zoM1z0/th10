@@ -646,8 +646,8 @@ int EnemyLaserType1View::CheckCollisionCircle(
             }
             EnemyLaserType0RequestView args;
             memset(&args, 0, sizeof(args));
-            args.maximumLength = static_cast<float>(gapLength) * 12.0f;
-            args.initialLength = args.maximumLength;
+            args.initialLength = static_cast<float>(gapLength) * 12.0f;
+            args.maximumLength = args.initialLength;
             args.speed = 8.0f;
             reinterpret_cast<AnmFloat3View &>(args.position) =
                 originalPosition + step * static_cast<float>(gapStart);

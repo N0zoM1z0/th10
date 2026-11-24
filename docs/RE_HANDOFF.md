@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `laser-type1-circle-split` | 1,108 B | `LaserType1CircleSplit`, 29 fields, inlined viewport tests and the ordered fragment lengths. The script loader and primary VM registrar also match in the same image. |
 | `frontend-update-dispatcher` | 1,128 B | `FrontEndReplay`, 99 fields, 17 jump destinations, the idle-demo state and the EAX callback. The five linked menus, the Practice menu and the replay destructor keep their exact code. |
 | `main-init-d3d-rendering` | 1,159 B | `MainInitD3dRendering`, 100 fields, the full HAL/REF fallback and selected back-buffer format. The logs, reset and screen-color functions match in the same image. WinMain matches in its own link. |
 | `laser-type1-box-split` | 1,171 B | `LaserType1BoxSplit`, 19 fields, the virtual ECX receiver and the zeroed fragment request. Polar, playfield bounds and the world-VM creator also match in the same image. |

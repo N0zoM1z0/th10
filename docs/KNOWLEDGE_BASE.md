@@ -1251,6 +1251,11 @@ register preservation or mod-ref assumptions) where our builds exploit it
     x87 code stores the initial field first, at request +0x14. The
     `laser-type1-box-split` link keeps the actual spawn call and both
     capture side effects.
+  - Circle split (slot +0x1C, `0x0041EFA0`) uses the same strict endpoint
+    and request-length order. It squares the radius in its argument slot
+    and uses the inlined viewport checks and named VM allocation, script
+    load and primary-list registration steps. The zeroed type-0 request
+    records its own start, width and remaining terminal distance.
   - Request fields: 18/1C angle/angular velocity, 20/24 max/initial length, 28 width, 2C growth, 30..3C signed durations, 40 type, 42 color.
   - Init copies 126 dwords and sets state 3.
   - Update table at 0x41EA30 covers states 2..5. Update attaches to Enemy 477704 slot 0 (+1068).
