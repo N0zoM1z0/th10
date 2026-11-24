@@ -37693,6 +37693,56 @@ linkages = [
   { offset = 0x464, type = "DIR32", local = true, target = 0x0042D199 },
 ]
 
+[units.frontend-replay-draw]
+source = "src/FrontEnd.cpp"
+support_sources = ["src/AnmManager.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+entry_symbol = "?FrontEndDrawCallback@@YIHPAUFrontEndControllerView@@@Z"
+artifact_kind = "linked-pe"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+output_dir = "build/match-linked/FrontEndReplaySaveDraw"
+pdb_source = "src/FrontEnd.cpp"
+functions = ["FrontEndControllerView::DrawReplay"]
+symbol = "?DrawReplay@FrontEndControllerView@@SGHPAU1@@Z"
+target_address = 0x00431BA0
+size = 825
+linkages = [
+  { offset = 0x059, type = "DIR32", symbol = "__real@41200000", target = 0x00470C1C },
+  { offset = 0x070, type = "DIR32", symbol = "__real@3dcccccd", target = 0x00470C18 },
+  { offset = 0x076, type = "DIR32", symbol = "__real@42a00000", target = 0x00470C28 },
+  { offset = 0x080, type = "DIR32", symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A", target = 0x004776E0 },
+  { offset = 0x093, type = "REL32", symbol = "_localtime", target = 0x00452BAA },
+  { offset = 0x0A4, type = "DIR32", symbol = "?g_ReplayCompletionNames@@3PAPBDA", target = 0x00474744 },
+  { offset = 0x0AF, type = "DIR32", symbol = "?g_ReplayDifficultyNames@@3PAPBDA", target = 0x004746F4 },
+  { offset = 0x0C2, type = "DIR32", symbol = "?g_ReplayCharacterNames@@3PAPBDA", target = 0x004746DC },
+  { offset = 0x0E4, type = "DIR32", symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A", target = 0x004776E0 },
+  { offset = 0x0F7, type = "DIR32", symbol = "??_C@_0DF@HIIJNJLG@No?4?$CF?42d?5?$CFs?5?$CF?42d?1?$CF?42d?1?$CF?42d?5?$CF?42d?3?$CF@", target = 0x0046EFB0 },
+  { offset = 0x0FD, type = "REL32", symbol = "?AddFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ", target = 0x00401630 },
+  { offset = 0x13C, type = "DIR32", symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A", target = 0x004776E0 },
+  { offset = 0x176, type = "DIR32", symbol = "?g_FrontEndStageNames@@3PAPBDA", target = 0x0047471C },
+  { offset = 0x17C, type = "DIR32", symbol = "??_C@_0O@DLJABDEF@?$CFs?5?5?9?9?9?9?9?9?9?9?9?$AA@", target = 0x0046F008 },
+  { offset = 0x186, type = "REL32", symbol = "?AddFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ", target = 0x00401630 },
+  { offset = 0x1AB, type = "DIR32", symbol = "?g_FrontEndStageNames@@3PAPBDA", target = 0x0047471C },
+  { offset = 0x1BD, type = "DIR32", symbol = "?g_FrontEndStageNames@@3PAPBDA", target = 0x0047471C },
+  { offset = 0x1C4, type = "DIR32", symbol = "??_C@_0L@LPGLHICO@?$CFs?5?5?$CF?48d?$CFd?$AA@", target = 0x0046EF68 },
+  { offset = 0x1CE, type = "REL32", symbol = "?AddFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ", target = 0x00401630 },
+  { offset = 0x1DF, type = "DIR32", symbol = "__real@41900000", target = 0x00470C0C },
+  { offset = 0x1FF, type = "DIR32", symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A", target = 0x004776E0 },
+  { offset = 0x235, type = "DIR32", symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A", target = 0x004776E0 },
+  { offset = 0x26D, type = "REL32", symbol = "_localtime", target = 0x00452BAA },
+  { offset = 0x27E, type = "DIR32", symbol = "?g_ReplayCompletionNames@@3PAPBDA", target = 0x00474744 },
+  { offset = 0x289, type = "DIR32", symbol = "?g_ReplayDifficultyNames@@3PAPBDA", target = 0x004746F4 },
+  { offset = 0x29C, type = "DIR32", symbol = "?g_ReplayCharacterNames@@3PAPBDA", target = 0x004746DC },
+  { offset = 0x2C5, type = "DIR32", symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A", target = 0x004776E0 },
+  { offset = 0x2CC, type = "DIR32", symbol = "??_C@_0DF@HIIJNJLG@No?4?$CF?42d?5?$CFs?5?$CF?42d?1?$CF?42d?1?$CF?42d?5?$CF?42d?3?$CF@", target = 0x0046EFB0 },
+  { offset = 0x2D2, type = "REL32", symbol = "?AddFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ", target = 0x00401630 },
+  { offset = 0x2DE, type = "DIR32", symbol = "??_C@_0DK@OAGCHDAP@No?4?$CF?42d?5?9?9?9?9?9?9?9?9?5?9?9?1?9?9?1?9?9?5?9?9?3?9?9?5@", target = 0x0046EF74 },
+  { offset = 0x2E8, type = "REL32", symbol = "?AddFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ", target = 0x00401630 },
+  { offset = 0x2F9, type = "DIR32", symbol = "__real@41700000", target = 0x00470C08 },
+  { offset = 0x312, type = "DIR32", symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A", target = 0x004776E0 },
+]
+
 [units.frontend-score-entry-draw]
 source = "src/FrontEnd.cpp"
 support_sources = ["src/AnmManager.cpp"]

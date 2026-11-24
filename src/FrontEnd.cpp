@@ -488,22 +488,6 @@ tickTimeout:
     }
 }
 
-static void DrawReplaySummary(
-    AsciiManagerView *ascii, AnmFloat3View *position,
-    ReplayManager *replay, int replayNumber)
-{
-    ReplayDataHeader *data = replay->replayData;
-    tm *date = localtime(reinterpret_cast<time_t *>(&data->timestamp));
-    ascii->AddFormatText(
-        position,
-        "No.%.2d %s %.2d/%.2d/%.2d %.2d:%.2d %s %s %s %2.1f%%",
-        replayNumber, data->replayName, date->tm_year % 100,
-        date->tm_mon + 1, date->tm_mday, date->tm_hour, date->tm_min,
-        g_ReplayCharacterNames[data->character * 3 + data->shotType],
-        g_ReplayDifficultyNames[data->difficulty],
-        g_ReplayCompletionNames[data->completionState], data->slowRate);
-}
-
 static AnmVmView *FindChildVm(
     FrontEndControllerView *controller, short scriptIndex)
 {
@@ -2660,93 +2644,104 @@ int __stdcall FrontEndControllerView::UpdateReplay(
 int __stdcall FrontEndControllerView::DrawReplay(
     FrontEndControllerView *controller)
 {
-    AsciiManagerView *ascii = g_AsciiManagerView;
-
-    if (controller->screenState == FRONT_END_REPLAY_SELECT_FILE)
+    switch (controller->screenState)
     {
-        ascii->drawShadow = 1;
-        AnmFloat3View position(58.0f, 80.0f, 0.0f);
-
-        for (int replayIndex = 0; replayIndex < 25; ++replayIndex)
-        {
-            ascii->color = controller->cursor.current == replayIndex
-                ? 0xffffff00 : 0xff808080;
-            ReplayManager *replay = controller->replayFiles[replayIndex];
-            if (replay == NULL)
-            {
-                ascii->AddFormatText(
-                    &position,
-                    "No.%.2d -------- --/--/-- --:-- ------- ------- --- ---%%",
-                    replayIndex + 1);
-            }
-            else
-            {
-                DrawReplaySummary(ascii, &position, replay, replayIndex + 1);
-            }
-            position.y += 15.0f;
-        }
-    }
-    else if (controller->screenState == FRONT_END_REPLAY_SELECT_STAGE)
+    case FRONT_END_REPLAY_SELECT_STAGE:
     {
-        ascii->drawShadow = 1;
+        ReplayDataHeader *data =
+            controller->replayFiles[controller->selectedReplay]->replayData;
         AnmFloat3View position(80.0f, 80.0f, 0.0f);
         if (controller->stateTimer.current < 10)
         {
-            position.y += controller->selectedReplay * 15.0f *
-                (10.0f - controller->stateTimer.subframe) * 0.1f;
+            position.y = (10.0f - controller->stateTimer.subframe) *
+                (controller->selectedReplay * 15) * 0.1f + 80.0f;
         }
 
-        ReplayManager *replay =
-            controller->replayFiles[controller->selectedReplay];
-        DrawReplaySummary(
-            ascii, &position, replay, controller->selectedReplay + 1);
+        g_AsciiManagerView->drawShadow = 1;
+        tm *date = localtime(reinterpret_cast<time_t *>(&data->timestamp));
+        g_AsciiManagerView->AddFormatText(
+            &position, "No.%.2d %s %.2d/%.2d/%.2d %.2d:%.2d %s %s %s %2.1f%%",
+            controller->selectedReplay + 1, data->replayName, date->tm_year % 100,
+            date->tm_mon + 1, date->tm_mday, date->tm_hour, date->tm_min,
+            g_ReplayCharacterNames[data->character * 3 + data->shotType],
+            g_ReplayDifficultyNames[data->difficulty],
+            g_ReplayCompletionNames[data->completionState], data->slowRate);
 
         if (controller->stateTimer.current >= 10)
         {
             position.x = 220.0f;
             position.y = 128.0f;
-            for (int stage = 1; stage <= 7; ++stage)
+            for (int stage = 1; stage < 8; ++stage)
             {
-                ascii->color = controller->cursor.current == stage - 1
-                    ? 0xffffff00 : 0xff808080;
-                ReplayStageDataHeader *header =
-                    replay->stageStates[stage].header;
-                if (header == NULL)
+                g_AsciiManagerView->color = controller->cursor.current == stage - 1
+                    ? 0xffffff00u : 0xff808080u;
+                if (controller->replayFiles[controller->selectedReplay]
+                        ->stageStates[stage].header == NULL)
                 {
-                    ascii->AddFormatText(
-                        &position, "%s  ---------",
-                        g_FrontEndStageNames[stage]);
+                    g_AsciiManagerView->AddFormatText(
+                        &position, "%s  ---------", g_FrontEndStageNames[stage]);
+                }
+                else if (stage < 6 &&
+                         controller->replayFiles[controller->selectedReplay]
+                             ->stageStates[stage + 1].header != NULL)
+                {
+                    ReplayStageDataHeader *next =
+                        controller->replayFiles[controller->selectedReplay]
+                            ->stageStates[stage + 1].header;
+                    g_AsciiManagerView->AddFormatText(
+                        &position, "%s  %.8d%d", g_FrontEndStageNames[stage],
+                        next->unknown00C, next->unknown1B4);
                 }
                 else
                 {
-                    ReplayStageDataHeader *nextHeader = stage < 6
-                        ? replay->stageStates[stage + 1].header : NULL;
-                    if (nextHeader != NULL)
-                    {
-                        ascii->AddFormatText(
-                            &position, "%s  %.8d%d",
-                            g_FrontEndStageNames[stage], nextHeader->unknown00C,
-                            nextHeader->unknown1B4);
-                    }
-                    else
-                    {
-                        ascii->AddFormatText(
-                            &position, "%s  %.8d%d",
-                            g_FrontEndStageNames[stage], replay->replayData->score,
-                            replay->replayData->unknown060);
-                    }
+                    g_AsciiManagerView->AddFormatText(
+                        &position, "%s  %.8d%d", g_FrontEndStageNames[stage],
+                        data->score, data->unknown060);
                 }
                 position.y += 18.0f;
             }
         }
+        break;
     }
-    else
+
+    case FRONT_END_REPLAY_SELECT_FILE:
     {
+        AnmFloat3View position(58.0f, 80.0f, 0.0f);
+        g_AsciiManagerView->drawShadow = 1;
+        for (int replayIndex = 0; replayIndex < 25; ++replayIndex)
+        {
+            g_AsciiManagerView->color = controller->cursor.current == replayIndex
+                ? 0xffffff00u : 0xff808080u;
+            if (controller->replayFiles[replayIndex] != NULL)
+            {
+                ReplayDataHeader *data = controller->replayFiles[replayIndex]->replayData;
+                tm *date = localtime(reinterpret_cast<time_t *>(&data->timestamp));
+                g_AsciiManagerView->AddFormatText(
+                    &position, "No.%.2d %s %.2d/%.2d/%.2d %.2d:%.2d %s %s %s %2.1f%%",
+                    replayIndex + 1, data->replayName, date->tm_year % 100,
+                    date->tm_mon + 1, date->tm_mday, date->tm_hour, date->tm_min,
+                    g_ReplayCharacterNames[data->character * 3 + data->shotType],
+                    g_ReplayDifficultyNames[data->difficulty],
+                    g_ReplayCompletionNames[data->completionState], data->slowRate);
+            }
+            else
+            {
+                g_AsciiManagerView->AddFormatText(
+                    &position,
+                    "No.%.2d -------- --/--/-- --:-- ------- ------- --- ---%%",
+                    replayIndex + 1);
+            }
+            position.y += 15.0f;
+        }
+        break;
+    }
+
+    default:
         return 1;
     }
 
-    ascii->color = 0xffffffff;
-    ascii->drawShadow = 0;
+    g_AsciiManagerView->color = 0xffffffffu;
+    g_AsciiManagerView->drawShadow = 0;
     return 1;
 }
 

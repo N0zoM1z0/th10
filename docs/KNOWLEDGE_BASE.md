@@ -785,6 +785,14 @@ frontier; do not refresh a baseline merely to accept the new positions.
   cells let C2 use EBP for the row shade and then the keyboard length. The
   calls merge with the text position in EBX. The local TH10 reference
   supplied the separate-call lead. [Reference license](licenses/th10-decomp-MIT.txt)
+- **FrontEndControllerView::DrawReplay @0x431BA0 (825)**: all 33 fields
+  match through the same title draw callback. The stage detail path takes
+  the replay header before the slide, renders its summary, and reads each
+  stage through the selected replay slot. Keep the next stage's header
+  in a local for the two score fields. VC7.1 stores the 0x24-byte stride
+  in the incoming argument slot and adds it to the replay pointer once
+  per row. The local TH10 reference supplied the stage access pattern.
+  [Reference license](licenses/th10-decomp-MIT.txt)
 - **GameResetGui @0x413BC0 (1,965)** is exact with 52 bound fields and
   73 fixed local branches in the GameManager update graph. Each loop
   walks flag-word addresses with a stride of `sizeof(AnmVmView)`. C2

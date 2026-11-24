@@ -17,6 +17,7 @@ comparison only for its source and link graph.
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
 | `spt-test-update` | 926 B | `SptTestUpdate`, 39 fields, VM lifetime and two-pass file enumeration. The registered callback and the interpreter, factory and worker calls match in the same image. |
+| `frontend-replay-draw` | 825 B | `FrontEndReplaySaveDraw`, 33 fields, the 25-slot list and the seven-stage detail view. Both neighboring draw paths, the callback and the text helpers pass. |
 | `frontend-score-entry-draw` | 826 B | `FrontEndReplaySaveDraw`, 35 fields and the two keyboard text paths. The score reads, replay save draw, title callback, formatter and string queue match. |
 | `merge-joystick-input` | 833 B | `InputPolling`, 21 fields and four RET 8 exits. The WinMM midpoint and dead zone calculations match. The keyboard caller and both button helpers pass their comparisons. |
 | `frontend-practice-records` | 850 B | `FrontEndPractice`, 14 fields and all three centered text calls. The VM result uses an output reference, and the palette reads the capture counter independently. The practice update replays in the same image. |
