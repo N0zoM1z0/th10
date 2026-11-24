@@ -1015,7 +1015,18 @@ frontier; do not refresh a baseline merely to accept the new positions.
   and ID temporary placements did not improve this residual.
   `EnemyReadDialog` (124/124), `EnemyKillAll` (182/182) and the GUI
   stage updater (3,836/3,836) remain exact in affected graphs.
-- **GuiShowScoreNotice @0x4172E0 (668)**: 660. [2026-10-25]
+- **GuiShowScoreNotice @0x4172E0 (668)** matches 640 code bytes, seven
+  switch entries and all 35 fields through the real spell-end caller.
+  Reuse the input value slot for the digit index after saving the number
+  in `remaining`. Keep the remainder separate, and publish the digit VM
+  ID before dividing. Snapshot the allocated VM flags before setting the
+  layer. Retire and clear each caption ID before reloading its resource.
+  Including the actual `AnmLoadedStartScript.cpp` loader lets LTCG keep the
+  caption factory resource in EDX and hidden result in EDI. The reduced
+  graph without it emits a 77-byte factory and 664-byte notice. The
+  spell-end caller also passes in the corrected graph. The MIT-licensed
+  reference supplied the loop and caption-store leads.
+  [Reference license](licenses/th10-decomp-MIT.txt)
 - **MainSupervisorView::UpdateGameMode @0x4218D0 (666)**: 678. [2026-10-29]
 - **CStreamingSound::HandleWaveStreamNotification @0x44D850 (637)**: 634. The
   637-byte CFG variants order the read and fill blocks wrongly. [2026-11-11]
