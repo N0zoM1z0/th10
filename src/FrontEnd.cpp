@@ -3449,105 +3449,103 @@ int __stdcall FrontEndControllerView::UpdateScoreEntry(
 int __stdcall FrontEndControllerView::DrawScoreEntry(
     FrontEndControllerView *controller)
 {
-    if (controller->screenState != FRONT_END_SCORE_ENTRY_ACTIVE)
-        return 1;
-
-    AsciiManagerView *ascii = g_AsciiManagerView;
-    ascii->drawShadow = 1;
-    AnmFloat3View position(48.0f, 160.0f, 0.0f);
-    int shot = g_ReplayShotType + g_ReplayCharacter * 3;
-    unsigned int shade = 0xff;
-
-    for (int row = 0; row < FRONT_END_SCORE_ENTRY_ROWS; ++row)
+    switch (controller->screenState)
     {
-        if (controller->scoreEntryUnavailable != 0)
+    case FRONT_END_SCORE_ENTRY_ACTIVE:
+    {
+        AnmFloat3View position(48.0f, 160.0f, 0.0f);
+        int difficulty = g_ReplayDifficulty;
+        g_AsciiManagerView->drawShadow = 1;
+        for (int row = 0; row < FRONT_END_SCORE_ENTRY_ROWS; ++row)
         {
-            ascii->color =
-                ((shade << 8 | shade) << 8) | 0xff0000ffu;
-        }
-        else
-        {
-            ascii->color = controller->cursor.current == row
-                ? 0xffffffffu : 0xff404040u;
+            int shade = 0xff - row * 0x10;
+            int rank = row + 1;
+            if (controller->scoreEntryUnavailable != 0)
+            {
+                g_AsciiManagerView->color =
+                    ((shade << 8 | shade) << 8) | 0xff0000ffu;
+            }
+            else
+            {
+                g_AsciiManagerView->color = controller->cursor.current != row
+                    ? 0xff404040u : 0xffffffffu;
+            }
+
+            FrontEndScoreTableView *table =
+                GetFrontEndScoreTable(g_ReplayShotType + g_ReplayCharacter * 3);
+            if (table->records[difficulty][row].timestamp != 0)
+            {
+                tm *date = localtime(&table->records[difficulty][row].timestamp);
+                const FrontEndScoreRecordView &record =
+                    GetFrontEndScoreTable(g_ReplayShotType + g_ReplayCharacter * 3)
+                        ->records[difficulty][row];
+                g_AsciiManagerView->AddFormatText(
+                    &position,
+                    "%2d  %s  %9ld%d  %.4d/%.2d/%.2d %.2d:%.2d  %s  %2.1f%%",
+                    rank, record.name, record.score, record.scoreSuffix,
+                    date->tm_year + 1900, date->tm_mon + 1,
+                    date->tm_mday, date->tm_hour, date->tm_min,
+                    g_FrontEndStageNames[record.stageNameIndex],
+                    static_cast<double>(record.slowdownRate));
+            }
+            else
+            {
+                const FrontEndScoreRecordView &record = table->records[difficulty][row];
+                g_AsciiManagerView->AddFormatText(
+                    &position, "%2d  %s  %9ld%d  ----/--/-- --:--  Stage -  ---%%",
+                    rank, record.name, record.score, record.scoreSuffix,
+                    static_cast<double>(record.slowdownRate));
+            }
+            position.y += 18.0f;
         }
 
-        FrontEndScoreRecordView *record =
-            GetPracticeScoreRecord(shot, g_ReplayDifficulty, row);
-        if (record->timestamp == 0)
+        if (controller->scoreEntryUnavailable == 0)
         {
-            ascii->AddFormatText(
-                &position,
-                "%2d  %s  %9ld%d  ----/--/-- --:--  Stage -  ---%%",
-                row + 1, record->name, record->score,
-                record->scoreSuffix, (double)record->slowdownRate);
+            int alphabetLength = static_cast<int>(strlen(g_FrontEndScoreEntryAlphabet));
+            position.x = 84.0f;
+            position.y = controller->cursor.current * 18.0f + 160.0f;
+            position.z = 0.0f;
+            g_AsciiManagerView->color = 0xffffffffu;
+            g_AsciiManagerView->AddFormatText(&position, "%s", controller->scoreEntryName);
+
+            position.x = static_cast<float>(controller->scoreEntryNameCursor * 9) + 84.0f;
+            if (controller->scoreEntryNameCursor == FRONT_END_SCORE_ENTRY_NAME_LENGTH)
+                position.x -= 9.0f;
+            g_AsciiManagerView->color = 0xffffff00u;
+            g_AsciiManagerView->AddFormatText(&position, "_");
+
+            g_AsciiManagerView->color = 0xffffffffu;
+            position.x = 212.0f;
+            position.y = 360.0f;
+            position.z = 0.0f;
+            for (int key = 0; key < alphabetLength; ++key)
+            {
+                g_AsciiManagerView->color =
+                    controller->scoreEntryKeyboardCursor.current == key
+                        ? 0xffffff00u : 0xff808080u;
+                if (key < alphabetLength - 3)
+                    g_AsciiManagerView->AddFormatText(
+                        &position, "%c", g_FrontEndScoreEntryAlphabet[key]);
+                else
+                    g_AsciiManagerView->AddFormatText(
+                        &position, "%c", key == alphabetLength - 3
+                            ? 0x81 : key == alphabetLength - 2 ? 0x7f : 0x80);
+
+                if (static_cast<unsigned int>(key) % FRONT_END_SCORE_ENTRY_COLUMNS ==
+                    FRONT_END_SCORE_ENTRY_COLUMNS - 1)
+                {
+                    position.x = 212.0f;
+                    position.y += 16.0f;
+                }
+                else
+                {
+                    position.x += 18.0f;
+                }
+            }
+            g_AsciiManagerView->color = 0xffffffffu;
         }
-        else
-        {
-            tm *localTime = localtime(&record->timestamp);
-            ascii->AddFormatText(
-                &position,
-                "%2d  %s  %9ld%d  %.4d/%.2d/%.2d %.2d:%.2d  %s  %2.1f%%",
-                row + 1, record->name, record->score,
-                record->scoreSuffix, localTime->tm_year + 1900,
-                localTime->tm_mon + 1, localTime->tm_mday,
-                localTime->tm_hour, localTime->tm_min,
-                g_FrontEndStageNames[record->stageNameIndex],
-                (double)record->slowdownRate);
-        }
-        shade -= 0x10;
-        position.y += 18.0f;
+        break;
     }
-
-    if (controller->scoreEntryUnavailable == 0)
-    {
-        int alphabetLength = strlen(g_FrontEndScoreEntryAlphabet);
-        position.x = 84.0f;
-        position.y =
-            controller->cursor.current * 18.0f + 160.0f;
-        ascii->color = 0xffffffffu;
-        ascii->AddFormatText(&position, "%s", controller->scoreEntryName);
-
-        position.x =
-            controller->scoreEntryNameCursor * 9.0f + 84.0f;
-        if (controller->scoreEntryNameCursor ==
-            FRONT_END_SCORE_ENTRY_NAME_LENGTH)
-        {
-            position.x -= 9.0f;
-        }
-        ascii->color = 0xffffff00u;
-        ascii->AddFormatText(&position, "_");
-
-        position.x = 212.0f;
-        position.y = 360.0f;
-        position.z = 0.0f;
-        for (int key = 0; key < alphabetLength; ++key)
-        {
-            ascii->color =
-                controller->scoreEntryKeyboardCursor.current == key
-                    ? 0xffffff00u : 0xff808080u;
-            int glyph;
-            if (key < alphabetLength - 3)
-                glyph = g_FrontEndScoreEntryAlphabet[key];
-            else if (key == alphabetLength - 3)
-                glyph = 0x81;
-            else if (key == alphabetLength - 2)
-                glyph = 0x7f;
-            else
-                glyph = 0x80;
-            ascii->AddFormatText(&position, "%c", glyph);
-
-            if (key % FRONT_END_SCORE_ENTRY_COLUMNS ==
-                FRONT_END_SCORE_ENTRY_COLUMNS - 1)
-            {
-                position.x = 212.0f;
-                position.y += 16.0f;
-            }
-            else
-            {
-                position.x += 18.0f;
-            }
-        }
-        ascii->color = 0xffffffffu;
     }
     return 1;
 }

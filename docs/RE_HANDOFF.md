@@ -58,6 +58,17 @@ comparison only for its source and link graph.
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
+## Open owner
+
+`FrontEndControllerView::DrawScoreEntry` at `0x00433230` is active.
+Compare the complete 826-byte draw path through the registered title
+draw callback. It renders ten score rows, overlays the editable name
+and caret, and draws the 13-column keyboard.
+The candidate uses the target's separate keyboard draw calls and reloads
+the ranked score after the date lookup. It emits 826 bytes and 35 address
+fields. The tail after the initial alphabet length scan aligns, and the
+ranked rows still need their original address formation and register use.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.
