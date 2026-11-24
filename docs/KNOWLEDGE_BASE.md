@@ -776,6 +776,14 @@ frontier; do not refresh a baseline merely to accept the new positions.
   the exact keyboard snapshot, rank counter and pending-interrupt bodies.
   The MIT-licensed reference spell-record update supplied the loop and
   call-boundary leads. [2026-11-24]
+- `FrontEndControllerView::DrawPractice` at `0x004329F0` receives the controller
+  in EDI and returns without popping arguments. The dated row takes the address
+  of the score table before passing its timestamp to `localtime`. The compiler
+  then reloads the selected shot when formatting the row. The shot profile
+  stores the session count at +0x4C8, active frames at +0x4CC and the difficulty
+  counts at +0x4D0. These offsets and the table-pointer hypothesis from the
+  MIT-licensed th10-decomp reference reproduce all 689 bytes and 24 fields in
+  the title draw callback link. [Reference license](licenses/th10-decomp-MIT.txt)
 - **FrontEndControllerView::DrawScoreEntry @0x433230 (826)**: all 35
   fields match through the registered title draw callback. Read the title's
   live score table at each field expression. In VC7.1 this keeps the

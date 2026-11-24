@@ -17,6 +17,7 @@ comparison only for its source and link graph.
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
 | `spt-test-update` | 926 B | `SptTestUpdate`, 39 fields, VM lifetime and two-pass file enumeration. The registered callback and the interpreter, factory and worker calls match in the same image. |
+| `frontend-practice-draw` | 689 B | `FrontEndReplaySaveDraw`, 24 fields and the EDI receiver. The score rows, play totals and three neighboring draw paths pass. The score-entry update also passes in its own graph. |
 | `ascii-manager-draw-strings` | 738 B | `StageViewport`, 30 fields, both fonts, shadow drawing and viewport restoration. The callback, camera, flush and renderer pass in the same image. |
 | `sound-player-initialize` | 786 B | `SoundSetupRealMain`, 23 fields, DirectSound device and buffer setup, and the 37-sample preload. The setup thread, sample loader and chunk walker pass. |
 | `item-manager-spawn` | 819 B | `ItemManagerSpawn`, 18 fields, three jump slots and eleven selector bytes. The normal pool and delayed ring match. Both laser callers, the polar helper, VM creator and loader pass. |

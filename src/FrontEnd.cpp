@@ -275,6 +275,21 @@ struct FrontEndScoreTableView
     FrontEndScoreRecordView records[5][10];
 };
 
+struct ScoreEntryShotView
+{
+    unsigned char prefix[8];
+    FrontEndScoreTableView scores;
+    int sessionStarts;
+    int activeFrames;
+    int difficultyClears[5];
+    unsigned char remaining[0x437c - 0x4e4];
+};
+
+static __forceinline ScoreEntryShotView *GetPracticeProfileShots()
+{
+    return reinterpret_cast<ScoreEntryShotView *>(g_FrontEndProfileData);
+}
+
 extern int FrontEndInsertScore(FrontEndScoreTableView *table);
 
 enum FrontEndKeyConfigBindingView
@@ -411,16 +426,6 @@ static FrontEndStageScoreRecordView *GetFrontEndStageScoreRecord(int stage)
 static __forceinline int CountPracticeRecordsForDifficulty(int difficulty)
 {
     return CountGameStatisticsRankKind(0, difficulty);
-}
-
-static FrontEndScoreRecordView *GetPracticeScoreRecord(
-    int shot, int difficulty, int row)
-{
-    return reinterpret_cast<FrontEndScoreRecordView *>(
-        reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
-        static_cast<unsigned int>(shot) * 0x437cu + 0x18u +
-        (static_cast<unsigned int>(difficulty) * 10u +
-         static_cast<unsigned int>(row)) * 0x18u);
 }
 
 static FrontEndScoreTableView *GetFrontEndScoreTable(int shot)
@@ -3083,72 +3088,70 @@ int FrontEndControllerView::RefreshPracticeRecords()
 // TH10_FRONTEND_FUNCTION: 0x004329F0 FrontEndControllerView::DrawPractice
 int FrontEndControllerView::DrawPractice()
 {
-    if (screenState != FRONT_END_PRACTICE_ACTIVE)
-        return 1;
-
-    AsciiManagerView *ascii = g_AsciiManagerView;
-    ascii->drawShadow = 1;
-    AnmFloat3View position(48.0f, 160.0f, 0.0f);
-    int difficulty = practiceDifficultyCursor.current;
-
-    if (practicePageCursor.current == 0)
+    switch (screenState)
     {
-        unsigned int shade = 0xff;
-        for (int row = 0; row < FRONT_END_PRACTICE_ROWS_PER_PAGE; ++row)
+    case FRONT_END_PRACTICE_ACTIVE:
+    {
+        AnmFloat3View position(48.0f, 160.0f, 0.0f);
+        int difficulty = practiceDifficultyCursor.current;
+        g_AsciiManagerView->drawShadow = 1;
+
+        if (!practicePageCursor.current)
         {
-            ascii->color =
-                ((shade << 8 | shade) << 8) | 0xff0000ffu;
-            FrontEndScoreRecordView *record =
-                GetPracticeScoreRecord(cursor.current, difficulty, row);
-            if (record->timestamp == 0)
+            for (int row = 0; row < FRONT_END_PRACTICE_ROWS_PER_PAGE; ++row)
             {
-                ascii->AddFormatText(
-                    &position,
-                    "%2d  %s  %9ld%d  ----/--/-- --:--  Stage -  ---%%",
-                    row + 1, record->name, record->score,
-                    record->scoreSuffix, (double)record->slowdownRate);
+                int shade = 0xff - row * 0x10;
+                int rank = row + 1;
+                g_AsciiManagerView->color =
+                    0xff0000ffu | ((shade << 8 | shade) << 8);
+
+                if (GetPracticeProfileShots()[cursor.current].scores.records[difficulty][row].timestamp != 0)
+                {
+                    FrontEndScoreTableView *table = &GetPracticeProfileShots()[cursor.current].scores;
+                    tm *localTime = localtime(&table->records[difficulty][row].timestamp);
+                    g_AsciiManagerView->AddFormatText(
+                        &position, "%2d  %s  %9ld%d  %.4d/%.2d/%.2d %.2d:%.2d  %s  %2.1f%%", rank,
+                        GetPracticeProfileShots()[cursor.current].scores.records[difficulty][row].name,
+                        GetPracticeProfileShots()[cursor.current].scores.records[difficulty][row].score,
+                        GetPracticeProfileShots()[cursor.current].scores.records[difficulty][row].scoreSuffix,
+                        localTime->tm_year + 1900, localTime->tm_mon + 1, localTime->tm_mday,
+                        localTime->tm_hour, localTime->tm_min,
+                        g_FrontEndStageNames[GetPracticeProfileShots()[cursor.current].scores.records[difficulty][row].stageNameIndex],
+                        GetPracticeProfileShots()[cursor.current].scores.records[difficulty][row].slowdownRate);
+                }
+                else
+                {
+                    g_AsciiManagerView->AddFormatText(
+                        &position, "%2d  %s  %9ld%d  ----/--/-- --:--  Stage -  ---%%", rank,
+                        GetPracticeProfileShots()[cursor.current].scores.records[difficulty][row].name,
+                        GetPracticeProfileShots()[cursor.current].scores.records[difficulty][row].score,
+                        GetPracticeProfileShots()[cursor.current].scores.records[difficulty][row].scoreSuffix,
+                        GetPracticeProfileShots()[cursor.current].scores.records[difficulty][row].slowdownRate);
+                }
+                position.y += 18.0f;
             }
-            else
-            {
-                tm *localTime = localtime(&record->timestamp);
-                ascii->AddFormatText(
-                    &position,
-                    "%2d  %s  %9ld%d  %.4d/%.2d/%.2d %.2d:%.2d  %s  %2.1f%%",
-                    row + 1, record->name, record->score,
-                    record->scoreSuffix, localTime->tm_year + 1900,
-                    localTime->tm_mon + 1, localTime->tm_mday,
-                    localTime->tm_hour, localTime->tm_min,
-                    g_FrontEndStageNames[record->stageNameIndex],
-                    (double)record->slowdownRate);
-            }
-            shade -= 0x10;
-            position.y += 18.0f;
         }
+
+        g_AsciiManagerView->color = 0xffffffffu;
+        position.x = 328.0f;
+        position.y = 378.0f;
+        g_AsciiManagerView->AddFormatText(
+            &position, "    %5d", GetPracticeProfileShots()[cursor.current].sessionStarts);
+        position.y = 396.0f;
+        g_AsciiManagerView->AddFormatText(
+            &position, "%3d:%.2d:%.2d",
+            GetPracticeProfileShots()[cursor.current].activeFrames / 216000,
+            GetPracticeProfileShots()[cursor.current].activeFrames / 3600 % 60,
+            GetPracticeProfileShots()[cursor.current].activeFrames / 60 % 60);
+        position.y = 414.0f;
+        g_AsciiManagerView->AddFormatText(
+            &position, "    %5d", GetPracticeProfileShots()[cursor.current].difficultyClears[difficulty]);
+
+        g_AsciiManagerView->color = 0xffffffffu;
+        g_AsciiManagerView->drawShadow = 0;
+        break;
     }
-
-    unsigned char *shotProfile = reinterpret_cast<unsigned char *>(
-        reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
-        static_cast<unsigned int>(cursor.current) * 0x437cu);
-    ascii->color = 0xffffffffu;
-    position.x = 328.0f;
-    position.y = 378.0f;
-    ascii->AddFormatText(
-        &position, "    %5d",
-        *reinterpret_cast<int *>(shotProfile + 0x4c8));
-
-    int playTimeFrames =
-        *reinterpret_cast<int *>(shotProfile + 0x4cc);
-    position.y = 396.0f;
-    ascii->AddFormatText(
-        &position, "%3d:%.2d:%.2d", playTimeFrames / 216000,
-        playTimeFrames / 3600 % 60, playTimeFrames / 60 % 60);
-
-    position.y = 414.0f;
-    ascii->AddFormatText(
-        &position, "    %5d",
-        *reinterpret_cast<int *>(shotProfile + 0x4d0 + difficulty * 4));
-    ascii->color = 0xffffffffu;
-    ascii->drawShadow = 0;
+    }
     return 1;
 }
 
@@ -3186,13 +3189,6 @@ static __forceinline void EraseScoreEntryCharacter(FrontEndControllerView &contr
     controller.scoreEntryName[cursor] = ' ';
 }
 
-struct ScoreEntryShotView
-{
-    unsigned char prefix[8];
-    FrontEndScoreTableView scores;
-    unsigned char remaining[0x437c - 8 - sizeof(FrontEndScoreTableView)];
-};
-
 struct ScoreEntryProfileView
 {
     ScoreEntryShotView shots[2][3];
@@ -3203,6 +3199,9 @@ struct ScoreEntryProfileView
 typedef char ScoreEntryProfileOffsets[
     (sizeof(ScoreEntryShotView) == 0x437c &&
      offsetof(ScoreEntryShotView, scores.records) == 0x18 &&
+     offsetof(ScoreEntryShotView, sessionStarts) == 0x4c8 &&
+     offsetof(ScoreEntryShotView, activeFrames) == 0x4cc &&
+     offsetof(ScoreEntryShotView, difficultyClears) == 0x4d0 &&
      offsetof(ScoreEntryProfileView, lastName) == 0x1d878) ? 1 : -1];
 
 static __forceinline FrontEndScoreTableView &GetCurrentScoreEntryTable()
