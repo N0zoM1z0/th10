@@ -846,18 +846,57 @@ void EclVmHost::StopAllThreads()
 }
 
 
-// Model the disabled scalar trace suggested by FORMAT's unused text copy.
-// Argument evaluation remains observable; the original trace definition is unknown.
-static void EclDebugTrace(const char *format)
+// The FORMAT debug sink is inactive in retail. Operand resolution still
+// happens at each conversion specifier.
+static void EclDebugTrace(const char *format, ...)
 {
 }
 
-static void EclDebugTrace(const char *format, int value)
+template <typename Result>
+static __forceinline void TraceFormatArgument(
+    EclVmContext *vm, const char *scratch, unsigned int argumentIndex)
 {
-}
-
-static void EclDebugTrace(const char *format, float value)
-{
+    const int inlineBytes =
+        reinterpret_cast<const EclVmFormatInlinePrefixView *>(
+            vm->instruction->operands)->inlineBytes;
+    const EclVmFormatArgumentView *argument =
+        reinterpret_cast<const EclVmFormatArgumentView *>(
+            reinterpret_cast<unsigned int>(
+                vm->instruction->operands) +
+            static_cast<unsigned int>(sizeof(int)) +
+            static_cast<unsigned int>(inlineBytes) +
+            static_cast<unsigned int>(argumentIndex) *
+            static_cast<unsigned int>(sizeof(EclVmFormatArgumentView)));
+    // FORMAT arguments follow the counted inline text. Word addresses
+    // use the original i386 arithmetic, which wraps at 32 bits.
+    const char argumentType = argument->type;
+    if (argumentType == 'f' || argumentType == 'g') {
+        EclDebugTrace(scratch, static_cast<Result>(EclVmContext::ReadFloatValue(
+            argumentIndex + 1u, vm,
+            reinterpret_cast<const EclVmScalar *>(
+                reinterpret_cast<unsigned int>(vm->instruction) +
+                static_cast<unsigned int>(
+                    offsetof(EclVmInstruction, scalarOperands)) +
+                (static_cast<unsigned int>(
+                    inlineBytes / static_cast<int>(sizeof(int))) +
+                 2u + static_cast<unsigned int>(argumentIndex) *
+                    static_cast<unsigned int>(
+                        sizeof(EclVmFormatArgumentView) /
+                        sizeof(int))) * 4u)->real)));
+    } else {
+        EclDebugTrace(scratch, static_cast<Result>(vm->ReadIntValue(
+            argumentIndex + 1u,
+            reinterpret_cast<const EclVmScalar *>(
+                reinterpret_cast<unsigned int>(vm->instruction) +
+                static_cast<unsigned int>(
+                    offsetof(EclVmInstruction, scalarOperands)) +
+                (static_cast<unsigned int>(
+                    inlineBytes / static_cast<int>(sizeof(int))) +
+                 2u + static_cast<unsigned int>(argumentIndex) *
+                    static_cast<unsigned int>(
+                        sizeof(EclVmFormatArgumentView) /
+                        sizeof(int))) * 4u)->integer)));
+    }
 }
 
 
@@ -888,8 +927,6 @@ int EclVmContext::Run(float timeDelta)
 
     while (static_cast<float>((*instructionCursor)->time) <= currentTime) {
         EclVmInstruction *current = *instructionCursor;
-        int instructionOffset;
-        EclVmInstruction *advanceInstruction;
 
         if ((difficultyMask & current->difficultyMask) != 0) {
             switch (current->opcode) {
@@ -995,10 +1032,11 @@ int EclVmContext::Run(float timeDelta)
             case ECL_VM_JUMP:
 jump_instruction:
             {
-                advanceInstruction = *instructionCursor;
-                currentTime = static_cast<float>(advanceInstruction->jumpOperands.targetTime);
-                instructionOffset = advanceInstruction->jumpOperands.instructionByteOffset;
-                goto advance_instruction;
+                EclVmInstruction *const branch = *instructionCursor;
+                currentTime = static_cast<float>(branch->jumpOperands.targetTime);
+                *instructionCursor = branch->AtByteOffset(
+                    branch->jumpOperands.instructionByteOffset);
+                continue;
             }
 
             case ECL_VM_SUBTRACT_TIME:
@@ -1282,9 +1320,9 @@ jump_instruction:
             case ECL_VM_BITWISE_XOR:
             {
                 EclVmScalar right;
-                right.integer = PopInt(this);
+                stack.Pop('i', sizeof(right.integer), &right.integer);
                 EclVmScalar left;
-                left.integer = PopInt(this);
+                stack.Pop('i', sizeof(left.integer), &left.integer);
                 PushInt(this, left.integer ^ right.integer);
                 break;
             }
@@ -1292,9 +1330,9 @@ jump_instruction:
             case ECL_VM_BITWISE_OR:
             {
                 EclVmScalar right;
-                right.integer = PopInt(this);
+                stack.Pop('i', sizeof(right), &right);
                 EclVmScalar left;
-                left.integer = PopInt(this);
+                stack.Pop('i', sizeof(left), &left);
                 PushInt(this, left.integer | right.integer);
                 break;
             }
@@ -1302,9 +1340,9 @@ jump_instruction:
             case ECL_VM_BITWISE_AND:
             {
                 EclVmScalar right;
-                right.integer = PopInt(this);
+                stack.Pop('i', sizeof(right.integer), &right.integer);
                 EclVmScalar left;
-                left.integer = PopInt(this);
+                stack.Pop('i', sizeof(left.integer), &left.integer);
                 PushInt(this, left.integer & right.integer);
                 break;
             }
@@ -1429,54 +1467,13 @@ jump_instruction:
                         EclDebugTrace(scratch);
                         break;
                     case 'd':
-                    case 'f':
-                    {
-                        const int inlineBytes =
-                            reinterpret_cast<const EclVmFormatInlinePrefixView *>(
-                                instruction->operands)->inlineBytes;
-                        const EclVmFormatArgumentView *argument =
-                            reinterpret_cast<const EclVmFormatArgumentView *>(
-                                reinterpret_cast<unsigned int>(
-                                    instruction->operands) +
-                                static_cast<unsigned int>(sizeof(int)) +
-                                static_cast<unsigned int>(inlineBytes) +
-                                static_cast<unsigned int>(argumentIndex) *
-                                static_cast<unsigned int>(sizeof(EclVmFormatArgumentView)));
-                        // FORMAT is a counted scalar word stream, not a
-                        // C++ one-element scalarOperands array. The original
-                        // i386 index * 4 address arithmetic wraps at 32 bits.
-                        const char argumentType = argument->type;
-                        if (argumentType == 'f' || argumentType == 'g') {
-                            EclDebugTrace(scratch, ReadFloatValue(
-                                argumentIndex + 1u, this,
-                                reinterpret_cast<const EclVmScalar *>(
-                                    reinterpret_cast<unsigned int>(instruction) +
-                                    static_cast<unsigned int>(
-                                        offsetof(EclVmInstruction, scalarOperands)) +
-                                    (static_cast<unsigned int>(
-                                        inlineBytes / static_cast<int>(sizeof(int))) +
-                                     2u + static_cast<unsigned int>(argumentIndex) *
-                                        static_cast<unsigned int>(
-                                            sizeof(EclVmFormatArgumentView) /
-                                            sizeof(int))) * 4u)->real));
-                            ++argumentIndex;
-                        } else {
-                            EclDebugTrace(scratch, ReadIntValue(
-                                argumentIndex + 1u,
-                                reinterpret_cast<const EclVmScalar *>(
-                                    reinterpret_cast<unsigned int>(instruction) +
-                                    static_cast<unsigned int>(
-                                        offsetof(EclVmInstruction, scalarOperands)) +
-                                    (static_cast<unsigned int>(
-                                        inlineBytes / static_cast<int>(sizeof(int))) +
-                                     2u + static_cast<unsigned int>(argumentIndex) *
-                                        static_cast<unsigned int>(
-                                            sizeof(EclVmFormatArgumentView) /
-                                            sizeof(int))) * 4u)->integer));
-                            ++argumentIndex;
-                        }
+                        TraceFormatArgument<int>(this, scratch, argumentIndex);
+                        ++argumentIndex;
                         break;
-                    }
+                    case 'f':
+                        TraceFormatArgument<double>(this, scratch, argumentIndex);
+                        ++argumentIndex;
+                        break;
                     }
                     cursor = reinterpret_cast<const char *>(
                         reinterpret_cast<unsigned int>(percent) + 2u);
@@ -1492,11 +1489,8 @@ jump_instruction:
             }
         }
 
-        advanceInstruction = *instructionCursor;
-        instructionOffset = advanceInstruction->size;
-advance_instruction:
-        *instructionCursor = advanceInstruction->AtByteOffset(
-            instructionOffset);
+        EclVmInstruction *const next = instruction;
+        *instructionCursor = next->AtByteOffset(next->size);
     }
 
     currentTime += timeDelta;

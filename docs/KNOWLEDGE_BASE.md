@@ -500,9 +500,10 @@ frontier; do not refresh a baseline merely to accept the new positions.
     direct signed timestamp comparison and the real by-value factories.
     The focused traces and comparisons are in
     `.analysis/anm-execute/results.txt`. [2026-11-23]
-- **EclVmContext::Run @0x44E1A0 (7,020)**: the current GameManager
-  and player-collision links match 7,001 bytes, with 189 bound fields and
-  62 fixed local destinations. The direct read from the packed spawn
+- **EclVmContext::Run @0x44E1A0 (7,020)**: the maintained GameManager
+  link matches 7,009 bytes, with 189 bound fields and 62 fixed local
+  destinations. The earlier GameManager and player-collision links matched
+  7,001 bytes. The direct read from the packed spawn
   operand recovers +0xEC/+0xF1 and +0x12A/+0x12C without moving the other
   19 differences.
   The helper returning an integer gave the operand a global candidate
@@ -592,6 +593,21 @@ frontier; do not refresh a baseline merely to accept the new positions.
   7,012 matching bytes. The context-first comparison and the stack-view
   comparison expose different constraints around the late stack loads.
   The traces and complete comparisons are in `.analysis/ecl-run/`.
+
+  The typed FORMAT paths, direct bitwise operand reads and independent
+  PC writes now reside in the maintained source. The receiver-first
+  probe remains separate. In that probe, explicit float operand slots
+  move the address-order differences from equality through less-than
+  and greater-than as the stack receiver changes. Giving greater-than
+  its own receiver and using a word pop in the first conditional jump
+  restores every float comparison. A separate stack receiver for only
+  one of AND's two operands then restores the first jump tag and one
+  raw AND read. The result is 7,016/7,020, with only the second AND word,
+  integer negate, raw float negate and the first sine word differing.
+  An explicit sine argument and result from the preceding 7,014-byte
+  probe also gives 7,016, with the earlier jump tag in place of the AND
+  difference. These changes preserve the full extent, all 189 fields
+  and the 171-byte float resolver. [2026-11-24]
 
   The anonymous `FORMAT` tag-byte cursor stays at `ESP+0x18`, the same
   home as the named `x` in `LENGTH_SQUARED`. The cursor has weight six
