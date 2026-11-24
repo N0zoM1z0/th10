@@ -1609,6 +1609,13 @@ register preservation or mod-ref assumptions) where our builds exploit it
 
 ### FrontEnd and result menu
 
+- `FrontEndControllerView::UpdateCharacter` at `0x004306A0` checks all
+  six Extra unlock bytes, runs the opening timer on entry, and samples
+  horizontal input before cancel and confirm. Four separately scoped
+  `AnmVmIdView` results keep one stack slot. The VM slot member supplies
+  the real lookup's receiver in ESI and aggregate result in EDI. With the
+  free-function form the final three calls computed those addresses in
+  reverse order. Both source entry points share the child-search body.
 - `FrontEndControllerView::UpdateStage` at `0x00430FF0` has five phases
   and shares the opening timer check with initialization. The inlined cursor
   clamp handles count zero and both selection bounds. The practice unlock

@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `frontend-character-update` | 956 B | `FrontEndStageSelect`, 53 fields, five phases and four child calls sharing one result slot. Both lookup entry points, the title dispatcher, and the adjacent selection handlers pass. |
 | `frontend-stage-update` | 1,052 B | `FrontEndStageSelect`, 80 fields, five phases and two numeric-key ladders. The real EDX keyboard snapshot, title dispatcher and 12 other guards match in the same image. |
 | `result-menu-draw-rows` | 1,062 B | `ResultMenuRows`, 56 fields, four jump destinations and ten selector bytes. The callback, name-entry overlay, formatter and string queue also match in the same image. |
 | `laser-type1-circle-split` | 1,108 B | `LaserType1CircleSplit`, 29 fields, inlined viewport tests and the ordered fragment lengths. The script loader and primary VM registrar also match in the same image. |
@@ -50,12 +51,6 @@ comparison only for its source and link graph.
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
 ## Open owner
-
-`FrontEndControllerView::UpdateCharacter` at `0x004306A0` is the active
-owner. The `frontend-character-update` candidate in
-`FrontEndStageSelect` has the full 956-byte extent and five phase
-destinations. The three later child-VM lookups still calculate the
-root and result addresses in reverse order.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

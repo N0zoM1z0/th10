@@ -1865,6 +1865,29 @@ int __stdcall FrontEndControllerView::UpdateDifficulty(
 AnmVmIdView ResultMenuFindScript(AnmVmIdView *id, int scriptIndex);
 static __forceinline unsigned int ReadReplayMenuPressedInput();
 
+static __forceinline AnmVmIdView FindAnimationChild(AnmVmIdView &id, int scriptIndex)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(id);
+    if (vm == NULL)
+        id.value = 0;
+    AnmVmLayerNodeView *node;
+    for (node = &vm->layerNode; node != NULL; node = node->next)
+    {
+        AnmVmView *entry = static_cast<AnmVmView *>(node->owner);
+        if (entry->scriptIndex == scriptIndex)
+            break;
+    }
+    if (node == NULL)
+        return AnmVmIdView(0);
+    return AnmVmIdView(static_cast<AnmVmView *>(node->owner)->id);
+}
+
+
+__declspec(noinline) AnmVmIdView FrontEndVmIdStorageView::FindChild(int scriptIndex)
+{
+    return FindAnimationChild(static_cast<AnmVmIdView &>(*this), scriptIndex);
+}
+
 // TH10_FRONTEND_FUNCTION: 0x004306A0 FrontEndControllerView::UpdateCharacter
 int __stdcall FrontEndControllerView::UpdateCharacter(
     FrontEndControllerView *controller)
@@ -1934,25 +1957,24 @@ int __stdcall FrontEndControllerView::UpdateCharacter(
         }
         else if ((pressed & FRONT_END_INPUT_CONFIRM) != 0)
         {
-            AnmVmIdView *root =
-                &static_cast<AnmVmIdView &>(controller->vmIds[0x7d]);
+            FrontEndVmIdStorageView *root = &controller->vmIds[0x7d];
             {
-                AnmVmIdView child = ResultMenuFindScript(root, cursor->current + 0x79);
+                AnmVmIdView child = root->FindChild(cursor->current + 0x79);
                 child.SetInterrupt(6);
             }
             {
-                AnmVmIdView child = ResultMenuFindScript(
-                    root, controller->cursor.current + 0x7b);
+                AnmVmIdView child = root->FindChild(
+                    controller->cursor.current + 0x7b);
                 child.SetInterrupt(6);
             }
             {
-                AnmVmIdView child = ResultMenuFindScript(
-                    root, 0x7a - controller->cursor.current);
+                AnmVmIdView child = root->FindChild(
+                    0x7a - controller->cursor.current);
                 child.SetInterrupt(1);
             }
             {
-                AnmVmIdView child = ResultMenuFindScript(
-                    root, 0x7c - controller->cursor.current);
+                AnmVmIdView child = root->FindChild(
+                    0x7c - controller->cursor.current);
                 child.SetInterrupt(1);
             }
             FrontEndPlaySound(FRONT_END_SOUND_SELECT);
@@ -4322,21 +4344,8 @@ void ResultMenuPendingThree(AnmVmIdView *id)
 // an unresolved input ID but still walks vm+0x10: a valid VM is a precondition.
 AnmVmIdView ResultMenuFindScript(AnmVmIdView *id, int scriptIndex)
 {
-    AnmVmView *vm = g_AnmRenderManagerView->FindVm(*id);
-    if (vm == NULL)
-        id->value = 0;
-    AnmVmLayerNodeView *node;
-    for (node = &vm->layerNode; node != NULL; node = node->next)
-    {
-        AnmVmView *entry = static_cast<AnmVmView *>(node->owner);
-        if (entry->scriptIndex == scriptIndex)
-            break;
-    }
-    if (node == NULL)
-        return AnmVmIdView(0);
-    return AnmVmIdView(static_cast<AnmVmView *>(node->owner)->id);
+    return FindAnimationChild(*id, scriptIndex);
 }
-
 // ResultMenu slots have the same four-byte representation as VM IDs but
 // deliberately omit the default constructor's early zero stores.
 static void ResultMenuPendingThree(ResultMenuVmIdStorage *id)

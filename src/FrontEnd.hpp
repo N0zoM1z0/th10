@@ -213,6 +213,7 @@ struct FrontEndVmIdStorageView
     {
         return *reinterpret_cast<const AnmVmIdView *>(this);
     }
+    AnmVmIdView FindChild(int scriptIndex);
     void SetInterrupt(short interrupt)
     {
         static_cast<AnmVmIdView &>(*this).SetInterrupt(interrupt);
