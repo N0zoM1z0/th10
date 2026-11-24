@@ -68,13 +68,12 @@ comparison only for its source and link graph.
 ## Open owner
 
 `EnemyFullObjectView::EnemyFullObjectView` at `0x0040D830` is active.
-Compare the complete 673-byte constructor through `EnemySpawn`. The
-current source calls the real ECL subroutine resolver and separates the
-threshold and callback-name initialization passes. In the dispatcher
-link it produces 676 bytes. A single eight-byte clear in the embedded
-context constructor brings most of the body into alignment, but changes
-the first two stores. Preserve the separate exact base constructors and
-resolve this initialization schedule before cold replay.
+The dispatcher link matches all 673 bytes and five fields with the shared
+ECL stack, typed context reset and separate threshold stores. The actual
+spawn caller, base and runtime constructors, script lookup and ECL
+thread spawn also match there. The candidate `EnemyFullConstructor`
+recipe links just the Enemy and ECL sources through `EnemySpawn`. Cold
+replay that recipe and check the original base-constructor link.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

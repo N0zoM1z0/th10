@@ -299,7 +299,6 @@ char g_EnemyResourceLoadErrorFormat[] =
 // 0x1008-byte operand-storage state. The two cursors are the only fields that
 // this constructor initializes; the containing ECL host owns the rest.
 EnemyEclContextView::EnemyEclContextView()
-    : operandStackOffset(0), localStorageOffset(0)
 {
 }
 
@@ -1416,14 +1415,24 @@ EnemyBulletPatternView::EnemyBulletPatternView()
 }
 
 static __forceinline void InitializeConstructedEnemyContext(
-    EnemyEclHostBaseView *enemy, unsigned int retainedFlags)
+    EclVmContext &context, EclVmHost *host, unsigned int retainedFlags)
 {
-    enemy->embeddedEclContext.currentTime = 0.0f;
-    enemy->embeddedEclContext.currentInstruction = NULL;
-    enemy->embeddedEclContext.operandResolver = enemy;
-    enemy->flags1028 = retainedFlags & ~1u;
-    int *contextValue = &enemy->value1020;
-    *contextValue = 0;
+    context.currentTime = 0.0f;
+    context.instruction = NULL;
+    context.host = host;
+    context.flags = retainedFlags & ~1u;
+    int *threadControl = &context.threadControl;
+    *threadControl = 0;
+}
+
+static __forceinline void ClearEnemyLifeCounters(EnemyRuntimeView &runtime)
+{
+    int *life = &runtime.life;
+    *life = 0;
+    int *gaugeReference = &runtime.lifeGaugeReference;
+    *gaugeReference = 0;
+    int *nextCallback = &runtime.lifeToNextCallback;
+    *nextCallback = 0;
 }
 
 // Maintained logical constructor for target 0x0040D830-0x0040DAD0. The target
@@ -1436,7 +1445,8 @@ EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
 
     memset(&enemy->runtime, 0, sizeof(enemy->runtime));
 
-    InitializeConstructedEnemyContext(enemy, enemy->flags1028);
+    EclVmHost *host = reinterpret_cast<EclVmHost *>(enemy);
+    InitializeConstructedEnemyContext(host->embeddedContext, host, host->embeddedContext.flags);
     enemy->activeEclContext = &enemy->embeddedEclContext;
     int *bindingState = &enemy->embeddedEclContext.unknown1010;
     *bindingState = -1;
@@ -1493,17 +1503,33 @@ EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
     enemy->activeEclContext->currentInstruction = instruction;
     enemy->activeEclContext->currentTime = 0.0f;
 
-    enemy->runtime.life = 0;
-    enemy->runtime.lifeGaugeReference = 0;
-    enemy->runtime.lifeToNextCallback = 0;
+    ClearEnemyLifeCounters(enemy->runtime);
 
-    for (int i = 0; i < 8; ++i)
-    {
-        enemy->runtime.callbackThresholds[i].lifeThreshold = -1;
-        enemy->runtime.callbackThresholds[i].timerThreshold = -1;
-    }
-    for (int i = 0; i < 8; ++i)
-        enemy->runtime.callbackThresholds[i].lifeCallbackName = NULL;
+    enemy->runtime.callbackThresholds[0].lifeThreshold = -1;
+    enemy->runtime.callbackThresholds[0].timerThreshold = -1;
+    enemy->runtime.callbackThresholds[1].lifeThreshold = -1;
+    enemy->runtime.callbackThresholds[1].timerThreshold = -1;
+    enemy->runtime.callbackThresholds[2].lifeThreshold = -1;
+    enemy->runtime.callbackThresholds[2].timerThreshold = -1;
+    enemy->runtime.callbackThresholds[3].lifeThreshold = -1;
+    enemy->runtime.callbackThresholds[3].timerThreshold = -1;
+    enemy->runtime.callbackThresholds[4].lifeThreshold = -1;
+    enemy->runtime.callbackThresholds[4].timerThreshold = -1;
+    enemy->runtime.callbackThresholds[5].lifeThreshold = -1;
+    enemy->runtime.callbackThresholds[5].timerThreshold = -1;
+    enemy->runtime.callbackThresholds[6].lifeThreshold = -1;
+    enemy->runtime.callbackThresholds[6].timerThreshold = -1;
+    enemy->runtime.callbackThresholds[7].lifeThreshold = -1;
+    enemy->runtime.callbackThresholds[7].timerThreshold = -1;
+
+    enemy->runtime.callbackThresholds[0].lifeCallbackName = NULL;
+    enemy->runtime.callbackThresholds[1].lifeCallbackName = NULL;
+    enemy->runtime.callbackThresholds[2].lifeCallbackName = NULL;
+    enemy->runtime.callbackThresholds[3].lifeCallbackName = NULL;
+    enemy->runtime.callbackThresholds[4].lifeCallbackName = NULL;
+    enemy->runtime.callbackThresholds[5].lifeCallbackName = NULL;
+    enemy->runtime.callbackThresholds[6].lifeCallbackName = NULL;
+    enemy->runtime.callbackThresholds[7].lifeCallbackName = NULL;
 }
 
 // Maintained source for target 0x0040CFB0 plus its compiler-owned alignment and

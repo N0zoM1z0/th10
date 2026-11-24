@@ -205,7 +205,7 @@ struct EclVmStackView
     int stackTop;
     int frameBase;
 
-    EclVmStackView();
+    EclVmStackView() : stackTop(0), frameBase(0) {}
     int Push(unsigned char type, int size, const void *value);
     int Pop(unsigned char type, int size, void *value);
     bool PopWord(void *destination);

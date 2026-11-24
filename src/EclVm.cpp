@@ -45,12 +45,6 @@ void EclVmPolarVectorView::FromAngleMagnitude(float angle, float magnitude)
 }
 
 
-EclVmStackView::EclVmStackView()
-    : stackTop(0), frameBase(0)
-{
-}
-
-
 int EclVmStackView::Push(
     unsigned char type, int size, const void *value)
 {

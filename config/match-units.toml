@@ -1958,6 +1958,29 @@ target_address = 0x0040C800
 size = 15
 linkages = []
 
+[units.enemy-full-constructor]
+artifact_kind = "linked-pe"
+source = "src/Enemy.cpp"
+output_dir = "build/match-linked/EnemyFullConstructor"
+support_sources = ["src/EclVm.cpp"]
+support_profiles = { "src/EclVm.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?EnemySpawn@@YGPAUEnemyFullObjectView@@PAUEnemyManagerView@@PBDPBUEnemySpawnRequestView@@@Z"
+functions = ["EnemyFullObjectView::EnemyFullObjectView"]
+symbol = "??0EnemyFullObjectView@@QAE@PBD@Z"
+target_address = 0x0040D830
+size = 673
+candidate = true
+linkages = [
+  { offset = 0x01B, type = "DIR32", symbol = "??_7EnemyFullObjectView@@6B@", target = 0x0046D0C0 },
+  { offset = 0x020, type = "REL32", symbol = "??0EnemyRuntimeView@@QAE@XZ", target = 0x0040CC70 },
+  { offset = 0x121, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
+  { offset = 0x1C3, type = "DIR32", symbol = "?g_EnemyManager@@3PAUEnemyManagerView@@A", target = 0x00477704 },
+  { offset = 0x1E8, type = "REL32", symbol = "?FindSubroutine@EclVmScriptDatabase@@QAEPAUEclVmInstruction@@PBD@Z", target = 0x00450470 },
+]
+
 [units.enemy-runtime-constructor]
 artifact_kind = "linked-pe"
 source = "src/Enemy.cpp"
@@ -5042,25 +5065,6 @@ relocations = []
 # live-ins arise naturally from the six-TU /GL /GS /EHsc call graph.
 # The local generated handler is bound by its complete one-state unwind
 # protocol; the anchored image is diagnostic and not a runnable game.
-[units.enemy-full-constructor]
-artifact_kind = "linked-pe"
-source = "src/EnemyEclDispatcher.cpp"
-support_sources = ["src/Enemy.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/EclVm.cpp", "src/Player.cpp", "src/PlayerCollision.cpp", "src/VmIdInterrupt.cpp", "src/FrontEnd.cpp", "src/ItemManager.cpp", "src/Main.cpp", "src/Sound.cpp", "src/Gui.cpp", "src/Hint.cpp", "src/GameManager.cpp", "src/GuiScoreDisplay.cpp", "src/GuiSpellNotice.cpp", "src/StageAnimationSlots.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/BulletLifecycle.cpp", "src/ScriptViewerWorker.cpp", "src/StageLifecycle.cpp", "src/ReplayManager.cpp", "src/GameObjectReset.cpp", "src/ReplayStageHelpers.cpp", "src/InputState.cpp", "src/ReplayStageRestore.cpp", "src/EnemyLaserManager.cpp", "src/GameManagerLifecycle.cpp", "src/MainConfiguration.cpp", "src/FileSystem.cpp", "src/Decompress.cpp", "src/AnmLoadedStartScript.cpp", "src/PlayerHudStartSpell.cpp", "src/AnmVmStartScript.cpp", "src/BulletManager.cpp", "src/BulletTransform.cpp", "src/EclWorldAnchor.cpp", "src/EnemyLaser.cpp", "src/EnemyMotion.cpp", "src/GuiMessage.cpp", "src/BulletCancelArea.cpp"]
-support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/RandomMath.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmVmCreate.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmVmId.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/EclVm.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Player.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/PlayerCollision.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/VmIdInterrupt.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/FrontEnd.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ItemManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Main.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Gui.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Hint.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/GameManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/GuiScoreDisplay.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/GuiSpellNotice.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/StageAnimationSlots.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/TransitionEffect.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Chain.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/BulletLifecycle.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ScriptViewerWorker.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/StageLifecycle.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ReplayManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/GameObjectReset.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/ReplayStageHelpers.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/InputState.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ReplayStageRestore.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/EnemyLaserManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/GameManagerLifecycle.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/MainConfiguration.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/FileSystem.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmLoadedStartScript.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/PlayerHudStartSpell.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/AnmVmStartScript.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/BulletManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/BulletTransform.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/EclWorldAnchor.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/EnemyLaser.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/GuiMessage.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/BulletCancelArea.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"] }
-normal_support_sources = ["src/Decompress.cpp", "src/EnemyMotion.cpp"]
-profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"]
-link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
-harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ"
-pdb_source = "src/Enemy.cpp"
-output_dir = "build/match-linked/EnemyEclDispatcher"
-functions = ["EnemyFullObjectView::EnemyFullObjectView"]
-symbol = "??0EnemyFullObjectView@@QAE@PBD@Z"
-target_address = 0x0040D830
-size = 673
-candidate = true
-linkages = []
-
 [units.gui-message-constructor]
 artifact_kind = "linked-pe"
 source = "src/EnemyEclDispatcher.cpp"

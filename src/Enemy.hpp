@@ -753,9 +753,7 @@ struct EnemyEclContextView
         float currentTime;
     };
     EnemyEclInstructionView *currentInstruction;
-    unsigned char unknown008[0x1000];
-    int operandStackOffset;
-    int localStorageOffset;
+    EclVmStackView stack;
     int unknown1010;
     EnemyEclHostBaseView *operandResolver;
 };
@@ -767,9 +765,9 @@ typedef char EnemyEclContextTimeAt000[
 typedef char EnemyEclContextInstructionAt004[
     (offsetof(EnemyEclContextView, currentInstruction) == 0x004) ? 1 : -1];
 typedef char EnemyEclContextOperandStackAt1008[
-    (offsetof(EnemyEclContextView, operandStackOffset) == 0x1008) ? 1 : -1];
+    (offsetof(EnemyEclContextView, stack.stackTop) == 0x1008) ? 1 : -1];
 typedef char EnemyEclContextLocalStorageAt100C[
-    (offsetof(EnemyEclContextView, localStorageOffset) == 0x100c) ? 1 : -1];
+    (offsetof(EnemyEclContextView, stack.frameBase) == 0x100c) ? 1 : -1];
 typedef char EnemyEclContextResolverAt1014[
     (offsetof(EnemyEclContextView, operandResolver) == 0x1014) ? 1 : -1];
 
