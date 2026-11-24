@@ -64,10 +64,11 @@ active. Compare the complete 850-byte helper through its three calls in
 unused-row clear.
 The candidate now reads typed spell history, uses the catalog index in
 both formats, and clears stale row handles in all three lookup paths.
-The strongest instruction comparison emits 834 bytes and aligns 230
-of the target's 267 instructions. The named row still needs the
-manager in ESI, the score pointer in ECX and two capture loads.
-Passing a capture/attempt pair reaches 850 bytes with different registers.
+The current 834-byte comparison aligns 231 of 267 instructions, including
+the first 104 and most of the masked and blank paths. The named row still
+needs the manager in ESI, the score pointer in ECX and two capture loads.
+A typed capture/attempt pair reaches 850 bytes with different registers.
+The title callback root leaves the scalar comparison unchanged.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

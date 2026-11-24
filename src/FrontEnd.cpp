@@ -3000,8 +3000,9 @@ int FrontEndControllerView::RefreshPracticeRecords()
     }
 
     practiceDisplayedEntries = 0;
-    FrontEndVmIdStorageView *rowId = practiceRowVmIds;
-    for (int row = 0; row < FRONT_END_PRACTICE_ROWS_PER_PAGE; ++row, ++rowId)
+    int row = 0;
+    for (FrontEndVmIdStorageView *rowId = practiceRowVmIds;
+         row < FRONT_END_PRACTICE_ROWS_PER_PAGE; ++row, ++rowId)
     {
         while (record < FRONT_END_PRACTICE_RECORD_COUNT &&
                g_FrontEndPracticeDifficulties[record] !=
@@ -3012,13 +3013,13 @@ int FrontEndControllerView::RefreshPracticeRecords()
 
         if (record >= FRONT_END_PRACTICE_RECORD_COUNT)
         {
-            FrontEndVmIdStorageView *unusedRow = &practiceRowVmIds[row];
-            for (; row < FRONT_END_PRACTICE_ROWS_PER_PAGE; ++row, ++unusedRow)
+            for (; row < FRONT_END_PRACTICE_ROWS_PER_PAGE; ++row)
             {
+                FrontEndVmIdStorageView &unusedRow = practiceRowVmIds[row];
                 AnmRenderManagerView *manager = g_AnmRenderManagerView;
-                AnmVmView *vm = FindPracticeRecordVm(manager, unusedRow->value);
+                AnmVmView *vm = FindPracticeRecordVm(manager, unusedRow.value);
                 if (vm == NULL)
-                    unusedRow->value = 0;
+                    unusedRow.value = 0;
                 manager->DrawTextCentered(vm, 0xffffffffu, " ");
             }
             break;
@@ -3041,7 +3042,31 @@ int FrontEndControllerView::RefreshPracticeRecords()
             name[length] = '\0';
             GameStatisticsRecord &shot = profile->records[cursor.current];
             AnmRenderManagerView *manager = g_AnmRenderManagerView;
-            AnmVmView *vm = FindPracticeRecordVm(manager, rowId->value);
+            int id = rowId->value;
+            AnmVmView *vm;
+            if (id != 0)
+            {
+                for (AnmVmLayerNodeView *node = manager->primaryVmListHead;
+                     node != NULL; node = node->next)
+                {
+                    if (static_cast<AnmVmView *>(node->owner)->id == id)
+                    {
+                        vm = static_cast<AnmVmView *>(node->owner);
+                        goto resolvedPracticeVm;
+                    }
+                }
+                for (AnmVmLayerNodeView *node = manager->secondaryVmListHead;
+                     node != NULL; node = node->next)
+                {
+                    if (static_cast<AnmVmView *>(node->owner)->id == id)
+                    {
+                        vm = static_cast<AnmVmView *>(node->owner);
+                        goto resolvedPracticeVm;
+                    }
+                }
+            }
+            vm = NULL;
+        resolvedPracticeVm:
             if (vm == NULL)
                 rowId->value = 0;
             GameStatisticsSpellHistoryEntryView *result = shot.SpellHistoryAt(record);
