@@ -1609,6 +1609,13 @@ register preservation or mod-ref assumptions) where our builds exploit it
 
 ### FrontEnd and result menu
 
+- `ResultMenuDrawRows` at `0x00422660` owns three pairs of phases, four
+  jump destinations and a ten-byte selector map. Its ASCII formatter takes
+  the text position in EBX. The score path reads the active profile and
+  difficulty again after `localtime`. Field-specific lookups keep the
+  original row-base displacements. Reading shot type through the shared
+  startup-state view keeps it after the color store. Using that view for the
+  character word as well changed the score-address SIB byte.
 - `FrontEndControllerView::Update` at `0x0042CDF0` receives the controller
   in EAX from the registered callback. Its jump table has 17 entries.
   The initialization branches share the score-entry, replay, and menu-return

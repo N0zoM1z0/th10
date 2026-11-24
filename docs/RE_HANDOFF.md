@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `result-menu-draw-rows` | 1,062 B | `ResultMenuRows`, 56 fields, four jump destinations and ten selector bytes. The callback, name-entry overlay, formatter and string queue also match in the same image. |
 | `laser-type1-circle-split` | 1,108 B | `LaserType1CircleSplit`, 29 fields, inlined viewport tests and the ordered fragment lengths. The script loader and primary VM registrar also match in the same image. |
 | `frontend-update-dispatcher` | 1,128 B | `FrontEndReplay`, 99 fields, 17 jump destinations, the idle-demo state and the EAX callback. The five linked menus, the Practice menu and the replay destructor keep their exact code. |
 | `main-init-d3d-rendering` | 1,159 B | `MainInitD3dRendering`, 100 fields, the full HAL/REF fallback and selected back-buffer format. The logs, reset and screen-color functions match in the same image. WinMain matches in its own link. |
@@ -48,12 +49,6 @@ comparison only for its source and link graph.
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
 ## Open owner
-
-`ResultMenuDrawRows` at `0x00422660` is the active owner. Use
-`result-menu-draw-rows` in `ResultMenuRows` to compare all 1,062 bytes.
-The replay rows and name-entry path line up, and typed score records
-restore the complete extent. Continue with selection loads and record
-addressing in the ranking loop.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

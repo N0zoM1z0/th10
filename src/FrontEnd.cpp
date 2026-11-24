@@ -4816,7 +4816,21 @@ void __stdcall ResultMenuDrawNameEntry(ResultMenuView *menu, AnmFloat3View posit
     g_AsciiManagerView->color = 0xffffffffu;
 }
 
-// Target 0x422660. ASCII+8988 selects the queued text shadow, not a game lock.
+static __forceinline FrontEndScoreTableView &GetResultRowsScoreTable()
+{
+    const FrontEndDemoStateView &run =
+        reinterpret_cast<const FrontEndDemoStateView &>(g_GameStartupState);
+    ScoreEntryProfileView *profile =
+        reinterpret_cast<ScoreEntryProfileView *>(g_FrontEndProfileData);
+    return profile->shots[g_ReplayCharacter][run.shotType].scores;
+}
+
+static __forceinline FrontEndScoreRecordView &GetResultRowsScoreRecord(int row)
+{
+    return GetResultRowsScoreTable().records[g_ReplayDifficulty][row];
+}
+
+// Target 0x422660. ASCII +0x8988 enables the queued text shadow.
 int __stdcall ResultMenuDrawRows(ResultMenuView *menu)
 {
     g_AsciiManagerView->drawShadow = 1;
@@ -4898,26 +4912,26 @@ int __stdcall ResultMenuDrawRows(ResultMenuView *menu)
         {
             g_AsciiManagerView->color = row == selected ?
                 0xffffff00u : 0xff808080u;
-            if (GetCurrentScoreEntryTable().records[g_ReplayDifficulty][row].timestamp != 0)
+            if (GetResultRowsScoreRecord(row).timestamp != 0)
             {
-                FrontEndScoreTableView *table = &GetCurrentScoreEntryTable();
+                FrontEndScoreTableView *table = &GetResultRowsScoreTable();
                 tm *date = localtime(&table->records[g_ReplayDifficulty][row].timestamp);
                 // Resample the score selection after localtime.
-                FrontEndScoreRecordView &record =
-                    GetCurrentScoreEntryTable().records[g_ReplayDifficulty][row];
                 g_AsciiManagerView->AddFormatText(&position,
                     "%2d %s %.9ld%d %.2d/%.2d/%.2d %s", row + 1,
-                    record.name, static_cast<long>(record.score), record.scoreSuffix,
+                    GetResultRowsScoreRecord(row).name,
+                    static_cast<long>(GetResultRowsScoreRecord(row).score),
+                    GetResultRowsScoreRecord(row).scoreSuffix,
                     date->tm_year % 100, date->tm_mon + 1, date->tm_mday,
-                    g_FrontEndStageNames[record.stageNameIndex]);
+                    g_FrontEndStageNames[GetResultRowsScoreRecord(row).stageNameIndex]);
             }
             else
             {
-                FrontEndScoreRecordView &record =
-                    GetCurrentScoreEntryTable().records[g_ReplayDifficulty][row];
                 g_AsciiManagerView->AddFormatText(&position,
                     "%2d %s %.9ld%d --/--/-- Stage -", row + 1,
-                    record.name, static_cast<long>(record.score), record.scoreSuffix);
+                    GetResultRowsScoreRecord(row).name,
+                    static_cast<long>(GetResultRowsScoreRecord(row).score),
+                    GetResultRowsScoreRecord(row).scoreSuffix);
             }
             position.y += 18.0f;
         }
