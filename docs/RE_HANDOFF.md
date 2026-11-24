@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `frontend-score-entry-update` | 1,400 B | `FrontEndReplay`, 80 fields and four phase destinations. The score insert uses the EDI receiver and both indexed name copies match. |
 | `frontend-shot-type-update` | 1,424 B | `FrontEndReplay`, 90 fields and five phase destinations. The child lookup, VM flag and interrupt owners pass in the same link. |
 | `player-initialize` | 1,435 B | `PlayerInitialize`, 49 fields, the EBX receiver from `PlayerCreate` and both callback registrations. The factory and option-file loader compare in their own link graphs. |
 | `frontend-replay-save-update` | 1,460 B | `FrontEndReplay`, 86 fields and five phase destinations. Replay loading, saving, slot destruction and both music calls also pass in the same link. |
@@ -35,17 +36,6 @@ comparison only for its source and link graph.
 | `enemy-dispatch-ecl` | 14,416 B | `EnemyEclDispatcher`, 726 fields, 118 jump destinations and 181 opcode selectors. The selected replay includes dialog EH and the drop-flush body. |
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
-
-## Open owner
-
-`FrontEndControllerView::UpdateScoreEntry` at `0x00432CB0` is the active
-owner. The `frontend-score-entry-update` recipe emits the full 1,400 bytes
-through the title dispatcher and binds all 80 fields. The typed score
-table restores the insertion receiver in EDI. Both name copies now match.
-The only residual is the editor cursor store moving ahead of the compare,
-which changes 11 bytes at `+0x3AD` through `+0x3B7`.
-Build the unit and run `scripts/repo-python scripts/check-frontier.py
-frontend-score-entry-update --no-build --show` to inspect this residual.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

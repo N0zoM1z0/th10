@@ -1568,7 +1568,11 @@ register preservation or mod-ref assumptions) where our builds exploit it
   and the route at 474788. Indexing the draft name by the distance walked
   from the profile name restores the initial copy. Keep the rank-record
   and profile-name writes together in the confirm branch so the second
-  copy uses the original source base.
+  copy uses the original source base. Bind the controller object before
+  calling the shared character writer on both keyboard paths. This lets
+  VC7.1 compare the incremented length before storing it. Binding the
+  object only there also preserves the original confirm-copy addressing.
+  The complete comparison binds all 80 fields and all four phases.
 - `ResultMenuUpdateResult` has a 0x4C frame: `char replayPath[64]`, two temporary DWORDs (one is the 25-item replay-list cleanup countdown) and the `/GS` cookie. The state-8 VM id is built through hidden-return storage `[ESP+0x14]` before `ResultMenuPendingSix`.
   - The table index is `shot + character*3`.
   - `GuiView::value9E78` holds the published score.

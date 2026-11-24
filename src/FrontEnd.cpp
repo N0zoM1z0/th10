@@ -3201,15 +3201,16 @@ static __forceinline int UpdateScoreEntryScreen(
                 const char *alphabet = g_FrontEndScoreEntryAlphabet;
                 int alphabetLength = strlen(alphabet);
                 int key = controller->scoreEntryKeyboardCursor.current;
+                FrontEndControllerView &editor = *controller;
                 if (key < alphabetLength - 3)
                 {
                     WriteScoreEntryCharacter(
-                        *controller, alphabet[key], alphabetLength);
+                        editor, alphabet[key], alphabetLength);
                     FrontEndPlaySound(FRONT_END_SOUND_SELECT);
                 }
                 else if (key == alphabetLength - 3)
                 {
-                    WriteScoreEntryCharacter(*controller, ' ', alphabetLength);
+                    WriteScoreEntryCharacter(editor, ' ', alphabetLength);
                     FrontEndPlaySound(FRONT_END_SOUND_SELECT);
                 }
                 else if (key == alphabetLength - 2)
