@@ -144,7 +144,7 @@ struct EnemyLaserType0CollisionView
         const EnemyLaserTrimVector *size,
         int capture);
     int CheckCollisionCircle(
-        EnemyLaserVectorView *center,
+        const EnemyLaserTrimVector *center,
         float radius,
         int capture);
 };
@@ -295,151 +295,151 @@ done:
 }
 
 
+static inline EnemyLaserTrimVector operator*(
+    float scale, const EnemyLaserTrimVector &vector)
+{
+    return EnemyLaserTrimVector(scale * vector.x, scale * vector.y, scale * vector.z);
+}
+
 int EnemyLaserType0CollisionView::CheckCollisionCircle(
-    EnemyLaserVectorView *center,
+    const EnemyLaserTrimVector *center,
     float radius,
     int capture)
 {
-    EnemyLaserVectorView originalPosition = position;
+    int hitCount = 0;
+    int sampleCount = 0;
+    EnemyLaserTrimVector originalPosition = position;
     unsigned char hits[256];
     memset(hits, 0, sizeof(hits));
 
-    int sampleCount = 0;
-    int hitCount = 0;
     float distance = 6.0f;
-    const float radiusSquared = radius * radius;
-
-    EnemyLaserVectorView step;
+    EnemyLaserTrimVector step;
     step.z = 0.0f;
     step.FromAngleMagnitude(angle, 6.0f);
+    EnemyLaserTrimVector sample;
+    sample = step + position;
+    sample.z = 0.0f;
+    step *= 2.0f;
+    radius *= radius;
 
-    EnemyLaserVectorView sample;
-    sample.x = position.x + step.x;
-    sample.y = position.y + step.y;
-    sample.z = position.z + step.z;
-
-    step.x += step.x;
-    step.y += step.y;
-    step.z += step.z;
-
-    while (distance + 6.0f < length)
     {
-        const float dx = center->x - sample.x;
-        const float dy = center->y - sample.y;
-        if (dx * dx + dy * dy <= radiusSquared)
+        while (distance + 6.0f <= length)
         {
-            hits[sampleCount] = 1;
-            ++hitCount;
-
-            if (capture != 0 &&
-                -192.0f <= sample.x + 32.0f &&
-                sample.x - 32.0f < 192.0f &&
-                0.0f <= sample.y + 32.0f &&
-                sample.y - 32.0f < 448.0f)
+            EnemyLaserTrimVector *point = &sample;
+            float dy = center->y - point->y;
+            float dx = center->x - point->x;
+            if (!(dx * dx + dy * dy > radius))
             {
-                g_ItemManager->Spawn(
-                    reinterpret_cast<const AnmFloat3View *>(&sample),
-                    8, 0xffffffffu, -1.5707964f, 0.6f);
+                hits[sampleCount] = 1;
+                ++hitCount;
+                if (capture &&
+                    !(point->x + 32.0f <= g_EnemyLaserPlayfieldMinimumX) &&
+                    !(point->x - 32.0f >= g_EnemyLaserPlayfieldMaximumX) &&
+                    !(point->y + 32.0f <= g_EnemyLaserPlayfieldMinimumY) &&
+                    !(point->y - 32.0f >= g_EnemyLaserPlayfieldMaximumY))
+                {
+                    g_ItemManager->Spawn(
+                        reinterpret_cast<const AnmFloat3View *>(point),
+                        8, 0xffffffffu, -1.5707964f, 0.6f);
+                }
+
+                int effectScript = request.color * 2 + 0x11;
+                EnemyLaserManagerResourceView *manager =
+                    reinterpret_cast<EnemyLaserManagerResourceView *>(g_EnemyLaserManager);
+                AnmLoadedView *resource = manager->effectResource;
+                AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+                unsigned int flags = vm->flags35C;
+                vm->flags35C = flags | 0x40000000u;
+                unsigned int *renderLayer = &vm->renderLayer;
+                *renderLayer = 0;
+                vm->positionOffset.x = point->x + 224.0f;
+                vm->positionOffset.z = point->z;
+                vm->positionOffset.y = point->y + 16.0f;
+                StartAnmLoadedScript(resource, vm, effectScript);
+                g_AnmRenderManagerView->AddVmVariant0(vm);
             }
 
-            EnemyLaserManagerResourceView *manager =
-                reinterpret_cast<EnemyLaserManagerResourceView *>(
-                    g_EnemyLaserManager);
-            manager->effectResource->CreateVmAtWorldVariant0(
-                static_cast<int>(request.color) * 2 + 0x11,
-                reinterpret_cast<const AnmFloat3View *>(&sample));
+            *point += step;
+            distance += 12.0f;
+            ++sampleCount;
         }
 
-        ++sampleCount;
-        sample.x += step.x;
-        sample.y += step.y;
-        sample.z += step.z;
-        distance += 12.0f;
-    }
-
-    if (hitCount == 0)
-        return 0;
-
-    if (sampleCount <= hitCount)
-    {
-        deletionCounter = 1;
-        return hitCount;
-    }
-
-    int sampleIndex = 0;
-    while (sampleIndex < sampleCount && hits[sampleIndex] != 0)
-        ++sampleIndex;
-
-    if (sampleIndex != 0)
-    {
-        const float prefixScale = static_cast<float>(sampleIndex);
-        const float prefixDistance = prefixScale * 12.0f;
-        position.x += step.x * prefixScale;
-        position.y += step.y * prefixScale;
-        position.z += step.z * prefixScale;
-        length -= prefixDistance;
-        if (length <= 18.0f)
+        if (hitCount == 0)
+            goto done;
+        if (hitCount >= sampleCount)
         {
             deletionCounter = 1;
             return hitCount;
         }
-        request.maximumLength = length;
-        tailOffset = prefixDistance;
-    }
 
-    int gapLength = 0;
-    while (sampleIndex < sampleCount && hits[sampleIndex] == 0)
-    {
-        ++sampleIndex;
-        ++gapLength;
-    }
-
-    if (sampleIndex >= sampleCount)
-        return hitCount;
-
-    const float firstGapLength =
-        static_cast<float>(gapLength) * 12.0f;
-    request.maximumLength -= length - firstGapLength;
-    length = firstGapLength;
-    if (firstGapLength < 18.0f)
-        deletionCounter = 1;
-
-    while (sampleIndex < sampleCount)
-    {
-        while (sampleIndex < sampleCount && hits[sampleIndex] != 0)
+        int sampleIndex = 0;
+        while (sampleIndex < sampleCount && hits[sampleIndex])
             ++sampleIndex;
+
+        if (sampleIndex)
+        {
+            position += step * static_cast<float>(sampleIndex);
+            float prefixDistance = static_cast<float>(sampleIndex) * 12.0f;
+            length -= prefixDistance;
+            if (length > 18.0f)
+            {
+                request.maximumLength = length;
+                tailOffset = prefixDistance;
+            }
+            else
+            {
+                deletionCounter = 1;
+                return hitCount;
+            }
+        }
+
+        int firstRun = 0;
+        while (sampleIndex < sampleCount && !hits[sampleIndex])
+        {
+            ++sampleIndex;
+            ++firstRun;
+        }
+
         if (sampleIndex >= sampleCount)
-            return hitCount;
+            goto done;
 
-        gapLength = 0;
-        const int gapStart = sampleIndex;
-        while (sampleIndex < sampleCount && hits[sampleIndex] == 0)
+        float firstLength = firstRun * 12.0f;
+        request.maximumLength -= length - firstLength;
+        length = firstLength;
+        if (firstLength < 18.0f)
+            deletionCounter = 1;
+
+        while (sampleIndex < sampleCount)
         {
-            ++sampleIndex;
-            ++gapLength;
-        }
+            while (sampleIndex < sampleCount && hits[sampleIndex])
+                ++sampleIndex;
+            if (sampleIndex >= sampleCount)
+                break;
 
-        EnemyLaserType0RequestView args = request;
-        const float segmentLength =
-            static_cast<float>(gapLength) * 12.0f;
-        args.maximumLength = segmentLength;
-        args.initialLength = segmentLength;
+            int run = 0;
+            int runStart = sampleIndex;
+            while (sampleIndex < sampleCount && !hits[sampleIndex])
+            {
+                ++sampleIndex;
+                ++run;
+            }
 
-        if (18.0f < segmentLength)
-        {
-            const float start = static_cast<float>(gapStart);
-            args.position.x = originalPosition.x + step.x * start;
-            args.position.y = originalPosition.y + step.y * start;
-            args.position.z = originalPosition.z + step.z * start;
-            reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->Spawn(
-                reinterpret_cast<EnemyLaserRequestScratch *>(&args),
-                0);
+            float runLength = run * 12.0f;
+            EnemyLaserType0RequestView args = request;
+            args.initialLength = runLength;
+            args.maximumLength = runLength;
+            if (runLength > 18.0f)
+            {
+                args.position = originalPosition + static_cast<float>(runStart) * step;
+                reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->Spawn(
+                    reinterpret_cast<EnemyLaserRequestScratch *>(&args), 0);
+            }
         }
     }
 
+done:
     return hitCount;
 }
-
 
 // Natural vector/counter structure follows levzzz5154/th10-decomp, MIT
 // copyright (c) 2026 levzzz, d1f31212514781c928fba145d8207397c8fb5650,

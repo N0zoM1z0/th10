@@ -923,7 +923,7 @@ AnmVmView *AnmRenderManagerView::AllocateVm()
     return vm;
 }
 
-AnmVmIdView AnmRenderManagerView::AddVmVariant0(AnmVmView *vm)
+__declspec(noinline) AnmVmIdView AnmRenderManagerView::AddVmVariant0(AnmVmView *vm)
 {
     AnmVmLayerNodeView *node = &vm->managerNode;
     node->owner = vm;

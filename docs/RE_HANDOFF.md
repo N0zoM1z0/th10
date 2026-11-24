@@ -44,6 +44,12 @@ comparison only for its source and link graph.
 
 ## Open owner
 
+`EnemyLaserType0CollisionView::CheckCollisionCircle` at `0x0041DD80` is
+the active owner. The `laser-line-circle-trim` candidate has the full
+1,238-byte extent and all 33 fields. The squared-distance test, viewport,
+VM creation and fragment request flow are in place. The remaining
+difference is x87 operand selection for the prefix Y multiplication.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.
