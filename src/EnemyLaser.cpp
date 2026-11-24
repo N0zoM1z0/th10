@@ -11,9 +11,6 @@
 #include <stddef.h>
 #include <string.h>
 
-static __declspec(noinline) unsigned int EnemyFireLaserInternal(
-    void *managerStorage, EnemyLaserRequestScratch *request, int type);
-
 void EnemyLaserVectorView::FromAngleMagnitude(float angle, float magnitude)
 {
 #if defined(_MSC_VER) && defined(_M_IX86)
@@ -267,8 +264,7 @@ int EnemyLaserType0CollisionView::CheckCollisionBox(
             args.position.x = originalPosition.x + step.x * start;
             args.position.y = originalPosition.y + step.y * start;
             args.position.z = originalPosition.z + step.z * start;
-            EnemyFireLaserInternal(
-                g_EnemyLaserManager,
+            reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->Spawn(
                 reinterpret_cast<EnemyLaserRequestScratch *>(&args),
                 0);
         }
@@ -414,8 +410,7 @@ int EnemyLaserType0CollisionView::CheckCollisionCircle(
             args.position.x = originalPosition.x + step.x * start;
             args.position.y = originalPosition.y + step.y * start;
             args.position.z = originalPosition.z + step.z * start;
-            EnemyFireLaserInternal(
-                g_EnemyLaserManager,
+            reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->Spawn(
                 reinterpret_cast<EnemyLaserRequestScratch *>(&args),
                 0);
         }
@@ -528,7 +523,7 @@ int EnemyLaserType1View::CheckCollisionBox(
             args.type = request.type;
             args.color = request.color;
             args.terminalDistance = request.maximumLength - gapStart * 12.0f;
-            EnemyFireLaserInternal(g_EnemyLaserManager,
+            reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->Spawn(
                 reinterpret_cast<EnemyLaserRequestScratch *>(&args), 0);
         }
     }
@@ -640,7 +635,7 @@ int EnemyLaserType1View::CheckCollisionCircle(
             args.type = request.type;
             args.color = request.color;
             args.terminalDistance = request.maximumLength - gapStart * 12.0f;
-            EnemyFireLaserInternal(g_EnemyLaserManager,
+            reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->Spawn(
                 reinterpret_cast<EnemyLaserRequestScratch *>(&args), 0);
         }
     }
@@ -726,7 +721,7 @@ typedef char EnemyLaserType1Layout[
 
 // Target 0x0040CF40. Keep the unusual raw request initialization independent of
 // the enclosing object, as used by the real dispatcher and type-1 constructor.
-EnemyLaserRequestScratch *EnemyInitializeLaserConfig(
+__declspec(noinline) EnemyLaserRequestScratch *EnemyInitializeLaserConfig(
     EnemyLaserRequestScratch *request)
 {
     memset(request, 0, sizeof(*request));
@@ -737,46 +732,44 @@ EnemyLaserRequestScratch *EnemyInitializeLaserConfig(
 // Target 0x0041C510. Allocation failure still reaches the target's null write;
 // no new failure recovery is invented. Unknown types consume an ID but do not
 // allocate or insert. The existing tail is a required sentinel/list node.
-static __declspec(noinline) unsigned int EnemyFireLaserInternal(
-    void *managerStorage, EnemyLaserRequestScratch *request, int type)
+static __forceinline void AppendSpawnedLaser(
+    EnemyLaserManagerStorageView *manager, EnemyLaserConstructionBaseView *laser,
+    const EnemyLaserRequestScratch *request)
 {
-    EnemyLaserManagerStorageView *manager =
-        static_cast<EnemyLaserManagerStorageView *>(managerStorage);
-    if (manager->count >= 256)
-        return 0;
-    if (++manager->nextId == 0)
-        manager->nextId = 1;
-    EnemyLaserConstructionBaseView *laser;
-    switch (type)
-    {
-    case 0:
-        {
-            laser = new EnemyLaserType0StorageView;
-        }
-        break;
-    case 1:
-        {
-            laser = new EnemyLaserType1StorageView;
-        }
-        break;
-    default:
-        return manager->nextId;
-    }
     laser->id = manager->nextId;
     EnemyLaserCommonStorageView *previousTail = manager->tail;
     laser->previous = previousTail;
     previousTail->next = reinterpret_cast<EnemyLaserCommonStorageView *>(laser);
-    ++manager->count;
+    int &count = manager->count;
+    count++;
     manager->tail = reinterpret_cast<EnemyLaserCommonStorageView *>(laser);
     laser->ApplyRequest(request);
-    return manager->nextId;
 }
 
-// Cross-TU dispatcher entry; laser-owned callers use the TU-local helper.
+unsigned int EnemyLaserManagerStorageView::Spawn(
+    EnemyLaserRequestScratch *request, int type)
+{
+    if (count >= 256)
+        return 0;
+    if (++nextId == 0)
+        nextId = 1;
+    switch (type)
+    {
+    case 0:
+        AppendSpawnedLaser(this, new EnemyLaserType0StorageView, request);
+        break;
+    case 1:
+        AppendSpawnedLaser(this, new EnemyLaserType1StorageView, request);
+        break;
+    }
+    return nextId;
+}
+
+// Retain the entry for callers that hold opaque manager storage.
 unsigned int EnemyFireLaser(
     void *managerStorage, EnemyLaserRequestScratch *request, int type)
 {
-    return EnemyFireLaserInternal(managerStorage, request, type);
+    return static_cast<EnemyLaserManagerStorageView *>(managerStorage)->Spawn(request, type);
 }
 
 // Target41CFD0: actual type-0 construction virtual, slot3C of46DA60.
@@ -807,8 +800,8 @@ void EnemyLaserType0StorageView::Bounce()
         state.request.position = projected;
         state.request.angle = EnemyWrapAngle(-state.angle - 3.1415927f);
         state.request.speed = state.patterns[4].values[0].scalar;
-        EnemyFireLaserInternal(g_EnemyLaserManager,
-            reinterpret_cast<EnemyLaserRequestScratch *>(&state.request), 0);
+        reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->Spawn(
+                reinterpret_cast<EnemyLaserRequestScratch *>(&state.request), 0);
         fired = 1;
     }
 
@@ -819,8 +812,8 @@ void EnemyLaserType0StorageView::Bounce()
         state.request.position = projected;
         state.request.angle = -state.angle;
         state.request.speed = state.patterns[4].values[0].scalar;
-        EnemyFireLaserInternal(g_EnemyLaserManager,
-            reinterpret_cast<EnemyLaserRequestScratch *>(&state.request), 0);
+        reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->Spawn(
+                reinterpret_cast<EnemyLaserRequestScratch *>(&state.request), 0);
     }
     else if (!fired) {
         return;

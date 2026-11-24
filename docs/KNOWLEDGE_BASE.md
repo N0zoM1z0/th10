@@ -426,83 +426,6 @@ Latest useful linked-owner state, largest first. Rebuild the affected graph afte
 source changes. `REGRESSED` means residual offsets moved relative to the stored
 frontier; do not refresh a baseline merely to accept the new positions.
 
-- **EnemyRuntimeView::DispatchEclInstruction @0x40E770 (14,416)**: the
-  maintained source emits 14,452 bytes in the `EnemyStartSpell` graph
-  with the reviewed bullet spawner. Scoped spawn requests and the spell
-  name array share the original ESP+0x248 stack slot. Together with
-  scoped position cases and a typed aim result, they give a 14,392-byte
-  probe with 14 of 108 main destinations fixed. The 181 selectors match.
-
-  - The main jump table starts at +0x35C0. The 181 selectors at +0x3770
-    and three alignment bytes precede two five-entry tables at +0x3828
-    and +0x383C. The nested switches belong to difficulty opcodes 0x163
-    and 0x164. The linked comparator checks this layout with one ordinary
-    data span and the actual PE relocations covering both tables.
-  - The local th10-decomp diagnostic reproduces all 14,416 bytes once its
-    726 native fields are bound. Eight data references overlap adjacent
-    four-byte anchors in that graph. The Y component of the camera offset
-    and seven reads of the second scalar interpolation control word use
-    explicit +4 addends. The probe commands are in
-    `.analysis/enemy-ecl-dispatch/results.txt`.
-  - With the actual spell and bullet callees, the reference probe retains
-    the 14,416-byte extent, 118 jump destinations and 726 field bindings.
-    An unused fourth source operand on `StartSpell` restores the spell
-    branch and shared tails. The spell body still matches 2,432 bytes and
-    consumes 16 stack bytes. Putting the manager first in the spawner's
-    source signature restores the descriptor `LEA` before the manager
-    `PUSH`. The physical ABI and all three bullet bodies still match in
-    that image. The co-located runtime probe retains the full layout with
-    actual scalar fields, float reads, timers, argument helpers, chapter
-    state and factory calls. Its sole ordinary difference is at +0x273D,
-    where ECX and ESI exchange SIB roles in the spell-name XOR loop.
-  - Scoped rank-3 and rank-5 count assignments give a 14,408-byte probe
-    in the maintained-source graph with real callees. The 181 selectors
-    and 18 fixed main destinations survive. The low-rank tail still needs
-    the original shared comparison and scaled pattern cursor.
-  - Random movement calls `RngView::GetRandomF32Signed` on `g_RngView`.
-    Screen shake calls `StageCreateTransitionEffect` with priority 0x31.
-    Both bind to real callees in the current probe. Appending the laser and
-    applying its request inside each construction branch restores the
-    factory's ESI manager, EDI request and stack kind with `RET 4`.
-    Incrementing the count through a local `int&` restores the memory
-    `INC`. The full laser translation unit produces all 153 bytes and four
-    fields with its existing callers in the probe graph. The runtime-entry
-    probe also binds all four original call sites directly to that exact
-    body without changing the dispatcher bytes.
-  - The standalone probe uses the repository's actual VM and animation
-    methods, spawn and clear helpers. It keeps the 14,416-byte extent,
-    all 118 jump destinations and all 726 field offsets. Initializing
-    the launch position from origin and displacement in a three-component
-    constructor gives the target x87 operand order in the bullet fire
-    case and most of the laser paths. The remaining differences are the
-    line lasers' X loads and the rank interpolation's pattern address
-    calculation. The spell-name loop matches in this source form.
-  - Rank-3 thresholds are +/-512. Rank-5 uses +/-600 and +/-200.
-    The target spell-name loop initializes its destination at ESP+0x248
-    and forms the source address as a displacement from that cursor.
-  - `FIRE_BULLET_PATTERN` keeps one `EnemyBulletPatternView*` across XYZ
-    publication, the protection-radius check and the actual spawner call.
-  - Paired script writes for bullet sprite IDs, offsets, angles, counts,
-    speeds, sounds and rank interpolation retain the typed pattern/offset
-    receiver after the first store. Preserve the original unchecked
-    modulo-32-bit index arithmetic and operand-read order; hoisting receivers
-    before the first store changed register lifetimes and regressed the owner.
-  - Rank-count and rank-speed branches use typed `EclVmHost*` / active-context
-    access for the second operand read. `AIM_BULLET_AT_PLAYER` retains the
-    original X address and a typed `Player*` for Y. These are natural source
-    repairs; the dispatcher remains nonexact.
-  - `dispatch_copy_player_to_motion` transfers all 12 XYZ bytes with
-    `memcpy`, preserving NaN payloads and signed zero. Pattern initialization
-    clears the complete 0x210-byte record before explicit defaults;
-    `COPY_BULLET_PATTERN` uses complete typed assignment because source and
-    destination indices may be equal. Opcode 0x199 has 22 overlapping
-    0x18-byte extra records per pattern.
-  - Type-0/type-1 laser request paths copy the serialized pattern words into
-    their verified request layouts. Keep their distinct 0x1DC/0x1F8 request
-    sizes and the `EnemyLaserType0/1RequestView` field offsets.
-  - `EnemyManagedVmIdAt` retains the ten four-byte VM handles with unchecked
-    32-bit address arithmetic. Only the flag loops have a proven 0..9 bound.
-
 - **EclVmScriptDatabase::AddScriptData @0x450220 (589)**: the SCPT file
   header is a verified 0x24-byte native layout. Both the subroutine-offset
   table base and optional include-package payload now derive from
@@ -1252,7 +1175,34 @@ register preservation or mod-ref assumptions) where our builds exploit it
 - Full object 0x2518 (EnemySpawn allocs); runtime tail at +0x103C, size 0x14DC, owner back-pointer runtime +0x14D8. Runtime: four 0x2C motion records +0/+0x2C/+0x58/+0x84; collision pairs +0xB0/+0xB8; ten VM ids +0xC0 (update uses 8); spawn params +0xFC (4 int then 4 float, writable lvalues); timer +0x11C; list node +0x130; two 0x4C pos interps +0x13C; four 0x3C scalar interps +0x1D4; reward/life +0x13BC/+0x13C0; drop type +0x13CC, 11 counts +0x13D0; 32.0f at +0x1400/+0x1404; death sound/effect +0x1408; flash +0x1414; timers +0x141C/+0x1430; flags +0x1444; manager slot +0x1450; eight 0x10 callback-threshold records +0x1458.
 - Enemy derives from a 0x103C ECL host (base vtable 0x0046D0D8, five slots + deleting dtor 0x0040C7B0; derived 0x0046D0C0, deleting 0x0040CC50, virtual delete via slot +0x14). Execution ctx full +0x008..+0x101F (0x1018); full +4 active ctx; resolver at ctx +0x1014 = Enemy; alloc list +0x1034; mirror +0x1030. Instruction: opcode +4, operand mask +8, operands from +0x10.
 - EnemyManagerView 0x68: timer +0x40, script DB +0x54, list head/tail +0x58/+0x5C, count +0x60, spawn counter +0x64; callbacks priority 0x12 (update 0x0040D810) / 0x14 (draw 0x0040D820), 0x24-byte nodes with owner at +0x20.
-- Dispatcher @0x0040E770: ECX runtime, RET; opcodes 0x100-0x1B4 (124 active); owner 14416 to 0x00411FBF (code ends 0x00411D2E, 108-entry table, 181-byte selector, two 5-entry difficulty tables at 0x00411F98/0x00411FAC). Laser request scratch at ESP+0x50, spawn request (0x84) at ESP+0x248 below cookie.
+- `EnemyRuntimeView::DispatchEclInstruction` at 0x0040E770 matches all
+  14,416 bytes in `enemy-dispatch-ecl` with VC7.1 SP1 build 6030
+  /GL /GS /EHsc. The main table starts at +0x35C0. The 181 selectors
+  and three alignment bytes at +0x3770 precede two five-entry tables
+  at +0x3828 and +0x383C for opcodes 0x163 and 0x164. The comparison
+  binds 726 fields, including 118 fixed jump destinations and four
+  references to the tables.
+  - The active context's raw instruction is kept in ESI and its signed
+    opcode is saved as a dword. Spawn requests and the spell-name
+    buffer use ESP+0x248. The encrypted-name loop forms the source
+    address as a displacement from its destination cursor.
+  - The spell callee consumes four stack arguments. The fourth source
+    operand is evaluated at the caller and is unused by `StartSpell`.
+    The manager-first source signature of `SpawnBulletPattern` keeps
+    the descriptor in EAX and the manager on the stack. The drop flush
+    also lists the drop record first so C2 forms its position address
+    before the drop address. The dialog uses /EHsc for the real
+    allocation cleanup.
+  - The position constructor preserves x87 operand order for the
+    bullet and laser requests. Writing the first speed range as
+    `high_1 - low_1` restores the final FMULP before the pattern
+    address LEA. The second range retains its inline helper.
+  - The laser factory appends and initializes inside each allocation
+    branch. Incrementing its count through a local reference restores
+    the memory INC. The same image binds all four dispatcher calls
+    to the factory and preserves its ESI manager, EDI request, stack
+    type and RET 4. Diagnostic commands and failed source forms are
+    in `.analysis/enemy-ecl-dispatch/results.txt`.
 - Enemy ANM script state is runtime +0xE8..+0xF8 (five DWORDs): selected resource (+0xE8), primary VM resource/script (+0xEC/+0xF0), base script (+0xF4), and direction (+0xF8). `SELECT_ANM_RESOURCE` writes the selector; `SET_ANM_SCRIPT`/`SET_MAIN_ANM_SCRIPT` publish the primary pair; `PLAY_SELECTED_ANM` and `EnemyRuntimeUpdate` consume the base script/direction; `EnemySpawn` selects the death effect from the primary pair. Source documents the contiguous words with `EnemyAnmScriptStateLayout` (0x14 bytes) and size/member-offset assertions; `EnemyRuntimeView` exposes descriptive direct members so the dispatcher retains its existing LTCG lowering. Targeted exact replays match `EnemyRuntimeUpdate` 2412/2412 and `EnemySpawn` 577/577 (2,989 bytes total).
 - Enemy bullet-pattern records are 0x210 bytes and share the `BulletSpawnDescriptorView` wire layout. The former +0x20 opaque block is now 18 shared `BulletTransformRecordView` records (0x18 each), followed by laser start/end offsets, start length, width and five timing fields through +0x1F3. Tail members +0x1FC..+0x20C are `transformFlags`, `spawnSound`, `transformSound`, `transformStartIndex` and `templateSprites`; +0x1FA remains an unclassified halfword. ECL opcode 0x199 uses a 22-record overlapping 0x18-byte view beginning at +0x20, so records 20/21 intentionally cross the pattern tail and next-pattern boundary. The opcode now writes the shared transform payload/kind/allow fields rather than a duplicate provisional record; cross-view offsets are asserted.
 - Adapters: ReadIntArgument 0x00412A00 (EAX runtime, ECX index; 30 direct dispatcher calls, others inline), ResolveIntArgument 0x00412A10 (9 calls), ReadFloatArgument 0x00412A60 (no callers), ResolveFloatArgument 0x00412A70 (tail-jumps to 0x00450070).

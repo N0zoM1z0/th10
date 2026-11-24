@@ -48,7 +48,7 @@ struct EnemyGameStateView
     int UpdateSpellPanel();
     int DrawPanelVms();
     void InvalidateSpellBonus();
-    void __stdcall StartSpell(int index, const char *name, int duration);
+    void __stdcall StartSpell(int index, const char *name, int duration, int);
 };
 typedef char EnemySpellEmbeddedVmsAt10[
     (offsetof(EnemyGameStateView, stageVms) == 0x10) ? 1 : -1];

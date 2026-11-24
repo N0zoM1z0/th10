@@ -2987,7 +2987,7 @@ void AnmLoadedView::SetAndExecuteScriptIdx(
     ++g_AnmRenderManagerView->scriptsStartedThisFrame;
 }
 
-AnmVmIdView AnmLoadedView::CreateVmVariant0(
+__declspec(noinline) AnmVmIdView AnmLoadedView::CreateVmVariant0(
     int scriptIndex, unsigned int renderLayer)
 {
     AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
@@ -3060,7 +3060,7 @@ AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant1(
     return g_AnmRenderManagerView->AddVmVariant1(vm);
 }
 
-AnmVmIdView __stdcall AnmLoadedView::CreateVmVariant2(
+__declspec(noinline) AnmVmIdView __stdcall AnmLoadedView::CreateVmVariant2(
     int scriptIndex, unsigned int renderLayer)
 {
     AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();

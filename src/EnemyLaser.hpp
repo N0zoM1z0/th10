@@ -288,6 +288,7 @@ struct EnemyLaserManagerStorageView
 
     EnemyLaserManagerStorageView() { memset(this, 0, sizeof(*this)); g_EnemyLaserManager = reinterpret_cast<EnemyLaserManagerView *>(this); }
     int Initialize();
+    __declspec(noinline) unsigned int Spawn(EnemyLaserRequestScratch *request, int type);
     int UpdateLinkedLasers();
     int AccumulatePointChecks(EnemyLaserVectorView *point, float radius);
 };

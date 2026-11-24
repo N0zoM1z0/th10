@@ -196,8 +196,7 @@ void BulletRuntimeView::AdvanceTransformProgram()
             pattern.transformSound = -1;
             memcpy(pattern.transforms, this->transforms, sizeof(pattern.transforms));
             SpawnBulletPattern(
-                &pattern,
-                reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager));
+                reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager), &pattern);
             ++this->transformIndex;
             if (despawnAfter == 0)
                 continue;

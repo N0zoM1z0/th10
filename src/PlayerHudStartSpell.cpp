@@ -106,7 +106,7 @@ static __forceinline AnmVmView *FindPanelChild(int &handle, int script)
 }
 
 void __stdcall EnemyGameStateView::StartSpell(
-    int index, const char *name, int duration)
+    int index, const char *name, int duration, int)
 {
     const int spellIndex = index;
     spellTimer.SetCurrent(0);

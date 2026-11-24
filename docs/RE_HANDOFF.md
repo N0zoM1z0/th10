@@ -24,6 +24,7 @@ the compiler observations behind the source changes.
 
 | Unit | Bytes | Relevant context |
 | --- | ---: | --- |
+| `enemy-dispatch-ecl` | 14,416 | `EnemyEclDispatcher` link, 726 fields, 118 jump destinations and 181 opcode selectors. The cold replay also verifies the dialog EH and drop-flush bodies. |
 | `bullet-transform-program` | 1,604 | UpdateBullets-rooted link, 38 fields, five absolute switch entries and 128 selectors. Credits 1,454 code bytes. |
 | `bullet-spawn-pattern-exact` | 194 | Same link, six fields. EAX descriptor and stack manager at both real callers. |
 | `enemy-start-spell` | 2,432 | `EnemyStartSpell` link, 108 fields and eight fixed local destinations. The real dispatcher passes four stack arguments. |
@@ -79,7 +80,6 @@ memory OR precedes them. Build `front-end-music-skip-line` to refresh the
 
 | Owner | Current comparison and next action |
 | --- | --- |
-| `EnemyRuntimeView::DispatchEclInstruction` | The standalone C++ probe with real VM, ANM, spawn, spell and cancel callees emits 14,416 bytes with all 181 opcode selectors, 118 jump destinations and 726 address-field offsets. The position constructor aligns the spell-name loop and leaves 22 ordinary differences in rank interpolation and the X loads of two line lasers. The linked dialog helper still needs its allocation EH shape in the cold graph. See `.analysis/enemy-ecl-dispatch/results.txt`. |
 | `MidiOutputView::LoadTrackFile` | `midi-load-track-file` matches 442 of 448 bytes with six bound fields. The ECX header copy's larger priority reverses two loads and the length reuses the header's stack colour. The retained cursor-returning reader recovers the stack homes in a 446-byte probe. See `.analysis/midi-event/results.txt`. |
 | `InitializeGameStatisticsRecord` | `game-statistics-initialize-record` matches 249 of 274 bytes with eight bound fields. The reference's literal name copy restores the word stores and zeros EDX, then spills the outer count. Investigate the lifetime of the name destination. |
 

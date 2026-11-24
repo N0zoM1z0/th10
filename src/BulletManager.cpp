@@ -811,7 +811,7 @@ int BulletSpawnDescriptorView::SpawnSingleBullet(
 
 
 int __stdcall SpawnBulletPattern(
-    BulletSpawnDescriptorView *descriptor, BulletManagerView *manager)
+    BulletManagerView *manager, BulletSpawnDescriptorView *descriptor)
 {
     int index2;
     int index1;
