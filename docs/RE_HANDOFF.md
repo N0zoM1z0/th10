@@ -56,6 +56,12 @@ comparison only for its source and link graph.
 
 ## Open owner
 
+`EnemyFullObjectView::ReadFloatOperand` at `0x00412350` is active.
+Compare all 884 bytes, including its 51-entry selector table, with
+`enemy-read-float-operand` in the native animation initializer link.
+The live link matches all 884 bytes and 84 fields with separate player
+coordinate cases and one result variable. The integer reader also matches.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.
