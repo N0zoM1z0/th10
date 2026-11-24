@@ -776,6 +776,15 @@ frontier; do not refresh a baseline merely to accept the new positions.
   the exact keyboard snapshot, rank counter and pending-interrupt bodies.
   The MIT-licensed reference spell-record update supplied the loop and
   call-boundary leads. [2026-11-24]
+- **FrontEndControllerView::DrawScoreEntry @0x433230 (826)**: all 35
+  fields match through the registered title draw callback. Read the title's
+  live score table at each field expression. In VC7.1 this keeps the
+  row-offset induction in EDI and folds the table reads within each format
+  path. The dated path selects the score row again after `localtime`.
+  Separate formatter calls for alphabet letters and the three control
+  cells let C2 use EBP for the row shade and then the keyboard length. The
+  calls merge with the text position in EBX. The local TH10 reference
+  supplied the separate-call lead. [Reference license](licenses/th10-decomp-MIT.txt)
 - **GameResetGui @0x413BC0 (1,965)** is exact with 52 bound fields and
   73 fixed local branches in the GameManager update graph. Each loop
   walks flag-word addresses with a stride of `sizeof(AnmVmView)`. C2

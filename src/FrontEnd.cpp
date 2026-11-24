@@ -3471,30 +3471,34 @@ int __stdcall FrontEndControllerView::DrawScoreEntry(
                     ? 0xff404040u : 0xffffffffu;
             }
 
-            FrontEndScoreTableView *table =
-                GetFrontEndScoreTable(g_ReplayShotType + g_ReplayCharacter * 3);
-            if (table->records[difficulty][row].timestamp != 0)
+            if (GetCurrentScoreEntryTable().records[difficulty][row].timestamp != 0)
             {
-                tm *date = localtime(&table->records[difficulty][row].timestamp);
-                const FrontEndScoreRecordView &record =
-                    GetFrontEndScoreTable(g_ReplayShotType + g_ReplayCharacter * 3)
-                        ->records[difficulty][row];
+                tm *date = localtime(
+                    &GetCurrentScoreEntryTable().records[difficulty][row].timestamp);
                 g_AsciiManagerView->AddFormatText(
                     &position,
                     "%2d  %s  %9ld%d  %.4d/%.2d/%.2d %.2d:%.2d  %s  %2.1f%%",
-                    rank, record.name, record.score, record.scoreSuffix,
+                    rank,
+                    GetCurrentScoreEntryTable().records[difficulty][row].name,
+                    GetCurrentScoreEntryTable().records[difficulty][row].score,
+                    GetCurrentScoreEntryTable().records[difficulty][row].scoreSuffix,
                     date->tm_year + 1900, date->tm_mon + 1,
                     date->tm_mday, date->tm_hour, date->tm_min,
-                    g_FrontEndStageNames[record.stageNameIndex],
-                    static_cast<double>(record.slowdownRate));
+                    g_FrontEndStageNames[
+                        GetCurrentScoreEntryTable().records[difficulty][row].stageNameIndex],
+                    static_cast<double>(
+                        GetCurrentScoreEntryTable().records[difficulty][row].slowdownRate));
             }
             else
             {
-                const FrontEndScoreRecordView &record = table->records[difficulty][row];
                 g_AsciiManagerView->AddFormatText(
                     &position, "%2d  %s  %9ld%d  ----/--/-- --:--  Stage -  ---%%",
-                    rank, record.name, record.score, record.scoreSuffix,
-                    static_cast<double>(record.slowdownRate));
+                    rank,
+                    GetCurrentScoreEntryTable().records[difficulty][row].name,
+                    GetCurrentScoreEntryTable().records[difficulty][row].score,
+                    GetCurrentScoreEntryTable().records[difficulty][row].scoreSuffix,
+                    static_cast<double>(
+                        GetCurrentScoreEntryTable().records[difficulty][row].slowdownRate));
             }
             position.y += 18.0f;
         }
