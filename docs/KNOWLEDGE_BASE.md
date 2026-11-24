@@ -614,9 +614,26 @@ frontier; do not refresh a baseline merely to accept the new positions.
   The phase flow follows the reference implementation from
   the MIT-licensed `_reference/th10-decomp` options source and was verified
   in this repository's `frontend-options-update` link. [2026-11-24]
-- **PlayerUpdateCallbackBody @0x425730 (3,112)**: 3,100. `FLD 1.0; FMUL scale`
-  operand order is reversed, the table base is 4 bytes early and the effect-loop
-  EDI subframe differs. [2026-11-12]
+- **PlayerUpdateCallbackBody @0x425730 (3,112)** matches the entire owner in
+  the `ClaudeReplayInitLoadScript` link with 112 fields and five state-table
+  destinations. Naming the options array preserves the position store before
+  the four reset flags. The effect row uses a motion record at `+0x18` with a
+  typed velocity member at row `+0x24`, followed by the timer at `+0x44`.
+  C2 13.10.6030 uses separate cursors for the radius and velocity. Advancing
+  the radius cursor before the row index gives the retail instruction order.
+  Updating the countdown through the same helper as the highlight timer
+  preserves EBX for the earlier respawn cancel argument. Expanding that
+  countdown directly rematerializes `push 1` and shifts state 1 by a byte.
+  The bounds subtraction result and the focus timer's scale accessor recover
+  the later x87 operand order. The motion and timer layout was checked against
+  the MIT-licensed `_reference/th10-decomp` Player update before comparison
+  in the repository's own link recipe. [2026-11-24]
+- **PlayerHandleCollisionHit @0x426CF0 (627)** emits 526 bytes in the current
+  link. Both hit-effect factories stay outlined since `58e9e8eb` made
+  `CreateVmVariant0` non-inlined for the ECL dispatcher. The existing target
+  match at `462debf9` applies to the earlier compiler context. The two
+  current calls need the target's inline allocate, initialize and add
+  sequence. [2026-11-24]
 - **FrontEndUpdateMusicRoom @0x433EF0 (2,796)** now has the full target
   extent and all 106 fields. The phase 1 and 2 table entries start two
   bytes and one byte early, respectively. The current sound helper restores

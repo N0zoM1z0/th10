@@ -2065,8 +2065,119 @@ static void SubtractPlayerTimerStep(PlayerTimerView *timer, const float &step)
     if (*timer->scale > 0.99f && *timer->scale < 1.01f)
         timer->subframe -= step;
     else
-        timer->subframe -= step * *timer->scale;
+    {
+        double scaledStep = *timer->scale;
+        scaledStep *= step;
+        timer->subframe -= static_cast<float>(scaledStep);
+    }
     timer->current = static_cast<int>(timer->subframe);
+}
+
+static __forceinline PlayerFloat3 SubtractPlayerBoundsVector(
+    const PlayerFloat3 &position, const PlayerFloat3 &extent)
+{
+    PlayerFloat3 result;
+    result.x = position.x - extent.x;
+    result.y = position.y - extent.y;
+    result.z = position.z - extent.z;
+    return result;
+}
+
+static __forceinline float PlayerUpdateTimerSpeed(const PlayerTimerView &timer)
+{
+    return *timer.scale;
+}
+
+static __forceinline void TickPlayerUpdateTimer(PlayerTimerView &timer)
+{
+    timer.previous = timer.current;
+    if (*timer.scale > 0.99f && PlayerUpdateTimerSpeed(timer) < 1.01f)
+    {
+        ++timer.current;
+        timer.subframe += 1.0f;
+    }
+    else
+    {
+        timer.current = static_cast<int>(timer.subframe += *timer.scale);
+    }
+}
+
+// The effect update uses the motion at row +0x18 and a separate lifetime.
+struct PlayerEffectMovement
+{
+    PlayerFloat3 position;
+    EnemyRuntimeVectorView velocity;
+    float speed;
+    float angle;
+    float radius;
+    float radiusDelta;
+    unsigned char flags;
+    unsigned char reserved[3];
+
+    void UpdateVelocity()
+    {
+        if ((flags & 1) == 0)
+        {
+            velocity.FromAngleMagnitude(angle, speed);
+            velocity.z = 0.0f;
+        }
+        else
+        {
+            radius += radiusDelta;
+            angle = EnemyWrapAngle(speed + angle);
+        }
+    }
+
+    __forceinline void Advance()
+    {
+        reinterpret_cast<EnemyMotionView *>(this)->AdvanceMotion();
+    }
+};
+
+struct PlayerUpdatingEffectRow
+{
+    float radius;
+    float radiusDelta;
+    float angle;
+    float angleDelta;
+    float extentX;
+    float extentY;
+    PlayerEffectMovement movement;
+    PlayerTimerView lifetime;
+    int damage;
+    int hitAccumulator;
+    int hitCap;
+    int collisionInterval;
+    unsigned int activeFlags;
+};
+typedef char PlayerUpdatingEffectRowLayout[
+    (sizeof(PlayerUpdatingEffectRow) == sizeof(PlayerEffectRowView) &&
+     sizeof(PlayerEffectMovement) == sizeof(EnemyMotionView) &&
+     offsetof(PlayerEffectMovement, velocity) == 0x0c &&
+     offsetof(PlayerEffectMovement, flags) == 0x28 &&
+     offsetof(PlayerUpdatingEffectRow, movement) == 0x18 &&
+     offsetof(PlayerUpdatingEffectRow, lifetime) == 0x44 &&
+     offsetof(PlayerUpdatingEffectRow, activeFlags) == 0x68) ? 1 : -1];
+
+static __forceinline void UpdatePlayerEffects(Player *player)
+{
+    PlayerUpdatingEffectRow *circle =
+        reinterpret_cast<PlayerUpdatingEffectRow *>(player->effectRows);
+    PlayerUpdatingEffectRow *table = circle;
+    for (int i = 0; i < 32; ++circle, ++i)
+    {
+        PlayerUpdatingEffectRow &effect = table[i];
+        if (effect.activeFlags & 1)
+        {
+            effect.movement.UpdateVelocity();
+            effect.movement.Advance();
+            circle->radius += effect.radiusDelta;
+            effect.angle += effect.angleDelta;
+            SubtractPlayerTimerStep(&effect.lifetime, g_PlayerTimerUnitStep470AFC);
+            if (effect.lifetime.current <= 0)
+                effect.activeFlags &= ~1u;
+        }
+    }
 }
 
 // Target 0x00425730-0x00426357 receives the Player owner on the stack and owns
@@ -2087,10 +2198,11 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
                 static_cast<unsigned int>(player->updateTimer1.current) * 8000u) / 60;
         player->drawPosition.y = (float)player->positionY * 0.01f;
 
-        player->options[0].resetFlag = 1;
-        player->options[1].resetFlag = 1;
-        player->options[2].resetFlag = 1;
-        player->options[3].resetFlag = 1;
+        PlayerOptionRuntime *option = player->options;
+        option[0].resetFlag = 1;
+        option[1].resetFlag = 1;
+        option[2].resetFlag = 1;
+        option[3].resetFlag = 1;
 
         // Match the low-32-bit SHL and signed loop comparison in retail.
         for (i = 32; i > static_cast<int>(
@@ -2291,35 +2403,7 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
         break;
     }
 
-    PlayerEffectRowView *row = player->effectRows;
-    for (i = 0; i < 32; ++i, ++row)
-    {
-        PlayerEffectMotionView &motion = row->motion;
-        if ((motion.activeFlags & 1) == 0)
-            continue;
-
-        if ((motion.motionFlags & 1) == 0)
-        {
-            reinterpret_cast<EnemyRuntimeVectorView *>(
-                &motion.velocity)->FromAngleMagnitude(
-                    motion.angularStep, motion.angle);
-            motion.velocity.z = 0.0f;
-        }
-        else
-        {
-            motion.timerStep += motion.timerStepDelta;
-            motion.angularStep =
-                EnemyWrapAngle(motion.angle + motion.angularStep);
-        }
-
-        reinterpret_cast<EnemyMotionView *>(&row->position)->AdvanceMotion();
-        row->radius += row->radiusDelta;
-        row->angle += row->angleDelta;
-
-        SubtractPlayerTimerStep(&motion.timer, g_PlayerTimerUnitStep470AFC);
-        if (motion.timer.current <= 0)
-            motion.activeFlags &= ~1u;
-    }
+    UpdatePlayerEffects(player);
 
     if (player->highlightTimer.current > 0)
     {
@@ -2348,13 +2432,14 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
     player->derivedMax0 = player->drawPosition + player->extent0;
     player->derivedVectors[0] = player->drawPosition - player->extent1 * 0.5f;
     player->derivedVectors[1] = player->drawPosition + player->extent1 * 0.5f;
-    player->derivedVectors[2] = player->drawPosition - player->extent2;
+    player->derivedVectors[2] =
+        SubtractPlayerBoundsVector(player->drawPosition, player->extent2);
     player->derivedVectors[3] = player->drawPosition + player->extent2;
     player->derivedVectors[4] = player->drawPosition - player->extent1;
     player->derivedVectors[5] = player->drawPosition + player->extent1;
 
     player->updateTimer1.Tick();
-    player->updateTimer2.Tick();
+    TickPlayerUpdateTimer(player->updateTimer2);
 
     if (g_PlayerDrawGate9EB8->value9EB8 == 0 &&
         g_PlayerDrawGate10 != NULL &&

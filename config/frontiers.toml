@@ -54,16 +54,6 @@ candidate_size = 510
 target_sha256 = "9be793018926bde16b0e725a6ccab3da97d461af2c129e67ac0aa32a131dded7"
 residual = ["3", "5", "7", "A", "1C", "2F", "79", "7D", "80", "86", "8B", "9A-9B", "A0-AC", "B1-CA", "CF-E7", "EC-F9", "FE-101", "103-114", "116-127", "12C-136", "13B-148", "14A-157", "15B-15D", "162-172", "174-181", "186-192", "197-1FD"]
 
-[frontier.player-update-callback-body]
-function = "PlayerUpdateCallbackBody"
-unit = "player-handle-collision-hit"
-symbol = "?PlayerUpdateCallbackBody@@YGHPAUPlayer@@@Z"
-address = 0x00425730
-size = 3112
-candidate_size = 3108
-target_sha256 = "97e44e62b40983b076620939b5ba753c4dddbcf4fbabd3f7de2b650ba4718196"
-residual = ["40-43", "45-50", "56-63", "65-6B", "70-74", "76-7A", "7C-80", "82-86", "88-8D", "64A", "655", "659", "65F", "662", "665", "668", "66B-66E", "673-675", "679-68F", "694-69A", "69F-6BB", "6C0-6CA", "6CF-6D7", "6DF", "6E1", "6E6-6E7", "6E9-6EE", "6F3-6FE", "700-704", "706", "708-734", "739-743", "748-756", "75B-75E", "763-777", "77C-7A8", "7AC", "7AE-7AF", "7B1-7BC", "7BE-7C8", "7CD-86E", "873-87A", "87F-886", "88B-8DA", "8DF-8E6", "8EB-8F2", "8F7-A70", "A75-A7F", "A84-A93", "A98-AB4", "AB9-AD4", "AD9-AE3", "AE8-AF7", "AFC-B18", "B1D-B24", "B29-B30", "B35-B52", "B57-B58", "B5A-B5B", "B5D", "B62-B65", "B6A-B6B", "B6E-B78", "B7D-B94", "B99-BC3", "BC8-BD6", "BD8-BDE", "BE0-BFA", "BFF-C0F", "C24-C27"]
-
 [frontier.player-update-movement]
 function = "PlayerUpdateMovementAndOptions"
 unit = "player-handle-collision-hit"
@@ -104,3 +94,10 @@ unit = "game-statistics-initialize-record"
 candidate_size = 274
 target_sha256 = "62905fe172fb66ca164498ab8964b6d0f9e8b09d783ceca25ebe2a1062712953"
 residual = ["14", "1D", "29", "47", "4D", "50", "52", "58-59", "5B", "61", "64", "70", "72", "76", "8B-8E", "90-93", "A6", "C8"]
+
+[frontier.player-handle-collision-hit]
+function = "PlayerHandleCollisionHit"
+unit = "player-handle-collision-hit"
+candidate_size = 526
+target_sha256 = "85f61f685fbb35d9ce165d7754c691c65679082490151b896afb4dfcd64518c3"
+residual = ["2", "E", "26-29", "2B-36", "3D-40", "45-58", "5D-62", "67-6C", "71-76", "79-7C", "7E-81", "86-97", "9C-A1", "A6-AB", "B0-B9", "BB-BE", "C3-E1", "E4-E8", "EA", "EF-F4", "F6-106", "108-117", "11C", "121-124", "126-157", "15A-15D", "160-176", "17B", "180-1A6", "1A8-1AC", "1AE-1B2", "1B4-1B8", "1BA-1BD", "1BF-1CD", "1CF-1E9", "1EB-272"]

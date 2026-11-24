@@ -4491,6 +4491,137 @@ target_address = 0x00412A10
 size = 75
 linkages = []
 
+[units.player-update-callback-body]
+source = "src/Enemy.cpp"
+support_sources = ["src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/EclVm.cpp", "src/Player.cpp", "src/PlayerCollision.cpp", "src/EnemyEclDispatcher.cpp", "src/VmIdInterrupt.cpp", "src/FrontEnd.cpp", "src/ItemManager.cpp", "src/Main.cpp", "src/Sound.cpp", "src/Gui.cpp", "src/Hint.cpp", "src/GameManager.cpp", "src/GuiScoreDisplay.cpp", "src/GuiSpellNotice.cpp", "src/StageAnimationSlots.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/BulletLifecycle.cpp", "src/ScriptViewerWorker.cpp", "src/StageLifecycle.cpp", "src/ReplayManager.cpp", "src/GameObjectReset.cpp", "src/ReplayStageHelpers.cpp", "src/InputState.cpp", "src/ReplayStageRestore.cpp", "src/EnemyLaserManager.cpp", "src/GameManagerLifecycle.cpp", "src/MainConfiguration.cpp", "src/FileSystem.cpp", "src/Decompress.cpp", "src/AnmLoadedStartScript.cpp"]
+support_profiles = { "src/AnmLoadedStartScript.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/FileSystem.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/RandomMath.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmVmCreate.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmVmId.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/Player.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/PlayerCollision.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/EnemyEclDispatcher.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/VmIdInterrupt.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/FrontEnd.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ItemManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Main.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Gui.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Hint.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/TransitionEffect.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Chain.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/BulletLifecycle.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ScriptViewerWorker.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/StageLifecycle.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ReplayManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ReplayStageHelpers.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/InputState.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ReplayStageRestore.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/EnemyLaserManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/GameManagerLifecycle.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/MainConfiguration.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"] }
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+harness = "unresolved-symbol-data-anchors-v1"
+artifact_kind = "linked-pe"
+output_dir = "build/match-linked/ClaudeReplayInitLoadScript"
+pdb_source = "src/Player.cpp"
+normal_support_sources = ["src/Decompress.cpp"]
+functions = ["PlayerUpdateCallbackBody"]
+symbol = "?PlayerUpdateCallbackBody@@YGHPAUPlayer@@@Z"
+target_address = 0x00425730
+size = 3112
+linkages = [
+  { offset = 0x1d, type = "DIR32", local = true, target = 0x426344 },
+  { offset = 0x61, type = "DIR32", symbol = "__real@3c23d70a", target = 0x470b00 },
+  { offset = 0x11a, type = "DIR32", symbol = "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A", target = 0x4776f0 },
+  { offset = 0x14a, type = "REL32", symbol = "?EnemyCancelBulletRecord@@YAIPAE@Z", target = 0x408030 },
+  { offset = 0x159, type = "DIR32", symbol = "?g_EnemyLaserManager@@3PAUEnemyLaserManagerView@@A", target = 0x47781c },
+  { offset = 0x180, type = "DIR32", symbol = "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A", target = 0x4776f0 },
+  { offset = 0x189, type = "DIR32", symbol = "__real@41888889", target = 0x470d44 },
+  { offset = 0x197, type = "DIR32", symbol = "__real@42800000", target = 0x470bc8 },
+  { offset = 0x1a5, type = "REL32", symbol = "?CancelBulletPattern@EnemyCancelManagerView@@QAEIPBUPlayerFloat3@@MHH@Z", target = 0x408100 },
+  { offset = 0x1af, type = "DIR32", symbol = "__real@3e800000", target = 0x470d40 },
+  { offset = 0x1b4, type = "DIR32", symbol = "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A", target = 0x4776f0 },
+  { offset = 0x1c1, type = "REL32", symbol = "?CancelBulletPattern@EnemyCancelManagerView@@QAEIPBUPlayerFloat3@@MHH@Z", target = 0x408100 },
+  { offset = 0x1c6, type = "DIR32", symbol = "?g_EnemyLaserManager@@3PAUEnemyLaserManagerView@@A", target = 0x47781c },
+  { offset = 0x1ce, type = "REL32", symbol = "?ApplyPatternCancel@EnemyEffectWaitManager@@QAEIPBUPlayerFloat3@@MH@Z", target = 0x41c800 },
+  { offset = 0x214, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x476f78 },
+  { offset = 0x235, type = "DIR32", symbol = "?g_PlayerDrawGate9EB8@@3PAUPlayerDrawGate9EB8@@A", target = 0x47770c },
+  { offset = 0x251, type = "DIR32", symbol = "?g_PlayerUpdateGate28@@3PAUPlayerUpdateGate28@@A", target = 0x4776ec },
+  { offset = 0x26b, type = "DIR32", symbol = "?g_PlayerPower@@3FA", target = 0x474c48 },
+  { offset = 0x287, type = "DIR32", symbol = "?g_PlayerInputBits@@3IA", target = 0x474e5c },
+  { offset = 0x29a, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x405410 },
+  { offset = 0x2a0, type = "REL32", symbol = "?StartPowerTransition@PlayerUpdateGate28@@QAEHXZ", target = 0x405860 },
+  { offset = 0x2a7, type = "DIR32", symbol = "?g_PlayerPower@@3FA", target = 0x474c48 },
+  { offset = 0x2ae, type = "REL32", symbol = "?RebuildPlayerOptions@@YGXPAUPlayer@@@Z", target = 0x426f70 },
+  { offset = 0x2b5, type = "DIR32", symbol = "?g_PlayerPower@@3FA", target = 0x474c48 },
+  { offset = 0x2c3, type = "DIR32", symbol = "?g_ItemPowerDisplayOwner@@3PAUItemPowerDisplayOwnerView@@A", target = 0x47770c },
+  { offset = 0x2e1, type = "REL32", symbol = "?UpdatePowerDisplay@ItemPowerDisplayOwnerView@@QAEXHH@Z", target = 0x4054b0 },
+  { offset = 0x2eb, type = "DIR32", symbol = "?g_GameScoreState@@3UGameScoreStateView@@A", target = 0x474c40 },
+  { offset = 0x2f0, type = "REL32", symbol = "?DecayFaith@GameScoreStateView@@QAEXH@Z", target = 0x412e70 },
+  { offset = 0x2ff, type = "DIR32", symbol = "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A", target = 0x4776f0 },
+  { offset = 0x32a, type = "REL32", symbol = "?EnemyCancelBulletRecord@@YAIPAE@Z", target = 0x408030 },
+  { offset = 0x339, type = "DIR32", symbol = "?g_EnemyLaserManager@@3PAUEnemyLaserManagerView@@A", target = 0x47781c },
+  { offset = 0x35d, type = "REL32", symbol = "?PlayerUpdateMovementAndOptions@@YAHPAUPlayer@@@Z", target = 0x4250b0 },
+  { offset = 0x375, type = "REL32", symbol = "?PlayerTransitionToState2@@YGXPAUPlayer@@@Z", target = 0x4269d0 },
+  { offset = 0x389, type = "DIR32", symbol = "?g_PlayerPower@@3FA", target = 0x474c48 },
+  { offset = 0x393, type = "DIR32", symbol = "?g_PlayerPower@@3FA", target = 0x474c48 },
+  { offset = 0x39c, type = "DIR32", symbol = "?g_PlayerPower@@3FA", target = 0x474c48 },
+  { offset = 0x3aa, type = "DIR32", symbol = "?g_ItemPowerDisplayOwner@@3PAUItemPowerDisplayOwnerView@@A", target = 0x47770c },
+  { offset = 0x3c8, type = "REL32", symbol = "?UpdatePowerDisplay@ItemPowerDisplayOwnerView@@QAEXHH@Z", target = 0x4054b0 },
+  { offset = 0x3da, type = "DIR32", symbol = "__real@43600000", target = 0x470b4c },
+  { offset = 0x3f3, type = "REL32", symbol = "?PlayerAngleToPoint@@YAMPAUPlayer@@PBUPlayerFloat3@@@Z", target = 0x426610 },
+  { offset = 0x419, type = "DIR32", symbol = "__real@3de5c8fa", target = 0x470d3c },
+  { offset = 0x423, type = "DIR32", symbol = "__real@3ec90fdb", target = 0x470d38 },
+  { offset = 0x452, type = "DIR32", symbol = "?g_ItemManager@@3PAUItemManagerView@@A", target = 0x477818 },
+  { offset = 0x459, type = "REL32", symbol = "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z", target = 0x41bb00 },
+  { offset = 0x469, type = "REL32", symbol = "?RebuildPlayerOptions@@YGXPAUPlayer@@@Z", target = 0x426f70 },
+  { offset = 0x47b, type = "DIR32", symbol = "?g_PlayerRuntimeGateValue@@3HA", target = 0x474c70 },
+  { offset = 0x48b, type = "DIR32", symbol = "?g_PlayerUpdateGate10@@3PAUPlayerUpdateGate10@@A", target = 0x477838 },
+  { offset = 0x49b, type = "DIR32", symbol = "?g_GameOwner477830@@3PAUGameChainOwnerView@@A", target = 0x477830 },
+  { offset = 0x4a0, type = "REL32", symbol = "?ResultMenuOpenGameOver@@YAXPAUResultMenuView@@@Z", target = 0x4231d0 },
+  { offset = 0x4ab, type = "DIR32", symbol = "?g_PlayerUpdateGate28@@3PAUPlayerUpdateGate28@@A", target = 0x4776ec },
+  { offset = 0x4c5, type = "DIR32", symbol = "?g_PlayerPower@@3FA", target = 0x474c48 },
+  { offset = 0x4e5, type = "DIR32", symbol = "?g_PlayerInputBits@@3IA", target = 0x474e5c },
+  { offset = 0x4f9, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x405410 },
+  { offset = 0x509, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x405410 },
+  { offset = 0x50f, type = "REL32", symbol = "?StartPowerTransition@PlayerUpdateGate28@@QAEHXZ", target = 0x405860 },
+  { offset = 0x516, type = "DIR32", symbol = "?g_PlayerPower@@3FA", target = 0x474c48 },
+  { offset = 0x51d, type = "REL32", symbol = "?RebuildPlayerOptions@@YGXPAUPlayer@@@Z", target = 0x426f70 },
+  { offset = 0x524, type = "DIR32", symbol = "?g_PlayerPower@@3FA", target = 0x474c48 },
+  { offset = 0x532, type = "DIR32", symbol = "?g_ItemPowerDisplayOwner@@3PAUItemPowerDisplayOwnerView@@A", target = 0x47770c },
+  { offset = 0x550, type = "REL32", symbol = "?UpdatePowerDisplay@ItemPowerDisplayOwnerView@@QAEXHH@Z", target = 0x4054b0 },
+  { offset = 0x566, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28 },
+  { offset = 0x56b, type = "REL32", symbol = "?SetNextGameMode@MainSupervisorView@@QAEXH@Z", target = 0x40ac90 },
+  { offset = 0x596, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x476f78 },
+  { offset = 0x59f, type = "REL32", symbol = "?SpawnEffectRow@Player@@QAEPAUPlayerEffectRowView@@PBUPlayerFloat3@@MMHH@Z", target = 0x427b50 },
+  { offset = 0x5e3, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x405410 },
+  { offset = 0x5ef, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x405410 },
+  { offset = 0x607, type = "DIR32", symbol = "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A", target = 0x4776f0 },
+  { offset = 0x626, type = "REL32", symbol = "?EnemyCancelBulletRecord@@YAIPAE@Z", target = 0x408030 },
+  { offset = 0x634, type = "DIR32", symbol = "?g_EnemyLaserManager@@3PAUEnemyLaserManagerView@@A", target = 0x47781c },
+  { offset = 0x63e, type = "REL32", symbol = "?EnemyApplyBulletClear@@YAIPAUEnemyEffectWaitManager@@H@Z", target = 0x41c850 },
+  { offset = 0x66e, type = "REL32", symbol = "?FromAngleMagnitude@EnemyRuntimeVectorView@@QAEXMM@Z", target = 0x44c5d0 },
+  { offset = 0x68f, type = "REL32", symbol = "?EnemyWrapAngle@@YGMM@Z", target = 0x44bc70 },
+  { offset = 0x69a, type = "REL32", symbol = "?AdvanceMotion@EnemyMotionView@@QAEXXZ", target = 0x44c2a0 },
+  { offset = 0x6bb, type = "DIR32", symbol = "__real@3f7d70a4", target = 0x470b68 },
+  { offset = 0x6ca, type = "DIR32", symbol = "__real@3f8147ae", target = 0x470b64 },
+  { offset = 0x6da, type = "DIR32", symbol = "?g_PlayerTimerUnitStep470AFC@@3MB", target = 0x470afc },
+  { offset = 0x6e4, type = "DIR32", symbol = "?g_PlayerTimerUnitStep470AFC@@3MB", target = 0x470afc },
+  { offset = 0x6f2, type = "REL32", symbol = "__ftol2", target = 0x463b2c },
+  { offset = 0x738, type = "DIR32", symbol = "__real@3f7d70a4", target = 0x470b68 },
+  { offset = 0x747, type = "DIR32", symbol = "__real@3f8147ae", target = 0x470b64 },
+  { offset = 0x75a, type = "DIR32", symbol = "?g_PlayerTimerUnitStep470AFC@@3MB", target = 0x470afc },
+  { offset = 0x764, type = "DIR32", symbol = "?g_PlayerTimerUnitStep470AFC@@3MB", target = 0x470afc },
+  { offset = 0x77b, type = "REL32", symbol = "__ftol2", target = 0x463b2c },
+  { offset = 0x7cc, type = "REL32", symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z", target = 0x43ee30 },
+  { offset = 0x872, type = "DIR32", symbol = "__real@3f000000", target = 0x470b0c },
+  { offset = 0x87e, type = "DIR32", symbol = "__real@3f000000", target = 0x470b0c },
+  { offset = 0x88a, type = "DIR32", symbol = "__real@3f000000", target = 0x470b0c },
+  { offset = 0x8de, type = "DIR32", symbol = "__real@3f000000", target = 0x470b0c },
+  { offset = 0x8ea, type = "DIR32", symbol = "__real@3f000000", target = 0x470b0c },
+  { offset = 0x8f6, type = "DIR32", symbol = "__real@3f000000", target = 0x470b0c },
+  { offset = 0xa74, type = "DIR32", symbol = "__real@3f7d70a4", target = 0x470b68 },
+  { offset = 0xa83, type = "DIR32", symbol = "__real@3f8147ae", target = 0x470b64 },
+  { offset = 0xa97, type = "DIR32", symbol = "__real@3f800000", target = 0x470afc },
+  { offset = 0xab8, type = "REL32", symbol = "__ftol2", target = 0x463b2c },
+  { offset = 0xad8, type = "DIR32", symbol = "__real@3f7d70a4", target = 0x470b68 },
+  { offset = 0xae7, type = "DIR32", symbol = "__real@3f8147ae", target = 0x470b64 },
+  { offset = 0xafb, type = "DIR32", symbol = "__real@3f800000", target = 0x470afc },
+  { offset = 0xb1c, type = "REL32", symbol = "__ftol2", target = 0x463b2c },
+  { offset = 0xb28, type = "DIR32", symbol = "?g_PlayerDrawGate9EB8@@3PAUPlayerDrawGate9EB8@@A", target = 0x47770c },
+  { offset = 0xb34, type = "DIR32", symbol = "?g_PlayerDrawGate10@@3PAUPlayerDrawGate10@@A", target = 0x477704 },
+  { offset = 0xb56, type = "DIR32", symbol = "?g_GameScoreState@@3UGameScoreStateView@@A", target = 0x474c40, addend = 0x58 },
+  { offset = 0xb61, type = "DIR32", symbol = "?g_GameScoreState@@3UGameScoreStateView@@A", target = 0x474c40, addend = 0x58 },
+  { offset = 0xb69, type = "DIR32", symbol = "?g_GameScoreState@@3UGameScoreStateView@@A", target = 0x474c40, addend = 0x58 },
+  { offset = 0xb7c, type = "DIR32", symbol = "?g_GameScoreState@@3UGameScoreStateView@@A", target = 0x474c40, addend = 0x58 },
+  { offset = 0xb98, type = "REL32", symbol = "?PlayerUpdateInputAction@@YAHPAUPlayer@@@Z", target = 0x4281d0 },
+  { offset = 0xbc7, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x476f78 },
+  { offset = 0xbfe, type = "REL32", symbol = "?PlayerUpdateShots@@YGHPAUPlayer@@@Z", target = 0x428280 },
+  { offset = 0xc14, type = "DIR32", local = true, target = 0x425751 },
+  { offset = 0xc18, type = "DIR32", local = true, target = 0x425964 },
+  { offset = 0xc1c, type = "DIR32", local = true, target = 0x425aa9 },
+  { offset = 0xc20, type = "DIR32", local = true, target = 0x425d25 },
+  { offset = 0xc24, type = "DIR32", local = true, target = 0x425a96 },
+]
+
 [units.player-update-callback]
 artifact_kind = "coff"
 source = "src/Player.cpp"
@@ -34228,6 +34359,7 @@ linkages = [
 ]
 
 [units.player-handle-collision-hit]
+candidate = true
 source = "src/Enemy.cpp"
 support_sources = ["src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/EclVm.cpp", "src/Player.cpp", "src/PlayerCollision.cpp", "src/EnemyEclDispatcher.cpp", "src/VmIdInterrupt.cpp", "src/FrontEnd.cpp", "src/ItemManager.cpp", "src/Main.cpp", "src/Sound.cpp", "src/Gui.cpp", "src/Hint.cpp", "src/GameManager.cpp", "src/GuiScoreDisplay.cpp", "src/GuiSpellNotice.cpp", "src/StageAnimationSlots.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/BulletLifecycle.cpp", "src/ScriptViewerWorker.cpp", "src/StageLifecycle.cpp", "src/ReplayManager.cpp", "src/GameObjectReset.cpp", "src/ReplayStageHelpers.cpp", "src/InputState.cpp", "src/ReplayStageRestore.cpp", "src/EnemyLaserManager.cpp", "src/GameManagerLifecycle.cpp", "src/MainConfiguration.cpp", "src/FileSystem.cpp", "src/Decompress.cpp", "src/AnmLoadedStartScript.cpp"]
 support_profiles = { "src/AnmLoadedStartScript.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/FileSystem.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/RandomMath.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmVmCreate.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmVmId.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/Player.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/PlayerCollision.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/EnemyEclDispatcher.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/VmIdInterrupt.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/FrontEnd.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ItemManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Main.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Gui.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Hint.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/TransitionEffect.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Chain.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/BulletLifecycle.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ScriptViewerWorker.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/StageLifecycle.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ReplayManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ReplayStageHelpers.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/InputState.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ReplayStageRestore.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/EnemyLaserManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/GameManagerLifecycle.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/MainConfiguration.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"] }

@@ -24,6 +24,7 @@ the compiler observations behind the source changes.
 
 | Unit | Bytes | Relevant context |
 | --- | ---: | --- |
+| `player-update-callback-body` | 3,112 | `ClaudeReplayInitLoadScript` link, 112 fields and all five state entries. The effect motion and lifetime are separate row members. Sharing the countdown helper preserves the earlier respawn argument in EBX. |
 | `frontend-options-update` | 3,188 | `FrontEndOptions` link, 129 fields and all five switch destinations. The supervisor-based configuration and queue view preserves the active phase's manager. The same link checks the refresh and both constant-interrupt members. |
 | `enemy-dispatch-ecl` | 14,416 | `EnemyEclDispatcher` link, 726 fields, 118 jump destinations and 181 opcode selectors. The cold replay also verifies the dialog EH and drop-flush bodies. |
 | `bullet-transform-program` | 1,604 | UpdateBullets-rooted link, 38 fields, five absolute switch entries and 128 selectors. Credits 1,454 code bytes. |
@@ -81,6 +82,7 @@ memory OR precedes them. Build `front-end-music-skip-line` to refresh the
 
 | Owner | Current comparison and next action |
 | --- | --- |
+| `PlayerHandleCollisionHit` | The current `player-handle-collision-hit` recipe emits a 526-byte candidate for the 627-byte target. The ECL dispatcher keeps `CreateVmVariant0` outlined. The hit-effect sites need the factory's inlined sequence. |
 | `MidiOutputView::LoadTrackFile` | `midi-load-track-file` matches 442 of 448 bytes with six bound fields. The ECX header copy's larger priority reverses two loads and the length reuses the header's stack colour. The retained cursor-returning reader recovers the stack homes in a 446-byte probe. See `.analysis/midi-event/results.txt`. |
 | `InitializeGameStatisticsRecord` | `game-statistics-initialize-record` matches 249 of 274 bytes with eight bound fields. The reference's literal name copy restores the word stores and zeros EDX, then spills the outer count. Investigate the lifetime of the name destination. |
 
