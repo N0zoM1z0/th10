@@ -1,33 +1,29 @@
 # TH10 private inputs and retained artifacts
 
-[RE_HANDOFF.md](RE_HANDOFF.md) identifies the current comparison lanes.
-A Git checkout supplies the source, recipes and ledgers. The original
-executable and local compiler and analyzer state are private inputs.
+[RE_HANDOFF.md](RE_HANDOFF.md) identifies the comparison lanes. The checkout
+supplies the source, recipes and ledgers. Keep these private inputs locally.
 
-- Keep the read-only Japanese TH10 v1.00a executable at
-  `resources/th10.exe`. Verify the target with
+- Keep the original Japanese TH10 v1.00a executable at the read-only path
+  `resources/th10.exe`. Verify it with
   `scripts/repo-python scripts/verify-target.py` before target-dependent work.
-- Keep `.tools/`, including the TH10 Wine prefix and shared runtime links,
-  `ghidra-project/`, the game's analyzer runtime state and `_reference/`.
-  See [SHARED_TOOLS.md](SHARED_TOOLS.md) for runtime setup.
-- Keep `build/match-linked/` (about 199 MiB), `build/match/` and
-  `build/probe-backlog/`. The linked comparator uses the PE, map and PDB
-  together. The support objects let the next probe reuse the reviewed
-  compiler graph.
-- Keep `docs/evidence/`, private D3D evidence, original origin-review
-  inputs and the working notes, selected traces and source probes under
-  `.analysis/`. The open ANM, ECL, MIDI, music room, spell and statistics
-  lanes retain their selected compiler contexts under `build/`.
-  The stage loader context retains the real-initializer comparison.
+- Keep `.tools/`, the TH10 Wine prefix, the Ghidra project and runtime state,
+  and `_reference/`. [SHARED_TOOLS.md](SHARED_TOOLS.md) describes the runtime
+  setup.
+- Keep `build/match-linked/`, `build/match/` and `build/probe-backlog/`.
+  The linked comparator needs the matching PE, map and PDB. Support objects
+  are useful for warm probes in the same graph.
+- Keep `docs/evidence/`, private D3D evidence, origin-review inputs and
+  working files for open owners. The music-room, ECL, ANM, spell-start and
+  stage-loader owners use their canonical comparison recipes. The MIDI
+  loader and statistics initializer retain their open diagnostic contexts.
 
-The 2026-11-23 handoff cleanup reclaimed about 88 MiB from `.analysis/` and
-`build/`. The exact Result menu, GUI reset, Item update and score-display
-owners now use their canonical outputs. Superseded candidate links,
-duplicate trial source and generated comparison reports were removed after
-the relevant findings were recorded. The retained working directories use
-about 21 MiB for `.analysis/` and 206 MiB for `build/`.
+The November 24 handoff cleanup reclaimed about 316 MiB of local disk space.
+It removed superseded trial builds and duplicate snapshots for closed owners.
+The dispatcher artifact from the `58e9e8eb` replay moved from a clean temporary
+worktree to `build/match-linked/EnemyEclDispatcher/`. Its compiler inputs belong
+to that checkpoint. Rebuild the selected unit to verify later source changes.
 
-Check the worktree and manifest before deleting a trial. Keep the source,
-objects and comparison inputs needed by current probes. Git keeps tracked
-history. Avoid replacement archives, reflog expiry and Git GC during routine
-artifact cleanup.
+Check `git status` and `git worktree list` before removing a trial. Preserve
+uncommitted worktrees and any live comparison inputs. Git retains tracked
+history. Use regular worktree removal for clean snapshots and leave Git
+garbage collection outside routine artifact cleanup.

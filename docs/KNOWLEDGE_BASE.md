@@ -459,8 +459,7 @@ frontier; do not refresh a baseline merely to accept the new positions.
     resolving the operand also restored opcode 91, but kept the
     resource live across `GetIntVar` in ESI. The final source keeps the
     direct signed timestamp comparison and the real by-value factories.
-    The focused traces and comparisons are in
-    `.analysis/anm-execute/results.txt`. [2026-11-23]
+    Replay `anm-execute-script` in the `GameManagerUpdate` graph. [2026-11-23]
 - **EclVmContext::Run @0x44E1A0 (7,020)**: the `ecl-vm-run` unit uses
   the GameManagerUpdate link rooted at `GamePrepareAnimationSlots`.
   The PDB extent covers 6,692 bytes before the switch data, 60 absolute
@@ -508,8 +507,7 @@ frontier; do not refresh a baseline merely to accept the new positions.
   maintained source matches the complete 7,020-byte extent in cold
   replay. The selected host, stack, float-reader and shared-link
   guards passed in the same replay.
-  The compiler traces and source controls are recorded under
-  `.analysis/ecl-run/`. [2026-11-24]
+  [2026-11-24]
 
 - **EclVmHost::StopAllThreads @0x450190 (31)** has an exact 31-byte
   body. Passing the already-resolved `EclVmContext*` to the stop
@@ -650,8 +648,10 @@ frontier; do not refresh a baseline merely to accept the new positions.
   and their strings compare byte for byte. The MIT-licensed
   `_reference/th10-decomp` music room provided source and compiler-context
   leads. [2026-11-24]
-- **RebuildPlayerOptions @0x426F70 (2,520)**: about 2,404, plain RET instead of
-  RET4 even with all nine callers present. [2026-10-19]
+- **RebuildPlayerOptions @0x426F70 (2,520)** has a recorded 2,424-byte
+  candidate in the `ClaudeReplayInitLoadScript` graph. The target consumes
+  a stack Player pointer and returns with RET 4. Use `rebuild-player-options`
+  in `config/frontiers.toml` for the baseline and its recipe.
 - **EnemyGameStateView::StartSpell @0x409280 (2,432)** uses the
   `enemy-start-spell` recipe with real `AnmVmStartScript` support.
   The cold replay covers 108 linked fields, including the table
@@ -675,8 +675,8 @@ frontier; do not refresh a baseline merely to accept the new positions.
   incoming pointer values and independent cursors restores that byte.
   The maintained panel copy has its own input and output cursors.
   Animation creation carries the layer and flags in a by-value
-  appearance. The reference source and local probe commands are
-  recorded in `.analysis/start-spell/results.txt`. [2026-11-24]
+  appearance. Replay `enemy-start-spell` for the complete owner.
+  [2026-11-24]
 - **ItemManagerUpdateBody @0x41AFD0 (2,320)** is exact in the registration-rooted
   `/GL` link, with 154 bound fields, 73 direct local branches and both jump
   tables at their target offsets. Expressing the distance scale as
@@ -1156,8 +1156,7 @@ register preservation or mod-ref assumptions) where our builds exploit it
     branch. Incrementing its count through a local reference restores
     the memory INC. The same image binds all four dispatcher calls
     to the factory and preserves its ESI manager, EDI request, stack
-    type and RET 4. Diagnostic commands and failed source forms are
-    in `.analysis/enemy-ecl-dispatch/results.txt`.
+    type and RET 4. Replay `enemy-dispatch-ecl` for this link graph.
 - Enemy ANM script state is runtime +0xE8..+0xF8 (five DWORDs): selected resource (+0xE8), primary VM resource/script (+0xEC/+0xF0), base script (+0xF4), and direction (+0xF8). `SELECT_ANM_RESOURCE` writes the selector; `SET_ANM_SCRIPT`/`SET_MAIN_ANM_SCRIPT` publish the primary pair; `PLAY_SELECTED_ANM` and `EnemyRuntimeUpdate` consume the base script/direction; `EnemySpawn` selects the death effect from the primary pair. Source documents the contiguous words with `EnemyAnmScriptStateLayout` (0x14 bytes) and size/member-offset assertions; `EnemyRuntimeView` exposes descriptive direct members so the dispatcher retains its existing LTCG lowering. Targeted exact replays match `EnemyRuntimeUpdate` 2412/2412 and `EnemySpawn` 577/577 (2,989 bytes total).
 - Enemy bullet-pattern records are 0x210 bytes and share the `BulletSpawnDescriptorView` wire layout. The former +0x20 opaque block is now 18 shared `BulletTransformRecordView` records (0x18 each), followed by laser start/end offsets, start length, width and five timing fields through +0x1F3. Tail members +0x1FC..+0x20C are `transformFlags`, `spawnSound`, `transformSound`, `transformStartIndex` and `templateSprites`; +0x1FA remains an unclassified halfword. ECL opcode 0x199 uses a 22-record overlapping 0x18-byte view beginning at +0x20, so records 20/21 intentionally cross the pattern tail and next-pattern boundary. The opcode now writes the shared transform payload/kind/allow fields rather than a duplicate provisional record; cross-view offsets are asserted.
 - Adapters: ReadIntArgument 0x00412A00 (EAX runtime, ECX index; 30 direct dispatcher calls, others inline), ResolveIntArgument 0x00412A10 (9 calls), ReadFloatArgument 0x00412A60 (no callers), ResolveFloatArgument 0x00412A70 (tail-jumps to 0x00450070).
@@ -1221,7 +1220,9 @@ register preservation or mod-ref assumptions) where our builds exploit it
 - Player (`sizeof==0x4478`; global `g_Player`; factory `new(0x4478)` -> ctor (ESI live-in, clears 0x111E dwords) -> `PlayerInitialize` (EBX live-in); dtor stack Player/RET4 with SEH):
 - The 0x34-byte `.sht` descriptor has schedule bytes at +0/+1, signed damage short at +2, spawn offsets at +4/+8, hitbox at +0xC/+0x10, angle/speed at +0x14/+0x18, signed source index at +0x1C, type at +0x1D, and callbacks at +0x24/+0x28 (update, ECX=Player EDX=row)/+0x30 (hit). Type-3 shots use occupancy ints at `+0x42F8[sourceIndex-1]`.
 - `Player::CalculateDamageToTarget @0x428630` uses a rotated private ABI: output pointer in ECX, Player/pos/size on the stack, `RET 12`. Draw offsets are 224.0f/16.0f. 0.125f is at 0x470B90, pi/2 at 0x470B94, 0.0f at 0x470B04.
-- `RebuildPlayerOptions @0x426F70` (stack Player, RET4): jump table indexed by `character*3+shot` (0-5) at 0x427930. It has nine call sites in five callers.
+- `RebuildPlayerOptions @0x426F70` takes a stack Player pointer and returns
+  with RET 4. Ten direct call sites pass that pointer. The six-entry table at
+  `0x427930` is indexed by `character * 3 + shot`.
 - `PlayerUpdateMovementAndOptions @0x4250B0` takes Player in live-in EDI and returns 0 with plain RET.
 - Player: SetCurrent timer 0x405410 is EAX receiver + stack value/RET4; respawn writes 480.0 (0x43F00000); effect spawner 0x427B50 picks first inactive of 32 rows (storage has 33). CreateVmVariant0 @0x448D00 returns AnmVmIdView via hidden aggregate. SetVmWorldPosition @0x449350 adds 224/16.
 - Player unwind @0x465280 destroys ANM VM @0x401FF0 at +0x14; draw-VM buffer at VM+0x358. Popup has VM at +0x18 and buffer at +0x370. PlayerHandleCollisionHit @0x426CF0 takes a stack argument and returns RET4.
@@ -1276,31 +1277,15 @@ register preservation or mod-ref assumptions) where our builds exploit it
   [2026-11-17] `GUI_MSG_SET_SIDE_0/1` now uses a typed
   `GuiMessageSideTextPosition` accessor for the second text-line VM.
   It retains the original unchecked, wrapped 32-bit address and real
-  12-byte `textPositions` stride rather than repeating two raw pointer
-  casts. The current 16-TU message graph remains 4,464/4,480 bytes
-  with 1,935 differences; the separate GUI stage updater passed its
-  complete 3,836-byte / 72-field strict comparison and selected cold
-  replay. Rewriting the five color accesses through a shared helper
-  shortened the message owner to 4,460 bytes and was rejected.
-  [2026-11-17] The five message text-color reads now use the actual
-  `GuiMessageVmView::textColors` array instead of repeated integer
-  base-address and stride casts. `activeSide` starts at zero and is
-  explicitly set to zero or one by the two side-selection opcodes.
-  The complete 16-support-TU interpreter candidate stays exactly
-  4,464/4,480 bytes with the same 1,935 differing offsets as before.
-  GUI stage Update 3,836/3,836 (72 fields) and Draw 724/724
-  (33 fields) retain strict whole-owner comparisons after rebuilding
-  both affected TU graphs. This is source recovery, not new exact credit.
+  12-byte `textPositions` stride. The five color reads use `textColors`
+  directly. `activeSide` starts at zero and the selection opcodes set it
+  to zero or one. The November 17 shared color-helper probe shortened the
+  message owner and changed its codegen. The later `gui-message-run`
+  recipe matches the full 4,480-byte owner.
 - Persistent stage counter address: `(stage*3+shot)*0x437C + 0x4D0 + difficulty*4`.
-  [2026-11-17] The shared `GuiStageClearCount` helper now expresses this
-  as native unsigned DWORD arithmetic on the serialized stage, shot and
-  difficulty words before flat 32-bit base-address addition. This removes
-  signed-multiplication/offset overflow and out-of-array pointer arithmetic
-  from the C++ address derivation; it preserves the target modulo-32
-  indexing, including malformed inputs. A focused 16-support-TU
-  `gui-message-run-candidate` relink remains 4464/4480 and 1935 residual
-  bytes (still nonexact), while the corresponding 3836/3836 GUI stage
-  updater strict-linked guard stays exact. No new exact credit.
+  `GuiStageClearCount` computes that offset with unsigned DWORD arithmetic
+  before adding it to the flat 32-bit base. The source retains the target's
+  wraparound indexing for malformed inputs. [2026-11-17]
 - Stage-bonus score terms:
   - `g_GuiPowerLevel * {20M, 25M, 35M}` and `g_GuiPowerLevel * 40M`;
   - `g_GuiPower * {100k, 200k, 300k, 400k}`;
@@ -1339,10 +1324,10 @@ register preservation or mod-ref assumptions) where our builds exploit it
   by bit-preserving `memcpy` to the signed field. This models the retail
   unconditional i386 increment at `INT_MAX` without signed-overflow UB.
   A fresh four-source `EnemyDispatcherHelpers` linked-PE graph retains both
-  exact whole owners (123/123, 149/149) and all four total linkages. The
-  refreshed 36-support-TU parent retains exact `PlayerHandleCollisionHit`
-  (627 bytes); the 14,416-byte dispatcher remains nonexact, and its residual
-  count is 10,570 in the current graph.
+  exact whole owners (123/123, 149/149) and all four linkages in that source
+  epoch. The dispatcher later matched in `enemy-dispatch-ecl`. The old
+  collision-hit comparison predates the outlined VM factory boundary.
+  See the `PlayerHandleCollisionHit` note above.
 - SoundPlayerView: 32 command slots at +0x1F88, stride 0x10C (opcode/arg/step/path at 0/4/8/12), QueueCommand @0x43E460 scans only 31, drops when full. FrontEndLoadMusic @0x420A90 replaces three extension bytes after last dot; FrontEndPlayMusic @0x420B10 publishes profile track byte even when the queue is full.
 - LoadBgm keeps the 16-bit alignment in EBP and uses `DIV EBP`.
 - BGM format records are 0x34 bytes; there are 16 preload slots; command records are 0x10C bytes.
