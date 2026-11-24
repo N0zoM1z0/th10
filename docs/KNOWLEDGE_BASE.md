@@ -770,8 +770,16 @@ frontier; do not refresh a baseline merely to accept the new positions.
   for the script index and the resource on the stack. In this StageCreate
   link the starter itself remains 204/202 bytes with the extra ECX clear
   before `AnmVmInitialize`. [2026-11-23]
-- **PlayerUpdateMovementAndOptions @0x4250B0 (1,656)**: 1,616; both direction
-  table bases 40 bytes early. [2026-11-12]
+- **PlayerUpdateMovementAndOptions @0x4250B0 (1,656)**: the complete
+  `ClaudeReplayInitLoadScript` candidate reaches both direction tables at
+  their original offsets and preserves all 16 destinations. Typed animation
+  IDs preserve both marker calls and leave ESI available for the shared
+  constant 1 in the input path. The two lean checks preserve the reload
+  after script 2, and the history guard tests vertical speed first.
+  The remaining 182 differing bytes concentrate in the option loop, where
+  C2 bases EBX at option +0x38 instead of +0x40 and schedules the coordinate
+  interpolation differently. The reference movement source suggested the
+  input, marker and lean expressions. [2026-11-24]
 - **GameManagerUpdateBody @0x418190 (1,544)**: exact with 114 bound fields
   and 60 fixed local branches in `game-manager-update-body`. Choosing the real
   `GamePrepareAnimationSlots` as the LTCG entry keeps its stack receiver. With

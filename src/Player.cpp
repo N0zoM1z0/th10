@@ -1120,12 +1120,20 @@ int PlayerInitialize(Player *player)
 typedef char PlayerMovementVmAt14[(offsetof(Player, drawVm) == 0x14) ? 1 : -1];
 typedef char PlayerMovementVmSize[(sizeof(PlayerDrawVmView) == sizeof(AnmVmView)) ? 1 : -1];
 
+static __forceinline void StartPlayerLeanScript(Player *player, int script)
+{
+    StartAnmLoadedScript(static_cast<AnmLoadedView *>(player->resource),
+        reinterpret_cast<AnmVmView *>(&player->drawVm), script);
+}
+
 int PlayerUpdateMovementAndOptions(Player *player)
 {
-    int horizontalSpeed = 0;
-    int verticalSpeed = 0;
-    const unsigned char directionBits =
-        *reinterpret_cast<const unsigned char *>(&g_PlayerInputBits);
+    const volatile unsigned int &heldInput = g_PlayerInputBits;
+    const volatile unsigned char &directionInput =
+        *reinterpret_cast<const volatile unsigned char *>(&heldInput);
+    long horizontalSpeed = 0;
+    long verticalSpeed = 0;
+    const unsigned char directionBits = directionInput;
 
     if ((directionBits & 0x50) == 0x50)
         player->movementDirection = PLAYER_DIRECTION_UP_LEFT;
@@ -1146,23 +1154,27 @@ int PlayerUpdateMovementAndOptions(Player *player)
     else
         player->movementDirection = PLAYER_DIRECTION_NONE;
 
-    if (g_PlayerDrawGate10 == NULL ||
-        g_PlayerDrawGate10->value60 == 0 ||
-        player->updateTimer2.current < 4)
+    if (g_PlayerDrawGate10 != NULL &&
+        g_PlayerDrawGate10->value60 != 0 &&
+        player->updateTimer2.current >= 4)
     {
-        player->optionMode = 0;
-        player->optionTransitionFrames = 30;
-    }
-    else
-    {
-        player->optionMode = (g_PlayerInputBits >> 2) & 1;
-        if (g_PlayerShotType + g_PlayerCharacter * 3 == 5)
+        player->optionMode = (heldInput >> 2) & 1;
+        // Finish publishing the mode before reading the selected shot.
+        _ReadWriteBarrier();
+        const int character = g_PlayerCharacter;
+        const int shotType = g_PlayerShotType;
+        if (character * 3 + shotType == 5)
         {
-            if ((g_PlayerInputBits & 4) != 0)
+            if ((directionInput & 4) != 0)
                 player->optionTransitionFrames = 0;
             else if (player->optionTransitionFrames < 30)
                 ++player->optionTransitionFrames;
         }
+    }
+    else
+    {
+        player->optionMode = 0;
+        player->optionTransitionFrames = 30;
     }
 
     if (player->optionMode != 0)
@@ -1172,13 +1184,13 @@ int PlayerUpdateMovementAndOptions(Player *player)
             AnmLoadedView *loaded = reinterpret_cast<BulletManagerView *>(
                 g_EnemyPrimaryResourceOwner)->bulletAnm;
             AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+            const unsigned int flags = vm->flags35C;
             vm->renderLayer = PLAYER_MODE_VM_LAYER;
-            vm->flags35C |= PLAYER_VM_RUNTIME_FLAG;
-            loaded->InitializeVm(
-                vm, PLAYER_MODE_VM_SCRIPT);
+            vm->flags35C = flags | PLAYER_VM_RUNTIME_FLAG;
+            loaded->InitializeVm(vm, PLAYER_MODE_VM_SCRIPT);
             const AnmVmIdView modeVmId =
                 g_AnmRenderManagerView->AddVmVariant0(vm);
-            player->modeVmId = modeVmId.value;
+            *reinterpret_cast<AnmVmIdView *>(&player->modeVmId) = modeVmId;
         }
 
         // Lexical order follows the target's mode-1 switch body order. The
@@ -1219,10 +1231,13 @@ int PlayerUpdateMovementAndOptions(Player *player)
     }
     else
     {
-        if (FindPlayerVm(player->modeVmId) != NULL)
-            g_AnmRenderManagerView->SetVmPendingInterrupt(
-                AnmVmIdView(player->modeVmId), 1);
-        player->modeVmId = 0;
+        AnmRenderManagerView *manager = g_AnmRenderManagerView;
+        const AnmVmIdView &modeVmId =
+            *reinterpret_cast<const AnmVmIdView *>(&player->modeVmId);
+        if (manager->FindVm(modeVmId) != NULL)
+            manager->SetVmPendingInterrupt(modeVmId, 1);
+        AnmVmIdView *marker = reinterpret_cast<AnmVmIdView *>(&player->modeVmId);
+        marker->value = 0;
 
         // Same target-observed lexical block order as the mode-1 switch.
         switch (player->movementDirection)
@@ -1261,36 +1276,13 @@ int PlayerUpdateMovementAndOptions(Player *player)
     }
 
     if (horizontalSpeed < 0 && player->previousHorizontalSpeed >= 0)
-        StartAnmLoadedScript(
-                static_cast<AnmLoadedView *>(player->resource),
-                reinterpret_cast<AnmVmView *>(&player->drawVm),
-                PLAYER_MAIN_VM_MOVE_LEFT);
-    do
-    {
-        int scriptIndex;
-        if (horizontalSpeed > 0)
-        {
-            if (player->previousHorizontalSpeed > 0)
-                break;
-            scriptIndex = PLAYER_MAIN_VM_MOVE_RIGHT;
-        }
-        else
-        {
-            if (horizontalSpeed != 0)
-                break;
-            if (player->previousHorizontalSpeed < 0)
-                StartAnmLoadedScript(
-                    static_cast<AnmLoadedView *>(player->resource),
-                    reinterpret_cast<AnmVmView *>(&player->drawVm),
-                    PLAYER_MAIN_VM_STOP_LEFT);
-            if (player->previousHorizontalSpeed <= 0)
-                break;
-            scriptIndex = PLAYER_MAIN_VM_STOP_RIGHT;
-        }
-        StartAnmLoadedScript(
-            static_cast<AnmLoadedView *>(player->resource),
-            reinterpret_cast<AnmVmView *>(&player->drawVm), scriptIndex);
-    } while (false);
+        StartPlayerLeanScript(player, PLAYER_MAIN_VM_MOVE_LEFT);
+    else if (horizontalSpeed == 0 && player->previousHorizontalSpeed < 0)
+        StartPlayerLeanScript(player, PLAYER_MAIN_VM_STOP_LEFT);
+    if (horizontalSpeed > 0 && player->previousHorizontalSpeed <= 0)
+        StartPlayerLeanScript(player, PLAYER_MAIN_VM_MOVE_RIGHT);
+    else if (horizontalSpeed == 0 && player->previousHorizontalSpeed > 0)
+        StartPlayerLeanScript(player, PLAYER_MAIN_VM_STOP_RIGHT);
 
     player->previousHorizontalSpeed = horizontalSpeed;
     player->previousVerticalSpeed = verticalSpeed;
@@ -1312,25 +1304,27 @@ int PlayerUpdateMovementAndOptions(Player *player)
     else if (player->positionY > 43200)
         player->positionY = 43200;
 
-    player->drawPosition.x = (float)player->positionX * 0.01f;
-    player->drawPosition.y = (float)player->positionY * 0.01f;
+    PlayerFloat3 *drawPosition = &player->drawPosition;
+    drawPosition->x = (float)player->positionX * 0.01f;
+    drawPosition->y = (float)player->positionY * 0.01f;
 
-    if (FindPlayerVm(player->modeVmId) == NULL)
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    AnmVmIdView &modeVmId = *reinterpret_cast<AnmVmIdView *>(&player->modeVmId);
+    if (manager->FindVm(modeVmId) == NULL)
     {
-        player->modeVmId = 0;
+        modeVmId = AnmVmIdView(0);
     }
     else
     {
         AnmFloat3View position;
         position.x = player->drawPosition.x + 224.0f;
-        position.y = player->drawPosition.y + 16.0f;
         position.z = player->drawPosition.z;
-        g_AnmRenderManagerView->SetVmPosition(
-            AnmVmIdView(player->modeVmId), &position);
+        position.y = player->drawPosition.y + 16.0f;
+        manager->SetVmPosition(modeVmId, &position);
     }
 
     if (player->optionMode == 0 &&
-        (horizontalSpeed != 0 || verticalSpeed != 0))
+        (verticalSpeed != 0 || horizontalSpeed != 0))
     {
         int historyIndex = 32;
         // The native SHL of the option count wraps at 32 bits, then the
@@ -1354,14 +1348,13 @@ int PlayerUpdateMovementAndOptions(Player *player)
         if (option.state == 0)
             continue;
 
-        const PlayerPositionPair &offset =
-            player->optionMode == 0 ? option.replayPair2 : option.replayPair3;
-        option.replayPair0.x = static_cast<int>(
-            static_cast<unsigned int>(player->positionX) +
-            static_cast<unsigned int>(offset.x));
-        option.replayPair0.y = static_cast<int>(
-            static_cast<unsigned int>(player->positionY) +
-            static_cast<unsigned int>(offset.y));
+        const PlayerPositionPair *offset =
+            player->optionMode != 0 ? &option.replayPair3 : &option.replayPair2;
+        option.replayPair0 = PlayerPositionPair(
+            static_cast<int>(static_cast<unsigned int>(player->positionX) +
+                static_cast<unsigned int>(offset->x)),
+            static_cast<int>(static_cast<unsigned int>(player->positionY) +
+                static_cast<unsigned int>(offset->y)));
 
         if (option.updateCallback != NULL)
             option.updateCallback(&option);
@@ -1370,14 +1363,15 @@ int PlayerUpdateMovementAndOptions(Player *player)
         {
             if (player->optionTransitionFrames >= 30)
             {
-                const int stepX = static_cast<int>(
-                    (static_cast<unsigned int>(option.replayPair0.x) -
-                     static_cast<unsigned int>(option.replayPair1.x)) *
-                    static_cast<unsigned int>(player->optionTransitionFrames)) / 100;
-                const int stepY = static_cast<int>(
-                    (static_cast<unsigned int>(option.replayPair0.y) -
-                     static_cast<unsigned int>(option.replayPair1.y)) *
-                    static_cast<unsigned int>(player->optionTransitionFrames)) / 100;
+                const unsigned int transitionFrames =
+                    static_cast<unsigned int>(player->optionTransitionFrames);
+                const PlayerPositionPair scaledDelta(
+                    static_cast<int>((static_cast<unsigned int>(option.replayPair0.x) -
+                        static_cast<unsigned int>(option.replayPair1.x)) * transitionFrames),
+                    static_cast<int>((static_cast<unsigned int>(option.replayPair0.y) -
+                        static_cast<unsigned int>(option.replayPair1.y)) * transitionFrames));
+                const int stepX = scaledDelta.x / 100;
+                const int stepY = scaledDelta.y / 100;
                 if (stepX != 0 || stepY != 0)
                 {
                     option.replayPair1.x = static_cast<int>(
