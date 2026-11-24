@@ -25,9 +25,12 @@ comparison only for its source and link graph.
 
 ## Open owners
 
+Active owner is `RebuildPlayerOptions` at `0x00426F70`. Resume its
+`rebuild-player-options` comparison until the whole owner is exact.
+
 | Owner | Where to resume |
 | --- | --- |
-| `RebuildPlayerOptions` (2,520 B) | Frontier `rebuild-player-options` reproduces its 2,424-byte baseline and 1,983 diagnostic differences in `ClaudeReplayInitLoadScript`. The same build passes the strict Player update callback comparison. The six-entry table is at `+0x9C0` in the original and `+0x960` in the candidate. |
+| `RebuildPlayerOptions` (2,520 B) | In `ClaudeReplayInitLoadScript`, the full-size candidate has 39 diagnostic byte differences in three coordinate additions at `+0x367`, `+0x4B9` and `+0x789`. Its six table destinations at `+0x9C0` match. The manager address load in the middle addition still sits at a different offset. |
 | `AnmRenderManagerView::AnmRenderManagerView` (2,315 B) | Frontier `anm-render-manager-constructor` has a 2,313-byte baseline. Compare the whole constructor, including chain registration and resolved fields. |
 | `PlayerHandleCollisionHit` (627 B) | The saved current-graph candidate is 526 bytes. Commit `58e9e8eb` kept `CreateVmVariant0` outlined for the dispatcher. Restore the inline allocate, initialize and add sequence at the two hit-effect sites while preserving the dispatcher call. |
 | `MidiOutputView::LoadTrackFile` (448 B) | The 448-byte `midi-load-track-file` baseline has six differing ordinary bytes. The older 446-byte cursor-returning probe recovers the stack homes. See the MIDI notes in the [knowledge base](KNOWLEDGE_BASE.md) and the working notes at `.analysis/midi-event/results.txt`. |

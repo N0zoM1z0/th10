@@ -648,15 +648,19 @@ frontier; do not refresh a baseline merely to accept the new positions.
   and their strings compare byte for byte. The MIT-licensed
   `_reference/th10-decomp` music room provided source and compiler-context
   leads. [2026-11-24]
-- **RebuildPlayerOptions @0x426F70 (2,520)** has a 2,424-byte candidate in
-  the `ClaudeReplayInitLoadScript` graph. A fresh build reproduces all 1,983
-  diagnostic differences in `rebuild-player-options`, starting at +0x22.
-  The original jump table occupies the final 24 bytes at +0x9C0. Its six
-  destinations relative to the owner are +0xE5, +0xFC, +0x113, +0x119,
-  +0x130 and +0x147. The candidate table starts at +0x960 with six different
-  owner-relative destinations. The frontier masks the candidate table relocations.
-  The same PE, MAP and PDB pass the strict `player-update-callback-body`
-  comparison for all 3,112 bytes and 112 fields. [2026-11-24]
+- **RebuildPlayerOptions @0x426F70 (2,520)** reaches its full extent in the
+  `ClaudeReplayInitLoadScript` graph. The full-power sweep calls
+  `CreateVmVariant2 @0x448E30` and uses the power and selection fields in
+  `g_GameScoreState`. Resolving the list node before marking its VM gives
+  the target branch layout. Naming the primary VM registration result
+  puts its six return values in their stack homes and restores the six
+  secondary result slots. The final 24 bytes hold the jump table at +0x9C0
+  with destinations +0xE5, +0xFC, +0x113, +0x119, +0x130 and +0x147.
+  The three coordinate additions leave 39 diagnostic differences. The
+  `player-update-callback-body` and `player-transition-to-state2` strict
+  comparisons pass on the same image. The MIT-licensed
+  `_reference/th10-decomp` model provided the loop and stack-home leads.
+  [2026-11-24]
 - **EnemyGameStateView::StartSpell @0x409280 (2,432)** uses the
   `enemy-start-spell` recipe with real `AnmVmStartScript` support.
   The cold replay covers 108 linked fields, including the table
