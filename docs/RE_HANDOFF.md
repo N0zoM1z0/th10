@@ -79,7 +79,7 @@ memory OR precedes them. Build `front-end-music-skip-line` to refresh the
 
 | Owner | Current comparison and next action |
 | --- | --- |
-| `EnemyRuntimeView::DispatchEclInstruction` | The reference diagnostic with real spell and bullet calls aligns all 14,416 bytes of extent, all 118 jump destinations and 726 fields. Six ordinary bytes differ at the bullet call's `LEA`/`PUSH` schedule. Scoped rank count reads give 14,408 bytes in the maintained-source graph with real callees. Transfer the reference call shape while preserving the laser factory's EDI request and stack kind. See `.analysis/enemy-ecl-dispatch/results.txt`. |
+| `EnemyRuntimeView::DispatchEclInstruction` | Reference-shaped source at the actual runtime entry retains the 14,416-byte extent, 118 jump destinations and 726 fields. Seven ordinary bytes differ in the bullet argument schedule and spell-loop SIB. The full laser factory probe now matches all 153 bytes with the ESI/EDI ABI. Continue replacing the reference view and callee context with maintained types and bodies. See `.analysis/enemy-ecl-dispatch/results.txt`. |
 | `MidiOutputView::LoadTrackFile` | `midi-load-track-file` matches 442 of 448 bytes with six bound fields. The ECX header copy's larger priority reverses two loads and the length reuses the header's stack colour. The retained cursor-returning reader recovers the stack homes in a 446-byte probe. See `.analysis/midi-event/results.txt`. |
 | `InitializeGameStatisticsRecord` | `game-statistics-initialize-record` matches 249 of 274 bytes with eight bound fields. The reference's literal name copy restores the word stores and zeros EDX, then spills the outer count. Investigate the lifetime of the name destination. |
 

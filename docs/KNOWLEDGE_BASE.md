@@ -450,17 +450,23 @@ frontier; do not refresh a baseline merely to accept the new positions.
     `PUSH` trade places before `SpawnBulletPattern`. An unused fourth
     source operand on `StartSpell` restores the spell branch and shared
     tails. The spell body still matches 2,432 bytes and consumes 16 stack
-    bytes.
+    bytes. Retargeting the reference body to the actual runtime entry and
+    using the maintained scalar members retains the full layout. The XOR
+    loop adds one difference at +0x273D, where ECX and ESI exchange SIB roles.
   - Scoped rank-3 and rank-5 count assignments give a 14,408-byte probe
     in the maintained-source graph with real callees. The 181 selectors
     and 18 fixed main destinations survive. The low-rank tail still needs
     the original shared comparison and scaled pattern cursor.
   - Random movement calls `RngView::GetRandomF32Signed` on `g_RngView`.
     Screen shake calls `StageCreateTransitionEffect` with priority 0x31.
-    Both bind to real callees in the latest probe. Adding `EnemyLaser.cpp`
-    changes request passing and merges laser calls. The manager-member
-    factory probe keeps ESI for the manager and takes the request on the
-    stack. The original receives it in EDI and returns with `RET 4`.
+    Both bind to real callees in the current probe. Appending the laser and
+    applying its request inside each construction branch restores the
+    factory's ESI manager, EDI request and stack kind with `RET 4`.
+    Incrementing the count through a local `int&` restores the memory
+    `INC`. The full laser translation unit produces all 153 bytes and four
+    fields with its existing callers in the probe graph. The runtime-entry
+    probe also binds all four original call sites directly to that exact
+    body and retains the same seven dispatcher byte differences.
   - Rank-3 thresholds are +/-512. Rank-5 uses +/-600 and +/-200.
     The target spell-name loop initializes its destination at ESP+0x248
     and forms the source address as a displacement from that cursor.
