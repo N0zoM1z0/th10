@@ -50,6 +50,12 @@ comparison only for its source and link graph.
 
 ## Open owner
 
+`FrontEndControllerView::UpdateStage` at `0x00430FF0` is the active
+owner. The warm `frontend-stage-update` link matches all 1,052 bytes
+and 80 fields, including five phase destinations and the real keyboard
+snapshot. Cold-replay the owner and compare the title dispatcher in the
+same link.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.

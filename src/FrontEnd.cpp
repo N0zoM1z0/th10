@@ -503,20 +503,6 @@ tickTimeout:
     }
 }
 
-static int ReadFrontEndStageShortcut()
-{
-    int directInput = FrontEndReadKeyboardState(g_FrontEndKeyboardState);
-    int firstKey = directInput != 0 ? 2 : '1';
-    int shortcut;
-
-    for (shortcut = 1; shortcut <= 9; ++shortcut)
-    {
-        if ((g_FrontEndKeyboardState[firstKey + shortcut - 1] & 0x80) != 0)
-            return shortcut;
-    }
-    return 0;
-}
-
 static void DrawReplaySummary(
     AsciiManagerView *ascii, AnmFloat3View *position,
     ReplayManager *replay, int replayNumber)
@@ -2187,6 +2173,27 @@ int __stdcall FrontEndControllerView::UpdateShotType(
 }
 
 
+static __forceinline void SelectPracticeStageCursor(FrontEndCursorView &cursor, int index)
+{
+    int count = cursor.count;
+    if (count != 0)
+        cursor.current = index >= count ? count - 1 : (((index < 0) - 1) & index);
+    else
+        cursor.current = index;
+}
+
+struct FrontEndPracticeShotView
+{
+    typedef FrontEndStageScoreRecordView StageRecords[5][6];
+
+    unsigned char unknown000[0x4e4];
+    StageRecords stages;
+    unsigned char remaining[0x437c - 0x4e4 - sizeof(StageRecords)];
+};
+
+typedef char FrontEndPracticeShotStride[
+    (sizeof(FrontEndPracticeShotView) == 0x437c) ? 1 : -1];
+
 // TH10_FRONTEND_FUNCTION: 0x00430FF0 FrontEndControllerView::UpdateStage
 int __stdcall FrontEndControllerView::UpdateStage(
     FrontEndControllerView *controller)
@@ -2195,51 +2202,105 @@ int __stdcall FrontEndControllerView::UpdateStage(
     {
     case FRONT_END_SELECTION_INITIALIZE:
         controller->cursor.count = 6;
-        controller->cursor.SetCurrent(g_FrontEndStageCursor);
+        SelectPracticeStageCursor(controller->cursor, g_FrontEndStageCursor);
         controller->CreateVm(0x6a);
-        controller->CreateVm(0x6b + g_ReplayCharacter);
-        SetScreenState(controller, FRONT_END_SELECTION_OPENING);
-        break;
+        {
+            int characterSlot = g_ReplayCharacter + 0x6b;
+            controller->CreateVm(characterSlot);
+        }
+        controller->SetScreenStateTarget(FRONT_END_SELECTION_OPENING);
+        // Check the opening timer on the initialization frame.
 
     case FRONT_END_SELECTION_OPENING:
         if (controller->stateTimer.current > 10)
-        {
-            SetScreenState(controller, FRONT_END_SELECTION_ACTIVE);
-            return 1;
-        }
+            controller->SetScreenStateTarget(FRONT_END_SELECTION_ACTIVE);
         break;
 
     case FRONT_END_SELECTION_ACTIVE:
-        controller->cursor.previous = controller->cursor.current;
-        if (InputRepeated(FRONT_END_INPUT_UP))
-            controller->cursor.Move(-1);
-        if (InputRepeated(FRONT_END_INPUT_DOWN))
-            controller->cursor.Move(1);
+    {
+        FrontEndCursorView *cursor = &controller->cursor;
+        cursor->previous = cursor->current;
+        const volatile unsigned char *pressedByte =
+            reinterpret_cast<const volatile unsigned char *>(&g_FrontEndInput.pressed);
+        if ((*pressedByte & FRONT_END_INPUT_UP) != 0 ||
+            (g_FrontEndInput.repeated & FRONT_END_INPUT_UP) != 0)
+            cursor->Move(-1);
+        if ((*pressedByte & FRONT_END_INPUT_DOWN) != 0 ||
+            (g_FrontEndInput.repeated & FRONT_END_INPUT_DOWN) != 0)
+            cursor->Move(1);
 
-        if (controller->cursor.previous != controller->cursor.current)
+        if (cursor->previous != cursor->current)
             FrontEndPlaySound(FRONT_END_SOUND_MOVE);
 
-        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
+        const unsigned int pressed = ReadReplayMenuPressedInput();
+        if ((pressed & FRONT_END_INPUT_CANCEL) != 0)
         {
-            SetScreenState(controller, FRONT_END_SELECTION_CLOSING);
+            controller->SetScreenStateTarget(FRONT_END_SELECTION_CLOSING);
             FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
-            g_FrontEndStageCursor = controller->cursor.current;
-            return 1;
+            g_FrontEndStageCursor = cursor->current;
         }
-
-        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
+        else if ((pressed & FRONT_END_INPUT_CONFIRM) != 0)
         {
-            FrontEndStageScoreRecordView *record =
-                GetFrontEndStageScoreRecord(controller->cursor.current + 1);
-            if (record->available != 0)
-                SetScreenState(controller, FRONT_END_SELECTION_CONFIRMED);
-
-            FrontEndPlaySound(
-                record->available != 0 ? FRONT_END_SOUND_SELECT : 0x25);
-            g_FrontEndStageCursor = controller->cursor.current;
-            g_FrontEndStageShortcut = ReadFrontEndStageShortcut();
+            FrontEndPracticeShotView (*profile)[3] =
+                reinterpret_cast<FrontEndPracticeShotView (*)[3]>(g_FrontEndProfileData);
+            if (profile[g_ReplayCharacter][g_ReplayShotType]
+                    .stages[g_ReplayDifficulty][cursor->current].available == 0)
+            {
+                FrontEndPlaySound(0x25);
+            }
+            else
+            {
+                controller->SetScreenStateTarget(FRONT_END_SELECTION_CONFIRMED);
+                FrontEndPlaySound(FRONT_END_SOUND_SELECT);
+            }
+            g_FrontEndStageCursor = cursor->current;
+            g_FrontEndStageShortcut = 0;
+            InputKeyboardSnapshotView keyboard;
+            if (keyboard.ReadKeyboardState(g_FrontEndKeyboardState) == 0)
+            {
+                if ((g_FrontEndKeyboardState['1'] & 0x80) != 0)
+                    g_FrontEndStageShortcut = 1;
+                else if ((g_FrontEndKeyboardState['2'] & 0x80) != 0)
+                    g_FrontEndStageShortcut = 2;
+                else if ((g_FrontEndKeyboardState['3'] & 0x80) != 0)
+                    g_FrontEndStageShortcut = 3;
+                else if ((g_FrontEndKeyboardState['4'] & 0x80) != 0)
+                    g_FrontEndStageShortcut = 4;
+                else if ((g_FrontEndKeyboardState['5'] & 0x80) != 0)
+                    g_FrontEndStageShortcut = 5;
+                else if ((g_FrontEndKeyboardState['6'] & 0x80) != 0)
+                    g_FrontEndStageShortcut = 6;
+                else if ((g_FrontEndKeyboardState['7'] & 0x80) != 0)
+                    g_FrontEndStageShortcut = 7;
+                else if ((g_FrontEndKeyboardState['8'] & 0x80) != 0)
+                    g_FrontEndStageShortcut = 8;
+                else if ((g_FrontEndKeyboardState['9'] & 0x80) != 0)
+                    g_FrontEndStageShortcut = 9;
+            }
+            else
+            {
+                if ((g_FrontEndKeyboardState[2] & 0x80) != 0)
+                    g_FrontEndStageShortcut = 1;
+                else if ((g_FrontEndKeyboardState[3] & 0x80) != 0)
+                    g_FrontEndStageShortcut = 2;
+                else if ((g_FrontEndKeyboardState[4] & 0x80) != 0)
+                    g_FrontEndStageShortcut = 3;
+                else if ((g_FrontEndKeyboardState[5] & 0x80) != 0)
+                    g_FrontEndStageShortcut = 4;
+                else if ((g_FrontEndKeyboardState[6] & 0x80) != 0)
+                    g_FrontEndStageShortcut = 5;
+                else if ((g_FrontEndKeyboardState[7] & 0x80) != 0)
+                    g_FrontEndStageShortcut = 6;
+                else if ((g_FrontEndKeyboardState[8] & 0x80) != 0)
+                    g_FrontEndStageShortcut = 7;
+                else if ((g_FrontEndKeyboardState[9] & 0x80) != 0)
+                    g_FrontEndStageShortcut = 8;
+                else if ((g_FrontEndKeyboardState[10] & 0x80) != 0)
+                    g_FrontEndStageShortcut = 9;
+            }
         }
         break;
+    }
 
     case FRONT_END_SELECTION_CONFIRMED:
         if (controller->stateTimer.current == 10)
@@ -2247,18 +2308,17 @@ int __stdcall FrontEndControllerView::UpdateStage(
             g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f);
             StageCreateTransitionEffect(0x2b, 5, 0x20, 0, 0, 0);
         }
-
         if (controller->stateTimer.current >= 40)
         {
-            controller->cursor.Push();
-            SetScreen(controller, FRONT_END_SCREEN_START_GAME);
-            g_FrontEndSelectedStage = controller->cursor.current + 1;
-            g_FrontEndSelectedStageRecord =
-                g_FrontEndStageRecords[controller->cursor.current];
-            g_FrontEndSelectedStageMirror = g_FrontEndSelectedStage;
+            FrontEndCursorView *cursor = &controller->cursor;
+            cursor->Push();
+            controller->SetScreenTarget(FRONT_END_SCREEN_START_GAME);
+            int stage = cursor->current + 1;
+            g_FrontEndSelectedStageRecord = g_FrontEndStageRecords[stage];
+            g_FrontEndSelectedStage = stage;
+            g_FrontEndSelectedStageMirror = stage;
             GameQueueScaledSoundCommand(6.0f);
-            g_FrontEndNextGameMode = 7;
-            return 1;
+            g_MainSupervisorView.nextGameMode = 7;
         }
         break;
 
@@ -2267,7 +2327,7 @@ int __stdcall FrontEndControllerView::UpdateStage(
         {
             DeleteVm(controller, 0x6a);
             DeleteVm(controller, 0x6b + g_ReplayCharacter);
-            SetScreen(controller, FRONT_END_SCREEN_SHOT_TYPE);
+            controller->SetScreenTarget(FRONT_END_SCREEN_SHOT_TYPE);
             controller->cursor.Pop();
         }
         break;
