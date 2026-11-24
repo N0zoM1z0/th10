@@ -19,7 +19,7 @@
 // TH10 0x0040AD20 is the shared cursor setter used by multiple FrontEnd
 // controllers. It takes the value in ECX and the cursor in EDX; the member API
 // in FrontEnd.hpp delegates here.
-int __fastcall FrontEndCursorSetCurrent(
+__declspec(noinline) int __fastcall FrontEndCursorSetCurrent(
     int value, FrontEndCursorView *cursor)
 {
     int count = cursor->count;
@@ -3008,10 +3008,96 @@ int FrontEndControllerView::DrawPractice()
 }
 
 
-// TH10_FRONTEND_FUNCTION: 0x00432CB0 FrontEndControllerView::UpdateScoreEntry
-int __stdcall FrontEndControllerView::UpdateScoreEntry(
-    FrontEndControllerView *controller)
+static __forceinline void SelectScoreEntryRow(FrontEndCursorView &cursor, int index)
 {
+    if (cursor.count != 0)
+        cursor.current = index >= cursor.count ? cursor.count - 1 :
+            (index < 0 ? 0 : index);
+    else
+        cursor.current = index;
+}
+
+static __forceinline void WriteScoreEntryCharacter(
+    FrontEndControllerView &controller, const char &character, int alphabetLength)
+{
+    if (controller.scoreEntryNameCursor < FRONT_END_SCORE_ENTRY_NAME_LENGTH)
+    {
+        controller.scoreEntryName[controller.scoreEntryNameCursor] = character;
+        if (++controller.scoreEntryNameCursor >= FRONT_END_SCORE_ENTRY_NAME_LENGTH)
+            FrontEndCursorSetCurrent(alphabetLength - 1,
+                &controller.scoreEntryKeyboardCursor);
+    }
+    else
+    {
+        controller.scoreEntryName[controller.scoreEntryNameCursor - 1] = character;
+    }
+}
+
+static __forceinline void EraseScoreEntryCharacter(FrontEndControllerView &controller)
+{
+    controller.scoreEntryName[--controller.scoreEntryNameCursor] = ' ';
+}
+
+struct ScoreEntryTableView
+{
+    FrontEndScoreTableView header;
+    FrontEndScoreRecordView records[5][10];
+};
+
+struct ScoreEntryShotView
+{
+    unsigned char prefix[8];
+    ScoreEntryTableView scores;
+    unsigned char remaining[0x437c - 8 - sizeof(ScoreEntryTableView)];
+};
+
+struct ScoreEntryProfileView
+{
+    ScoreEntryShotView shots[2][3];
+    unsigned char remaining[0x1d878 - 6 * sizeof(ScoreEntryShotView)];
+    char lastName[9];
+};
+
+static __forceinline ScoreEntryTableView &GetCurrentScoreEntryTable()
+{
+    ScoreEntryProfileView *profile =
+        reinterpret_cast<ScoreEntryProfileView *>(g_FrontEndProfileData);
+    return profile->shots[g_ReplayCharacter][g_ReplayShotType].scores;
+}
+
+static __forceinline int InsertCompletedRunScore()
+{
+    const int stageCount = 8;
+    g_FrontEndSelectedStage = stageCount;
+    g_FrontEndSelectedStageMirror = stageCount;
+    g_FrontEndScoreFormatTable = g_ScriptViewerRouteDescriptor +
+        stageCount * sizeof(g_FrontEndStageRecords[0]);
+    int rank = FrontEndInsertScore(&GetCurrentScoreEntryTable().header);
+    g_FrontEndScoreFormatTable = g_ScriptViewerRouteDescriptor;
+    g_FrontEndSelectedStage = 0;
+    g_FrontEndSelectedStageMirror = 0;
+    return rank;
+}
+
+static __forceinline void SaveScoreEntryName(
+    const FrontEndControllerView &controller, const char *name)
+{
+    strcpy(GetCurrentScoreEntryTable().records[g_ReplayDifficulty][controller.cursor.current].name,
+        name);
+    ScoreEntryProfileView *profile =
+        reinterpret_cast<ScoreEntryProfileView *>(g_FrontEndProfileData);
+    strcpy(profile->lastName, name);
+}
+
+struct ScoreEntryScreen
+{
+    FrontEndControllerView *const &controller;
+};
+
+static __forceinline int UpdateScoreEntryScreen(
+    const ScoreEntryScreen &screen, AnmVmIdView &backdrop)
+{
+    FrontEndControllerView *const &controller = screen.controller;
     switch (controller->screenState)
     {
     case FRONT_END_SCORE_ENTRY_INITIALIZE:
@@ -3020,96 +3106,85 @@ int __stdcall FrontEndControllerView::UpdateScoreEntry(
         FrontEndLoadMusic(0, "bgm/th10_17.wav");
         FrontEndPlayMusic(0, 17);
 
-        if (ResolveVm(&controller->vmIds[0x5e]) == NULL)
+        if (g_AnmRenderManagerView->FindVm(
+                controller->vmIds[0x5e]) == NULL)
         {
             controller->CreateVm(0x5e);
-            controller->difficultyAuxVmId =
-                g_AsciiManagerView->asciiAnm->CreateVmVariant0(
-                    8, FRONT_END_RENDER_LAYER);
+            AnmLoadedView &resource = *g_AsciiManagerView->asciiAnm;
+            backdrop = resource.CreateVmVariant0(8, FRONT_END_RENDER_LAYER);
+            controller->difficultyAuxVmId = backdrop;
         }
 
         controller->CreateVm(0x68);
-        controller->SetScreenStateTarget(
-            FRONT_END_SCORE_ENTRY_OPENING);
+        controller->SetScreenStateTarget(FRONT_END_SCORE_ENTRY_OPENING);
         controller->CreateVm(0x98 + g_ReplayCharacter);
-        int shot = g_ReplayShotType + g_ReplayCharacter * 3;
-        controller->CreateVm(0x9a + shot);
+        controller->CreateVm(0x9a + g_ReplayCharacter * 3 + g_ReplayShotType);
         controller->CreateVm(0xa0 + g_ReplayDifficulty);
 
-        g_FrontEndSelectedStage = FRONT_END_SCORE_ENTRY_NAME_LENGTH;
-        g_FrontEndSelectedStageMirror = FRONT_END_SCORE_ENTRY_NAME_LENGTH;
-        g_FrontEndScoreFormatTable = g_FrontEndScoreEntryFormatTable;
-        int insertedRow = FrontEndInsertScore(GetFrontEndScoreTable(shot));
-        g_FrontEndScoreFormatTable = g_FrontEndDefaultScoreFormatTable;
-        g_FrontEndSelectedStage = 0;
-        g_FrontEndSelectedStageMirror = 0;
+        int insertedRow = InsertCompletedRunScore();
 
-        if (insertedRow < 0)
+        if (insertedRow >= 0)
         {
-            controller->cursor.SetCurrent(insertedRow);
-            controller->scoreEntryUnavailable = 1;
-        }
-        else
-        {
-            ResetStateTimer(controller);
+            controller->stateTimer.SetCurrent(0);
             controller->cursor.wraps = 1;
-            controller->cursor.SetCurrent(insertedRow);
+            FrontEndCursorSetCurrent(insertedRow, &controller->cursor);
 
-            FrontEndCursorView *keyboard =
-                &controller->scoreEntryKeyboardCursor;
-            keyboard->SetCurrent(0);
-            keyboard->count = strlen(g_FrontEndScoreEntryAlphabet);
-            keyboard->wraps = 1;
+            FrontEndCursorView *keyboard = &controller->scoreEntryKeyboardCursor;
+            SelectScoreEntryRow(*keyboard, 0);
+            controller->scoreEntryKeyboardCursor.count = strlen(g_FrontEndScoreEntryAlphabet);
+            controller->scoreEntryKeyboardCursor.wraps = 1;
 
-            strcpy(
-                controller->scoreEntryName,
-                reinterpret_cast<char *>(
-                    g_FrontEndProfileData + 0x1d878));
+            strcpy(controller->scoreEntryName,
+                reinterpret_cast<char *>(g_FrontEndProfileData + 0x1d878));
             if (strcmp(controller->scoreEntryName, "        ") != 0)
                 keyboard->Move(-1);
 
-            int cursor = FRONT_END_SCORE_ENTRY_NAME_LENGTH;
-            while (cursor > 0 &&
-                   controller->scoreEntryName[cursor - 1] == ' ')
+            int cursor;
+            for (cursor = FRONT_END_SCORE_ENTRY_NAME_LENGTH; cursor > 0; --cursor)
             {
-                --cursor;
+                if (controller->scoreEntryName[cursor - 1] != ' ')
+                    break;
             }
             controller->scoreEntryNameCursor = cursor;
             controller->scoreEntryUnavailable = 0;
         }
+        else
+        {
+            SelectScoreEntryRow(controller->cursor, -1);
+            controller->scoreEntryUnavailable = 1;
+        }
     }
+        // The opening timer is checked on the initialization frame.
     case FRONT_END_SCORE_ENTRY_OPENING:
         if (controller->stateTimer.current > 6)
-        {
-            controller->SetScreenStateTarget(
-                FRONT_END_SCORE_ENTRY_ACTIVE);
-            return 1;
-        }
+            controller->SetScreenStateTarget(FRONT_END_SCORE_ENTRY_ACTIVE);
         break;
 
     case FRONT_END_SCORE_ENTRY_ACTIVE:
     {
-        FrontEndCursorView *keyboard =
-            &controller->scoreEntryKeyboardCursor;
         if (controller->scoreEntryUnavailable == 0)
         {
+            FrontEndInputView *input = &g_FrontEndInput;
+            FrontEndCursorView *keyboard = &controller->scoreEntryKeyboardCursor;
             keyboard->previous = keyboard->current;
-            if (InputRepeated(FRONT_END_INPUT_UP))
+            if (static_cast<short>(input->IsRepeated(FRONT_END_INPUT_UP)))
                 keyboard->Move(-FRONT_END_SCORE_ENTRY_COLUMNS);
-            if (InputRepeated(FRONT_END_INPUT_DOWN))
+            if (static_cast<short>(input->IsRepeated(FRONT_END_INPUT_DOWN)))
                 keyboard->Move(FRONT_END_SCORE_ENTRY_COLUMNS);
-            if (InputRepeated(FRONT_END_INPUT_LEFT))
+            if (static_cast<short>(input->IsRepeated(FRONT_END_INPUT_LEFT)))
             {
-                keyboard->Move(
-                    keyboard->current % FRONT_END_SCORE_ENTRY_COLUMNS == 0
-                        ? FRONT_END_SCORE_ENTRY_COLUMNS - 1 : -1);
+                if (keyboard->current % FRONT_END_SCORE_ENTRY_COLUMNS != 0)
+                    keyboard->Move(-1);
+                else
+                    keyboard->Move(FRONT_END_SCORE_ENTRY_COLUMNS - 1);
             }
-            if (InputRepeated(FRONT_END_INPUT_RIGHT))
+            if (static_cast<short>(input->IsRepeated(FRONT_END_INPUT_RIGHT)))
             {
-                keyboard->Move(
-                    keyboard->current % FRONT_END_SCORE_ENTRY_COLUMNS ==
-                            FRONT_END_SCORE_ENTRY_COLUMNS - 1
-                        ? -(FRONT_END_SCORE_ENTRY_COLUMNS - 1) : 1);
+                if (keyboard->current % FRONT_END_SCORE_ENTRY_COLUMNS !=
+                    FRONT_END_SCORE_ENTRY_COLUMNS - 1)
+                    keyboard->Move(1);
+                else
+                    keyboard->Move(1 - FRONT_END_SCORE_ENTRY_COLUMNS);
             }
             if (keyboard->previous != keyboard->current)
                 FrontEndPlaySound(FRONT_END_SOUND_MOVE);
@@ -3119,96 +3194,57 @@ int __stdcall FrontEndControllerView::UpdateScoreEntry(
         {
             if (controller->scoreEntryUnavailable == 0)
             {
-                int alphabetLength = strlen(g_FrontEndScoreEntryAlphabet);
-                int key = keyboard->current;
+                const char *alphabet = g_FrontEndScoreEntryAlphabet;
+                int alphabetLength = strlen(alphabet);
+                int key = controller->scoreEntryKeyboardCursor.current;
                 if (key < alphabetLength - 3)
                 {
-                    int cursor = controller->scoreEntryNameCursor;
-                    if (cursor < FRONT_END_SCORE_ENTRY_NAME_LENGTH)
-                    {
-                        controller->scoreEntryName[cursor] =
-                            g_FrontEndScoreEntryAlphabet[key];
-                        ++controller->scoreEntryNameCursor;
-                        if (controller->scoreEntryNameCursor >=
-                            FRONT_END_SCORE_ENTRY_NAME_LENGTH)
-                        {
-                            keyboard->SetCurrent(alphabetLength - 1);
-                        }
-                    }
-                    else
-                    {
-                        controller->scoreEntryName[
-                            FRONT_END_SCORE_ENTRY_NAME_LENGTH - 1] =
-                                g_FrontEndScoreEntryAlphabet[key];
-                    }
+                    WriteScoreEntryCharacter(*controller, alphabet[key], alphabetLength);
+                    FrontEndPlaySound(FRONT_END_SOUND_SELECT);
                 }
                 else if (key == alphabetLength - 3)
                 {
-                    int cursor = controller->scoreEntryNameCursor;
-                    if (cursor < FRONT_END_SCORE_ENTRY_NAME_LENGTH)
-                    {
-                        controller->scoreEntryName[cursor] = ' ';
-                        ++controller->scoreEntryNameCursor;
-                        if (controller->scoreEntryNameCursor >=
-                            FRONT_END_SCORE_ENTRY_NAME_LENGTH)
-                        {
-                            keyboard->SetCurrent(alphabetLength - 1);
-                        }
-                    }
-                    else
-                    {
-                        controller->scoreEntryName[
-                            FRONT_END_SCORE_ENTRY_NAME_LENGTH - 1] = ' ';
-                    }
+                    WriteScoreEntryCharacter(*controller, ' ', alphabetLength);
+                    FrontEndPlaySound(FRONT_END_SOUND_SELECT);
                 }
                 else if (key == alphabetLength - 2)
                 {
                     if (controller->scoreEntryNameCursor == 0)
-                        return 1;
-                    --controller->scoreEntryNameCursor;
-                    controller->scoreEntryName[
-                        controller->scoreEntryNameCursor] = ' ';
+                        break;
+                    EraseScoreEntryCharacter(*controller);
+                    FrontEndPlaySound(FRONT_END_SOUND_SELECT);
                 }
                 else if (key == alphabetLength - 1)
                 {
-                    int shot = g_ReplayShotType + g_ReplayCharacter * 3;
-                    FrontEndScoreRecordView *record =
-                        GetPracticeScoreRecord(
-                            shot, g_ReplayDifficulty,
-                            controller->cursor.current);
-                    strcpy(record->name, controller->scoreEntryName);
-                    strcpy(
-                        reinterpret_cast<char *>(
-                            g_FrontEndProfileData + 0x1d878),
-                        controller->scoreEntryName);
-                    controller->SetScreenStateTarget(
-                        FRONT_END_SCORE_ENTRY_CLOSING);
+                    SaveScoreEntryName(*controller, controller->scoreEntryName);
+                    controller->SetScreenStateTarget(FRONT_END_SCORE_ENTRY_CLOSING);
+                    FrontEndPlaySound(FRONT_END_SOUND_SELECT);
+                }
+                else
+                {
+                    FrontEndPlaySound(FRONT_END_SOUND_SELECT);
                 }
             }
             else
             {
-                controller->SetScreenStateTarget(
-                    FRONT_END_SCORE_ENTRY_CLOSING);
+                controller->SetScreenStateTarget(FRONT_END_SCORE_ENTRY_CLOSING);
+                FrontEndPlaySound(FRONT_END_SOUND_SELECT);
             }
-            FrontEndPlaySound(FRONT_END_SOUND_SELECT);
         }
 
         if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
         {
-            if (controller->scoreEntryUnavailable != 0)
+            if (controller->scoreEntryUnavailable == 0)
             {
-                controller->SetScreenStateTarget(
-                    FRONT_END_SCORE_ENTRY_CLOSING);
-                FrontEndPlaySound(FRONT_END_SOUND_SELECT);
-                return 1;
-            }
-            if (controller->scoreEntryNameCursor != 0)
-            {
+                if (controller->scoreEntryNameCursor == 0)
+                    break;
                 FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
-                --controller->scoreEntryNameCursor;
-                controller->scoreEntryName[
-                    controller->scoreEntryNameCursor] = ' ';
-                return 1;
+                EraseScoreEntryCharacter(*controller);
+            }
+            else
+            {
+                controller->SetScreenStateTarget(FRONT_END_SCORE_ENTRY_CLOSING);
+                FrontEndPlaySound(FRONT_END_SOUND_SELECT);
             }
         }
         break;
@@ -3219,15 +3255,23 @@ int __stdcall FrontEndControllerView::UpdateScoreEntry(
         {
             DeleteVm(controller, 0x68);
             DeleteVm(controller, 0x98 + g_ReplayCharacter);
-            DeleteVm(
-                controller,
-                0x9a + g_ReplayShotType + g_ReplayCharacter * 3);
+            const volatile int &character = g_ReplayCharacter;
+            DeleteVm(controller, 0x9a + character * 3 + g_ReplayShotType);
             DeleteVm(controller, 0xa0 + g_ReplayDifficulty);
             controller->SetScreenTarget(FRONT_END_SCREEN_REPLAY_SAVE);
         }
         break;
     }
     return 1;
+}
+
+// TH10_FRONTEND_FUNCTION: 0x00432CB0 FrontEndControllerView::UpdateScoreEntry
+int __stdcall FrontEndControllerView::UpdateScoreEntry(
+    FrontEndControllerView *controller)
+{
+    ScoreEntryScreen screen = { controller };
+    AnmVmIdView backdrop;
+    return UpdateScoreEntryScreen(screen, backdrop);
 }
 
 

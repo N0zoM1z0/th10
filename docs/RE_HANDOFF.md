@@ -36,6 +36,15 @@ comparison only for its source and link graph.
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
+## Open owner
+
+`FrontEndControllerView::UpdateScoreEntry` at `0x00432CB0` is the active
+owner. The `frontend-score-entry-update` recipe recovers the four phases
+through the title dispatcher and emits 1,404 of the target's 1,400 bytes.
+A caller-local animation handle restores the frame. Remaining differences
+include the private insertion argument, name-copy addressing and cursor
+publication in the name editor.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.
