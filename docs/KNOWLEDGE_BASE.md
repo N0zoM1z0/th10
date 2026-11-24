@@ -444,6 +444,17 @@ frontier; do not refresh a baseline merely to accept the new positions.
     and seven reads of the second scalar interpolation control word use
     explicit +4 addends. The probe commands are in
     `.analysis/enemy-ecl-dispatch/results.txt`.
+  - With the actual spell and bullet callees, the reference probe retains
+    the 14,416-byte extent, 118 jump destinations and 726 field bindings.
+    Six ordinary bytes differ where the descriptor `LEA` and manager
+    `PUSH` trade places before `SpawnBulletPattern`. An unused fourth
+    source operand on `StartSpell` restores the spell branch and shared
+    tails. The spell body still matches 2,432 bytes and consumes 16 stack
+    bytes.
+  - Scoped rank-3 and rank-5 count assignments give a 14,408-byte probe
+    in the maintained-source graph with real callees. The 181 selectors
+    and 18 fixed main destinations survive. The low-rank tail still needs
+    the original shared comparison and scaled pattern cursor.
   - Random movement calls `RngView::GetRandomF32Signed` on `g_RngView`.
     Screen shake calls `StageCreateTransitionEffect` with priority 0x31.
     Both bind to real callees in the latest probe. Adding `EnemyLaser.cpp`
