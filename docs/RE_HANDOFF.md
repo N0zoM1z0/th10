@@ -34,6 +34,14 @@ comparison only for its source and link graph.
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
+## Open owner
+
+`PlayerInitialize` at `0x004247F0` is the active owner. Compare the full
+1,435-byte initializer through `player-initialize`. The real logger and VM
+initializer restore both private call boundaries. The current residual is
+34 bytes across the callback publication, two staged vector stores and
+the option-file index.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.

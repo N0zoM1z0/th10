@@ -355,7 +355,6 @@ extern int g_PlayerCharacter;
 extern int g_PlayerShotType;
 extern int g_PlayerOptionPositionBase[];
 extern float g_PlayerOptionCoordinateScale;
-extern PlayerVmManager *g_PlayerVmManager;
 extern void *g_PlayerCallbackManager;
 extern PlayerOptionDataView *g_PlayerSharedOptionData;
 extern const char *g_PlayerShotDataFilenames[6];
@@ -951,7 +950,7 @@ static AnmFloat3View AddPlayerPositionExtent(
     AnmFloat3View result;
     result.x = extent.x + position.x;
     result.y = *static_cast<volatile const float *>(&extent.y) + position.y;
-    result.z = extent.z + position.z;
+    result.z = *static_cast<const volatile float *>(&extent.z) + position.z;
     return result;
 }
 
@@ -965,8 +964,7 @@ int PlayerInitialize(Player *player)
     const int &shotType = g_GameScoreState.history.statisticsGroupB;
     const char *animationFilename =
         character == 0 ? "pl00.anm" : "pl01.anm";
-    player->resource = reinterpret_cast<AnmRenderManagerView *>(g_PlayerVmManager)->
-        PreloadAnm(8, animationFilename);
+    player->resource = g_AnmRenderManagerView->PreloadAnm(8, animationFilename);
     if (player->resource == NULL)
     {
         th10::g_GameErrorContext.Log("\x8e\xa9\x8b\x40\x83\x66\x81\x5b\x83\x5e\x82\xaa\x8c\xa9\x82\xc2\x82\xa9\x82\xe8\x82\xdc\x82\xb9\x82\xf1\x81\x42\x83\x66\x81\x5b\x83\x5e\x82\xaa\x89\xf3\x82\xea\x82\xc4\x82\xa2\x82\xdc\x82\xb7\x0d\x0a");
@@ -1072,15 +1070,15 @@ int PlayerInitialize(Player *player)
     *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[0]) =
         positionValue - extentValue1;
     *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[1]) =
-        extentValue1 + positionValue;
+        AddPlayerPositionExtent(extentValue1, positionValue);
     *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[2]) =
         positionValue - extentValue2;
     *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[3]) =
-        extentValue2 + positionValue;
+        AddPlayerPositionExtent(extentValue2, positionValue);
     *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[4]) =
         positionValue - extentValue2;
     *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[5]) =
-        extentValue2 + positionValue;
+        AddPlayerPositionExtent(extentValue2, positionValue);
 
     if ((player->updateTimer1.flags & 1) == 0)
     {
