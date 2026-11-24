@@ -66,6 +66,13 @@ comparison only for its source and link graph.
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
+## Open owner
+
+`GuiShowScoreNotice` at `0x004172E0` is active. The warm
+`GuiSpellNotice` link matches the 640-byte body, the seven-entry switch
+table and all 35 fields. The exact spell-end caller passes in the same
+image. Cold replay both units and check the digit VM call interfaces.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.

@@ -11,50 +11,40 @@
 struct GameChainOwnerView;
 extern GameChainOwnerView *g_GameAnimationSlots;
 
+static __forceinline AnmVmIdView CreateScoreNoticeDigit(
+    AnmLoadedView *loaded, int scriptIndex)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    unsigned int flags = vm->flags35C;
+    vm->renderLayer = 15;
+    vm->flags35C = flags | 0x40000000u;
+    loaded->InitializeVm(vm, scriptIndex);
+    return g_AnmRenderManagerView->AddVmVariant0(vm);
+}
+
 // Physical owner: 640 code bytes plus a 28-byte switch table. The target
-// passes kind in EAX and the GUI/value on the stack; LTCG selects that ABI
-// from these ordinary parameters.
+// passes kind in EAX and the GUI/value on the stack.
 void __stdcall GuiShowScoreNotice(int kind, GuiView *gui, int value)
 {
     switch (kind)
     {
     case 0:
     {
-        g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E14);
-        memset(&gui->specialVmId9E14, 0, sizeof(gui->specialVmId9E14));
-#if defined(_MSC_VER)
-#pragma inline_depth(0)
-#endif
+        gui->specialVmId9E14.MarkForDeletionAndClear();
         gui->specialVmId9E14.value = gui->frontAnm->CreateVmVariant0(0x47, 15).value;
-#if defined(_MSC_VER)
-#pragma inline_depth(16)
-#endif
-        int remaining = value;
         int visible = 0;
+        int remaining = value;
         int divisor = 10000000;
-        for (int i = 0; i < 8; ++i)
+        for (value = 0; value < 8; ++value)
         {
-            AnmVmIdView *id = &gui->valueVmIds[i];
-            g_AnmRenderManagerView->MarkVmForDeletion(*id);
-            memset(id, 0, sizeof(*id));
-            AnmLoadedView *loaded = gui->frontAnm;
-            AnmVmView *createdVm = g_AnmRenderManagerView->AllocateVm();
-            createdVm->renderLayer = 15;
-            createdVm->useAlternateRng = 1;
-            loaded->InitializeVm(createdVm, i + 0x27);
-            AnmVmIdView created = g_AnmRenderManagerView->AddVmVariant0(createdVm);
-            const int digit = remaining / divisor;
-            const int remainder = remaining % divisor;
-            id->value = created.value;
+            AnmVmIdView *id = &gui->valueVmIds[value];
+            id->MarkForDeletionAndClear();
+            *id = CreateScoreNoticeDigit(gui->frontAnm, 0x27 + value);
+            int digit = remaining / divisor;
+            int remainder = remaining % divisor;
             if (digit != 0)
                 visible = 1;
-#if defined(_MSC_VER)
-#pragma inline_depth(0)
-#endif
             AnmVmView *vm = g_AnmRenderManagerView->FindVm(*id);
-#if defined(_MSC_VER)
-#pragma inline_depth(16)
-#endif
             if (vm != NULL)
                 vm->anmFile->SetSprite(vm, digit + 8);
             if (visible == 0)
@@ -67,61 +57,24 @@ void __stdcall GuiShowScoreNotice(int kind, GuiView *gui, int value)
         break;
     }
     case 1:
-        g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E14);
-        gui->specialVmId9E14 = AnmVmIdView();
-#if defined(_MSC_VER)
-#pragma inline_depth(0)
-#endif
+        gui->specialVmId9E14.MarkForDeletionAndClear();
         gui->specialVmId9E14.value = gui->frontAnm->CreateVmVariant0(0x48, 15).value;
-#if defined(_MSC_VER)
-#pragma inline_depth(16)
-#endif
         break;
     case 2:
-        g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E18);
-        gui->specialVmId9E18 = AnmVmIdView();
-#if defined(_MSC_VER)
-#pragma inline_depth(0)
-#endif
+        gui->specialVmId9E18.MarkForDeletionAndClear();
         gui->specialVmId9E18.value = gui->frontAnm->CreateVmVariant0(0x49, 15).value;
-#if defined(_MSC_VER)
-#pragma inline_depth(16)
-#endif
         break;
     case 3:
-        g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E18);
-        gui->specialVmId9E18 = AnmVmIdView();
-#if defined(_MSC_VER)
-#pragma inline_depth(0)
-#endif
+        gui->specialVmId9E18.MarkForDeletionAndClear();
         gui->specialVmId9E18.value = gui->frontAnm->CreateVmVariant0(0x4a, 15).value;
-#if defined(_MSC_VER)
-#pragma inline_depth(16)
-#endif
         break;
     case 4:
-        g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E18);
-        gui->specialVmId9E18 = AnmVmIdView();
-#if defined(_MSC_VER)
-#pragma inline_depth(0)
-#endif
+        gui->specialVmId9E18.MarkForDeletionAndClear();
         gui->specialVmId9E18.value = gui->frontAnm->CreateVmVariant0(0x4b, 15).value;
-#if defined(_MSC_VER)
-#pragma inline_depth(16)
-#endif
-        break;
-    case 5:
         break;
     case 6:
-        g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E14);
-        gui->specialVmId9E14 = AnmVmIdView();
-#if defined(_MSC_VER)
-#pragma inline_depth(0)
-#endif
+        gui->specialVmId9E14.MarkForDeletionAndClear();
         gui->specialVmId9E14.value = gui->frontAnm->CreateVmVariant0(0x4c, 15).value;
-#if defined(_MSC_VER)
-#pragma inline_depth(16)
-#endif
         break;
     }
 }
