@@ -6222,6 +6222,11 @@ static __forceinline void SetAsciiGlyphSize(
     *reinterpret_cast<unsigned int *>(&glyph->flags35C) |= 8;
 }
 
+static __forceinline void SetAsciiViewport(int index)
+{
+    CONFIGURE_ASCII_VIEWPORT(index);
+}
+
 // Target 0x00401760-0x00401A41 renders the 256-entry regular queue.
 int __stdcall AsciiManagerDrawStrings(AsciiManagerView *manager)
 {
@@ -6253,7 +6258,7 @@ int __stdcall AsciiManagerDrawStrings(AsciiManagerView *manager)
         {
             currentViewport = string->viewportIndex;
             g_AnmRenderManagerView->FlushVertexBuffer();
-            CONFIGURE_ASCII_VIEWPORT(currentViewport);
+            SetAsciiViewport(currentViewport);
         }
 
         for (; *text != '\0'; ++text)
@@ -6297,7 +6302,7 @@ int __stdcall AsciiManagerDrawStrings(AsciiManagerView *manager)
     if (currentViewport != 0)
     {
         g_AnmRenderManagerView->FlushVertexBuffer();
-        CONFIGURE_ASCII_VIEWPORT(0);
+        SetAsciiViewport(0);
     }
     return 1;
 }

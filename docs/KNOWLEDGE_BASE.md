@@ -972,6 +972,16 @@ frontier; do not refresh a baseline merely to accept the new positions.
   sample loader, chunk walker and error log match in the same image.
   The local TH10 reference supplied the configuration and descriptor leads.
   [Reference license](licenses/th10-decomp-MIT.txt)
+- **AsciiManagerDrawStrings @0x401760 (738)**: `StageViewport` reproduces
+  all 30 fields and the two shadow and foreground draws. The float value
+  helpers update scale and sprite size alongside the dirty flag. Keep the
+  space advance in its own branch and read the dimensions through the
+  installed sprite. Calling the inline viewport helper at both transition
+  sites gives C2 the original stack homes for the text pointer, line height
+  and record index at `ESP+0x14`, `+0x18` and `+0x1C`. The callback, camera,
+  batch flush and quad renderer pass in the same image. The local TH10
+  reference supplied the glyph and space branch leads.
+  [Reference license](licenses/th10-decomp-MIT.txt)
 - **GuiView::DrawStageElements @0x415800 (724)**: [2026-11-17] exact
   across the complete 724-byte function and 33 original-bound DIR32/REL32
   fields in the 17-input GUI draw `/GL` graph. The recovered natural C++

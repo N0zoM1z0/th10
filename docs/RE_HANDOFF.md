@@ -17,6 +17,7 @@ comparison only for its source and link graph.
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
 | `spt-test-update` | 926 B | `SptTestUpdate`, 39 fields, VM lifetime and two-pass file enumeration. The registered callback and the interpreter, factory and worker calls match in the same image. |
+| `ascii-manager-draw-strings` | 738 B | `StageViewport`, 30 fields, both fonts, shadow drawing and viewport restoration. The callback, camera, flush and renderer pass in the same image. |
 | `sound-player-initialize` | 786 B | `SoundSetupRealMain`, 23 fields, DirectSound device and buffer setup, and the 37-sample preload. The setup thread, sample loader and chunk walker pass. |
 | `item-manager-spawn` | 819 B | `ItemManagerSpawn`, 18 fields, three jump slots and eleven selector bytes. The normal pool and delayed ring match. Both laser callers, the polar helper, VM creator and loader pass. |
 | `frontend-replay-draw` | 825 B | `FrontEndReplaySaveDraw`, 33 fields, the 25-slot list and the seven-stage detail view. Both neighboring draw paths, the callback and the text helpers pass. |
@@ -61,15 +62,6 @@ comparison only for its source and link graph.
 | `enemy-dispatch-ecl` | 14,416 B | `EnemyEclDispatcher`, 726 fields, 118 jump destinations and 181 opcode selectors. The selected replay includes dialog EH and the drop-flush body. |
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
-
-## Open owner
-
-`AsciiManagerDrawStrings` at `0x00401760` is active. Compare its full
-738-byte text queue traversal in `StageViewport`, including glyph size,
-shadow passes and viewport restoration. The candidate matches 730 bytes
-and all 30 fields. Eight stack-displacement bytes still place the text
-pointer, line height and record count in a different order. The camera,
-late stage draw, quad renderer and batch flush match in the same image.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

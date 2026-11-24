@@ -28673,7 +28673,6 @@ size = 77
 linkages = []
 
 [units.ascii-manager-draw-strings]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/StageScript.cpp"
 support_sources = ["src/StageLifecycle.cpp", "src/StageDraw.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/FileSystem.cpp", "src/MainViewport.cpp"]
