@@ -1,16 +1,6 @@
 #include "BulletManager.hpp"
+#include "EnemySoundQueue.hpp"
 #include "PlayerCollision.hpp"
-
-struct EnemySoundQueueView
-{
-    unsigned char unknown000[0x408];
-    int cueValues[134];
-    int activeSoundIds[12];
-    int sampleCounts[12];
-    int samples[12][128];
-
-    void QueueSoundCue(int soundId, float positionX);
-};
 
 struct BulletPositionView
 {

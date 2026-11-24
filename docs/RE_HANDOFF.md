@@ -55,6 +55,12 @@ comparison only for its source and link graph.
 
 ## Open owner
 
+`BulletUpdateRuntime` at `0x00406240` is active. Use
+`bullet-runtime-update` to compare its complete 885-byte extent in
+`BulletRuntimeTick`, rooted at the registered manager update callback.
+The live link matches the runtime body, the transform program, the manager
+update and its callback. The scoped cold replay is pending.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.
