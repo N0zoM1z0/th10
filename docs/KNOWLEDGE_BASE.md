@@ -736,47 +736,31 @@ frontier; do not refresh a baseline merely to accept the new positions.
   [2026-11-23]
 - **RebuildPlayerOptions @0x426F70 (2,520)**: about 2,404, plain RET instead of
   RET4 even with all nine callers present. [2026-10-19]
-- **EnemyGameStateView::StartSpell @0x409280 (2,432)**: the current
-  candidate matches 2,366 bytes and all 108 linked fields, including
-  the table reference and all seven stage destinations. Linking the
-  real `AnmVmStartScript` restores the argument setup at its 15 calls.
-  Returning the VM through the matching node in both handle lists
-  and the child-script lookup restores the complete extent. The
-  remaining 66 bytes are within `+0x000..+0x127`, in the entry and
-  the name and attempt updates. The reference's by-value panel
-  appearance and direct first name copy preserve those differences.
-  The `enemy-start-spell` recipe binds the full candidate. The replay gate
-  uses the same `ReplayManager::mode` at +0x10 as `EnemyEndSpell`.
-  Rebinding the pointer at 0x477838 to `g_ReplayManager` preserves the
-  complete extent, all field positions and the 66 differing bytes.
-  The default code section produces the same complete bound body, so
-  the source needs no private section directive. The real dispatcher
-  still pushes four words. The same link preserves the complete primary
-  back registrar and right-aligned text renderer.
+- **EnemyGameStateView::StartSpell @0x409280 (2,432)** uses the
+  `enemy-start-spell` recipe with real `AnmVmStartScript` support.
+  The cold replay covers 108 linked fields, including the table
+  reference and all seven stage destinations. The real dispatcher
+  pushes the panel pointer, index, name and duration, and the owner
+  returns with `RET 0x10`. The replay gate reads `ReplayManager::mode`
+  at +0x10, as in `EnemyEndSpell`.
 
-  Restoring the formal name from a saved pointer immediately after
-  the aggregate copy gives 2,402 matching bytes in the same graph.
-  The first two copies and the per-shot attempt update agree with retail.
-  The real dispatcher still pushes four arguments and the callee returns
-  with `RET 0x10`. The loop uses two advancing pointers, while retail
-  indexes through an address offset. C2 also stores the saved name back
-  to the argument slot before the attempt branch. Together these repairs
-  and new differences leave 30 differing bytes, including bytes inside
-  the previously matching counter tail. Both the real dispatcher entry
-  and a named name-buffer pointer in that caller reproduce the result.
+  Preparing the aggregate name cursor while the record-index product
+  is live in EAX gives the cursor ECX. The reference context's C2 trace
+  shows the original argument coalescing into ECX for the first two
+  copies and being read from its incoming stack slot at the draw.
+  Assigning the aggregate record before forming the cursor frees EAX,
+  so the cursor takes EAX and the original name takes EBX. Saving and
+  restoring the name explicitly repairs those earlier registers but
+  introduces a stack write before the aggregate attempt update.
 
-  Indexing the destination by the source cursor's distance from its
-  start recovers the relative address but reverses the SIB terms.
-  In this 2,399-byte match, the index offset has weight 80 and takes EAX.
-  The name at weight 79 takes ECX. C2 preserves its original value in
-  EDI, then copies it back to the stack at +0x135. Moving the restoration
-  to the common path or using a saved pointer directly at the draw call
-  changes the contribution. Moving the advancing cursor into an inline
-  history helper keeps the stack ABI and copies the name into the index
-  argument slot before the per-shot work. It shortens the owner to 2,424
-  bytes. The default code section preserves the 2,402-byte match of the
-  two-pointer probe. Its source and trace commands are in
-  `.analysis/start-spell/results.txt`.
+  Initializing the third cursor before the record assignment matches
+  2,431 bytes, leaving only the exchanged SIB terms at +0x124. Passing
+  the record's destination directly to the copy helper with constant
+  incoming pointer values and independent cursors restores that byte.
+  The maintained panel copy has its own input and output cursors.
+  Animation creation carries the layer and flags in a by-value
+  appearance. The reference source and local probe commands are
+  recorded in `.analysis/start-spell/results.txt`. [2026-11-24]
 - **ItemManagerUpdateBody @0x41AFD0 (2,320)** is exact in the registration-rooted
   `/GL` link, with 154 bound fields, 73 direct local branches and both jump
   tables at their target offsets. Expressing the distance scale as

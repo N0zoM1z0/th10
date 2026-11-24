@@ -30,6 +30,7 @@ the compiler observations behind the source changes.
 
 | Unit | Bytes | Relevant context |
 | --- | ---: | --- |
+| `enemy-start-spell` | 2,432 | `EnemyStartSpell` link, 108 fields and eight fixed local destinations. The real dispatcher passes four stack arguments. |
 | `ecl-vm-run` | 7,020 | `GameManagerUpdate` link, 189 fields and 62 fixed local destinations. The complete switch data and the context-first float reader are covered by the scoped replay. |
 | `anm-execute-script` | 9,964 | `GameManagerUpdate` link, 350 fields and 95 fixed local destinations. Per-case child attachment restores allocation before C2 merges the two spawn tails. |
 | `result-menu-update-result` | 3,260 | `GameManagerUpdate` link, 174 fields and eight switch entries. The two score-name copies share a source pointer. |
@@ -82,7 +83,6 @@ memory OR precedes them. Build `front-end-music-skip-line` to refresh the
 
 | Owner | Current comparison and next action |
 | --- | --- |
-| `EnemyGameStateView::StartSpell` | The default-section source matches 2,366 of 2,432 bytes. The retained `spell-restore-default-code-section` probe matches 2,402 with 108 fields and eight fixed destinations. Preserve the four stack arguments and seven stage targets while restoring the relative aggregate store and original name argument lifetime. See `.analysis/start-spell/results.txt`. |
 | `MidiOutputView::LoadTrackFile` | `midi-load-track-file` matches 442 of 448 bytes with six bound fields. The ECX header copy's larger priority reverses two loads and the length reuses the header's stack colour. The retained cursor-returning reader recovers the stack homes in a 446-byte probe. See `.analysis/midi-event/results.txt`. |
 | `InitializeGameStatisticsRecord` | `game-statistics-initialize-record` matches 249 of 274 bytes with eight bound fields. The reference's literal name copy restores the word stores and zeros EDX, then spills the outer count. Investigate the lifetime of the name destination. |
 

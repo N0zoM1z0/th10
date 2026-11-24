@@ -1,3 +1,6 @@
+// Panel copy and appearance source informed by th10-decomp (MIT),
+// commit db6797d245afd2e58b2cd31b60d2857499d3aa7c. See docs/licenses/th10-decomp-MIT.txt.
+
 #include "Main.hpp"
 #include "EnemyGameState.hpp"
 #include "EnemyPrimaryResources.hpp"
@@ -27,7 +30,7 @@ static __forceinline void CopySpellRecordName(char *destination, const char *sou
     } while (value != 0);
 }
 
-static __forceinline void CopyPanelName(char *destination, const char *source)
+static inline void CopyPanelName(char *const destination, const char *const source)
 {
     const char *cursor = source;
     char *output = destination;
@@ -36,14 +39,27 @@ static __forceinline void CopyPanelName(char *destination, const char *source)
 }
 
 
-static __forceinline AnmVmIdView CreatePanelAnimation(
-    AnmLoadedView *resource, int script)
+struct SpellPanelAppearance
+{
+    int renderLayer;
+    unsigned int flags;
+};
+
+static inline AnmVmIdView CreatePanelAnimation(
+    AnmLoadedView *resource, int script, SpellPanelAppearance appearance)
 {
     AnmVmView *object = g_AnmRenderManagerView->AllocateVm();
-    object->renderLayer = 15;
-    object->flags35C |= 0x40000000u;
+    object->renderLayer = appearance.renderLayer;
+    object->flags35C |= appearance.flags;
     resource->InitializeVm(object, script);
     return g_AnmRenderManagerView->AddVmVariant0(object);
+}
+
+static inline AnmVmIdView CreatePanelAnimation(
+    AnmLoadedView *resource, int script)
+{
+    SpellPanelAppearance appearance = {15, 0x40000000u};
+    return CreatePanelAnimation(resource, script, appearance);
 }
 
 static __forceinline AnmVmView *FindInline(int handle)
@@ -92,12 +108,14 @@ static __forceinline AnmVmView *FindPanelChild(int &handle, int script)
 void __stdcall EnemyGameStateView::StartSpell(
     int index, const char *name, int duration)
 {
-    const char *panelNameCursor = name;
     const int spellIndex = index;
     spellTimer.SetCurrent(0);
     spellId = spellIndex;
 
-    CopyPanelName(spellName, panelNameCursor);
+    const char *panelName = name;
+    char *panelNameDestination = spellName;
+    while ((*panelNameDestination++ = *panelName++) != 0)
+        ;
 
     flags378C = (flags378C & ~0x18u) | 3u;
 
@@ -108,16 +126,15 @@ void __stdcall EnemyGameStateView::StartSpell(
             statistics->records[
                 g_GameScoreState.history.statisticsGroupA * 3 +
                 g_GameScoreState.history.statisticsGroupB].SpellHistoryAt(spellIndex);
-        CopySpellRecordName(record->name, panelNameCursor);
+        CopySpellRecordName(record->name, name);
 
         record = statistics->records[
             g_GameScoreState.history.statisticsGroupA * 3 +
             g_GameScoreState.history.statisticsGroupB].SpellHistoryAt(spellIndex);
         CountSpellAttempt(record);
 
-        record = statistics->records[6].SpellHistoryAt(spellIndex);
-        CopyPanelName(record->name, panelNameCursor);
-        CountSpellAttempt(record);
+        CopyPanelName(statistics->records[6].SpellHistoryAt(spellIndex)->name, name);
+        CountSpellAttempt(statistics->records[6].SpellHistoryAt(spellIndex));
     }
 
     // The retained raw-register experiment treated EBP as the HUD receiver,
@@ -137,7 +154,7 @@ void __stdcall EnemyGameStateView::StartSpell(
     // The loaded panel name is its format argument, not a separate %s value.
     g_AnmRenderManagerView->DrawTextRight(
         GetPanelAnimation(panelVmIds[1].value), 0x00FFFFFFu,
-        panelNameCursor);
+        name);
 
     reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
         QueueSoundSample(14, 0);
