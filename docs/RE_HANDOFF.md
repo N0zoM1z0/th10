@@ -32,6 +32,15 @@ comparison only for its source and link graph.
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
+## Open owner
+
+`FrontEndControllerView::UpdateReplay` at `0x004315C0` is the active owner.
+The `frontend-replay-update` recipe produces the full 1,492-byte body and
+six phase destinations in the replay-loader `/EHs` graph. That graph keeps
+both replay file loads outlined and restores the 0x188-byte frame. The
+current comparison has 183 differing bytes. Start with the phase-2 input
+snapshot and the register rotation after creating the backdrop.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.

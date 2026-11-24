@@ -7,6 +7,7 @@
 #include "ReplayManager.hpp"
 #include "FileSystem.hpp"
 #include "VmIdInterrupt.hpp"
+#include "GameScoreState.hpp"
 #include <stdlib.h>
 #include <math.h>
 
@@ -2304,10 +2305,28 @@ int FrontEndControllerView::DrawStageScores()
 }
 
 
+extern unsigned char g_ScriptViewerRouteDescriptor[];
+
+static __forceinline void ReplayResetOpeningTimer(AnmVmTimerView *timer)
+{
+    timer->SetCurrent(0);
+}
+
+static __forceinline unsigned int ReadReplayMenuPressedInput()
+{
+    unsigned int input;
+    const unsigned char *bytes =
+        reinterpret_cast<const unsigned char *>(&g_FrontEndInput);
+    memcpy(&input, bytes + offsetof(FrontEndInputView, pressed), sizeof(input));
+    return input;
+}
+
 // TH10_FRONTEND_FUNCTION: 0x004315C0 FrontEndControllerView::UpdateReplay
 int __stdcall FrontEndControllerView::UpdateReplay(
     FrontEndControllerView *controller)
 {
+    char replayPath[64];
+    WIN32_FIND_DATAA findData;
     switch (controller->screenState)
     {
     case FRONT_END_REPLAY_INITIALIZE:
@@ -2316,20 +2335,20 @@ int __stdcall FrontEndControllerView::UpdateReplay(
         controller->cursor.SetCurrent(g_FrontEndReplayCursor);
         g_FrontEndReplayCursor = 0;
 
-        if (ResolveVm(&controller->vmIds[0x5e]) == NULL)
+        if (g_AnmRenderManagerView->FindVm(
+                controller->vmIds[0x5e]) == NULL)
         {
             controller->CreateVm(0x5e);
-            controller->difficultyAuxVmId =
-                g_AsciiManagerView->asciiAnm->CreateVmVariant0(
-                    8, FRONT_END_RENDER_LAYER);
+            AnmLoadedView &resource = *g_AsciiManagerView->asciiAnm;
+            controller->difficultyAuxVmId = resource.CreateVmVariant0(
+                8, FRONT_END_RENDER_LAYER);
         }
         controller->CreateVm(0x65);
-        SetScreenState(controller, FRONT_END_REPLAY_OPENING);
+        controller->SetScreenStateTarget(FRONT_END_REPLAY_OPENING);
 
         memset(controller->replayFiles, 0, sizeof(controller->replayFiles));
         for (int replayNumber = 1; replayNumber <= 25; ++replayNumber)
         {
-            char replayPath[64];
             sprintf(replayPath, "th10_%.2d.rpy", replayNumber);
             controller->replayFiles[replayNumber - 1] =
                 ReplayManager::Load(replayPath);
@@ -2338,20 +2357,18 @@ int __stdcall FrontEndControllerView::UpdateReplay(
         _mkdir("replay");
         _chdir("replay");
 
-        WIN32_FIND_DATAA findData;
         HANDLE search = FindFirstFileA("th10_ud????.rpy", &findData);
         if (search != INVALID_HANDLE_VALUE)
         {
-            int replayIndex = 25;
-            do
+            for (int replayIndex = 25; replayIndex < 50; ++replayIndex)
             {
                 _chdir("../");
                 controller->replayFiles[replayIndex] =
                     ReplayManager::Load(findData.cFileName);
                 _chdir("replay");
-                ++replayIndex;
+                if (!FindNextFileA(search, &findData))
+                    break;
             }
-            while (replayIndex < 50 && FindNextFileA(search, &findData));
         }
 
         // The original calls FindClose even when FindFirstFileA returned the
@@ -2359,85 +2376,90 @@ int __stdcall FrontEndControllerView::UpdateReplay(
         FindClose(search);
         _chdir("../");
         controller->replayListOffset = 0;
-        break;
     }
+        // The opening timer is checked on the initialization frame.
 
     case FRONT_END_REPLAY_OPENING:
         if (controller->stateTimer.current > 6)
         {
-            SetScreenState(controller, FRONT_END_REPLAY_SELECT_FILE);
-            return 1;
+            controller->screenState = FRONT_END_REPLAY_SELECT_FILE;
+            ReplayResetOpeningTimer(&controller->stateTimer);
         }
         break;
 
     case FRONT_END_REPLAY_SELECT_FILE:
-        controller->cursor.previous = controller->cursor.current;
-        if (InputRepeated(FRONT_END_INPUT_UP))
-            controller->cursor.Move(-1);
-        if (InputRepeated(FRONT_END_INPUT_DOWN))
-            controller->cursor.Move(1);
+    {
+        FrontEndCursorView *cursor = &controller->cursor;
+        cursor->previous = cursor->current;
+        if (g_FrontEndInput.IsActiveInline(FRONT_END_INPUT_UP))
+            cursor->Move(-1);
+        if (g_FrontEndInput.IsActiveInline(FRONT_END_INPUT_DOWN))
+            cursor->Move(1);
 
-        if (controller->cursor.previous != controller->cursor.current)
+        if (cursor->previous != cursor->current)
             FrontEndPlaySound(FRONT_END_SOUND_MOVE);
 
-        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
+        unsigned int pressed = ReadReplayMenuPressedInput();
+        if ((pressed & FRONT_END_INPUT_CANCEL) != 0)
         {
-            SetScreenState(controller, FRONT_END_REPLAY_CLOSING);
+            controller->SetScreenStateTarget(FRONT_END_REPLAY_CLOSING);
             FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
-            return 1;
         }
-
-        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0 &&
-            controller->replayFiles[controller->cursor.current] != NULL)
+        else if ((pressed & FRONT_END_INPUT_CONFIRM) != 0 &&
+                 controller->replayFiles[cursor->current] != NULL)
         {
-            SetScreenState(controller, FRONT_END_REPLAY_SELECT_STAGE);
-            controller->selectedReplay = controller->cursor.current;
-            controller->cursor.Push();
+            controller->SetScreenStateTarget(FRONT_END_REPLAY_SELECT_STAGE);
+            controller->selectedReplay = cursor->current;
+            cursor->Push();
             FrontEndPlaySound(FRONT_END_SOUND_SELECT);
 
             controller->cursor.count = 7;
-            controller->cursor.SetCurrent(0);
-            ReplayManager *replay =
-                controller->replayFiles[controller->selectedReplay];
-            for (int stage = 1; stage <= 7; ++stage)
+            cursor->Select(0);
+            int stage = 0;
+            do
             {
-                if (replay->stageStates[stage].header == NULL)
-                    controller->cursor.DisableEntry(stage - 1);
-            }
-            controller->cursor.Move(-1);
-            controller->cursor.Move(1);
+                if (controller->replayFiles[controller->selectedReplay]->
+                        stageStates[stage + 1].header == NULL)
+                    cursor->DisableEntry(stage);
+                ++stage;
+            } while (stage < 7);
+            cursor->Move(-1);
+            cursor->Move(1);
         }
         break;
+    }
 
     case FRONT_END_REPLAY_SELECT_STAGE:
+    {
         if (controller->stateTimer.current < 15)
             break;
 
-        controller->cursor.previous = controller->cursor.current;
-        if (InputRepeated(FRONT_END_INPUT_UP))
-            controller->cursor.Move(-1);
-        if (InputRepeated(FRONT_END_INPUT_DOWN))
-            controller->cursor.Move(1);
+        FrontEndCursorView *cursor = &controller->cursor;
+        cursor->previous = cursor->current;
+        if (static_cast<short>(g_FrontEndInput.IsRepeated(FRONT_END_INPUT_UP)))
+            cursor->Move(-1);
+        if (static_cast<short>(g_FrontEndInput.IsRepeated(FRONT_END_INPUT_DOWN)))
+            cursor->Move(1);
 
-        if (controller->cursor.previous != controller->cursor.current)
+        if (cursor->previous != cursor->current)
             FrontEndPlaySound(FRONT_END_SOUND_MOVE);
 
-        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
+        unsigned int pressed = ReadReplayMenuPressedInput();
+        if ((pressed & FRONT_END_INPUT_CANCEL) != 0)
         {
-            controller->cursor.Pop();
+            cursor->Pop();
             controller->cursor.count = 25;
             controller->cursor.disabledEntryCount = 0;
-            SetScreenState(controller, FRONT_END_REPLAY_SELECT_FILE);
+            controller->SetScreenStateTarget(FRONT_END_REPLAY_SELECT_FILE);
             FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
-            return 1;
         }
-
-        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
+        else if ((pressed & FRONT_END_INPUT_CONFIRM) != 0)
         {
-            controller->selectedReplayStage = controller->cursor.current;
-            SetScreenState(controller, FRONT_END_REPLAY_STARTING);
+            controller->selectedReplayStage = cursor->current;
+            controller->SetScreenStateTarget(FRONT_END_REPLAY_STARTING);
         }
         break;
+    }
 
     case FRONT_END_REPLAY_STARTING:
         if (controller->stateTimer.current == 2)
@@ -2448,20 +2470,22 @@ int __stdcall FrontEndControllerView::UpdateReplay(
 
         if (controller->stateTimer.current >= 32)
         {
-            SetScreen(controller, FRONT_END_SCREEN_START_GAME);
-            g_FrontEndSelectedStage = controller->selectedReplayStage + 1;
-            g_FrontEndSelectedStageRecord =
-                g_FrontEndStageRecords[controller->selectedReplayStage];
-            g_FrontEndSelectedStageMirror = g_FrontEndSelectedStage;
+            controller->SetScreenTarget(FRONT_END_SCREEN_START_GAME);
+            int stage = controller->selectedReplayStage + 1;
+            g_FrontEndSelectedStageRecord = g_ScriptViewerRouteDescriptor +
+                stage * sizeof(g_FrontEndStageRecords[0]);
+            g_GameScoreState.selectedStage = stage;
+            g_GameScoreState.nextStage = stage;
             GameQueueScaledSoundCommand(6.0f);
-            g_FrontEndNextGameMode = 12;
+            g_MainSupervisorView.nextGameMode = 12;
 
-            ReplayManager *replay =
-                controller->replayFiles[controller->selectedReplay];
-            strcpy(g_FrontEndDemoPath, replay->replayPath);
-            g_ReplayCharacter = replay->replayData->character;
-            g_ReplayShotType = replay->replayData->shotType;
-            g_ReplayDifficulty = replay->replayData->difficulty;
+            strcpy(g_FrontEndDemoPath,
+                controller->replayFiles[controller->selectedReplay]->replayPath);
+            ReplayDataHeader *header =
+                controller->replayFiles[controller->selectedReplay]->replayData;
+            g_GameScoreState.history.statisticsGroupA = header->character;
+            g_GameScoreState.history.statisticsGroupB = header->shotType;
+            g_ReplayDifficulty = header->difficulty;
             g_MainModeTransitionCounter = 2;
             g_FrontEndReplayCursor = controller->selectedReplay;
         }
@@ -2471,15 +2495,15 @@ int __stdcall FrontEndControllerView::UpdateReplay(
         if (controller->stateTimer.current >= 6)
         {
             for (int replayIndex = 0; replayIndex < 50; ++replayIndex)
-                ReplayManager::Destroy(controller->replayFiles[replayIndex]);
+                delete controller->replayFiles[replayIndex];
             memset(controller->replayFiles, 0, sizeof(controller->replayFiles));
 
             DeleteVm(controller, 0x65);
-            InterruptVm(controller, 0x5a, 8);
-            InterruptVm(controller, 0x5b, 8);
+            controller->MarkVmInterrupt(0x5a, 8);
+            controller->MarkVmInterrupt(0x5b, 8);
             DeleteVm(controller, 0x5e);
-            InterruptVmId(controller->difficultyAuxVmId.value, 1);
-            SetScreen(controller, FRONT_END_SCREEN_MAIN_MENU_RETURN);
+            EnemyMarkPendingInterrupt(&controller->difficultyAuxVmId.value);
+            controller->SetScreenTarget(FRONT_END_SCREEN_MAIN_MENU_RETURN);
             controller->cursor.Pop();
         }
         break;
@@ -4048,7 +4072,6 @@ closeMusicRoom:
 // storage aliases remain unresolved; pause and result bodies share this view.
 #include "ResultMenu.hpp"
 #include "Gui.hpp"
-#include "GameScoreState.hpp"
 #include "EnemySoundQueue.hpp"
 extern unsigned char g_MainSoundOwner[0x52d0];
 extern unsigned int g_GameRuntimeFlags;
