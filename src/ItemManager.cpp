@@ -345,115 +345,120 @@ int ItemManagerView::ConvertPowerItems()
 // Complete0x41BB00 owner:793 body bytes plus26 bytes of table alignment,
 // three absolute jump slots and the eleven-byte kind selector. The normal
 // pool is150 records; kind8 uses the following2048-record ring.
+static __forceinline ItemRecordView *FindFreeNormalItem(ItemRecordView *item)
+{
+    for (int slot = 0; slot < 150; ++slot, ++item)
+    {
+        if (item->active == 0)
+            return item;
+    }
+    return NULL;
+}
+
+static __forceinline void ResetSpawnMotion(ItemRecordView &item)
+{
+    item.velocity.z = 0.0f;
+    unsigned int flags = item.timer.flags;
+    if ((flags & 1u) == 0)
+    {
+        flags |= 1u;
+        item.timer.current = 0;
+        item.timer.previous = -999999;
+        item.timer.subframe = 0.0f;
+        item.timer.scale = &g_PlayerTimerScale;
+        item.timer.flags = flags;
+    }
+    item.timer.current = 0;
+    item.timer.subframe = 0.0f;
+    item.timer.previous = -1;
+    item.unknown3C4 = 0;
+}
+
 int ItemManagerView::Spawn(const AnmFloat3View *position, int kind,
     unsigned int color, float angle, float magnitude)
 {
-    if (kind == 8)
+    if (kind != 8)
     {
-        ItemRecordView *item = &items[150 + delayedItemCursor];
-        ++delayedSpawnRequests;
-        if (item->active == 0)
+        ItemRecordView *item = FindFreeNormalItem(items);
+        if (item == NULL)
+            return 0;
+
+        item->active = 1;
+        AnmFloat3View *location = &item->worldPosition;
+        *location = *position;
+        if (location->x <= -192.0f)
+            location->x = -192.0f;
+        else if (location->x >= 192.0f)
+            location->x = 192.0f;
+        item->velocity.FromAngleMagnitude(angle, magnitude);
+        ResetSpawnMotion(*item);
+
+        if (g_PlayerPower >= 100)
         {
-            if (delayedSpawnRequests >= 1024)
-                item->delayFrames = delayedItemCursor % 32 + 16;
-            else if (delayedSpawnRequests >= 512)
-                item->delayFrames = delayedItemCursor % 16 + 8;
-            else if (delayedSpawnRequests >= 256)
-                item->delayFrames = delayedItemCursor % 8 + 4;
-            else
-                item->delayFrames = delayedItemCursor % 4;
-            item->kind = 8;
-            item->spriteKind = 8;
-            item->active = 5;
-            item->worldPosition = *position;
-            item->velocity.FromAngleMagnitude(angle, magnitude);
-            item->velocity.z = 0.0f;
-            if ((item->timer.flags & 1u) == 0)
+            switch (kind)
             {
-                item->timer.current = 0;
-                item->timer.previous = -999999;
-                item->timer.subframe = 0.0f;
-                item->timer.scale = &g_PlayerTimerScale;
-                item->timer.flags |= 1u;
+            case 10:
+            case 11:
+                kind = 5;
+                break;
+            case 1:
+            case 4:
+                kind = 9;
+                break;
             }
-            item->timer.current = 0;
-            item->timer.subframe = 0.0f;
-            item->timer.previous = -1;
-            item->unknown3C4 = 0;
         }
-        delayedItemCursor = (delayedItemCursor + 1) % 2048;
+
+        // The previous slot contents determine whether to spawn the effect.
+        if (item->kind == 3)
+        {
+            g_EnemyPrimaryResourceOwner->primaryEnemyResource->
+                CreateVmAtWorldVariant0(0x189, location);
+        }
+        item->kind = kind;
+        item->spriteKind = kind;
+        if (kind == 10)
+        {
+            item->spriteKind = 1;
+            AnmVmStartScript(g_EnemyPrimaryResourceOwner->primaryEnemyResource,
+                &item->vm, 0x177);
+        }
+        else if (kind == 11)
+        {
+            item->spriteKind = 4;
+            AnmVmStartScript(g_EnemyPrimaryResourceOwner->primaryEnemyResource,
+                &item->vm, 0x17a);
+        }
+        else
+        {
+            AnmVmStartScript(g_EnemyPrimaryResourceOwner->primaryEnemyResource,
+                &item->vm, kind + 0x176);
+        }
+        item->vm.primaryColor.value = color;
         return 0;
     }
 
-    ItemRecordView *item = &items[0];
-    int index = 0;
-    while (item->active != 0)
+    int cursor = delayedItemCursor;
+    ItemRecordView *item = &items[150 + cursor];
+    int requests = ++delayedSpawnRequests;
+    if (item->active == 0)
     {
-        ++index;
-        ++item;
-        if (index >= 150)
-            return 0;
-    }
-    item->active = 1;
-    item->worldPosition = *position;
-    if (item->worldPosition.x < -192.0f)
-        item->worldPosition.x = -192.0f;
-    else if (item->worldPosition.x >= 192.0f)
-        item->worldPosition.x = 192.0f;
-    item->velocity.FromAngleMagnitude(angle, magnitude);
-    item->velocity.z = 0.0f;
-    if ((item->timer.flags & 1u) == 0)
-    {
-        item->timer.current = 0;
-        item->timer.previous = -999999;
-        item->timer.subframe = 0.0f;
-        item->timer.scale = &g_PlayerTimerScale;
-        item->timer.flags |= 1u;
-    }
-    item->timer.current = 0;
-    item->timer.subframe = 0.0f;
-    item->timer.previous = -1;
-    item->unknown3C4 = 0;
-    if (g_PlayerPower >= 100)
-    {
-        switch (kind)
-        {
-        case 1:
-        case 4:
-            kind = 9;
-            break;
-        case 10:
-        case 11:
-            kind = 5;
-            break;
-        }
-    }
-    // This tests the inactive record's old kind, before installing the new
-    // kind. Both target call sites use the real world-position VM creator.
-    if (item->kind == 3)
-    {
-        g_EnemyPrimaryResourceOwner->primaryEnemyResource->
-            CreateVmAtWorldVariant0(0x189, &item->worldPosition);
-    }
-    item->kind = kind;
-    item->spriteKind = kind;
-    if (kind == 10)
-    {
-        item->spriteKind = 1;
-        AnmVmStartScript(g_EnemyPrimaryResourceOwner->primaryEnemyResource, &item->vm, 0x177);
-    }
-    else
-    {
-        int script;
-        if (kind == 11)
-        {
-            item->spriteKind = 4;
-            script = 0x17a;
-        }
+        int delayFrames;
+        if (requests >= 1024)
+            delayFrames = cursor % 32 + 16;
+        else if (requests >= 512)
+            delayFrames = cursor % 16 + 8;
+        else if (requests >= 256)
+            delayFrames = cursor % 8 + 4;
         else
-            script = kind + 0x176;
-        AnmVmStartScript(g_EnemyPrimaryResourceOwner->primaryEnemyResource, &item->vm, script);
+            delayFrames = cursor % 4;
+        item->delayFrames = delayFrames;
+        item->kind = 8;
+        item->spriteKind = 8;
+        item->active = 5;
+        item->worldPosition = *position;
+        item->velocity.FromAngleMagnitude(angle, magnitude);
+        ResetSpawnMotion(*item);
     }
-    item->vm.primaryColor.value = color;
+    delayedItemCursor = (delayedItemCursor + 1) % 2048;
     return 0;
 }

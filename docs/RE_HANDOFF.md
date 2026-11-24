@@ -60,6 +60,19 @@ comparison only for its source and link graph.
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
+## Open owner
+
+`ItemManagerView::Spawn` at `0x0041BB00` is active. Compare the complete
+819-byte item spawn through `ItemManagerSpawn`, including the normal
+slot search, delayed ring, power conversion and switch tables. The caller
+supplies the manager in EAX, the position in ECX, and four stack arguments.
+The candidate aligns 205 of 208 code instructions with the real script
+starter in the link. The vertical velocity stores and the player power
+read still need their original order around timer initialization. The
+laser caller, polar helper, VM creator and script loader match in the same
+image. The script starter has the retail EAX/ESI/RET 4 interface and its
+own body is two bytes longer.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.
