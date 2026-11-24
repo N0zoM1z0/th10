@@ -427,30 +427,34 @@ source changes. `REGRESSED` means residual offsets moved relative to the stored
 frontier; do not refresh a baseline merely to accept the new positions.
 
 - **EnemyRuntimeView::DispatchEclInstruction @0x40E770 (14,416)**: the
-  maintained `EnemyStartSpell` graph with the reviewed bullet spawner
-  produces 14,452 bytes. It matches the 181 selector bytes and six of
-  the 108 main destinations. Motion scopes and a typed aim result give
-  14,424 bytes in a local probe. Earlier residual ledgers measure their
-  recorded source and link contexts.
+  maintained source emits 14,452 bytes in the `EnemyStartSpell` graph
+  with the reviewed bullet spawner. Scoped spawn requests and the spell
+  name array share the original ESP+0x248 stack slot. Together with
+  scoped position cases and a typed aim result, they give a 14,392-byte
+  probe with 14 of 108 main destinations fixed. The 181 selectors match.
 
   - The main jump table starts at +0x35C0. The 181 selectors at +0x3770
     and three alignment bytes precede two five-entry tables at +0x3828
     and +0x383C. The nested switches belong to difficulty opcodes 0x163
     and 0x164. The linked comparator checks this layout with one ordinary
     data span and the actual PE relocations covering both tables.
-  - The local th10-decomp reference diagnostic reproduces the 14,416-byte
-    extent, all 118 table destinations and all ordinary bytes. Use its
-    case scopes and shared tails to guide maintained-source work. The
-    retained images, compare commands and source probes are in
-    `.analysis/enemy-ecl-dispatch/`.
+  - The local th10-decomp diagnostic reproduces all 14,416 bytes once its
+    726 native fields are bound. Eight data references overlap adjacent
+    four-byte anchors in that graph. The Y component of the camera offset
+    and seven reads of the second scalar interpolation control word use
+    explicit +4 addends. The probe commands are in
+    `.analysis/enemy-ecl-dispatch/results.txt`.
+  - Random movement calls `RngView::GetRandomF32Signed` on `g_RngView`.
+    Screen shake calls `StageCreateTransitionEffect` with priority 0x31.
+    Both bind to real callees in the latest probe. Adding `EnemyLaser.cpp`
+    changes request passing and merges laser calls. The manager-member
+    factory probe keeps ESI for the manager and takes the request on the
+    stack. The original receives it in EDI and returns with `RET 4`.
   - Rank-3 thresholds are +/-512. Rank-5 uses +/-600 and +/-200.
     The target spell-name loop initializes its destination at ESP+0x248
     and forms the source address as a displacement from that cursor.
-  - `FIRE_BULLET_PATTERN` now keeps one `EnemyBulletPatternView*` across
-    XYZ publication, the protection-radius check and `SpawnBulletPattern`.
-    This was the largest recent improvement: 36-TU 14,468/14,416 with 10,495
-    differences became 14,452/14,416 with 10,414; 12-TU 14,472/14,416 with
-    10,531 became 14,456/14,416 with 10,240. The owner is still nonexact.
+  - `FIRE_BULLET_PATTERN` keeps one `EnemyBulletPatternView*` across XYZ
+    publication, the protection-radius check and the actual spawner call.
   - Paired script writes for bullet sprite IDs, offsets, angles, counts,
     speeds, sounds and rank interpolation retain the typed pattern/offset
     receiver after the first store. Preserve the original unchecked

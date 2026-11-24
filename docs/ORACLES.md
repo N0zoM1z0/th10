@@ -108,13 +108,6 @@ offsets. Being internal does not authorize normalizing a different code label,
 table slot or data position. The synthetic swapped-table and shifted-base
 controls in `scripts/test-linked-local-fields.py` guard this requirement.
 
-When decoding stops in an owned absolute jump table, complete authoritative PE
-DIR32 fields may bridge the gap to an explicitly declared unlinked data suffix.
-Those annotations remain contiguous, trailing, disjoint from decoded bytes and
-all link fields; partial words and relative fields cannot fill coverage gaps.
-Field inventory and semantic binding remain exhaustive, and every data byte is
-still compared.
-
 Nonexact owners are tracked by the diagnostic frontier ratchet,
 `scripts/check-frontier.py` with `config/frontiers.toml`. It rebuilds each
 named unit graph, masks the candidate's link-resolved fields and fails when a

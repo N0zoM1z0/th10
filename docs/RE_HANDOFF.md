@@ -79,7 +79,7 @@ memory OR precedes them. Build `front-end-music-skip-line` to refresh the
 
 | Owner | Current comparison and next action |
 | --- | --- |
-| `EnemyRuntimeView::DispatchEclInstruction` | The graph with both real spell and bullet callees emits 14,452 bytes and matches all 181 opcode selectors. Scoped position cases and a typed aim result give 14,424 bytes. The reference diagnostic reproduces the original 14,416-byte layout and all 118 jump destinations. See `.analysis/enemy-ecl-dispatch/results.txt`. |
+| `EnemyRuntimeView::DispatchEclInstruction` | The reference diagnostic reproduces 14,416 bytes and all 118 jump destinations. Scoped spawn requests and the spell name array share the original ESP+0x248 slot. The 14,516-byte graph with real spell, bullet, laser, RNG and screen-effect calls fixes 18 main destinations and all 181 selectors. Recover the laser factory's EDI request and stack kind before revisiting the shared result and rank tails. See `.analysis/enemy-ecl-dispatch/results.txt`. |
 | `MidiOutputView::LoadTrackFile` | `midi-load-track-file` matches 442 of 448 bytes with six bound fields. The ECX header copy's larger priority reverses two loads and the length reuses the header's stack colour. The retained cursor-returning reader recovers the stack homes in a 446-byte probe. See `.analysis/midi-event/results.txt`. |
 | `InitializeGameStatisticsRecord` | `game-statistics-initialize-record` matches 249 of 274 bytes with eight bound fields. The reference's literal name copy restores the word stores and zeros EDX, then spills the outer count. Investigate the lifetime of the name destination. |
 
