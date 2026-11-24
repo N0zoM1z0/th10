@@ -66,4 +66,4 @@ function = "FrontEndControllerView::UpdateScoreEntry"
 unit = "frontend-score-entry-update"
 candidate_size = 1400
 target_sha256 = "1c27414508c6e8cf36fd313405d424cb83f0cdc4ffc06123d2b227a093ae5d32"
-residual = ["1B4", "3AD-3B7", "458"]
+residual = ["3AD-3B7"]

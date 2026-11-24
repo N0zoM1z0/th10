@@ -41,9 +41,9 @@ comparison only for its source and link graph.
 `FrontEndControllerView::UpdateScoreEntry` at `0x00432CB0` is the active
 owner. The `frontend-score-entry-update` recipe emits the full 1,400 bytes
 through the title dispatcher and binds all 80 fields. The typed score
-table restores the insertion receiver in EDI. The 13 remaining differences
-are the two string-copy addressing bytes and the order of the editor
-cursor write at `+0x3AD` through `+0x3B7`.
+table restores the insertion receiver in EDI. Both name copies now match.
+The only residual is the editor cursor store moving ahead of the compare,
+which changes 11 bytes at `+0x3AD` through `+0x3B7`.
 Build the unit and run `scripts/repo-python scripts/check-frontier.py
 frontend-score-entry-update --no-build --show` to inspect this residual.
 

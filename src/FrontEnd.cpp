@@ -3082,17 +3082,6 @@ static __forceinline int InsertCompletedRunScore()
     return rank;
 }
 
-static __forceinline void SaveScoreEntryName(
-    const FrontEndControllerView &controller, const char *name)
-{
-    FrontEndScoreRecordView &record =
-        GetCurrentScoreEntryTable().records[g_ReplayDifficulty][controller.cursor.current];
-    strcpy(record.name, name);
-    ScoreEntryProfileView *profile =
-        reinterpret_cast<ScoreEntryProfileView *>(g_FrontEndProfileData);
-    strcpy(profile->lastName, name);
-}
-
 struct ScoreEntryScreen
 {
     FrontEndControllerView *const &controller;
@@ -3135,13 +3124,23 @@ static __forceinline int UpdateScoreEntryScreen(
 
             FrontEndCursorView *keyboard = &controller->scoreEntryKeyboardCursor;
             SelectScoreEntryRow(*keyboard, 0);
-            controller->scoreEntryKeyboardCursor.count = strlen(g_FrontEndScoreEntryAlphabet);
+            controller->scoreEntryKeyboardCursor.count =
+                strlen(g_FrontEndScoreEntryAlphabet);
             controller->scoreEntryKeyboardCursor.wraps = 1;
 
             const ScoreEntryProfileView *profile =
                 reinterpret_cast<ScoreEntryProfileView *>(g_FrontEndProfileData);
-            strcpy(controller->scoreEntryName, profile->lastName);
-            if (strcmp(controller->scoreEntryName, "        ") != 0)
+            char *editingName = controller->scoreEntryName;
+            const char *lastName = profile->lastName;
+            const char *character = lastName;
+            char letter;
+            do
+            {
+                letter = *character;
+                editingName[character - lastName] = letter;
+                ++character;
+            } while (letter != '\0');
+            if (strcmp(editingName, "        ") != 0)
                 keyboard->Move(-1);
 
             int cursor;
@@ -3159,7 +3158,7 @@ static __forceinline int UpdateScoreEntryScreen(
             controller->scoreEntryUnavailable = 1;
         }
     }
-        // The opening timer is checked on the initialization frame.
+    // The opening timer is checked on the initialization frame.
     case FRONT_END_SCORE_ENTRY_OPENING:
         if (controller->stateTimer.current > 6)
             controller->SetScreenStateTarget(FRONT_END_SCORE_ENTRY_ACTIVE);
@@ -3204,7 +3203,8 @@ static __forceinline int UpdateScoreEntryScreen(
                 int key = controller->scoreEntryKeyboardCursor.current;
                 if (key < alphabetLength - 3)
                 {
-                    WriteScoreEntryCharacter(*controller, alphabet[key], alphabetLength);
+                    WriteScoreEntryCharacter(
+                        *controller, alphabet[key], alphabetLength);
                     FrontEndPlaySound(FRONT_END_SOUND_SELECT);
                 }
                 else if (key == alphabetLength - 3)
@@ -3221,7 +3221,22 @@ static __forceinline int UpdateScoreEntryScreen(
                 }
                 else if (key == alphabetLength - 1)
                 {
-                    SaveScoreEntryName(*controller, controller->scoreEntryName);
+                    const char *name = controller->scoreEntryName;
+                    FrontEndScoreRecordView &record =
+                        GetCurrentScoreEntryTable().records[g_ReplayDifficulty]
+                            [controller->cursor.current];
+                    strcpy(record.name, name);
+                    ScoreEntryProfileView *profile =
+                        reinterpret_cast<ScoreEntryProfileView *>(g_FrontEndProfileData);
+                    char *lastName = profile->lastName;
+                    const char *character = name;
+                    char letter;
+                    do
+                    {
+                        letter = *character;
+                        lastName[character - name] = letter;
+                        ++character;
+                    } while (letter != '\0');
                     controller->SetScreenStateTarget(FRONT_END_SCORE_ENTRY_CLOSING);
                     FrontEndPlaySound(FRONT_END_SOUND_SELECT);
                 }
