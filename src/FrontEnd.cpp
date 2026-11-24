@@ -5092,158 +5092,209 @@ void ResultMenuResume(ResultMenuView *menu)
     g_AnmGameSpeed = menu->savedSpeed;
 }
 
-// Target 0x422C80. Confirm, shortcut and cancel checks intentionally remain
-// independent: later pressed bits may override earlier transitions this tick.
+enum ResultMenuPausePhase
+{
+    RESULT_MENU_PAUSE_CLOSED = 0,
+    RESULT_MENU_PAUSE_OPENING = 1,
+    RESULT_MENU_PAUSE_CHOOSING = 2,
+    RESULT_MENU_PAUSE_CLOSING = 3,
+    RESULT_MENU_PAUSE_CONFIRM_OPENING = 4,
+    RESULT_MENU_PAUSE_CONFIRM_RESOLVING = 5
+};
+
+static __forceinline short PauseMenuInputActive(
+    const FrontEndInputView *input, unsigned short mask)
+{
+    if ((input->pressed & mask) != 0)
+        return 1;
+    if ((input->repeated & mask) != 0)
+        return 1;
+    return 0;
+}
+
+// Target 0x00422C80. The two shortcuts and escape can override an
+// earlier choice during the same input update.
 void __stdcall ResultMenuUpdatePause(ResultMenuView *menu)
 {
     switch (menu->state)
     {
-    case 1:
-        if (menu->timer.current < 10) return;
-        menu->state = 2;
-        menu->cursor.count = g_ResultGameManager->initializationMode != 0 ? 2 : 3;
-        menu->cursor.wraps = 1;
-        menu->cursor.SetCurrent(0);
-        menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
-        return;
-    case 2:
-        menu->cursor.previous = menu->cursor.current;
-        if ((g_FrontEndInput.pressed & 0x10) != 0 || (g_FrontEndInput.repeated & 0x10) != 0)
-            menu->cursor.Move(-1);
-        if ((g_FrontEndInput.pressed & 0x20) != 0 || (g_FrontEndInput.repeated & 0x20) != 0)
-            menu->cursor.Move(1);
-        if (menu->cursor.previous != menu->cursor.current)
+    case RESULT_MENU_PAUSE_OPENING:
+        if (menu->timer.current >= 10)
         {
+            menu->state = RESULT_MENU_PAUSE_CHOOSING;
+            menu->cursor.count = g_ResultGameManager->initializationMode != 0 ? 2 : 3;
+            menu->cursor.wraps = 1;
+            menu->cursor.Select(0);
             menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
-            ResultMenuSound(12);
+            return;
         }
-        if ((g_FrontEndInput.pressed & 0x1001) != 0)
+        break;
+
+    case RESULT_MENU_PAUSE_CHOOSING:
+    {
+        FrontEndCursorView *cursor = &menu->cursor;
+        cursor->previous = cursor->current;
+        if (PauseMenuInputActive(&g_FrontEndInput, FRONT_END_INPUT_UP))
+            cursor->Move(-1);
+        if (PauseMenuInputActive(&g_FrontEndInput, FRONT_END_INPUT_DOWN))
+            cursor->Move(1);
+        if (cursor->previous != cursor->current)
         {
-            ResultMenuSound(10);
-            switch (menu->cursor.current)
+            menu->mainVm.SetInterrupt(static_cast<short>(cursor->current + 7));
+            ResultMenuSound(FRONT_END_SOUND_MOVE);
+        }
+        if ((ReadReplayMenuPressedInput() & FRONT_END_INPUT_CONFIRM) != 0)
+        {
+            ResultMenuSound(FRONT_END_SOUND_SELECT);
+            switch (cursor->current)
             {
+            case 2:
+                ResultMenuPendingSix(ResultMenuFindScript(
+                    reinterpret_cast<AnmVmIdView *>(&menu->mainVm), 117));
+                menu->state = RESULT_MENU_PAUSE_CONFIRM_OPENING;
+                break;
+            case 1:
+                ResultMenuPendingSix(ResultMenuFindScript(
+                    reinterpret_cast<AnmVmIdView *>(&menu->mainVm), 116));
+                menu->state = g_ResultGameManager->initializationMode != 0 ?
+                    RESULT_MENU_PAUSE_CLOSING : RESULT_MENU_PAUSE_CONFIRM_OPENING;
+                break;
             case 0:
                 EnemyMarkPendingInterrupt(&menu->secondaryVm.value);
                 EnemyMarkPendingInterrupt(&menu->mainVm.value);
                 EnemyMarkPendingInterrupt(&menu->auxiliaryVm.value);
-                menu->state = 3;
-                break;
-            case 1:
-                {
-                    AnmVmIdView id = ResultMenuFindScript(&menu->mainVm, 116);
-                    ResultMenuPendingSix(id);
-                    menu->state = g_ResultGameManager->initializationMode != 0 ? 3 : 4;
-                }
-                break;
-            case 2:
-                {
-                    AnmVmIdView id = ResultMenuFindScript(&menu->mainVm, 117);
-                    ResultMenuPendingSix(id);
-                    menu->state = 4;
-                }
+                menu->state = RESULT_MENU_PAUSE_CLOSING;
                 break;
             }
             menu->timer.SetCurrent(0);
         }
-        if ((g_FrontEndInput.pressed & 0x4000) != 0)
+        if ((ReadReplayMenuPressedInput() & 0x4000) != 0)
         {
-            ResultMenuSound(10);
-            AnmVmIdView id = ResultMenuFindScript(&menu->mainVm, 117);
-            ResultMenuPendingSix(id);
-            menu->state = 3;
+            ResultMenuSound(FRONT_END_SOUND_SELECT);
+            ResultMenuPendingSix(ResultMenuFindScript(
+                reinterpret_cast<AnmVmIdView *>(&menu->mainVm), 117));
+            menu->state = RESULT_MENU_PAUSE_CLOSING;
             menu->timer.SetCurrent(0);
-            menu->cursor.SetCurrent(2);
+            menu->cursor.Select(2);
             EnemyMarkPendingInterrupt(&menu->secondaryVm.value);
         }
-        if ((g_FrontEndInput.pressed & 0x200) != 0)
+        if ((ReadReplayMenuPressedInput() & 0x200) != 0)
         {
-            ResultMenuSound(10);
-            AnmVmIdView id = ResultMenuFindScript(&menu->mainVm, 116);
-            ResultMenuPendingSix(id);
-            menu->state = 3;
+            ResultMenuSound(FRONT_END_SOUND_SELECT);
+            ResultMenuPendingSix(ResultMenuFindScript(
+                reinterpret_cast<AnmVmIdView *>(&menu->mainVm), 116));
+            menu->state = RESULT_MENU_PAUSE_CLOSING;
             menu->timer.SetCurrent(0);
-            menu->cursor.SetCurrent(1);
+            menu->cursor.Select(1);
         }
-        break;
-    case 4:
-        if (menu->timer.current < 20) return;
+        goto escape;
+    }
+
+    case RESULT_MENU_PAUSE_CONFIRM_OPENING:
+    {
+        if (menu->timer.current < 20)
+            return;
         if (menu->timer.current == 20)
         {
             menu->cursor.Push();
             menu->cursor.count = 2;
             menu->cursor.wraps = 1;
-            menu->cursor.SetCurrent(1);
+            menu->cursor.Select(1);
             menu->mainVm.SetInterrupt(14);
         }
-        if (menu->timer.current < 30) return;
+        if (menu->timer.current < 30)
+            return;
         if (menu->timer.current == 30)
             menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 15));
-        menu->cursor.previous = menu->cursor.current;
-        if (g_FrontEndInput.IsRepeated(0x10)) menu->cursor.Move(-1);
-        if (g_FrontEndInput.IsRepeated(0x20)) menu->cursor.Move(1);
-        if (menu->cursor.previous != menu->cursor.current)
+
+        FrontEndCursorView *cursor = &menu->cursor;
+        cursor->previous = cursor->current;
+        if (static_cast<short>(g_FrontEndInput.IsRepeated(FRONT_END_INPUT_UP)))
+            cursor->Move(-1);
+        if (static_cast<short>(g_FrontEndInput.IsRepeated(FRONT_END_INPUT_DOWN)))
+            cursor->Move(1);
+        if (cursor->previous != cursor->current)
         {
-            menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 15));
-            ResultMenuSound(12);
+            menu->mainVm.SetInterrupt(static_cast<short>(cursor->current + 15));
+            ResultMenuSound(FRONT_END_SOUND_MOVE);
         }
-        if ((g_FrontEndInput.pressed & 0x1001) != 0)
+        if ((ReadReplayMenuPressedInput() & FRONT_END_INPUT_CONFIRM) != 0)
         {
-            ResultMenuSound(10);
-            if (menu->cursor.current == 0 || menu->cursor.current == 1)
+            ResultMenuSound(FRONT_END_SOUND_SELECT);
+            switch (cursor->current)
             {
-                AnmVmIdView id = ResultMenuFindScript(&menu->mainVm, menu->cursor.current == 0 ? 119 : 120);
-                ResultMenuPendingSix(id);
-                menu->state = 5;
+            case 1:
+                ResultMenuPendingSix(ResultMenuFindScript(
+                    reinterpret_cast<AnmVmIdView *>(&menu->mainVm), 120));
+                menu->state = RESULT_MENU_PAUSE_CONFIRM_RESOLVING;
+                break;
+            case 0:
+                ResultMenuPendingSix(ResultMenuFindScript(
+                    reinterpret_cast<AnmVmIdView *>(&menu->mainVm), 119));
+                menu->state = RESULT_MENU_PAUSE_CONFIRM_RESOLVING;
+                break;
             }
             menu->timer.SetCurrent(0);
         }
-        break;
-    case 5:
-        if (menu->timer.current < 20) return;
-        if (menu->cursor.current == 0)
+        goto escape;
+    }
+
+    case RESULT_MENU_PAUSE_CONFIRM_RESOLVING:
+        if (menu->timer.current < 20)
+            break;
+        switch (menu->cursor.current)
         {
+        case 1:
+        {
+            menu->cursor.Pop();
+            short frame = static_cast<short>(menu->cursor.current);
+            frame += 7;
+            menu->mainVm.SetInterrupt(frame);
+            menu->state = RESULT_MENU_PAUSE_CHOOSING;
+            menu->timer.SetCurrent(0);
+            return;
+        }
+        case 0:
             EnemyMarkPendingInterrupt(&menu->secondaryVm.value);
             EnemyMarkPendingInterrupt(&menu->mainVm.value);
-            menu->state = 3;
+            menu->state = RESULT_MENU_PAUSE_CLOSING;
             menu->cursor.Pop();
-        }
-        else if (menu->cursor.current == 1)
-        {
-            menu->cursor.Pop();
-            menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
-            menu->state = 2;
+            break;
         }
         menu->timer.SetCurrent(0);
         return;
-    case 3:
-        if (menu->timer.current < 12) return;
-        menu->state = 0;
+
+    case RESULT_MENU_PAUSE_CLOSING:
+        if (menu->timer.current < 12)
+            break;
+        menu->state = RESULT_MENU_PAUSE_CLOSED;
         switch (menu->cursor.current)
         {
-        case 0:
-            ResultMenuResume(menu);
-            break;
+        case 2:
+            EnemyMarkPendingInterrupt(&menu->mainVm.value);
+            g_GameTransitionState = 10;
+            return;
         case 1:
             EnemyMarkPendingInterrupt(&menu->secondaryVm.value);
             EnemyMarkPendingInterrupt(&menu->mainVm.value);
             g_MainSupervisorView.SetNextGameMode(4);
-            break;
-        case 2:
-            EnemyMarkPendingInterrupt(&menu->mainVm.value);
-            g_GameTransitionState = 10;
+            return;
+        case 0:
+            ResultMenuResume(menu);
             break;
         }
-        return;
-    default:
-        return;
+        break;
     }
-    if ((g_FrontEndInput.pressed & 8) != 0)
+    return;
+
+escape:
+    if ((ReadReplayMenuPressedInput() & 8) != 0)
     {
-        menu->cursor.SetCurrent(0);
+        menu->cursor.Select(0);
         EnemyMarkPendingInterrupt(&menu->secondaryVm.value);
         EnemyMarkPendingInterrupt(&menu->mainVm.value);
         EnemyMarkPendingInterrupt(&menu->auxiliaryVm.value);
-        menu->state = 3;
+        menu->state = RESULT_MENU_PAUSE_CLOSING;
         menu->timer.SetCurrent(0);
     }
 }

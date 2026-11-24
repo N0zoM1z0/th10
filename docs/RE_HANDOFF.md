@@ -38,6 +38,18 @@ comparison only for its source and link graph.
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
+## Open owner
+
+`ResultMenuUpdatePause` at `0x00422C80` is the active owner. Compare the
+complete 1,360-byte contribution through the real result-menu graph. Its
+1,338-byte code span ends at `0x004231B9`; alignment and five phase
+destinations follow. The current graph emits the full extent and restores
+the five distinct animation-handle returns. The remaining register
+allocation is in the confirmation cursor, between `+0x30F` and `+0x3A2`.
+Build `result-menu-update-pause` and use
+`scripts/repo-python scripts/check-frontier.py result-menu-update-pause
+--no-build --show` to inspect it.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.
