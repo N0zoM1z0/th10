@@ -1555,6 +1555,16 @@ register preservation or mod-ref assumptions) where our builds exploit it
   - Dialog records are 8 bytes.
   - `g_EnemyDialogIndex` = 0x00474C84; dialog-state global = 0x00474C8C.
   - operator new = 0x00452493; GuiMessageVmView constructor = 0x00415B00.
+- `GuiMessageVmView::GuiMessageVmView` at `0x00415B00` matches all 683 bytes and
+  21 fields in the real dispatcher link. The glyph writes copy each stored
+  `AnmVmIdView` by value through its existing view. Converting each slot
+  through the integer constructor uses EAX for all four pushes, while the
+  target uses ECX, EDX, EAX and ECX. Assign the second position after the
+  colors and side fields. VC7.1 schedules its final component after those
+  stores. The MIT-licensed th10-decomp reference supplied these two source
+  leads. The allocator in this dispatcher link occupies 163 bytes and keeps
+  the ESI receiver, EAX return and plain RET used by the 161-byte target.
+  [Reference license](licenses/th10-decomp-MIT.txt)
 - Popup owner 0x477840. Power digit display 0x4054B0 uses ESI owner, EDX value and stack percent.
 - GUI: the GuiView is 0x9ED0 bytes and the message VM is 0x90. A message instruction is `u16 time, u8 op, u8 size, payload`, with opcodes 0-23. `GuiSetLivesDisplayCount` uses EAX owner and ECX count over 0x3AC-stride slots.
 - the stage-7 HUD selector (table @0x4157E0, entry @0x414E71) uses a signed state CMP 24, picking script 0x8C below 24 and 0x8D otherwise. Countdown: values 0..5 set interrupts 9 and queue sound 0x24 @0x415501; 6..10 set interrupts 8 and queue sound 0x1B; >=11 makes no sound; an increase sets interrupts 7. Counter 474C4C is captured before ExecuteScript. Message cleanup walks six slots +40..+54 with deletion bit 0x04000000. Gauge hide clears four interleaved value fields plus final +9EAC.
