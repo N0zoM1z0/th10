@@ -656,9 +656,11 @@ frontier; do not refresh a baseline merely to accept the new positions.
   puts its six return values in their stack homes and restores the six
   secondary result slots. The final 24 bytes hold the jump table at +0x9C0
   with destinations +0xE5, +0xFC, +0x113, +0x119, +0x130 and +0x147.
-  The three coordinate additions leave 39 diagnostic differences. The
-  `player-update-callback-body` and `player-transition-to-state2` strict
-  comparisons pass on the same image. The MIT-licensed
+  Computing each coordinate directly in its case restores the manager
+  load at +0x4C2. The strict comparison validates all 96 address fields
+  and leaves 15 differences in three X-coordinate load groups. Swapping
+  the signed addends leaves those groups unchanged. The strict Player
+  update and state-transition comparisons pass on the same image. The MIT-licensed
   `_reference/th10-decomp` model provided the loop and stack-home leads.
   [2026-11-24]
 - **EnemyGameStateView::StartSpell @0x409280 (2,432)** uses the

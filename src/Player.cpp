@@ -2601,15 +2601,6 @@ static __forceinline void CopyPlayerOptionPair(
     pair->y = source.y;
 }
 
-static __forceinline PlayerPositionPair AddPlayerOptionPairs(
-    const PlayerPositionPair &left, const PlayerPositionPair &right)
-{
-    PlayerPositionPair sum;
-    sum.x = left.x + right.x;
-    sum.y = left.y + right.y;
-    return sum;
-}
-
 void __stdcall RebuildPlayerOptions(Player *player)
 {
     PlayerOptionRuntime *record = player->options;
@@ -2680,11 +2671,10 @@ void __stdcall RebuildPlayerOptions(Player *player)
     if (player->optionCount == optionCount)
         return;
 
-    const PlayerPositionPair &anchor =
-        *reinterpret_cast<const PlayerPositionPair *>(&player->positionX);
     for (i = 0; i < optionCount; ++i)
     {
-        CopyPlayerOptionPair(&player->options[i].replayPair1, anchor);
+        CopyPlayerOptionPair(&player->options[i].replayPair1,
+            *reinterpret_cast<const PlayerPositionPair *>(&player->positionX));
         unsigned int id = player->options[i].primaryVmId;
         if (id != 0)
         {
@@ -2706,7 +2696,9 @@ void __stdcall RebuildPlayerOptions(Player *player)
 
             const PlayerPositionPair *offset = player->optionMode
                 ? &player->options[i].replayPair3 : &player->options[i].replayPair2;
-            PlayerPositionPair position = AddPlayerOptionPairs(anchor, *offset);
+            PlayerPositionPair position;
+            position.x = player->positionX + offset->x;
+            position.y = player->positionY + offset->y;
             CopyPlayerOptionPair(&player->options[i].replayPair0, position);
             CopyPlayerOptionPair(&player->options[i].replayPair1, position);
 
@@ -2767,7 +2759,10 @@ void __stdcall RebuildPlayerOptions(Player *player)
 
                 const PlayerPositionPair *offset = player->optionMode
                     ? &player->options[i].replayPair3 : &player->options[i].replayPair2;
-                player->options[i].replayPair0 = AddPlayerOptionPairs(*offset, anchor);
+                PlayerPositionPair position;
+                position.x = offset->x + player->positionX;
+                position.y = offset->y + player->positionY;
+                player->options[i].replayPair0 = position;
                 player->options[i].primaryVmId =
                     CreatePlayerOptionVm(player, PLAYER_OPTION_PRIMARY_SCRIPT_1);
                 break;
@@ -2777,8 +2772,9 @@ void __stdcall RebuildPlayerOptions(Player *player)
                     GetPlayerOptionPosition(GetPlayerOptionData(player), 0x20, optionCount, i));
                 if (!player->optionMode || player->options[i].state == 0)
                 {
-                    PlayerPositionPair position =
-                        AddPlayerOptionPairs(player->options[i].replayPair2, anchor);
+                    PlayerPositionPair position;
+                    position.x = player->options[i].replayPair2.x + player->positionX;
+                    position.y = player->options[i].replayPair2.y + player->positionY;
                     CopyPlayerOptionPair(&player->options[i].replayPair0, position);
                     CopyPlayerOptionPair(&player->options[i].replayPair3, position);
                 }

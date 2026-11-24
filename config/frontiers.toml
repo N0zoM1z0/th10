@@ -66,13 +66,10 @@ residual = ["1F-29", "2B-2C", "30-42", "44-58", "5A-6E", "70-7E", "80-8E", "90-9
 
 [frontier.rebuild-player-options]
 function = "RebuildPlayerOptions"
-unit = "player-handle-collision-hit"
-symbol = "?RebuildPlayerOptions@@YGXPAUPlayer@@@Z"
-address = 0x00426F70
-size = 2520
+unit = "rebuild-player-options"
 candidate_size = 2520
 target_sha256 = "7dfaf871a4841d67e6223b302fa56ceabdf9dbceaa37576aa6e7daab5f12c2fd"
-residual = ["368-36A", "36E-370", "4BA-4C1", "4C3-4C6", "4C9-4CD", "78A-790", "792-793", "795-79B"]
+residual = ["368-36A", "36E-370", "4B8", "4BA", "78A-790"]
 
 [frontier.bullet-cancel-in-area]
 function = "BulletManagerView::CancelBulletsInArea"
