@@ -6207,32 +6207,37 @@ int __fastcall AnmPairOwnerDrawCallback(AnmPairDrawOwnerView *owner)
     return 1;
 }
 
-// Target 0x00401760-0x00401A41 renders the 256-entry regular queue. Every
-// field read below is independently visible in the target body; the renderer
-// and viewport helper names remain semantic until their own owners are closed.
+static __forceinline void SetAsciiGlyphScale(AnmVmView *glyph, float x, float y)
+{
+    glyph->scaleX = x;
+    glyph->scaleY = y;
+    *reinterpret_cast<unsigned int *>(&glyph->flags35C) |= 8;
+}
+
+static __forceinline void SetAsciiGlyphSize(
+    AnmVmView *glyph, float width, float height)
+{
+    glyph->spriteWidth = width;
+    glyph->spriteHeight = height;
+    *reinterpret_cast<unsigned int *>(&glyph->flags35C) |= 8;
+}
+
+// Target 0x00401760-0x00401A41 renders the 256-entry regular queue.
 int __stdcall AsciiManagerDrawStrings(AsciiManagerView *manager)
 {
-    float spaceWidth;
-    float lineHeight;
     int currentViewport = 1;
-    int index;
-    AsciiManagerStringView *string = manager->strings;
-
-    // The target writes the complete containing dword and establishes the
-    // two high render-state bits as well as the low visible bit.
     *reinterpret_cast<unsigned int *>(&manager->primaryVm014.flags35C) =
         (*reinterpret_cast<unsigned int *>(&manager->primaryVm014.flags35C) &
          0xffd7ffffu) | 0x00140001u;
 
-    for (index = 0; index < manager->numStrings; ++index, ++string)
+    AsciiManagerStringView *string = manager->strings;
+    for (int index = 0; index < manager->numStrings; ++index, ++string)
     {
-        unsigned char *text;
-
         manager->primaryVm014.position = string->position;
-        manager->primaryVm014.scaleX = string->scaleX;
-        manager->primaryVm014.scaleY = string->scaleY;
-        *reinterpret_cast<unsigned int *>(&manager->primaryVm014.flags35C) |= 8;
-
+        SetAsciiGlyphScale(&manager->primaryVm014, string->scaleX, string->scaleY);
+        const char *text = string->text;
+        float spaceWidth;
+        float lineHeight;
         if (string->smallFont == 1)
         {
             spaceWidth = 7.0f;
@@ -6251,50 +6256,41 @@ int __stdcall AsciiManagerDrawStrings(AsciiManagerView *manager)
             CONFIGURE_ASCII_VIEWPORT(currentViewport);
         }
 
-        text = reinterpret_cast<unsigned char *>(string->text);
-        while (*text != '\0')
+        for (; *text != '\0'; ++text)
         {
             if (*text == '\n')
             {
-                manager->primaryVm014.position.y +=
-                    lineHeight * string->scaleY;
+                manager->primaryVm014.position.y += lineHeight * string->scaleY;
                 manager->primaryVm014.position.x = string->position.x;
+                continue;
+            }
+
+            if (*text == ' ')
+            {
+                manager->primaryVm014.position.x += spaceWidth;
             }
             else
             {
-                if (*text != ' ')
+                manager->primaryVm014.loadedSprite =
+                    &manager->asciiAnm->sprites[
+                        string->smallFont * 0x62 + static_cast<unsigned char>(*text) - ' '];
+                SetAsciiGlyphSize(
+                    &manager->primaryVm014, manager->primaryVm014.loadedSprite->width,
+                    manager->primaryVm014.loadedSprite->height);
+                if (string->drawShadow != 0)
                 {
-                    AnmSpriteView *sprite =
-                        &manager->asciiAnm->sprites[
-                            string->smallFont * 0x62 + *text - ' '];
-                    manager->primaryVm014.loadedSprite = sprite;
-                    manager->primaryVm014.spriteWidth = sprite->width;
-                    manager->primaryVm014.spriteHeight = sprite->height;
-                    manager->primaryVm014.flags35C |= 8u;
-
-                    if (string->drawShadow != 0)
-                    {
-                        manager->primaryVm014.primaryColor.value =
-                            static_cast<int>(string->color & 0xff000000u);
-                        reinterpret_cast<unsigned char *>(
-                            &manager->primaryVm014.primaryColor.value)[3] =
-                                static_cast<unsigned char>(string->color >> 25);
-                        manager->primaryVm014.position.x += 2.0f;
-                        manager->primaryVm014.position.y += 2.0f;
-                        g_AnmRenderManagerView->DrawNoRotation(
-                            &manager->primaryVm014);
-                        manager->primaryVm014.position.x -= 2.0f;
-                        manager->primaryVm014.position.y -= 2.0f;
-                    }
-
-                    manager->primaryVm014.primaryColor.value = string->color;
-                    g_AnmRenderManagerView->DrawNoRotation(
-                        &manager->primaryVm014);
-
+                    manager->primaryVm014.primaryColor.value = string->color & 0xff000000u;
+                    manager->primaryVm014.primaryColor.alpha = (string->color >> 24) / 2;
+                    manager->primaryVm014.position.x += 2.0f;
+                    manager->primaryVm014.position.y += 2.0f;
+                    g_AnmRenderManagerView->DrawNoRotation(&manager->primaryVm014);
+                    manager->primaryVm014.position.x -= 2.0f;
+                    manager->primaryVm014.position.y -= 2.0f;
                 }
+                manager->primaryVm014.primaryColor.value = string->color;
+                g_AnmRenderManagerView->DrawNoRotation(&manager->primaryVm014);
                 manager->primaryVm014.position.x += spaceWidth;
             }
-            ++text;
         }
     }
 

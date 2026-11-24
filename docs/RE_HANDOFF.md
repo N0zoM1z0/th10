@@ -62,6 +62,15 @@ comparison only for its source and link graph.
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
+## Open owner
+
+`AsciiManagerDrawStrings` at `0x00401760` is active. Compare its full
+738-byte text queue traversal in `StageViewport`, including glyph size,
+shadow passes and viewport restoration. The candidate matches 730 bytes
+and all 30 fields. Eight stack-displacement bytes still place the text
+pointer, line height and record count in a different order. The camera,
+late stage draw, quad renderer and batch flush match in the same image.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.
