@@ -1232,6 +1232,17 @@ register preservation or mod-ref assumptions) where our builds exploit it
     position multiplication and in the distance calculation. The
     `laser-line-box-trim` graph binds the item spawn, both animation/vector
     paths, the fragment spawn and the two stack-cookie checks.
+  - Circle trim (slot +0x1C, `0x0041DD80`) squares the radius in its
+    argument slot and rejects a sample when the squared XY distance is
+    ordered greater. The viewport checks are inlined. The effect path
+    allocates the VM, sets its flag and render layer, writes its offset
+    coordinates, starts the script, and calls the primary-list registrar
+    with a real aggregate result. Outlining that registrar retains the
+    EAX result slot and the original stack frame. Read and advance the
+    sample through its point pointer to preserve the x87 addition order.
+    Use scalar-first XYZ multiplication for both the removed prefix and
+    the fragment start. Vector-first multiplication changed the two x87
+    instructions for the prefix Y product by five bytes.
 - Type-1 laser (table 46DA10, D74 layout, VMs 61C/9C8):
   - Request fields: 18/1C angle/angular velocity, 20/24 max/initial length, 28 width, 2C growth, 30..3C signed durations, 40 type, 42 color.
   - Init copies 126 dwords and sets state 3.

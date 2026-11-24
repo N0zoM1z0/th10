@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `laser-line-circle-trim` | 1,238 B | `LaserLineCircleTrim`, 33 fields, inline viewport tests and the VM allocation, script load, and registration calls. The rectangle trim, allocator and three direct Player consumers also match in their own links. |
 | `laser-line-box-trim` | 1,269 B | `LaserLineBoxTrim`, 23 fields, the ECX receiver, the XYZ sample loop and all 476 bytes of each fragment request. Polar, bounds and world-VM creation also match in the same link. |
 | `frontend-main-menu-return` | 1,280 B | `FrontEndReplay`, 103 fields, the EBX receiver and three complete switch tables. The phase setter and eight known exact units pass their affected comparisons. |
 | `hint-consume-entries` | 1,317 B | `HintLifecycle`, 34 fields and all three world-VM paths. The per-frame update and registered callback replay in the same build. |
@@ -43,12 +44,6 @@ comparison only for its source and link graph.
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
 ## Open owner
-
-`EnemyLaserType0CollisionView::CheckCollisionCircle` at `0x0041DD80` is
-the active owner. The `laser-line-circle-trim` candidate has the full
-1,238-byte extent and all 33 fields. The squared-distance test, viewport,
-VM creation and fragment request flow are in place. The remaining
-difference is x87 operand selection for the prefix Y multiplication.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

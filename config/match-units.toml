@@ -23982,7 +23982,6 @@ linkages = [
 ]
 
 [units.laser-line-circle-trim]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/EnemyLaser.cpp"
 support_sources = ["src/AnmManager.cpp", "src/ItemManager.cpp", "src/AnmLoadedStartScript.cpp", "src/AnmVmCreate.cpp", "src/EnemyEclDispatcher.cpp"]

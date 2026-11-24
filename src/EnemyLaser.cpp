@@ -378,7 +378,7 @@ int EnemyLaserType0CollisionView::CheckCollisionCircle(
 
         if (sampleIndex)
         {
-            position += step * static_cast<float>(sampleIndex);
+            position += static_cast<float>(sampleIndex) * step;
             float prefixDistance = static_cast<float>(sampleIndex) * 12.0f;
             length -= prefixDistance;
             if (length > 18.0f)
