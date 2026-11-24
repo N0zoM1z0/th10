@@ -238,7 +238,7 @@ enum
     FRONT_END_SOUND_CANCEL = 11,
     FRONT_END_SOUND_MOVE = 12,
     FRONT_END_SOUND_UNLOCK = 44,
-    FRONT_END_PRACTICE_RECORD_COUNT = 110,
+    FRONT_END_PRACTICE_RECORD_COUNT = GameStatisticsRecord::SpellCount,
     FRONT_END_PRACTICE_ROWS_PER_PAGE = 10,
     FRONT_END_SCORE_ENTRY_ROWS = 10,
     FRONT_END_SCORE_ENTRY_NAME_LENGTH = 8,
@@ -3046,9 +3046,9 @@ int FrontEndControllerView::RefreshPracticeRecords()
         GameStatisticsOwner *profile =
             reinterpret_cast<GameStatisticsOwner *>(g_FrontEndProfileData);
         GameStatisticsRecord &catalog = profile->records[6];
-        if (catalog.SpellHistoryAt(record)->attempts != 0)
+        if (catalog.spellHistory[record].attempts != 0)
         {
-            strcpy(name, catalog.SpellHistoryAt(record)->name);
+            strcpy(name, catalog.spellHistory[record].name);
             int length = static_cast<int>(strlen(name));
             if (length < 42)
             {
@@ -3060,11 +3060,11 @@ int FrontEndControllerView::RefreshPracticeRecords()
             name[length] = '\0';
             GameStatisticsRecord &shot = profile->records[cursor.current];
             PracticeRowAnimation animation = ResolvePracticeRowAnimation(*rowId);
-            GameStatisticsSpellHistoryEntryView *result = shot.SpellHistoryAt(record);
+            const GameStatisticsSpellHistoryEntryView &result = shot.spellHistory[record];
             animation.manager->DrawTextCentered(
-                animation.vm, result->captures != 0 ? 0x00ffff80u : 0x00efefefu,
+                animation.vm, result.captures != 0 ? 0x00ffff80u : 0x00efefefu,
                 "No.%3d %s %4d/%4d", record + 1, name,
-                result->captures, result->attempts);
+                result.captures, result.attempts);
             ++record;
         }
         else
@@ -3074,10 +3074,10 @@ int FrontEndControllerView::RefreshPracticeRecords()
             AnmVmView *vm = FindPracticeRecordVm(manager, rowId->value);
             if (vm == NULL)
                 rowId->value = 0;
-            GameStatisticsSpellHistoryEntryView *result = shot.SpellHistoryAt(record);
+            const GameStatisticsSpellHistoryEntryView &result = shot.spellHistory[record];
             manager->DrawTextCentered(
                 vm, 0x00808080u, g_FrontEndPracticeUnavailableFormat,
-                record + 1, result->captures, result->attempts);
+                record + 1, result.captures, result.attempts);
             ++record;
         }
 

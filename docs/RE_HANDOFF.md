@@ -62,8 +62,9 @@ comparison only for its source and link graph.
 active. Compare the complete 850-byte helper through its three calls in
 `UpdatePractice`, including record filtering, text formatting and the
 unused-row clear.
-The candidate now reads typed spell history, uses the catalog index in
-both formats, and clears stale row handles in all three lookup paths.
+The candidate uses the 110-entry spell history array at record offset
+`0x59C`, prints the catalog index in both formats, and clears stale row
+handles in all three lookup paths.
 The current 834-byte comparison aligns 242 of 267 instructions. Returning
 the manager and VM together leaves the VM in EAX and the row ID in EDX in
 the named lookup. The manager and score pointer still need ESI and ECX.

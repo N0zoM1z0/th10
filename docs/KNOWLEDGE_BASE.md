@@ -1361,7 +1361,12 @@ register preservation or mod-ref assumptions) where our builds exploit it
 - `EnemyRuntimeUpdate` literals: -192, 192, 0, 448, ±0.1.
 - Teardown 40D530 (EAX): 32 script frees, ANM slots 9..12 released through the slot protocol.
 - Manager fields: +0x38 = effectResources[2] (stage ANM), timer +40, list +58/+5C.
-- Spell history rows are 0x437C bytes with 110 entries of 0x90 from row+0x59C (slot 6 = 0x19A8C). Captures +0x80 (EndSpell), attempts +0x84 (BeginSpell).
+- Each 0x437C-byte statistics record ends with 110 spell history entries
+  of 0x90 bytes at +0x59C. Captures are at entry+0x80 and attempts at
+  +0x84. The retail initializer at `0x0042ACB0` stores the spell index at
+  +0x88 and reads its difficulty from the signed catalog at `0x004743C0`
+  for the field at +0x8C. The combined catalog in statistics slot six
+  starts at +0x19A8C from the profile owner.
 - `EnemyBeginSpell` sets flag 0x40000000 and layer15.
 - Dispatcher: 181-byte opcode map onto 108 handlers; main table at +0x35C0. Rank-3 thresholds ±512, rank-5 ±600/±200.
 - Callback: `OR [ecx+0x2480],0x10000` precedes the timeout-global read. Player flags at +0x378C/+0x3790.

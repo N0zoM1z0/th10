@@ -23,12 +23,15 @@ struct GameStatisticsSpellHistoryEntryView
     char name[0x80];
     int captures;
     int attempts;
-    unsigned char unknown088[8];
+    int spellIndex;
+    int difficulty;
 };
 typedef char GameStatisticsSpellHistoryLayout[
     (sizeof(GameStatisticsSpellHistoryEntryView) == 0x90 &&
      offsetof(GameStatisticsSpellHistoryEntryView, captures) == 0x80 &&
-     offsetof(GameStatisticsSpellHistoryEntryView, attempts) == 0x84) ? 1 : -1];
+     offsetof(GameStatisticsSpellHistoryEntryView, attempts) == 0x84 &&
+     offsetof(GameStatisticsSpellHistoryEntryView, spellIndex) == 0x88 &&
+     offsetof(GameStatisticsSpellHistoryEntryView, difficulty) == 0x8c) ? 1 : -1];
 
 struct GameStatisticsRecord
 {
@@ -40,15 +43,13 @@ struct GameStatisticsRecord
     unsigned char unknown010[0x4b0];
     int sessionStarts;
     int activeFrames;
-    unsigned char unknown4C8[0x3eb4];
+    unsigned char unknown4C8[0x59c - 0x4c8];
+    enum { SpellCount = 110 };
+    GameStatisticsSpellHistoryEntryView spellHistory[SpellCount];
 
-    // This 0x59C-relative region of each 0x437C record is reused by
-    // spell-start, spell-end and the spell panel. Keep the rest opaque.
     GameStatisticsSpellHistoryEntryView *SpellHistoryAt(int spellIndex)
     {
-        return reinterpret_cast<GameStatisticsSpellHistoryEntryView *>(
-            reinterpret_cast<unsigned char *>(this) + 0x59c +
-            spellIndex * sizeof(GameStatisticsSpellHistoryEntryView));
+        return &spellHistory[spellIndex];
     }
 
     // Existing GameManager accesses were owner+i*437C+stage*F0+18/+1D.
@@ -126,9 +127,7 @@ typedef char GameStatisticsTailPayloadLayout[
      offsetof(GameStatisticsTail, parsedPayload) == 0x08) ? 1 : -1];
 typedef char GameStatisticsRecordSize437C[(sizeof(GameStatisticsRecord) == 0x437c) ? 1 : -1];
 typedef char GameStatisticsSpellHistoryBaseWithinRecord[
-    (offsetof(GameStatisticsRecord, unknown4C8) == 0x4c8 &&
-     0x59c >= offsetof(GameStatisticsRecord, unknown4C8) &&
-     0x59c + sizeof(GameStatisticsSpellHistoryEntryView) <= sizeof(GameStatisticsRecord)) ? 1 : -1];
+    (offsetof(GameStatisticsRecord, spellHistory) == 0x59c) ? 1 : -1];
 typedef char GameStatisticsSessionsAt4C0[(offsetof(GameStatisticsRecord, sessionStarts) == 0x4c0) ? 1 : -1];
 typedef char GameStatisticsFramesAt4C4[(offsetof(GameStatisticsRecord, activeFrames) == 0x4c4) ? 1 : -1];
 typedef char GameStatisticsTailSize448[(sizeof(GameStatisticsTail) == 0x448) ? 1 : -1];
