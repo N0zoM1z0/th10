@@ -208,6 +208,9 @@ struct EclVmStackView
     EclVmStackView();
     int Push(unsigned char type, int size, const void *value);
     int Pop(unsigned char type, int size, void *value);
+    bool PopWord(void *destination);
+    void PopInt(int *destination);
+    void PopFloat(float *destination);
     int EnterFrame(int localBytes);
     int LeaveFrame();
 };
@@ -238,7 +241,7 @@ struct EclVmContext
     float ReadFloat(unsigned int index);
     int ReadIntValue(unsigned int flagIndex, int value);
     static float __stdcall ReadFloatValue(
-        unsigned int flagIndex, EclVmContext *context, float value);
+        EclVmContext *context, unsigned int flagIndex, float value);
     int *ResolveInt(unsigned int index);
     __declspec(noinline) float *ResolveFloat(unsigned int index);
     int Run(float timeDelta);

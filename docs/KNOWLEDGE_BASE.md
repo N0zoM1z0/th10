@@ -500,227 +500,65 @@ frontier; do not refresh a baseline merely to accept the new positions.
     direct signed timestamp comparison and the real by-value factories.
     The focused traces and comparisons are in
     `.analysis/anm-execute/results.txt`. [2026-11-23]
-- **EclVmContext::Run @0x44E1A0 (7,020)**: the maintained GameManager
-  link matches 7,009 bytes, with 189 bound fields and 62 fixed local
-  destinations. The earlier GameManager and player-collision links matched
-  7,001 bytes. The direct read from the packed spawn
-  operand recovers +0xEC/+0xF1 and +0x12A/+0x12C without moving the other
-  19 differences.
-  The helper returning an integer gave the operand a global candidate
-  with weight 40 and an EDI cost of -1. Returning a reference removed
-  that candidate but added a global index copy with weight 100 that
-  took EAX. Keeping the native byte-count calculation inside the typed
-  operand read leaves the length and operand to local allocation. They
-  take ECX and EDX, so the following stop context takes EAX.
-  The standalone `EclVmStack` link selects ECX for the receiver and
-  matches 6,998 bytes. The real Enemy-rooted `EclVmHostRunEnemy` link
-  restores EAX and matches 6,999, with extra SIB differences at +0x3CC
-  and +0x15BE relative to GameManager. Its 146-byte host and 171-byte
-  float reader both match. Moving `Run` before the operand readers
-  preserves every compared byte in the standalone and GameManager links.
-  `PopInt` uses the native `EclVmScalar::integer` word.
-  `EclStopThreadContext` retains a typed `EclVmContext*` and `Pop`
-  keeps the typed `stackData + stackTop` address.
-  A complete comparison in the `16572e6b` player-collision graph confirms
-  all 189 fields and 62 fixed local destinations. Direct typed stack pops
-  for bitwise OR, primitive word locals for add and subtract, and relocating
-  the real `ReadFloatValue` implementation to a separate `/GL` TU all leave
-  the same 23 differences. The relocated resolver still matches 171/171.
-  Adapting the reference's separate FORMAT `d` and `f` cases and
-  explicit casts emits a 6,956-byte owner. Its dispatch tables lead to
-  the same reversed add and subtract homes. Writing named comparison
-  results directly through the stack also retains the home order.
+- **EclVmContext::Run @0x44E1A0 (7,020)**: the `ecl-vm-run` unit uses
+  the GameManagerUpdate link rooted at `GamePrepareAnimationSlots`.
+  The PDB extent covers 6,692 bytes before the switch data, 60 absolute
+  jump entries and 88 selector bytes. The strict comparison binds 189
+  fields, including 62 fixed local destinations. Caller visibility
+  matters: the standalone EclVmStack graph gives Run an ECX receiver,
+  while the Enemy-rooted and GameManager graphs give it the target's EAX.
 
-  The earlier GameManager link reproduced the 23-byte residual.
-  Renaming the two arithmetic locals preserves every byte and identifies
-  the twelve stack-offset differences as the left/result words for integer
-  addition and subtraction. They both have weight six. At C2's stack-colour
-  sort (`0x10768DBA` to `0x10768DF7`), the pair moves from colours 2 and 3
-  to 6 and 5. The final homes are `ESP+0x24` for add and `ESP+0x20` for
-  subtract. The target puts add at `ESP+0x20` and subtract at `ESP+0x24`.
-  The offsets after two argument pushes refer to the same words.
-  Separate `/GL` units for `Pop` and `Push` preserve the parent residual
-  and the exact 122-byte and 96-byte leaf bodies, respectively. Extracting
-  `Pop`'s raw copy into an inline helper expands the parent residual to
-  119 bytes. Publishing the wrapped sum through a named word retains the
-  home order and changes four SIB encodings elsewhere in `Run`.
+  The packed spawn operand read keeps the inline-name length and script
+  index in local allocation. They take ECX and EDX, leaving EAX for the
+  following stop context. A value-returning helper gives the script index
+  an EDI global candidate, and a reference-returning helper introduces an
+  EAX global index copy.
 
-  In the current GameManager link, C2's operand scan at
-  `0x107ACE03` calls `0x107B501A` once for each of the six references to
-  each left result word. The references are the raw pop store, float
-  conversion load and store, arithmetic load and store, and the address
-  passed to `Push`. Each adds one to the weight. The right operand words
-  have four references apiece. Taking the address of the compound
-  assignment in `Push`, using a result reference or expressing subtraction
-  as modulo addition preserves the full 19-byte residual. A scalar
-  reference common to the two type-conversion branches in `Pop` does
-  recover both conditional-jump tag addresses, but leaves 6,963 matching
-  bytes. The weighting trace and complete comparison are in
-  `.analysis/ecl-run/results.txt`.
+  Integer add and subtract originally used each other's result stack
+  homes at ESP+0x20 and ESP+0x24. Both result colours weigh six because
+  the pop, conversion, arithmetic and Push address use the same words.
+  The target FORMAT tag cursor weighs seven and shares the colour of
+  LENGTH_SQUARED's x. The separate FORMAT integer and float paths move
+  that colour ahead of the arithmetic colours and restore all twelve
+  stack-offset bytes. Giving ReadFloatValue the context first restores
+  the two FORMAT register moves and preserves the 171-byte reader.
+  Separate relative-jump and ordinary PC writes also let C2 merge the
+  common tail after allocation. The final time guard then uses EDX for
+  its next-instruction FILD address.
 
-  The loop's closing time guard contributes +0x19E6 and +0x19E8.
-  At `0x1079C23B`, the reload of the next instruction through EBX
-  is the final local allocation and starts at the EAX entry of the
-  scratch list (0x108AB740). EAX feeds the FILD address, where retail
-  uses EDX. Separate pointer writebacks for the relative jump and
-  ordinary instruction advance let C2 merge the common tail later.
-  The unsigned instruction-size load stays local and takes ECX,
-  leaving EDX for the final reload. The complete probe matches
-  7,003 of 7,020 bytes, with the other 17 residuals at the same offsets.
+  C2 can reverse the base and index terms of inlined stack loads when
+  their symbol ordinals cross a hash wrap in OptCmpHashVal
+  (0x10795BC5 in C2 13.10.6030). The 60 traced typed-pop pairs follow
+  the same relative order as the target. In that source, a signed tag
+  stride removes 186 conversion requests. Retaining the unsigned
+  sizeof stride for integer tags advances the relevant late ordinals
+  by 32, restoring all but the first bitwise AND tag SIB at +0x1586.
+  The remaining tag is at 0x17FC with sine's raw temporary at 0xFF5,
+  so a fixed-base shift of four to ten crosses the AND wrap at 0x1800
+  while keeping sine below 0x1000.
 
-  The local TH10 reference trace gives the anonymous FORMAT tag cursor
-  weight seven instead of six. It sorts ahead of both arithmetic result
-  words and shares the colour of `LENGTH_SQUARED`'s x. The exact
-  cursor placement predicted by the earlier sort model follows from
-  separate `%d` and `%f` paths with their typed numeric arguments and
-  one increment per argument. In the GameManager graph this restores
-  both integer result homes and all twelve corresponding bytes.
-  The typed FORMAT helper, direct bitwise pops and separate pointer
-  writebacks compare 7,009 of 7,020 bytes with all fields bound.
-  Putting the real context first in `ReadFloatValue`'s declaration
-  restores the two FORMAT register moves. The member form also
-  restores that order. Both preserve the 171-byte float reader and
-  yield 7,011 matching bytes in the complete comparison.
+  Naming the child context in each flag handler moves the tag ordinals
+  by two per handler and leaves the late raw values fixed. That
+  restores the AND encoding but moves two floating greater-or-equal
+  bases and the floating NOT base below their 0x800 hash wrap. Using
+  the pops directly from the stack in greater-or-equal restores the
+  earlier float encodings. Storing the polar x output address in a
+  local supplies the remaining allocation change. The resulting
+  maintained source matches the complete 7,020-byte extent in cold
+  replay. The selected host, stack, float-reader and shared-link
+  guards passed in the same replay.
+  The compiler traces and source controls are recorded under
+  `.analysis/ecl-run/`. [2026-11-24]
 
-  The nine residuals in the receiver-first probe are SIB encodings in
-  the bitwise cases, both negate cases and sine. At the three mismatched
-  integer tag sites, C2's temporary ordinals are 0x1803, 0x1816 and
-  0x1829, thirteen higher than in the reference trace. The reference OR
-  also gives its stack base locals much earlier ordinals, 0x804 and
-  0x80E. A common ordinal shift fails the full set of tag constraints.
-  Giving XOR and AND their own stack view restores four more addresses
-  and reinstates three earlier address differences. The net result is
-  7,012 matching bytes. The context-first comparison and the stack-view
-  comparison expose different constraints around the late stack loads.
-  The traces and complete comparisons are in `.analysis/ecl-run/`.
-
-  The typed FORMAT paths, direct bitwise operand reads and independent
-  PC writes now reside in the maintained source. The receiver-first
-  probe remains separate. In that probe, explicit float operand slots
-  move the address-order differences from equality through less-than
-  and greater-than as the stack receiver changes. Giving greater-than
-  its own receiver and using a word pop in the first conditional jump
-  restores every float comparison. A separate stack receiver for only
-  one of AND's two operands then restores the first jump tag and one
-  raw AND read. The result is 7,016/7,020, with only the second AND word,
-  integer negate, raw float negate and the first sine word differing.
-  An explicit sine argument and result from the preceding 7,014-byte
-  probe also gives 7,016, with the earlier jump tag in place of the AND
-  difference. These changes preserve the full extent, all 189 fields
-  and the 171-byte float resolver. [2026-11-24]
-
-  Typed logical OR and AND operand pops move both temporary ranges down
-  by 24 in the late stack operations. The second bitwise AND word moves
-  from 0x100A to 0xFF2 and integer negate from 0x1016 to 0xFFE, restoring
-  both encodings. This moves the first AND tag back below 0x1800 and
-  the first jump tag below 0x1400. The two tag addresses and the raw
-  float negate and sine reads are the only residuals in that probe.
-  With bases held fixed in a uniform-shift model, moving the raw temporary
-  ordinals down by 26 first satisfies the 38 bound raw comparisons.
-  The 37 bound tag comparisons accept an upward shift of 15 to 31.
-  A source change needs to move those ranges independently. [2026-11-24]
-
-  A full typed-pop comparison uses the same relative temporary order as
-  the TH10 reference for all 60 observed pairs. In the complete source
-  port, the raw and tag ordinals start 128 and 130 slots later. The
-  split translation unit preserves those offsets. Using a signed tag
-  stride removes 186 conversion requests, three per affected tag pop,
-  and brings the offsets to +32 and +34. This probe matches 7,016
-  bytes. With the less extensive port, the signed stride moves the
-  raw range to -4 and brings every late raw load into alignment.
-
-  The aliased XOR stack receiver in the complete signed-stride port
-  aligns all stack address encodings. Its eight differences occupy
-  FORMAT's initial tag lookup at +0x1951 through +0x195D. The target
-  loads the inline length before the tag cursor and adds those values
-  before indexing from the instruction header. The candidate loads
-  the cursor first and adds the header to it. The typed FORMAT helper
-  restores that sequence in the same probe and shifts eight address
-  bytes in the preceding float comparisons and bitwise OR. Using the
-  generic word pops in OR and separate stack receivers in the two
-  float comparisons restores those addresses. This gives 7,017/7,020.
-  The residuals are both bitwise AND tag reads and the raw cosine read.
-  The AND tag temporaries are 0x17DC and 0x17EF. The raw sine and cosine
-  temporaries are 0xFD5 and 0xFE9. A uniform shift of +36 to +42 with
-  the bases held fixed satisfies the 56 bound raw and 37 bound tag
-  comparisons in this probe.
-  Using the unsigned tag stride only in `PopInt` moves both ranges
-  by 32 and matches 7,019/7,020. The first AND tag temporary is
-  0x17FC and the second is 0x180F. The raw sine temporary is 0xFF5
-  and the raw cosine temporary is 0x1009. A further shift of four
-  to ten would cross the first AND boundary and keep sine below its
-  wrap point.
-  The full comparisons and compiler traces are in `.analysis/ecl-run/`.
-  [2026-11-24]
-
-  The anonymous `FORMAT` tag-byte cursor stays at `ESP+0x18`, the same
-  home as the named `x` in `LENGTH_SQUARED`. The cursor has weight six
-  and `x` has weight three. C2 groups them in pre-sort colour four, just
-  after the two arithmetic colours. In the traced sort model, raising
-  the cursor's weight to seven and moving its group ahead of the
-  subtract result exchanges just the add and subtract homes. All other
-  homes stay fixed in that model. Swapping the two presort arithmetic
-  colours also exchanges just those homes. In the current trace,
-  increasing the add colour from six to seven is the only isolated
-  weight change of one or two that produces this exchange. A named
-  `tagByteOffset` confirms the cursor's identity and preserves every
-  weight and colour membership. It changes instruction and field
-  positions in `FORMAT`.
-  The separate payload-word cursor changes the owner extent, and a
-  signed source index leaves the original 23 differences.
-  Moving `ReadIntValue` and `FindThread` to separate `/GL` sources in
-  independent trials retains the 23 differences and both leaves' exact
-  124- and 36-byte bodies. [2026-11-23]
-
-  Moving `Pop`'s scalar destination into `EQUAL_FLOAT` restores the
-  stack-data base and index operands at +0xE6F and +0xE7B. The same
-  two differences move to the first pop in `NOT_EQUAL_FLOAT` at
-  +0xEE9 and +0xEF5. The owner still matches 6,997 of 7,020 bytes
-  and all 189 fields. Making the next pop's destination explicit
-  keeps the moved differences and can change the later `BITWISE_AND`
-  address at +0x15BE. Commuting the source pointer additions in `Pop`
-  leaves the original encodings. Compare the neighboring handlers
-  when changing an inlined pop's operand lifetime.
-
-  Factoring the integer add/subtract pops into a shared inline function
-  preserves all 65 stack colours and offsets and introduces eight SIB
-  differences. In contrast, evaluating `LENGTH_SQUARED` with a named
-  accumulator preserves its own x87 bytes and restores the earlier
-  `BITWISE_AND` tag operand at +0x1586. `NEGATE_INT`,
-  `NEGATE_FLOAT_STORAGE` and `SINE` then each gain a SIB difference.
-  The two `BITWISE_AND` address terms are already in the opposite
-  order at global-allocation entry (`0x107A5471`). At `OptCmpHashVal`
-  (`0x10795BC5`), the stack-offset temporary moves from ordinal
-  `0x17F1` to `0x1810`. Its hash wraps from `0x1FC40` to
-  `0x10400`. The stack-base hash goes from `0x16041` to `0x16061`,
-  so the base now sorts first. Across 37 tag comparisons with bound
-  SIB terms, a common ordinal shift for temporaries, locals or both
-  cannot reproduce all retail orders.
-  A variadic FORMAT sink with both `BITWISE_OR` pops called directly
-  preserves all 23 baseline differences in the maintained graph.
-
-  `LENGTH_SQUARED` now uses ordinary float locals while computing
-  `y * y + x * x`. The source still reads x before y and resolves the
-  destination before the products. This yields the same x87 sequence
-  without a volatile local. That change preserved the then-current
-  23 residual bytes and 189 bindings in the GameManager graph.
-
-  At `RegSimpleAssign` (`0x1079BD18`), the thread-spawn script operand
-  already has EDI. The inline-name length takes ECX locally, leaving
-  the cursor at EDX for the next local load, the context in the stop
-  case. A local operand read after the length would use that EDX
-  and leave EAX for the context, in the same order as retail. The
-  packed operand still uses EDI. A representation copy also retains
-  that register and changes the same four distant SIB encodings as
-  naming the length at the common instruction advance. The trace is
-  `.analysis/ecl-run/ecl-arithmetic-names-entry-registers.trace`.
-- **EclVmHost::StopAllThreads @0x450190 (31)**: exact 31/31 after making the stop helper accept the already-resolved `EclVmContext*`; both STOP_THREAD and STOP_ALL_THREADS now pass the context explicitly. The parent `EclVmContext::Run` schedule remains at its existing 23-byte residual. [2026-11-19]
+- **EclVmHost::StopAllThreads @0x450190 (31)** has an exact 31-byte
+  body. Passing the already-resolved `EclVmContext*` to the stop
+  helper restored the store to the child instruction field.
 
 - **EclVmStackView::Pop @0x450610 (122)**: exact 122/122 with the typed
   stored-type view and private EAX/ECX/BL ABI. The adjacent stack owners are
   also exact: `Push` 96/96, `EnterFrame` 64/64 and `LeaveFrame` 41/41.
-  Keep the leaf spelling that preserves the parent `Run` schedule; solve the
-  23-byte parent residual independently.
+  Keep the leaf spelling and replay `ecl-vm-run` when changing its
+  inlined stack operations.
 
 - **GuiMessageVmView::Run @0x415E90 (4,480)** matches its complete
   extent in the 16-TU VC7.1 SP1 build 6030 `/GL` graph. The

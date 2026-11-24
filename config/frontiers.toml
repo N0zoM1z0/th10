@@ -61,16 +61,6 @@ candidate_size = 510
 target_sha256 = "9be793018926bde16b0e725a6ccab3da97d461af2c129e67ac0aa32a131dded7"
 residual = ["3", "5", "7", "A", "1C", "2F", "79", "7D", "80", "86", "8B", "9A-9B", "A0-AC", "B1-CA", "CF-E7", "EC-F9", "FE-101", "103-114", "116-127", "12C-136", "13B-148", "14A-157", "15B-15D", "162-172", "174-181", "186-192", "197-1FD"]
 
-[frontier.ecl-run]
-function = "EclVmContext::Run"
-unit = "player-handle-collision-hit"
-symbol = "?Run@EclVmContext@@QAEHM@Z"
-address = 0x0044E1A0
-size = 7020
-candidate_size = 7020
-target_sha256 = "b802e20de41d15a9bd59d3b7110f99840e56e5d40f27a2cda159b883d9fe3667"
-residual = ["AF", "EC", "F1", "12A", "12C", "1FB", "151D", "1838", "183C", "1840", "1844", "1899", "18B6", "18E6", "18F8", "191C", "1932", "1957", "199E", "19A8", "19BA", "19E6", "19E8"]
-
 [frontier.enemy-dispatch-ecl]
 function = "EnemyRuntimeView::DispatchEclInstruction"
 unit = "player-handle-collision-hit"

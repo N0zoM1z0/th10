@@ -1,6 +1,6 @@
 #include "EclVm.hpp"
 
-// FORMAT source shape informed by th10-decomp (MIT), commit c6791d82dc9f02e55eca45a5314f900a85481efd.
+// Interpreter source informed by th10-decomp (MIT), commit db6797d245afd2e58b2cd31b60d2857499d3aa7c.
 // See docs/licenses/th10-decomp-MIT.txt; target/native evidence remains authoritative.
 
 #include <math.h>
@@ -282,33 +282,14 @@ static bool IsOperandIndirect(
     return (instruction->operandMask.bits & (1U << index)) != 0;
 }
 
-static __forceinline int PopInt(EclVmContext *context)
-{
-    EclVmScalar value;
-    context->stack.Pop('i', sizeof(value), &value);
-    return value.integer;
-}
-
-static __forceinline float PopFloat(EclVmContext *context)
-{
-    EclVmScalar value;
-    EclVmStackView *const stackView = &context->stack;
-    stackView->Pop('f', sizeof(value.real), &value.real);
-    return value.real;
-}
-
-// Target Run expands these scalar wrappers but retains calls to the separate
-// EclVmStackView::Push owner.  Limit nested inlining only across this pair.
+// The interpreter expands this integer wrapper and retains the
+// call to EclVmStackView::Push.
 #pragma inline_depth(1)
 static __forceinline int PushInt(EclVmContext *context, const int &value)
 {
     return context->stack.Push('i', sizeof(value), &value);
 }
 
-static __forceinline int PushFloat(EclVmContext *context, float value)
-{
-    return context->stack.Push('f', sizeof(value), &value);
-}
 #pragma inline_depth(16)
 
 
@@ -394,7 +375,7 @@ int EclVmContext::ReadInt(unsigned int index)
 }
 
 float __stdcall EclVmContext::ReadFloatValue(
-    unsigned int flagIndex, EclVmContext *context, float value)
+    EclVmContext *context, unsigned int flagIndex, float value)
 {
     if (IsOperandIndirect(context->instruction, flagIndex))
     {
@@ -507,13 +488,6 @@ static __forceinline EclVmSubroutineEntry *EclMutableEntryAtWord(
     return reinterpret_cast<EclVmSubroutineEntry *>(
         reinterpret_cast<unsigned int>(base) +
         static_cast<unsigned int>(index) * sizeof(EclVmSubroutineEntry));
-}
-
-static __forceinline int EclPredecrementNativeWord(int &value)
-{
-    const unsigned int nativeWord = static_cast<unsigned int>(value) - 1u;
-    memcpy(&value, &nativeWord, sizeof value);
-    return value;
 }
 
 int EclVmScriptDatabase::AddScriptData(void *scriptData)
@@ -683,7 +657,7 @@ int EclVmContext::StartSubroutine(
                 value.integer =
                     OperandWord(*callerInstruction,
                         valueOffset / sizeof(int))->integer;
-                value.real = ReadFloatValue(argumentIndex, caller, value.real);
+                value.real = ReadFloatValue(caller, argumentIndex, value.real);
                 if (reinterpret_cast<const EclVmCallArgumentView *>(
                     reinterpret_cast<const unsigned char *>(
                     reinterpret_cast<unsigned int>((*callerInstruction)->operands) +
@@ -846,11 +820,13 @@ void EclVmHost::StopAllThreads()
 }
 
 
-// The FORMAT debug sink is inactive in retail. Operand resolution still
-// happens at each conversion specifier.
+// Model the disabled scalar trace suggested by FORMAT's unused text copy.
+// Argument evaluation remains observable; the original trace definition is unknown.
+// The debug sink is inactive in the retail build.
 static void EclDebugTrace(const char *format, ...)
 {
 }
+
 
 template <typename Result>
 static __forceinline void TraceFormatArgument(
@@ -867,12 +843,13 @@ static __forceinline void TraceFormatArgument(
             static_cast<unsigned int>(inlineBytes) +
             static_cast<unsigned int>(argumentIndex) *
             static_cast<unsigned int>(sizeof(EclVmFormatArgumentView)));
-    // FORMAT arguments follow the counted inline text. Word addresses
-    // use the original i386 arithmetic, which wraps at 32 bits.
+    // FORMAT is a counted scalar word stream, not a
+    // C++ one-element scalarOperands array. The original
+    // i386 index * 4 address arithmetic wraps at 32 bits.
     const char argumentType = argument->type;
     if (argumentType == 'f' || argumentType == 'g') {
         EclDebugTrace(scratch, static_cast<Result>(EclVmContext::ReadFloatValue(
-            argumentIndex + 1u, vm,
+            vm, argumentIndex + 1u,
             reinterpret_cast<const EclVmScalar *>(
                 reinterpret_cast<unsigned int>(vm->instruction) +
                 static_cast<unsigned int>(
@@ -900,32 +877,70 @@ static __forceinline void TraceFormatArgument(
 }
 
 
-static __forceinline int PopReturnTimeWord(
-    EclVmStackView *stack, float *value)
+__forceinline bool EclVmStackView::PopWord(void *destination)
 {
-    const int size = sizeof(*value);
-    if (stack->stackTop - size < 0)
-        return -1;
-    unsigned char *const stackData = stack->data;
-    stack->stackTop -= size;
-    // Native ECL return-time words use a flat 32-bit stack address.
-    // An untrusted serialized top is not a bounded C++ array index.
-    const unsigned char *const valueAddress =
-        reinterpret_cast<const unsigned char *>(
-            reinterpret_cast<unsigned int>(stackData) +
-            static_cast<unsigned int>(stack->stackTop));
-    memcpy(value, valueAddress, size);
-    return 0;
+    const int wordBytes = sizeof(int);
+    if (stackTop - wordBytes >= 0)
+    {
+        stackTop -= wordBytes;
+        const int valueOffset = stackTop;
+        const EclVmScalar *source = reinterpret_cast<const EclVmScalar *>(data + valueOffset);
+        const unsigned int word = source->bits;
+        static_cast<EclVmScalar *>(destination)->bits = word;
+        return true;
+    }
+    return false;
+}
+
+__forceinline void EclVmStackView::PopInt(int *destination)
+{
+    if (PopWord(destination))
+    {
+        stackTop -= sizeof(EclVmStackTypeSlotView);
+        const unsigned char tag = data[stackTop];
+        if (tag == 'f')
+        {
+            const float sourceValue = reinterpret_cast<const EclVmScalar *>(destination)->real;
+            *destination = static_cast<int>(sourceValue);
+        }
+    }
+}
+
+__forceinline void EclVmStackView::PopFloat(float *destination)
+{
+    if (PopWord(destination))
+    {
+        stackTop -= static_cast<int>(sizeof(EclVmStackTypeSlotView));
+        const unsigned char tag = data[stackTop];
+        if (tag == 'f')
+        {
+            // The stored word already has the requested representation.
+        }
+        else if (tag == 'i')
+        {
+            const int sourceValue = reinterpret_cast<const EclVmScalar *>(destination)->integer;
+            const float converted = static_cast<float>(sourceValue);
+            *destination = converted;
+        }
+    }
+}
+
+static __forceinline void PopInt(EclVmContext *context, int *destination)
+{
+    context->stack.PopInt(destination);
+}
+
+static __forceinline void PopFloat(EclVmContext *context, float *destination)
+{
+    context->stack.PopFloat(destination);
 }
 
 int EclVmContext::Run(float timeDelta)
 {
-    EclVmInstruction **const instructionCursor = &instruction;
-
-    if (*instructionCursor == NULL)
+    if (instruction == NULL)
         return -1;
-
-    while (static_cast<float>((*instructionCursor)->time) <= currentTime) {
+    EclVmInstruction **instructionCursor = &instruction;
+    while (static_cast<float>(instruction->time) <= currentTime) {
         EclVmInstruction *current = *instructionCursor;
 
         if ((difficultyMask & current->difficultyMask) != 0) {
@@ -941,13 +956,15 @@ int EclVmContext::Run(float timeDelta)
             {
                 stack.LeaveFrame();
                 if (stack.stackTop == 0) {
-                    instruction = NULL;
+                    *instructionCursor = NULL;
                     return -1;
                 }
 
-                stack.Pop(
-                    0, sizeof(*instructionCursor), instructionCursor);
-                PopReturnTimeWord(&stack, &currentTime);
+                {
+                    EclVmStackView *frame = &stack;
+                    frame->PopWord(instructionCursor);
+                }
+                stack.PopWord(&currentTime);
                 if (*instructionCursor == NULL)
                     return -1;
                 break;
@@ -982,7 +999,7 @@ int EclVmContext::Run(float timeDelta)
             {
                 EclVmThreadNode *thread = host->FindThread(ReadInt(0));
                 if (thread != NULL)
-                    EclStopThreadContext(thread->context);
+                    thread->context->instruction = NULL;
                 break;
             }
 
@@ -990,7 +1007,10 @@ int EclVmContext::Run(float timeDelta)
             {
                 EclVmThreadNode *thread = host->FindThread(ReadInt(0));
                 if (thread != NULL)
-                    thread->context->threadFlag0 = 1;
+                {
+                    EclVmContext *const child = thread->context;
+                    child->threadFlag0 = 1;
+                }
                 break;
             }
 
@@ -998,7 +1018,10 @@ int EclVmContext::Run(float timeDelta)
             {
                 EclVmThreadNode *thread = host->FindThread(ReadInt(0));
                 if (thread != NULL)
-                    thread->context->threadFlag0 = 0;
+                {
+                    EclVmContext *const child = thread->context;
+                    child->threadFlag0 = 0;
+                }
                 break;
             }
 
@@ -1008,33 +1031,40 @@ int EclVmContext::Run(float timeDelta)
                 if (thread != NULL)
                 {
                     EclVmContext *const threadContext = thread->context;
-                    const int control = ReadInt(1);
-                    threadContext->threadControl = control;
+                    threadContext->threadControl = ReadInt(1);
                 }
                 break;
             }
 
             case ECL_VM_CALL:
-                if (StartSubroutine(this, 0) != 0)
+                if (StartSubroutine(this, 0))
                     return -1;
                 continue;
 
             case ECL_VM_JUMP_IF_TRUE:
-                if (PopInt(this) != 0)
+            {
+                int condition;
+                PopInt(this, &condition);
+                if (condition != 0)
                     goto jump_instruction;
                 break;
+            }
 
             case ECL_VM_JUMP_IF_FALSE:
-                if (PopInt(this) == 0)
-                    goto jump_instruction;
-                break;
+            {
+                int condition;
+                PopInt(this, &condition);
+                if (condition != 0)
+                    break;
+            }
 
             case ECL_VM_JUMP:
 jump_instruction:
             {
                 EclVmInstruction *const branch = *instructionCursor;
                 currentTime = static_cast<float>(branch->jumpOperands.targetTime);
-                *instructionCursor = branch->AtByteOffset(
+                *instructionCursor = reinterpret_cast<EclVmInstruction *>(
+                    reinterpret_cast<char *>(branch) +
                     branch->jumpOperands.instructionByteOffset);
                 continue;
             }
@@ -1043,228 +1073,242 @@ jump_instruction:
                 currentTime -= static_cast<float>(ReadInt(0));
                 break;
 
+            // Stack frames, then typed transfers between operands and the stack.
             case ECL_VM_ENTER_FRAME:
                 stack.EnterFrame(ReadInt(0));
                 break;
-
             case ECL_VM_LEAVE_FRAME:
                 stack.LeaveFrame();
                 break;
-
-            case ECL_VM_PUSH_INT:
-                PushInt(this, ReadInt(0));
+            case ECL_VM_PUSH_INT: {
+                int value = ReadInt(0);
+                stack.Push('i', 4, &value);
                 break;
-
-            case ECL_VM_STORE_INT:
-                stack.Pop('i', sizeof(EclVmScalar),
-                    ResolveInt(0));
+            }
+            case ECL_VM_STORE_INT: {
+                int* destination = ResolveInt(0);
+                PopInt(this, destination);
                 break;
-
-            case ECL_VM_PUSH_FLOAT:
-                PushFloat(this, ReadFloat(0));
+            }
+            case ECL_VM_PUSH_FLOAT: {
+                float value = ReadFloat(0);
+                stack.Push('f', 4, &value);
                 break;
-
-            case ECL_VM_STORE_FLOAT:
-                stack.Pop('f', sizeof(EclVmScalar),
-                    ResolveFloat(0));
-                break;
-
-            case ECL_VM_ADD_INT:
-            {
-                EclVmScalar right;
-                stack.Pop('i', sizeof(right.integer), &right.integer);
-                EclVmScalar left;
-                stack.Pop('i', sizeof(left.integer), &left.integer);
-                // The native integer VM operates on 32-bit words: add,
-                // subtract and multiply wrap even at the signed limits.
-                left.bits += right.bits;
-                stack.Push('i', sizeof(left.integer), &left.integer);
+            }
+            case ECL_VM_STORE_FLOAT: {
+                float* destination = ResolveFloat(0);
+                PopFloat(this, destination);
                 break;
             }
 
-            case ECL_VM_SUBTRACT_INT:
-            {
-                EclVmScalar right;
-                stack.Pop('i', sizeof(right.integer), &right.integer);
-                EclVmScalar left;
-                stack.Pop('i', sizeof(left.integer), &left.integer);
-                left.bits -= right.bits;
-                stack.Push('i', sizeof(left.integer), &left.integer);
+            // Integer arithmetic reuses the left operand storage for the result:
+            // the integer and float operations both push from that same word.
+            case ECL_VM_ADD_INT: {
+                int right_storage;
+                PopInt(this, &right_storage);
+                int left_storage;
+                PopInt(this, &left_storage);
+                left_storage = static_cast<int>(static_cast<unsigned int>(left_storage) +
+                    static_cast<unsigned int>(right_storage));
+                stack.Push('i', 4, &left_storage);
+                break;
+            }
+            case ECL_VM_SUBTRACT_INT: {
+                int right_storage;
+                PopInt(this, &right_storage);
+                int left_storage;
+                PopInt(this, &left_storage);
+                left_storage = static_cast<int>(static_cast<unsigned int>(left_storage) -
+                    static_cast<unsigned int>(right_storage));
+                stack.Push('i', 4, &left_storage);
+                break;
+            }
+            case ECL_VM_MULTIPLY_INT: {
+                int right_storage;
+                PopInt(this, &right_storage);
+                int left_storage;
+                PopInt(this, &left_storage);
+                left_storage = static_cast<int>(static_cast<unsigned int>(left_storage) *
+                    static_cast<unsigned int>(right_storage));
+                stack.Push('i', 4, &left_storage);
+                break;
+            }
+            case ECL_VM_DIVIDE_INT: {
+                int right_storage;
+                PopInt(this, &right_storage);
+                int left_storage;
+                PopInt(this, &left_storage);
+                left_storage = left_storage / right_storage;
+                stack.Push('i', 4, &left_storage);
+                break;
+            }
+            case ECL_VM_MODULO_INT: {
+                int right_storage;
+                PopInt(this, &right_storage);
+                int left_storage;
+                PopInt(this, &left_storage);
+                left_storage = left_storage % right_storage;
+                stack.Push('i', 4, &left_storage);
                 break;
             }
 
-            case ECL_VM_MULTIPLY_INT:
-            {
-                EclVmScalar right;
-                stack.Pop('i', sizeof(right.integer), &right.integer);
-                EclVmScalar left;
-                stack.Pop('i', sizeof(left.integer), &left.integer);
-                left.bits *= right.bits;
-                stack.Push('i', sizeof(left.integer), &left.integer);
+            // Floating-point arithmetic uses the same pop order and a float result tag.
+            case ECL_VM_ADD_FLOAT: {
+                float right_storage;
+                PopFloat(this, &right_storage);
+                float left_storage;
+                PopFloat(this, &left_storage);
+                left_storage = left_storage + right_storage;
+                stack.Push('f', 4, &left_storage);
+                break;
+            }
+            case ECL_VM_SUBTRACT_FLOAT: {
+                float right_storage;
+                PopFloat(this, &right_storage);
+                float left_storage;
+                PopFloat(this, &left_storage);
+                left_storage = left_storage - right_storage;
+                stack.Push('f', 4, &left_storage);
+                break;
+            }
+            case ECL_VM_MULTIPLY_FLOAT: {
+                float right_storage;
+                PopFloat(this, &right_storage);
+                float left_storage;
+                PopFloat(this, &left_storage);
+                left_storage = left_storage * right_storage;
+                stack.Push('f', 4, &left_storage);
+                break;
+            }
+            case ECL_VM_DIVIDE_FLOAT: {
+                float right_storage;
+                PopFloat(this, &right_storage);
+                float left_storage;
+                PopFloat(this, &left_storage);
+                left_storage = left_storage / right_storage;
+                stack.Push('f', 4, &left_storage);
                 break;
             }
 
-            case ECL_VM_DIVIDE_INT:
-            {
-                EclVmScalar right;
-                stack.Pop('i', sizeof(right.integer), &right.integer);
-                EclVmScalar left;
-                stack.Pop('i', sizeof(left.integer), &left.integer);
-                left.integer /= right.integer;
-                stack.Push('i', sizeof(left.integer), &left.integer);
+            // Integer comparisons and logical NOT produce an integer result.
+            case ECL_VM_EQUAL_INT: {
+                int right_storage;
+                PopInt(this, &right_storage);
+                int left_storage;
+                PopInt(this, &left_storage);
+                const int left_operand = left_storage;
+                const int right_operand = right_storage;
+                int result = left_operand == right_operand;
+                stack.Push('i', 4, &result);
+                break;
+            }
+            case ECL_VM_NOT_EQUAL_INT: {
+                int right_storage;
+                PopInt(this, &right_storage);
+                int left_storage;
+                PopInt(this, &left_storage);
+                const int left_operand = left_storage;
+                const int right_operand = right_storage;
+                int result = left_operand != right_operand;
+                stack.Push('i', 4, &result);
+                break;
+            }
+            case ECL_VM_LESS_INT: {
+                int right_storage;
+                PopInt(this, &right_storage);
+                int left_storage;
+                PopInt(this, &left_storage);
+                const int left_operand = left_storage;
+                const int right_operand = right_storage;
+                int result = left_operand < right_operand;
+                stack.Push('i', 4, &result);
+                break;
+            }
+            case ECL_VM_LESS_EQUAL_INT: {
+                int right_storage;
+                PopInt(this, &right_storage);
+                int left_storage;
+                PopInt(this, &left_storage);
+                const int left_operand = left_storage;
+                const int right_operand = right_storage;
+                int result = left_operand <= right_operand;
+                stack.Push('i', 4, &result);
+                break;
+            }
+            case ECL_VM_GREATER_INT: {
+                int right_storage;
+                PopInt(this, &right_storage);
+                int left_storage;
+                PopInt(this, &left_storage);
+                const int left_operand = left_storage;
+                const int right_operand = right_storage;
+                int result = left_operand > right_operand;
+                stack.Push('i', 4, &result);
+                break;
+            }
+            case ECL_VM_GREATER_EQUAL_INT: {
+                int right_storage;
+                PopInt(this, &right_storage);
+                int left_storage;
+                PopInt(this, &left_storage);
+                const int left_operand = left_storage;
+                const int right_operand = right_storage;
+                int result = left_operand >= right_operand;
+                stack.Push('i', 4, &result);
+                break;
+            }
+            case ECL_VM_NOT_INT: {
+                int value;
+                PopInt(this, &value);
+                int result = value == 0;
+                stack.Push('i', 4, &result);
                 break;
             }
 
-            case ECL_VM_MODULO_INT:
-            {
-                EclVmScalar right;
-                stack.Pop('i', sizeof(right.integer), &right.integer);
-                EclVmScalar left;
-                stack.Pop('i', sizeof(left.integer), &left.integer);
-                left.integer %= right.integer;
-                stack.Push('i', sizeof(left.integer), &left.integer);
+            // Floating-point comparisons also push an integer, not a float.
+            case ECL_VM_EQUAL_FLOAT: {
+                float right_storage;
+                PopFloat(this, &right_storage);
+                float left_storage;
+                PopFloat(this, &left_storage);
+                const float left_operand = left_storage;
+                const float right_operand = right_storage;
+                int result = (left_operand == right_operand) ? 1 : 0;
+                stack.Push('i', 4, &result);
                 break;
             }
-
-            case ECL_VM_ADD_FLOAT:
-            {
-                EclVmScalar right;
-                stack.Pop('f', sizeof(right.real), &right.real);
-                EclVmScalar left;
-                stack.Pop('f', sizeof(left.real), &left.real);
-                left.real += right.real;
-                stack.Push('f', sizeof(left.real), &left.real);
+            case ECL_VM_NOT_EQUAL_FLOAT: {
+                EclVmStackView *operands = &stack;
+                float right_storage;
+                PopFloat(this, &right_storage);
+                float left_storage;
+                operands->PopFloat(&left_storage);
+                const float left_operand = left_storage;
+                const float right_operand = right_storage;
+                int result = (left_operand != right_operand) ? 1 : 0;
+                stack.Push('i', 4, &result);
                 break;
             }
-
-            case ECL_VM_SUBTRACT_FLOAT:
-            {
-                EclVmScalar right;
-                stack.Pop('f', sizeof(right.real), &right.real);
-                EclVmScalar left;
-                stack.Pop('f', sizeof(left.real), &left.real);
-                left.real -= right.real;
-                stack.Push('f', sizeof(left.real), &left.real);
+            case ECL_VM_LESS_FLOAT: {
+                float right_storage;
+                stack.PopFloat(&right_storage);
+                float left_storage;
+                stack.PopFloat(&left_storage);
+                const float left_operand = left_storage;
+                const float right_operand = right_storage;
+                int result = (left_operand < right_operand) ? 1 : 0;
+                stack.Push('i', 4, &result);
                 break;
             }
-
-            case ECL_VM_MULTIPLY_FLOAT:
-            {
-                EclVmScalar right;
-                stack.Pop('f', sizeof(right.real), &right.real);
-                EclVmScalar left;
-                stack.Pop('f', sizeof(left.real), &left.real);
-                left.real *= right.real;
-                stack.Push('f', sizeof(left.real), &left.real);
-                break;
-            }
-
-            case ECL_VM_DIVIDE_FLOAT:
-            {
-                EclVmScalar right;
-                stack.Pop('f', sizeof(right.real), &right.real);
-                EclVmScalar left;
-                stack.Pop('f', sizeof(left.real), &left.real);
-                left.real /= right.real;
-                stack.Push('f', sizeof(left.real), &left.real);
-                break;
-            }
-
-            case ECL_VM_EQUAL_INT:
-            {
-                EclVmScalar right;
-                right.integer = PopInt(this);
-                EclVmScalar left;
-                left.integer = PopInt(this);
-                PushInt(this, left.integer == right.integer);
-                break;
-            }
-
-            case ECL_VM_NOT_EQUAL_INT:
-            {
-                EclVmScalar right;
-                right.integer = PopInt(this);
-                EclVmScalar left;
-                left.integer = PopInt(this);
-                PushInt(this, left.integer != right.integer);
-                break;
-            }
-
-            case ECL_VM_LESS_INT:
-            {
-                EclVmScalar right;
-                right.integer = PopInt(this);
-                EclVmScalar left;
-                left.integer = PopInt(this);
-                PushInt(this, left.integer < right.integer);
-                break;
-            }
-
-            case ECL_VM_LESS_EQUAL_INT:
-            {
-                EclVmScalar right;
-                right.integer = PopInt(this);
-                EclVmScalar left;
-                left.integer = PopInt(this);
-                PushInt(this, left.integer <= right.integer);
-                break;
-            }
-
-            case ECL_VM_GREATER_INT:
-            {
-                EclVmScalar right;
-                right.integer = PopInt(this);
-                EclVmScalar left;
-                left.integer = PopInt(this);
-                PushInt(this, left.integer > right.integer);
-                break;
-            }
-
-            case ECL_VM_GREATER_EQUAL_INT:
-            {
-                EclVmScalar right;
-                right.integer = PopInt(this);
-                EclVmScalar left;
-                left.integer = PopInt(this);
-                PushInt(this, left.integer >= right.integer);
-                break;
-            }
-
-            case ECL_VM_NOT_INT:
-                PushInt(this, !PopInt(this));
-                break;
-
-            case ECL_VM_EQUAL_FLOAT:
-            {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
-                int floatResult = left == right;
-                PushInt(this, floatResult);
-                break;
-            }
-
-            case ECL_VM_NOT_EQUAL_FLOAT:
-            {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
-                int floatResult = left != right;
-                PushInt(this, floatResult);
-                break;
-            }
-
-            case ECL_VM_LESS_FLOAT:
-            {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
-                int floatResult = left < right;
-                PushInt(this, floatResult);
-                break;
-            }
-
             case ECL_VM_LESS_EQUAL_FLOAT:
             {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
+                EclVmStackView &operands = stack;
+                EclVmScalar rightOperand;
+                operands.Pop('f', sizeof(rightOperand.real), &rightOperand.real);
+                const float right = rightOperand.real;
+                EclVmScalar leftOperand;
+                operands.Pop('f', sizeof(leftOperand.real), &leftOperand.real);
+                const float left = leftOperand.real;
                 int floatResult = left <= right;
                 PushInt(this, floatResult);
                 break;
@@ -1272,57 +1316,61 @@ jump_instruction:
 
             case ECL_VM_GREATER_FLOAT:
             {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
+                EclVmStackView *const operands = &stack;
+                EclVmScalar rightOperand;
+                operands->Pop('f', sizeof(rightOperand.real), &rightOperand.real);
+                const float right = rightOperand.real;
+                EclVmScalar leftOperand;
+                operands->Pop('f', sizeof(leftOperand.real), &leftOperand.real);
+                const float left = leftOperand.real;
                 int floatResult = left > right;
                 PushInt(this, floatResult);
                 break;
             }
 
-            case ECL_VM_GREATER_EQUAL_FLOAT:
-            {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
-                int floatResult = left >= right;
-                PushInt(this, floatResult);
+            case ECL_VM_GREATER_EQUAL_FLOAT: {
+                float right_storage;
+                stack.PopFloat(&right_storage);
+                float left_storage;
+                stack.PopFloat(&left_storage);
+                int result = (left_storage >= right_storage) ? 1 : 0;
+                stack.Push('i', 4, &result);
+                break;
+            }
+            case ECL_VM_NOT_FLOAT: {
+                float value;
+                PopFloat(this, &value);
+                int result = (value == 0.0f) ? 1 : 0;
+                stack.Push('i', 4, &result);
                 break;
             }
 
-            case ECL_VM_NOT_FLOAT:
-            {
-                int floatResult = PopFloat(this) == 0.0f;
-                PushInt(this, floatResult);
+            // Logical and bitwise operations on integer stack words.
+            case ECL_VM_LOGICAL_OR: {
+                int right;
+                PopInt(this, &right);
+                int left;
+                PopInt(this, &left);
+                int result = (left || right) ? 1 : 0;
+                stack.Push('i', 4, &result);
                 break;
             }
-
-            case ECL_VM_LOGICAL_OR:
-            {
-                EclVmScalar right;
-                right.integer = PopInt(this);
-                EclVmScalar left;
-                left.integer = PopInt(this);
-                int logicalResult = left.integer != 0 || right.integer != 0;
-                PushInt(this, logicalResult);
+            case ECL_VM_LOGICAL_AND: {
+                int right;
+                PopInt(this, &right);
+                int left;
+                PopInt(this, &left);
+                int result = (left && right) ? 1 : 0;
+                stack.Push('i', 4, &result);
                 break;
             }
-
-            case ECL_VM_LOGICAL_AND:
-            {
-                EclVmScalar right;
-                right.integer = PopInt(this);
-                EclVmScalar left;
-                left.integer = PopInt(this);
-                int logicalResult = left.integer != 0 && right.integer != 0;
-                PushInt(this, logicalResult);
-                break;
-            }
-
             case ECL_VM_BITWISE_XOR:
             {
+                EclVmStackView &operands = stack;
                 EclVmScalar right;
-                stack.Pop('i', sizeof(right.integer), &right.integer);
+                operands.Pop('i', sizeof(right.integer), &right.integer);
                 EclVmScalar left;
-                stack.Pop('i', sizeof(left.integer), &left.integer);
+                operands.Pop('i', sizeof(left.integer), &left.integer);
                 PushInt(this, left.integer ^ right.integer);
                 break;
             }
@@ -1337,95 +1385,79 @@ jump_instruction:
                 break;
             }
 
-            case ECL_VM_BITWISE_AND:
-            {
-                EclVmScalar right;
-                stack.Pop('i', sizeof(right.integer), &right.integer);
-                EclVmScalar left;
-                stack.Pop('i', sizeof(left.integer), &left.integer);
-                PushInt(this, left.integer & right.integer);
+            case ECL_VM_BITWISE_AND: {
+                int right;
+                PopInt(this, &right);
+                int left;
+                PopInt(this, &left);
+                int result = left & right;
+                stack.Push('i', 4, &result);
                 break;
             }
 
-            case ECL_VM_NEGATE_INT:
-            {
-                EclVmScalar value;
-                stack.Pop('i', sizeof(value.integer), &value.integer);
-                value.bits = 0u - value.bits;
-                stack.Push('i', sizeof(value.integer), &value.integer);
+            // Negation and post-decrement.
+            case ECL_VM_NEGATE_INT: {
+                int value;
+                PopInt(this, &value);
+                value = static_cast<int>(0u - static_cast<unsigned int>(value));
+                stack.Push('i', 4, &value);
+                break;
+            }
+            case ECL_VM_NEGATE_FLOAT_STORAGE: {
+                // Negate the integer word, then write it back with the float tag.
+                EclVmScalar word;
+                PopFloat(this, &word.real);
+                word.bits = 0u - word.bits;
+                stack.Push('f', sizeof(word), &word);
+                break;
+            }
+            case ECL_VM_POST_DECREMENT_INT: {
+                int original_value = ReadInt(0);
+                int* destination = ResolveInt(0);
+                *destination = static_cast<int>(static_cast<unsigned int>(original_value) - 1u);
+                stack.Push('i', 4, &original_value);
                 break;
             }
 
-            case ECL_VM_NEGATE_FLOAT_STORAGE:
-            {
-                // 0x0044F851 executes integer NEG on the raw float dword and
-                // then pushes that dword with type 'f'.  This is not x87 FCHS.
-                EclVmScalar value;
-                stack.Pop('f', sizeof(value), &value);
-                // Raw DWORD negation is modulo32, including negative-zero bits.
-                value.bits = 0u - value.bits;
-                stack.Push('f', sizeof(value), &value);
+            // Trigonometry and vector operations.
+            case ECL_VM_SINE: {
+                float angle;
+                PopFloat(this, &angle);
+                float result = (float)sin(angle);
+                stack.Push('f', 4, &result);
                 break;
             }
-
-            case ECL_VM_POST_DECREMENT_INT:
-            {
-                EclVmScalar value;
-                value.integer = ReadInt(0);
-                int *destination = ResolveInt(0);
-                // Native DWORD postdecrement wraps before publication.
-                // Reuse the VM's 4-byte scalar overlay instead of narrowing
-                // an arbitrary unsigned result to signed int. The unchanged
-                // `value` is still the predecrement result pushed below.
-                const unsigned int nextWord = value.bits - 1u;
-                EclVmScalar nativeWord;
-                nativeWord.bits = nextWord;
-                *destination = nativeWord.integer;
-                stack.Push('i', sizeof(value.integer), &value.integer);
+            case ECL_VM_COSINE: {
+                float angle;
+                PopFloat(this, &angle);
+                float result = (float)cos(angle);
+                stack.Push('f', 4, &result);
                 break;
             }
-
-            case ECL_VM_SINE:
-                PushFloat(this, static_cast<float>(sin(PopFloat(this))));
-                break;
-
-            case ECL_VM_COSINE:
-                PushFloat(this, static_cast<float>(cos(PopFloat(this))));
-                break;
-
-            case ECL_VM_POLAR_TO_CARTESIAN:
-            {
+            case ECL_VM_POLAR_TO_CARTESIAN: {
                 EclVmPolarVectorView vector;
-                vector.FromAngleMagnitude(
-                    EnemyWrapAngle(ReadFloat(2)), ReadFloat(3));
-                *ResolveFloat(0) = vector.x;
+                vector.FromAngleMagnitude(EnemyWrapAngle(ReadFloat(2)), ReadFloat(3));
+                float *const x = ResolveFloat(0);
+                *x = vector.x;
                 *ResolveFloat(1) = vector.y;
                 break;
             }
-
-            case ECL_VM_LENGTH_SQUARED:
-            {
-                // Retail calls ResolveFloat(0) after the two source reads,
-                // but before either square is evaluated. A direct assignment
-                // expression leaves that side-effect ordering implicit.
-                // The original x87 sequence multiplies y first, then x.
-                const float x = ReadFloat(1);
-                const float y = ReadFloat(2);
-                float *const output = ResolveFloat(0);
-                *output = y * y + x * x;
+            case ECL_VM_LENGTH_SQUARED: {
+                float x = ReadFloat(1);
+                float y = ReadFloat(2);
+                *ResolveFloat(0) = y * y + x * x;
                 break;
             }
-
-            case ECL_VM_NORMALIZE_ANGLE:
-                *ResolveFloat(0) = EnemyWrapAngle(ReadFloat(0));
+            case ECL_VM_NORMALIZE_ANGLE: {
+                float* destination = ResolveFloat(0);
+                *destination = EnemyWrapAngle(ReadFloat(0));
                 break;
-
-            case ECL_VM_POINT_ANGLE:
-            {
-                const float dx = ReadFloat(2) - ReadFloat(0);
-                const float dy = ReadFloat(3) - ReadFloat(1);
-                *ResolveFloat(0) =
-                    static_cast<float>(atan2(dy, dx));
+            }
+            case ECL_VM_POINT_ANGLE: {
+                float x = ReadFloat(2) - ReadFloat(0);
+                float y = ReadFloat(3) - ReadFloat(1);
+                y = (float)atan2(y, x);
+                *ResolveFloat(0) = y;
                 break;
             }
 
@@ -1489,8 +1521,9 @@ jump_instruction:
             }
         }
 
-        EclVmInstruction *const next = instruction;
-        *instructionCursor = next->AtByteOffset(next->size);
+        instructionCursor = &instruction;
+        *instructionCursor = reinterpret_cast<EclVmInstruction *>(
+            reinterpret_cast<char *>(instruction) + instruction->size);
     }
 
     currentTime += timeDelta;

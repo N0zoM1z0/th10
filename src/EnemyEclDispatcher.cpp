@@ -1054,7 +1054,7 @@ int EnemyRuntimeView::ReadRawIntArgument(int index, int rawValue)
 float EnemyRuntimeView::ReadRawFloatArgument(int index, float rawValue)
 {
     EclVmHost *const host = reinterpret_cast<EclVmHost *>(owner);
-    return EclVmContext::ReadFloatValue(index, host->activeContext, rawValue);
+    return EclVmContext::ReadFloatValue(host->activeContext, index, rawValue);
 }
 
 #define ENEMY_READ_INT_DIRECT(index) \
