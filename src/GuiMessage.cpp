@@ -56,6 +56,15 @@ void __stdcall EnemyKillAll(EnemyManagerView *manager)
     }
 }
 
+static __forceinline AnmVmView *ResolveDialogueTextVm(
+    AnmRenderManagerView *manager, AnmVmIdView *id)
+{
+    AnmVmView *vm = manager->FindVm(*id);
+    if (vm == 0)
+        id->value = 0;
+    return vm;
+}
+
 // Complete target 0x00415B00 (683 bytes). Member construction precedes
 // the target bulk clear; ordinary new in the real caller owns failure cleanup.
 GuiMessageVmView::GuiMessageVmView(const unsigned char *record)
@@ -92,25 +101,17 @@ GuiMessageVmView::GuiMessageVmView(const unsigned char *record)
         message->vmIds[GUI_MESSAGE_TEXT_LINE_1].value = createdId.value;
     }
 
-    vm = anm->FindVm(message->vmIds[GUI_MESSAGE_TEXT_LINE_0]);
-    if (vm == 0) message->vmIds[GUI_MESSAGE_TEXT_LINE_0].value = 0;
-    vm->glyphWidth = 16;
-    vm = anm->FindVm(message->vmIds[GUI_MESSAGE_TEXT_LINE_0]);
-    if (vm == 0) message->vmIds[GUI_MESSAGE_TEXT_LINE_0].value = 0;
-    vm->glyphHeight = 16;
-    vm = anm->FindVm(message->vmIds[GUI_MESSAGE_TEXT_LINE_1]);
-    if (vm == 0) message->vmIds[GUI_MESSAGE_TEXT_LINE_1].value = 0;
-    vm->glyphWidth = 16;
-    vm = anm->FindVm(message->vmIds[GUI_MESSAGE_TEXT_LINE_1]);
-    if (vm == 0) message->vmIds[GUI_MESSAGE_TEXT_LINE_1].value = 0;
-    vm->glyphHeight = 16;
+    ResolveDialogueTextVm(anm, &message->vmIds[GUI_MESSAGE_TEXT_LINE_0])->glyphWidth = 16;
+    ResolveDialogueTextVm(anm, &message->vmIds[GUI_MESSAGE_TEXT_LINE_0])->glyphHeight = 16;
+    ResolveDialogueTextVm(anm, &message->vmIds[GUI_MESSAGE_TEXT_LINE_1])->glyphWidth = 16;
+    ResolveDialogueTextVm(anm, &message->vmIds[GUI_MESSAGE_TEXT_LINE_1])->glyphHeight = 16;
 
     message->textPositions[0] = AnmFloat3View(8.0f, 0.0f, 0.0f);
-    message->textPositions[1] = AnmFloat3View(24.0f, 0.0f, 0.0f);
     message->alternatingLine = 0;
     message->textColors[0] = 0x00f8f08fu;
     message->textColors[1] = 0x008088ffu;
     message->activeSide = 0;
+    message->textPositions[1] = AnmFloat3View(24.0f, 0.0f, 0.0f);
 
     BulletManagerView *bullets = reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager);
     BulletRuntimeView *bullet = &bullets->bullets[0];
