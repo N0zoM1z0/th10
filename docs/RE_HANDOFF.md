@@ -24,6 +24,7 @@ the compiler observations behind the source changes.
 
 | Unit | Bytes | Relevant context |
 | --- | ---: | --- |
+| `front-end-update-music-room` | 2,796 | `MusicRoomHelpers` link, 106 fields and four phase entries. Destination-first line copies and the direct auxiliary VM result preserve parser scheduling and the stack frame. Both line readers and row interpolation replay in the same link. |
 | `player-update-callback-body` | 3,112 | `ClaudeReplayInitLoadScript` link, 112 fields and all five state entries. The effect motion and lifetime are separate row members. Sharing the countdown helper preserves the earlier respawn argument in EBX. |
 | `frontend-options-update` | 3,188 | `FrontEndOptions` link, 129 fields and all five switch destinations. The supervisor-based configuration and queue view preserves the active phase's manager. The same link checks the refresh and both constant-interrupt members. |
 | `enemy-dispatch-ecl` | 14,416 | `EnemyEclDispatcher` link, 726 fields, 118 jump destinations and 181 opcode selectors. The cold replay also verifies the dialog EH and drop-flush bodies. |
@@ -47,36 +48,6 @@ the compiler observations behind the source changes.
 | `bullet-spawn-single-exact` | 1,472 | UpdateBullets-rooted link, 44 fields. Credits 1,413 code bytes. |
 
 ## Open owners
-
-### Music room
-
-`FrontEndUpdateMusicRoom` at `0x433EF0` compares the 2,796-byte contribution
-in the `MusicRoomHelpers` graph. The current source matches 1,360 of 2,372
-ordinary bytes, all 101 external bindings and 60 of 96 fixed relative
-branches. The phase 1 and 2 table destinations are two bytes and one byte
-early, respectively.
-Sharing the first row index and y-coordinate's row-pair offset removes an
-extra loop-entry jump.
-
-C2 traces attribute both parity register differences to the phase 0 row
-setup. In the earlier source, the second LEA for the y offset reuses EDX
-and the scratch cursor stays on EAX. The shared row-pair form emits the
-shift in EDX and spends the next scratch choice on a separate LEA for the
-first row index. This rotates the later remainder operands to ECX and EDX.
-Preserve the row-entry layout while testing a change before that choice.
-
-The same current source in the `GameManagerUpdate` graph restores the
-parser's retail ESI comment cursor and EBX countdown. The link also moves
-the `OpenFile` size pointer from the retail stack slot to EBX and changes
-the browse and close blocks. Adding the real `StageLifecycle.cpp` caller
-alone to `MusicRoomHelpers` preserves the baseline's bytes and field
-positions. The caller responsible for the observed graph difference remains
-unidentified.
-Keep both inlined VM factory expansions in the comparison. The preview's
-flag store currently schedules after the script PUSH, while the original
-memory OR precedes them. Build `front-end-music-skip-line` to refresh the
-`MusicRoomHelpers` graph when its inputs change. The local
-`.analysis/music-room/results.txt` has the compare and trace commands.
 
 ### Other large or close owners
 

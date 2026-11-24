@@ -634,97 +634,22 @@ frontier; do not refresh a baseline merely to accept the new positions.
   match at `462debf9` applies to the earlier compiler context. The two
   current calls need the target's inline allocate, initialize and add
   sequence. [2026-11-24]
-- **FrontEndUpdateMusicRoom @0x433EF0 (2,796)** now has the full target
-  extent and all 106 fields. The phase 1 and 2 table entries start two
-  bytes and one byte early, respectively. The current sound helper restores
-  both queue receivers that were missing in the older 2,788-byte build.
-  `Select(0)` recovers both count-dependent cursor stores. A shared cursor
-  pointer keeps the browse selection and previous value on the same base.
-  Testing the near-row condition first gives the target x87 branch.
-  `StartMusicRowInterpolation` places duration before the vector
-  parameters and restores both PUSH sequences while preserving its exact
-  206 bytes and seven fields. Guarding the parser with an explicit first
-  iteration test aligns its early block but grows the owner by 16 bytes.
-  At global allocation (`0x107AAC16`), the eight-line countdown has
-  weight 56 and can use EBX or ESI. It takes ESI at cost zero while
-  EBX costs 4,400. The comment cursor comes later at weight 36 with
-  EBX as its sole choice. Retail uses EBX for the countdown and ESI
-  for the cursor. Advancing the marker separately, using an early
-  `continue`, and indexing a typed comment array all preserve this
-  code. The prologue and phase offsets also remain open.
-  - The guarded parser moves its remaining-byte test before the pointer
-    setup and shifts the later phases by 16 bytes. The `do` form of the
-    eight-line countdown also changes which VM factories are inlined.
-    Both the preview and row sites call `CreateVmVariant0` directly,
-    replacing the target's two `AllocateVm`/`InitializeVm`/`AddVmVariant0`
-    sequences. This drops six linkage fields and shortens the owner to
-    2,588 bytes. A countdown `for` loop preserves the baseline extent
-    and field positions. Changing only preview registration to `do`
-    turns that factory expansion into a call and leaves 103 fields.
-  - Sharing `stateTimer.current - 1` between the first row index and its
-    y coordinate removes a short jump over alignment before the first
-    row-count check. Applying either expression by itself preserves the
-    earlier layout. Using both raises the ordinary byte count from
-    846 to 1,360 of 2,372 and the number of matching relative branches
-    from 35 to 60. The two displaced table destinations are the
-    remaining local absolute field differences. The phase 1 and 2
-    parity masks use ECX and EDX, respectively. The retail EAX encoding
-    saves a byte at each mask.
-  - The scratch cursor at C2 `0x1079C39D` first diverges at the phase 0
-    row setup. Before the shared offset, the second y-offset LEA reuses
-    EDX and leaves the cursor on EAX. In the current source, the shift
-    keeps EDX and a separate LEA takes EAX for the first row index. The
-    signed remainder's two local scratch requests, 28 and 37 in both traces,
-    move from EAX/EAX to ECX/EDX. The source before the shared offset
-    has the extra row-entry jump and 846 matching ordinary bytes.
-  - The same shared-offset source in the `GameManagerUpdate` graph puts
-    the comment cursor in ESI and its countdown in EBX as in retail. The
-    link passes the `OpenFile` size pointer in EBX, while retail pushes
-    it. The zero value shared by the browse and close blocks moves to
-    ESI and 891 ordinary bytes match. Both graphs bind all 101 external
-    fields. Adding `StageLifecycle.cpp` alone to `MusicRoomHelpers`
-    leaves the owner unchanged. Test other real callers while checking
-    the complete `OpenFile` call and both parser registers.
-  - Both inlined factories enter C2's `Riscify` at `0x107AD4FE` with a
-    memory OR for VM flag `0x40000000`. At `0x107AD5FB` both have a
-    load, register OR and store. The scheduler at `0x107B0D2F` puts
-    the preview script LEA and PUSH between the OR and its store.
-    Retail uses the memory OR at `+0x1B6`, before the script LEA. The
-    initial row already matches retail's split sequence. The dependency
-    hook at `0x107B0B9B` corresponds to TH09's `0x107B5338` in C2
-    13.10.3077. The preview's OR and script LEA both have weight
-    `0x4C00`, while the script PUSH has `0x4400` and the flag store
-    has `0x4000`. The script instructions and flag store have no
-    dependency edge between them. Spelling the flag as its named
-    bitfield in the shared factory gives identical music-room code.
-    Moving the flag assignment before the layer store changes nine
-    ordinary bytes and leaves both sequences split.
-  - TH09's shared loop index and the TH10 reference's shared position
-    and comment reveal helper leave the machine code identical. Giving
-    the parser its own inlined helper changes the whole owner's inlining
-    decisions. It leaves 98 fields as both VM factories become calls
-    and two line-reader calls disappear. Keep the two factory
-    expansions in scope when comparing parser changes.
-  - Expanding the preview factory in source with the same three real
-    calls preserves the split flag update and every linkage field. The
-    guarded `do` form of the initial row loop keeps both factory
-    expansions but inlines the row's `FindVm` and leaves the phase 0
-    `SetScreenState` out of line. It emits 2,780 bytes and 105 fields.
-  - A TH09-style declaration-only control isolates callee visibility.
-    Both `StartMusicRowInterpolation` calls stay out of line. Hiding
-    its body under LTCG in the earlier source moves the middle table
-    destinations from `+0x454/+0x529` to `+0x455/+0x52A` and keeps the
-    2,796-byte extent and 106 fields. Both call sites now push all five
-    arguments.
-    Retail passes the VM and vectors in EAX, EDX and ECX. Hiding
-    `MarkVmInterrupt` similarly changes its two exit-phase calls to
-    the public member convention and shrinks the owner to 2,788 bytes.
-    The parser keeps its register allocation in both controls. A normal
-    `UpdateMusicRoom` member under LTCG retains the same stack receiver
-    and produces identical owned bytes after rebasing fields. Passing
-    the remaining-byte count by reference also preserves the caller
-    and both exact line readers.
-  [2026-11-23]
+- **FrontEndUpdateMusicRoom @0x433EF0 (2,796)** matches the complete
+  `MusicRoomHelpers` link, including 106 address fields, four phase entries
+  and 96 fixed relative branches. Passing the destination first in the
+  line reader's source signature orders the register loads at the parser
+  calls. Its machine interface remains ECX cursor, EDI remaining,
+  destination on the stack and RET 4. Reading `.value` directly from the
+  auxiliary VM factory's return preserves the `0x1C` stack frame. Naming the
+  result allowed C2 to reuse the receiver's incoming stack word and shrink
+  the frame to `0x18`. Indexed track destinations preserve the ESI comment
+  cursor and EBX countdown. The shared switch exits save EBX after the
+  phase bound. The preview and row factories inline their allocate,
+  initialize and register operations with their respective flag-store
+  orders. The locked-title string and warning table have named bindings
+  and their strings compare byte for byte. The MIT-licensed
+  `_reference/th10-decomp` music room provided source and compiler-context
+  leads. [2026-11-24]
 - **RebuildPlayerOptions @0x426F70 (2,520)**: about 2,404, plain RET instead of
   RET4 even with all nine callers present. [2026-10-19]
 - **EnemyGameStateView::StartSpell @0x409280 (2,432)** uses the

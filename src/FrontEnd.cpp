@@ -3555,8 +3555,8 @@ int __stdcall FrontEndControllerView::DrawReplaySave(
 
 
 // Original Japanese CP932 text, preserved as byte-valued C++ string literals.
-static const char g_MusicLockedTitleFormat[] = "No.%d  \201H\201H\201H\201H\201H\201H\201H\201H\201H\201H\201H";
-static const char *g_MusicWarningLines[8] = {
+extern const char g_MusicLockedTitleFormat[] = "No.%d  \201H\201H\201H\201H\201H\201H\201H\201H\201H\201H\201H";
+const char *g_MusicWarningLines[8] = {
     "\201@",
     "\201@\201@\201\226\201\226\221I\221\360\202\265\202\275\213\310\202\315\202\334\202\276\203Q\201[\203\200\222\206\202\305\215\304\220\266\202\263\202\352\202\304\202\242\202\334\202\271\202\361\201\226\201\226",
     " ",
@@ -3594,7 +3594,7 @@ static char *FrontEndMusicSkipLine(char *cursor, int *remaining)
 }
 
 static char *__stdcall FrontEndMusicCopyLine(
-    char *cursor, char *destination, int *remaining)
+    char *destination, char *cursor, int *remaining)
 {
     char *end = cursor;
     while (*end != '\n' && *end != '\r')
@@ -3697,11 +3697,35 @@ void FrontEndControllerView::MarkVmInterrupt(int index, short interrupt)
     }
 }
 
-// Complete music-room owner 0x00433EF0..0x004349DB: 2778 executable
-// bytes, two alignment bytes and the four-entry table at 0x004349CC.
-// Original class/TU ownership and whole-owner exactness remain unproved.
+static __forceinline AnmVmIdView CreateMusicPreviewVm(
+    AnmLoadedView *loaded, int script)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    vm->flags35C |= 0x40000000u;
+    vm->renderLayer = 15;
+    loaded->InitializeVm(vm, script);
+    return g_AnmRenderManagerView->AddVmVariant0(vm);
+}
+
+static __forceinline AnmVmIdView CreateMusicTrackRowVm(
+    AnmLoadedView *loaded, int script)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    const unsigned int flags = vm->flags35C;
+    vm->renderLayer = 15;
+    vm->flags35C = flags | 0x40000000u;
+    loaded->InitializeVm(vm, script);
+    return g_AnmRenderManagerView->AddVmVariant0(vm);
+}
+
+// The music-room owner includes two alignment bytes followed by its
+// four-entry phase table at 0x004349CC.
 int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
 {
+    AnmFloat3View position;
+    int remaining;
+    int i;
+
     switch (controller->screenState)
     {
     case 0:
@@ -3712,20 +3736,17 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
             if (g_AnmRenderManagerView->FindVm(controller->vmIds[0x5f]) == NULL)
             {
                 controller->CreateVm(0x5f);
-                controller->difficultyAuxVmId =
-                    g_AsciiManagerView->asciiAnm->CreateVmVariant0(8, 15);
+                AnmLoadedView *resource = g_AsciiManagerView->asciiAnm;
+                controller->difficultyAuxVmId.value =
+                    resource->CreateVmVariant0(8, 15).value;
             }
             controller->CreateVm(0x67);
-            int remaining;
             int count = 0;
-            char *cursor = reinterpret_cast<char *>(
+            controller->musicText = reinterpret_cast<char *>(
                 FileSystem::OpenFile("musiccmt.txt", &remaining, 0));
-            controller->musicText = cursor;
+            char *cursor = controller->musicText;
             if (cursor == NULL)
                 goto closeMusicRoom;
-            char *path = &controller->musicPaths[0][0];
-            char *title = &controller->musicTitles[0][0];
-            char *comment = &controller->musicComments[0][0][0];
             while (remaining > 0)
             {
                 if (*cursor == '#'
@@ -3734,16 +3755,14 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
                 else
                 {
                     // Target advances past '@' without decrementing remaining.
-                    cursor = FrontEndMusicCopyLine(cursor + 1, path, &remaining);
-                    cursor = FrontEndMusicCopyLine(cursor, title, &remaining);
+                    cursor = FrontEndMusicCopyLine(
+                        controller->musicPaths[count], cursor + 1, &remaining);
+                    cursor = FrontEndMusicCopyLine(
+                        controller->musicTitles[count], cursor, &remaining);
                     for (int line = 0; line < 8; ++line)
-                    {
-                        cursor = FrontEndMusicCopyLine(cursor, comment, &remaining);
-                        comment += 0x42;
-                    }
+                        cursor = FrontEndMusicCopyLine(
+                            controller->musicComments[count][line], cursor, &remaining);
                     ++count;
-                    path += 0x40;
-                    title += 0x42;
                 }
             }
             controller->cursor.count = count;
@@ -3752,25 +3771,25 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
             controller->musicTrackCount = count;
             for (int i = 0; i < 8; ++i)
                 controller->musicCommentVmIds[i] =
-                    g_FrontEndMusicCommentAnm->CreateVmVariant0(i + 0x27, 15);
+                    CreateMusicPreviewVm(g_FrontEndMusicCommentAnm, i + 0x27);
             controller->musicCommentLine = 0;
             controller->musicSelectedTrack = 0;
             controller->musicWarning = 0;
         }
         if (controller->stateTimer.current < 10)
         {
-            const int rowPair = controller->stateTimer.current - 1;
-            AnmFloat3View position(64.0f,
-                (96.0f - controller->musicListOffset * 20.0f) +
-                    static_cast<float>(rowPair * 40),
-                0.0f);
-            for (int i = rowPair * 2;
+            position.x = 64.0f;
+            position.z = 0.0f;
+            position.y = 96.0f - static_cast<float>(controller->musicListOffset) * 20.0f +
+                static_cast<float>(controller->stateTimer.current * 40 - 40);
+            for (i = controller->stateTimer.current * 2 - 2;
                  i < controller->stateTimer.current * 2; ++i)
             {
                 if (i >= controller->musicTrackCount)
                     break;
-                controller->musicRowVmIds[i] =
-                    controller->frontAnm->CreateVmVariant0(i + 0xad, 15);
+                const AnmVmIdView created =
+                    CreateMusicTrackRowVm(controller->frontAnm, i + 0xad);
+                controller->musicRowVmIds[i].value = created.value;
                 FrontEndVmIdStorageView *rowId = &controller->musicRowVmIds[i];
                 AnmRenderManagerView *manager = g_AnmRenderManagerView;
                 AnmVmView *vm = manager->FindVm(*rowId);
@@ -3844,12 +3863,16 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
             if (menuCursor->previous != menuCursor->current)
             {
                 FrontEndPlaySound(12);
-                if (menuCursor->current < controller->musicListOffset)
-                    controller->musicListOffset = menuCursor->current;
-                else if (menuCursor->current >= controller->musicListOffset + 10)
-                    controller->musicListOffset = menuCursor->current - 9;
-                AnmFloat3View position(64.0f, 96.0f - controller->musicListOffset * 20.0f, 0.0f);
-                for (int i = 0; i < controller->musicTrackCount; ++i)
+                const int scroll = controller->musicListOffset;
+                const int selection = menuCursor->current;
+                if (selection < scroll)
+                    controller->musicListOffset = selection;
+                else if (selection >= scroll + 10)
+                    controller->musicListOffset = selection - 9;
+                position.x = 64.0f;
+                position.z = 0.0f;
+                position.y = 96.0f - static_cast<float>(controller->musicListOffset) * 20.0f;
+                for (i = 0; i < controller->musicTrackCount; ++i)
                 {
                     FrontEndVmIdStorageView *rowId = &controller->musicRowVmIds[i];
                     AnmRenderManagerView *manager = g_AnmRenderManagerView;
@@ -3904,17 +3927,11 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
                 controller->musicWarning == 0)
             {
                 if ((g_FrontEndSupervisorFlags & 0x10) != 0)
-                {
                     FrontEndQueueSoundCommand("dummy", 4, 0);
-                    controller->musicWarning = 1;
-                    return 0;
-                }
                 else
-                {
                     FrontEndQueueSoundCommand("dummy", 3, 0);
-                    controller->musicWarning = 1;
-                    return 0;
-                }
+                controller->musicWarning = 1;
+                break;
             }
             FrontEndLoadMusic(0, controller->musicPaths[controller->cursor.current]);
             if ((g_FrontEndSupervisorFlags & 0x10) != 0)
@@ -3923,9 +3940,10 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
             // Target marks byte zero, not musicSelectedTrack's byte.
             g_FrontEndProfileData[0x1d892] = 1;
             controller->musicWarning = 0;
-            return 0;
+            break;
         }
-        if ((g_FrontEndInput.pressed & 0x0a) != 0)
+        if ((g_FrontEndInput.pressed & 0x0a) == 0)
+            break;
         {
 closeMusicRoom:
             if (controller->musicText != NULL)
