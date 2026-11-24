@@ -948,10 +948,10 @@ static __forceinline const char *PlayerShotDataFilename(int character, int shotT
     return g_PlayerShotDataFilenames[character * 3 + shotType];
 }
 
-static AnmFloat3View AddPlayerPositionExtent(
-    const AnmFloat3View &extent, const AnmFloat3View &position)
+static PlayerFloat3 AddPlayerPositionExtent(
+    const PlayerFloat3 &extent, const PlayerFloat3 &position)
 {
-    AnmFloat3View result;
+    PlayerFloat3 result;
     result.x = extent.x + position.x;
     result.y = *static_cast<volatile const float *>(&extent.y) + position.y;
     result.z = *static_cast<const volatile float *>(&extent.z) + position.z;
@@ -1000,8 +1000,6 @@ int PlayerInitialize(Player *player)
     th10::ChainElem *drawNode = th10::Chain::AllocElem(
         reinterpret_cast<th10::ChainCallback>(PlayerDrawCallback));
     drawNode->flags &= ~2u;
-    // Complete the flags update before publishing the callback argument.
-    _ReadWriteBarrier();
     drawNode->arg = player;
     th10::g_Chain->AddToDrawChain(drawNode, 0x16);
     player->drawCallbackNode = reinterpret_cast<PlayerCallbackNodeView *>(drawNode);
@@ -1054,29 +1052,25 @@ int PlayerInitialize(Player *player)
     player->extent2.x = player->extent2.y = g_PlayerExtent2ByCharacter[character] * 0.5f;
     player->extent2.z = 5.0f;
 
-    const AnmFloat3View &positionValue =
-        *reinterpret_cast<const AnmFloat3View *>(&player->drawPosition);
-    const AnmFloat3View &extentValue0 =
-        *reinterpret_cast<const AnmFloat3View *>(&player->extent0);
-    const AnmFloat3View &extentValue1 =
-        *reinterpret_cast<const AnmFloat3View *>(&player->extent1);
-    const AnmFloat3View &extentValue2 =
-        *reinterpret_cast<const AnmFloat3View *>(&player->extent2);
-    *reinterpret_cast<AnmFloat3View *>(&player->derivedMin0) =
+    const PlayerFloat3 &positionValue = player->drawPosition;
+    const PlayerFloat3 &extentValue0 = player->extent0;
+    const PlayerFloat3 &extentValue1 = player->extent1;
+    const PlayerFloat3 &extentValue2 = player->extent2;
+    player->derivedMin0 =
         positionValue - extentValue0;
-    *reinterpret_cast<AnmFloat3View *>(&player->derivedMax0) =
+    player->derivedMax0 =
         AddPlayerPositionExtent(extentValue0, positionValue);
-    *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[0]) =
+    player->derivedVectors[0] =
         positionValue - extentValue1;
-    *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[1]) =
+    player->derivedVectors[1] =
         AddPlayerPositionExtent(extentValue1, positionValue);
-    *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[2]) =
+    player->derivedVectors[2] =
         positionValue - extentValue2;
-    *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[3]) =
+    player->derivedVectors[3] =
         AddPlayerPositionExtent(extentValue2, positionValue);
-    *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[4]) =
+    player->derivedVectors[4] =
         positionValue - extentValue2;
-    *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[5]) =
+    player->derivedVectors[5] =
         AddPlayerPositionExtent(extentValue2, positionValue);
 
     if ((player->updateTimer1.flags & 1) == 0)
