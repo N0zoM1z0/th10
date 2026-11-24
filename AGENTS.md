@@ -48,10 +48,9 @@ actual exactness, target identity, natural-source and state-isolation rules.
 
 ## Current direction — handoff and exact reconstruction
 
-The current task is exact reconstruction. Target at least 98% of reviewed
-authored owned bytes exact. Prioritize complete medium/large representatives
-alongside useful leaves, and compare the first complete source early. Natural
-low-level C/C++ and provisional numeric/offset names are acceptable.
+Prioritize complete medium/large owners alongside useful leaves, and compare
+the first complete source early. Natural low-level C/C++ and provisional
+numeric/offset names are acceptable.
 
 Call local tools directly. Do not route through Factory providers, require
 Factory receipts, or read Factory guidance as a session prerequisite. Use

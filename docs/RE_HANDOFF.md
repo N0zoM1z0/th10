@@ -1,9 +1,8 @@
 # TH10 reconstruction handoff
 
 Start with [AGENTS.md](../AGENTS.md), then read the selected owner's source and
-ledger rows. The work is still in the exact reconstruction phase. The goal is
-98% of reviewed authored owned bytes using the pinned VC7.1 SP1 build 6030
-compiler and linker. [PROGRESS.md](PROGRESS.md) gives the ledger totals.
+ledger rows. Exact reconstruction uses the pinned VC7.1 SP1 build 6030 compiler
+and linker. [PROGRESS.md](PROGRESS.md) gives the ledger totals.
 Product closure, runtime semantics and portability remain open.
 
 Use the original Japanese TH10 v1.00a executable at the private, read-only

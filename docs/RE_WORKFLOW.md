@@ -8,9 +8,8 @@ instructions. No Factory provider, receipt, coordinator or Factory-document
 prerequisite applies. Follow the commit format in AGENTS.md and keep
 checkpoints local.
 
-The objective is at least 98% of reviewed authored owned bytes exact. Advance
-complete medium/large representatives and useful leaves. Natural low-level
-source and provisional names are acceptable; compare a complete owner early.
+Advance complete medium/large owners and useful leaves. Compare a complete
+owner early. Natural low-level source and provisional names are acceptable.
 
 ## Bounded exact loop
 
