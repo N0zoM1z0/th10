@@ -900,8 +900,6 @@ frontier; do not refresh a baseline merely to accept the new positions.
   timer writes. Publishing the current-frame field through a volatile
   reference preserves all three positions. [2026-11-24]
 - **BulletSpawnDescriptorView::SpawnSingleBullet @0x4067D0 (1,413 code + 59 local-table bytes)**: exact since 2026-11-22. A selected cold replay reproduces 1,472/1,472 bytes with all 44 fields. The last 54 bytes closed through three natural changes. First, the call became `AnmVmStartScript(manager->bulletAnm, &bullet->vm, table[type] + color)`, which removed a `_ReadWriteBarrier` and the fake ECX argument. Second, the callee `AdvanceTransformProgram` became a plain switch, which fixed the effect-switch registers; this is a non-local effect through LTCG. Third, the cursor tail was written as `++bullet; if (bullet->state == 5) cursor = &bullets[0]; else cursor = bullet;` instead of an inverted early return. Earlier fixes still hold: the ordered `if/else if` interrupt selection and the collision-height/width store order. [2026-11-22]
-- **EnemyLaserLineView::RunCommands @0x41CA80 (1,356)**: 1,368; embedded VM
-  receiver EDX versus ESI. [2026-10-20]
 - **HintOwnerView::ConsumeEntries @0x419120 (1,317)**: 1,308 with all 34
   identities. [2026-10-31]
 - **EnemyLaserType1View::CheckCollisionBox @0x41EB00 (1,171)** and
@@ -1192,6 +1190,16 @@ register preservation or mod-ref assumptions) where our builds exploit it
 
 ### Laser
 
+- `EnemyLaserLineView::RunCommands` at 0x0041CA80 matches the 1,356-byte
+  owner, including 31 fields, five jump destinations and the 64-byte
+  selector map. Use the command record's opcode for the gate and switch.
+  Loading a separate opcode before binding the record changes the
+  dispatch registers. The virtual entry keeps the receiver in ECX and
+  the single stack slot for the integer-to-float wait conversion. Rooting
+  the link at the update caller moves the receiver to the stack.
+  The same image matches the timer, player aim, polar vector, and both
+  sound callees. Preserve the ordinary shared PC increment and the
+  explicit jump and skip paths.
 - The type-1 vtable 0x46DA10 has Draw at +0xC, the box cutter 0x41EB00 at +0x18 and the circle cutter 0x41EFA0 at +0x1C (RET 0xC, frame 0x32C). The box frame is 0x344.
 - The type-0 vtable 0x46DA60 has CheckPoint 0x41E4D0 at +0x20 and Bounce 0x41CFD0 at +0x3C. Update calls Bounce under mask 0x08000C00.
 - Cutter predicates accept unordered values: the radial test rejects only on ordered squared distance > squared radius, and the box test uses negated XY rejects. Sample Z is cleared after vector addition. Bounce's Y reflection uses ordered `<min` and `>=max`.

@@ -23942,6 +23942,54 @@ linkages = [
   { offset = 0x33c, type = "DIR32", local = true, target = 0x41e845 },
 ]
 
+[units.laser-line-run-commands]
+artifact_kind = "linked-pe"
+source = "src/LaserScript.cpp"
+support_sources = ["src/AnmManager.cpp", "src/EnemyLaser.cpp", "src/EnemyEclDispatcher.cpp", "src/Enemy.cpp", "src/AnmVmStartScript.cpp", "src/AnmLoadedStartScript.cpp", "src/LaserLine.cpp"]
+output_dir = "build/match-linked/LaserLineCommands"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?RunCommands@EnemyLaserLineView@@UAEXXZ"
+functions = ["EnemyLaserLineView::RunCommands"]
+symbol = "?RunCommands@EnemyLaserLineView@@UAEXXZ"
+target_address = 0x0041CA80
+size = 1356
+data_spans = [{ offset = 0x4F5, width = 3 }, { offset = 0x50C, width = 64 }]
+linkages = [
+  { offset = 0x095, type = "DIR32", local = true, target = 0x0041CF8C },
+  { offset = 0x09C, type = "DIR32", local = true, target = 0x0041CF78 },
+  { offset = 0x0B4, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
+  { offset = 0x0DB, type = "DIR32", symbol = "__real@c4778000", target = 0x00470B50 },
+  { offset = 0x0F0, type = "DIR32", symbol = "__real@44778000", target = 0x00470CCC },
+  { offset = 0x0FD, type = "DIR32", symbol = "?g_Player@@3PAUPlayer@@A", target = 0x00477834 },
+  { offset = 0x105, type = "REL32", symbol = "?AngleFromPosition@Player@@QBEMPBUPlayerFloat3@@@Z", target = 0x00426660 },
+  { offset = 0x11C, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
+  { offset = 0x13E, type = "REL32", symbol = "?FromAngleMagnitude@EnemyLaserVectorView@@QAEXMM@Z", target = 0x0041F800 },
+  { offset = 0x15E, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x00492590 },
+  { offset = 0x163, type = "REL32", symbol = "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z", target = 0x0043DC90 },
+  { offset = 0x193, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
+  { offset = 0x1BC, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x00492590 },
+  { offset = 0x1C1, type = "REL32", symbol = "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z", target = 0x0043DC90 },
+  { offset = 0x213, type = "DIR32", symbol = "__real@c479c000", target = 0x00470CC8 },
+  { offset = 0x255, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
+  { offset = 0x2AD, type = "DIR32", symbol = "?g_BulletSpriteScriptBase@@3PAHA", target = 0x00474170 },
+  { offset = 0x2B3, type = "DIR32", symbol = "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A", target = 0x004776F0 },
+  { offset = 0x2C7, type = "REL32", symbol = "?AnmVmStartScript@@YGXPAUAnmLoadedView@@PAUAnmVmView@@H@Z", target = 0x00404F30 },
+  { offset = 0x30D, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
+  { offset = 0x36E, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x00492590 },
+  { offset = 0x373, type = "REL32", symbol = "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z", target = 0x0043DD10 },
+  { offset = 0x3A7, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
+  { offset = 0x3D3, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
+  { offset = 0x42D, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x4A7, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
+  { offset = 0x4F8, type = "DIR32", local = true, target = 0x0041CB20 },
+  { offset = 0x4FC, type = "DIR32", local = true, target = 0x0041CB47 },
+  { offset = 0x500, type = "DIR32", local = true, target = 0x0041CBF3 },
+  { offset = 0x504, type = "DIR32", local = true, target = 0x0041CC80 },
+  { offset = 0x508, type = "DIR32", local = true, target = 0x0041CF50 },
+]
+
 [units.laser-line-update]
 artifact_kind = "linked-pe"
 source = "src/LaserLine.cpp"

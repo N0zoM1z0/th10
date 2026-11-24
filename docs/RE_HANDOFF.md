@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `laser-line-run-commands` | 1,356 B | `LaserLineCommands`, 31 fields, five jump destinations and 64 selector bytes. The virtual receiver is ECX, and `laser-line-update` passes its own link. |
 | `frontend-score-entry-update` | 1,400 B | `FrontEndReplay`, 80 fields and four phase destinations. The score insert uses the EDI receiver and both indexed name copies match. |
 | `frontend-shot-type-update` | 1,424 B | `FrontEndReplay`, 90 fields and five phase destinations. The child lookup, VM flag and interrupt owners pass in the same link. |
 | `player-initialize` | 1,435 B | `PlayerInitialize`, 49 fields, the EBX receiver from `PlayerCreate` and both callback registrations. The factory and option-file loader compare in their own link graphs. |

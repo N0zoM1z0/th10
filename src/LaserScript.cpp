@@ -2,10 +2,10 @@
 #include "EnemyLaserLine.hpp"
 #include "EnemyPrimaryResources.hpp"
 #include "EnemySoundQueue.hpp"
+#include "Player.hpp"
 
 extern unsigned char g_MainSoundOwner[0x52d0];
 extern int g_BulletSpriteScriptBase[];
-extern float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position);
 
 // Target41CA80, virtual slot0. Commands are the type-0 request's live24-byte
 // records at450. Keep signed PC, mutable arguments and post-call PC reads.
@@ -13,18 +13,17 @@ void EnemyLaserLineView::RunCommands()
 {
     while (commandIndex < 18)
     {
-        unsigned int opcode = request.commands[commandIndex].opcode;
         EnemyLaserCommandView &command = request.commands[commandIndex];
-        if (opcode == 0)
+        if (command.opcode == 0)
             return;
         if (command.allowWhileActive == 0 && flags != 0)
             return;
-        if (opcode == 0x80000000u)
+        if (command.opcode == 0x80000000u)
         {
             ++commandIndex;
             continue;
         }
-        switch (opcode)
+        switch (command.opcode)
         {
         case 1u:
             flags |= 1u;
@@ -39,7 +38,7 @@ void EnemyLaserLineView::RunCommands()
                 if (command.arguments[1].scalar <= -990.0f)
                     selectedAngle = angle;
                 else if (command.arguments[1].scalar >= 990.0f)
-                    selectedAngle = EnemyAngleFromPlayer(g_Player,
+                    selectedAngle = g_Player->AngleFromPosition(
                         reinterpret_cast<const PlayerFloat3 *>(&position));
                 else
                     selectedAngle = command.arguments[1].scalar;
@@ -67,7 +66,7 @@ void EnemyLaserLineView::RunCommands()
         case 0x40u:
         case 0x80u:
         case 0x100u:
-            flags |= opcode;
+            flags |= command.opcode;
             patterns[3].values[1].integer = command.arguments[0].integer;
             patterns[3].values[0].scalar = command.arguments[1].scalar > -999.0f
                 ? command.arguments[1].scalar : growSpeed;
@@ -84,22 +83,22 @@ void EnemyLaserLineView::RunCommands()
             }
             break;
         case 0x8000u:
-            flags |= opcode;
+            flags |= command.opcode;
             patterns[5].timer.SetCurrent(command.arguments[2].integer);
-            break;
-        case 0x10000u:
-            unknown00C = 3;
             break;
         case 0x20000u:
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                 QueueSoundCue(command.arguments[2].integer, position.x);
             break;
+        case 0x10000u:
+            unknown00C = 3;
+            break;
         case 0x100000u:
-            flags |= opcode;
+            flags |= command.opcode;
             patterns[6].timer.SetCurrent(command.arguments[2].integer);
             break;
         case 0x200000u:
-            flags |= opcode;
+            flags |= command.opcode;
             patterns[6].timer.SetCurrent(command.arguments[2].integer);
             break;
         case 0x1000000u:
@@ -114,7 +113,7 @@ void EnemyLaserLineView::RunCommands()
         case 0x8000000u:
             if (command.arguments[2].integer > 0)
             {
-                flags |= opcode;
+                flags |= command.opcode;
                 if (command.arguments[0].scalar >= 0.0f)
                     patterns[4].values[0].scalar = command.arguments[0].scalar;
                 else
