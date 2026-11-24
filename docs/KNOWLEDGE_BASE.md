@@ -841,6 +841,21 @@ frontier; do not refresh a baseline merely to accept the new positions.
   preserve the record paths. The loader and exporter use the same 61 base
   entries at `0x004744B0` and three alignment entries at `0x00474494`.
   The MIT-licensed reference parser suggested these source forms. [2026-11-24]
+- **FrontEndControllerView::UpdateReplay @0x4315C0 (1,492)**: the
+  replay-loader `/EHs` graph keeps both calls to `ReplayManager::Load`
+  outlined and leaves the 0x188-byte frame for the path, find data and
+  animation handle. Initialization falls through to the opening timer.
+  Enumeration calls `FindNextFileA` after storing the last slot too.
+  Phase 2 reads movement bits bytewise and uses one four-byte snapshot for
+  cancel and confirm. Phase 4 calls `IsRepeated` and tests
+  AX. Assigning the backdrop result's integer value restores the register
+  order through both enumeration loops. Copying difficulty into the shared
+  score state at `+0x34` keeps that store ahead of the selected replay read.
+  Call `FrontEndCursorSetCurrent` directly to bind the retail callee. The
+  destructor uses `RET 4` in the menu link and reproduces its 367-byte body
+  in `ClaudeReplayInitLoadScript`. The MIT-licensed replay-selection model
+  supplied the phase and loop leads.
+  [2026-11-24]
 - **UpdateReplaySave @0x433570 (1,460)**: 1,444; the target reloads the pressed
   input after the movement sound. [2026-10-30]
 - **BulletRuntimeView::AdvanceTransformProgram @0x406D90 (1,604 compared bytes)**:

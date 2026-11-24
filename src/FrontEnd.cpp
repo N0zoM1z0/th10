@@ -2314,6 +2314,7 @@ static __forceinline void ReplayResetOpeningTimer(AnmVmTimerView *timer)
 
 static __forceinline unsigned int ReadReplayMenuPressedInput()
 {
+    // Confirm and cancel share the four-byte sample beginning at pressed.
     unsigned int input;
     const unsigned char *bytes =
         reinterpret_cast<const unsigned char *>(&g_FrontEndInput);
@@ -2332,7 +2333,7 @@ int __stdcall FrontEndControllerView::UpdateReplay(
     case FRONT_END_REPLAY_INITIALIZE:
     {
         controller->cursor.count = 25;
-        controller->cursor.SetCurrent(g_FrontEndReplayCursor);
+        FrontEndCursorSetCurrent(g_FrontEndReplayCursor, &controller->cursor);
         g_FrontEndReplayCursor = 0;
 
         if (g_AnmRenderManagerView->FindVm(
@@ -2340,8 +2341,8 @@ int __stdcall FrontEndControllerView::UpdateReplay(
         {
             controller->CreateVm(0x5e);
             AnmLoadedView &resource = *g_AsciiManagerView->asciiAnm;
-            controller->difficultyAuxVmId = resource.CreateVmVariant0(
-                8, FRONT_END_RENDER_LAYER);
+            controller->difficultyAuxVmId.value = resource.CreateVmVariant0(
+                8, FRONT_END_RENDER_LAYER).value;
         }
         controller->CreateVm(0x65);
         controller->SetScreenStateTarget(FRONT_END_REPLAY_OPENING);
@@ -2391,9 +2392,14 @@ int __stdcall FrontEndControllerView::UpdateReplay(
     {
         FrontEndCursorView *cursor = &controller->cursor;
         cursor->previous = cursor->current;
-        if (g_FrontEndInput.IsActiveInline(FRONT_END_INPUT_UP))
+        const volatile unsigned char *pressedByte =
+            reinterpret_cast<const volatile unsigned char *>(
+                &g_FrontEndInput.pressed);
+        if ((*pressedByte & FRONT_END_INPUT_UP) != 0 ||
+            (g_FrontEndInput.repeated & FRONT_END_INPUT_UP) != 0)
             cursor->Move(-1);
-        if (g_FrontEndInput.IsActiveInline(FRONT_END_INPUT_DOWN))
+        if ((*pressedByte & FRONT_END_INPUT_DOWN) != 0 ||
+            (g_FrontEndInput.repeated & FRONT_END_INPUT_DOWN) != 0)
             cursor->Move(1);
 
         if (cursor->previous != cursor->current)
@@ -2485,7 +2491,8 @@ int __stdcall FrontEndControllerView::UpdateReplay(
                 controller->replayFiles[controller->selectedReplay]->replayData;
             g_GameScoreState.history.statisticsGroupA = header->character;
             g_GameScoreState.history.statisticsGroupB = header->shotType;
-            g_ReplayDifficulty = header->difficulty;
+            memcpy(g_GameScoreState.history.unknown30 + 4,
+                &header->difficulty, sizeof(header->difficulty));
             g_MainModeTransitionCounter = 2;
             g_FrontEndReplayCursor = controller->selectedReplay;
         }
