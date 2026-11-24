@@ -58,6 +58,9 @@ comparison only for its source and link graph.
 active owner. Use `frontend-difficulty-update` in `FrontEndStageSelect`
 to compare all 888 bytes, five phase destinations, the backdrop and the
 normal and Extra child-VM paths.
+The candidate has the 888-byte extent and 62 link fields. The remaining
+differences are scratch registers and the final difficulty store. The
+Extra lookup's successful branch now shares the original interrupt tail.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

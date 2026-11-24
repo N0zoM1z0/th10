@@ -1615,6 +1615,14 @@ register preservation or mod-ref assumptions) where our builds exploit it
   glyphs. A single shared glyph temporary changes register allocation in
   both the grid and the replay list. The two-input draw-callback link keeps
   the private formatter position in EBX.
+- `FrontEndControllerView::UpdateDifficulty` at `0x00430320` clears
+  the selected root slot on entry and on cancellation. Slot 0x77 covers
+  the four normal choices, and 0x78 is the fixed Extra choice. Confirmation
+  calls the member child lookup for `selection + 0x6d`. Extra looks up 0x71
+  inline. Keep one named child per branch so VC7.1 can merge the interrupt
+  calls on the shared result slot. Returning immediately from the node walk
+  places the successful lookup out of line after the confirmation return.
+  Both maintained 70-byte lookup entry points retain their exact code.
 - `FrontEndControllerView::UpdateCharacter` at `0x004306A0` checks all
   six Extra unlock bytes, runs the opening timer on entry, and samples
   horizontal input before cancel and confirm. Four separately scoped

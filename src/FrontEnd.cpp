@@ -1883,16 +1883,13 @@ static __forceinline AnmVmIdView FindAnimationChild(AnmVmIdView &id, int scriptI
     AnmVmView *vm = g_AnmRenderManagerView->FindVm(id);
     if (vm == NULL)
         id.value = 0;
-    AnmVmLayerNodeView *node;
-    for (node = &vm->layerNode; node != NULL; node = node->next)
+    for (AnmVmLayerNodeView *node = &vm->layerNode; node != NULL; node = node->next)
     {
         AnmVmView *entry = static_cast<AnmVmView *>(node->owner);
         if (entry->scriptIndex == scriptIndex)
-            break;
+            return AnmVmIdView(static_cast<AnmVmView *>(node->owner)->id);
     }
-    if (node == NULL)
-        return AnmVmIdView(0);
-    return AnmVmIdView(static_cast<AnmVmView *>(node->owner)->id);
+    return AnmVmIdView(0);
 }
 
 
