@@ -355,7 +355,6 @@ extern int g_PlayerCharacter;
 extern int g_PlayerShotType;
 extern int g_PlayerOptionPositionBase[];
 extern float g_PlayerOptionCoordinateScale;
-extern void *g_PlayerCallbackManager;
 extern PlayerOptionDataView *g_PlayerSharedOptionData;
 extern const char *g_PlayerShotDataFilenames[6];
 extern float g_PlayerOptionValue04ByCharacter[2];
@@ -944,6 +943,11 @@ int PlayerLoadOptionData(Player *player, const char *filename)
     return 0;
 }
 
+static __forceinline const char *PlayerShotDataFilename(int character, int shotType)
+{
+    return g_PlayerShotDataFilenames[character * 3 + shotType];
+}
+
 static AnmFloat3View AddPlayerPositionExtent(
     const AnmFloat3View &extent, const AnmFloat3View &position)
 {
@@ -978,9 +982,8 @@ int PlayerInitialize(Player *player)
     }
     else
     {
-        const int dataIndex = shotType + character * 3;
         if (PlayerLoadOptionData(
-                player, g_PlayerShotDataFilenames[dataIndex]) != 0)
+                player, PlayerShotDataFilename(character, shotType)) != 0)
         {
             th10::g_GameErrorContext.Log("\x8e\xa9\x8b\x40\x83\x66\x81\x5b\x83\x5e\x82\xaa\x8c\xa9\x82\xc2\x82\xa9\x82\xe8\x82\xdc\x82\xb9\x82\xf1\x81\x42\x83\x66\x81\x5b\x83\x5e\x82\xaa\x89\xf3\x82\xea\x82\xc4\x82\xa2\x82\xdc\x82\xb7\x0d\x0a");
             return -1;
@@ -989,13 +992,9 @@ int PlayerInitialize(Player *player)
 
     th10::ChainElem *updateNode = th10::Chain::AllocElem(
         reinterpret_cast<th10::ChainCallback>(PlayerUpdateCallback));
-    // Capture flags and the current owner before publishing the node fields.
-    const unsigned int updateFlags = updateNode->flags;
-    th10::Chain *const updateManager = reinterpret_cast<th10::Chain *>(
-        *reinterpret_cast<void *volatile *>(&g_PlayerCallbackManager));
     updateNode->arg = player;
-    updateNode->flags = updateFlags & ~2u;
-    updateManager->AddToCalcChain(updateNode, 0x10);
+    updateNode->flags &= ~2u;
+    th10::g_Chain->AddToCalcChain(updateNode, 0x10);
     player->updateCallbackNode = reinterpret_cast<PlayerCallbackNodeView *>(updateNode);
 
     th10::ChainElem *drawNode = th10::Chain::AllocElem(

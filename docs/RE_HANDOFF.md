@@ -39,8 +39,8 @@ comparison only for its source and link graph.
 `PlayerInitialize` at `0x004247F0` is the active owner. Compare the full
 1,435-byte initializer through `player-initialize`. The real logger and VM
 initializer restore both private call boundaries. The current residual is
-34 bytes across the callback publication, two staged vector stores and
-the option-file index.
+23 bytes across the draw-chain receiver load and two staged vector stores.
+The update callback and shot-file selection already match.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

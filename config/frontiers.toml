@@ -66,4 +66,4 @@ function = "PlayerInitialize"
 unit = "player-initialize"
 candidate_size = 1435
 target_sha256 = "d7afacbf04a5b593f0d22ba7d4878f94755ca85a00673ea8b17c22921ccfc607"
-residual = ["72", "77-79", "9C-A0", "A2", "337-338", "33A-341", "4AD-4B3", "55A-55B", "560", "566-567", "569", "56C"]
+residual = ["9C-A0", "A2", "337-338", "33A-341", "4AD-4B3"]
