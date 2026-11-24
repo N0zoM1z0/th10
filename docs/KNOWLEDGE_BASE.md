@@ -267,17 +267,19 @@ ECX load and the original prologue. LTCG still emits the direct call.
 
 ### Non-local regressions through calling conventions
 
-- `e569a902` (2026-11-19) added a `QueueSoundCue` call to
-  `src/BulletTransform.cpp`. `bullet-runtime-update` compiled that file as a
-  normal (non-`/GL`) support object, so `QueueSoundCue @0x43DD10` lost its
-  private EBX/ESI ABI. `BulletUpdateRuntime @0x406240` silently dropped from
-  885 to 878 bytes while its `matches.csv` row still said exact. After
-  compiling every support source with `/GL` and adding the `StartScript`
-  sources, it is 884/885. The one remaining difference is
-  `mov ecx, ebp` (retail) against `push ebp`: in this two-caller graph LTCG
-  passes the interpreter's `this` on the stack. Retail has exactly those two
-  call sites and no address reference, so the cause is still unknown.
-  Adding `RandomMath.cpp` was neutral.
+- `BulletUpdateRuntime @0x406240` matches 885 bytes and 39 fields in
+  `BulletRuntimeTick` with the registered manager callback as the root. The
+  live manager calls the runtime through its stack receiver. The runtime
+  and single-bullet spawner call `AdvanceTransformProgram` with ECX in the
+  same link, where the interpreter's complete 1,604 bytes also match.
+  The earlier runtime-rooted link used a stack receiver for the transform
+  and emitted 884 bytes. Compiling `BulletTransform.cpp` as normal COFF
+  after it acquired a sound cue also lost the cue's private EBX/ESI
+  convention. Keep all the support inputs under `/GL` and use the shared
+  sound queue declaration.
+  The absolute-direction helper receives ESI and keeps its known two-byte
+  internal difference. The ANM executor receives the VM on the stack and
+  matches its complete body in `GameManagerUpdate`.
 - When a support file gains a call to a private-ABI callee, replay every exact
   unit whose graph compiles that file as normal COFF.
 - `SpawnBulletPattern @0x4073E0` receives the descriptor in EAX and

@@ -6065,7 +6065,6 @@ linkages = [
 ]
 
 [units.bullet-runtime-update]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/BulletManager.cpp"
 pdb_source = "src/BulletRuntime.cpp"
