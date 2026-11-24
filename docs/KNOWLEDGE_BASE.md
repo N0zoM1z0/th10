@@ -756,6 +756,16 @@ frontier; do not refresh a baseline merely to accept the new positions.
   references were checked against the target, including the CP932 header
   literals. The MIT-licensed reference exporter suggested the split
   between outlined and inlined writes and the cursor form. [2026-11-24]
+- **FrontEndControllerView::UpdatePractice @0x431EE0 (1,968)**: the
+  complete candidate calls the existing rank counter, keyboard snapshot,
+  screen transitions and pending-interrupt owner. The page record rows
+  use the ASCII manager's text animation at `+0x899C`, while the
+  backdrop uses its main animation at `+0x8994`. Returning to the page
+  summary calls the pending-interrupt helper for each row. Cancellation
+  inlines the primary and secondary VM searches and stops the located
+  tree. The candidate retains the switch table and the full keyboard
+  edge loop. Its remaining differences include the aggregate VM result
+  slots and the registers in the cancellation loop. [2026-11-24]
 - **GameResetGui @0x413BC0 (1,965)** is exact with 52 bound fields and
   73 fixed local branches in the GameManager update graph. Each loop
   walks flag-word addresses with a stride of `sizeof(AnmVmView)`. C2

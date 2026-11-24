@@ -4,14 +4,6 @@
 extern "C" __declspec(dllimport) int __stdcall GetKeyboardState(
     unsigned char *state);
 
-// Source-model view for the original private single-buffer keyboard fetch.
-// An unused receiver can arise from a real nonstatic member; the 256-byte
-// output is the register-passed second fastcall argument in EDX.
-struct InputKeyboardSnapshotView
-{
-    int __fastcall ReadKeyboardState(unsigned char *state);
-};
-
 // TH10 0x44B010: use Win32 keys or DirectInput depending on supervisor flags.
 int __fastcall InputKeyboardSnapshotView::ReadKeyboardState(
     unsigned char *state)

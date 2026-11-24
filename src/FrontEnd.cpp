@@ -3,6 +3,7 @@
 #include "FrontEnd.hpp"
 #include "Player.hpp"
 #include "InputState.hpp"
+#include "InputPolling.hpp"
 #include "ReplayManager.hpp"
 #include "FileSystem.hpp"
 #include "VmIdInterrupt.hpp"
@@ -186,6 +187,7 @@ void FrontEndUnlockPracticeRecords(unsigned char *profile)
     }
 }
 int __stdcall GameQueueScaledSoundCommand(float magnitude);
+int __fastcall CountGameStatisticsRankKind(int unused, int kind);
 void *__stdcall StageCreateTransitionEffect(int drawPriority, int kind, int frames,
     unsigned int value0, unsigned int value1, unsigned int value2);
 
@@ -403,15 +405,9 @@ static FrontEndStageScoreRecordView *GetFrontEndStageScoreRecord(int stage)
         stageWord * static_cast<unsigned int>(sizeof(FrontEndStageScoreRecordView)));
 }
 
-static int CountPracticeRecordsForDifficulty(int difficulty)
+static __forceinline int CountPracticeRecordsForDifficulty(int difficulty)
 {
-    int count = 0;
-    for (int record = 0; record < FRONT_END_PRACTICE_RECORD_COUNT; ++record)
-    {
-        if (g_FrontEndPracticeDifficulties[record] == difficulty)
-            ++count;
-    }
-    return count;
+    return CountGameStatisticsRankKind(0, difficulty);
 }
 
 static unsigned char *GetPracticeCatalogRecord(int record)
@@ -446,18 +442,22 @@ static FrontEndScoreTableView *GetFrontEndScoreTable(int shot)
         static_cast<unsigned int>(shot) * 0x437cu + 8u);
 }
 
-static void InterruptPracticeRows(FrontEndControllerView *controller)
+static __forceinline void InterruptPracticeRows(FrontEndControllerView *controller)
 {
     for (int row = 0; row < FRONT_END_PRACTICE_ROWS_PER_PAGE; ++row)
-        InterruptVmId(controller->practiceRowVmIds[row].value, 1);
+        EnemyMarkPendingInterrupt(&controller->practiceRowVmIds[row].value);
 }
 
-static void UpdatePracticeSecretSequence()
+static __forceinline void UpdatePracticeSecretSequence()
 {
     memcpy(
         g_FrontEndPreviousKeyboardState, g_FrontEndKeyboardState,
         sizeof(g_FrontEndPreviousKeyboardState));
-    if (FrontEndReadKeyboardState(g_FrontEndKeyboardState) == 0)
+    InputKeyboardSnapshotView keyboard;
+#pragma inline_depth(0)
+    const int read = keyboard.ReadKeyboardState(g_FrontEndKeyboardState);
+#pragma inline_depth(16)
+    if (read == 0)
         goto tickTimeout;
 
     for (int key = 0; key < 256; ++key)
@@ -484,14 +484,11 @@ static void UpdatePracticeSecretSequence()
     }
     else
     {
+        unsigned char pressed = 0;
         for (int key = 0; key < 57; ++key)
-        {
-            if ((g_FrontEndKeyboardTransitions[key] & 0x80) != 0)
-            {
-                g_FrontEndPracticeSecretProgress = 0;
-                break;
-            }
-        }
+            pressed |= g_FrontEndKeyboardTransitions[key];
+        if ((pressed & 0x80) != 0)
+            g_FrontEndPracticeSecretProgress = 0;
     }
 
 tickTimeout:
@@ -2587,23 +2584,75 @@ int __stdcall FrontEndControllerView::DrawReplay(
 
 
 // TH10_FRONTEND_FUNCTION: 0x00431EE0 FrontEndControllerView::UpdatePractice
+static __forceinline AnmVmView *FindPracticeRecordVm(
+    AnmRenderManagerView *manager, int id)
+{
+    if (id == 0)
+        return NULL;
+    AnmVmLayerNodeView *node;
+    for (node = manager->primaryVmListHead; node != NULL; node = node->next)
+    {
+        AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+        if (vm->id == id)
+            return vm;
+    }
+    for (node = manager->secondaryVmListHead; node != NULL; node = node->next)
+    {
+        AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+        if (vm->id == id)
+            return vm;
+    }
+    return NULL;
+}
+
+static __forceinline void StopPracticeRowVm(AnmVmView *vm)
+{
+    if (vm != NULL)
+    {
+        vm->pendingInterrupt = 1;
+        if (vm->layerNode.previous == NULL)
+        {
+            for (AnmVmLayerNodeView *child = vm->layerNode.next;
+                 child != NULL; child = child->next)
+                static_cast<AnmVmView *>(child->owner)->pendingInterrupt = 1;
+        }
+    }
+}
+
+static __forceinline void AnimatePracticeInput(
+    FrontEndControllerView *controller, int index)
+{
+    g_AnmRenderManagerView->SetVmPendingInterruptAndExecute(
+        static_cast<const AnmVmIdView &>(controller->vmIds[index]), 2);
+}
+
+static __forceinline void SelectPracticeCursor(FrontEndCursorView &cursor, int index)
+{
+    if (cursor.count != 0)
+        cursor.current = index >= cursor.count ? cursor.count - 1 : index;
+    else
+        cursor.current = index;
+}
+
 int __stdcall FrontEndControllerView::UpdatePractice(
     FrontEndControllerView *controller)
 {
     switch (controller->screenState)
     {
     case FRONT_END_PRACTICE_INITIALIZE:
+    {
         controller->cursor.count = 6;
-        controller->cursor.SetCurrent(0);
+        SelectPracticeCursor(controller->cursor, 0);
         controller->practiceDifficultyCursor.count = 5;
-        controller->practiceDifficultyCursor.SetCurrent(1);
+        SelectPracticeCursor(controller->practiceDifficultyCursor, 1);
         controller->practiceDifficultyCursor.wraps = 1;
 
         controller->practicePageCursor.count =
             (CountPracticeRecordsForDifficulty(
                 controller->practiceDifficultyCursor.current) + 9) / 10 + 1;
-        controller->practicePageCursor.SetCurrent(0);
-        controller->practicePageCursor.wraps = 1;
+        SelectPracticeCursor(controller->practicePageCursor, 0);
+        FrontEndCursorView *page = &controller->practicePageCursor;
+        page->wraps = 1;
 
         if (g_AnmRenderManagerView->FindVm(
                 controller->vmIds[0x5e]) == NULL)
@@ -2615,7 +2664,7 @@ int __stdcall FrontEndControllerView::UpdatePractice(
         }
 
         controller->CreateVm(0x66);
-        SetScreenState(controller, FRONT_END_PRACTICE_OPENING);
+        controller->SetScreenStateTarget(FRONT_END_PRACTICE_OPENING);
         controller->CreateVm(0x98 + controller->cursor.current / 3);
         controller->CreateVm(0x9a + controller->cursor.current);
         controller->CreateVm(0xa0 + controller->practiceDifficultyCursor.current);
@@ -2627,14 +2676,12 @@ int __stdcall FrontEndControllerView::UpdatePractice(
         controller->CreateVm(0xa6);
         controller->CreateVm(0xa7);
         controller->CreateVm(0xac);
+    }
         // Fall through: creation callbacks can advance the opening timer.
 
     case FRONT_END_PRACTICE_OPENING:
         if (controller->stateTimer.current > 6)
-        {
-            SetScreenState(controller, FRONT_END_PRACTICE_ACTIVE);
-            return 1;
-        }
+            controller->SetScreenStateTarget(FRONT_END_PRACTICE_ACTIVE);
         break;
 
     case FRONT_END_PRACTICE_ACTIVE:
@@ -2650,22 +2697,22 @@ int __stdcall FrontEndControllerView::UpdatePractice(
         if (InputRepeated(FRONT_END_INPUT_UP))
         {
             difficulty->Move(-1);
-            InterruptVmNow(controller, 0xaa, 2);
+            AnimatePracticeInput(controller, 0xaa);
         }
         if (InputRepeated(FRONT_END_INPUT_DOWN))
         {
             difficulty->Move(1);
-            InterruptVmNow(controller, 0xab, 2);
+            AnimatePracticeInput(controller, 0xab);
         }
 
         if (difficulty->previous != difficulty->current)
         {
             FrontEndPlaySound(FRONT_END_SOUND_MOVE);
-            DeleteVm(controller, 0xa0 + difficulty->previous);
+            DeleteVm(controller, 0xa0 + controller->practiceDifficultyCursor.previous);
             controller->CreateVm(0xa0 + difficulty->current);
             if (page->current > 0)
             {
-                page->SetCurrent(1);
+                SelectPracticeCursor(*page, 1);
                 controller->RefreshPracticeRecords();
             }
             page->count =
@@ -2676,19 +2723,19 @@ int __stdcall FrontEndControllerView::UpdatePractice(
         if (InputRepeated(FRONT_END_INPUT_LEFT))
         {
             controller->cursor.Move(-1);
-            InterruptVmNow(controller, 0xa8, 2);
+            AnimatePracticeInput(controller, 0xa8);
         }
         if (InputRepeated(FRONT_END_INPUT_RIGHT))
         {
             controller->cursor.Move(1);
-            InterruptVmNow(controller, 0xa9, 2);
+            AnimatePracticeInput(controller, 0xa9);
         }
 
         if (controller->cursor.previous != controller->cursor.current)
         {
             FrontEndPlaySound(FRONT_END_SOUND_MOVE);
-            if (controller->cursor.previous / 3 !=
-                controller->cursor.current / 3)
+            if (controller->cursor.current / 3 !=
+                controller->cursor.previous / 3)
             {
                 DeleteVm(
                     controller, 0x98 + controller->cursor.previous / 3);
@@ -2704,13 +2751,15 @@ int __stdcall FrontEndControllerView::UpdatePractice(
         {
             if (page->current == 0)
             {
-                for (int row = 0; row < FRONT_END_PRACTICE_ROWS_PER_PAGE;
-                     ++row)
+                int row = 0;
+                do
                 {
-                    controller->practiceRowVmIds[row] =
-                        g_AsciiManagerView->asciiAnm->CreateVmVariant0(
-                            row + 0x17, FRONT_END_RENDER_LAYER);
-                }
+                    AnmLoadedView *resource = g_AsciiManagerView->textAnm;
+                    const AnmVmIdView id = resource->CreateVmVariant0(
+                        row + 0x17, FRONT_END_RENDER_LAYER);
+                    controller->practiceRowVmIds[row] = id;
+                    ++row;
+                } while (row < FRONT_END_PRACTICE_ROWS_PER_PAGE);
             }
 
             page->Move(1);
@@ -2733,7 +2782,7 @@ int __stdcall FrontEndControllerView::UpdatePractice(
 
         if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
         {
-            SetScreenState(controller, FRONT_END_PRACTICE_CLOSING);
+            controller->SetScreenStateTarget(FRONT_END_PRACTICE_CLOSING);
             FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
             DeleteVm(controller, 0xa0 + difficulty->current);
             DeleteVm(controller, 0x9a + controller->cursor.current);
@@ -2746,8 +2795,11 @@ int __stdcall FrontEndControllerView::UpdatePractice(
             DeleteVm(controller, 0xa6);
             DeleteVm(controller, 0xa7);
             DeleteVm(controller, 0xac);
-            InterruptPracticeRows(controller);
-            return 1;
+            for (int row = 0; row < FRONT_END_PRACTICE_ROWS_PER_PAGE; ++row)
+            {
+                StopPracticeRowVm(FindPracticeRecordVm(g_AnmRenderManagerView,
+                    controller->practiceRowVmIds[row].value));
+            }
         }
         break;
     }
@@ -2756,11 +2808,11 @@ int __stdcall FrontEndControllerView::UpdatePractice(
         if (controller->stateTimer.current >= 6)
         {
             DeleteVm(controller, 0x66);
-            InterruptVm(controller, 0x5a, 8);
-            InterruptVm(controller, 0x5b, 8);
+            controller->MarkVmInterrupt(0x5a, 8);
+            controller->MarkVmInterrupt(0x5b, 8);
             DeleteVm(controller, 0x5e);
-            InterruptVmId(controller->difficultyAuxVmId.value, 1);
-            SetScreen(controller, FRONT_END_SCREEN_MAIN_MENU_RETURN);
+            EnemyMarkPendingInterrupt(&controller->difficultyAuxVmId.value);
+            controller->SetScreenTarget(FRONT_END_SCREEN_MAIN_MENU_RETURN);
             controller->cursor.Pop();
         }
         break;

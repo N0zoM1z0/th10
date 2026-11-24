@@ -3,6 +3,14 @@
 
 #include "InputState.hpp"
 
+// Source-model view for the original private single-buffer keyboard fetch.
+// An unused receiver can arise from a real nonstatic member; the 256-byte
+// output is the register-passed second fastcall argument in EDX.
+struct InputKeyboardSnapshotView
+{
+    int __fastcall ReadKeyboardState(unsigned char *state);
+};
+
 // Complete observed6A record, separate from the older partial FrontEnd view.
 // All members are words; no inferred packing or replacement global is needed.
 // The original array count, defining storage and C++ lifetime remain open.

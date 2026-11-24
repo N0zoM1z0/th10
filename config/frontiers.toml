@@ -60,3 +60,10 @@ unit = "game-statistics-initialize-record"
 candidate_size = 274
 target_sha256 = "62905fe172fb66ca164498ab8964b6d0f9e8b09d783ceca25ebe2a1062712953"
 residual = ["14", "1D", "29", "47", "4D", "50", "52", "58-59", "5B", "61", "64", "70", "72", "76", "8B-8E", "90-93", "A6", "C8"]
+
+[frontier.frontend-practice-update]
+function = "FrontEndControllerView::UpdatePractice"
+unit = "frontend-practice-update"
+candidate_size = 1968
+target_sha256 = "6ff824890aa27a2e890bfe0ef3e05789a6facf5c9260eefff73147b1a5c6420a"
+residual = ["F1", "FA", "FE", "105", "107", "416", "423", "430", "435-439", "43B-440", "442-444", "446", "44B-45D", "45F-464", "469-471", "473-475", "478-482", "487-491", "496-49D", "4A2", "4A7-4A9", "4AC-4BE", "4C3-4C8", "4CA-4CD", "4D2-4D3", "4D8-4DD", "4E2", "4E7", "4EC-4EE", "4F3", "4F5-4F9", "4FB-4FF", "6AB", "6B6", "6BB", "6C1", "6C4", "6C8", "6D2", "6D4", "6DF", "6E9", "6EB", "6F8", "704", "716", "725"]
