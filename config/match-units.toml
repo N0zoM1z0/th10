@@ -1630,14 +1630,16 @@ target_address = 0x00402050
 size = 88
 
 [units.anm-vm-initialize-private]
-artifact_kind = "linked-pe"
-source = "src/AnmVmInitialize.cpp"
-support_sources = ["src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp"]
-output_dir = "build/match-linked/AnmVmInitializeFastcall"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp", "src/Sound.cpp", "src/ZWave.cpp", "src/Startup.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/GameStatistics.cpp"]
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/ZWave.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/Startup.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+artifact_kind = "linked-pe"
+pdb_source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/StartupWorkerLifecycle"
 functions = ["AnmVmInitialize"]
 symbol = "?AnmVmInitialize@@YIXPAXPAUAnmVmView@@@Z"
 target_address = 0x00401DE0
@@ -3176,7 +3178,6 @@ linkages = [
 [units.anm-vm-layer-node-insert-after]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3191,7 +3192,6 @@ linkages = []
 [units.anm-start-scale-interpolation]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3208,7 +3208,6 @@ linkages = [
 [units.anm-loaded-set-sprite]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3226,7 +3225,6 @@ linkages = [
 [units.anm-vm-timer-add]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3246,7 +3244,6 @@ linkages = [
 [units.anm-add-normalize-angle]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3268,7 +3265,6 @@ linkages = [
 [units.anm-start-secondary-color-interpolation]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3285,7 +3281,6 @@ linkages = [
 [units.anm-start-secondary-alpha-interpolation]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3302,7 +3297,6 @@ linkages = [
 [units.anm-start-primary-color-interpolation]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3435,7 +3429,6 @@ relocations = [
 [units.anm-get-float-var]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3584,7 +3577,6 @@ linkages = [
 [units.anm-loaded-set-and-execute-script-index]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3603,7 +3595,6 @@ linkages = [
 [units.anm-manager-add-vm-primary-tail]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3618,7 +3609,6 @@ linkages = []
 [units.anm-manager-add-vm-primary-head]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3633,7 +3623,6 @@ linkages = []
 [units.anm-manager-add-vm-secondary-tail]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3648,7 +3637,6 @@ linkages = []
 [units.anm-manager-add-vm-secondary-head]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3774,7 +3762,6 @@ linkages = [
 [units.anm-manager-draw-layer]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -3791,7 +3778,6 @@ linkages = [
 [units.anm-manager-remove-vm]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -4021,7 +4007,6 @@ linkages = [
 [units.anm-manager-update-primary-vms]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -4040,7 +4025,6 @@ linkages = [
 [units.anm-manager-update-secondary-vms]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -28836,7 +28820,6 @@ linkages = [
 [units.anm-vm-timer-decrement]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-support_sources = ["src/AnmVmInitialize.cpp"]
 output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -30386,8 +30369,8 @@ linkages = [
 [units.script-viewer-anm-allocate-vm]
 artifact_kind = "linked-pe"
 source = "src/ScriptViewer.cpp"
-support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp", "src/AnmVmInitialize.cpp"]
-output_dir = "build/match-linked/ScriptViewerAllocateVm"
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
@@ -33192,7 +33175,7 @@ linkages = [
 [units.result-menu-open-pause]
 artifact_kind = "linked-pe"
 source = "src/Ending.cpp"
-support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/FrontEnd.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/FileSystem.cpp", "src/Main.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/DecomphelpLeafAccessors.cpp", "src/TransitionEffect.cpp", "src/Sound.cpp", "src/Player.cpp", "src/GameErrorContext.cpp", "src/AnmVmInitialize.cpp"]
+support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/FrontEnd.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/FileSystem.cpp", "src/Main.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/DecomphelpLeafAccessors.cpp", "src/TransitionEffect.cpp", "src/Sound.cpp", "src/Player.cpp", "src/GameErrorContext.cpp"]
 pdb_source = "src/FrontEnd.cpp"
 output_dir = "build/match-linked/ClaudeResultOpenPause"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
@@ -34827,7 +34810,6 @@ linkages = [
 ]
 
 [units.anm-render-manager-constructor]
-candidate = true
 source = "src/Main.cpp"
 support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp", "src/Sound.cpp", "src/ZWave.cpp", "src/Startup.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/GameStatistics.cpp"]
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
@@ -34843,6 +34825,122 @@ symbol = "??0AnmRenderManagerView@@QAE@XZ"
 target_address = 0x00445900
 size = 2315
 linkages = [
+  { offset = 0x003, type = "DIR32", symbol = "__ehhandler$??0AnmRenderManagerView@@QAE@XZ", target = 0x004657A5, stage_array_eh_handler = true },
+  { offset = 0x009, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 0x011, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 0x01F, type = "DIR32", symbol = "??1AnmVmView@@QAE@XZ", target = 0x00401FF0 },
+  { offset = 0x024, type = "DIR32", symbol = "??0AnmVmView@@QAE@XZ", target = 0x00402050 },
+  { offset = 0x037, type = "REL32", symbol = "??_L@YGXPAXIHP6EX0@Z1@Z", target = 0x0045252D },
+  { offset = 0x094, type = "DIR32", symbol = "??1AnmVmView@@QAE@XZ", target = 0x00401FF0 },
+  { offset = 0x099, type = "DIR32", symbol = "??0AnmVmView@@QAE@XZ", target = 0x00402050 },
+  { offset = 0x0B1, type = "REL32", symbol = "??_L@YGXPAXIHP6EX0@Z1@Z", target = 0x0045252D },
+  { offset = 0x0C7, type = "DIR32", symbol = "?g_AnmQuadVerticesNoDiffuse@@3PAUAnmRenderVertexNoDiffuseView@@A", target = 0x00497860, addend = 0x54 },
+  { offset = 0x0D1, type = "DIR32", symbol = "?g_AnmQuadVerticesNoDiffuse@@3PAUAnmRenderVertexNoDiffuseView@@A", target = 0x00497860, addend = 0x3C },
+  { offset = 0x0DB, type = "DIR32", symbol = "?g_AnmQuadVerticesNoDiffuse@@3PAUAnmRenderVertexNoDiffuseView@@A", target = 0x00497860, addend = 0x24 },
+  { offset = 0x0E5, type = "DIR32", symbol = "?g_AnmQuadVerticesNoDiffuse@@3PAUAnmRenderVertexNoDiffuseView@@A", target = 0x00497860, addend = 0xC },
+  { offset = 0x0EE, type = "DIR32", symbol = "?g_AnmQuadVerticesNoDiffuse@@3PAUAnmRenderVertexNoDiffuseView@@A", target = 0x00497860, addend = 0x10 },
+  { offset = 0x0F3, type = "DIR32", symbol = "?g_AnmQuadVerticesNoDiffuse@@3PAUAnmRenderVertexNoDiffuseView@@A", target = 0x00497860, addend = 0x14 },
+  { offset = 0x0F9, type = "DIR32", symbol = "?g_AnmQuadVerticesNoDiffuse@@3PAUAnmRenderVertexNoDiffuseView@@A", target = 0x00497860, addend = 0x28 },
+  { offset = 0x102, type = "DIR32", symbol = "?g_AnmQuadVerticesNoDiffuse@@3PAUAnmRenderVertexNoDiffuseView@@A", target = 0x00497860, addend = 0x2C },
+  { offset = 0x107, type = "DIR32", symbol = "?g_AnmQuadVerticesNoDiffuse@@3PAUAnmRenderVertexNoDiffuseView@@A", target = 0x00497860, addend = 0x40 },
+  { offset = 0x10D, type = "DIR32", symbol = "?g_AnmQuadVerticesNoDiffuse@@3PAUAnmRenderVertexNoDiffuseView@@A", target = 0x00497860, addend = 0x44 },
+  { offset = 0x117, type = "DIR32", symbol = "?g_AnmQuadVerticesNoDiffuse@@3PAUAnmRenderVertexNoDiffuseView@@A", target = 0x00497860, addend = 0x58 },
+  { offset = 0x121, type = "DIR32", symbol = "?g_AnmQuadVerticesNoDiffuse@@3PAUAnmRenderVertexNoDiffuseView@@A", target = 0x00497860, addend = 0x5C },
+  { offset = 0x12B, type = "DIR32", symbol = "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A", target = 0x004978C0, addend = 0x60 },
+  { offset = 0x135, type = "DIR32", symbol = "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A", target = 0x004978C0, addend = 0x44 },
+  { offset = 0x13F, type = "DIR32", symbol = "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A", target = 0x004978C0, addend = 0x28 },
+  { offset = 0x149, type = "DIR32", symbol = "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A", target = 0x004978C0, addend = 0xC },
+  { offset = 0x152, type = "DIR32", symbol = "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A", target = 0x004978C0, addend = 0x14 },
+  { offset = 0x157, type = "DIR32", symbol = "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A", target = 0x004978C0, addend = 0x18 },
+  { offset = 0x15D, type = "DIR32", symbol = "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A", target = 0x004978C0, addend = 0x30 },
+  { offset = 0x166, type = "DIR32", symbol = "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A", target = 0x004978C0, addend = 0x34 },
+  { offset = 0x16B, type = "DIR32", symbol = "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A", target = 0x004978C0, addend = 0x4C },
+  { offset = 0x171, type = "DIR32", symbol = "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A", target = 0x004978C0, addend = 0x50 },
+  { offset = 0x17B, type = "DIR32", symbol = "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A", target = 0x004978C0, addend = 0x68 },
+  { offset = 0x185, type = "DIR32", symbol = "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A", target = 0x004978C0, addend = 0x6C },
+  { offset = 0x1E3, type = "REL32", symbol = "?AnmVmInitialize@@YIXPAXPAUAnmVmView@@@Z", target = 0x00401DE0 },
+  { offset = 0x1FB, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x22D, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x23D, type = "DIR32", symbol = "?OnUpdatePrimary@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x004485D0 },
+  { offset = 0x24E, type = "REL32", symbol = "?AddToCalcChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449AE0 },
+  { offset = 0x255, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x286, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x298, type = "DIR32", symbol = "?OnUpdateSecondary@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x004485E0 },
+  { offset = 0x2A9, type = "REL32", symbol = "?AddToCalcChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449AE0 },
+  { offset = 0x2B0, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x2E2, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x2F1, type = "DIR32", symbol = "?DrawLayer0@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x004485F0 },
+  { offset = 0x2FF, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x306, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x337, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x349, type = "DIR32", symbol = "?DrawLayer1@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x00448600 },
+  { offset = 0x35A, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x361, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x393, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x3A2, type = "DIR32", symbol = "?DrawLayer2@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x00448610 },
+  { offset = 0x3B0, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x3B7, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x3E8, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x3FA, type = "DIR32", symbol = "?DrawLayer3@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x00448620 },
+  { offset = 0x40B, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x412, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x444, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x453, type = "DIR32", symbol = "?DrawLayer4@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x004486A0 },
+  { offset = 0x461, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x468, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x499, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x4AB, type = "DIR32", symbol = "?DrawLayer5@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x004486B0 },
+  { offset = 0x4BC, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x4C3, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x4F5, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x504, type = "DIR32", symbol = "?DrawLayer6@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x004486C0 },
+  { offset = 0x512, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x519, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x54A, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x55C, type = "DIR32", symbol = "?DrawLayer7@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x004486D0 },
+  { offset = 0x56D, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x574, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x5A6, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x5B5, type = "DIR32", symbol = "?DrawLayer8@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x004486E0 },
+  { offset = 0x5C3, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x5CA, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x5FB, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x60D, type = "DIR32", symbol = "?DrawLayer9@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x004486F0 },
+  { offset = 0x61E, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x625, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x657, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x666, type = "DIR32", symbol = "?DrawLayer10@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x00448700 },
+  { offset = 0x674, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x67B, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x6AC, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x6BE, type = "DIR32", symbol = "?DrawLayer11@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x00448710 },
+  { offset = 0x6CF, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x6D6, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x708, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x717, type = "DIR32", symbol = "?DrawLayer12@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x00448720 },
+  { offset = 0x725, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x72C, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x75D, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x76F, type = "DIR32", symbol = "?DrawLayer13@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x00448730 },
+  { offset = 0x780, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x787, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x7B9, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x7C8, type = "DIR32", symbol = "?DrawLayer14@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x00448740 },
+  { offset = 0x7D6, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x7DC, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x80D, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x81F, type = "DIR32", symbol = "?DrawLayer15@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x00448770 },
+  { offset = 0x830, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x837, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x869, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x878, type = "DIR32", symbol = "?DrawLayer16@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x004487C0 },
+  { offset = 0x886, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x88D, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x8BE, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x8D0, type = "DIR32", symbol = "?DrawLayer19@AnmRenderManagerView@@SIHPAU1@@Z", target = 0x00448810 },
+  { offset = 0x8E1, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x8E6, type = "DIR32", symbol = "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A", target = 0x00491C30 },
+  { offset = 0x901, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
 ]
 
 [units.entity-start-script]

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Synthetic metadata controls for Stage and spell-panel array EH bindings."""
+"""Synthetic metadata controls for VM array and member EH bindings."""
 import copy
 import runpy
 import struct
@@ -22,12 +22,18 @@ class Image:
         unwind = bytearray()
         for index, (member, count) in enumerate(arrays):
             action = start + len(code)
-            code += b'\x68' + struct.pack('<I', destructor) + b'\x6a' + bytes([count])
-            code += b'\x68' + struct.pack('<I', 0x3ac) + b'\x8b\x45\x04'
-            code += (b'\x83\xc0' + bytes([member]) if member <= 0x7f
-                     else b'\x05' + struct.pack('<I', member))
-            code += b'\x50\xe8'
-            code += struct.pack('<i', iterator - action - eh.action_size(member) + 1) + b'\xc3'
+            size = eh.action_size(member, count)
+            if count == 1:
+                code += b'\x8b\x4d\x04\x81\xc1' + struct.pack('<I', member)
+                code += b'\xe9' + struct.pack('<i', destructor - action - size)
+            else:
+                code += b'\x68' + struct.pack('<I', destructor)
+                code += (b'\x6a' + bytes([count]) if count <= 0x7f
+                         else b'\x68' + struct.pack('<I', count))
+                code += b'\x68' + struct.pack('<I', 0x3ac) + b'\x8b\x45\x04'
+                code += (b'\x83\xc0' + bytes([member]) if member <= 0x7f
+                         else b'\x05' + struct.pack('<I', member))
+                code += b'\x50\xe8' + struct.pack('<i', iterator - action - size + 1) + b'\xc3'
             unwind += struct.pack('<iI', index - 1, action)
         code += b'\xb8' + struct.pack('<I', data + 0x20)
         code += b'\xe9' + struct.pack('<i', frame - handler - 10)
@@ -61,7 +67,11 @@ def fixture(symbol):
     arrays = spec['arrays']
     lead = eh.generated_lead(arrays)
     address = 0x111000 + lead
-    if spec.get('owner_source'):
+    if spec.get('owner_source') == 'src/AnmManager.cpp':
+        source = spec['owner_source']
+        supports = []
+        owner_object = vm_basename = 'source.ltcg.obj'
+    elif spec.get('owner_source'):
         source = spec['owner_source']
         supports = ['src/AnmManager.cpp']
         owner_object = 'source.ltcg.obj'
@@ -73,6 +83,7 @@ def fixture(symbol):
         vm_basename = 'support-01-AnmManager.ltcg.obj'
     stage_object = 'Z:\\synthetic\\' + owner_object
     vm_object = 'Z:\\synthetic\\' + vm_basename
+    vm_module = 13 if stage_object == vm_object else 14
     unit = dict(artifact_kind='linked-pe', source=source,
                 support_sources=supports,
                 symbol=symbol, target_address=spec['entry'], size=spec['size'])
@@ -84,14 +95,16 @@ def fixture(symbol):
                    address=address, flags=['f', 'CIL', 'library:', 'CIL'], object='module')]
     pdb = dict(contributions=[dict(section_number=1, section_offset=0x11000, size=lead + 10,
                module_index=13, object=stage_object, characteristics=0x60000020)],
-               modules=[dict(index=13, object=stage_object), dict(index=14, object=vm_object)])
+               modules=[dict(index=13, object=stage_object)])
+    if vm_module != 13:
+        pdb['modules'].append(dict(index=vm_module, object=vm_object))
     publics = [dict(symbol=s, address=a, section_number=1, section_offset=a - 0x100000)
                for s, a in [('frame', 0x101800), ('iterator', 0x101820),
                             (eh.DESTRUCTOR_SYMBOL, 0x101840), ('free', 0x1018a0)]]
     aliases = {'___CxxFrameHandler': 'frame', eh.ITERATOR_SYMBOL: 'iterator', '_free': 'free'}
     functions = [dict(symbol=eh.DESTRUCTOR_SYMBOL, address='0x101840', size=34,
                      map_object=vm_basename,
-                     pdb_module_index=14, pdb_object=vm_object)]
+                     pdb_module_index=vm_module, pdb_object=vm_object)]
     native = Image(address, 0x101800, 0x101840, 0x101820, 0x1018a0, arrays, 0x100000, 0x300000)
     target = Image(spec['handler'], eh.TARGET_FRAME_HANDLER, eh.TARGET_DESTRUCTOR,
                    eh.TARGET_ITERATOR, eh.TARGET_FREE, arrays, 0x400000, 0x600000)
@@ -100,9 +113,11 @@ def fixture(symbol):
     region_fields = []
     cursor = 0
     for member, count in arrays:
-        size = eh.action_size(member)
-        region_fields.extend([dict(offset=cursor + 1, width=4, type='DIR32'),
-                              dict(offset=cursor + size - 5, width=4, type='REL32')])
+        size = eh.action_size(member, count)
+        region_fields.append(dict(offset=cursor + size - (4 if count == 1 else 5),
+                                  width=4, type='REL32'))
+        if count != 1:
+            region_fields.append(dict(offset=cursor + 1, width=4, type='DIR32'))
         cursor += size
     region_fields += [dict(offset=lead + 1, width=4, type='DIR32'),
                       dict(offset=lead + 6, width=4, type='REL32')]
@@ -162,7 +177,7 @@ def main():
             ('partial-region-decode', lambda q: q['region_links'].update(decoded_bytes=1)),
             ('mutable-info', lambda q: setattr(q['target'].sections[1], 'characteristics', 0xc0000040)),
             ('wrong-magic', lambda q: word(q, 'target', 0x600020, 0x19930521)),
-            ('wrong-state-count', lambda q: word(q, 'native', 0x300024, 3)),
+            ('wrong-state-count', lambda q: word(q, 'native', 0x300024, len(spec['arrays']) + 1)),
             ('try-map', lambda q: word(q, 'target', 0x60002c, 1)),
             ('wrong-action', lambda q: word(q, 'native', 0x300004, q['address'])),
             ('wrong-predecessor', lambda q: word(q, 'target', 0x600000, 0)),
@@ -181,6 +196,10 @@ def main():
         if len(spec['arrays']) == 2:
             cases += [('second-predecessor', lambda q: word(q, 'target', 0x600008, 0xffffffff)),
                       ('second-member', lambda q: word(q, 'target', q['target_start'] + 43, 0x1f0c))]
+        if len(spec['arrays']) == 3:
+            cases += [('wide-count', lambda q: word(q, 'target', q['target_start'] + 6, 4095)),
+                      ('embedded-offset', lambda q: word(q, 'target', q['target_start'] + 33, 0x3ad134)),
+                      ('embedded-target', lambda q: word(q, 'native', 0x111026, 0))]
         for label, change in cases:
             q = fixture(symbol)
             change(q)
@@ -190,7 +209,7 @@ def main():
                 checks += 1
                 continue
             raise AssertionError('accepted ' + label)
-    print('Stage/panel array EH guards passed:', len(eh.PARENTS), 'protocols and', checks, 'focused rejections')
+    print('VM array/member EH guards passed:', len(eh.PARENTS), 'protocols and', checks, 'focused rejections')
 
 
 if __name__ == '__main__':

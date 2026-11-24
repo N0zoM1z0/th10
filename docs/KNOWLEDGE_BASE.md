@@ -19,8 +19,8 @@ versus target size unless it says ordinary bytes or normalized instructions.
   and the real callee. A callee whose TU is missing becomes an anchored
   external with a stack ABI, and the caller changes with it. Build the real
   producer/consumer graph instead of declaring an ABI. Examples:
-  `AnmVmInitialize` in `src/AnmVmInitialize.cpp` (missing, it adds two
-  `xor ecx,ecx` to `AllocateVm @0x449950`); `GuiMessageLeaves.cpp` and
+  An opaque `AnmVmInitialize` added two `xor ecx,ecx` to the earlier
+  `AllocateVm @0x449950` build. Other examples include `GuiMessageLeaves.cpp` and
   `VmIdInterrupt.cpp` for `GuiMessageVmView::Run`; `AnmVmId.cpp` for the result
   menu's `SetInterrupt`; Chain.cpp for the transition factory `@0x43C8B0`
   (EBX priority, five stack arguments, RET20); the real `GameErrorContext::Fatal`
@@ -224,8 +224,8 @@ versus target size unless it says ordinary bytes or normalized instructions.
 
 Retail 0x404F30 calls 0x401DE0 with `mov edx, esi` and never sets ECX. None
 of the 10 retail call sites of 0x401DE0 sets ECX, and none takes its address.
-LTCG therefore saw the initializer's dead first parameter. Yet it kept the VM
-in ESI across the call. Our natural source cannot reproduce both at once:
+LTCG saw the dead first parameter and the script starter kept the VM in ESI
+across the call. These probes predate the header-inline definition:
 
 | Graph for `entity-start-script` | Result |
 | --- | --- |
@@ -721,10 +721,17 @@ frontier; do not refresh a baseline merely to accept the new positions.
   The item update, the 141-byte member and GameManager's update also match
   with the branch-local awards.
   [2026-11-23]
-- **AnmRenderManagerView ctor @0x445900 (2,315)**: 655/670 normalized
-  instructions after setting `element->arg = this` before `flags |= 3` and
-  resetting the capture surface index first; the EH frame, VM flag loop and Chain
-  scheduling still differ. [2026-11-14]
+- **AnmRenderManagerView ctor @0x445900 (2,315)** matches all 116 fields
+  in the `StartupWorkerLifecycle` cold link. The 273-byte initializer's
+  header-inline definition lets C2 omit the dead ECX argument while the
+  caller reloads EDX on each iteration. The pointer walk and countdown
+  recover the stack slot. The manager clears the VM ID during its full
+  storage reset. Taking a flag snapshot for the first chain registration
+  and computing the allocation-bit mask before the callback zeroing
+  restore its final instruction order. The EH binding verifies the pool,
+  embedded VM and layer array cleanup actions in one 79-byte region.
+  The [MIT-licensed reference](licenses/th10-decomp-MIT.txt) provided the
+  inline initializer lead. [2026-11-24]
 - **ExportAutomaticHints @0x41A200 (2,247)**: native inlines all 24 writer uses;
   the target makes 9 calls and inlines 15. [2026-10-25]
 - **GameResetGui @0x413BC0 (1,965)** is exact with 52 bound fields and

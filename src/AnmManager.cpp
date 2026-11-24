@@ -1191,6 +1191,7 @@ int AnmRenderManagerView::RemoveVm(AnmVmView *vm)
 // below are direct TH10 observations; TH095 supplied only the source-family
 // hypothesis for the repeated chain registration shape.
 AnmRenderManagerView::AnmRenderManagerView()
+    : nextVmId(AnmVmIdView::Uninitialized())
 {
     th10::ChainElem *element;
 
@@ -1231,15 +1232,22 @@ AnmRenderManagerView::AnmRenderManagerView()
     captureSurfaceIndex = -1;
     captureAnmIndex = -1;
 
-    for (int i = 0; i < 0x1000; ++i)
-        vmPool[i].Initialize();
+    AnmVmView *vm = vmPool;
+    int remaining = 0x1000;
+    do
+    {
+        vm->Initialize();
+        ++vm;
+    } while (--remaining);
 
     element = new th10::ChainElem;
+    const volatile unsigned int &allocatedFlags = element->flags;
+    const unsigned int primaryFlags = allocatedFlags | 3u;
     element->callback = reinterpret_cast<th10::ChainCallback>(OnUpdatePrimary);
     element->addedCallback = NULL;
     element->deletedCallback = NULL;
     element->arg = this;
-    element->flags |= 3u;
+    element->flags = primaryFlags;
     th10::g_Chain->AddToCalcChain(element, 0x1a);
 
     element = new th10::ChainElem;

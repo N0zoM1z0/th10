@@ -631,7 +631,7 @@ struct AnmVmView;
 struct AnmLoadedView;
 struct AnmTextureEntryView;
 // Retail 0x401DE0 is the Entity_Init-style fastcall initializer; the VM is in EDX.
-__declspec(noinline) void __fastcall AnmVmInitialize(void *unused, AnmVmView *vm);
+inline void __fastcall AnmVmInitialize(void *unused, AnmVmView *vm);
 
 
 struct AnmVmLayerNodeView
@@ -881,6 +881,8 @@ typedef char AnmVmInterpolationLayoutAt070[
      offsetof(AnmVmView, secondaryColorInterpolation) == 0x1bc &&
      offsetof(AnmVmView, secondaryAlphaInterpolation) == 0x208 &&
      offsetof(AnmVmView, uvScrollVelocityX) == 0x234) ? 1 : -1];
+
+#include "AnmVmInitialize.inl"
 
 struct AnmSpriteView
 {

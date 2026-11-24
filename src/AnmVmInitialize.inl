@@ -1,7 +1,6 @@
-#include "AnmManager.hpp"
 #include <string.h>
 
-__declspec(noinline) void __fastcall AnmVmInitialize(
+inline void __fastcall AnmVmInitialize(
     void *unused, AnmVmView *vm)
 {
     AnmFloat3View savedPosition = vm->positionOffset;

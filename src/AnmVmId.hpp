@@ -13,7 +13,10 @@ struct AnmLoadedView;
 
 struct AnmVmIdView
 {
+    struct Uninitialized {};
+
     AnmVmIdView() { value = 0; }
+    explicit AnmVmIdView(Uninitialized) {}
     AnmVmIdView(int initialValue) { value = initialValue; }
 
     int operator==(AnmVmIdView other)

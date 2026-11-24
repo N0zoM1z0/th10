@@ -173,21 +173,29 @@ If a required input, extent, tool profile, or observable cannot be established,
 record `unknown` or an open candidate. Accuracy takes precedence over apparent
 completion.
 
-## Stage array-member EH address binding
+## VM array-member EH address binding
 
-The explicit `stage_array_eh_handler = true` descriptor is restricted to the
-reviewed StageScriptView constructor188 and destructor499, including their exact
-parent symbols, target entries/extents, field offsets and handler addresses.
-The complete37/64-byte generated regions must share the parent's qualified
-StageLifecycle PDB object and unique MAP handler entry. Their four/six fields,
-immutable28-byte FuncInfo, one/two unwind rows, predecessor edges, saved this at
-EBP+4, array offsets180/1F08, counts8/3 and stride3AC are checked in both images.
+The explicit `stage_array_eh_handler = true` descriptor binds reviewed VM
+member handlers by exact parent symbol, target extent, field offset and
+handler address. It covers the StageScriptView constructor and destructor,
+the spell panel constructor and the ANM render manager constructor.
+The Stage constructor and destructor generate 37- and 64-byte regions that
+must share the parent's qualified StageLifecycle PDB object and have a unique
+MAP handler entry. Both images must match the bound fields, immutable 28-byte
+FuncInfo, unwind rows and predecessor edges, saved receiver at EBP+4, array
+offsets `+0x180` and `+0x1F08`, counts 8 and 3, and stride `0x3AC`.
 The VM destructor must be a real uniquely qualified34-byte AnmManager contribution;
 its full bytes and sole free field are independently bound. Vector-destructor
 and CxxFrameHandler entries are also checked. This is address/metadata identity,
 not generated-code credit or exception execution.
 Only the affected Stage array-binding self-test is added to the optional Oracle
 selection; unrelated comparison mechanisms retain their current contracts.
+
+The ANM constructor's 79-byte generated region contains a 4,096-VM pool
+cleanup at `+0x68`, a direct destructor tail call for the embedded VM at
+`+0x3AD130`, and a 20-VM array cleanup at `+0x72DAE4`. The verifier binds
+all three unwind states, the array counts, the saved receiver, and the real
+VM destructor in the same AnmManager object.
 
 ## Validation scope during exact reconstruction
 

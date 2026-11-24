@@ -1,7 +1,7 @@
 """Bind target-reviewed VM-array EH metadata, without runtime credit.
 
-Covers Stage's VM array owners and the spell-panel constructor's two
-compiler-generated unwind actions (25-byte small-offset + 27-byte action).
+Covers Stage and spell-panel VM arrays and the ANM manager's pool, embedded
+VM, and layer array.
 A full PDB-generated contribution, immutable FuncInfo/unwind map, saved this,
 real VM destructor and CRT entries must agree with the original executable.
 """
@@ -9,7 +9,7 @@ from pathlib import Path
 import struct
 
 from capstone import Cs, CS_ARCH_X86, CS_MODE_32
-from capstone.x86_const import X86_OP_IMM, X86_OP_MEM, X86_OP_REG, X86_REG_EAX, X86_REG_EBP
+from capstone.x86_const import X86_OP_IMM, X86_OP_MEM, X86_OP_REG, X86_REG_EAX, X86_REG_EBP, X86_REG_ECX
 from linked_image import (LinkedImageError, linked_code_fields, linked_functions,
                           map_statics, pdb_section_contributions)
 
@@ -21,6 +21,9 @@ PARENTS = {
     '??0EnemyGameStateView@@QAE@XZ': dict(entry=0x408910, size=176, offset=9,
         handler=0x465514, arrays=((0x10, 2), (0x778, 8)),
         owner_source='src/EnemyGameStateLifecycle.cpp'),
+    '??0AnmRenderManagerView@@QAE@XZ': dict(entry=0x445900, size=2315, offset=3,
+        handler=0x4657a5, arrays=((0x68, 4096), (0x3ad130, 1), (0x72dae4, 20)),
+        owner_source='src/AnmManager.cpp'),
 }
 DESTRUCTOR_SYMBOL = '??1AnmVmView@@QAE@XZ'
 ITERATOR_SYMBOL = '??_M@YGXPAXIHP6EX0@Z@Z'
@@ -77,14 +80,14 @@ def immediate(instruction, value):
         and instruction.operands[0].imm == value
 
 
-def action_size(member):
-    # VC7.1 uses add eax,imm8 for the panel's +0x10 array and the normal
-    # add eax,imm32 for the larger Stage/panel offsets.
-    return 25 if 0 <= member <= 0x7f else 27
+def action_size(member, count):
+    if count == 1:
+        return 14
+    return (25 if 0 <= member <= 0x7f else 27) + (3 if count > 0x7f else 0)
 
 
 def generated_lead(arrays):
-    return sum(action_size(member) for member, _ in arrays)
+    return sum(action_size(member, count) for member, count in arrays)
 
 
 def protocol(image, handler, frame, destructor, iterator, arrays):
@@ -111,31 +114,42 @@ def protocol(image, handler, frame, destructor, iterator, arrays):
     actions = []
     action_offset = 0
     for index, (member, count) in enumerate(arrays):
-        size = action_size(member)
+        size = action_size(member, count)
         predecessor, action = struct.unpack('<iI', image.read_address(words[2] + index * 8, 8))
         require(predecessor == index - 1 and action == start + action_offset,
                 'unwind state/action edge differs')
         code = list(decoder.disasm(image.read_address(action, size), action))
-        require(len(code) == 8 and [i.size for i in code] == [5, 2, 5, 3, size - 22, 1, 5, 1]
-                and [i.mnemonic for i in code] ==
-                ['push', 'push', 'push', 'mov', 'add', 'push', 'call', 'ret'],
-                'complete array cleanup shape differs')
-        dtor, number, stride, load, add, push, call, ret = code
-        require(immediate(dtor, destructor) and immediate(number, count)
-                and immediate(stride, 0x3ac), 'array destructor/count/stride differs')
+        if count == 1:
+            require([i.size for i in code] == [3, 6, 5]
+                    and [i.mnemonic for i in code] == ['mov', 'add', 'jmp'],
+                    'complete member cleanup shape differs')
+            load, add, jump = code
+            require(immediate(jump, destructor), 'member destructor differs')
+            receiver = X86_REG_ECX
+        else:
+            count_size = 5 if count > 0x7f else 2
+            require([i.size for i in code] == [5, count_size, 5, 3, size - 20 - count_size, 1, 5, 1]
+                    and [i.mnemonic for i in code] ==
+                    ['push', 'push', 'push', 'mov', 'add', 'push', 'call', 'ret'],
+                    'complete array cleanup shape differs')
+            dtor, number, stride, load, add, push, call, ret = code
+            require(immediate(dtor, destructor) and immediate(number, count)
+                    and immediate(stride, 0x3ac), 'array destructor/count/stride differs')
+            require(len(push.operands) == 1 and push.operands[0].type == X86_OP_REG
+                    and push.operands[0].reg == X86_REG_EAX
+                    and immediate(call, iterator) and not ret.operands,
+                    'array iterator protocol differs')
+            receiver = X86_REG_EAX
         require(len(load.operands) == 2 and load.operands[0].type == X86_OP_REG
-                and load.operands[0].reg == X86_REG_EAX
+                and load.operands[0].reg == receiver
                 and load.operands[1].type == X86_OP_MEM
                 and load.operands[1].mem.base == X86_REG_EBP
                 and load.operands[1].mem.index == 0 and load.operands[1].mem.segment == 0
                 and load.operands[1].mem.disp == 4
                 and len(add.operands) == 2 and add.operands[0].type == X86_OP_REG
-                and add.operands[0].reg == X86_REG_EAX
-                and add.operands[1].type == X86_OP_IMM and add.operands[1].imm == member
-                and len(push.operands) == 1 and push.operands[0].type == X86_OP_REG
-                and push.operands[0].reg == X86_REG_EAX
-                and immediate(call, iterator) and not ret.operands,
-                'saved-this/member/iterator protocol differs')
+                and add.operands[0].reg == receiver
+                and add.operands[1].type == X86_OP_IMM and add.operands[1].imm == member,
+                'saved-this/member protocol differs')
         actions.append(dict(state=index, predecessor=predecessor, address=hex(action),
                             member_offset=member, count=count, stride=0x3ac, size=size))
         action_offset += size
@@ -225,8 +239,11 @@ def stage_array_eh_target(unit, field, directory, image, publics, aliases, targe
     expected = set()
     cursor = 0
     for member, count in spec['arrays']:
-        size = action_size(member)
-        expected.update(((cursor + 1, 4, 'DIR32'), (cursor + size - 5, 4, 'REL32')))
+        size = action_size(member, count)
+        if count == 1:
+            expected.add((cursor + size - 4, 4, 'REL32'))
+        else:
+            expected.update(((cursor + 1, 4, 'DIR32'), (cursor + size - 5, 4, 'REL32')))
         cursor += size
     expected.update({(lead + 1, 4, 'DIR32'), (lead + 6, 4, 'REL32')})
     require(generated_fields['normalization_complete']

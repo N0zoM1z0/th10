@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `anm-render-manager-constructor` | 2,315 B | `StartupWorkerLifecycle`, 116 fields and three VM cleanup actions. The same link contains the exact 273-byte initializer. |
 | `replay-playback-frame-control-callback` | 68 B | `FrontEndOptionsRefresh`, two DIR32 fields and the four short branches to the shared return. |
 | `rebuild-player-options` | 2,520 B | `ClaudeReplayInitLoadScript`, 96 fields and six switch destinations. The link also covers Player update and state transition. |
 | `front-end-update-music-room` | 2,796 B | `MusicRoomHelpers`, 106 fields and four phase destinations. The same link covers both line readers and row interpolation. |
@@ -29,7 +30,6 @@ comparison only for its source and link graph.
 
 | Owner | Where to resume |
 | --- | --- |
-| `AnmRenderManagerView::AnmRenderManagerView` (2,315 B) | Frontier `anm-render-manager-constructor` has a 2,313-byte baseline. Compare the whole constructor, including chain registration and resolved fields. |
 | `PlayerHandleCollisionHit` (627 B) | The saved current-graph candidate is 526 bytes. Commit `58e9e8eb` kept `CreateVmVariant0` outlined for the dispatcher. Restore the inline allocate, initialize and add sequence at the two hit-effect sites while preserving the dispatcher call. |
 | `MidiOutputView::LoadTrackFile` (448 B) | The 448-byte `midi-load-track-file` baseline has six differing ordinary bytes. The older 446-byte cursor-returning probe recovers the stack homes. See the MIDI notes in the [knowledge base](KNOWLEDGE_BASE.md) and the working notes at `.analysis/midi-event/results.txt`. |
 
