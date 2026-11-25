@@ -1492,8 +1492,8 @@ restored the EDI receiver at both calls and the full update comparison.
   word offset calculation. The preheader matches through +0x6B. A volatile
   cursor pointer preserves the target's reloads and aligns the loop from
   +0x107. The integer conversion and raw word store leave through
-  separate branches. A compiler barrier after the raw word store
-  prevents VC7.1 from merging the stores. A volatile word offset
+  separate branches. In an earlier candidate, a compiler barrier after
+  the raw word store prevents VC7.1 from merging the stores. A volatile word offset
   shortens the loop by seven bytes. Deriving both cursors from the loop
   offsets emits two memory increments and shortens the owner to 538 bytes.
   Force-inlined reference helpers for the word offset's initialization
@@ -1560,8 +1560,8 @@ restored the EDI receiver at both calls and the full update comparison.
   byte-neutral against the retained source, which puts it after the
   direct store.
   The target uses ECX for the direct integer result and EDX for the
-  converted result. Keeping the paths separate requires resolving that
-  register difference or retaining the barrier.
+  converted result. In the 536-byte candidate, the two paths need either
+  that register difference or the barrier to stay separate.
   Qualifying the direct integer write as volatile still produces the
   shared store in the 542-byte cached-count loop. Deriving the payload
   word offset from the descriptor offset lets VC7.1 materialize a separate
@@ -1593,6 +1593,9 @@ restored the EDI receiver at both calls and the full update comparison.
   resulting owner matches 542 of 550 bytes. The remaining differences are
   the float operand register at +0xC6 and the cursor and instruction
   registers at the loop latch beginning at +0xF2.
+  Removing the barrier from this form preserves all 550 owner bytes and
+  all four linked fields in the local comparison. Its two result stores
+  remain separate, so the source no longer needs the intrinsic.
   In the 542-byte candidate, the latch's destination, instruction and
   word-offset candidates have equal priority 56 and no register
   preferences. The allocator assigns EAX, ECX and EDX in that order.

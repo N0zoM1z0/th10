@@ -13,6 +13,7 @@ in `src/EclVm.cpp`. It is the largest remaining authored owner, with
 bind. The remaining differences are register choices in the operand loop.
 The integer operand and both integer result stores match through +0xC5.
 The float operand is loaded into ECX where the target uses EDX.
+The direct integer store no longer needs a compiler barrier in this form.
 Its allocation gets EAX and ECX preferences from the index and instruction
 base, while the caller-context conflict cancels the EAX preference. The
 read-only C2 trace and its completed debugger link are retained under

@@ -597,9 +597,6 @@ EclVmInstruction *EclVmScriptDatabase::FindSubroutine(const char *name)
 }
 
 
-extern "C" void _ReadWriteBarrier();
-#pragma intrinsic(_ReadWriteBarrier)
-
 static const EclVmCallArgumentView *CallArgument(
     const EclVmInstruction *instruction, unsigned int offset)
 {
@@ -680,7 +677,6 @@ int EclVmContext::StartSubroutine(
                 {
                     EclVmScalar *const output = argument;
                     output->integer = resolved;
-                    _ReadWriteBarrier();
                 }
             }
 
