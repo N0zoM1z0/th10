@@ -1387,7 +1387,10 @@ restored the EDI receiver at both calls and the full update comparison.
   The 408-byte baseline uses ESI for the horizontal-bounce flag and only
   sets it after the first call. The target uses EBP for that flag, saves
   ESI separately during the horizontal boundary check, and sets EBP
-  before the call.
+  before the call. Set the flag before calling `Spawn` in C++ so it stays
+  live across the call. VC7.1 then matches the full 410-byte body and all
+  17 fields. In the same cold image, virtual slot `+0x3C` points to
+  `Bounce` and `Update` and both laser constructors still match.
 - Cutter predicates accept unordered values: the radial test rejects only on ordered squared distance > squared radius, and the box test uses negated XY rejects. Sample Z is cleared after vector addition. Bounce's Y reflection uses ordered `<min` and `>=max`.
 - AccumulatePointChecks takes EAX as its receiver, calls the virtual at +0x20 and returns RET 8.
 - Type-0 laser (vtable 46DA60, line D58, VMs at 600/9AC, request at 424):

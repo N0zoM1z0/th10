@@ -821,9 +821,9 @@ void EnemyLaserType0StorageView::Bounce()
         state.request.position = projected;
         state.request.angle = EnemyWrapAngle(-state.angle - 3.1415927f);
         state.request.speed = state.patterns[4].values[0].scalar;
+        fired = 1;
         reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->Spawn(
                 reinterpret_cast<EnemyLaserRequestScratch *>(&state.request), 0);
-        fired = 1;
     }
 
     if ((state.flags & 0x08000000u) == 0 &&

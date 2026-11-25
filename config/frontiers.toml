@@ -12,13 +12,6 @@ candidate_size = 335
 target_sha256 = "e20984dc1778b1bfcdc3a91d44db88057c326184264be1fa698cd9df1284bc8f"
 residual = ["D7", "DD"]
 
-[frontier.laser-type0-bounce]
-function = "EnemyLaserType0StorageView::Bounce"
-unit = "laser-type0-bounce"
-candidate_size = 510
-target_sha256 = "9be793018926bde16b0e725a6ccab3da97d461af2c129e67ac0aa32a131dded7"
-residual = ["3", "5", "7", "A", "1C", "2F", "79", "7D", "80", "86", "8B", "9A-9B", "A0-AC", "B1-CA", "CF-E7", "EC-F9", "FE-101", "103-114", "116-127", "12C-136", "13B-148", "14A-157", "15B-15D", "162-172", "174-181", "186-192", "197-1FD"]
-
 [frontier.initialize-game-statistics-record]
 function = "InitializeGameStatisticsRecord"
 unit = "game-statistics-initialize-record"

@@ -36865,7 +36865,6 @@ linkages = [
 ]
 
 [units.laser-type0-bounce]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/LaserLine.cpp"
 pdb_source = "src/EnemyLaser.cpp"

@@ -7,11 +7,8 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `EnemyLaserType0StorageView::Bounce` at `0x0041CFD0`
-(410 bytes). Keep the real type-0 virtual receiver in ECX and root the
-comparison at the real Update entry. The previous four-input Update link
-emitted 510 bytes with one inlined spawn path. Start by comparing both
-spawn call sites and the projected endpoint's stack allocation.
+The `laser-type0-bounce` unit has finished. The next active owner is
+selected from the remaining authored functions by size.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -24,10 +21,12 @@ locally. [RE_ARTIFACTS.md](RE_ARTIFACTS.md) identifies the retained inputs.
 412-byte cold match with 44 bound fields and both unwind actions in
 `ScriptViewerDestructSmall`. The factory and eleven related entries pass
 in the same image. The standalone VM destructor, GUI and ASCII
-destructors, GUI cleanup, startup worker destructor, and enemy spell panel
-constructor pass in their affected cold links. Finish the stage
-constructor/destructor and render-manager constructor guards before
-promoting `script-viewer-destructor` to the match ledger.
+destructors, GUI cleanup, startup worker destructor, enemy spell panel
+constructor and ANM render manager constructor pass in their affected
+cold links. The stage constructor and destructor guards still need to
+qualify the inline VM destructor in `src/StageLifecycle.cpp`, where the
+stage link now emits it. Finish those guards before promoting
+`script-viewer-destructor` to the match ledger.
 
 `EclVmContext::StartSubroutine` at `0x0044DF70` remains at 536/550 bytes
 with all four call fields resolved in the `ecl-vm-start-subroutine`
@@ -45,6 +44,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `laser-type0-bounce` | 410 B | `LaserLineUpdate`, 17 fields and the real type-0 virtual slot. Both spawn calls take the manager in ESI and the request in EDI. |
 | `startup-worker-destructor` | 417 B | `StartupDestructorCore`, 40 fields and nine local branches. Both member unwind actions bind to their concrete destructors. |
 | `frontend-stage-scores-draw` | 419 B | `FrontEndReplaySaveDraw`, 16 fields and 17 local branches. The callback supplies EDI and the formatter takes the position in EBX. |
 | `input-initialize-devices` | 439 B | `InputDeviceCore`, 29 fields and ten local branches. The worker passes the device owner in EAX, and Log uses ECX. |
