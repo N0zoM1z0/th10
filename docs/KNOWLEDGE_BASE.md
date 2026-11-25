@@ -1319,6 +1319,13 @@ restored the EDI receiver at both calls and the full update comparison.
   the cursor stays in EBX after clearing the caption ID. FuncInfo at
   0x471740 refers to a 184-byte generated region with seven actions
   and a verified 34-byte VM destructor. [2026-11-25]
+- **GuiCleanupResources @0x414370 (476)** binds all 17 linked fields
+  in the `GuiDestructorCore` cold image. The three consecutive VM
+  deletions match the target's ordering when the manager snapshot is a
+  volatile read and the first two clears end with memory barriers.
+  The strict comparison matches 427 bytes. The target stores the GUI
+  pointer in EBP and zero in EBX. The current candidate reverses them
+  and brings the stack argument load forward. [2026-11-25]
 - Statistics: factory 0x42AF20 allocates 0x1DCB4 bytes and publishes to
   0x47783C; the constructor clears it, loads the score file, initializes seven
   records and the tail, then calls loader 0x42B030; destruction is at 0x42AEF0.

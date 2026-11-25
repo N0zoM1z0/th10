@@ -10,10 +10,12 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 The active owner is `GuiCleanupResources` at `0x00414370` in
 `src/Gui.cpp`. The target takes one stack argument and returns with
 RET 4. The `gui-cleanup-resources` candidate uses the five-source
-`GuiDestructorCore` graph and emits the complete 476-byte extent.
-It exchanges the EBP GUI pointer and EBX zero, and loads the next
-VM ID earlier than the target. The latter also displaces one of the
-17 linked fields. The older GameManagerCleanup graph emits 462 bytes.
+`GuiDestructorCore` graph. A volatile manager snapshot and barriers
+after the first two VM ID clears restore the target's ordering and
+all 17 linked field locations. The strict comparison matches 427 of
+476 bytes. The target keeps the GUI pointer in EBP and zero in EBX.
+The candidate reverses those registers and loads the argument earlier
+in the prologue. The older GameManagerCleanup graph emits 462 bytes.
 
 ```sh
 timeout -k 10s 185s taskset -c 2 nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit gui-cleanup-resources

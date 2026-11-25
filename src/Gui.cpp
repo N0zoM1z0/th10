@@ -2133,11 +2133,14 @@ void __stdcall GuiCleanupResources(GuiView *gui)
     th10::ChainElem *update = static_cast<th10::ChainElem *>(gui->updateCallback);
     if (update != NULL)
         update->flags &= ~2u;
+    // Retain the manager snapshot and publish each ID clear before loading the next.
     g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E14);
-    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    AnmRenderManagerView *const manager = static_cast<AnmRenderManagerView *volatile &>(g_AnmRenderManagerView);
     gui->specialVmId9E14.value = 0;
+    _ReadWriteBarrier();
     manager->MarkVmForDeletion(gui->specialVmId9E18);
     gui->specialVmId9E18.value = 0;
+    _ReadWriteBarrier();
     manager->MarkVmForDeletion(gui->bossGaugeVmId);
     gui->bossGaugeVmId.value = 0;
     for (int i = 0; i < 10; ++i)
