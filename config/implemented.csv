@@ -1207,7 +1207,7 @@ Player::SpawnShot
 PlayerEmitShotRows
 PlayerUpdateInputAction
 EnemyGameStateView::InvalidateSpellBonus
-PlayerUpdateGate28::StartPowerTransition
+ScriptViewerBombOwnerView::StartPowerTransition
 ResultMenuOpenGameOver
 PlayerHandleCollisionHit
 PlayerDrawCallbackBody

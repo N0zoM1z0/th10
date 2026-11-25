@@ -7,11 +7,12 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `PlayerUpdateGate28::StartPowerTransition` at
+The active owner is `ScriptViewerBombOwnerView::StartPowerTransition` at
 `0x00405860` (397 bytes). Use the real Player update link to preserve
-the stack receiver and both callers. The prior 397-byte image differs
-in the EBX save around VM creation, the spell-panel receiver retained
-after bonus invalidation, and the final rank and mode stores.
+the stack receiver and both callers. The Bomb factory publishes the
+same `0x004776EC` object that they pass on the stack. The remaining
+differences are the EBX save around VM creation, the panel receiver
+retained after bonus invalidation, and the final rank and mode stores.
 Build `player-start-power-transition` for the 15-input candidate and
 compare its 17 fields with `scripts/compare-linked-function.py --unit
 player-start-power-transition`. The real script loader closes the VM

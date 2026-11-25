@@ -40,15 +40,24 @@ struct ScriptViewerBombOwnerView
     unsigned int vmId2C;
     AnmFloat3View position30;
     float collisionRadius;
-    unsigned char opaque040[8];
+    float value40;
+    int damageMode;
     ScriptViewerBombOwnerView();
+    int StartPowerTransition();
     __declspec(noinline) int RegisterTasks();
     __declspec(noinline) int Update();
     __declspec(noinline) int EmitAuxiliary();
     ~ScriptViewerBombOwnerView();
 };
 typedef char ScriptViewerBombOwnerSize48[
-    (sizeof(ScriptViewerBombOwnerView) == 0x48) ? 1 : -1];
+    (sizeof(ScriptViewerBombOwnerView) == 0x48 &&
+     offsetof(ScriptViewerBombOwnerView, mode28) == 0x28 &&
+     offsetof(ScriptViewerBombOwnerView, vmId2C) == 0x2c &&
+     offsetof(ScriptViewerBombOwnerView, position30) == 0x30 &&
+     offsetof(ScriptViewerBombOwnerView, collisionRadius) == 0x3c &&
+     offsetof(ScriptViewerBombOwnerView, value40) == 0x40 &&
+     offsetof(ScriptViewerBombOwnerView, damageMode) == 0x44) ? 1 : -1];
+extern void *g_ScriptViewerBomb;
 typedef char ScriptViewerBombTimerAt014[
     (offsetof(ScriptViewerBombOwnerView, timer) == 0x14 &&
      offsetof(ScriptViewerBombOwnerView, timer.flags) == 0x24) ? 1 : -1];

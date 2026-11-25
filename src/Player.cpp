@@ -20,6 +20,7 @@
 #include "Hint.hpp"
 #include "ItemManager.hpp"
 #include "ItemPowerDisplay.hpp"
+#include "ScriptViewerOwners.hpp"
 
 #include <stddef.h>
 #include <math.h>
@@ -177,7 +178,6 @@ struct PlayerUpdateGate28
     float value40;
     int mode;
 
-    int StartPowerTransition();
     int GetDamageAtPosition(const PlayerFloat3 *targetPosition);
 };
 typedef char PlayerAuxiliaryDamageOffsets[
@@ -2208,13 +2208,13 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
     case 1:
         if (g_PlayerDrawGate9EB8 != NULL &&
             g_PlayerDrawGate9EB8->value9EB8 == 0 &&
-            g_PlayerUpdateGate28 != NULL &&
-            g_PlayerUpdateGate28->value28 == 0 &&
+            g_ScriptViewerBomb != NULL &&
+            static_cast<ScriptViewerBombOwnerView *>(g_ScriptViewerBomb)->mode28 == 0 &&
             static_cast<short>(g_PlayerPower / 20) != 0 &&
             (g_PlayerInputBits & 2) != 0)
         {
             reinterpret_cast<AnmVmTimerView *>(&player->highlightTimer)->SetCurrent(0x10e);
-            g_PlayerUpdateGate28->StartPowerTransition();
+            static_cast<ScriptViewerBombOwnerView *>(g_ScriptViewerBomb)->StartPowerTransition();
             g_PlayerPower -= 20;
             RebuildPlayerOptions(player);
             int power = g_PlayerPower;
@@ -2254,14 +2254,14 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
         }
         else
         {
-            if (g_PlayerUpdateGate28 != NULL &&
-                g_PlayerUpdateGate28->value28 == 0 &&
+            if (g_ScriptViewerBomb != NULL &&
+                static_cast<ScriptViewerBombOwnerView *>(g_ScriptViewerBomb)->mode28 == 0 &&
                 static_cast<short>(g_PlayerPower / 20) != 0 &&
                 (g_PlayerInputBits & 2) != 0)
             {
                 reinterpret_cast<AnmVmTimerView *>(&player->updateTimer1)->SetCurrent(0x3c);
                 reinterpret_cast<AnmVmTimerView *>(&player->highlightTimer)->SetCurrent(200);
-                g_PlayerUpdateGate28->StartPowerTransition();
+                static_cast<ScriptViewerBombOwnerView *>(g_ScriptViewerBomb)->StartPowerTransition();
                 g_PlayerPower -= 20;
                 RebuildPlayerOptions(player);
                 int power = g_PlayerPower;
@@ -2831,15 +2831,15 @@ void EnemyGameStateView::InvalidateSpellBonus()
 }
 
 // Target405860: begin the input-triggered power transition and its effect VM.
-int PlayerUpdateGate28::StartPowerTransition()
+int ScriptViewerBombOwnerView::StartPowerTransition()
 {
-    if (value28 != 0)
+    if (mode28 != 0)
         return -1;
-    value28 = 1;
+    mode28 = 1;
     timer.SetCurrent(0);
-    radius = 32.0f;
+    collisionRadius = 32.0f;
     value40 = 4.0f;
-    position = g_Player->drawPosition;
+    memcpy(&position30, &g_Player->drawPosition, sizeof position30);
 
     EnemyGameStateView *state = g_EnemyGameState;
     int script;
@@ -2849,10 +2849,10 @@ int PlayerUpdateGate28::StartPowerTransition()
         script = g_PlayerCharacter != 0 ? 407 : 400;
     else
         script = 441;
-    vmId = g_EnemyPrimaryResourceOwner->primaryEnemyResource->CreateVmAtWorldVariant0(
-        script, reinterpret_cast<const AnmFloat3View *>(&position));
+    vmId2C = g_EnemyPrimaryResourceOwner->primaryEnemyResource->CreateVmAtWorldVariant0(
+        script, &position30).value;
     reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundCue(
-        38, position.x);
+        38, position30.x);
     const int power = g_GameScoreState.power;
     g_ItemPowerDisplayOwner->UpdatePowerDisplay(
         power / 20, ((power % 20) * 100) / 20);
@@ -2860,8 +2860,8 @@ int PlayerUpdateGate28::StartPowerTransition()
     panel->InvalidateSpellBonus();
     g_GameScoreState.AddRank(-128);
     if ((panel->flags378C & 1u) != 0 && panel->spellTimer.current >= 60)
-        mode = 1;
+        damageMode = 1;
     else
-        mode = 0;
+        damageMode = 0;
     return 0;
 }

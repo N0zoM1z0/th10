@@ -4530,11 +4530,11 @@ linkages = [
   { offset = 0x1ce, type = "REL32", symbol = "?ApplyPatternCancel@EnemyEffectWaitManager@@QAEIPBUPlayerFloat3@@MH@Z", target = 0x41c800 },
   { offset = 0x214, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x476f78 },
   { offset = 0x235, type = "DIR32", symbol = "?g_PlayerDrawGate9EB8@@3PAUPlayerDrawGate9EB8@@A", target = 0x47770c },
-  { offset = 0x251, type = "DIR32", symbol = "?g_PlayerUpdateGate28@@3PAUPlayerUpdateGate28@@A", target = 0x4776ec },
+  { offset = 0x251, type = "DIR32", symbol = "?g_ScriptViewerBomb@@3PAXA", target = 0x4776ec },
   { offset = 0x26b, type = "DIR32", symbol = "?g_PlayerPower@@3FA", target = 0x474c48 },
   { offset = 0x287, type = "DIR32", symbol = "?g_PlayerInputBits@@3IA", target = 0x474e5c },
   { offset = 0x29a, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x405410 },
-  { offset = 0x2a0, type = "REL32", symbol = "?StartPowerTransition@PlayerUpdateGate28@@QAEHXZ", target = 0x405860 },
+  { offset = 0x2a0, type = "REL32", symbol = "?StartPowerTransition@ScriptViewerBombOwnerView@@QAEHXZ", target = 0x405860 },
   { offset = 0x2a7, type = "DIR32", symbol = "?g_PlayerPower@@3FA", target = 0x474c48 },
   { offset = 0x2ae, type = "REL32", symbol = "?RebuildPlayerOptions@@YGXPAUPlayer@@@Z", target = 0x426f70 },
   { offset = 0x2b5, type = "DIR32", symbol = "?g_PlayerPower@@3FA", target = 0x474c48 },
@@ -4563,12 +4563,12 @@ linkages = [
   { offset = 0x48b, type = "DIR32", symbol = "?g_PlayerUpdateGate10@@3PAUPlayerUpdateGate10@@A", target = 0x477838 },
   { offset = 0x49b, type = "DIR32", symbol = "?g_GameOwner477830@@3PAUGameChainOwnerView@@A", target = 0x477830 },
   { offset = 0x4a0, type = "REL32", symbol = "?ResultMenuOpenGameOver@@YAXPAUResultMenuView@@@Z", target = 0x4231d0 },
-  { offset = 0x4ab, type = "DIR32", symbol = "?g_PlayerUpdateGate28@@3PAUPlayerUpdateGate28@@A", target = 0x4776ec },
+  { offset = 0x4ab, type = "DIR32", symbol = "?g_ScriptViewerBomb@@3PAXA", target = 0x4776ec },
   { offset = 0x4c5, type = "DIR32", symbol = "?g_PlayerPower@@3FA", target = 0x474c48 },
   { offset = 0x4e5, type = "DIR32", symbol = "?g_PlayerInputBits@@3IA", target = 0x474e5c },
   { offset = 0x4f9, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x405410 },
   { offset = 0x509, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x405410 },
-  { offset = 0x50f, type = "REL32", symbol = "?StartPowerTransition@PlayerUpdateGate28@@QAEHXZ", target = 0x405860 },
+  { offset = 0x50f, type = "REL32", symbol = "?StartPowerTransition@ScriptViewerBombOwnerView@@QAEHXZ", target = 0x405860 },
   { offset = 0x516, type = "DIR32", symbol = "?g_PlayerPower@@3FA", target = 0x474c48 },
   { offset = 0x51d, type = "REL32", symbol = "?RebuildPlayerOptions@@YGXPAUPlayer@@@Z", target = 0x426f70 },
   { offset = 0x524, type = "DIR32", symbol = "?g_PlayerPower@@3FA", target = 0x474c48 },
@@ -29954,8 +29954,8 @@ harness = "unresolved-symbol-data-anchors-v1"
 entry_symbol = "?PlayerUpdateCallbackBody@@YGHPAUPlayer@@@Z"
 pdb_source = "src/Player.cpp"
 output_dir = "build/match-linked/PlayerStartPowerTransition"
-functions = ["PlayerUpdateGate28::StartPowerTransition"]
-symbol = "?StartPowerTransition@PlayerUpdateGate28@@QAEHXZ"
+functions = ["ScriptViewerBombOwnerView::StartPowerTransition"]
+symbol = "?StartPowerTransition@ScriptViewerBombOwnerView@@QAEHXZ"
 target_address = 0x00405860
 size = 397
 linkages = [

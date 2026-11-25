@@ -27,7 +27,7 @@ target_sha256 = "b9bb3bdc04047b8cab1506b12b88a3f8bf420d9bad787eb30e4b1c30b75076a
 residual = []
 
 [frontier.player-start-power-transition]
-function = "PlayerUpdateGate28::StartPowerTransition"
+function = "ScriptViewerBombOwnerView::StartPowerTransition"
 unit = "player-start-power-transition"
 candidate_size = 397
 target_sha256 = "97a3b63c03fa748e56bc93fda09e8c5b5fbab97b5e3819fd198aa0a811005852"

@@ -1748,9 +1748,11 @@ restored the EDI receiver at both calls and the full update comparison.
 - `GetPlanarBounds`: ECX center, ESI min, EDX max, EAX extent; 0.5 at 470B0C.
 - Shot rows 428160: unsigned16 power 474C48 /20, clamped to 4; optionMode+5; .sht+110. Descriptor rows are 34 bytes, ending at a negative interval. `SpawnShot` takes 3 stack values, RET12. `UpdateShots`: stack Player, RET4. Shot callbacks get ECX Player, EDX shot. There are 128 shots and 32 effects.
 - `StartPowerTransition` at `0x00405860` takes the owner on the stack and
-  returns -1 if active. It initializes the timer and state, selects script
+  returns -1 if active. Both Player states read the pointer from
+  `0x004776EC`, where the Bomb factory publishes its 0x48-byte object.
+  The transition initializes that object's timer and state, selects script
   400, 407 or 441, starts the effect VM, plays cue 38, deducts 128 rank and
-  updates the mode. The 14-input Player update link reproduces the 397-byte
+  updates the mode. The Player update link reproduces the 397-byte
   extent. Its first difference is an early EBX save at `+0x4F` instead of
   `+0xBD`. After bonus invalidation the target keeps the panel in ESI and
   uses EAX for rank. The candidate keeps the panel in EAX and uses ECX for
