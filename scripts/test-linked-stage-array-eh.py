@@ -75,8 +75,9 @@ def fixture(symbol):
     address = 0x111000 + lead
     if spec.get('owner_source') == 'src/AnmManager.cpp':
         source = spec['owner_source']
-        supports = []
-        owner_object = vm_basename = 'source.ltcg.obj'
+        supports = [spec['vm_destructor_source']] if 'vm_destructor_source' in spec else []
+        owner_object = 'source.ltcg.obj'
+        vm_basename = f'support-00-{Path(supports[0]).stem}.ltcg.obj' if supports else owner_object
     elif spec.get('owner_source'):
         source = spec['owner_source']
         supports = ['src/AnmManager.cpp']

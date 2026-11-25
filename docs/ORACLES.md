@@ -185,8 +185,10 @@ must share the parent's qualified StageLifecycle PDB object and have a unique
 MAP handler entry. Both images must match the bound fields, immutable 28-byte
 FuncInfo, unwind rows and predecessor edges, saved receiver at EBP+4, array
 offsets `+0x180` and `+0x1F08`, counts 8 and 3, and stride `0x3AC`.
-The VM destructor must be a real uniquely qualified34-byte AnmManager contribution;
-its full bytes and sole free field are independently bound. Vector-destructor
+The VM destructor must have a unique, complete 34-byte contribution from
+the qualified PDB object. LTCG can emit the inline definition in a caller's
+translation unit. The verifier checks all of its bytes and its sole free
+field independently. Vector-destructor
 and CxxFrameHandler entries are also checked. This is address/metadata identity,
 not generated-code credit or exception execution.
 Only the affected Stage array-binding self-test is added to the optional Oracle
@@ -212,9 +214,12 @@ three-byte add for member `+0x14`, and the second uses the six-byte add for
 
 The startup worker destructor binds a 32-byte region at `0x465696`. Its
 short actions tail-call the worker destructor at `0x44C130` for member
-`+0x10` and the VM destructor at `0x401FF0` for member `+0x30`. The existing
-worker-member verifier checks the full worker destructor and its Stop
-binding alongside the VM destructor proof.
+`+0x10` and the VM destructor at `0x401FF0` for member `+0x30`. The script
+viewer destructor binds the same two callees in its 35-byte region at
+`0x4657E9`, with its VM member at `+0x2C8`. The verifier checks the full
+worker destructor and its Stop binding alongside the VM destructor. The
+script viewer graph qualifies the complete inline VM destructor in the
+ScriptViewer PDB object.
 
 ## Validation scope during exact reconstruction
 

@@ -7,20 +7,27 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `ScriptViewerView::~ScriptViewerView` at `0x0040A1A0`.
-The `script-viewer-destructor` candidate has a strict 412-byte warm match
-with 44 fields and both unwind actions in `ScriptViewerDestructSmall`.
-Keep `/EHs` for stack-passed popup destruction. The inline VM destructor
-and nonthrowing CRT `free` declaration together remove the extra EH state
-store. Cold-build the candidate and recheck the existing VM cleanup owners
-that depend on the shared destructor definition.
+The active owner is `EnemyLaserType0StorageView::Bounce` at `0x0041CFD0`
+(410 bytes). Keep the real type-0 virtual receiver in ECX and root the
+comparison at the real Update entry. The previous four-input Update link
+emitted 510 bytes with one inlined spawn path. Start by comparing both
+spawn call sites and the projected endpoint's stack allocation.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
 CPU at nice 10, and explicit unit selectors. Repository commands run
 locally. [RE_ARTIFACTS.md](RE_ARTIFACTS.md) identifies the retained inputs.
 
-### Parked ECL owner
+### Parked owners
+
+`ScriptViewerView::~ScriptViewerView` at `0x0040A1A0` has a strict
+412-byte cold match with 44 bound fields and both unwind actions in
+`ScriptViewerDestructSmall`. The factory and eleven related entries pass
+in the same image. The standalone VM destructor, GUI and ASCII
+destructors, GUI cleanup, startup worker destructor, and enemy spell panel
+constructor pass in their affected cold links. Finish the stage
+constructor/destructor and render-manager constructor guards before
+promoting `script-viewer-destructor` to the match ledger.
 
 `EclVmContext::StartSubroutine` at `0x0044DF70` remains at 536/550 bytes
 with all four call fields resolved in the `ecl-vm-start-subroutine`
