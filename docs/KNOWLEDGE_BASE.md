@@ -1376,9 +1376,27 @@ frontier; do not refresh a baseline merely to accept the new positions.
   The shared zero has priority 35 and takes EDX; the outer count has signed
   priority -14 and takes ESI. Before local allocation, the tail store still
   precedes both zero stores. `indexed-allocation.trace` retains these IR and
-  allocation observations. The next useful trace should inspect the local
-  allocator's copy-destination definitions and memory-order dependencies,
-  rather than repeating scalar type or pointer spelling controls.
+  allocation observations.
+
+  Read-only local-allocation and scheduling traces at source commit
+  `558af946` reproduce the same 255/274-byte contribution with all eight
+  fields bound. The copy pointer takes EDI and both words and the byte take
+  EBX; local register choice is already correct. In `scheduling.trace`,
+  graph 2 has edges from node 9 (the tail store) to nodes 10 and 11 (the
+  extra/status clears). Both clears then precede the EAX cursor update.
+  The emitted schedule respects this chain, so changing instruction priority
+  alone cannot move the tail past the clears. `local-order2.trace` and the
+  corresponding strict comparison retain the allocation control; the
+  scheduling trace and its strict comparison retain the dependency control.
+
+  A normal-COFF owner in the same six-input graph produces the same complete
+  normalized instruction body as the LTCG control. Assigning a nine-byte
+  aggregate through the byte view is also neutral. Assigning it through the
+  named member instead changes the induction base and spills. Packed name
+  views and a const reference to the name pointer preserve the failed
+  two-cursor shape. Keep the canonical /GL profile. The next source experiment
+  should separate the tail write from the copy while retaining EAX as the
+  active-byte cursor and EDI as a secondary name destination.
 
   Named row references or direct name-member/array-reference copies change
   the induction base and spill. Scalar, union and word-buffer tails change

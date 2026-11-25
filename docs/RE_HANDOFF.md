@@ -25,10 +25,17 @@ byte-identical cold control. `indexed-allocation.trace` describes source
 commit `4ffa9bb5`: the copy is expanded before global allocation, its byte
 and pointer temporaries are local, zero gets EDX at priority 35 and the outer
 count gets ESI at priority -14. The tail store is still before both zeros
-at local-allocation entry. Next inspect the local allocator's copy-destination
-definitions and memory-order dependencies. Existing RegAssign hooks at
-`0x1079C134`/`0x1079C23B` are read-only starting points. Avoid repeating the
-ruled-out scalar, pointer, helper and buffer families without a new prediction.
+at local-allocation entry. At source commit `558af946`, `local-order2.trace`
+confirms EDI for the copy pointer and EBX for both words and the byte.
+`scheduling.trace` graph 2 has edges from the tail store (node 9) to both
+clears (10/11), which then precede the EAX update. Both completed debugger
+links reproduce the 255/274 mismatch with all eight fields bound. A priority
+change cannot cross these dependencies. Normal COFF and a nine-byte aggregate
+through the byte view preserve the complete normalized control body; a named
+aggregate member changes the cursor and spills. Keep /GL. Next investigate a
+split-copy source that retains EAX as the active-byte cursor and EDI as a
+secondary name destination. Avoid repeating the ruled-out scalar, pointer,
+helper and buffer families without a new prediction.
 
 A one-byte buffer eliminates its temporary storage but changes the induction
 base; an explicit parent cursor adds a second cursor and spills the count.
