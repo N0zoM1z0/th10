@@ -1249,11 +1249,12 @@ frontier; do not refresh a baseline merely to accept the new positions.
   and binds device fields at +0x18/+0x4E/+0x89/+0x127, format at
   +0x65/+0x84, and D3DXLoadSurfaceFromSurface at +0xC6. Current receipts
   and probes are under `.analysis/anm-copy-backbuffer2/`.
-- **Player::~Player @0x424ED0 (325)**: the first canonical cold build in
-  `ScriptViewerDestructSmall` matches 325 bytes and 30 fields, including
+- **Player::~Player @0x424ED0 (325)**: two independent canonical cold builds
+  in `ScriptViewerDestructSmall` match 325 bytes and 30 fields, including
   the real VM member EH binding. Unit `player-destructor` retains the
   nine-source `/EHs` link with its existing separate Enemy support profile.
-  Independent cold and affected-consumer replays are pending.
+  The selected factory (69), release adapter (18), update (3,112), draw
+  (409) and ScriptViewer destructor (412) cold replays all remain exact.
 
   Model `drawVm` at Player+0x14 with the maintained `AnmVmView`, whose size
   is 0x3AC. The old partial lifetime view gave identical ordinary parent

@@ -45,6 +45,11 @@ replays under `.analysis/anm-copy-backbuffer/` and
 `.analysis/anm-copy-backbuffer2/`, in the same `BulletHorizontalWrap` link.
 Their superseded warm trials and source snapshots reclaimed about 2 MiB.
 
+The Player destructor retains its canonical comparison, selected consumer
+replays and focused EH controls under `.analysis/player-destructor/`.
+Its declared live link is `build/match-linked/ScriptViewerDestructSmall/`;
+superseded source snapshots and warm probe links have been removed.
+
 The Bomb power transition cleanup reclaimed about 26 MiB in source
 snapshots, trial links and superseded GUI and text-rendering outputs.
 

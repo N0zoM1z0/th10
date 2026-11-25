@@ -7,24 +7,20 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `Player::~Player` at `0x00424ED0`, complete
-instruction extent `[0x00424ED0, 0x00425015)` (325 bytes), in `src/Player.cpp`.
-It is the largest remaining authored owner apart from the explicitly
-deferred `StartSubroutine`. Unit `player-destructor` uses the nine-source
-`ScriptViewerDestructSmall` graph. The first canonical cold build matches
-all 325 bytes and 30 fields, including the complete VM-member EH binding.
-`Player::drawVm` now uses `AnmVmView`; the old partial view produced the
-wrong ESI/30-byte cleanup ABI even when all ordinary parent bytes matched.
-The target needs ECX and the real 34-byte VM destructor.
+The sole active owner is `FrontEndInsertScore` at `0x00421FA0`, currently
+listed as 316 bytes in `src/FrontEnd.cpp`. It is the largest remaining
+authored owner apart from the explicitly deferred `StartSubroutine`.
+Inspect the current implementation and native link recipe, then compare
+its complete source early. The old knowledge entry reports a 263-byte
+match and a double `100.0` where the target uses a float constant; treat
+that as a lead and establish the current baseline before editing.
+Stay on this owner through its complete strict cold match.
 
-The independent selected replay is running for `player-destructor`,
-`script-viewer-destructor`, `script-viewer-player-create`,
-`script-viewer-release-player`, `player-update-callback-body` and
-`player-draw-callback-body`. It covers the known member/field consumers
-and preserves each canonical link recipe; the update body needs its
-37-input graph. Finish these scoped checks before acceptance or selecting
-another owner. The VM member EH self-test and native wrong-view rejection
-pass. Current inputs, logs and receipts are under
+`Player::~Player` is accepted in `ScriptViewerDestructSmall` at 325 bytes
+and 30 fields, with the complete VM-member EH binding. The factory,
+release adapter, update, draw and ScriptViewer destructor all pass their
+selected cold links after the real `AnmVmView` member replaces the partial
+lifetime view. Receipts and focused EH controls are under
 `.analysis/player-destructor/`.
 
 Both ANM surface-copy variants are accepted in `BulletHorizontalWrap`.
@@ -76,6 +72,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `player-destructor` | 325 B | `ScriptViewerDestructSmall`, 30 fields and the real 34-byte VM cleanup. Five selected lifecycle/field consumers pass their own cold links. |
 | `anm-copy-surface-to-backbuffer2` | 325 B | `BulletHorizontalWrap`, seven fields and EBX index/stack manager/RET 28. Both selected same-image guards pass. |
 | `anm-copy-surface-to-backbuffer` | 330 B | `BulletHorizontalWrap`, seven fields and EBX/EAX/RET 16. The same-image absolute-direction Bullet guard passes 335 bytes and eight fields. |
 | `bullet-update-absolute-direction` | 335 B | `BulletHorizontalWrap`, eight fields and the ESI receiver. The direct runtime caller passes its own cold link at 885 bytes and 39 fields. |
