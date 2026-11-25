@@ -633,6 +633,8 @@ int EclVmContext::StartSubroutine(
         _ReadWriteBarrier();
         unsigned int valueOffset = metadataOffset +
             static_cast<int>(offsetof(EclVmCallArgumentView, integer));
+        volatile unsigned int &valueCursor = valueOffset;
+        int operandCount;
         do
         {
             const char sourceType =
@@ -684,15 +686,17 @@ int EclVmContext::StartSubroutine(
                 }
             }
 
+            const EclVmInstruction *const nextInstruction = *callerInstruction;
             EclVmScalar *const previousArgument = argument;
+            const unsigned int previousValueOffset = valueCursor;
             argument = reinterpret_cast<EclVmScalar *>(
                 reinterpret_cast<unsigned int>(previousArgument) + sizeof(EclVmScalar));
+            operandCount = static_cast<const volatile EclVmInstruction *>(nextInstruction)->operandCount;
             argumentIndex = static_cast<int>(
                 static_cast<unsigned int>(argumentIndex) + 1u);
-            valueOffset += sizeof(EclVmCallArgumentView);
+            valueCursor = previousValueOffset + sizeof(EclVmCallArgumentView);
             metadataOffset += sizeof(EclVmCallArgumentView);
-        } while (argumentIndex <
-                 static_cast<const volatile EclVmInstruction *>(*callerInstruction)->operandCount);
+        } while (argumentIndex < operandCount);
     }
 
     EclVmContext *const frameCaller = caller;

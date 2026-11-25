@@ -11,7 +11,7 @@ The active owner is `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. The target owns 550 bytes and receives the destination
 in EAX with two stack arguments and RET 8. The two-source
 `EclVmHostRunEnemy` link emits the full extent and binds all four calls.
-The strict comparison matches 517 bytes. The same image matches
+The strict comparison matches 532 bytes. The same image matches
 `ecl-vm-spawn-thread` and `ecl-vm-host-run`.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
@@ -29,15 +29,11 @@ scripts/repo-python scripts/compare-linked-function.py --unit ecl-vm-spawn-threa
 scripts/repo-python scripts/ci.py && git diff --check
 ```
 
-The initial stack setup and the return-frame and lookup sequence match.
-The remaining 33 bytes differ between +0x6C and +0x103 in the argument
-loop. The floating-point result path at +0xCF through +0xF1 matches.
-The target uses EAX for the word offset at +0x6C. An operand watchpoint
-shows `RewriteAsReal` replacing the offset's virtual symbol with ECX
-before Riscify. It uses a split symbol inserted by `CreateGenAndKill`.
-The retained `.analysis/ecl-start-subroutine/trace-word-color.py`
-captures both the symbol changes and register choices in the built
-two-source link.
+The entry through the word-offset shift at +0x94 matches. So do the
+floating-point result path and the return-frame and lookup sequence.
+The remaining 18 bytes differ in the two raw operand loads, the float
+call setup, the integer result path, and the order and register choices
+for the two reloads at the loop latch.
 
 Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 [frontiers.toml](../config/frontiers.toml). Product closure, runtime semantics

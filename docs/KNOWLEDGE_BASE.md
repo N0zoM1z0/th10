@@ -1452,6 +1452,12 @@ restored the EDI receiver at both calls and the full update comparison.
   path aligns from +0xCF through +0xF1. Taking an additional local
   destination snapshot in the raw integer branch shortens the combined
   candidate to 544 bytes. See the [current handoff](RE_HANDOFF.md).
+  Accessing the word offset through a volatile reference for both the
+  read and the write at the latch restores EAX for its initialization
+  and preserves the entry jump and backedge reload. The volatile read
+  alone drops that entry split and the owner shrinks to 537 bytes.
+  Reading the next operand count before writing the offset, then testing
+  the captured count at the backedge, brings the strict match to 532 bytes.
 - In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
   the destination address LEA to EAX and advances the integer register
   cursor to ECX. The 551-byte candidate with a plain caller parameter
