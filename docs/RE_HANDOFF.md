@@ -7,10 +7,19 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The alternate text renderer at `0x00437FE0` is exact in the
-`text-render-alternate` cold replay. The mixed graph preserves the
-ESI/ECX `FillColor` call and the ECX `InvertAlpha` calls. The next
-authored owner is selected from [matches.csv](../config/matches.csv).
+The active owner is `GuiCleanupResources` at `0x00414370` in
+`src/Gui.cpp`. The target takes one stack argument and returns with
+RET 4. The `gui-cleanup-resources` candidate uses the five-source
+`GuiDestructorCore` graph and emits the complete 476-byte extent.
+It exchanges the EBP GUI pointer and EBX zero, and loads the next
+VM ID earlier than the target. The latter also displaces one of the
+17 linked fields. The older GameManagerCleanup graph emits 462 bytes.
+
+```sh
+timeout -k 10s 185s taskset -c 2 nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit gui-cleanup-resources
+scripts/repo-python scripts/compare-linked-function.py --unit gui-cleanup-resources --json
+scripts/repo-python .analysis/gui-cleanup-resources/compare.py GuiDestructorCore
+```
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
