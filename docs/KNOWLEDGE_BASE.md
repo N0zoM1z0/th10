@@ -1170,7 +1170,10 @@ frontier; do not refresh a baseline merely to accept the new positions.
   forms also regress. All trials were reverted.
   A read-only VC7.1 C2 trace identifies the angle-word load as global
   candidate 8, with priority 16. `ChoosePhysReg` selects EAX with all three
-  integer-register scores at zero. The debugger link completes and matches
+  integer-register scores at zero. EAX, ECX and EDX are all eligible, so
+  the target EDX needs a preference or interference that changes this tie.
+  Local integer-word, union and pointer forms of the angle copy each leave
+  the complete comparison at 333 matching bytes. The debugger link completes and matches
   the ordinary link across all 335 bytes and eight linked fields. The next
   probe should inspect its eligible registers and live-range conflicts.
   The `_reference/th10-decomp` `EaseStep` shape (plain float fields, direct
