@@ -17,6 +17,10 @@ compare its 17 fields with `scripts/compare-linked-function.py --unit
 player-start-power-transition`. The real script loader closes the VM
 creation callee's 118-byte comparison in this graph. The Player body
 still has the same register differences.
+Reading and calculating the rank before bonus invalidation produces a
+394-byte trial. It matches the first 282 bytes, eleven linked fields and
+the original branches in that prefix. The trial keeps rank in ESI across
+the call. The target keeps the panel there and reads rank afterward.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available

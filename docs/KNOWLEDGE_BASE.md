@@ -1767,6 +1767,13 @@ restored the EDI receiver at both calls and the full update comparison.
   invalidator into a separate `/GL` translation unit keeps the same
   caller allocation, as does linking the real panel global. The
   candidate binds all four calls to the intended real functions.
+  Keeping a value live across invalidation changes the EBX save from
+  `+0x4F` to the target's `+0xBD`. An early rank calculation matches the
+  first 282 bytes, all eleven fields in that prefix and its relative
+  branches. Early snapshots of the spell timer or active bit also move
+  the EBX save. In each trial ESI holds the early value while the panel
+  stays in EAX. The target uses ESI for the panel itself and reads the
+  rank after the call.
 - Option reset flags are at Player 332C/33C4/345C/34F4; draw position 3C0/3C4; signed coordinates 3CC/3D0 scaled by 0.01f (470B00).
 - `g_AnmGameSpeed` is 476F78.
 - `+0x08/+0x0C`: update/draw callback nodes (0x24-byte nodes; callback at +0x08, owner at +0x20). Priorities 0x10/0x16. Update entry 0x426500 does `push ecx; call 0x425730; ret`. Draw entry 0x426510 does `mov eax,ecx; jmp 0x426360`.
