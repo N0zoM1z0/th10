@@ -1747,7 +1747,16 @@ restored the EDI receiver at both calls and the full update comparison.
 - `GetDamageAtPosition`: ECX owner 4776EC, EAX position. Globals: 4776F4 game state, 477704 gate, 474C68 int. Results are 3, 38, 38/5 (gate), 23/26, 20/16 or 0.
 - `GetPlanarBounds`: ECX center, ESI min, EDX max, EAX extent; 0.5 at 470B0C.
 - Shot rows 428160: unsigned16 power 474C48 /20, clamped to 4; optionMode+5; .sht+110. Descriptor rows are 34 bytes, ending at a negative interval. `SpawnShot` takes 3 stack values, RET12. `UpdateShots`: stack Player, RET4. Shot callbacks get ECX Player, EDX shot. There are 128 shots and 32 effects.
-- `StartPowerTransition` 405860: stack owner, RET4, returns -1/0. Timer14, state28, VM2C, XYZ30, radius32/value40=4, scripts 400/407/441, sound38, rank clamped at -128, mode44.
+- `StartPowerTransition` at `0x00405860` takes the owner on the stack and
+  returns -1 if active. It initializes the timer and state, selects script
+  400, 407 or 441, starts the effect VM, plays cue 38, deducts 128 rank and
+  updates the mode. The 14-input Player update link reproduces the 397-byte
+  extent. Its first difference is an early EBX save at `+0x4F` instead of
+  `+0xBD`. After bonus invalidation the target keeps the panel in ESI and
+  uses EAX for rank. The candidate keeps the panel in EAX and uses ECX for
+  rank. Reusing the panel local and taking member references preserve the
+  candidate. A named VM result reads the stack return slot instead of
+  dereferencing EAX, and direct unsigned rank subtraction emits ADD -128.
 - Option reset flags are at Player 332C/33C4/345C/34F4; draw position 3C0/3C4; signed coordinates 3CC/3D0 scaled by 0.01f (470B00).
 - `g_AnmGameSpeed` is 476F78.
 - `+0x08/+0x0C`: update/draw callback nodes (0x24-byte nodes; callback at +0x08, owner at +0x20). Priorities 0x10/0x16. Update entry 0x426500 does `push ecx; call 0x425730; ret`. Draw entry 0x426510 does `mov eax,ecx; jmp 0x426360`.

@@ -25,3 +25,10 @@ unit = "script-viewer-destructor"
 candidate_size = 412
 target_sha256 = "b9bb3bdc04047b8cab1506b12b88a3f8bf420d9bad787eb30e4b1c30b75076a1"
 residual = []
+
+[frontier.player-start-power-transition]
+function = "PlayerUpdateGate28::StartPowerTransition"
+unit = "player-start-power-transition"
+candidate_size = 397
+target_sha256 = "97a3b63c03fa748e56bc93fda09e8c5b5fbab97b5e3819fd198aa0a811005852"
+residual = ["4F-53", "55-58", "5B-5F", "61-7A", "7F-82", "84-87", "89-8A", "8C-9A", "9C-A0", "A5-AE", "B0-B5", "B7-B9", "11A", "11F", "124-125", "12A-12C", "131-134", "136-139", "13E-142", "148-156", "15B-162", "165-17F"]
