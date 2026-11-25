@@ -1974,6 +1974,14 @@ restored the EDI receiver at both calls and the full update comparison.
   via EBX. The handler at `0x4657E9` binds the worker and VM cleanup actions
   for `+0x10` and `+0x2C8`.
 
+- `EnemyGameStateView::~EnemyGameStateView` at `0x00408AF0` matches in
+  the real factory link with `/EHs`, `AnmManager.cpp` and `Chain.cpp`.
+  Cache the ANM manager for the three VM deletions and take fresh task
+  and Chain snapshots before each lock. The ANM cleanup takes its
+  manager in EDX. Chain unregister takes the task in ECX and the Chain
+  in EDX. The compiler emits the expected stack receiver, three VM
+  array unwind states and RET 4.
+
 - `FrontEndControllerView::DrawStageScores` at `0x00431410` uses the common
   score state for the selections at +0x28, +0x2C and +0x34. The practice
   rows are eight bytes each, starting at profile +0x4E4. Inlining the

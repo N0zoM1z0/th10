@@ -8,10 +8,10 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 ## Resume
 
 The active owner is `EnemyGameStateView::~EnemyGameStateView` at
-`0x00408AF0` (402 bytes). Start from the real `CreateEnemyGameState`
-caller and link the actual ANM and Chain owners. The target takes the
-receiver on the stack, keeps one ANM manager across the three VM
-deletions, and unwinds arrays of 2, 8 and 5 VMs.
+`0x00408AF0`. The real factory link matches its 402 bytes and all
+36 fields, including the stack receiver and the unwind actions for
+2, 8 and 5 VMs. The constructor, registration and factory also pass in
+this image.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -47,6 +47,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `enemy-spell-panel-destructor` | 402 B | `SpellPanelDestructor` with `/EHs`, 36 fields and three VM-array unwind actions. The receiver is on the stack with RET 4. |
 | `laser-type0-bounce` | 410 B | `LaserLineUpdate`, 17 fields and the real type-0 virtual slot. Both spawn calls take the manager in ESI and the request in EDI. |
 | `startup-worker-destructor` | 417 B | `StartupDestructorCore`, 40 fields and nine local branches. Both member unwind actions bind to their concrete destructors. |
 | `frontend-stage-scores-draw` | 419 B | `FrontEndReplaySaveDraw`, 16 fields and 17 local branches. The callback supplies EDI and the formatter takes the position in EBX. |

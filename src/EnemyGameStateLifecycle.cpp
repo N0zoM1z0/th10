@@ -57,34 +57,43 @@ int EnemyGameStateView::RegisterTasks()
 // reverses the 5, 8 and 2 VM arrays automatically; do not memcpy/skip them.
 EnemyGameStateView::~EnemyGameStateView()
 {
-    g_AnmRenderManagerView->MarkVmForDeletion(panelVmIds[0]);
+    AnmRenderManagerView *anm = g_AnmRenderManagerView;
+    anm->MarkVmForDeletion(panelVmIds[0]);
     panelVmIds[0].value = 0;
-    g_AnmRenderManagerView->MarkVmForDeletion(panelVmIds[1]);
+    anm->MarkVmForDeletion(panelVmIds[1]);
     panelVmIds[1].value = 0;
-    g_AnmRenderManagerView->MarkVmForDeletion(panelVmIds[2]);
+    anm->MarkVmForDeletion(panelVmIds[2]);
     panelVmIds[2].value = 0;
 
-    if (updateTask != NULL)
+    th10::ChainElem *task = updateTask;
+    th10::Chain *chain = th10::g_Chain;
+    if (task != NULL)
     {
         EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         ++g_MainSupervisorView.criticalSectionLockCounts[0];
-        th10::g_Chain->UnregisterElem(updateTask);
+        chain->UnregisterElem(task);
         LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         --g_MainSupervisorView.criticalSectionLockCounts[0];
     }
-    if (drawTask != NULL)
+
+    task = drawTask;
+    chain = th10::g_Chain;
+    if (task != NULL)
     {
         EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         ++g_MainSupervisorView.criticalSectionLockCounts[0];
-        th10::g_Chain->UnregisterElem(drawTask);
+        chain->UnregisterElem(task);
         LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         --g_MainSupervisorView.criticalSectionLockCounts[0];
     }
-    if (auxiliaryDrawTask != NULL)
+
+    task = auxiliaryDrawTask;
+    chain = th10::g_Chain;
+    if (task != NULL)
     {
         EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         ++g_MainSupervisorView.criticalSectionLockCounts[0];
-        th10::g_Chain->UnregisterElem(auxiliaryDrawTask);
+        chain->UnregisterElem(task);
         LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         --g_MainSupervisorView.criticalSectionLockCounts[0];
     }
