@@ -1325,7 +1325,15 @@ restored the EDI receiver at both calls and the full update comparison.
   volatile read and the first two clears end with memory barriers.
   The strict comparison matches 427 bytes. The target stores the GUI
   pointer in EBP and zero in EBX. The current candidate reverses them
-  and brings the stack argument load forward. [2026-11-25]
+  and brings the stack argument load forward. Reusing `FindVm` for the
+  value IDs keeps both VM-list walks inline and preserves the comparison.
+  At `ChoosePhysReg`, the GUI argument candidate has priority 56 and
+  ties between EBX and EBP at cost zero. It takes EBX before the zero
+  candidate reaches allocation with priority 7 and EBP as its sole
+  remaining choice. Linking the same objects with the destructor or game
+  cleanup as the entry emits a 462-byte private-register version. A
+  stack-receiver member prototype keeps the 476-byte result and the same
+  register choices. [2026-11-25]
 - Statistics: factory 0x42AF20 allocates 0x1DCB4 bytes and publishes to
   0x47783C; the constructor clears it, loads the score file, initializes seven
   records and the tail, then calls loader 0x42B030; destruction is at 0x42AEF0.

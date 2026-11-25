@@ -15,7 +15,12 @@ after the first two VM ID clears restore the target's ordering and
 all 17 linked field locations. The strict comparison matches 427 of
 476 bytes. The target keeps the GUI pointer in EBP and zero in EBX.
 The candidate reverses those registers and loads the argument earlier
-in the prologue. The older GameManagerCleanup graph emits 462 bytes.
+in the prologue. Six bytes differ in the first 14 bytes. The remaining
+43 all reflect the EBX/EBP exchange. The allocator chooses EBX for the
+GUI pointer on a tie with EBP before allocating zero.
+Keep the `GuiCleanupResources` entry
+when testing this difference. Rooting the same five objects at the GUI
+destructor or `GameManagerCleanup` changes the ABI and emits 462 bytes.
 
 ```sh
 timeout -k 10s 185s taskset -c 2 nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit gui-cleanup-resources
