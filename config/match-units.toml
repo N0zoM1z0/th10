@@ -23509,7 +23509,6 @@ functions = ["EndingView::Initialize"]
 symbol = "?Initialize@EndingView@@QAEHXZ"
 target_address = 0x0040B560
 size = 584
-candidate = true
 linkages = [
   { offset = 0x002, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
   { offset = 0x009, type = "DIR32", symbol = "__ehhandler$?Initialize@EndingView@@QAEHXZ", target = 0x004657BB, allocation_eh_handler = true, allocation_eh_storage_offset = 4 },

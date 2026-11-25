@@ -1071,8 +1071,16 @@ frontier; do not refresh a baseline merely to accept the new positions.
   the complete PDB-owned extent, all seven DIR32 bindings and normalization
   checks (PDB GUID `e2fe72994a11224b8fb8ca595ee88ec9`, age 1). No inline
   assembly or padding is used. [2026-11-17]
-- **EndingView::Initialize @0x40B560 (584)**: full size, node-flag scheduling.
-  [2026-10-30]
+- **EndingView::Initialize @0x40B560 (584)** matches all 30 fields through
+  the actual ending factory. Separate update and draw task locals. Taking
+  the update node flags through a word copy retains the register update.
+  The typed counters and unlock views preserve the index publication and
+  reload order. Linking the real PBG archive implementation gives the file
+  opener its EAX path and two stack arguments. The allocation cleanup
+  reads EBP+4 and targets the sole scalar-delete action. Applying the Chain
+  flag mask at the store preserves the two inlined callback resets. The MIT-licensed
+  reference supplied the separate-local and typed-counter leads.
+  [Reference license](licenses/th10-decomp-MIT.txt)
 - **ReplayManager::BeginStage @0x42A450 (582)**: 566. [2026-10-31] Porting
   LoadReplay together with it broke `replay-manager-create`.
 - **EclVmContext::StartSubroutine @0x44DF70 (550)**: 551. [2026-11-07]
