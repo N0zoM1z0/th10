@@ -1103,6 +1103,12 @@ frontier; do not refresh a baseline merely to accept the new positions.
   The four-source `script-viewer-popup-draw` candidate matches 534 bytes
   and resolves all 15 linked fields. The cursor and count use exchanged
   EAX and ECX registers in the final six differing bytes.
+  VC7.1 assigns those registers before Riscify. Separating the cursor
+  load from its subtraction gives the target's ECX cursor and EAX count.
+  In that 542-byte comparison the count decrement comes first, so the
+  cursor decrement overwrites its flags and the branch gets an extra
+  `test eax, eax`. The 540-byte form computes the previous digit address
+  directly from the cursor slot and retains the branch on decrement flags.
   [2026-11-17] The count-dependent digit cursor now uses native
   modulo-32-bit address addition to `record->digits` and decrements the
   byte cursor through the same unsigned word representation. This avoids
