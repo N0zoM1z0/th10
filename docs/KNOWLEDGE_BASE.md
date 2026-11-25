@@ -1599,6 +1599,17 @@ restored the EDI receiver at both calls and the full update comparison.
   In the 542-byte candidate, the latch's destination, instruction and
   word-offset candidates have equal priority 56 and no register
   preferences. The allocator assigns EAX, ECX and EDX in that order.
+  A C2 trace through `OrderGlobregs` places those candidates consecutively
+  in its input hash buckets 27, 28 and 29 and in the output queue in the
+  same order. Each has benefit 8. `GrgNewGlobreg` assigns increasing numbers
+  and uses the low ten bits as the hash bucket. The three corresponding
+  reads occur in that same order in the Color input block. Moving the
+  instruction read before the cursor read in a control reverses their
+  candidate roles and gives the instruction EAX and cursor ECX, but also
+  reverses the generated read order and changes the subsequent count
+  schedule. The control matches 523 bytes and is not retained. The normal
+  traced link finishes and reproduces all 550 candidate bytes and four
+  fields, so this observation does not depend on a partial debug build.
   The float operand candidate has ECX and EAX preferences and scores
   0, -1 and 0 for EAX, ECX and EDX, selecting ECX. Qualifying either
   result-tag instruction read as volatile changes the complete body
