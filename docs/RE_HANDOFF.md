@@ -11,10 +11,13 @@ The active owner is `ScriptViewerPopupOwnerView::Draw` at `0x0042B780`
 in `src/ScriptViewerPopupCreate.cpp`. The target owns 540 bytes and
 receives the popup owner in EDI. Draw traverses 723 records, adjusts
 fog, and renders each active popup's digits. The four-source
-`script-viewer-popup-draw` candidate declares all 15 target fields.
-A fresh build reproduces the 537-byte extent and the callback passes
-the owner in EBX. The candidate keeps the digit cursor in EBP and spills
-alpha. The target keeps alpha in EBX and has a separate digit cursor slot.
+`script-viewer-popup-draw` candidate emits 540 bytes and resolves all 15
+target fields. Direct access to the embedded VM restores the EDI
+receiver and the EBP record cursor. The inner loop keeps alpha in EBX
+and stores the digit cursor and count in separate stack slots.
+The strict comparison matches 534 bytes. The six remaining bytes at
++0x1D5, +0x1DF, +0x1E2, +0x1E3, +0x1EB and +0x1EF swap EAX and ECX
+between the cursor and count in the inner loop's final updates.
 
 ```sh
 scripts/repo-python scripts/verify-target.py

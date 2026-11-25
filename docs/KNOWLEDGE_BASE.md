@@ -1096,9 +1096,13 @@ frontier; do not refresh a baseline merely to accept the new positions.
   playback cursors at the target's +0x32E0 and +0x158 bases. The stage
   update calls the owner in EBX and the owner returns with a plain RET.
   [2026-11-25]
-- **ScriptViewerPopupOwnerView::Draw @0x42B780 (540)**: current
-  four-source linked graph yields 537/540 bytes and 266 non-linkage
-  differences; the 10-byte draw callback is also nonexact.
+- **ScriptViewerPopupOwnerView::Draw @0x42B780 (540)**: direct access
+  through the embedded VM restores the target's EDI receiver and EBP
+  record cursor. Separate digit cursor and count accesses at the loop end
+  put alpha in EBX and give the digit state the target's two stack slots.
+  The four-source `script-viewer-popup-draw` candidate matches 534 bytes
+  and resolves all 15 linked fields. The cursor and count use exchanged
+  EAX and ECX registers in the final six differing bytes.
   [2026-11-17] The count-dependent digit cursor now uses native
   modulo-32-bit address addition to `record->digits` and decrements the
   byte cursor through the same unsigned word representation. This avoids

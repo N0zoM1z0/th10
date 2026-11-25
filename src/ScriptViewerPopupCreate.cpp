@@ -83,30 +83,36 @@ int ScriptViewerPopupOwnerView::Draw()
         unsigned char *digit = reinterpret_cast<unsigned char *>(
             reinterpret_cast<unsigned int>(record->digits) +
             static_cast<unsigned int>(count) - 1u);
+        unsigned char *volatile &digitCursor = digit;
         if (count > 0)
         {
             AnmVmView *const drawVm = &vm;
+            int activeDigits = count;
+            volatile int &digitCount = activeDigits;
+            int remaining;
             do
             {
                 if (record->timer.current >= 52 && *digit != 10)
                 {
                     if (record->timer.current < 56)
-                        drawVm->loadedSprite = &loadedDigitAnm->sprites[*digit + 207];
+                        vm.loadedSprite = &loadedDigitAnm->sprites[*digit + 207];
                     else
-                        drawVm->loadedSprite = &loadedDigitAnm->sprites[*digit + 217];
+                        vm.loadedSprite = &loadedDigitAnm->sprites[*digit + 217];
                 }
                 else
-                    drawVm->loadedSprite = &loadedDigitAnm->sprites[*digit + 196];
-                drawVm->primaryColor.alpha = static_cast<unsigned char>(alpha);
-                drawVm->spriteWidth = drawVm->loadedSprite->width;
+                    vm.loadedSprite = &loadedDigitAnm->sprites[*digit + 196];
+                vm.primaryColor.alpha = static_cast<unsigned char>(alpha);
+                drawVm->spriteWidth = vm.loadedSprite->width;
                 drawVm->flags35C |= 8;
                 g_AnmRenderManagerView->DrawNoRotation(drawVm);
-                drawVm->positionOffset.x += spacing;
-                // Advance the native digit byte cursor even after the
-                // final entry, without forming an invalid C++ array pointer.
-                digit = reinterpret_cast<unsigned char *>(
-                    reinterpret_cast<unsigned int>(digit) - 1u);
-            } while (--count);
+                const float nextX = spacing + vm.positionOffset.x;
+                const unsigned int nextDigit = reinterpret_cast<unsigned int>(digitCursor) - 1u;
+                const int previousCount = digitCount;
+                remaining = previousCount - 1;
+                vm.positionOffset.x = nextX;
+                digitCursor = reinterpret_cast<unsigned char *>(nextDigit);
+                digitCount = remaining;
+            } while (remaining != 0);
             player = g_Player;
         }
     }
