@@ -7,11 +7,14 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `EnemyGameStateView::~EnemyGameStateView` at
-`0x00408AF0`. The real factory link matches its 402 bytes and all
-36 fields, including the stack receiver and the unwind actions for
-2, 8 and 5 VMs. The constructor, registration and factory also pass in
-this image.
+The active owner is `PlayerUpdateGate28::StartPowerTransition` at
+`0x00405860` (397 bytes). Use the real Player update link to preserve
+the stack receiver and both callers. The prior 397-byte image differs
+in the EBX save around VM creation, the spell-panel receiver retained
+after bonus invalidation, and the final rank and mode stores.
+Build `player-start-power-transition` for the 14-input candidate and
+compare its 17 fields with `scripts/compare-linked-function.py --unit
+player-start-power-transition`.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
