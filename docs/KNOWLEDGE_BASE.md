@@ -1615,6 +1615,8 @@ restored the EDI receiver at both calls and the full update comparison.
   `EclVmContext::StartSubroutine` and assigns the receiver to EAX.
   Declaring a virtual destructor `__stdcall` in a separate compiler
   probe preserves the default mangling and generated call sequence.
+  Adding `/EHs` or `/EHsc` moves the linked address by 0x40. The
+  385-byte extent, instruction sequence and ECX receiver are unchanged.
   The original executable's only direct call to the destructor is
   the deleting wrapper at `0x0040CC54`.
 - EnemyManager `activeEnemyCount` is at +0x60 (`DEC [ECX+0x60]` in the 386-byte enemy-object destructor; `INC` in Spawn). `spawnCounter` also wraps.
