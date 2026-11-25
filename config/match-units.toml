@@ -27717,7 +27717,6 @@ functions = ["MainSupervisorView::UpdateGameMode"]
 symbol = "?UpdateGameMode@MainSupervisorView@@QAEHXZ"
 target_address = 0x004218D0
 size = 666
-candidate = true
 data_spans = [{ offset = 0x28C, width = 14 }]
 linkages = [
   { offset = 0x021, type = "DIR32", symbol = "__imp__EnterCriticalSection@4", target = 0x004660B0 },

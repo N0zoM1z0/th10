@@ -17,6 +17,7 @@ comparison only for its source and link graph.
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
 | `spt-test-update` | 926 B | `SptTestUpdate`, 39 fields, VM lifetime and two-pass file enumeration. The registered callback and the interpreter, factory and worker calls match in the same image. |
+| `supervisor-update-game-mode` | 666 B | `SupervisorModes`, 60 fields, 20 jump entries and 14 selector bytes. The registered update, chain registration and lifecycle guards match in the same image. |
 | `gui-score-notice` | 668 B | `GuiScoreNoticeCore`, 35 fields and seven switch destinations. The spell-end caller, caption factory, script initializer and sprite setter pass in the same image. |
 | `enemy-full-constructor` | 673 B | Two-source `EnemyFullConstructor` link through `EnemySpawn`, five fields and the ESI receiver. The base, embedded context and runtime constructors pass independent replays. The caller passes in its own link. |
 | `gui-message-constructor` | 683 B | `EnemyEclDispatcher`, 21 fields, four stored-ID lookups and the 2,000-record bullet sweep. The actual allocation caller, its EH binding and the ECL dispatcher match in the same image. |
@@ -66,14 +67,6 @@ comparison only for its source and link graph.
 | `enemy-dispatch-ecl` | 14,416 B | `EnemyEclDispatcher`, 726 fields, 118 jump destinations and 181 opcode selectors. The selected replay includes dialog EH and the drop-flush body. |
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
-
-## Open owner
-
-`MainSupervisorView::UpdateGameMode` at `0x004218D0` is active. Placing
-the terminating mode last in the source lets VC7.1 move the shared
-unlock-and-return block behind the menu case. The warm `SupervisorModes`
-link matches all 666 bytes, 60 fields and the 14 selector bytes. Replay
-this unit and its registered update and lifecycle guards in that graph.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

@@ -1027,7 +1027,15 @@ frontier; do not refresh a baseline merely to accept the new positions.
   spell-end caller also passes in the corrected graph. The MIT-licensed
   reference supplied the loop and caption-store leads.
   [Reference license](licenses/th10-decomp-MIT.txt)
-- **MainSupervisorView::UpdateGameMode @0x4218D0 (666)**: 678. [2026-10-29]
+- **MainSupervisorView::UpdateGameMode @0x4218D0 (666)** matches 572 code
+  bytes, 20 jump entries, 14 selector bytes and all 60 fields. Keeping
+  the terminating case last in source lets VC7.1 move the common
+  unlock-and-return block behind the title creation call. The boot
+  failure enters that terminating case directly. Read the previous
+  mode into one local after acquiring the lock, and keep each title
+  creation call in its own case so the compiler can merge the tails.
+  The MIT-licensed reference supplied the terminating-case lead.
+  [Reference license](licenses/th10-decomp-MIT.txt)
 - **CStreamingSound::HandleWaveStreamNotification @0x44D850 (637)**: 634. The
   637-byte CFG variants order the read and fill blocks wrongly. [2026-11-11]
 - **EnemyResolveRuntimeCallback @0x4127A0 (593)**: natural C++ callback now
