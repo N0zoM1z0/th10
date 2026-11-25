@@ -28,13 +28,13 @@ extern u8 g_ChainNestCounter;
 
 ChainElem::ChainElem()
 {
-    const unsigned int previousFlags = flags & ~1u;
+    const unsigned int previousFlags = flags;
     callback = NULL;
     addedCallback = NULL;
     deletedCallback = NULL;
     prio = 0;
     // Preserve every flag except the allocation bit.
-    flags = previousFlags;
+    flags = previousFlags & ~1u;
     // Publish the self link before clearing the two remaining list links.
     ChainElem *volatile &publishedSelf = self;
     publishedSelf = this;

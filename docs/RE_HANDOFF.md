@@ -75,9 +75,10 @@ comparison only for its source and link graph.
 
 `EndingView::Initialize` at `0x0040B560` is active. The warm
 `EndingInitialize` link matches 584 bytes and 30 fields. The real
-`PbgArchive.cpp` input restores the file opener's EAX path and two stack
-arguments. The allocation cleanup reads its saved pointer at EBP+4.
-Cold replay this owner and compare the factory and callees in its image.
+`PbgArchive.cpp` input restores the two stack arguments of the file
+opener. The first cold replay exposed only the two inlined Chain node
+flag clears. Applying the mask at its store restores the warm match and
+preserves the known Chain consumers. Cold replay the final owner and allocator.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
