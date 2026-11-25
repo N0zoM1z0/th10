@@ -1509,6 +1509,16 @@ restored the EDI receiver at both calls and the full update comparison.
   The target uses ECX for the direct integer result and EDX for the
   converted result. Keeping the paths separate requires resolving that
   register difference or retaining the barrier.
+  Qualifying the direct integer write as volatile still produces the
+  shared store in the 542-byte cached-count loop. Deriving the payload
+  word offset from the descriptor offset lets VC7.1 materialize a separate
+  induction variable again. The resulting 552-byte body puts the word
+  offset in ECX and the instruction base in EAX. The inverse derivation
+  emits 576 bytes. This leaves the explicit two-offset loop as the closer
+  shape for isolating the allocator choices.
+  Keeping the encoded float operand in the scalar bit carrier until the
+  resolver call preserves the integer load and push. Loading it as a
+  native float first introduces an x87 load and a temporary spill.
 - In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
   the destination address LEA to EAX and advances the integer register
   cursor to ECX. The 551-byte candidate with a plain caller parameter

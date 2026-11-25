@@ -600,6 +600,14 @@ EclVmInstruction *EclVmScriptDatabase::FindSubroutine(const char *name)
 extern "C" void _ReadWriteBarrier();
 #pragma intrinsic(_ReadWriteBarrier)
 
+static const EclVmCallArgumentView *CallArgument(
+    const EclVmInstruction *instruction, unsigned int offset)
+{
+    return reinterpret_cast<const EclVmCallArgumentView *>(
+        reinterpret_cast<unsigned int>(instruction->operands) + offset);
+}
+
+
 int EclVmContext::StartSubroutine(
     EclVmContext *volatile caller, unsigned int firstArgument)
 {
@@ -637,10 +645,7 @@ int EclVmContext::StartSubroutine(
         for (int operandCount = initialCount; argumentIndex < operandCount;)
         {
             const char sourceType =
-                reinterpret_cast<const EclVmCallArgumentView *>(
-                    reinterpret_cast<const unsigned char *>(
-                    reinterpret_cast<unsigned int>((*callerInstruction)->operands) +
-                    metadataOffset))->sourceType;
+                CallArgument(*callerInstruction, metadataOffset)->sourceType;
 
             // CALL arguments follow a counted name; scalarOperands[1] is
             // only their first-word overlay, not a bounded C++ array.
@@ -653,10 +658,7 @@ int EclVmContext::StartSubroutine(
                         valueOffset / sizeof(int))->integer;
                 EclVmContext *const source = caller;
                 const float resolved = ReadFloatValue(source, argumentIndex, value.real);
-                if (reinterpret_cast<const EclVmCallArgumentView *>(
-                    reinterpret_cast<const unsigned char *>(
-                    reinterpret_cast<unsigned int>((*callerInstruction)->operands) +
-                    metadataOffset))->destinationType == 'f')
+                if (CallArgument(*callerInstruction, metadataOffset)->destinationType == 'f')
                     argument->real = resolved;
                 else
                     argument->integer =
@@ -668,10 +670,7 @@ int EclVmContext::StartSubroutine(
                 const int operand =
                     OperandInt(*callerInstruction, valueOffset / sizeof(int));
                 const int resolved = source->ReadIntValue(argumentIndex, operand);
-                if (reinterpret_cast<const EclVmCallArgumentView *>(
-                    reinterpret_cast<const unsigned char *>(
-                    reinterpret_cast<unsigned int>((*callerInstruction)->operands) +
-                    metadataOffset))->destinationType == 'f')
+                if (CallArgument(*callerInstruction, metadataOffset)->destinationType == 'f')
                 {
                     const float converted = static_cast<float>(resolved);
                     EclVmScalar *const output = argument;
