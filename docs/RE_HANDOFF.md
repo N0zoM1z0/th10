@@ -7,27 +7,13 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `GuiView::LoadData` at `0x00413A20`, 289 bytes
-in `src/Gui.cpp`. It is the largest remaining authored owner apart from the
-explicitly deferred `StartSubroutine`. Its first strict comparison now matches all 289 bytes, 16 fields and
-six local branches in `GuiCreation-cold-20261025`. A consumed route view
-restores both argument/index register groups. Direct score copying before
-the two spell assignments avoids the priority-16 named snapshot and lets
-the priority-12 minus-one constant use EAX. The native score read uses ECX;
-the score store remains last. Two local ordering barriers retain the timer
-schedule. Source and read-only C2 findings are in `docs/KNOWLEDGE_BASE.md`.
-
-Run the selected independent cold replay before ledger credit:
-
-```bash
-scripts/repo-python scripts/replay-exact-units.py \
-  --unit gui-load-data --unit gui-creation-initialize \
-  --unit game-manager-initialize --json
-```
-
-Receipts and the current positive source are under `.analysis/gui-load-data/`.
-Use `score-copy-first-compare.json` for the first complete strict match.
-Stay on this owner until the selected cold links finish.
+The sole active owner is `FrontEndUpdateMainMenu` at `0x0042D300`, 288
+bytes in `src/FrontEnd.cpp`. It is the largest remaining authored owner apart
+from the explicitly deferred `StartSubroutine`. Its complete extent contains
+268 code bytes and 20 bytes of switch destinations through `0x0042D41F`.
+Inspect its current implementation and retained FrontEnd update recipe,
+compare the complete source early, and stay on this owner through its full
+strict cold match.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
@@ -69,6 +55,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `gui-load-data` | 289 B | `GuiCreation-cold-20261025`, 16 fields and six local branches. Both direct callers pass: GUI Initialize 147/15 and GameManager Initialize 1,009/102 in its own link. |
 | `laser-type1-initialize` | 309 B | `LaserType1InitCore`, seven fields. Unchanged natural source with the real VM starter and script loader; independent cold replay passes. |
 | `frontend-insert-score` | 316 B | `ResultMenuClose`, 18 fields and the EDI table receiver. Both direct callers pass their own selected cold links. |
 | `player-destructor` | 325 B | `ScriptViewerDestructSmall`, 30 fields and the real 34-byte VM cleanup. Five selected lifecycle/field consumers pass their own cold links. |

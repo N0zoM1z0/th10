@@ -60,6 +60,13 @@ and independent cold replay under `.analysis/laser-type1-initialize/`. Keep
 `build/match-linked/LaserType1InitCore/`; the temporary decoder output and
 one-off diagnostic helper have been removed.
 
+The GUI stage-data loader retains its initial diagnosis, complete strict
+comparison, selected cold replay and one useful read-only C2 allocation trace
+under `.analysis/gui-load-data/`. Keep its live `GuiCreation-cold-20261025`
+and `GameStartupRestore` links. Superseded source snapshots, warm dumps,
+private relink helpers and debugger-link images have been removed (about
+2.2 MiB).
+
 The Bomb power transition cleanup reclaimed about 26 MiB in source
 snapshots, trial links and superseded GUI and text-rendering outputs.
 

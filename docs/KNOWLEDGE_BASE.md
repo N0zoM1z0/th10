@@ -1323,11 +1323,12 @@ frontier; do not refresh a baseline merely to accept the new positions.
   public lookup cannot establish the meaning of an interior reference.
   The corrected receipts are `member-bindings-compare.json` and
   `member-bindings-replay.json` in the same directory.
-- **GuiView::LoadData @0x413A20 (289)** has its first complete strict
-  match in `GuiCreation-cold-20261025`: all 289 bytes, 16 fields and six
-  local branches. The private receiver remains on the stack with
-  RET 4. Independent selected cold replay with both direct consumers is
-  pending; receipts are under `.analysis/gui-load-data/`.
+- **GuiView::LoadData @0x413A20 (289)** is accepted in
+  `GuiCreation-cold-20261025`: all 289 bytes, 16 fields and six local branches
+  reproduce cold. The private receiver remains on the stack with RET 4.
+  Both direct consumers pass their selected cold links: GUI Initialize at
+  147 bytes/15 fields and GameManager Initialize at 1,009 bytes/102 fields.
+  Receipts are under `.analysis/gui-load-data/`.
 
   `GuiStageRouteView` names two message filenames at +0x18 and the UI ANM
   filename at +0x20. Read the ANM name directly in the preload call and use
