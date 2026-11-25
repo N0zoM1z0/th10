@@ -35,7 +35,13 @@ The remaining 14 bytes differ in register choices for the raw operand
 loads and pushes, the integer result path, and the loop latch. The loop
 latch now reloads the destination cursor, caller instruction and word
 offset in target order. The target holds the destination in ECX and the
-instruction in EAX.
+instruction in EAX. At +0x97, the integer operand's live range is
+eligible for EAX, ECX and EDX. EAX and ECX tie at −1 in the current
+`ChoosePhysReg` trace. The earlier 551-byte candidate assigns ECX to
+this load with the signed costs 1, −1 and 1. Two previously allocated
+ranges contribute one preference each to the tie. Run
+`.analysis/ecl-start-subroutine/trace-int-word-preference-origin.py`
+against the built two-source candidate to identify those ranges.
 
 Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 [frontiers.toml](../config/frontiers.toml). Product closure, runtime semantics

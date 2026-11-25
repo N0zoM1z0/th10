@@ -1466,6 +1466,17 @@ restored the EDI receiver at both calls and the full update comparison.
   all three slot loads. The operand count can then use an ordinary byte
   read. All remaining differences in the 536-byte match are register
   choices within the argument loop.
+  The integer operand load at +0x97 keeps its compiler tuple from
+  GlobalRegAlloc to Riscify. `CreateGlobregs` gives the result its own
+  virtual symbol, and the allocation watchpoint records the physical
+  assignment in `ChoosePhysReg`. All three scratch registers are
+  eligible. The current source chooses EAX on a tie with ECX at −1.
+  The earlier plain-caller candidate assigns ECX at −1 with EAX and EDX
+  both at 1. A watchpoint on the preference list records one entry
+  each from the earlier EAX and ECX allocations in the current candidate.
+  Both list writes occur at `0x10759830`. Capturing a local destination
+  pointer in the raw integer store fixes +0xBB but moves the float result
+  and latch registers.
 - In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
   the destination address LEA to EAX and advances the integer register
   cursor to ECX. The 551-byte candidate with a plain caller parameter
