@@ -67,6 +67,11 @@ and `GameStartupRestore` links. Superseded source snapshots, warm dumps,
 private relink helpers and debugger-link images have been removed (about
 2.2 MiB).
 
+The main-menu entry owner retains its baseline, complete strict comparison
+and dispatcher cold replay under `.analysis/frontend-main-menu/`, with the
+live graph in `build/match-linked/FrontEndReplay/`. Superseded warm dumps
+and the private relink helper have been removed.
+
 The Bomb power transition cleanup reclaimed about 26 MiB in source
 snapshots, trial links and superseded GUI and text-rendering outputs.
 

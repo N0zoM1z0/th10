@@ -7,23 +7,15 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `FrontEndUpdateMainMenu` at `0x0042D300`, 288
-bytes in `src/FrontEnd.cpp`. It is the largest remaining authored owner apart
-from the explicitly deferred `StartSubroutine`. Its first strict comparison now matches all 288 bytes and 20 fields
-in `FrontEndReplay`, including the complete five-entry switch table. Use
-`cursor.Select(0)` for the target inline reset, and assign the returned VM
-ID's integer `.value` directly to recover EDX. The receiver remains EBX.
-No shared header or helper implementation changed.
-
-Before ledger credit, run the independent selected cold replay:
-
-```bash
-scripts/repo-python scripts/replay-exact-units.py \
-  --unit frontend-main-menu-update --unit frontend-update-dispatcher --json
-```
-
-Current receipts are under `.analysis/frontend-main-menu/`.
-Stay on this owner until the selected cold link finishes.
+The sole active owner is `MainConfigureCamera` at `0x00421480`, 287 bytes
+in `src/MainViewport.cpp`. It is the first largest remaining authored owner
+apart from the explicitly deferred `StartSubroutine`. Its previous candidate
+matched 282/287 bytes: rounded viewport captures and conversion of the tan
+result recovered the first 0x59 bytes, but aspect computation was scheduled
+after LookAt instead of before. Establish the current complete baseline from
+its declared recipe, then stay on this owner through a strict cold match.
+Relevant failed controls are in `docs/KNOWLEDGE_BASE.md`; do not repeat them
+without a new prediction.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
@@ -65,6 +57,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `frontend-main-menu-update` | 288 B | `FrontEndReplay`, 20 fields including five switch entries. The real dispatcher passes 1,128 bytes/99 fields in the same cold link. |
 | `gui-load-data` | 289 B | `GuiCreation-cold-20261025`, 16 fields and six local branches. Both direct callers pass: GUI Initialize 147/15 and GameManager Initialize 1,009/102 in its own link. |
 | `laser-type1-initialize` | 309 B | `LaserType1InitCore`, seven fields. Unchanged natural source with the real VM starter and script loader; independent cold replay passes. |
 | `frontend-insert-score` | 316 B | `ResultMenuClose`, 18 fields and the EDI table receiver. Both direct callers pass their own selected cold links. |

@@ -2408,9 +2408,9 @@ restored the EDI receiver at both calls and the full update comparison.
   counter and demo index keep their established offsets. Separate externs
   for each word changed register allocation and store ordering even after
   the dispatch tails matched. Keep the exact stage scan and the timer tick.
-- **FrontEndUpdateMainMenu @0x42D300 (288)** has its first complete
-  strict match in `FrontEndReplay`: 268 code bytes, five owned switch entries
-  and all 20 fields. The real dispatcher supplies EBX and the worker returns
+- **FrontEndUpdateMainMenu @0x42D300 (288)** is accepted in
+  `FrontEndReplay`: 268 code bytes, five owned switch entries and all 20
+  fields reproduce in the selected cold replay. The real dispatcher supplies EBX and the worker returns
   without stack arguments. The initial current-source cold build emitted
   272 bytes because cursor reset called the out-of-line lower-clamping setter.
   Use the existing `cursor.Select(0)` upper-bound selection instead. It
@@ -2422,8 +2422,9 @@ restored the EDI receiver at both calls and the full update comparison.
   the target EDX temporary while keeping the hidden return destination in
   EDI. These two changes produce the complete 288-byte match. All six local
   fields are fixed: the table address and five destinations. The pressed
-  input reference binds `g_FrontEndInput` at 0x474E30 plus six. Independent
-  cold replay with `frontend-update-dispatcher` is pending; receipts are under
+  input reference binds `g_FrontEndInput` at 0x474E30 plus six. The real
+  `frontend-update-dispatcher` also passes its complete 1,128-byte owner and
+  99 fields in the same cold link. Receipts are under
   `.analysis/frontend-main-menu/`.
 - `FrontEndUpdateMainMenuReturn` at 0x0042D420 occupies 1,280 bytes.
   Its five phase destinations and both eight-entry item tables account
