@@ -7,7 +7,13 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The next owner selection follows the canonical match ledger.
+The active owner is `EclVmContext::StartSubroutine` at `0x0044DF70`
+in `src/EclVm.cpp`. The target owns 550 bytes and receives the destination
+in EAX and two stack arguments. The two-source `EclVmHostRunEnemy`
+candidate reproduces the larger `GameManagerUpdate` graph's 551-byte
+baseline. The main differences are the loop entry, integer conversion
+branch and frame-push registers. Direct offset and typed-cursor forms
+preserve the baseline. Keep the real `Run` and child-spawn callers.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
