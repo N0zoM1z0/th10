@@ -21,9 +21,11 @@ read-only C2 trace and its completed debugger link are retained under
 The loop latch assigns its destination cursor before the instruction
 pointer, which leaves the latter with ECX and EDX available. C2 creates
 their global-register candidates in read order and queues them in that
-same order. Reversing the reads assigns the desired registers but changes
-the machine-code schedule; the next useful experiment must preserve that
-schedule while changing a candidate's benefit or preference. The target
+same order. An instruction-walk counter supplies their secondary queue
+order, with 106 for the cursor and 105 for the instruction. Reversing the
+reads assigns the desired registers but changes the machine-code schedule;
+the next useful experiment must preserve that schedule while changing a
+candidate's priority, secondary order, or register preference. The target
 uses ECX for the cursor and EAX for the instruction pointer. See
 [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) for traces and cold replay scope.
 For nonexact candidates, compile and compare only the affected unit.

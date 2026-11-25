@@ -1602,7 +1602,13 @@ restored the EDI receiver at both calls and the full update comparison.
   A C2 trace through `OrderGlobregs` places those candidates consecutively
   in its input hash buckets 27, 28 and 29 and in the output queue in the
   same order. Each has benefit 8. `GrgNewGlobreg` assigns increasing numbers
-  and uses the low ten bits as the hash bucket. The three corresponding
+  and uses the low ten bits as the hash bucket. The order is also determined
+  by the secondary ordering field at candidate +0x44: the cursor,
+  instruction and offset have values 106, 105 and 104, and `OrderGlobregs`
+  sorts equal-priority candidates by this field in descending order. A
+  write watchpoint identifies `CreateGlobregs` at 0x107A8713 assigning the
+  field from its instruction-walk counter; the writes occur in offset,
+  instruction, cursor order. The three corresponding
   reads occur in that same order in the Color input block. Moving the
   instruction read before the cursor read in a control reverses their
   candidate roles and gives the instruction EAX and cursor ECX, but also
