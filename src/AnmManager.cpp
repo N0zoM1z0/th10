@@ -6285,67 +6285,55 @@ int __stdcall AsciiManagerDrawStrings(AsciiManagerView *manager)
 // mode split is the exact floating-point comparison against scale 1.0.
 int __stdcall AsciiManagerDrawGuiStrings(AsciiManagerView *manager)
 {
-    float spaceWidth;
     int currentViewport = 1;
-    int index;
-    AsciiManagerStringView *string = manager->guiStrings;
-    AnmVmView *vm = &manager->primaryVm014;
-
     *reinterpret_cast<unsigned int *>(&manager->primaryVm014.flags35C) =
         (*reinterpret_cast<unsigned int *>(&manager->primaryVm014.flags35C) &
          0xffd7ffffu) | 0x00140001u;
 
-    for (index = 0; index < manager->numGuiStrings; ++index, ++string)
+    AsciiManagerStringView *string = manager->guiStrings;
+    for (int index = 0; index < manager->numGuiStrings; ++index, ++string)
     {
-        unsigned char *text;
-
-        vm->position = string->position;
-        vm->scaleX = string->scaleX;
-        vm->scaleY = string->scaleY;
-        *reinterpret_cast<unsigned int *>(&vm->flags35C) |= 8;
-        spaceWidth = manager->spaceWidth * string->scaleX;
-
+        manager->primaryVm014.position = string->position;
+        SetAsciiGlyphScale(&manager->primaryVm014, string->scaleX, string->scaleY);
+        const float spaceWidth = manager->spaceWidth * string->scaleX;
+        const char *text = string->text;
         if (currentViewport != string->viewportIndex)
         {
             currentViewport = string->viewportIndex;
             g_AnmRenderManagerView->FlushVertexBuffer();
-            CONFIGURE_ASCII_VIEWPORT(currentViewport);
+            SetAsciiViewport(currentViewport);
         }
 
-        text = reinterpret_cast<unsigned char *>(string->text);
-        while (*text != '\0')
+        for (; *text != '\0'; ++text)
         {
             if (*text == '\n')
             {
-                manager->primaryVm014.position.y += 14.0f * string->scaleY;
+                manager->primaryVm014.position.y += string->scaleY * 14.0f;
                 manager->primaryVm014.position.x = string->position.x;
+                continue;
+            }
+            if (*text == ' ')
+            {
+                manager->primaryVm014.position.x += spaceWidth;
             }
             else
             {
-                if (*text != ' ')
-                {
-                    AnmSpriteView *sprite =
-                        &manager->asciiAnm->sprites[*text - ' '];
-                    vm->loadedSprite = sprite;
-                    vm->primaryColor.value = string->color;
-                    if (vm->scaleX == 1.0f)
-                        g_AnmRenderManagerView->DrawNoRotation(
-                            vm);
-                    else
-                        g_AnmRenderManagerView->DrawNoRotationNoRound(
-                            vm);
-
-                }
+                manager->primaryVm014.loadedSprite =
+                    &manager->asciiAnm->sprites[static_cast<unsigned char>(*text) - ' '];
+                manager->primaryVm014.primaryColor.value = string->color;
+                if (manager->primaryVm014.scaleX != 1.0f)
+                    g_AnmRenderManagerView->DrawNoRotationNoRound(&manager->primaryVm014);
+                else
+                    g_AnmRenderManagerView->DrawNoRotation(&manager->primaryVm014);
                 manager->primaryVm014.position.x += spaceWidth;
             }
-            ++text;
         }
     }
 
     if (currentViewport != 0)
     {
         g_AnmRenderManagerView->FlushVertexBuffer();
-        CONFIGURE_ASCII_VIEWPORT(0);
+        SetAsciiViewport(0);
     }
     return 1;
 }

@@ -39604,3 +39604,49 @@ linkages = [
   { offset = 0x225, type = "REL32", symbol = "??_M@YGXPAXIHP6EX0@Z@Z", target = 0x004525FF },
   { offset = 0x234, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
 ]
+
+[units.ascii-manager-draw-gui-strings]
+artifact_kind = "linked-pe"
+source = "src/StageScript.cpp"
+support_sources = ["src/StageLifecycle.cpp", "src/StageDraw.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/FileSystem.cpp", "src/MainViewport.cpp"]
+pdb_source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AsciiGuiDraw"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+functions = ["AsciiManagerDrawGuiStrings"]
+symbol = "?AsciiManagerDrawGuiStrings@@YGHPAUAsciiManagerView@@@Z"
+target_address = 0x00401A50
+size = 570
+candidate = true
+linkages = [
+  { offset = 0x9a, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0xa5, type = "REL32", symbol = "?FlushVertexBuffer@AnmRenderManagerView@@QAEXXZ", target = 0x00442F50 },
+  { offset = 0xae, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x154 },
+  { offset = 0xb4, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x384 },
+  { offset = 0xb9, type = "REL32", symbol = "?ConfigureCamera@StageCameraStateView@@QAEXXZ", target = 0x004215A0 },
+  { offset = 0xbf, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x384 },
+  { offset = 0xc4, type = "DIR32", symbol = "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A", target = 0x00491C30 },
+  { offset = 0xda, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x388 },
+  { offset = 0xe5, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x26C },
+  { offset = 0xeb, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x384 },
+  { offset = 0xf0, type = "REL32", symbol = "?ConfigureCamera@StageCameraStateView@@QAEXXZ", target = 0x004215A0 },
+  { offset = 0xf6, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x384 },
+  { offset = 0xfb, type = "DIR32", symbol = "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A", target = 0x00491C30 },
+  { offset = 0x111, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x388 },
+  { offset = 0x132, type = "DIR32", symbol = "__real@41600000", target = 0x00470C88 },
+  { offset = 0x159, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x18b, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x194, type = "REL32", symbol = "?DrawNoRotationNoRound@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x00443290 },
+  { offset = 0x19c, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x1a5, type = "REL32", symbol = "?DrawNoRotation@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x00443080 },
+  { offset = 0x1e9, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x1ee, type = "REL32", symbol = "?FlushVertexBuffer@AnmRenderManagerView@@QAEXXZ", target = 0x00442F50 },
+  { offset = 0x1f3, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x26C },
+  { offset = 0x1f9, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x384 },
+  { offset = 0x1fe, type = "REL32", symbol = "?ConfigureCamera@StageCameraStateView@@QAEXXZ", target = 0x004215A0 },
+  { offset = 0x204, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x384 },
+  { offset = 0x209, type = "DIR32", symbol = "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A", target = 0x00491C30 },
+  { offset = 0x225, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x388 },
+]

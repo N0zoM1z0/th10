@@ -7,13 +7,13 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The largest remaining reviewed authored owner is
-`AsciiManagerDrawGuiStrings` at `0x00401A50`, 570 bytes, in
-`src/AnmManager.cpp`. Start from the real `ascii-manager-on-draw-high`
-recipe. Its 10-byte callback already binds the renderer and establishes
-the EBX receiver. The regular-string renderer at `0x00401760` is a
-separate exact owner. Record the new selection here before editing.
-Continue that owner through a strict cold match before switching.
+Active owner: `AsciiManagerDrawGuiStrings` at `0x00401A50`, 570 bytes,
+in `src/AnmManager.cpp`. Its real `ascii-manager-on-draw-high`
+callback establishes the EBX receiver. Use a linked recipe with the
+actual draw, flush and camera bodies. The exact regular-string renderer
+at `0x00401760` supplies the shared scale and viewport helpers.
+The warm `AsciiGuiDraw` link matches 570 bytes and 28 fields.
+Run the selected cold replay and verify the callback and render callees.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
