@@ -7,8 +7,13 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The Bomb power transition is complete. Use the match and origin ledgers to
-choose the next authored function when reconstruction resumes.
+The active owner is `EclVmContext::StartSubroutine` at `0x0044DF70` in
+`src/EclVm.cpp`. It is the largest authored function still open in the
+match ledger. The two-source `EclVmHostRunEnemy` link matches 536 of 550
+bytes and resolves all four call fields. The remaining bytes are register
+choices in the operand loop. The same cold link passes `ecl-vm-spawn-thread`
+and `ecl-vm-host-run`, and the separate `ecl-vm-run` link also passes.
+The allocator and tail merge findings are in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md).
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -27,15 +32,6 @@ cold links. The stage constructor and destructor guards still need to
 qualify the inline VM destructor in `src/StageLifecycle.cpp`, where the
 stage link now emits it. Finish those guards before promoting
 `script-viewer-destructor` to the match ledger.
-
-`EclVmContext::StartSubroutine` at `0x0044DF70` remains at 536/550 bytes
-with all four call fields resolved in the `ecl-vm-start-subroutine`
-comparison. Its latest source separates encoded operands from their
-resolved values and uses one typed descriptor reader. The two-source
-cold link reproduces the same 14 register-only differences and passes
-`ecl-vm-spawn-thread` and `ecl-vm-host-run`; the separate
-`ecl-vm-run` link also passes. The allocator and late tail merge findings
-are in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md).
 
 Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 [frontiers.toml](../config/frontiers.toml).
