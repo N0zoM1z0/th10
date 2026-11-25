@@ -1164,9 +1164,11 @@ frontier; do not refresh a baseline merely to accept the new positions.
   branches. A selected cold replay passed and the owner is canonical exact.
   [2026-11-22]
 - **BulletRuntimeView::UpdateAbsoluteDirectionChange @0x4078E0 (335)**:
-  the maintained source's first canonical `BulletHorizontalWrap` build
-  matches all 335 bytes and eight bound fields. The selected cold replay
-  of this owner and its direct caller is pending.
+  two independent canonical `BulletHorizontalWrap` cold builds match all
+  335 bytes and eight bound fields. The selected `bullet-runtime-update`
+  cold replay also matches 885 bytes and 39 fields. Reproduce both with
+  `scripts/repo-python scripts/replay-exact-units.py
+  --unit bullet-update-absolute-direction --unit bullet-runtime-update --json`.
 
   A function-local motion view preserves the target schedule. It gives
   speed and timer flags volatile accesses, gives the scale pointer volatile
@@ -1180,8 +1182,7 @@ frontier; do not refresh a baseline merely to accept the new positions.
 
   The crucial local register use is the angle assignment, not necessarily
   the flags read. A read-only VC7.1 SP1 6030 C2 trace of the nested-view
-  control assigns
-  the copy from +0x6C8 to +0x3E4 to EAX (temporary 0x124), then magnitude
+  control assigns the copy from +0x6C8 to +0x3E4 to EAX (temporary 0x124), then magnitude
   to ECX (0x11A) and outgoing angle to EDX (0x11B). Its debugger and ordinary
   links agree across all 335 bytes and eight resolved fields. That control
   still matches only 320/335: it stores the angle before loading speed and

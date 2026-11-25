@@ -35,6 +35,11 @@ supplies the source, recipes and ledgers. Keep these private inputs locally.
   `.analysis/player-start-power-transition/`. Its canonical link is
   `build/match-linked/PlayerStartPowerTransition/`.
 
+The absolute-direction owner retains its canonical comparison and selected
+cold replay under `.analysis/bullet-absolute/`, with the live link in
+`build/match-linked/BulletHorizontalWrap/`. Removing its superseded source
+trials, debugger contexts and experiment links reclaimed about 53 MiB.
+
 The Bomb power transition cleanup reclaimed about 26 MiB in source
 snapshots, trial links and superseded GUI and text-rendering outputs.
 

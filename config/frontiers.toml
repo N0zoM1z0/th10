@@ -5,13 +5,6 @@
 # candidate's link-resolved fields are masked. Record changes with --update or
 # --add rather than by hand.
 
-[frontier.bullet-update-absolute-direction]
-function = "BulletRuntimeView::UpdateAbsoluteDirectionChange"
-unit = "bullet-update-absolute-direction"
-candidate_size = 335
-target_sha256 = "e20984dc1778b1bfcdc3a91d44db88057c326184264be1fa698cd9df1284bc8f"
-residual = ["D7", "DD"]
-
 [frontier.initialize-game-statistics-record]
 function = "InitializeGameStatisticsRecord"
 unit = "game-statistics-initialize-record"
