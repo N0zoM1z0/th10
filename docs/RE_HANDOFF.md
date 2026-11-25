@@ -19,7 +19,11 @@ base, while the caller-context conflict cancels the EAX preference. The
 read-only C2 trace and its completed debugger link are retained under
 `.analysis/ecl-start-subroutine/terra-float-costs2.*`.
 The loop latch assigns its destination cursor before the instruction
-pointer, which leaves the latter with ECX and EDX available. The target
+pointer, which leaves the latter with ECX and EDX available. C2 creates
+their global-register candidates in read order and queues them in that
+same order. Reversing the reads assigns the desired registers but changes
+the machine-code schedule; the next useful experiment must preserve that
+schedule while changing a candidate's benefit or preference. The target
 uses ECX for the cursor and EAX for the instruction pointer. See
 [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) for traces and cold replay scope.
 For nonexact candidates, compile and compare only the affected unit.

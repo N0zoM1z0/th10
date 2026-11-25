@@ -1631,6 +1631,12 @@ restored the EDI receiver at both calls and the full update comparison.
   switch cases produces 557 bytes. Neither control-flow form preserves the
   target's shared branch, so the remaining allocation difference needs a
   change in the existing shared path or its live ranges.
+  With a plain destination pointer, making only the result-path reads
+  volatile gives a 550-byte owner but moves the latch's instruction read
+  ahead of the cursor read. Making the latch cursor read volatile too
+  restores the same 542-byte match as the retained source. A volatile
+  operand-count read with a plain instruction slot gives a 544-byte owner;
+  keeping the instruction slot volatile yields the existing 542-byte match.
   In this 542-byte-match form, independently removing volatile access to
   the destination cursor, the latch instruction slot, or the value offset
   produces owner lengths of 542, 544, and 546 bytes respectively. The
