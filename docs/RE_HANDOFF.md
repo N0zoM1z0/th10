@@ -31,6 +31,8 @@ scripts/repo-python scripts/ci.py && git diff --check
 
 The entry through the word-offset shift at +0x94 matches. So do the
 floating-point result path and the return-frame and lookup sequence.
+The operand loop seeds its condition from the initial count read, so
+the destination cursor initialization needs no compiler barrier.
 The remaining 14 bytes differ in register choices for the raw operand
 loads and pushes, the integer result path, and the loop latch. The loop
 latch now reloads the destination cursor, caller instruction and word
@@ -45,6 +47,8 @@ earlier candidate splits and spills that range, then `RegAssign` picks
 EAX for the shift. Compare those paths with
 `.analysis/ecl-start-subroutine/trace-offset-color-writes.sh` (use the
 saved `baseline` and `named-float-ordered-latch-reference` sources).
+For the float operand at +0xC6, `ChoosePhysReg` selects ECX at −1
+with EAX and EDX both at 0. The float call needs the operand in EDX.
 
 Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 [frontiers.toml](../config/frontiers.toml). Product closure, runtime semantics

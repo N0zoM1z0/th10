@@ -1489,6 +1489,13 @@ restored the EDI receiver at both calls and the full update comparison.
   183 and takes EAX in `ChoosePhysReg`. Removing both volatile latch
   accesses changes the extent to 546 bytes. Delaying the word offset
   write until the loop continues emits 542 bytes.
+  Seeding the `for` loop from the same operand count used by the initial
+  guard preserves the 536-byte candidate's instruction stream and lets
+  the source drop the barrier between the two cursor initializations.
+  An independent `for` condition that rereads the count at entry adds a
+  second guard. The float raw-word load at +0xC6 receives the same EAX
+  and ECX preferences as the integer load, but chooses ECX with net
+  costs 0, −1 and 0. The target uses EDX for that operand.
 - In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
   the destination address LEA to EAX and advances the integer register
   cursor to ECX. The 551-byte candidate with a plain caller parameter

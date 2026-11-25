@@ -625,17 +625,16 @@ int EclVmContext::StartSubroutine(
     }
 
     int argumentIndex = firstArgument + 1;
-    if (argumentIndex < (*callerInstruction)->operandCount)
+    const int initialCount = (*callerInstruction)->operandCount;
+    if (argumentIndex < initialCount)
     {
         EclVmScalar *volatile argument = reinterpret_cast<EclVmScalar *>(
             reinterpret_cast<unsigned int>(destination->stack.data) +
             static_cast<unsigned int>(argumentOffset));
-        _ReadWriteBarrier();
         unsigned int valueOffset = metadataOffset +
             static_cast<int>(offsetof(EclVmCallArgumentView, integer));
         volatile unsigned int &valueCursor = valueOffset;
-        int operandCount;
-        do
+        for (int operandCount = initialCount; argumentIndex < operandCount;)
         {
             const char sourceType =
                 reinterpret_cast<const EclVmCallArgumentView *>(
@@ -698,7 +697,7 @@ int EclVmContext::StartSubroutine(
                 static_cast<unsigned int>(argumentIndex) + 1u);
             valueCursor = previousValueOffset + sizeof(EclVmCallArgumentView);
             metadataOffset += sizeof(EclVmCallArgumentView);
-        } while (argumentIndex < operandCount);
+        }
     }
 
     EclVmContext *const frameCaller = caller;
