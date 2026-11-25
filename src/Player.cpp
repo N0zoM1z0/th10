@@ -2846,7 +2846,7 @@ int ScriptViewerBombOwnerView::StartPowerTransition()
     if (((state->flags378C & 1u) == 0 ||
             state->spellId < 93 || state->spellId > 96) &&
         state->spellId != 109)
-        script = g_PlayerCharacter != 0 ? 407 : 400;
+        script = g_GameScoreState.history.statisticsGroupA != 0 ? 407 : 400;
     else
         script = 441;
     vmId2C = g_EnemyPrimaryResourceOwner->primaryEnemyResource->CreateVmAtWorldVariant0(

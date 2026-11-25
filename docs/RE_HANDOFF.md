@@ -27,8 +27,9 @@ the call. The target keeps the panel there and reads rank afterward.
 The pointer-bound loop trial matches all 397 caller bytes and 17 fields
 while emitting 69 bytes for the 81-byte invalidator. The indexed
 invalidator remains the maintained source. Both functions need to match
-in the same link. The power display now reads the shared score member at
-`0x00474C40 + 0x08`.
+in the same link. The transition reads character and power from offsets
+`+0x28` and `+0x08` of the score object at `0x00474C40`. Rank uses
+`+0x58`.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
