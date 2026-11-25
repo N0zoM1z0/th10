@@ -151,6 +151,17 @@ static void RemoveStartupElement(th10::ChainElem *element, th10::Chain *chain)
     --g_MainSupervisorView.criticalSectionLockCounts[0];
 }
 
+static inline void ReleaseStartupBank(int index)
+{
+    AnmLoadedView *&bank = g_AnmRenderManagerView->loadedAnms[index];
+    if (bank != NULL)
+    {
+        bank->Release();
+        ::operator delete(bank);
+        bank = NULL;
+    }
+}
+
 // Target41FB50..41FCF0, including the automatic VM/worker member cleanup.
 StartupWorkerView::~StartupWorkerView()
 {
@@ -158,14 +169,15 @@ StartupWorkerView::~StartupWorkerView()
     RemoveStartupElement(calcElement, th10::g_Chain);
     RemoveStartupElement(drawElement, th10::g_Chain);
     ReleaseStartupResources();
-    g_AnmRenderManagerView->ReleaseAnm(1);
+    ReleaseStartupBank(1);
     AsciiManagerView *ascii = g_AsciiManagerView;
     g_StartupWorker = NULL;
     if (ascii != NULL)
         delete ascii;
-    g_AnmRenderManagerView->ReleaseAnm(0);
+    ReleaseStartupBank(0);
     GameFinalizeStatistics42B1E0(g_GameStatisticsRows);
-    delete g_GameStatisticsRows;
+    GameStatisticsOwner *statistics = g_GameStatisticsRows;
+    delete statistics;
     g_GameStatisticsRows = NULL;
 }
 
