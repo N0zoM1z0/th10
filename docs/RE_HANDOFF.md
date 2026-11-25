@@ -7,13 +7,7 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-Active owner: `AsciiManagerDrawGuiStrings` at `0x00401A50`, 570 bytes,
-in `src/AnmManager.cpp`. Its real `ascii-manager-on-draw-high`
-callback establishes the EBX receiver. Use a linked recipe with the
-actual draw, flush and camera bodies. The exact regular-string renderer
-at `0x00401760` supplies the shared scale and viewport helpers.
-The warm `AsciiGuiDraw` link matches 570 bytes and 28 fields.
-Run the selected cold replay and verify the callback and render callees.
+The next owner selection follows the canonical match ledger.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -37,6 +31,7 @@ and portability remain open.
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `ascii-manager-draw-gui-strings` | 570 B | `StageViewport`, 28 fields, both quad paths and the EBX draw callback. |
 | `gui-destructor` | 574 B | `GuiDestructorCore` with `/EHsc` for all five inputs. All 37 fields, 18 local branches and seven unwind actions match. The receiver is on the stack and the function returns with RET 4. |
 | `game-reset-gui` | 1,965 B | `GameManagerUpdate`, 52 fields and 73 local branches. Both GameManager calls and the ScriptViewer call passed cold with an EDI receiver. |
 | `replay-manager-begin-stage` | 582 B | `ReplayBeginStageCore`, 25 fields and ten local branches. The position helper uses EAX and ECX here and matches 83 bytes in its default-profile cold link. |
@@ -47,6 +42,10 @@ and portability remain open.
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 local branches. Per-case child attachment drives allocation before tail merging. |
 
 ## Known comparison issue
+
+The `ascii-manager-initialize` factory graph has a pre-existing
+`Initialize` call-binding difference at +0x108. Relinking before and
+after the GUI draw source change produces the same diagnostic.
 
 The `gui-message-destructor` warm guard in `GameCleanupContext` differed by
 eight bytes. Relinking the source from before the `GuiView` destructor work

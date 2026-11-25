@@ -31227,17 +31227,17 @@ linkages = [
   { offset = 0xBC, type = "DIR32", local = true, target = 0x0042244A },
 ]
 
-# The real ASCII manager factory/callback registration graph selects EBX for
-# both the callback receiver and its GUI text renderer's private receiver.
+# The viewport link preserves the real callback and renderer receivers.
 [units.ascii-manager-on-draw-high]
 artifact_kind = "linked-pe"
-source = "src/AnmManager.cpp"
-support_sources = ["src/GameErrorContext.cpp", "src/Chain.cpp"]
-output_dir = "build/match-linked/AsciiManagerInitialize"
-profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+source = "src/StageScript.cpp"
+support_sources = ["src/StageLifecycle.cpp", "src/StageDraw.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/FileSystem.cpp", "src/MainViewport.cpp"]
+pdb_source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/StageViewport"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?AsciiManagerCreate@@YAPAUAsciiManagerView@@XZ"
+entry_symbol = "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
 functions = ["AsciiManagerView::OnDrawHighPriority"]
 symbol = "?OnDrawHighPriority@AsciiManagerView@@SIHPAU1@@Z"
 target_address = 0x00401520
@@ -39610,7 +39610,7 @@ artifact_kind = "linked-pe"
 source = "src/StageScript.cpp"
 support_sources = ["src/StageLifecycle.cpp", "src/StageDraw.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/FileSystem.cpp", "src/MainViewport.cpp"]
 pdb_source = "src/AnmManager.cpp"
-output_dir = "build/match-linked/AsciiGuiDraw"
+output_dir = "build/match-linked/StageViewport"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
@@ -39619,7 +39619,6 @@ functions = ["AsciiManagerDrawGuiStrings"]
 symbol = "?AsciiManagerDrawGuiStrings@@YGHPAUAsciiManagerView@@@Z"
 target_address = 0x00401A50
 size = 570
-candidate = true
 linkages = [
   { offset = 0x9a, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
   { offset = 0xa5, type = "REL32", symbol = "?FlushVertexBuffer@AnmRenderManagerView@@QAEXXZ", target = 0x00442F50 },

@@ -1017,6 +1017,14 @@ frontier; do not refresh a baseline merely to accept the new positions.
   batch flush and quad renderer pass in the same image. The local TH10
   reference supplied the glyph and space branch leads.
   [Reference license](licenses/th10-decomp-MIT.txt)
+- **AsciiManagerDrawGuiStrings @0x401A50 (570)** matches all 28 fields
+  in the cold `StageViewport` link. Keep the embedded glyph on the
+  manager, use the shared scale and viewport helpers, and take the text
+  cursor before testing the viewport. Giving the space and glyph arms
+  their own position advance lets C2 merge the update while preserving
+  the EBX receiver and the original stack slots. The high-priority
+  callback and both draw callees match in the same image.
+  [Reference license](licenses/th10-decomp-MIT.txt)
 - **GuiView::DrawStageElements @0x415800 (724)**: [2026-11-17] exact
   across the complete 724-byte function and 33 original-bound DIR32/REL32
   fields in the 17-input GUI draw `/GL` graph. The recovered natural C++
