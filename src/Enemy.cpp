@@ -1698,9 +1698,9 @@ EnemyFullObjectView::~EnemyFullObjectView()
     EnemyListNodeView *listNode = &enemy->runtime.listNode;
 
     if (manager->enemyListHead == listNode)
-        manager->enemyListHead = listNode->next;
+        manager->enemyListHead = enemy->runtime.listNode.next;
     if (manager->enemyListTail == listNode)
-        manager->enemyListTail = listNode->previous;
+        manager->enemyListTail = enemy->runtime.listNode.previous;
     if (listNode->next != NULL)
         listNode->next->previous = listNode->previous;
     if (listNode->previous != NULL)
@@ -1724,31 +1724,24 @@ EnemyFullObjectView::~EnemyFullObjectView()
         const unsigned int vmId = enemy->runtime.managedVmIds.words[i];
         if (vmId != 0)
         {
-            AnmVmView *vm = NULL;
             AnmVmLayerNodeView *vmNode = anmManager->primaryVmListHead;
             while (vmNode != NULL)
             {
                 if (static_cast<AnmVmView *>(vmNode->owner)->id == vmId)
-                {
-                    vm = static_cast<AnmVmView *>(vmNode->owner);
-                    break;
-                }
+                    goto foundVm;
                 vmNode = vmNode->next;
             }
-            if (vm == NULL)
+            vmNode = anmManager->secondaryVmListHead;
+            while (vmNode != NULL)
             {
-                vmNode = anmManager->secondaryVmListHead;
-                while (vmNode != NULL)
-                {
-                    if (static_cast<AnmVmView *>(vmNode->owner)->id == vmId)
-                    {
-                        vm = static_cast<AnmVmView *>(vmNode->owner);
-                        break;
-                    }
-                    vmNode = vmNode->next;
-                }
+                if (static_cast<AnmVmView *>(vmNode->owner)->id == vmId)
+                    goto foundVm;
+                vmNode = vmNode->next;
             }
+            goto clearVmId;
 
+        foundVm:
+            AnmVmView *vm = static_cast<AnmVmView *>(vmNode->owner);
             if (vm != NULL)
             {
                 vm->flags35C |= 0x4000000u;
@@ -1764,6 +1757,7 @@ EnemyFullObjectView::~EnemyFullObjectView()
                 }
             }
         }
+    clearVmId:
         enemy->runtime.managedVmIds.words[i] = 0;
     }
 

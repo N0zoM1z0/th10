@@ -40162,7 +40162,6 @@ linkages = [
 ]
 
 [units.enemy-full-object-destructor]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/EclVm.cpp"
 support_sources = ["src/Enemy.cpp"]

@@ -1611,25 +1611,17 @@ restored the EDI receiver at both calls and the full update comparison.
   secondary VM lists at +0x72DAD4 and +0x72DADC. It marks the matched VM
   and walks the child nodes only when the VM's preceding layer link is
   null. The target clears Player tracking with one Player pointer read.
-  The shared ANM types preserve the 385-byte candidate in the two-source
-  VC7.1 SP1 link. Inherit the virtual destructor from the base class.
+  Inherit the virtual destructor from the base class.
   Repeating `virtual` on the derived declaration kept its receiver in
   ECX, while the inherited declaration makes the compiler-generated
   deleting wrapper pass it on the stack. The cold wrapper matches all
   31 bytes with both calls bound and occupies vtable slot five.
-  The destructor now matches more of the target instruction sequence.
-  Direct `this` accesses, a self-reference and a countdown over the ten
-  VM slots preserve the linked ABI. Both an inline search helper and the
-  real `AnmRenderManagerView::FindVm` in the `EnemyScalarInterpolation`
-  link shorten the candidate to 369 bytes.
-  In the VC7.1 SP1 trace, `MdmFlexParams` takes its early exit for both
-  the destructor and the deleting wrapper. Its eligibility field at
-  function symbol +0xE1 is zero for both. In the same link it scans
-  `EclVmContext::StartSubroutine` and assigns the receiver to EAX.
-  Declaring a virtual destructor `__stdcall` in a separate compiler
-  probe preserves the default mangling and generated call sequence.
-  Adding `/EHs` or `/EHsc` moves the linked address by 0x40. The
-  385-byte extent, instruction sequence and ECX receiver are unchanged.
+  Load the replacement head and tail directly from the Enemy's embedded
+  node. Let both ANM list searches converge on the matched node and share
+  its marking path. A failed lookup still clears the VM id. Together
+  these changes reproduce all 386 bytes and seven fields in the
+  two-source VC7.1 SP1 link. With explicit `virtual`, both entries took
+  the early exit from `MdmFlexParams` and the destructor used ECX.
   A scan of the original PE for relative branches and literal pointers
   finds the destructor only in the deleting wrapper's call at `0x0040CC54`.
   The wrapper has no direct branch references and its only literal pointer

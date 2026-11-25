@@ -7,21 +7,10 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `EnemyFullObjectView::~EnemyFullObjectView` at
-`0x0040DAE0` in `src/Enemy.cpp`. The 386-byte target has a stack receiver
-and RET 4. The `enemy-full-object-destructor` candidate describes all seven
-target fields in the `EclVmHostRunEnemy` link. The cold 385-byte
-candidate passes the receiver on the stack because the destructor
-inherits its virtual declaration. The generated 31-byte deleting wrapper
-matches both calls and occupies the sixth virtual-table slot. The
-destructor still needs the original receiver register lifetime, both
-managed VM search paths, and the child-list cleanup layout.
-
-```sh
-timeout -k 10s 145s taskset -c 2 nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit enemy-full-object-destructor
-scripts/repo-python .analysis/enemy-full-destructor/compare.py EclVmHostRunEnemy
-scripts/repo-python scripts/compare-linked-function.py --unit enemy-full-object-destructor --json
-```
+The active owner is `CleanupHintOwner` at `0x00418EE0` in `src/Hint.cpp`
+(346 bytes). The two target callers are the Hint release path and
+GameManager cleanup. Keep the separate task locks, ten VM cleanup
+slots, and export-stream teardown in the complete comparison.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -45,6 +34,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `enemy-full-object-destructor` | 386 B | `EclVmHostRunEnemy`, seven fields. The inherited virtual declaration restores the stack receiver. Both VM searches share the same match path. The generated 31-byte deleting wrapper matches both calls and vtable slot five. |
 | `script-viewer-destructor` | 412 B | `ScriptViewerDestructSmall` with `/EHs`, 44 fields and two member unwind actions. The factory and eleven related entries pass in the same image. The Stage factory, constructor and destructor pass in their separate cold link. |
 | `player-start-power-transition` | 397 B | `PlayerStartPowerTransition`, 17 fields. The in-class indexed invalidator preserves the 81-byte outline in the same link and keeps the panel in ESI across its call. The two Player update calls retain the stack receiver. |
 | `enemy-spell-panel-destructor` | 402 B | `SpellPanelDestructor` with `/EHs`, 36 fields and three VM-array unwind actions. The receiver is on the stack with RET 4. |
