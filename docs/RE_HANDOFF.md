@@ -49,6 +49,12 @@ EAX for the shift. Compare those paths with
 saved `baseline` and `named-float-ordered-latch-reference` sources).
 For the float operand at +0xC6, `ChoosePhysReg` selects ECX at −1
 with EAX and EDX both at 0. The float call needs the operand in EDX.
+The barrier after the raw integer store keeps its exit separate. In
+the barrier-free build, Riscify sees both integer writes through EDX
+and the linked body shares the store that follows the float conversion.
+The target uses ECX for the direct integer result at +0xBB.
+`.analysis/ecl-start-subroutine/trace-result-tail-flow.sh` can replay
+the late flow trace with `native-raw-int-store` and `for-cached-head-base`.
 
 Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 [frontiers.toml](../config/frontiers.toml). Product closure, runtime semantics

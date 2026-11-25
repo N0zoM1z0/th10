@@ -1496,6 +1496,19 @@ restored the EDI receiver at both calls and the full update comparison.
   second guard. The float raw-word load at +0xC6 receives the same EAX
   and ECX preferences as the integer load, but chooses ECX with net
   costs 0, −1 and 0. The target uses EDX for that operand.
+  With the cached-count loop, removing the remaining barrier leaves
+  both integer writes visible at Riscify entry. The direct integer result
+  and the float-to-integer conversion each reload the destination into
+  EDX and store EAX through it. Both stores survive to the second
+  `FgDoLateFlowOpts` entry. By `FgCodeMotion` entry the direct store is
+  gone, reducing the final extent from 550 to 542 bytes. Typed pointer
+  stores, an aggregate assignment and a four-byte copy reproduce the
+  merge. A single barrier after the converted integer store is
+  byte-neutral against the retained source, which puts it after the
+  direct store.
+  The target uses ECX for the direct integer result and EDX for the
+  converted result. Keeping the paths separate requires resolving that
+  register difference or retaining the barrier.
 - In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
   the destination address LEA to EAX and advances the integer register
   cursor to ECX. The 551-byte candidate with a plain caller parameter
