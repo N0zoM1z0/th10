@@ -1394,9 +1394,42 @@ frontier; do not refresh a baseline merely to accept the new positions.
   aggregate through the byte view is also neutral. Assigning it through the
   named member instead changes the induction base and spills. Packed name
   views and a const reference to the name pointer preserve the failed
-  two-cursor shape. Keep the canonical /GL profile. The next source experiment
-  should separate the tail write from the copy while retaining EAX as the
-  active-byte cursor and EDI as a secondary name destination.
+  two-cursor shape. Keep the canonical /GL profile. Splitting the tail write
+  must preserve EAX as the active-byte cursor and EDI as a secondary name
+  destination.
+
+  `alias-dependency.trace` confirms why the scheduling edges exist. At
+  `0x107B58E4`, C2 compares the tail store's alias handle 0x3b with the
+  clears' handles 0x39 and 0x38. The predicate returns 1 for both pairs;
+  `0x107AE529` then adds each edge with argument 0x80. The completed
+  read-only link reproduces the full 255/274 mismatch with all eight fields.
+  A six-input cold artifact with typed rank members in GameStatisticsRecord
+  has the identical contribution, so replacing its raw byte member alone
+  does not resolve the aliasing. Private /Oa and /Ow controls both hoist the
+  name reads and produce the same wrong 275-byte body. Neither flag is kept.
+
+  `split-allocation.trace` instead uses the retained
+  `tail-buffer-walked.cpp` input. The extra name induction variable has
+  priority 520 and takes EAX; the parent cursor takes ESI at priority 164.
+  The saved name pointer and the eliminated one-byte buffer's value each
+  have priority 144 and take EDI and EDX. Zero has priority 63 and only EBX
+  remains available. The outer count spills. Eliminating buffer storage
+  therefore does not make its byte a local-allocation temporary. In the
+  nine-byte-copy control, the byte and copy pointer are absent from global
+  allocation, which leaves EDX for zero and ESI for the count.
+
+  Two four-byte copies followed by an inlined completion helper restore
+  the target store order but retain different registers, the second word's
+  store base and two SIB encodings. The retained `tail-aggregate-init.cpp` compares
+  257/274 bytes with all eight fields in a private strict comparison. Its
+  first three fields use the external default-name view at original
+  0x46E858, rather than the canonical pooled literal. Packing the pointer
+  and byte into a value object, with either a constructor or aggregate
+  initialization, preserves this body. Using memcpy's return value,
+  strlen of the literal or an eight-byte aggregate preserves the failed
+  two-cursor form; memmove remains a call. Next inspect how C2 excludes the
+  nine-byte copy's anonymous values from global candidates before trying
+  another split-copy representation.
 
   Named row references or direct name-member/array-reference copies change
   the induction base and spill. Scalar, union and word-buffer tails change

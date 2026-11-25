@@ -32,10 +32,21 @@ clears (10/11), which then precede the EAX update. Both completed debugger
 links reproduce the 255/274 mismatch with all eight fields bound. A priority
 change cannot cross these dependencies. Normal COFF and a nine-byte aggregate
 through the byte view preserve the complete normalized control body; a named
-aggregate member changes the cursor and spills. Keep /GL. Next investigate a
-split-copy source that retains EAX as the active-byte cursor and EDI as a
-secondary name destination. Avoid repeating the ruled-out scalar, pointer,
-helper and buffer families without a new prediction.
+aggregate member changes the cursor and spills. Keep /GL.
+
+`alias-dependency.trace` confirms that C2's alias predicate returns 1 for
+both tail/clear pairs before adding the edges. Typed rank members reproduce
+the complete mismatch in a six-input cold artifact. Private /Oa and /Ow
+controls both hoist the name reads and produce 275 bytes; neither is kept.
+`split-allocation.trace` uses `tail-buffer-walked.cpp`: an extra name IV takes
+EAX at priority 520, while the saved name pointer and byte each have priority
+144. They leave zero in EBX and spill the count. The one-byte buffer is gone,
+but its byte is still a global candidate. `tail-aggregate-init.cpp` retains
+an alternate split-copy control with the target store order and different
+registers/SIBs; its private comparison binds the external name view instead
+of the pooled literal. Next inspect the candidate-creation rules that exclude
+the nine-byte copy's anonymous byte and pointer. More pointer spelling,
+helper parameter packing and buffer elimination controls need a new prediction.
 
 A one-byte buffer eliminates its temporary storage but changes the induction
 base; an explicit parent cursor adds a second cursor and spills the count.

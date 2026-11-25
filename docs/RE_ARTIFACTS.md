@@ -87,14 +87,15 @@ graph. The trace records the byte-neutral narrow-index baseline before the
 late-merged script snapshots. Superseded dumps, source snapshots, private
 helper and debugger image have been removed (about 0.5 MiB).
 
-The current statistics-record initializer retains its complete baseline,
-255/274 cold control, current strict comparison and read-only allocation
-and scheduling traces under `.analysis/statistics-record/`. Keep the canonical six-input
-`GameStatisticsTail` graph, its private scheduling-trace link and the two small
-tail-buffer control sources. The indexed allocation trace describes commit
-`4ffa9bb5`; the local-allocation and scheduling controls describe `558af946`.
-The whole-row byte view preserves the same normalized body. Superseded trial
-dumps, snapshots and debugger contexts were removed (about 0.6 MiB total).
+The statistics-record initializer retains its complete baseline, 255/274 cold
+control, current strict comparison and useful allocation/alias/scheduling traces
+under `.analysis/statistics-record/`. Keep the canonical `GameStatisticsTail`
+graph and its private `alias-dependency-trace` and `split-allocation-trace`
+links. The indexed trace describes `4ffa9bb5`; the later baseline controls use
+the unchanged owner source from `558af946`. The split-allocation trace uses
+`tail-buffer-walked.cpp`. Keep both original tail-buffer inputs and the alternate
+`tail-aggregate-init.cpp` control with its 257/274 private comparison. Superseded
+trial dumps, snapshots and debugger contexts were removed (about 1 MiB total).
 
 The Bomb power transition cleanup reclaimed about 26 MiB in source
 snapshots, trial links and superseded GUI and text-rendering outputs.
