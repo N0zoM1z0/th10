@@ -29,15 +29,14 @@ supplies the source, recipes and ledgers. Keep these private inputs locally.
   `build/match-linked/StageViewport/`.
 - The popup Draw cold receipt is under `.analysis/script-viewer-popup-draw/`.
   Its canonical link is `build/match-linked/ScriptViewerPopupCreate/`.
-  Completed popup trials reclaimed about 3.5 MiB.
-- GUI cleanup cold and direct-caller receipts remain under
-  `.analysis/gui-cleanup-resources/` after removing about 17 MiB of trials.
+- GUI cleanup cold and direct-caller receipts are under
+  `.analysis/gui-cleanup-resources/`.
+- The Bomb power transition replay and direct-caller comparisons are under
+  `.analysis/player-start-power-transition/`. Its canonical link is
+  `build/match-linked/PlayerStartPowerTransition/`.
 
-The November 25 handoff reclaimed about 126 MiB from `.analysis/` and
-`build/`. The latest pass removed about 10 MiB, including the obsolete
-`AsciiGuiDraw` link and reproducible source variants. Four worktrees
-under `.analysis/` carry uncommitted work. Use `git worktree list` to
-locate them before touching their parent directories.
+The Bomb power transition cleanup reclaimed about 26 MiB in source
+snapshots, trial links and superseded GUI and text-rendering outputs.
 
 Check `git status` and `git worktree list` before removing a trial. Keep
 uncommitted worktrees and live comparison inputs. Use regular worktree

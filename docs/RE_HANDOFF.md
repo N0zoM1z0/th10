@@ -7,9 +7,8 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-There is no active function after the Bomb power transition and repository
-cleanup. Use the match and origin ledgers to choose the next authored
-function when reconstruction resumes.
+The Bomb power transition is complete. Use the match and origin ledgers to
+choose the next authored function when reconstruction resumes.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -67,16 +66,15 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 local branches. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 local branches. Per-case child attachment drives allocation before tail merging. |
 
-## Known comparison issue
+## Known comparison issues
 
-The `ascii-manager-initialize` factory graph reports a call-binding
-difference at +0x108. Relinking before and after the GUI draw source
-change produced the same diagnostic. The 10-byte high-priority draw
-callback now has its own cold proof in `StageViewport`.
+The retained `ascii-manager-initialize` image reports a call-binding
+difference at `+0x108` for `AnmVmView::Initialize`. The high-priority draw
+callback has a separate cold proof in `StageViewport`.
 
-The `gui-message-destructor` warm guard in `GameCleanupContext` differed by
-eight bytes. Relinking the source from before the `GuiView` destructor work
-reproduced the same eight differences. The direct GameManager cleanup and
-ScriptViewer creation and release callers passed their own warm comparisons
-with the final GUI source. Use the unit's own recipe for further checks.
+The retained `gui-message-destructor` image in `GameCleanupContext`
+matches 89 of 97 bytes. Relinking the source from before the `GuiView`
+destructor work reproduced the same differences. The direct GameManager
+cleanup and ScriptViewer creation and release callers passed their
+comparisons with the final GUI source.
 [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) records source and compiler findings.
