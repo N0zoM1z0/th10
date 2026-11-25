@@ -1163,118 +1163,41 @@ frontier; do not refresh a baseline merely to accept the new positions.
   `width <= 32`, then the large palette reproduces the target's two x87 `jp`
   branches. A selected cold replay passed and the owner is canonical exact.
   [2026-11-22]
-- **BulletRuntimeView::UpdateAbsoluteDirectionChange @0x4078E0 (335)**: the
-  current linked candidate has 333/335 equal bytes in its fully decoded
-  335-byte contribution; only +0xD7/+0xDD differ (target EDX, candidate EAX),
-  and all eight linked fields are bound. `register` hints were byte-neutral;
-  removing the angle-copy local and passing `angle` directly adds two
-  differences; volatile forms also regress. All trials were reverted.
-  A read-only VC7.1 C2 trace identifies the angle-word load as global
-  candidate 8, with priority 16. At `ChoosePhysReg` entry (0x107AAB62), its
-  register class is 0, its conflict-list head and preference-list pointer are
-  null, its eligible set includes EAX/ECX/EDX, and all three scores are zero.
-  Class 0's actual order is EAX, ECX, EDX, EBP, EBX, EDI; EAX is therefore the
-  deterministic first eligible choice. A global-coloring route to target EDX
-  must account for both earlier choices, EAX and ECX, or provide an EDX
-  preference; the baseline has neither interference nor preferences.
-  Local integer-word, union and pointer forms of the angle copy each leave
-  the complete comparison at 333 matching bytes. The baseline debugger link
-  and ordinary link agree across the complete 335-byte owner and eight linked
-  fields.
-  Reading the angle through a direct float reference removes global angle
-  candidate 8: local `RegAssign` assigns magnitude to EAX and angle to ECX,
-  then advances to EDX; the result is 331/335. A separate float snapshot
-  (`float outgoingAngle = angle`) has the same C2 path and result, with
-  differences at +0xD4/+0xD7/+0xDC/+0xDD. Its GDB link was independently
-  checked against the ordinary link: all 335 owner bytes and all eight
-  resolved fields agree.
-  Expanding `SetCurrent(0)` with a plain local `timerFlags` and using a direct
-  float angle still leaves the same local sequence (magnitude EAX, angle ECX,
-  later timer value EDX) and 331/335; the flags value remains a global
-  candidate and does not advance the local cursor. A volatile alias for the
-  flags field does not change that sequence and regresses to 324/335; its
-  debugger link also agrees with the ordinary link across 335 bytes and eight
-  fields. Moving the `memcpy` into both control-flow arms expands the candidate
-  owner to 337 bytes (manifest extent is 335) and changes the call setup to the
-  local EAX/ECX path, so it is rejected. Reusing `nextSpeed` as the source of
-  the speed-field store is byte-identical to the 333/335 baseline.
-  A speed-word carrier alone preserves 333, while combining it with a direct
-  angle reference gives 327. Replacing the velocity receiver reference with
-  a pointer preserves 333. Computing that receiver before the reset/easing
-  branch expands the complete owner to 343 bytes. Preparing a speed word
-  before the angle copy gives 331 matching bytes. Grouping both float
-  arguments in a local aggregate, in either member order, preserves 333.
-  A diagnostic inline-timer/direct-angle form with `int
-  timerNeedsInitialization = (state.timer.flags & 1u) == 0` changes the local
-  `RegAssign` sequence to flags load EAX, magnitude ECX, angle EDX, producing
-  the target call setup exactly. Its owner is 340 bytes, five longer than the
-  target. C2 loads only `AL`, inverts and zero-extends it for the condition,
-  then reloads the full flags word in the branch; the target loads the full
-  word once, tests `AL`, and reuses EAX for the OR and store. The 340-byte
-  debugger link matches the ordinary diagnostic link across its complete
-  owner and all eight fields. A bool-typed version takes the same register
-  path but grows to 343 bytes.
-  A scratch flags-alias/bitfield form keeps the owner at 335 bytes and
-  produces the target call setup (magnitude ECX, angle EDX). Its `RegAssign`
-  trace is explicit: the flags read from `[esi+0x6C0]` is temporary `0x93`
-  in EAX, magnitude temporary `0x125` is in ECX, and the angle load from
-  `[esi+0x3E4]` (temporary `0x126`) is in EDX. The bitfield and unsigned-word
-  reference spellings produce identical owner bytes. The GDB link is bound
-  to the ordinary diagnostic link: both have SHA-256
-  `2c4b9fee15cebc6b9159d6504e4106dae12cd38be5afba68750d1070f43b9da3`
-  for the complete 335-byte owner and identical eight resolved fields.
-  This remains a mismatch: the candidate's `g_AnmGameSpeed` DIR32 field is
-  at +0x96 rather than the target's +0x97. Masking both the target and
-  candidate link-field spans leaves 266/302 non-link bytes equal; all 36
-  non-link differences lie in the timer-reset sequence (+0x6A..+0xA0).
-  C2 narrows the aliased read to `AL`, emits `not/test/je`, and lowers the
-  update to `or dword ptr [timer.flags], 1`; the target instead keeps the
-  full flags word in EAX, tests `AL`, branches with `jne`, and reuses EAX
-  for the OR and store. Replacing compound OR with value assignment
-  canonicalizes to the same memory OR.
-  A union word retained across the branch restores the target dword load
-  and register OR/store, but becomes global candidate 8 in EAX; local
-  allocation then yields EAX/ECX for magnitude/angle. Adding a bool local
-  after that yields EDX/EAX. A union copy used only for the condition is
-  narrowed back to a byte load. Volatile read forms expand the owner.
-  Declaring the bool inside `AnmVmTimerView::SetCurrent` reproduces the same
-  343-byte code as declaring it in the caller; moving its scope does not
-  remove the reload. Widening the bitfield result to `unsigned int`, using
-  a signed one-bit field, and reversing the boolean branch polarity do not
-  restore the target timer sequence. An inline magnitude-first wrapper also
-  leaves the direct-float 331/335 candidate unchanged.
-  These forms remain scratch-only; the main source is restored to the
-  333/335 baseline. The next useful step is to reproduce the target's
-  full-width flags load and register OR/store without making the value a
-  cross-block global candidate or losing the local EAX/ECX/EDX assignment
-  sequence.
-  Additional probes did not recover the target call setup. Direct
-  float-to-float next-angle assignment uses x87 and grows to 337 bytes. A one-word aggregate next-angle copy,
-  aggregate flags snapshot, and array/aggregate duration snapshots each
-  retain 335 bytes but reproduce the direct-angle 331/335 result. Duplicating
-  the velocity call in both outer branches leaves two calls and 356 bytes;
-  C2 does not merge that tail. Reusing one integer variable for the increment,
-  next angle and outgoing angle coalesces the increment into EAX and removes
-  the target's `mov eax, edx`, leaving 333 bytes. The angle still uses EAX.
-  These paths are rejected; source-variable reuse can change codegen, but
-  this particular coalescing loses an already matching instruction.
-  Reusing the pre-increment source instead, while retaining the comparison
-  through `state.int2`, restores all 335 bytes of extent but leaves the same
-  two angle-register differences. Its strict comparison binds all eight
-  fields. Neither counter reuse creates the missing EDX preference.
-  The maintained increment now adds `1u` as an unsigned word before the
-  target-specific signed conversion and limit comparison. This defines the
-  native wrap without relying on signed C++ overflow. Its canonical strict
-  link remains 333/335, with only +0xD7/+0xDD different and all eight fields
-  bound. The direct-angle control remains 331/335. A selected cold replay
-  of the direct caller, `bullet-runtime-update`, passes all 885 bytes and
-  39 fields. Reproduce it with `scripts/repo-python
-  scripts/replay-exact-units.py --unit bullet-runtime-update --json`.
-  The `_reference/th10-decomp` `EaseStep` shape (plain float fields, direct
-  `++int2`, `angle = value1`, reset speed copied before the timer reset)
-  regressed to 320/335 on 2026-11-22 and was reverted. The source and ordinary
-  linked candidate are restored to the 333/335 `memcpy` baseline; no exact
-  acceptance or cold replay is claimed.
+- **BulletRuntimeView::UpdateAbsoluteDirectionChange @0x4078E0 (335)**:
+  the maintained source's first canonical `BulletHorizontalWrap` build
+  matches all 335 bytes and eight bound fields. The selected cold replay
+  of this owner and its direct caller is pending.
+
+  A function-local motion view preserves the target schedule. It gives
+  speed and timer flags volatile accesses, gives the scale pointer volatile
+  float elements, and snapshots the full flags word before assigning the
+  reset magnitude. The ordinary float angle assignment becomes a raw word
+  copy. The complete layout and two key offsets are asserted locally;
+  the shared timer type and the ESI receiver are unchanged. These qualifiers
+  reproduce codegen; the original source's qualifiers remain unknown.
+  Increment the cycle count as an unsigned word, then convert back for
+  the signed limit comparison.
+
+  The crucial local register use is the angle assignment, not necessarily
+  the flags read. A read-only VC7.1 SP1 6030 C2 trace of the nested-view
+  control assigns
+  the copy from +0x6C8 to +0x3E4 to EAX (temporary 0x124), then magnitude
+  to ECX (0x11A) and outgoing angle to EDX (0x11B). Its debugger and ordinary
+  links agree across all 335 bytes and eight resolved fields. That control
+  still matches only 320/335: it stores the angle before loading speed and
+  tests the flags before spilling magnitude. The flat motion view recovers
+  both interleavings and the complete match.
+
+  Earlier integer/memcpy angle forms matched 333/335. Their outgoing angle
+  was global candidate 8, priority 16, with EAX/ECX/EDX eligible and zero
+  scores or preferences; class-0 order selected EAX. Direct float call
+  operands alone gave 331/335 because magnitude consumed the first local
+  EAX. Boolean flags temporaries recovered ECX/EDX but narrowed the flags
+  read and changed the timer reset. Delaying the float angle store through
+  a scalar local grew the owner to 337 bytes by using x87. Moving the
+  complete angle assignment after speed kept 335 bytes but missed the
+  reset schedule. Removing volatile from speed or adding it to flags
+  writeback alone was byte-neutral in the 320/335 control.
 - **Player::~Player @0x424ED0 (325)**: 333. [2026-10-31]
 - **FrontEndInsertScore @0x421FA0 (316)**: 263; the helper uses 64-bit `100.0`
   where the target uses 32-bit. [2026-10-15]

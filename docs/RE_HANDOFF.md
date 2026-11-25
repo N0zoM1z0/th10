@@ -8,46 +8,14 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 ## Resume
 
 The sole active owner is `BulletRuntimeView::UpdateAbsoluteDirectionChange`
-at `0x004078E0`, with complete extent `[0x004078E0, 0x00407A2F)` (335 bytes;
-last byte `0x00407A2E`) in `src/BulletManager.cpp`. Its current
-`BulletHorizontalWrap` strict linked comparison is 333/335: only +0xD7 and
-+0xDD differ, because the candidate forwards the angle word in EAX while the
-target forwards it in EDX. The cycle counter now adds `1u` to an unsigned word
-and converts back for the signed limit comparison; the canonical build preserves
-those same 333 matching bytes and all eight field bindings. Its direct caller,
-`bullet-runtime-update`, passes the selected cold replay at 885/885 with 39 fields. It remains
-nonexact and is the only active function; do not select another owner until
-this one has a complete strict exact match and its selected cold replay passes. Reproduce the current frontier with
-`scripts/repo-python scripts/check-frontier.py --no-build --show bullet-update-absolute-direction`.
-Investigate the call operand's VC7.1 register allocation and compare the
-complete owner and eight linked fields after each source change.
-The angle load is global candidate 8 with priority 16, no observed scoring
-contributions, and EAX/ECX/EDX eligible. Class-0 order is EAX, ECX, EDX, so
-all-zero scores select EAX; a global-coloring solution for target EDX must
-account for both earlier registers. Direct angle references alone still give
-331/335. A scratch inline-timer/direct-angle form with an integer
-`timerNeedsInitialization` local produces the target call setup: local
-`RegAssign` assigns the flags load to EAX, magnitude to ECX, and angle to EDX.
-Its owner is 340 bytes because C2 loads only `AL`, inverts/zero-extends it for
-the condition, then reloads the full flags word in the branch. The ordinary
-and debugger links agree across the full 340-byte owner and all eight fields,
-but it is not exact. The experiment and trace are under
-`.analysis/bullet-absolute/int-flag-local.*`; a bool-typed version takes the
-same register path at 343 bytes. A 335-byte flags-alias/bitfield candidate
-under `.analysis/bullet-absolute/bitfield-alias-bool.*` also has the target
-call setup. Its `RegAssign` trace is flags load EAX, magnitude ECX, angle EDX.
-The debugger link matches the ordinary candidate across all 335 bytes and
-eight resolved fields (owner SHA-256
-`2c4b9fee15cebc6b9159d6504e4106dae12cd38be5afba68750d1070f43b9da3`).
-It remains nonexact: `g_AnmGameSpeed` is relocated at +0x96 instead of +0x97,
-and the timer sequence uses a byte load, `not/test/je`, and memory OR rather
-than the target dword EAX load, `test/jne`, and register OR/store. Masking
-both target and candidate link spans leaves 266/302 non-link bytes equal;
-the remaining differences are confined to timer initialization.
-The main source remains at the 333/335 baseline; no exact acceptance or cold
-replay is claimed. Next, preserve the target's dword flags load and register
-OR/store while keeping the flags read local and the magnitude/angle local
-assignment ECX/EDX.
+at `0x004078E0`, complete extent `[0x004078E0, 0x00407A2F)` (335 bytes), in
+`src/BulletManager.cpp`. The function-local motion view passes the first
+canonical strict comparison: 335/335 bytes and all eight linked fields.
+The selected cold replay of `bullet-update-absolute-direction` and its direct
+caller `bullet-runtime-update` is running. Finish that proof before accepting
+this owner or selecting another function. The current source uses the real
+ESI receiver and preserves unsigned counter wrap before the signed comparison.
+The source and compiler findings are in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md).
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
@@ -126,44 +94,3 @@ destructor work reproduced the same differences. The direct GameManager
 cleanup and ScriptViewer creation and release callers passed their
 comparisons with the final GUI source.
 [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) records source and compiler findings.
-
-## 2026-11-25 follow-up — Bullet angle register allocation
-
-The only active target remains `BulletRuntimeView::UpdateAbsoluteDirectionChange`,
-`0x004078E0`, half-open owner range `[0x004078E0, 0x00407A2F)` (335 bytes),
-`src/BulletManager.cpp`, unit `bullet-update-absolute-direction`. The current
-ordinary link is restored to the `memcpy` baseline: 333/335 bytes match, only
-`+0xD7` and `+0xDD` differ, and all eight link fields remain in the comparison.
-No exact acceptance or cold replay has been claimed; do not select another
-function or resume `EclVmContext::StartSubroutine`.
-
-Pinned C2 evidence for global angle candidate 8 at `ChoosePhysReg`:
-- priority 16, register class 0;
-- empty conflict-list head and empty preference list;
-- EAX, ECX and EDX all eligible, all three scores zero;
-- class-0 order is EAX, ECX, EDX, EBP, EBX, EDI, so EAX is the deterministic tie.
-The candidate has no current interference/preference that can naturally select
-EDX. Trace artifacts: `.analysis/bullet-absolute/angle-conflict.jsonl` and
-`.analysis/bullet-absolute/angle-class.jsonl`.
-
-Additional source experiments, all reverted:
-- `float outgoingAngle = angle` follows the direct-float local path (magnitude
-  EAX, angle ECX, later timer value EDX), 331/335. Its debugger link matched
-  the ordinary link for all 335 owner bytes and eight resolved fields.
-- Expanding `SetCurrent(0)` through a plain local `timerFlags` while passing
-  `angle` directly leaves that same local assignment order and 331/335; the
-  flags value remains a global candidate.
-- A volatile flags alias still leaves the same local assignment order and
-  regresses to 324/335; its debugger link was byte/field-bound to the ordinary
-  link.
-- Moving the angle `memcpy` into both control-flow arms expands the candidate
-  owner to 337 bytes, beyond the 335-byte manifest extent, and changes the call
-  to the local EAX/ECX path.
-- Reusing `nextSpeed` for the speed-field store is byte-identical to baseline.
-
-The final restore was rebuilt serially on available CPU 2 with the pinned
-VC7.1 toolchain; strict linked comparison returned to 333/335. Continue only
-with this function. The next source experiment must have a concrete prediction
-for a nonempty EDX preference or a real EAX/ECX interference; ordinary
-variable-order and hint changes are already ruled out.
-

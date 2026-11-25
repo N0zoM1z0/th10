@@ -258,52 +258,79 @@ void BulletRuntimeView::UpdateRelativeDirectionChange()
 
 void BulletRuntimeView::UpdateAbsoluteDirectionChange()
 {
-    BulletExStateView &state = exStates[3];
-    float nextSpeed;
-
-    if (state.timer.current >= state.int0) {
-        if (transformSound >= 0) {
+    // Keep the motion fields in one view so the angle copy and timer snapshot
+    // retain their native ordering without changing the shared timer type.
+    struct AbsoluteDirectionFields {
+        unsigned char unknown000[0x3c0];
+        AnmOpcodeVectorView velocity;
+        unsigned char unknown3cc[0xc];
+        volatile float speed;
+        unsigned char unknown3dc[8];
+        float angle;
+        unsigned char unknown3e8[0x54];
+        unsigned int activeFlags;
+        unsigned char unknown440[0x18];
+        int sound;
+        unsigned char unknown45c[0x254];
+        int previous;
+        int current;
+        float subframe;
+        volatile float *scale;
+        volatile unsigned int timerFlags;
+        float nextSpeed;
+        float nextAngle;
+        unsigned char unknown6cc[0xc];
+        int duration;
+        int limit;
+        int count;
+    };
+    typedef char CheckFields[
+        (sizeof(AbsoluteDirectionFields) == 0x6e4 &&
+         offsetof(AbsoluteDirectionFields, timerFlags) == 0x6c0 &&
+         offsetof(AbsoluteDirectionFields, duration) == 0x6d8) ? 1 : -1];
+    AbsoluteDirectionFields &bullet =
+        *reinterpret_cast<AbsoluteDirectionFields *>(this);
+    const int duration = bullet.duration;
+    float magnitude;
+    if (bullet.current >= duration) {
+        if (bullet.sound >= 0) {
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
-                QueueSoundSample(transformSound, 0);
+                QueueSoundSample(bullet.sound, 0);
         }
         // Preserve the native word wrap before the signed limit comparison.
-        state.int2 = static_cast<int>(
-            static_cast<unsigned int>(state.int2) + 1u);
-        if (state.int2 >= state.int1)
-            activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE;
-
-        // The transform's next angle is a 32-bit IEEE-754 bit payload.
-        // Copy its representation without imposing a float conversion.
-        const int nextAngleBits = state.value1Bits;
-        float newSpeed = state.value0;
-        speed = newSpeed;
-        angleBits = nextAngleBits;
-        nextSpeed = newSpeed;
-        state.timer.SetCurrent(0);
+        bullet.count = static_cast<int>(
+            static_cast<unsigned int>(bullet.count) + 1u);
+        if (bullet.count >= bullet.limit)
+            bullet.activeFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE;
+        bullet.angle = bullet.nextAngle;
+        const float nextSpeed = bullet.nextSpeed;
+        bullet.speed = nextSpeed;
+        const unsigned int initialFlags = bullet.timerFlags;
+        magnitude = nextSpeed;
+        if ((initialFlags & 1u) == 0) {
+            bullet.current = 0;
+            bullet.previous = -999999;
+            bullet.subframe = 0;
+            bullet.scale = &g_AnmGameSpeed;
+            bullet.timerFlags = initialFlags | 1u;
+        }
+        bullet.current = 0;
+        bullet.subframe = 0;
+        bullet.previous = -1;
     }
     else {
-        nextSpeed = speed;
-        nextSpeed -=
-            (nextSpeed * state.timer.subframe) /
-                static_cast<float>(state.int0);
+        const float initialSpeed = bullet.speed;
+        magnitude = initialSpeed - initialSpeed * bullet.subframe / duration;
     }
-
-    // Forward the current angle as an IEEE-754 word, without an arithmetic
-    // conversion or a redundant signed-word temporary.
-    float outgoingAngle;
-    memcpy(&outgoingAngle, &angleBits, sizeof(outgoingAngle));
-    AnmOpcodeVectorView &nextVelocity =
-        *reinterpret_cast<AnmOpcodeVectorView *>(&velocity);
-    nextVelocity.FromAngleMagnitude(outgoingAngle, nextSpeed);
-    state.timer.previous = state.timer.current;
-    if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
-        ++state.timer.current;
-        state.timer.subframe += 1.0f;
+    bullet.velocity.FromAngleMagnitude(bullet.angle, magnitude);
+    bullet.previous = bullet.current;
+    if (*bullet.scale > 0.99f && *bullet.scale < 1.01f) {
+        ++bullet.current;
+        bullet.subframe += 1.0f;
     }
     else {
-        state.timer.subframe =
-            *state.timer.scale + state.timer.subframe;
-        state.timer.current = static_cast<int>(state.timer.subframe);
+        bullet.current = static_cast<int>(
+            bullet.subframe = *bullet.scale + bullet.subframe);
     }
 }
 
