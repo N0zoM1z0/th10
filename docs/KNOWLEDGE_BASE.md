@@ -1601,6 +1601,16 @@ restored the EDI receiver at both calls and the full update comparison.
   result-tag instruction read as volatile changes the complete body
   to 514 matching bytes. Copying the integer operand through `memcpy`
   leaves the prior 536-byte candidate unchanged.
+  In a read-only C2 trace of the 542-byte source, the EAX preference
+  comes from the word-index live range and the ECX preference comes from
+  the instruction-pointer range. A conflicting caller-context range
+  contributes an EAX penalty of one. `ChoosePhysReg` applies that
+  penalty before subtracting the two preferences, producing scores
+  0, -1 and 0 for EAX, ECX and EDX. The trace build finishes normally
+  under GDB and its complete 550-byte function and all four linked fields
+  equal the ordinary local build. Loading the float word directly through
+  its scalar pointer changes the owner to 552 bytes. A volatile float
+  read emits an x87 load and changes it to 555 bytes.
 - In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
   the destination address LEA to EAX and advances the integer register
   cursor to ECX. The 551-byte candidate with a plain caller parameter
