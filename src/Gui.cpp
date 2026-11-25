@@ -2147,37 +2147,19 @@ void __stdcall GuiCleanupResources(GuiView *gui)
         gui->bossGaugeSegmentVmIds[i].value = 0;
     for (int i = 0; i < 8; ++i)
     {
-        const int id = gui->valueVmIds[i].value;
-        if (id != 0)
+        AnmVmIdView &slot = gui->valueVmIds[i];
+        AnmVmView *vm = manager->FindVm(slot);
+        if (vm != NULL)
         {
-            AnmVmLayerNodeView *node = manager->primaryVmListHead;
-            while (node != NULL && static_cast<AnmVmView *>(node->owner)->id != id)
-                node = node->next;
-            if (node == NULL)
+            vm->flags35C |= 0x04000000u;
+            if (vm->layerNode.previous == NULL)
             {
-                node = manager->secondaryVmListHead;
-                while (node != NULL && static_cast<AnmVmView *>(node->owner)->id != id)
-                    node = node->next;
-            }
-            if (node != NULL)
-            {
-                AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
-                if (vm != NULL)
-                {
-                    vm->flags35C |= 0x04000000u;
-                    if (vm->layerNode.previous == NULL)
-                    {
-                        AnmVmLayerNodeView *child = vm->layerNode.next;
-                        while (child != NULL)
-                        {
-                            static_cast<AnmVmView *>(child->owner)->flags35C |= 0x04000000u;
-                            child = child->next;
-                        }
-                    }
-                }
+                for (AnmVmLayerNodeView *child = vm->layerNode.next;
+                     child != NULL; child = child->next)
+                    static_cast<AnmVmView *>(child->owner)->flags35C |= 0x04000000u;
             }
         }
-        gui->valueVmIds[i].value = 0;
+        slot.value = 0;
     }
     gui->bossGaugeSegmentCount = 0;
 }
