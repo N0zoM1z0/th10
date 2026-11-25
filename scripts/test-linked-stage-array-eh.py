@@ -81,7 +81,7 @@ def fixture(symbol):
         source = spec['owner_source']
         supports = ['src/AnmManager.cpp']
         owner_object = 'source.ltcg.obj'
-        vm_basename = 'support-00-AnmManager.ltcg.obj'
+        vm_basename = owner_object if spec.get('vm_destructor_source') == source else 'support-00-AnmManager.ltcg.obj'
         if 'worker_offset' in spec:
             supports.append('src/ScriptViewerWorker.cpp')
     else:
@@ -199,6 +199,7 @@ def main():
             ('wrong-predecessor', lambda q: word(q, 'target', 0x600000, 0)),
             ('anchored-destructor', lambda q: q['aliases'].update({eh.DESTRUCTOR_SYMBOL: 'fake'})),
             ('short-destructor', lambda q: q['functions'][0].update(size=33)),
+            ('wrong-destructor-object', lambda q: q['functions'][0].update(map_object='foreign.obj')),
             ('foreign-destructor', lambda q: q['functions'][0].update(pdb_module_index=15)),
             ('destructor-field', lambda q: q['links']['fields'].append(dict(offset=1, width=4, type='DIR32'))),
             ('destructor-byte', lambda q: q['native'].write(0x101840, b'\x91')),

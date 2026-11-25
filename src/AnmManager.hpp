@@ -1694,3 +1694,14 @@ void __stdcall RenderTextToTextureAlternate(
 }
 
 #undef TH10_ANM_NOINLINE
+
+// Make the CRT deallocator's nonthrowing contract visible to this destructor.
+extern "C" __declspec(nothrow) void __cdecl free(void *);
+
+// Target 0x00401FF0-0x00402011 owns the optional generated-vertex buffer.
+inline AnmVmView::~AnmVmView()
+{
+    if (generatedVertices != NULL)
+        free(generatedVertices);
+    generatedVertices = NULL;
+}

@@ -28,6 +28,9 @@ PARENTS = {
     '??1StartupWorkerView@@QAE@XZ': dict(entry=0x41fb50, size=417, offset=3,
         handler=0x465696, arrays=((0x10, 1), (0x30, 1)), worker_offset=0x10,
         owner_source='src/Startup.cpp'),
+    '??1ScriptViewerView@@QAE@XZ': dict(entry=0x40a1a0, size=412, offset=9,
+        handler=0x4657e9, arrays=((0x10, 1), (0x2c8, 1)), worker_offset=0x10,
+        owner_source='src/ScriptViewer.cpp', vm_destructor_source='src/ScriptViewer.cpp'),
     '??0EnemyGameStateView@@QAE@XZ': dict(entry=0x408910, size=176, offset=9,
         handler=0x465514, arrays=((0x10, 2), (0x778, 8)),
         owner_source='src/EnemyGameStateLifecycle.cpp'),
@@ -181,14 +184,14 @@ def source_object(unit, source):
 
 def destructor_identity(unit, directory, image, target, publics, aliases):
     require(DESTRUCTOR_SYMBOL not in aliases, 'VM destructor cannot be an anchor')
+    source = PARENTS[unit['symbol']].get('vm_destructor_source', 'src/AnmManager.cpp')
+    expected = source_object(unit, source)
     rows = [f for f in linked_functions(directory/'source.exe', directory/'source.map',
                                        directory/'source.pdb')['functions']
             if f['symbol'] == DESTRUCTOR_SYMBOL]
     require(len(rows) == 1 and rows[0]['size'] == 34
-            and rows[0]['map_object'] == source_object(unit, 'src/AnmManager.cpp'),
-            'complete qualified34-byte VM destructor required')
+            and rows[0]['map_object'] == expected, 'complete qualified 34-byte VM destructor required')
     owner = rows[0]
-    expected = source_object(unit, 'src/AnmManager.cpp')
     require(str(owner['pdb_object']).replace('\\', '/').rsplit('/', 1)[-1] == expected,
             'VM destructor leaves its PDB object')
     modules = [m for m in pdb_section_contributions(directory/'source.pdb')['modules']

@@ -4092,14 +4092,6 @@ AnmVmView::AnmVmView()
     activeSpriteIndex = -1;
 }
 
-// Target 0x00401FF0-0x00402011 owns the optional generated-vertex buffer.
-AnmVmView::~AnmVmView()
-{
-    if (generatedVertices != NULL)
-        free(generatedVertices);
-    generatedVertices = NULL;
-}
-
 // Target 0x00401000-0x004010FA receives this through a private ESI register.
 // C++ construction accounts for the manager vtable and both embedded VM
 // constructors before the body clears the complete manager state.

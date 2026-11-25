@@ -7,18 +7,13 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `ScriptViewerView::~ScriptViewerView` at `0x0040A1A0`,
-the largest remaining authored owner outside the parked ECL scope. The
-`script-viewer-destructor` candidate in the canonical `/EHs` link emits
-417 bytes against 412 and aligns 110 of 118 instructions. The reference
-parameter in `ScriptViewerDeleteOwned` matches all seven manager deletions.
-The remaining differences are the three callback lock registers and the
-five-byte EH state store before VM cleanup. With `/EHsc` on `ScriptViewer.cpp`,
-the first 89 instructions match but the popup destructor takes EBX instead
-of a stack argument. Real alternate entries and adding the game reset
-caller leave that difference intact. Keep the original lifecycle partition.
-The factory, scalar deleting destructor and seven nullable release wrappers
-pass in the canonical `/EHs` image.
+The active owner is `ScriptViewerView::~ScriptViewerView` at `0x0040A1A0`.
+The `script-viewer-destructor` candidate has a strict 412-byte warm match
+with 44 fields and both unwind actions in `ScriptViewerDestructSmall`.
+Keep `/EHs` for stack-passed popup destruction. The inline VM destructor
+and nonthrowing CRT `free` declaration together remove the extra EH state
+store. Cold-build the candidate and recheck the existing VM cleanup owners
+that depend on the shared destructor definition.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
