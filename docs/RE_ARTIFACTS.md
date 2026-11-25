@@ -12,18 +12,18 @@ supplies the source, recipes and ledgers. Keep these private inputs locally.
 - Keep `build/match-linked/`, `build/match/` and `build/probe-backlog/`.
   The linked comparator needs the matching PE, map and PDB. Support objects
   are useful for warm probes in the same graph.
-- Keep `docs/evidence/`, private D3D evidence, origin-review inputs and
-  working files for open owners. The music-room, ECL, ANM, spell-start and
-  stage-loader owners use their canonical comparison recipes. The MIDI
-  loader and statistics initializer retain their open diagnostic contexts.
+- Keep `docs/evidence/`, private D3D evidence, origin-review inputs, and
+  the current MIDI and statistics diagnostic contexts. Local receipts for
+  the GUI destructor, GUI reset and replay stage snapshot are under
+  `.analysis/gui-destructor/`, `.analysis/game-reset-gui/` and
+  `.analysis/replay-begin-stage/`. Each can be reproduced from its
+  manifest recipe.
 
-The November 24 handoff cleanup reclaimed about 316 MiB of local disk space.
-It removed superseded trial builds and duplicate snapshots for closed owners.
-The dispatcher artifact from the `58e9e8eb` replay moved from a clean temporary
-worktree to `build/match-linked/EnemyEclDispatcher/`. Its compiler inputs belong
-to that checkpoint. Rebuild the selected unit to verify later source changes.
+The November 25 handoff reclaimed about 116 MiB from `.analysis/` and
+`build/` by removing retired scratch builds, snapshots and compiler traces.
+Four worktrees under `.analysis/` carry uncommitted work. Use
+`git worktree list` to locate them before touching their parent directories.
 
-Check `git status` and `git worktree list` before removing a trial. Preserve
-uncommitted worktrees and any live comparison inputs. Git retains tracked
-history. Use regular worktree removal for clean snapshots and leave Git
-garbage collection outside routine artifact cleanup.
+Check `git status` and `git worktree list` before removing a trial. Keep
+uncommitted worktrees and live comparison inputs. Use regular worktree
+removal for clean snapshots. Git retains tracked history.

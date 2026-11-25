@@ -1027,21 +1027,12 @@ frontier; do not refresh a baseline merely to accept the new positions.
   `FSTP`, resolving the earlier 6-byte `LEA`/`FMUL` inversion at +0xD0.
   All 173 original instructions and the 23 local control destinations
   remain whole; no code padding or inline assembly was introduced.
-- **GuiMessageVmView ctor @0x415B00 (683)**: [2026-11-17]
-  In the six-input `EnemyReadDialogEh` graph the current candidate is
-  684/683 bytes, with 81 ordinary (non-linkage) byte differences.
-  That improves on the 702-byte initial candidate: six VM ID slots
-  now use four-byte storage with no pre-memset zero stores, the 2,000
-  bullet records use the original advancing pointer walk, and both
-  `AddVmVariant0` return values have independent C++ scopes.
-  An intermediate 683-byte candidate had 227 ordinary differences;
-  choosing that size alone would regress the actual comparison. The
-  one-byte extra instruction in the better 684-byte build is near the
-  final enemy-manager reload. Four-byte storage and offset-zero
-  assertions are retained. Alternate field orders, manager captures
-  and ID temporary placements did not improve this residual.
-  `EnemyReadDialog` (124/124), `EnemyKillAll` (182/182) and the GUI
-  stage updater (3,836/3,836) remain exact in affected graphs.
+- **GuiMessageVmView ctor @0x415B00 (683)** matches all 21 fields in
+  the cold `EnemyEclDispatcher` graph. Keep both creation results in
+  their typed `AnmVmIdView` slots. The last position copy follows the
+  color and side stores. The 2,000 bullet records use an advancing
+  pointer walk. The real dialog allocation caller and its EH binding
+  pass in the same link. [2026-11-25]
 - **GuiShowScoreNotice @0x4172E0 (668)** matches 640 code bytes, seven
   switch entries and all 35 fields through the real spell-end caller.
   Reuse the input value slot for the digit index after saving the number
@@ -1307,8 +1298,16 @@ restored the EDI receiver at both calls and the full update comparison.
   A selected cold build passes both units (731 bytes, 34 fields).
   The original explicit-versus-compiler-generated source origin is unknown.
   [2026-11-17]
-- `GuiView::~GuiView @0x4145F0` uses FuncInfo 0x471740 with seven unwind states
-  and the vector destructor iterator for six arrays; it needs `/EHsc`.
+- **GuiView::~GuiView @0x4145F0 (574)** matches all 37 fields, 18 local
+  branches and seven unwind actions in the cold `GuiDestructorCore`
+  link. The five real inputs share `/EHsc`. The larger mixed-profile
+  graph inserted a five-byte state store before the standalone VM
+  destructor. The uniform graph inlines that destructor and calls the
+  vector iterator for six arrays. The real GUI resource-cleanup entry
+  preserves its stack call. Explicit ID comparisons retain EDX and
+  the cursor stays in EBX after clearing the caption ID. FuncInfo at
+  0x471740 refers to a 184-byte generated region with seven actions
+  and a verified 34-byte VM destructor. [2026-11-25]
 - Statistics: factory 0x42AF20 allocates 0x1DCB4 bytes and publishes to
   0x47783C; the constructor clears it, loads the score file, initializes seven
   records and the tail, then calls loader 0x42B030; destruction is at 0x42AEF0.
@@ -1612,26 +1611,15 @@ restored the EDI receiver at both calls and the full update comparison.
 
 - `0x474C48/0x474C4C/0x474C70` are fields of one escaped globals object at `0x474C40` (the `Add` receiver), not separate globals.
 - `GameCreateOwner42B660` is `new` (null-checked constructor call), `Initialize`, and on failure a null-checked destructor plus `operator delete`, which is what `delete owner;` emits for a non-virtual destructor.
-- `GuiMessageVmView::Run` indexes 4-byte `textColors` and 12-byte `textPositions` by `message->activeSide`.
-  [2026-11-17] All 36 portrait sprite script IDs in the 4,480-byte
-  GUI stage-message interpreter now add the literal sprite offset as
-  an unsigned i386 DWORD before converting back to the signed script
-  argument. A single ordinary `__forceinline` C++ helper preserves the
-  actual field read and native integer wraparound without ASM or padding.
-  Rebuilding the 16-support-TU `gui-message-run-candidate` graph yields
-  4,464/4,480 bytes and 1,935 differences, identical to its fresh
-  baseline (still nonexact and REGRESSED against the older 1,910-byte
-  residual ledger). The independently linked 3,836-byte GUI stage
-  updater remains exactly matched with all 72 target-bound fields.
-  This is a semantic overflow repair, not extra exact byte credit.
-  [2026-11-17] `GUI_MSG_SET_SIDE_0/1` now uses a typed
-  `GuiMessageSideTextPosition` accessor for the second text-line VM.
-  It retains the original unchecked, wrapped 32-bit address and real
-  12-byte `textPositions` stride. The five color reads use `textColors`
-  directly. `activeSide` starts at zero and the selection opcodes set it
-  to zero or one. The November 17 shared color-helper probe shortened the
-  message owner and changed its codegen. The later `gui-message-run`
-  recipe matches the full 4,480-byte owner.
+- **GuiMessageVmView::Run @0x415E90 (4,480)** matches 337 fields and
+  47 fixed local destinations in the cold `gui-message-run` recipe.
+  The interpreter indexes 4-byte `textColors` and 12-byte
+  `textPositions` by `activeSide`. The side starts at zero and the
+  two selection opcodes set it to zero or one. Keep the typed
+  `GuiMessageSideTextPosition` accessor for the second text-line VM
+  and direct reads for the five color uses. Portrait script IDs use
+  an unsigned 32-bit offset addition before conversion to the signed
+  script argument.
 - Persistent stage counter address: `(stage*3+shot)*0x437C + 0x4D0 + difficulty*4`.
   `GuiStageClearCount` computes that offset with unsigned DWORD arithmetic
   before adding it to the flat 32-bit base. The source retains the target's

@@ -48,9 +48,11 @@ actual exactness, target identity, natural-source and state-isolation rules.
 
 ## Current direction — handoff and exact reconstruction
 
-Prioritize complete medium/large owners alongside useful leaves, and compare
-the first complete source early. Natural low-level C/C++ and provisional
-numeric/offset names are acceptable.
+Use the canonical match ledger to find the largest remaining authored owner.
+Leave smaller leaves for later. Record the selected function in
+`docs/RE_HANDOFF.md` and stay on it through a complete strict cold match.
+Compare the first complete source early. Natural low-level C/C++ and
+provisional numeric/offset names are acceptable.
 
 Call local tools directly. Do not route through Factory providers, require
 Factory receipts, or read Factory guidance as a session prerequisite. Use
@@ -85,9 +87,9 @@ call is needed for a documentation/test-maintenance batch.
 ## Exact work and acceptance
 
 - Work on one bounded owner or coherent infrastructure batch and leave a
-  reviewable local checkpoint. Prefer complete comparisons over speculative
-  test matrices. Park repeated byte-neutral controls; reopen with new evidence
-  and a falsifiable prediction.
+  reviewable local checkpoint. Commit substantive progress during the work.
+  Prefer complete comparisons and evidence-backed probes. Revisit a byte-neutral
+  control when new evidence supports a falsifiable prediction.
 - Keep compiler/linker jobs serial, one CPU at nice10, with bounded runtime and
   retained exit logs. Preserve TH10's pinned VC7.1 profiles and LTCG `/GL` where
   applicable; do not transplant another game's compiler flags.

@@ -8,8 +8,9 @@ instructions. No Factory provider, receipt, coordinator or Factory-document
 prerequisite applies. Follow the commit format in AGENTS.md and keep
 checkpoints local.
 
-Advance complete medium/large owners and useful leaves. Compare a complete
-owner early. Natural low-level source and provisional names are acceptable.
+Start with the largest remaining authored owner. Compare a complete source
+early and commit substantive progress. Natural low-level source and
+provisional names are acceptable.
 
 ## Bounded exact loop
 
@@ -17,9 +18,8 @@ owner early. Natural low-level source and provisional names are acceptable.
    ledger rows. Use `scripts/repo-python`; verify the target before target work.
    Run toolchain execution smoke only on setup/change or a tool problem. Attest
    local Ghidra when using it, not for unrelated maintenance.
-2. Select one owner with a usable complete comparison and a concrete unresolved
-   source/codegen question. Backlog/ranking/boundary reports are optional triage
-   tools. A whole subsystem's source-completeness report is not an entry gate.
+2. Record one selected function in the handoff. Stay on it until the complete
+   strict cold match passes. Use the canonical exact ledger to rank the backlog.
 3. Review target entry, exits, tables, alignment, ownership, ABI and actual
    callees. Keep authorship and source presence separate from exactness.
 4. Recover a complete natural implementation and compile it early with the

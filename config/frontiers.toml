@@ -12,13 +12,6 @@ candidate_size = 335
 target_sha256 = "e20984dc1778b1bfcdc3a91d44db88057c326184264be1fa698cd9df1284bc8f"
 residual = ["D7", "DD"]
 
-[frontier.enemy-read-float-operand]
-function = "EnemyFullObjectView::ReadFloatOperand"
-unit = "enemy-read-float-operand"
-candidate_size = 876
-target_sha256 = "426f0193e28b8f0b42799a60f83305b89170c821bb45dc4f5ac4a7a657bdaf34"
-residual = ["E", "2F", "87", "89", "8F", "92", "E6", "EF", "F8", "101", "10A", "113", "11C", "125", "129-139", "13F", "148", "151", "158-159", "15E-168", "16D-176", "17B-182", "184-188", "18D-194", "196-19A", "1AB", "1B4-1B8", "1BA-1BB", "1C0", "1C5-1CC", "1CE-1CF", "1D4", "1D9-1E0", "1E6", "1EB-1F4", "1F9-20F", "211-212", "217-220", "225-23B", "23D-23E", "243-24C", "251-267", "269-26A", "26F-278", "27D-293", "295-296", "29E-29F", "36C-373"]
-
 [frontier.ascii-manager-destructor]
 function = "AsciiManagerView::~AsciiManagerView"
 unit = "ascii-manager-destructor"
@@ -39,13 +32,6 @@ unit = "laser-type0-bounce"
 candidate_size = 510
 target_sha256 = "9be793018926bde16b0e725a6ccab3da97d461af2c129e67ac0aa32a131dded7"
 residual = ["3", "5", "7", "A", "1C", "2F", "79", "7D", "80", "86", "8B", "9A-9B", "A0-AC", "B1-CA", "CF-E7", "EC-F9", "FE-101", "103-114", "116-127", "12C-136", "13B-148", "14A-157", "15B-15D", "162-172", "174-181", "186-192", "197-1FD"]
-
-[frontier.bullet-cancel-in-area]
-function = "BulletManagerView::CancelBulletsInArea"
-unit = "bullet-cancel-in-area"
-candidate_size = 564
-target_sha256 = "db89521d8d41ed987a728bfa2b80ff10e772c908a085a5347b6a8964de1d8559"
-residual = ["2", "DC", "E6", "FD-103", "108-110", "113-150", "153-163", "166-169", "16B-176", "17B-18A", "18F-1A0", "1A5-1A9", "1AE-1BE", "1C3-1D3", "1D8-1DE", "1E3-1F3", "1F8-1FC", "201-205", "207-20F", "212-21D", "21F-232", "234-248"]
 
 [frontier.initialize-game-statistics-record]
 function = "InitializeGameStatisticsRecord"

@@ -178,7 +178,8 @@ completion.
 The explicit `stage_array_eh_handler = true` descriptor binds reviewed VM
 member handlers by exact parent symbol, target extent, field offset and
 handler address. It covers the StageScriptView constructor and destructor,
-the spell panel constructor and the ANM render manager constructor.
+the spell panel constructor, the ANM render manager constructor and the
+GUI destructor.
 The Stage constructor and destructor generate 37- and 64-byte regions that
 must share the parent's qualified StageLifecycle PDB object and have a unique
 MAP handler entry. Both images must match the bound fields, immutable 28-byte
@@ -196,6 +197,12 @@ cleanup at `+0x68`, a direct destructor tail call for the embedded VM at
 `+0x3AD130`, and a 20-VM array cleanup at `+0x72DAE4`. The verifier binds
 all three unwind states, the array counts, the saved receiver, and the real
 VM destructor in the same AnmManager object.
+
+The GUI destructor binds its 184-byte generated region at the handler
+entry 0x46574E. FuncInfo at 0x471740 references six array cleanup actions
+and the standalone VM destructor action. The five-input `GuiDestructorCore`
+link uses `/EHsc` throughout. Run the existing VM array-member EH self-test
+when changing this verifier.
 
 ## Validation scope during exact reconstruction
 
