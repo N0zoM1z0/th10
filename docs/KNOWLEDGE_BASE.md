@@ -1606,8 +1606,17 @@ restored the EDI receiver at both calls and the full update comparison.
   VC7.1 SP1 link. The target deleting wrapper at `0x0040CC50` pushes
   its saved ESI receiver. The linked deleting wrapper calls with ECX.
   Direct `this` accesses, a self-reference and a countdown over the ten
-  VM slots preserve the linked ABI. A shared helper that returns a
-  matched VM directly shortens the candidate to 369 bytes.
+  VM slots preserve the linked ABI. Both an inline search helper and the
+  real `AnmRenderManagerView::FindVm` in the `EnemyScalarInterpolation`
+  link shorten the candidate to 369 bytes.
+  In the VC7.1 SP1 trace, `MdmFlexParams` takes its early exit for both
+  the destructor and the deleting wrapper. Its eligibility field at
+  function symbol +0xE1 is zero for both. In the same link it scans
+  `EclVmContext::StartSubroutine` and assigns the receiver to EAX.
+  Declaring a virtual destructor `__stdcall` in a separate compiler
+  probe preserves the default mangling and generated call sequence.
+  The original executable's only direct call to the destructor is
+  the deleting wrapper at `0x0040CC54`.
 - EnemyManager `activeEnemyCount` is at +0x60 (`DEC [ECX+0x60]` in the 386-byte enemy-object destructor; `INC` in Spawn). `spawnCounter` also wraps.
 - `EnemyConfigureInterrupt` records are 16 bytes at EnemyFullObjectView+0x2494; the timer callback is at `(slot+0x24A)*0x10`.
 - `managedVmIds` has 10 entries; script indices into it are unchecked. `loadedAnmResources` has 4 pointers, also accessed with unchecked indices.

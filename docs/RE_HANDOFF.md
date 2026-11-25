@@ -15,6 +15,9 @@ the shared ANM registry and emits 385 bytes. Its compiler-generated
 deleting wrapper passes the receiver in ECX. The target wrapper at
 `0x0040CC50` pushes ESI before calling the destructor. Recover the stack
 receiver and keep both managed VM search paths in the comparison.
+In the current link both destructor entries take the early exit from
+`MdmFlexParams`. The retained
+`.analysis/enemy-full-destructor/trace-receiver.py` records that decision.
 
 ```sh
 timeout -k 10s 145s taskset -c 2 nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit enemy-full-object-destructor
