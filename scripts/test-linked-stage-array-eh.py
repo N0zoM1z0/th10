@@ -35,11 +35,13 @@ class Image:
                          else b'\x05' + struct.pack('<I', member))
                 code += b'\x50\xe8' + struct.pack('<i', iterator - action - size + 1) + b'\xc3'
             unwind += struct.pack('<iI', index - 1, action)
-        code += b'\xb8' + struct.pack('<I', data + 0x20)
+        info_offset = max(0x20, len(unwind))
+        self.func_info = data + info_offset
+        code += b'\xb8' + struct.pack('<I', self.func_info)
         code += b'\xe9' + struct.pack('<i', frame - handler - 10)
         info = bytearray(0x100)
         info[:len(unwind)] = unwind
-        struct.pack_into('<7I', info, 0x20, 0x19930520, len(arrays), data, 0, 0, 0, 0)
+        struct.pack_into('<7I', info, info_offset, 0x19930520, len(arrays), data, 0, 0, 0, 0)
         # A synthetic dense34-byte callee with the same single-field inventory.
         cleanup = b'\x90' * 14 + b'\xe8' + struct.pack('<i', free - destructor - 19)
         cleanup += b'\x90' * 14 + b'\xc3'
@@ -156,7 +158,7 @@ def main():
         runpy.run_path('scripts/build-match-unit.py')['validate_fields']('synthetic', unit, unit['size'])
         for neighbor in [0, 0x37, 0xffffffff]:
             q = fixture(symbol)
-            word(q, 'target', 0x60003c, neighbor)
+            word(q, 'target', q['target'].func_info + 28, neighbor)
             bind(q)
         cases = [
             ('false-opt-in', lambda q: q['field'].update(stage_array_eh_handler=False)),
@@ -176,9 +178,9 @@ def main():
             ('extra-region-field', lambda q: q['region_links']['fields'].append(dict(offset=2, width=4, type='DIR32'))),
             ('partial-region-decode', lambda q: q['region_links'].update(decoded_bytes=1)),
             ('mutable-info', lambda q: setattr(q['target'].sections[1], 'characteristics', 0xc0000040)),
-            ('wrong-magic', lambda q: word(q, 'target', 0x600020, 0x19930521)),
-            ('wrong-state-count', lambda q: word(q, 'native', 0x300024, len(spec['arrays']) + 1)),
-            ('try-map', lambda q: word(q, 'target', 0x60002c, 1)),
+            ('wrong-magic', lambda q: word(q, 'target', q['target'].func_info, 0x19930521)),
+            ('wrong-state-count', lambda q: word(q, 'native', q['native'].func_info + 4, len(spec['arrays']) + 1)),
+            ('try-map', lambda q: word(q, 'target', q['target'].func_info + 12, 1)),
             ('wrong-action', lambda q: word(q, 'native', 0x300004, q['address'])),
             ('wrong-predecessor', lambda q: word(q, 'target', 0x600000, 0)),
             ('array-count', lambda q: q['target'].write(q['target_start'] + 6, b'\x09')),

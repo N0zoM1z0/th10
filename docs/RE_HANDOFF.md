@@ -82,7 +82,9 @@ cleanup entry preserves the initial stack argument. Typed ID cursors
 and explicit comparisons align all 161 target instructions. LTCG
 adds one five-byte state store before the standalone VM's inlined
 destructor. Resolve that store while preserving the six array actions
-and the one member action through FuncInfo at 0x00471740.
+and the one member action through FuncInfo at 0x00471740. All 37 field
+identities and the seven-state generated protocol agree in the warm
+candidate after accounting for the extra instruction.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

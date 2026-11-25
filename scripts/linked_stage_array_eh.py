@@ -1,7 +1,7 @@
 """Bind target-reviewed VM-array EH metadata, without runtime credit.
 
-Covers Stage and spell-panel VM arrays and the ANM manager's pool, embedded
-VM, and layer array.
+Covers the Stage, spell-panel and GUI VMs and the ANM manager's pool,
+embedded VM and layer array.
 A full PDB-generated contribution, immutable FuncInfo/unwind map, saved this,
 real VM destructor and CRT entries must agree with the original executable.
 """
@@ -18,6 +18,10 @@ PARENTS = {
                                      handler=0x46556b, arrays=((0x180, 8),)),
     '??1StageScriptView@@QAE@XZ': dict(entry=0x402440, size=499, offset=3,
                                      handler=0x4652d6, arrays=((0x180, 8), (0x1f08, 3))),
+    '??1GuiView@@QAE@XZ': dict(entry=0x4145f0, size=574, offset=3,
+        handler=0x46574e, arrays=((0x10, 10), (0x24c8, 10), (0x4980, 9),
+                                (0x6a8c, 4), (0x793c, 2), (0x8094, 7), (0x9a48, 1)),
+        owner_source='src/Gui.cpp'),
     '??0EnemyGameStateView@@QAE@XZ': dict(entry=0x408910, size=176, offset=9,
         handler=0x465514, arrays=((0x10, 2), (0x778, 8)),
         owner_source='src/EnemyGameStateLifecycle.cpp'),
