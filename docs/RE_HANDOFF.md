@@ -9,10 +9,20 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 The sole active owner is `GuiView::LoadData` at `0x00413A20`, 289 bytes
 in `src/Gui.cpp`. It is the largest remaining authored owner apart from the
-explicitly deferred `StartSubroutine`. Its previous candidate retained all
-16 fields and six local branches but differed in register/store scheduling.
-Inspect its current source and link recipe, compare the complete source early,
-and stay on it through its complete strict cold match.
+explicitly deferred `StartSubroutine`. Its current complete cold baseline in the existing 17-input
+`GuiCreation-cold-20261025` graph is 289 bytes and 178/225 non-link bytes.
+Using `frameTimer.SetCurrent(0)` restores the target's final zero-store order;
+the current warm candidate is 289 bytes and 192/225. The typed score field is
+`g_GameScoreState.score` (0x474C44). Naming the ANM filename is byte-neutral.
+
+Remaining work: initial filename EAX→ECX, new-file route/index ECX/EDX→EDX/EAX,
+and tail minus-one/score ECX/EAX→EAX/ECX with score publication last. Candidate
+unit `gui-load-data` has all 16 target fields. Use its canonical build for final
+proof; private `.analysis/gui-load-data/relink-probe.py LABEL` recompiles only
+Gui and relinks the retained graph for bounded diagnostics. Analysis is in
+`.analysis/gui-load-data/`. After complete strict equality, replay this unit
+with `gui-creation-initialize` and `game-manager-initialize`. Stay on this owner
+through its complete strict cold match.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with

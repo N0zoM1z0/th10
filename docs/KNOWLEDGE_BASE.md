@@ -1323,6 +1323,28 @@ frontier; do not refresh a baseline merely to accept the new positions.
   public lookup cannot establish the meaning of an interior reference.
   The corrected receipts are `member-bindings-compare.json` and
   `member-bindings-replay.json` in the same directory.
+- **GuiView::LoadData @0x413A20 (289)** remains open in the current
+  17-input `GuiCreation-cold-20261025` graph. The first complete cold build
+  emits 289 bytes with all instructions decoded and 178 of 225 non-link
+  bytes equal. The canonical candidate `gui-load-data` declares all 16
+  target fields and keeps the stack receiver, RET 4 and six local branches.
+
+  Calling the existing `frameTimer.SetCurrent(0)` instead of manually
+  expanding it restores both final zero stores before the shared minus-one
+  constant. A same-input warm diagnostic improves to 192/225 non-link bytes
+  with the extent still 289. Explicitly naming the initial ANM filename is
+  byte-neutral. Reading the final score through `g_GameScoreState.score`
+  instead of `g_GameStageState + 4` is also code-neutral after address binding;
+  the typed view and the name `capturedScore` make that source access clearer.
+
+  The remaining differences are the initial filename in EAX rather than ECX,
+  the new-file route/index in ECX/EDX rather than EDX/EAX, and the tail's
+  minus-one/score registers and store order. Target reads the score into ECX,
+  writes both spell sentinels from EAX, then publishes the score. Both
+  `gui-creation-initialize` and `game-manager-initialize` are direct consumers.
+  Current source, private warm relinker and diagnostics are under
+  `.analysis/gui-load-data/`. Rebuild `gui-load-data` cold before acceptance;
+  warm results give no exact credit.
 - **InitializeGameStatisticsRecord @0x42ACB0 (274)**. The six-TU
   `GameStatisticsTail` graph matches 249 bytes and binds all eight DIR32
   fields in the complete PDB contribution. Three read the nine-byte

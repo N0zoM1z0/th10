@@ -2293,7 +2293,7 @@ GuiView::GuiView()
 
 int GuiView::LoadData()
 {
-    int capturedStage;
+    int capturedScore;
     const unsigned char *route = static_cast<const unsigned char *>(g_ScriptViewerStageRoute);
     stageUiAnm = g_AnmRenderManagerView->PreloadAnm(28, *reinterpret_cast<const char *const *>(route + 0x20));
     if (!stageUiAnm)
@@ -2314,21 +2314,11 @@ int GuiView::LoadData()
         if (!messageFile)
             goto failed;
     }
-    if (!(frameTimer.flags & 1))
-    {
-        frameTimer.current = 0;
-        frameTimer.previous = -999999;
-        frameTimer.subframe = 0.0f;
-        frameTimer.scale = &g_AnmGameSpeed;
-        frameTimer.flags |= 1;
-    }
-    frameTimer.current = 0;
-    frameTimer.subframe = 0.0f;
-    frameTimer.previous = -1;
-    capturedStage = *reinterpret_cast<const int *>(g_GameStageState + 4);
+    frameTimer.SetCurrent(0);
+    capturedScore = g_GameScoreState.score;
     spellSeconds = -1;
     previousSpellSeconds = -1;
-    value9E78 = capturedStage;
+    value9E78 = capturedScore;
     return 0;
 failed:
     th10::g_GameErrorContext.Log("\x83\x66\x81\x5b\x83\x5e\x82\xaa\x89\xf3\x82\xea\x82\xc4\x82\xa2\x82\xdc\x82\xb7\r\n");
