@@ -1345,13 +1345,24 @@ frontier; do not refresh a baseline merely to accept the new positions.
   `SetCurrent(0)` alone fixes only the timer stores; a final publication
   barrier alone fixes only the spell stores. Keep both ordering points.
 
-  Three register choices remain: filename EAX→ECX, new-file route/index
-  ECX/EDX→EDX/EAX, and tail minus-one/score ECX/EAX→EAX/ECX. The target's
-  ECX score load is one byte longer, while its EAX index load is one byte
-  shorter. Both `gui-creation-initialize` and `game-manager-initialize` are
-  direct consumers. Current source, private warm relinker and diagnostics
-  are under `.analysis/gui-load-data/`. Rebuild cold before acceptance;
-  warm results give no exact credit.
+  A consumed `GuiStageRouteView` now names the two message-file pointers at
+  +0x18 and the UI filename at +0x20. Directly reading the latter in the
+  preload call, and using a separate local route pointer in the new-file
+  branch, restores the target ECX filename and EDX/EAX route/index pair.
+  The complete candidate is now 288 bytes: its remaining EAX score read
+  is one byte shorter than the target ECX form. The tail still gives ECX
+  to the shared minus-one value and EAX to the score. All other instruction
+  choices and both write sequences align after accounting for that shift.
+  The raw offset-based diagnostic is now 118/225; that metric reflects the
+  shifted instruction addresses, not a new semantic regression.
+
+  Unsigned sentinel lvalues, a nested const score snapshot and a volatile
+  score read are byte-neutral in this graph. Do not repeat those controls
+  without new evidence. The next step is read-only local C2 allocation
+  tracing for this last pair. Both `gui-creation-initialize` and
+  `game-manager-initialize` are direct consumers. Current inputs, private
+  warm relinker and diagnostics are under `.analysis/gui-load-data/`.
+  Rebuild cold before acceptance; warm results give no exact credit.
 - **InitializeGameStatisticsRecord @0x42ACB0 (274)**. The six-TU
   `GameStatisticsTail` graph matches 249 bytes and binds all eight DIR32
   fields in the complete PDB contribution. Three read the nine-byte

@@ -11,20 +11,23 @@ The sole active owner is `GuiView::LoadData` at `0x00413A20`, 289 bytes
 in `src/Gui.cpp`. It is the largest remaining authored owner apart from the
 explicitly deferred `StartSubroutine`. Its current complete cold baseline in the existing 17-input
 `GuiCreation-cold-20261025` graph is 289 bytes and 178/225 non-link bytes.
-The current warm candidate is 289 bytes and 192/225. Two local ordering
-barriers now preserve both timer-zero-before-sentinel and
-spell-sentinels-before-score-publication schedules. No shared timer header
-changed. Source `g_GameScoreState.score` binds base 0x474C40 plus four;
-coincident diagnostic publics are not semantic bindings.
+The current warm candidate is 288 bytes. A consumed route view restores
+the ECX filename and EDX/EAX route/index choices. Both local write-ordering
+barriers are retained. Only the tail's minus-one/score ECX/EAX pair remains
+swapped: target uses EAX/ECX, making its score load one byte longer. All other
+instruction choices align after accounting for that shift. The raw diagnostic
+is 118/225 because later instruction offsets differ; it is not exact.
 
-Remaining work: initial filename EAX→ECX, new-file route/index ECX/EDX→EDX/EAX,
-and tail minus-one/score ECX/EAX→EAX/ECX. The tail instruction order is now
-correct. Candidate `gui-load-data` has all 16 target fields. Use its canonical
-build for final proof; `.analysis/gui-load-data/relink-probe.py LABEL`
-recompiles only Gui and relinks the retained graph for bounded diagnostics.
-Analysis is in `.analysis/gui-load-data/`. After complete strict equality,
-replay this unit with `gui-creation-initialize` and `game-manager-initialize`.
-Stay on this owner through its complete strict cold match.
+Candidate `gui-load-data` has all 16 target fields. Current inputs and the
+private warm relinker are under `.analysis/gui-load-data/`. A source snapshot
+named `source-typed-route.cpp` is the current positive control. Unsigned
+sentinel stores, a scoped const score and a volatile score read are neutral.
+Next inspect C2's allocation of this final pair through local read-only
+tracing, reusing the pinned hooks from the retained ECL trace without changing
+that deferred owner. Use the canonical cold build for final proof. After full
+strict equality, replay this unit with `gui-creation-initialize` and
+`game-manager-initialize`. Stay on this owner through its complete strict
+cold match.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with

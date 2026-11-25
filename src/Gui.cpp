@@ -2291,11 +2291,22 @@ GuiView::GuiView()
     g_GuiView = this;
 }
 
+// Consumed route fields; the rest of the descriptor remains opaque.
+struct GuiStageRouteView
+{
+    unsigned char unknown000[0x18];
+    const char *messageFiles[2];
+    const char *stageUiFile;
+};
+typedef char GuiStageRouteFileOffsets[
+    (offsetof(GuiStageRouteView, messageFiles) == 0x18 &&
+     offsetof(GuiStageRouteView, stageUiFile) == 0x20) ? 1 : -1];
+
 int GuiView::LoadData()
 {
     int capturedScore;
-    const unsigned char *route = static_cast<const unsigned char *>(g_ScriptViewerStageRoute);
-    stageUiAnm = g_AnmRenderManagerView->PreloadAnm(28, *reinterpret_cast<const char *const *>(route + 0x20));
+    stageUiAnm = g_AnmRenderManagerView->PreloadAnm(28,
+        static_cast<const GuiStageRouteView *>(g_ScriptViewerStageRoute)->stageUiFile);
     if (!stageUiAnm)
         goto failed;
     if (g_GuiRetainedMessageFile491BE8)
@@ -2305,9 +2316,10 @@ int GuiView::LoadData()
     }
     else
     {
-        route = static_cast<const unsigned char *>(g_ScriptViewerStageRoute);
+        const GuiStageRouteView *route =
+            static_cast<const GuiStageRouteView *>(g_ScriptViewerStageRoute);
         const int index = *reinterpret_cast<const int *>(g_GameStageState + 0x28);
-        const char *filename = reinterpret_cast<const char *const *>(route + 0x18)[index];
+        const char *filename = route->messageFiles[index];
         g_StageFilePath[0] = 0;
         strcat(g_StageFilePath, filename);
         messageFile = FileSystem::OpenFile(g_StageFilePath, NULL, 0);
