@@ -73,15 +73,16 @@ comparison only for its source and link graph.
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
-## Current verification
+## Open owner
 
-The replay frame allocator, clear and position helpers passed selected
-cold replay. The process-frame family and stage-state restoration passed
-their warm comparisons and have selected cold jobs in progress.
-
-A fresh build of the larger GameManager graph exposes a prior GUI-reset
-call ABI difference at +0x10E. Relinking the pre-recovery replay source
-into that graph reproduces the same diff.
+`GameResetGui` at `0x00413BC0` is active. The clean prior build
+emitted 1,131 of 1,965 bytes and put the GUI argument on the stack.
+The shared primary-list registration helper restores six inline paths
+while the first two keep an outlined registration call. The candidate
+now emits 1,965 bytes and 52 linked fields with 528 of 543 instructions
+aligned. Both stage-reset calls use EDI, and the warm GameManager update
+comparison passes all 1,544 bytes. Resolve the resource and stage-index
+loads in the two final caption initialization sequences.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

@@ -1910,8 +1910,8 @@ typedef char GuiResetSpecialIdsAt9E50[
 // callbacks, resource loads, or allocation side effects are executed by tests.
 // The stage captions allocate their VM before adding the caption offset to
 // the starting-stage script index, as the retail schedule shows.
-static __forceinline AnmVmIdView CreateFrontCaptionVm(
-    AnmLoadedView *anm, int script, int offset)
+static __forceinline AnmVmView *InitializeResetVm(
+    AnmLoadedView *anm, int script, int offset = 0)
 {
     AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
     unsigned int flags = vm->flags35C | 0x40000000u;
@@ -1919,7 +1919,20 @@ static __forceinline AnmVmIdView CreateFrontCaptionVm(
     vm->renderLayer = 15;
     vm->flags35C = flags;
     anm->InitializeVm(vm, script);
+    return vm;
+}
+
+static __forceinline AnmVmIdView CreateResetVm(AnmLoadedView *anm, int script)
+{
+    AnmVmView *vm = InitializeResetVm(anm, script);
     return g_AnmRenderManagerView->AddVmVariant0(vm);
+}
+
+static __forceinline AnmVmIdView CreateFrontCaptionVm(
+    AnmLoadedView *anm, int script, int offset = 0)
+{
+    AnmVmView *vm = InitializeResetVm(anm, script, offset);
+    return AddVmToPrimaryBack(*g_AnmRenderManagerView, vm);
 }
 
 // The shown and hidden spans advance through native flag-word addresses.
@@ -1958,12 +1971,12 @@ void GameResetGui(GuiView *gui)
         static_cast<GuiResetCallbackView *>(gui->drawCallback)->flags |= 2;
 
     if (gui->specialVmId9E58.value == 0)
-        gui->specialVmId9E58 = gui->frontAnm->CreateVmVariant0(0, 15);
+        gui->specialVmId9E58 = CreateResetVm(gui->frontAnm, 0);
     if (gui->specialVmId9E5C.value == 0)
     {
         // The target discards this returned ID. Do not silently repair the
         // missing +0x9E5C publication or suppress repeated future allocation.
-        gui->frontAnm->CreateVmVariant0(1, 15);
+        CreateResetVm(gui->frontAnm, 1);
     }
 
     if ((gui->displayVms0[0].flags35C & 1) == 0)
@@ -1996,17 +2009,17 @@ void GameResetGui(GuiView *gui)
 
     if (g_GameTransitionState != 8 && (g_GameRuntimeFlags & 0x20) == 0)
     {
-        gui->stageUiAnm->CreateVmVariant0(0, 15);
-        gui->stageUiAnm->CreateVmVariant0(1, 15);
+        CreateFrontCaptionVm(gui->stageUiAnm, 0);
+        CreateFrontCaptionVm(gui->stageUiAnm, 1);
     }
     if ((g_GameRuntimeFlags & 0x20) != 0)
-        gui->frontAnm->CreateVmVariant0(0x71, 15);
+        CreateFrontCaptionVm(gui->frontAnm, 0x71);
 
     StartAnmLoadedScript(
         g_AsciiManagerView->asciiAnm, &gui->bossPositionVm, 0);
     if (g_GameStartupMode == 1 && g_GuiResetSession->value5C == 0 &&
         g_GameStartupValue474C90 == 0)
-        gui->frontAnm->CreateVmVariant0(0x4f, 15);
+        CreateFrontCaptionVm(gui->frontAnm, 0x4f);
 
     if (g_GameNewSession != 0)
     {
