@@ -9,11 +9,10 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 The active owner is `FrontEndControllerView::DrawStageScores` at
 `0x00431410`, the largest remaining authored owner outside the parked ECL
-scope. The `frontend-stage-scores-draw` candidate in `FrontEndReplaySaveDraw`
-has a strict 419-byte warm match with 16 fields. Inlining each record access
-puts the cursor comparison ahead of the profile pointer load and preserves
-the selection reloads after setting the text color. Cold replay the draw
-owner with the four existing draw units that share the link.
+scope. `frontend-stage-scores-draw` passed cold replay with all four draw
+owners in `FrontEndReplaySaveDraw`, and the real formatter matches in that
+same image. The shared score-state consumer `replay-manager-initialize`
+passes in its own link.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -38,6 +37,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `frontend-stage-scores-draw` | 419 B | `FrontEndReplaySaveDraw`, 16 fields and 17 local branches. The callback supplies EDI and the formatter takes the position in EBX. |
 | `input-initialize-devices` | 439 B | `InputDeviceCore`, 29 fields and ten local branches. The worker passes the device owner in EAX, and Log uses ECX. |
 | `laser-line-initialize` | 442 B | `LaserLineInitCore`, 10 fields and four local branches. The virtual receiver uses ECX, and the VM starter receives ESI/EAX. |
 | `replay-manager-load-replay` | 450 B | `ReplayLoadCore`, 18 fields and 14 local branches. The archive opener takes its name in EAX and size pointer on the stack. `Load` and `Initialize` pass in their own links. |

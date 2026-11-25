@@ -1953,6 +1953,16 @@ restored the EDI receiver at both calls and the full update comparison.
 
 ### FrontEnd and result menu
 
+- `FrontEndControllerView::DrawStageScores` at `0x00431410` uses the common
+  score state for the selections at +0x28, +0x2C and +0x34. The practice
+  rows are eight bytes each, starting at profile +0x4E4. Inlining the
+  record getter at all three accesses preserves the reloads across the
+  color store and keeps the cursor comparison ahead of the profile load.
+  The linked FrontEnd draw callback supplies an EDI receiver, and the
+  genuine ASCII formatter takes the position in EBX. The
+  [MIT-licensed reference](licenses/th10-decomp-MIT.txt) suggested using
+  the shared score-state fields and repeating the record access.
+
 - `FrontEndControllerView::UpdateKeyConfig` at 0x0042F540 receives the
   controller in EBX. Its five phases share the function's final return,
   leaving the ESI save after the phase bound check. The nine live mapping
