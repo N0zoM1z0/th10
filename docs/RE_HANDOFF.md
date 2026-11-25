@@ -9,11 +9,10 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 The active owner is `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. The target owns 550 bytes and receives the destination
-in EAX and two stack arguments. The two-source `EclVmHostRunEnemy`
-candidate reproduces the larger `GameManagerUpdate` graph's 551-byte
-baseline. The main differences are the loop entry, integer conversion
-branch and frame-push registers. Direct offset and typed-cursor forms
-preserve the baseline. Keep the real `Run` and child-spawn callers.
+in EAX with two stack arguments and RET 8. The committed source emits
+551 bytes in the two-source `EclVmHostRunEnemy` link. The larger
+`GameManagerUpdate` graph emits the same instruction sequence.
+The current linked image matches all 142 bytes of `ecl-vm-spawn-thread`.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -23,11 +22,27 @@ locally. [RE_ARTIFACTS.md](RE_ARTIFACTS.md) identifies the retained inputs.
 ```sh
 scripts/repo-python scripts/verify-target.py
 scripts/repo-python scripts/verify-toolchain.py --check
-timeout -k 10s 540s taskset -c 2 nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit UNIT
-scripts/repo-python scripts/compare-linked-function.py --unit UNIT --json
-timeout -k 10s 540s taskset -c 2 nice -n 10 scripts/repo-python scripts/replay-exact-units.py --unit EXACT_UNIT --json
+timeout -k 10s 120s taskset -c 2 nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit ecl-vm-start-subroutine
+scripts/repo-python .analysis/ecl-start-subroutine/compare.py EclVmHostRunEnemy
+scripts/repo-python scripts/compare-linked-function.py --unit ecl-vm-start-subroutine --json
+scripts/repo-python scripts/compare-linked-function.py --unit ecl-vm-spawn-thread --json
 scripts/repo-python scripts/ci.py && git diff --check
 ```
+
+The instruction diagnostic aligns 142 of 165 target instructions. Start
+with the return-frame block at +0x120. The target keeps the caller in EDX
+and the four-byte push size in EBX. The candidate uses EBP and EDX, and
+its load of the caller time takes one extra byte. The other differences
+are the destination cursor at +0x64 and the integer conversion branch at
++0xAD. Direct offset cursors preserve the baseline. Branch inversion
+merges stores and shrinks the body to 543 bytes. A `do/while` loop
+increased it to 554 bytes and lost instruction alignment.
+
+The strict comparator currently stops at the extent mismatch. The four
+target call fields are at +0x9E, +0xD2, +0xE8 and +0x1DD. Bind them when
+the source matches their positions, then replay only this owner and its
+affected exact callers. Keep the real `Run` and child-spawn callers in
+their respective recipes.
 
 Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 [frontiers.toml](../config/frontiers.toml). Product closure, runtime semantics
@@ -49,9 +64,10 @@ and portability remain open.
 
 ## Known comparison issue
 
-The `ascii-manager-initialize` factory graph has a pre-existing
-`Initialize` call-binding difference at +0x108. Relinking before and
-after the GUI draw source change produces the same diagnostic.
+The `ascii-manager-initialize` factory graph reports a call-binding
+difference at +0x108. Relinking before and after the GUI draw source
+change produced the same diagnostic. The 10-byte high-priority draw
+callback now has its own cold proof in `StageViewport`.
 
 The `gui-message-destructor` warm guard in `GameCleanupContext` differed by
 eight bytes. Relinking the source from before the `GuiView` destructor work

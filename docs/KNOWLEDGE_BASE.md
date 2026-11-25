@@ -1096,7 +1096,6 @@ frontier; do not refresh a baseline merely to accept the new positions.
   playback cursors at the target's +0x32E0 and +0x158 bases. The stage
   update calls the owner in EBX and the owner returns with a plain RET.
   [2026-11-25]
-- **EclVmContext::StartSubroutine @0x44DF70 (550)**: 551. [2026-11-07]
 - **ScriptViewerPopupOwnerView::Draw @0x42B780 (540)**: current
   four-source linked graph yields 537/540 bytes and 266 non-linkage
   differences; the 10-byte draw callback is also nonexact.
@@ -1423,7 +1422,18 @@ restored the EDI receiver at both calls and the full update comparison.
 - Pop @0x00450610 (122, RET 4): EAX stack, ECX byte count, BL requested type, one stack out ptr. Push/EnterFrame/LeaveFrame use EAX stack receiver.
 - Host 0x103C prefix: active ctx +4, embedded ctx +8, script DB +0x102C, thread-list sentinel +0x1030. Run's only callers are EclVmHost::Run; host Run callers keep host in EDI (EnemyRuntimeUpdate 0x0040E0FE/0x0040E205).
 - Opcode 0x51 polar helper 0x004501B0 (30B thiscall FSINCOS) is byte-identical to AnmFloat3View::FromAngleMagnitude @0x004458B0; 0x51/0x52 use EnemyWrapAngle @0x0044BC70.
-- StartSubroutine @0x0044DF70: private EAX, two stack args, RET 8; operand-word indexing via `valueOffset/4`, empty-stack zero return word, restore active ctx via `caller->host`.
+- `EclVmContext::StartSubroutine` at `0x0044DF70` takes the destination
+  in EAX and the caller and operand index on the stack. It returns with
+  RET 8. The argument words are indexed by `valueOffset / 4`. An empty
+  destination stack receives two zero return words. A successful lookup
+  restores the active context through the caller's host. The 550-byte
+  target has four calls. Their REL32 fields are at +0x9E for
+  `ReadIntValue`, +0xD2 for `ReadFloatValue`, +0xE8 for the CRT float
+  to integer conversion at `0x00463B2C`, and +0x1DD for
+  `FindSubroutine`. The two-source VC7.1 SP1 `EclVmHostRunEnemy` link
+  emits a 551-byte candidate. The return-frame register assignment costs
+  one byte at the caller-time load. See the
+  [current handoff](RE_HANDOFF.md) for the remaining differences.
 - Script DB (0x1098 polymorphic resource): AddScriptData @0x00450220 validates SCPT, ≤32 file buffers, header 0x24, sorted 8-byte name table; derived vtable 0x0046D0B4 (slots: AddScriptData, package loader 0x0040D400, file loader 0x0040CD20), base 0x0046D0F0 (AddScriptData, 0x0040C810). Owned script pointers +0x0C..+0x88, lookup table +0x8C, nested dwords +0x1090/+0x1094.
 - Opcode 55 negates the 32-bit raw word (NEG EDX at 44F851) after tag conversion and pushes it with float tag 66h.
   - Run loads the instruction into EAX for the time comparison, then separately loads EDI at body+40.
