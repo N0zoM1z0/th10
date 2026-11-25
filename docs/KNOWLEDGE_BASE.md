@@ -1647,7 +1647,10 @@ restored the EDI receiver at both calls and the full update comparison.
   count load. Capturing the destination in a pointer or reference before
   the conversion adds a stack temporary and expands the owner to 556 bytes.
   Capturing the converted integer while retaining the direct destination
-  access leaves the 542-byte match unchanged. Expressing loop continuation
+  access leaves the 542-byte match unchanged. A completed debugger link of
+  that form has identical owner bytes and four fields; its temporary numbers
+  change, but the EDX-to-EAX cursor transition and count allocation do not.
+  Expressing loop continuation
   as a boolean after the index increment or cursor updates is also neutral,
   for both ordinary and volatile count reads.
   The float operand candidate has ECX and EAX preferences and scores
