@@ -11,18 +11,29 @@ The sole active owner is `InitializeGameStatisticsRecord` at `0x0042ACB0`,
 274 bytes in `src/GameStatisticsRecordDefaults.cpp`. It is the largest
 remaining authored owner apart from the explicitly deferred `StartSubroutine`.
 Its candidate recipe is `game-statistics-initialize-record` in the six-input
-`GameStatisticsTail` graph. The complete current owner matches 255/274 bytes
-with all eight fields bound. Indexed rank rows and the literal strcpy
-restore all registers and stack record / RET4. Direct spellHistory indexing
-restores the complete unrolled kind loop. Only the ninth name-byte store is
-out of position: +0x60 before the zeros instead of +0x71 after CMP. Its move
-accounts for all 19 differing bytes. Keep this source as the control while
-investigating the tail's scheduling and alias dependencies.
+`GameStatisticsTail` graph. The current complete owner matches 255/274 bytes
+with all eight fields; an independent cold control reproduces the same body.
+Indexed ranks restore all registers and stack record / RET4. Direct
+spellHistory indexing restores the entire unrolled kind loop. Only the ninth
+name-byte store is misplaced: +0x60 before the zeros instead of +0x71 after
+CMP, accounting for all 19 differing bytes. The whole-row byte view preserves
+the complete normalized body. Keep this source as the control.
 
-Read the focused knowledge entry and `.analysis/statistics-record/`.
-`indexed-strcpy-compare.json` is the current strict comparison; baseline
-and bounded failed controls are retained there. The updated diagnostic
-frontier describes the current instruction order. Stay on this owner:
+`whole-row-byte-view-compare.json` is the current strict comparison under
+`.analysis/statistics-record/`; `indexed-cold-control-*` records the prior
+byte-identical cold control. `indexed-allocation.trace` describes source
+commit `4ffa9bb5`: the copy is expanded before global allocation, its byte
+and pointer temporaries are local, zero gets EDX at priority 35 and the outer
+count gets ESI at priority -14. The tail store is still before both zeros
+at local-allocation entry. Next inspect the local allocator's copy-destination
+definitions and memory-order dependencies. Existing RegAssign hooks at
+`0x1079C134`/`0x1079C23B` are read-only starting points. Avoid repeating the
+ruled-out scalar, pointer, helper and buffer families without a new prediction.
+
+A one-byte buffer eliminates its temporary storage but changes the induction
+base; an explicit parent cursor adds a second cursor and spills the count.
+Both control inputs are retained. The direct constructor remains nonexact
+137/132, with `push esi` immediately before the bound call. Stay on this owner:
 
 ```bash
 scripts/repo-python scripts/build-match-unit.py \

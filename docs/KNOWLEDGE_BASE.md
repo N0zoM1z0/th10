@@ -1353,40 +1353,48 @@ frontier; do not refresh a baseline merely to accept the new positions.
   volatile reads/writes were neutral. Direct score copying after the two
   sentinels gives the right registers but leaves the read too late. Both
   `gui-creation-initialize` and `game-manager-initialize` are direct consumers.
-- **InitializeGameStatisticsRecord @0x42ACB0 (274)** now matches 255/274
-  bytes after all eight fields in the six-input `GameStatisticsTail` graph.
-  Index rank rows directly, retain a char pointer to the active byte, and
-  copy the nine-byte `"--------\0"` placeholder through the literal
-  `strcpy` intrinsic. This restores every register and the stack record /
-  RET4 ABI without spilling a counter. The pooled literal's complete nine
-  bytes agree with original `0x46E858`; the three fields bind its symbol
-  and addends 0/4/8.
+- **InitializeGameStatisticsRecord @0x42ACB0 (274)** matches 255/274 bytes
+  with all eight fields in the six-input `GameStatisticsTail` graph, also
+  reproduced by an independent cold control. Indexed rank rows, the char
+  view at the active byte and literal strcpy restore every register and
+  stack record / RET4 without spilling a counter. The whole-row byte view
+  preserves that complete normalized contribution. The pooled literal's
+  nine bytes equal original `0x46E858`; its three fields bind addends 0/4/8.
+  Direct spellHistory member indexing restores the entire five-way unrolled
+  kind loop, including setup order and both SIB encodings.
 
-  Direct `record->spellHistory[index]` member indexing restores the entire
-  compiler-unrolled kind loop, including setup order and both SIB encodings.
-  The sole remaining difference is one instruction's position: the byte
-  store occurs at +0x60 before the independent zeros, where the target
-  places it at +0x71 after the score/cursor update and CMP. Its movement
-  accounts for 19 differing bytes; all remaining instructions and operands
-  agree. The diagnostic frontier was regenerated for this new instruction
-  order; the previous 249-byte baseline remains in Git.
+  Only the name tail-byte store is misplaced: +0x60 before the independent
+  zeros instead of +0x71 after the score/cursor update and CMP. Its movement
+  accounts for all 19 differing bytes. The diagnostic frontier records this
+  instruction order; Git retains the previous 249-byte baseline. The sole
+  direct constructor remains 137/132 bytes, and its observed `push esi`
+  immediately before the call preserves the real record argument.
+
+  Read-only C2 tracing at source commit `4ffa9bb5` shows the nine-byte copy
+  already expanded before global allocation. Its word and byte temporaries,
+  including the copy destination, are absent from global register choices.
+  The shared zero has priority 35 and takes EDX; the outer count has signed
+  priority -14 and takes ESI. Before local allocation, the tail store still
+  precedes both zero stores. `indexed-allocation.trace` retains these IR and
+  allocation observations. The next useful trace should inspect the local
+  allocator's copy-destination definitions and memory-order dependencies,
+  rather than repeating scalar type or pointer spelling controls.
+
+  Named row references or direct name-member/array-reference copies change
+  the induction base and spill. Scalar, union and word-buffer tails change
+  allocation; advancing rank first restores the store position but not the
+  other choices. A one-byte array is fully eliminated and uses BL, yet its
+  indexed loop walks the tail address; an explicit parent cursor grows a
+  second cursor and spills the outer count. Whole-nine-byte memcpy is neutral
+  to strcpy. Moving the copy after the zeros also moves both word copies.
+  An inline metadata helper unrolls the rank loop; a score-based latch keeps
+  the loop but still changes allocation. Literal 8+1 copies fold the tail
+  into immediate zero. VC7.1 rejects __restrict and leaves strncpy as a call.
 
   th10-decomp's score-default notes supplied the indexed-loop lead; its
-  [MIT notice](licenses/th10-decomp-MIT.txt) is retained. A named row
-  reference spills the score and changes the private ABI. Hand-written
-  scalar/union/word-buffer tails change the induction base and allocation;
-  advancing the rank before that tail fixes its store position but retains
-  those other differences. A whole nine-byte memcpy is byte neutral to
-  strcpy. Copying after the zeros places the byte last but also moves both
-  word copies. Direct name-member copying changes the cursor and spills;
-  common-base zero copies unroll the rank loop. Splitting a literal 8+1
-  copy folds the ninth byte into immediate zero.
-
-  Before indexed rows, the explicit ninth-byte local took EDX ahead of the
-  shared zero constant. A late load fixed allocation but moved its field;
-  literal strcpy with a walked cursor introduced a second induction cursor
-  and spilled the outer count. Those old controls and the current complete
-  comparisons are under `.analysis/statistics-record/`.
+  [MIT notice](licenses/th10-decomp-MIT.txt) is retained. Current comparisons,
+  useful allocation traces and two remaining tail-buffer control inputs are
+  under `.analysis/statistics-record/`.
 - **PlayerLoadOptionData @0x426520 (229)**: canonical scoped 20-support-TU
   VC7.1 /GL cold replay in the real `EnemyReadIntOperand`/`PlayerInitialize`
   caller graph. The complete 229-byte `src/Player.cpp` PDB contribution

@@ -46,7 +46,9 @@ void __stdcall InitializeGameStatisticsRecord(GameStatisticsRecord *record)
         for (int rank = 0; rank < 10; ++rank)
         {
             ranks[group][rank].score = 1000000 - rank * 100000;
-            unsigned char *activeByte = &ranks[group][rank].active;
+            unsigned char *activeByte =
+                reinterpret_cast<unsigned char *>(&ranks[group][rank]) +
+                offsetof(GameStatisticsRankScoreSlot, active);
             activeByte[0] = 1;
             strcpy(reinterpret_cast<char *>(activeByte + 2), "--------");
             ranks[group][rank].extra = 0;

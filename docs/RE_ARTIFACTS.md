@@ -87,6 +87,15 @@ graph. The trace records the byte-neutral narrow-index baseline before the
 late-merged script snapshots. Superseded dumps, source snapshots, private
 helper and debugger image have been removed (about 0.5 MiB).
 
+The current statistics-record initializer retains its complete baseline,
+255/274 cold control, current strict comparison and read-only allocation
+trace under `.analysis/statistics-record/`. Keep the canonical six-input
+`GameStatisticsTail` graph and the two small tail-buffer control sources.
+The indexed allocation trace describes commit `4ffa9bb5`; the current
+whole-row byte view preserves its normalized body. Superseded trial dumps,
+source snapshots, legacy relink/debugger contexts and the completed debugger
+image were removed (about 0.3 MiB).
+
 The Bomb power transition cleanup reclaimed about 26 MiB in source
 snapshots, trial links and superseded GUI and text-rendering outputs.
 
