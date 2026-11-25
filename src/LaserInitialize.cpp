@@ -37,7 +37,10 @@ int EnemyLaserLineView::Initialize(const EnemyLaserType0RequestView *initial)
     width = request.width;
     growSpeed = request.speed;
     angle = request.angle;
-    traveled = length > 0.0f ? 0.01f : 0.0f;
+    if (length > 0.0f)
+        traveled = 0.01f;
+    else
+        traveled = 0.0f;
     velocity.FromAngleMagnitude(angle, growSpeed);
     return 0;
 }
