@@ -1174,8 +1174,12 @@ frontier; do not refresh a baseline merely to accept the new positions.
   the target EDX needs a preference or interference that changes this tie.
   Local integer-word, union and pointer forms of the angle copy each leave
   the complete comparison at 333 matching bytes. The debugger link completes and matches
-  the ordinary link across all 335 bytes and eight linked fields. The next
-  probe should inspect its eligible registers and live-range conflicts.
+  the ordinary link across all 335 bytes and eight linked fields.
+  Reading the angle through a direct float reference gives 331 matching
+  bytes. A speed-word carrier alone preserves 333, while combining it with
+  a direct angle reference gives 327. Replacing the velocity receiver
+  reference with a pointer preserves 333. Computing that receiver before
+  the reset/easing branch expands the complete owner to 343 bytes.
   The `_reference/th10-decomp` `EaseStep` shape (plain float fields, direct
   `++int2`, `angle = value1`, reset speed copied before the timer reset)
   regressed to 320/335 on 2026-11-22 and was reverted.

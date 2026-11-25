@@ -14,6 +14,11 @@ instead of EDX. Reproduce the current frontier with
 `scripts/repo-python scripts/check-frontier.py --no-build --show bullet-update-absolute-direction`.
 Investigate the call operand's VC7.1 register allocation and compare the
 complete owner and eight linked fields after each source change.
+The angle load is global candidate 8 with priority 16, no observed scoring
+contributions, and EAX/ECX/EDX eligible. All three score zero and it takes
+EAX. Direct angle references and early receiver computation regress the
+comparison. The completed read-only C2 traces are in
+`.analysis/bullet-absolute/angle-eligible.*`.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
