@@ -1359,6 +1359,17 @@ restored the EDI receiver at both calls and the full update comparison.
 
 ### Laser
 
+- `EnemyLaserLineView::Initialize` at `0x0041C8C0` copies the complete
+  0x1DC-byte request, starts and steps both VMs, and initializes the
+  30-frame hold timer, geometry, sound and polar velocity. The existing
+  timer helper already emits current, subframe and previous in the target
+  order. Separate `traveled` stores reproduce the immediate `0.01f` and
+  zero writes, as suggested by the [MIT-licensed reference](licenses/th10-decomp-MIT.txt).
+  Root the link at the real virtual initializer to keep the receiver in ECX
+  and the request on the stack. The actual startup helper receives the VM
+  in ESI and the script number in EAX in this graph. Its body emits 204
+  bytes, including a two-byte `xor ecx, ecx` before VM initialization.
+
 - `EnemyLaserLineView::RunCommands` at 0x0041CA80 matches the 1,356-byte
   owner, including 31 fields, five jump destinations and the 64-byte
   selector map. Use the command record's opcode for the gate and switch.

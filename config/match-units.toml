@@ -24164,7 +24164,6 @@ linkages = [
 ]
 
 [units.laser-line-initialize]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/LaserInitialize.cpp"
 support_sources = ["src/AnmManager.cpp", "src/AnmVmStartScript.cpp", "src/AnmLoadedStartScript.cpp", "src/EnemyLaser.cpp"]

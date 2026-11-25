@@ -7,13 +7,9 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `EnemyLaserLineView::Initialize` at `0x0041C8C0`, the
-largest remaining authored owner outside the parked ECL scope. The real
-virtual entry in `LaserLineInitCore` has a strict 442-byte warm match with
-10 fields. Separate zero and nonzero `traveled` assignments reproduce the
-immediate stores, and the real VM startup code supplies the private ESI/EAX
-arguments. Run the scoped cold replay for `laser-line-initialize` and the
-same-source `laser-line-motion-0040` guard.
+The moving line-laser initializer passed scoped cold comparison alongside
+`laser-line-motion-0040`. Select the largest remaining authored owner from
+the ledgers.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -38,6 +34,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `laser-line-initialize` | 442 B | `LaserLineInitCore`, 10 fields and four local branches. The virtual receiver uses ECX, and the VM starter receives ESI/EAX. |
 | `replay-manager-load-replay` | 450 B | `ReplayLoadCore`, 18 fields and 14 local branches. The archive opener takes its name in EAX and size pointer on the stack. `Load` and `Initialize` pass in their own links. |
 | `ascii-manager-destructor` | 467 B | `GuiDestructorCore`, 38 fields, eight local branches and two embedded VM unwind actions. The receiver is on the stack with two RET 4 exits. |
 | `gui-cleanup-resources` | 476 B | `GuiDestructorCore`, 17 fields, an EBP GUI pointer and the shared startup runtime flags. |
