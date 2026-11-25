@@ -1616,6 +1616,15 @@ restored the EDI receiver at both calls and the full update comparison.
   schedule. The control matches 523 bytes and is not retained. The normal
   traced link finishes and reproduces all 550 candidate bytes and four
   fields, so this observation does not depend on a partial debug build.
+  A separate diagnostic changes the instruction candidate's priority in
+  the debugger process only, before ordering. With the ordinary count read,
+  C2 assigns the desired EAX and ECX to instruction and cursor but moves the
+  count load ahead of the cursor store. Qualifying the count read volatile
+  preserves the target schedule in that diagnostic; its latch then differs
+  only at +0x105 and +0x10F, where the count uses EAX instead of ECX.
+  This manipulated compiler run is a probe, not matching evidence. In an
+  ordinary link, storing the loop count as unsigned char or short instead
+  expands the function to 560 or 551 bytes respectively.
   The float operand candidate has ECX and EAX preferences and scores
   0, -1 and 0 for EAX, ECX and EDX, selecting ECX. Qualifying either
   result-tag instruction read as volatile changes the complete body

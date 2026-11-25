@@ -24,8 +24,10 @@ their global-register candidates in read order and queues them in that
 same order. An instruction-walk counter supplies their secondary queue
 order, with 106 for the cursor and 105 for the instruction. Reversing the
 reads assigns the desired registers but changes the machine-code schedule;
-the next useful experiment must preserve that schedule while changing a
-candidate's priority, secondary order, or register preference. The target
+raising the instruction candidate's priority in a debugger control also
+changes that schedule. A volatile count read restores it in the control,
+but the count still uses EAX instead of ECX. The next useful experiment
+must address both candidate order and count register choice. The target
 uses ECX for the cursor and EAX for the instruction pointer. See
 [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) for traces and cold replay scope.
 For nonexact candidates, compile and compare only the affected unit.
