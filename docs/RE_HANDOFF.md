@@ -72,6 +72,14 @@ comparison only for its source and link graph.
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
+## Open owner
+
+`ReplayManager::BeginStage` at `0x0042A450` is active. The record path
+aligns through offset 0x158. Playback now reloads the player pointer
+after the position helper and the full linked contribution is 581/582
+bytes. The remaining differences involve the original player pointer's
+lifetime across that call and the two option-copy loop pointers.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.
