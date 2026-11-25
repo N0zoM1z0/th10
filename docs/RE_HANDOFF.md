@@ -15,9 +15,10 @@ parameter in `ScriptViewerDeleteOwned` matches all seven manager deletions.
 The remaining differences are the three callback lock registers and the
 five-byte EH state store before VM cleanup. With `/EHsc` on `ScriptViewer.cpp`,
 the first 89 instructions match but the popup destructor takes EBX instead
-of a stack argument. Inspect the real popup call context before retrying
-that profile. The factory, scalar deleting destructor and seven nullable
-release wrappers pass in the canonical `/EHs` image.
+of a stack argument. Real alternate entries and adding the game reset
+caller leave that difference intact. Keep the original lifecycle partition.
+The factory, scalar deleting destructor and seven nullable release wrappers
+pass in the canonical `/EHs` image.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available

@@ -1953,6 +1953,18 @@ restored the EDI receiver at both calls and the full update comparison.
 
 ### FrontEnd and result menu
 
+- `ScriptViewerView::~ScriptViewerView` at `0x0040A1A0` takes the receiver
+  on the stack and returns with `RET 4`. A reference to each manager pointer
+  lets VC7.1 keep the snapshot in ESI across destruction and deallocation.
+  In the `/EHs` graph, all seven manager deletions match. The two scheduler
+  removals still use a different register rotation, and an extra five-byte
+  EH state store precedes VM cleanup. `/EHsc` on the parent fixes both and
+  emits a 411-byte body, but removes the real popup destructor's EH frame
+  and moves its receiver into EBX. An alternate entry, the real game reset
+  caller, narrower link graphs and a standalone normal-COFF popup trial did
+  not preserve the required stack handoff. The target handler at `0x4657E9`
+  has worker and VM actions for `+0x10` and `+0x2C8`.
+
 - `FrontEndControllerView::DrawStageScores` at `0x00431410` uses the common
   score state for the selections at +0x28, +0x2C and +0x34. The practice
   rows are eight bytes each, starting at profile +0x4E4. Inlining the
