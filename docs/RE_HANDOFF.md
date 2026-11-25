@@ -32,9 +32,11 @@ scripts/repo-python scripts/ci.py && git diff --check
 The initial stack setup and the return-frame and lookup sequence match.
 The remaining 37 bytes differ between +0x6C and +0x107 in the argument
 loop. The destination cursor store now occurs at +0x68. The target uses
-EAX for the word offset at +0x6C. Trace the candidate's ECX allocation
-into the operand reads and resolve the load order around the float call
-and the loop latch.
+EAX for the word offset at +0x6C. The compiler trace already shows ECX
+for this offset at Riscify entry. Follow the assignment from the word
+offset LEA to its loop-carried slot through spill and register assignment.
+The retained `.analysis/ecl-start-subroutine/trace-live-ranges.py`
+captures those phases from the built two-source link.
 
 Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 [frontiers.toml](../config/frontiers.toml). Product closure, runtime semantics

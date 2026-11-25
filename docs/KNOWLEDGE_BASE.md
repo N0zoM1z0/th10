@@ -1449,6 +1449,19 @@ restored the EDI receiver at both calls and the full update comparison.
   the target's +0x103 and moves the word offset reload after the cursor store.
   The complete comparison still has 37 differing bytes. See the
   [current handoff](RE_HANDOFF.md) for the remaining differences.
+- In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
+  the destination address LEA to EAX and advances the integer register
+  cursor to ECX. The 551-byte candidate with a plain caller parameter
+  assigns the destination address to ECX and emits the word offset in
+  EAX. The 550-byte candidate already carries the word offset in ECX
+  at Riscify entry, so the first difference is present before that pass.
+  At GlobalRegAlloc entry, the word offset LEA in both candidates feeds
+  a copy to the loop-carried offset. The LEA's tuple survives to Riscify.
+  The RegAssign event for the destination-address LEA is separate from
+  the register choice propagated through the word offset copy.
+  The local trace runs from the two-source `EclVmHostRunEnemy` link
+  inputs. Launching `winedbg.exe` with a Windows path to the linker and a
+  pseudo-terminal exposes the local GDB proxy for read-only observation.
 - Script DB (0x1098 polymorphic resource): AddScriptData @0x00450220 validates SCPT, ≤32 file buffers, header 0x24, sorted 8-byte name table; derived vtable 0x0046D0B4 (slots: AddScriptData, package loader 0x0040D400, file loader 0x0040CD20), base 0x0046D0F0 (AddScriptData, 0x0040C810). Owned script pointers +0x0C..+0x88, lookup table +0x8C, nested dwords +0x1090/+0x1094.
 - Opcode 55 negates the 32-bit raw word (NEG EDX at 44F851) after tag conversion and pushes it with float tag 66h.
   - Run loads the instruction into EAX for the time comparison, then separately loads EDI at body+40.
