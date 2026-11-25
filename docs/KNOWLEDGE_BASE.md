@@ -1792,6 +1792,10 @@ restored the EDI receiver at both calls and the full update comparison.
   The real Player callback, Enemy update and Bomb factory entries yield
   the same pair of bodies. Adding ItemManagerUpdate's rank callers and
   the popup producer preserves that result.
+  Moving the shared rank implementation into Player's translation unit
+  yields the same register allocation. Both ordinary and forced local
+  inlining leave the panel in EAX. Evaluating the mode predicate before
+  rank publication produces a 399-byte body.
 - Option reset flags are at Player 332C/33C4/345C/34F4; draw position 3C0/3C4; signed coordinates 3CC/3D0 scaled by 0.01f (470B00).
 - `g_AnmGameSpeed` is 476F78.
 - `+0x08/+0x0C`: update/draw callback nodes (0x24-byte nodes; callback at +0x08, owner at +0x20). Priorities 0x10/0x16. Update entry 0x426500 does `push ecx; call 0x425730; ret`. Draw entry 0x426510 does `mov eax,ecx; jmp 0x426360`.
