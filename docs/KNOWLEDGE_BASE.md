@@ -935,6 +935,14 @@ frontier; do not refresh a baseline merely to accept the new positions.
   target stack destinations and failed-ID handling. The update still passes
   the first link in EAX and the owner and release flag on the stack. The
   scheduler adapter passes in the same image.
+- **EnemyLaserLineView::Clear @0x41E260 (609)** matches all 22 fields
+  through its public virtual ECX entry. The existing primary-tail insertion
+  helper expands in the loop and retains the conditional second increment
+  when the ID wraps through zero. Increment the segment count before
+  reading the color and resource. Write the VM position through its typed
+  subobject in X, Z, Y order. The MIT-licensed reference supplied the
+  inline-registration and position-store leads.
+  [Reference license](licenses/th10-decomp-MIT.txt)
 - **EnemyLaserType1View::Clear @0x41F400 (623)** matches all 29 fields
   with the public virtual member as link entry. The ECX receiver belongs
   to slot 0x0046DA24. Keep the VM position as a typed subobject and snapshot the

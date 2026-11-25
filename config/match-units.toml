@@ -24152,7 +24152,6 @@ functions = ["EnemyLaserLineView::Clear"]
 symbol = "?Clear@EnemyLaserLineView@@UAEHH@Z"
 target_address = 0x0041E260
 size = 609
-candidate = true
 linkages = [
   { offset = 0x026, type = "REL32", symbol = "?FromAngleMagnitude@EnemyLaserVectorView@@QAEXMM@Z", target = 0x0041F800 },
   { offset = 0x079, type = "DIR32", symbol = "__real@41400000", target = 0x00470CD8 },
