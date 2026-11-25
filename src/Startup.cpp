@@ -177,7 +177,11 @@ StartupWorkerView::~StartupWorkerView()
     ReleaseStartupBank(0);
     GameFinalizeStatistics42B1E0(g_GameStatisticsRows);
     GameStatisticsOwner *statistics = g_GameStatisticsRows;
-    delete statistics;
+    if (statistics != NULL)
+    {
+        statistics->~GameStatisticsOwner();
+        ::operator delete(statistics);
+    }
     g_GameStatisticsRows = NULL;
 }
 

@@ -29,6 +29,6 @@ residual = ["14", "1D", "29", "47", "4D", "50", "52", "58-59", "5B", "61", "64",
 [frontier.startup-worker-destructor]
 function = "StartupWorkerView::~StartupWorkerView"
 unit = "startup-worker-destructor"
-candidate_size = 433
+candidate_size = 417
 target_sha256 = "5eb23600528f1904c9f3d9a9b6cb5de473d992e4dbcf90121b42e88eb6edc9dd"
-residual = ["B9-BD", "C2-C5", "CA-D4", "D9-DC", "E1-E6", "ED-EE", "F3-F5", "F7", "FC-FD", "102-10C", "111-114", "119-120", "122-123", "128", "12E", "133-140", "145-151", "15A-15E", "163-172", "174-177", "17C-17F", "184-18A", "18C-192", "197", "19C-1B0"]
+residual = []

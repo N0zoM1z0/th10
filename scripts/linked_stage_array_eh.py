@@ -1,7 +1,7 @@
 """Bind target-reviewed VM-array EH metadata, without runtime credit.
 
-Covers the Stage, spell-panel, GUI and ASCII VMs and the ANM manager's pool,
-embedded VM and layer array.
+Covers the Stage, spell-panel, GUI, ASCII and startup VMs, the startup
+worker, and the ANM manager's pool, embedded VM and layer array.
 A full PDB-generated contribution, immutable FuncInfo/unwind map, saved this,
 real VM destructor and CRT entries must agree with the original executable.
 """
@@ -12,6 +12,7 @@ from capstone import Cs, CS_ARCH_X86, CS_MODE_32
 from capstone.x86_const import X86_OP_IMM, X86_OP_MEM, X86_OP_REG, X86_REG_EAX, X86_REG_EBP, X86_REG_ECX
 from linked_image import (LinkedImageError, linked_code_fields, linked_functions,
                           map_statics, pdb_section_contributions)
+import linked_worker_member_eh as worker_eh
 
 PARENTS = {
     '??0StageScriptView@@QAE@XZ': dict(entry=0x402160, size=188, offset=9,
@@ -24,6 +25,9 @@ PARENTS = {
         owner_source='src/Gui.cpp'),
     '??1AsciiManagerView@@QAE@XZ': dict(entry=0x401260, size=467, offset=3,
         handler=0x4652f9, arrays=((0x14, 1), (0x3c0, 1)), owner_source='src/AnmManager.cpp'),
+    '??1StartupWorkerView@@QAE@XZ': dict(entry=0x41fb50, size=417, offset=3,
+        handler=0x465696, arrays=((0x10, 1), (0x30, 1)), worker_offset=0x10,
+        owner_source='src/Startup.cpp'),
     '??0EnemyGameStateView@@QAE@XZ': dict(entry=0x408910, size=176, offset=9,
         handler=0x465514, arrays=((0x10, 2), (0x778, 8)),
         owner_source='src/EnemyGameStateLifecycle.cpp'),
@@ -96,7 +100,7 @@ def generated_lead(arrays):
     return sum(action_size(member, count) for member, count in arrays)
 
 
-def protocol(image, handler, frame, destructor, iterator, arrays):
+def protocol(image, handler, frame, destructor, iterator, arrays, member_destructors=None):
     lead = generated_lead(arrays)
     region_size = lead + 10
     start = handler - lead
@@ -125,12 +129,14 @@ def protocol(image, handler, frame, destructor, iterator, arrays):
         require(predecessor == index - 1 and action == start + action_offset,
                 'unwind state/action edge differs')
         code = list(decoder.disasm(image.read_address(action, size), action))
+        worker_member = member_destructors is not None and member in member_destructors
         if count == 1:
             require([i.size for i in code] == [3, size - 8, 5]
                     and [i.mnemonic for i in code] == ['mov', 'add', 'jmp'],
                     'complete member cleanup shape differs')
             load, add, jump = code
-            require(immediate(jump, destructor), 'member destructor differs')
+            callee = member_destructors[member] if worker_member else destructor
+            require(immediate(jump, callee), 'member destructor differs')
             receiver = X86_REG_ECX
         else:
             count_size = 5 if count > 0x7f else 2
@@ -157,7 +163,8 @@ def protocol(image, handler, frame, destructor, iterator, arrays):
                 and add.operands[1].type == X86_OP_IMM and add.operands[1].imm == member,
                 'saved-this/member protocol differs')
         actions.append(dict(state=index, predecessor=predecessor, address=hex(action),
-                            member_offset=member, count=count, stride=0x3ac, size=size))
+                            member_offset=member, count=count, size=size,
+                            **({'destructor': hex(callee)} if worker_member else {'stride': 0x3ac})))
         action_offset += size
     return dict(handler=hex(handler), func_info=hex(info), unwind_map=hex(words[2]),
                 unwind_states=len(arrays), region_bytes=region_size, func_info_bytes=28,
@@ -257,12 +264,24 @@ def stage_array_eh_target(unit, field, directory, image, publics, aliases, targe
             and {(f['offset'], f['width'], f['type']) for f in generated_fields['fields']} == expected,
             'generated region field inventory differs')
     destructor, owner = destructor_identity(unit, directory, image, target, publics, aliases)
+    worker_offset = spec.get('worker_offset')
+    candidate_members = reviewed_members = worker_proof = None
+    if worker_offset is not None:
+        worker, worker_owner = worker_eh.destructor_identity(unit, directory, publics, aliases)
+        worker_proof = dict(owner=worker_owner,
+                            **worker_eh.destructor_bytes(image, target, worker, publics, aliases))
+        candidate_members = {worker_offset: worker}
+        reviewed_members = {worker_offset: worker_eh.TARGET_DESTRUCTOR}
+    iterator = None
+    if any(count > 1 for _, count in spec['arrays']):
+        iterator = address_for(publics, aliases, ITERATOR_SYMBOL)
     candidate = protocol(image, address, address_for(publics, aliases, '___CxxFrameHandler'),
-                         destructor, address_for(publics, aliases, ITERATOR_SYMBOL), spec['arrays'])
+                         destructor, iterator, spec['arrays'], candidate_members)
     reviewed = protocol(target, field['target'], TARGET_FRAME_HANDLER, TARGET_DESTRUCTOR,
-                        TARGET_ITERATOR, spec['arrays'])
+                        TARGET_ITERATOR, spec['arrays'], reviewed_members)
     return dict(symbol=field['symbol'], parent_symbol=unit['symbol'],
                 pdb_module_index=contribution['module_index'], candidate=candidate, target=reviewed,
                 generated_region_fields=len(expected),
                 cleanup_owner=owner, cleanup_proof=dict(bytes=34, fields=1, result='exact'),
+                **({'worker_cleanup_proof': worker_proof} if worker_proof is not None else {}),
                 authority='address binding only; no generated-code or runtime credit')

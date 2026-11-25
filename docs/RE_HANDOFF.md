@@ -8,14 +8,12 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 ## Resume
 
 The active owner is `StartupWorkerView::~StartupWorkerView` at `0x0041FB50`,
-the largest remaining authored owner outside the parked ECL scope. The
-`startup-worker-destructor` candidate in `StartupWorkerLifecycle` emits
-433 bytes against the target's 417, with 100 of 119 instructions aligned.
-An ANM bank reference restores the two release-site scratch registers.
-The residual begins at the first bank null test and includes the extra EH
-state write before the VM cleanup. The generated handler already carries
-two short member actions at +0x10 and +0x30. Compare a smaller uniform
-`/EHsc` link using the real startup, ANM, Chain, worker and statistics sources.
+the largest remaining authored owner outside the parked ECL scope.
+`StartupDestructorCore` has a strict 417-byte warm match with 40 fields.
+All five inputs use `/EHsc`, and the statistics cleanup names the destructor
+and deallocation separately. The generated handler binds the two short
+actions at +0x10 and +0x30 to the real worker and VM destructors. Cold replay
+the destructor before recording exactness.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available

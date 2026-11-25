@@ -14,7 +14,8 @@ import linked_stage_array_eh as eh
 class Image:
     image_base = 0
 
-    def __init__(self, handler, frame, destructor, iterator, free, arrays, base, data):
+    def __init__(self, handler, frame, destructor, iterator, free, arrays, base, data,
+                 member_destructors=None):
         self.sections = [SimpleNamespace(rva=base, virtual_size=0x100000, characteristics=0x60000020),
                          SimpleNamespace(rva=data, virtual_size=0x100, characteristics=0x40000040)]
         start = handler - eh.generated_lead(arrays)
@@ -27,7 +28,8 @@ class Image:
                 code += b'\x8b\x4d\x04'
                 code += (b'\x83\xc1' + bytes([member]) if member <= 0x7f
                          else b'\x81\xc1' + struct.pack('<I', member))
-                code += b'\xe9' + struct.pack('<i', destructor - action - size)
+                callee = destructor if member_destructors is None else member_destructors.get(member, destructor)
+                code += b'\xe9' + struct.pack('<i', callee - action - size)
             else:
                 code += b'\x68' + struct.pack('<I', destructor)
                 code += (b'\x6a' + bytes([count]) if count <= 0x7f
@@ -80,6 +82,8 @@ def fixture(symbol):
         supports = ['src/AnmManager.cpp']
         owner_object = 'source.ltcg.obj'
         vm_basename = 'support-00-AnmManager.ltcg.obj'
+        if 'worker_offset' in spec:
+            supports.append('src/ScriptViewerWorker.cpp')
     else:
         source = 'src/StageScript.cpp'
         supports = ['src/StageLifecycle.cpp', 'src/AnmManager.cpp']
@@ -109,9 +113,13 @@ def fixture(symbol):
     functions = [dict(symbol=eh.DESTRUCTOR_SYMBOL, address='0x101840', size=34,
                      map_object=vm_basename,
                      pdb_module_index=vm_module, pdb_object=vm_object)]
-    native = Image(address, 0x101800, 0x101840, 0x101820, 0x1018a0, arrays, 0x100000, 0x300000)
+    worker_offset = spec.get('worker_offset')
+    native_workers = {worker_offset: 0x101860} if worker_offset is not None else None
+    target_workers = {worker_offset: eh.worker_eh.TARGET_DESTRUCTOR} if worker_offset is not None else None
+    native = Image(address, 0x101800, 0x101840, 0x101820, 0x1018a0, arrays, 0x100000, 0x300000,
+                   native_workers)
     target = Image(spec['handler'], eh.TARGET_FRAME_HANDLER, eh.TARGET_DESTRUCTOR,
-                   eh.TARGET_ITERATOR, eh.TARGET_FREE, arrays, 0x400000, 0x600000)
+                   eh.TARGET_ITERATOR, eh.TARGET_FREE, arrays, 0x400000, 0x600000, target_workers)
     links = dict(normalization_complete=True, decoded_bytes=34,
                  fields=[dict(offset=15, width=4, type='REL32')])
     region_fields = []
@@ -138,7 +146,9 @@ def bind(f):
     with patch.object(eh, 'map_statics', return_value=f['statics']), \
          patch.object(eh, 'pdb_section_contributions', return_value=f['pdb']), \
          patch.object(eh, 'linked_functions', return_value={'functions': f['functions']}), \
-         patch.object(eh, 'linked_code_fields', side_effect=fields):
+         patch.object(eh, 'linked_code_fields', side_effect=fields), \
+         patch.object(eh.worker_eh, 'destructor_identity', return_value=(0x101860, {})), \
+         patch.object(eh.worker_eh, 'destructor_bytes', return_value={'result': 'exact'}):
         return eh.stage_array_eh_target(f['unit'], f['field'], Path('build/synthetic'),
                    f['native'], f['publics'], f['aliases'], f['target'], f['parent'], f['address'])
 
@@ -154,6 +164,8 @@ def main():
         result = bind(f)
         assert result['candidate']['unwind_states'] == len(spec['arrays'])
         assert result['cleanup_proof'] == dict(bytes=34, fields=1, result='exact')
+        if 'worker_offset' in spec:
+            assert result['worker_cleanup_proof']['result'] == 'exact'
         assert eh.stage_array_eh_selector(f['unit'], {}) is False
         unit = {**f['unit'], 'linkages': [f['field']]}
         assert runpy.run_path('scripts/compare-linked-function.py')['expected_fields'](unit)[0]['stage_array_eh_handler']
@@ -195,8 +207,12 @@ def main():
         if spec['arrays'][0][1] == 1:
             cases += [('short-member', lambda q: q['target'].write(q['target_start'] + 5, b'\x18')),
                       ('short-saved-this', lambda q: q['native'].write(0x111002, b'\x08')),
-                      ('short-destructor-entry', lambda q: word(q, 'native', 0x111007, 0x101841 - 0x11100b)),
-                      ('second-member', lambda q: word(q, 'target', q['target_start'] + 16, 0x3c4))]
+                      ('short-destructor-entry', lambda q: word(q, 'native', 0x111007, 0x101841 - 0x11100b))]
+            if 'worker_offset' in spec:
+                cases += [('worker-vm-swap', lambda q: word(q, 'native', 0x111007, 0x101840 - 0x11100b)),
+                          ('second-short-member', lambda q: q['target'].write(q['target_start'] + 16, b'\x34'))]
+            else:
+                cases += [('second-member', lambda q: word(q, 'target', q['target_start'] + 16, 0x3c4))]
         else:
             cases += [('array-count', lambda q: q['target'].write(q['target_start'] + 6, b'\x09')),
                       ('array-stride', lambda q: word(q, 'target', q['target_start'] + 8, 0x3b0)),
