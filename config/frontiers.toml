@@ -33,13 +33,6 @@ candidate_size = 405
 target_sha256 = "e41ec7c2936cf8757fa9fb3e28f273ea5c919f92ef09a6d9ad231a70d341e7a7"
 residual = ["D-32", "37", "39-3F", "44-45", "4A-52", "57-60", "65-6C", "6E", "73-88", "8D-8F", "94-96", "9B-A1", "A3-A9", "AE-BB", "C0-DE", "E3-EB", "ED-F5", "FA-10D", "112-12F", "131-13C", "140-165", "16A-172", "177-180", "183-187", "18C-1C1"]
 
-[frontier.replay-manager-begin-stage]
-function = "ReplayManager::BeginStage"
-unit = "replay-manager-begin-stage"
-candidate_size = 569
-target_sha256 = "3c3e5ed3e6264161342fab7e375ca0b11e50d082da0a7a46cc890b232a76952f"
-residual = ["158-159", "15E-168", "16E", "176", "17B-185", "188-18E", "190-195", "198", "19D-19E", "1A3-1AD", "1AF-1BF", "1C1-1C2", "1C4-1C5", "1C7-1C8", "1CA-1DE", "1E0-1E1", "1E3", "1E9", "1EE-216", "218-222", "224-228", "22A", "22F-245"]
-
 [frontier.laser-type0-bounce]
 function = "EnemyLaserType0StorageView::Bounce"
 unit = "laser-type0-bounce"

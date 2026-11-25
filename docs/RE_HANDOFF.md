@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `replay-manager-begin-stage` | 582 B | `ReplayBeginStageCore`, 25 fields and ten local branch destinations. The position helper has the same EAX and ECX inputs in this link and matches all 83 bytes in its default-profile cold link. |
 | `spt-test-update` | 926 B | `SptTestUpdate`, 39 fields, VM lifetime and two-pass file enumeration. The registered callback and the interpreter, factory and worker calls match in the same image. |
 | `laser-type1-clear` | 623 B | `LaserType1Clear`, 29 fields and the virtual ECX receiver. The polar helper, script loader, registrar and full item allocator match in the same image. |
 | `ending-initialize` | 584 B | `EndingInitialize`, 30 fields and the allocation cleanup slot at EBP+4. The actual factory, text constructor, both callbacks and chain registrations match. |
@@ -72,14 +73,11 @@ comparison only for its source and link graph.
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
-## Open owner
+## Current verification
 
-`ReplayManager::BeginStage` at `0x0042A450` is active. The
-`ReplayBeginStageCore` graph matches all 582 bytes, 25 linked fields and
-ten fixed local destinations in the warm comparison. The real position
-helper lives in `ReplayStageRestore.cpp`. Its scoped `/Os` build preserves
-the target EAX and ECX inputs and makes the caller reload the player. The
-default helper build matches all 83 bytes. Selected cold replay is next.
+The replay frame allocator, clear and position helpers passed selected
+cold replay. The process-frame family and stage-state restoration passed
+their warm comparisons and have selected cold jobs in progress.
 
 A fresh build of the larger GameManager graph exposes a prior GUI-reset
 call ABI difference at +0x10E. Relinking the pre-recovery replay source

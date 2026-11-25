@@ -1081,8 +1081,12 @@ frontier; do not refresh a baseline merely to accept the new positions.
   flag mask at the store preserves the two inlined callback resets. The MIT-licensed
   reference supplied the separate-local and typed-counter leads.
   [Reference license](licenses/th10-decomp-MIT.txt)
-- **ReplayManager::BeginStage @0x42A450 (582)**: 566. [2026-10-31] Porting
-  LoadReplay together with it broke `replay-manager-create`.
+- **ReplayManager::BeginStage @0x42A450 (582)** matches the complete
+  `ReplayBeginStageCore` cold link, with 25 bound fields and ten local
+  branches. Typed assignment from the recorded option pair puts the
+  playback cursors at the target's +0x32E0 and +0x158 bases. The stage
+  update calls the owner in EBX and the owner returns with a plain RET.
+  [2026-11-25]
 - **EclVmContext::StartSubroutine @0x44DF70 (550)**: 551. [2026-11-07]
 - **ScriptViewerPopupOwnerView::Draw @0x42B780 (540)**: current
   four-source linked graph yields 537/540 bytes and 266 non-linkage
@@ -1249,21 +1253,27 @@ frontier; do not refresh a baseline merely to accept the new positions.
 - **th10::leaf::Fn0041FD90 @0x41FD90 (63)**: no callers or stored pointers; its
   EDX input ABI cannot be recovered from a caller.
 
-Systematic seam: retail callers sometimes treat an LTCG callee as opaque (no
-register preservation or mod-ref assumptions) where our builds exploit it
-(`AnmVmInitialize`, `ReplayRestoreStagePosition`, the popup ctor). Removing
-`/EHs` from the callee TU and dropping `noinline` did not help.
+Retail callers sometimes treat an LTCG callee as opaque even when the
+current pinned compiler can preserve registers or recognize its memory
+effects. Removing `/EHs` and dropping `noinline` left the register
+mismatches for the ANM initializer and popup constructor.
 
-For `ReplayManager::BeginStage @0x42A450`, C2 exposes the difference
-before local register allocation. A direct saved Player pointer makes the
-post-position read reuse EAX. A local volatile read or a pointer-slot
-`memcpy` retains the read but changes the already-exact GameManager update
-caller from 1,544 to 1,538 bytes in the cached graph. Capturing the
-history member first and recovering its owning Player retains the
-ordinary load and restores the cached caller result. The caller's
-fresh-build GUI reset ABI differs in both the old and new replay sources.
-The replay residual is the placement of the 0x436C history offset around
-the position call. [2026-11-25]
+For `ReplayManager::BeginStage`, the default optimizer folds the normal
+player reload after position restoration and reuses EAX. A volatile
+read or pointer-slot `memcpy` retained the reload but changed the cached
+GameManager caller. Capturing the history member before the call kept a
+normal reload and moved the history offset too early. The exact link
+compiles the real `ReplayStageRestore.cpp` input with `/Os`. Scalar
+coordinate stores keep the helper's EAX player and ECX position inputs,
+and the new register lifetime gives the caller both player loads. The
+compiler barrier after the two stores restores the helper's x87
+schedule in its separate default-profile 83-byte comparison.
+
+The replay work exposed a pre-existing cold `GameManagerUpdateBody`
+difference at the GUI reset call. The old and new replay sources show
+the same disassembly diff in the fresh GameManager graph. The target
+passes the GUI in EDI with plain RET at 0x413BC0. The current graph puts
+that argument on the stack and adjusts ESP after the call. [2026-11-25]
 
 ## Topic-report residue
 
