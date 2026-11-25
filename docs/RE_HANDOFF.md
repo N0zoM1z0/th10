@@ -7,16 +7,21 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `MainConfigureCamera` at `0x00421480`, 287 bytes
-in `src/MainViewport.cpp`. It is the first largest remaining authored owner
-apart from the explicitly deferred `StartSubroutine`. Its first strict comparison now matches all 287 bytes and 12 fields in
-`StageViewport` under the unchanged `/GL /GS` profile. The two identical
-height conversions merge into one; a narrow volatile aspect store before
-LookAt preserves rounding. Eliminating the named height scalar restores the
-width ESP+8 and height/aspect ESP+0xC homes in the 0x2C frame. Source and
-read-only stack-colour findings are in `docs/KNOWLEDGE_BASE.md`.
+The sole active owner is `AnmLoadedView::SetAndExecuteScriptIdx` at
+`0x0043E8B0`, 287 bytes in `src/AnmManager.cpp`. It is the largest remaining
+authored owner apart from the explicitly deferred `StartSubroutine`.
+The prior same-TU `/GL` diagnostic emitted the full size but swapped the
+script index and script pointer registers (target EDI and ESI). Inspect the
+existing `anm-set-vm-script-index-and-execute` caller recipe, compare a complete
+source early, and stay on this owner through strict independent cold replay.
 
-Before ledger credit, run the selected independent cold replay:
+`MainConfigureCamera` is accepted: its complete 287-byte PDB extent and all
+12 fields pass cold in `StageViewport`. The six direct consumers also pass
+across three links: viewport selector 60/1, ANM layers 3/15/16/19 at 115/12,
+72/7, 72/7 and 72/7, and main Render 425/34 (bytes/fields). The selected
+seven-unit replay covers 1,103 bytes. Receipts and useful stack-colour
+findings are under `.analysis/main-configure-camera/` and in the knowledge
+base. Reproduce with:
 
 ```bash
 scripts/repo-python scripts/replay-exact-units.py \
@@ -25,11 +30,6 @@ scripts/repo-python scripts/replay-exact-units.py \
   --unit anm-callback-layer-16 --unit anm-callback-layer-19 \
   --unit main-render --json
 ```
-
-These are the six direct consumers, grouped into three declared links.
-Receipts are under `.analysis/main-configure-camera/`;
-`temporary-height-compare.json` is the first complete strict match.
-Stay on this owner until the selected cold links finish.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
@@ -71,6 +71,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `main-configure-camera` | 287 B | `StageViewport`, 12 fields and EDI receiver. All six direct consumers pass selected cold comparisons in three graphs. |
 | `frontend-main-menu-update` | 288 B | `FrontEndReplay`, 20 fields including five switch entries. The real dispatcher passes 1,128 bytes/99 fields in the same cold link. |
 | `gui-load-data` | 289 B | `GuiCreation-cold-20261025`, 16 fields and six local branches. Both direct callers pass: GUI Initialize 147/15 and GameManager Initialize 1,009/102 in its own link. |
 | `laser-type1-initialize` | 309 B | `LaserType1InitCore`, seven fields. Unchanged natural source with the real VM starter and script loader; independent cold replay passes. |

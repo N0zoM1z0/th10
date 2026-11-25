@@ -72,6 +72,14 @@ and dispatcher cold replay under `.analysis/frontend-main-menu/`, with the
 live graph in `build/match-linked/FrontEndReplay/`. Superseded warm dumps
 and the private relink helper have been removed.
 
+The default camera owner retains its baseline, first complete strict comparison,
+selected cold replay and useful read-only stack-colour trace under
+`.analysis/main-configure-camera/`. Its live links are `StageViewport`,
+`AnmDrawCallbacks` and `ChainLifetime`. The trace describes the preceding
+six-displacement candidate at commit `201b2dfa`; Git retains that source.
+Superseded trial dumps, source snapshots, warm helpers and the debugger image
+have been removed (about 0.3 MiB).
+
 The Bomb power transition cleanup reclaimed about 26 MiB in source
 snapshots, trial links and superseded GUI and text-rendering outputs.
 

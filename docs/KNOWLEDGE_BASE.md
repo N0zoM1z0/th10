@@ -2496,8 +2496,8 @@ restored the EDI receiver at both calls and the full update comparison.
   - GameResetAnimationSlots uses transitionTimer at 2A1C and flags at 2A18 (SetCurrent 60, then OR 4).
   - GameManagerUpdate loads the primary stage from 4776E8 (call @0x4181FC); the menu pointer at 4776E4 goes to 0x404530.
 - Easing @0x44C350: 509 code bytes, 3 alignment bytes and 16 entries at 0x44C550 (576 total); a separate 57-byte body starts at 0x44C590. Fog converts through `__ftol2` @0x463B2C.
-- **MainConfigureCamera @0x421480 (287)** has its first complete strict
-  match in the ten-input `StageViewport` graph under the existing `/GL /GS`
+- **MainConfigureCamera @0x421480 (287)** passes independent strict cold
+  replay in the ten-input `StageViewport` graph under the existing `/GL /GS`
   profile: all 287 bytes and 12 fields. The unsigned dimensions keep their
   separate float snapshots; aspect is written as a rounded float before
   LookAt. Source uses two identical height conversion expressions, which
@@ -2518,9 +2518,12 @@ restored the EDI receiver at both calls and the full update comparison.
   controls enlarged the frame to 0x30; a volatile aspect read also changed
   the by-value argument into an unwanted x87 copy. The pinned th10-decomp
   compiler tracer supplied the read-only colour hook recipe; its
-  [MIT notice](licenses/th10-decomp-MIT.txt) is preserved. Independent cold
-  replay with all six direct consumers is pending. Current receipts and
-  trace are under `.analysis/main-configure-camera/`.
+  [MIT notice](licenses/th10-decomp-MIT.txt) is preserved. All six direct
+  consumers pass cold: viewport selector 60/1, ANM layers 3/15/16/19 at
+  115/12, 72/7, 72/7 and 72/7, and main Render 425/34 (bytes/fields).
+  The selected replay covers three links and 1,103 complete-owner bytes.
+  Receipts and the preceding candidate's trace are under
+  `.analysis/main-configure-camera/`.
 - Camera: selector 0x405300 (ESI supervisor, EBX index). 0x421480 screen camera: unsigned dims, eyeZ = h/2/tan(pi/20), FOV pi/10, near 1/far 10000, up (0,-1,0). Stage camera 0x4215A0 has an EDI receiver, near/far 30/1800 and a rocking Float3 at camera+0x3C.
 - Stage: alpha is a byte at stage+0x1EEB. Fog start/end are raw DWORD captures. VM positionOffset is at +0x340/344/348. StageFogView is 28 bytes with packed color at +0x18. The bounds callee takes ECX object, EDX position, EAX camera, stack distSq, RET4. StageDrawInstances is stack stage/layer, RET8. 0x452182/0x452188 are IAT thunks for D3DXMatrixTranslation/D3DXVec3ProjectArray.
 - `GameEnterMenuState` 404530: transition priority15/kind2/30 frames; transitionTimer 2A1C=30; flags 2A18 |= 2.
