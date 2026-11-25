@@ -923,32 +923,6 @@ AnmVmView *AnmRenderManagerView::AllocateVm()
     return vm;
 }
 
-static __forceinline AnmVmIdView &AddVmToPrimaryBack(
-    AnmRenderManagerView &manager, AnmVmView *vm)
-{
-    AnmVmLayerNodeView *node = &vm->managerNode;
-    node->owner = vm;
-    node->next = NULL;
-    node->previous = NULL;
-
-    if (manager.primaryVmListHead == NULL)
-    {
-        manager.primaryVmListHead = node;
-    }
-    else
-    {
-        manager.primaryVmListTail->InsertAfter(node);
-    }
-    manager.primaryVmListTail = node;
-
-    AnmVmIdView *incrementReceiver = &manager.nextVmId;
-    (*incrementReceiver)++;
-    if (manager.nextVmId == AnmVmIdView())
-        manager.nextVmId++;
-    vm->id = manager.nextVmId.value;
-    return manager.nextVmId;
-}
-
 __declspec(noinline) AnmVmIdView AnmRenderManagerView::AddVmVariant0(AnmVmView *vm)
 {
     return AddVmToPrimaryBack(*this, vm);

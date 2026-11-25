@@ -6,8 +6,9 @@
 // its origin and then every twelve units, excluding the final six units.
 int EnemyLaserLineView::Clear(int spawnItems)
 {
-    float distance = 6.0f;
+    float distance;
     int count = 0;
+    distance = 6.0f;
     EnemyLaserVectorView step;
     step.FromAngleMagnitude(angle, 6.0f);
     AnmFloat3View point;
@@ -19,20 +20,21 @@ int EnemyLaserLineView::Clear(int spawnItems)
     {
         do
         {
-            const int color = request.color;
+            ++count;
+            const int scriptIndex = request.color * 2 + 0x11;
             AnmLoadedView *resource =
                 reinterpret_cast<EnemyLaserManagerStorageView *>(
                     g_EnemyLaserManager)->effectResource;
-            ++count;
-            const int scriptIndex = color * 2 + 0x11;
             AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
-            vm->flags35C |= 0x40000000u;
+            unsigned int flags = vm->flags35C;
+            vm->flags35C = flags | 0x40000000u;
             vm->renderLayer = 0;
-            vm->positionOffset.x = point.x + 224.0f;
-            vm->positionOffset.y = point.y + 16.0f;
-            vm->positionOffset.z = point.z;
+            AnmFloat3View *effectPosition = &vm->positionOffset;
+            effectPosition->x = point.x + 224.0f;
+            effectPosition->z = point.z;
+            effectPosition->y = point.y + 16.0f;
             StartAnmLoadedScript(resource, vm, scriptIndex);
-            g_AnmRenderManagerView->AddVmVariant0(vm);
+            AddVmToPrimaryBack(*g_AnmRenderManagerView, vm);
             if (spawnItems != 0 &&
                 !(point.x + 32.0f <= -192.0f) &&
                 !(point.x - 32.0f >= 192.0f) &&

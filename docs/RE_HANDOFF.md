@@ -70,6 +70,14 @@ comparison only for its source and link graph.
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
+## Open owner
+
+`EnemyLaserLineView::Clear` at `0x0041E260` is active. The warm
+`LaserLineClear` link matches 609 bytes and all 22 fields. The existing
+primary-tail registrar is shared with the outlined overloads and expands
+in the clear loop. Type 1 clear and the score notice pass in their own
+links. Cold replay this owner and check its callees in the same image.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.
