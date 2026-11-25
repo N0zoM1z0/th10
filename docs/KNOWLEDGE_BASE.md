@@ -2122,6 +2122,14 @@ restored the EDI receiver at both calls and the full update comparison.
 
 ### ANM
 
+- **`AsciiManagerView::~AsciiManagerView` at `0x00401260`** removes three
+  callbacks under supervisor critical section 0, releases animation banks
+  2, 0 and 3, and clears the global manager. VC7.1 LTCG with `/EHsc` stores
+  the scheduler snapshot on the stack and keeps the two lock imports in
+  registers. Both unwind actions use the saved receiver at `EBP+4` and call
+  the real VM destructor for members `+0x14` and `+0x3C0`. The older `/EHs`
+  startup link emits extra EH state stores and a 481-byte body instead of 467.
+
 - **AsciiManagerView::ResetStrings @0x4014D0 (26)** and **OnUpdate
   @0x4014F0 (26)**: [2026-11-17] both natural C++ queue-reset owners now
   publish the frame counter through an unsigned 32-bit increment and

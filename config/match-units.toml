@@ -36044,7 +36044,6 @@ linkages = [
 ]
 
 [units.ascii-manager-destructor]
-candidate = true
 source = "src/GameManager.cpp"
 support_sources = ["src/Gui.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp"]
 output_dir = "build/match-linked/GuiDestructorCore"

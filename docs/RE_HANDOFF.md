@@ -7,13 +7,9 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `AsciiManagerView::~AsciiManagerView` at `0x00401260`
-in `ascii-manager-destructor`, the largest remaining authored owner outside
-the parked ECL scope. The old `StartupWorkerLifecycle` graph emitted 481
-bytes. The uniform `/EHsc` `GuiDestructorCore` graph has a strict warm match
-of 467 bytes and 38 fields with both stack-receiver RET 4 exits. The lock
-uses `MainSupervisorView`, and the 35-byte EH region destroys the two
-embedded `AnmVmView` instances at +0x14 and +0x3C0. Cold verification is next.
+The ASCII manager destructor at `0x00401260` passed scoped cold comparison
+alongside `ascii-manager-create`, `gui-cleanup-resources` and `gui-destructor`.
+Select the largest remaining authored owner from the ledgers.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -38,6 +34,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `ascii-manager-destructor` | 467 B | `GuiDestructorCore`, 38 fields, eight local branches and two embedded VM unwind actions. The receiver is on the stack with two RET 4 exits. |
 | `gui-cleanup-resources` | 476 B | `GuiDestructorCore`, 17 fields, an EBP GUI pointer and the shared startup runtime flags. |
 | `text-render-alternate` | 509 B | `TextBufferLifecycle`, 32 fields, outlined LTCG FillColor and normal-COFF InvertAlpha. |
 | `script-viewer-popup-draw` | 540 B | `ScriptViewerPopupCreate`, 15 fields and the EDI draw callback receiver. Assign the decremented count after publishing the cursor. |

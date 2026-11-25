@@ -30,6 +30,8 @@ supplies the source, recipes and ledgers. Keep these private inputs locally.
 - The popup Draw cold receipt is under `.analysis/script-viewer-popup-draw/`.
   Its canonical link is `build/match-linked/ScriptViewerPopupCreate/`.
   Completed popup trials reclaimed about 3.5 MiB.
+- GUI cleanup cold and direct-caller receipts remain under
+  `.analysis/gui-cleanup-resources/` after removing about 17 MiB of trials.
 
 The November 25 handoff reclaimed about 126 MiB from `.analysis/` and
 `build/`. The latest pass removed about 10 MiB, including the obsolete
