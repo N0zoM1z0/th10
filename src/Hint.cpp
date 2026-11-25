@@ -269,8 +269,42 @@ void __stdcall CleanupHintOwner(HintOwnerView *owner)
     AnmRenderManagerView *manager = g_AnmRenderManagerView;
     for (int index = 0; index < 10; ++index)
     {
-        if (owner->vmIds[index].value != 0)
-            manager->MarkVmForDeletion(owner->vmIds[index]);
+        const unsigned int vmId = owner->vmIds[index].value;
+        if (vmId != 0)
+        {
+            AnmVmLayerNodeView *node = manager->primaryVmListHead;
+            while (node != NULL)
+            {
+                if (static_cast<AnmVmView *>(node->owner)->id == vmId)
+                    goto foundVm;
+                node = node->next;
+            }
+            node = manager->secondaryVmListHead;
+            while (node != NULL)
+            {
+                if (static_cast<AnmVmView *>(node->owner)->id == vmId)
+                    goto foundVm;
+                node = node->next;
+            }
+            goto clearVmId;
+
+        foundVm:
+            AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+            if (vm != NULL)
+            {
+                vm->flags35C |= 0x04000000u;
+                if (vm->layerNode.previous == NULL)
+                {
+                    AnmVmLayerNodeView *child = vm->layerNode.next;
+                    while (child != NULL)
+                    {
+                        static_cast<AnmVmView *>(child->owner)->flags35C |= 0x04000000u;
+                        child = child->next;
+                    }
+                }
+            }
+        }
+    clearVmId:
         owner->vmIds[index].value = 0;
     }
     if (g_MainSupervisorView.configuration.hintMode == 2)
