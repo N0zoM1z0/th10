@@ -652,36 +652,34 @@ int EclVmContext::StartSubroutine(
                     OperandWord(*callerInstruction,
                         valueOffset / sizeof(int))->integer;
                 EclVmContext *const source = caller;
-                value.real = ReadFloatValue(source, argumentIndex, value.real);
+                const float resolved = ReadFloatValue(source, argumentIndex, value.real);
                 if (reinterpret_cast<const EclVmCallArgumentView *>(
                     reinterpret_cast<const unsigned char *>(
                     reinterpret_cast<unsigned int>((*callerInstruction)->operands) +
                     metadataOffset))->destinationType == 'f')
-                    argument->real = value.real;
+                    argument->real = resolved;
                 else
                     argument->integer =
-                        static_cast<int>(value.real);
+                        static_cast<int>(resolved);
             }
             else
             {
-                EclVmScalar value;
-                value.integer =
-                    OperandWord(*callerInstruction,
-                        valueOffset / sizeof(int))->integer;
-                value.integer = caller->ReadIntValue(
-                    argumentIndex, value.integer);
+                EclVmContext *const source = caller;
+                const int operand =
+                    OperandInt(*callerInstruction, valueOffset / sizeof(int));
+                const int resolved = source->ReadIntValue(argumentIndex, operand);
                 if (reinterpret_cast<const EclVmCallArgumentView *>(
                     reinterpret_cast<const unsigned char *>(
                     reinterpret_cast<unsigned int>((*callerInstruction)->operands) +
                     metadataOffset))->destinationType == 'f')
                 {
-                    const float converted = static_cast<float>(value.integer);
+                    const float converted = static_cast<float>(resolved);
                     EclVmScalar *const output = argument;
                     output->real = converted;
                 }
                 else
                 {
-                    argument->integer = value.integer;
+                    argument->integer = resolved;
                     _ReadWriteBarrier();
                 }
             }
@@ -693,8 +691,7 @@ int EclVmContext::StartSubroutine(
             argument = reinterpret_cast<EclVmScalar *>(
                 reinterpret_cast<unsigned int>(previousArgument) + sizeof(EclVmScalar));
             operandCount = nextInstruction->operandCount;
-            argumentIndex = static_cast<int>(
-                static_cast<unsigned int>(argumentIndex) + 1u);
+            ++argumentIndex;
             valueCursor = previousValueOffset + sizeof(EclVmCallArgumentView);
             metadataOffset += sizeof(EclVmCallArgumentView);
         }
