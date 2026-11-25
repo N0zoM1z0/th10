@@ -7,9 +7,14 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The ASCII manager destructor at `0x00401260` passed scoped cold comparison
-alongside `ascii-manager-create`, `gui-cleanup-resources` and `gui-destructor`.
-Select the largest remaining authored owner from the ledgers.
+The active owner is `ReplayManager::LoadReplay` at `0x0042A200` in
+`replay-manager-load-replay`, the largest remaining authored owner outside
+the parked ECL scope. Separate header checks and per-iteration stage lookup
+reduce the diagnostic from 359 differing offsets to 160. The 451-byte
+candidate keeps the receiver in ESI and the replay buffer in EBX. The target
+keeps the buffer in EBP and passes the archive size pointer on the stack.
+Try the real `FileSystemOpen` link context with the replay caller and the
+normal-COFF decoder.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available

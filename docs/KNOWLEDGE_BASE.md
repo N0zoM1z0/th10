@@ -1900,6 +1900,15 @@ restored the EDI receiver at both calls and the full update comparison.
 
 ### Replay
 
+- **`ReplayManager::LoadReplay` at `0x0042A200`** tests bit `0x20` of
+  `g_GameStartupState.runtimeFlags` before opening the file and again before
+  freeing the packed data. Separate magic and version checks let LTCG merge
+  the shared close-and-fail tail ahead of the successful disk read. The stage
+  loop reloads the count each iteration, caps counts of at least eight to six,
+  and re-reads the stage index between the header and cursor stores. The
+  [MIT-licensed reference](licenses/th10-decomp-MIT.txt) suggested these
+  source forms and the named allocation-size local.
+
 - `SaveReplay`: ECX owner, EDX path, stack name, RET4.
 - Fields: mode +0x10, header +0x14, data +0x18, eight stage headers +0x1C, frame lists +0x3C, eight 0x24 stage states at +0xA0, payload +0x1C0, FPS +0x1C4, path +0x1D4.
 - A frame block is 0x6284 bytes: 3600 6-byte records plus 3600 FPS bytes.

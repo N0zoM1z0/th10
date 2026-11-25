@@ -65,9 +65,6 @@ typedef char ReplayRuntimeStateSnapshotAt24[
 typedef char ReplayRuntimeStateFlagsAt58[
     (offsetof(ReplayRuntimeState, flags) == 0x58) ? 1 : -1];
 
-// Maintained view of the target byte whose 0x20 bit selects archive-backed
-// replay loading. The containing original object/field name is not established.
-extern unsigned char g_ReplayFileLoadFlags;
 enum
 {
     REPLAY_FILE_LOAD_FROM_ARCHIVE = 0x20,
@@ -954,13 +951,13 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
 
 int ReplayManager::LoadReplay(const char *path)
 {
+    char fullPath[256];
     unsigned char *compressedData;
 
     strcpy(replayPath, path);
 
-    if ((g_ReplayFileLoadFlags & REPLAY_FILE_LOAD_FROM_ARCHIVE) == 0)
+    if ((g_GameStartupState.runtimeFlags & REPLAY_FILE_LOAD_FROM_ARCHIVE) == 0)
     {
-        char fullPath[256];
         sprintf(fullPath, "replay/%s", path);
 
         if (!FileSystem::CheckIfFileAlreadyExists(fullPath))
@@ -970,7 +967,12 @@ int ReplayManager::LoadReplay(const char *path)
 
         fileHeader =
             (ReplayFileHeader *)ReplayFile::Read(sizeof(ReplayFileHeader));
-        if (fileHeader->magic != 0x72303174 || fileHeader->version != 5)
+        if (fileHeader->magic != 0x72303174)
+        {
+            FileSystem::CloseWriteFile();
+            return -1;
+        }
+        if (fileHeader->version != 5)
         {
             FileSystem::CloseWriteFile();
             return -1;
@@ -988,8 +990,8 @@ int ReplayManager::LoadReplay(const char *path)
         compressedData = (unsigned char *)(fileHeader + 1);
     }
 
-    decompressedPayload =
-        (unsigned char *)malloc(fileHeader->decompressedPayloadSize);
+    const unsigned int decompressedSize = fileHeader->decompressedPayloadSize;
+    decompressedPayload = (unsigned char *)malloc(decompressedSize);
 
     FileSystem::Decrypt(compressedData, fileHeader->compressedPayloadSize,
                         0xaa, 0xe1, 0x400,
@@ -1003,26 +1005,19 @@ int ReplayManager::LoadReplay(const char *path)
     replayData = (ReplayDataHeader *)decompressedPayload;
     unsigned char *stageData = decompressedPayload + sizeof(ReplayDataHeader);
 
-    int stageCount = replayData->stageCount;
-    if (stageCount >= 8)
-        stageCount = 6;
-
-    for (int i = 0; i < stageCount; i++)
+    for (int i = 0; i < (replayData->stageCount >= 8 ? 6 : replayData->stageCount); ++i)
     {
-        ReplayStageDataHeader *stageHeader =
-            (ReplayStageDataHeader *)stageData;
-        ReplayStageState &stageState = stageStates[stageHeader->stageIndex];
-
-        stageState.header = stageHeader;
-        stageState.recordStart = stageData + sizeof(ReplayStageDataHeader);
-        stageState.fpsStart =
-            stageState.recordStart +
+        ReplayStageDataHeader *stageHeader = (ReplayStageDataHeader *)stageData;
+        stageStates[stageHeader->stageIndex].header = stageHeader;
+        stageStates[stageHeader->stageIndex].recordStart =
+            stageData + sizeof(ReplayStageDataHeader);
+        stageStates[stageHeader->stageIndex].fpsStart =
+            stageStates[stageHeader->stageIndex].recordStart +
             stageHeader->recordCount * sizeof(ReplayRecData);
-
         stageData += sizeof(ReplayStageDataHeader) + stageHeader->payloadSize;
     }
 
-    if ((g_ReplayFileLoadFlags & REPLAY_FILE_LOAD_FROM_ARCHIVE) == 0 &&
+    if ((g_GameStartupState.runtimeFlags & REPLAY_FILE_LOAD_FROM_ARCHIVE) == 0 &&
         compressedData != NULL)
     {
         free(compressedData);
