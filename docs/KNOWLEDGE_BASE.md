@@ -2591,8 +2591,8 @@ restored the EDI receiver at both calls and the full update comparison.
 
 ### ANM
 
-- **AnmLoadedView::SetAndExecuteScriptIdx @0x43E8B0 (287)** has its first
-  complete strict match in the two-input `AnmSetVmScriptIndex` graph under
+- **AnmLoadedView::SetAndExecuteScriptIdx @0x43E8B0 (287)** passes independent
+  strict cold replay in the two-input `AnmSetVmScriptIndex` graph under
   the existing `/GL` profile: 287 bytes and four fields. The real
   `EnemyRuntimeUpdate` root gives EDX loaded resource, EAX VM and ECX script
   index, with plain RET. Source captures script base and current instruction
@@ -2606,7 +2606,8 @@ restored the EDI receiver at both calls and the full update comparison.
   note supplied the late-merge hypothesis. With both snapshots validated,
   the timer method stopped inlining and changed the private ABI; expressing
   its original reset locally restores all 287 bytes. Independent cold replay
-  with the 36-byte `AnmSetVmScriptIndexAndExecute` caller is pending.
+  passes this owner and its sole direct caller, the complete 36-byte
+  `AnmSetVmScriptIndexAndExecute` with all three fields.
 
   A 16-bit index snapshot, direct raw-member flags, combined flag expression,
   combined guard, bitfield test, two-bit axis view and two snapshots with a

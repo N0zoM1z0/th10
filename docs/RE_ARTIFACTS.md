@@ -80,6 +80,13 @@ six-displacement candidate at commit `201b2dfa`; Git retains that source.
 Superseded trial dumps, source snapshots, warm helpers and the debugger image
 have been removed (about 0.3 MiB).
 
+The ANM script switch retains its complete baseline, first strict match,
+selected cold replay and useful read-only allocation trace under
+`.analysis/anm-set-execute-script-idx/`. Keep the live `AnmSetVmScriptIndex`
+graph. The trace records the byte-neutral narrow-index baseline before the
+late-merged script snapshots. Superseded dumps, source snapshots, private
+helper and debugger image have been removed (about 0.5 MiB).
+
 The Bomb power transition cleanup reclaimed about 26 MiB in source
 snapshots, trial links and superseded GUI and text-rendering outputs.
 

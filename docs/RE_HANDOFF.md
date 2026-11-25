@@ -7,41 +7,25 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `AnmLoadedView::SetAndExecuteScriptIdx` at
-`0x0043E8B0`, 287 bytes in `src/AnmManager.cpp`. It is the largest remaining
-authored owner apart from the explicitly deferred `StartSubroutine`.
-The first complete strict comparison now matches all 287 bytes and four
-fields in the two-input `AnmSetVmScriptIndex` graph. Separate script-base
-and current-instruction snapshots, both validated before reset, merge into
-one load while restoring the ESI/EDI allocation. Expressing the timer reset
-locally preserves its target inline behavior and private EDX/EAX/ECX ABI.
-See the ANM knowledge section and `.analysis/anm-set-execute-script-idx/`.
+The sole active owner is `InitializeGameStatisticsRecord` at `0x0042ACB0`,
+274 bytes in `src/GameStatisticsRecordDefaults.cpp`. It is the largest
+remaining authored owner apart from the explicitly deferred `StartSubroutine`.
+Its candidate recipe is `game-statistics-initialize-record` in the six-input
+`GameStatisticsTail` graph. The prior complete comparison was 249/274 with
+all eight fields bound. The ninth name byte takes EDX ahead of zero;
+a late load fixes registers but moves its field. Literal `strcpy` recovers
+the two word stores but introduces a second induction cursor and spills the
+outer count. The rank-kind loop also has setup/SIB differences.
 
-Before ledger credit, run the independent selected cold replay:
-
-```bash
-scripts/repo-python scripts/replay-exact-units.py \
-  --unit anm-loaded-set-execute-script-idx \
-  --unit anm-set-vm-script-index-and-execute --json
-```
-
-The second unit is its sole direct caller, 36 bytes. Stay on this owner
-until both complete comparisons pass cold.
-
-`MainConfigureCamera` is accepted: its complete 287-byte PDB extent and all
-12 fields pass cold in `StageViewport`. The six direct consumers also pass
-across three links: viewport selector 60/1, ANM layers 3/15/16/19 at 115/12,
-72/7, 72/7 and 72/7, and main Render 425/34 (bytes/fields). The selected
-seven-unit replay covers 1,103 bytes. Receipts and useful stack-colour
-findings are under `.analysis/main-configure-camera/` and in the knowledge
-base. Reproduce with:
+Read the focused knowledge entry and `.analysis/statistics-record/`, compare
+the current complete source early, and stay on this owner through a strict
+independent cold match. Use the candidate unit only while nonexact:
 
 ```bash
-scripts/repo-python scripts/replay-exact-units.py \
-  --unit main-configure-camera --unit main-select-viewport \
-  --unit anm-callback-layer-3 --unit anm-callback-layer-15 \
-  --unit anm-callback-layer-16 --unit anm-callback-layer-19 \
-  --unit main-render --json
+scripts/repo-python scripts/build-match-unit.py \
+  --unit game-statistics-initialize-record
+scripts/repo-python scripts/compare-linked-function.py \
+  --unit game-statistics-initialize-record --json
 ```
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
@@ -84,6 +68,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `anm-loaded-set-execute-script-idx` | 287 B | `AnmSetVmScriptIndex`, four fields and EDX/EAX/ECX inputs. The sole 36-byte handle caller passes all three fields in the same independent cold link. |
 | `main-configure-camera` | 287 B | `StageViewport`, 12 fields and EDI receiver. All six direct consumers pass selected cold comparisons in three graphs. |
 | `frontend-main-menu-update` | 288 B | `FrontEndReplay`, 20 fields including five switch entries. The real dispatcher passes 1,128 bytes/99 fields in the same cold link. |
 | `gui-load-data` | 289 B | `GuiCreation-cold-20261025`, 16 fields and six local branches. Both direct callers pass: GUI Initialize 147/15 and GameManager Initialize 1,009/102 in its own link. |
