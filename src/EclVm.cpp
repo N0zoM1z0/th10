@@ -652,7 +652,8 @@ int EclVmContext::StartSubroutine(
                 value.integer =
                     OperandWord(*callerInstruction,
                         valueOffset / sizeof(int))->integer;
-                value.real = ReadFloatValue(caller, argumentIndex, value.real);
+                EclVmContext *const source = caller;
+                value.real = ReadFloatValue(source, argumentIndex, value.real);
                 if (reinterpret_cast<const EclVmCallArgumentView *>(
                     reinterpret_cast<const unsigned char *>(
                     reinterpret_cast<unsigned int>((*callerInstruction)->operands) +

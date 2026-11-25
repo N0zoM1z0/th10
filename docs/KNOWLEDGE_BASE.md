@@ -1458,6 +1458,9 @@ restored the EDI receiver at both calls and the full update comparison.
   alone drops that entry split and the owner shrinks to 537 bytes.
   Reading the next operand count before writing the offset, then testing
   the captured count at the backedge, brings the strict match to 532 bytes.
+  With that latch, capturing the caller after reading the float operand
+  puts the caller load before the push and matches another three bytes.
+  The raw float word is still carried in ECX where the target uses EDX.
 - In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
   the destination address LEA to EAX and advances the integer register
   cursor to ECX. The 551-byte candidate with a plain caller parameter

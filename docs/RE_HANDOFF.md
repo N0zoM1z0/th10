@@ -11,7 +11,7 @@ The active owner is `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. The target owns 550 bytes and receives the destination
 in EAX with two stack arguments and RET 8. The two-source
 `EclVmHostRunEnemy` link emits the full extent and binds all four calls.
-The strict comparison matches 532 bytes. The same image matches
+The strict comparison matches 535 bytes. The same image matches
 `ecl-vm-spawn-thread` and `ecl-vm-host-run`.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
@@ -31,9 +31,10 @@ scripts/repo-python scripts/ci.py && git diff --check
 
 The entry through the word-offset shift at +0x94 matches. So do the
 floating-point result path and the return-frame and lookup sequence.
-The remaining 18 bytes differ in the two raw operand loads, the float
-call setup, the integer result path, and the order and register choices
-for the two reloads at the loop latch.
+The remaining 15 bytes differ in the raw operand loads and pushes, the
+integer result path, and the two reloads and count register at the loop
+latch. The float resolver's context load now occurs before its stack
+argument is pushed.
 
 Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 [frontiers.toml](../config/frontiers.toml). Product closure, runtime semantics
