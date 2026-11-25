@@ -87,10 +87,15 @@ def tool_environment() -> tuple[Path, dict[str, str]]:
 
 
 def windows_path(path: Path, environment: dict[str, str]) -> str:
-    converted = run(["winepath", "-w", str(path.resolve())], environment=environment)
-    if converted.returncode != 0:
-        raise ValueError(f"winepath failed for {path}: {converted.stdout.strip()}")
-    return converted.stdout.strip().replace("\r", "")
+    converted = subprocess.run(
+        ["winepath", "-w", str(path.resolve())], cwd=ROOT, env=environment,
+        capture_output=True, text=True, errors="replace",
+    )
+    lines = converted.stdout.strip().splitlines()
+    if converted.returncode != 0 or len(lines) != 1:
+        diagnostic = converted.stderr.strip() or converted.stdout.strip()
+        raise ValueError(f"winepath failed for {path}: {diagnostic}")
+    return lines[0]
 
 
 def remove_files(paths: list[Path]) -> list[str]:
