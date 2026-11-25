@@ -1,6 +1,8 @@
 #ifndef TH10_RECONSTRUCTION_PLAYER_HPP
 #define TH10_RECONSTRUCTION_PLAYER_HPP
 
+#include "AnmManager.hpp"
+
 #include <stddef.h>
 #include <string.h>
 
@@ -265,79 +267,6 @@ typedef char PlayerEffectRowPositionAt18[
 typedef char PlayerEffectRowMotionAt24[
     (offsetof(PlayerEffectRowView, motion) == 0x24) ? 1 : -1];
 
-// Neutral four-byte subobject view for draw-VM members whose only reviewed
-// constructor effect is clearing flag bit zero. Their original types and
-// semantics remain unknown.
-struct PlayerConstructorFlagView
-{
-    unsigned int flags;
-    PlayerConstructorFlagView() { flags &= ~1u; }
-};
-typedef char PlayerConstructorFlagViewSizeIs04[
-    (sizeof(PlayerConstructorFlagView) == 0x04) ? 1 : -1];
-
-// Maintained 0x3AC-byte draw-VM storage view beginning at Player +0x14.
-// TH10 constructor order proves the neutral flag subobjects below run before
-// the containing VM body clears its 0x3AC-byte storage. Only independently
-// observed fields are given semantic names; original VM types/names are unknown.
-struct PlayerDrawVmView
-{
-    unsigned char unknown000[0x6c];
-    PlayerConstructorFlagView constructorFlags06C;
-    unsigned char unknown070[0x40];
-    PlayerConstructorFlagView constructorFlags0B0;
-    unsigned char unknown0B4[0x48];
-    PlayerConstructorFlagView constructorFlags0FC;
-    unsigned char unknown100[0x28];
-    PlayerConstructorFlagView constructorFlags128;
-    unsigned char unknown12C[0x48];
-    PlayerConstructorFlagView constructorFlags174;
-    unsigned char unknown178[0x38];
-    PlayerConstructorFlagView constructorFlags1B0;
-    unsigned char unknown1B4[0x48];
-    PlayerConstructorFlagView constructorFlags1FC;
-    unsigned char unknown200[0x28];
-    PlayerConstructorFlagView constructorFlags228;
-    unsigned char unknown22C[0xd4];
-    unsigned int color;
-    unsigned char unknown304[0x3c];
-    float positionX;
-    float positionY;
-    float positionZ;
-    unsigned char unknown34C[0x0c];
-    void *ownedData358;
-    unsigned int flags;
-    unsigned char unknown360[0x18];
-    PlayerConstructorFlagView constructorFlags378;
-    unsigned char unknown37C[0x08];
-    unsigned short unknownWord384;
-    unsigned char unknown386[0x26];
-
-    PlayerDrawVmView()
-    {
-        memset(this, 0, sizeof(*this));
-        unknownWord384 = 0xffff;
-    }
-    ~PlayerDrawVmView();
-};
-typedef char PlayerDrawVmViewSizeIs3AC[
-    (sizeof(PlayerDrawVmView) == 0x3ac) ? 1 : -1];
-typedef char PlayerDrawVmViewCtorFlagsAt06C[
-    (offsetof(PlayerDrawVmView, constructorFlags06C) == 0x06c) ? 1 : -1];
-typedef char PlayerDrawVmViewCtorFlagsAt378[
-    (offsetof(PlayerDrawVmView, constructorFlags378) == 0x378) ? 1 : -1];
-typedef char PlayerDrawVmViewColorAt300[
-    (offsetof(PlayerDrawVmView, color) == 0x300) ? 1 : -1];
-typedef char PlayerDrawVmViewPositionAt340[
-    (offsetof(PlayerDrawVmView, positionX) == 0x340) ? 1 : -1];
-typedef char PlayerDrawVmViewOwnedDataAt358[
-    (offsetof(PlayerDrawVmView, ownedData358) == 0x358) ? 1 : -1];
-typedef char PlayerDrawVmViewFlagsAt35C[
-    (offsetof(PlayerDrawVmView, flags) == 0x35c) ? 1 : -1];
-typedef char PlayerDrawVmViewWordAt384[
-    (offsetof(PlayerDrawVmView, unknownWord384) == 0x384) ? 1 : -1];
-
-
 // Maintained view of the fixed header of the variable-sized Player .sht data.
 // The first three float names remain offset-based because their original
 // semantics are not established. Speed fields are named from TH10-local use.
@@ -471,7 +400,7 @@ struct Player
     PlayerCallbackNodeView *updateCallbackNode;
     PlayerCallbackNodeView *drawCallbackNode;
     void *resource;
-    PlayerDrawVmView drawVm;
+    AnmVmView drawVm;
     PlayerFloat3 drawPosition;
     int positionX;
     int positionY;

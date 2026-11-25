@@ -80,9 +80,10 @@ def fixture(symbol):
         vm_basename = f'support-00-{Path(supports[0]).stem}.ltcg.obj' if supports else owner_object
     elif spec.get('owner_source'):
         source = spec['owner_source']
-        supports = ['src/AnmManager.cpp']
+        vm_source = spec.get('vm_destructor_source', source)
+        supports = [vm_source if vm_source != source else 'src/AnmManager.cpp']
         owner_object = 'source.ltcg.obj'
-        vm_basename = owner_object if spec.get('vm_destructor_source') == source else 'support-00-AnmManager.ltcg.obj'
+        vm_basename = owner_object if vm_source == source else f'support-00-{Path(supports[0]).stem}.ltcg.obj'
         if 'worker_offset' in spec:
             supports.append('src/ScriptViewerWorker.cpp')
     else:

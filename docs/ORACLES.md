@@ -225,6 +225,13 @@ three states unwind arrays of 2, 8 and 5 VMs at offsets `+0x10`,
 `+0x778` and `+0x24D8`. In the factory link, the qualified VM
 destructor is in the same PDB object as the spell panel destructor.
 
+The Player destructor binds its 21-byte member region at handler entry
+`0x46528B`. Its one state loads saved this from `EBP+4`, adds `0x14` in ECX
+and tail-jumps to the real 34-byte VM destructor. The declared
+`ScriptViewerDestructSmall` graph emits that VM destructor in the primary
+ScriptViewer object, while the parent and generated region belong to Player.
+The partial Player VM view's ESI-receiver destructor fails this binding.
+
 ## Validation scope during exact reconstruction
 
 The current checkpoint Oracle is the affected complete native byte comparison,

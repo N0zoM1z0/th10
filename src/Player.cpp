@@ -739,13 +739,6 @@ __declspec(noinline) void PlayerOptionSpecialCallbackBody(
 
 // Maintained source for the Player constructor/reset/factory/destructor seam.
 // LTCG gives several of these bodies private ESI/stack/register boundaries.
-PlayerDrawVmView::~PlayerDrawVmView()
-{
-    if (ownedData358 != NULL)
-        free(ownedData358);
-    ownedData358 = NULL;
-}
-
 Player::Player()
 {
     memset(this, 0, sizeof(*this));
@@ -1086,7 +1079,7 @@ int PlayerInitialize(Player *player)
 // Maintained source for the Player movement/options owner at 0x004250B0.
 // The target body receives Player in EDI from its sole caller.
 typedef char PlayerMovementVmAt14[(offsetof(Player, drawVm) == 0x14) ? 1 : -1];
-typedef char PlayerMovementVmSize[(sizeof(PlayerDrawVmView) == sizeof(AnmVmView)) ? 1 : -1];
+typedef char PlayerMovementVmSize[(sizeof(((Player *)0)->drawVm) == sizeof(AnmVmView)) ? 1 : -1];
 
 static __forceinline void StartPlayerLeanScript(Player *player, int script)
 {
@@ -2336,17 +2329,17 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
         if (player->updateTimer1.current != player->updateTimer1.previous &&
             player->updateTimer1.current % 3 == 0)
         {
-            player->drawVm.color = 0xff0000ffu;
-            player->drawVm.flags |= 0x8000u;
+            player->drawVm.secondaryColor.value = 0xff0000ffu;
+            player->drawVm.flags35C |= 0x8000u;
         }
         else
         {
-            player->drawVm.flags &= ~0x8000u;
+            player->drawVm.flags35C &= ~0x8000u;
         }
     }
     else
     {
-        player->drawVm.flags &= ~0x8000u;
+        player->drawVm.flags35C &= ~0x8000u;
     }
 
     AnmRenderManagerView::ExecuteScript(

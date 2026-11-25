@@ -7,13 +7,25 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `Player::~Player` at `0x00424ED0`, currently listed
-as 325 bytes in `src/Player.cpp`. It is the largest remaining authored owner
-apart from the explicitly deferred `StartSubroutine`. Inspect the complete
-target boundary, current implementation and available link recipe, then
-compare the complete source early. The old knowledge entry's 333-byte
-candidate is historical; establish the current native baseline before relying
-on it. Stay on this destructor through the complete strict cold match.
+The sole active owner is `Player::~Player` at `0x00424ED0`, complete
+instruction extent `[0x00424ED0, 0x00425015)` (325 bytes), in `src/Player.cpp`.
+It is the largest remaining authored owner apart from the explicitly
+deferred `StartSubroutine`. Unit `player-destructor` uses the nine-source
+`ScriptViewerDestructSmall` graph. The first canonical cold build matches
+all 325 bytes and 30 fields, including the complete VM-member EH binding.
+`Player::drawVm` now uses `AnmVmView`; the old partial view produced the
+wrong ESI/30-byte cleanup ABI even when all ordinary parent bytes matched.
+The target needs ECX and the real 34-byte VM destructor.
+
+The independent selected replay is running for `player-destructor`,
+`script-viewer-destructor`, `script-viewer-player-create`,
+`script-viewer-release-player`, `player-update-callback-body` and
+`player-draw-callback-body`. It covers the known member/field consumers
+and preserves each canonical link recipe; the update body needs its
+37-input graph. Finish these scoped checks before acceptance or selecting
+another owner. The VM member EH self-test and native wrong-view rejection
+pass. Current inputs, logs and receipts are under
+`.analysis/player-destructor/`.
 
 Both ANM surface-copy variants are accepted in `BulletHorizontalWrap`.
 `anm-copy-surface-to-backbuffer` matches 330 bytes and seven fields;

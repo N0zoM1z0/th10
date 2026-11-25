@@ -1249,7 +1249,33 @@ frontier; do not refresh a baseline merely to accept the new positions.
   and binds device fields at +0x18/+0x4E/+0x89/+0x127, format at
   +0x65/+0x84, and D3DXLoadSurfaceFromSurface at +0xC6. Current receipts
   and probes are under `.analysis/anm-copy-backbuffer2/`.
-- **Player::~Player @0x424ED0 (325)**: 333. [2026-10-31]
+- **Player::~Player @0x424ED0 (325)**: the first canonical cold build in
+  `ScriptViewerDestructSmall` matches 325 bytes and 30 fields, including
+  the real VM member EH binding. Unit `player-destructor` retains the
+  nine-source `/EHs` link with its existing separate Enemy support profile.
+  Independent cold and affected-consumer replays are pending.
+
+  Model `drawVm` at Player+0x14 with the maintained `AnmVmView`, whose size
+  is 0x3AC. The old partial lifetime view gave identical ordinary parent
+  bytes but selected a private 30-byte ESI-receiver destructor for EH.
+  Target action `[0x465280, 0x46528B)` instead loads saved this from EBP+4,
+  adds 0x14 in ECX and tail-jumps to the real 34-byte VM destructor at
+  0x401FF0. Merely delegating inside the old view retained the wrong ABI.
+  Using the actual member type recovers the whole action. The obsolete
+  view, constructor stubs and destructor are removed.
+
+  The EH handler at 0x46528B owns a complete 21-byte generated region,
+  one-state 28-byte FuncInfo and a single unwind row. The existing VM
+  member binder now has a fixed Player case and still requires the real
+  complete VM destructor, parent-qualified PDB contribution and exact
+  saved receiver. Its focused self-test passes all ten protocols and
+  351 rejections; the original private-view native action is rejected.
+  The common VM destructor is emitted by the primary ScriptViewer object
+  in this graph. The color field at VM+0x300 is `secondaryColor.value`,
+  while flags remain at +0x35C. Verify the update and draw callbacks,
+  factory, release adapter and ScriptViewer destructor after this header
+  change. The old 333-byte observation predates the current source/context.
+  Current inputs and receipts are under `.analysis/player-destructor/`.
 - **FrontEndInsertScore @0x421FA0 (316)**: 263; the helper uses 64-bit `100.0`
   where the target uses 32-bit. [2026-10-15]
 - **InitializeGameStatisticsRecord @0x42ACB0 (274)**. The six-TU
