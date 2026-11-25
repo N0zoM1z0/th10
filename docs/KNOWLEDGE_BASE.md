@@ -1180,6 +1180,10 @@ frontier; do not refresh a baseline merely to accept the new positions.
   a direct angle reference gives 327. Replacing the velocity receiver
   reference with a pointer preserves 333. Computing that receiver before
   the reset/easing branch expands the complete owner to 343 bytes.
+  The magnitude's local `RegAssign` selects ECX and advances its cursor to
+  EDX, after the angle has already received EAX globally. Preparing a speed
+  word before the angle copy gives 331 matching bytes. Grouping both float
+  arguments in a local aggregate, in either member order, preserves 333.
   The `_reference/th10-decomp` `EaseStep` shape (plain float fields, direct
   `++int2`, `angle = value1`, reset speed copied before the timer reset)
   regressed to 320/335 on 2026-11-22 and was reverted.
