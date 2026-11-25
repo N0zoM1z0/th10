@@ -116,7 +116,7 @@ static inline void ReplayCutChain(ReplayChainElement *element)
 }
 
 // Complete target-observed position restoration is maintained in
-// ReplayStageHelpers.cpp; original class/TU ownership remains unknown.
+// ReplayStageRestore.cpp; original class/TU ownership remains unknown.
 void ReplayRestoreStagePosition(Player *runtime,
                                 const unsigned int *position);
 
@@ -456,15 +456,13 @@ void ReplayManager::BeginStage()
     else if (mode == REPLAY_MANAGER_PLAYBACK)
     {
         int stage = g_GameScoreState.selectedStage;
-        // Restore the captured history even if the current player pointer is reloaded.
-        PlayerPositionPair *history = g_Player->replayPositionHistory;
+        Player *runtime = g_Player;
         ReplayStageDataHeader *stageHeader = stageStates[stage].header;
         activeStage = stage;
-        Player *runtime = reinterpret_cast<Player *>(
-            reinterpret_cast<unsigned char *>(history) - offsetof(Player, replayPositionHistory));
-        ReplayRestoreStagePosition(runtime, &stageHeader->unknown024);
+        Player &originalRuntime = *runtime;
+        ReplayRestoreStagePosition(&originalRuntime, &stageHeader->unknown024);
         runtime = g_Player;
-        memcpy(history, stageHeader->runtimeSnapshot,
+        memcpy(originalRuntime.replayPositionHistory, stageHeader->runtimeSnapshot,
                sizeof(stageHeader->runtimeSnapshot));
         runtime->optionMode = stageHeader->unknown1BC;
         RebuildPlayerOptions(runtime);

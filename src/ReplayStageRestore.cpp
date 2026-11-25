@@ -1,5 +1,6 @@
 #include "Main.hpp"
 #include "ReplayManager.hpp"
+#include "Player.hpp"
 #include "GameScoreState.hpp"
 #include "Rng.hpp"
 #include <string.h>
@@ -47,4 +48,21 @@ void GameRestoreReplayState(ReplayManager *replay)
         g_ReplayStageValue1B8 =
             replay->stageStates[g_GameScoreState.selectedStage].header->unknown1B8;
     }
+}
+
+extern "C" void _ReadWriteBarrier();
+#pragma intrinsic(_ReadWriteBarrier)
+
+// Target 428E10 copies signed fixed-point coordinates, publishes their float
+// counterparts and marks all four option positions for reset.
+void ReplayRestoreStagePosition(Player *runtime, const unsigned int *position)
+{
+    runtime->positionX = static_cast<int>(position[0]);
+    runtime->positionY = static_cast<int>(position[1]);
+    // Publish both fixed-point coordinates before converting them for display.
+    _ReadWriteBarrier();
+    runtime->drawPosition.x = static_cast<float>(runtime->positionX) * 0.01f;
+    runtime->drawPosition.y = static_cast<float>(runtime->positionY) * 0.01f;
+    for (int i = 0; i < 4; ++i)
+        runtime->options[i].resetFlag = 1;
 }

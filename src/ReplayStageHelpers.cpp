@@ -59,18 +59,6 @@ void ReplayClearStageFrameData(ReplayManager *manager, int stage)
     }
 }
 
-// Target 428E10 copies signed fixed-point coordinates, publishes their float
-// counterparts and marks all four option positions for reset.
-void ReplayRestoreStagePosition(Player *runtime, const unsigned int *position)
-{
-    *reinterpret_cast<PlayerPositionPair *>(&runtime->positionX) =
-        *reinterpret_cast<const PlayerPositionPair *>(position);
-    runtime->drawPosition.x = static_cast<float>(runtime->positionX) * 0.01f;
-    runtime->drawPosition.y = static_cast<float>(runtime->positionY) * 0.01f;
-    for (int i = 0; i < 4; ++i)
-        runtime->options[i].resetFlag = 1;
-}
-
 // Target 42A8A0 appends all three record words before advancing the cursor.
 // The signed record count selects whether the caller allocates another block.
 int __stdcall ReplayAppendRecord(ReplayFrameData *frameData, unsigned short input,
