@@ -50,6 +50,11 @@ replays and focused EH controls under `.analysis/player-destructor/`.
 Its declared live link is `build/match-linked/ScriptViewerDestructSmall/`;
 superseded source snapshots and warm probe links have been removed.
 
+The score insertion owner retains its complete baseline, canonical comparison
+and selected cold replay under `.analysis/frontend-insert-score/`. Its live
+links are `ResultMenuClose` and the score-entry caller's `FrontEndReplay`.
+Superseded disassembly and diagnostic helper files have been removed.
+
 The Bomb power transition cleanup reclaimed about 26 MiB in source
 snapshots, trial links and superseded GUI and text-rendering outputs.
 

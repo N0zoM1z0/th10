@@ -7,17 +7,20 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `FrontEndInsertScore` at `0x00421FA0`, currently
-listed as 316 bytes in `src/FrontEnd.cpp`. It is the largest remaining
-authored owner apart from the explicitly deferred `StartSubroutine`.
-Its first strict comparison now matches all 316 bytes and 18 fields in
-`ResultMenuClose`. Explicitly converting the double timing ratio to float
-restores the target dword multiply and reverse subtraction. Merely changing
-the constants was byte-neutral. Unit `frontend-insert-score` is ready for
-independent cold replay with `result-menu-prepare-score` and
-`frontend-score-entry-update`. Receipts are under
-`.analysis/frontend-insert-score/`. Do not grant ledger credit until those
-selected cold links pass.
+The sole active owner is `EnemyLaserType1View::Initialize` at `0x0041E5C0`,
+309 bytes in `src/LaserType1.cpp`. It is the largest remaining authored
+owner apart from the explicitly deferred `StartSubroutine`. Inspect its
+current source, target and retained link recipe, then compare the complete
+source early. Stay on this owner through its complete strict cold match.
+
+`FrontEndInsertScore` is accepted at 316 bytes and 18 fields in
+`ResultMenuClose`. Its independent cold replay and both direct callers pass:
+`result-menu-prepare-score` at 377 bytes/18 fields and
+`frontend-score-entry-update` at 1,400 bytes/80 fields in `FrontEndReplay`.
+Converting the double timing ratio to float before percentage arithmetic
+restores the target dword multiply and reverse subtraction. Changing only
+literal spelling is byte-neutral. Receipts are under
+`.analysis/frontend-insert-score/`.
 
 `Player::~Player` is accepted in `ScriptViewerDestructSmall` at 325 bytes
 and 30 fields, with the complete VM-member EH binding. The factory,
@@ -75,6 +78,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `frontend-insert-score` | 316 B | `ResultMenuClose`, 18 fields and the EDI table receiver. Both direct callers pass their own selected cold links. |
 | `player-destructor` | 325 B | `ScriptViewerDestructSmall`, 30 fields and the real 34-byte VM cleanup. Five selected lifecycle/field consumers pass their own cold links. |
 | `anm-copy-surface-to-backbuffer2` | 325 B | `BulletHorizontalWrap`, seven fields and EBX index/stack manager/RET 28. Both selected same-image guards pass. |
 | `anm-copy-surface-to-backbuffer` | 330 B | `BulletHorizontalWrap`, seven fields and EBX/EAX/RET 16. The same-image absolute-direction Bullet guard passes 335 bytes and eight fields. |

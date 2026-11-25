@@ -1291,8 +1291,10 @@ frontier; do not refresh a baseline merely to accept the new positions.
   repeated difficulty loads and exactly nine name bytes after `time`. The
   explicit `static_cast<float>` on the ratio restores both dword operations
   without an intervening memory round trip in this pinned profile. The first
-  strict `frontend-insert-score` comparison matches all 316 bytes and 18 fields.
-  Independent cold replay and the two direct callers remain pending. Receipts
+  strict `frontend-insert-score` comparison and its independent cold replay
+  match all 316 bytes and 18 fields. `result-menu-prepare-score` passes 377
+  bytes and 18 fields in the same graph; `frontend-score-entry-update` passes
+  its complete 1,400-byte owner and 80 fields in `FrontEndReplay`. Receipts
   are under `.analysis/frontend-insert-score/`.
 - **InitializeGameStatisticsRecord @0x42ACB0 (274)**. The six-TU
   `GameStatisticsTail` graph matches 249 bytes and binds all eight DIR32
