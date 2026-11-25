@@ -1365,6 +1365,16 @@ restored the EDI receiver at both calls and the full update comparison.
 - Hint writer 0x44B740 returns -1/-2/0 (byte count, not BOOL). Popup Draw uses 723×40-byte records at owner+0x3C4. The Spt Test ECL database is at +0x2D8.
 - Hint `ConsumeEntries` 419120: EAX first link, owner/freeEntries on stack, RET8. Effect owner 4776E0+899C; manager 491C10. World creator 448DB0: EDI position, stack resource/ID-out/script, RET12, returns the pointer in EAX.
 - Hint `Update`: owner EBX; callback 4198A0 moves ECX to EBX.
+- `CleanupHintOwner` at `0x00418EE0` matches all 346 bytes and 22
+  fields in the VC7.1 SP1 `HintCleanupOwner` link. Each task chain is
+  unregistered under its own critical-section acquisition. Each of ten
+  VM IDs is searched across both manager lists, its VM and eligible
+  children are marked for deletion, and the ID is cleared. The optional
+  export precedes list cleanup and the owner-global clear. With
+  `HintLoad.cpp` compiled under LTCG, the called `ClearHintLists` body
+  matches 79 bytes with its receiver in EAX. The factory matches in this
+  graph. The full cleanup also matches in the GameManager cleanup graph.
+  The Hint initializer uses its established separate graph.
 
 ### Laser
 

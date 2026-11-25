@@ -7,29 +7,19 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `CleanupHintOwner` at `0x00418EE0` in `src/Hint.cpp`
-(346 bytes). The two target callers are the Hint release path and
-GameManager cleanup. Keep the separate task locks, ten VM cleanup
-slots, and export-stream teardown in the complete comparison.
-The `HintCleanupOwner` link with `HintLoad.cpp` under LTCG currently matches
-all 346 bytes and 22 resolved fields. The same image matches the 79-byte
-`ClearHintLists` body with its EAX receiver. Cold replay the owner and
-the affected callers before acceptance.
+The active owner is `EclVmContext::StartSubroutine` at `0x0044DF70`
+in `src/EclVm.cpp`. It is the largest remaining authored owner, with
+536 of 550 bytes matching in `EclVmHostRunEnemy`. Its four call fields
+bind. The remaining differences are register choices in the operand loop.
+The loop latch assigns its destination cursor before the instruction
+pointer, which leaves the latter with ECX and EDX available. The target
+uses ECX for the cursor and EAX for the instruction pointer. See
+[KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) for traces and cold replay scope.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
 CPU at nice 10, and explicit unit selectors. Repository commands run
 locally. [RE_ARTIFACTS.md](RE_ARTIFACTS.md) identifies the retained inputs.
-
-### Parked owners
-
-`EclVmContext::StartSubroutine` at `0x0044DF70` matches 536 of 550 bytes
-and all four call fields in `EclVmHostRunEnemy`. The remaining differences
-are register choices in the operand loop. The loop latch assigns its
-destination cursor before the instruction pointer, which leaves the latter
-with ECX and EDX available. The target uses ECX for the cursor and EAX
-for the instruction pointer. See [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md)
-for the traces and the cold replay scope.
 
 Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 [frontiers.toml](../config/frontiers.toml).
@@ -38,6 +28,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `hint-cleanup-owner` | 346 B | `HintCleanupOwner`, 22 fields and the complete EAX-receiver list cleanup callee. The factory and GameManager cleanup pass in their own graphs. |
 | `enemy-full-object-destructor` | 386 B | `EclVmHostRunEnemy`, seven fields. The inherited virtual declaration restores the stack receiver. Both VM searches share the same match path. The generated 31-byte deleting wrapper matches both calls and vtable slot five. |
 | `script-viewer-destructor` | 412 B | `ScriptViewerDestructSmall` with `/EHs`, 44 fields and two member unwind actions. The factory and eleven related entries pass in the same image. The Stage factory, constructor and destructor pass in their separate cold link. |
 | `player-start-power-transition` | 397 B | `PlayerStartPowerTransition`, 17 fields. The in-class indexed invalidator preserves the 81-byte outline in the same link and keeps the panel in ESI across its call. The two Player update calls retain the stack receiver. |

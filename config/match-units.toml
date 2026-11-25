@@ -40223,4 +40223,3 @@ linkages = [
   { offset = 0x148, type = "REL32", symbol = "?ClearHintLists@@YAXPAUHintOwnerView@@@Z", target = 0x00419040 },
   { offset = 0x14E, type = "DIR32", symbol = "?g_GameOwner477814@@3PAUHintOwnerView@@A", target = 0x00477814 },
 ]
-candidate = true
