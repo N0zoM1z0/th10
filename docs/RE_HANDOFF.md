@@ -7,12 +7,8 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `ScriptViewerView::~ScriptViewerView` at `0x0040A1A0`
-in `src/ScriptViewer.cpp`. The `ScriptViewerDestructSmall` link matches the
-complete 412-byte body, 44 bound fields and both unwind actions. The factory
-and eleven related entries match in the same image. Complete the Stage
-constructor and destructor guards with the inlined VM destructor emitted
-by `src/StageLifecycle.cpp`, then promote `script-viewer-destructor`.
+The ScriptViewer destructor is complete. Select the largest remaining
+authored owner from the match ledger when reconstruction resumes.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -36,6 +32,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `script-viewer-destructor` | 412 B | `ScriptViewerDestructSmall` with `/EHs`, 44 fields and two member unwind actions. The factory and eleven related entries pass in the same image. The Stage factory, constructor and destructor pass in their separate cold link. |
 | `player-start-power-transition` | 397 B | `PlayerStartPowerTransition`, 17 fields. The in-class indexed invalidator preserves the 81-byte outline in the same link and keeps the panel in ESI across its call. The two Player update calls retain the stack receiver. |
 | `enemy-spell-panel-destructor` | 402 B | `SpellPanelDestructor` with `/EHs`, 36 fields and three VM-array unwind actions. The receiver is on the stack with RET 4. |
 | `laser-type0-bounce` | 410 B | `LaserLineUpdate`, 17 fields and the real type-0 virtual slot. Both spawn calls take the manager in ESI and the request in EDI. |

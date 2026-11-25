@@ -21657,7 +21657,6 @@ linkages = [
 ]
 
 [units.script-viewer-destructor]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/ScriptViewer.cpp"
 output_dir = "build/match-linked/ScriptViewerDestructSmall"
