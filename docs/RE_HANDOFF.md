@@ -7,10 +7,14 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `BulletRuntimeView::UpdateAbsoluteDirectionChange` at
-`0x004078E0` in `src/BulletManager.cpp`. Its `BulletHorizontalWrap` link has
-335 bytes with differences at +0xD7 and +0xDD, where the angle word uses EAX
-instead of EDX. Reproduce the current frontier with
+The sole active owner is `BulletRuntimeView::UpdateAbsoluteDirectionChange`
+at `0x004078E0`, with complete extent `[0x004078E0, 0x00407A2F)` (335 bytes;
+last byte `0x00407A2E`) in `src/BulletManager.cpp`. Its current
+`BulletHorizontalWrap` strict linked comparison is 333/335: only +0xD7 and
++0xDD differ, because the candidate forwards the angle word in EAX while the
+target forwards it in EDX. It remains nonexact and is the only active function;
+do not select another owner until this one has a complete strict exact match
+and its selected cold replay passes. Reproduce the current frontier with
 `scripts/repo-python scripts/check-frontier.py --no-build --show bullet-update-absolute-direction`.
 Investigate the call operand's VC7.1 register allocation and compare the
 complete owner and eight linked fields after each source change.

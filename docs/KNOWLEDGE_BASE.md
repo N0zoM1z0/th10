@@ -1163,30 +1163,41 @@ frontier; do not refresh a baseline merely to accept the new positions.
   `width <= 32`, then the large palette reproduces the target's two x87 `jp`
   branches. A selected cold replay passed and the owner is canonical exact.
   [2026-11-22]
-- **BulletRuntimeView::UpdateAbsoluteDirectionChange @0x4078E0 (335)**: current
-  linked candidate is 335/335, with two differences at +0xD7/+0xDD
-  (target EDX, candidate EAX). `register` hints were byte-neutral; removing the
-  angle-copy local and passing `angle` directly adds two differences; volatile
-  forms also regress. All trials were reverted.
+- **BulletRuntimeView::UpdateAbsoluteDirectionChange @0x4078E0 (335)**: the
+  current linked candidate has 333/335 equal bytes in its fully decoded
+  335-byte contribution; only +0xD7/+0xDD differ (target EDX, candidate EAX),
+  and all eight linked fields are bound. `register` hints were byte-neutral;
+  removing the angle-copy local and passing `angle` directly adds two
+  differences; volatile forms also regress. All trials were reverted.
   A read-only VC7.1 C2 trace identifies the angle-word load as global
   candidate 8, with priority 16. `ChoosePhysReg` selects EAX with all three
   integer-register scores at zero. EAX, ECX and EDX are all eligible, so
   the target EDX needs a preference or interference that changes this tie.
   Local integer-word, union and pointer forms of the angle copy each leave
-  the complete comparison at 333 matching bytes. The debugger link completes and matches
-  the ordinary link across all 335 bytes and eight linked fields.
-  Reading the angle through a direct float reference gives 331 matching
-  bytes. A speed-word carrier alone preserves 333, while combining it with
-  a direct angle reference gives 327. Replacing the velocity receiver
-  reference with a pointer preserves 333. Computing that receiver before
-  the reset/easing branch expands the complete owner to 343 bytes.
-  The magnitude's local `RegAssign` selects ECX and advances its cursor to
-  EDX, after the angle has already received EAX globally. Preparing a speed
-  word before the angle copy gives 331 matching bytes. Grouping both float
+  the complete comparison at 333 matching bytes. The debugger link completes
+  and matches the ordinary link across all 335 owner bytes and eight linked
+  fields.
+  Reading the angle through a direct float reference removes that global
+  angle candidate: local `RegAssign` assigns magnitude to EAX and angle to
+  ECX, then advances to EDX; the result is 331/335. A separate float snapshot
+  (`float outgoingAngle = angle`) has the same C2 path and the same 331/335
+  result, with differences at +0xD4/+0xD7/+0xDC/+0xDD. Its trace confirms no
+  global angle candidate 8; the first local assignments are magnitude EAX,
+  angle ECX, then the later timer value EDX. The snapshot's GDB link was
+  independently checked against the ordinary link: all 335 owner bytes and
+  all eight resolved fields are identical, so the trace reflects the ordinary
+  code-generation path. The snapshot was reverted.
+  A speed-word carrier alone preserves 333, while combining it with a direct
+  angle reference gives 327. Replacing the velocity receiver reference with
+  a pointer preserves 333. Computing that receiver before the reset/easing
+  branch expands the complete owner to 343 bytes. Preparing a speed word
+  before the angle copy gives 331 matching bytes. Grouping both float
   arguments in a local aggregate, in either member order, preserves 333.
   The `_reference/th10-decomp` `EaseStep` shape (plain float fields, direct
   `++int2`, `angle = value1`, reset speed copied before the timer reset)
-  regressed to 320/335 on 2026-11-22 and was reverted.
+  regressed to 320/335 on 2026-11-22 and was reverted. The source and ordinary
+  linked candidate were restored to the 333/335 `memcpy` baseline after the
+  float-snapshot experiment.
 - **Player::~Player @0x424ED0 (325)**: 333. [2026-10-31]
 - **FrontEndInsertScore @0x421FA0 (316)**: 263; the helper uses 64-bit `100.0`
   where the target uses 32-bit. [2026-10-15]
