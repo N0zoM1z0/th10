@@ -8,13 +8,22 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 ## Resume
 
 The sole active owner is `AnmRenderManagerView::CopySurfaceToBackbuffer`
-at `0x00447FD0`, currently listed as 330 bytes in `src/AnmManager.cpp`.
-It is the largest remaining authored owner apart from the explicitly deferred
-`StartSubroutine`. Review its boundary before creating the exact unit: the
-current ledger notes a 328-byte physical body plus two trailing CC bytes.
-The maintained implementation is present, but there is no canonical unit yet.
-Compare that complete source early in a real caller graph and preserve the
-D3D adapter evidence and interfaces while investigating this owner.
+at `0x00447FD0`, complete instruction extent `[0x00447FD0, 0x0044811A)`
+(330 bytes), in `src/AnmManager.cpp`. It is the largest remaining authored
+owner apart from the explicitly deferred `StartSubroutine`. The old boundary
+note was wrong: `RET 16` starts at `0x00448117` and occupies the last three
+bytes; CC alignment begins at `0x0044811A`.
+
+Use candidate unit `anm-copy-surface-to-backbuffer` in `BulletHorizontalWrap`.
+The retained baseline has the correct EBX manager/EAX index/RET 16 ABI,
+but its full PDB contribution is 331 bytes. The strict comparator rejects
+that extent against the reviewed 330-byte target. Attested local Ghidra
+reports no entry references. The source, disassembly, baseline and query
+results are under `.analysis/anm-copy-backbuffer/`. Start by staging the
+device reload before CreateRenderTarget's format argument; the target uses
+ECX for the surface-info index while the candidate uses EAX. Compare the
+complete owner and all seven fields. Preserve the D3D adapter evidence and
+interfaces while working on this function.
 
 `BulletRuntimeView::UpdateAbsoluteDirectionChange` is accepted: two independent
 canonical builds match 335 bytes and eight fields, and its direct runtime

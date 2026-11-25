@@ -1199,6 +1199,24 @@ frontier; do not refresh a baseline merely to accept the new positions.
   complete angle assignment after speed kept 335 bytes but missed the
   reset schedule. Removing volatile from speed or adding it to flags
   writeback alone was byte-neutral in the 320/335 control.
+- **AnmRenderManagerView::CopySurfaceToBackbuffer @0x447FD0 (330)**:
+  direct target decoding confirms `[0x447FD0, 0x44811A)` is all instructions.
+  The final `c2 10 00` starts at 0x448117; alignment CC bytes begin at
+  0x44811A. The old ledger note incorrectly treated the RET immediate as
+  padding. Keep the complete 330-byte boundary.
+
+  Attested local Ghidra reports no entry references. The retained body in
+  `BulletHorizontalWrap` nevertheless has the target's EBX manager, EAX index
+  and RET 16 ABI. Its fully decoded PDB contribution is 331 bytes; the new
+  candidate unit `anm-copy-surface-to-backbuffer` correctly rejects that
+  extent before granting any byte credit. Seven target fields are reviewed:
+  device at +0x16/+0x4C/+0x87/+0x128, backbuffer format at +0x63/+0x82,
+  and D3DXLoadSurfaceFromSurface at +0xC4. The analysis is under
+  `.analysis/anm-copy-backbuffer/`.
+  Start with CreateRenderTarget input scheduling: the target reloads the
+  device before the format and uses ECX for the surface-info index, whereas
+  the candidate loads the format first and uses EAX for that index. Keep
+  the existing D3D interfaces and compare the entire owner after the edit.
 - **Player::~Player @0x424ED0 (325)**: 333. [2026-10-31]
 - **FrontEndInsertScore @0x421FA0 (316)**: 263; the helper uses 64-bit `100.0`
   where the target uses 32-bit. [2026-10-15]
