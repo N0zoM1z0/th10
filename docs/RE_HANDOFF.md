@@ -30,9 +30,19 @@ the condition, then reloads the full flags word in the branch. The ordinary
 and debugger links agree across the full 340-byte owner and all eight fields,
 but it is not exact. The experiment and trace are under
 `.analysis/bullet-absolute/int-flag-local.*`; a bool-typed version takes the
-same register path at 343 bytes. The main source remains at the 333/335
-baseline. The next test should retain a full-width flags local in `RegAssign`
-without the extra byte normalization or reload.
+same register path at 343 bytes. A better-sized scratch candidate at
+`.analysis/bullet-absolute/experiments/word-alias-bool-local/` has a 335-byte
+PDB owner and the exact target call setup. Its `g_AnmGameSpeed` field is at
++0x96 rather than +0x97, so strict comparison rejects it. An in-memory
+diagnostic manifest with only that field offset adjusted compares the full
+owner at 294/335; all 41 differences are in timer initialization. The alias
+read is narrowed to `AL` and the update becomes a memory OR. Keeping the
+union word alive through the branch restores the target timer instructions
+but makes it global candidate 8 in EAX, causing the call arguments to return
+to EAX/ECX. The main source remains at the 333/335 baseline; no exact
+acceptance or cold replay is claimed. Next, preserve the target's dword
+flags load and register OR/store while keeping the flags read local and the
+magnitude/angle local assignment ECX/EDX.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
