@@ -1473,10 +1473,14 @@ restored the EDI receiver at both calls and the full update comparison.
   eligible. The current source chooses EAX on a tie with ECX at −1.
   The earlier plain-caller candidate assigns ECX at −1 with EAX and EDX
   both at 1. A watchpoint on the preference list records one entry
-  each from the earlier EAX and ECX allocations in the current candidate.
-  Both list writes occur at `0x10759830`. Capturing a local destination
-  pointer in the raw integer store fixes +0xBB but moves the float result
-  and latch registers.
+  each from the earlier EAX and ECX allocations at `0x10759830`.
+  At Color entry, the EAX range feeds the shift used for the word index.
+  The ECX range comes from the instruction pointer load and supplies the
+  base for the source tag and both raw operands. Passing the word offset
+  to an inlined by-reference index calculation leaves the code unchanged.
+  Reading it through the volatile latch alias in either operand path adds
+  a four-byte reload. Capturing a local destination pointer in the raw
+  integer store fixes +0xBB but moves the float result and latch registers.
 - In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
   the destination address LEA to EAX and advances the integer register
   cursor to ECX. The 551-byte candidate with a plain caller parameter
