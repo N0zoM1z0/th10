@@ -1170,23 +1170,33 @@ frontier; do not refresh a baseline merely to accept the new positions.
   removing the angle-copy local and passing `angle` directly adds two
   differences; volatile forms also regress. All trials were reverted.
   A read-only VC7.1 C2 trace identifies the angle-word load as global
-  candidate 8, with priority 16. `ChoosePhysReg` selects EAX with all three
-  integer-register scores at zero. EAX, ECX and EDX are all eligible, so
-  the target EDX needs a preference or interference that changes this tie.
+  candidate 8, with priority 16. At `ChoosePhysReg` entry (0x107AAB62), its
+  register class is 0, its conflict-list head and preference-list pointer are
+  null, its eligible set includes EAX/ECX/EDX, and all three scores are zero.
+  Class 0's actual order is EAX, ECX, EDX, EBP, EBX, EDI; EAX is therefore the
+  deterministic first eligible choice. The angle candidate has no existing
+  interference or register preference to explain the target's EDX.
   Local integer-word, union and pointer forms of the angle copy each leave
-  the complete comparison at 333 matching bytes. The debugger link completes
-  and matches the ordinary link across all 335 owner bytes and eight linked
+  the complete comparison at 333 matching bytes. The baseline debugger link
+  and ordinary link agree across the complete 335-byte owner and eight linked
   fields.
-  Reading the angle through a direct float reference removes that global
-  angle candidate: local `RegAssign` assigns magnitude to EAX and angle to
-  ECX, then advances to EDX; the result is 331/335. A separate float snapshot
-  (`float outgoingAngle = angle`) has the same C2 path and the same 331/335
-  result, with differences at +0xD4/+0xD7/+0xDC/+0xDD. Its trace confirms no
-  global angle candidate 8; the first local assignments are magnitude EAX,
-  angle ECX, then the later timer value EDX. The snapshot's GDB link was
-  independently checked against the ordinary link: all 335 owner bytes and
-  all eight resolved fields are identical, so the trace reflects the ordinary
-  code-generation path. The snapshot was reverted.
+  Reading the angle through a direct float reference removes global angle
+  candidate 8: local `RegAssign` assigns magnitude to EAX and angle to ECX,
+  then advances to EDX; the result is 331/335. A separate float snapshot
+  (`float outgoingAngle = angle`) has the same C2 path and result, with
+  differences at +0xD4/+0xD7/+0xDC/+0xDD. Its GDB link was independently
+  checked against the ordinary link: all 335 owner bytes and all eight
+  resolved fields agree.
+  Expanding `SetCurrent(0)` with a plain local `timerFlags` and using a direct
+  float angle still leaves the same local sequence (magnitude EAX, angle ECX,
+  later timer value EDX) and 331/335; the flags value remains a global
+  candidate and does not advance the local cursor. A volatile alias for the
+  flags field does not change that sequence and regresses to 324/335; its
+  debugger link also agrees with the ordinary link across 335 bytes and eight
+  fields. Moving the `memcpy` into both control-flow arms expands the candidate
+  owner to 337 bytes (manifest extent is 335) and changes the call setup to the
+  local EAX/ECX path, so it is rejected. Reusing `nextSpeed` as the source of
+  the speed-field store is byte-identical to the 333/335 baseline.
   A speed-word carrier alone preserves 333, while combining it with a direct
   angle reference gives 327. Replacing the velocity receiver reference with
   a pointer preserves 333. Computing that receiver before the reset/easing
@@ -1196,8 +1206,8 @@ frontier; do not refresh a baseline merely to accept the new positions.
   The `_reference/th10-decomp` `EaseStep` shape (plain float fields, direct
   `++int2`, `angle = value1`, reset speed copied before the timer reset)
   regressed to 320/335 on 2026-11-22 and was reverted. The source and ordinary
-  linked candidate were restored to the 333/335 `memcpy` baseline after the
-  float-snapshot experiment.
+  linked candidate are restored to the 333/335 `memcpy` baseline; no exact
+  acceptance or cold replay is claimed.
 - **Player::~Player @0x424ED0 (325)**: 333. [2026-10-31]
 - **FrontEndInsertScore @0x421FA0 (316)**: 263; the helper uses 64-bit `100.0`
   where the target uses 32-bit. [2026-10-15]

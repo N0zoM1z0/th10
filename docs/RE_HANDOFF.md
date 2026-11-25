@@ -101,3 +101,44 @@ destructor work reproduced the same differences. The direct GameManager
 cleanup and ScriptViewer creation and release callers passed their
 comparisons with the final GUI source.
 [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) records source and compiler findings.
+
+## 2026-11-25 follow-up — Bullet angle register allocation
+
+The only active target remains `BulletRuntimeView::UpdateAbsoluteDirectionChange`,
+`0x004078E0`, half-open owner range `[0x004078E0, 0x00407A2F)` (335 bytes),
+`src/BulletManager.cpp`, unit `bullet-update-absolute-direction`. The current
+ordinary link is restored to the `memcpy` baseline: 333/335 bytes match, only
+`+0xD7` and `+0xDD` differ, and all eight link fields remain in the comparison.
+No exact acceptance or cold replay has been claimed; do not select another
+function or resume `EclVmContext::StartSubroutine`.
+
+Pinned C2 evidence for global angle candidate 8 at `ChoosePhysReg`:
+- priority 16, register class 0;
+- empty conflict-list head and empty preference list;
+- EAX, ECX and EDX all eligible, all three scores zero;
+- class-0 order is EAX, ECX, EDX, EBP, EBX, EDI, so EAX is the deterministic tie.
+The candidate has no current interference/preference that can naturally select
+EDX. Trace artifacts: `.analysis/bullet-absolute/angle-conflict.jsonl` and
+`.analysis/bullet-absolute/angle-class.jsonl`.
+
+Additional source experiments, all reverted:
+- `float outgoingAngle = angle` follows the direct-float local path (magnitude
+  EAX, angle ECX, later timer value EDX), 331/335. Its debugger link matched
+  the ordinary link for all 335 owner bytes and eight resolved fields.
+- Expanding `SetCurrent(0)` through a plain local `timerFlags` while passing
+  `angle` directly leaves that same local assignment order and 331/335; the
+  flags value remains a global candidate.
+- A volatile flags alias still leaves the same local assignment order and
+  regresses to 324/335; its debugger link was byte/field-bound to the ordinary
+  link.
+- Moving the angle `memcpy` into both control-flow arms expands the candidate
+  owner to 337 bytes, beyond the 335-byte manifest extent, and changes the call
+  to the local EAX/ECX path.
+- Reusing `nextSpeed` for the speed-field store is byte-identical to baseline.
+
+The final restore was rebuilt serially on available CPU 2 with the pinned
+VC7.1 toolchain; strict linked comparison returned to 333/335. Continue only
+with this function. The next source experiment must have a concrete prediction
+for a nonempty EDX preference or a real EAX/ECX interference; ordinary
+variable-order and hint changes are already ruled out.
+
