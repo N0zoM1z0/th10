@@ -1323,46 +1323,35 @@ frontier; do not refresh a baseline merely to accept the new positions.
   public lookup cannot establish the meaning of an interior reference.
   The corrected receipts are `member-bindings-compare.json` and
   `member-bindings-replay.json` in the same directory.
-- **GuiView::LoadData @0x413A20 (289)** remains open in the current
-  17-input `GuiCreation-cold-20261025` graph. The first complete cold build
-  emits 289 bytes with all instructions decoded and 178 of 225 non-link
-  bytes equal. Candidate `gui-load-data` declares all 16 target fields and
-  preserves the stack receiver, RET 4 and six local branches.
+- **GuiView::LoadData @0x413A20 (289)** has its first complete strict
+  match in `GuiCreation-cold-20261025`: all 289 bytes, 16 fields and six
+  local branches. The private receiver remains on the stack with
+  RET 4. Independent selected cold replay with both direct consumers is
+  pending; receipts are under `.analysis/gui-load-data/`.
 
-  The current warm candidate remains 289 bytes and 192/225 non-link bytes.
-  Its instruction order now matches the target in both reset sequences:
-  two timer zero stores precede the previous-frame sentinel; the score load
-  precedes both spell sentinels and its final store follows them. A local
-  expansion of the timer reset has a compiler barrier after the zero stores,
-  with another after the spell sentinels. No shared timer header changed.
+  `GuiStageRouteView` names two message filenames at +0x18 and the UI ANM
+  filename at +0x20. Read the ANM name directly in the preload call and use
+  a separate local route pointer for the message selection. This restores
+  the ECX filename and EDX/EAX route/index choices. Keep local compiler
+  barriers after the timer's two final zero stores and after setting its
+  previous-frame sentinel. No shared timer header changes.
+
+  Copy `g_GameScoreState.score` directly into `value9E78` before assigning
+  the two spell sentinels. The compiler emits the score load into ECX,
+  both sentinel stores from EAX, then the score store. The previous named
+  score snapshot created a global candidate with priority 16; the shared
+  minus-one candidate had priority 12. Neither had a register preference,
+  so the score took EAX first and the constant got ECX. Read-only C2 tracing
+  in `tail-allocation2.jsonl` records that choice. Removing the named
+  snapshot lets the constant keep EAX; source assignment order then places
+  the independent sentinel stores between the score read and write.
+
   The [MIT-licensed th10-decomp reference](licenses/th10-decomp-MIT.txt)
-  supplied the clock-ordering lead; its post-reset barrier alone does not
-  reproduce our full-view context.
-
-  Naming the initial ANM filename, the typed/scalar current-score views and
-  a volatile final-score store are byte-neutral after field binding. Direct
-  score loading after the sentinels delays the read too far. Calling
-  `SetCurrent(0)` alone fixes only the timer stores; a final publication
-  barrier alone fixes only the spell stores. Keep both ordering points.
-
-  A consumed `GuiStageRouteView` now names the two message-file pointers at
-  +0x18 and the UI filename at +0x20. Directly reading the latter in the
-  preload call, and using a separate local route pointer in the new-file
-  branch, restores the target ECX filename and EDX/EAX route/index pair.
-  The complete candidate is now 288 bytes: its remaining EAX score read
-  is one byte shorter than the target ECX form. The tail still gives ECX
-  to the shared minus-one value and EAX to the score. All other instruction
-  choices and both write sequences align after accounting for that shift.
-  The raw offset-based diagnostic is now 118/225; that metric reflects the
-  shifted instruction addresses, not a new semantic regression.
-
-  Unsigned sentinel lvalues, a nested const score snapshot and a volatile
-  score read are byte-neutral in this graph. Do not repeat those controls
-  without new evidence. The next step is read-only local C2 allocation
-  tracing for this last pair. Both `gui-creation-initialize` and
-  `game-manager-initialize` are direct consumers. Current inputs, private
-  warm relinker and diagnostics are under `.analysis/gui-load-data/`.
-  Rebuild cold before acceptance; warm results give no exact credit.
+  supplied the clock-ordering lead. Naming the initial filename, changing
+  score aliases, unsigned sentinel lvalues, a scoped const snapshot and
+  volatile reads/writes were neutral. Direct score copying after the two
+  sentinels gives the right registers but leaves the read too late. Both
+  `gui-creation-initialize` and `game-manager-initialize` are direct consumers.
 - **InitializeGameStatisticsRecord @0x42ACB0 (274)**. The six-TU
   `GameStatisticsTail` graph matches 249 bytes and binds all eight DIR32
   fields in the complete PDB contribution. Three read the nine-byte

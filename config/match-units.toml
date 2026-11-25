@@ -40377,7 +40377,6 @@ linkages = [
 ]
 
 [units.gui-load-data]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/ScriptViewer.cpp"
 output_dir = "build/match-linked/GuiCreation-cold-20261025"

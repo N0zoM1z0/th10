@@ -2304,7 +2304,6 @@ typedef char GuiStageRouteFileOffsets[
 
 int GuiView::LoadData()
 {
-    int capturedScore;
     stageUiAnm = g_AnmRenderManagerView->PreloadAnm(28,
         static_cast<const GuiStageRouteView *>(g_ScriptViewerStageRoute)->stageUiFile);
     if (!stageUiAnm)
@@ -2339,12 +2338,10 @@ int GuiView::LoadData()
     // Keep both zero stores ahead of the previous-frame sentinel.
     _ReadWriteBarrier();
     frameTimer.previous = -1;
-    capturedScore = g_GameScoreState.score;
+    _ReadWriteBarrier();
+    value9E78 = g_GameScoreState.score;
     spellSeconds = -1;
     previousSpellSeconds = -1;
-    // Publish the score after both spell countdowns are reset.
-    _ReadWriteBarrier();
-    value9E78 = capturedScore;
     return 0;
 failed:
     th10::g_GameErrorContext.Log("\x83\x66\x81\x5b\x83\x5e\x82\xaa\x89\xf3\x82\xea\x82\xc4\x82\xa2\x82\xdc\x82\xb7\r\n");
