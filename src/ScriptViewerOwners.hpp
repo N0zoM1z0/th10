@@ -11,8 +11,9 @@
 // protocol does not reach scalar deallocation (matching the straight-line
 // target release entries); this is distinct from a host C++ delete expression.
 template <class T>
-inline void ScriptViewerDeleteOwned(T *object)
+inline void ScriptViewerDeleteOwned(T *const &owner)
 {
+    T *object = owner;
     if (object)
     {
         object->~T();

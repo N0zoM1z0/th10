@@ -25,3 +25,10 @@ unit = "game-statistics-initialize-record"
 candidate_size = 274
 target_sha256 = "62905fe172fb66ca164498ab8964b6d0f9e8b09d783ceca25ebe2a1062712953"
 residual = ["14", "1D", "29", "47", "4D", "50", "52", "58-59", "5B", "61", "64", "70", "72", "76", "8B-8E", "90-93", "A6", "C8"]
+
+[frontier.script-viewer-destructor]
+function = "ScriptViewerView::~ScriptViewerView"
+unit = "script-viewer-destructor"
+candidate_size = 417
+target_sha256 = "b9bb3bdc04047b8cab1506b12b88a3f8bf420d9bad787eb30e4b1c30b75076a1"
+residual = ["30", "36", "3C", "49", "53", "5F", "70", "7D", "87", "93", "14A-14B", "14D-15C", "161-168", "16D-177", "179-182", "187", "18C-195", "19A-1A0"]
