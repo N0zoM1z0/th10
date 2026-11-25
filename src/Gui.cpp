@@ -2314,10 +2314,24 @@ int GuiView::LoadData()
         if (!messageFile)
             goto failed;
     }
-    frameTimer.SetCurrent(0);
+    if (!(frameTimer.flags & 1))
+    {
+        frameTimer.current = 0;
+        frameTimer.previous = -999999;
+        frameTimer.subframe = 0.0f;
+        frameTimer.scale = &g_AnmGameSpeed;
+        frameTimer.flags |= 1;
+    }
+    frameTimer.current = 0;
+    frameTimer.subframe = 0.0f;
+    // Keep both zero stores ahead of the previous-frame sentinel.
+    _ReadWriteBarrier();
+    frameTimer.previous = -1;
     capturedScore = g_GameScoreState.score;
     spellSeconds = -1;
     previousSpellSeconds = -1;
+    // Publish the score after both spell countdowns are reset.
+    _ReadWriteBarrier();
     value9E78 = capturedScore;
     return 0;
 failed:

@@ -1326,24 +1326,31 @@ frontier; do not refresh a baseline merely to accept the new positions.
 - **GuiView::LoadData @0x413A20 (289)** remains open in the current
   17-input `GuiCreation-cold-20261025` graph. The first complete cold build
   emits 289 bytes with all instructions decoded and 178 of 225 non-link
-  bytes equal. The canonical candidate `gui-load-data` declares all 16
-  target fields and keeps the stack receiver, RET 4 and six local branches.
+  bytes equal. Candidate `gui-load-data` declares all 16 target fields and
+  preserves the stack receiver, RET 4 and six local branches.
 
-  Calling the existing `frameTimer.SetCurrent(0)` instead of manually
-  expanding it restores both final zero stores before the shared minus-one
-  constant. A same-input warm diagnostic improves to 192/225 non-link bytes
-  with the extent still 289. Explicitly naming the initial ANM filename is
-  byte-neutral. Reading the final score through `g_GameScoreState.score`
-  instead of `g_GameStageState + 4` is also code-neutral after address binding;
-  the typed view and the name `capturedScore` make that source access clearer.
+  The current warm candidate remains 289 bytes and 192/225 non-link bytes.
+  Its instruction order now matches the target in both reset sequences:
+  two timer zero stores precede the previous-frame sentinel; the score load
+  precedes both spell sentinels and its final store follows them. A local
+  expansion of the timer reset has a compiler barrier after the zero stores,
+  with another after the spell sentinels. No shared timer header changed.
+  The [MIT-licensed th10-decomp reference](licenses/th10-decomp-MIT.txt)
+  supplied the clock-ordering lead; its post-reset barrier alone does not
+  reproduce our full-view context.
 
-  The remaining differences are the initial filename in EAX rather than ECX,
-  the new-file route/index in ECX/EDX rather than EDX/EAX, and the tail's
-  minus-one/score registers and store order. Target reads the score into ECX,
-  writes both spell sentinels from EAX, then publishes the score. Both
-  `gui-creation-initialize` and `game-manager-initialize` are direct consumers.
-  Current source, private warm relinker and diagnostics are under
-  `.analysis/gui-load-data/`. Rebuild `gui-load-data` cold before acceptance;
+  Naming the initial ANM filename, the typed/scalar current-score views and
+  a volatile final-score store are byte-neutral after field binding. Direct
+  score loading after the sentinels delays the read too far. Calling
+  `SetCurrent(0)` alone fixes only the timer stores; a final publication
+  barrier alone fixes only the spell stores. Keep both ordering points.
+
+  Three register choices remain: filename EAX→ECX, new-file route/index
+  ECX/EDX→EDX/EAX, and tail minus-one/score ECX/EAX→EAX/ECX. The target's
+  ECX score load is one byte longer, while its EAX index load is one byte
+  shorter. Both `gui-creation-initialize` and `game-manager-initialize` are
+  direct consumers. Current source, private warm relinker and diagnostics
+  are under `.analysis/gui-load-data/`. Rebuild cold before acceptance;
   warm results give no exact credit.
 - **InitializeGameStatisticsRecord @0x42ACB0 (274)**. The six-TU
   `GameStatisticsTail` graph matches 249 bytes and binds all eight DIR32
