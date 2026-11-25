@@ -74,12 +74,15 @@ comparison only for its source and link graph.
 
 ## Open owner
 
-`ReplayManager::BeginStage` at `0x0042A450` is active. The record path
-aligns through offset 0x158. Typed assignment from the recorded option pair
-puts both playback loop pointers in the target registers. The real
-`GameManagerUpdate` graph emits 582 bytes and aligns 145 of 157 instructions.
-Resolve the preserved player pointer around `ReplayRestoreStagePosition`
-and the branch into the option-copy loop before binding the fields.
+`ReplayManager::BeginStage` at `0x0042A450` is active. Its
+`ReplayBeginStageCore` recipe keeps the real `GameManagerUpdateBody` root
+and the player and replay implementations. Preserving the original player
+reference for the history copy while reusing the player pointer for the
+global reload restored the option-copy loop entry. The candidate emits
+582 bytes and aligns 150 of 157 instructions. The remaining differences
+are the initial stage and player register allocation and the register
+holding the saved option mode. The plain-RET position helper leaves EAX
+intact, and its sole original caller reloads EAX immediately after it.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

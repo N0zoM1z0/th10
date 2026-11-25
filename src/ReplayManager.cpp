@@ -459,13 +459,14 @@ void ReplayManager::BeginStage()
         Player *runtime = g_Player;
         ReplayStageDataHeader *stageHeader = stageStates[stage].header;
         activeStage = stage;
-        ReplayRestoreStagePosition(runtime, &stageHeader->unknown024);
+        Player &originalRuntime = *runtime;
+        ReplayRestoreStagePosition(&originalRuntime, &stageHeader->unknown024);
         Player *const volatile &currentPlayer = g_Player;
-        Player *updatedRuntime = currentPlayer;
-        memcpy(runtime->replayPositionHistory, stageHeader->runtimeSnapshot,
+        runtime = currentPlayer;
+        memcpy(originalRuntime.replayPositionHistory, stageHeader->runtimeSnapshot,
                sizeof(stageHeader->runtimeSnapshot));
-        updatedRuntime->optionMode = stageHeader->unknown1BC;
-        RebuildPlayerOptions(updatedRuntime);
+        runtime->optionMode = stageHeader->unknown1BC;
+        RebuildPlayerOptions(runtime);
         runtime = g_Player;
 
         for (int i = 0; i < 4; i++)
