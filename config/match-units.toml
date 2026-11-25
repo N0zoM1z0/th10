@@ -26417,9 +26417,9 @@ functions = ["InitializeGameStatisticsRecord"]
 size = 274
 target_address = 0x0042ACB0
 linkages = [
-  { offset = 0x48, type = "DIR32", symbol = "?g_GameStatisticsDefaultEntryName@@3QBDB", target = 0x0046E858 },
-  { offset = 0x53, type = "DIR32", symbol = "?g_GameStatisticsDefaultEntryName@@3QBDB", target = 0x0046E858, addend = 4 },
-  { offset = 0x5C, type = "DIR32", symbol = "?g_GameStatisticsDefaultEntryName@@3QBDB", target = 0x0046E858, addend = 8 },
+  { offset = 0x48, type = "DIR32", symbol = "??_C@_08GGNFKEJM@?9?9?9?9?9?9?9?9?$AA@", target = 0x0046E858 },
+  { offset = 0x53, type = "DIR32", symbol = "??_C@_08GGNFKEJM@?9?9?9?9?9?9?9?9?$AA@", target = 0x0046E858, addend = 4 },
+  { offset = 0x5C, type = "DIR32", symbol = "??_C@_08GGNFKEJM@?9?9?9?9?9?9?9?9?$AA@", target = 0x0046E858, addend = 8 },
   { offset = 0x7C, type = "DIR32", symbol = "?g_GameStatisticsRankKind@@3PACA", target = 0x004743C0 },
   { offset = 0x86, type = "DIR32", symbol = "?g_GameStatisticsRankKind@@3PACA", target = 0x004743C0, addend = 2 },
   { offset = 0xB2, type = "DIR32", symbol = "?g_GameStatisticsRankKind@@3PACA", target = 0x004743C0 },

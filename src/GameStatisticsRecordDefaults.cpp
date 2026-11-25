@@ -39,39 +39,24 @@ void __stdcall InitializeGameStatisticsRecord(GameStatisticsRecord *record)
     record->unknown02 = 0;
     record->unknown08 = 0x437c;
 
-    unsigned char *activeByte = reinterpret_cast<unsigned char *>(record) + 0x14;
-    int groupsRemaining = 5;
-    do
+    GameStatisticsRankScoreSlot (*ranks)[10] =
+        reinterpret_cast<GameStatisticsRankScoreSlot (*)[10]>(record->unknown010);
+    for (int group = 0; group < 5; ++group)
     {
-        int score = 1000000;
-        do
+        for (int rank = 0; rank < 10; ++rank)
         {
-            memcpy(activeByte - 4, &score, sizeof score);
+            ranks[group][rank].score = 1000000 - rank * 100000;
+            unsigned char *activeByte = &ranks[group][rank].active;
             activeByte[0] = 1;
-            // The original reads the fixed name as two DWORDs and a final
-            // byte. Keep the ninth-byte store after the independent status
-            // and score updates, preserving its true destination word.
-            unsigned char *const nameDest = activeByte + 2;
-            // Two independent four-byte copies preserve the target DWORD
-            // read/write order without requiring aligned uint32 pointers.
-            memcpy(nameDest, &g_GameStatisticsDefaultEntryName[0], 4);
-            memcpy(nameDest + 4, &g_GameStatisticsDefaultEntryName[4], 4);
-            const unsigned char ninth = g_GameStatisticsDefaultEntryName[8];
-            const int zero = 0;
-            memcpy(activeByte + 12, &zero, sizeof zero);
-            activeByte[1] = 0;
-            score -= 100000;
-            activeByte += 24;
-            nameDest[8] = ninth;
-        } while (score > 0);
-    } while (--groupsRemaining != 0);
+            strcpy(reinterpret_cast<char *>(activeByte + 2), "--------");
+            ranks[group][rank].extra = 0;
+            ranks[group][rank].status = 0;
+        }
+    }
 
-    int *kindData = reinterpret_cast<int *>(
-        reinterpret_cast<unsigned char *>(record) + 0x628);
     for (int index = 0; index < 110; ++index)
     {
-        kindData[-1] = index;
-        kindData[0] = *(g_GameStatisticsRankKind + index);
-        kindData += 0x90 / sizeof(int);
+        record->spellHistory[index].spellIndex = index;
+        record->spellHistory[index].difficulty = g_GameStatisticsRankKind[index];
     }
 }

@@ -11,15 +11,18 @@ The sole active owner is `InitializeGameStatisticsRecord` at `0x0042ACB0`,
 274 bytes in `src/GameStatisticsRecordDefaults.cpp`. It is the largest
 remaining authored owner apart from the explicitly deferred `StartSubroutine`.
 Its candidate recipe is `game-statistics-initialize-record` in the six-input
-`GameStatisticsTail` graph. The prior complete comparison was 249/274 with
-all eight fields bound. The ninth name byte takes EDX ahead of zero;
-a late load fixes registers but moves its field. Literal `strcpy` recovers
-the two word stores but introduces a second induction cursor and spills the
-outer count. The rank-kind loop also has setup/SIB differences.
+`GameStatisticsTail` graph. The complete current owner matches 255/274 bytes
+with all eight fields bound. Indexed rank rows and the literal strcpy
+restore all registers and stack record / RET4. Direct spellHistory indexing
+restores the complete unrolled kind loop. Only the ninth name-byte store is
+out of position: +0x60 before the zeros instead of +0x71 after CMP. Its move
+accounts for all 19 differing bytes. Keep this source as the control while
+investigating the tail's scheduling and alias dependencies.
 
-Read the focused knowledge entry and `.analysis/statistics-record/`, compare
-the current complete source early, and stay on this owner through a strict
-independent cold match. Use the candidate unit only while nonexact:
+Read the focused knowledge entry and `.analysis/statistics-record/`.
+`indexed-strcpy-compare.json` is the current strict comparison; baseline
+and bounded failed controls are retained there. The updated diagnostic
+frontier describes the current instruction order. Stay on this owner:
 
 ```bash
 scripts/repo-python scripts/build-match-unit.py \

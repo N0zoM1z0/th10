@@ -10,4 +10,4 @@ function = "InitializeGameStatisticsRecord"
 unit = "game-statistics-initialize-record"
 candidate_size = 274
 target_sha256 = "62905fe172fb66ca164498ab8964b6d0f9e8b09d783ceca25ebe2a1062712953"
-residual = ["14", "1D", "29", "47", "4D", "50", "52", "58-59", "5B", "61", "64", "70", "72", "76", "8B-8E", "90-93", "A6", "C8"]
+residual = ["60-63", "65-73"]

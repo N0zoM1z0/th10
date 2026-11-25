@@ -1353,29 +1353,40 @@ frontier; do not refresh a baseline merely to accept the new positions.
   volatile reads/writes were neutral. Direct score copying after the two
   sentinels gives the right registers but leaves the read too late. Both
   `gui-creation-initialize` and `game-manager-initialize` are direct consumers.
-- **InitializeGameStatisticsRecord @0x42ACB0 (274)**. The six-TU
-  `GameStatisticsTail` graph matches 249 bytes and binds all eight DIR32
-  fields in the complete PDB contribution. Three read the nine-byte
-  default name at `0x46E858`; five refer to the signed rank-kind table at
-  `0x4743C0`. The strict recipe is `game-statistics-initialize-record`.
+- **InitializeGameStatisticsRecord @0x42ACB0 (274)** now matches 255/274
+  bytes after all eight fields in the six-input `GameStatisticsTail` graph.
+  Index rank rows directly, retain a char pointer to the active byte, and
+  copy the nine-byte `"--------\0"` placeholder through the literal
+  `strcpy` intrinsic. This restores every register and the stack record /
+  RET4 ABI without spilling a counter. The pooled literal's complete nine
+  bytes agree with original `0x46E858`; the three fields bind its symbol
+  and addends 0/4/8.
 
-  In VC7.1 SP1 C2, the name destination has global allocation weight 192
-  and chooses ESI. The live ninth byte scores 128 and claims EDX before
-  the zero constant (59), leaving EBX for zero and EDI for the outer
-  count. Reading the ninth byte at its store makes EDX hold zero and EBX
-  hold the name, with 65 of 75 normalized instructions matching. The
-  field for that load moves from `+0x5C` to `+0x62`, or `+0x5F` when
-  the read follows just the first zero store. Changing the outer loop
-  between count-up and countdown gives the same displacement.
+  Direct `record->spellHistory[index]` member indexing restores the entire
+  compiler-unrolled kind loop, including setup order and both SIB encodings.
+  The sole remaining difference is one instruction's position: the byte
+  store occurs at +0x60 before the independent zeros, where the target
+  places it at +0x71 after the score/cursor update and CMP. Its movement
+  accounts for 19 differing bytes; all remaining instructions and operands
+  agree. The diagnostic frontier was regenerated for this new instruction
+  order; the previous 249-byte baseline remains in Git.
 
-  The reference's `strcpy(name, "--------")` intrinsic gives both word
-  stores the same destination register and assigns zero to EDX. C2
-  creates a second induction cursor and spills the outer count. Advancing
-  from the return of `strcpy` keeps the active cursor in EAX, while the
-  count stays spilled and the name uses a second register. The next
-  source shape should keep the intrinsic copy and a single live cursor.
-  The traces and controls are under `.analysis/statistics-record/`.
-  [2026-11-23]
+  th10-decomp's score-default notes supplied the indexed-loop lead; its
+  [MIT notice](licenses/th10-decomp-MIT.txt) is retained. A named row
+  reference spills the score and changes the private ABI. Hand-written
+  scalar/union/word-buffer tails change the induction base and allocation;
+  advancing the rank before that tail fixes its store position but retains
+  those other differences. A whole nine-byte memcpy is byte neutral to
+  strcpy. Copying after the zeros places the byte last but also moves both
+  word copies. Direct name-member copying changes the cursor and spills;
+  common-base zero copies unroll the rank loop. Splitting a literal 8+1
+  copy folds the ninth byte into immediate zero.
+
+  Before indexed rows, the explicit ninth-byte local took EDX ahead of the
+  shared zero constant. A late load fixed allocation but moved its field;
+  literal strcpy with a walked cursor introduced a second induction cursor
+  and spilled the outer count. Those old controls and the current complete
+  comparisons are under `.analysis/statistics-record/`.
 - **PlayerLoadOptionData @0x426520 (229)**: canonical scoped 20-support-TU
   VC7.1 /GL cold replay in the real `EnemyReadIntOperand`/`PlayerInitialize`
   caller graph. The complete 229-byte `src/Player.cpp` PDB contribution
