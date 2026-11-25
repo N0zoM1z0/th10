@@ -1766,9 +1766,10 @@ restored the EDI receiver at both calls and the full update comparison.
   A reference to the global panel pointer restores EAX for rank but
   reloads the panel after clamping. The target loads the panel once
   before bonus invalidation and retains it in ESI. Moving the exact
-  invalidator into a separate `/GL` translation unit keeps the same
-  caller allocation, as does linking the real panel global. The
-  candidate binds all four calls to the intended real functions.
+  invalidator into `EnemyGameStateLifecycle.cpp` preserves all 81
+  invalidator bytes and the same caller allocation. Adding the real
+  panel update, draw and Chain code preserves both results. The candidate
+  binds all four calls to the intended real functions.
   Keeping a value live across invalidation changes the EBX save from
   `+0x4F` to the target's `+0xBD`. An early rank calculation matches the
   first 282 bytes, all eleven fields in that prefix and its relative
