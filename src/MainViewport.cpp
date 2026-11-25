@@ -18,14 +18,14 @@ void MainConfigureCamera(AnmViewportOwnerView *camera)
     float halfWidth = width * 0.5f;
     float height = static_cast<float>(camera->viewport.height);
     float halfHeight = height * 0.5f;
-    float aspect = width / height;
+    *static_cast<volatile float *>(&height) = width / height;
     AnmFloat3View eye(halfWidth, halfHeight,
         halfHeight / static_cast<float>(tan(3.1415927f / 20.0)));
     AnmFloat3View at(halfWidth, halfHeight, 0.0f);
     AnmFloat3View up(0.0f, -1.0f, 0.0f);
     D3DXMatrixLookAtLH(&camera->viewMatrix, &eye, &at, &up);
     D3DXMatrixPerspectiveFovLH(&camera->projectionMatrix,
-        3.1415927f / 10.0f, aspect, 1.0f, 10000.0f);
+        3.1415927f / 10.0f, height, 1.0f, 10000.0f);
     g_MainSupervisorView.d3dDevice->vtable->SetTransform(g_MainSupervisorView.d3dDevice, 2, &camera->viewMatrix);
     g_MainSupervisorView.d3dDevice->vtable->SetTransform(g_MainSupervisorView.d3dDevice, 3, &camera->projectionMatrix);
     if (g_AnmRenderManagerView != NULL)

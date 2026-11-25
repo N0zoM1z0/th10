@@ -2496,6 +2496,29 @@ restored the EDI receiver at both calls and the full update comparison.
   - GameResetAnimationSlots uses transitionTimer at 2A1C and flags at 2A18 (SetCurrent 60, then OR 4).
   - GameManagerUpdate loads the primary stage from 4776E8 (call @0x4181FC); the menu pointer at 4776E4 goes to 0x404530.
 - Easing @0x44C350: 509 code bytes, 3 alignment bytes and 16 entries at 0x44C550 (576 total); a separate 57-byte body starts at 0x44C590. Fog converts through `__ftol2` @0x463B2C.
+- **MainConfigureCamera @0x421480 (287)** remains a candidate in the
+  current ten-input `StageViewport` graph under `/GL /GS`. The first complete
+  cold build emits 282 bytes. Reusing the height scalar for the aspect ratio
+  is byte-neutral. Writing that ratio through a volatile float view restores
+  the target computation before LookAt, all argument timing and later register
+  choices. The complete current candidate is 287 bytes with 281/287 bytes
+  matching after all 12 target-bound fields. No compiler profile changed.
+
+  Six ordinary displacement bytes remain: +0x33, +0x4D, +0x5C, +0x64,
+  +0x92 and +0xBF. Target width is at ESP+8 and height/aspect at ESP+0xC;
+  the candidate swaps those two homes. Both use a 0x2C frame. Width and
+  height each have a real rounded float snapshot; aspect overwrites the
+  retired height snapshot. The supervisor device field binds its actual
+  base at 0x491C28 plus eight, not the coincident PbgArchives anchor.
+
+  Extra volatile reads/writes, earlier width address binding, declaration
+  order, a vertical height/aspect union and a separate volatile width snapshot
+  are neutral. A two-float array and `AnmFloat2View` keep the pair ordered but
+  enlarge the frame to 0x30. Keep the minimal scalar form. Current native
+  comparisons and failed controls are under `.analysis/main-configure-camera/`.
+  Next inspect the compiler's stack colour weights and allocation order.
+  Direct consumers are `main-select-viewport`, callback layers 3/15/16/19
+  and `main-render`; select those units after the owner becomes strict exact.
 - Camera: selector 0x405300 (ESI supervisor, EBX index). 0x421480 screen camera: unsigned dims, eyeZ = h/2/tan(pi/20), FOV pi/10, near 1/far 10000, up (0,-1,0). Stage camera 0x4215A0 has an EDI receiver, near/far 30/1800 and a rocking Float3 at camera+0x3C.
 - Stage: alpha is a byte at stage+0x1EEB. Fog start/end are raw DWORD captures. VM positionOffset is at +0x340/344/348. StageFogView is 28 bytes with packed color at +0x18. The bounds callee takes ECX object, EDX position, EAX camera, stack distSq, RET4. StageDrawInstances is stack stage/layer, RET8. 0x452182/0x452188 are IAT thunks for D3DXMatrixTranslation/D3DXVec3ProjectArray.
 - `GameEnterMenuState` 404530: transition priority15/kind2/30 frames; transitionTimer 2A1C=30; flags 2A18 |= 2.

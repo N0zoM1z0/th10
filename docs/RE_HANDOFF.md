@@ -9,13 +9,27 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 The sole active owner is `MainConfigureCamera` at `0x00421480`, 287 bytes
 in `src/MainViewport.cpp`. It is the first largest remaining authored owner
-apart from the explicitly deferred `StartSubroutine`. Its previous candidate
-matched 282/287 bytes: rounded viewport captures and conversion of the tan
-result recovered the first 0x59 bytes, but aspect computation was scheduled
-after LookAt instead of before. Establish the current complete baseline from
-its declared recipe, then stay on this owner through a strict cold match.
-Relevant failed controls are in `docs/KNOWLEDGE_BASE.md`; do not repeat them
-without a new prediction.
+apart from the explicitly deferred `StartSubroutine`. Its current `StageViewport` cold baseline is 282 bytes under the existing
+`/GL /GS` recipe. The maintained candidate now emits 287 bytes and compares
+281/287 with all 12 fields bound. A narrow volatile store rounds the aspect
+into the retired height snapshot before LookAt, restoring all operation and
+register ordering. Six stack displacement bytes remain because width and
+height/aspect occupy the opposite two homes. Target uses ESP+8 / ESP+0xC;
+current source uses ESP+0xC / ESP+8, with the correct 0x2C frame.
+
+Candidate unit: `main-configure-camera`. Inputs and comparisons are under
+`.analysis/main-configure-camera/`; `positive-compare.json` is the current
+complete mismatch. Declaration order, added volatile qualifiers/read views,
+address ordering and a height/aspect union are neutral. Two-element aggregate
+controls enlarge the frame to 0x30. Next use read-only C2 stack-colour tracing
+for the allocation order; the pinned reference has the existing hook recipe
+in `reference/compiler_traces/stackpack/trace_stackcolors_link.py`.
+
+Stay on this owner through strict cold equality. Then replay the owner and
+its direct consumers with explicit selectors: `main-select-viewport`,
+`anm-callback-layer-3`, `anm-callback-layer-15`, `anm-callback-layer-16`,
+`anm-callback-layer-19` and `main-render`. All share this changed function;
+no historical cohort replay is needed.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
