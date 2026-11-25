@@ -7,58 +7,40 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `EclVmContext::StartSubroutine` at `0x0044DF70`
-in `src/EclVm.cpp`. The target owns 550 bytes and receives the destination
-in EAX with two stack arguments and RET 8. The two-source
-`EclVmHostRunEnemy` link emits the full extent and binds all four calls.
-The strict comparison matches 536 bytes. The same image matches
-`ecl-vm-spawn-thread` and `ecl-vm-host-run`.
+The active owner is `ScriptViewerPopupOwnerView::Draw` at `0x0042B780`
+in `src/ScriptViewerPopupCreate.cpp`. The target owns 540 bytes and
+receives the popup owner in EDI. Draw traverses 723 records, adjusts
+fog, and renders each active popup's digits. The four-source
+`ScriptViewerPopupCreate` graph is available through the
+`script-viewer-popup-update` build selector. The prior Draw candidate
+measured 537 bytes. Focus on the separate stack slots for spacing,
+alpha and the digit cursor, and compare the real Draw callback's receiver.
+
+```sh
+scripts/repo-python scripts/verify-target.py
+scripts/repo-python scripts/verify-toolchain.py --check
+timeout -k 10s 140s taskset -c 2 nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit script-viewer-popup-update
+scripts/repo-python scripts/compare-linked-function.py --unit script-viewer-popup-update --json
+```
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
 CPU at nice 10, and explicit unit selectors. Repository commands run
 locally. [RE_ARTIFACTS.md](RE_ARTIFACTS.md) identifies the retained inputs.
 
-```sh
-scripts/repo-python scripts/verify-target.py
-scripts/repo-python scripts/verify-toolchain.py --check
-timeout -k 10s 120s taskset -c 2 nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit ecl-vm-start-subroutine
-scripts/repo-python .analysis/ecl-start-subroutine/compare.py EclVmHostRunEnemy
-scripts/repo-python scripts/compare-linked-function.py --unit ecl-vm-start-subroutine --json
-scripts/repo-python scripts/compare-linked-function.py --unit ecl-vm-spawn-thread --json
-scripts/repo-python scripts/ci.py && git diff --check
-```
+### Parked ECL owner
 
-The entry through the word-offset shift at +0x94 matches. So do the
-floating-point result path and the return-frame and lookup sequence.
-The operand loop seeds its condition from the initial count read, so
-the destination cursor initialization needs no compiler barrier.
-The remaining 14 bytes differ in register choices for the raw operand
-loads and pushes, the integer result path, and the loop latch. The loop
-latch now reloads the destination cursor, caller instruction and word
-offset in target order. The target holds the destination in ECX and the
-instruction in EAX. At +0x97, the integer operand's live range is
-eligible for EAX, ECX and EDX. EAX and ECX tie at −1 in the current
-`ChoosePhysReg` trace. The earlier 551-byte candidate assigns ECX to
-this load with the signed costs 1, −1 and 1. Both candidates shift the
-word offset in EAX. In the current candidate, the loop-carried offset
-receives EAX in `ChoosePhysReg` and contributes the preference. The
-earlier candidate splits and spills that range, then `RegAssign` picks
-EAX for the shift. Compare those paths with
-`.analysis/ecl-start-subroutine/trace-offset-color-writes.sh` (use the
-saved `baseline` and `named-float-ordered-latch-reference` sources).
-For the float operand at +0xC6, `ChoosePhysReg` selects ECX at −1
-with EAX and EDX both at 0. The float call needs the operand in EDX.
-The barrier after the raw integer store keeps its exit separate. In
-the barrier-free build, Riscify sees both integer writes through EDX
-and the linked body shares the store that follows the float conversion.
-The target uses ECX for the direct integer result at +0xBB.
-`.analysis/ecl-start-subroutine/trace-result-tail-flow.sh` can replay
-the late flow trace with `native-raw-int-store` and `for-cached-head-base`.
+`EclVmContext::StartSubroutine` at `0x0044DF70` remains at 536/550 bytes
+with all four call fields resolved in the `ecl-vm-start-subroutine`
+comparison. Its latest source separates encoded operands from their
+resolved values and uses one typed descriptor reader. The two-source
+cold link reproduces the same 14 register-only differences and passes
+`ecl-vm-spawn-thread` and `ecl-vm-host-run`; the separate
+`ecl-vm-run` link also passes. The allocator and late tail merge findings
+are in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md).
 
 Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
-[frontiers.toml](../config/frontiers.toml). Product closure, runtime semantics
-and portability remain open.
+[frontiers.toml](../config/frontiers.toml).
 
 ## Recent exact checkpoints
 
