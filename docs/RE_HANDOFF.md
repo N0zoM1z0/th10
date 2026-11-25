@@ -10,14 +10,12 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 The active owner is `EnemyFullObjectView::~EnemyFullObjectView` at
 `0x0040DAE0` in `src/Enemy.cpp`. The 386-byte target has a stack receiver
 and RET 4. The `enemy-full-object-destructor` candidate describes all seven
-target fields in the `EclVmHostRunEnemy` link. The current source uses
-the shared ANM registry and emits 385 bytes. Its compiler-generated
-deleting wrapper passes the receiver in ECX. The target wrapper at
-`0x0040CC50` pushes ESI before calling the destructor. Recover the stack
-receiver and keep both managed VM search paths in the comparison.
-In the current link both destructor entries take the early exit from
-`MdmFlexParams`. The retained
-`.analysis/enemy-full-destructor/trace-receiver.py` records that decision.
+target fields in the `EclVmHostRunEnemy` link. The cold 385-byte
+candidate passes the receiver on the stack because the destructor
+inherits its virtual declaration. The generated 31-byte deleting wrapper
+matches both calls and occupies the sixth virtual-table slot. The
+destructor still needs the original receiver register lifetime, both
+managed VM search paths, and the child-list cleanup layout.
 
 ```sh
 timeout -k 10s 145s taskset -c 2 nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit enemy-full-object-destructor

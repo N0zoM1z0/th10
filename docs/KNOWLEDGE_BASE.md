@@ -1612,8 +1612,12 @@ restored the EDI receiver at both calls and the full update comparison.
   and walks the child nodes only when the VM's preceding layer link is
   null. The target clears Player tracking with one Player pointer read.
   The shared ANM types preserve the 385-byte candidate in the two-source
-  VC7.1 SP1 link. The target deleting wrapper at `0x0040CC50` pushes
-  its saved ESI receiver. The linked deleting wrapper calls with ECX.
+  VC7.1 SP1 link. Inherit the virtual destructor from the base class.
+  Repeating `virtual` on the derived declaration kept its receiver in
+  ECX, while the inherited declaration makes the compiler-generated
+  deleting wrapper pass it on the stack. The cold wrapper matches all
+  31 bytes with both calls bound and occupies vtable slot five.
+  The destructor now matches more of the target instruction sequence.
   Direct `this` accesses, a self-reference and a countdown over the ten
   VM slots preserve the linked ABI. Both an inline search helper and the
   real `AnmRenderManagerView::FindVm` in the `EnemyScalarInterpolation`

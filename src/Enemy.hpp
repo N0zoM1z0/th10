@@ -830,7 +830,7 @@ struct EnemyFullObjectView : EnemyEclHostBaseView
     virtual int *ResolveIntOperand(int operand);
     virtual float ReadFloatOperand(int operand);
     virtual float *ResolveFloatOperand(int operand);
-    virtual ~EnemyFullObjectView();
+    ~EnemyFullObjectView();
 
     EnemyRuntimeView runtime;
 };
