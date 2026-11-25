@@ -17,6 +17,7 @@ comparison only for its source and link graph.
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
 | `spt-test-update` | 926 B | `SptTestUpdate`, 39 fields, VM lifetime and two-pass file enumeration. The registered callback and the interpreter, factory and worker calls match in the same image. |
+| `laser-type1-clear` | 623 B | `LaserType1Clear`, 29 fields and the virtual ECX receiver. The polar helper, script loader, registrar and full item allocator match in the same image. |
 | `wave-stream-refill` | 637 B | `SoundInitBuffers`, five call fields and both stack arguments. The BGM worker and queue entry match in the same image. |
 | `supervisor-update-game-mode` | 666 B | `SupervisorModes`, 60 fields, 20 jump entries and 14 selector bytes. The registered update, chain registration and lifecycle guards match in the same image. |
 | `gui-score-notice` | 668 B | `GuiScoreNoticeCore`, 35 fields and seven switch destinations. The spell-end caller, caption factory, script initializer and sprite setter pass in the same image. |
@@ -68,14 +69,6 @@ comparison only for its source and link graph.
 | `enemy-dispatch-ecl` | 14,416 B | `EnemyEclDispatcher`, 726 fields, 118 jump destinations and 181 opcode selectors. The selected replay includes dialog EH and the drop-flush body. |
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
-
-## Open owner
-
-`EnemyLaserType1View::Clear` at `0x0041F400` is active. The virtual
-member is the link entry to keep its public ECX receiver. The warm
-`LaserType1Clear` link matches 623 bytes and 29 fields, including the
-real item allocator, script loader and animation registrar. Cold
-replay this owner and recheck those callees in the same artifact.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

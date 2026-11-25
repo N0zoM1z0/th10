@@ -935,6 +935,15 @@ frontier; do not refresh a baseline merely to accept the new positions.
   target stack destinations and failed-ID handling. The update still passes
   the first link in EAX and the owner and release flag on the stack. The
   scheduler adapter passes in the same image.
+- **EnemyLaserType1View::Clear @0x41F400 (623)** matches all 29 fields
+  with the public virtual member as link entry. The ECX receiver belongs
+  to slot 0x0046DA24. Keep the VM position as a typed subobject and snapshot the
+  existing flag word before updating it. The aggregate VM ID return
+  places the result address after the VM argument move. An explicit
+  result pointer reversed those two instructions. The loop retains the
+  floating-point addition of the zero step to Z. The MIT-licensed
+  reference supplied the position-subobject lead.
+  [Reference license](licenses/th10-decomp-MIT.txt)
 - **EnemyLaserType1View::CheckCollisionBox @0x41EB00 (1,171)** and
   **CheckCollisionCircle @0x41EFA0 (1,108)**: 1,209 and 1,178; the type-0
   factory branch still inlines. [2026-11-06]
