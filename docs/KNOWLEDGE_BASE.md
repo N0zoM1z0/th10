@@ -58,6 +58,15 @@ versus target size unless it says ordinary bytes or normalized instructions.
   ECX/EDX and plain RET. Member functions give callee cleanup plus a this
   register where a free function emits caller cleanup (`SpawnEffectRow
   @0x427B50`).
+- In an independent VC7.1 SP1 build 6030 probe, the derived virtual destructor
+  takes `this` in ECX in both normal COFF and LTCG. The deleting wrapper
+  calls that body with ECX and uses `RET 4` to discard its own deletion flag.
+  LTCG moves the nonvirtual destructor's receiver from ECX to EAX, and switching
+  the LTCG build from `/Gd` to `/Gz` leaves `.text` identical. A one-argument
+  `__stdcall` control takes EAX when only directly referenced in the LTCG link.
+  Calling it through a volatile function pointer preserves the stack argument
+  and `RET 4`. Reproduce the probe with `scripts/repo-python
+  .analysis/enemy-full-destructor/compiler-abi/run.py`.
 - Formal parameter order selects private registers: `(int index,
   Controller*)` gives EAX controller/ECX index; reordering registrar formals
   closed `TransitionEffectView::Initialize @0x43C970`. Count-first argument
