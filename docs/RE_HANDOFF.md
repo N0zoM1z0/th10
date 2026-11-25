@@ -22,15 +22,17 @@ The angle load is global candidate 8 with priority 16, no observed scoring
 contributions, and EAX/ECX/EDX eligible. Class-0 order is EAX, ECX, EDX, so
 all-zero scores select EAX; a global-coloring solution for target EDX must
 account for both earlier registers. Direct angle references alone still give
-331/335. A scratch inline-timer/direct-angle form with a bool initialization
-local does produce the target call setup: local `RegAssign` assigns the flags
-load to EAX, magnitude to ECX, and angle to EDX. Its owner expands to 343
-bytes because C2 emits a byte load/invert/test and reloads the full flags word
-in the branch. The ordinary and debugger links agree across that full 343-byte
-owner and all eight fields, but it is not exact. The experiment and trace are
-under `.analysis/bullet-absolute/bool-flag-local.*`; the main source remains
-at the 333/335 baseline. The next test should preserve a full-width flags
-local in `RegAssign` without the extra byte operations or reload.
+331/335. A scratch inline-timer/direct-angle form with an integer
+`timerNeedsInitialization` local produces the target call setup: local
+`RegAssign` assigns the flags load to EAX, magnitude to ECX, and angle to EDX.
+Its owner is 340 bytes because C2 loads only `AL`, inverts/zero-extends it for
+the condition, then reloads the full flags word in the branch. The ordinary
+and debugger links agree across the full 340-byte owner and all eight fields,
+but it is not exact. The experiment and trace are under
+`.analysis/bullet-absolute/int-flag-local.*`; a bool-typed version takes the
+same register path at 343 bytes. The main source remains at the 333/335
+baseline. The next test should retain a full-width flags local in `RegAssign`
+without the extra byte normalization or reload.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with

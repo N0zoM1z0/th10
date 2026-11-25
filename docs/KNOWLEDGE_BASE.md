@@ -1204,17 +1204,19 @@ frontier; do not refresh a baseline merely to accept the new positions.
   branch expands the complete owner to 343 bytes. Preparing a speed word
   before the angle copy gives 331 matching bytes. Grouping both float
   arguments in a local aggregate, in either member order, preserves 333.
-  A diagnostic inline-timer/direct-angle form with `bool
+  A diagnostic inline-timer/direct-angle form with `int
   timerNeedsInitialization = (state.timer.flags & 1u) == 0` changes the local
   `RegAssign` sequence to flags load EAX, magnitude ECX, angle EDX, producing
-  the target call setup exactly. Its owner grows to 343 bytes: C2 reads only
-  `AL`, inverts and tests it, then reloads the full flags word in the branch;
-  the target loads the full word once, tests `AL`, and reuses EAX for the OR
-  and store. The 343-byte debugger link matches the ordinary diagnostic link
-  across its complete owner and all eight fields. This remains scratch-only;
-  the main source is restored to the 333/335 baseline. The next useful step
-  is to retain a full-width flags temporary in local `RegAssign` without the
-  byte normalization and reload.
+  the target call setup exactly. Its owner is 340 bytes, five longer than the
+  target. C2 loads only `AL`, inverts and zero-extends it for the condition,
+  then reloads the full flags word in the branch; the target loads the full
+  word once, tests `AL`, and reuses EAX for the OR and store. The 340-byte
+  debugger link matches the ordinary diagnostic link across its complete
+  owner and all eight fields. A bool-typed version takes the same register
+  path but grows to 343 bytes. These forms remain scratch-only; the main source
+  is restored to the 333/335 baseline. The next useful step is to retain a
+  full-width flags temporary in local `RegAssign` without byte normalization
+  or a second load.
   The `_reference/th10-decomp` `EaseStep` shape (plain float fields, direct
   `++int2`, `angle = value1`, reset speed copied before the timer reset)
   regressed to 320/335 on 2026-11-22 and was reverted. The source and ordinary
