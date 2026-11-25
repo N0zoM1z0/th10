@@ -7,10 +7,20 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The popup Draw owner at `0x0042B780` is exact in the four-source
-`script-viewer-popup-draw` cold replay. Its 15 fields and the EDI
-receiver used by the draw callback match. The next authored owner is
-selected from [matches.csv](../config/matches.csv).
+The active owner is `TextHelperView::RenderTextToTextureAlternate` at
+`0x00437FE0` in `src/TextRenderer.cpp`. The target owns 509 bytes and
+returns with RET 0x18. The mixed normal-COFF graph gives the baseline the
+target extent, with a public call to FillColor. The fully optimized
+TextBufferLifecycle graph instead inlines FillColor and emits 575 bytes.
+The target calls FillColor with ESI holding the buffer and ECX the color,
+then calls InvertAlpha twice with ECX holding the buffer. Preserve both
+call boundaries and compare font selection, the font restore and upload.
+
+```sh
+timeout -k 10s 150s taskset -c 2 nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit text-render-alternate
+scripts/repo-python scripts/compare-linked-function.py --unit text-render-alternate --json
+scripts/repo-python .analysis/text-render-alternate/compare.py TextBufferLifecycle
+```
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
