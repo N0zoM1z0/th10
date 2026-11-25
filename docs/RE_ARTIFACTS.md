@@ -27,6 +27,9 @@ supplies the source, recipes and ledgers. Keep these private inputs locally.
 - The current ASCII GUI draw receipt and same-image guards are under
   `.analysis/ascii-gui-draw/`. Their canonical link is
   `build/match-linked/StageViewport/`.
+- The popup Draw cold receipt is under `.analysis/script-viewer-popup-draw/`.
+  Its canonical link is `build/match-linked/ScriptViewerPopupCreate/`.
+  Completed popup trials reclaimed about 3.5 MiB.
 
 The November 25 handoff reclaimed about 126 MiB from `.analysis/` and
 `build/`. The latest pass removed about 10 MiB, including the obsolete

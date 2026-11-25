@@ -7,20 +7,10 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `TextHelperView::RenderTextToTextureAlternate` at
-`0x00437FE0` in `src/TextRenderer.cpp`. The target owns 509 bytes and
-returns with RET 0x18. The mixed normal-COFF graph gives the baseline the
-target extent, with a public call to FillColor. The fully optimized
-TextBufferLifecycle graph instead inlines FillColor and emits 575 bytes.
-The target calls FillColor with ESI holding the buffer and ECX the color,
-then calls InvertAlpha twice with ECX holding the buffer. Preserve both
-call boundaries and compare font selection, the font restore and upload.
-
-```sh
-timeout -k 10s 150s taskset -c 2 nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit text-render-alternate
-scripts/repo-python scripts/compare-linked-function.py --unit text-render-alternate --json
-scripts/repo-python .analysis/text-render-alternate/compare.py TextBufferLifecycle
-```
+The alternate text renderer at `0x00437FE0` is exact in the
+`text-render-alternate` cold replay. The mixed graph preserves the
+ESI/ECX `FillColor` call and the ECX `InvertAlpha` calls. The next
+authored owner is selected from [matches.csv](../config/matches.csv).
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -45,6 +35,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `text-render-alternate` | 509 B | `TextBufferLifecycle`, 32 fields, outlined LTCG FillColor and normal-COFF InvertAlpha. |
 | `script-viewer-popup-draw` | 540 B | `ScriptViewerPopupCreate`, 15 fields and the EDI draw callback receiver. Assign the decremented count after publishing the cursor. |
 | `ascii-manager-draw-gui-strings` | 570 B | `StageViewport`, 28 fields, both quad paths and the EBX draw callback. |
 | `gui-destructor` | 574 B | `GuiDestructorCore` with `/EHsc` for all five inputs. All 37 fields, 18 local branches and seven unwind actions match. The receiver is on the stack and the function returns with RET 4. |

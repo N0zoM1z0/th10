@@ -38,8 +38,14 @@ versus target size unless it says ordinary bytes or normalized instructions.
   own TU fixed `HintOwnerView::Initialize @0x418E30`. Pulling a whole legacy
   leaf TU into a real graph causes LNK2005; move the single body to its caller's
   TU instead.
-- Profiles are per TU. `RenderTextToTexture` is exact only in a mixed graph
-  (TextFontRelease `/GL`, TextRenderer normal COFF). Enemy.cpp uses its own
+- Profiles are per TU. `RenderTextToTexture` uses a mixed graph with
+  `TextFontRelease` under `/GL` and both the text renderer and alpha
+  inversion built as normal COFF. `RenderTextToTextureAlternate` needs
+  the renderer under `/GL` so the outlined `FillColor` call takes ESI
+  and ECX. Compiling `InvertAlpha` as normal COFF preserves the ECX
+  receiver in both calls from the alternate path. With the whole
+  renderer under `/GL`, those two loads used EDX and 507 of 509 bytes
+  matched. Enemy.cpp uses its own
   profile; uniform `/GL /GS /EHs` broke ScriptViewer Update. `/GS` is required
   wherever the target has a cookie (Enemy dispatcher, result menu). `/EHsc` or
   `/EHs` is needed where the target has an FS:[0] frame (`new T[n]`,

@@ -19303,7 +19303,8 @@ linkages = [
 [units.text-create-buffer]
 artifact_kind = "linked-pe"
 source = "src/TextRenderer.cpp"
-support_sources = ["src/RandomMath.cpp"]
+support_sources = ["src/RandomMath.cpp", "src/TextBufferInvertAlpha.cpp"]
+normal_support_sources = ["src/TextBufferInvertAlpha.cpp"]
 output_dir = "build/match-linked/TextBufferLifecycle"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -19361,7 +19362,8 @@ linkages = [
 [units.text-font-release-resources]
 artifact_kind = "linked-pe"
 source = "src/TextFontRelease.cpp"
-support_sources = ["src/TextRenderer.cpp", "src/RandomMath.cpp"]
+support_sources = ["src/TextRenderer.cpp", "src/RandomMath.cpp", "src/TextBufferInvertAlpha.cpp"]
+normal_support_sources = ["src/TextBufferInvertAlpha.cpp"]
 output_dir = "build/match-linked/TextFontRelease"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -19399,8 +19401,8 @@ linkages = [
 [units.text-render-main]
 artifact_kind = "linked-pe"
 source = "src/TextFontRelease.cpp"
-support_sources = ["src/TextRenderer.cpp", "src/RandomMath.cpp"]
-normal_support_sources = ["src/TextRenderer.cpp"]
+support_sources = ["src/TextRenderer.cpp", "src/RandomMath.cpp", "src/TextBufferInvertAlpha.cpp"]
+normal_support_sources = ["src/TextRenderer.cpp", "src/TextBufferInvertAlpha.cpp"]
 pdb_source = "src/TextRenderer.cpp"
 output_dir = "build/match-linked/TextRenderMainHybrid"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
@@ -19452,7 +19454,8 @@ linkages = [
 [units.text-render-alternate]
 artifact_kind = "linked-pe"
 source = "src/TextRenderer.cpp"
-support_sources = ["src/RandomMath.cpp"]
+support_sources = ["src/RandomMath.cpp", "src/TextBufferInvertAlpha.cpp"]
+normal_support_sources = ["src/TextBufferInvertAlpha.cpp"]
 output_dir = "build/match-linked/TextBufferLifecycle"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -19462,7 +19465,6 @@ functions = ["TextHelperView::RenderTextToTextureAlternate"]
 symbol = "?RenderTextToTextureAlternate@TextHelperView@@YGXPBUD3d9RectView@@HHIPBDPAUD3d9TextureView@@@Z"
 target_address = 0x00437FE0
 size = 509
-candidate = true
 linkages = [
   { offset = 0x012, type = "DIR32", symbol = "?g_TextFont17@@3PAUHFONT__@@A", target = 0x004918A0, width = 4 },
   { offset = 0x022, type = "DIR32", symbol = "?g_TextFont18@@3PAUHFONT__@@A", target = 0x0049189C, width = 4 },
@@ -19501,7 +19503,8 @@ linkages = [
 [units.text-release-buffer]
 artifact_kind = "linked-pe"
 source = "src/TextRenderer.cpp"
-support_sources = ["src/RandomMath.cpp"]
+support_sources = ["src/RandomMath.cpp", "src/TextBufferInvertAlpha.cpp"]
+normal_support_sources = ["src/TextBufferInvertAlpha.cpp"]
 output_dir = "build/match-linked/TextBufferLifecycle"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -19520,7 +19523,8 @@ linkages = [
 [units.text-try-allocate-buffer]
 artifact_kind = "linked-pe"
 source = "src/TextRenderer.cpp"
-support_sources = ["src/RandomMath.cpp"]
+support_sources = ["src/RandomMath.cpp", "src/TextBufferInvertAlpha.cpp"]
+normal_support_sources = ["src/TextBufferInvertAlpha.cpp"]
 output_dir = "build/match-linked/TextBufferLifecycle"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -26211,7 +26215,8 @@ target = 4375392
 [units.text-fill-color]
 artifact_kind = "linked-pe"
 source = "src/TextRenderer.cpp"
-support_sources = ["src/RandomMath.cpp"]
+support_sources = ["src/RandomMath.cpp", "src/TextBufferInvertAlpha.cpp"]
+normal_support_sources = ["src/TextBufferInvertAlpha.cpp"]
 output_dir = "build/match-linked/TextBufferLifecycle"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
@@ -33643,8 +33648,8 @@ size = 107
 
 [units.text-buffer-invert-alpha]
 artifact_kind = "coff"
-source = "src/TextRenderer.cpp"
-object = "build/match/TextRenderer.obj"
+source = "src/TextBufferInvertAlpha.cpp"
+object = "build/match/TextBufferInvertAlpha.obj"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
 functions = ["TextRenderBufferView::InvertAlpha"]
 symbol = "?InvertAlpha@TextRenderBufferView@@QAE_NH@Z"
