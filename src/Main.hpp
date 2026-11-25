@@ -249,6 +249,11 @@ struct MainInputVtableView
     long (__stdcall *Call020)(MainInputObjectView *object);
 };
 struct MainInputObjectView { MainInputVtableView *vtable; };
+struct MainInputCapabilitiesView
+{
+    unsigned int size;
+    unsigned char fields004[0x28];
+};
 struct MidiTimerView;
 
 // Two camera slots starting at Main supervisor +0x154 use a 0x118-byte
@@ -298,7 +303,8 @@ struct MainSupervisorView
     MainInputObjectView *inputInterface;       // +0x00C
     MainInputObjectView *inputDevice0;         // +0x010
     MainInputObjectView *inputDevice1;         // +0x014
-    unsigned char unknown018[0x030];
+    unsigned char unknown018[4];
+    MainInputCapabilitiesView padCapabilities; // +0x01C
     HWND gameWindow;                            // +0x048
     AnmMatrixView viewMatrix;                   // +0x04C
     AnmMatrixView projectionMatrix;             // +0x08C
@@ -351,6 +357,7 @@ typedef char MainSupervisorCleanupFields[
      offsetof(MainSupervisorView, inputInterface) == 0xc &&
      offsetof(MainSupervisorView, inputDevice0) == 0x10 &&
      offsetof(MainSupervisorView, inputDevice1) == 0x14 &&
+     offsetof(MainSupervisorView, padCapabilities) == 0x1c &&
      offsetof(MainSupervisorView, timerOwner) == 0x11c &&
      offsetof(MainSupervisorView, bufferBytes760) == 0x760 &&
      offsetof(MainSupervisorView, buffer764) == 0x764) ? 1 : -1];

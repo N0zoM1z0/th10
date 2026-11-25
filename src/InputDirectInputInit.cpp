@@ -56,7 +56,6 @@ extern unsigned char g_InputDirectInputIID[];
 extern unsigned char g_InputKeyboardGuid[];
 extern unsigned char g_InputKeyboardDataFormat[];
 extern unsigned char g_InputJoystickDataFormat[];
-extern unsigned char g_InputPadCapabilitiesRaw[44];
 extern char g_InputCreateFailureLog[];
 extern char g_InputKeyboardFormatFailureLog[];
 extern char g_InputKeyboardCoopFailureLog[];
@@ -114,9 +113,10 @@ __declspec(noinline) int InputInitializeDevices(InputDeviceOwnerView *owner)
         th10::g_GameErrorContext.Log(g_InputCreateFailureLog);
         return -1;
     }
-    InputDeviceView *keyboard = owner->keyboard;
-    if (InputMethods(keyboard)->SetDataFormat(keyboard,g_InputKeyboardDataFormat) < 0)
+    if (InputMethods(owner->keyboard)->SetDataFormat(
+            owner->keyboard, g_InputKeyboardDataFormat) < 0)
     {
+        InputDeviceView *keyboard = owner->keyboard;
         if (keyboard)
         {
             InputMethods(keyboard)->Release(keyboard);
@@ -131,9 +131,10 @@ __declspec(noinline) int InputInitializeDevices(InputDeviceOwnerView *owner)
         th10::g_GameErrorContext.Log(g_InputKeyboardFormatFailureLog);
         return -1;
     }
-    keyboard=owner->keyboard;
-    if (InputMethods(keyboard)->SetCooperativeLevel(keyboard,owner->window,0x16) < 0)
+    if (InputMethods(owner->keyboard)->SetCooperativeLevel(
+            owner->keyboard, owner->window, 0x16) < 0)
     {
+        InputDeviceView *keyboard = owner->keyboard;
         if (keyboard)
         {
             InputMethods(keyboard)->Release(keyboard);
@@ -143,19 +144,21 @@ __declspec(noinline) int InputInitializeDevices(InputDeviceOwnerView *owner)
         th10::g_GameErrorContext.Log(g_InputKeyboardCoopFailureLog);
         return -1;
     }
-    keyboard=owner->keyboard;
+    InputDeviceView *keyboard = owner->keyboard;
     InputMethods(keyboard)->Acquire(keyboard);
     th10::g_GameErrorContext.Log(g_InputKeyboardAcquireLog);
     input=static_cast<InputDirect8Interface *>(owner->directInput8);
     input->vtable->EnumDevices(input,4,&InputEnumPadDeviceCallback,NULL,1);
     if (owner->joystick)
     {
-        InputDeviceView *device=owner->joystick;
-        InputMethods(device)->SetDataFormat(device,g_InputJoystickDataFormat);
-        InputMethods(device)->SetCooperativeLevel(device,owner->window,10);
-        *reinterpret_cast<unsigned int *>(g_InputPadCapabilitiesRaw) = 44;
-        InputMethods(device)->GetCapabilities(device,g_InputPadCapabilitiesRaw);
-        InputMethods(device)->EnumObjects(device,
+        InputMethods(owner->joystick)->SetDataFormat(
+            owner->joystick, g_InputJoystickDataFormat);
+        InputMethods(owner->joystick)->SetCooperativeLevel(
+            owner->joystick, owner->window, 10);
+        g_MainSupervisorView.padCapabilities.size = sizeof(MainInputCapabilitiesView);
+        InputMethods(owner->joystick)->GetCapabilities(
+            owner->joystick, &g_MainSupervisorView.padCapabilities);
+        InputMethods(owner->joystick)->EnumObjects(owner->joystick,
             reinterpret_cast<int (__stdcall *)(const void *,void *)>(&InputEnumAxisRangeCallback),NULL,0);
         th10::g_GameErrorContext.Log(g_InputJoystickEnumeratedLog);
     }
