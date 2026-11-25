@@ -1200,10 +1200,12 @@ frontier; do not refresh a baseline merely to accept the new positions.
   reset schedule. Removing volatile from speed or adding it to flags
   writeback alone was byte-neutral in the 320/335 control.
 - **AnmRenderManagerView::CopySurfaceToBackbuffer @0x447FD0 (330)**:
-  the maintained source passes its first canonical cold build: all 330
-  bytes and seven fields match after snapshotting `g_Direct3DDevice`
-  immediately before CreateRenderTarget. The selected cold replay and
-  same-image Bullet guard are pending. Keep the existing D3D interfaces.
+  two independent canonical cold builds match all 330 bytes and seven
+  fields after snapshotting `g_Direct3DDevice` immediately before
+  CreateRenderTarget. The same-image `bullet-update-absolute-direction`
+  guard matches 335 bytes and eight fields. Replay with
+  `scripts/repo-python scripts/replay-exact-units.py
+  --unit anm-copy-surface-to-backbuffer --unit bullet-update-absolute-direction --json`.
 
   The snapshot holds the device in EAX before evaluating the format and
   surface dimensions. The index then uses ECX and the surface-info base
