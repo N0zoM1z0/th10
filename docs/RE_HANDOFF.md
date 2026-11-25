@@ -9,27 +9,27 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 The sole active owner is `MainConfigureCamera` at `0x00421480`, 287 bytes
 in `src/MainViewport.cpp`. It is the first largest remaining authored owner
-apart from the explicitly deferred `StartSubroutine`. Its current `StageViewport` cold baseline is 282 bytes under the existing
-`/GL /GS` recipe. The maintained candidate now emits 287 bytes and compares
-281/287 with all 12 fields bound. A narrow volatile store rounds the aspect
-into the retired height snapshot before LookAt, restoring all operation and
-register ordering. Six stack displacement bytes remain because width and
-height/aspect occupy the opposite two homes. Target uses ESP+8 / ESP+0xC;
-current source uses ESP+0xC / ESP+8, with the correct 0x2C frame.
+apart from the explicitly deferred `StartSubroutine`. Its first strict comparison now matches all 287 bytes and 12 fields in
+`StageViewport` under the unchanged `/GL /GS` profile. The two identical
+height conversions merge into one; a narrow volatile aspect store before
+LookAt preserves rounding. Eliminating the named height scalar restores the
+width ESP+8 and height/aspect ESP+0xC homes in the 0x2C frame. Source and
+read-only stack-colour findings are in `docs/KNOWLEDGE_BASE.md`.
 
-Candidate unit: `main-configure-camera`. Inputs and comparisons are under
-`.analysis/main-configure-camera/`; `positive-compare.json` is the current
-complete mismatch. Declaration order, added volatile qualifiers/read views,
-address ordering and a height/aspect union are neutral. Two-element aggregate
-controls enlarge the frame to 0x30. Next use read-only C2 stack-colour tracing
-for the allocation order; the pinned reference has the existing hook recipe
-in `reference/compiler_traces/stackpack/trace_stackcolors_link.py`.
+Before ledger credit, run the selected independent cold replay:
 
-Stay on this owner through strict cold equality. Then replay the owner and
-its direct consumers with explicit selectors: `main-select-viewport`,
-`anm-callback-layer-3`, `anm-callback-layer-15`, `anm-callback-layer-16`,
-`anm-callback-layer-19` and `main-render`. All share this changed function;
-no historical cohort replay is needed.
+```bash
+scripts/repo-python scripts/replay-exact-units.py \
+  --unit main-configure-camera --unit main-select-viewport \
+  --unit anm-callback-layer-3 --unit anm-callback-layer-15 \
+  --unit anm-callback-layer-16 --unit anm-callback-layer-19 \
+  --unit main-render --json
+```
+
+These are the six direct consumers, grouped into three declared links.
+Receipts are under `.analysis/main-configure-camera/`;
+`temporary-height-compare.json` is the first complete strict match.
+Stay on this owner until the selected cold links finish.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
