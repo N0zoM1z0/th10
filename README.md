@@ -101,17 +101,6 @@ Keep required private inputs and current comparison contexts as described in
 [RE_ARTIFACTS.md](docs/RE_ARTIFACTS.md). Historical archives, duplicate snapshots
 and old reports can be deleted after recording useful findings.
 
-## Acknowledgements and license
-
-Thank you to levzzz and the contributors to
-[th10-decomp](https://github.com/levzzz5154/th10-decomp) for sharing their
-TH10 reconstruction and research. Their MSVC sources and recovery notes have
-informed source structure, control-flow hypotheses and compiler analysis here.
-
-This project uses the [MIT license](LICENSE). Reference-derived portions retain
-th10-decomp's [original MIT copyright and permission notice](docs/licenses/th10-decomp-MIT.txt),
-along with the notices accompanying individual adapted components.
-
 ## Required phase order
 
 1. Reconcile authored boundaries and recover exact historical-toolchain units.
@@ -134,3 +123,16 @@ along with the notices accompanying individual adapted components.
 - [`docs/RE_HANDOFF.md`](docs/RE_HANDOFF.md) — current owners, retained comparisons and resume commands.
 - [`docs/RE_ARTIFACTS.md`](docs/RE_ARTIFACTS.md) — required private inputs, current unresolved contexts, and cleanup policy.
 - [`docs/KNOWLEDGE_BASE.md`](docs/KNOWLEDGE_BASE.md) — TH10-only knowledge.
+
+## Credits
+
+Thank you to levzzz and the contributors to
+[th10-decomp](https://github.com/levzzz5154/th10-decomp) for sharing their
+TH10 reconstruction and research. Their MSVC sources and recovery notes have
+informed source structure, control-flow hypotheses and compiler analysis here.
+
+## License
+
+This project uses the [MIT license](LICENSE). Reference-derived portions retain
+th10-decomp's [original MIT copyright and permission notice](docs/licenses/th10-decomp-MIT.txt),
+along with the notices accompanying individual adapted components.
