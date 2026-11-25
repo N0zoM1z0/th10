@@ -1430,9 +1430,11 @@ restored the EDI receiver at both calls and the full update comparison.
   target has four calls. Their REL32 fields are at +0x9E for
   `ReadIntValue`, +0xD2 for `ReadFloatValue`, +0xE8 for the CRT float
   to integer conversion at `0x00463B2C`, and +0x1DD for
-  `FindSubroutine`. The two-source VC7.1 SP1 `EclVmHostRunEnemy` link
-  emits a 551-byte candidate. The return-frame register assignment costs
-  one byte at the caller-time load. See the
+  `FindSubroutine`. Capturing the caller once after the argument loop
+  from the volatile pointer parameter puts the return-frame caller in
+  EDX and the push size in EBX. The two-source VC7.1 SP1
+  `EclVmHostRunEnemy` link reaches 550 bytes with four bound fields.
+  The operand loop and its prefix still differ. See the
   [current handoff](RE_HANDOFF.md) for the remaining differences.
 - Script DB (0x1098 polymorphic resource): AddScriptData @0x00450220 validates SCPT, ≤32 file buffers, header 0x24, sorted 8-byte name table; derived vtable 0x0046D0B4 (slots: AddScriptData, package loader 0x0040D400, file loader 0x0040CD20), base 0x0046D0F0 (AddScriptData, 0x0040C810). Owned script pointers +0x0C..+0x88, lookup table +0x8C, nested dwords +0x1090/+0x1094.
 - Opcode 55 negates the 32-bit raw word (NEG EDX at 44F851) after tag conversion and pushes it with float tag 66h.

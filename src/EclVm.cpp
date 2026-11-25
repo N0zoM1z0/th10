@@ -598,7 +598,7 @@ EclVmInstruction *EclVmScriptDatabase::FindSubroutine(const char *name)
 
 
 int EclVmContext::StartSubroutine(
-    EclVmContext *caller, unsigned int firstArgument)
+    EclVmContext *volatile caller, unsigned int firstArgument)
 {
     EclVmContext *destination = this;
     EclVmInstruction **const callerInstruction = &caller->instruction;
@@ -682,6 +682,7 @@ int EclVmContext::StartSubroutine(
         }
     }
 
+    EclVmContext *const frameCaller = caller;
     if (previousTop != 0)
     {
         destination->stack.Pop(0, sizeof(preservedValue), &preservedValue);
@@ -692,7 +693,7 @@ int EclVmContext::StartSubroutine(
             static_cast<unsigned int>(sizeof(EclVmStackSavedWordView)))->value =
                 preservedValue;
         destination->stack.Push(
-            0, sizeof(caller->currentTime), &caller->currentTime);
+            0, sizeof(frameCaller->currentTime), &frameCaller->currentTime);
         destination->stack.Push(
             0, sizeof(*callerInstruction), callerInstruction);
     }
@@ -704,9 +705,9 @@ int EclVmContext::StartSubroutine(
         destination->stack.Push(0, sizeof(preservedValue), &preservedValue);
     }
 
-    EclVmContext *const previousContext = caller->host->activeContext;
-    caller->host->activeContext = destination;
-    EclVmHost *const host = caller->host;
+    EclVmContext *const previousContext = frameCaller->host->activeContext;
+    frameCaller->host->activeContext = destination;
+    EclVmHost *const host = frameCaller->host;
     // Subroutine names follow the initial serialized 32-bit CALL operand.
     // The instruction prefix owns the +0x10 byte-stream start.
     host->activeContext->instruction = host->scriptDatabase->FindSubroutine(

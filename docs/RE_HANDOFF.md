@@ -9,10 +9,10 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 The active owner is `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. The target owns 550 bytes and receives the destination
-in EAX with two stack arguments and RET 8. The committed source emits
-551 bytes in the two-source `EclVmHostRunEnemy` link. The larger
-`GameManagerUpdate` graph emits the same instruction sequence.
-The current linked image matches all 142 bytes of `ecl-vm-spawn-thread`.
+in EAX with two stack arguments and RET 8. The two-source
+`EclVmHostRunEnemy` link emits the full extent and binds all four calls.
+The strict comparison matches 459 bytes. The same image matches
+`ecl-vm-spawn-thread` and `ecl-vm-host-run`.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -29,20 +29,14 @@ scripts/repo-python scripts/compare-linked-function.py --unit ecl-vm-spawn-threa
 scripts/repo-python scripts/ci.py && git diff --check
 ```
 
-The instruction diagnostic aligns 142 of 165 target instructions. Start
-with the return-frame block at +0x120. The target keeps the caller in EDX
-and the four-byte push size in EBX. The candidate uses EBP and EDX, and
-its load of the caller time takes one extra byte. The other differences
-are the destination cursor at +0x64 and the integer conversion branch at
-+0xAD. Direct offset cursors preserve the baseline. Branch inversion
-merges stores and shrinks the body to 543 bytes. A `do/while` loop
-increased it to 554 bytes and lost instruction alignment.
-
-The strict comparator currently stops at the extent mismatch. The four
-target call fields are at +0x9E, +0xD2, +0xE8 and +0x1DD. Bind them when
-the source matches their positions, then replay only this owner and its
-affected exact callers. Keep the real `Run` and child-spawn callers in
-their respective recipes.
+The caller reload after the argument loop puts the caller in EDX and
+the four-byte push size in EBX. From the loop's last branch at +0x114
+through RET 8, the return-frame and lookup instructions now align.
+Resolve the zero and cursor registers in the prefix, the destination
+cursor setup at +0x64 and the conversion path beginning at +0xAD.
+The earlier ordinary caller parameter gave a closer prefix and widened
+the return-frame block by one byte. Sharing the two branches' final push
+through a pointer lost a separate capacity check.
 
 Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 [frontiers.toml](../config/frontiers.toml). Product closure, runtime semantics

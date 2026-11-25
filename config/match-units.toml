@@ -39665,4 +39665,9 @@ symbol = "?StartSubroutine@EclVmContext@@QAEHPAU1@I@Z"
 target_address = 0x0044DF70
 size = 550
 candidate = true
-linkages = []
+linkages = [
+  { offset = 0x9E, type = "REL32", symbol = "?ReadIntValue@EclVmContext@@QAEHIH@Z", target = 0x0044FF00 },
+  { offset = 0xD2, type = "REL32", symbol = "?ReadFloatValue@EclVmContext@@SGMPAU1@IM@Z", target = 0x0044FF80 },
+  { offset = 0xE8, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0x1DD, type = "REL32", symbol = "?FindSubroutine@EclVmScriptDatabase@@QAEPAUEclVmInstruction@@PBD@Z", target = 0x00450470 },
+]
