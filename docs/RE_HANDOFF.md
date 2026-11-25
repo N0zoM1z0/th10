@@ -34,8 +34,10 @@ The remaining 33 bytes differ between +0x6C and +0x103 in the argument
 loop. The floating-point result path at +0xCF through +0xF1 matches.
 The target uses EAX for the word offset at +0x6C. An operand watchpoint
 shows `RewriteAsReal` replacing the offset's virtual symbol with ECX
-before Riscify. The retained `.analysis/ecl-start-subroutine/trace-word-offset.py`
-captures the operand changes from the built two-source link.
+before Riscify. It uses a split symbol inserted by `CreateGenAndKill`.
+The retained `.analysis/ecl-start-subroutine/trace-word-color.py`
+captures both the symbol changes and register choices in the built
+two-source link.
 
 Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 [frontiers.toml](../config/frontiers.toml). Product closure, runtime semantics

@@ -1464,8 +1464,14 @@ restored the EDI receiver at both calls and the full update comparison.
   the register choice propagated through the word offset copy.
   Watching the word-offset LEA's destination operand in the 513-byte
   candidate locates the final physical-symbol write at `0x107ACB9F`,
-  in the out-of-line block reached from `RewriteAsReal`. The code reads
-  the mapped symbol from the virtual register's allocation record.
+  in the out-of-line block reached from `RewriteAsReal`. The 517-byte
+  candidate takes the same path. `CreateGenAndKill` first replaces the
+  original offset symbol with a split symbol, then `RewriteAsReal`
+  reads ECX from that split symbol's register map. The EAX choice logged
+  for the original offset is for a separate live range.
+  Capturing the caller before reading the float operand switches the
+  caller load to EAX before the push but moves the integer operand
+  read ahead of its receiver load and shortens the function to 548 bytes.
   The local trace runs from the two-source `EclVmHostRunEnemy` link
   inputs. Launching `winedbg.exe` with a Windows path to the linker and a
   pseudo-terminal exposes the local GDB proxy for read-only observation.
