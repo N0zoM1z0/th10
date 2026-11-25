@@ -456,13 +456,15 @@ void ReplayManager::BeginStage()
     else if (mode == REPLAY_MANAGER_PLAYBACK)
     {
         int stage = g_GameScoreState.selectedStage;
-        Player *runtime = g_Player;
+        // Restore the captured history even if the current player pointer is reloaded.
+        PlayerPositionPair *history = g_Player->replayPositionHistory;
         ReplayStageDataHeader *stageHeader = stageStates[stage].header;
         activeStage = stage;
-        Player &originalRuntime = *runtime;
-        ReplayRestoreStagePosition(&originalRuntime, &stageHeader->unknown024);
+        Player *runtime = reinterpret_cast<Player *>(
+            reinterpret_cast<unsigned char *>(history) - offsetof(Player, replayPositionHistory));
+        ReplayRestoreStagePosition(runtime, &stageHeader->unknown024);
         runtime = g_Player;
-        memcpy(originalRuntime.replayPositionHistory, stageHeader->runtimeSnapshot,
+        memcpy(history, stageHeader->runtimeSnapshot,
                sizeof(stageHeader->runtimeSnapshot));
         runtime->optionMode = stageHeader->unknown1BC;
         RebuildPlayerOptions(runtime);
