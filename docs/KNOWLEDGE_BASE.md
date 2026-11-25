@@ -1174,8 +1174,9 @@ frontier; do not refresh a baseline merely to accept the new positions.
   register class is 0, its conflict-list head and preference-list pointer are
   null, its eligible set includes EAX/ECX/EDX, and all three scores are zero.
   Class 0's actual order is EAX, ECX, EDX, EBP, EBX, EDI; EAX is therefore the
-  deterministic first eligible choice. The angle candidate has no existing
-  interference or register preference to explain the target's EDX.
+  deterministic first eligible choice. A global-coloring route to target EDX
+  must account for both earlier choices, EAX and ECX, or provide an EDX
+  preference; the baseline has neither interference nor preferences.
   Local integer-word, union and pointer forms of the angle copy each leave
   the complete comparison at 333 matching bytes. The baseline debugger link
   and ordinary link agree across the complete 335-byte owner and eight linked
@@ -1203,6 +1204,17 @@ frontier; do not refresh a baseline merely to accept the new positions.
   branch expands the complete owner to 343 bytes. Preparing a speed word
   before the angle copy gives 331 matching bytes. Grouping both float
   arguments in a local aggregate, in either member order, preserves 333.
+  A diagnostic inline-timer/direct-angle form with `bool
+  timerNeedsInitialization = (state.timer.flags & 1u) == 0` changes the local
+  `RegAssign` sequence to flags load EAX, magnitude ECX, angle EDX, producing
+  the target call setup exactly. Its owner grows to 343 bytes: C2 reads only
+  `AL`, inverts and tests it, then reloads the full flags word in the branch;
+  the target loads the full word once, tests `AL`, and reuses EAX for the OR
+  and store. The 343-byte debugger link matches the ordinary diagnostic link
+  across its complete owner and all eight fields. This remains scratch-only;
+  the main source is restored to the 333/335 baseline. The next useful step
+  is to retain a full-width flags temporary in local `RegAssign` without the
+  byte normalization and reload.
   The `_reference/th10-decomp` `EaseStep` shape (plain float fields, direct
   `++int2`, `angle = value1`, reset speed copied before the timer reset)
   regressed to 320/335 on 2026-11-22 and was reverted. The source and ordinary

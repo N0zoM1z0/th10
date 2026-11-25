@@ -19,10 +19,18 @@ and its selected cold replay passes. Reproduce the current frontier with
 Investigate the call operand's VC7.1 register allocation and compare the
 complete owner and eight linked fields after each source change.
 The angle load is global candidate 8 with priority 16, no observed scoring
-contributions, and EAX/ECX/EDX eligible. All three score zero and it takes
-EAX. Direct angle references and early receiver computation regress the
-comparison. The completed read-only C2 traces are in
-`.analysis/bullet-absolute/angle-eligible.*`.
+contributions, and EAX/ECX/EDX eligible. Class-0 order is EAX, ECX, EDX, so
+all-zero scores select EAX; a global-coloring solution for target EDX must
+account for both earlier registers. Direct angle references alone still give
+331/335. A scratch inline-timer/direct-angle form with a bool initialization
+local does produce the target call setup: local `RegAssign` assigns the flags
+load to EAX, magnitude to ECX, and angle to EDX. Its owner expands to 343
+bytes because C2 emits a byte load/invert/test and reloads the full flags word
+in the branch. The ordinary and debugger links agree across that full 343-byte
+owner and all eight fields, but it is not exact. The experiment and trace are
+under `.analysis/bullet-absolute/bool-flag-local.*`; the main source remains
+at the 333/335 baseline. The next test should preserve a full-width flags
+local in `RegAssign` without the extra byte operations or reload.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
