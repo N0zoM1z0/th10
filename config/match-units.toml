@@ -27806,7 +27806,6 @@ linkages = [
 ]
 
 [units.startup-worker-destructor]
-candidate = true
 source = "src/Startup.cpp"
 support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/ScriptViewerWorker.cpp", "src/GameStatistics.cpp"]
 output_dir = "build/match-linked/StartupDestructorCore"

@@ -7,13 +7,10 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `StartupWorkerView::~StartupWorkerView` at `0x0041FB50`,
-the largest remaining authored owner outside the parked ECL scope.
-`StartupDestructorCore` has a strict 417-byte warm match with 40 fields.
-All five inputs use `/EHsc`, and the statistics cleanup names the destructor
-and deallocation separately. The generated handler binds the two short
-actions at +0x10 and +0x30 to the real worker and VM destructors. Cold replay
-the destructor before recording exactness.
+The startup worker destructor passed cold replay in `StartupDestructorCore`.
+The ASCII and worker destructors, worker Stop and startup bank release also
+match in that image. The startup factory passes in `StartupWorkerLifecycle`.
+Select the largest remaining authored owner from the ledgers.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -38,6 +35,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `startup-worker-destructor` | 417 B | `StartupDestructorCore`, 40 fields and nine local branches. Both member unwind actions bind to their concrete destructors. |
 | `frontend-stage-scores-draw` | 419 B | `FrontEndReplaySaveDraw`, 16 fields and 17 local branches. The callback supplies EDI and the formatter takes the position in EBX. |
 | `input-initialize-devices` | 439 B | `InputDeviceCore`, 29 fields and ten local branches. The worker passes the device owner in EAX, and Log uses ECX. |
 | `laser-line-initialize` | 442 B | `LaserLineInitCore`, 10 fields and four local branches. The virtual receiver uses ECX, and the VM starter receives ESI/EAX. |

@@ -2207,6 +2207,14 @@ restored the EDI receiver at both calls and the full update comparison.
 
 ### Main and supervisor
 
+- `StartupWorkerView::~StartupWorkerView` at `0x0041FB50` keeps the two ANM
+  bank slots by reference while releasing their contents. Explicitly invoking
+  the statistics destructor before deallocation lets LTCG retain the
+  statistics pointer in EDI. The five-input `/EHsc` `StartupDestructorCore`
+  link also reuses EBP for the null value and omits the extra state store
+  seen in the earlier WinMain graph. Its two unwind actions bind the worker
+  at +0x10 and VM at +0x30.
+
 - `GameWindowView::InitD3DRendering` at `0x00439890` prepares the
   56-byte presentation record, then tries hardware vertex processing,
   software vertex processing, and the reference device. The force-no-vsync

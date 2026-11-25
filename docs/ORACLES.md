@@ -178,8 +178,8 @@ completion.
 The explicit `stage_array_eh_handler = true` descriptor binds reviewed VM
 member handlers by exact parent symbol, target extent, field offset and
 handler address. It covers the StageScriptView constructor and destructor,
-the spell panel constructor, the ANM render manager constructor and the
-GUI and ASCII manager destructors.
+the spell panel constructor, the ANM render manager constructor, and the
+GUI, ASCII manager and startup worker destructors.
 The Stage constructor and destructor generate 37- and 64-byte regions that
 must share the parent's qualified StageLifecycle PDB object and have a unique
 MAP handler entry. Both images must match the bound fields, immutable 28-byte
@@ -209,6 +209,12 @@ region at handler entry `0x4652F9`. Its two actions load the receiver from
 `EBP+4` and tail-call the standalone VM destructor. The first uses the
 three-byte add for member `+0x14`, and the second uses the six-byte add for
 `+0x3C0`.
+
+The startup worker destructor binds a 32-byte region at `0x465696`. Its
+short actions tail-call the worker destructor at `0x44C130` for member
+`+0x10` and the VM destructor at `0x401FF0` for member `+0x30`. The existing
+worker-member verifier checks the full worker destructor and its Stop
+binding alongside the VM destructor proof.
 
 ## Validation scope during exact reconstruction
 

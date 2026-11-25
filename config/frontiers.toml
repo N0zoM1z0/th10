@@ -25,10 +25,3 @@ unit = "game-statistics-initialize-record"
 candidate_size = 274
 target_sha256 = "62905fe172fb66ca164498ab8964b6d0f9e8b09d783ceca25ebe2a1062712953"
 residual = ["14", "1D", "29", "47", "4D", "50", "52", "58-59", "5B", "61", "64", "70", "72", "76", "8B-8E", "90-93", "A6", "C8"]
-
-[frontier.startup-worker-destructor]
-function = "StartupWorkerView::~StartupWorkerView"
-unit = "startup-worker-destructor"
-candidate_size = 417
-target_sha256 = "5eb23600528f1904c9f3d9a9b6cb5de473d992e4dbcf90121b42e88eb6edc9dd"
-residual = []
