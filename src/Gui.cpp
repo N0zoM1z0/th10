@@ -1910,7 +1910,17 @@ typedef char GuiResetSpecialIdsAt9E50[
 // callbacks, resource loads, or allocation side effects are executed by tests.
 // The stage captions allocate their VM before adding the caption offset to
 // the starting-stage script index, as the retail schedule shows.
-static __forceinline AnmVmView *InitializeResetVm(
+static __forceinline AnmVmIdView CreateResetVm(AnmLoadedView *anm, int script)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    unsigned int flags = vm->flags35C | 0x40000000u;
+    vm->renderLayer = 15;
+    vm->flags35C = flags;
+    anm->InitializeVm(vm, script);
+    return g_AnmRenderManagerView->AddVmVariant0(vm);
+}
+
+static __forceinline AnmVmIdView CreateResetCaptionVm(
     AnmLoadedView *anm, int script, int offset = 0)
 {
     AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
@@ -1919,19 +1929,6 @@ static __forceinline AnmVmView *InitializeResetVm(
     vm->renderLayer = 15;
     vm->flags35C = flags;
     anm->InitializeVm(vm, script);
-    return vm;
-}
-
-static __forceinline AnmVmIdView CreateResetVm(AnmLoadedView *anm, int script)
-{
-    AnmVmView *vm = InitializeResetVm(anm, script);
-    return g_AnmRenderManagerView->AddVmVariant0(vm);
-}
-
-static __forceinline AnmVmIdView CreateFrontCaptionVm(
-    AnmLoadedView *anm, int script, int offset = 0)
-{
-    AnmVmView *vm = InitializeResetVm(anm, script, offset);
     return AddVmToPrimaryBack(*g_AnmRenderManagerView, vm);
 }
 
@@ -2009,22 +2006,22 @@ void GameResetGui(GuiView *gui)
 
     if (g_GameTransitionState != 8 && (g_GameRuntimeFlags & 0x20) == 0)
     {
-        CreateFrontCaptionVm(gui->stageUiAnm, 0);
-        CreateFrontCaptionVm(gui->stageUiAnm, 1);
+        CreateResetCaptionVm(gui->stageUiAnm, 0);
+        CreateResetCaptionVm(gui->stageUiAnm, 1);
     }
     if ((g_GameRuntimeFlags & 0x20) != 0)
-        CreateFrontCaptionVm(gui->frontAnm, 0x71);
+        CreateResetCaptionVm(gui->frontAnm, 0x71);
 
     StartAnmLoadedScript(
         g_AsciiManagerView->asciiAnm, &gui->bossPositionVm, 0);
     if (g_GameStartupMode == 1 && g_GuiResetSession->value5C == 0 &&
         g_GameStartupValue474C90 == 0)
-        CreateFrontCaptionVm(gui->frontAnm, 0x4f);
+        CreateResetCaptionVm(gui->frontAnm, 0x4f);
 
     if (g_GameNewSession != 0)
     {
         gui->specialVmId9E50 =
-            CreateFrontCaptionVm(gui->frontAnm, g_GameStartingStage, 0x66);
+            CreateResetCaptionVm(gui->frontAnm, g_GameStartingStage, 0x66);
         // Reset interrupt region 1: target-local two-list/root-child walk.
     {
         AnmVmView *vm = g_AnmRenderManagerView->FindVm(gui->specialVmId9E50);
@@ -2044,7 +2041,7 @@ void GameResetGui(GuiView *gui)
     }
     }
     gui->specialVmId9E54 =
-        CreateFrontCaptionVm(gui->frontAnm, g_GameStartingStage, 0x6b);
+        CreateResetCaptionVm(gui->frontAnm, g_GameStartingStage, 0x6b);
     // Both target interrupt walks select +0x9E50, including this final walk.
     // Reset interrupt region 2: target-local two-list/root-child walk.
     {

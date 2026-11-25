@@ -75,14 +75,11 @@ comparison only for its source and link graph.
 
 ## Open owner
 
-`GameResetGui` at `0x00413BC0` is active. The clean prior build
-emitted 1,131 of 1,965 bytes and put the GUI argument on the stack.
-The shared primary-list registration helper restores six inline paths
-while the first two keep an outlined registration call. The candidate
-now emits 1,965 bytes and 52 linked fields with 528 of 543 instructions
-aligned. Both stage-reset calls use EDI, and the warm GameManager update
-comparison passes all 1,544 bytes. Resolve the resource and stage-index
-loads in the two final caption initialization sequences.
+`GameResetGui` at `0x00413BC0` is active. The warm link matches all
+1,965 bytes, 52 fields and 73 local branch destinations. Keeping allocation,
+script adjustment and inline registration in one caption helper restores
+the two call-site schedules. The GameManager and ScriptViewer callers
+pass their strict warm comparisons. The selected cold replays are next.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
