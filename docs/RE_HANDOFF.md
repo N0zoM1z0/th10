@@ -17,6 +17,8 @@ The loop latch assigns its destination cursor before the instruction
 pointer, which leaves the latter with ECX and EDX available. The target
 uses ECX for the cursor and EAX for the instruction pointer. See
 [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) for traces and cold replay scope.
+For nonexact candidates, compile and compare only the affected unit.
+Run selected cold replays after the owner reaches a complete exact match.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available

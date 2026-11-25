@@ -1593,6 +1593,14 @@ restored the EDI receiver at both calls and the full update comparison.
   resulting owner matches 542 of 550 bytes. The remaining differences are
   the float operand register at +0xC6 and the cursor and instruction
   registers at the loop latch beginning at +0xF2.
+  In the 542-byte candidate, the latch's destination, instruction and
+  word-offset candidates have equal priority 56 and no register
+  preferences. The allocator assigns EAX, ECX and EDX in that order.
+  The float operand candidate has ECX and EAX preferences and scores
+  0, -1 and 0 for EAX, ECX and EDX, selecting ECX. Qualifying either
+  result-tag instruction read as volatile changes the complete body
+  to 514 matching bytes. Copying the integer operand through `memcpy`
+  leaves the prior 536-byte candidate unchanged.
 - In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
   the destination address LEA to EAX and advances the integer register
   cursor to ECX. The 551-byte candidate with a plain caller parameter
