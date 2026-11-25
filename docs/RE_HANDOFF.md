@@ -38,10 +38,13 @@ offset in target order. The target holds the destination in ECX and the
 instruction in EAX. At +0x97, the integer operand's live range is
 eligible for EAX, ECX and EDX. EAX and ECX tie at −1 in the current
 `ChoosePhysReg` trace. The earlier 551-byte candidate assigns ECX to
-this load with the signed costs 1, −1 and 1. The EAX preference comes
-from the word offset and the ECX preference comes from the instruction
-pointer. The retained `.analysis/ecl-start-subroutine/trace-int-word-color-input.py`
-records the live ranges at Color entry and their later preferences.
+this load with the signed costs 1, −1 and 1. Both candidates shift the
+word offset in EAX. In the current candidate, the loop-carried offset
+receives EAX in `ChoosePhysReg` and contributes the preference. The
+earlier candidate splits and spills that range, then `RegAssign` picks
+EAX for the shift. Compare those paths with
+`.analysis/ecl-start-subroutine/trace-offset-color-writes.sh` (use the
+saved `baseline` and `named-float-ordered-latch-reference` sources).
 
 Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 [frontiers.toml](../config/frontiers.toml). Product closure, runtime semantics

@@ -1481,6 +1481,14 @@ restored the EDI receiver at both calls and the full update comparison.
   Reading it through the volatile latch alias in either operand path adds
   a four-byte reload. Capturing a local destination pointer in the raw
   integer store fixes +0xBB but moves the float result and latch registers.
+  The word offset's allocation record explains why the earlier candidate
+  lacks the EAX preference. Its initial priority reaches 79 before
+  `ColProcessSplitGlobregs` splits the range. The following piece reaches
+  −26 through `SpillOrDefer` and `InsertByBenefit`, and local `RegAssign`
+  chooses EAX for the shift. The 536-byte candidate reaches priority
+  183 and takes EAX in `ChoosePhysReg`. Removing both volatile latch
+  accesses changes the extent to 546 bytes. Delaying the word offset
+  write until the loop continues emits 542 bytes.
 - In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
   the destination address LEA to EAX and advances the integer register
   cursor to ECX. The 551-byte candidate with a plain caller parameter
