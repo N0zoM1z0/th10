@@ -55,6 +55,11 @@ and selected cold replay under `.analysis/frontend-insert-score/`. Its live
 links are `ResultMenuClose` and the score-entry caller's `FrontEndReplay`.
 Superseded disassembly and diagnostic helper files have been removed.
 
+The type-1 laser initializer retains its initial build log, canonical comparison
+and independent cold replay under `.analysis/laser-type1-initialize/`. Keep
+`build/match-linked/LaserType1InitCore/`; the temporary decoder output and
+one-off diagnostic helper have been removed.
+
 The Bomb power transition cleanup reclaimed about 26 MiB in source
 snapshots, trial links and superseded GUI and text-rendering outputs.
 

@@ -982,7 +982,8 @@ frontier; do not refresh a baseline merely to accept the new positions.
   the X/Z/Y position-load schedule. Width starts at 2.0f; growth speed comes
   from request+0x2C. The seven fields cover both manager loads, the script-base
   table and both pairs of starter/interpreter calls. Independent cold replay
-  remains pending. Receipts are under `.analysis/laser-type1-initialize/`.
+  also matches the complete 309-byte extent and all seven fields. Receipts
+  are under `.analysis/laser-type1-initialize/`.
 - **EnemyLaserType1View::Clear @0x41F400 (623)** matches all 29 fields
   with the public virtual member as link entry. The ECX receiver belongs
   to slot 0x0046DA24. Keep the VM position as a typed subobject and snapshot the

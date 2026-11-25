@@ -7,38 +7,12 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `EnemyLaserType1View::Initialize` at `0x0041E5C0`,
-309 bytes in `src/LaserType1.cpp`. Its first strict comparison matches
-309/309 bytes and all seven fields in `LaserType1InitCore`; the existing source
-needs no edit once the real VM starter and script loader are linked. The unit
-is `laser-type1-initialize`, with receipts under
-`.analysis/laser-type1-initialize/`. Run its independent selected cold replay
-before ledger credit. No shared source or existing unit recipe changed.
-
-`FrontEndInsertScore` is accepted at 316 bytes and 18 fields in
-`ResultMenuClose`. Its independent cold replay and both direct callers pass:
-`result-menu-prepare-score` at 377 bytes/18 fields and
-`frontend-score-entry-update` at 1,400 bytes/80 fields in `FrontEndReplay`.
-Converting the double timing ratio to float before percentage arithmetic
-restores the target dword multiply and reverse subtraction. Changing only
-literal spelling is byte-neutral. Receipts are under
-`.analysis/frontend-insert-score/`.
-
-`Player::~Player` is accepted in `ScriptViewerDestructSmall` at 325 bytes
-and 30 fields, with the complete VM-member EH binding. The factory,
-release adapter, update, draw and ScriptViewer destructor all pass their
-selected cold links after the real `AnmVmView` member replaces the partial
-lifetime view. Receipts and focused EH controls are under
-`.analysis/player-destructor/`.
-
-Both ANM surface-copy variants are accepted in `BulletHorizontalWrap`.
-`anm-copy-surface-to-backbuffer` matches 330 bytes and seven fields;
-`anm-copy-surface-to-backbuffer2` matches 325 bytes and seven fields. Their
-local device snapshots preserve the target schedules and distinct failure
-cleanup. The selected absolute-direction Bullet guard remains 335/335 with
-eight fields. Receipts are under `.analysis/anm-copy-backbuffer/` and
-`.analysis/anm-copy-backbuffer2/`; findings are in
-[KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md).
+The sole active owner is `GuiView::LoadData` at `0x00413A20`, 289 bytes
+in `src/Gui.cpp`. It is the largest remaining authored owner apart from the
+explicitly deferred `StartSubroutine`. Its previous candidate retained all
+16 fields and six local branches but differed in register/store scheduling.
+Inspect its current source and link recipe, compare the complete source early,
+and stay on it through its complete strict cold match.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
@@ -80,6 +54,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `laser-type1-initialize` | 309 B | `LaserType1InitCore`, seven fields. Unchanged natural source with the real VM starter and script loader; independent cold replay passes. |
 | `frontend-insert-score` | 316 B | `ResultMenuClose`, 18 fields and the EDI table receiver. Both direct callers pass their own selected cold links. |
 | `player-destructor` | 325 B | `ScriptViewerDestructSmall`, 30 fields and the real 34-byte VM cleanup. Five selected lifecycle/field consumers pass their own cold links. |
 | `anm-copy-surface-to-backbuffer2` | 325 B | `BulletHorizontalWrap`, seven fields and EBX index/stack manager/RET 28. Both selected same-image guards pass. |
