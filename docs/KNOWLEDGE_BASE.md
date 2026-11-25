@@ -1804,6 +1804,14 @@ restored the EDI receiver at both calls and the full update comparison.
 
 ### Input
 
+- `InputInitializeDevices` at `0x0043B8D0` reloads the keyboard slot after
+  COM format and cooperative-level calls and reloads the joystick slot
+  before each use. The 44-byte controller capabilities record starts at
+  supervisor +0x1C. Link through the actual input worker and `GameErrorContext`
+  to give the initializer EAX and the log receiver ECX. In that link, the
+  shared vtable cast left 24 register bytes different. Separate, typed COM
+  interfaces for the parent and devices reproduce the target allocation.
+
 - `MergeJoystickInput @0x44A190` takes `(unsigned short buttons /*ECX*/, int bindingIndex, int padIndex=0)`, with the last two on the stack.
 - Key binding shorts at controller+0x59CC..0x59D4; key-config display labels 0x43..0x56, digit base 0x33, signed-short /10 and %10.
 - Debug input (@0x40AC20): clears +4, 16 u16 counters at +0x38; at 26 subtracts 8 and ORs only bit 0 into +0x30. Edges are +0x32/+0x34.

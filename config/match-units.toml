@@ -32461,7 +32461,6 @@ size = 21
 linkages = []
 
 [units.input-initialize-devices]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/InputDirectInputInit.cpp"
 support_sources = ["src/InputDirectInputDeviceEnum.cpp", "src/InputDirectInputRange.cpp", "src/GameErrorContext.cpp"]
@@ -32508,7 +32507,7 @@ linkages = [
 
 # The 83-byte input initialization worker becomes exactly native when
 # DirectInput8 COM release and both real enumerator sources share the
-# actual three-input VC7.1 /GL graph. The 439-byte parent stays NONEXACT.
+# actual three-input VC7.1 /GL graph.
 [units.input-initialize-device-thread-0043ba90]
 artifact_kind = "linked-pe"
 source = "src/InputDirectInputInit.cpp"

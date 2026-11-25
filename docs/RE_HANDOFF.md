@@ -7,12 +7,10 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `InputInitializeDevices` at `0x0043B8D0`, the largest
-remaining authored owner outside the parked ECL scope. The four-input
-`InputDeviceCore` graph has a strict 439-byte warm match with 29 fields.
-Separate COM interface and device types restore the target register choices
-after `SetDataFormat`. Rebuild the initializer, worker and release helper
-with explicit cold replay selectors.
+The DirectInput initializer passed cold replay with the worker and release
+helper. Both enumeration callbacks match in `InputDeviceCore`, and the
+supervisor layout consumer `main-release-game` passes its own warm link.
+Select the largest remaining authored owner from the ledgers.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -37,6 +35,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `input-initialize-devices` | 439 B | `InputDeviceCore`, 29 fields and ten local branches. The worker passes the device owner in EAX, and Log uses ECX. |
 | `laser-line-initialize` | 442 B | `LaserLineInitCore`, 10 fields and four local branches. The virtual receiver uses ECX, and the VM starter receives ESI/EAX. |
 | `replay-manager-load-replay` | 450 B | `ReplayLoadCore`, 18 fields and 14 local branches. The archive opener takes its name in EAX and size pointer on the stack. `Load` and `Initialize` pass in their own links. |
 | `ascii-manager-destructor` | 467 B | `GuiDestructorCore`, 38 fields, eight local branches and two embedded VM unwind actions. The receiver is on the stack with two RET 4 exits. |
