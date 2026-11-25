@@ -394,11 +394,12 @@ void ReplayManager::Destroy(ReplayManager *replayManager)
     }
 }
 
-static __forceinline void RestoreReplayOptionPosition(
-    PlayerPositionPair &destination, const ReplayStageRuntimePair &recorded)
+__forceinline PlayerPositionPair &PlayerPositionPair::operator=(
+    const ReplayStageRuntimePair &recorded)
 {
-    destination.x = static_cast<int>(recorded.first);
-    destination.y = static_cast<int>(recorded.second);
+    x = static_cast<int>(recorded.first);
+    y = static_cast<int>(recorded.second);
+    return *this;
 }
 
 void ReplayManager::BeginStage()
@@ -469,14 +470,13 @@ void ReplayManager::BeginStage()
 
         for (int i = 0; i < 4; i++)
         {
-            PlayerOptionRuntime &slot = runtime->options[i];
-            RestoreReplayOptionPosition(slot.replayPair0, stageHeader->runtimePairs0[i]);
-            RestoreReplayOptionPosition(slot.replayPair1, stageHeader->runtimePairs1[i]);
-            RestoreReplayOptionPosition(slot.replayPair2, stageHeader->runtimePairs2[i]);
-            RestoreReplayOptionPosition(slot.replayPair3, stageHeader->runtimePairs3[i]);
+            runtime->options[i].replayPair0 = stageHeader->runtimePairs0[i];
+            runtime->options[i].replayPair1 = stageHeader->runtimePairs1[i];
+            runtime->options[i].replayPair2 = stageHeader->runtimePairs2[i];
+            runtime->options[i].replayPair3 = stageHeader->runtimePairs3[i];
 
             if (g_GameScoreState.history.statisticsGroupB + g_GameScoreState.history.statisticsGroupA * 3 == 5)
-                RestoreReplayOptionPosition(slot.replayPair3, stageHeader->runtimePairs0[i]);
+                runtime->options[i].replayPair3 = stageHeader->runtimePairs0[i];
         }
         for (int i = 0; i < 4; ++i)
             runtime->options[i].resetFlag = 0;

@@ -75,10 +75,11 @@ comparison only for its source and link graph.
 ## Open owner
 
 `ReplayManager::BeginStage` at `0x0042A450` is active. The record path
-aligns through offset 0x158. Playback now reloads the player pointer
-after the position helper and the full linked contribution is 581/582
-bytes. The remaining differences involve the original player pointer's
-lifetime across that call and the two option-copy loop pointers.
+aligns through offset 0x158. Typed assignment from the recorded option pair
+puts both playback loop pointers in the target registers. The real
+`GameManagerUpdate` graph emits 582 bytes and aligns 145 of 157 instructions.
+Resolve the preserved player pointer around `ReplayRestoreStagePosition`
+and the branch into the option-copy loop before binding the fields.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

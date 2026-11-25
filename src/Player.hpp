@@ -4,6 +4,8 @@
 #include <stddef.h>
 #include <string.h>
 
+struct ReplayStageRuntimePair;
+
 struct PlayerPositionPair
 {
     int x;
@@ -11,6 +13,8 @@ struct PlayerPositionPair
 
     PlayerPositionPair() {}
     PlayerPositionPair(int x, int y) : x(x), y(y) {}
+
+    PlayerPositionPair &operator=(const ReplayStageRuntimePair &recorded);
 
     PlayerPositionPair operator+(const PlayerPositionPair &other) const
     {
