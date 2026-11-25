@@ -1226,10 +1226,13 @@ frontier; do not refresh a baseline merely to accept the new positions.
   D3DXLoadSurfaceFromSurface at +0xC4. Analysis and receipts are under
   `.analysis/anm-copy-backbuffer/`.
 - **AnmRenderManagerView::CopySurfaceToBackbuffer2 @0x448120 (325)**:
-  the maintained source passes its first canonical cold build at 325 bytes
-  and seven fields after the same local device snapshot before
-  CreateRenderTarget. The selected independent cold replay, first surface
-  variant and absolute-direction Bullet guards are pending.
+  two independent canonical cold builds match all 325 bytes and seven
+  fields after the same local device snapshot before CreateRenderTarget.
+  The selected first surface variant (330 bytes, seven fields) and
+  absolute-direction Bullet guard (335 bytes, eight fields) remain exact.
+  Replay with `scripts/repo-python scripts/replay-exact-units.py
+  --unit anm-copy-surface-to-backbuffer2 --unit anm-copy-surface-to-backbuffer
+  --unit bullet-update-absolute-direction --json`.
 
   The initial 307-byte candidate shared the failure cleanup with the normal
   exit. The snapshot restores the target's register choices, leaving the

@@ -40,9 +40,10 @@ cold replay under `.analysis/bullet-absolute/`, with the live link in
 `build/match-linked/BulletHorizontalWrap/`. Removing its superseded source
 trials, debugger contexts and experiment links reclaimed about 53 MiB.
 
-The surface-copy owner's canonical comparison and selected cold replay are
-under `.analysis/anm-copy-backbuffer/`, in the same `BulletHorizontalWrap`
-link. Its superseded warm trial and source snapshot reclaimed about 1 MiB.
+The surface-copy owners retain their canonical comparisons and selected cold
+replays under `.analysis/anm-copy-backbuffer/` and
+`.analysis/anm-copy-backbuffer2/`, in the same `BulletHorizontalWrap` link.
+Their superseded warm trials and source snapshots reclaimed about 2 MiB.
 
 The Bomb power transition cleanup reclaimed about 26 MiB in source
 snapshots, trial links and superseded GUI and text-rendering outputs.

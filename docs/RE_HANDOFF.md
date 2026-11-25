@@ -7,35 +7,21 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `AnmRenderManagerView::CopySurfaceToBackbuffer2`
-at `0x00448120`, complete instruction extent `[0x00448120, 0x00448265)`
-(325 bytes), in `src/AnmManager.cpp`. It ties with the Player destructor
-as the largest remaining authored owner apart from the explicitly deferred
-`StartSubroutine`. RET 28 starts at `0x00448262` and occupies the final three
-bytes; the old note incorrectly called its immediate bytes padding.
+The sole active owner is `Player::~Player` at `0x00424ED0`, currently listed
+as 325 bytes in `src/Player.cpp`. It is the largest remaining authored owner
+apart from the explicitly deferred `StartSubroutine`. Inspect the complete
+target boundary, current implementation and available link recipe, then
+compare the complete source early. The old knowledge entry's 333-byte
+candidate is historical; establish the current native baseline before relying
+on it. Stay on this destructor through the complete strict cold match.
 
-Unit `anm-copy-surface-to-backbuffer2` in `BulletHorizontalWrap` passes its
-first canonical strict comparison at 325 bytes and seven fields after snapshotting the device
-before CreateRenderTarget. The initial candidate was 307 bytes because it
-shared the failure cleanup with the normal exit; the snapshot leaves those
-tails in the target's distinct register forms. The independent selected cold
-replay is running, with the first surface variant and absolute-direction
-Bullet guards. Finish that proof
-before accepting or selecting another owner. Keep D3D interfaces and adapter
-evidence intact. Current work is under `.analysis/anm-copy-backbuffer2/`.
-
-`CopySurfaceToBackbuffer @0x00447FD0` is accepted at 330 bytes and seven fields
-after two independent cold builds. Its device snapshot before
-CreateRenderTarget restores the complete schedule and EBX/EAX/RET 16 ABI.
-The selected same-image Bullet guard passes 335 bytes and eight fields.
-Replay unit `anm-copy-surface-to-backbuffer`; receipts are under
-`.analysis/anm-copy-backbuffer/`.
-
-`BulletRuntimeView::UpdateAbsoluteDirectionChange` is accepted: two independent
-canonical builds match 335 bytes and eight fields, and its direct runtime
-caller passes cold at 885 bytes and 39 fields. The unit is
-`bullet-update-absolute-direction`; both selected replay results are under
-`.analysis/bullet-absolute/`. Its compiler findings are consolidated in
+Both ANM surface-copy variants are accepted in `BulletHorizontalWrap`.
+`anm-copy-surface-to-backbuffer` matches 330 bytes and seven fields;
+`anm-copy-surface-to-backbuffer2` matches 325 bytes and seven fields. Their
+local device snapshots preserve the target schedules and distinct failure
+cleanup. The selected absolute-direction Bullet guard remains 335/335 with
+eight fields. Receipts are under `.analysis/anm-copy-backbuffer/` and
+`.analysis/anm-copy-backbuffer2/`; findings are in
 [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md).
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
@@ -78,6 +64,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `anm-copy-surface-to-backbuffer2` | 325 B | `BulletHorizontalWrap`, seven fields and EBX index/stack manager/RET 28. Both selected same-image guards pass. |
 | `anm-copy-surface-to-backbuffer` | 330 B | `BulletHorizontalWrap`, seven fields and EBX/EAX/RET 16. The same-image absolute-direction Bullet guard passes 335 bytes and eight fields. |
 | `bullet-update-absolute-direction` | 335 B | `BulletHorizontalWrap`, eight fields and the ESI receiver. The direct runtime caller passes its own cold link at 885 bytes and 39 fields. |
 | `hint-cleanup-owner` | 346 B | `HintCleanupOwner`, 22 fields and the complete EAX-receiver list cleanup callee. The factory and GameManager cleanup pass in their own graphs. |
