@@ -11,7 +11,7 @@ The active owner is `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. The target owns 550 bytes and receives the destination
 in EAX with two stack arguments and RET 8. The two-source
 `EclVmHostRunEnemy` link emits the full extent and binds all four calls.
-The strict comparison matches 459 bytes. The same image matches
+The strict comparison matches 507 bytes. The same image matches
 `ecl-vm-spawn-thread` and `ecl-vm-host-run`.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
@@ -29,14 +29,12 @@ scripts/repo-python scripts/compare-linked-function.py --unit ecl-vm-spawn-threa
 scripts/repo-python scripts/ci.py && git diff --check
 ```
 
-The caller reload after the argument loop puts the caller in EDX and
-the four-byte push size in EBX. From the loop's last branch at +0x114
-through RET 8, the return-frame and lookup instructions now align.
-Resolve the zero and cursor registers in the prefix, the destination
-cursor setup at +0x64 and the conversion path beginning at +0xAD.
-The earlier ordinary caller parameter gave a closer prefix and widened
-the return-frame block by one byte. Sharing the two branches' final push
-through a pointer lost a separate capacity check.
+The initial stack setup and the return-frame and lookup sequence match.
+The remaining 43 bytes differ between +0x68 and +0x107 in the argument
+loop. The target stores the destination cursor before computing the
+word offset in EAX. Resolve those two instructions first, then follow
+the EAX/ECX allocation into the operand read and the order of loads
+around the float call and loop latch.
 
 Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 [frontiers.toml](../config/frontiers.toml). Product closure, runtime semantics

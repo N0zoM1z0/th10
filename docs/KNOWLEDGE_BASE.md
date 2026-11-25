@@ -1434,7 +1434,13 @@ restored the EDI receiver at both calls and the full update comparison.
   from the volatile pointer parameter puts the return-frame caller in
   EDX and the push size in EBX. The two-source VC7.1 SP1
   `EclVmHostRunEnemy` link reaches 550 bytes with four bound fields.
-  The operand loop and its prefix still differ. See the
+  Calculating the typed destination cursor before the word offset
+  aligns the preheader through +0x67. Keeping the cursor in a volatile
+  pointer slot preserves the target's reloads and aligns the loop from
+  +0x107. The integer conversion and raw word store leave through
+  separate branches. A compiler barrier after the raw word store
+  prevents VC7.1 from merging the stores. A volatile word offset
+  shortens the loop by seven bytes. See the
   [current handoff](RE_HANDOFF.md) for the remaining differences.
 - Script DB (0x1098 polymorphic resource): AddScriptData @0x00450220 validates SCPT, ≤32 file buffers, header 0x24, sorted 8-byte name table; derived vtable 0x0046D0B4 (slots: AddScriptData, package loader 0x0040D400, file loader 0x0040CD20), base 0x0046D0F0 (AddScriptData, 0x0040C810). Owned script pointers +0x0C..+0x88, lookup table +0x8C, nested dwords +0x1090/+0x1094.
 - Opcode 55 negates the 32-bit raw word (NEG EDX at 44F851) after tag conversion and pushes it with float tag 66h.

@@ -597,6 +597,9 @@ EclVmInstruction *EclVmScriptDatabase::FindSubroutine(const char *name)
 }
 
 
+extern "C" void _ReadWriteBarrier();
+#pragma intrinsic(_ReadWriteBarrier)
+
 int EclVmContext::StartSubroutine(
     EclVmContext *volatile caller, unsigned int firstArgument)
 {
@@ -624,13 +627,13 @@ int EclVmContext::StartSubroutine(
     int argumentIndex = firstArgument + 1;
     if (argumentIndex < (*callerInstruction)->operandCount)
     {
-        unsigned int valueOffset = metadataOffset +
-            static_cast<int>(offsetof(EclVmCallArgumentView, integer));
-        unsigned char *argument = reinterpret_cast<unsigned char *>(
+        EclVmScalar *volatile argument = reinterpret_cast<EclVmScalar *>(
             reinterpret_cast<unsigned int>(destination->stack.data) +
             static_cast<unsigned int>(argumentOffset));
+        unsigned int valueOffset = metadataOffset +
+            static_cast<int>(offsetof(EclVmCallArgumentView, integer));
         for (; argumentIndex < (*callerInstruction)->operandCount;
-             argument = reinterpret_cast<unsigned char *>(
+             argument = reinterpret_cast<EclVmScalar *>(
                  reinterpret_cast<unsigned int>(argument) + sizeof(int)),
              argumentIndex = static_cast<int>(static_cast<unsigned int>(argumentIndex) + 1u),
              valueOffset += sizeof(EclVmCallArgumentView),
@@ -656,9 +659,9 @@ int EclVmContext::StartSubroutine(
                     reinterpret_cast<const unsigned char *>(
                     reinterpret_cast<unsigned int>((*callerInstruction)->operands) +
                     metadataOffset))->destinationType == 'f')
-                    reinterpret_cast<EclVmScalar *>(argument)->real = value.real;
+                    argument->real = value.real;
                 else
-                    reinterpret_cast<EclVmScalar *>(argument)->integer =
+                    argument->integer =
                         static_cast<int>(value.real);
             }
             else
@@ -672,11 +675,14 @@ int EclVmContext::StartSubroutine(
                 if (reinterpret_cast<const EclVmCallArgumentView *>(
                     reinterpret_cast<const unsigned char *>(
                     reinterpret_cast<unsigned int>((*callerInstruction)->operands) +
-                    metadataOffset))->destinationType != 'f')
-                    reinterpret_cast<EclVmScalar *>(argument)->integer = value.integer;
-                else
-                    reinterpret_cast<EclVmScalar *>(argument)->real =
+                    metadataOffset))->destinationType == 'f')
+                    argument->real =
                         static_cast<float>(value.integer);
+                else
+                {
+                    argument->integer = value.integer;
+                    _ReadWriteBarrier();
+                }
             }
 
         }
