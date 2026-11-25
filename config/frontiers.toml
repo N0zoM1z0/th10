@@ -15,10 +15,9 @@ residual = ["D7", "DD"]
 [frontier.replay-manager-load-replay]
 function = "ReplayManager::LoadReplay"
 unit = "replay-manager-load-replay"
-candidate_size = 451
+candidate_size = 450
 target_sha256 = "e41ec7c2936cf8757fa9fb3e28f273ea5c919f92ef09a6d9ad231a70d341e7a7"
-residual = ["1D", "97", "A4", "AB", "AF", "B2", "B7-C4", "C9-DC", "DE-E0", "E3-E7", "EC-F5", "F8-FE", "103-10D", "10F-116", "11B-11F", "121-12E", "143", "16B", "17B-180", "183-18B", "18D-192", "197-1A0", "1A5-1AE", "1B0-1B5", "1BA-1BD", "1BF-1C2"]
-
+residual = []
 [frontier.laser-type0-bounce]
 function = "EnemyLaserType0StorageView::Bounce"
 unit = "laser-type0-bounce"

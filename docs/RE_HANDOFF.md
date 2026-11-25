@@ -9,12 +9,11 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 The active owner is `ReplayManager::LoadReplay` at `0x0042A200` in
 `replay-manager-load-replay`, the largest remaining authored owner outside
-the parked ECL scope. Separate header checks and per-iteration stage lookup
-reduce the diagnostic from 359 differing offsets to 160. The 451-byte
-candidate keeps the receiver in ESI and the replay buffer in EBX. The target
-keeps the buffer in EBP and passes the archive size pointer on the stack.
-Try the real `FileSystemOpen` link context with the replay caller and the
-normal-COFF decoder.
+the parked ECL scope. The five-input `ReplayLoadCore` graph has a strict
+warm match of 450 bytes and 18 fields. The real Main checksum and PBG archive
+context gives `FileSystem::OpenFile` an EAX filename and a stack size pointer.
+The replay manager stays in ESI and the packed buffer in EBP. Cold replay
+the loader, then check its direct consumers in their own link graphs.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
