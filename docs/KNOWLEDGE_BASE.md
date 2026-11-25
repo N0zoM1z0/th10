@@ -1626,8 +1626,13 @@ restored the EDI receiver at both calls and the full update comparison.
   probe preserves the default mangling and generated call sequence.
   Adding `/EHs` or `/EHsc` moves the linked address by 0x40. The
   385-byte extent, instruction sequence and ECX receiver are unchanged.
-  The original executable's only direct call to the destructor is
-  the deleting wrapper at `0x0040CC54`.
+  A scan of the original PE for relative branches and literal pointers
+  finds the destructor only in the deleting wrapper's call at `0x0040CC54`.
+  The wrapper has no direct branch references and its only literal pointer
+  is the sixth entry of the Enemy vtable at `0x0046D0D4`. The wrapper saves
+  its ECX receiver before pushing a separate copy for the callee. The
+  callee's `RET 4` removes that copy, while the wrapper's `RET 4` discards
+  the deletion flag.
 - EnemyManager `activeEnemyCount` is at +0x60 (`DEC [ECX+0x60]` in the 386-byte enemy-object destructor; `INC` in Spawn). `spawnCounter` also wraps.
 - `EnemyConfigureInterrupt` records are 16 bytes at EnemyFullObjectView+0x2494; the timer callback is at `(slot+0x24A)*0x10`.
 - `managedVmIds` has 10 entries; script indices into it are unchecked. `loadedAnmResources` has 4 pointers, also accessed with unchecked indices.
