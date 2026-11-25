@@ -7,10 +7,14 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The DirectInput initializer passed cold replay with the worker and release
-helper. Both enumeration callbacks match in `InputDeviceCore`, and the
-supervisor layout consumer `main-release-game` passes its own warm link.
-Select the largest remaining authored owner from the ledgers.
+The active owner is `FrontEndControllerView::DrawStageScores` at
+`0x00431410`, the largest remaining authored owner outside the parked ECL
+scope. The `frontend-stage-scores-draw` candidate in `FrontEndReplaySaveDraw`
+emits 417 of the target's 419 bytes and aligns 98 of 101 instructions. The
+remaining sequence is the loop's first cursor comparison: the target loads
+the cursor and row into registers before the profile pointer, while the
+candidate folds the cursor into a memory operand. All four existing draw
+owners in that image pass their strict comparisons.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available

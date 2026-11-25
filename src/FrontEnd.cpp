@@ -409,20 +409,6 @@ static void DisableChildVmTree(
         FindChildVmId(&controller->vmIds[rootIndex], scriptIndex));
 }
 
-static FrontEndStageScoreRecordView *GetFrontEndStageScoreRecord(int stage)
-{
-    const unsigned int shotWord =
-        static_cast<unsigned int>(g_ReplayShotType) +
-        static_cast<unsigned int>(g_ReplayCharacter) * 3u;
-    const unsigned int stageWord =
-        static_cast<unsigned int>(stage) +
-        static_cast<unsigned int>(g_ReplayDifficulty) * 6u;
-    return reinterpret_cast<FrontEndStageScoreRecordView *>(
-        reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
-        shotWord * 0x437cu + 0x4dcu +
-        stageWord * static_cast<unsigned int>(sizeof(FrontEndStageScoreRecordView)));
-}
-
 static __forceinline int CountPracticeRecordsForDifficulty(int difficulty)
 {
     return CountGameStatisticsRankKind(0, difficulty);
@@ -2371,63 +2357,68 @@ int __stdcall FrontEndControllerView::UpdateStage(
 // TH10_FRONTEND_FUNCTION: 0x00431410 FrontEndControllerView::DrawStageScores
 int FrontEndControllerView::DrawStageScores()
 {
-    AsciiManagerView *ascii = g_AsciiManagerView;
-
     if (screenState >= FRONT_END_SELECTION_ACTIVE &&
         screenState <= FRONT_END_SELECTION_CONFIRMED)
     {
-        ascii->drawShadow = 1;
+        g_AsciiManagerView->drawShadow = 1;
         AnmFloat3View position(80.0f, 80.0f, 0.0f);
 
         if (stateTimer.current >= 10 ||
             screenState == FRONT_END_SELECTION_CONFIRMED)
         {
-            position.x = g_ReplayCharacter == 0 ? 168.0f : 296.0f;
             position.y = 216.0f;
+            position.x = 168.0f;
+            if (g_GameScoreState.history.statisticsGroupA != 0)
+                position.x = 296.0f;
 
-            for (int stage = 1; stage <= 6; ++stage)
+            for (int stage = 1; stage < 7; ++stage)
             {
-                FrontEndStageScoreRecordView *record =
-                    GetFrontEndStageScoreRecord(stage);
+                FrontEndPracticeShotView (*profile)[3] =
+                    reinterpret_cast<FrontEndPracticeShotView (*)[3]>(g_FrontEndProfileData);
                 if (cursor.current == stage - 1)
                 {
-                    if (record->available == 0)
+                    if (profile[g_GameScoreState.history.statisticsGroupA]
+                               [g_GameScoreState.history.statisticsGroupB]
+                            .stages[g_GameScoreState.history.selection.difficulty][stage - 1].available)
                     {
-                        ascii->color = 0xffdfdfdf;
-                    }
-                    else if (screenState == FRONT_END_SELECTION_CONFIRMED &&
-                             stateTimer.current % 4 >= 2)
-                    {
-                        ascii->color = 0xff000000;
+                        if (screenState == FRONT_END_SELECTION_CONFIRMED &&
+                            stateTimer.current % 4 >= 2)
+                            g_AsciiManagerView->color = 0xff000000;
+                        else
+                            g_AsciiManagerView->color = 0xffffff00;
                     }
                     else
                     {
-                        ascii->color = 0xffffff00;
+                        g_AsciiManagerView->color = 0xffdfdfdf;
                     }
                 }
                 else
                 {
-                    ascii->color = 0xff808080;
+                    g_AsciiManagerView->color = 0xff808080;
                 }
 
-                if (record->available == 0)
+                if (profile[g_GameScoreState.history.statisticsGroupA]
+                           [g_GameScoreState.history.statisticsGroupB]
+                        .stages[g_GameScoreState.history.selection.difficulty][stage - 1].available == 0)
                 {
-                    ascii->AddFormatText(
+                    g_AsciiManagerView->AddFormatText(
                         &position, "%s  ---------",
                         g_FrontEndStageNames[stage]);
                 }
                 else
                 {
-                    ascii->AddFormatText(
-                        &position, "%s  %.8d0",
-                        g_FrontEndStageNames[stage], record->score);
+                    g_AsciiManagerView->AddFormatText(
+                        &position, "%s  %.8d0", g_FrontEndStageNames[stage],
+                        profile[g_GameScoreState.history.statisticsGroupA]
+                               [g_GameScoreState.history.statisticsGroupB]
+                            .stages[g_GameScoreState.history.selection.difficulty][stage - 1].score);
                 }
                 position.y += 18.0f;
             }
         }
 
-        ascii->color = 0xffffffff;
-        ascii->drawShadow = 0;
+        g_AsciiManagerView->color = 0xffffffff;
+        g_AsciiManagerView->drawShadow = 0;
     }
     return 1;
 }

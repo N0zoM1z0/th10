@@ -34,7 +34,16 @@ struct GameScoreStateView
         {
             int statisticsGroupA;
             int statisticsGroupB;
-            unsigned char unknown30[0x0c];
+            union
+            {
+                unsigned char unknown30[0x0c];
+                struct
+                {
+                    unsigned char unknown030[4];
+                    int difficulty;
+                    unsigned char unknown038[4];
+                } selection;
+            };
         } history;
     };
     int selectedStage;
@@ -65,7 +74,8 @@ typedef char GameScoreStateHistoryGroupsAt28[
     (offsetof(GameScoreStateView, unknown28) == 0x28 &&
      offsetof(GameScoreStateView, history.statisticsGroupA) == 0x28 &&
      offsetof(GameScoreStateView, history.statisticsGroupB) == 0x2c &&
-     offsetof(GameScoreStateView, history.unknown30) == 0x30) ? 1 : -1];
+     offsetof(GameScoreStateView, history.unknown30) == 0x30 &&
+     offsetof(GameScoreStateView, history.selection.difficulty) == 0x34) ? 1 : -1];
 typedef char GameScoreStateStageFields[
     (offsetof(GameScoreStateView, selectedStage) == 0x3c &&
      offsetof(GameScoreStateView, nextStage) == 0x40) ? 1 : -1];

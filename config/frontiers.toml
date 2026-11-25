@@ -25,3 +25,10 @@ unit = "game-statistics-initialize-record"
 candidate_size = 274
 target_sha256 = "62905fe172fb66ca164498ab8964b6d0f9e8b09d783ceca25ebe2a1062712953"
 residual = ["14", "1D", "29", "47", "4D", "50", "52", "58-59", "5B", "61", "64", "70", "72", "76", "8B-8E", "90-93", "A6", "C8"]
+
+[frontier.frontend-stage-scores-draw]
+function = "FrontEndControllerView::DrawStageScores"
+unit = "frontend-stage-scores-draw"
+candidate_size = 417
+target_sha256 = "cbb90dcc2b5f99c4e9a55cf45b4bdb71ac2e45b235bec64c28661cdd15a1ef9b"
+residual = ["B", "14", "51", "81", "86-8F", "94-99", "9E-B2", "B4-D8", "DC-E4", "E6-E7", "E9-F2", "F4-FE", "100-101", "106-107", "10C-111", "116-132", "137-13E", "143-144", "149-156", "15B-15C", "161-169", "16E-16F", "174-18A", "18D-192", "197-19B", "19D-1A2"]
