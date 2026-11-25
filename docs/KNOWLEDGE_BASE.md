@@ -1200,23 +1200,29 @@ frontier; do not refresh a baseline merely to accept the new positions.
   reset schedule. Removing volatile from speed or adding it to flags
   writeback alone was byte-neutral in the 320/335 control.
 - **AnmRenderManagerView::CopySurfaceToBackbuffer @0x447FD0 (330)**:
-  direct target decoding confirms `[0x447FD0, 0x44811A)` is all instructions.
+  the maintained source passes its first canonical cold build: all 330
+  bytes and seven fields match after snapshotting `g_Direct3DDevice`
+  immediately before CreateRenderTarget. The selected cold replay and
+  same-image Bullet guard are pending. Keep the existing D3D interfaces.
+
+  The snapshot holds the device in EAX before evaluating the format and
+  surface dimensions. The index then uses ECX and the surface-info base
+  uses EBP, avoiding the original candidate's longer indexed height load.
+  All later register choices and rectangle/point stores also match. The
+  original source evaluated the format first and produced 331 bytes.
+  The snapshot is local to CreateRenderTarget; the fallback and final
+  UpdateSurface still reload the global device at their original points.
+
+  Direct target decoding confirms `[0x447FD0, 0x44811A)` is all instructions.
   The final `c2 10 00` starts at 0x448117; alignment CC bytes begin at
   0x44811A. The old ledger note incorrectly treated the RET immediate as
-  padding. Keep the complete 330-byte boundary.
-
-  Attested local Ghidra reports no entry references. The retained body in
-  `BulletHorizontalWrap` nevertheless has the target's EBX manager, EAX index
-  and RET 16 ABI. Its fully decoded PDB contribution is 331 bytes; the new
-  candidate unit `anm-copy-surface-to-backbuffer` correctly rejects that
-  extent before granting any byte credit. Seven target fields are reviewed:
-  device at +0x16/+0x4C/+0x87/+0x128, backbuffer format at +0x63/+0x82,
-  and D3DXLoadSurfaceFromSurface at +0xC4. The analysis is under
+  padding. Keep the complete 330-byte boundary. Attested local Ghidra
+  reports no entry references. The retained `BulletHorizontalWrap` graph
+  supplies the target EBX manager, EAX index and RET 16 ABI.
+  Unit `anm-copy-surface-to-backbuffer` binds the device at
+  +0x16/+0x4C/+0x87/+0x128, format at +0x63/+0x82, and
+  D3DXLoadSurfaceFromSurface at +0xC4. Analysis and receipts are under
   `.analysis/anm-copy-backbuffer/`.
-  Start with CreateRenderTarget input scheduling: the target reloads the
-  device before the format and uses ECX for the surface-info index, whereas
-  the candidate loads the format first and uses EAX for that index. Keep
-  the existing D3D interfaces and compare the entire owner after the edit.
 - **Player::~Player @0x424ED0 (325)**: 333. [2026-10-31]
 - **FrontEndInsertScore @0x421FA0 (316)**: 263; the helper uses 64-bit `100.0`
   where the target uses 32-bit. [2026-10-15]

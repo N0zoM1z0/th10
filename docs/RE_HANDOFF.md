@@ -14,16 +14,15 @@ owner apart from the explicitly deferred `StartSubroutine`. The old boundary
 note was wrong: `RET 16` starts at `0x00448117` and occupies the last three
 bytes; CC alignment begins at `0x0044811A`.
 
-Use candidate unit `anm-copy-surface-to-backbuffer` in `BulletHorizontalWrap`.
-The retained baseline has the correct EBX manager/EAX index/RET 16 ABI,
-but its full PDB contribution is 331 bytes. The strict comparator rejects
-that extent against the reviewed 330-byte target. Attested local Ghidra
-reports no entry references. The source, disassembly, baseline and query
-results are under `.analysis/anm-copy-backbuffer/`. Start by staging the
-device reload before CreateRenderTarget's format argument; the target uses
-ECX for the surface-info index while the candidate uses EAX. Compare the
-complete owner and all seven fields. Preserve the D3D adapter evidence and
-interfaces while working on this function.
+Use unit `anm-copy-surface-to-backbuffer` in `BulletHorizontalWrap`.
+The device snapshot before CreateRenderTarget passes the first canonical
+strict comparison: all 330 bytes and seven fields, including the EBX manager/
+EAX index/RET 16 ABI. Its selected cold replay is running; finish that proof
+before accepting or changing owners.
+Recheck `bullet-update-absolute-direction` in that same graph as the narrow
+LTCG guard. Attested local Ghidra reports no entry references. Preserve the
+D3D adapter evidence and interfaces. Current analysis and receipts are under
+`.analysis/anm-copy-backbuffer/`.
 
 `BulletRuntimeView::UpdateAbsoluteDirectionChange` is accepted: two independent
 canonical builds match 335 bytes and eight fields, and its direct runtime

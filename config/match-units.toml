@@ -40224,7 +40224,6 @@ linkages = [
 ]
 
 [units.anm-copy-surface-to-backbuffer]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/BulletManager.cpp"
 pdb_source = "src/AnmManager.cpp"
