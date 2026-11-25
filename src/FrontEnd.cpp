@@ -2354,6 +2354,13 @@ int __stdcall FrontEndControllerView::UpdateStage(
 }
 
 
+static __forceinline const FrontEndStageScoreRecordView &GetFrontEndStageScoreRecord(int stage)
+{
+    return reinterpret_cast<const FrontEndPracticeShotView (*)[3]>(g_FrontEndProfileData)
+        [g_GameScoreState.history.statisticsGroupA][g_GameScoreState.history.statisticsGroupB]
+        .stages[g_GameScoreState.history.selection.difficulty][stage - 1];
+}
+
 // TH10_FRONTEND_FUNCTION: 0x00431410 FrontEndControllerView::DrawStageScores
 int FrontEndControllerView::DrawStageScores()
 {
@@ -2373,13 +2380,9 @@ int FrontEndControllerView::DrawStageScores()
 
             for (int stage = 1; stage < 7; ++stage)
             {
-                FrontEndPracticeShotView (*profile)[3] =
-                    reinterpret_cast<FrontEndPracticeShotView (*)[3]>(g_FrontEndProfileData);
                 if (cursor.current == stage - 1)
                 {
-                    if (profile[g_GameScoreState.history.statisticsGroupA]
-                               [g_GameScoreState.history.statisticsGroupB]
-                            .stages[g_GameScoreState.history.selection.difficulty][stage - 1].available)
+                    if (GetFrontEndStageScoreRecord(stage).available)
                     {
                         if (screenState == FRONT_END_SELECTION_CONFIRMED &&
                             stateTimer.current % 4 >= 2)
@@ -2397,9 +2400,7 @@ int FrontEndControllerView::DrawStageScores()
                     g_AsciiManagerView->color = 0xff808080;
                 }
 
-                if (profile[g_GameScoreState.history.statisticsGroupA]
-                           [g_GameScoreState.history.statisticsGroupB]
-                        .stages[g_GameScoreState.history.selection.difficulty][stage - 1].available == 0)
+                if (GetFrontEndStageScoreRecord(stage).available == 0)
                 {
                     g_AsciiManagerView->AddFormatText(
                         &position, "%s  ---------",
@@ -2409,9 +2410,7 @@ int FrontEndControllerView::DrawStageScores()
                 {
                     g_AsciiManagerView->AddFormatText(
                         &position, "%s  %.8d0", g_FrontEndStageNames[stage],
-                        profile[g_GameScoreState.history.statisticsGroupA]
-                               [g_GameScoreState.history.statisticsGroupB]
-                            .stages[g_GameScoreState.history.selection.difficulty][stage - 1].score);
+                        GetFrontEndStageScoreRecord(stage).score);
                 }
                 position.y += 18.0f;
             }

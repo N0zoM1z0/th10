@@ -38410,7 +38410,24 @@ functions = ["FrontEndControllerView::DrawStageScores"]
 symbol = "?DrawStageScores@FrontEndControllerView@@QAEHXZ"
 target_address = 0x00431410
 size = 419
-linkages = []
+linkages = [
+  { offset = 0x01A, type = "DIR32", symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A", target = 0x004776E0 },
+  { offset = 0x056, type = "DIR32", symbol = "?g_GameScoreState@@3UGameScoreStateView@@A", target = 0x00474C40, addend = 0x28 },
+  { offset = 0x07A, type = "DIR32", symbol = "?g_GameScoreState@@3UGameScoreStateView@@A", target = 0x00474C40, addend = 0x28 },
+  { offset = 0x08A, type = "DIR32", symbol = "?g_FrontEndProfileData@@3PAEA", target = 0x0047783C },
+  { offset = 0x092, type = "DIR32", symbol = "?g_GameScoreState@@3UGameScoreStateView@@A", target = 0x00474C40, addend = 0x2C },
+  { offset = 0x09C, type = "DIR32", symbol = "?g_GameScoreState@@3UGameScoreStateView@@A", target = 0x00474C40, addend = 0x34 },
+  { offset = 0x104, type = "DIR32", symbol = "?g_GameScoreState@@3UGameScoreStateView@@A", target = 0x00474C40, addend = 0x28 },
+  { offset = 0x10A, type = "DIR32", symbol = "?g_GameScoreState@@3UGameScoreStateView@@A", target = 0x00474C40, addend = 0x2C },
+  { offset = 0x114, type = "DIR32", symbol = "?g_GameScoreState@@3UGameScoreStateView@@A", target = 0x00474C40, addend = 0x34 },
+  { offset = 0x135, type = "DIR32", symbol = "?g_FrontEndStageNames@@3PAPBDA", target = 0x0047471C },
+  { offset = 0x141, type = "DIR32", symbol = "??_C@_0O@DLJABDEF@?$CFs?5?5?9?9?9?9?9?9?9?9?9?$AA@", target = 0x0046F008 },
+  { offset = 0x147, type = "REL32", symbol = "?AddFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ", target = 0x00401630 },
+  { offset = 0x159, type = "DIR32", symbol = "??_C@_09MGHDHLGG@?$CFs?5?5?$CF?48d0?$AA@", target = 0x0046EFFC },
+  { offset = 0x15F, type = "REL32", symbol = "?AddFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ", target = 0x00401630 },
+  { offset = 0x16C, type = "DIR32", symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A", target = 0x004776E0 },
+  { offset = 0x172, type = "DIR32", symbol = "__real@41900000", target = 0x00470C0C },
+]
 
 [units.frontend-practice-draw]
 source = "src/FrontEnd.cpp"
