@@ -1757,6 +1757,13 @@ restored the EDI receiver at both calls and the full update comparison.
   rank. Reusing the panel local and taking member references preserve the
   candidate. A named VM result reads the stack return slot instead of
   dereferencing EAX, and direct unsigned rank subtraction emits ADD -128.
+  Linking `AnmLoadedStartScript.cpp` makes the world VM producer match
+  118 bytes and seven fields in the same image. The Player body is
+  byte-neutral under this change, ruling out the script loader as the
+  cause of the early EBX save.
+  A reference to the global panel pointer restores EAX for rank but
+  reloads the panel after clamping. The target loads the panel once
+  before bonus invalidation and retains it in ESI.
 - Option reset flags are at Player 332C/33C4/345C/34F4; draw position 3C0/3C4; signed coordinates 3CC/3D0 scaled by 0.01f (470B00).
 - `g_AnmGameSpeed` is 476F78.
 - `+0x08/+0x0C`: update/draw callback nodes (0x24-byte nodes; callback at +0x08, owner at +0x20). Priorities 0x10/0x16. Update entry 0x426500 does `push ecx; call 0x425730; ret`. Draw entry 0x426510 does `mov eax,ecx; jmp 0x426360`.
