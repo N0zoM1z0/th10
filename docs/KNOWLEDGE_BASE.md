@@ -1784,6 +1784,10 @@ restored the EDI receiver at both calls and the full update comparison.
   separately. The power display reads the signed short at score
   offset `+0x08`, and the rank adjustment writes offset `+0x58` of
   the same score object.
+  Compiling the transition in the Bomb factory translation unit with
+  its real lifecycle present preserves the same register difference.
+  The explicit Pentium scheduling profiles and link-time dead-code
+  elimination also preserve it while the 81-byte invalidator matches.
 - Option reset flags are at Player 332C/33C4/345C/34F4; draw position 3C0/3C4; signed coordinates 3CC/3D0 scaled by 0.01f (470B00).
 - `g_AnmGameSpeed` is 476F78.
 - `+0x08/+0x0C`: update/draw callback nodes (0x24-byte nodes; callback at +0x08, owner at +0x20). Priorities 0x10/0x16. Update entry 0x426500 does `push ecx; call 0x425730; ret`. Draw entry 0x426510 does `mov eax,ecx; jmp 0x426360`.
