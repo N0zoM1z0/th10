@@ -21,6 +21,10 @@ Reading and calculating the rank before bonus invalidation produces a
 394-byte trial. It matches the first 282 bytes, eleven linked fields and
 the original branches in that prefix. The trial keeps rank in ESI across
 the call. The target keeps the panel there and reads rank afterward.
+The pointer-cursor trial matches the complete 397-byte caller and its 17
+fields. It expands the exact 81-byte invalidator to 176 bytes, where EAX
+advances through the VMs. Keep the indexed invalidator until both bodies
+match in the same graph.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
