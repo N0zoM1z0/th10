@@ -1614,6 +1614,12 @@ restored the EDI receiver at both calls and the full update comparison.
   equal the ordinary local build. Loading the float word directly through
   its scalar pointer changes the owner to 552 bytes. A volatile float
   read emits an x87 load and changes it to 555 bytes.
+  Repeating the allocator trace after removing the store barrier gives the
+  same interference penalty and preferences. Duplicating the float arm for
+  the two source tags produces a 587-byte owner; expressing those tags as
+  switch cases produces 557 bytes. Neither control-flow form preserves the
+  target's shared branch, so the remaining allocation difference needs a
+  change in the existing shared path or its live ranges.
 - In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
   the destination address LEA to EAX and advances the integer register
   cursor to ECX. The 551-byte candidate with a plain caller parameter
