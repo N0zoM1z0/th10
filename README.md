@@ -123,8 +123,3 @@ and old reports can be deleted after recording useful findings.
 - [`docs/RE_HANDOFF.md`](docs/RE_HANDOFF.md) — current owners, retained comparisons and resume commands.
 - [`docs/RE_ARTIFACTS.md`](docs/RE_ARTIFACTS.md) — required private inputs, current unresolved contexts, and cleanup policy.
 - [`docs/KNOWLEDGE_BASE.md`](docs/KNOWLEDGE_BASE.md) — TH10-only knowledge.
-
-## License
-
-Repository-authored code and documentation are provided under the MIT License.
-This does not grant rights to the original game or its assets.
