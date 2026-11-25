@@ -1641,6 +1641,15 @@ restored the EDI receiver at both calls and the full update comparison.
   cursor ECX. Reversing the source comparison changes the function's other
   register assignments and gives 419 matching bytes; negating the original
   comparison preserves the 542-byte match.
+  Immediately before that latch, local temporary 0x2FC supplies the float
+  to integer result's destination reload. `RegAssign` chooses EDX for it
+  and advances the integer cursor to EAX, which remains the cursor at the
+  count load. Capturing the destination in a pointer or reference before
+  the conversion adds a stack temporary and expands the owner to 556 bytes.
+  Capturing the converted integer while retaining the direct destination
+  access leaves the 542-byte match unchanged. Expressing loop continuation
+  as a boolean after the index increment or cursor updates is also neutral,
+  for both ordinary and volatile count reads.
   The float operand candidate has ECX and EAX preferences and scores
   0, -1 and 0 for EAX, ECX and EDX, selecting ECX. Qualifying either
   result-tag instruction read as volatile changes the complete body
