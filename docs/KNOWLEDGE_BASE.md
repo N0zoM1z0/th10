@@ -1620,6 +1620,11 @@ restored the EDI receiver at both calls and the full update comparison.
   switch cases produces 557 bytes. Neither control-flow form preserves the
   target's shared branch, so the remaining allocation difference needs a
   change in the existing shared path or its live ranges.
+  In this 542-byte-match form, independently removing volatile access to
+  the destination cursor, the latch instruction slot, or the value offset
+  produces owner lengths of 542, 544, and 546 bytes respectively. The
+  operand readers may call host virtual resolvers, so an instruction pointer
+  saved before resolution cannot replace the post-call reload in general.
 - In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
   the destination address LEA to EAX and advances the integer register
   cursor to ECX. The 551-byte candidate with a plain caller parameter
