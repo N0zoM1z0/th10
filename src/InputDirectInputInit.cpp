@@ -2,14 +2,18 @@
 #include "GameErrorContext.hpp"
 #include "InputPolling.hpp"
 
+struct InputDirect8Interface;
+struct InputDirectDevice;
+struct InputDirectObjectInstanceView;
+
 // Original 0x43B8D0: device initialization is part of the input supervisor.
 // The offsets are from its original EAX receiver, not a new allocation.
 struct InputDeviceOwnerView
 {
     unsigned char unknown000[0x0c];
-    void *directInput8;                 // +0x0c / global 0x491c34
-    InputDeviceView *keyboard;          // +0x10 / global 0x491c38
-    InputDeviceView *joystick;          // +0x14 / global 0x491c3c
+    InputDirect8Interface *directInput8; // +0x0c / global 0x491c34
+    InputDirectDevice *keyboard;        // +0x10 / global 0x491c38
+    InputDirectDevice *joystick;        // +0x14 / global 0x491c3c
     unsigned char unknown018[0x48-0x18];
     HWND window;                        // +0x48
     unsigned char unknown04C[0x150-0x4c];
@@ -22,11 +26,11 @@ typedef char InputDeviceOwnerOffsets[
      offsetof(InputDeviceOwnerView, window)==0x48 &&
      offsetof(InputDeviceOwnerView, flags)==0x150) ? 1 : -1];
 
-struct InputDirect8Interface;
 struct InputDirect8Methods
 {
-    void *query, *addref, *release;
-    long (__stdcall *CreateDevice)(InputDirect8Interface *, const void *, InputDeviceView **, void *);
+    void *query, *addref;
+    unsigned long (__stdcall *Release)(InputDirect8Interface *);
+    long (__stdcall *CreateDevice)(InputDirect8Interface *, const void *, InputDirectDevice **, void *);
     long (__stdcall *EnumDevices)(InputDirect8Interface *, unsigned int,
         int (__stdcall *)(const unsigned char *, void *), void *, unsigned int);
 };
@@ -35,20 +39,22 @@ struct InputDirect8Interface { InputDirect8Methods *vtable; };
 struct InputDirectDeviceMethods
 {
     void *query, *addref;
-    unsigned long (__stdcall *Release)(InputDeviceView *);
-    long (__stdcall *GetCapabilities)(InputDeviceView *, void *);
-    long (__stdcall *EnumObjects)(InputDeviceView *,
-        int (__stdcall *)(const void *, void *), void *, unsigned int);
+    unsigned long (__stdcall *Release)(InputDirectDevice *);
+    long (__stdcall *GetCapabilities)(InputDirectDevice *, MainInputCapabilitiesView *);
+    long (__stdcall *EnumObjects)(InputDirectDevice *,
+        int (__stdcall *)(const InputDirectObjectInstanceView *, void *), void *, unsigned int);
     void *GetProperty;
     void *SetProperty;
-    long (__stdcall *Acquire)(InputDeviceView *);
+    long (__stdcall *Acquire)(InputDirectDevice *);
     void *Unacquire;
     void *GetDeviceState;
     void *GetDeviceData;
-    long (__stdcall *SetDataFormat)(InputDeviceView *, const void *);
+    long (__stdcall *SetDataFormat)(InputDirectDevice *, const void *);
     void *SetEventNotification;
-    long (__stdcall *SetCooperativeLevel)(InputDeviceView *, HWND, unsigned int);
+    long (__stdcall *SetCooperativeLevel)(InputDirectDevice *, HWND, unsigned int);
 };
+
+struct InputDirectDevice { InputDirectDeviceMethods *vtable; };
 
 extern "C" long __stdcall DirectInput8Create(HINSTANCE, unsigned int,
     const void *, void **, void *);
@@ -60,27 +66,19 @@ extern char g_InputCreateFailureLog[];
 extern char g_InputKeyboardFormatFailureLog[];
 extern char g_InputKeyboardCoopFailureLog[];
 extern char g_InputKeyboardAcquireLog[];
-extern char g_InputDeviceEnumeratedLog[];
 extern char g_InputJoystickEnumeratedLog[];
-extern int __stdcall InputEnumPadDeviceCallback(const unsigned char *,void *);
-struct InputDirectObjectInstanceView;
+extern int __stdcall InputEnumPadDeviceCallback(const unsigned char *, void *);
 extern int __stdcall InputEnumAxisRangeCallback(const InputDirectObjectInstanceView *, void *);
-
-static inline InputDirectDeviceMethods *InputMethods(InputDeviceView *device)
-{
-    return reinterpret_cast<InputDirectDeviceMethods *>(device->vtable);
-}
 
 // Target original 0x00421D20: conditional release and clear of the parent
 // DirectInput8 pointer. The original incoming receiver is held in ESI, which
 // the actual InputInitializeDevices caller may promote under VC7.1 /GL.
 __declspec(noinline) void InputDeviceOwnerView::ReleaseDirectInput8()
 {
-    InputDeviceView *const input =
-        reinterpret_cast<InputDeviceView *>(directInput8);
+    InputDirect8Interface *const input = directInput8;
     if (input != NULL)
     {
-        InputMethods(input)->Release(input);
+        input->vtable->Release(input);
         directInput8 = NULL;
     }
 }
@@ -89,77 +87,75 @@ __declspec(noinline) void InputDeviceOwnerView::ReleaseDirectInput8()
 // external code/data boundaries. The success/failure cleanup is not omitted.
 __declspec(noinline) int InputInitializeDevices(InputDeviceOwnerView *owner)
 {
-    HINSTANCE instance = reinterpret_cast<HINSTANCE>(GetWindowLongA(owner->window,-6));
+    HINSTANCE instance = reinterpret_cast<HINSTANCE>(GetWindowLongA(owner->window, -6));
     if ((owner->flags & 0x08u) != 0)
         return -1;
 
-    if (DirectInput8Create(instance,0x800,g_InputDirectInputIID,
-            &owner->directInput8,NULL) < 0)
+    if (DirectInput8Create(instance, 0x800, g_InputDirectInputIID,
+            reinterpret_cast<void **>(&owner->directInput8), NULL) < 0)
     {
         owner->directInput8 = NULL;
         th10::g_GameErrorContext.Log(g_InputCreateFailureLog);
         return -1;
     }
 
-    InputDirect8Interface *input = static_cast<InputDirect8Interface *>(owner->directInput8);
-    if (input->vtable->CreateDevice(input,g_InputKeyboardGuid,&owner->keyboard,NULL) < 0)
+    InputDirect8Interface *input = owner->directInput8;
+    if (input->vtable->CreateDevice(input, g_InputKeyboardGuid, &owner->keyboard, NULL) < 0)
     {
         if (owner->directInput8)
         {
-            InputDirectDeviceMethods *methods=InputMethods(reinterpret_cast<InputDeviceView *>(owner->directInput8));
-            methods->Release(reinterpret_cast<InputDeviceView *>(owner->directInput8));
-            owner->directInput8=NULL;
+            owner->directInput8->vtable->Release(owner->directInput8);
+            owner->directInput8 = NULL;
         }
         th10::g_GameErrorContext.Log(g_InputCreateFailureLog);
         return -1;
     }
-    if (InputMethods(owner->keyboard)->SetDataFormat(
+    if (owner->keyboard->vtable->SetDataFormat(
             owner->keyboard, g_InputKeyboardDataFormat) < 0)
     {
-        InputDeviceView *keyboard = owner->keyboard;
+        InputDirectDevice *keyboard = owner->keyboard;
         if (keyboard)
         {
-            InputMethods(keyboard)->Release(keyboard);
-            owner->keyboard=NULL;
+            keyboard->vtable->Release(keyboard);
+            owner->keyboard = NULL;
         }
         if (owner->directInput8)
         {
-            InputDirectDeviceMethods *methods=InputMethods(reinterpret_cast<InputDeviceView *>(owner->directInput8));
-            methods->Release(reinterpret_cast<InputDeviceView *>(owner->directInput8));
-            owner->directInput8=NULL;
+            owner->directInput8->vtable->Release(owner->directInput8);
+            owner->directInput8 = NULL;
         }
         th10::g_GameErrorContext.Log(g_InputKeyboardFormatFailureLog);
         return -1;
     }
-    if (InputMethods(owner->keyboard)->SetCooperativeLevel(
+    if (owner->keyboard->vtable->SetCooperativeLevel(
             owner->keyboard, owner->window, 0x16) < 0)
     {
-        InputDeviceView *keyboard = owner->keyboard;
+        InputDirectDevice *keyboard = owner->keyboard;
         if (keyboard)
         {
-            InputMethods(keyboard)->Release(keyboard);
-            owner->keyboard=NULL;
+            keyboard->vtable->Release(keyboard);
+            owner->keyboard = NULL;
         }
         owner->ReleaseDirectInput8();
         th10::g_GameErrorContext.Log(g_InputKeyboardCoopFailureLog);
         return -1;
     }
-    InputDeviceView *keyboard = owner->keyboard;
-    InputMethods(keyboard)->Acquire(keyboard);
+    InputDirectDevice *keyboard = owner->keyboard;
+    keyboard->vtable->Acquire(keyboard);
     th10::g_GameErrorContext.Log(g_InputKeyboardAcquireLog);
-    input=static_cast<InputDirect8Interface *>(owner->directInput8);
-    input->vtable->EnumDevices(input,4,&InputEnumPadDeviceCallback,NULL,1);
+    input = owner->directInput8;
+    input->vtable->EnumDevices(input, 4, &InputEnumPadDeviceCallback, NULL, 1);
     if (owner->joystick)
     {
-        InputMethods(owner->joystick)->SetDataFormat(
+        owner->joystick->vtable->SetDataFormat(
             owner->joystick, g_InputJoystickDataFormat);
-        InputMethods(owner->joystick)->SetCooperativeLevel(
+        owner->joystick->vtable->SetCooperativeLevel(
             owner->joystick, owner->window, 10);
         g_MainSupervisorView.padCapabilities.size = sizeof(MainInputCapabilitiesView);
-        InputMethods(owner->joystick)->GetCapabilities(
+        owner->joystick->vtable->GetCapabilities(
             owner->joystick, &g_MainSupervisorView.padCapabilities);
-        InputMethods(owner->joystick)->EnumObjects(owner->joystick,
-            reinterpret_cast<int (__stdcall *)(const void *,void *)>(&InputEnumAxisRangeCallback),NULL,0);
+        owner->joystick->vtable->EnumObjects(owner->joystick,
+            &InputEnumAxisRangeCallback, NULL, 0);
         th10::g_GameErrorContext.Log(g_InputJoystickEnumeratedLog);
     }
     return 0;

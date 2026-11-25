@@ -31,4 +31,4 @@ function = "InputInitializeDevices"
 unit = "input-initialize-devices"
 candidate_size = 439
 target_sha256 = "927343e54fd612dbeea353fd332fbb6deb9c3ee5e960a8af28a181b2eda4ec36"
-residual = ["B1", "B4", "C3", "C6", "E8", "EB", "EE", "F1", "FE", "101", "12A", "12D", "141", "152", "15C", "164", "167", "16D", "170", "173", "183", "18B", "191", "19D"]
+residual = []

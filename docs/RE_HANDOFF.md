@@ -9,11 +9,10 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 The active owner is `InputInitializeDevices` at `0x0043B8D0`, the largest
 remaining authored owner outside the parked ECL scope. The four-input
-`InputDeviceCore` graph now emits all 439 bytes with 29 bound fields. The
-EAX receiver, ECX log receiver, branch destinations and supervisor pad
-capabilities at +0x1C agree. The remaining 24 byte differences are volatile
-register choices after the keyboard data-format call. Use
-`scripts/check-frontier.py input-initialize-devices` to compare this owner.
+`InputDeviceCore` graph has a strict 439-byte warm match with 29 fields.
+Separate COM interface and device types restore the target register choices
+after `SetDataFormat`. Rebuild the initializer, worker and release helper
+with explicit cold replay selectors.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
