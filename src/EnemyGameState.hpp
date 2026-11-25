@@ -47,7 +47,19 @@ struct EnemyGameStateView
 
     int UpdateSpellPanel();
     int DrawPanelVms();
-    void InvalidateSpellBonus();
+    // Clear the timed spell bonus and keep front VM slot two.
+    void InvalidateSpellBonus()
+    {
+        if (spellTimer.current < 60)
+            return;
+        currentSpellBonus = 0;
+        flags378C &= ~2u;
+        for (int slot = 0; slot < 8; ++slot)
+        {
+            if (slot != 2)
+                frontVms[slot].flags35C &= ~2u;
+        }
+    }
     void __stdcall StartSpell(int index, const char *name, int duration, int);
 };
 typedef char EnemySpellEmbeddedVmsAt10[

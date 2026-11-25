@@ -2795,20 +2795,6 @@ void PlayerTimerView::Subtract(float value)
     current = static_cast<int>(subframe);
 }
 
-// Target405500: invalidate the timed spell bonus, retaining front VM slot two.
-void EnemyGameStateView::InvalidateSpellBonus()
-{
-    if (spellTimer.current < 60)
-        return;
-    currentSpellBonus = 0;
-    flags378C &= ~2u;
-    for (int slot = 0; slot < 8; ++slot)
-    {
-        if (slot != 2)
-            frontVms[slot].flags35C &= ~2u;
-    }
-}
-
 // Target405860: begin the input-triggered power transition and its effect VM.
 int ScriptViewerBombOwnerView::StartPowerTransition()
 {

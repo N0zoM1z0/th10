@@ -7,31 +7,9 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `ScriptViewerBombOwnerView::StartPowerTransition` at
-`0x00405860` (397 bytes). Use the real Player update link to preserve
-the stack receiver and both callers. The Bomb factory publishes the
-same `0x004776EC` object that they pass on the stack. The remaining
-differences are the EBX save around VM creation, the panel receiver
-retained after bonus invalidation, and the final rank and mode stores.
-The 3,112-byte Player update still matches both calls. The six Bomb
-creation, registration, update and destruction units also pass cold.
-The Player collision handler and state-2 transition now reuse the indexed
-invalidator and match their full target bodies with it inlined.
-Build `player-start-power-transition` for the 15-input candidate and
-compare its 17 fields with `scripts/compare-linked-function.py --unit
-player-start-power-transition`. The real script loader closes the VM
-creation callee's 118-byte comparison in this graph. The Player body
-still has the same register differences.
-Reading and calculating the rank before bonus invalidation produces a
-394-byte trial. It matches the first 282 bytes, eleven linked fields and
-the original branches in that prefix. The trial keeps rank in ESI across
-the call. The target keeps the panel there and reads rank afterward.
-The pointer-bound loop trial matches all 397 caller bytes and 17 fields
-while emitting 69 bytes for the 81-byte invalidator. The indexed
-invalidator remains the maintained source. Both functions need to match
-in the same link. The transition reads character and power from offsets
-`+0x28` and `+0x08` of the score object at `0x00474C40`. Rank uses
-`+0x58`.
+There is no active function after the Bomb power transition and repository
+cleanup. Use the match and origin ledgers to choose the next authored
+function when reconstruction resumes.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -67,6 +45,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `player-start-power-transition` | 397 B | `PlayerStartPowerTransition`, 17 fields. The in-class indexed invalidator preserves the 81-byte outline in the same link and keeps the panel in ESI across its call. The two Player update calls retain the stack receiver. |
 | `enemy-spell-panel-destructor` | 402 B | `SpellPanelDestructor` with `/EHs`, 36 fields and three VM-array unwind actions. The receiver is on the stack with RET 4. |
 | `laser-type0-bounce` | 410 B | `LaserLineUpdate`, 17 fields and the real type-0 virtual slot. Both spawn calls take the manager in ESI and the request in EDI. |
 | `startup-worker-destructor` | 417 B | `StartupDestructorCore`, 40 fields and nine local branches. Both member unwind actions bind to their concrete destructors. |

@@ -1747,61 +1747,24 @@ restored the EDI receiver at both calls and the full update comparison.
 - `GetDamageAtPosition`: ECX owner 4776EC, EAX position. Globals: 4776F4 game state, 477704 gate, 474C68 int. Results are 3, 38, 38/5 (gate), 23/26, 20/16 or 0.
 - `GetPlanarBounds`: ECX center, ESI min, EDX max, EAX extent; 0.5 at 470B0C.
 - Shot rows 428160: unsigned16 power 474C48 /20, clamped to 4; optionMode+5; .sht+110. Descriptor rows are 34 bytes, ending at a negative interval. `SpawnShot` takes 3 stack values, RET12. `UpdateShots`: stack Player, RET4. Shot callbacks get ECX Player, EDX shot. There are 128 shots and 32 effects.
-- `StartPowerTransition` at `0x00405860` takes the owner on the stack and
-  returns -1 if active. Both Player states read the pointer from
-  `0x004776EC`, where the Bomb factory publishes its 0x48-byte object.
-  The transition initializes that object's timer and state, selects script
-  400, 407 or 441, starts the effect VM, plays cue 38, deducts 128 rank and
-  updates the mode. The Player update link reproduces the 397-byte
-  extent. Its first difference is an early EBX save at `+0x4F` instead of
-  `+0xBD`. After bonus invalidation the target keeps the panel in ESI and
-  uses EAX for rank. The candidate keeps the panel in EAX and uses ECX for
-  rank. Reusing the panel local and taking member references preserve the
-  candidate. A named VM result reads the stack return slot instead of
-  dereferencing EAX, and direct unsigned rank subtraction emits ADD -128.
-  Linking `AnmLoadedStartScript.cpp` makes the world VM producer match
-  118 bytes and seven fields in the same image. The Player body is
-  byte-neutral under this change, ruling out the script loader as the
-  cause of the early EBX save.
-  A reference to the global panel pointer restores EAX for rank but
-  reloads the panel after clamping. The target loads the panel once
-  before bonus invalidation and retains it in ESI. Moving the exact
-  invalidator into `EnemyGameStateLifecycle.cpp` preserves all 81
-  invalidator bytes and the same caller allocation. Adding the real
-  panel update, draw and Chain code preserves both results. The candidate
-  binds all four calls to the intended real functions.
-  Keeping a value live across invalidation changes the EBX save from
-  `+0x4F` to the target's `+0xBD`. An early rank calculation matches the
-  first 282 bytes, all eleven fields in that prefix and its relative
-  branches. Early snapshots of the spell timer or active bit also move
-  the EBX save. In each trial ESI holds the early value while the panel
-  stays in EAX. The target uses ESI for the panel itself and reads the
-  rank after the call.
-  A typed VM cursor advances EAX in the invalidator. The indexed cursor
-  emits 176 bytes and the pointer-bound loop emits 69 bytes. Both make
-  the caller match all 397 bytes and 17 fields. The indexed 81-byte
-  invalidator preserves EAX, so VC7.1 retains the panel in that register
-  in the caller. The target requires the caller to preserve the panel
-  separately. Script selection reads the character word at score
-  offset `+0x28`, the power display reads the signed short at `+0x08`,
-  and the rank adjustment writes `+0x58` of the same score object.
-  Compiling the transition in the Bomb factory translation unit with
-  its real lifecycle present preserves the same register difference.
-  The explicit Pentium scheduling profiles and link-time dead-code
-  elimination also preserve it while the 81-byte invalidator matches.
-  The real Player callback, Enemy update and Bomb factory entries yield
-  the same pair of bodies. Adding ItemManagerUpdate's rank callers and
-  the popup producer preserves that result.
-  Moving the shared rank implementation into Player's translation unit
-  yields the same register allocation. Both ordinary and forced local
-  inlining leave the panel in EAX. Evaluating the mode predicate before
-  rank publication produces a 399-byte body.
-  `PlayerHandleCollisionHit` and `PlayerTransitionToState2` call the same
-  indexed invalidator in source. VC7.1 expands both calls to their target
-  inline loads, masks and stores. The 627-byte collision handler, 796-byte
-  state transition, 3,112-byte Player update and outlined 81-byte
-  invalidator remain exact. The Bomb transition retains its outlined call
-  and the 159-byte residual.
+- `ScriptViewerBombOwnerView::StartPowerTransition` at `0x00405860` matches
+  all 397 bytes and 17 fields in `PlayerStartPowerTransition`. Both Player
+  states pass the 0x48-byte Bomb object from `0x004776EC` on the stack.
+  The transition sets up the timer, spawns script 400, 407 or 441, plays
+  cue 38, refreshes the power display, and adjusts the rank and damage
+  mode. Character, signed power and rank are at score offsets `+0x28`,
+  `+0x08` and `+0x58`.
+- Defining the counted `InvalidateSpellBonus` loop inline before its
+  callers yields the exact 81-byte outline and the exact Bomb caller in
+  the same VC7.1 SP1 `/GL` link. The in-class definition leaves the
+  outlined call in the transition, with the panel in ESI across the
+  call and EAX available for rank. It expands into the original inline
+  bodies of `PlayerHandleCollisionHit` and `PlayerTransitionToState2`.
+  Moving an out-of-line definition earlier leaves the prior allocation
+  unchanged. The pointer-bound loop also matches the caller but changes
+  the invalidator to 69 bytes. Keep the counted loop. The real loader
+  in `AnmLoadedStartScript.cpp` gives the 118-byte world VM producer its
+  exact call sequence in this link.
 - Option reset flags are at Player 332C/33C4/345C/34F4; draw position 3C0/3C4; signed coordinates 3CC/3D0 scaled by 0.01f (470B00).
 - `g_AnmGameSpeed` is 476F78.
 - `+0x08/+0x0C`: update/draw callback nodes (0x24-byte nodes; callback at +0x08, owner at +0x20). Priorities 0x10/0x16. Update entry 0x426500 does `push ecx; call 0x425730; ret`. Draw entry 0x426510 does `mov eax,ecx; jmp 0x426360`.
