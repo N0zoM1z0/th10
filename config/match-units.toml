@@ -40334,9 +40334,9 @@ target_address = 0x00421FA0
 size = 316
 linkages = [
   { offset = 0x1, type = "DIR32", symbol = "?g_ReplayDifficulty@@3HA", target = 0x00474C74 },
-  { offset = 0x7, type = "DIR32", symbol = "?g_GameStartupState@@3UGameStartupStateView@@A", target = 0x00474C44 },
+  { offset = 0x7, type = "DIR32", symbol = "?g_GameScoreState@@3UGameScoreStateView@@A", target = 0x00474C40, addend = 4 },
   { offset = 0x7F, type = "DIR32", symbol = "?g_ReplayDifficulty@@3HA", target = 0x00474C74 },
-  { offset = 0x87, type = "DIR32", symbol = "?g_GameStartupState@@3UGameStartupStateView@@A", target = 0x00474C44 },
+  { offset = 0x87, type = "DIR32", symbol = "?g_GameScoreState@@3UGameScoreStateView@@A", target = 0x00474C40, addend = 4 },
   { offset = 0x99, type = "DIR32", symbol = "?g_ReplayDifficulty@@3HA", target = 0x00474C74 },
   { offset = 0x9F, type = "DIR32", symbol = "?g_GameStartupValue474C90@@3HA", target = 0x00474C90 },
   { offset = 0xB1, type = "DIR32", symbol = "?g_ReplayDifficulty@@3HA", target = 0x00474C74 },

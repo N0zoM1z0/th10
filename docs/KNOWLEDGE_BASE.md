@@ -1312,6 +1312,17 @@ frontier; do not refresh a baseline merely to accept the new positions.
   bytes and 18 fields in the same graph; `frontend-score-entry-update` passes
   its complete 1,400-byte owner and 80 fields in `FrontEndReplay`. Receipts
   are under `.analysis/frontend-insert-score/`.
+
+  Bind the two score reads to `g_GameScoreState` at 0x474C40 with addend 4.
+  A four-byte diagnostic anchor can place an interior member at the next
+  public symbol's address: here `g_GameStartupState` coincides with the score
+  member in the candidate image. The original field inventory selected that
+  neighboring public. Correcting both declarations to the actual source base
+  preserves 316/316 and all 18 fields in another independent cold replay.
+  Use source expressions to choose base symbols and addends; an address-only
+  public lookup cannot establish the meaning of an interior reference.
+  The corrected receipts are `member-bindings-compare.json` and
+  `member-bindings-replay.json` in the same directory.
 - **InitializeGameStatisticsRecord @0x42ACB0 (274)**. The six-TU
   `GameStatisticsTail` graph matches 249 bytes and binds all eight DIR32
   fields in the complete PDB contribution. Three read the nine-byte
