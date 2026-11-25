@@ -77,13 +77,17 @@ comparison only for its source and link graph.
 `ReplayManager::BeginStage` at `0x0042A450` is active. Its
 `ReplayBeginStageCore` recipe keeps the real `GameManagerUpdateBody` root
 and the player and replay implementations. Capturing the history array
-before restoring the position retains an ordinary player-pointer reload
-and keeps the 1,544-byte `game-manager-update-body` exact. The candidate
-emits 582 bytes and aligns 153 of 157 instructions. It advances the
+before restoring the position retains an ordinary player-pointer reload.
+The candidate emits 582 bytes and aligns 153 of 157 instructions. It advances the
 preserved EDI pointer before the position call and addresses back to its
 owner for EAX. In the target, EAX receives the EDI base directly and the
 history offset is applied after the call. This also controls the branch
 into the option-copy loop.
+
+The frame allocator passes selected cold replay at 139 bytes. The cached
+GameManager graph passed its 1,544-byte comparison. A fresh build exposes
+an older GUI-reset call ABI difference at +0x10E. Relinking the pre-recovery
+replay source into that fresh graph reproduces the entire current diff.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete

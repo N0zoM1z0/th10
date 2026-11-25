@@ -1258,10 +1258,12 @@ For `ReplayManager::BeginStage @0x42A450`, C2 exposes the difference
 before local register allocation. A direct saved Player pointer makes the
 post-position read reuse EAX. A local volatile read or a pointer-slot
 `memcpy` retains the read but changes the already-exact GameManager update
-caller from 1,544 to 1,538 bytes. Capturing the history member first and
-recovering its owning Player retains the separate ordinary load and the
-exact caller. Its residual is the placement of the 0x436C history offset
-around the position call. [2026-11-25]
+caller from 1,544 to 1,538 bytes in the cached graph. Capturing the
+history member first and recovering its owning Player retains the
+ordinary load and restores the cached caller result. The caller's
+fresh-build GUI reset ABI differs in both the old and new replay sources.
+The replay residual is the placement of the 0x436C history offset around
+the position call. [2026-11-25]
 
 ## Topic-report residue
 
