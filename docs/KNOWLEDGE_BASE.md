@@ -1561,6 +1561,13 @@ restored the EDI receiver at both calls and the full update comparison.
   destination in a local and writing the integer-to-float conversion
   directly changes which store uses the target register, while the
   complete comparison stays at 536 bytes.
+  A watchpoint on the latch's instruction-pointer load traces its
+  physical register to `ChoosePhysReg`. When that load is assigned,
+  the destination cursor already holds EAX. The instruction pointer has
+  priority 56, no register preferences and equal costs for ECX and EDX.
+  It takes ECX. Grouping the three latch inputs into an aggregate or
+  moving their reloads into an inlined advance helper leaves this code
+  unchanged.
 - In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
   the destination address LEA to EAX and advances the integer register
   cursor to ECX. The 551-byte candidate with a plain caller parameter

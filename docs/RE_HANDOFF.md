@@ -15,6 +15,13 @@ choices in the operand loop. The same cold link passes `ecl-vm-spawn-thread`
 and `ecl-vm-host-run`, and the separate `ecl-vm-run` link also passes.
 The allocator and tail merge findings are in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md).
 
+At +0xF2 the destination cursor takes EAX before the +0xF6 instruction
+pointer load is assigned. VC7.1 then has ECX and EDX available for the
+instruction pointer. The target uses ECX for the cursor and EAX for the
+instruction pointer. The local trace
+`.analysis/ecl-start-subroutine/trace-latch-instruction-color.py` follows
+that assignment in the two-source graph.
+
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
 CPU at nice 10, and explicit unit selectors. Repository commands run
