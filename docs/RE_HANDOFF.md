@@ -74,6 +74,16 @@ comparison only for its source and link graph.
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
+## Open owner
+
+`GuiView::~GuiView` at `0x004145F0` is active. The target owns
+574 bytes. The real GameManager cleanup graph with the GUI resource
+cleanup entry preserves the initial stack argument. Typed ID cursors
+and explicit comparisons align all 161 target instructions. LTCG
+adds one five-byte state store before the standalone VM's inlined
+destructor. Resolve that store while preserving the six array actions
+and the one member action through FuncInfo at 0x00471740.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.

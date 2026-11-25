@@ -2235,21 +2235,35 @@ GuiView::~GuiView()
     }
     AnmRenderManagerView *manager = g_AnmRenderManagerView;
     updateCallback = NULL;
+    // Publish the cleared callback before reading the caption ID.
+    _ReadWriteBarrier();
     manager->MarkVmForDeletion(specialVmId9E50);
     specialVmId9E50.value = 0;
-    for (int i = 0; i < 8; ++i)
+    AnmVmIdView *slot = valueVmIds;
+    int remaining = sizeof(valueVmIds) / sizeof(valueVmIds[0]);
+    do
     {
-        const int id = valueVmIds[i].value;
+        const int id = slot->value;
         if (id != 0)
         {
             AnmVmLayerNodeView *node = manager->primaryVmListHead;
-            while (node != NULL && static_cast<AnmVmView *>(node->owner)->id != id)
+            while (node != NULL)
+            {
+                const int *candidateId = &static_cast<AnmVmView *>(node->owner)->id;
+                if (*candidateId == id)
+                    break;
                 node = node->next;
+            }
             if (node == NULL)
             {
                 node = manager->secondaryVmListHead;
-                while (node != NULL && static_cast<AnmVmView *>(node->owner)->id != id)
+                while (node != NULL)
+                {
+                    const int *candidateId = &static_cast<AnmVmView *>(node->owner)->id;
+                    if (*candidateId == id)
+                        break;
                     node = node->next;
+                }
             }
             if (node != NULL)
             {
@@ -2269,8 +2283,9 @@ GuiView::~GuiView()
                 }
             }
         }
-        valueVmIds[i].value = 0;
-    }
+        slot->value = 0;
+        ++slot;
+    } while (--remaining != 0);
     manager->MarkLoadedVmsForDeletion(frontAnm);
     g_GuiView = NULL;
 }
