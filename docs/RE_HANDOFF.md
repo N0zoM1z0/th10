@@ -7,8 +7,11 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The `laser-type0-bounce` unit has finished. The next active owner is
-selected from the remaining authored functions by size.
+The active owner is `EnemyGameStateView::~EnemyGameStateView` at
+`0x00408AF0` (402 bytes). Start from the real `CreateEnemyGameState`
+caller and link the actual ANM and Chain owners. The target takes the
+receiver on the stack, keeps one ANM manager across the three VM
+deletions, and unwinds arrays of 2, 8 and 5 VMs.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
