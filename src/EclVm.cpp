@@ -667,9 +667,9 @@ int EclVmContext::StartSubroutine(
             else
             {
                 EclVmContext *const source = caller;
-                const int operand =
-                    OperandInt(instruction, valueOffset / sizeof(int));
-                const int resolved = source->ReadIntValue(argumentIndex, operand);
+                const EclVmScalar *const encoded =
+                    OperandWord(instruction, valueOffset / sizeof(EclVmScalar));
+                const int resolved = source->ReadIntValue(argumentIndex, encoded->integer);
                 if (CallArgument(*callerInstruction, metadataOffset)->destinationType == 'f')
                 {
                     const float converted = static_cast<float>(resolved);
@@ -678,7 +678,8 @@ int EclVmContext::StartSubroutine(
                 }
                 else
                 {
-                    argument->integer = resolved;
+                    EclVmScalar *const output = argument;
+                    output->integer = resolved;
                     _ReadWriteBarrier();
                 }
             }

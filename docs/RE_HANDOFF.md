@@ -9,8 +9,10 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 The active owner is `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
-536 of 550 bytes matching in `EclVmHostRunEnemy`. Its four call fields
+542 of 550 bytes matching in `EclVmHostRunEnemy`. Its four call fields
 bind. The remaining differences are register choices in the operand loop.
+The integer operand and both integer result stores match through +0xC5.
+The float operand is loaded into ECX where the target uses EDX.
 The loop latch assigns its destination cursor before the instruction
 pointer, which leaves the latter with ECX and EDX available. The target
 uses ECX for the cursor and EAX for the instruction pointer. See

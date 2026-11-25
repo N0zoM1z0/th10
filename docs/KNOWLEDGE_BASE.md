@@ -1587,6 +1587,12 @@ restored the EDI receiver at both calls and the full update comparison.
   It takes ECX. Grouping the three latch inputs into an aggregate or
   moving their reloads into an inlined advance helper leaves this code
   unchanged.
+  In the two-source `EclVmHostRunEnemy` link, naming the encoded integer
+  operand pointer and separately snapshotting the destination before the
+  direct integer store aligns the complete prefix through +0xC5. The
+  resulting owner matches 542 of 550 bytes. The remaining differences are
+  the float operand register at +0xC6 and the cursor and instruction
+  registers at the loop latch beginning at +0xF2.
 - In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
   the destination address LEA to EAX and advances the integer register
   cursor to ECX. The 551-byte candidate with a plain caller parameter
