@@ -76,13 +76,14 @@ comparison only for its source and link graph.
 
 `ReplayManager::BeginStage` at `0x0042A450` is active. Its
 `ReplayBeginStageCore` recipe keeps the real `GameManagerUpdateBody` root
-and the player and replay implementations. Preserving the original player
-reference for the history copy while reusing the player pointer for the
-global reload restored the option-copy loop entry. The candidate emits
-582 bytes and aligns 150 of 157 instructions. The remaining differences
-are the initial stage and player register allocation and the register
-holding the saved option mode. The plain-RET position helper leaves EAX
-intact, and its sole original caller reloads EAX immediately after it.
+and the player and replay implementations. The checked-in source preserves
+the typed option copies, aligns 151 of 157 instructions, and keeps the
+1,544-byte `game-manager-update-body` exact. LTCG folds the player-pointer
+reload after the position helper and emits only 569 of the target's 582
+bytes. The local volatile read and pointer-slot `memcpy` each preserve the
+reload and reach 582 bytes, but make the caller 1,538 bytes. The helper
+at 0x428E10 leaves EAX intact and the original caller then reloads EAX.
+Find a source or link context with the reload and both original extents.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
