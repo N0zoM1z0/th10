@@ -1553,6 +1553,14 @@ restored the EDI receiver at both calls and the full update comparison.
   Keeping the encoded float operand in the scalar bit carrier until the
   resolver call preserves the integer load and push. Loading it as a
   native float first introduces an x87 load and a temporary spill.
+  One instruction snapshot supplies the source tag and both possible
+  operand loads. The destination tag is looked up again after a resolver
+  call. Keeping this distinction explicit preserves the 536-byte match.
+  The cold `EclVmStack` link reproduces the same 14 differing bytes
+  with exact integer and float readers. Capturing the raw integer
+  destination in a local and writing the integer-to-float conversion
+  directly changes which store uses the target register, while the
+  complete comparison stays at 536 bytes.
 - In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
   the destination address LEA to EAX and advances the integer register
   cursor to ECX. The 551-byte candidate with a plain caller parameter

@@ -644,8 +644,8 @@ int EclVmContext::StartSubroutine(
         volatile unsigned int &valueCursor = valueOffset;
         for (int operandCount = initialCount; argumentIndex < operandCount;)
         {
-            const char sourceType =
-                CallArgument(*callerInstruction, metadataOffset)->sourceType;
+            const EclVmInstruction *const instruction = *callerInstruction;
+            const char sourceType = CallArgument(instruction, metadataOffset)->sourceType;
 
             // CALL arguments follow a counted name; scalarOperands[1] is
             // only their first-word overlay, not a bounded C++ array.
@@ -654,7 +654,7 @@ int EclVmContext::StartSubroutine(
             {
                 EclVmScalar value;
                 value.integer =
-                    OperandWord(*callerInstruction,
+                    OperandWord(instruction,
                         valueOffset / sizeof(int))->integer;
                 EclVmContext *const source = caller;
                 const float resolved = ReadFloatValue(source, argumentIndex, value.real);
@@ -668,7 +668,7 @@ int EclVmContext::StartSubroutine(
             {
                 EclVmContext *const source = caller;
                 const int operand =
-                    OperandInt(*callerInstruction, valueOffset / sizeof(int));
+                    OperandInt(instruction, valueOffset / sizeof(int));
                 const int resolved = source->ReadIntValue(argumentIndex, operand);
                 if (CallArgument(*callerInstruction, metadataOffset)->destinationType == 'f')
                 {
