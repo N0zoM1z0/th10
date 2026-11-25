@@ -1248,6 +1248,24 @@ frontier; do not refresh a baseline merely to accept the new positions.
   full-width flags load and register OR/store without making the value a
   cross-block global candidate or losing the local EAX/ECX/EDX assignment
   sequence.
+  Additional probes did not recover the target call setup. Direct
+  float-to-float next-angle assignment uses x87 and grows to 337 bytes. A one-word aggregate next-angle copy,
+  aggregate flags snapshot, and array/aggregate duration snapshots each
+  retain 335 bytes but reproduce the direct-angle 331/335 result. Duplicating
+  the velocity call in both outer branches leaves two calls and 356 bytes;
+  C2 does not merge that tail. Reusing one integer variable for the increment,
+  next angle and outgoing angle coalesces the increment into EAX and removes
+  the target's `mov eax, edx`, leaving 333 bytes. The angle still uses EAX.
+  These paths are rejected; source-variable reuse can change codegen, but
+  this particular coalescing loses an already matching instruction.
+  The maintained increment now adds `1u` as an unsigned word before the
+  target-specific signed conversion and limit comparison. This defines the
+  native wrap without relying on signed C++ overflow. Its canonical strict
+  link remains 333/335, with only +0xD7/+0xDD different and all eight fields
+  bound. The direct-angle control remains 331/335. A selected cold replay
+  of the direct caller, `bullet-runtime-update`, passes all 885 bytes and
+  39 fields. Reproduce it with `scripts/repo-python
+  scripts/replay-exact-units.py --unit bullet-runtime-update --json`.
   The `_reference/th10-decomp` `EaseStep` shape (plain float fields, direct
   `++int2`, `angle = value1`, reset speed copied before the timer reset)
   regressed to 320/335 on 2026-11-22 and was reverted. The source and ordinary

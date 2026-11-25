@@ -266,7 +266,9 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                 QueueSoundSample(transformSound, 0);
         }
-        ++state.int2;
+        // Preserve the native word wrap before the signed limit comparison.
+        state.int2 = static_cast<int>(
+            static_cast<unsigned int>(state.int2) + 1u);
         if (state.int2 >= state.int1)
             activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE;
 
