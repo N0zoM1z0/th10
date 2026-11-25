@@ -1634,6 +1634,13 @@ restored the EDI receiver at both calls and the full update comparison.
   source's ordinary link. Sharing one count variable between the entry
   guard and the loop, with either a reference or direct access, leaves that
   candidate's complete comparison at 542 matching bytes.
+  With the retained nonvolatile count read, the count temporary instead
+  reaches local `RegAssign` as 0x1BD. Its integer-register cursor points
+  at EAX and the pass chooses EAX. The same local choice occurs when a
+  debugger-only priority adjustment gives the instruction pointer EAX and
+  cursor ECX. Reversing the source comparison changes the function's other
+  register assignments and gives 419 matching bytes; negating the original
+  comparison preserves the 542-byte match.
   The float operand candidate has ECX and EAX preferences and scores
   0, -1 and 0 for EAX, ECX and EDX, selecting ECX. Qualifying either
   result-tag instruction read as volatile changes the complete body
