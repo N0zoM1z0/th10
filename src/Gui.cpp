@@ -2094,10 +2094,16 @@ GuiMessageVmView::~GuiMessageVmView()
     vmIds[GUI_MESSAGE_ENEMY_NAME].value = 0;
 }
 
+static __forceinline void ReleaseGuiVm(AnmVmIdView &id, AnmRenderManagerView *manager)
+{
+    manager->MarkVmForDeletion(id);
+    id.value = 0;
+}
+
 // Target 0x00414370-0x0041454B. This also serves live GUI resource teardown.
 void __stdcall GuiCleanupResources(GuiView *gui)
 {
-    if ((g_GuiGameFlags & 9u) == 0)
+    if ((g_GameStartupState.runtimeFlags & 9u) == 0)
     {
         AnmLoadedView **slot = &g_AnmRenderManagerView->loadedAnms[28];
         if (*slot != NULL)
@@ -2117,7 +2123,7 @@ void __stdcall GuiCleanupResources(GuiView *gui)
         delete message;
         gui->message = NULL;
     }
-    if ((g_GuiGameFlags & 9u) == 0)
+    if ((g_GameStartupState.runtimeFlags & 9u) == 0)
     {
         if (gui->messageFile != NULL)
         {
@@ -2133,16 +2139,10 @@ void __stdcall GuiCleanupResources(GuiView *gui)
     th10::ChainElem *update = static_cast<th10::ChainElem *>(gui->updateCallback);
     if (update != NULL)
         update->flags &= ~2u;
-    // Retain the manager snapshot and publish each ID clear before loading the next.
-    g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E14);
-    AnmRenderManagerView *const manager = static_cast<AnmRenderManagerView *volatile &>(g_AnmRenderManagerView);
-    gui->specialVmId9E14.value = 0;
-    _ReadWriteBarrier();
-    manager->MarkVmForDeletion(gui->specialVmId9E18);
-    gui->specialVmId9E18.value = 0;
-    _ReadWriteBarrier();
-    manager->MarkVmForDeletion(gui->bossGaugeVmId);
-    gui->bossGaugeVmId.value = 0;
+    ReleaseGuiVm(gui->specialVmId9E14, g_AnmRenderManagerView);
+    AnmRenderManagerView *const manager = g_AnmRenderManagerView;
+    ReleaseGuiVm(gui->specialVmId9E18, manager);
+    ReleaseGuiVm(gui->bossGaugeVmId, manager);
     for (int i = 0; i < 10; ++i)
         gui->bossGaugeSegmentVmIds[i].value = 0;
     for (int i = 0; i < 8; ++i)

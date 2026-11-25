@@ -1319,21 +1319,16 @@ restored the EDI receiver at both calls and the full update comparison.
   the cursor stays in EBX after clearing the caption ID. FuncInfo at
   0x471740 refers to a 184-byte generated region with seven actions
   and a verified 34-byte VM destructor. [2026-11-25]
-- **GuiCleanupResources @0x414370 (476)** binds all 17 linked fields
-  in the `GuiDestructorCore` cold image. The three consecutive VM
-  deletions match the target's ordering when the manager snapshot is a
-  volatile read and the first two clears end with memory barriers.
-  The strict comparison matches 427 bytes. The target stores the GUI
-  pointer in EBP and zero in EBX. The current candidate reverses them
-  and brings the stack argument load forward. Reusing `FindVm` for the
-  value IDs keeps both VM-list walks inline and preserves the comparison.
-  At `ChoosePhysReg`, the GUI argument candidate has priority 56 and
-  ties between EBX and EBP at cost zero. It takes EBX before the zero
-  candidate reaches allocation with priority 7 and EBP as its sole
-  remaining choice. Linking the same objects with the destructor or game
-  cleanup as the entry emits a 462-byte private-register version. A
-  stack-receiver member prototype keeps the 476-byte result and the same
-  register choices. [2026-11-25]
+- **GuiCleanupResources @0x414370 (476)** matches all 17 fields in the
+  `GuiDestructorCore` cold replay. Reading `g_GameStartupState.runtimeFlags`
+  at +0x60 gives the EBP GUI pointer, the EBX zero and the target prologue.
+  The earlier standalone flag symbol resolved to the same address but
+  produced 427 matched bytes because the argument took EBX. The current
+  inline `ReleaseGuiVm` groups each mark and ID clear, keeping the target's
+  operation order through the three fixed IDs. The MIT-licensed TH10
+  side-panel teardown model suggested the inline grouping and shared
+  flag view. The replay uses the maintained real callees.
+  [Reference license](licenses/th10-decomp-MIT.txt) [2026-11-25]
 - Statistics: factory 0x42AF20 allocates 0x1DCB4 bytes and publishes to
   0x47783C; the constructor clears it, loads the score file, initializes seven
   records and the tail, then calls loader 0x42B030; destruction is at 0x42AEF0.

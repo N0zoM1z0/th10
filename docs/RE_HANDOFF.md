@@ -7,26 +7,10 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `GuiCleanupResources` at `0x00414370` in
-`src/Gui.cpp`. The target takes one stack argument and returns with
-RET 4. The `gui-cleanup-resources` candidate uses the five-source
-`GuiDestructorCore` graph. A volatile manager snapshot and barriers
-after the first two VM ID clears restore the target's ordering and
-all 17 linked field locations. The strict comparison matches 427 of
-476 bytes. The target keeps the GUI pointer in EBP and zero in EBX.
-The candidate reverses those registers and loads the argument earlier
-in the prologue. Six bytes differ in the first 14 bytes. The remaining
-43 all reflect the EBX/EBP exchange. The allocator chooses EBX for the
-GUI pointer on a tie with EBP before allocating zero.
-Keep the `GuiCleanupResources` entry
-when testing this difference. Rooting the same five objects at the GUI
-destructor or `GameManagerCleanup` changes the ABI and emits 462 bytes.
-
-```sh
-timeout -k 10s 185s taskset -c 2 nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit gui-cleanup-resources
-scripts/repo-python scripts/compare-linked-function.py --unit gui-cleanup-resources --json
-scripts/repo-python .analysis/gui-cleanup-resources/compare.py GuiDestructorCore
-```
+The GUI resource cleanup owner at `0x00414370` matches all 476 bytes
+and 17 fields in `gui-cleanup-resources`. Its live setup flags use
+`g_GameStartupState.runtimeFlags` at +0x60. The next authored owner is
+selected from [matches.csv](../config/matches.csv).
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -51,6 +35,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `gui-cleanup-resources` | 476 B | `GuiDestructorCore`, 17 fields, an EBP GUI pointer and the shared startup runtime flags. |
 | `text-render-alternate` | 509 B | `TextBufferLifecycle`, 32 fields, outlined LTCG FillColor and normal-COFF InvertAlpha. |
 | `script-viewer-popup-draw` | 540 B | `ScriptViewerPopupCreate`, 15 fields and the EDI draw callback receiver. Assign the decremented count after publishing the cursor. |
 | `ascii-manager-draw-gui-strings` | 570 B | `StageViewport`, 28 fields, both quad paths and the EBX draw callback. |
