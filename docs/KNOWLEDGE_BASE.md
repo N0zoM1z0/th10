@@ -1353,99 +1353,44 @@ frontier; do not refresh a baseline merely to accept the new positions.
   volatile reads/writes were neutral. Direct score copying after the two
   sentinels gives the right registers but leaves the read too late. Both
   `gui-creation-initialize` and `game-manager-initialize` are direct consumers.
-- **InitializeGameStatisticsRecord @0x42ACB0 (274)** matches 255/274 bytes
-  with all eight fields in the six-input `GameStatisticsTail` graph, also
-  reproduced by an independent cold control. Indexed rank rows, the char
-  view at the active byte and literal strcpy restore every register and
-  stack record / RET4 without spilling a counter. The whole-row byte view
-  preserves that complete normalized contribution. The pooled literal's
-  nine bytes equal original `0x46E858`; its three fields bind addends 0/4/8.
-  Direct spellHistory member indexing restores the entire five-way unrolled
-  kind loop, including setup order and both SIB encodings.
+- **InitializeGameStatisticsRecord @0x42ACB0 (274)** has a complete first
+  cold match with all eight fields in the six-input `GameStatisticsTail`
+  graph. Declare `rankScores[5][10]` as actual GameStatisticsRecord members
+  and use the indexed members directly, including the literal strcpy.
+  These changes must be combined: typing the parent while retaining the
+  byte-view copy preserves the former 255/274 body; a direct member copy
+  through the old overlay changes the induction base and spills. Together
+  they preserve every register and move the ninth-byte store from +0x60
+  to the target +0x71, after the clears, score/cursor update and CMP.
+  Direct spellHistory indexing preserves the five-way unrolled kind loop.
 
-  Only the name tail-byte store is misplaced: +0x60 before the independent
-  zeros instead of +0x71 after the score/cursor update and CMP. Its movement
-  accounts for all 19 differing bytes. The diagnostic frontier records this
-  instruction order; Git retains the previous 249-byte baseline. The sole
-  direct constructor remains 137/132 bytes, and its observed `push esi`
-  immediately before the call preserves the real record argument.
+  The 0x18-byte rank view has score at +0, byte fields at +4/+5, a nine-byte
+  name at +6 and the cleared DWORD at +0x10. The table begins at record+0x10
+  and ends at +0x4c0; the record remains 0x437c bytes. The pooled literal's
+  nine bytes equal original 0x46E858; fields bind addends 0/4/8. The other
+  five fields bind the signed kind table at 0x4743C0. The sole constructor
+  still differs at 137/132 bytes, but its bound call and the original both
+  push ESI and the complete callee returns with RET4. Its own exactness is
+  independent of this match.
 
-  Read-only C2 tracing at source commit `4ffa9bb5` shows the nine-byte copy
-  already expanded before global allocation. Its word and byte temporaries,
-  including the copy destination, are absent from global register choices.
-  The shared zero has priority 35 and takes EDX; the outer count has signed
-  priority -14 and takes ESI. Before local allocation, the tail store still
-  precedes both zero stores. `indexed-allocation.trace` retains these IR and
-  allocation observations.
+  Earlier read-only traces explain the failed byte-view controls. C2's alias
+  predicate made the tail store precede both clears. Its nine-byte copy
+  temporaries stayed local, whereas a removed one-byte buffer still became
+  a global candidate at priority 144 and displaced zero into EBX. The extra
+  name induction variable had priority 520 and spilled the outer count.
+  `candidate-filter.trace` shows the copy byte/pointer as kind-3 symbols with
+  nonzero defining-instruction fields at +0x14; the filter at 0x107A69D3 skips
+  their global candidates. Storage elimination alone does not imply that.
+  Split copies, helper parameter packing and returned values can change
+  register selection or unroll the loop, but do not replace the typed-member
+  fix. Normal COFF, /Oa and /Ow controls were also unhelpful; preserve /GL.
 
-  Read-only local-allocation and scheduling traces at source commit
-  `558af946` reproduce the same 255/274-byte contribution with all eight
-  fields bound. The copy pointer takes EDI and both words and the byte take
-  EBX; local register choice is already correct. In `scheduling.trace`,
-  graph 2 has edges from node 9 (the tail store) to nodes 10 and 11 (the
-  extra/status clears). Both clears then precede the EAX cursor update.
-  The emitted schedule respects this chain, so changing instruction priority
-  alone cannot move the tail past the clears. `local-order2.trace` and the
-  corresponding strict comparison retain the allocation control; the
-  scheduling trace and its strict comparison retain the dependency control.
-
-  A normal-COFF owner in the same six-input graph produces the same complete
-  normalized instruction body as the LTCG control. Assigning a nine-byte
-  aggregate through the byte view is also neutral. Assigning it through the
-  named member instead changes the induction base and spills. Packed name
-  views and a const reference to the name pointer preserve the failed
-  two-cursor shape. Keep the canonical /GL profile. Splitting the tail write
-  must preserve EAX as the active-byte cursor and EDI as a secondary name
-  destination.
-
-  `alias-dependency.trace` confirms why the scheduling edges exist. At
-  `0x107B58E4`, C2 compares the tail store's alias handle 0x3b with the
-  clears' handles 0x39 and 0x38. The predicate returns 1 for both pairs;
-  `0x107AE529` then adds each edge with argument 0x80. The completed
-  read-only link reproduces the full 255/274 mismatch with all eight fields.
-  A six-input cold artifact with typed rank members in GameStatisticsRecord
-  has the identical contribution, so replacing its raw byte member alone
-  does not resolve the aliasing. Private /Oa and /Ow controls both hoist the
-  name reads and produce the same wrong 275-byte body. Neither flag is kept.
-
-  `split-allocation.trace` instead uses the retained
-  `tail-buffer-walked.cpp` input. The extra name induction variable has
-  priority 520 and takes EAX; the parent cursor takes ESI at priority 164.
-  The saved name pointer and the eliminated one-byte buffer's value each
-  have priority 144 and take EDI and EDX. Zero has priority 63 and only EBX
-  remains available. The outer count spills. Eliminating buffer storage
-  therefore does not make its byte a local-allocation temporary. In the
-  nine-byte-copy control, the byte and copy pointer are absent from global
-  allocation, which leaves EDX for zero and ESI for the count.
-
-  Two four-byte copies followed by an inlined completion helper restore
-  the target store order but retain different registers, the second word's
-  store base and two SIB encodings. The retained `tail-aggregate-init.cpp` compares
-  257/274 bytes with all eight fields in a private strict comparison. Its
-  first three fields use the external default-name view at original
-  0x46E858, rather than the canonical pooled literal. Packing the pointer
-  and byte into a value object, with either a constructor or aggregate
-  initialization, preserves this body. Using memcpy's return value,
-  strlen of the literal or an eight-byte aggregate preserves the failed
-  two-cursor form; memmove remains a call. Next inspect how C2 excludes the
-  nine-byte copy's anonymous values from global candidates before trying
-  another split-copy representation.
-
-  Named row references or direct name-member/array-reference copies change
-  the induction base and spill. Scalar, union and word-buffer tails change
-  allocation; advancing rank first restores the store position but not the
-  other choices. A one-byte array is fully eliminated and uses BL, yet its
-  indexed loop walks the tail address; an explicit parent cursor grows a
-  second cursor and spills the outer count. Whole-nine-byte memcpy is neutral
-  to strcpy. Moving the copy after the zeros also moves both word copies.
-  An inline metadata helper unrolls the rank loop; a score-based latch keeps
-  the loop but still changes allocation. Literal 8+1 copies fold the tail
-  into immediate zero. VC7.1 rejects __restrict and leaves strncpy as a call.
-
-  th10-decomp's score-default notes supplied the indexed-loop lead; its
-  [MIT notice](licenses/th10-decomp-MIT.txt) is retained. Current comparisons,
-  useful allocation traces and two remaining tail-buffer control inputs are
-  under `.analysis/statistics-record/`.
+  th10-decomp's score-default notes supplied the indexed-table lead; its
+  [MIT notice](licenses/th10-decomp-MIT.txt) is retained. The first complete
+  cold comparison and caller/literal checks are under
+  `.analysis/statistics-record/typed-direct-copy-*`. The final-source canonical
+  cold replay also passes this owner and the load/finalize/tail guards
+  (1,403 bytes, 44 fields); selected record-consumer checks are in progress.
 - **PlayerLoadOptionData @0x426520 (229)**: canonical scoped 20-support-TU
   VC7.1 /GL cold replay in the real `EnemyReadIntOperand`/`PlayerInitialize`
   caller graph. The complete 229-byte `src/Player.cpp` PDB contribution

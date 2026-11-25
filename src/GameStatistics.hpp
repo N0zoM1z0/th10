@@ -33,6 +33,23 @@ typedef char GameStatisticsSpellHistoryLayout[
      offsetof(GameStatisticsSpellHistoryEntryView, spellIndex) == 0x88 &&
      offsetof(GameStatisticsSpellHistoryEntryView, difficulty) == 0x8c) ? 1 : -1];
 
+struct GameStatisticsRankScoreSlot
+{
+    int score;
+    unsigned char active;
+    unsigned char status;
+    char playerName[9];
+    unsigned char reserved0F;
+    unsigned int extra;
+    unsigned int padding;
+};
+typedef char GameStatisticsRankScoreSlotLayout[
+    (sizeof(GameStatisticsRankScoreSlot) == 0x18 &&
+     offsetof(GameStatisticsRankScoreSlot, active) == 0x04 &&
+     offsetof(GameStatisticsRankScoreSlot, status) == 0x05 &&
+     offsetof(GameStatisticsRankScoreSlot, playerName) == 0x06 &&
+     offsetof(GameStatisticsRankScoreSlot, extra) == 0x10) ? 1 : -1];
+
 struct GameStatisticsRecord
 {
     unsigned short magic;
@@ -40,7 +57,7 @@ struct GameStatisticsRecord
     unsigned int checksum;
     unsigned int unknown08;
     unsigned int recordIndex;
-    unsigned char unknown010[0x4b0];
+    GameStatisticsRankScoreSlot rankScores[5][10];
     int sessionStarts;
     int activeFrames;
     unsigned char unknown4C8[0x59c - 0x4c8];
@@ -126,6 +143,8 @@ typedef char GameStatisticsTailPayloadLayout[
      offsetof(GameStatisticsTailPayloadView, randomWords046) == 0x3e &&
      offsetof(GameStatisticsTail, parsedPayload) == 0x08) ? 1 : -1];
 typedef char GameStatisticsRecordSize437C[(sizeof(GameStatisticsRecord) == 0x437c) ? 1 : -1];
+typedef char GameStatisticsRankScoresAt10[
+    (offsetof(GameStatisticsRecord, rankScores) == 0x10) ? 1 : -1];
 typedef char GameStatisticsSpellHistoryBaseWithinRecord[
     (offsetof(GameStatisticsRecord, spellHistory) == 0x59c) ? 1 : -1];
 typedef char GameStatisticsSessionsAt4C0[(offsetof(GameStatisticsRecord, sessionStarts) == 0x4c0) ? 1 : -1];

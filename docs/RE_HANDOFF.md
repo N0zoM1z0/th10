@@ -8,57 +8,40 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 ## Resume
 
 The sole active owner is `InitializeGameStatisticsRecord` at `0x0042ACB0`,
-274 bytes in `src/GameStatisticsRecordDefaults.cpp`. It is the largest
-remaining authored owner apart from the explicitly deferred `StartSubroutine`.
-Its candidate recipe is `game-statistics-initialize-record` in the six-input
-`GameStatisticsTail` graph. The current complete owner matches 255/274 bytes
-with all eight fields; an independent cold control reproduces the same body.
-Indexed ranks restore all registers and stack record / RET4. Direct
-spellHistory indexing restores the entire unrolled kind loop. Only the ninth
-name-byte store is misplaced: +0x60 before the zeros instead of +0x71 after
-CMP, accounting for all 19 differing bytes. The whole-row byte view preserves
-the complete normalized body. Keep this source as the control.
+274 bytes in `src/GameStatisticsRecordDefaults.cpp`. Its first complete cold
+comparison passes all eight fields in the six-input `GameStatisticsTail`
+graph. The fix combines typed `rankScores[5][10]` members in
+GameStatisticsRecord with direct indexed member accesses. Retaining a byte
+view for the copy keeps the wrong store ordering even with the typed parent.
+The original and the real constructor both push ESI to the RET4 callee; the
+constructor itself remains nonexact at 137/132 bytes.
 
-`whole-row-byte-view-compare.json` is the current strict comparison under
-`.analysis/statistics-record/`; `indexed-cold-control-*` records the prior
-byte-identical cold control. `indexed-allocation.trace` describes source
-commit `4ffa9bb5`: the copy is expanded before global allocation, its byte
-and pointer temporaries are local, zero gets EDX at priority 35 and the outer
-count gets ESI at priority -14. The tail store is still before both zeros
-at local-allocation entry. At source commit `558af946`, `local-order2.trace`
-confirms EDI for the copy pointer and EBX for both words and the byte.
-`scheduling.trace` graph 2 has edges from the tail store (node 9) to both
-clears (10/11), which then precede the EAX update. Both completed debugger
-links reproduce the 255/274 mismatch with all eight fields bound. A priority
-change cannot cross these dependencies. Normal COFF and a nine-byte aggregate
-through the byte view preserve the complete normalized control body; a named
-aggregate member changes the cursor and spills. Keep /GL.
-
-`alias-dependency.trace` confirms that C2's alias predicate returns 1 for
-both tail/clear pairs before adding the edges. Typed rank members reproduce
-the complete mismatch in a six-input cold artifact. Private /Oa and /Ow
-controls both hoist the name reads and produce 275 bytes; neither is kept.
-`split-allocation.trace` uses `tail-buffer-walked.cpp`: an extra name IV takes
-EAX at priority 520, while the saved name pointer and byte each have priority
-144. They leave zero in EBX and spill the count. The one-byte buffer is gone,
-but its byte is still a global candidate. `tail-aggregate-init.cpp` retains
-an alternate split-copy control with the target store order and different
-registers/SIBs; its private comparison binds the external name view instead
-of the pooled literal. Next inspect the candidate-creation rules that exclude
-the nine-byte copy's anonymous byte and pointer. More pointer spelling,
-helper parameter packing and buffer elimination controls need a new prediction.
-
-A one-byte buffer eliminates its temporary storage but changes the induction
-base; an explicit parent cursor adds a second cursor and spills the count.
-Both control inputs are retained. The direct constructor remains nonexact
-137/132, with `push esi` immediately before the bound call. Stay on this owner:
+The final-source canonical cold replay passes this owner and the existing
+load/finalize/tail guards: 1,403 bytes and 44 fields. Keep this owner selected
+until the actual GameStatisticsRecord consumers pass. The native source is frozen
+while the serial checks run. Their outputs are under
+`.analysis/statistics-record/`: `typed-direct-copy-compare.json` is the first
+cold match, `accepted-source-*` covers the final source and the three existing
+statistics guards, and `record-consumers-cold.*` covers selected record users.
+The accepted ledger and candidate flag have not yet been changed.
 
 ```bash
 scripts/repo-python scripts/build-match-unit.py \
   --unit game-statistics-initialize-record
 scripts/repo-python scripts/compare-linked-function.py \
   --unit game-statistics-initialize-record --json
+scripts/repo-python scripts/replay-exact-units.py \
+  --unit game-decomphelp-fulltu-004088a0 --unit enemy-end-spell \
+  --unit game-manager-initialize --unit enemy-spell-panel-update \
+  --unit game-manager-update-body --unit enemy-start-spell \
+  --unit frontend-practice-records --json
 ```
+
+After these pass, promote the canonical unit and ledger, remove its obsolete
+frontier, regenerate progress and select the next largest authored owner.
+[KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) retains the typed-member finding and
+useful failed controls. There is no remaining source-order experiment to run
+for this owner before evaluating the queued comparisons.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
