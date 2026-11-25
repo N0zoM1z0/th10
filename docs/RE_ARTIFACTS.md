@@ -18,11 +18,21 @@ supplies the source, recipes and ledgers. Keep these private inputs locally.
   `.analysis/gui-destructor/`, `.analysis/game-reset-gui/` and
   `.analysis/replay-begin-stage/`. Each can be reproduced from its
   manifest recipe.
+- For `StartSubroutine`, keep `.analysis/ecl-start-subroutine/` and the
+  warm relink helper at `.analysis/update-replay/relink.py`. The ECL
+  directory contains the baseline instruction diff, target listing and
+  trial generators. Run a `make-*.py` generator from the repository root
+  to recreate its source variants. The current link is
+  `build/match-linked/EclVmHostRunEnemy/`.
+- The current ASCII GUI draw receipt and same-image guards are under
+  `.analysis/ascii-gui-draw/`. Their canonical link is
+  `build/match-linked/StageViewport/`.
 
-The November 25 handoff reclaimed about 116 MiB from `.analysis/` and
-`build/` by removing retired scratch builds, snapshots and compiler traces.
-Four worktrees under `.analysis/` carry uncommitted work. Use
-`git worktree list` to locate them before touching their parent directories.
+The November 25 handoff reclaimed about 126 MiB from `.analysis/` and
+`build/`. The latest pass removed about 10 MiB, including the obsolete
+`AsciiGuiDraw` link and reproducible source variants. Four worktrees
+under `.analysis/` carry uncommitted work. Use `git worktree list` to
+locate them before touching their parent directories.
 
 Check `git status` and `git worktree list` before removing a trial. Keep
 uncommitted worktrees and live comparison inputs. Use regular worktree
