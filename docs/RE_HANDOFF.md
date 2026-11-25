@@ -11,15 +11,16 @@ The active owner is `ScriptViewerPopupOwnerView::Draw` at `0x0042B780`
 in `src/ScriptViewerPopupCreate.cpp`. The target owns 540 bytes and
 receives the popup owner in EDI. Draw traverses 723 records, adjusts
 fog, and renders each active popup's digits. The four-source
-`ScriptViewerPopupCreate` graph is available through the
-`script-viewer-popup-update` build selector. The prior Draw candidate
-measured 537 bytes. Focus on the separate stack slots for spacing,
-alpha and the digit cursor, and compare the real Draw callback's receiver.
+`script-viewer-popup-draw` candidate declares all 15 target fields.
+A fresh build reproduces the 537-byte extent and the callback passes
+the owner in EBX. The candidate keeps the digit cursor in EBP and spills
+alpha. The target keeps alpha in EBX and has a separate digit cursor slot.
 
 ```sh
 scripts/repo-python scripts/verify-target.py
 scripts/repo-python scripts/verify-toolchain.py --check
-timeout -k 10s 140s taskset -c 2 nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit script-viewer-popup-update
+timeout -k 10s 150s taskset -c 2 nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit script-viewer-popup-draw
+scripts/repo-python scripts/compare-linked-function.py --unit script-viewer-popup-draw --json
 scripts/repo-python scripts/compare-linked-function.py --unit script-viewer-popup-update --json
 ```
 
