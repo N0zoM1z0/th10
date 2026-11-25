@@ -18,6 +18,11 @@ and stores the digit cursor and count in separate stack slots.
 The strict comparison matches 534 bytes. The six remaining bytes at
 +0x1D5, +0x1DF, +0x1E2, +0x1E3, +0x1EB and +0x1EF swap EAX and ECX
 between the cursor and count in the inner loop's final updates.
+The private `near-all-first-pass` control assigns ECX to the cursor
+and EAX to the count. It emits 542 bytes because the count decrement
+runs before the cursor decrement and needs a separate zero test.
+The two read-only register traces are under
+`.analysis/script-viewer-popup-draw/`.
 
 ```sh
 scripts/repo-python scripts/verify-target.py
