@@ -7,7 +7,15 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `EclVmContext::StartSubroutine` at `0x0044DF70`
+The active owner is `BulletRuntimeView::UpdateAbsoluteDirectionChange` at
+`0x004078E0` in `src/BulletManager.cpp`. Its `BulletHorizontalWrap` link has
+335 bytes with differences at +0xD7 and +0xDD, where the angle word uses EAX
+instead of EDX. Reproduce the current frontier with
+`scripts/repo-python scripts/check-frontier.py --no-build --show bullet-update-absolute-direction`.
+Investigate the call operand's VC7.1 register allocation and compare the
+complete owner and eight linked fields after each source change.
+
+The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
 542 of 550 bytes matching in `EclVmHostRunEnemy`. Its four call fields
 bind. The remaining differences are register choices in the operand loop.
