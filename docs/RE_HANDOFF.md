@@ -10,11 +10,14 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 The sole active owner is `FrontEndInsertScore` at `0x00421FA0`, currently
 listed as 316 bytes in `src/FrontEnd.cpp`. It is the largest remaining
 authored owner apart from the explicitly deferred `StartSubroutine`.
-Inspect the current implementation and native link recipe, then compare
-its complete source early. The old knowledge entry reports a 263-byte
-match and a double `100.0` where the target uses a float constant; treat
-that as a lead and establish the current baseline before editing.
-Stay on this owner through its complete strict cold match.
+Its first strict comparison now matches all 316 bytes and 18 fields in
+`ResultMenuClose`. Explicitly converting the double timing ratio to float
+restores the target dword multiply and reverse subtraction. Merely changing
+the constants was byte-neutral. Unit `frontend-insert-score` is ready for
+independent cold replay with `result-menu-prepare-score` and
+`frontend-score-entry-update`. Receipts are under
+`.analysis/frontend-insert-score/`. Do not grant ledger credit until those
+selected cold links pass.
 
 `Player::~Player` is accepted in `ScriptViewerDestructSmall` at 325 bytes
 and 30 fields, with the complete VM-member EH binding. The factory,

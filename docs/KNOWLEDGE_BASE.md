@@ -1277,8 +1277,23 @@ frontier; do not refresh a baseline merely to accept the new positions.
   factory, release adapter and ScriptViewer destructor after this header
   change. The old 333-byte observation predates the current source/context.
   Current inputs and receipts are under `.analysis/player-destructor/`.
-- **FrontEndInsertScore @0x421FA0 (316)**: 263; the helper uses 64-bit `100.0`
-  where the target uses 32-bit. [2026-10-15]
+- **FrontEndInsertScore @0x421FA0 (316)**. The current two-source
+  `ResultMenuClose` graph supplies the real result-menu and score-entry callers
+  and preserves the EDI table receiver. Its first complete build already has
+  the target 316-byte extent and matches 242 of 244 non-link bytes. Only the
+  x87 multiply and reverse-subtract operand widths differ. The historical
+  263-byte extent belongs to an older source/context.
+
+  Both timing inputs are doubles. Merely changing the two `100.0` literals to
+  `100.0f` is byte-neutral: VC7.1 promotes them back to double for the surrounding
+  expression. The target instead uses the float constant at 0x470B44. Keep
+  the signed tie-before-equal insertion, complete 24-byte record assignments,
+  repeated difficulty loads and exactly nine name bytes after `time`. The
+  explicit `static_cast<float>` on the ratio restores both dword operations
+  without an intervening memory round trip in this pinned profile. The first
+  strict `frontend-insert-score` comparison matches all 316 bytes and 18 fields.
+  Independent cold replay and the two direct callers remain pending. Receipts
+  are under `.analysis/frontend-insert-score/`.
 - **InitializeGameStatisticsRecord @0x42ACB0 (274)**. The six-TU
   `GameStatisticsTail` graph matches 249 bytes and binds all eight DIR32
   fields in the complete PDB contribution. Three read the nine-byte

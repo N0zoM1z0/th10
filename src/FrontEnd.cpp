@@ -5088,8 +5088,8 @@ int FrontEndInsertScore(FrontEndScoreTableView *table)
     // leaving the tenth name byte untouched. There is no denominator guard.
     strcpy(table->records[g_ReplayDifficulty][row].name, "        ");
     table->records[g_ReplayDifficulty][row].slowdownRate = static_cast<float>(
-        100.0 - (g_ReplayTimingSource->lagNumerator /
-                 g_ReplayTimingSource->lagDenominator) * 100.0);
+        100.0f - static_cast<float>(g_ReplayTimingSource->lagNumerator /
+                                   g_ReplayTimingSource->lagDenominator) * 100.0f);
     return row;
 }
 
