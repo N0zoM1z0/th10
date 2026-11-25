@@ -1774,12 +1774,14 @@ restored the EDI receiver at both calls and the full update comparison.
   the EBX save. In each trial ESI holds the early value while the panel
   stays in EAX. The target uses ESI for the panel itself and reads the
   rank after the call.
-  A typed VM cursor in the invalidator makes its EAX receiver advance as
-  it clears flags. This emits a 176-byte invalidator and makes the
-  caller match all 397 bytes and 17 fields. The indexed 81-byte
-  invalidator preserves EAX, so VC7.1 currently retains the panel in
-  that register in the caller. The paired target bodies require an
-  exact invalidator with a caller that preserves the panel separately.
+  A typed VM cursor advances EAX in the invalidator. The indexed cursor
+  emits 176 bytes and the pointer-bound loop emits 69 bytes. Both make
+  the caller match all 397 bytes and 17 fields. The indexed 81-byte
+  invalidator preserves EAX, so VC7.1 retains the panel in that register
+  in the caller. The target requires the caller to preserve the panel
+  separately. The power display reads the signed short at score
+  offset `+0x08`, and the rank adjustment writes offset `+0x58` of
+  the same score object.
 - Option reset flags are at Player 332C/33C4/345C/34F4; draw position 3C0/3C4; signed coordinates 3CC/3D0 scaled by 0.01f (470B00).
 - `g_AnmGameSpeed` is 476F78.
 - `+0x08/+0x0C`: update/draw callback nodes (0x24-byte nodes; callback at +0x08, owner at +0x20). Priorities 0x10/0x16. Update entry 0x426500 does `push ecx; call 0x425730; ret`. Draw entry 0x426510 does `mov eax,ecx; jmp 0x426360`.

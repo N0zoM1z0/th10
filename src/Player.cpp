@@ -2853,7 +2853,7 @@ int PlayerUpdateGate28::StartPowerTransition()
         script, reinterpret_cast<const AnmFloat3View *>(&position));
     reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundCue(
         38, position.x);
-    int power = g_PlayerPower;
+    const int power = g_GameScoreState.power;
     g_ItemPowerDisplayOwner->UpdatePowerDisplay(
         power / 20, ((power % 20) * 100) / 20);
     EnemyGameStateView *panel = g_EnemyGameState;
