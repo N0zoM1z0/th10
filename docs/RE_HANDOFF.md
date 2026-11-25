@@ -15,6 +15,8 @@ differences are the EBX save around VM creation, the panel receiver
 retained after bonus invalidation, and the final rank and mode stores.
 The 3,112-byte Player update still matches both calls. The six Bomb
 creation, registration, update and destruction units also pass cold.
+The Player collision handler and state-2 transition now reuse the indexed
+invalidator and match their full target bodies with it inlined.
 Build `player-start-power-transition` for the 15-input candidate and
 compare its 17 fields with `scripts/compare-linked-function.py --unit
 player-start-power-transition`. The real script loader closes the VM

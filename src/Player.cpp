@@ -546,17 +546,7 @@ void __stdcall PlayerHandleCollisionHit(Player *player)
         static_cast<AnmLoadedView *>(player->resource),
         reinterpret_cast<AnmVmView *>(&player->drawVm), 0);
 
-    EnemyGameStateView *panel = g_EnemyGameState;
-    if (panel->spellTimer.current >= 60)
-    {
-        panel->currentSpellBonus = 0;
-        panel->flags378C &= ~2u;
-        for (int slot = 0; slot < 8; ++slot)
-        {
-            if (slot != 2)
-                panel->frontVms[slot].flags35C &= ~2u;
-        }
-    }
+    g_EnemyGameState->InvalidateSpellBonus();
 }
 
 // Target4269D0. The maintained update caller enters state2 after its state4
@@ -587,18 +577,7 @@ void __stdcall PlayerTransitionToState2(Player *player)
         g_GameOwner477814->AddCaution("Caution!",
             &player->drawPosition);
 
-    EnemyGameStateView *panel = g_EnemyGameState;
-    if (panel->spellTimer.current >= 60)
-    {
-        panel->currentSpellBonus = 0;
-        panel->flags378C &= ~2u;
-        for (int slot = 0; slot < 8; ++slot)
-        {
-            // Target clears seven VM flags; the third VM is deliberately kept.
-            if (slot != 2)
-                panel->frontVms[slot].flags35C &= ~2u;
-        }
-    }
+    g_EnemyGameState->InvalidateSpellBonus();
     g_GameScoreState.AddRank(-0x400);
 }
 

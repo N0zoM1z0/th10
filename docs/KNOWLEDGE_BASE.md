@@ -1796,6 +1796,12 @@ restored the EDI receiver at both calls and the full update comparison.
   yields the same register allocation. Both ordinary and forced local
   inlining leave the panel in EAX. Evaluating the mode predicate before
   rank publication produces a 399-byte body.
+  `PlayerHandleCollisionHit` and `PlayerTransitionToState2` call the same
+  indexed invalidator in source. VC7.1 expands both calls to their target
+  inline loads, masks and stores. The 627-byte collision handler, 796-byte
+  state transition, 3,112-byte Player update and outlined 81-byte
+  invalidator remain exact. The Bomb transition retains its outlined call
+  and the 159-byte residual.
 - Option reset flags are at Player 332C/33C4/345C/34F4; draw position 3C0/3C4; signed coordinates 3CC/3D0 scaled by 0.01f (470B00).
 - `g_AnmGameSpeed` is 476F78.
 - `+0x08/+0x0C`: update/draw callback nodes (0x24-byte nodes; callback at +0x08, owner at +0x20). Priorities 0x10/0x16. Update entry 0x426500 does `push ecx; call 0x425730; ret`. Draw entry 0x426510 does `mov eax,ecx; jmp 0x426360`.
