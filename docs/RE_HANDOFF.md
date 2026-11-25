@@ -7,20 +7,12 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `EclVmContext::StartSubroutine` at `0x0044DF70` in
-`src/EclVm.cpp`. It is the largest authored function still open in the
-match ledger. The two-source `EclVmHostRunEnemy` link matches 536 of 550
-bytes and resolves all four call fields. The remaining bytes are register
-choices in the operand loop. The same cold link passes `ecl-vm-spawn-thread`
-and `ecl-vm-host-run`, and the separate `ecl-vm-run` link also passes.
-The allocator and tail merge findings are in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md).
-
-At +0xF2 the destination cursor takes EAX before the +0xF6 instruction
-pointer load is assigned. VC7.1 then has ECX and EDX available for the
-instruction pointer. The target uses ECX for the cursor and EAX for the
-instruction pointer. The local trace
-`.analysis/ecl-start-subroutine/trace-latch-instruction-color.py` follows
-that assignment in the two-source graph.
+The active owner is `ScriptViewerView::~ScriptViewerView` at `0x0040A1A0`
+in `src/ScriptViewer.cpp`. The `ScriptViewerDestructSmall` link matches the
+complete 412-byte body, 44 bound fields and both unwind actions. The factory
+and eleven related entries match in the same image. Complete the Stage
+constructor and destructor guards with the inlined VM destructor emitted
+by `src/StageLifecycle.cpp`, then promote `script-viewer-destructor`.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -29,16 +21,13 @@ locally. [RE_ARTIFACTS.md](RE_ARTIFACTS.md) identifies the retained inputs.
 
 ### Parked owners
 
-`ScriptViewerView::~ScriptViewerView` at `0x0040A1A0` has a strict
-412-byte cold match with 44 bound fields and both unwind actions in
-`ScriptViewerDestructSmall`. The factory and eleven related entries pass
-in the same image. The standalone VM destructor, GUI and ASCII
-destructors, GUI cleanup, startup worker destructor, enemy spell panel
-constructor and ANM render manager constructor pass in their affected
-cold links. The stage constructor and destructor guards still need to
-qualify the inline VM destructor in `src/StageLifecycle.cpp`, where the
-stage link now emits it. Finish those guards before promoting
-`script-viewer-destructor` to the match ledger.
+`EclVmContext::StartSubroutine` at `0x0044DF70` matches 536 of 550 bytes
+and all four call fields in `EclVmHostRunEnemy`. The remaining differences
+are register choices in the operand loop. The loop latch assigns its
+destination cursor before the instruction pointer, which leaves the latter
+with ECX and EDX available. The target uses ECX for the cursor and EAX
+for the instruction pointer. See [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md)
+for the traces and the cold replay scope.
 
 Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 [frontiers.toml](../config/frontiers.toml).

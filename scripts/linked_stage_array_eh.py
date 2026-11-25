@@ -16,9 +16,10 @@ import linked_worker_member_eh as worker_eh
 
 PARENTS = {
     '??0StageScriptView@@QAE@XZ': dict(entry=0x402160, size=188, offset=9,
-                                     handler=0x46556b, arrays=((0x180, 8),)),
+        handler=0x46556b, arrays=((0x180, 8),), vm_destructor_source='src/StageLifecycle.cpp'),
     '??1StageScriptView@@QAE@XZ': dict(entry=0x402440, size=499, offset=3,
-                                     handler=0x4652d6, arrays=((0x180, 8), (0x1f08, 3))),
+        handler=0x4652d6, arrays=((0x180, 8), (0x1f08, 3)),
+        vm_destructor_source='src/StageLifecycle.cpp'),
     '??1GuiView@@QAE@XZ': dict(entry=0x4145f0, size=574, offset=3,
         handler=0x46574e, arrays=((0x10, 10), (0x24c8, 10), (0x4980, 9),
                                 (0x6a8c, 4), (0x793c, 2), (0x8094, 7), (0x9a48, 1)),

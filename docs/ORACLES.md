@@ -187,10 +187,9 @@ FuncInfo, unwind rows and predecessor edges, saved receiver at EBP+4, array
 offsets `+0x180` and `+0x1F08`, counts 8 and 3, and stride `0x3AC`.
 The VM destructor must have a unique, complete 34-byte contribution from
 the qualified PDB object. LTCG can emit the inline definition in a caller's
-translation unit. The verifier checks all of its bytes and its sole free
-field independently. Vector-destructor
-and CxxFrameHandler entries are also checked. This is address/metadata identity,
-not generated-code credit or exception execution.
+translation unit. The Stage link emits its copy in the StageLifecycle
+object. The verifier checks all of its bytes and its sole free field
+independently. It also checks vector-destructor and CxxFrameHandler entries.
 Only the affected Stage array-binding self-test is added to the optional Oracle
 selection; unrelated comparison mechanisms retain their current contracts.
 

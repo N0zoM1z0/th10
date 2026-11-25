@@ -89,7 +89,7 @@ def fixture(symbol):
         source = 'src/StageScript.cpp'
         supports = ['src/StageLifecycle.cpp', 'src/AnmManager.cpp']
         owner_object = 'support-00-StageLifecycle.ltcg.obj'
-        vm_basename = 'support-01-AnmManager.ltcg.obj'
+        vm_basename = owner_object
     stage_object = 'Z:\\synthetic\\' + owner_object
     vm_object = 'Z:\\synthetic\\' + vm_basename
     vm_module = 13 if stage_object == vm_object else 14
@@ -200,7 +200,8 @@ def main():
             ('wrong-predecessor', lambda q: word(q, 'target', 0x600000, 0)),
             ('anchored-destructor', lambda q: q['aliases'].update({eh.DESTRUCTOR_SYMBOL: 'fake'})),
             ('short-destructor', lambda q: q['functions'][0].update(size=33)),
-            ('wrong-destructor-object', lambda q: q['functions'][0].update(map_object='foreign.obj')),
+            ('wrong-destructor-object', lambda q: q['functions'][0].update(map_object=(
+                'support-01-AnmManager.ltcg.obj' if not spec.get('owner_source') else 'foreign.obj'))),
             ('foreign-destructor', lambda q: q['functions'][0].update(pdb_module_index=15)),
             ('destructor-field', lambda q: q['links']['fields'].append(dict(offset=1, width=4, type='DIR32'))),
             ('destructor-byte', lambda q: q['native'].write(0x101840, b'\x91')),
