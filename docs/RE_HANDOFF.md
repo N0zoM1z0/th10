@@ -10,10 +10,9 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 The active owner is `ReplayManager::LoadReplay` at `0x0042A200` in
 `replay-manager-load-replay`, the largest remaining authored owner outside
 the parked ECL scope. The five-input `ReplayLoadCore` graph has a strict
-warm match of 450 bytes and 18 fields. The real Main checksum and PBG archive
-context gives `FileSystem::OpenFile` an EAX filename and a stack size pointer.
-The replay manager stays in ESI and the packed buffer in EBP. Cold replay
-the loader, then check its direct consumers in their own link graphs.
+cold match of 450 bytes and 18 fields. The seven file and decoder bodies in
+that image also match. The direct `Load` and `Initialize` caller guards are
+running in their own graphs.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -38,6 +37,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `replay-manager-load-replay` | 450 B | `ReplayLoadCore`, 18 fields and 14 local branches. The loader uses ESI, and the archive opener takes its name in EAX and size pointer on the stack. |
 | `ascii-manager-destructor` | 467 B | `GuiDestructorCore`, 38 fields, eight local branches and two embedded VM unwind actions. The receiver is on the stack with two RET 4 exits. |
 | `gui-cleanup-resources` | 476 B | `GuiDestructorCore`, 17 fields, an EBP GUI pointer and the shared startup runtime flags. |
 | `text-render-alternate` | 509 B | `TextBufferLifecycle`, 32 fields, outlined LTCG FillColor and normal-COFF InvertAlpha. |

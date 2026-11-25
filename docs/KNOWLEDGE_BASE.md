@@ -1908,6 +1908,11 @@ restored the EDI receiver at both calls and the full update comparison.
   and re-reads the stage index between the header and cursor stores. The
   [MIT-licensed reference](licenses/th10-decomp-MIT.txt) suggested these
   source forms and the named allocation-size local.
+  The Main checksum and PBG archive context keeps `OpenFile`'s size pointer
+  on the stack and lets the loader keep the packed buffer in EBP. In the
+  earlier graph without the PBG archive, LTCG put the size pointer and packed
+  buffer in EBX and emitted a 451-byte body. `ReplayLoadCore` matches 450 bytes
+  with the decoder linked as normal COFF.
 
 - `SaveReplay`: ECX owner, EDX path, stack name, RET4.
 - Fields: mode +0x10, header +0x14, data +0x18, eight stage headers +0x1C, frame lists +0x3C, eight 0x24 stage states at +0xA0, payload +0x1C0, FPS +0x1C4, path +0x1D4.

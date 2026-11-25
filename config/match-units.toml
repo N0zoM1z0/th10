@@ -36540,7 +36540,6 @@ linkages = [
 ]
 
 [units.replay-manager-load-replay]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/Main.cpp"
 support_sources = ["src/FileSystem.cpp", "src/PbgArchive.cpp", "src/ReplayManager.cpp", "src/Decompress.cpp"]
