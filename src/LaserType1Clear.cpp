@@ -33,11 +33,13 @@ int EnemyLaserType1View::Clear(int spawnItems)
                         reinterpret_cast<EnemyLaserManagerStorageView *>(
                             g_EnemyLaserManager)->effectResource;
                     AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
-                    vm->flags35C |= 0x40000000u;
+                    unsigned int flags = vm->flags35C;
+                    vm->flags35C = flags | 0x40000000u;
                     vm->renderLayer = 0;
-                    vm->positionOffset.x = point.x + 224.0f;
-                    vm->positionOffset.y = animationY;
-                    vm->positionOffset.z = point.z;
+                    AnmFloat3View *effectPosition = &vm->positionOffset;
+                    effectPosition->x = point.x + 224.0f;
+                    effectPosition->y = animationY;
+                    effectPosition->z = point.z;
                     StartAnmLoadedScript(resource, vm, scriptIndex);
                     g_AnmRenderManagerView->AddVmVariant0(vm);
                     if (spawnItems != 0 &&

@@ -69,6 +69,14 @@ comparison only for its source and link graph.
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
+## Open owner
+
+`EnemyLaserType1View::Clear` at `0x0041F400` is active. The virtual
+member is the link entry to keep its public ECX receiver. The warm
+`LaserType1Clear` link matches 623 bytes and 29 fields, including the
+real item allocator, script loader and animation registrar. Cold
+replay this owner and recheck those callees in the same artifact.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.
