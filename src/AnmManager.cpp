@@ -2942,8 +2942,11 @@ void AnmLoadedView::SetAndExecuteScriptIndex(
 void AnmLoadedView::SetAndExecuteScriptIdx(
     AnmVmView *vm, int scriptIndex)
 {
+    // Capture both script positions before the VM reset. VC7.1 merges these
+    // slot reads after forming register candidates.
     AnmRawInstructionView *beginningOfScript = AnmScriptAtWord(scripts, scriptIndex);
-    if (beginningOfScript == NULL)
+    AnmRawInstructionView *currentInstruction = AnmScriptAtWord(scripts, scriptIndex);
+    if (beginningOfScript == NULL || currentInstruction == NULL)
         return;
     if (pendingLoadCount != 0)
         return;
@@ -2977,8 +2980,19 @@ void AnmLoadedView::SetAndExecuteScriptIdx(
     vm->anmFile = this;
     vm->flags35C = flags;
     vm->beginningOfScript = beginningOfScript;
-    vm->currentInstruction = beginningOfScript;
-    vm->scriptTimer.SetCurrent(0);
+    vm->currentInstruction = currentInstruction;
+    AnmVmTimerView &timer = vm->scriptTimer;
+    if ((timer.flags & 1u) == 0)
+    {
+        timer.current = 0;
+        timer.previous = -999999;
+        timer.subframe = 0.0f;
+        timer.scale = &g_AnmGameSpeed;
+        timer.flags |= 1u;
+    }
+    timer.current = 0;
+    timer.subframe = 0.0f;
+    timer.previous = -1;
     vm->visible = 0;
     AnmRenderManagerView::ExecuteScript(vm);
     ++g_AnmRenderManagerView->scriptsStartedThisFrame;

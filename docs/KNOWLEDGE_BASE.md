@@ -2591,6 +2591,31 @@ restored the EDI receiver at both calls and the full update comparison.
 
 ### ANM
 
+- **AnmLoadedView::SetAndExecuteScriptIdx @0x43E8B0 (287)** has its first
+  complete strict match in the two-input `AnmSetVmScriptIndex` graph under
+  the existing `/GL` profile: 287 bytes and four fields. The real
+  `EnemyRuntimeUpdate` root gives EDX loaded resource, EAX VM and ECX script
+  index, with plain RET. Source captures script base and current instruction
+  separately, validates both snapshots, then resets the VM. VC7.1 merges
+  their identical slot reads late enough to restore the target ESI script
+  pointer and EDI saved index.
+
+  The previous single-snapshot body matched 265/287 bytes after field
+  replay. Read-only C2 allocation showed flags at priority 44 taking ESI
+  before the script pointer at 42. th10-decomp's script-change recovery
+  note supplied the late-merge hypothesis. With both snapshots validated,
+  the timer method stopped inlining and changed the private ABI; expressing
+  its original reset locally restores all 287 bytes. Independent cold replay
+  with the 36-byte `AnmSetVmScriptIndexAndExecute` caller is pending.
+
+  A 16-bit index snapshot, direct raw-member flags, combined flag expression,
+  combined guard, bitfield test, two-bit axis view and two snapshots with a
+  single guard were byte neutral. A one-bit flip assignment expanded to a
+  five-instruction update. The baseline allocation trace used th10-decomp's
+  read-only hook recipe with the TH10 environment; the
+  [MIT notice](licenses/th10-decomp-MIT.txt) is retained. Comparisons and
+  useful trace records are under `.analysis/anm-set-execute-script-idx/`.
+
 - **`AsciiManagerView::~AsciiManagerView` at `0x00401260`** removes three
   callbacks under supervisor critical section 0, releases animation banks
   2, 0 and 3, and clears the global manager. VC7.1 LTCG with `/EHsc` stores

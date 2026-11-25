@@ -10,10 +10,23 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 The sole active owner is `AnmLoadedView::SetAndExecuteScriptIdx` at
 `0x0043E8B0`, 287 bytes in `src/AnmManager.cpp`. It is the largest remaining
 authored owner apart from the explicitly deferred `StartSubroutine`.
-The prior same-TU `/GL` diagnostic emitted the full size but swapped the
-script index and script pointer registers (target EDI and ESI). Inspect the
-existing `anm-set-vm-script-index-and-execute` caller recipe, compare a complete
-source early, and stay on this owner through strict independent cold replay.
+The first complete strict comparison now matches all 287 bytes and four
+fields in the two-input `AnmSetVmScriptIndex` graph. Separate script-base
+and current-instruction snapshots, both validated before reset, merge into
+one load while restoring the ESI/EDI allocation. Expressing the timer reset
+locally preserves its target inline behavior and private EDX/EAX/ECX ABI.
+See the ANM knowledge section and `.analysis/anm-set-execute-script-idx/`.
+
+Before ledger credit, run the independent selected cold replay:
+
+```bash
+scripts/repo-python scripts/replay-exact-units.py \
+  --unit anm-loaded-set-execute-script-idx \
+  --unit anm-set-vm-script-index-and-execute --json
+```
+
+The second unit is its sole direct caller, 36 bytes. Stay on this owner
+until both complete comparisons pass cold.
 
 `MainConfigureCamera` is accepted: its complete 287-byte PDB extent and all
 12 fields pass cold in `StageViewport`. The six direct consumers also pass
