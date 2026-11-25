@@ -8,10 +8,12 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 ## Resume
 
 The sole active owner is `EnemyLaserType1View::Initialize` at `0x0041E5C0`,
-309 bytes in `src/LaserType1.cpp`. It is the largest remaining authored
-owner apart from the explicitly deferred `StartSubroutine`. Inspect its
-current source, target and retained link recipe, then compare the complete
-source early. Stay on this owner through its complete strict cold match.
+309 bytes in `src/LaserType1.cpp`. Its first strict comparison matches
+309/309 bytes and all seven fields in `LaserType1InitCore`; the existing source
+needs no edit once the real VM starter and script loader are linked. The unit
+is `laser-type1-initialize`, with receipts under
+`.analysis/laser-type1-initialize/`. Run its independent selected cold replay
+before ledger credit. No shared source or existing unit recipe changed.
 
 `FrontEndInsertScore` is accepted at 316 bytes and 18 fields in
 `ResultMenuClose`. Its independent cold replay and both direct callers pass:

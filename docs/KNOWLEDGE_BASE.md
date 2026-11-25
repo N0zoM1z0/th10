@@ -968,6 +968,21 @@ frontier; do not refresh a baseline merely to accept the new positions.
   subobject in X, Z, Y order. The MIT-licensed reference supplied the
   inline-registration and position-store leads.
   [Reference license](licenses/th10-decomp-MIT.txt)
+- **EnemyLaserType1View::Initialize @0x41E5C0 (309)** matches all 309
+  bytes and seven fields in its first strict `LaserType1InitCore` comparison.
+  The existing source needs no edit. Use the same five-input recipe as the
+  accepted line initializer, with `LaserType1.cpp` as primary and its actual
+  virtual initializer as entry. The real `AnmVmStartScript.cpp` and
+  `AnmLoadedStartScript.cpp` support recover ESI for the VM, EAX for the script
+  and one resource argument on the stack. The old `LaserType1Update` observation
+  emitted 312 bytes without the real starter implementation.
+
+  The target ECX receiver returns with RET 4. It copies all 126 request DWORDs,
+  reads signed type/color shorts, initializes both embedded VMs, and preserves
+  the X/Z/Y position-load schedule. Width starts at 2.0f; growth speed comes
+  from request+0x2C. The seven fields cover both manager loads, the script-base
+  table and both pairs of starter/interpreter calls. Independent cold replay
+  remains pending. Receipts are under `.analysis/laser-type1-initialize/`.
 - **EnemyLaserType1View::Clear @0x41F400 (623)** matches all 29 fields
   with the public virtual member as link entry. The ECX receiver belongs
   to slot 0x0046DA24. Keep the VM position as a typed subobject and snapshot the
