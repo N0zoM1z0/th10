@@ -1258,6 +1258,10 @@ frontier; do not refresh a baseline merely to accept the new positions.
   the target's `mov eax, edx`, leaving 333 bytes. The angle still uses EAX.
   These paths are rejected; source-variable reuse can change codegen, but
   this particular coalescing loses an already matching instruction.
+  Reusing the pre-increment source instead, while retaining the comparison
+  through `state.int2`, restores all 335 bytes of extent but leaves the same
+  two angle-register differences. Its strict comparison binds all eight
+  fields. Neither counter reuse creates the missing EDX preference.
   The maintained increment now adds `1u` as an unsigned word before the
   target-specific signed conversion and limit comparison. This defines the
   native wrap without relying on signed C++ overflow. Its canonical strict
