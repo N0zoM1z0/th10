@@ -1,6 +1,6 @@
 """Bind target-reviewed VM-array EH metadata, without runtime credit.
 
-Covers the Stage, spell-panel and GUI VMs and the ANM manager's pool,
+Covers the Stage, spell-panel, GUI and ASCII VMs and the ANM manager's pool,
 embedded VM and layer array.
 A full PDB-generated contribution, immutable FuncInfo/unwind map, saved this,
 real VM destructor and CRT entries must agree with the original executable.
@@ -22,6 +22,8 @@ PARENTS = {
         handler=0x46574e, arrays=((0x10, 10), (0x24c8, 10), (0x4980, 9),
                                 (0x6a8c, 4), (0x793c, 2), (0x8094, 7), (0x9a48, 1)),
         owner_source='src/Gui.cpp'),
+    '??1AsciiManagerView@@QAE@XZ': dict(entry=0x401260, size=467, offset=3,
+        handler=0x4652f9, arrays=((0x14, 1), (0x3c0, 1)), owner_source='src/AnmManager.cpp'),
     '??0EnemyGameStateView@@QAE@XZ': dict(entry=0x408910, size=176, offset=9,
         handler=0x465514, arrays=((0x10, 2), (0x778, 8)),
         owner_source='src/EnemyGameStateLifecycle.cpp'),
@@ -86,7 +88,7 @@ def immediate(instruction, value):
 
 def action_size(member, count):
     if count == 1:
-        return 14
+        return 11 if 0 <= member <= 0x7f else 14
     return (25 if 0 <= member <= 0x7f else 27) + (3 if count > 0x7f else 0)
 
 
@@ -124,7 +126,7 @@ def protocol(image, handler, frame, destructor, iterator, arrays):
                 'unwind state/action edge differs')
         code = list(decoder.disasm(image.read_address(action, size), action))
         if count == 1:
-            require([i.size for i in code] == [3, 6, 5]
+            require([i.size for i in code] == [3, size - 8, 5]
                     and [i.mnemonic for i in code] == ['mov', 'add', 'jmp'],
                     'complete member cleanup shape differs')
             load, add, jump = code

@@ -1,5 +1,5 @@
 #include "GameErrorContext.hpp"
-#include "AnmManager.hpp"
+#include "Main.hpp"
 #include "AnmLoadedStartScript.hpp"
 #include "StageScript.hpp"
 #include "FileSystem.hpp"
@@ -4194,27 +4194,24 @@ fail:
     return -1;
 }
 
-static void RemoveAnmChainElement(AnmChainElementView *element)
+static void RemoveAnmChainElement(th10::ChainElem *element)
 {
     th10::Chain *chain = th10::g_Chain;
     if (element != NULL)
     {
-        EnterCriticalSection(g_AnmChainCriticalSection);
-        ++g_AnmChainMutationDepth;
-        chain->UnregisterElem(reinterpret_cast<th10::ChainElem *>(element));
-        LeaveCriticalSection(g_AnmChainCriticalSection);
-        --g_AnmChainMutationDepth;
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        chain->UnregisterElem(element);
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        --g_MainSupervisorView.criticalSectionLockCounts[0];
     }
 }
 
 AsciiManagerView::~AsciiManagerView()
 {
-    RemoveAnmChainElement(
-        static_cast<AnmChainElementView *>(calcChainElement));
-    RemoveAnmChainElement(
-        static_cast<AnmChainElementView *>(drawChainElement0));
-    RemoveAnmChainElement(
-        static_cast<AnmChainElementView *>(drawChainElement));
+    RemoveAnmChainElement(static_cast<th10::ChainElem *>(calcChainElement));
+    RemoveAnmChainElement(static_cast<th10::ChainElem *>(drawChainElement0));
+    RemoveAnmChainElement(static_cast<th10::ChainElem *>(drawChainElement));
 
     g_AnmRenderManagerView->ReleaseAnm(2);
     g_AnmRenderManagerView->ReleaseAnm(0);

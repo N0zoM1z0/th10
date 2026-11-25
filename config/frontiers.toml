@@ -15,10 +15,9 @@ residual = ["D7", "DD"]
 [frontier.ascii-manager-destructor]
 function = "AsciiManagerView::~AsciiManagerView"
 unit = "ascii-manager-destructor"
-candidate_size = 481
+candidate_size = 467
 target_sha256 = "eac2ee271ae86394a9975fc24bc00dad409bc7e34b2f9e3cbebfe507fc609d96"
-residual = ["0-1", "6-8", "E-14", "19-1E", "23-29", "2B-31", "36-37", "3C-3D", "42-44", "49-4C", "51-55", "5A", "5F-62", "67-71", "76-78", "7D-80", "85-89", "8E", "93-96", "9B-A2", "A4-A8", "AD-AF", "B4-B7", "BC-C0", "C5", "CA-CD", "D2-D3", "D8-E8", "ED-F0", "F5-F8", "FA-FF", "104-114", "119-11C", "121-12B", "130-140", "145-148", "14D-168", "16D", "171-174", "179-194", "196-19B", "1A0-1AD", "1B1-1B3", "1B5-1B7", "1BC-1CB", "1CD-1E0"]
-
+residual = []
 [frontier.replay-manager-load-replay]
 function = "ReplayManager::LoadReplay"
 unit = "replay-manager-load-replay"

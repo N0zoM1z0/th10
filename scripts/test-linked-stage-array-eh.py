@@ -24,7 +24,9 @@ class Image:
             action = start + len(code)
             size = eh.action_size(member, count)
             if count == 1:
-                code += b'\x8b\x4d\x04\x81\xc1' + struct.pack('<I', member)
+                code += b'\x8b\x4d\x04'
+                code += (b'\x83\xc1' + bytes([member]) if member <= 0x7f
+                         else b'\x81\xc1' + struct.pack('<I', member))
                 code += b'\xe9' + struct.pack('<i', destructor - action - size)
             else:
                 code += b'\x68' + struct.pack('<I', destructor)
@@ -183,11 +185,6 @@ def main():
             ('try-map', lambda q: word(q, 'target', q['target'].func_info + 12, 1)),
             ('wrong-action', lambda q: word(q, 'native', 0x300004, q['address'])),
             ('wrong-predecessor', lambda q: word(q, 'target', 0x600000, 0)),
-            ('array-count', lambda q: q['target'].write(q['target_start'] + 6, b'\x09')),
-            ('array-stride', lambda q: word(q, 'target', q['target_start'] + 8, 0x3b0)),
-            ('saved-this', lambda q: q['native'].write(0x11100e, b'\x08')),
-            ('member-offset', lambda q: word(q, 'target', q['target_start'] + 16, 0x184)),
-            ('iterator-entry', lambda q: word(q, 'native', 0x111016, 0x101821 - 0x11101a)),
             ('anchored-destructor', lambda q: q['aliases'].update({eh.DESTRUCTOR_SYMBOL: 'fake'})),
             ('short-destructor', lambda q: q['functions'][0].update(size=33)),
             ('foreign-destructor', lambda q: q['functions'][0].update(pdb_module_index=15)),
@@ -195,9 +192,21 @@ def main():
             ('destructor-byte', lambda q: q['native'].write(0x101840, b'\x91')),
             ('destructor-free', lambda q: word(q, 'native', 0x10184f, 0x1018a1 - 0x101853)),
         ]
+        if spec['arrays'][0][1] == 1:
+            cases += [('short-member', lambda q: q['target'].write(q['target_start'] + 5, b'\x18')),
+                      ('short-saved-this', lambda q: q['native'].write(0x111002, b'\x08')),
+                      ('short-destructor-entry', lambda q: word(q, 'native', 0x111007, 0x101841 - 0x11100b)),
+                      ('second-member', lambda q: word(q, 'target', q['target_start'] + 16, 0x3c4))]
+        else:
+            cases += [('array-count', lambda q: q['target'].write(q['target_start'] + 6, b'\x09')),
+                      ('array-stride', lambda q: word(q, 'target', q['target_start'] + 8, 0x3b0)),
+                      ('saved-this', lambda q: q['native'].write(0x11100e, b'\x08')),
+                      ('member-offset', lambda q: word(q, 'target', q['target_start'] + 16, 0x184)),
+                      ('iterator-entry', lambda q: word(q, 'native', 0x111016, 0x101821 - 0x11101a))]
+            if len(spec['arrays']) == 2:
+                cases += [('second-member', lambda q: word(q, 'target', q['target_start'] + 43, 0x1f0c))]
         if len(spec['arrays']) == 2:
-            cases += [('second-predecessor', lambda q: word(q, 'target', 0x600008, 0xffffffff)),
-                      ('second-member', lambda q: word(q, 'target', q['target_start'] + 43, 0x1f0c))]
+            cases += [('second-predecessor', lambda q: word(q, 'target', 0x600008, 0xffffffff))]
         if len(spec['arrays']) == 3:
             cases += [('wide-count', lambda q: word(q, 'target', q['target_start'] + 6, 4095)),
                       ('embedded-offset', lambda q: word(q, 'target', q['target_start'] + 33, 0x3ad134)),

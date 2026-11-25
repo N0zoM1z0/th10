@@ -7,10 +7,13 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The GUI resource cleanup owner at `0x00414370` matches all 476 bytes
-and 17 fields in `gui-cleanup-resources`. Its live setup flags use
-`g_GameStartupState.runtimeFlags` at +0x60. The next authored owner is
-selected from [matches.csv](../config/matches.csv).
+The active owner is `AsciiManagerView::~AsciiManagerView` at `0x00401260`
+in `ascii-manager-destructor`, the largest remaining authored owner outside
+the parked ECL scope. The old `StartupWorkerLifecycle` graph emitted 481
+bytes. The uniform `/EHsc` `GuiDestructorCore` graph has a strict warm match
+of 467 bytes and 38 fields with both stack-receiver RET 4 exits. The lock
+uses `MainSupervisorView`, and the 35-byte EH region destroys the two
+embedded `AnmVmView` instances at +0x14 and +0x3C0. Cold verification is next.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
