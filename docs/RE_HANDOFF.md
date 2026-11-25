@@ -9,11 +9,21 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 The sole active owner is `FrontEndUpdateMainMenu` at `0x0042D300`, 288
 bytes in `src/FrontEnd.cpp`. It is the largest remaining authored owner apart
-from the explicitly deferred `StartSubroutine`. Its complete extent contains
-268 code bytes and 20 bytes of switch destinations through `0x0042D41F`.
-Inspect its current implementation and retained FrontEnd update recipe,
-compare the complete source early, and stay on this owner through its full
-strict cold match.
+from the explicitly deferred `StartSubroutine`. Its first strict comparison now matches all 288 bytes and 20 fields
+in `FrontEndReplay`, including the complete five-entry switch table. Use
+`cursor.Select(0)` for the target inline reset, and assign the returned VM
+ID's integer `.value` directly to recover EDX. The receiver remains EBX.
+No shared header or helper implementation changed.
+
+Before ledger credit, run the independent selected cold replay:
+
+```bash
+scripts/repo-python scripts/replay-exact-units.py \
+  --unit frontend-main-menu-update --unit frontend-update-dispatcher --json
+```
+
+Current receipts are under `.analysis/frontend-main-menu/`.
+Stay on this owner until the selected cold link finishes.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with

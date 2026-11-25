@@ -741,11 +741,11 @@ int __stdcall FrontEndUpdateMainMenu(FrontEndControllerView *controller)
         {
             controller->CreateVm(0x58);
             controller->CreateVm(0x5a);
-            controller->titleAuxVmId =
-                controller->titleAnm->CreateVmVariant0(0, 15);
+            controller->titleAuxVmId.value =
+                controller->titleAnm->CreateVmVariant0(0, 15).value;
         }
         controller->SetScreenStateTarget(1);
-        controller->cursor.SetCurrent(0);
+        controller->cursor.Select(0);
         // The opening threshold is sampled after the phase/timer reset.
     case 1:
         if (controller->stateTimer.current > 10)
