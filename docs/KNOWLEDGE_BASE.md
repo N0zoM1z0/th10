@@ -1382,6 +1382,12 @@ restored the EDI receiver at both calls and the full update comparison.
   explicit jump and skip paths.
 - The type-1 vtable 0x46DA10 has Draw at +0xC, the box cutter 0x41EB00 at +0x18 and the circle cutter 0x41EFA0 at +0x1C (RET 0xC, frame 0x32C). The box frame is 0x344.
 - The type-0 vtable 0x46DA60 has CheckPoint 0x41E4D0 at +0x20 and Bounce 0x41CFD0 at +0x3C. Update calls Bounce under mask 0x08000C00.
+- The four-input `LaserLineUpdate` link emits both `Bounce` spawn calls
+  with the manager in ESI, the request in EDI and one stack argument.
+  The 408-byte baseline uses ESI for the horizontal-bounce flag and only
+  sets it after the first call. The target uses EBP for that flag, saves
+  ESI separately during the horizontal boundary check, and sets EBP
+  before the call.
 - Cutter predicates accept unordered values: the radial test rejects only on ordered squared distance > squared radius, and the box test uses negated XY rejects. Sample Z is cleared after vector addition. Bounce's Y reflection uses ordered `<min` and `>=max`.
 - AccumulatePointChecks takes EAX as its receiver, calls the virtual at +0x20 and returns RET 8.
 - Type-0 laser (vtable 46DA60, line D58, VMs at 600/9AC, request at 424):
