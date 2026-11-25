@@ -11,7 +11,7 @@ The active owner is `CleanupHintOwner` at `0x00418EE0` in `src/Hint.cpp`
 (346 bytes). The two target callers are the Hint release path and
 GameManager cleanup. Keep the separate task locks, ten VM cleanup
 slots, and export-stream teardown in the complete comparison.
-The `HintLifecycle` link with `HintLoad.cpp` under LTCG currently matches
+The `HintCleanupOwner` link with `HintLoad.cpp` under LTCG currently matches
 all 346 bytes and 22 resolved fields. The same image matches the 79-byte
 `ClearHintLists` body with its EAX receiver. Cold replay the owner and
 the affected callers before acceptance.
