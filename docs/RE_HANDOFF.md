@@ -27,7 +27,9 @@ reads assigns the desired registers but changes the machine-code schedule;
 raising the instruction candidate's priority in a debugger control also
 changes that schedule. A volatile count read restores it in the control,
 but the count still uses EAX instead of ECX. The next useful experiment
-must address both candidate order and count register choice. The target
+must address both candidate order and count register choice: in the
+volatile-count form, C2 selects the count's EAX on a zero-cost tie with
+ECX and has no register preference for that value. The target
 uses ECX for the cursor and EAX for the instruction pointer. See
 [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) for traces and cold replay scope.
 For nonexact candidates, compile and compare only the affected unit.

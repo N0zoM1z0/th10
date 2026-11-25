@@ -1625,6 +1625,15 @@ restored the EDI receiver at both calls and the full update comparison.
   This manipulated compiler run is a probe, not matching evidence. In an
   ordinary link, storing the loop count as unsigned char or short instead
   expands the function to 560 or 551 bytes respectively.
+  A separate read-only trace of the volatile-count source follows the
+  count-load destination into global candidate 18. Its priority is 64;
+  EAX and ECX are both eligible, both score zero, and its preference list
+  is empty, so `ChoosePhysReg` selects EAX. This is an independent choice,
+  rather than a mandatory reuse of the instruction pointer's register.
+  The completed trace link has the same 550 bytes and four fields as that
+  source's ordinary link. Sharing one count variable between the entry
+  guard and the loop, with either a reference or direct access, leaves that
+  candidate's complete comparison at 542 matching bytes.
   The float operand candidate has ECX and EAX preferences and scores
   0, -1 and 0 for EAX, ECX and EDX, selecting ECX. Qualifying either
   result-tag instruction read as volatile changes the complete body
