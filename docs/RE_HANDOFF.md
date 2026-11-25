@@ -30,19 +30,21 @@ the condition, then reloads the full flags word in the branch. The ordinary
 and debugger links agree across the full 340-byte owner and all eight fields,
 but it is not exact. The experiment and trace are under
 `.analysis/bullet-absolute/int-flag-local.*`; a bool-typed version takes the
-same register path at 343 bytes. A better-sized scratch candidate at
-`.analysis/bullet-absolute/experiments/word-alias-bool-local/` has a 335-byte
-PDB owner and the exact target call setup. Its `g_AnmGameSpeed` field is at
-+0x96 rather than +0x97, so strict comparison rejects it. An in-memory
-diagnostic manifest with only that field offset adjusted compares the full
-owner at 294/335; all 41 differences are in timer initialization. The alias
-read is narrowed to `AL` and the update becomes a memory OR. Keeping the
-union word alive through the branch restores the target timer instructions
-but makes it global candidate 8 in EAX, causing the call arguments to return
-to EAX/ECX. The main source remains at the 333/335 baseline; no exact
-acceptance or cold replay is claimed. Next, preserve the target's dword
-flags load and register OR/store while keeping the flags read local and the
-magnitude/angle local assignment ECX/EDX.
+same register path at 343 bytes. A 335-byte flags-alias/bitfield candidate
+under `.analysis/bullet-absolute/bitfield-alias-bool.*` also has the target
+call setup. Its `RegAssign` trace is flags load EAX, magnitude ECX, angle EDX.
+The debugger link matches the ordinary candidate across all 335 bytes and
+eight resolved fields (owner SHA-256
+`2c4b9fee15cebc6b9159d6504e4106dae12cd38be5afba68750d1070f43b9da3`).
+It remains nonexact: `g_AnmGameSpeed` is relocated at +0x96 instead of +0x97,
+and the timer sequence uses a byte load, `not/test/je`, and memory OR rather
+than the target dword EAX load, `test/jne`, and register OR/store. Masking
+both target and candidate link spans leaves 266/302 non-link bytes equal;
+the remaining differences are confined to timer initialization.
+The main source remains at the 333/335 baseline; no exact acceptance or cold
+replay is claimed. Next, preserve the target's dword flags load and register
+OR/store while keeping the flags read local and the magnitude/angle local
+assignment ECX/EDX.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with

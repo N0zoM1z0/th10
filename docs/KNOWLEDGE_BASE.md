@@ -1214,25 +1214,40 @@ frontier; do not refresh a baseline merely to accept the new positions.
   debugger link matches the ordinary diagnostic link across its complete
   owner and all eight fields. A bool-typed version takes the same register
   path but grows to 343 bytes.
-  A separate scratch form uses an `unsigned int &` alias for `timer.flags`,
-  a bool condition, and a reference OR write. It keeps the owner at exactly
-  335 bytes and produces the target call setup (magnitude ECX, angle EDX),
-  but the `g_AnmGameSpeed` DIR32 field moves from +0x97 to +0x96, so the
-  strict recipe correctly rejects it. With only that field offset changed
-  in an in-memory diagnostic manifest, the full 335-byte compare is 294/335;
-  all 41 remaining byte differences are in the timer-reset sequence
-  (+0x6A..+0x96). C2 narrows the aliased read to `AL`, emits `not/test`, and
-  lowers the update to `or dword ptr [timer.flags], 1`. Replacing compound OR
-  with value assignment canonicalizes to the same memory OR. A union word
-  retained across the branch restores the target dword load and register OR/
-  store, but becomes global candidate 8 in EAX; local allocation then yields
-  EAX/ECX for magnitude/angle. Adding a bool local after that yields EDX/EAX.
-  A union copy used only for the condition is narrowed back to a byte load;
-  volatile read forms expand the owner and are not a solution. These forms
-  remain scratch-only; the main source is restored to the 333/335 baseline.
-  The next useful step is to reproduce the target's full-width flags load
-  and register OR/store without making the value a cross-block global
-  candidate or losing the local EAX/ECX/EDX assignment sequence.
+  A scratch flags-alias/bitfield form keeps the owner at 335 bytes and
+  produces the target call setup (magnitude ECX, angle EDX). Its `RegAssign`
+  trace is explicit: the flags read from `[esi+0x6C0]` is temporary `0x93`
+  in EAX, magnitude temporary `0x125` is in ECX, and the angle load from
+  `[esi+0x3E4]` (temporary `0x126`) is in EDX. The bitfield and unsigned-word
+  reference spellings produce identical owner bytes. The GDB link is bound
+  to the ordinary diagnostic link: both have SHA-256
+  `2c4b9fee15cebc6b9159d6504e4106dae12cd38be5afba68750d1070f43b9da3`
+  for the complete 335-byte owner and identical eight resolved fields.
+  This remains a mismatch: the candidate's `g_AnmGameSpeed` DIR32 field is
+  at +0x96 rather than the target's +0x97. Masking both the target and
+  candidate link-field spans leaves 266/302 non-link bytes equal; all 36
+  non-link differences lie in the timer-reset sequence (+0x6A..+0xA0).
+  C2 narrows the aliased read to `AL`, emits `not/test/je`, and lowers the
+  update to `or dword ptr [timer.flags], 1`; the target instead keeps the
+  full flags word in EAX, tests `AL`, branches with `jne`, and reuses EAX
+  for the OR and store. Replacing compound OR with value assignment
+  canonicalizes to the same memory OR.
+  A union word retained across the branch restores the target dword load
+  and register OR/store, but becomes global candidate 8 in EAX; local
+  allocation then yields EAX/ECX for magnitude/angle. Adding a bool local
+  after that yields EDX/EAX. A union copy used only for the condition is
+  narrowed back to a byte load. Volatile read forms expand the owner.
+  Declaring the bool inside `AnmVmTimerView::SetCurrent` reproduces the same
+  343-byte code as declaring it in the caller; moving its scope does not
+  remove the reload. Widening the bitfield result to `unsigned int`, using
+  a signed one-bit field, and reversing the boolean branch polarity do not
+  restore the target timer sequence. An inline magnitude-first wrapper also
+  leaves the direct-float 331/335 candidate unchanged.
+  These forms remain scratch-only; the main source is restored to the
+  333/335 baseline. The next useful step is to reproduce the target's
+  full-width flags load and register OR/store without making the value a
+  cross-block global candidate or losing the local EAX/ECX/EDX assignment
+  sequence.
   The `_reference/th10-decomp` `EaseStep` shape (plain float fields, direct
   `++int2`, `angle = value1`, reset speed copied before the timer reset)
   regressed to 320/335 on 2026-11-22 and was reverted. The source and ordinary
