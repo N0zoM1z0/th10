@@ -815,6 +815,16 @@ frontier; do not refresh a baseline merely to accept the new positions.
   77 bytes in the reset graph. The `script-viewer-update` direct caller
   retains 1,251 bytes and all 83 fields after relinking with the new GUI
   object. [2026-11-23]
+
+  The shared primary-list factory later became out of line for ECL, which
+  reduced the GUI reset to 1,131 bytes and changed its caller to a stack
+  argument. The reset now allocates and initializes VMs locally. The two
+  initial IDs use the out-of-line registrar, and six creation sites
+  inline the shared primary-tail registrar. Keep allocation, stage offset
+  and by-value ID return in the caption helper. Splitting allocation into
+  a nested inline helper changes the first caption's EBP and stack
+  assignments. The selected GameManager cold link restores the complete
+  1,965-byte reset and 1,544-byte update. [2026-11-25]
 - **StageExecuteScript @0x403C80 (1,868)** is exact with 36 bound fields,
   including the switch base and all 15 table entries. In opcode 9, write
   the fog interpolation mode before copying its initial and final records,
@@ -1270,10 +1280,9 @@ compiler barrier after the two stores restores the helper's x87
 schedule in its separate default-profile 83-byte comparison.
 
 The replay work exposed a pre-existing cold `GameManagerUpdateBody`
-difference at the GUI reset call. The old and new replay sources show
-the same disassembly diff in the fresh GameManager graph. The target
-passes the GUI in EDI with plain RET at 0x413BC0. The current graph puts
-that argument on the stack and adjusts ESP after the call. [2026-11-25]
+difference at the GUI reset call. Recovering the GUI's inline VM creation
+restored the EDI receiver at both calls and the full update comparison.
+[2026-11-25]
 
 ## Topic-report residue
 

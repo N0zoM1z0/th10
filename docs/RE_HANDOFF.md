@@ -16,6 +16,7 @@ comparison only for its source and link graph.
 
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
+| `game-reset-gui` | 1,965 B | `GameManagerUpdate`, 52 fields and 73 local branches. Both GameManager calls and the ScriptViewer call pass selected cold replays with the EDI receiver. |
 | `replay-manager-begin-stage` | 582 B | `ReplayBeginStageCore`, 25 fields and ten local branch destinations. The position helper has the same EAX and ECX inputs in this link and matches all 83 bytes in its default-profile cold link. |
 | `spt-test-update` | 926 B | `SptTestUpdate`, 39 fields, VM lifetime and two-pass file enumeration. The registered callback and the interpreter, factory and worker calls match in the same image. |
 | `laser-type1-clear` | 623 B | `LaserType1Clear`, 29 fields and the virtual ECX receiver. The polar helper, script loader, registrar and full item allocator match in the same image. |
@@ -72,14 +73,6 @@ comparison only for its source and link graph.
 | `enemy-dispatch-ecl` | 14,416 B | `EnemyEclDispatcher`, 726 fields, 118 jump destinations and 181 opcode selectors. The selected replay includes dialog EH and the drop-flush body. |
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
-
-## Open owner
-
-`GameResetGui` at `0x00413BC0` is active. The warm link matches all
-1,965 bytes, 52 fields and 73 local branch destinations. Keeping allocation,
-script adjustment and inline registration in one caption helper restores
-the two call-site schedules. The GameManager and ScriptViewer callers
-pass their strict warm comparisons. The selected cold replays are next.
 
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
