@@ -71,6 +71,14 @@ comparison only for its source and link graph.
 | `ecl-vm-run` | 7,020 B | `GameManagerUpdate`, 189 fields, switch data and 62 fixed local destinations. |
 | `anm-execute-script` | 9,964 B | `GameManagerUpdate`, 350 fields and 95 fixed local destinations. Per-case child attachment controls allocation before tail merging. |
 
+## Open owner
+
+`EndingView::Initialize` at `0x0040B560` is active. The warm
+`EndingInitialize` link matches 584 bytes and 30 fields. The real
+`PbgArchive.cpp` input restores the file opener's EAX path and two stack
+arguments. The allocation cleanup reads its saved pointer at EBP+4.
+Cold replay this owner and compare the factory and callees in its image.
+
 The [knowledge base](KNOWLEDGE_BASE.md) records target layouts, compiler behavior
 and source forms worth reusing. Use `_reference/th10-decomp` for concrete
 source hypotheses and verify them in the repository's TH10 graph.

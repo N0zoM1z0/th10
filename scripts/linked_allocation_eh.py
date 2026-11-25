@@ -32,8 +32,8 @@ def allocation_eh_selector(unit, field):
             and not any(k.startswith('static_') for k in field), 'separate DIR32 entry required')
     require(field.get('symbol') == '__ehhandler$' + str(unit.get('symbol')), 'parent symbol differs')
     offset = field.get('allocation_eh_storage_offset', -0x10)
-    require(type(offset) is int and -0x80 <= offset <= -4 and offset % 4 == 0,
-            'saved-storage offset must be an aligned negative disp8 frame slot')
+    require(type(offset) is int and -0x80 <= offset <= 0x7c and offset != 0 and offset % 4 == 0,
+            'saved-storage offset must be a nonzero aligned disp8 frame slot')
     return True
 
 

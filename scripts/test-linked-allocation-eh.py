@@ -70,29 +70,36 @@ def main():
         bind(f)
 
     # The explicitly declared slot is an equality constraint, not a mask.
-    f=fixture();f['field']['allocation_eh_storage_offset']=-0x48
     expected_fields=runpy.run_path(str(Path(__file__).with_name('compare-linked-function.py')))['expected_fields']
-    f['field']=expected_fields({**f['unit'],'linkages':[{**f['field'],'offset':3}]})[0]
-    assert f['field']['allocation_eh_storage_offset']==-0x48
-    for side in ['native','target']:
-        f[side].write((0x1100 if side=='native' else 0x1200)+2,b'\xb8')
-    result=bind(f)
-    assert result['candidate']['saved_storage_offset']==result['target']['saved_storage_offset']==-0x48
-    for side in ['native','target']:
-        wrong=copy.deepcopy(f)
-        wrong[side].write((0x1100 if side=='native' else 0x1200)+2,b'\xb4')
-        try:bind(wrong)
-        except LinkedImageError as error:assert 'saved-storage/scalar-delete' in str(error)
-        else:raise AssertionError('accepted a different declared storage slot in '+side)
+    for offset in (-0x48, 4):
+        f = fixture()
+        f['field']['allocation_eh_storage_offset'] = offset
+        f['field'] = expected_fields({**f['unit'], 'linkages': [{**f['field'], 'offset': 3}]})[0]
+        assert f['field']['allocation_eh_storage_offset'] == offset
+        displacements = {'native': 0x1102, 'target': 0x1202}
+        for side, address in displacements.items():
+            f[side].write(address, struct.pack('<b', offset))
+        result = bind(f)
+        assert result['candidate']['saved_storage_offset'] == result['target']['saved_storage_offset'] == offset
+        for side, address in displacements.items():
+            wrong = copy.deepcopy(f)
+            wrong[side].write(address, struct.pack('<b', offset - 4))
+            try:
+                bind(wrong)
+            except LinkedImageError as error:
+                assert 'saved-storage/scalar-delete' in str(error)
+            else:
+                raise AssertionError('accepted a different declared storage slot in ' + side)
 
     controls=[
         ('no-opt-in',lambda f:f['field'].pop('allocation_eh_handler'),'missing selector'),
         ('false-opt-in',lambda f:f['field'].update(allocation_eh_handler=False),'explicit true'),
         ('offset-without-selector',lambda f:(f['field'].pop('allocation_eh_handler'),f['field'].update(allocation_eh_storage_offset=-0x48)),'storage offset requires'),
-        ('positive-slot',lambda f:f['field'].update(allocation_eh_storage_offset=4),'aligned negative disp8'),
-        ('unaligned-slot',lambda f:f['field'].update(allocation_eh_storage_offset=-0x47),'aligned negative disp8'),
-        ('wide-slot',lambda f:f['field'].update(allocation_eh_storage_offset=-0x84),'aligned negative disp8'),
-        ('boolean-slot',lambda f:f['field'].update(allocation_eh_storage_offset=False),'aligned negative disp8'),
+        ('zero-slot',lambda f:f['field'].update(allocation_eh_storage_offset=0),'nonzero aligned disp8'),
+        ('unaligned-slot',lambda f:f['field'].update(allocation_eh_storage_offset=-0x47),'nonzero aligned disp8'),
+        ('wide-slot',lambda f:f['field'].update(allocation_eh_storage_offset=-0x84),'nonzero aligned disp8'),
+        ('wide-positive-slot',lambda f:f['field'].update(allocation_eh_storage_offset=0x80),'nonzero aligned disp8'),
+        ('boolean-slot',lambda f:f['field'].update(allocation_eh_storage_offset=False),'nonzero aligned disp8'),
         ('wrong-declared-slot',lambda f:f['field'].update(allocation_eh_storage_offset=-0x48),'saved-storage/scalar-delete'),
         ('wrong-artifact',lambda f:f['unit'].update(artifact_kind='coff'),'linked-pe'),
         ('wrong-field-kind',lambda f:f['field'].update(type='REL32'),'separate DIR32'),
@@ -136,6 +143,6 @@ def main():
         except LinkedImageError as error:
             assert message in str(error),(name,str(error))
         else:raise AssertionError('accepted '+name)
-    print(f'Allocation EH synthetic5 positives (section end/neighbors/declared slot) and {len(controls)+2} rejection controls pass')
+    print(f'Allocation EH synthetic checks pass for both frame-slot signs and {len(controls) + 4} rejection controls')
 
 if __name__=='__main__':main()

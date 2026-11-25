@@ -2,6 +2,7 @@
 #include "Ending.hpp"
 #include "FileSystem.hpp"
 #include "GameErrorContext.hpp"
+#include "GameScoreState.hpp"
 #include "InputState.hpp"
 #include "EnemySoundQueue.hpp"
 #include "TransitionEffect.hpp"
@@ -18,10 +19,7 @@ extern char g_StageFilePath[];                  //497C38, capacity unknown
 extern const char *g_EndingScriptPaths[12];      //474440, external data owner
 extern char g_EndingDataErrorMessage[];          //46CB68, external message
 extern unsigned char *g_GuiPersistentData;      //47783C
-extern int g_GuiCharacter;                     //474C68
-extern int g_GuiShotType;                      //474C6C
-extern int g_GuiDifficulty;                    //474C74
-extern int g_GameStartupValue474C90;
+extern int g_GuiDifficulty;                     //474C74
 extern int g_GameStartupCounter;                //4918A4
 extern void PlayerSetShotVmInterrupt2(unsigned int *id);
 extern void ResultMenuPendingThree(AnmVmIdView *id);
@@ -125,38 +123,91 @@ unsigned char *EndingView::LoadScript(const char *path)
     return loaded;
 }
 
+struct EndingGameCountersView
+{
+    unsigned char unknown000[0x28];
+    int character;
+    int shotType;
+    int unknown030;
+    int difficulty;
+    unsigned char unknown038[0x18];
+    int continueState;
+};
+
+struct EndingUnlocksView
+{
+    unsigned char unknown000[0x1d882];
+    unsigned char seen[12];
+    unsigned char alternateSeen;
+};
+
+typedef char EndingGameCountersOffsets[
+    (offsetof(EndingGameCountersView, character) == 0x28 &&
+     offsetof(EndingGameCountersView, shotType) == 0x2c &&
+     offsetof(EndingGameCountersView, difficulty) == 0x34 &&
+     offsetof(EndingGameCountersView, continueState) == 0x50) ? 1 : -1];
+
+typedef char EndingUnlocksOffsets[
+    (offsetof(EndingUnlocksView, seen) == 0x1d882 &&
+     offsetof(EndingUnlocksView, alternateSeen) == 0x1d88e) ? 1 : -1];
+
+static __forceinline EndingUnlocksView *GetEndingUnlocks()
+{
+    return reinterpret_cast<EndingUnlocksView *>(g_GuiPersistentData);
+}
+
+static __forceinline AnmLoadedView *GetEndingAsciiResource(AsciiManagerView *ascii)
+{
+    return ascii->asciiAnm;
+}
+
+static __forceinline void SetEndingFlag(unsigned int &flags, unsigned int bit)
+{
+    flags |= bit;
+}
+
 int EndingView::Initialize()
 {
-    th10::ChainElem *task = new th10::ChainElem;
-    task->flags |= 3;
-    task->callback = reinterpret_cast<th10::ChainCallback>(EndingUpdateCallback);
-    task->deletedCallback = task->addedCallback = NULL;
-    task->arg = this;
-    th10::g_Chain->AddToCalcChain(task, 28);
-    updateTask = task;
-    task = new th10::ChainElem;
-    task->flags |= 3;
-    task->callback = reinterpret_cast<th10::ChainCallback>(th10::leaf::Fn0040BA80);
-    task->deletedCallback = task->addedCallback = NULL;
-    task->arg = this;
-    th10::g_Chain->AddToDrawChain(task, 6);
-    drawTask = task;
+    th10::ChainElem *update = new th10::ChainElem;
+    unsigned int updateFlags;
+    memcpy(&updateFlags, &update->flags, sizeof(updateFlags));
+    update->flags = updateFlags | 3;
+    update->callback = reinterpret_cast<th10::ChainCallback>(EndingUpdateCallback);
+    update->addedCallback = NULL;
+    update->deletedCallback = NULL;
+    update->arg = this;
+    th10::g_Chain->AddToCalcChain(update, 28);
+    updateTask = update;
 
-    AnmFloat3View position(480.0f, 392.0f, 0.0f);
+    th10::ChainElem *draw = new th10::ChainElem;
+    draw->flagBits.heapAllocated = 1;
+    draw->flags |= 2;
+    draw->callback = reinterpret_cast<th10::ChainCallback>(th10::leaf::Fn0040BA80);
+    draw->addedCallback = NULL;
+    draw->deletedCallback = NULL;
+    draw->arg = this;
+    th10::g_Chain->AddToDrawChain(draw, 6);
+    drawTask = draw;
+
     int &auxiliaryId = g_AsciiManagerView->auxiliaryVm89A4;
+    AnmFloat3View position(480.0f, 392.0f, 0.0f);
     if (auxiliaryId == 0)
-        auxiliaryId =
-            g_AsciiManagerView->asciiAnm->CreateVmAtScreenVariant0(6, &position).value;
-    endingIndex = g_GuiShotType + g_GuiCharacter * 3;
-    if (g_GameStartupValue474C90 == 0 && g_GuiDifficulty >= 1)
+        auxiliaryId = GetEndingAsciiResource(g_AsciiManagerView)->
+            CreateVmAtScreenVariant0(6, &position).value;
+
+    EndingGameCountersView *counters =
+        reinterpret_cast<EndingGameCountersView *>(&g_GameScoreState);
+    endingIndex = counters->character * 3 + counters->shotType;
+    if (counters->continueState == 0 && counters->difficulty >= 1)
         endingIndex += 6;
-    if (g_GuiPersistentData[0x1d882 + endingIndex] == 0)
-        flags |= 1;
-    if (g_GuiPersistentData[0x1d88e] == 0)
-        flags |= 2;
-    g_GuiPersistentData[0x1d882 + endingIndex] = 1;
+    if (GetEndingUnlocks()->seen[endingIndex] == 0)
+        SetEndingFlag(flags, 1);
+    if (GetEndingUnlocks()->alternateSeen == 0)
+        SetEndingFlag(flags, 2);
+    GetEndingUnlocks()->seen[endingIndex] = 1;
     if (endingIndex >= 6)
-        g_GuiPersistentData[0x1d88e] = 1;
+        GetEndingUnlocks()->alternateSeen = 1;
+
     const char *scriptPath = g_EndingScriptPaths[endingIndex];
     g_StageFilePath[0] = '\0';
     strcat(g_StageFilePath, scriptPath);
