@@ -7,8 +7,20 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The ScriptViewer destructor is complete. Select the largest remaining
-authored owner from the match ledger when reconstruction resumes.
+The active owner is `EnemyFullObjectView::~EnemyFullObjectView` at
+`0x0040DAE0` in `src/Enemy.cpp`. The 386-byte target has a stack receiver
+and RET 4. The `enemy-full-object-destructor` candidate describes all seven
+target fields in the `EclVmHostRunEnemy` link. The current source uses
+the shared ANM registry and emits 385 bytes. Its compiler-generated
+deleting wrapper passes the receiver in ECX. The target wrapper at
+`0x0040CC50` pushes ESI before calling the destructor. Recover the stack
+receiver and keep both managed VM search paths in the comparison.
+
+```sh
+timeout -k 10s 145s taskset -c 2 nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit enemy-full-object-destructor
+scripts/repo-python .analysis/enemy-full-destructor/compare.py EclVmHostRunEnemy
+scripts/repo-python scripts/compare-linked-function.py --unit enemy-full-object-destructor --json
+```
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available

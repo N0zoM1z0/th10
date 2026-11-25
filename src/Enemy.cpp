@@ -69,18 +69,6 @@ typedef char EnemyManagedVmColorAt300[
 typedef char EnemyManagedVmFlagsAt35C[
     (offsetof(EnemyManagedVmView, flags) == 0x35c) ? 1 : -1];
 
-struct EnemyManagedVmRegistryView
-{
-    unsigned char unknown000[0x72dad4];
-    EnemyManagedVmListNodeView *primaryList;
-    unsigned char unknown72DAD8[0x04];
-    EnemyManagedVmListNodeView *secondaryList;
-};
-typedef char EnemyManagedVmRegistryPrimaryAt72DAD4[
-    (offsetof(EnemyManagedVmRegistryView, primaryList) == 0x72dad4) ? 1 : -1];
-typedef char EnemyManagedVmRegistrySecondaryAt72DADC[
-    (offsetof(EnemyManagedVmRegistryView, secondaryList) == 0x72dadc) ? 1 : -1];
-
 
 // TH10 uses negative ECL operand selectors in the reviewed 0x00411FC0 /
 // 0x00412350 readers. Names below describe only target-observed behavior;
@@ -256,7 +244,6 @@ extern int g_EnemyDamageProcessedFlag;
 extern float g_PlayerTimerScale;
 extern int g_EnemySpawnLayerIndex;
 extern EnemyManagerView *g_EnemyManager;
-extern EnemyManagedVmRegistryView *g_EnemyManagedVmRegistry;
 
 extern void *g_EnemyCallbackManager;
 extern EnemyCriticalSectionView g_EnemyCallbackCriticalSection;
@@ -1731,31 +1718,31 @@ EnemyFullObjectView::~EnemyFullObjectView()
             static_cast<unsigned int>(enemy->runtime.managerSlot) *
             sizeof(manager->specialEnemySlots[0])) = NULL;
 
+    AnmRenderManagerView *const anmManager = g_AnmRenderManagerView;
     for (int i = 0; i < 10; ++i)
     {
         const unsigned int vmId = enemy->runtime.managedVmIds.words[i];
         if (vmId != 0)
         {
-            EnemyManagedVmView *vm = NULL;
-            EnemyManagedVmListNodeView *vmNode =
-                g_EnemyManagedVmRegistry->primaryList;
+            AnmVmView *vm = NULL;
+            AnmVmLayerNodeView *vmNode = anmManager->primaryVmListHead;
             while (vmNode != NULL)
             {
-                if (vmNode->vm->id == vmId)
+                if (static_cast<AnmVmView *>(vmNode->owner)->id == vmId)
                 {
-                    vm = vmNode->vm;
+                    vm = static_cast<AnmVmView *>(vmNode->owner);
                     break;
                 }
                 vmNode = vmNode->next;
             }
             if (vm == NULL)
             {
-                vmNode = g_EnemyManagedVmRegistry->secondaryList;
+                vmNode = anmManager->secondaryVmListHead;
                 while (vmNode != NULL)
                 {
-                    if (vmNode->vm->id == vmId)
+                    if (static_cast<AnmVmView *>(vmNode->owner)->id == vmId)
                     {
-                        vm = vmNode->vm;
+                        vm = static_cast<AnmVmView *>(vmNode->owner);
                         break;
                     }
                     vmNode = vmNode->next;
@@ -1764,13 +1751,14 @@ EnemyFullObjectView::~EnemyFullObjectView()
 
             if (vm != NULL)
             {
-                vm->flags |= 0x4000000u;
-                if (vm->childState == 0)
+                vm->flags35C |= 0x4000000u;
+                if (vm->layerNode.previous == NULL)
                 {
-                    EnemyManagedVmListNodeView *child = vm->children;
+                    AnmVmLayerNodeView *child = vm->layerNode.next;
                     while (child != NULL)
                     {
-                        child->vm->flags |= 0x4000000u;
+                        AnmVmView *const childVm = static_cast<AnmVmView *>(child->owner);
+                        childVm->flags35C |= 0x4000000u;
                         child = child->next;
                     }
                 }
@@ -1779,20 +1767,20 @@ EnemyFullObjectView::~EnemyFullObjectView()
         enemy->runtime.managedVmIds.words[i] = 0;
     }
 
-    if (g_Player != NULL)
+    Player *const player = g_Player;
+    if (player != NULL)
     {
-        if (g_Player->trackedEnemy == enemy)
+        if (player->trackedEnemy == enemy)
         {
-            g_Player->trackedEnemy = NULL;
-            g_Player->trackedEnemyValid = 0;
+            player->trackedEnemy = NULL;
+            player->trackedEnemyValid = 0;
         }
         for (int i = 0; i < 128; ++i)
         {
-            if (g_Player->shots[i].trackedEnemy == enemy)
-                g_Player->shots[i].trackedEnemy = NULL;
+            if (player->shots[i].trackedEnemy == enemy)
+                player->shots[i].trackedEnemy = NULL;
         }
     }
-
 }
 
 // Target 0x0040E5F0-0x0040E691 uses the real sound, ANM, item and score services.

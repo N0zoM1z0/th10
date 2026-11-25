@@ -1597,6 +1597,17 @@ restored the EDI receiver at both calls and the full update comparison.
 
 ### Enemy
 
+- `EnemyFullObjectView::~EnemyFullObjectView` at `0x0040DAE0` uses the
+  shared ANM render manager pointer at `0x00491C10` and its primary and
+  secondary VM lists at +0x72DAD4 and +0x72DADC. It marks the matched VM
+  and walks the child nodes only when the VM's preceding layer link is
+  null. The target clears Player tracking with one Player pointer read.
+  The shared ANM types preserve the 385-byte candidate in the two-source
+  VC7.1 SP1 link. The target deleting wrapper at `0x0040CC50` pushes
+  its saved ESI receiver. The linked deleting wrapper calls with ECX.
+  Direct `this` accesses, a self-reference and a countdown over the ten
+  VM slots preserve the linked ABI. A shared helper that returns a
+  matched VM directly shortens the candidate to 369 bytes.
 - EnemyManager `activeEnemyCount` is at +0x60 (`DEC [ECX+0x60]` in the 386-byte enemy-object destructor; `INC` in Spawn). `spawnCounter` also wraps.
 - `EnemyConfigureInterrupt` records are 16 bytes at EnemyFullObjectView+0x2494; the timer callback is at `(slot+0x24A)*0x10`.
 - `managedVmIds` has 10 entries; script indices into it are unchecked. `loadedAnmResources` has 4 pointers, also accessed with unchecked indices.
