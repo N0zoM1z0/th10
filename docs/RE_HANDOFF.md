@@ -11,7 +11,7 @@ The active owner is `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. The target owns 550 bytes and receives the destination
 in EAX with two stack arguments and RET 8. The two-source
 `EclVmHostRunEnemy` link emits the full extent and binds all four calls.
-The strict comparison matches 507 bytes. The same image matches
+The strict comparison matches 513 bytes. The same image matches
 `ecl-vm-spawn-thread` and `ecl-vm-host-run`.
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
@@ -30,11 +30,11 @@ scripts/repo-python scripts/ci.py && git diff --check
 ```
 
 The initial stack setup and the return-frame and lookup sequence match.
-The remaining 43 bytes differ between +0x68 and +0x107 in the argument
-loop. The target stores the destination cursor before computing the
-word offset in EAX. Resolve those two instructions first, then follow
-the EAX/ECX allocation into the operand read and the order of loads
-around the float call and loop latch.
+The remaining 37 bytes differ between +0x6C and +0x107 in the argument
+loop. The destination cursor store now occurs at +0x68. The target uses
+EAX for the word offset at +0x6C. Trace the candidate's ECX allocation
+into the operand reads and resolve the load order around the float call
+and the loop latch.
 
 Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 [frontiers.toml](../config/frontiers.toml). Product closure, runtime semantics

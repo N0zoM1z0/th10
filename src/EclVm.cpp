@@ -630,14 +630,10 @@ int EclVmContext::StartSubroutine(
         EclVmScalar *volatile argument = reinterpret_cast<EclVmScalar *>(
             reinterpret_cast<unsigned int>(destination->stack.data) +
             static_cast<unsigned int>(argumentOffset));
+        _ReadWriteBarrier();
         unsigned int valueOffset = metadataOffset +
             static_cast<int>(offsetof(EclVmCallArgumentView, integer));
-        for (; argumentIndex < (*callerInstruction)->operandCount;
-             argument = reinterpret_cast<EclVmScalar *>(
-                 reinterpret_cast<unsigned int>(argument) + sizeof(int)),
-             argumentIndex = static_cast<int>(static_cast<unsigned int>(argumentIndex) + 1u),
-             valueOffset += sizeof(EclVmCallArgumentView),
-             metadataOffset += sizeof(EclVmCallArgumentView))
+        do
         {
             const char sourceType =
                 reinterpret_cast<const EclVmCallArgumentView *>(
@@ -685,7 +681,13 @@ int EclVmContext::StartSubroutine(
                 }
             }
 
-        }
+            argument = reinterpret_cast<EclVmScalar *>(
+                reinterpret_cast<unsigned int>(argument) + sizeof(EclVmScalar));
+            argumentIndex = static_cast<int>(
+                static_cast<unsigned int>(argumentIndex) + 1u);
+            valueOffset += sizeof(EclVmCallArgumentView);
+            metadataOffset += sizeof(EclVmCallArgumentView);
+        } while (argumentIndex < (*callerInstruction)->operandCount);
     }
 
     EclVmContext *const frameCaller = caller;
