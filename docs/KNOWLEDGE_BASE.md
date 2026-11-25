@@ -1225,6 +1225,27 @@ frontier; do not refresh a baseline merely to accept the new positions.
   +0x16/+0x4C/+0x87/+0x128, format at +0x63/+0x82, and
   D3DXLoadSurfaceFromSurface at +0xC4. Analysis and receipts are under
   `.analysis/anm-copy-backbuffer/`.
+- **AnmRenderManagerView::CopySurfaceToBackbuffer2 @0x448120 (325)**:
+  the maintained source passes its first canonical cold build at 325 bytes
+  and seven fields after the same local device snapshot before
+  CreateRenderTarget. The selected independent cold replay, first surface
+  variant and absolute-direction Bullet guards are pending.
+
+  The initial 307-byte candidate shared the failure cleanup with the normal
+  exit. The snapshot restores the target's register choices, leaving the
+  failure Release through EDX and the normal Release through ECX. Those
+  tails remain separate. Removing the longer indexed height load saves
+  one byte, while the separate failure tail adds 19, yielding 325 bytes.
+  The EBX index, stack manager and RET 28 ABI already matched and remain
+  unchanged. The rectangle and point setup matches without editing it.
+
+  `[0x448120, 0x448265)` is a complete instruction body. The final RET 28
+  starts at 0x448262 and occupies three bytes; CC alignment starts at
+  0x448265. The old note made the same RET-immediate mistake as the first
+  variant. Unit `anm-copy-surface-to-backbuffer2` uses `BulletHorizontalWrap`
+  and binds device fields at +0x18/+0x4E/+0x89/+0x127, format at
+  +0x65/+0x84, and D3DXLoadSurfaceFromSurface at +0xC6. Current receipts
+  and probes are under `.analysis/anm-copy-backbuffer2/`.
 - **Player::~Player @0x424ED0 (325)**: 333. [2026-10-31]
 - **FrontEndInsertScore @0x421FA0 (316)**: 263; the helper uses 64-bit `100.0`
   where the target uses 32-bit. [2026-10-15]

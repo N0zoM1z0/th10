@@ -2648,8 +2648,9 @@ void AnmRenderManagerView::CopySurfaceToBackbuffer2(
 
     if (surfaces[surfaceIndex] == NULL)
     {
-        if (g_Direct3DDevice->vtable->CreateRenderTarget(
-                g_Direct3DDevice, surfaceInfo[surfaceIndex].width,
+        D3d9DeviceView *device = g_Direct3DDevice;
+        if (device->vtable->CreateRenderTarget(
+                device, surfaceInfo[surfaceIndex].width,
                 surfaceInfo[surfaceIndex].height, g_AnmBackbufferFormat,
                 0, 0, 1, &surfaces[surfaceIndex], NULL) != 0)
         {

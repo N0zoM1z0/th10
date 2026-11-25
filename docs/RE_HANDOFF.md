@@ -8,13 +8,21 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 ## Resume
 
 The sole active owner is `AnmRenderManagerView::CopySurfaceToBackbuffer2`
-at `0x00448120`, currently listed as 325 bytes in `src/AnmManager.cpp`.
-It ties with the Player destructor as the largest remaining authored owner
-apart from the explicitly deferred `StartSubroutine`. The adjacent surface
-variant is selected to reuse the validated device-snapshot model. Review
-its final RET instruction and establish the complete native baseline before
-editing. Keep D3D interfaces and adapter evidence intact. Current work is
-under `.analysis/anm-copy-backbuffer2/`.
+at `0x00448120`, complete instruction extent `[0x00448120, 0x00448265)`
+(325 bytes), in `src/AnmManager.cpp`. It ties with the Player destructor
+as the largest remaining authored owner apart from the explicitly deferred
+`StartSubroutine`. RET 28 starts at `0x00448262` and occupies the final three
+bytes; the old note incorrectly called its immediate bytes padding.
+
+Unit `anm-copy-surface-to-backbuffer2` in `BulletHorizontalWrap` passes its
+first canonical strict comparison at 325 bytes and seven fields after snapshotting the device
+before CreateRenderTarget. The initial candidate was 307 bytes because it
+shared the failure cleanup with the normal exit; the snapshot leaves those
+tails in the target's distinct register forms. The independent selected cold
+replay is running, with the first surface variant and absolute-direction
+Bullet guards. Finish that proof
+before accepting or selecting another owner. Keep D3D interfaces and adapter
+evidence intact. Current work is under `.analysis/anm-copy-backbuffer2/`.
 
 `CopySurfaceToBackbuffer @0x00447FD0` is accepted at 330 bytes and seven fields
 after two independent cold builds. Its device snapshot before
