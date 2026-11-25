@@ -1168,6 +1168,11 @@ frontier; do not refresh a baseline merely to accept the new positions.
   (target EDX, candidate EAX). `register` hints were byte-neutral; removing the
   angle-copy local and passing `angle` directly adds two differences; volatile
   forms also regress. All trials were reverted.
+  A read-only VC7.1 C2 trace identifies the angle-word load as global
+  candidate 8, with priority 16. `ChoosePhysReg` selects EAX with all three
+  integer-register scores at zero. The debugger link completes and matches
+  the ordinary link across all 335 bytes and eight linked fields. The next
+  probe should inspect its eligible registers and live-range conflicts.
   The `_reference/th10-decomp` `EaseStep` shape (plain float fields, direct
   `++int2`, `angle = value1`, reset speed copied before the timer reset)
   regressed to 320/335 on 2026-11-22 and was reverted.
