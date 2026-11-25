@@ -7,30 +7,10 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The active owner is `ScriptViewerPopupOwnerView::Draw` at `0x0042B780`
-in `src/ScriptViewerPopupCreate.cpp`. The target owns 540 bytes and
-receives the popup owner in EDI. Draw traverses 723 records, adjusts
-fog, and renders each active popup's digits. The four-source
-`script-viewer-popup-draw` candidate emits 540 bytes and resolves all 15
-target fields. Direct access to the embedded VM restores the EDI
-receiver and the EBP record cursor. The inner loop keeps alpha in EBX
-and stores the digit cursor and count in separate stack slots.
-The strict comparison matches 534 bytes. The six remaining bytes at
-+0x1D5, +0x1DF, +0x1E2, +0x1E3, +0x1EB and +0x1EF swap EAX and ECX
-between the cursor and count in the inner loop's final updates.
-The private `near-all-first-pass` control assigns ECX to the cursor
-and EAX to the count. It emits 542 bytes because the count decrement
-runs before the cursor decrement and needs a separate zero test.
-The two read-only register traces are under
-`.analysis/script-viewer-popup-draw/`.
-
-```sh
-scripts/repo-python scripts/verify-target.py
-scripts/repo-python scripts/verify-toolchain.py --check
-timeout -k 10s 150s taskset -c 2 nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit script-viewer-popup-draw
-scripts/repo-python scripts/compare-linked-function.py --unit script-viewer-popup-draw --json
-scripts/repo-python scripts/compare-linked-function.py --unit script-viewer-popup-update --json
-```
+The popup Draw owner at `0x0042B780` is exact in the four-source
+`script-viewer-popup-draw` cold replay. Its 15 fields and the EDI
+receiver used by the draw callback match. The next authored owner is
+selected from [matches.csv](../config/matches.csv).
 
 Keep the original Japanese TH10 v1.00a target at the read-only path
 `resources/th10.exe`. Use pinned VC7.1 SP1 build 6030, a single available
@@ -55,6 +35,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `script-viewer-popup-draw` | 540 B | `ScriptViewerPopupCreate`, 15 fields and the EDI draw callback receiver. Assign the decremented count after publishing the cursor. |
 | `ascii-manager-draw-gui-strings` | 570 B | `StageViewport`, 28 fields, both quad paths and the EBX draw callback. |
 | `gui-destructor` | 574 B | `GuiDestructorCore` with `/EHsc` for all five inputs. All 37 fields, 18 local branches and seven unwind actions match. The receiver is on the stack and the function returns with RET 4. |
 | `game-reset-gui` | 1,965 B | `GameManagerUpdate`, 52 fields and 73 local branches. Both GameManager calls and the ScriptViewer call passed cold with an EDI receiver. |

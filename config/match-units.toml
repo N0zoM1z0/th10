@@ -31616,7 +31616,6 @@ functions = ["ScriptViewerPopupOwnerView::Draw"]
 symbol = "?Draw@ScriptViewerPopupOwnerView@@QAEHXZ"
 target_address = 0x0042B780
 size = 540
-candidate = true
 linkages = [
   { offset = 0x001, type = "DIR32", symbol = "?g_AnmHardwareFlags@@3EA", target = 0x00491D78 },
   { offset = 0x016, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x750 },

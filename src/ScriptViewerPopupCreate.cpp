@@ -101,17 +101,19 @@ int ScriptViewerPopupOwnerView::Draw()
                 }
                 else
                     vm.loadedSprite = &loadedDigitAnm->sprites[*digit + 196];
+                const AnmSpriteView *const sprite = vm.loadedSprite;
+                AnmRenderManagerView *const renderer = g_AnmRenderManagerView;
                 vm.primaryColor.alpha = static_cast<unsigned char>(alpha);
-                drawVm->spriteWidth = vm.loadedSprite->width;
+                drawVm->spriteWidth = sprite->width;
                 drawVm->flags35C |= 8;
-                g_AnmRenderManagerView->DrawNoRotation(drawVm);
+                renderer->DrawNoRotation(drawVm);
                 const float nextX = spacing + vm.positionOffset.x;
-                const unsigned int nextDigit = reinterpret_cast<unsigned int>(digitCursor) - 1u;
-                const int previousCount = digitCount;
-                remaining = previousCount - 1;
+                unsigned int cursor = reinterpret_cast<unsigned int>(digitCursor);
+                remaining = digitCount;
+                --cursor;
                 vm.positionOffset.x = nextX;
-                digitCursor = reinterpret_cast<unsigned char *>(nextDigit);
-                digitCount = remaining;
+                digitCursor = reinterpret_cast<unsigned char *>(cursor);
+                digitCount = --remaining;
             } while (remaining != 0);
             player = g_Player;
         }

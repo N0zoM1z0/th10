@@ -1096,29 +1096,17 @@ frontier; do not refresh a baseline merely to accept the new positions.
   playback cursors at the target's +0x32E0 and +0x158 bases. The stage
   update calls the owner in EBX and the owner returns with a plain RET.
   [2026-11-25]
-- **ScriptViewerPopupOwnerView::Draw @0x42B780 (540)**: direct access
-  through the embedded VM restores the target's EDI receiver and EBP
-  record cursor. Separate digit cursor and count accesses at the loop end
-  put alpha in EBX and give the digit state the target's two stack slots.
-  The four-source `script-viewer-popup-draw` candidate matches 534 bytes
-  and resolves all 15 linked fields. The cursor and count use exchanged
-  EAX and ECX registers in the final six differing bytes.
-  VC7.1 assigns those registers before Riscify. Separating the cursor
-  load from its subtraction gives the target's ECX cursor and EAX count.
-  In that 542-byte comparison the count decrement comes first, so the
-  cursor decrement overwrites its flags and the branch gets an extra
-  `test eax, eax`. The 540-byte form computes the previous digit address
-  directly from the cursor slot and retains the branch on decrement flags.
-  [2026-11-17] The count-dependent digit cursor now uses native
-  modulo-32-bit address addition to `record->digits` and decrements the
-  byte cursor through the same unsigned word representation. This avoids
-  undefined one-before-array pointer arithmetic when `digitCount == 0`
-  or after the last digit, while preserving the target
-  `LEA/DEC` behavior and ordinary C++ digit rendering. A fresh focused
-  four-source popup linked image remains 537/540 bytes with 266
-  non-relocation differences; the 10-byte draw callback remains nonexact,
-  and the separate popup Update owner passes its strict 134/134-byte
-  link comparison. This is a semantic repair, not exact-code credit.
+- **ScriptViewerPopupOwnerView::Draw @0x42B780 (540)**: the four-source
+  `script-viewer-popup-draw` cold replay matches every byte and binds all
+  15 linked fields. The callback passes the receiver in EDI. Reading the
+  digit cursor and count into locals, then assigning `digitCount = --remaining`
+  after publishing the position and cursor, puts the cursor in ECX and the
+  count in EAX. The final branch uses the count decrement's flags. The
+  separated count arithmetic emitted a zero test or a three-byte cursor
+  LEA. Publishing the cursor before updating the position instead swapped
+  the stack slots for spacing and the cursor. The native unsigned cursor
+  preserves wrap before the first digit without out-of-bounds pointer
+  arithmetic. [2026-11-25]
 - **EnemyKillAll @0x40E6A0 (182)**: canonical `enemy-kill-all` linked-PE
   unit cold-replays the complete 182-byte PDB-owned extent with all six
   target-bound DIR32/REL32 fields at zero differences. The real
