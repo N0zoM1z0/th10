@@ -17,6 +17,7 @@ comparison only for its source and link graph.
 | Unit | Complete extent | What to keep in the comparison |
 | --- | ---: | --- |
 | `spt-test-update` | 926 B | `SptTestUpdate`, 39 fields, VM lifetime and two-pass file enumeration. The registered callback and the interpreter, factory and worker calls match in the same image. |
+| `wave-stream-refill` | 637 B | `SoundInitBuffers`, five call fields and both stack arguments. The BGM worker and queue entry match in the same image. |
 | `supervisor-update-game-mode` | 666 B | `SupervisorModes`, 60 fields, 20 jump entries and 14 selector bytes. The registered update, chain registration and lifecycle guards match in the same image. |
 | `gui-score-notice` | 668 B | `GuiScoreNoticeCore`, 35 fields and seven switch destinations. The spell-end caller, caption factory, script initializer and sprite setter pass in the same image. |
 | `enemy-full-constructor` | 673 B | Two-source `EnemyFullConstructor` link through `EnemySpawn`, five fields and the ESI receiver. The base, embedded context and runtime constructors pass independent replays. The caller passes in its own link. |

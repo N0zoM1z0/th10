@@ -1036,8 +1036,14 @@ frontier; do not refresh a baseline merely to accept the new positions.
   creation call in its own case so the compiler can merge the tails.
   The MIT-licensed reference supplied the terminating-case lead.
   [Reference license](licenses/th10-decomp-MIT.txt)
-- **CStreamingSound::HandleWaveStreamNotification @0x44D850 (637)**: 634. The
-  637-byte CFG variants order the read and fill blocks wrongly. [2026-11-11]
+- **CStreamingSound::HandleWaveStreamNotification @0x44D850 (637)** matches
+  the complete refill path and five calls in the actual sound queue link.
+  Record a full byte count after filling the locked segment with silence.
+  The read and silence paths then share one short-read test, which keeps
+  the repeat loop at 0x44D9F0 with the original internal alignment. Keep
+  the separate remaining byte count on each refill read. The MIT-licensed
+  reference supplied the shared short-read test.
+  [Reference license](licenses/th10-decomp-MIT.txt)
 - **EnemyResolveRuntimeCallback @0x4127A0 (593)**: natural C++ callback now
   uses a 32-bit flag-word bit-field and `_ReadWriteBarrier()` to preserve the
   timeout state write ordering without inline assembly. The full 593-byte

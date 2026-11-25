@@ -804,35 +804,36 @@ HRESULT CStreamingSound::HandleWaveStreamNotification(BOOL loopedPlay)
         if (FAILED(hr = m_pWaveFile->Read(
                 static_cast<BYTE *>(lockedBuffer), lockedSize, &bytesRead)))
             return hr;
-        if (bytesRead < lockedSize)
-        {
-            if (loopedPlay)
-            {
-                DWORD readSoFar = bytesRead;
-                while (readSoFar < lockedSize)
-                {
-                    if (FAILED(hr = m_pWaveFile->ResetFile(true)))
-                        return hr;
-                    if (FAILED(hr = m_pWaveFile->Read(
-                            reinterpret_cast<BYTE *>(reinterpret_cast<unsigned int>(lockedBuffer) + readSoFar),
-                            lockedSize - readSoFar, &bytesRead)))
-                        return hr;
-                    readSoFar += bytesRead;
-                }
-            }
-            else
-            {
-                FillMemory(reinterpret_cast<BYTE *>(reinterpret_cast<unsigned int>(lockedBuffer) + bytesRead),
-                           lockedSize - bytesRead,
-                           static_cast<BYTE>(m_pWaveFile->m_pzwf->format.wBitsPerSample == 8 ? 128 : 0));
-                m_bFillNextNotificationWithSilence = TRUE;
-            }
-        }
     }
     else
     {
         FillMemory(lockedBuffer, lockedSize,
                    static_cast<BYTE>(m_pWaveFile->m_pzwf->format.wBitsPerSample == 8 ? 128 : 0));
+        bytesRead = lockedSize;
+    }
+    if (bytesRead < lockedSize)
+    {
+        if (!loopedPlay)
+        {
+            FillMemory(static_cast<BYTE *>(lockedBuffer) + bytesRead,
+                       lockedSize - bytesRead,
+                       static_cast<BYTE>(m_pWaveFile->m_pzwf->format.wBitsPerSample == 8 ? 128 : 0));
+            m_bFillNextNotificationWithSilence = TRUE;
+        }
+        else
+        {
+            DWORD readSoFar = bytesRead;
+            while (readSoFar < lockedSize)
+            {
+                if (FAILED(hr = m_pWaveFile->ResetFile(true)))
+                    return hr;
+                DWORD remaining = lockedSize - readSoFar;
+                if (FAILED(hr = m_pWaveFile->Read(
+                        static_cast<BYTE *>(lockedBuffer) + readSoFar, remaining, &bytesRead)))
+                    return hr;
+                readSoFar += bytesRead;
+            }
+        }
     }
 
     m_apDSBuffer[0]->Unlock(lockedBuffer, lockedSize, NULL, 0);
