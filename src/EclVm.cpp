@@ -687,12 +687,13 @@ int EclVmContext::StartSubroutine(
                 }
             }
 
-            const EclVmInstruction *const nextInstruction = *callerInstruction;
             EclVmScalar *const previousArgument = argument;
+            EclVmInstruction *volatile &instructionSlot = *callerInstruction;
+            const EclVmInstruction *const nextInstruction = instructionSlot;
             const unsigned int previousValueOffset = valueCursor;
             argument = reinterpret_cast<EclVmScalar *>(
                 reinterpret_cast<unsigned int>(previousArgument) + sizeof(EclVmScalar));
-            operandCount = static_cast<const volatile EclVmInstruction *>(nextInstruction)->operandCount;
+            operandCount = nextInstruction->operandCount;
             argumentIndex = static_cast<int>(
                 static_cast<unsigned int>(argumentIndex) + 1u);
             valueCursor = previousValueOffset + sizeof(EclVmCallArgumentView);

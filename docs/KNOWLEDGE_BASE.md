@@ -1461,6 +1461,11 @@ restored the EDI receiver at both calls and the full update comparison.
   With that latch, capturing the caller after reading the float operand
   puts the caller load before the push and matches another three bytes.
   The raw float word is still carried in ECX where the target uses EDX.
+  Taking the latch's instruction pointer through a volatile reference
+  after reading the destination cursor reproduces the target order of
+  all three slot loads. The operand count can then use an ordinary byte
+  read. All remaining differences in the 536-byte match are register
+  choices within the argument loop.
 - In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
   the destination address LEA to EAX and advances the integer register
   cursor to ECX. The 551-byte candidate with a plain caller parameter
