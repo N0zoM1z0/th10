@@ -672,8 +672,11 @@ int EclVmContext::StartSubroutine(
                     reinterpret_cast<const unsigned char *>(
                     reinterpret_cast<unsigned int>((*callerInstruction)->operands) +
                     metadataOffset))->destinationType == 'f')
-                    argument->real =
-                        static_cast<float>(value.integer);
+                {
+                    const float converted = static_cast<float>(value.integer);
+                    EclVmScalar *const output = argument;
+                    output->real = converted;
+                }
                 else
                 {
                     argument->integer = value.integer;
@@ -681,13 +684,15 @@ int EclVmContext::StartSubroutine(
                 }
             }
 
+            EclVmScalar *const previousArgument = argument;
             argument = reinterpret_cast<EclVmScalar *>(
-                reinterpret_cast<unsigned int>(argument) + sizeof(EclVmScalar));
+                reinterpret_cast<unsigned int>(previousArgument) + sizeof(EclVmScalar));
             argumentIndex = static_cast<int>(
                 static_cast<unsigned int>(argumentIndex) + 1u);
             valueOffset += sizeof(EclVmCallArgumentView);
             metadataOffset += sizeof(EclVmCallArgumentView);
-        } while (argumentIndex < (*callerInstruction)->operandCount);
+        } while (argumentIndex <
+                 static_cast<const volatile EclVmInstruction *>(*callerInstruction)->operandCount);
     }
 
     EclVmContext *const frameCaller = caller;

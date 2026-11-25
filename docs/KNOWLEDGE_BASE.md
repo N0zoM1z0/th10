@@ -1447,8 +1447,11 @@ restored the EDI receiver at both calls and the full update comparison.
   or advance were byte-neutral in the earlier for-loop candidate.
   A volatile read of `operandCount` at the latch moves the count load to
   the target's +0x103 and moves the word offset reload after the cursor store.
-  The complete comparison still has 37 differing bytes. See the
-  [current handoff](RE_HANDOFF.md) for the remaining differences.
+  Combining that read with a local snapshot of the previous destination
+  and a named integer-to-float result matches 517 bytes. The float result
+  path aligns from +0xCF through +0xF1. Taking an additional local
+  destination snapshot in the raw integer branch shortens the combined
+  candidate to 544 bytes. See the [current handoff](RE_HANDOFF.md).
 - In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
   the destination address LEA to EAX and advances the integer register
   cursor to ECX. The 551-byte candidate with a plain caller parameter
@@ -1459,6 +1462,10 @@ restored the EDI receiver at both calls and the full update comparison.
   a copy to the loop-carried offset. The LEA's tuple survives to Riscify.
   The RegAssign event for the destination-address LEA is separate from
   the register choice propagated through the word offset copy.
+  Watching the word-offset LEA's destination operand in the 513-byte
+  candidate locates the final physical-symbol write at `0x107ACB9F`,
+  in the out-of-line block reached from `RewriteAsReal`. The code reads
+  the mapped symbol from the virtual register's allocation record.
   The local trace runs from the two-source `EclVmHostRunEnemy` link
   inputs. Launching `winedbg.exe` with a Windows path to the linker and a
   pseudo-terminal exposes the local GDB proxy for read-only observation.
