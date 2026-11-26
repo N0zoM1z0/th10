@@ -37,7 +37,7 @@ int __stdcall MainLoadConfiguration(const char *path, MainSupervisorView *superv
         if (static_cast<unsigned char>(configuration.colorMode) < 2 &&
             configuration.unknown01B < 3 && configuration.unknown01C < 2 &&
             configuration.windowed < 2 && configuration.frameskip < 3 &&
-            configuration.unknown01F < 3 && configuration.format == 0x100003 &&
+            configuration.unknown01F < 3 && configuration.format == GAME_CONFIG_FORMAT_VERSION &&
             size == sizeof(configuration))
         {
             memcpy(g_DefaultGameKeyBindings, configuration.keyBindings,
@@ -50,24 +50,24 @@ int __stdcall MainLoadConfiguration(const char *path, MainSupervisorView *superv
 
 configurationLoaded:
     supervisor->disableVsync = 0;
-    if ((supervisor->configuration.options & 4) != 0)
+    if ((supervisor->configuration.options & GAME_CONFIG_DISABLE_FOG) != 0)
         th10::g_GameErrorContext.Log(g_MainConfigOption004Log);
-    if ((supervisor->configuration.options & 1) != 0)
+    if ((supervisor->configuration.options & GAME_CONFIG_FORCE_16BIT_TEXTURES) != 0)
         th10::g_GameErrorContext.Log(g_MainConfigOption001Log);
     if (supervisor->configuration.windowed != 0)
         th10::g_GameErrorContext.Log(g_MainConfigWindowedLog);
-    if ((supervisor->configuration.options & 2) != 0)
+    if ((supervisor->configuration.options & GAME_CONFIG_FORCE_REFERENCE_RASTERIZER) != 0)
         th10::g_GameErrorContext.Log(g_MainConfigOption002Log);
-    if ((supervisor->configuration.options & 8) != 0)
+    if ((supervisor->configuration.options & GAME_CONFIG_DISABLE_DIRECTINPUT) != 0)
         th10::g_GameErrorContext.Log(g_MainConfigOption008Log);
-    if ((supervisor->configuration.options & 0x10) != 0)
+    if ((supervisor->configuration.options & GAME_CONFIG_LOAD_BGM_IN_MEMORY) != 0)
         th10::g_GameErrorContext.Log(g_MainConfigOption010Log);
-    if ((supervisor->configuration.options & 0x20) != 0)
+    if ((supervisor->configuration.options & GAME_CONFIG_DISABLE_VSYNC) != 0)
     {
         th10::g_GameErrorContext.Log(g_MainConfigOption020Log);
         g_MainSupervisorView.disableVsync = 1;
     }
-    if ((supervisor->configuration.options & 0x40) != 0)
+    if ((supervisor->configuration.options & GAME_CONFIG_DISABLE_TEXT_AUTO_DETECT) != 0)
         th10::g_GameErrorContext.Log(g_MainConfigOption040Log);
     if (FileSystem::WriteFile(path, &configuration, sizeof(configuration)) != 0)
     {

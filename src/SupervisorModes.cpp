@@ -38,110 +38,133 @@ void MainSupervisorView::LeaveLock(int index)
     --criticalSectionLockCounts[index];
 }
 
+// Evidenced by MainSupervisorView::UpdateGameMode transitions (0x004218D0)
+// and MainSupervisorView::OnUpdate (0x0041FF80).
+enum SupervisorGameMode
+{
+    SUPERVISOR_MODE_STARTUP_INIT                = 0,
+    SUPERVISOR_MODE_STARTUP_LOADING             = 1,
+    SUPERVISOR_MODE_BOOT_READY                  = 2,
+    SUPERVISOR_MODE_EXIT                        = 3,
+    SUPERVISOR_MODE_TITLE                       = 4,
+    SUPERVISOR_MODE_GAMEPLAY                    = 7,
+    SUPERVISOR_MODE_NEXT_STAGE                  = 10,
+    SUPERVISOR_MODE_RETRY_STAGE                 = 11,
+    SUPERVISOR_MODE_REPLAY_PLAYBACK             = 12,
+    SUPERVISOR_MODE_RESTART_GAME                = 13,
+    SUPERVISOR_MODE_ENDING                      = 14,
+    SUPERVISOR_MODE_RETURN_TO_TITLE_AFTER_CLEAR = 15
+};
+
+enum SupervisorLockSlot
+{
+    SUPERVISOR_LOCK_MODE = 5
+};
+
 // Target4218D0: code through421B0B plus two jump tables and a byte index map.
 int MainSupervisorView::UpdateGameMode()
 {
     if (currentGameMode != nextGameMode)
     {
-        ::EnterCriticalSection(&criticalSections[5]);
+        ::EnterCriticalSection(&criticalSections[SUPERVISOR_LOCK_MODE]);
         int previous = currentGameMode;
-        ++criticalSectionLockCounts[5];
+        ++criticalSectionLockCounts[SUPERVISOR_LOCK_MODE];
         previousGameMode = previous;
         clearColor = 0xff000000u;
         switch (nextGameMode)
         {
-        case 0:
-            nextGameMode = 1;
+        case SUPERVISOR_MODE_STARTUP_INIT:
+            nextGameMode = SUPERVISOR_MODE_STARTUP_LOADING;
             startupWorker = CreateStartupWorker();
             if (startupWorker != NULL)
                 break;
-            nextGameMode = 3;
+            nextGameMode = SUPERVISOR_MODE_EXIT;
             goto quit;
-        case 4:
+        case SUPERVISOR_MODE_TITLE:
             switch (previous)
             {
-            case 7:
+            case SUPERVISOR_MODE_GAMEPLAY:
                 GameManagerDelete(g_GameManager);
                 // Fall through to recreate the title screen.
-            case 1:
-            case 2:
+            case SUPERVISOR_MODE_STARTUP_LOADING:
+            case SUPERVISOR_MODE_BOOT_READY:
                 FrontEndCreate();
                 break;
-            case 14:
+            case SUPERVISOR_MODE_ENDING:
                 EndingDelete(g_EndingView);
                 FrontEndCreate();
                 break;
             }
             break;
-        case 15:
+        case SUPERVISOR_MODE_RETURN_TO_TITLE_AFTER_CLEAR:
             switch (previous)
             {
-            case 2:
+            case SUPERVISOR_MODE_BOOT_READY:
                 break;
-            case 14:
+            case SUPERVISOR_MODE_ENDING:
                 EndingDelete(g_EndingView);
                 break;
-            case 7:
+            case SUPERVISOR_MODE_GAMEPLAY:
                 GameManagerDelete(g_GameManager);
                 break;
             default:
                 goto finish;
             }
-            nextGameMode = 4;
+            nextGameMode = SUPERVISOR_MODE_TITLE;
             g_MainModeTransitionCounter = 3;
             FrontEndCreate();
             break;
-        case 7:
-            if (previous == 4)
+        case SUPERVISOR_MODE_GAMEPLAY:
+            if (previous == SUPERVISOR_MODE_TITLE)
                 FrontEndDelete(g_FrontEndControllerView);
             newGameSession = 1;
             GameManagerCreate(0);
             break;
-        case 12:
-            if (previous == 4)
+        case SUPERVISOR_MODE_REPLAY_PLAYBACK:
+            if (previous == SUPERVISOR_MODE_TITLE)
                 FrontEndDelete(g_FrontEndControllerView);
-            nextGameMode = 7;
+            nextGameMode = SUPERVISOR_MODE_GAMEPLAY;
             newGameSession = 1;
             GameManagerCreate(1);
             break;
-        case 11:
+        case SUPERVISOR_MODE_RETRY_STAGE:
         {
             int mode = g_GameManager->initializationMode;
             newGameSession = 0;
-            if (previous == 7)
+            if (previous == SUPERVISOR_MODE_GAMEPLAY)
                 GameManagerDelete(g_GameManager);
-            nextGameMode = 7;
+            nextGameMode = SUPERVISOR_MODE_GAMEPLAY;
             GameManagerCreate(mode);
             break;
         }
-        case 10:
+        case SUPERVISOR_MODE_NEXT_STAGE:
             GameManagerDelete(g_GameManager);
             newGameSession = 1;
-            nextGameMode = 7;
+            nextGameMode = SUPERVISOR_MODE_GAMEPLAY;
             g_GameScoreState.SelectNextStage();
             GameManagerCreate(0);
             break;
-        case 13:
+        case SUPERVISOR_MODE_RESTART_GAME:
             GameManagerDelete(g_GameManager);
             newGameSession = 1;
-            nextGameMode = 7;
+            nextGameMode = SUPERVISOR_MODE_GAMEPLAY;
             GameManagerCreate(0);
             break;
-        case 14:
-            if (previous == 7)
+        case SUPERVISOR_MODE_ENDING:
+            if (previous == SUPERVISOR_MODE_GAMEPLAY)
                 GameManagerDelete(g_GameManager);
             EndingCreate();
             break;
-        case 3:
+        case SUPERVISOR_MODE_EXIT:
     quit:
             ReleaseModeOwners();
-            LeaveLock(5);
+            LeaveLock(SUPERVISOR_LOCK_MODE);
             return 4;
         }
     finish:
         currentGameMode = nextGameMode;
-        ::LeaveCriticalSection(&criticalSections[5]);
-        --criticalSectionLockCounts[5];
+        ::LeaveCriticalSection(&criticalSections[SUPERVISOR_LOCK_MODE]);
+        --criticalSectionLockCounts[SUPERVISOR_LOCK_MODE];
     }
     return 1;
 }
@@ -151,7 +174,7 @@ int MainSupervisorView::UpdateGameMode()
 int __fastcall MainSupervisorView::OnUpdate(MainSupervisorView *supervisor)
 {
     if ((supervisor->flags & 0x80) != 0 && supervisor->modeWorker.running == 0)
-        g_MainSupervisorView.nextGameMode = 3;
+        g_MainSupervisorView.nextGameMode = SUPERVISOR_MODE_EXIT;
     reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->ServiceBgmFades();
     PollInputFrame(0);
     if (g_AnmRenderManagerView->ServicePreloadedAnms() != 0)

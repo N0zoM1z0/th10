@@ -355,7 +355,7 @@ int WINAPI WinMain(
     if (MainLoadConfiguration("th10.cfg", &g_MainSupervisorView) != 0)
         goto stop;
 
-    if ((g_MainSupervisorView.configuration.options & 0x100) != 0)
+    if ((g_MainSupervisorView.configuration.options & GAME_CONFIG_ASK_DISPLAY_MODE_ON_STARTUP) != 0)
     {
         INT_PTR dialogResult = DialogBoxParamA(
             instance, MAKEINTRESOURCEA(203), NULL,
@@ -1205,16 +1205,16 @@ INT_PTR CALLBACK MainConfigurationDialogProc(
         {
         case 201:
             if (IsDlgButtonChecked(dialog, 202) == BST_CHECKED)
-                g_MainSupervisorView.configuration.options |= 0x100;
+                g_MainSupervisorView.configuration.options |= GAME_CONFIG_ASK_DISPLAY_MODE_ON_STARTUP;
             else
-                g_MainSupervisorView.configuration.options &= ~0x100u;
+                g_MainSupervisorView.configuration.options &= ~static_cast<unsigned int>(GAME_CONFIG_ASK_DISPLAY_MODE_ON_STARTUP);
             EndDialog(dialog, IDYES);
             break;
         case 203:
             if (IsDlgButtonChecked(dialog, 202) == BST_CHECKED)
-                g_MainSupervisorView.configuration.options |= 0x100;
+                g_MainSupervisorView.configuration.options |= GAME_CONFIG_ASK_DISPLAY_MODE_ON_STARTUP;
             else
-                g_MainSupervisorView.configuration.options &= ~0x100u;
+                g_MainSupervisorView.configuration.options &= ~static_cast<unsigned int>(GAME_CONFIG_ASK_DISPLAY_MODE_ON_STARTUP);
             EndDialog(dialog, IDNO);
             break;
         default:
