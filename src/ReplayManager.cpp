@@ -105,11 +105,11 @@ void ReplayClearStageFrameData(ReplayManager *manager, int stage);
 static inline void ReplayCutChain(ReplayChainElement *element)
 {
     th10::Chain *chain = th10::g_Chain;
-    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-    ++g_MainSupervisorView.criticalSectionLockCounts[0];
+    EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+    ++g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
     chain->UnregisterElem(reinterpret_cast<th10::ChainElem *>(element));
-    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-    --g_MainSupervisorView.criticalSectionLockCounts[0];
+    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+    --g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
 }
 
 // Complete target-observed position restoration is maintained in

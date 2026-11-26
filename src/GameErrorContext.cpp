@@ -1,5 +1,6 @@
 #include "GameErrorContext.hpp"
 #include "FileSystem.hpp"
+#include "SupervisorLockSlot.hpp"
 // Natural C++ candidate adapted from th10-decomphelp-forN0/src/GameErrorContext.cpp.
 // The target-bound Log and Fatal bodies are retained here only after direct
 // IDA review and canonical VC7.1 replay. Fatal uses a natural same-TU entry
@@ -29,7 +30,7 @@ char * __fastcall GameErrorContext::Log(char *fmt, ...)
 
     self = this;
 
-    EnterCriticalSection(&g_CriticalSections[3]);
+    EnterCriticalSection(&g_CriticalSections[SUPERVISOR_LOCK_LOG]);
     g_LogLockDepth++;
     va_start(args, fmt);
     vsprintf(tmpBuffer, fmt, args);
@@ -40,7 +41,7 @@ char * __fastcall GameErrorContext::Log(char *fmt, ...)
         self->m_BufferEnd += tmpBufferSize;
         self->m_BufferEnd[0] = '\0';
     }
-    LeaveCriticalSection(&g_CriticalSections[3]);
+    LeaveCriticalSection(&g_CriticalSections[SUPERVISOR_LOCK_LOG]);
     g_LogLockDepth--;
     return fmt;
 }
@@ -54,7 +55,7 @@ char * __fastcall GameErrorContext::Fatal(char *fmt, ...)
 
     self = this;
 
-    EnterCriticalSection(&g_CriticalSections[3]);
+    EnterCriticalSection(&g_CriticalSections[SUPERVISOR_LOCK_LOG]);
     g_LogLockDepth++;
     va_start(args, fmt);
     vsprintf(tmpBuffer, fmt, args);
@@ -66,7 +67,7 @@ char * __fastcall GameErrorContext::Fatal(char *fmt, ...)
         self->m_BufferEnd[0] = '\0';
     }
     self->m_Fatal = 1;
-    LeaveCriticalSection(&g_CriticalSections[3]);
+    LeaveCriticalSection(&g_CriticalSections[SUPERVISOR_LOCK_LOG]);
     g_LogLockDepth--;
     return fmt;
 }

@@ -298,15 +298,7 @@ enum SupervisorGameMode
     SUPERVISOR_MODE_RETURN_TO_TITLE_AFTER_CLEAR = 15
 };
 
-// Evidenced by Chain.cpp (slot 0), FileSystem.cpp (slot 2),
-// GameErrorContext.cpp (slot 3), and SupervisorModes.cpp (slot 5).
-enum SupervisorLockSlot
-{
-    SUPERVISOR_LOCK_CHAIN   = 0,
-    SUPERVISOR_LOCK_FILE_IO = 2,
-    SUPERVISOR_LOCK_LOG     = 3,
-    SUPERVISOR_LOCK_MODE    = 5
-};
+#include "SupervisorLockSlot.hpp"
 
 struct MainSupervisorView
 {

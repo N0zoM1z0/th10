@@ -18,3 +18,5 @@ jobs:
       - run: python3 scripts/ci.py --base "$TH10_CHECK_BASE"
         env:
           TH10_CHECK_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+      - name: Semantic protocol checks
+        run: python3 scripts/check-semantic-protocols.py

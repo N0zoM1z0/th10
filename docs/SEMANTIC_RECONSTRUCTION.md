@@ -32,9 +32,11 @@ Subsystem navigation lives in [SEMANTIC_INDEX.md](SEMANTIC_INDEX.md).
    - **VC7.1 exact oracle:** replay every affected accepted exact unit via
      `scripts/build-match-unit.py --unit <unit>` and
      `scripts/compare-linked-function.py --unit <unit>` (must remain 0 diffs).
-   - **Product build + PI oracle:** run `scripts/build.py`,
-     `scripts/build.py --reverse-link`, and `scripts/verify-pi.py`, plus
-     `scripts/ci.py` and `git diff --check`.
+   - **Product build + PI oracle:** run `scripts/build.py --fresh` (required
+     after editing shared `.hpp` headers, since incremental `scripts/build.py`
+     tracks `.cpp` mtimes only), `scripts/build.py --reverse-link`,
+     `scripts/verify-pi.py`, `scripts/check-semantic-protocols.py`,
+     `scripts/ci.py`, and `git diff --check`.
 5. Commit each coherent semantic batch on `semantic/readability-protocols` with
    a concise evidence summary.
 

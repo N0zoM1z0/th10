@@ -178,6 +178,9 @@ TextRenderFormatInfo g_TextRenderFormats[11] = {
     { 0x0u, 0x0u, 0x1u, 0x0u },
 };
 unsigned int g_EnemySoundCueMetadata_head = 0x00000000u;
+// SoundCueMetadata storage (0x004749CC..0x00474B40, 372 bytes):
+// - 46 complete 8-byte SoundCueMetadata records (368 bytes)
+// - 1 trailing observed 4-byte word (0x32FCE0u), semantic role unresolved
 unsigned int g_SoundCueMetadata_storage[93] = {
     0xF894u, 0x0u, 0xF7CCu, 0x1u, 0x5FB50u, 0x1u, 0x5FA24u, 0x2u,
     0x64FBB4u, 0x3u, 0x64FD44u, 0x4u, 0x64FD44u, 0x5u, 0x32F894u, 0x6u,
@@ -192,6 +195,8 @@ unsigned int g_SoundCueMetadata_storage[93] = {
     0x64FED4u, 0x1Fu, 0x64FED4u, 0x20u, 0x64FED4u, 0x21u, 0x64FED4u, 0x22u,
     0x64FF9Cu, 0x23u, 0x640000u, 0x24u, 0x32FCE0u,
 };
+typedef char SoundCueMetadataStorageLayout[
+    (sizeof(g_SoundCueMetadata_storage) == 46 * 8 + 4) ? 1 : -1];
 struct PbgDecryptProfile { unsigned int key, step, limit; };
 PbgDecryptProfile g_PbgDecryptProfiles[8] = {
     { 0xAA371Bu, 0x40u, 0x2800u },
