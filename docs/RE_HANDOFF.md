@@ -4,29 +4,22 @@ Read [AGENTS.md](../AGENTS.md), then this brief and the relevant source.
 [PROGRESS.md](PROGRESS.md) is generated from the ledgers;
 [matches.csv](../config/matches.csv) is the exact-count authority.
 
-## Continue with StartSubroutine
+## Authored exact backlog complete
 
-The next owner is `EclVmContext::StartSubroutine @0x0044DF70`, 550 bytes in
-`src/EclVm.cpp`. The operator resumed it after the other ready owners, then
-requested cleanup and a handoff. No reconstruction job is running.
+`EclVmContext::StartSubroutine @0x0044DF70` (550 bytes in `src/EclVm.cpp`) is
+now an accepted cold-verified exact match in `ecl-vm-start-subroutine`,
+completing all confirmed authored functions in the canonical ledger (see
+[PROGRESS.md](PROGRESS.md) and [matches.csv](../config/matches.csv)).
 
-The committed source is the current cold-compared 544/550 baseline. Its
-complete extent and four REL32 fields bind; the float-word mismatch at
-`+0xC7`/`+0xCE` is now resolved by keeping `argument` non-volatile in the loop
-body and passing `instruction->floatOperands[valueOffset / sizeof(int)]`
-directly to `ReadFloatValue(caller, argumentIndex, ...)` (removing the local
-`EclVmScalar value` carrier and float-arm `source = caller` snapshot), while
-retaining a volatile header instruction reload. Six ordinary bytes remain, all
-from a single `EAX`/`ECX` swap in the loop latch (`+0xF3..+0x10F`). The live
-`build/match-linked/EclVmHostRunEnemy` PE and objects were cold-built from the
-committed source; the baseline report is
-`.analysis/ecl-start-subroutine/cold-544-compare.json`.
+The two-input `/GL` recipe `ecl-vm-start-subroutine` (`src/EclVm.cpp` +
+`src/Enemy.cpp`, rooted at `EnemyRuntimeUpdate`) reproduces all 550 bytes and
+all four `REL32` call fields (`ReadIntValue`, `ReadFloatValue`, `__ftol2`,
+`FindSubroutine`) with zero differences; sibling exact units in the same
+image (`ecl-vm-host-run` 146/146, `ecl-vm-spawn-thread` 142/142, and
+`enemy-full-object-destructor` 386/386) remain exact. The cold exact report
+is `.analysis/ecl-start-subroutine/cold-exact-compare.json`.
 
-Use the two-input /GL recipe `ecl-vm-start-subroutine`, rooted at the real
-EnemyRuntimeUpdate. Verify the original Japanese v1.00a input and toolchain
-at session entry. Select an available CPU; CPU 2 was used here. Keep native
-jobs serial at nice 10 and retain their logs and actual exit codes below
-`.analysis/`. Run the comparison only after a successful build:
+Reproduce the cold comparison with:
 
 ```sh
 scripts/repo-python scripts/verify-target.py
@@ -35,30 +28,10 @@ timeout 900s nice -n 10 taskset -c 2 scripts/repo-python scripts/build-match-uni
 scripts/repo-python scripts/compare-linked-function.py --unit ecl-vm-start-subroutine --json
 ```
 
-The expected diagnostic result is a 550-byte candidate with 544 matching
-bytes and four fields. It is not an accepted match.
-
-| Remaining offsets | Native | Target |
-| --- | --- | --- |
-| `+0xF3`, `+0xF7`, `+0xFD`, `+0x100` | Cursor EAX, instruction ECX | Cursor ECX, instruction EAX |
-| `+0x105`, `+0x10F` | Count EAX | ECX |
-
-Everything through `+0xF1` (242 bytes, including both operand branches) and
-from `+0x110` through `+0x225` (278 bytes) matches byte-for-byte. Equal-priority
-latch candidates are ordered by instruction-walk fields 106/105/104; reversing
-source reads fixes their register roles (`EAX`/`ECX`/`EDX`) but breaks the
-schedule when both reads are volatile. A fully non-volatile IVR loop
-(`stack.data[argumentOffset]` and `(metadataOffset + 4u) / 4u`) naturally
-assigns the target latch registers (`ECX`/`EAX`/`EDX`/`ECX`) and float word
-(`EDX`), but currently swaps `valueOffset`/`instruction` at `+0x68..+0xC6` and
-reorders two latch instructions (`+0xF6`, `+0x107`).
-
-[KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) retains the C2 findings and failed
-controls in its StartSubroutine entry. Three read-only trace families remain
-under `.analysis/ecl-start-subroutine/`: `terra-float-costs2`,
-`terra-latch-tie-write`, and `terra-latch-count-scores`. The last traces an
-older volatile-count control. Debugger priority changes are not acceptance
-evidence. The warm relink helper remains `.analysis/update-replay/relink.py`.
+[KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) records the natural zero-`volatile`
+loop-header IVR structure (`++argumentIndex, metadataOffset += 8, argumentOffset += 4`
+with `static_cast<unsigned int>(metadataOffset + 4) >> 2`) that closed the
+final float-word and loop-latch register differences.
 
 ## Completed work
 
@@ -67,6 +40,7 @@ Recent source/context repairs are summarized in the knowledge base:
 
 | Scope | Canonical units |
 | --- | --- |
+| ECL subroutine entry | `ecl-vm-start-subroutine` |
 | Natural VM initializer member | `anm-vm-initialize-private`, `entity-start-script` |
 | Popup insertion, resource reload and factory | `script-viewer-emit-value-popup`, `script-viewer-popup-initialize`, `script-viewer-popup-create` |
 | Real file/archive consumers | `game-statistics-constructor`, `game-statistics-create` |

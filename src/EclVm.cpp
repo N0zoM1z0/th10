@@ -612,12 +612,9 @@ int EclVmContext::StartSubroutine(
     EclVmInstruction **const callerInstruction = &caller->instruction;
     EclVmInstruction *const call = *callerInstruction;
     const int inlineBytes = call->callOperands.inlineNameBytes;
-    // The CALL metadata offset is a serialized i386 address word, not a
-    // signed counter. Advancing it modulo 2^32 preserves unchecked script
-    // byte offsets without an implementation-defined signed conversion.
-    unsigned int metadataOffset =
-        static_cast<unsigned int>(inlineBytes) +
-        firstArgument * 4u + 4u;
+    // Skip the length-prefixed subroutine name and any preceding fixed words.
+    int metadataOffset =
+        inlineBytes + static_cast<int>(firstArgument) * 4 + 4;
     int preservedValue = 0;
     const int previousTop = destination->stack.stackTop;
     int argumentOffset = static_cast<int>(
@@ -629,63 +626,35 @@ int EclVmContext::StartSubroutine(
         argumentOffset = 12;
     }
 
-    int argumentIndex = firstArgument + 1;
-    const int initialCount = (*callerInstruction)->operandCount;
-    if (argumentIndex < initialCount)
+    for (int argumentIndex = static_cast<int>(firstArgument) + 1;
+         argumentIndex < (*callerInstruction)->operandCount;
+         ++argumentIndex, metadataOffset += 8, argumentOffset += 4)
     {
-        EclVmScalar *argument = reinterpret_cast<EclVmScalar *>(
-            reinterpret_cast<unsigned int>(destination->stack.data) +
-            static_cast<unsigned int>(argumentOffset));
-        unsigned int valueOffset = metadataOffset +
-            static_cast<int>(offsetof(EclVmCallArgumentView, integer));
-        volatile unsigned int &valueCursor = valueOffset;
-        for (int operandCount = initialCount; argumentIndex < operandCount;)
+        const char sourceType = CallArgument(*callerInstruction, metadataOffset)->sourceType;
+        if (sourceType == 'f' || sourceType == 'g')
         {
-            const EclVmInstruction *const instruction =
-                *static_cast<EclVmInstruction *volatile *>(callerInstruction);
-            const char sourceType = CallArgument(instruction, metadataOffset)->sourceType;
-
-            // CALL arguments follow a counted name; scalarOperands[1] is
-            // only their first-word overlay, not a bounded C++ array.
-            // Preserve the original low-32-bit dword byte-address walk.
-            if (sourceType == 'f' || sourceType == 'g')
-            {
-                const float resolved = ReadFloatValue(
-                    caller, argumentIndex,
-                    instruction->floatOperands[valueOffset / sizeof(int)]);
-                if (CallArgument(*callerInstruction, metadataOffset)->destinationType == 'f')
-                    argument->real = resolved;
-                else
-                    argument->integer = static_cast<int>(resolved);
-            }
+            const float resolved = ReadFloatValue(
+                caller, argumentIndex,
+                (*callerInstruction)->floatOperands[
+                    static_cast<unsigned int>(metadataOffset + 4) >> 2]);
+            if (CallArgument(*callerInstruction, metadataOffset)->destinationType == 'f')
+                *reinterpret_cast<float *>(&destination->stack.data[argumentOffset]) = resolved;
             else
-            {
-                EclVmContext *const source = caller;
-                const EclVmScalar *const encoded =
-                    OperandWord(instruction, valueOffset / sizeof(EclVmScalar));
-                const int resolved = source->ReadIntValue(argumentIndex, encoded->integer);
-                if (CallArgument(*callerInstruction, metadataOffset)->destinationType == 'f')
-                {
-                    const float converted = static_cast<float>(resolved);
-                    argument->real = converted;
-                }
-                else
-                {
-                    argument->integer = resolved;
-                }
-            }
-
-            EclVmScalar *volatile &argumentSlot = argument;
-            EclVmScalar *const previousArgument = argumentSlot;
-            EclVmInstruction *volatile &instructionSlot = *callerInstruction;
-            const EclVmInstruction *const nextInstruction = instructionSlot;
-            const unsigned int previousValueOffset = valueCursor;
-            argumentSlot = reinterpret_cast<EclVmScalar *>(
-                reinterpret_cast<unsigned int>(previousArgument) + sizeof(EclVmScalar));
-            operandCount = nextInstruction->operandCount;
-            ++argumentIndex;
-            valueCursor = previousValueOffset + sizeof(EclVmCallArgumentView);
-            metadataOffset += sizeof(EclVmCallArgumentView);
+                *reinterpret_cast<int *>(&destination->stack.data[argumentOffset]) =
+                    static_cast<int>(resolved);
+        }
+        else
+        {
+            const unsigned int operand =
+                static_cast<unsigned int>(metadataOffset + 4) >> 2;
+            const int resolved = caller->ReadIntValue(
+                argumentIndex,
+                (*callerInstruction)->integerOperands[operand]);
+            if (CallArgument(*callerInstruction, metadataOffset)->destinationType == 'f')
+                *reinterpret_cast<float *>(&destination->stack.data[argumentOffset]) =
+                    static_cast<float>(resolved);
+            else
+                *reinterpret_cast<int *>(&destination->stack.data[argumentOffset]) = resolved;
         }
     }
 

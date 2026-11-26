@@ -40151,7 +40151,6 @@ functions = ["EclVmContext::StartSubroutine"]
 symbol = "?StartSubroutine@EclVmContext@@QAEHPAU1@I@Z"
 target_address = 0x0044DF70
 size = 550
-candidate = true
 linkages = [
   { offset = 0x9E, type = "REL32", symbol = "?ReadIntValue@EclVmContext@@QAEHIH@Z", target = 0x0044FF00 },
   { offset = 0xD2, type = "REL32", symbol = "?ReadFloatValue@EclVmContext@@SGMPAU1@IM@Z", target = 0x0044FF80 },

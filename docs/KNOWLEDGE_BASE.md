@@ -1872,37 +1872,29 @@ restored the EDI receiver at both calls and the full update comparison.
 - Pop @0x00450610 (122, RET 4): EAX stack, ECX byte count, BL requested type, one stack out ptr. Push/EnterFrame/LeaveFrame use EAX stack receiver.
 - Host 0x103C prefix: active ctx +4, embedded ctx +8, script DB +0x102C, thread-list sentinel +0x1030. Run's only callers are EclVmHost::Run; host Run callers keep host in EDI (EnemyRuntimeUpdate 0x0040E0FE/0x0040E205).
 - Opcode 0x51 polar helper 0x004501B0 (30B thiscall FSINCOS) is byte-identical to AnmFloat3View::FromAngleMagnitude @0x004458B0; 0x51/0x52 use EnemyWrapAngle @0x0044BC70.
-- **EclVmContext::StartSubroutine @0x44DF70 (550 bytes, open)** has a
-  current cold baseline of 544 matching bytes with all four call fields
-  bound. The two-input `ecl-vm-start-subroutine` recipe compiles EclVm.cpp
-  and Enemy.cpp under VC7.1 SP1 6030 /GL, rooted at EnemyRuntimeUpdate.
-  The destination arrives in EAX; caller and first-argument index are on
-  the stack, and the complete owner returns with RET8. An empty destination
-  stack receives two zero return words. After the argument loop, capturing
-  the caller once gives EDX for the return-frame caller and EBX for the push
-  size. Successful lookup restores the active context through the caller's
-  host. The four REL32 fields
-  at +0x9E/+0xD2/+0xE8/+0x1DD bind ReadIntValue, ReadFloatValue, __ftol2
-  and FindSubroutine. The current cold report is
-  `.analysis/ecl-start-subroutine/cold-544-compare.json`.
+- **EclVmContext::StartSubroutine @0x44DF70 (550 bytes, exact)** passes all
+  550 bytes and all four REL32 call fields (`+0x9E` `ReadIntValue`, `+0xD2`
+  `ReadFloatValue`, `+0xE8` `__ftol2`, `+0x1DD` `FindSubroutine`) in a cold
+  two-input `ecl-vm-start-subroutine` build (`src/EclVm.cpp` + `src/Enemy.cpp`,
+  VC7.1 SP1 6030 `/GL`, rooted at `EnemyRuntimeUpdate`). The destination
+  arrives in EAX; caller and first-argument index are on the stack, and the
+  complete owner returns with `RET 8`. An empty destination stack receives
+  two zero return words; after the argument loop, capturing `caller` once
+  gives EDX for the return-frame caller and EBX for the push size.
+  Successful lookup restores the active context through the caller's host.
+  The cold exact report is `.analysis/ecl-start-subroutine/cold-exact-compare.json`.
 
-  Passing `instruction->floatOperands[valueOffset / sizeof(int)]` directly
-  to `ReadFloatValue(caller, argumentIndex, ...)` with a non-volatile
-  `argument` in the loop body (and a volatile header `*callerInstruction`
-  load) eliminates the local `EclVmScalar` global-reg candidate and matches
-  the float word in EDX (`+0xC7`/`+0xCE`) without x87 spills. Everything
-  from `+0x000` through `+0x0F1` and `+0x110` through `+0x225` now matches
-  byte-for-byte.
-
-  The remaining six differing bytes are all one `EAX`/`ECX` swap in the
-  loop latch: at `+0xF3`/`+0xF7`/`+0xFD`/`+0x100` the destination cursor
-  and instruction pointer use EAX/ECX instead of ECX/EAX, and at
-  `+0x105`/`+0x10F` the local `RegAssign` operand count reuses the freed
-  cursor register (`EAX` instead of `ECX`). A non-volatile IVR loop
-  (`stack.data[argumentOffset]` and `(metadataOffset + 4u) / 4u`) naturally
-  assigns the target latch registers (`ECX`/`EAX`/`EDX`/`ECX`) and float
-  word (`EDX`), but swaps `valueOffset`/`instruction` at `+0x68..+0xC6`
-  and reorders `+0xF6` and `+0x107`.
+  The exact loop requires no `volatile` inside the loop body or latch:
+  use a signed `int metadataOffset`, write the `for`-header step in the
+  order `++argumentIndex, metadataOffset += 8, argumentOffset += 4`, index
+  `(*callerInstruction)->floatOperands[static_cast<unsigned int>(metadataOffset + 4) >> 2]`
+  directly in the float arm, capture `unsigned int operand = static_cast<unsigned int>(metadataOffset + 4) >> 2`
+  for `(*callerInstruction)->integerOperands[operand]` in the integer arm,
+  and store through `&destination->stack.data[argumentOffset]`. C2's IVR
+  then synthesizes both `[esp+0x28]` and `[esp+0x10]` in the preheader,
+  assigns the float word to EDX, and emits the exact latch registers
+  (`ECX`/`EAX`/`EDX`/`ECX`) and schedule. Informed by the MIT-licensed
+  `th10-decomp` reference ([license](licenses/th10-decomp-MIT.txt)).
 
   Read-only C2 traces explain the float-word, latch and count allocations:
 
