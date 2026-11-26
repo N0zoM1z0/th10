@@ -40747,7 +40747,6 @@ linkages = [
 
 # Actual direct caller guard for popup initialization.
 [units.script-viewer-popup-create]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/ScriptViewerPopupCreate.cpp"
 support_sources = ["src/Chain.cpp", "src/ScriptViewerLifecycle.cpp", "src/AnmManager.cpp"]

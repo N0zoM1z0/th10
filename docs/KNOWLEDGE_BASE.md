@@ -1627,8 +1627,8 @@ frontier; do not refresh a baseline merely to accept the new positions.
   and initialize `owner` directly. The extra check of the constructor result
   disappears, preserving EBX only around construction and keeping the live
   owner in ESI. Its complete 71 bytes/five fields pass as the direct caller
-  guard; `script-viewer-popup-create` retains that candidate recipe for
-  later canonical selection. Constructor134, destructor232, update134,
+  guard and is accepted as `script-viewer-popup-create` from that same
+  complete cold proof, with no executable input changes. Constructor134, destructor232, update134,
   draw540, insertion167, update adapter7, Chain allocator74 and the concrete
   VM initializer273 all pass in the same cold image. Reports are under
   `.analysis/popup-initialize/`; reproduce the graph with
