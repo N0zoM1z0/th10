@@ -714,14 +714,22 @@ frontier; do not refresh a baseline merely to accept the new positions.
   appearance. Replay `enemy-start-spell` for the complete owner.
   [2026-11-24]
 
-  Reopened on 2026-11-26: `060d3655` later made AddVmVariant0 noinline for
-  difficulty selection. The current cold body is 1,992 bytes with six calls
-  instead of the target's one. Five CreatePanelAnimation registrations lost
-  their inline bodies; the existing AddVmToPrimaryBack primitive can supply
-  them without changing the global method. A separate cold build with the
-  pre-statistics-change record definition produces identical complete code,
-  all 113 field bindings and all aliases. The record layout change did not
-  cause this regression. See `.analysis/statistics-record/` for the control.
+  Reopened on 2026-11-26: `9531029b` later made AddVmVariant0 noinline;
+  `060d3655` extracted its shared registration primitive. The resulting cold
+  body is 1,992 bytes with six calls instead of the target's one. Locally
+  inline the five unconditional panel registrations with AddVmToPrimaryBack,
+  and leave stage-animation registrations on the canonical method. Their
+  branches merge into one shared call. This recovers the complete 2,432 bytes
+  and all 108 fields without changing the global method.
+
+  One byte remains at +0x124: `MOV [EDX+ECX],AL` instead of the target's
+  `MOV [ECX+EDX],AL`. Restoring the pre-statistics-change record definition
+  produces both the same old 1,992-byte body/all 113 field bindings and the
+  same 2,431/2,432 panel/stage result. The record layout is independent of
+  this residual. Copy pointer order, explicit-byte do-loops and indexed loops
+  disturb allocation or layout; unsigned-byte cursors, forced copy inlining,
+  direct history access and direct by-value panel registration do not change
+  the SIB. The useful controls are under `.analysis/statistics-record/`.
 - **ItemManagerUpdateBody @0x41AFD0 (2,320)** is exact in the registration-rooted
   `/GL` link, with 154 bound fields, 73 direct local branches and both jump
   tables at their target offsets. Expressing the distance scale as

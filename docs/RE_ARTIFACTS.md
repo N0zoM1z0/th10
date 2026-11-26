@@ -87,14 +87,15 @@ graph. The trace records the byte-neutral narrow-index baseline before the
 late-merged script snapshots. Superseded dumps, source snapshots, private
 helper and debugger image have been removed (about 0.5 MiB).
 
-The statistics-record initializer retains its first complete cold match,
-final-source canonical comparisons, caller/literal checks and selected
-record-consumer outputs under `.analysis/statistics-record/`. Keep the live
-`GameStatisticsTail` graph. The first `typed-direct-copy-cold` artifact is superseded by the
-accepted canonical cold image. The useful alias/candidate-filter traces describe
-the preceding byte-view source; the split-allocation input remains in
-`tail-buffer-walked.cpp`. Superseded trial inputs, dumps and debugger contexts
-were removed (about 2 MiB total).
+The statistics-record initializer retains its accepted canonical cold graph,
+caller/literal checks, selected record-consumer comparisons and useful prior
+allocation traces under `.analysis/statistics-record/`. The old-record
+StartSpell controls retain their complete code/field equality report and
+comparison outcomes; their temporary worktree has been removed. Keep the
+live `GameStatisticsTail` and `EnemyStartSpell` graphs. The first private
+statistics match is superseded by the canonical image. Superseded trial inputs,
+dumps, debugger contexts and the old-record worktree reclaimed about 16 MiB
+in total. The split-allocation input remains in `tail-buffer-walked.cpp`.
 
 The Bomb power transition cleanup reclaimed about 26 MiB in source
 snapshots, trial links and superseded GUI and text-rendering outputs.

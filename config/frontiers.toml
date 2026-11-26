@@ -4,3 +4,10 @@
 # residual: hex byte offsets (ranges) that differ from the original after the
 # candidate's link-resolved fields are masked. Record changes with --update or
 # --add rather than by hand.
+
+[frontier.enemy-start-spell]
+function = "EnemyGameStateView::StartSpell"
+unit = "enemy-start-spell"
+candidate_size = 2432
+target_sha256 = "0a83aa9fdaa2f24183fe8bbb08caee04a6978631c0afba823a2dfcba7acf493e"
+residual = ["124"]

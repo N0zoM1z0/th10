@@ -8,22 +8,42 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 ## Resume
 
 The sole active owner is `EnemyGameStateView::StartSpell` at `0x00409280`,
-2,432 bytes in `src/PlayerHudStartSpell.cpp`. Its historical exact acceptance
-at `fb13affe` predates `060d3655`, which made AddVmVariant0 noinline. The
-current cold recipe emits 1,992 bytes: six AddVmVariant0 calls instead of the
-target's one. Five panel registrations need their former inline bodies.
-Use the existing `AddVmToPrimaryBack` primitive inside CreatePanelAnimation;
-keep the global noinline method needed by the difficulty-selection owner.
-The current ledger claim has been reopened until a complete cold match passes.
+2,432 bytes in `src/PlayerHudStartSpell.cpp`. The current panel/stage helper
+split recovers the complete extent and all 108 fields. Its only ordinary
+mismatch is +0x124: target `MOV [ECX+EDX],AL`, candidate `MOV [EDX+ECX],AL`.
+A complete 39-input cold rebuild reproduces this single-byte residual;
+see `start-spell-panel-stage-cold-*` under `.analysis/statistics-record/`.
+Keep it selected; candidate status and zero exact credit remain until the
+complete strict comparison passes.
 
-This regression is independent of the accepted statistics-record change.
-An isolated cold control restoring only GameStatistics.hpp and
-GameStatisticsRecordDefaults.cpp from `25bc76aa` produces the same complete
-1,992 bytes, all 113 field bindings and all aliases. Three unused anonymous
-namespace names vary with the worktree path; their addresses agree. The
-control and current outputs are under `.analysis/statistics-record/`, including
-`start-spell-record-definition-control.json` and `start-spell-baseline-cold.*`.
-The temporary worktree path is in `start-spell-baseline-worktree.txt`.
+The panel helper uses AddVmToPrimaryBack and explicit local inlining. The
+stage helper keeps the canonical AddVmVariant0 call, merging the stage arms
+into the target's shared tail. This preserves the global noinline method
+needed by other accepted owners. The noinline annotation first appeared in
+`9531029b`; `060d3655` later extracted its registration primitive.
+
+A cold control with only the pre-statistics-change record definition gives
+the same old 1,992-byte body and all 113 field bindings. Recompiling that
+control with the panel/stage split also gives the same 2,431/2,432 result.
+The three unused anonymous namespace names vary with the worktree path;
+all addresses and referenced bindings agree. Reports and probe outcomes are
+under `.analysis/statistics-record/`: `start-spell-record-definition-control.json`,
+`start-spell-inline-old-record-compare.json` and
+`start-spell-panel-stage-probes.json`. These controls isolate the remaining
+index encoding from the accepted record layout change.
+
+Pointer declaration order changes the name register lifetime and loses more
+bytes. A do-loop with an explicit byte changes early field positions; relative
+or integer-address loops grow the extent. Unsigned-byte cursors, parameter
+order, forced copy inlining, a direct rank-history member access, a separate
+aggregate-name binding and direct by-value panel registration preserve the
+same one-byte residual. Resume with a concrete operand-order hypothesis rather
+than repeating those source forms. The pinned C2 prefix-allocation trace helper
+is `.analysis/start-spell/trace-prefix-allocation.py`; adapt its block filter
+before using it to inspect the copy-loop memory operand. A small next control
+can separate declaration order from definition order: declare the output
+cursor first, initialize the input cursor next, then assign the output. The
+earlier reversal changed both orders and lost the name register coalescing.
 
 ```bash
 scripts/repo-python scripts/build-match-unit.py --unit enemy-start-spell

@@ -38,28 +38,37 @@ static inline void CopyPanelName(char *const destination, const char *const sour
         ;
 }
 
-
 struct SpellPanelAppearance
 {
     int renderLayer;
     unsigned int flags;
 };
 
-static inline AnmVmIdView CreatePanelAnimation(
+static __forceinline AnmVmIdView CreatePanelAnimation(
     AnmLoadedView *resource, int script, SpellPanelAppearance appearance)
 {
     AnmVmView *object = g_AnmRenderManagerView->AllocateVm();
     object->renderLayer = appearance.renderLayer;
     object->flags35C |= appearance.flags;
     resource->InitializeVm(object, script);
-    return g_AnmRenderManagerView->AddVmVariant0(object);
+    return AddVmToPrimaryBack(*g_AnmRenderManagerView, object);
 }
 
-static inline AnmVmIdView CreatePanelAnimation(
+static __forceinline AnmVmIdView CreatePanelAnimation(
     AnmLoadedView *resource, int script)
 {
     SpellPanelAppearance appearance = {15, 0x40000000u};
     return CreatePanelAnimation(resource, script, appearance);
+}
+
+static inline AnmVmIdView CreateStageAnimation(
+    AnmLoadedView *resource, int script)
+{
+    AnmVmView *object = g_AnmRenderManagerView->AllocateVm();
+    object->renderLayer = 15;
+    object->flags35C |= 0x40000000u;
+    resource->InitializeVm(object, script);
+    return g_AnmRenderManagerView->AddVmVariant0(object);
 }
 
 static __forceinline AnmVmView *FindInline(int handle)
@@ -191,10 +200,10 @@ void __stdcall EnemyGameStateView::StartSpell(
             g_EnemyManager->typedEffectResources.stageAnimationAnm,
             &stageVms[1], 11);
         if (spellIndex >= 2)
-            CreatePanelAnimation(
+            CreateStageAnimation(
                 g_EnemyManager->typedEffectResources.stageAnimationAnm, 14);
         else
-            CreatePanelAnimation(
+            CreateStageAnimation(
                 g_EnemyManager->typedEffectResources.stageAnimationAnm, 15);
         break;
     case 2:
@@ -204,7 +213,7 @@ void __stdcall EnemyGameStateView::StartSpell(
         AnmVmStartScript(
             g_EnemyManager->typedEffectResources.stageAnimationAnm,
             &stageVms[1], 15);
-        CreatePanelAnimation(
+        CreateStageAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 17);
         break;
     case 3:
@@ -214,7 +223,7 @@ void __stdcall EnemyGameStateView::StartSpell(
         AnmVmStartScript(
             g_EnemyManager->typedEffectResources.stageAnimationAnm,
             &stageVms[1], 19);
-        CreatePanelAnimation(
+        CreateStageAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 21);
         break;
     case 4:
@@ -224,7 +233,7 @@ void __stdcall EnemyGameStateView::StartSpell(
         AnmVmStartScript(
             g_EnemyManager->typedEffectResources.stageAnimationAnm,
             &stageVms[1], 20);
-        CreatePanelAnimation(
+        CreateStageAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 22);
         break;
     case 5:
@@ -234,7 +243,7 @@ void __stdcall EnemyGameStateView::StartSpell(
         AnmVmStartScript(
             g_EnemyManager->typedEffectResources.stageAnimationAnm,
             &stageVms[1], 13);
-        CreatePanelAnimation(
+        CreateStageAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 15);
         break;
     case 6:
@@ -244,7 +253,7 @@ void __stdcall EnemyGameStateView::StartSpell(
         AnmVmStartScript(
             g_EnemyManager->typedEffectResources.stageAnimationAnm,
             &stageVms[1], 34);
-        CreatePanelAnimation(
+        CreateStageAnimation(
             g_EnemyManager->typedEffectResources.stageAnimationAnm, 36);
         break;
     case 7:
@@ -253,7 +262,7 @@ void __stdcall EnemyGameStateView::StartSpell(
             AnmVmStartScript(
                 g_EnemyManager->typedEffectResources.stageAnimationAnm,
                 &stageVms[0], 38);
-            CreatePanelAnimation(
+            CreateStageAnimation(
                 g_EnemyManager->typedEffectResources.stageAnimationAnm, 40);
         }
         else
@@ -264,7 +273,7 @@ void __stdcall EnemyGameStateView::StartSpell(
             AnmVmStartScript(
                 g_EnemyManager->typedEffectResources.stageAnimationAnm,
                 &stageVms[1], 28);
-            CreatePanelAnimation(
+            CreateStageAnimation(
                 g_EnemyManager->typedEffectResources.stageAnimationAnm, 30);
         }
         break;
