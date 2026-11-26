@@ -4,23 +4,37 @@ target_sha256 = "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc904
 [product]
 format = "pe32-i386-windows-gui"
 output = "build/windows-i386/th10.exe"
-status = "skeleton"
+reordered_output = "build/windows-i386/th10-reordered.exe"
+status = "configured"
 
 [toolchain]
 provider = "msvc71-sp1"
 compiler_version = "13.10.6030"
-compiler_identity_state = "observed-candidate"
-compile_profile_state = "unknown"
-link_profile_state = "unknown"
+compiler_identity_state = "verified"
+compile_profile_state = "configured"
+link_profile_state = "configured"
 normal_coff_and_ltcg_inputs_observed = true
 
 [graph]
-translation_unit_partition_state = "unknown"
-link_order_state = "unknown"
-sources = []
-libraries = []
-resources = []
+translation_unit_partition_state = "configured"
+link_order_state = "configured"
+sources = ["src/*.cpp", "src/ProductData.asm"]
+excluded_sources = ["src/EnemyLaserPatternCancel.cpp"]
+libraries = [
+    "libcmt.lib",
+    "kernel32.lib",
+    "user32.lib",
+    "gdi32.lib",
+    "ole32.lib",
+    "winmm.lib",
+    "dinput8.lib",
+    "dsound.lib",
+    "dxguid.lib",
+    "d3d9.lib",
+    "d3dx9_31.lib",
+]
+resources = ["src/th10.rc"]
 
 [acceptance]
-whole_build_closed = false
+whole_build_closed = true
 windows_i386_runtime_validated = false

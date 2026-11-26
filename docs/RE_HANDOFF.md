@@ -4,6 +4,36 @@ Read [AGENTS.md](../AGENTS.md), then this brief and the relevant source.
 [PROGRESS.md](PROGRESS.md) is generated from the ledgers;
 [matches.csv](../config/matches.csv) is the exact-count authority.
 
+## Product build, headless Wine verification, and Position Independence
+
+The whole-program VC7.1 SP1 `/GL` + `/LTCG` build is now configured in
+[config/build.toml](../config/build.toml) and driven by
+[scripts/build.py](../scripts/build.py), producing both
+`build/windows-i386/th10.exe` (standard link, base `0x00400000`) and
+`build/windows-i386/th10-reordered.exe` (reversed `.obj` order, base
+`0x00500000`) with undecorated `d3d9.dll` / `d3dx9_31.dll` imports, Win32
+dialog resource [src/th10.rc](../src/th10.rc), cross-TU bridge
+[src/ProductBridge.cpp](../src/ProductBridge.cpp), and relocatable global
+storage [src/ProductData.asm](../src/ProductData.asm).
+
+Reproduce both builds and run the Position Independence verifier:
+
+```sh
+scripts/repo-python scripts/build.py --check
+scripts/repo-python scripts/build.py
+scripts/repo-python scripts/build.py --reverse-link
+scripts/repo-python scripts/verify-pi.py
+```
+
+See [POSITION_INDEPENDENCE.md](POSITION_INDEPENDENCE.md) for the full PI
+verification results, the duplicate-storage and symbol-collision bugs fixed
+during integration, and the headless Wine/Xvfb comparison against
+`resources/th10.exe` (all three binaries load Direct3D9/DirectInput8/DirectSound,
+create the `東方風神録 〜 Mountain of Faith. ver 1.00a` window, and reach the
+identical missing-`th10.dat` teardown point `GameFinalizeStatistics42B1E0 + 0x0`).
+Full interactive gameplay testing remains blocked only on supplying a private
+`th10.dat` archive.
+
 ## Authored exact backlog complete
 
 `EclVmContext::StartSubroutine @0x0044DF70` (550 bytes in `src/EclVm.cpp`) is

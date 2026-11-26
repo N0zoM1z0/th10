@@ -1,0 +1,11 @@
+#include <windows.h>
+
+203 DIALOGEX 0, 0, 186, 78
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Touhou Fuujinroku ~ Mountain of Faith"
+FONT 9, "MS UI Gothic"
+BEGIN
+    PUSHBUTTON      "Full Screen", 201, 14, 14, 72, 22
+    PUSHBUTTON      "Window", 203, 100, 14, 72, 22
+    AUTOCHECKBOX    "Ask every time", 202, 14, 48, 158, 12
+END

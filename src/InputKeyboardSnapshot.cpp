@@ -11,7 +11,7 @@ int __fastcall InputKeyboardSnapshotView::ReadKeyboardState(
     memset(state, 0, 256);
     if (g_InputEnabled == 0)
         return 0;
-    if ((g_FrontEndSupervisorFlags & 0x200u) == 0)
+    if ((g_InputSupervisorFlags & 0x200u) == 0)
     {
         GetKeyboardState(state);
         return 0;

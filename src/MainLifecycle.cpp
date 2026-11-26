@@ -19,7 +19,7 @@ MainSupervisorView::MainSupervisorView()
 }
 
 // Target4658F0 constructs491C28 and registers its automatic destruction.
-MainSupervisorView g_MainSupervisorView;
+extern MainSupervisorView g_MainSupervisorView;
 
 extern ScriptViewerWorkerView g_MainScanWorker;
 extern PbgArchive g_MainPbgArchive;

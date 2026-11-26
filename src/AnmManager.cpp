@@ -22,7 +22,7 @@ unsigned int __fastcall AnmRandomU32InRange(RngView *rng, unsigned int range)
     return ((static_cast<unsigned int>(upper) << 16) | lower) % range;
 }
 
-AsciiManagerView *g_AsciiManagerView;
+extern AsciiManagerView *g_AsciiManagerView;
 
 struct MainSupervisorView;
 extern MainSupervisorView g_MainSupervisorView;

@@ -593,7 +593,7 @@ struct GameOwner40AF90View
 };
 typedef char GameOwner40AF90Size24[(sizeof(GameOwner40AF90View) == 24) ? 1 : -1];
 
-extern char g_GameOwnerBulletAnmErrorMessage[];
+extern char g_GameOwnerUiAnmErrorMessage[];
 namespace th10 { namespace leaf {
     int Fn0040B050(void);
     int Fn0040B060(void);
@@ -605,7 +605,7 @@ int GameOwner40AF90View::Initialize()
     bulletAnm = g_AnmRenderManagerView->PreloadAnm(7, "bullet.anm");
     if (bulletAnm == NULL)
     {
-        th10::g_GameErrorContext.Log(g_GameOwnerBulletAnmErrorMessage);
+        th10::g_GameErrorContext.Log(g_GameOwnerUiAnmErrorMessage);
         return -1;
     }
     th10::ChainElem *task = th10::Chain::AllocElem(

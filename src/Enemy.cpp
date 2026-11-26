@@ -239,7 +239,7 @@ struct EnemyCriticalSectionView
 
 // Same target storage declaration as Main.hpp and Sound.cpp.
 extern unsigned char g_MainSoundOwner[0x52d0];
-extern PlayerFloat3 g_EnemyGlobalPositionOffset;
+extern PlayerFloat3 g_EnemyPositionOffsetDelta;
 extern int g_EnemyDamageProcessedFlag;
 extern float g_PlayerTimerScale;
 extern int g_EnemySpawnLayerIndex;
@@ -890,9 +890,9 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     enemy->offsetMotion.AdvanceMotion();
     if ((enemy->flags & 0x40000u) != 0)
     {
-        baseMotion->position.x += g_EnemyGlobalPositionOffset.x;
-        baseMotion->position.y += g_EnemyGlobalPositionOffset.y;
-        baseMotion->position.z += g_EnemyGlobalPositionOffset.z;
+        baseMotion->position.x += g_EnemyPositionOffsetDelta.x;
+        baseMotion->position.y += g_EnemyPositionOffsetDelta.y;
+        baseMotion->position.z += g_EnemyPositionOffsetDelta.z;
     }
     baseMotion->AdvanceMotion();
 
@@ -1841,26 +1841,6 @@ namespace th10
 {
 namespace leaf
 {
-
-__declspec(noinline) unsigned char *Fn0040CC10(unsigned char *pThis)
-{
-    return pThis + 0x2c;
-}
-
-__declspec(noinline) unsigned char *Fn0040CC20(unsigned char *pThis)
-{
-    return pThis + 0x13c0;
-}
-
-__declspec(noinline) unsigned char *Fn0040CC30(unsigned char *pThis)
-{
-    return pThis + 0x23fc;
-}
-
-__declspec(noinline) unsigned int Fn0040CC40(unsigned char *pThis)
-{
-    return *(unsigned int *)(*(unsigned char **)(pThis + 4) + 4);
-}
 
 // Target417800 resets the existing manager timer and both list cursors.
 // Keep the observed call boundary and bind the actual scale symbol.

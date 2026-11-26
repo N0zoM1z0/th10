@@ -165,12 +165,12 @@ __declspec(noinline) int InputInitializeDevices(InputDeviceOwnerView *owner)
 // input-device availability bits separate from the enumerator callback.
 int InputDeviceInitThread()
 {
-    g_FrontEndSupervisorFlags &= ~0x600u;
+    g_InputSupervisorFlags &= ~0x600u;
     InputInitializeDevices(
         reinterpret_cast<InputDeviceOwnerView *>(&g_MainSupervisorView));
-    unsigned int flags = g_FrontEndSupervisorFlags;
+    unsigned int flags = g_InputSupervisorFlags;
     flags ^= (flags ^ ((g_InputKeyboardDevice != NULL) << 9)) & 0x200u;
     flags ^= (flags ^ ((g_InputPadDevices[0] != NULL) << 10)) & 0x400u;
-    g_FrontEndSupervisorFlags = flags;
+    g_InputSupervisorFlags = flags;
     return flags;
 }

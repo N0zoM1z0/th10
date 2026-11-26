@@ -6,7 +6,7 @@
 
 // Native 0x004776F0; the ScriptViewer lifecycle already uses this exact
 // BulletManagerView pointer, which was only externally declared before.
-BulletManagerView *g_ScriptViewerBullets;
+extern BulletManagerView *g_ScriptViewerBullets;
 
 extern char g_GameOwnerBulletAnmErrorMessage[];
 extern int __fastcall BulletManagerUpdateCallback(BulletManagerView *manager);

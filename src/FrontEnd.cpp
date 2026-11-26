@@ -128,6 +128,7 @@ extern int g_FrontEndNextGameMode;
 extern unsigned char *g_FrontEndProfileData;
 extern const char *g_FrontEndStageNames[];
 extern unsigned char g_FrontEndKeyboardState[256];
+extern unsigned char g_FrontEndStageKeyboardState[256];
 extern unsigned char g_FrontEndPreviousKeyboardState[256];
 extern unsigned char g_FrontEndKeyboardTransitions[256];
 extern int g_FrontEndPracticeSecretIdleFrames;
@@ -142,6 +143,7 @@ extern unsigned char g_FrontEndDefaultScoreFormatTable[];
 extern int g_FrontEndReplayCursor;
 extern const char *g_ReplayCharacterNames[];
 extern const char *g_ReplayDifficultyNames[];
+extern const char *g_ResultDifficultyShortNames[];
 extern const char *g_ReplayCompletionNames[];
 
 extern int g_ReplayCurrentStage;
@@ -2274,46 +2276,46 @@ int __stdcall FrontEndControllerView::UpdateStage(
             g_FrontEndStageCursor = cursor->current;
             g_FrontEndStageShortcut = 0;
             InputKeyboardSnapshotView keyboard;
-            if (keyboard.ReadKeyboardState(g_FrontEndKeyboardState) == 0)
+            if (keyboard.ReadKeyboardState(g_FrontEndStageKeyboardState) == 0)
             {
-                if ((g_FrontEndKeyboardState['1'] & 0x80) != 0)
+                if ((g_FrontEndStageKeyboardState['1'] & 0x80) != 0)
                     g_FrontEndStageShortcut = 1;
-                else if ((g_FrontEndKeyboardState['2'] & 0x80) != 0)
+                else if ((g_FrontEndStageKeyboardState['2'] & 0x80) != 0)
                     g_FrontEndStageShortcut = 2;
-                else if ((g_FrontEndKeyboardState['3'] & 0x80) != 0)
+                else if ((g_FrontEndStageKeyboardState['3'] & 0x80) != 0)
                     g_FrontEndStageShortcut = 3;
-                else if ((g_FrontEndKeyboardState['4'] & 0x80) != 0)
+                else if ((g_FrontEndStageKeyboardState['4'] & 0x80) != 0)
                     g_FrontEndStageShortcut = 4;
-                else if ((g_FrontEndKeyboardState['5'] & 0x80) != 0)
+                else if ((g_FrontEndStageKeyboardState['5'] & 0x80) != 0)
                     g_FrontEndStageShortcut = 5;
-                else if ((g_FrontEndKeyboardState['6'] & 0x80) != 0)
+                else if ((g_FrontEndStageKeyboardState['6'] & 0x80) != 0)
                     g_FrontEndStageShortcut = 6;
-                else if ((g_FrontEndKeyboardState['7'] & 0x80) != 0)
+                else if ((g_FrontEndStageKeyboardState['7'] & 0x80) != 0)
                     g_FrontEndStageShortcut = 7;
-                else if ((g_FrontEndKeyboardState['8'] & 0x80) != 0)
+                else if ((g_FrontEndStageKeyboardState['8'] & 0x80) != 0)
                     g_FrontEndStageShortcut = 8;
-                else if ((g_FrontEndKeyboardState['9'] & 0x80) != 0)
+                else if ((g_FrontEndStageKeyboardState['9'] & 0x80) != 0)
                     g_FrontEndStageShortcut = 9;
             }
             else
             {
-                if ((g_FrontEndKeyboardState[2] & 0x80) != 0)
+                if ((g_FrontEndStageKeyboardState[2] & 0x80) != 0)
                     g_FrontEndStageShortcut = 1;
-                else if ((g_FrontEndKeyboardState[3] & 0x80) != 0)
+                else if ((g_FrontEndStageKeyboardState[3] & 0x80) != 0)
                     g_FrontEndStageShortcut = 2;
-                else if ((g_FrontEndKeyboardState[4] & 0x80) != 0)
+                else if ((g_FrontEndStageKeyboardState[4] & 0x80) != 0)
                     g_FrontEndStageShortcut = 3;
-                else if ((g_FrontEndKeyboardState[5] & 0x80) != 0)
+                else if ((g_FrontEndStageKeyboardState[5] & 0x80) != 0)
                     g_FrontEndStageShortcut = 4;
-                else if ((g_FrontEndKeyboardState[6] & 0x80) != 0)
+                else if ((g_FrontEndStageKeyboardState[6] & 0x80) != 0)
                     g_FrontEndStageShortcut = 5;
-                else if ((g_FrontEndKeyboardState[7] & 0x80) != 0)
+                else if ((g_FrontEndStageKeyboardState[7] & 0x80) != 0)
                     g_FrontEndStageShortcut = 6;
-                else if ((g_FrontEndKeyboardState[8] & 0x80) != 0)
+                else if ((g_FrontEndStageKeyboardState[8] & 0x80) != 0)
                     g_FrontEndStageShortcut = 7;
-                else if ((g_FrontEndKeyboardState[9] & 0x80) != 0)
+                else if ((g_FrontEndStageKeyboardState[9] & 0x80) != 0)
                     g_FrontEndStageShortcut = 8;
-                else if ((g_FrontEndKeyboardState[10] & 0x80) != 0)
+                else if ((g_FrontEndStageKeyboardState[10] & 0x80) != 0)
                     g_FrontEndStageShortcut = 9;
             }
         }
@@ -4959,7 +4961,7 @@ int __stdcall ResultMenuDrawRows(ResultMenuView *menu)
                     data->replayName, date->tm_year % 100, date->tm_mon + 1,
                     date->tm_mday,
                     g_ReplayCharacterNames[data->character * 3 + data->shotType],
-                    g_ReplayDifficultyNames[data->difficulty],
+                    g_ResultDifficultyShortNames[data->difficulty],
                     g_ReplayCompletionNames[data->completionState]);
             }
             else
@@ -4992,7 +4994,7 @@ int __stdcall ResultMenuDrawRows(ResultMenuView *menu)
             "No.%.2d          %.2d/%.2d/%.2d %s %s %s", selected + 1,
             date->tm_year % 100, date->tm_mon + 1, date->tm_mday,
             g_ReplayCharacterNames[data->character * 3 + data->shotType],
-            g_ReplayDifficultyNames[data->difficulty],
+            g_ResultDifficultyShortNames[data->difficulty],
             g_ReplayCompletionNames[g_FrontEndSelectedStage]);
         break;
     }

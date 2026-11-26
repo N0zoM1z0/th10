@@ -7,7 +7,7 @@
 
 // This is the target 0x004776F4 game-owned spell panel, already used by
 // SpellPanel/EnemyEclDispatcher. Avoid a second shadow/anonymous owner.
-EnemyGameStateView *g_EnemyGameState;
+extern EnemyGameStateView *g_EnemyGameState;
 
 // The 50-byte callback at 0x00409230 is already source-mapped and exact.
 // Its descriptive receiver type was historically private to AnmManager.cpp.

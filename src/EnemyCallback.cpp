@@ -6,6 +6,8 @@ extern "C" void _ReadWriteBarrier(void);
 
 extern float g_PlayerTimerScale;
 extern int g_EnemyTimeoutValue;
+struct GameAdditionalChainView;
+extern GameAdditionalChainView *g_GameOwner4776F4;
 
 // Target 0x004127A0-0x004129F0 is called from both callback checkpoints in
 // EnemyRuntimeUpdate. This overlay exposes only the Player words that the
@@ -129,7 +131,7 @@ const unsigned char *__fastcall EnemyResolveRuntimeCallback(
                 g_EnemyTimeoutValue = 5000;
 
             EnemyCallbackPlayerStateView *player =
-                reinterpret_cast<EnemyCallbackPlayerStateView *>(g_Player);
+                reinterpret_cast<EnemyCallbackPlayerStateView *>(g_GameOwner4776F4);
             unsigned int flags378C = player->flags378C;
             if ((flags378C & 8u) == 0 && player->state3738 >= 60)
             {

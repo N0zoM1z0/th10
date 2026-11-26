@@ -82,7 +82,7 @@ typedef char InputPollingObservedLayouts[
      offsetof(InputDeviceVtableView, GetDeviceState) == 0x24 &&
      offsetof(InputDeviceVtableView, Poll) == 0x64) ? 1 : -1];
 
-extern unsigned int g_FrontEndSupervisorFlags;
+extern unsigned int g_InputSupervisorFlags;
 extern int g_InputEnabled;
 extern InputDeviceView *g_InputKeyboardDevice;
 extern InputDeviceView *g_InputPadDevices[];

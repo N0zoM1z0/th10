@@ -38,7 +38,7 @@ unsigned short __stdcall MergeJoystickInput(
     unsigned int deadzone;
     InputBindingSetView *binding =
         reinterpret_cast<InputBindingSetView *>(&g_FrontEndInput) + bindingIndex;
-    if ((g_FrontEndSupervisorFlags & 0x400) == 0)
+    if ((g_InputSupervisorFlags & 0x400) == 0)
     {
         memset(&info, 0, sizeof(info));
         info.size = sizeof(info);
@@ -105,7 +105,7 @@ signed char *__fastcall FrontEndGetControllerState(int padIndex)
     InputJoystickInfoView info;
     InputDirectJoystickStateView state;
     memset(g_InputJoystickButtons, 0, sizeof(g_InputJoystickButtons));
-    if ((g_FrontEndSupervisorFlags & 0x400) == 0)
+    if ((g_InputSupervisorFlags & 0x400) == 0)
     {
         memset(&info, 0, sizeof(info));
         info.size = sizeof(info);
@@ -154,7 +154,7 @@ unsigned short __fastcall PollInputFrame(int bindingIndex)
     unsigned char state[256];
     if (g_InputEnabled != 0)
     {
-        if ((g_FrontEndSupervisorFlags & 0x200) == 0)
+        if ((g_InputSupervisorFlags & 0x200) == 0)
         {
             GetKeyboardState(state);
             unsigned char keys = 0;
