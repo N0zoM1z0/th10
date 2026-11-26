@@ -258,10 +258,10 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
         ResetGameStage();
         if ((g_GameConfigurationFlags491D78 & 0x10) != 0)
             reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->
-                QueueCommand("dummy", 4, 0);
+                QueueCommand("dummy", SOUND_COMMAND_RELEASE_BGM, 0);
         else
             reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->
-                QueueCommand("dummy", 3, 0);
+                QueueCommand("dummy", SOUND_COMMAND_STOP_BGM, 0);
         FrontEndPlayMusic(0, g_GameStageUpdate->musicIndex);
         int *secondVmId = &g_GameEffectUpdate->secondVmId;
         EnemyMarkPendingInterrupt(secondVmId);
@@ -382,9 +382,9 @@ namespace th10 { namespace leaf {
 int GamePrepareDummyMusic()
 {
     if ((g_GameConfigurationFlags491D78 & 0x10) != 0)
-        reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->QueueCommand("dummy", 4, 0);
+        reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->QueueCommand("dummy", SOUND_COMMAND_RELEASE_BGM, 0);
     else
-        reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->QueueCommand("dummy", 3, 0);
+        reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->QueueCommand("dummy", SOUND_COMMAND_STOP_BGM, 0);
     return 0;
 }
 
@@ -852,9 +852,9 @@ void __stdcall GameManagerCleanup(GameManager *manager)
     if ((g_GameStartupState.runtimeFlags & 0x22u) == 0)
     {
         if ((g_GameConfigurationFlags491D78 & 0x10u) != 0)
-            FrontEndQueueSoundCommand("dummy", 4, 0);
+            FrontEndQueueSoundCommand("dummy", SOUND_COMMAND_RELEASE_BGM, 0);
         else
-            FrontEndQueueSoundCommand("dummy", 3, 0);
+            FrontEndQueueSoundCommand("dummy", SOUND_COMMAND_STOP_BGM, 0);
     }
     unsigned int finalFlags = g_GameStartupState.runtimeFlags;
     g_GameStartupCounter = 1;

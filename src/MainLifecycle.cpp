@@ -67,7 +67,7 @@ int MainSupervisorView::ReleaseGame()
         vertexBuffer = NULL;
     }
     reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->QueueCommand(
-        g_MainDummyBgmPath, 4, 0);
+        g_MainDummyBgmPath, SOUND_COMMAND_RELEASE_BGM, 0);
     MainReleaseTextResources();
     if (inputDevice0 != NULL)
     {

@@ -60,6 +60,7 @@ Dated evidence records for semantic/readability batches on
 - **Product + PI oracle**: `scripts/build.py --fresh`, `scripts/build.py --reverse-link`, hardened `scripts/verify-pi.py`, `scripts/check-semantic-protocols.py`, `scripts/ci.py`, `git diff --check`.
 
 ### Repo-wide Supervisor lock closure, Sound metadata +4 PI contract & guard precision — 2026-11-26
+- **Commit**: `3dada38b`
 - **Scope**:
   - **Repo-wide Supervisor lock closure**: moved `#include "SupervisorLockSlot.hpp"` to the top of `src/Main.hpp` (outside `#pragma pack(push, 4)`), updated evidence comments in `src/SupervisorLockSlot.hpp`, and replaced all 124 remaining bare `[0]` / `[5]` lock array accesses across all 15 consumer TUs (`AnmManager.cpp`, `Chain.cpp`, `Ending.cpp`, `EnemyGameStateLifecycle.cpp`, `EnemyLaserManager.cpp`, `FrontEndLifecycle.cpp`, `GameManager.cpp`, `Gui.cpp`, `Hint.cpp`, `Main.cpp`, `ResultMenuCleanup.cpp`, `ScriptViewerLifecycle.cpp`, `StageLifecycle.cpp`, `Startup.cpp`, `TransitionEffect.cpp`). Zero bare `0`/`3`/`5` lock indices remain in `src/*.cpp`.
   - **Sound metadata contiguous 376-byte layout contract & real bug fix**: documented all three overlapping views (`SoundPlaybackMetadata[47]`, `EnemySoundCueMetadataView[47]`, `SoundCueMetadata` @ `+4`, trailing `0x32FCE0u` = 47th entry's `volume=0xFCE0` / `cueValue=0x0032`) in `src/ProductGlobals.cpp` and added a post-link `+4` offset + `.data` section + 376-byte content contract to `scripts/verify-pi.py`. The new PI contract immediately caught a real VC7.1 4-byte alignment gap (`delta=+8`) between `g_EnemySoundCueMetadata_head` and `g_SoundCueMetadata_storage[93]`; fixed via `#pragma data_seg(".data$th10_soundmeta")` with a 12-byte leading alignment pad so both standard and reverse-linked PEs satisfy `delta=+4`.
@@ -87,3 +88,25 @@ Dated evidence records for semantic/readability batches on
   - `stage-lifecycle-destructor`: 499/499
   - `startup-worker-destructor`: 417/417
 - **Product + PI oracle**: `scripts/build.py --fresh`, `scripts/build.py --reverse-link`, hardened `scripts/verify-pi.py` (including `+4` 376-byte Sound metadata contract on both PEs), upgraded `scripts/check-semantic-protocols.py`, `scripts/ci.py`, `git diff --check`.
+
+### SoundPlayerCommandOpcode protocol closure — 2026-11-26
+- **Scope**:
+  - Extracted `SoundPlayerCommandOpcode` (`SOUND_COMMAND_NONE = 0` .. `SOUND_COMMAND_SET_BGM_VOLUME = 8`) to `src/SoundCommandOpcode.hpp` (included by `src/Sound.hpp` and `src/FrontEnd.cpp`).
+  - Symbolized all 22 bare numeric opcode sites across `src/Sound.cpp`, `src/MainLifecycle.cpp`, `src/GameManager.cpp`, and `src/FrontEnd.cpp`.
+  - Added exact-enum and repo-wide zero-bare-opcode enforcement to `scripts/check-semantic-protocols.py`.
+- **VC7.1 exact oracle (13/13 clean units 0 diffs; 2 pre-existing `ResultTransitions` LTCG shift)**:
+  - `sound-process-queues`: 1452/1452
+  - `sound-player-queue-command`: 104/104
+  - `main-release-game`: 293/293
+  - `game-prepare-dummy-music`: 41/41
+  - `game-manager-cleanup`: 1105/1105
+  - `game-manager-update-body`: 1544/1544
+  - `frontend-options-refresh`: 3999/3999
+  - `front-end-load-music`: 120/120
+  - `front-end-play-music`: 73/73
+  - `front-end-queue-scaled-sound`: 84/84
+  - `front-end-update-music-room`: 2796/2796
+  - `result-menu-open-pause`: 382/382
+  - `result-menu-resume`: 74/74
+  - Note: `result-menu-open-game-over` and `game-complete-stage-transition` (both in the `ResultTransitions` `/GL` image) exhibit a pre-existing 2-byte LTCG register-allocation shift at `RequestCaptureRectangle` (`offset 210 -> 212`) introduced on `main` (`69f5d411`) when `g_AsciiManagerView` in `src/AnmManager.cpp` was converted from a tentative definition to `extern` for PI single-storage; the `QueueCommand` call sites themselves are byte-identical.
+- **Product + PI oracle**: `scripts/build.py --fresh`, `scripts/build.py --reverse-link`, `scripts/verify-pi.py`, `scripts/check-semantic-protocols.py`, `scripts/ci.py`, `git diff --check`.

@@ -1,5 +1,6 @@
 #include "Main.hpp"
 #include "EnemySoundQueue.hpp"
+#include "SoundCommandOpcode.hpp"
 #include "FrontEnd.hpp"
 #include "Player.hpp"
 #include "InputState.hpp"
@@ -1352,7 +1353,7 @@ void FrontEndControllerView::RefreshOptionsDisplay()
     float volume;
 
     g_FrontEndSoundBgmVolume = GetOptionsConfiguration().bgmVolume;
-    FrontEndQueueSoundCommand("SetVol", 8, 0);
+    FrontEndQueueSoundCommand("SetVol", SOUND_COMMAND_SET_BGM_VOLUME, 0);
     g_FrontEndSoundSfxVolume = GetOptionsConfiguration().sfxVolume;
 
     if (g_FrontEndSoundSfxVolume != 0)
@@ -3964,7 +3965,7 @@ int __stdcall FrontEndLoadMusic(int slot, const char *path)
     extension[1] = 'w';
     extension[2] = 'a';
     extension[3] = 'v';
-    FrontEndQueueSoundCommand(name, 1, slot);
+    FrontEndQueueSoundCommand(name, SOUND_COMMAND_PRELOAD_BGM, slot);
     return 1;
 }
 
@@ -3973,8 +3974,8 @@ int __stdcall FrontEndLoadMusic(int slot, const char *path)
 int __stdcall FrontEndPlayMusic(int slot, int trackIndex)
 {
     if ((g_FrontEndSupervisorFlags & 0x10) != 0)
-        FrontEndQueueSoundCommand("dummy", 4, 0);
-    FrontEndQueueSoundCommand("dummy", 2, slot);
+        FrontEndQueueSoundCommand("dummy", SOUND_COMMAND_RELEASE_BGM, 0);
+    FrontEndQueueSoundCommand("dummy", SOUND_COMMAND_LOAD_BGM, slot);
     *reinterpret_cast<unsigned char *>(
         reinterpret_cast<unsigned int>(g_FrontEndProfileData) +
         0x1d892u + static_cast<unsigned int>(trackIndex)) = 1;
@@ -3993,7 +3994,7 @@ int __stdcall GameQueueScaledSoundCommand(float magnitude)
         value = magnitude;
     else
         value = static_cast<double>(magnitude) / g_AnmGameSpeed;
-    FrontEndQueueSoundCommand("", 5, static_cast<int>(value));
+    FrontEndQueueSoundCommand("", SOUND_COMMAND_FADE_BGM, static_cast<int>(value));
     return 0;
 }
 
@@ -4249,16 +4250,16 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
                 controller->musicWarning == 0)
             {
                 if ((g_FrontEndSupervisorFlags & 0x10) != 0)
-                    FrontEndQueueSoundCommand("dummy", 4, 0);
+                    FrontEndQueueSoundCommand("dummy", SOUND_COMMAND_RELEASE_BGM, 0);
                 else
-                    FrontEndQueueSoundCommand("dummy", 3, 0);
+                    FrontEndQueueSoundCommand("dummy", SOUND_COMMAND_STOP_BGM, 0);
                 controller->musicWarning = 1;
                 break;
             }
             FrontEndLoadMusic(0, controller->musicPaths[controller->cursor.current]);
             if ((g_FrontEndSupervisorFlags & 0x10) != 0)
-                FrontEndQueueSoundCommand("dummy", 4, 0);
-            FrontEndQueueSoundCommand("dummy", 2, 0);
+                FrontEndQueueSoundCommand("dummy", SOUND_COMMAND_RELEASE_BGM, 0);
+            FrontEndQueueSoundCommand("dummy", SOUND_COMMAND_LOAD_BGM, 0);
             // Target marks byte zero, not musicSelectedTrack's byte.
             g_FrontEndProfileData[0x1d892] = 1;
             controller->musicWarning = 0;
@@ -5154,7 +5155,7 @@ void __stdcall ResultMenuOpenPause(ResultMenuView *menu)
     menu->mainVm = mainId;
     ResultMenuPendingThree(&menu->mainVm);
     ResultMenuSound(32);
-    FrontEndQueueSoundCommand("Pause", 6, 0);
+    FrontEndQueueSoundCommand("Pause", SOUND_COMMAND_PAUSE_BGM, 0);
     if (g_ResultGameManager->initializationMode != 0)
     {
         ResultMenuFindScript(reinterpret_cast<AnmVmIdView *>(&menu->mainVm), 117)
@@ -5186,8 +5187,8 @@ void ResultMenuOpenGameOver(ResultMenuView *menu)
     menu->mainVm = resource->CreateVmVariant1(128, 15);
     FrontEndLoadMusic(0, "bgm/th10_17.wav");
     if ((g_FrontEndSupervisorFlags & 0x10) != 0)
-        FrontEndQueueSoundCommand("dummy", 4, 0);
-    FrontEndQueueSoundCommand("dummy", 2, 0);
+        FrontEndQueueSoundCommand("dummy", SOUND_COMMAND_RELEASE_BGM, 0);
+    FrontEndQueueSoundCommand("dummy", SOUND_COMMAND_LOAD_BGM, 0);
     g_FrontEndProfileData[0x1d8a3] = 1;
     menu->completed = 0;
     menu->savedSpeed = g_AnmGameSpeed;
@@ -5215,8 +5216,8 @@ void GameCompleteStageTransition(ResultMenuView *menu)
     menu->mainVm = resource->CreateVmVariant1(129, 15);
     FrontEndLoadMusic(0, "bgm/th10_17.wav");
     if ((g_FrontEndSupervisorFlags & 0x10) != 0)
-        FrontEndQueueSoundCommand("dummy", 4, 0);
-    FrontEndQueueSoundCommand("dummy", 2, 0);
+        FrontEndQueueSoundCommand("dummy", SOUND_COMMAND_RELEASE_BGM, 0);
+    FrontEndQueueSoundCommand("dummy", SOUND_COMMAND_LOAD_BGM, 0);
     g_FrontEndProfileData[0x1d8a3] = 1;
     menu->completed = 1;
     menu->savedSpeed = g_AnmGameSpeed;
@@ -5230,7 +5231,7 @@ extern "C" void _ReadWriteBarrier();
 void ResultMenuResume(ResultMenuView *menu)
 {
     g_ResultGameManager->flags58 &= ~0x10;
-    FrontEndQueueSoundCommand("UnPause", 7, 0);
+    FrontEndQueueSoundCommand("UnPause", SOUND_COMMAND_UNPAUSE_BGM, 0);
     g_AnmRenderManagerView->MarkVmForDeletion(*reinterpret_cast<AnmVmIdView *>(&menu->auxiliaryVm));
     menu->auxiliaryVm.value = 0;
     _ReadWriteBarrier();

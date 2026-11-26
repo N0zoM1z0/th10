@@ -256,7 +256,37 @@ def main() -> int:
     if '#include "resource.h"' not in rc or '#include "resource.h"' not in main_cpp:
         failures.append("both src/th10.rc and src/Main.cpp must include resource.h")
 
-    # 8. No local machine absolute links in docs/
+    # 8. SoundPlayerCommandOpcode exact 0..8 mapping + zero bare opcodes across src/*.cpp
+    cmd_hpp = (ROOT / "src" / "SoundCommandOpcode.hpp").read_text(errors="replace")
+    check_exact_enum(
+        cmd_hpp,
+        "SoundPlayerCommandOpcode",
+        {
+            "SOUND_COMMAND_NONE": 0,
+            "SOUND_COMMAND_PRELOAD_BGM": 1,
+            "SOUND_COMMAND_LOAD_BGM": 2,
+            "SOUND_COMMAND_STOP_BGM": 3,
+            "SOUND_COMMAND_RELEASE_BGM": 4,
+            "SOUND_COMMAND_FADE_BGM": 5,
+            "SOUND_COMMAND_PAUSE_BGM": 6,
+            "SOUND_COMMAND_UNPAUSE_BGM": 7,
+            "SOUND_COMMAND_SET_BGM_VOLUME": 8,
+        },
+        "src/SoundCommandOpcode.hpp",
+        failures,
+    )
+    bare_cmd_pat = re.compile(
+        r"\b(?:QueueCommand|FrontEndQueueSoundCommand)\s*\([^;]*?,\s*(?:0x[0-9A-Fa-f]+|[0-9]+)\s*,",
+        re.S,
+    )
+    for cpp in sorted((ROOT / "src").glob("*.cpp")):
+        txt = cpp.read_text(errors="replace")
+        if bare_cmd_pat.search(txt):
+            failures.append(f"{cpp.relative_to(ROOT)} passes bare numeric opcode to QueueCommand/FrontEndQueueSoundCommand")
+    if "commandQueue[index].opcode == 0" in sound_cpp:
+        failures.append("src/Sound.cpp uses bare 0 instead of SOUND_COMMAND_NONE")
+
+    # 9. No local machine absolute links in docs/
     for doc in sorted((ROOT / "docs").glob("*.md")):
         if "file:///home/" in doc.read_text(errors="replace"):
             failures.append(f"{doc.relative_to(ROOT)} contains a local file:///home/ link")

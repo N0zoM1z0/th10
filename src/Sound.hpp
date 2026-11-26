@@ -5,6 +5,7 @@
 #include <windows.h>
 #include <dsound.h>
 #include "SoundFormat.hpp"
+#include "SoundCommandOpcode.hpp"
 
 class CSound;
 class CSoundManager;

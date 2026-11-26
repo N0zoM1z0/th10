@@ -188,20 +188,6 @@ public:
         DWORD notifySize, HANDLE notifyEvent);
 };
 
-// Values are read from the target queue switch; the names are descriptive.
-enum SoundPlayerCommandOpcode
-{
-    SOUND_COMMAND_NONE = 0,
-    SOUND_COMMAND_PRELOAD_BGM = 1,
-    SOUND_COMMAND_LOAD_BGM = 2,
-    SOUND_COMMAND_STOP_BGM = 3,
-    SOUND_COMMAND_RELEASE_BGM = 4,
-    SOUND_COMMAND_FADE_BGM = 5,
-    SOUND_COMMAND_PAUSE_BGM = 6,
-    SOUND_COMMAND_UNPAUSE_BGM = 7,
-    SOUND_COMMAND_SET_BGM_VOLUME = 8
-};
-
 struct SoundCueMetadata
 {
     short volume;
@@ -1106,7 +1092,7 @@ void SoundPlayerView::QueueCommand(const char *path, int opcode, int argument)
 {
     for (int index = 0; index < 31; ++index)
     {
-        if (commandQueue[index].opcode == 0)
+        if (commandQueue[index].opcode == SOUND_COMMAND_NONE)
         {
             commandQueue[index].opcode = opcode;
             commandQueue[index].argument = argument;
