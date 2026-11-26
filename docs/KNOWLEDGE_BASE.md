@@ -1596,8 +1596,23 @@ frontier; do not refresh a baseline merely to accept the new positions.
   at 10/10 bytes with the REL32 call to `DrawFpsCounter` bound at +4.
   The `src/Main.cpp` __fastcall wrapper is PDB-owned in the real FPS
   draw graph and passes its complete scoped cold replay. [2026-11-17]
-- **GameStatisticsOwner ctor @0x42AE60 (132)** and **CreateStatistics42AF20
-  @0x42AF20 (97)**: 137 and 98. [2026-11-13]
+- **GameStatisticsOwner::GameStatisticsOwner @0x42AE60 (132)** matches
+  unchanged source in an eight-input WinMain cold graph. Keep the original
+  six statistics inputs/profiles and add actual Main and PbgArchive inputs.
+  The older six-input image emitted a 297-byte OpenFile with its output
+  pointer in EBX, leaving a 137-byte constructor with stack receiver/RET4.
+  The new graph restores the complete 360-byte OpenFile, its stack output
+  pointer and the constructor's EAX receiver/RET. EBX holds the owner, the
+  scratch word is restored, and both pointer-difference loop register sets
+  match without changing the seven-record loop.
+
+  All five fields and the score filename match. The real factory passes
+  97 bytes/nine fields, including the complete 21-byte one-allocation unwind
+  protocol, one-state FuncInfo and EBP-16 saved allocation. Its prepared
+  `game-statistics-create` candidate is retained for later canonical selection.
+  OpenFile360, loader423, finalizer564, tail142 and record274 also pass in
+  the same image. Reproduce with `--unit game-statistics-constructor`;
+  reports are under `.analysis/statistics-constructor/`.
 - **ScriptViewerPopupOwnerView::Initialize @0x42B4D0 (145)** matches all
   11 fields in its four-input popup factory cold graph with EAX owner/RET.
   Store the resource in `loadedDigitAnm` first; reload it after both task
