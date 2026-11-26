@@ -50,15 +50,24 @@ using the existing caller recipe in memory. The canonical recipe is unchanged.
 The ordinary `EnemyStartSpell` image is restored from the committed owner;
 `start-spell-retained-baseline-*` records its current comparison.
 
-The next source control can use a signed displacement type to test the
-integer-address reassociation separately from hash ordering. Keep the two
-requirements together: the cursor must remain in ECX and the aggregate name
-must remain in ESI for the attempt-count access at +0x84. The earlier unsigned
-displacement moved the subtraction before the first copy and rematerialized
-the count address after the third loop. Ordinary strcpy, a source const
-reference, helper definition order and removal of the unused formal do not
-change the residual. The indexed ResultMenu form, cursor pairs and an explicit
-ID constructor disturb other registers or field positions in this owner.
+The retained historical exact objects now have a completed read-only hash
+trace too. Their cursor key is `0x13820` (serial `0x1C1`), and their difference
+key is `0x10D80` (serial `0x836`). The historical difference crosses the `0x800`
+serial wrap; the current one is 86 serials earlier and sorts first. The trace
+preserves the historical owner's full hash, recorded in
+`spell-start-trace/historical-linked-control.json`. Preserve that older source
+and object context; it has the earlier three-formal declaration.
+
+The next useful analysis is to compare the two owners before loop strength
+reduction and locate the extra generated temporaries. Avoid another recipe
+change: both current cold graphs already agree. Signed displacement repeats
+the unsigned prefix reassociation, and combining the aggregate copy/count
+changes the original name to EBX. Both fail to preserve the required ECX
+cursor and ESI record base. Returning the copy destination, factoring the 15
+stage-script calls, fixed panel appearance and position memcpy leave the same
+single-byte residual. The dual-index copy moves an earlier field. These
+controls are summarized in `start-spell-panel-stage-probes.json`; all source
+experiments have been reverted and the ordinary baseline was compared again.
 
 ```bash
 scripts/repo-python scripts/build-match-unit.py --unit enemy-dispatch-ecl

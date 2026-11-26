@@ -753,12 +753,29 @@ frontier; do not refresh a baseline merely to accept the new positions.
   finalized.
   Inputs and output are in `.analysis/statistics-record/spell-start-trace/`.
 
-  A strcpy call, a const reference to its source, removing the unused formal
-  and helper definition order preserve the one-byte residual. The indexed
-  ResultMenu copy form changes name-register lifetimes here. A named integer
-  displacement also reassociates the first panel-name address into an earlier
-  owner-minus-name subtraction and rematerializes the aggregate attempt address.
-  Those variants do not preserve the complete target prefix.
+  Relinking the retained historical exact objects under the same read-only
+  trace preserves their complete 2,432-byte owner hash. Their cursor is kind 4,
+  serial `0x1C1`, key `0x13820`; the generated difference is kind 3, serial
+  `0x836`, key `0x10D80`. Its serial crosses the `0x800` wrap in the six-bit
+  hash path, placing it after the cursor. The current difference is 86 serials
+  earlier, below that wrap. This explains the historical/current SIB reversal;
+  it does not yet identify which earlier lowering introduced those temporaries.
+  The historical object graph retains its three-formal source epoch.
+  See `spell-start-trace/historical/historical-early-hash.trace` and
+  `spell-start-trace/historical-linked-control.json` in the private scratch.
+
+  A strcpy call, a const reference to its source, removing the unused formal,
+  returning the destination and helper definition order preserve the residual.
+  Factoring the 15 stage-script calls also leaves it unchanged. The indexed
+  ResultMenu form changes name-register lifetimes here; indexing both arrays
+  moves an earlier field. Signed and unsigned named integer displacements both
+  give 2,341/2,432 and reassociate the first panel-name subtraction. Combining
+  the aggregate copy and count in a typed helper keeps 2,432 bytes and all 108
+  fields but gives the original name EBX, leaving only 2,366 matching bytes.
+  Neither a pointer parameter nor a const source parameter repairs that lifetime.
+  A record-reference displacement retains the count base but still changes the
+  prefix. All these controls were discarded; the committed source and retained
+  ordinary image reproduce the single-byte residual.
   A separate cold build of the real ECL dispatcher graph passes its complete
   14,416 bytes and 726 fields. The same-image StartSpell contribution remains
   2,431/2,432 with all 108 fields, so changing to that recipe does not remove
