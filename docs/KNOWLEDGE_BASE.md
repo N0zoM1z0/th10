@@ -688,6 +688,27 @@ frontier; do not refresh a baseline merely to accept the new positions.
   The [MIT-licensed model](licenses/th10-decomp-MIT.txt) in
   `_reference/th10-decomp` provided the loop and stack-home leads.
   [2026-11-24]
+- **PlayerShotTrackEnemy @0x428B10 (266)** matches its unchanged complete
+  source in the two-input `player-shot-track-enemy` cold link. Include the real
+  EnemyWrapAngle body from `EnemyEclDispatcher.cpp`; an unresolved anchor for
+  that callee makes C2 spill speed to a local while retaining the angle
+  difference on the x87 stack, producing 288 bytes. With the real floating-point
+  call effects, C2 instead stores the angle difference as float32 and keeps
+  speed live beneath the wrapped-angle result, matching all 266 bytes/15 fields.
+  A double speed local gives 298 bytes; rounding the angle through a volatile
+  local gives 304. Both source controls were discarded.
+
+  The shot is live in EDX and the target ignores incoming ECX; its nominal
+  callback owner remains unknown. State 2 returns zero without changing motion.
+  The angle-difference callee passes 80 bytes/four fields and EnemyWrapAngle
+  passes 94 bytes/six fields in the same image. The acquisition callback is
+  45 bytes under the tracking entry but retains its accepted 53 bytes/one field
+  under its own canonical cold entry. Keep those contexts separate.
+  Reproduce with `scripts/build-match-unit.py --unit player-shot-track-enemy`
+  and `scripts/compare-linked-function.py --unit player-shot-track-enemy --json`
+  through `scripts/repo-python`. Final reports are `real-wrap-cold-*`,
+  `real-wrap-helper-guard.json`, the angle-difference guard and
+  `acquire-canonical-cold-*` under `.analysis/player-shot-track/`.
 - **EnemyGameStateView::StartSpell @0x409280 (2,432)** matches its complete
   linked extent with all 108 fields, including the jump-table address and its
   seven fixed stage destinations, in `enemy-start-spell`. Both panel and stage creation pass layer 15 and flag
