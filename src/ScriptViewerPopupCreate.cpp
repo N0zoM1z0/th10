@@ -168,8 +168,7 @@ void ScriptViewerPopupOwnerView::EmitValuePopup(
 // Original 0x42B4D0: connect update/draw tasks and initialize the shared VM.
 int ScriptViewerPopupOwnerView::Initialize()
 {
-    AnmLoadedView *loaded = g_AsciiManagerView->asciiAnm;
-    loadedDigitAnm = loaded;
+    loadedDigitAnm = g_AsciiManagerView->asciiAnm;
     th10::ChainElem *task = th10::Chain::AllocElem(
         reinterpret_cast<th10::ChainCallback>(&ScriptViewerPopupUpdate42B9A0));
     task->arg = this;
@@ -184,9 +183,11 @@ int ScriptViewerPopupOwnerView::Initialize()
     th10::g_Chain->AddToDrawChain(task, 35);
     drawTask = task;
 
-    vm.Initialize();
-    vm.anmFile = loaded;
-    loaded->SetSprite(&vm, 196);
+    AnmVmView *popupVm = &vm;
+    AnmLoadedView *loaded = loadedDigitAnm;
+    popupVm->Initialize();
+    popupVm->anmFile = loaded;
+    loaded->SetSprite(popupVm, 196);
     return 0;
 }
 
@@ -195,19 +196,14 @@ int ScriptViewerPopupOwnerView::Initialize()
 ScriptViewerPopupOwnerView *GameCreateOwner42B660()
 {
     ScriptViewerPopupOwnerView *owner = new ScriptViewerPopupOwnerView;
-    ScriptViewerPopupOwnerView *initializedOwner;
-    if (owner != NULL)
-        initializedOwner = owner;
-    else
-        initializedOwner = NULL;
-    if (initializedOwner->Initialize() != 0)
+    if (owner->Initialize() != 0)
     {
-        if (initializedOwner != NULL)
+        if (owner != NULL)
         {
-            initializedOwner->~ScriptViewerPopupOwnerView();
-            ::operator delete(initializedOwner);
+            owner->~ScriptViewerPopupOwnerView();
+            ::operator delete(owner);
         }
         return NULL;
     }
-    return initializedOwner;
+    return owner;
 }

@@ -40716,3 +40716,54 @@ linkages = [
   { offset = 0x50, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
   { offset = 0x5E, type = "REL32", symbol = "??0EnemyLaserType0StorageView@@QAE@XZ", target = 0x0041C5B0 },
 ]
+
+# Complete popup registration and embedded VM initialization.
+[units.script-viewer-popup-initialize]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewerPopupCreate.cpp"
+support_sources = ["src/Chain.cpp", "src/ScriptViewerLifecycle.cpp", "src/AnmManager.cpp"]
+output_dir = "build/match-linked/ScriptViewerPopupCreate"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?GameCreateOwner42B660@@YAPAUScriptViewerPopupOwnerView@@XZ"
+functions = ["ScriptViewerPopupOwnerView::Initialize"]
+symbol = "?Initialize@ScriptViewerPopupOwnerView@@QAEHXZ"
+target_address = 0x0042B4D0
+size = 145
+linkages = [
+  { offset = 0x05, type = "DIR32", symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A", target = 0x004776E0 },
+  { offset = 0x11, type = "DIR32", symbol = "?ScriptViewerPopupUpdate42B9A0@@YIHPAX@Z", target = 0x0042B9A0 },
+  { offset = 0x19, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x00449ED0 },
+  { offset = 0x1F, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x38, type = "REL32", symbol = "?AddToCalcChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449AE0 },
+  { offset = 0x3D, type = "DIR32", symbol = "?ScriptViewerPopupDraw42B9B0@@YIHPAX@Z", target = 0x0042B9B0 },
+  { offset = 0x45, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x00449ED0 },
+  { offset = 0x4F, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x63, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x73, type = "REL32", symbol = "?Initialize@AnmVmView@@QAEXXZ", target = 0x00401DE0 },
+  { offset = 0x87, type = "REL32", symbol = "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z", target = 0x0043E5A0 },
+]
+
+# Actual direct caller guard for popup initialization.
+[units.script-viewer-popup-create]
+candidate = true
+artifact_kind = "linked-pe"
+source = "src/ScriptViewerPopupCreate.cpp"
+support_sources = ["src/Chain.cpp", "src/ScriptViewerLifecycle.cpp", "src/AnmManager.cpp"]
+output_dir = "build/match-linked/ScriptViewerPopupCreate"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?GameCreateOwner42B660@@YAPAUScriptViewerPopupOwnerView@@XZ"
+functions = ["GameCreateOwner42B660"]
+symbol = "?GameCreateOwner42B660@@YAPAUScriptViewerPopupOwnerView@@XZ"
+target_address = 0x0042B660
+size = 71
+linkages = [
+  { offset = 0x07, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x16, type = "REL32", symbol = "??0ScriptViewerPopupOwnerView@@QAE@XZ", target = 0x0042B430 },
+  { offset = 0x24, type = "REL32", symbol = "?Initialize@ScriptViewerPopupOwnerView@@QAEHXZ", target = 0x0042B4D0 },
+  { offset = 0x32, type = "REL32", symbol = "??1ScriptViewerPopupOwnerView@@QAE@XZ", target = 0x0042B570 },
+  { offset = 0x38, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+]

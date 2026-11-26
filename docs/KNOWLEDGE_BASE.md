@@ -1598,11 +1598,25 @@ frontier; do not refresh a baseline merely to accept the new positions.
   draw graph and passes its complete scoped cold replay. [2026-11-17]
 - **GameStatisticsOwner ctor @0x42AE60 (132)** and **CreateStatistics42AF20
   @0x42AF20 (97)**: 137 and 98. [2026-11-13]
-- **ScriptViewerPopupOwnerView::Initialize @0x42B4D0 (145)** and
-  **GameCreateOwner42B660 @0x42B660 (71)**: the current popup graph anchors
-  `AnmVmInitialize` as an external, so Initialize takes `this` in EBX instead
-  of EAX. Build them in a graph with AnmVmInitialize.cpp; an earlier trial with
-  `delete owner;` and that TU reached 141/145 and 67/71. [2026-11-15]
+- **ScriptViewerPopupOwnerView::Initialize @0x42B4D0 (145)** matches all
+  11 fields in its four-input popup factory cold graph with EAX owner/RET.
+  Store the resource in `loadedDigitAnm` first; reload it after both task
+  registrations, alongside the embedded VM pointer. Holding the original
+  resource local across the tasks instead gives 141 bytes with an EBP save
+  and EBX receiver. The later read lets EBX hold the owner first and the
+  resource after its final owner use, restoring the target's task setup,
+  VM reset and sprite-196 call schedule.
+
+  Remove the factory's redundant `initializedOwner` null-selection temporary
+  and initialize `owner` directly. The extra check of the constructor result
+  disappears, preserving EBX only around construction and keeping the live
+  owner in ESI. Its complete 71 bytes/five fields pass as the direct caller
+  guard; `script-viewer-popup-create` retains that candidate recipe for
+  later canonical selection. Constructor134, destructor232, update134,
+  draw540, insertion167, update adapter7, Chain allocator74 and the concrete
+  VM initializer273 all pass in the same cold image. Reports are under
+  `.analysis/popup-initialize/`; reproduce the graph with
+  `--unit script-viewer-popup-initialize`.
 - **th10::Chain::AllocElem @0x449ED0 (74)**: exact. Keeping the
   `ChainElem` self-link publication before both volatile next/prev pointer
   clears restores the target's inlined constructor order within `new`.
