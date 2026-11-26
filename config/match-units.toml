@@ -40627,3 +40627,33 @@ size = 214
 linkages = [
   { offset = 0x84, type = "REL32", symbol = "?AnmVmStartScript@@YGXPAUAnmLoadedView@@PAUAnmVmView@@H@Z", target = 0x00404F30 },
 ]
+
+# Complete manager teardown in its actual startup/shutdown context.
+[units.anm-render-manager-destructor]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/AnmManager.cpp"]
+pdb_source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmCopyTextureRect"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+support_profiles = { "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "WinMain@16"
+functions = ["AnmRenderManagerView::~AnmRenderManagerView"]
+symbol = "??1AnmRenderManagerView@@QAE@XZ"
+target_address = 0x00446220
+size = 206
+linkages = [
+  { offset = 0x2, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 0x9, type = "DIR32", symbol = "__ehhandler$??1AnmRenderManagerView@@QAE@XZ", target = 0x00465225, stage_array_eh_handler = true },
+  { offset = 0x11, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 0x36, type = "REL32", symbol = "?RemoveVm@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x00448BB0 },
+  { offset = 0x56, type = "REL32", symbol = "?RemoveVm@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x00448BB0 },
+  { offset = 0x61, type = "DIR32", symbol = "??1AnmVmView@@QAE@XZ", target = 0x00401FF0 },
+  { offset = 0x79, type = "REL32", symbol = "??_M@YGXPAXIHP6EX0@Z@Z", target = 0x004525FF },
+  { offset = 0x89, type = "REL32", symbol = "_free", target = 0x00452422 },
+  { offset = 0x91, type = "DIR32", symbol = "??1AnmVmView@@QAE@XZ", target = 0x00401FF0 },
+  { offset = 0xB6, type = "REL32", symbol = "??_M@YGXPAXIHP6EX0@Z@Z", target = 0x004525FF },
+  { offset = 0xC3, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+]

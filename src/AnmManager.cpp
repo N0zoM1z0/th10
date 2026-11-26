@@ -2858,10 +2858,20 @@ out:
 // pool VMs in that target-observed order.
 AnmRenderManagerView::~AnmRenderManagerView()
 {
-    while (primaryVmListHead != NULL)
-        RemoveVm(static_cast<AnmVmView *>(primaryVmListHead->owner));
-    while (secondaryVmListHead != NULL)
-        RemoveVm(static_cast<AnmVmView *>(secondaryVmListHead->owner));
+    AnmVmLayerNodeView *node = primaryVmListHead;
+    while (node != NULL)
+    {
+        AnmVmLayerNodeView *next = node->next;
+        RemoveVm(static_cast<AnmVmView *>(node->owner));
+        node = next;
+    }
+    node = secondaryVmListHead;
+    while (node != NULL)
+    {
+        AnmVmLayerNodeView *next = node->next;
+        RemoveVm(static_cast<AnmVmView *>(node->owner));
+        node = next;
+    }
 }
 
 // Target 0x0043E5A0 binds one loaded sprite to a VM and rebuilds the two

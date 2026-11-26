@@ -688,6 +688,27 @@ frontier; do not refresh a baseline merely to accept the new positions.
   The [MIT-licensed model](licenses/th10-decomp-MIT.txt) in
   `_reference/th10-decomp` provided the loop and stack-home leads.
   [2026-11-24]
+- **AnmRenderManagerView::~AnmRenderManagerView @0x446220 (206)** matches
+  its two-input Main/AnmManager cold graph under the real WinMain entry.
+  Both intrusive-list walks cache `node->next` before RemoveVm, then advance
+  through that saved pointer. Repeatedly reloading the list head also gave
+  206 bytes but failed the complete instruction and address-field comparison.
+  Saved-next traversal restores EBX for next, EDI for the manager and ESI for
+  the current VM. The physical receiver remains on the stack with RET4.
+
+  All 11 fields bind. The three-state unwind map uses ascending constructed
+  members: inline pool +0x68 (4096), primary VM +0x3AD130 (1), and layer VMs
+  +0x72DAE4 (20). Keep that state order even though normal destruction runs
+  the members in reverse. The existing protocol checker proves the complete
+  79-byte generated region, 28-byte FuncInfo, 24-byte unwind map and concrete
+  34-byte VM cleanup. Its parent descriptor adds no new verification mechanism;
+  all 12 protocols and 419 focused rejection cases pass.
+
+  RemoveVm remains 268 bytes in the same image and its canonical cold graph.
+  Recompiling AnmManager and relinking the canonical WinMain graph preserves
+  all 1,389 caller bytes and 146 fields. Reports are `saved-next-cold-*`,
+  `remove-*-guard.*`, `remove-canonical-cold-*` and `winmain-guard-*` under
+  `.analysis/anm-manager-destructor/`.
 - **GamePrepareAnimationSlots @0x404450 (214)** matches its unchanged source
   in the five-input `game-prepare-animation-slots` cold graph. Keep this owner
   as entry to retain its stack argument and both RET4 exits. Include the real

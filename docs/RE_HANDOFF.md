@@ -7,22 +7,20 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `AnmRenderManagerView::~AnmRenderManagerView` at
-`0x00446220`, 206 bytes in `src/AnmManager.cpp`. It is the largest remaining
-authored owner outside the operator-deferred StartSubroutine. Natural source
-already drains both VM lists through RemoveVm; automatic member destruction
-then releases the 20 layer VMs, primary VM and 4,096 inline-pool VMs.
-The target uses a stack manager argument and RET4. Its real shutdown caller
-is at 0x438AD0 in the Main/ANM lifecycle.
+The sole active owner is `AnmVmStartScript` at `0x00404F30`, 202 bytes in
+`src/AnmVmStartScript.cpp`. It is the largest remaining authored owner outside
+the operator-deferred StartSubroutine. The natural source is complete: reset
+the VM, clear three position vectors, install 16x16 glyph dimensions and the
+script index, then execute the loaded script. The target takes ESI VM, EAX
+index and one stack resource argument with RET4.
 
-Begin with the existing two-input `anm-copy-texture-rect` startup image, which
-already compiles Main and AnmManager under WinMain using the actual manager
-creation profiles. Inspect the complete destructor and its generated member/
-array EH region before changing source. Reuse the existing VM-array protocol
-checker after reviewing this parent's actual unwind map and cleanup order.
-No dedicated manager-destructor comparison unit has been added yet.
-AnmVmStartScript remains a separate 204/202 candidate in the stage graph;
-leave that smaller owner until this destructor is complete.
+The accepted five-input stage-preparation graph emits this starter at 204
+bytes, so the starter remains open. Inspect its complete body and the retained
+39-input EnemyStartSpell graph before changing source. That graph contains
+real starter callers and the actual LoadScript definition. The former exact
+claim used a fake ECX context parameter and was withdrawn; keep the natural
+three-argument declaration. Stage preparation and StartSpell are known exact
+callers to recheck if their shared starter interface changes.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
@@ -64,6 +62,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `anm-render-manager-destructor` | 206 B | `AnmCopyTextureRect`, two-input canonical cold, all 11 fields and stack manager/RET4. Cache next before RemoveVm in both lists. Three-state EH, 79-byte generated region and 34-byte VM cleanup pass. RemoveVm passes 268 in this graph and its own cold; WinMain passes 1,389/146 after the changed source is recompiled in its canonical graph. |
 | `game-prepare-animation-slots` | 214 B | `StagePrepareAnimationSlots`, five-input canonical cold, sole real VM-starter call and stack owner/RET4. Source unchanged. The retained 1,544-byte GameManager caller passes all 114 fields; the starter itself remains nonexact. |
 | `anm-copy-texture-rect` | 227 B | `AnmCopyTextureRect`, two-input canonical cold, both call fields and EDX/EAX/ECX plus four stack words / RET16. Fresh lookups cross the flush and first surface query. The 133-byte flush callee passes four fields in the same graph and its own canonical cold. |
 | `script-viewer-popup-owner-destructor` | 232 B | `ScriptViewerPopupCreate`, four-input canonical cold, 22 fields and stack receiver/RET4. Single VM-member EH: 21-byte region, 28-byte FuncInfo and real 34-byte cleanup. Constructor134 and release18 pass; the VM EH verifier self-tests pass. |
