@@ -32,23 +32,39 @@ under `.analysis/statistics-record/`: `start-spell-record-definition-control.jso
 `start-spell-panel-stage-probes.json`. These controls isolate the remaining
 index encoding from the accepted record layout change.
 
-Pointer declaration order changes the name register lifetime and loses more
-bytes. A do-loop with an explicit byte changes early field positions; relative
-or integer-address loops grow the extent. Unsigned-byte cursors, parameter
-order, forced copy inlining, a direct rank-history member access, a separate
-aggregate-name binding and direct by-value panel registration preserve the
-same one-byte residual. Resume with a concrete operand-order hypothesis rather
-than repeating those source forms. The pinned C2 prefix-allocation trace helper
-is `.analysis/start-spell/trace-prefix-allocation.py`; adapt its block filter
-before using it to inspect the copy-loop memory operand. A small next control
-can separate declaration order from definition order: declare the output
-cursor first, initialize the input cursor next, then assign the output. The
-earlier reversal changed both orders and lost the name register coalescing.
+The current source is restored to `3ac55cc2`. C2's cached operand keys order
+its generated destination difference (`0x1F800`) before the source cursor
+(`0x13840`). A read-only trace captures their actual comparison before global
+allocation; moving the copy helper's definition changes heap addresses but not
+these keys. The completed debugger link preserves the full candidate bytes.
+See the StartSpell note in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) for symbol
+classes, hash paths and failed source controls.
+
+The real ECL caller's 46-input cold graph passes its complete 14,416 bytes
+and all 726 fields. The StartSpell owner in that same image still passes all
+108 fields and differs only at +0x124. Reports are
+`start-spell-real-caller-compare.json` and
+`start-spell-real-caller-owner-compare.json` under `.analysis/statistics-record/`.
+The private wrapper below keeps the complete 2,432-byte owner contract while
+using the existing caller recipe in memory. The canonical recipe is unchanged.
+The ordinary `EnemyStartSpell` image is restored from the committed owner;
+`start-spell-retained-baseline-*` records its current comparison.
+
+The next source control can use a signed displacement type to test the
+integer-address reassociation separately from hash ordering. Keep the two
+requirements together: the cursor must remain in ECX and the aggregate name
+must remain in ESI for the attempt-count access at +0x84. The earlier unsigned
+displacement moved the subtraction before the first copy and rematerialized
+the count address after the third loop. Ordinary strcpy, a source const
+reference, helper definition order and removal of the unused formal do not
+change the residual. The indexed ResultMenu form, cursor pairs and an explicit
+ID constructor disturb other registers or field positions in this owner.
 
 ```bash
-scripts/repo-python scripts/build-match-unit.py --unit enemy-start-spell
+scripts/repo-python scripts/build-match-unit.py --unit enemy-dispatch-ecl
 scripts/repo-python scripts/compare-linked-function.py \
-  --unit enemy-start-spell --json
+  --unit enemy-dispatch-ecl --json
+scripts/repo-python .analysis/statistics-record/compare-start-spell-caller-graph.py
 ```
 
 InitializeGameStatisticsRecord now passes the complete 274-byte owner and all

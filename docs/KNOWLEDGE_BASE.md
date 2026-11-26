@@ -730,6 +730,39 @@ frontier; do not refresh a baseline merely to accept the new positions.
   disturb allocation or layout; unsigned-byte cursors, forced copy inlining,
   direct history access and direct by-value panel registration do not change
   the SIB. The useful controls are under `.analysis/statistics-record/`.
+
+  In pinned C2 build 6030, OptCmpHashVal at `0x10795BC5` sorts operands by
+  descending cached key at +0x10. An early read-only trace captures the actual
+  pair: destination difference `0x1F800`, walked source cursor `0x13840`.
+  The difference's symbol is kind 3 with no defining instruction and serial
+  `0x7E0`;
+  its hash path at `0x107977C2` shifts the serial left six bits. The cursor's
+  symbol is kind 4, serial `0x1C2`; its path at `0x107957B1` uses the
+  five-bit shift.
+  For these two operands the low 16-bit result is combined with `0x10000`.
+  This puts the difference first before global allocation and preserves the
+  wrong SIB order. Moving CopyPanelName below the owner changes heap addresses
+  but leaves both serials and keys unchanged.
+
+  Filter the trace when C2 selects the function: `0x1074FE38` stores ESI to
+  current-function slot `0x10883D74`, and `0x107515C8` restores it from EDI.
+  Starting at global allocation (`0x107A5471`) is too late for the relevant
+  comparisons. The completed debugger link has the same full owner bytes as
+  the ordinary candidate. In the headless wrapper, continue the inferior to
+  process exit; detaching can shut down the display before the PE header is
+  finalized.
+  Inputs and output are in `.analysis/statistics-record/spell-start-trace/`.
+
+  A strcpy call, a const reference to its source, removing the unused formal
+  and helper definition order preserve the one-byte residual. The indexed
+  ResultMenu copy form changes name-register lifetimes here. A named integer
+  displacement also reassociates the first panel-name address into an earlier
+  owner-minus-name subtraction and rematerializes the aggregate attempt address.
+  Those variants do not preserve the complete target prefix.
+  A separate cold build of the real ECL dispatcher graph passes its complete
+  14,416 bytes and 726 fields. The same-image StartSpell contribution remains
+  2,431/2,432 with all 108 fields, so changing to that recipe does not remove
+  this residual. Keep the canonical owner recipe unchanged.
 - **ItemManagerUpdateBody @0x41AFD0 (2,320)** is exact in the registration-rooted
   `/GL` link, with 154 bound fields, 73 direct local branches and both jump
   tables at their target offsets. Expressing the distance scale as
