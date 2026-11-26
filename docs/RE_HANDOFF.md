@@ -10,16 +10,17 @@ The next owner is `EclVmContext::StartSubroutine @0x0044DF70`, 550 bytes in
 `src/EclVm.cpp`. The operator resumed it after the other ready owners, then
 requested cleanup and a handoff. No reconstruction job is running.
 
-The committed source is the current cold-compared 542/550 baseline. Its
-complete extent and four REL32 fields bind; eight ordinary bytes still
-have different registers. Neither the unsigned float-index snapshot nor
-the shared tag/word union improved it, so both trials were discarded.
-
-The live `build/match-linked/EclVmHostRunEnemy` PE and objects were last
-produced by the discarded tag/word trial. Its owner bytes and fields are
-byte-neutral against the baseline, but rebuild from the restored source
-before further compiler observations or warm probes. The baseline report is
-`.analysis/ecl-start-subroutine/resumed-current-cold-compare.json`.
+The committed source is the current cold-compared 544/550 baseline. Its
+complete extent and four REL32 fields bind; the float-word mismatch at
+`+0xC7`/`+0xCE` is now resolved by keeping `argument` non-volatile in the loop
+body and passing `instruction->floatOperands[valueOffset / sizeof(int)]`
+directly to `ReadFloatValue(caller, argumentIndex, ...)` (removing the local
+`EclVmScalar value` carrier and float-arm `source = caller` snapshot), while
+retaining a volatile header instruction reload. Six ordinary bytes remain, all
+from a single `EAX`/`ECX` swap in the loop latch (`+0xF3..+0x10F`). The live
+`build/match-linked/EclVmHostRunEnemy` PE and objects were cold-built from the
+committed source; the baseline report is
+`.analysis/ecl-start-subroutine/cold-544-compare.json`.
 
 Use the two-input /GL recipe `ecl-vm-start-subroutine`, rooted at the real
 EnemyRuntimeUpdate. Verify the original Japanese v1.00a input and toolchain
@@ -34,21 +35,23 @@ timeout 900s nice -n 10 taskset -c 2 scripts/repo-python scripts/build-match-uni
 scripts/repo-python scripts/compare-linked-function.py --unit ecl-vm-start-subroutine --json
 ```
 
-The expected diagnostic result is a 550-byte candidate with 542 matching
+The expected diagnostic result is a 550-byte candidate with 544 matching
 bytes and four fields. It is not an accepted match.
 
 | Remaining offsets | Native | Target |
 | --- | --- | --- |
-| `+0xC7`, `+0xCE` | Float word in ECX | EDX |
 | `+0xF3`, `+0xF7`, `+0xFD`, `+0x100` | Cursor EAX, instruction ECX | Cursor ECX, instruction EAX |
 | `+0x105`, `+0x10F` | Count EAX | ECX |
 
-The integer path matches through `+0xC5`. Float-word preference and latch
-ordering are separate problems. Equal-priority latch candidates are ordered
-by instruction-walk fields 106/105/104; reversing source reads fixes their
-register roles but breaks the schedule. The count's EAX choice is independent.
-The current baseline needs no integer-store compiler barrier. Keep the raw
-float bit carrier and post-resolver instruction reloads.
+Everything through `+0xF1` (242 bytes, including both operand branches) and
+from `+0x110` through `+0x225` (278 bytes) matches byte-for-byte. Equal-priority
+latch candidates are ordered by instruction-walk fields 106/105/104; reversing
+source reads fixes their register roles (`EAX`/`ECX`/`EDX`) but breaks the
+schedule when both reads are volatile. A fully non-volatile IVR loop
+(`stack.data[argumentOffset]` and `(metadataOffset + 4u) / 4u`) naturally
+assigns the target latch registers (`ECX`/`EAX`/`EDX`/`ECX`) and float word
+(`EDX`), but currently swaps `valueOffset`/`instruction` at `+0x68..+0xC6` and
+reorders two latch instructions (`+0xF6`, `+0x107`).
 
 [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) retains the C2 findings and failed
 controls in its StartSubroutine entry. Three read-only trace families remain

@@ -1873,7 +1873,7 @@ restored the EDI receiver at both calls and the full update comparison.
 - Host 0x103C prefix: active ctx +4, embedded ctx +8, script DB +0x102C, thread-list sentinel +0x1030. Run's only callers are EclVmHost::Run; host Run callers keep host in EDI (EnemyRuntimeUpdate 0x0040E0FE/0x0040E205).
 - Opcode 0x51 polar helper 0x004501B0 (30B thiscall FSINCOS) is byte-identical to AnmFloat3View::FromAngleMagnitude @0x004458B0; 0x51/0x52 use EnemyWrapAngle @0x0044BC70.
 - **EclVmContext::StartSubroutine @0x44DF70 (550 bytes, open)** has a
-  current cold baseline of 542 matching bytes with all four call fields
+  current cold baseline of 544 matching bytes with all four call fields
   bound. The two-input `ecl-vm-start-subroutine` recipe compiles EclVm.cpp
   and Enemy.cpp under VC7.1 SP1 6030 /GL, rooted at EnemyRuntimeUpdate.
   The destination arrives in EAX; caller and first-argument index are on
@@ -1884,17 +1884,25 @@ restored the EDI receiver at both calls and the full update comparison.
   host. The four REL32 fields
   at +0x9E/+0xD2/+0xE8/+0x1DD bind ReadIntValue, ReadFloatValue, __ftol2
   and FindSubroutine. The current cold report is
-  `.analysis/ecl-start-subroutine/resumed-current-cold-compare.json`.
+  `.analysis/ecl-start-subroutine/cold-544-compare.json`.
 
-  The remaining differences are register choices. At +0xC7/+0xCE the raw
-  float word uses ECX instead of EDX. At +0xF3/+0xF7/+0xFD/+0x100 the
-  destination cursor and instruction pointer use EAX/ECX instead of
-  ECX/EAX. At +0x105/+0x10F the operand count uses EAX instead of ECX.
-  The integer path matches through +0xC5. Keep the raw float word in its
-  scalar bit carrier: a native float local introduces an x87 load/spill.
-  One instruction snapshot supplies the source tag and raw operand, but
-  the destination tag must be reloaded after resolution because the host's
-  virtual resolvers may change the caller's instruction.
+  Passing `instruction->floatOperands[valueOffset / sizeof(int)]` directly
+  to `ReadFloatValue(caller, argumentIndex, ...)` with a non-volatile
+  `argument` in the loop body (and a volatile header `*callerInstruction`
+  load) eliminates the local `EclVmScalar` global-reg candidate and matches
+  the float word in EDX (`+0xC7`/`+0xCE`) without x87 spills. Everything
+  from `+0x000` through `+0x0F1` and `+0x110` through `+0x225` now matches
+  byte-for-byte.
+
+  The remaining six differing bytes are all one `EAX`/`ECX` swap in the
+  loop latch: at `+0xF3`/`+0xF7`/`+0xFD`/`+0x100` the destination cursor
+  and instruction pointer use EAX/ECX instead of ECX/EAX, and at
+  `+0x105`/`+0x10F` the local `RegAssign` operand count reuses the freed
+  cursor register (`EAX` instead of `ECX`). A non-volatile IVR loop
+  (`stack.data[argumentOffset]` and `(metadataOffset + 4u) / 4u`) naturally
+  assigns the target latch registers (`ECX`/`EAX`/`EDX`/`ECX`) and float
+  word (`EDX`), but swaps `valueOffset`/`instruction` at `+0x68..+0xC6`
+  and reorders `+0xF6` and `+0x107`.
 
   Read-only C2 traces explain the float-word, latch and count allocations:
 
