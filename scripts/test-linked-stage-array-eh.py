@@ -209,13 +209,14 @@ def main():
             ('destructor-free', lambda q: word(q, 'native', 0x10184f, 0x1018a1 - 0x101853)),
         ]
         if spec['arrays'][0][1] == 1:
-            cases += [('short-member', lambda q: q['target'].write(q['target_start'] + 5, b'\x18')),
+            cases += [('short-member', lambda q: q['target'].write(q['target_start'] + 5,
+                          bytes([(spec['arrays'][0][0] + 4) & 0xff]))),
                       ('short-saved-this', lambda q: q['native'].write(0x111002, b'\x08')),
                       ('short-destructor-entry', lambda q: word(q, 'native', 0x111007, 0x101841 - 0x11100b))]
             if 'worker_offset' in spec:
                 cases += [('worker-vm-swap', lambda q: word(q, 'native', 0x111007, 0x101840 - 0x11100b)),
                           ('second-short-member', lambda q: q['target'].write(q['target_start'] + 16, b'\x34'))]
-            else:
+            elif len(spec['arrays']) > 1:
                 cases += [('second-member', lambda q: word(q, 'target', q['target_start'] + 16, 0x3c4))]
         else:
             cases += [('array-count', lambda q: q['target'].write(q['target_start'] + 6, b'\x09')),

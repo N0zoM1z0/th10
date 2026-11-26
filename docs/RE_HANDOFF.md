@@ -7,16 +7,17 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `ScriptViewerPopupOwnerView::~ScriptViewerPopupOwnerView`
-at `0x0042B570`, 232 bytes in `src/ScriptViewerLifecycle.cpp`. It is the largest
-remaining authored owner outside the operator-deferred StartSubroutine. Its
-complete source unregisters the update and draw tasks under the supervisor's
-critical section and clears g_ScriptViewerPopups. Begin with the existing
-`script-viewer-popup-constructor` factory graph (`ScriptViewerPopupCreate`),
-which already supplies the real popup owner and its initialization failure
-cleanup. Inspect the complete linked destructor and the target's physical
-receiver/cleanup protocol before editing. No destructor comparison unit has
-been added yet.
+The sole active owner is `AnmRenderManagerView::CopyTextureRect` at
+`0x00448360`, 227 bytes in `src/AnmManager.cpp`. It is the largest remaining
+authored owner outside the operator-deferred StartSubroutine. Complete source
+already performs both loaded-texture lookups, flushes vertices, acquires two
+surfaces, calls D3DXLoadSurfaceFromSurface with filter -1, and releases them
+on the target's success/failure paths. No comparison unit exists yet.
+The recorded private interface is EDX manager, EAX destination entry, ECX
+source entry and four stack words / RET 16. Inspect the target and the
+existing linked body, then compare the complete source early. The maintained
+source currently has no direct caller for this method. Preserve unrelated
+D3D adapter evidence and its private inputs.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
@@ -58,6 +59,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `script-viewer-popup-owner-destructor` | 232 B | `ScriptViewerPopupCreate`, four-input canonical cold, 22 fields and stack receiver/RET4. Single VM-member EH: 21-byte region, 28-byte FuncInfo and real 34-byte cleanup. Constructor134 and release18 pass; the VM EH verifier self-tests pass. |
 | `player-constructor` | 244 B | `ScriptViewerLifecycle-cold-2`, 14-input canonical cold, sole g_Player field and ESI receiver/EAX result. Nested option-state construction restores the last flag clear. The Player factory passes 69/5 and the standalone option constructor remains 10/10. |
 | `player-shot-track-enemy` | 266 B | `PlayerShotTracking`, two-input canonical cold, all 15 fields and unchanged source. Real EnemyWrapAngle support keeps speed on the x87 stack. Same-image angle helpers pass 80/4 and 94/6; acquisition passes its own canonical cold entry at 53/1. |
 | `enemy-start-spell` | 2,432 B | `EnemyStartSpell`, 39-input canonical cold, 108 fields and RET 0x10. The real ECL caller and same-image owner pass selected strict replays. Both creation paths retain by-value appearance inputs. |

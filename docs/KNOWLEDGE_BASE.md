@@ -688,6 +688,25 @@ frontier; do not refresh a baseline merely to accept the new positions.
   The [MIT-licensed model](licenses/th10-decomp-MIT.txt) in
   `_reference/th10-decomp` provided the loop and stack-home leads.
   [2026-11-24]
+- **ScriptViewerPopupOwnerView::~ScriptViewerPopupOwnerView @0x42B570 (232)**
+  matches its unchanged source in the four-input popup factory cold graph with
+  `/EHs`. The shared inline AnmVmView destructor and nonthrowing CRT free
+  declaration remove the old artifact's extra eight-byte EH state store.
+  No profile or destructor-body adjustment is needed. The receiver is on the
+  stack and both exits use RET 4. Task snapshots and Chain snapshots precede
+  each critical-section branch; the global popup pointer is cleared before
+  the embedded VM releases its generated vertices at owner +0x370.
+
+  All 22 fields bind, including the four FS exception-list references. The
+  handler at 0x46523B owns a 21-byte region: saved this at EBP+4, member +0x18,
+  and a tail to the real 34-byte VM destructor. FuncInfo at 0x4712B0 is 28
+  bytes with one unwind state; its map is at 0x4712A8. The existing VM member
+  verifier checks the complete region, immutable metadata, source/PDB owner
+  and cleanup bytes. Its new parent case passes the existing positive and
+  negative controls. The popup constructor remains 134/134 in the same image;
+  the 18-byte release adapter passes in its own canonical graph. The 71-byte
+  creation factory and initializer retain their separate nonexact status.
+  Final reports are under `.analysis/popup-owner-destructor/`.
 - **Player::Player @0x4246C0 (244)** needs the option flag clear to arise
   from member construction. Group the existing option +0x70..+0x80 storage in
   PlayerOptionState70 and let its constructor clear flag bit zero; the outer
