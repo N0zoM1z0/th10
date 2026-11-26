@@ -7,16 +7,16 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `Player::Player` at `0x004246C0`, 244 bytes in
-`src/Player.cpp`. It is the largest remaining authored owner outside the
-operator-deferred StartSubroutine. The complete constructor source already
-performs natural subobject construction followed by memset and g_Player
-publication. The earlier fixed-normal diagnostic emitted 186 bytes and kept
-the draw-VM constructor outlined. Start with the real Player factory context
-from `script-viewer-player-create` in `ScriptViewerLifecycle-cold-2`; preserve
-its existing profiles and support inputs. The target factory supplies ESI,
-and the constructor returns the same object in EAX with plain RET. Inspect
-that complete existing linked body before changing constructor source.
+The sole active owner is `ScriptViewerPopupOwnerView::~ScriptViewerPopupOwnerView`
+at `0x0042B570`, 232 bytes in `src/ScriptViewerLifecycle.cpp`. It is the largest
+remaining authored owner outside the operator-deferred StartSubroutine. Its
+complete source unregisters the update and draw tasks under the supervisor's
+critical section and clears g_ScriptViewerPopups. Begin with the existing
+`script-viewer-popup-constructor` factory graph (`ScriptViewerPopupCreate`),
+which already supplies the real popup owner and its initialization failure
+cleanup. Inspect the complete linked destructor and the target's physical
+receiver/cleanup protocol before editing. No destructor comparison unit has
+been added yet.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
@@ -58,6 +58,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `player-constructor` | 244 B | `ScriptViewerLifecycle-cold-2`, 14-input canonical cold, sole g_Player field and ESI receiver/EAX result. Nested option-state construction restores the last flag clear. The Player factory passes 69/5 and the standalone option constructor remains 10/10. |
 | `player-shot-track-enemy` | 266 B | `PlayerShotTracking`, two-input canonical cold, all 15 fields and unchanged source. Real EnemyWrapAngle support keeps speed on the x87 stack. Same-image angle helpers pass 80/4 and 94/6; acquisition passes its own canonical cold entry at 53/1. |
 | `enemy-start-spell` | 2,432 B | `EnemyStartSpell`, 39-input canonical cold, 108 fields and RET 0x10. The real ECL caller and same-image owner pass selected strict replays. Both creation paths retain by-value appearance inputs. |
 | `game-statistics-initialize-record` | 274 B | `GameStatisticsTail`, eight fields, matching literal payload and stack record / RET4. Three same-image guards and six selected typed-record consumers pass cold. The independent StartSpell regression has its own accepted repair. |

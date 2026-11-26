@@ -71,6 +71,14 @@ struct PlayerOptionRuntime;
 // source declaration/convention remains unknown.
 typedef int (__fastcall *PlayerOptionCallback)(PlayerOptionRuntime *option);
 
+struct PlayerOptionState70
+{
+    unsigned char unknown00[0x10];
+    unsigned int flags;
+
+    PlayerOptionState70() { flags &= ~1u; }
+};
+
 struct PlayerOptionRuntime
 {
     int state;
@@ -82,15 +90,14 @@ struct PlayerOptionRuntime
     unsigned char unknown054[0x14];
     unsigned int primaryVmId;
     unsigned int secondaryVmId;
-    unsigned char unknown070[0x10];
-    unsigned int flags80;
+    PlayerOptionState70 state70;
     int previousMode;
     int optionIndex;
     int resetFlag;
     PlayerOptionCallback updateCallback;
     PlayerOptionCallback drawCallback;
 
-    PlayerOptionRuntime() { flags80 &= ~1u; }
+    PlayerOptionRuntime() {}
 };
 typedef char PlayerOptionRuntimeSizeIs98[
     (sizeof(PlayerOptionRuntime) == 0x98) ? 1 : -1];
@@ -101,7 +108,8 @@ typedef char PlayerOptionRuntimePrimaryVmIdAt68[
 typedef char PlayerOptionRuntimeSecondaryVmIdAt6C[
     (offsetof(PlayerOptionRuntime, secondaryVmId) == 0x6c) ? 1 : -1];
 typedef char PlayerOptionRuntimeFlagsAt80[
-    (offsetof(PlayerOptionRuntime, flags80) == 0x80) ? 1 : -1];
+    (offsetof(PlayerOptionRuntime, state70) +
+     offsetof(PlayerOptionState70, flags) == 0x80) ? 1 : -1];
 typedef char PlayerOptionRuntimePreviousModeAt84[
     (offsetof(PlayerOptionRuntime, previousMode) == 0x84) ? 1 : -1];
 typedef char PlayerOptionRuntimeIndexAt88[

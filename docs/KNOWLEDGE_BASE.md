@@ -688,6 +688,30 @@ frontier; do not refresh a baseline merely to accept the new positions.
   The [MIT-licensed model](licenses/th10-decomp-MIT.txt) in
   `_reference/th10-decomp` provided the loop and stack-home leads.
   [2026-11-24]
+- **Player::Player @0x4246C0 (244)** needs the option flag clear to arise
+  from member construction. Group the existing option +0x70..+0x80 storage in
+  PlayerOptionState70 and let its constructor clear flag bit zero; the outer
+  PlayerOptionRuntime constructor has an empty body. The flag stays at +0x80,
+  prior mode at +0x84, and the option remains 0x98 bytes. The original state
+  member type and its first 16 bytes remain unknown.
+
+  With a direct flags80 clear in the outer option constructor, a fresh
+  14-input factory graph emits 250 bytes. All four option iterations use a
+  load/AND/store sequence and advance EAX. Nested member construction gives
+  three expanded iterations followed by one direct AND at [EAX+0x118],
+  removing the dead final pointer advance and restoring the target's seven
+  loop-alignment bytes. The complete linked owner then matches 244 bytes and
+  its sole g_Player field. No explicit construction loops are needed.
+  The real factory passes this in ESI; the constructor returns it in EAX.
+  Automatic subobjects initialize before the containing 0x111E-dword memset
+  and g_Player publication. The earlier 186-byte normal-COFF diagnostic keeps
+  the draw-VM constructor outlined; use the real factory's /GL recipe.
+
+  The final-source 14-input canonical cold link passes all 244 bytes and
+  the sole g_Player field. Its actual PlayerCreate caller remains 69/69 with
+  all five fields; the standalone normal-COFF option constructor remains
+  10/10. Retain `nested-state-cold-*`, `nested-state-factory-guard.*` and
+  `option-guard-*` under `.analysis/player-constructor/`.
 - **PlayerShotTrackEnemy @0x428B10 (266)** matches its unchanged complete
   source in the two-input `player-shot-track-enemy` cold link. Include the real
   EnemyWrapAngle body from `EnemyEclDispatcher.cpp`; an unresolved anchor for
