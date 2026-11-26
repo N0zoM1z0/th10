@@ -1608,8 +1608,9 @@ frontier; do not refresh a baseline merely to accept the new positions.
 
   All five fields and the score filename match. The real factory passes
   97 bytes/nine fields, including the complete 21-byte one-allocation unwind
-  protocol, one-state FuncInfo and EBP-16 saved allocation. Its prepared
-  `game-statistics-create` candidate is retained for later canonical selection.
+  protocol, one-state FuncInfo and EBP-16 saved allocation. It is accepted
+  as `game-statistics-create` from this same complete cold proof; no
+  executable input changed between constructor and factory acceptance.
   OpenFile360, loader423, finalizer564, tail142 and record274 also pass in
   the same image. Reproduce with `--unit game-statistics-constructor`;
   reports are under `.analysis/statistics-constructor/`.

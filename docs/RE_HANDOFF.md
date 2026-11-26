@@ -7,17 +7,15 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `CreateStatistics42AF20` at `0x0042AF20`, 97 bytes
-in `src/GameStatisticsLoad.cpp`. Its prepared `game-statistics-create` unit
-already passes all 97 bytes and nine fields in the constructor's eight-input
-WinMain cold graph, including the complete one-allocation EH protocol.
-Accept this ready candidate from its retained complete proof; no executable
-input has changed since that cold graph. Next accept the 71-byte popup factory
-from its initializer's four-input cold proof, then resume StartSubroutine.
-The operator explicitly approved this remaining order in the current session.
+The sole active owner is `GameCreateOwner42B660` at `0x0042B660`, 71 bytes
+in `src/ScriptViewerPopupCreate.cpp`. Its prepared `script-viewer-popup-create`
+unit already passes all 71 bytes and five fields in the initializer's four-input
+cold graph. No executable input has changed since that complete proof.
+Accept this ready candidate, then return to the 550-byte StartSubroutine as
+explicitly approved by the operator in this session.
 
 The operator has authorized resuming `EclVmContext::StartSubroutine` at
-`0x0044DF70` in `src/EclVm.cpp` after the two ready factories above. Its
+`0x0044DF70` in `src/EclVm.cpp` after this ready popup factory. Its
 retained frontier is 542 of 550 bytes matching in `EclVmHostRunEnemy`.
 Its four call fields
 bind. The remaining differences are register choices in the operand loop.
@@ -57,6 +55,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `game-statistics-create` | 97 B | `GameStatisticsConstructor`, existing eight-input cold proof, nine fields and complete one-allocation EH binding. Constructor132 and selected file/statistics helpers pass. No executable inputs changed for this acceptance. |
 | `frontend-draw-dispatch` | 116 B | `FrontEndReplaySaveDraw`, two-input draw-callback cold, all 14 fields and eight fixed switch destinations. Source unchanged. Callback7 and complete draw callees419/689/825/826/955 pass in the same image. |
 | `game-statistics-constructor` | 132 B | `GameStatisticsConstructor`, eight-input WinMain cold, five fields and EAX owner/RET. Source unchanged; real file/archive consumers restore OpenFile360. Factory97/9 and its allocation EH, loader423, finalizer564, tail142 and record274 pass in the same image. |
 | `script-viewer-popup-initialize` | 145 B | `ScriptViewerPopupCreate`, four-input canonical cold, 11 fields and EAX owner/RET. Reload the saved resource after both registrations. Direct factory71/5 and all selected popup, Chain and concrete VM initializer guards pass; factory remains a prepared candidate for later selection. |

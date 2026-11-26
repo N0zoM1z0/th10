@@ -40795,7 +40795,6 @@ linkages = [
 
 # Complete direct caller guard, including its one-allocation unwind state.
 [units.game-statistics-create]
-candidate = true
 artifact_kind = "linked-pe"
 source = "src/GameStatisticsLoad.cpp"
 pdb_source = "src/GameStatisticsLoad.cpp"
