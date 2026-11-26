@@ -277,6 +277,37 @@ typedef char MainCameraRecordLayout[
 
 // Target constructor clears784 bytes through clearColor; preserve that view extent.
 #pragma pack(push, 4)
+// Evidenced by MainRegisterChain (-2 sentinel), MainSupervisorView::UpdateGameMode
+// (0x004218D0), and MainSupervisorView::OnUpdate (0x0041FF80).
+// Note: SUPERVISOR_MODE_UNINITIALIZED (-2) is the initial currentGameMode sentinel
+// set by MainRegisterChain(), not a transition target requested via nextGameMode.
+enum SupervisorGameMode
+{
+    SUPERVISOR_MODE_UNINITIALIZED               = -2,
+    SUPERVISOR_MODE_STARTUP_INIT                = 0,
+    SUPERVISOR_MODE_STARTUP_LOADING             = 1,
+    SUPERVISOR_MODE_BOOT_READY                  = 2,
+    SUPERVISOR_MODE_EXIT                        = 3,
+    SUPERVISOR_MODE_TITLE                       = 4,
+    SUPERVISOR_MODE_GAMEPLAY                    = 7,
+    SUPERVISOR_MODE_NEXT_STAGE                  = 10,
+    SUPERVISOR_MODE_RETRY_STAGE                 = 11,
+    SUPERVISOR_MODE_REPLAY_PLAYBACK             = 12,
+    SUPERVISOR_MODE_RESTART_GAME                = 13,
+    SUPERVISOR_MODE_ENDING                      = 14,
+    SUPERVISOR_MODE_RETURN_TO_TITLE_AFTER_CLEAR = 15
+};
+
+// Evidenced by Chain.cpp (slot 0), FileSystem.cpp (slot 2),
+// GameErrorContext.cpp (slot 3), and SupervisorModes.cpp (slot 5).
+enum SupervisorLockSlot
+{
+    SUPERVISOR_LOCK_CHAIN   = 0,
+    SUPERVISOR_LOCK_FILE_IO = 2,
+    SUPERVISOR_LOCK_LOG     = 3,
+    SUPERVISOR_LOCK_MODE    = 5
+};
+
 struct MainSupervisorView
 {
     MainSupervisorView();

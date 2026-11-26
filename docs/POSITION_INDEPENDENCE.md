@@ -28,26 +28,31 @@ fixed layout:
 
 ## Implementation
 
-- **Pure C++ read-only strings & constants**: [src/ProductStrings.cpp](file:///home/pentester/coding/codex_ida/th10-reconstruction/th10/src/ProductStrings.cpp)
+- **Pure C++ read-only strings & constants**: [src/ProductStrings.cpp](../src/ProductStrings.cpp)
   defines all built-in Shift-JIS/ASCII strings (with UTF-8 comments), float
-  constants, and `.rdata` lookup tables as standard C++ literals and arrays.
-- **Pure C++ initialized data tables**: [src/ProductGlobals.cpp](file:///home/pentester/coding/codex_ida/th10-reconstruction/th10/src/ProductGlobals.cpp)
+  constants, and lookup tables as standard C++ literals and arrays. Note:
+  symbols whose existing exact-unit `extern` declarations are non-`const`
+  (`char[]` / `float`) are placed in `.data` by VC7.1; `extern const` symbols
+  are placed in `.rdata`, and both sections are verified in `scripts/verify-pi.py`.
+- **Pure C++ initialized data tables**: [src/ProductGlobals.cpp](../src/ProductGlobals.cpp)
   defines all initialized `.data` tables (bullet tables, stage records,
   ending/demo/shot paths, callback tables with direct C++ function pointers,
-  `g_GameScoreState`, `g_MainScanWorker`, and `th10::g_GameErrorContext` with
-  a native C++ self-pointer initializer) and binds same-address aliases via
-  `#pragma comment(linker, "/alternatename:...")`.
-- **Zero-initialized `.bss` layout**: [src/ProductBssLayout.asm](file:///home/pentester/coding/codex_ida/th10-reconstruction/th10/src/ProductBssLayout.asm)
-  contains only zero-initialized `DB ... DUP(?)` reservations and `PUBLIC`
-  labels (zero strings, zero data bytes, zero hardcoded addresses) so VC7.1
-  preserves the 5 sub-4-byte struct-interior offsets (`+0x06`/`+0x32` in
-  `g_FrontEndInput` and `+0x136`/`+0x6F6`/`+0x6F7` in `g_MainSupervisorView`).
+  `g_GameScoreState`, `g_MainScanWorker`, and `th10::g_GameErrorContext` using
+  the canonical headers `ScriptViewerWorker.hpp` and `GameErrorContext.hpp`)
+  and binds same-address aliases via `#pragma comment(linker, "/alternatename:...")`.
+- **Authoritative zero-initialized `.bss` layout**: [src/ProductBssLayout.asm](../src/ProductBssLayout.asm)
+  defines the unified zero-initialized `.bss` storage layout (187 symbol labels
+  and 127 `DB ... DUP(?)` reservations, with zero strings, zero data bytes, and
+  zero hardcoded addresses). Retaining `.asm` for `.bss` keeps contiguous
+  single-storage layout and preserves VC7.1's 5 sub-4-byte struct-interior
+  offsets (`+0x06`/`+0x32` in `g_FrontEndInput` and `+0x136`/`+0x6F6`/`+0x6F7`
+  in `g_MainSupervisorView`).
 - **DirectInput SDK constants**: `g_InputKeyboardDataFormat`,
   `g_InputJoystickDataFormat`, `g_InputKeyboardGuid`, and
   `g_InputDirectInputIID` bind directly to `dinput8.lib` / `dxguid.lib`
   (`_c_dfDIKeyboard`, `_c_dfDIJoystick2`, `_GUID_SysKeyboard`,
   `_IID_IDirectInput8A`) via linker `/alternatename`.
-- **Cross-TU bridge**: [src/ProductBridge.cpp](file:///home/pentester/coding/codex_ida/th10-reconstruction/th10/src/ProductBridge.cpp)
+- **Cross-TU bridge**: [src/ProductBridge.cpp](../src/ProductBridge.cpp)
   wires placeholder-named declarations, the 4 runtime callbacks
   (`0x00420000`, `0x004200D0`, `0x0042BC30`, `0x0042BE10`), and `EnemyLaser`
   virtual dispatch to their reconstructed exact owners.

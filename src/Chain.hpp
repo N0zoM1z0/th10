@@ -4,7 +4,9 @@
 namespace th10
 {
 
-// Evidenced by Chain::RunCalcChain / RunDrawChain and SupervisorModes.cpp.
+// Evidenced by MainRunCalcChain / MainRunDrawChain (src/Chain.cpp) and
+// SupervisorModes.cpp. Note: MainRunDrawChain handles values 0, 2, 3, 4, 5;
+// values 6 (restart) and 7 (invoke deletedCallback) are calc-chain specific.
 enum ChainCallbackResult
 {
     CHAIN_CALLBACK_RESULT_CONTINUE_AND_REMOVE_NO_DELETE = 0,
@@ -13,7 +15,8 @@ enum ChainCallbackResult
     CHAIN_CALLBACK_RESULT_BREAK                         = 3,
     CHAIN_CALLBACK_RESULT_EXIT_GAME_SUCCESS             = 4,
     CHAIN_CALLBACK_RESULT_EXIT_GAME_ERROR               = 5,
-    CHAIN_CALLBACK_RESULT_RESTART_FROM_FIRST_JOB        = 6
+    CHAIN_CALLBACK_RESULT_RESTART_FROM_FIRST_JOB        = 6,
+    CHAIN_CALLBACK_RESULT_INVOKE_DELETED_CALLBACK       = 7
 };
 
 typedef int (__fastcall *ChainCallback)(void *arg);

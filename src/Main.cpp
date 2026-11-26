@@ -1,5 +1,7 @@
 #include "GameErrorContext.hpp"
 #include "Main.hpp"
+#include "InputPolling.hpp"
+#include "resource.h"
 #include "MainViewport.hpp"
 #include "FileSystem.hpp"
 #include "Midi.hpp"
@@ -358,7 +360,7 @@ int WINAPI WinMain(
     if ((g_MainSupervisorView.configuration.options & GAME_CONFIG_ASK_DISPLAY_MODE_ON_STARTUP) != 0)
     {
         INT_PTR dialogResult = DialogBoxParamA(
-            instance, MAKEINTRESOURCEA(203), NULL,
+            instance, MAKEINTRESOURCEA(IDD_MAIN_STARTUP_MODE), NULL,
             MainConfigurationDialogProc, 0);
         g_MainSupervisorView.configuration.windowed = dialogResult != 6;
     }
@@ -607,7 +609,7 @@ void GameWindowView::Present()
     }
 
     MainServiceAnmScreenshots(g_AnmRenderManagerView);
-    if ((g_MainInputEdges & 0x0800) != 0)
+    if ((g_MainInputEdges & INPUT_BUTTON_SCREENSHOT) != 0)
     {
         _mkdir("snapshot");
         for (screenshotIndex = 0; screenshotIndex < 1000; ++screenshotIndex)
@@ -1195,30 +1197,24 @@ INT_PTR CALLBACK MainConfigurationDialogProc(
     HWND dialog, UINT message, WPARAM wparam, LPARAM lparam)
 {
     (void)lparam;
-    // Control IDs match Dialog 203 in src/th10.rc.
-    enum MainStartupDialogControlId
-    {
-        MAIN_DIALOG_BTN_FULLSCREEN = 201,
-        MAIN_DIALOG_CHK_ASK_ALWAYS = 202,
-        MAIN_DIALOG_BTN_WINDOWED   = 203
-    };
+    // Control IDs shared with src/th10.rc via src/resource.h.
     switch (message)
     {
     case WM_INITDIALOG:
-        SendMessageA(GetDlgItem(dialog, MAIN_DIALOG_CHK_ASK_ALWAYS), BM_SETCHECK, BST_CHECKED, 0);
+        SendMessageA(GetDlgItem(dialog, IDC_MAIN_ASK_ALWAYS), BM_SETCHECK, BST_CHECKED, 0);
         return 0;
     case WM_COMMAND:
         switch (LOWORD(wparam))
         {
-        case MAIN_DIALOG_BTN_FULLSCREEN:
-            if (IsDlgButtonChecked(dialog, MAIN_DIALOG_CHK_ASK_ALWAYS) == BST_CHECKED)
+        case IDC_MAIN_FULLSCREEN:
+            if (IsDlgButtonChecked(dialog, IDC_MAIN_ASK_ALWAYS) == BST_CHECKED)
                 g_MainSupervisorView.configuration.options |= GAME_CONFIG_ASK_DISPLAY_MODE_ON_STARTUP;
             else
                 g_MainSupervisorView.configuration.options &= ~static_cast<unsigned int>(GAME_CONFIG_ASK_DISPLAY_MODE_ON_STARTUP);
             EndDialog(dialog, IDYES);
             break;
-        case MAIN_DIALOG_BTN_WINDOWED:
-            if (IsDlgButtonChecked(dialog, MAIN_DIALOG_CHK_ASK_ALWAYS) == BST_CHECKED)
+        case IDC_MAIN_WINDOWED:
+            if (IsDlgButtonChecked(dialog, IDC_MAIN_ASK_ALWAYS) == BST_CHECKED)
                 g_MainSupervisorView.configuration.options |= GAME_CONFIG_ASK_DISPLAY_MODE_ON_STARTUP;
             else
                 g_MainSupervisorView.configuration.options &= ~static_cast<unsigned int>(GAME_CONFIG_ASK_DISPLAY_MODE_ON_STARTUP);

@@ -45,25 +45,26 @@ unsigned short __stdcall MergeJoystickInput(
         info.flags = 0xff;
         if (joyGetPosEx(padIndex != 0, &info) != 0)
             return buttons;
-        MergeWinMmButton(&buttons, binding->controllerMappings[0], 1, info.buttons);
-        MergeWinMmButton(&buttons, binding->controllerMappings[1], 2, info.buttons);
-        MergeWinMmButton(&buttons, binding->controllerMappings[3], 8, info.buttons);
+        MergeWinMmButton(&buttons, binding->controllerMappings[0], INPUT_BUTTON_SHOOT, info.buttons);
+        MergeWinMmButton(&buttons, binding->controllerMappings[1], INPUT_BUTTON_BOMB, info.buttons);
+        MergeWinMmButton(&buttons, binding->controllerMappings[3], INPUT_BUTTON_PAUSE, info.buttons);
+        // Bit 0x0004 (controllerMappings[2]) is observed but its TH10 role is unverified.
         MergeWinMmButton(&buttons, binding->controllerMappings[2], 4, info.buttons);
-        MergeWinMmButton(&buttons, binding->controllerMappings[8], 0x100, info.buttons);
+        MergeWinMmButton(&buttons, binding->controllerMappings[8], INPUT_BUTTON_SKIP, info.buttons);
 
         deadzone = (g_InputJoystickCaps[padIndex].xMax -
                     g_InputJoystickCaps[padIndex].xMin) / 4;
         buttons |= info.x > (g_InputJoystickCaps[padIndex].xMin +
-            g_InputJoystickCaps[padIndex].xMax) / 2 + deadzone ? 0x80 : 0;
+            g_InputJoystickCaps[padIndex].xMax) / 2 + deadzone ? INPUT_BUTTON_RIGHT : 0;
         buttons |= info.x < (g_InputJoystickCaps[padIndex].xMin +
-            g_InputJoystickCaps[padIndex].xMax) / 2 - deadzone ? 0x40 : 0;
+            g_InputJoystickCaps[padIndex].xMax) / 2 - deadzone ? INPUT_BUTTON_LEFT : 0;
 
         deadzone = -(g_InputJoystickCaps[padIndex].yMin -
                      g_InputJoystickCaps[padIndex].yMax) / 4;
         buttons |= (g_InputJoystickCaps[padIndex].yMin +
-            g_InputJoystickCaps[padIndex].yMax) / 2 + deadzone < info.y ? 0x20 : 0;
+            g_InputJoystickCaps[padIndex].yMax) / 2 + deadzone < info.y ? INPUT_BUTTON_DOWN : 0;
         buttons |= info.y < (g_InputJoystickCaps[padIndex].yMin +
-            g_InputJoystickCaps[padIndex].yMax) / 2 - deadzone ? 0x10 : 0;
+            g_InputJoystickCaps[padIndex].yMax) / 2 - deadzone ? INPUT_BUTTON_UP : 0;
         return buttons;
     }
 
@@ -86,15 +87,15 @@ unsigned short __stdcall MergeJoystickInput(
     if (g_InputPadDevices[padIndex]->vtable->GetDeviceState(
         g_InputPadDevices[padIndex], sizeof(state), &state) < 0)
         return buttons;
-    MergeDirectButton(&buttons, binding->controllerMappings[0], 1, state.buttons);
-    MergeDirectButton(&buttons, binding->controllerMappings[1], 2, state.buttons);
-    MergeDirectButton(&buttons, binding->controllerMappings[3], 8, state.buttons);
+    MergeDirectButton(&buttons, binding->controllerMappings[0], INPUT_BUTTON_SHOOT, state.buttons);
+    MergeDirectButton(&buttons, binding->controllerMappings[1], INPUT_BUTTON_BOMB, state.buttons);
+    MergeDirectButton(&buttons, binding->controllerMappings[3], INPUT_BUTTON_PAUSE, state.buttons);
     MergeDirectButton(&buttons, binding->controllerMappings[2], 4, state.buttons);
-    MergeDirectButton(&buttons, binding->controllerMappings[8], 0x100, state.buttons);
-    buttons |= state.x < -g_InputJoystickXThreshold ? 0x40 : 0;
-    buttons |= state.y < -g_InputJoystickYThreshold ? 0x10 : 0;
-    buttons |= state.x > g_InputJoystickXThreshold ? 0x80 : 0;
-    buttons |= state.y > g_InputJoystickYThreshold ? 0x20 : 0;
+    MergeDirectButton(&buttons, binding->controllerMappings[8], INPUT_BUTTON_SKIP, state.buttons);
+    buttons |= state.x < -g_InputJoystickXThreshold ? INPUT_BUTTON_LEFT : 0;
+    buttons |= state.y < -g_InputJoystickYThreshold ? INPUT_BUTTON_UP : 0;
+    buttons |= state.x > g_InputJoystickXThreshold ? INPUT_BUTTON_RIGHT : 0;
+    buttons |= state.y > g_InputJoystickYThreshold ? INPUT_BUTTON_DOWN : 0;
     return buttons;
 }
 

@@ -110,6 +110,16 @@ and old reports can be deleted after recording useful findings.
    reconstructed native i386 product as runtime Oracles.
 4. Start portability only after the native semantic baseline is trustworthy.
 
+## Maintainer Navigation
+
+- [Semantic reconstruction rules](docs/SEMANTIC_RECONSTRUCTION.md) — evidence boundary, bounded batch workflow, and dual-oracle acceptance.
+- [Semantic subsystem index](docs/SEMANTIC_INDEX.md) — subsystem-to-source index across `src/`.
+- [Source ownership and build map](docs/SOURCE_MAP.md) — VC7.1 `/GL` + non-`/GL` build graph and per-subsystem validation entries.
+- [Semantic batch history](docs/SEMANTIC_HISTORY.md) — reproducible batch records with exact unit results and open items.
+- [ANM resource index](docs/ANM_RESOURCE_INDEX.md) & [Sound resource index](docs/SOUND_RESOURCE_INDEX.md) — separated integer ID namespaces.
+- [Position independence and data layout](docs/POSITION_INDEPENDENCE.md) — relocatable storage, shared-alias contracts, and reordered-link verification.
+- [Current reconstruction handoff](docs/RE_HANDOFF.md) — active branch status, commands, and next work.
+
 ## Project map
 
 - [`AGENTS.md`](AGENTS.md) — mandatory session and evidence rules.

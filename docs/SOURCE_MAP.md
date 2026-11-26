@@ -22,15 +22,30 @@ with pinned VC7.1 SP1 6030 (`/GL` + `/LTCG`).
     tables, callback tables, stage records, `g_GameScoreState`,
     `g_MainScanWorker`, `th10::g_GameErrorContext`, and `#pragma comment(linker,
     "/alternatename:...")` shared-storage aliases.
-- **Zero-initialized `.bss` layout (`1` file)**:
-  - [src/ProductBssLayout.asm](../src/ProductBssLayout.asm): zero-initialized
-    `DUP(?)` `.bss` storage preserving VC7.1's 5 sub-4-byte struct-interior
-    offsets (`+0x06`/`+0x32` in `g_FrontEndInput`; `+0x136`/`+0x6F6`/`+0x6F7`
-    in `g_MainSupervisorView`). Contains no strings, data bytes, or pointers.
-- **Win32 resources (`1` file)**:
-  - [src/th10.rc](../src/th10.rc): startup display-mode selection Dialog 203
-    (`MAIN_DIALOG_BTN_FULLSCREEN = 201`, `MAIN_DIALOG_CHK_ASK_ALWAYS = 202`,
-    `MAIN_DIALOG_BTN_WINDOWED = 203`).
+- **Authoritative zero-initialized `.bss` layout (`1` file)**:
+  - [src/ProductBssLayout.asm](../src/ProductBssLayout.asm): unified
+    zero-initialized `.bss` storage layout (187 symbol labels, 127 `DUP(?)`
+    reservations; zero strings, zero data bytes, zero pointers). Retaining
+    `.asm` preserves contiguous single-storage layout and VC7.1's 5 sub-4-byte
+    struct-interior offsets (`+0x06`/`+0x32` in `g_FrontEndInput`;
+    `+0x136`/`+0x6F6`/`+0x6F7` in `g_MainSupervisorView`).
+- **Win32 resources (`2` files)**:
+  - [src/resource.h](../src/resource.h) and [src/th10.rc](../src/th10.rc):
+    shared Dialog 203 resource IDs (`IDD_MAIN_STARTUP_MODE`,
+    `IDC_MAIN_FULLSCREEN`, `IDC_MAIN_ASK_ALWAYS`, `IDC_MAIN_WINDOWED`) used by
+    both `rc.exe` and `src/Main.cpp`.
+
+## Validation entry points by subsystem
+
+| Subsystem | Production owner | Supporting headers | Validation entry |
+| --- | --- | --- | --- |
+| Game Configuration | `src/MainConfiguration.cpp` | `src/GameConfiguration.hpp` | `game-configuration-reset-defaults` + `scripts/build.py --fresh` |
+| Supervisor & Entry | `src/Main.cpp`, `src/SupervisorModes.cpp` | `src/Main.hpp`, `src/resource.h` | `scripts/build.py --fresh` + `scripts/verify-pi.py` |
+| Chain Scheduler | `src/Chain.cpp` | `src/Chain.hpp` | `chain-run-calc`, `chain-run-draw` + `scripts/check-semantic-protocols.py` |
+| ANM Manager | `src/AnmManager.cpp` | `src/AnmManager.hpp`, `docs/ANM_RESOURCE_INDEX.md` | affected ANM exact units + `scripts/build.py --fresh` |
+| Sound | `src/Sound.cpp`, `src/ZWave.cpp` | `src/Sound.hpp`, `docs/SOUND_RESOURCE_INDEX.md` | `scripts/check-semantic-protocols.py` + `scripts/build.py --fresh` |
+| Input | `src/InputPolling.cpp` | `src/InputPolling.hpp` | `merge-joystick-input` + `scripts/build.py --fresh` |
+| Product Data & PI | `src/ProductStrings.cpp`, `src/ProductGlobals.cpp`, `src/ProductBssLayout.asm` | `src/GameErrorContext.hpp`, `src/ScriptViewerWorker.hpp` | `scripts/build.py --fresh` + `--reverse-link` + `scripts/verify-pi.py` |
 
 ## Source families
 

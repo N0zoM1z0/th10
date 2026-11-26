@@ -2,12 +2,15 @@
 """Verify Position Independence (PI) of the TH10 v1.00a product build.
 
 Checks:
-1. Map displacement between build/windows-i386/th10.exe and
-   build/windows-i386/th10-reordered.exe across .text, .rdata, .data, and .bss.
-2. Shared-storage identity for cross-TU alias groups in both builds.
-3. Contiguous struct-interior offset preservation across reordered links.
-4. Real PE base-relocation (.reloc) coverage for all initialized pointers in
-   ProductData (zero un-relocated retail 0x004xxxxx addresses).
+1. Map displacement AND actual PE section index between
+   build/windows-i386/th10.exe and build/windows-i386/th10-reordered.exe
+   across .text (0001), .rdata (0002), and .data/.bss (0003).
+2. Shared-storage identity for ALL /alternatename alias bindings declared in
+   src/ProductGlobals.cpp (plus core multi-symbol groups) in both builds.
+3. Contiguous struct-interior offset preservation across reordered links
+   (g_GameScoreState, g_FrontEndInput, g_MainSupervisorView).
+4. Real PE base-relocation (.reloc) coverage and target address match for all
+   initialized code/self pointers in src/ProductGlobals.cpp.
 """
 
 from __future__ import annotations
@@ -24,15 +27,19 @@ STD_EXE = ROOT / "build" / "windows-i386" / "th10.exe"
 STD_MAP = ROOT / "build" / "windows-i386" / "th10.map"
 REV_EXE = ROOT / "build" / "windows-i386" / "th10-reordered.exe"
 REV_MAP = ROOT / "build" / "windows-i386" / "th10-reordered.map"
+GLOBALS_CPP = ROOT / "src" / "ProductGlobals.cpp"
+
+SECTION_NAMES = {1: ".text", 2: ".rdata", 3: ".data/.bss"}
 
 
-def parse_map(map_path: Path) -> dict[str, int]:
-    syms: dict[str, int] = {}
-    pat = re.compile(r"^\s*[0-9a-fA-F]{4}:[0-9a-fA-F]{8}\s+(\S+)\s+([0-9a-fA-F]{8})\s+")
+def parse_map(map_path: Path) -> dict[str, tuple[int, int]]:
+    """Return {symbol: (section_index, va)} from a VC7.1 .map file."""
+    syms: dict[str, tuple[int, int]] = {}
+    pat = re.compile(r"^\s*([0-9a-fA-F]{4}):[0-9a-fA-F]{8}\s+(\S+)\s+([0-9a-fA-F]{8})\s+")
     for line in map_path.read_text(errors="replace").splitlines():
         m = pat.match(line)
         if m:
-            syms[m.group(1)] = int(m.group(2), 16)
+            syms[m.group(2)] = (int(m.group(1), 16), int(m.group(3), 16))
     return syms
 
 
@@ -46,6 +53,11 @@ def get_reloc_rvas(pe: pefile.PE) -> set[int]:
     return rvas
 
 
+def parse_alternatename_pragmas(cpp_path: Path) -> list[tuple[str, str]]:
+    pat = re.compile(r'#pragma\s+comment\(linker,\s*"/alternatename:([^=]+)=([^"]+)"\)')
+    return pat.findall(cpp_path.read_text(errors="replace"))
+
+
 def main() -> int:
     for p in (STD_EXE, STD_MAP, REV_EXE, REV_MAP):
         if not p.is_file():
@@ -56,32 +68,39 @@ def main() -> int:
     rev_syms = parse_map(REV_MAP)
     failures: list[str] = []
 
-    # 1. Displacement proof across .text, .rdata, .data, .bss
+    # 1. Displacement + actual PE section verification
     probe_syms = [
-        (".text", "_WinMain@16"),
-        (".text", "?PlayerShotTrackEnemy@@YIHPAXPAUPlayerShotRuntimeView@@@Z"),
-        (".text", "?InstallAnmVmVertexBuffer@@YIHPAUAnmVmView@@PBI@Z"),
-        (".rdata", "?g_MainWindowTitle@@3QBDB"),
-        (".rdata", "?g_BulletCullBottom@@3MA"),
-        (".data", "?g_GameScoreState@@3UGameScoreStateView@@A"),
-        (".data", "?g_PlayerShotUpdateCallbacks@@3PAP6IXPAUPlayer@@PAUPlayerShotRuntimeView@@@ZA"),
-        (".data", "?g_GameErrorContext@th10@@3UGameErrorContext@1@A"),
-        (".bss", "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"),
-        (".bss", "?g_Player@@3PAUPlayer@@A"),
+        (1, "_WinMain@16"),
+        (1, "?PlayerShotTrackEnemy@@YIHPAXPAUPlayerShotRuntimeView@@@Z"),
+        (1, "?InstallAnmVmVertexBuffer@@YIHPAUAnmVmView@@PBI@Z"),
+        (2, "?g_MainWindowTitle@@3QBDB"),
+        (2, "?g_AnmSpecialVmDescriptors@@3QBUAnmSpecialVmDescriptorView@@B"),
+        (3, "?g_BulletCullBottom@@3MA"),
+        (3, "?g_GameScoreState@@3UGameScoreStateView@@A"),
+        (3, "?g_PlayerShotUpdateCallbacks@@3PAP6IXPAUPlayer@@PAUPlayerShotRuntimeView@@@ZA"),
+        (3, "?g_GameErrorContext@th10@@3UGameErrorContext@1@A"),
+        (3, "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"),
+        (3, "?g_Player@@3PAUPlayer@@A"),
     ]
-    print("=== 1. Symbol Displacement (normal vs reverse-link) ===")
-    for sec, sym in probe_syms:
+    print("=== 1. Symbol Displacement & Section Check (normal vs reverse-link) ===")
+    for exp_sec, sym in probe_syms:
         a = std_syms.get(sym)
         b = rev_syms.get(sym)
         if a is None or b is None:
             failures.append(f"missing probe symbol {sym}: std={a} rev={b}")
             continue
-        moved = a != b
-        print(f"  [{sec:6s}] {sym[:52]:52s} 0x{a:08X} -> 0x{b:08X} (delta={b - a:+d})")
+        sec_a, va_a = a
+        sec_b, va_b = b
+        sec_ok = (sec_a == exp_sec) and (sec_b == exp_sec)
+        moved = va_a != va_b
+        sec_label = SECTION_NAMES.get(sec_a, f"sec{sec_a}")
+        print(f"  [{sec_label:10s}] {sym[:50]:50s} 0x{va_a:08X} -> 0x{va_b:08X} (delta={va_b - va_a:+d}, sec_ok={sec_ok})")
+        if not sec_ok:
+            failures.append(f"symbol {sym} section mismatch: std={sec_a} rev={sec_b} expected={exp_sec}")
         if not moved:
-            failures.append(f"symbol {sym} did not move under reverse-link (0x{a:08X})")
+            failures.append(f"symbol {sym} did not move under reverse-link (0x{va_a:08X})")
 
-    # 2. Shared-storage identity proof
+    # 2. Shared-storage identity proof (core groups + ALL ProductGlobals.cpp /alternatename bindings)
     alias_groups = [
         ("AnmRenderManager", [
             "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
@@ -108,12 +127,24 @@ def main() -> int:
     ]
     print("\n=== 2. Shared-Storage Identity ===")
     for label, group in alias_groups:
-        std_vals = {std_syms.get(s) for s in group}
-        rev_vals = {rev_syms.get(s) for s in group}
+        std_vals = {std_syms[s][1] if s in std_syms else None for s in group}
+        rev_vals = {rev_syms[s][1] if s in rev_syms else None for s in group}
         ok = len(std_vals) == 1 and None not in std_vals and len(rev_vals) == 1 and None not in rev_vals
         print(f"  {label:20s} std=0x{next(iter(std_vals)) or 0:08X} rev=0x{next(iter(rev_vals)) or 0:08X} ok={ok}")
         if not ok:
             failures.append(f"alias group {label} diverged: std={std_vals} rev={rev_vals}")
+
+    pragmas = parse_alternatename_pragmas(GLOBALS_CPP)
+    checked_pragmas = 0
+    for alias, target in pragmas:
+        # Only check aliases that survived /opt:ref in the map
+        if alias in std_syms or alias in rev_syms:
+            checked_pragmas += 1
+            if std_syms.get(alias) != std_syms.get(target):
+                failures.append(f"std /alternatename mismatch: {alias}={std_syms.get(alias)} != {target}={std_syms.get(target)}")
+            if rev_syms.get(alias) != rev_syms.get(target):
+                failures.append(f"rev /alternatename mismatch: {alias}={rev_syms.get(alias)} != {target}={rev_syms.get(target)}")
+    print(f"  ProductGlobals.cpp /alternatename pragmas: {len(pragmas)} declared, {checked_pragmas} live in map verified")
 
     # 3. Contiguous struct-interior offset preservation
     offset_contracts = [
@@ -133,38 +164,35 @@ def main() -> int:
     ]
     print("\n=== 3. Struct-Interior Offset Contracts ===")
     for label, base_sym, field_sym, expected in offset_contracts:
-        d_std = std_syms[field_sym] - std_syms[base_sym]
-        d_rev = rev_syms[field_sym] - rev_syms[base_sym]
+        d_std = std_syms[field_sym][1] - std_syms[base_sym][1]
+        d_rev = rev_syms[field_sym][1] - rev_syms[base_sym][1]
         ok = d_std == expected and d_rev == expected
-        print(f"  {label:40s} std=+0x{d_std:02X} rev=+0x{d_rev:02X} expected=+0x{expected:02X} ok={ok}")
+        print(f"  {label:48s} std=+0x{d_std:02X} rev=+0x{d_rev:02X} expected=+0x{expected:02X} ok={ok}")
         if not ok:
             failures.append(f"offset contract {label} failed: std={d_std:#x} rev={d_rev:#x} expected={expected:#x}")
 
-    # 4. PE base-relocation check on initialized pointer slots in .data
+    # 4. PE base-relocation check on all initialized code/self pointer slots
+    pointer_contracts = [
+        ("g_GameErrorContext.m_BufferEnd", "?g_GameErrorContext@th10@@3UGameErrorContext@1@A", 0x2000, "?g_GameErrorContext@th10@@3UGameErrorContext@1@A"),
+        ("g_AnmSpecialVmDescriptors[0].cb", "?g_AnmSpecialVmDescriptors@@3QBUAnmSpecialVmDescriptorView@@B", 0x04, "?InstallAnmVmVertexBuffer@@YIHPAUAnmVmView@@PBI@Z"),
+        ("g_PlayerShotSpawnCallbacks[1]", "?g_PlayerShotSpawnCallbacks@@3PAPAXA", 0x04, "?PlayerShotAcquireTarget@@YIHPAUPlayer@@PAUPlayerShotRuntimeView@@H@Z"),
+        ("g_PlayerShotUpdateCallbacks[1]", "?g_PlayerShotUpdateCallbacks@@3PAP6IXPAUPlayer@@PAUPlayerShotRuntimeView@@@ZA", 0x04, "?PlayerShotTrackEnemy@@YIHPAXPAUPlayerShotRuntimeView@@@Z"),
+        ("g_PlayerShotUpdateCallbacks[2]", "?g_PlayerShotUpdateCallbacks@@3PAP6IXPAUPlayer@@PAUPlayerShotRuntimeView@@@ZA", 0x08, "?PlayerShotSetOptionOrigin@@YIHPAUPlayer@@PAUPlayerShotRuntimeView@@@Z"),
+    ]
     print("\n=== 4. Initialized Pointer Relocations (.reloc) ===")
     for exe_path, syms in ((STD_EXE, std_syms), (REV_EXE, rev_syms)):
         pe = pefile.PE(str(exe_path))
         base = pe.OPTIONAL_HEADER.ImageBase
         relocs = get_reloc_rvas(pe)
-        # Check g_GameErrorContext self-pointer (+0x2000), g_PlayerShotUpdateCallbacks[1], g_AnmSpecialVmDescriptors+4
-        err_va = syms["?g_GameErrorContext@th10@@3UGameErrorContext@1@A"]
-        err_ptr_rva = (err_va + 0x2000) - base
-        err_ptr_val = struct.unpack("<I", pe.get_data(err_ptr_rva, 4))[0]
-        shot_va = syms["?g_PlayerShotUpdateCallbacks@@3PAP6IXPAUPlayer@@PAUPlayerShotRuntimeView@@@ZA"]
-        shot_ptr_rva = (shot_va + 4) - base
-        shot_ptr_val = struct.unpack("<I", pe.get_data(shot_ptr_rva, 4))[0]
-        track_va = syms["?PlayerShotTrackEnemy@@YIHPAXPAUPlayerShotRuntimeView@@@Z"]
-
-        ok_err = (err_ptr_rva in relocs) and (err_ptr_val == err_va)
-        ok_shot = (shot_ptr_rva in relocs) and (shot_ptr_val == track_va)
-        print(
-            f"  {exe_path.name:20s} err_self_ptr=0x{err_ptr_val:08X} (reloc={err_ptr_rva in relocs}) "
-            f"shot_cb[1]=0x{shot_ptr_val:08X} (reloc={shot_ptr_rva in relocs})"
-        )
-        if not ok_err:
-            failures.append(f"{exe_path.name}: g_GameErrorContext self-pointer not relocated to 0x{err_va:08X}")
-        if not ok_shot:
-            failures.append(f"{exe_path.name}: g_PlayerShotUpdateCallbacks[1] not relocated to 0x{track_va:08X}")
+        for label, owner_sym, off, target_sym in pointer_contracts:
+            slot_va = syms[owner_sym][1] + off
+            slot_rva = slot_va - base
+            val = struct.unpack("<I", pe.get_data(slot_rva, 4))[0]
+            exp = syms[target_sym][1]
+            ok = (slot_rva in relocs) and (val == exp)
+            print(f"  {exe_path.name:20s} {label:32s} val=0x{val:08X} exp=0x{exp:08X} reloc={slot_rva in relocs} ok={ok}")
+            if not ok:
+                failures.append(f"{exe_path.name}: {label} val=0x{val:08X} exp=0x{exp:08X} reloc={slot_rva in relocs}")
 
     if failures:
         print("\nFAILURES:", file=sys.stderr)

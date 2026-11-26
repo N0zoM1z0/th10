@@ -92,8 +92,8 @@ __declspec(noinline) i32 Chain::AddToCalcChain(ChainElem *elem, i32 prio)
         result = elem->addedCallback(elem->arg);
         elem->addedCallback = NULL;
     }
-    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-    g_MainSupervisorView.criticalSectionLockCounts[0]++;
+    EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+    g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN]++;
     {
         ListNode *cur;
         ListNode *node;
@@ -114,8 +114,8 @@ __declspec(noinline) i32 Chain::AddToCalcChain(ChainElem *elem, i32 prio)
         cur->next = node;
         node->prev = cur;
     }
-    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-    g_MainSupervisorView.criticalSectionLockCounts[0]--;
+    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+    g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN]--;
     return result;
 }
 
@@ -129,8 +129,8 @@ __declspec(noinline) i32 Chain::AddToDrawChain(ChainElem *elem, i32 prio)
         result = elem->addedCallback(elem->arg);
         elem->addedCallback = NULL;
     }
-    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-    g_MainSupervisorView.criticalSectionLockCounts[0]++;
+    EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+    g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN]++;
     {
         ListNode *cur;
         ListNode *node;
@@ -151,8 +151,8 @@ __declspec(noinline) i32 Chain::AddToDrawChain(ChainElem *elem, i32 prio)
         cur->next = node;
         node->prev = cur;
     }
-    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-    g_MainSupervisorView.criticalSectionLockCounts[0]--;
+    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+    g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN]--;
     return result;
 }
 
@@ -257,8 +257,8 @@ int __stdcall MainRunCalcChain(void *owner)
     int updatedCount;
     int result;
 
-    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-    ++g_MainSupervisorView.criticalSectionLockCounts[0];
+    EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+    ++g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
 restart:
     updatedCount = 0;
     node = chain->CalcList()->next;
@@ -271,32 +271,32 @@ restart:
 execute_again:
             if (elem->flags & 2)
             {
-                LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-                --g_MainSupervisorView.criticalSectionLockCounts[0];
+                LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+                --g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
                 result = elem->callback(elem->arg);
-                EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-                ++g_MainSupervisorView.criticalSectionLockCounts[0];
+                EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+                ++g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
                 switch (result)
                 {
-                case 0:
+                case th10::CHAIN_CALLBACK_RESULT_CONTINUE_AND_REMOVE_NO_DELETE:
                     chain->UnregisterElem(elem);
                     ++updatedCount;
                     node = next;
                     continue;
-                case 2:
+                case th10::CHAIN_CALLBACK_RESULT_EXECUTE_AGAIN:
                     goto execute_again;
-                case 4:
+                case th10::CHAIN_CALLBACK_RESULT_EXIT_GAME_SUCCESS:
                     updatedCount = 0;
                     goto loop_exit;
-                case 3:
+                case th10::CHAIN_CALLBACK_RESULT_BREAK:
                     updatedCount = 1;
                     goto loop_exit;
-                case 5:
+                case th10::CHAIN_CALLBACK_RESULT_EXIT_GAME_ERROR:
                     updatedCount = -1;
                     goto loop_exit;
-                case 6:
+                case th10::CHAIN_CALLBACK_RESULT_RESTART_FROM_FIRST_JOB:
                     goto restart;
-                case 7:
+                case th10::CHAIN_CALLBACK_RESULT_INVOKE_DELETED_CALLBACK:
                     if (elem->deletedCallback != NULL)
                         elem->deletedCallback(elem->arg);
                     break;
@@ -307,8 +307,8 @@ execute_again:
         node = next;
     }
 loop_exit:
-    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-    --g_MainSupervisorView.criticalSectionLockCounts[0];
+    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+    --g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
     return updatedCount;
 }
 
@@ -321,8 +321,8 @@ int __stdcall MainRunDrawChain(void *owner)
     int updatedCount;
     int result;
 
-    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-    ++g_MainSupervisorView.criticalSectionLockCounts[0];
+    EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+    ++g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
     updatedCount = 0;
     node = chain->DrawList()->next;
     while (node != NULL)
@@ -334,25 +334,25 @@ int __stdcall MainRunDrawChain(void *owner)
 execute_again:
             if (elem->flags & 2)
             {
-                LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-                --g_MainSupervisorView.criticalSectionLockCounts[0];
+                LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+                --g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
                 result = elem->callback(elem->arg);
-                EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-                ++g_MainSupervisorView.criticalSectionLockCounts[0];
+                EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+                ++g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
                 switch (result)
                 {
-                case 0:
+                case th10::CHAIN_CALLBACK_RESULT_CONTINUE_AND_REMOVE_NO_DELETE:
                     chain->UnregisterElem(elem);
                     break;
-                case 2:
+                case th10::CHAIN_CALLBACK_RESULT_EXECUTE_AGAIN:
                     goto execute_again;
-                case 4:
+                case th10::CHAIN_CALLBACK_RESULT_EXIT_GAME_SUCCESS:
                     updatedCount = 0;
                     goto loop_exit;
-                case 3:
+                case th10::CHAIN_CALLBACK_RESULT_BREAK:
                     updatedCount = 1;
                     goto loop_exit;
-                case 5:
+                case th10::CHAIN_CALLBACK_RESULT_EXIT_GAME_ERROR:
                     updatedCount = -1;
                     goto loop_exit;
                 }
@@ -362,7 +362,7 @@ execute_again:
         node = next;
     }
 loop_exit:
-    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-    --g_MainSupervisorView.criticalSectionLockCounts[0];
+    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+    --g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
     return updatedCount;
 }

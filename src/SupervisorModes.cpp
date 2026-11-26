@@ -38,29 +38,6 @@ void MainSupervisorView::LeaveLock(int index)
     --criticalSectionLockCounts[index];
 }
 
-// Evidenced by MainSupervisorView::UpdateGameMode transitions (0x004218D0)
-// and MainSupervisorView::OnUpdate (0x0041FF80).
-enum SupervisorGameMode
-{
-    SUPERVISOR_MODE_STARTUP_INIT                = 0,
-    SUPERVISOR_MODE_STARTUP_LOADING             = 1,
-    SUPERVISOR_MODE_BOOT_READY                  = 2,
-    SUPERVISOR_MODE_EXIT                        = 3,
-    SUPERVISOR_MODE_TITLE                       = 4,
-    SUPERVISOR_MODE_GAMEPLAY                    = 7,
-    SUPERVISOR_MODE_NEXT_STAGE                  = 10,
-    SUPERVISOR_MODE_RETRY_STAGE                 = 11,
-    SUPERVISOR_MODE_REPLAY_PLAYBACK             = 12,
-    SUPERVISOR_MODE_RESTART_GAME                = 13,
-    SUPERVISOR_MODE_ENDING                      = 14,
-    SUPERVISOR_MODE_RETURN_TO_TITLE_AFTER_CLEAR = 15
-};
-
-enum SupervisorLockSlot
-{
-    SUPERVISOR_LOCK_MODE = 5
-};
-
 // Target4218D0: code through421B0B plus two jump tables and a byte index map.
 int MainSupervisorView::UpdateGameMode()
 {
@@ -184,9 +161,9 @@ int __fastcall MainSupervisorView::OnUpdate(MainSupervisorView *supervisor)
             ? th10::CHAIN_CALLBACK_RESULT_EXIT_GAME_SUCCESS
             : th10::CHAIN_CALLBACK_RESULT_CONTINUE;
     int result = supervisor->UpdateGameMode();
-    if (result != 1)
+    if (result != th10::CHAIN_CALLBACK_RESULT_CONTINUE)
         return result;
-    return 1;
+    return th10::CHAIN_CALLBACK_RESULT_CONTINUE;
 }
 
 // Target420470..42053B is the real address escape of the calculation callback.
@@ -197,8 +174,8 @@ extern int MainDrawLateCallback();
 extern int MainDrawFinalCallback();
 int MainRegisterChain()
 {
-    g_MainSupervisorView.currentGameMode = -2;
-    g_MainSupervisorView.nextGameMode = 0;
+    g_MainSupervisorView.currentGameMode = SUPERVISOR_MODE_UNINITIALIZED;
+    g_MainSupervisorView.nextGameMode = SUPERVISOR_MODE_STARTUP_INIT;
     g_MainSupervisorView.unknown398 = 0;
     th10::ChainElem *element = th10::Chain::AllocElem(
         reinterpret_cast<th10::ChainCallback>(MainSupervisorView::OnUpdate));

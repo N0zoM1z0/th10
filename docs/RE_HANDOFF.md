@@ -18,14 +18,22 @@ dialog resource [src/th10.rc](../src/th10.rc), cross-TU bridge
 [src/ProductGlobals.cpp](../src/ProductGlobals.cpp)), and zero-initialized
 `.bss` layout [src/ProductBssLayout.asm](../src/ProductBssLayout.asm).
 
-Reproduce both builds and run the Position Independence verifier:
+Reproduce both builds and run the Position Independence and semantic protocol
+verifiers (use `--fresh` after shared header edits):
 
 ```sh
 scripts/repo-python scripts/build.py --check
-scripts/repo-python scripts/build.py
+scripts/repo-python scripts/build.py --fresh
 scripts/repo-python scripts/build.py --reverse-link
 scripts/repo-python scripts/verify-pi.py
+scripts/repo-python scripts/check-semantic-protocols.py
 ```
+
+See [SEMANTIC_RECONSTRUCTION.md](SEMANTIC_RECONSTRUCTION.md),
+[SEMANTIC_INDEX.md](SEMANTIC_INDEX.md), [SOURCE_MAP.md](SOURCE_MAP.md), and
+[SEMANTIC_HISTORY.md](SEMANTIC_HISTORY.md) for active semantic batches on
+`semantic/readability-protocols` (next open consumers: `FrontEnd.cpp`/`Gui.cpp`
+input masks, `EnemySoundQueue` cue IDs, and `SoundPlayer` command opcodes).
 
 See [POSITION_INDEPENDENCE.md](POSITION_INDEPENDENCE.md) for the full PI
 verification results, the duplicate-storage and symbol-collision bugs fixed

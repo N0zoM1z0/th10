@@ -11,7 +11,7 @@
 #include "GameErrorContext.hpp"
 
 // Target pointer table 0x00474B40, in load order. Pointer slots are mutable.
-const char *g_SoundFileNames[37] =
+const char *g_SoundFileNames[SE_COUNT] =
 {
     "se_plst00.wav",
     "se_enep00.wav",
@@ -323,7 +323,7 @@ int SoundPlayerView::Initialize(HWND window)
     SetTimer(window, 0, 250, NULL);
     gameWindow = window;
     SoundPlayerView *globalOwner = reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner);
-    for (int i = 0; i < 37; ++i)
+    for (int i = 0; i < SE_COUNT; ++i)
     {
         if (globalOwner->soundDataLoadState == 2)
             return -1;
@@ -523,7 +523,7 @@ void SoundDataLoaderThread()
 {
     SoundPlayerView *owner = reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner);
     unsigned char **const slots = owner->soundFileData;
-    for (int i = 0; i < 37; ++i)
+    for (int i = 0; i < SE_COUNT; ++i)
     {
         if (owner->soundDataLoadState == 2)
             return;
@@ -589,7 +589,7 @@ int MainReleaseSound(unsigned char *soundOwner)
             owner->soundBuffers[i] = NULL;
         }
     }
-    for (int i = 0; i < 37; ++i)
+    for (int i = 0; i < SE_COUNT; ++i)
     {
         if (owner->soundFileData[i] != NULL)
         {

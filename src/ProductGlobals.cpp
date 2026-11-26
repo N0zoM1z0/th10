@@ -7,6 +7,8 @@
 // 100% relocatable and Position Independent.
 
 #include <stddef.h>
+#include "GameErrorContext.hpp"
+#include "ScriptViewerWorker.hpp"
 
 // Forward declarations for code pointers referenced in initialized tables
 struct AnmVmView;
@@ -16,9 +18,6 @@ extern int __fastcall InstallAnmVmVertexBuffer(AnmVmView *vm, const unsigned int
 extern int __fastcall PlayerShotAcquireTarget(Player *player, PlayerShotRuntimeView *shot, int index);
 extern int __fastcall PlayerShotTrackEnemy(void *player, PlayerShotRuntimeView *shot);
 extern int __fastcall PlayerShotSetOptionOrigin(Player *player, PlayerShotRuntimeView *shot);
-
-// External ScriptViewerWorkerView vtable symbol (from ScriptViewerWorker.obj)
-extern "C" unsigned char _th10_worker_vtable_ref;
 
 // ===========================================================================
 // 1. Initialized data tables (.data)
@@ -179,7 +178,7 @@ TextRenderFormatInfo g_TextRenderFormats[11] = {
     { 0x0u, 0x0u, 0x1u, 0x0u },
 };
 unsigned int g_EnemySoundCueMetadata_head = 0x00000000u;
-unsigned int g_SoundCueMetadata_storage[131] = {
+unsigned int g_SoundCueMetadata_storage[93] = {
     0xF894u, 0x0u, 0xF7CCu, 0x1u, 0x5FB50u, 0x1u, 0x5FA24u, 0x2u,
     0x64FBB4u, 0x3u, 0x64FD44u, 0x4u, 0x64FD44u, 0x5u, 0x32F894u, 0x6u,
     0x32F768u, 0x7u, 0x32F6A0u, 0x8u, 0x64FE0Cu, 0x9u, 0x64FE70u, 0xAu,
@@ -191,12 +190,7 @@ unsigned int g_SoundCueMetadata_storage[131] = {
     0x64FCE0u, 0x19u, 0x64FCE0u, 0x1Au, 0x64FCE0u, 0x1Bu, 0xFE0Cu, 0x1Cu,
     0x64FED4u, 0x1Du, 0x640000u, 0x1Eu, 0x640000u, 0x1Eu, 0x64FDA8u, 0x8u,
     0x64FED4u, 0x1Fu, 0x64FED4u, 0x20u, 0x64FED4u, 0x21u, 0x64FED4u, 0x22u,
-    0x64FF9Cu, 0x23u, 0x640000u, 0x24u, 0x32FCE0u, 0x4700B4u, 0x4700A4u, 0x470094u,
-    0x470084u, 0x470074u, 0x470064u, 0x470054u, 0x470044u, 0x470038u, 0x470028u, 0x470018u,
-    0x470008u, 0x46FFF8u, 0x46FFE8u, 0x46FFD8u, 0x46FFC8u, 0x46FFB8u, 0x46FFA8u, 0x46FF98u,
-    0x46FF88u, 0x46FF78u, 0x46FF68u, 0x46FF58u, 0x46FF48u, 0x46FF38u, 0x46FF28u, 0x46FF18u,
-    0x46FF08u, 0x46FEF8u, 0x46FEE8u, 0x46FED8u, 0x46FECCu, 0x46FEC0u, 0x46FEB0u, 0x46FEA0u,
-    0x46FE90u, 0x46FE80u, 0x0u,
+    0x64FF9Cu, 0x23u, 0x640000u, 0x24u, 0x32FCE0u,
 };
 struct PbgDecryptProfile { unsigned int key, step, limit; };
 PbgDecryptProfile g_PbgDecryptProfiles[8] = {
@@ -237,22 +231,12 @@ int g_FrontEndStageShortcut = 0;
 #pragma data_seg()
 
 unsigned char g_TextRenderBuffer_storage[0x124] = { 0 };
-struct ScriptViewerWorkerView {
-    ScriptViewerWorkerView();
-    virtual ~ScriptViewerWorkerView();
-    unsigned int pad[6];
-};
 ScriptViewerWorkerView g_MainScanWorker;
 float g_EnemyWorldMatrix_storage[16] = { 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f };
 
 
 short g_DefaultGameKeyBindings[9] = { 0, 1, 2, 3, -1, -1, -1, -1, 4 };
 namespace th10 {
-struct GameErrorContext {
-    char m_Buffer[0x2000];
-    char *m_BufferEnd;
-    int m_ShowMessageBox;
-};
 GameErrorContext g_GameErrorContext = { { 0 }, g_GameErrorContext.m_Buffer, 0 };
 }
 
