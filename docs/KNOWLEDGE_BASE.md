@@ -688,98 +688,61 @@ frontier; do not refresh a baseline merely to accept the new positions.
   The [MIT-licensed model](licenses/th10-decomp-MIT.txt) in
   `_reference/th10-decomp` provided the loop and stack-home leads.
   [2026-11-24]
-- **EnemyGameStateView::StartSpell @0x409280 (2,432)** uses the
-  `enemy-start-spell` recipe with real `AnmVmStartScript` support.
-  The historical cold replay at `fb13affe` covers 108 linked fields, including the table
-  reference and all seven stage destinations. The real dispatcher
-  pushes the panel pointer, index, name and duration, and the owner
-  returns with `RET 0x10`. The replay gate reads `ReplayManager::mode`
-  at +0x10, as in `EnemyEndSpell`.
+- **EnemyGameStateView::StartSpell @0x409280 (2,432)** matches its complete
+  linked extent with all 108 fields, including the jump-table address and its
+  seven fixed stage destinations, in `enemy-start-spell`. Both panel and stage creation pass layer 15 and flag
+  `0x40000000` through the by-value SpellPanelAppearance overload. The panel
+  overload is force-inlined and uses AddVmToPrimaryBack for its five
+  unconditional registrations. The ordinary stage overload keeps the global
+  AddVmVariant0 call; its nine arms merge into the target's one shared tail.
+  Preserve that method's global noinline annotation, introduced in `9531029b`.
+  `060d3655` later extracted the shared registration primitive.
 
-  Preparing the aggregate name cursor while the record-index product
-  is live in EAX gives the cursor ECX. The reference context's C2 trace
-  shows the original argument coalescing into ECX for the first two
-  copies and being read from its incoming stack slot at the draw.
-  Assigning the aggregate record before forming the cursor frees EAX,
-  so the cursor takes EAX and the original name takes EBX. Saving and
-  restoring the name explicitly repairs those earlier registers but
-  introduces a stack write before the aggregate attempt update.
+  Passing literal appearance values directly in the stage helper leaves
+  2,431/2,432 bytes despite all 108 fields binding. The sole residual is
+  +0x124: `MOV [EDX+ECX],AL` instead of `MOV [ECX+EDX],AL`. Restoring the
+  stage overload's by-value appearance path repairs that earlier name-copy
+  instruction. Keep the copy's const incoming pointer values and independent
+  cursors: the source must stay in ECX and the aggregate record in ESI for
+  its attempt-count access at +0x84.
 
-  Initializing the third cursor before the record assignment matches
-  2,431 bytes, leaving only the exchanged SIB terms at +0x124. Passing
-  the record's destination directly to the copy helper with constant
-  incoming pointer values and independent cursors restores that byte.
-  The maintained panel copy has its own input and output cursors.
-  Animation creation carries the layer and flags in a by-value
-  appearance. Replay `enemy-start-spell` for the complete owner.
-  [2026-11-24]
+  In pinned C2 build 6030, OptCmpHashVal (`0x10795BC5`) sorts the cached keys
+  at operand +0x10 in descending order. The literal-stage candidate's generated
+  destination difference has kind 3, serial `0x7E0`, key `0x1F800`; its walked
+  cursor has kind 4, serial `0x1C2`, key `0x13840`. The historical exact objects
+  have difference `0x836`/`0x10D80` and cursor `0x1C1`/`0x13820`, reversing
+  the sort after the difference crosses the `0x800` serial wrap. Kind 3 uses
+  the six-bit serial shift at `0x107977C2`; kind 4 uses the five-bit path at
+  `0x107957B1`. These keys include `0x10000` and a low 16-bit payload.
 
-  Reopened on 2026-11-26: `9531029b` later made AddVmVariant0 noinline;
-  `060d3655` extracted its shared registration primitive. The resulting cold
-  body is 1,992 bytes with six calls instead of the target's one. Locally
-  inline the five unconditional panel registrations with AddVmToPrimaryBack,
-  and leave stage-animation registrations on the canonical method. Their
-  branches merge into one shared call. This recovers the complete 2,432 bytes
-  and all 108 fields without changing the global method.
+  The difference is created through `0x1074B014`, called by `0x1074AF10`,
+  with the same stack through `0x1074B20D` and `0x1078F5B5` in both contexts.
+  C2 allocates serials to batches of 32 0x60-byte symbol slots and preserves
+  a slot's serial when reusing it. Its kind-3 allocation can use the free
+  list; the `0xF` request at `0x1074B00A` takes a fresh slot. Thus a serial
+  gap is not a count of newly emitted operations. The pool counter is already
+  `0x3C0` in the candidate and `0x3E0` in the historical context when the owner
+  is selected. Their read-only debugger links preserve each complete owner
+  hash. The historical context has the earlier three-formal declaration.
 
-  One byte remains at +0x124: `MOV [EDX+ECX],AL` instead of the target's
-  `MOV [ECX+EDX],AL`. Restoring the pre-statistics-change record definition
-  produces both the same old 1,992-byte body/all 113 field bindings and the
-  same 2,431/2,432 panel/stage result. The record layout is independent of
-  this residual. Copy pointer order, explicit-byte do-loops and indexed loops
-  disturb allocation or layout; unsigned-byte cursors, forced copy inlining,
-  direct history access and direct by-value panel registration do not change
-  the SIB. The useful controls are under `.analysis/statistics-record/`.
+  A strcpy call, a const source reference, helper definition order, returning
+  the copy destination and factoring the 15 stage-script calls preserve the
+  residual. Combining the aggregate copy/count changes the original name to
+  EBX and gives 2,366/2,432. Signed and unsigned explicit displacements both
+  give 2,341/2,432 and reassociate the first panel-name subtraction. Indexed
+  variants disturb the prefix or rematerialize the count base. Restoring the
+  pre-statistics-change record definition reproduces both the old 1,992-byte
+  regression and the 2,431-byte candidate; it is independent of this repair.
+  Useful traces and failed controls are under `.analysis/statistics-record/`.
+  In the headless debugger wrapper, continue to process exit: detaching can
+  shut down the display before the PE header is finalized.
 
-  In pinned C2 build 6030, OptCmpHashVal at `0x10795BC5` sorts operands by
-  descending cached key at +0x10. An early read-only trace captures the actual
-  pair: destination difference `0x1F800`, walked source cursor `0x13840`.
-  The difference's symbol is kind 3 with no defining instruction and serial
-  `0x7E0`;
-  its hash path at `0x107977C2` shifts the serial left six bits. The cursor's
-  symbol is kind 4, serial `0x1C2`; its path at `0x107957B1` uses the
-  five-bit shift.
-  For these two operands the low 16-bit result is combined with `0x10000`.
-  This puts the difference first before global allocation and preserves the
-  wrong SIB order. Moving CopyPanelName below the owner changes heap addresses
-  but leaves both serials and keys unchanged.
-
-  Filter the trace when C2 selects the function: `0x1074FE38` stores ESI to
-  current-function slot `0x10883D74`, and `0x107515C8` restores it from EDI.
-  Starting at global allocation (`0x107A5471`) is too late for the relevant
-  comparisons. The completed debugger link has the same full owner bytes as
-  the ordinary candidate. In the headless wrapper, continue the inferior to
-  process exit; detaching can shut down the display before the PE header is
-  finalized.
-  Inputs and output are in `.analysis/statistics-record/spell-start-trace/`.
-
-  Relinking the retained historical exact objects under the same read-only
-  trace preserves their complete 2,432-byte owner hash. Their cursor is kind 4,
-  serial `0x1C1`, key `0x13820`; the generated difference is kind 3, serial
-  `0x836`, key `0x10D80`. Its serial crosses the `0x800` wrap in the six-bit
-  hash path, placing it after the cursor. The current difference is 86 serials
-  earlier, below that wrap. This explains the historical/current SIB reversal;
-  it does not yet identify which earlier lowering introduced those temporaries.
-  The historical object graph retains its three-formal source epoch.
-  See `spell-start-trace/historical/historical-early-hash.trace` and
-  `spell-start-trace/historical-linked-control.json` in the private scratch.
-
-  A strcpy call, a const reference to its source, removing the unused formal,
-  returning the destination and helper definition order preserve the residual.
-  Factoring the 15 stage-script calls also leaves it unchanged. The indexed
-  ResultMenu form changes name-register lifetimes here; indexing both arrays
-  moves an earlier field. Signed and unsigned named integer displacements both
-  give 2,341/2,432 and reassociate the first panel-name subtraction. Combining
-  the aggregate copy and count in a typed helper keeps 2,432 bytes and all 108
-  fields but gives the original name EBX, leaving only 2,366 matching bytes.
-  Neither a pointer parameter nor a const source parameter repairs that lifetime.
-  A record-reference displacement retains the count base but still changes the
-  prefix. All these controls were discarded; the committed source and retained
-  ordinary image reproduce the single-byte residual.
-  A separate cold build of the real ECL dispatcher graph passes its complete
-  14,416 bytes and 726 fields. The same-image StartSpell contribution remains
-  2,431/2,432 with all 108 fields, so changing to that recipe does not remove
-  this residual. Keep the canonical owner recipe unchanged.
+  The final-source 39-input canonical cold link passes all 2,432 bytes and
+  108 fields. Recompiling this source in the retained 46-input ECL caller graph
+  also passes the complete caller (14,416 bytes/726 fields) and the same-image
+  owner (2,432 bytes/108 fields). The return is RET 0x10. Final reports are
+  `start-spell-stage-appearance-cold-*` and `start-spell-stage-appearance-caller-*`
+  under `.analysis/statistics-record/`.
 - **ItemManagerUpdateBody @0x41AFD0 (2,320)** is exact in the registration-rooted
   `/GL` link, with 154 bound fields, 73 direct local branches and both jump
   tables at their target offsets. Expressing the distance scale as

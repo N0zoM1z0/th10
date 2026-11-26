@@ -7,85 +7,27 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `EnemyGameStateView::StartSpell` at `0x00409280`,
-2,432 bytes in `src/PlayerHudStartSpell.cpp`. The current panel/stage helper
-split recovers the complete extent and all 108 fields. Its only ordinary
-mismatch is +0x124: target `MOV [ECX+EDX],AL`, candidate `MOV [EDX+ECX],AL`.
-A complete 39-input cold rebuild reproduces this single-byte residual;
-see `start-spell-panel-stage-cold-*` under `.analysis/statistics-record/`.
-Keep it selected; candidate status and zero exact credit remain until the
-complete strict comparison passes.
+The sole active owner is `PlayerShotTrackEnemy` at `0x00428B10`, 266 bytes
+in `src/PlayerShotTracking.cpp`. It is the largest remaining authored owner
+outside the operator-deferred StartSubroutine. The complete source is already
+present but has no tracking-owner comparison unit yet. The existing
+`player-shot-angle-difference-00428ce0` recipe compiles the same translation
+unit with the tracking callback as its LTCG entry; use that context for the
+first bounded build and add the complete target-bound tracking comparison.
+The shot arrives in EDX; the incoming ECX owner identity is still unknown.
+Keep the existing 80-byte angle-difference and 53-byte acquisition owners as
+selected guards when this shared source changes.
 
-The panel helper uses AddVmToPrimaryBack and explicit local inlining. The
-stage helper keeps the canonical AddVmVariant0 call, merging the stage arms
-into the target's shared tail. This preserves the global noinline method
-needed by other accepted owners. The noinline annotation first appeared in
-`9531029b`; `060d3655` later extracted its registration primitive.
-
-A cold control with only the pre-statistics-change record definition gives
-the same old 1,992-byte body and all 113 field bindings. Recompiling that
-control with the panel/stage split also gives the same 2,431/2,432 result.
-The three unused anonymous namespace names vary with the worktree path;
-all addresses and referenced bindings agree. Reports and probe outcomes are
-under `.analysis/statistics-record/`: `start-spell-record-definition-control.json`,
-`start-spell-inline-old-record-compare.json` and
-`start-spell-panel-stage-probes.json`. These controls isolate the remaining
-index encoding from the accepted record layout change.
-
-The current source is restored to `3ac55cc2`. C2's cached operand keys order
-its generated destination difference (`0x1F800`) before the source cursor
-(`0x13840`). A read-only trace captures their actual comparison before global
-allocation; moving the copy helper's definition changes heap addresses but not
-these keys. The completed debugger link preserves the full candidate bytes.
-See the StartSpell note in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) for symbol
-classes, hash paths and failed source controls.
-
-The real ECL caller's 46-input cold graph passes its complete 14,416 bytes
-and all 726 fields. The StartSpell owner in that same image still passes all
-108 fields and differs only at +0x124. Reports are
-`start-spell-real-caller-compare.json` and
-`start-spell-real-caller-owner-compare.json` under `.analysis/statistics-record/`.
-The private wrapper below keeps the complete 2,432-byte owner contract while
-using the existing caller recipe in memory. The canonical recipe is unchanged.
-The ordinary `EnemyStartSpell` image is restored from the committed owner;
-`start-spell-retained-baseline-*` records its current comparison.
-
-The retained historical exact objects now have a completed read-only hash
-trace too. Their cursor key is `0x13820` (serial `0x1C1`), and their difference
-key is `0x10D80` (serial `0x836`). The historical difference crosses the `0x800`
-serial wrap; the current one is 86 serials earlier and sorts first. The trace
-preserves the historical owner's full hash, recorded in
-`spell-start-trace/historical-linked-control.json`. Preserve that older source
-and object context; it has the earlier three-formal declaration.
-
-The next useful analysis is to compare the two owners before loop strength
-reduction and locate the extra generated temporaries. Avoid another recipe
-change: both current cold graphs already agree. Signed displacement repeats
-the unsigned prefix reassociation, and combining the aggregate copy/count
-changes the original name to EBX. Both fail to preserve the required ECX
-cursor and ESI record base. Returning the copy destination, factoring the 15
-stage-script calls, fixed panel appearance and position memcpy leave the same
-single-byte residual. The dual-index copy moves an earlier field. These
-controls are summarized in `start-spell-panel-stage-probes.json`; all source
-experiments have been reverted and the ordinary baseline was compared again.
-
-```bash
-scripts/repo-python scripts/build-match-unit.py --unit enemy-dispatch-ecl
-scripts/repo-python scripts/compare-linked-function.py \
-  --unit enemy-dispatch-ecl --json
-scripts/repo-python .analysis/statistics-record/compare-start-spell-caller-graph.py
-```
-
-InitializeGameStatisticsRecord now passes the complete 274-byte owner and all
-eight fields. Its final-source canonical cold graph also passes the existing
-load/finalize/tail guards (1,403 bytes and 44 fields together). Six selected
-record consumers pass: DecompHelp, EnemyEndSpell, GameManager Initialize,
-spell-panel Update, GameManager Update and practice-record Refresh. See
-`accepted-source-*`, `accepted-consumer-*` and `practice-consumer-cold.json`
-in `.analysis/statistics-record/`. The sole constructor remains nonexact at
-137/132 bytes; its actual call and the original both push ESI to the RET4
-initializer. The typed-member finding and failed controls are in
-[KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md).
+StartSpell is now accepted again. The final-source 39-input canonical cold
+link passes all 2,432 bytes and 108 fields, including the jump-table address
+and seven fixed stage destinations. The selected real ECL caller replay also
+passes 14,416 bytes/726 fields, and its same-image StartSpell passes 2,432/108.
+Both panel and stage helpers must carry by-value appearance inputs; using
+literal values directly in the stage helper caused the earlier SIB reversal.
+The physical entry returns with RET 0x10. Final source and reports are
+`src/PlayerHudStartSpell.cpp` and `start-spell-stage-appearance-{cold,caller}-*`
+under `.analysis/statistics-record/`. The read-only allocator/hash finding is
+in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md).
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
@@ -127,7 +69,8 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
-| `game-statistics-initialize-record` | 274 B | `GameStatisticsTail`, eight fields, matching literal payload and stack record / RET4. Three same-image guards and six selected typed-record consumers pass cold; the independent StartSpell regression is reopened. |
+| `enemy-start-spell` | 2,432 B | `EnemyStartSpell`, 39-input canonical cold, 108 fields and RET 0x10. The real ECL caller and same-image owner pass selected strict replays. Both creation paths retain by-value appearance inputs. |
+| `game-statistics-initialize-record` | 274 B | `GameStatisticsTail`, eight fields, matching literal payload and stack record / RET4. Three same-image guards and six selected typed-record consumers pass cold. The independent StartSpell regression has its own accepted repair. |
 | `anm-loaded-set-execute-script-idx` | 287 B | `AnmSetVmScriptIndex`, four fields and EDX/EAX/ECX inputs. The sole 36-byte handle caller passes all three fields in the same independent cold link. |
 | `main-configure-camera` | 287 B | `StageViewport`, 12 fields and EDI receiver. All six direct consumers pass selected cold comparisons in three graphs. |
 | `frontend-main-menu-update` | 288 B | `FrontEndReplay`, 20 fields including five switch entries. The real dispatcher passes 1,128 bytes/99 fields in the same cold link. |

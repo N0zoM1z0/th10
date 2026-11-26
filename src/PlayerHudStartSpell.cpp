@@ -62,13 +62,20 @@ static __forceinline AnmVmIdView CreatePanelAnimation(
 }
 
 static inline AnmVmIdView CreateStageAnimation(
-    AnmLoadedView *resource, int script)
+    AnmLoadedView *resource, int script, SpellPanelAppearance appearance)
 {
     AnmVmView *object = g_AnmRenderManagerView->AllocateVm();
-    object->renderLayer = 15;
-    object->flags35C |= 0x40000000u;
+    object->renderLayer = appearance.renderLayer;
+    object->flags35C |= appearance.flags;
     resource->InitializeVm(object, script);
     return g_AnmRenderManagerView->AddVmVariant0(object);
+}
+
+static inline AnmVmIdView CreateStageAnimation(
+    AnmLoadedView *resource, int script)
+{
+    SpellPanelAppearance appearance = {15, 0x40000000u};
+    return CreateStageAnimation(resource, script, appearance);
 }
 
 static __forceinline AnmVmView *FindInline(int handle)
