@@ -7,15 +7,16 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `EnemyFireLaser` at `0x0041C510`, 153 bytes in
-`src/EnemyLaser.cpp`. It is the largest remaining authored owner outside the
-operator-deferred StartSubroutine. The target takes ESI manager, EDI request
-and one stack type argument with RET4. The maintained natural factory uses
-real C++ construction, typed virtual-slot declarations and a cached append
-pointer. Its older ten-input candidate had the full 153-byte extent but
-plain RET. Inspect the complete current body and actual dispatcher/caller
-context before changing source. Keep the separately exact type constructors
-and their existing physical interfaces.
+The sole active owner is `ScriptViewerPopupOwnerView::Initialize` at
+`0x0042B4D0`, 145 bytes in `src/ScriptViewerPopupCreate.cpp`. It is the largest
+remaining authored owner outside the operator-deferred StartSubroutine.
+Inspect the current four-input ScriptViewerPopupCreate image before editing:
+the natural VM initializer member now has its complete 273-byte body in
+this graph. Older notes about an opaque initializer and EBX receiver predate
+that repair. The function installs the shared ASCII resource, allocates and
+registers both tasks, resets its embedded VM and selects sprite 196. Preserve
+the accepted popup constructor, destructor, insertion and draw/update bodies;
+its real factory is the direct consumer to recheck.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
@@ -57,6 +58,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `enemy-laser-spawn` | 153 B | `LaserLineUpdate`, four-input canonical cold, four fields and ESI/EDI/stack type with RET4. Current member source unchanged; replaces the stale free-helper label. Bounce410/17, update1001/31 and both constructors202/2 and219/2 pass in the same image. |
 | `script-viewer-emit-value-popup` | 167 B | `ScriptViewerPopupCreate`, four-input canonical cold, one speed field and ESI/EDI/EAX/stack color/RET4. Keep zero fixup after the sign branch and reuse the timer helper. Popup guards pass; actual ItemManager caller2320/154 and same-image callee167/1 pass its 41-input cold graph. |
 | `frontend-assign-keyconfig-binding` | 200 B | `FrontEndKeyConfig`, 21-input canonical cold, three fields and EAX/ECX/EDX with RET. Source unchanged. The real key editor caller passes 880/67; display refresh2452 and sound queue123 pass in the same image. |
 | `entity-start-script` | 202 B | `StagePrepareAnimationSlots`, five-input canonical cold, both calls and ESI VM/EAX index/stack resource/RET4. Natural `AnmVmView::Initialize()` replaces the dummy-argument free wrapper; initializer273 remains raw-exact. Direct initializer consumers, stage214, stage dispatcher1868 and StartSpell2432 pass selected canonical cold comparisons. |

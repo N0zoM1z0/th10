@@ -1573,9 +1573,20 @@ frontier; do not refresh a baseline merely to accept the new positions.
   target `FSTP` and `SUB ESP,8` before multiplication instead of an extra
   live x87 value. This closes the earlier 168-byte / 10-difference candidate
   with natural C++; the independent strict comparator also passes. [2026-11-19]
-- **EnemyFireLaser @0x41C510 (153)**: target ESI manager, EDI request, stack
-  type, RET4; forms give 157/RET8 or 153 with plain RET. The laser vtable split
-  is the likely lever. [2026-11-14]
+- **EnemyLaserManagerStorageView::Spawn @0x41C510 (153)** matches its
+  unchanged natural member source in the four-input LaserLineUpdate cold
+  graph. The complete body binds both operator-new calls and the real
+  type-0/type-1 constructors. ESI manager, EDI request, stack type and both
+  RET4 exits match. The earlier EnemyFireLaser label referred to the opaque
+  forwarding helper and its older plain-RET candidate, rather than this
+  current member body. Keep real C++ construction, the typed virtual base
+  and the cached append-tail read.
+
+  Bounce passes 410 bytes/17 fields and the virtual update root passes
+  1,001 bytes/31 fields in the same cold image. Both constructor callees
+  remain complete at 202 and 219 bytes, with two fields each; their origin
+  classifications are unchanged. Reproduce with `--unit enemy-laser-spawn`;
+  reports are under `.analysis/laser-factory/`.
 - **CreateFpsCounter @0x413350 (151)**: exact 151/151 in the real WinMain
   `/GL /GS` graph. The factory allocates/publishes the shared 0x8c FPS/replay
   timing owner, initializes a 0x24 ChainElem, assigns its draw callback,
