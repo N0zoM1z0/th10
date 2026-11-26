@@ -7,22 +7,22 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `GamePrepareAnimationSlots` at `0x00404450`,
-214 bytes in `src/StageAnimationSlots.cpp`. It is the largest remaining
-authored owner outside the operator-deferred StartSubroutine. Complete source
-already marks the three task flags, resets each object, walks signed primitive
-records, starts the VM scripts and resets the instruction pointer.
-The target uses a stack stage-owner argument and RET4; its sole call is to
-AnmVmStartScript at 0x404F30. Include that real definition and its initializer
-and loaded-script dependencies before interpreting register differences.
+The sole active owner is `AnmRenderManagerView::~AnmRenderManagerView` at
+`0x00446220`, 206 bytes in `src/AnmManager.cpp`. It is the largest remaining
+authored owner outside the operator-deferred StartSubroutine. Natural source
+already drains both VM lists through RemoveVm; automatic member destruction
+then releases the 20 layer VMs, primary VM and 4,096 inline-pool VMs.
+The target uses a stack manager argument and RET4. Its real shutdown caller
+is at 0x438AD0 in the Main/ANM lifecycle.
 
-The existing `game-manager-update-body` recipe already roots the graph at this
-stage function. Older source-era diagnostics were 184 bytes with private EDI
-in a caller-rooted graph and 204 bytes when this function was entry. Treat
-those as leads and compare the current complete source early. No dedicated
-stage-preparation comparison unit exists yet. Keep this function as entry to
-preserve the target's stack interface; its real caller is GameManager update
-at 0x4181E3.
+Begin with the existing two-input `anm-copy-texture-rect` startup image, which
+already compiles Main and AnmManager under WinMain using the actual manager
+creation profiles. Inspect the complete destructor and its generated member/
+array EH region before changing source. Reuse the existing VM-array protocol
+checker after reviewing this parent's actual unwind map and cleanup order.
+No dedicated manager-destructor comparison unit has been added yet.
+AnmVmStartScript remains a separate 204/202 candidate in the stage graph;
+leave that smaller owner until this destructor is complete.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
@@ -64,6 +64,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `game-prepare-animation-slots` | 214 B | `StagePrepareAnimationSlots`, five-input canonical cold, sole real VM-starter call and stack owner/RET4. Source unchanged. The retained 1,544-byte GameManager caller passes all 114 fields; the starter itself remains nonexact. |
 | `anm-copy-texture-rect` | 227 B | `AnmCopyTextureRect`, two-input canonical cold, both call fields and EDX/EAX/ECX plus four stack words / RET16. Fresh lookups cross the flush and first surface query. The 133-byte flush callee passes four fields in the same graph and its own canonical cold. |
 | `script-viewer-popup-owner-destructor` | 232 B | `ScriptViewerPopupCreate`, four-input canonical cold, 22 fields and stack receiver/RET4. Single VM-member EH: 21-byte region, 28-byte FuncInfo and real 34-byte cleanup. Constructor134 and release18 pass; the VM EH verifier self-tests pass. |
 | `player-constructor` | 244 B | `ScriptViewerLifecycle-cold-2`, 14-input canonical cold, sole g_Player field and ESI receiver/EAX result. Nested option-state construction restores the last flag clear. The Player factory passes 69/5 and the standalone option constructor remains 10/10. |

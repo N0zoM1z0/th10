@@ -688,6 +688,21 @@ frontier; do not refresh a baseline merely to accept the new positions.
   The [MIT-licensed model](licenses/th10-decomp-MIT.txt) in
   `_reference/th10-decomp` provided the loop and stack-home leads.
   [2026-11-24]
+- **GamePrepareAnimationSlots @0x404450 (214)** matches its unchanged source
+  in the five-input `game-prepare-animation-slots` cold graph. Keep this owner
+  as entry to retain its stack argument and both RET4 exits. Include the real
+  AnmVmStartScript, AnmVmCreate, AnmLoadedStartScript and AnmManager definitions;
+  the current complete input graph closes the older 204-byte entry candidate.
+  The target's sole call is AnmVmStartScript at 0x404F30.
+
+  Three task flags, signed object and primitive loops, signed primitive stride,
+  VM-bank addressing, truncated VM index and the final instruction-pointer
+  reset all match. The retained GameManagerUpdateBody image remains exact at
+  1,544 bytes/114 fields; its target call at 0x4181E3 passes the stack owner.
+  The starter's physical return is RET4, but its own 204-byte body differs from
+  the target's 202 and remains a separate open owner.
+  Final reports are `first-cold-*` and `retained-caller-guard.*` under
+  `.analysis/stage-prepare/`.
 - **AnmRenderManagerView::CopyTextureRect @0x448360 (227)** matches all
   bytes and both call fields in the two-input Main.cpp/AnmManager.cpp cold
   link. Keep WinMain as the actual manager-creation entry, with its existing
