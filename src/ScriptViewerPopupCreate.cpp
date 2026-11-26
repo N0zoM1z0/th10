@@ -138,40 +138,30 @@ void ScriptViewerPopupOwnerView::EmitValuePopup(
     ScriptViewerPopupRecord *row = PopupRecords() + nextPopupIndex;
     int count = 0;
     row->active = 1;
-    if (value < 0)
-        goto negativeValue;
-    while (value != 0)
+    if (value >= 0)
     {
-        row->digits[count] = static_cast<unsigned char>(value % 10);
-        value /= 10;
-        ++count;
+        while (value != 0)
+        {
+            row->digits[count++] = static_cast<unsigned char>(value % 10);
+            value /= 10;
+        }
     }
-    if (count != 0)
-        goto storePopup;
-    row->digits[0] = 0;
-singleDigit:
-    count = 1;
-storePopup:
+    else
+    {
+        row->digits[0] = 10;
+        count = 1;
+    }
+    if (count == 0)
+    {
+        row->digits[0] = 0;
+        count = 1;
+    }
     row->digitCount = static_cast<unsigned char>(count);
     row->color = color;
-    if ((row->timer.flags & 1u) == 0)
-    {
-        row->timer.current = 0;
-        row->timer.previous = -999999;
-        row->timer.subframe = 0.0f;
-        row->timer.scale = &g_AnmGameSpeed;
-        row->timer.flags |= 1u;
-    }
-    row->timer.current = 0;
-    row->timer.subframe = 0.0f;
-    row->timer.previous = -1;
+    row->timer.SetCurrent(0);
     row->position = *position;
     ++nextPopupIndex;
     return;
-
-negativeValue:
-    row->digits[0] = 10;
-    goto singleDigit;
 }
 
 

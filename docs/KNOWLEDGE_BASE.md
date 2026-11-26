@@ -695,6 +695,27 @@ frontier; do not refresh a baseline merely to accept the new positions.
   all 1,389 caller bytes and 146 fields. Reports are `saved-next-cold-*`,
   `remove-*-guard.*`, `remove-canonical-cold-*` and `winmain-guard-*` under
   `.analysis/anm-manager-destructor/`.
+- **ScriptViewerPopupOwnerView::EmitValuePopup @0x42B9C0 (167)**
+  matches the complete four-input popup factory cold graph, including the
+  sole g_AnmGameSpeed field at +0x75 and ESI owner/EDI position/EAX value/
+  stack color with RET4. Put the zero-digit fixup after the entire sign
+  branch. The negative sentinel block then follows the return and jumps
+  back to the shared assignment of one to count. A zero fixup inside the
+  positive branch gives 176 bytes; the original goto and negative-first
+  forms give 171. Use the existing `timer.SetCurrent(0)` so digit count is
+  stored before color, matching the target's schedule.
+
+  The [MIT-licensed reference](licenses/th10-decomp-MIT.txt), especially
+  `callback_thunk_pairs_2026-10-01.md`, supplied the lead to check for zero
+  digits after the sign branch. The source keeps the 720-slot insertion ring, 723 update/draw rows,
+  negative glyph 10, signed decimal split and complete timer reset.
+  The 134-byte constructor, 232-byte destructor, 134-byte update and
+  540-byte draw pass in the same cold image. The actual ItemManagerUpdateBody caller passes 2,320 bytes/
+  154 fields in its own 41-input cold graph, including all eight popup calls;
+  the complete popup callee also passes there at 167 bytes/one field.
+  Reproduce with `--unit script-viewer-emit-value-popup` and
+  `--unit item-manager-update-body`; reports are under
+  `.analysis/popup-emit-value/`.
 - **GamePrepareAnimationSlots @0x404450 (214)** matches its unchanged source
   in the five-input `game-prepare-animation-slots` cold graph. Keep this owner
   as entry to retain its stack argument and both RET4 exits. Include the real
