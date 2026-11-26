@@ -7,14 +7,14 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `FrontEndControllerView::AssignKeyConfigBinding`
-at `0x00430250`, 200 bytes in `src/FrontEnd.cpp`. It is the largest remaining
-authored owner outside the operator-deferred StartSubroutine. The target
-receives EAX controller, ECX binding index and EDX button index, then returns
-without stack arguments. It swaps the displaced button across five editable
-action slots, refreshes their displayed digits and plays the selection sound.
-Inspect the current natural source, both actual callers and the complete
-owner extent before selecting its canonical link and making a source change.
+The sole active owner is `ScriptViewerPopupOwnerView::EmitValuePopup` at
+`0x0042B9C0`, 167 bytes in `src/ScriptViewerPopupCreate.cpp`. It is the largest
+remaining authored owner outside the operator-deferred StartSubroutine.
+The target takes ESI popup owner, EDI position, EAX value and a stack color
+with RET4. It inserts decimal digits into the popup ring. The older five-input
+candidate was 171/167 bytes; inspect the complete current body early and use
+the real shared popup owner and actual ItemManager callers. Preserve the
+accepted popup constructor, destructor, callbacks and shared VM/timer layout.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
@@ -56,6 +56,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `frontend-assign-keyconfig-binding` | 200 B | `FrontEndKeyConfig`, 21-input canonical cold, three fields and EAX/ECX/EDX with RET. Source unchanged. The real key editor caller passes 880/67; display refresh2452 and sound queue123 pass in the same image. |
 | `entity-start-script` | 202 B | `StagePrepareAnimationSlots`, five-input canonical cold, both calls and ESI VM/EAX index/stack resource/RET4. Natural `AnmVmView::Initialize()` replaces the dummy-argument free wrapper; initializer273 remains raw-exact. Direct initializer consumers, stage214, stage dispatcher1868 and StartSpell2432 pass selected canonical cold comparisons. |
 | `anm-render-manager-destructor` | 206 B | `AnmCopyTextureRect`, two-input canonical cold, all 11 fields and stack manager/RET4. Cache next before RemoveVm in both lists. Three-state EH, 79-byte generated region and 34-byte VM cleanup pass. RemoveVm passes 268 in this graph and its own cold; WinMain passes 1,389/146 after the changed source is recompiled in its canonical graph. |
 | `game-prepare-animation-slots` | 214 B | `StagePrepareAnimationSlots`, five-input canonical cold, sole real VM-starter call and stack owner/RET4. Source unchanged. The retained 1,544-byte GameManager caller passes all 114 fields; the starter now has its own 202-byte exact recipe. |

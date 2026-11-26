@@ -2497,6 +2497,21 @@ restored the EDI receiver at both calls and the full update comparison.
   [MIT-licensed reference](licenses/th10-decomp-MIT.txt) suggested using
   the shared score-state fields and repeating the record access.
 
+- **FrontEndControllerView::AssignKeyConfigBinding @0x430250 (200)**
+  matches unchanged source in the 21-input FrontEndUpdateCallback cold graph.
+  All three fields bind: RefreshKeyConfigDisplay, g_MainSoundOwner and
+  QueueSoundSample. The controller arrives in EAX, binding index in ECX and
+  button index in EDX with plain RET. Keep the first duplicate replacement's
+  saved word and the later selected-word reloads. The retained older
+  eight-input display image has a 159-byte candidate with a different
+  binding register and an opaque sound call; use the current callback graph.
+
+  A target scan finds one direct call at 0x42F6D8 in UpdateKeyConfig, with no
+  direct tail jump or absolute address reference. This corrects the older
+  inventory's two-call description. The complete caller remains 880 bytes/
+  67 fields in the same cold image; display refresh remains 2,452 bytes and
+  sound queue 123. Reproduce with `--unit frontend-assign-keyconfig-binding`;
+  reports are under `.analysis/frontend-assign-key/`.
 - `FrontEndControllerView::UpdateKeyConfig` at 0x0042F540 receives the
   controller in EBX. Its five phases share the function's final return,
   leaving the ESI save after the phase bound check. The nine live mapping
