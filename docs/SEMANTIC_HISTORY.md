@@ -35,6 +35,7 @@ Dated evidence records for semantic/readability batches on
 - **Product + PI oracle**: `scripts/build.py --fresh`, `scripts/build.py --reverse-link`, `scripts/verify-pi.py`, `scripts/check-semantic-protocols.py`, headless Wine/Xvfb parity on both PEs, `scripts/ci.py`, `git diff --check`.
 
 ### Exact replay closure, lock-slot audit, fail-closed PI & CI guard — 2026-11-26
+- **Commit**: `d3fd54d9`
 - **Scope**:
   - **Lock-slot evidence & consumer closure**: extracted `SupervisorLockSlot` to `src/SupervisorLockSlot.hpp` (included by `src/Main.hpp`), keeping only the 3 directly evidenced slots (`SUPERVISOR_LOCK_CHAIN = 0`, `SUPERVISOR_LOCK_LOG = 3`, `SUPERVISOR_LOCK_MODE = 5`) and removing unverified `SUPERVISOR_LOCK_FILE_IO = 2` (`gReplayFileCriticalSection` is an independent BSS symbol, not `criticalSections[2]`). Applied `SUPERVISOR_LOCK_LOG` in `src/GameErrorContext.cpp` and `SUPERVISOR_LOCK_CHAIN` in `src/ScriptViewer.cpp` and `src/ReplayManager.cpp`.
   - **Data layout clarity**: documented `g_SoundCueMetadata_storage` in `src/ProductGlobals.cpp` (46 complete 8-byte `SoundCueMetadata` records + 1 trailing observed 4-byte word `0x32FCE0u`, semantic role unresolved) with a compile-time size assertion.
@@ -57,3 +58,32 @@ Dated evidence records for semantic/readability batches on
   - `decomphelp-game-error-log`: 201/201
   - `decomphelp-game-error-fatal`: 201/201
 - **Product + PI oracle**: `scripts/build.py --fresh`, `scripts/build.py --reverse-link`, hardened `scripts/verify-pi.py`, `scripts/check-semantic-protocols.py`, `scripts/ci.py`, `git diff --check`.
+
+### Repo-wide Supervisor lock closure, Sound metadata +4 PI contract & guard precision — 2026-11-26
+- **Scope**:
+  - **Repo-wide Supervisor lock closure**: moved `#include "SupervisorLockSlot.hpp"` to the top of `src/Main.hpp` (outside `#pragma pack(push, 4)`), updated evidence comments in `src/SupervisorLockSlot.hpp`, and replaced all 124 remaining bare `[0]` / `[5]` lock array accesses across all 15 consumer TUs (`AnmManager.cpp`, `Chain.cpp`, `Ending.cpp`, `EnemyGameStateLifecycle.cpp`, `EnemyLaserManager.cpp`, `FrontEndLifecycle.cpp`, `GameManager.cpp`, `Gui.cpp`, `Hint.cpp`, `Main.cpp`, `ResultMenuCleanup.cpp`, `ScriptViewerLifecycle.cpp`, `StageLifecycle.cpp`, `Startup.cpp`, `TransitionEffect.cpp`). Zero bare `0`/`3`/`5` lock indices remain in `src/*.cpp`.
+  - **Sound metadata contiguous 376-byte layout contract & real bug fix**: documented all three overlapping views (`SoundPlaybackMetadata[47]`, `EnemySoundCueMetadataView[47]`, `SoundCueMetadata` @ `+4`, trailing `0x32FCE0u` = 47th entry's `volume=0xFCE0` / `cueValue=0x0032`) in `src/ProductGlobals.cpp` and added a post-link `+4` offset + `.data` section + 376-byte content contract to `scripts/verify-pi.py`. The new PI contract immediately caught a real VC7.1 4-byte alignment gap (`delta=+8`) between `g_EnemySoundCueMetadata_head` and `g_SoundCueMetadata_storage[93]`; fixed via `#pragma data_seg(".data$th10_soundmeta")` with a 12-byte leading alignment pad so both standard and reverse-linked PEs satisfy `delta=+4`.
+  - **Semantic guard precision**: upgraded `scripts/check-semantic-protocols.py` to enforce exact enum name/value mappings (`SupervisorLockSlot`, `ChainCallbackResult`, `SoundEffectId`, `GameInputButtonMask`), repo-wide `src/*.cpp` lock-index scanning, `Chain.cpp` calc/draw case sets, the 37-entry `g_SoundFileNames` table, and `InputPolling.cpp` `MergeJoystickInput` button masks.
+- **VC7.1 exact oracle (21/21 affected units, all 0 diffs — including 2 closed from `d3fd54d9`)**:
+  - `script-viewer-destructor`: 412/412
+  - `replay-manager-destructor`: 367/367
+  - `decomphelp-chain-remove-all`: 82/82
+  - `stage-transition-effect-cleanup`: 127/127
+  - `main-get-timestamp-fps`: 282/282
+  - `main-delete-fps-counter`: 84/84
+  - `anm-render-manager-destructor`: 206/206
+  - `ending-destructor`: 362/362
+  - `enemy-spell-panel-destructor`: 402/402
+  - `enemy-laser-linked-cleanup`: 195/195
+  - `frontend-delete`: 18/18
+  - `game-cleanup-owner-40af00`: 137/137
+  - `game-manager-cleanup`: 1105/1105
+  - `gui-destructor`: 574/574
+  - `hint-cleanup-owner`: 346/346
+  - `result-menu-cleanup`: 311/311
+  - `script-viewer-bullet-destructor`: 236/236
+  - `script-viewer-bomb-destructor`: 137/137
+  - `script-viewer-popup-owner-destructor`: 232/232
+  - `stage-lifecycle-destructor`: 499/499
+  - `startup-worker-destructor`: 417/417
+- **Product + PI oracle**: `scripts/build.py --fresh`, `scripts/build.py --reverse-link`, hardened `scripts/verify-pi.py` (including `+4` 376-byte Sound metadata contract on both PEs), upgraded `scripts/check-semantic-protocols.py`, `scripts/ci.py`, `git diff --check`.

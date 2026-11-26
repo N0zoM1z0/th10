@@ -39,11 +39,11 @@ static void RemoveFrontEndTask(th10::ChainElem *element)
     th10::Chain *chain = th10::g_Chain;
     if (element == NULL)
         return;
-    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-    ++g_MainSupervisorView.criticalSectionLockCounts[0];
+    EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+    ++g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
     chain->UnregisterElem(element);
-    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-    --g_MainSupervisorView.criticalSectionLockCounts[0];
+    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+    --g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
 }
 
 // Target42CB60..42CD4A includes automatic worker destruction and its unwind edge.

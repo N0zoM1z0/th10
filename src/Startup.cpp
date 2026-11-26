@@ -144,11 +144,11 @@ static void RemoveStartupElement(th10::ChainElem *element, th10::Chain *chain)
 {
     if (element == NULL)
         return;
-    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-    ++g_MainSupervisorView.criticalSectionLockCounts[0];
+    EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+    ++g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
     chain->UnregisterElem(element);
-    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-    --g_MainSupervisorView.criticalSectionLockCounts[0];
+    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+    --g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
 }
 
 static inline void ReleaseStartupBank(int index)

@@ -114,6 +114,8 @@ def main() -> int:
         (3, ".data", "?g_GameErrorContext@th10@@3UGameErrorContext@1@A"),
         (3, ".data", "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"),
         (3, ".data", "?g_Player@@3PAUPlayer@@A"),
+        (3, ".data", "?g_EnemySoundCueMetadata_head@@3IA"),
+        (3, ".data", "?g_SoundCueMetadata_storage@@3PAIA"),
     ]
     print("=== 1. Symbol Displacement & Real PE Section Check ===")
     for exp_seg, exp_sec_name, sym in probe_syms:
@@ -257,6 +259,46 @@ def main() -> int:
                     f"{exe_path.name}: g_SoundFileNames[{idx}] rtype={rtype} sec={tgt_sec} str={actual_str!r} expected={expected_name!r}"
                 )
         print(f"  {exe_path.name:20s} g_SoundFileNames[0..36]          verified={se_ok}/{len(sound_names)} (HIGHLOW + .rdata + exact string)")
+
+    # 5. Contiguous 47-entry Sound Metadata Table Contract (376 bytes = head 4B + storage 372B)
+    print("\n=== 5. Contiguous Sound Metadata Table Contract (47 x 8B = 376B) ===")
+    sm_head = "?g_EnemySoundCueMetadata_head@@3IA"
+    sm_stor = "?g_SoundCueMetadata_storage@@3PAIA"
+    sm_enemy = "?g_EnemySoundCueMetadata@@3PAUEnemySoundCueMetadataView@@A"
+    sm_play = "?g_SoundPlaybackMetadata@@3PAUSoundPlaybackMetadata@@A"
+    sm_cue = "?g_SoundCueMetadata@@3PAUSoundCueMetadata@@A"
+    for exe_path, pe, syms in ((STD_EXE, std_pe, std_syms), (REV_EXE, rev_pe, rev_syms)):
+        base = pe.OPTIONAL_HEADER.ImageBase
+        missing = [s for s in (sm_head, sm_stor, sm_enemy, sm_play, sm_cue) if s not in syms]
+        if missing:
+            failures.append(f"{exe_path.name}: missing sound metadata symbols: {missing}")
+            continue
+        va_head = syms[sm_head][1]
+        va_stor = syms[sm_stor][1]
+        delta = va_stor - va_head
+        alias_ok = (
+            syms[sm_enemy][1] == va_head
+            and syms[sm_play][1] == va_head
+            and syms[sm_cue][1] == va_stor
+        )
+        sec_head = pe_section_name_for_va(pe, va_head)
+        sec_stor = pe_section_name_for_va(pe, va_stor)
+        sec_ok = sec_head == ".data" and sec_stor == ".data"
+        raw = pe.get_data(va_head - base, 47 * 8)
+        first_dw = struct.unpack("<I", raw[0:4])[0]
+        last_dw = struct.unpack("<I", raw[372:376])[0]
+        bytes_ok = (len(raw) == 376) and (first_dw == 0x00000000) and (last_dw == 0x0032FCE0)
+        ok = (delta == 4) and alias_ok and sec_ok and bytes_ok
+        print(
+            f"  {exe_path.name:20s} head=0x{va_head:08X} stor=0x{va_stor:08X} "
+            f"delta=+{delta} sec=({sec_head},{sec_stor}) tail=0x{last_dw:08X} ok={ok}"
+        )
+        if not ok:
+            failures.append(
+                f"{exe_path.name}: Sound metadata layout contract failed: "
+                f"delta={delta} alias_ok={alias_ok} sec=({sec_head},{sec_stor}) "
+                f"first=0x{first_dw:08X} tail=0x{last_dw:08X}"
+            )
 
     if failures:
         print("\nFAILURES:", file=sys.stderr)

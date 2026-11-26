@@ -227,21 +227,21 @@ EndingView::~EndingView()
     th10::Chain *chain = th10::g_Chain;
     if (task)
     {
-        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
         chain->UnregisterElem(task);
-        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-        --g_MainSupervisorView.criticalSectionLockCounts[0];
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+        --g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
     }
     task = drawTask;
     chain = th10::g_Chain;
     if (task)
     {
-        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
         chain->UnregisterElem(task);
-        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-        --g_MainSupervisorView.criticalSectionLockCounts[0];
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+        --g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
     }
     g_AnmRenderManagerView->ReleaseSurface(0);
     delete text;

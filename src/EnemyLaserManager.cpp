@@ -38,21 +38,21 @@ void __stdcall GameCleanupLinked41C1C0(GameChainOwnerView *owner)
     th10::Chain *chain = th10::g_Chain;
     if (task)
     {
-        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
         chain->UnregisterElem(task);
-        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-        --g_MainSupervisorView.criticalSectionLockCounts[0];
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+        --g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
     }
     task = manager->drawTask;
     chain = th10::g_Chain;
     if (task)
     {
-        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
         chain->UnregisterElem(task);
-        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-        --g_MainSupervisorView.criticalSectionLockCounts[0];
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+        --g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
     }
     EnemyLaserCommonStorageView *node = manager->sentinel.next;
     while (node)

@@ -299,20 +299,20 @@ void TransitionEffectView::Cleanup()
     th10::Chain *chain = th10::g_Chain;
     if (node != NULL)
     {
-        EnterCriticalSection(&th10::g_CriticalSections[0]);
+        EnterCriticalSection(&th10::g_CriticalSections[SUPERVISOR_LOCK_CHAIN]);
         ++th10::g_ChainNestCounter;
         chain->UnregisterElem(node);
-        LeaveCriticalSection(&th10::g_CriticalSections[0]);
+        LeaveCriticalSection(&th10::g_CriticalSections[SUPERVISOR_LOCK_CHAIN]);
         --th10::g_ChainNestCounter;
     }
     node = drawNode;
     chain = th10::g_Chain;
     if (node != NULL)
     {
-        EnterCriticalSection(&th10::g_CriticalSections[0]);
+        EnterCriticalSection(&th10::g_CriticalSections[SUPERVISOR_LOCK_CHAIN]);
         ++th10::g_ChainNestCounter;
         chain->UnregisterElem(node);
-        LeaveCriticalSection(&th10::g_CriticalSections[0]);
+        LeaveCriticalSection(&th10::g_CriticalSections[SUPERVISOR_LOCK_CHAIN]);
         --th10::g_ChainNestCounter;
     }
 }

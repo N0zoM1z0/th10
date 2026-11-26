@@ -18,6 +18,7 @@
 #include <windows.h>
 #include "ScriptViewerWorker.hpp"
 #include "GameConfiguration.hpp"
+#include "SupervisorLockSlot.hpp"
 
 enum MainRenderResult
 {
@@ -297,8 +298,6 @@ enum SupervisorGameMode
     SUPERVISOR_MODE_ENDING                      = 14,
     SUPERVISOR_MODE_RETURN_TO_TITLE_AFTER_CLEAR = 15
 };
-
-#include "SupervisorLockSlot.hpp"
 
 struct MainSupervisorView
 {

@@ -177,10 +177,21 @@ TextRenderFormatInfo g_TextRenderFormats[11] = {
     { 0xFFFFFFFFu, 0x0u, 0x0u, 0x0u },
     { 0x0u, 0x0u, 0x1u, 0x0u },
 };
+// Contiguous 47-entry Sound metadata table (0x004749C8..0x00474B40, 376 bytes):
+// Three overlapping views share this single 376-byte storage block:
+// - g_SoundPlaybackMetadata (Sound.cpp, @ +0): 47 x 8-byte SoundPlaybackMetadata
+//   { int sampleIndex; short volume; short unknown006; }
+// - g_EnemySoundCueMetadata (EnemyEclDispatcher.cpp, @ +0): 47 x 8-byte
+//   EnemySoundCueMetadataView { int unknown000; unsigned short unknown004; short cueValue; }
+// - g_SoundCueMetadata (Sound.cpp, @ +4): overlapping view starting at +4
+//   (46 complete 8-byte strides + 4-byte tail 0x32FCE0u = 47th entry's
+//   volume=0xFCE0 and cueValue/unknown006=0x0032, read via cueValue at +6).
+#pragma data_seg(".data$th10_soundmeta")
+// Align g_SoundCueMetadata_storage to a 16-byte boundary while keeping
+// g_EnemySoundCueMetadata_head immediately preceding it at -4 bytes (no
+// compiler-inserted alignment gap between head and storage).
+unsigned int _soundmeta_align_pad[3] = { 0u, 0u, 0u };
 unsigned int g_EnemySoundCueMetadata_head = 0x00000000u;
-// SoundCueMetadata storage (0x004749CC..0x00474B40, 372 bytes):
-// - 46 complete 8-byte SoundCueMetadata records (368 bytes)
-// - 1 trailing observed 4-byte word (0x32FCE0u), semantic role unresolved
 unsigned int g_SoundCueMetadata_storage[93] = {
     0xF894u, 0x0u, 0xF7CCu, 0x1u, 0x5FB50u, 0x1u, 0x5FA24u, 0x2u,
     0x64FBB4u, 0x3u, 0x64FD44u, 0x4u, 0x64FD44u, 0x5u, 0x32F894u, 0x6u,
@@ -195,8 +206,10 @@ unsigned int g_SoundCueMetadata_storage[93] = {
     0x64FED4u, 0x1Fu, 0x64FED4u, 0x20u, 0x64FED4u, 0x21u, 0x64FED4u, 0x22u,
     0x64FF9Cu, 0x23u, 0x640000u, 0x24u, 0x32FCE0u,
 };
+#pragma data_seg()
 typedef char SoundCueMetadataStorageLayout[
-    (sizeof(g_SoundCueMetadata_storage) == 46 * 8 + 4) ? 1 : -1];
+    (sizeof(g_EnemySoundCueMetadata_head) + sizeof(g_SoundCueMetadata_storage) == 47 * 8 &&
+     sizeof(g_SoundCueMetadata_storage) == 46 * 8 + 4) ? 1 : -1];
 struct PbgDecryptProfile { unsigned int key, step, limit; };
 PbgDecryptProfile g_PbgDecryptProfiles[8] = {
     { 0xAA371Bu, 0x40u, 0x2800u },

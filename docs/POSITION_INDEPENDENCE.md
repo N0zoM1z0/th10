@@ -81,6 +81,14 @@ fixed layout:
 3. **Self-pointer relocation**: `th10::g_GameErrorContext.m_BufferEnd`
    (`+0x2000`) is initialized to `&th10::g_GameErrorContext` via a COFF
    relocation rather than a fixed retail address.
+4. **Sound metadata 4-byte alignment gap (caught by `+4` PI layout contract)**:
+   VC7.1 automatically 8-byte-aligned `g_SoundCueMetadata_storage[93]` in
+   `src/ProductGlobals.cpp`, inserting a silent 4-byte padding gap after
+   `g_EnemySoundCueMetadata_head` (`delta = +8` instead of `+4`) and shifting
+   `g_SoundPlaybackMetadata` / `g_EnemySoundCueMetadata` reads by 4 bytes.
+   Grouping both in `#pragma data_seg(".data$th10_soundmeta")` with a 12-byte
+   leading alignment pad restores the exact `+4` contiguous 376-byte layout,
+   enforced post-link on both PEs by `scripts/verify-pi.py`.
 
 ## Verification
 
@@ -97,19 +105,23 @@ mtimes.)
 
 Observed results (`th10.exe` @ `0x00400000` vs `th10-reordered.exe` @ `0x00500000`):
 
-- **Symbol displacement**: every probed `.text`, `.rdata`, `.data`, and `.bss`
-  symbol moved by `+868 KB` to `+1.23 MB` (e.g. `_WinMain@16` `0x0042F960 ->
-  0x00512AC0`, `g_GameErrorContext` `0x00458E40 -> 0x00558E40`,
-  `g_AnmRenderManagerView` `0x00476830 -> 0x00576810`), with section ownership
-  independently cross-checked against both the `.map` file and the PE section
-  table.
+- **Symbol displacement & PE section cross-check**: 13 representative `.text`,
+  `.rdata`, and `.data` symbols (including `g_EnemySoundCueMetadata_head` and
+  `g_SoundCueMetadata_storage`) moved by `+868 KB` to `+1.23 MB` (e.g.
+  `_WinMain@16` `0x0042F960 -> 0x00512AE0`, `g_GameErrorContext` `0x004586D8 ->
+  0x00558AE0`, `g_AnmRenderManagerView` `0x00476840 -> 0x005766F0`), with
+  section ownership independently cross-checked against both the `.map` file
+  and the PE section table.
 - **Shared-storage identity**: all alias groups (`AnmRenderManager`,
   `Difficulty`, `CriticalSections`, `PlayfieldBottom`) and all 65
   `/alternatename` pragmas in `src/ProductGlobals.cpp` resolve fail-closed to
   identical addresses within each build.
-- **Struct-interior offsets**: all checked offsets (`g_GameScoreState` fields
-  `+0x04/+0x28/+0x34/+0x60`, `g_FrontEndInput` fields `+0x06/+0x2C`) remain
-  exact across both links.
+- **Struct-interior & contiguous table contracts**: all 13 checked struct
+  offsets (`g_GameScoreState` `+0x04/+0x28/+0x34/+0x60`, `g_FrontEndInput`
+  `+0x06/+0x2C/+0x32`, `g_MainSupervisorView` `+0x08/+0x136/+0x64C/+0x6F4/+0x6F6/+0x6F7`)
+  and the 376-byte 47-entry Sound metadata table (`g_SoundCueMetadata_storage`
+  at exact `+4` from `g_EnemySoundCueMetadata_head` in `.data`, trailing dword
+  `0x0032FCE0`) remain exact across both links.
 - **Verified PE `.reloc` pointer contracts**: 42 initialized pointers are
   explicitly checked for `IMAGE_REL_BASED_HIGHLOW` (`type == 3`) `.reloc`
   entries and target values in both PEs — the 5 code/self pointers

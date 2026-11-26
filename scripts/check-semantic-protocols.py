@@ -1,19 +1,22 @@
 #!/usr/bin/env python3
-"""Lightweight regression guard for completed TH10 semantic protocols.
+"""Regression guard for completed TH10 semantic protocols.
 
-Enforces only completed protocol invariants so semantic readability does not
+Enforces completed protocol invariants so semantic readability does not
 silently regress back to bare numbers, duplicate ODR definitions, or
 unverified enum values:
 1. ProductGlobals.cpp uses canonical GameErrorContext.hpp and
    ScriptViewerWorker.hpp (no local duplicate struct definitions).
-2. SupervisorLockSlot defines only evidenced slots 0, 3, 5 (excludes
-   unverified slot 2) and all closed consumers (Chain.cpp, ScriptViewer.cpp,
-   ReplayManager.cpp, GameErrorContext.cpp) use named lock slots.
-3. ChainCallbackResult covers 0..7 and both Chain.cpp dispatchers use named
-   enum cases (no decimal or hex numeric case labels).
-4. SoundEffectId defines SE_COUNT = 37 and Sound.cpp uses SE_COUNT (no bare 37).
+2. SupervisorLockSlot defines the exact evidenced set {CHAIN=0, LOG=3, MODE=5}
+   with no extra/duplicate entries, and NO src/*.cpp file uses bare [0], [3],
+   or [5] on criticalSections / criticalSectionLockCounts / g_CriticalSections.
+3. ChainCallbackResult matches the exact 0..7 name/value mapping, and both
+   Chain.cpp dispatchers cover their expected enum cases with no numeric cases.
+4. SoundEffectId matches the exact 0..36 + SE_COUNT=37 mapping, Sound.cpp
+   g_SoundFileNames[SE_COUNT] has 37 matching entries, and Sound.cpp uses SE_COUNT.
 5. SupervisorGameMode includes SUPERVISOR_MODE_UNINITIALIZED = -2.
-6. GameInputButtonMask is used in Main.cpp (no bare 0x0800 on g_MainInputEdges).
+6. GameInputButtonMask matches the exact evidenced bitmask mapping, and
+   completed consumers (InputPolling.cpp MergeJoystickInput, Main.cpp screenshot)
+   use named masks.
 7. src/resource.h defines 201/202/203 and is included by both th10.rc & Main.cpp.
 8. docs/*.md contain no local machine file:///home/ links.
 """
@@ -27,6 +30,49 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def parse_enum(text: str, enum_name: str) -> tuple[dict[str, int], list[str]]:
+    """Parse a C++ enum { NAME = VAL, ... }; block and detect duplicates."""
+    m = re.search(rf"\benum\s+{re.escape(enum_name)}\s*\{{(.*?)\}}\s*;", text, re.S)
+    if not m:
+        return {}, [f"enum {enum_name} not found"]
+    body = re.sub(r"//.*", "", m.group(1))
+    body = re.sub(r"/\*.*?\*/", "", body, flags=re.S)
+    entries: dict[str, int] = {}
+    errs: list[str] = []
+    next_val = 0
+    for raw_item in body.split(","):
+        item = raw_item.strip()
+        if not item:
+            continue
+        em = re.match(r"^([A-Za-z_]\w*)(?:\s*=\s*(-?(?:0x[0-9A-Fa-f]+|[0-9]+)))?$", item)
+        if not em:
+            errs.append(f"enum {enum_name}: unparseable item {item!r}")
+            continue
+        name = em.group(1)
+        val = int(em.group(2), 0) if em.group(2) is not None else next_val
+        if name in entries:
+            errs.append(f"enum {enum_name}: duplicate name {name}")
+        if val in entries.values():
+            errs.append(f"enum {enum_name}: duplicate value {val} on {name}")
+        entries[name] = val
+        next_val = val + 1
+    return entries, errs
+
+
+def check_exact_enum(
+    text: str, enum_name: str, expected: dict[str, int], source_label: str, failures: list[str]
+) -> None:
+    actual, errs = parse_enum(text, enum_name)
+    for e in errs:
+        failures.append(f"{source_label}: {e}")
+    if actual != expected:
+        missing = {k: v for k, v in expected.items() if actual.get(k) != v}
+        extra = {k: v for k, v in actual.items() if k not in expected}
+        failures.append(
+            f"{source_label}: enum {enum_name} mismatch (missing/changed={missing}, extra={extra})"
+        )
+
+
 def main() -> int:
     failures: list[str] = []
 
@@ -37,49 +83,164 @@ def main() -> int:
     if re.search(r"\bstruct\s+(GameErrorContext|ScriptViewerWorkerView)\s*\{", pg):
         failures.append("src/ProductGlobals.cpp contains a duplicate local struct GameErrorContext/ScriptViewerWorkerView")
 
-    # 2. SupervisorLockSlot domain & consumer closure
+    # 2. SupervisorLockSlot exact domain + repo-wide src/*.cpp lock-index scan
     lock_hpp = (ROOT / "src" / "SupervisorLockSlot.hpp").read_text(errors="replace")
-    for expected in ("SUPERVISOR_LOCK_CHAIN = 0", "SUPERVISOR_LOCK_LOG   = 3", "SUPERVISOR_LOCK_MODE  = 5"):
-        if expected not in lock_hpp:
-            failures.append(f"src/SupervisorLockSlot.hpp missing '{expected}'")
-    if "SUPERVISOR_LOCK_FILE_IO" in lock_hpp:
-        failures.append("src/SupervisorLockSlot.hpp must not define unverified SUPERVISOR_LOCK_FILE_IO")
+    check_exact_enum(
+        lock_hpp,
+        "SupervisorLockSlot",
+        {
+            "SUPERVISOR_LOCK_CHAIN": 0,
+            "SUPERVISOR_LOCK_LOG": 3,
+            "SUPERVISOR_LOCK_MODE": 5,
+        },
+        "src/SupervisorLockSlot.hpp",
+        failures,
+    )
 
-    for rel in ("src/Chain.cpp", "src/ScriptViewer.cpp", "src/ReplayManager.cpp"):
-        txt = (ROOT / rel).read_text(errors="replace")
-        if "criticalSections[0]" in txt or "criticalSectionLockCounts[0]" in txt:
-            failures.append(f"{rel} uses bare criticalSections[0] instead of SUPERVISOR_LOCK_CHAIN")
+    lock_index_pat = re.compile(
+        r"\b(criticalSections|criticalSectionLockCounts|g_CriticalSections)\s*\[\s*(?:0x0*[035]|[035])\s*\]"
+    )
+    for cpp in sorted((ROOT / "src").glob("*.cpp")):
+        for lineno, line in enumerate(cpp.read_text(errors="replace").splitlines(), 1):
+            m = lock_index_pat.search(line)
+            if m:
+                failures.append(
+                    f"{cpp.relative_to(ROOT)}:{lineno} uses bare lock slot '{m.group(0)}' instead of SupervisorLockSlot"
+                )
 
-    gec = (ROOT / "src" / "GameErrorContext.cpp").read_text(errors="replace")
-    if "g_CriticalSections[3]" in gec:
-        failures.append("src/GameErrorContext.cpp uses bare g_CriticalSections[3] instead of SUPERVISOR_LOCK_LOG")
-
-    # 3. ChainCallbackResult domain (0..7) & Chain.cpp switch closure (decimal + hex)
+    # 3. ChainCallbackResult exact 0..7 mapping + Chain.cpp switch coverage
     chain_hpp = (ROOT / "src" / "Chain.hpp").read_text(errors="replace")
-    for val in range(8):
-        if not re.search(rf"CHAIN_CALLBACK_RESULT_\w+\s*=\s*{val}\b", chain_hpp):
-            failures.append(f"src/Chain.hpp missing ChainCallbackResult value {val}")
+    check_exact_enum(
+        chain_hpp,
+        "ChainCallbackResult",
+        {
+            "CHAIN_CALLBACK_RESULT_CONTINUE_AND_REMOVE_NO_DELETE": 0,
+            "CHAIN_CALLBACK_RESULT_CONTINUE": 1,
+            "CHAIN_CALLBACK_RESULT_EXECUTE_AGAIN": 2,
+            "CHAIN_CALLBACK_RESULT_BREAK": 3,
+            "CHAIN_CALLBACK_RESULT_EXIT_GAME_SUCCESS": 4,
+            "CHAIN_CALLBACK_RESULT_EXIT_GAME_ERROR": 5,
+            "CHAIN_CALLBACK_RESULT_RESTART_FROM_FIRST_JOB": 6,
+            "CHAIN_CALLBACK_RESULT_INVOKE_DELETED_CALLBACK": 7,
+        },
+        "src/Chain.hpp",
+        failures,
+    )
     chain_cpp = (ROOT / "src" / "Chain.cpp").read_text(errors="replace")
     if re.search(r"\bcase\s+(?:0x[0-9A-Fa-f]+|[0-9]+)\s*:", chain_cpp):
         failures.append("src/Chain.cpp contains bare numeric (decimal/hex) switch case labels")
 
-    # 4. SoundEffectId SE_COUNT = 37 & Sound.cpp closure
+    calc_m = re.search(r"MainRunCalcChain\b(.*?)MainRunDrawChain\b", chain_cpp, re.S)
+    draw_m = re.search(r"MainRunDrawChain\b(.*)", chain_cpp, re.S)
+    if not calc_m or not draw_m:
+        failures.append("src/Chain.cpp missing MainRunCalcChain or MainRunDrawChain")
+    else:
+        calc_cases = set(re.findall(r"\bcase\s+(?:th10::)?(CHAIN_CALLBACK_RESULT_\w+)\s*:", calc_m.group(1)))
+        draw_cases = set(re.findall(r"\bcase\s+(?:th10::)?(CHAIN_CALLBACK_RESULT_\w+)\s*:", draw_m.group(1)))
+        exp_calc = {
+            "CHAIN_CALLBACK_RESULT_CONTINUE_AND_REMOVE_NO_DELETE",
+            "CHAIN_CALLBACK_RESULT_EXECUTE_AGAIN",
+            "CHAIN_CALLBACK_RESULT_BREAK",
+            "CHAIN_CALLBACK_RESULT_EXIT_GAME_SUCCESS",
+            "CHAIN_CALLBACK_RESULT_EXIT_GAME_ERROR",
+            "CHAIN_CALLBACK_RESULT_RESTART_FROM_FIRST_JOB",
+            "CHAIN_CALLBACK_RESULT_INVOKE_DELETED_CALLBACK",
+        }
+        exp_draw = {
+            "CHAIN_CALLBACK_RESULT_CONTINUE_AND_REMOVE_NO_DELETE",
+            "CHAIN_CALLBACK_RESULT_EXECUTE_AGAIN",
+            "CHAIN_CALLBACK_RESULT_BREAK",
+            "CHAIN_CALLBACK_RESULT_EXIT_GAME_SUCCESS",
+            "CHAIN_CALLBACK_RESULT_EXIT_GAME_ERROR",
+        }
+        if calc_cases != exp_calc:
+            failures.append(f"src/Chain.cpp MainRunCalcChain cases={sorted(calc_cases)} != expected={sorted(exp_calc)}")
+        if draw_cases != exp_draw:
+            failures.append(f"src/Chain.cpp MainRunDrawChain cases={sorted(draw_cases)} != expected={sorted(exp_draw)}")
+
+    # 4. SoundEffectId exact 0..36 + SE_COUNT=37 mapping & Sound.cpp table/loop closure
+    expected_se_names = [
+        "SE_PLST00", "SE_ENEP00", "SE_PLDEAD00", "SE_POWER0", "SE_POWER1",
+        "SE_TAN00", "SE_TAN01", "SE_TAN02", "SE_OK00", "SE_CANCEL00",
+        "SE_SELECT00", "SE_GUN00", "SE_CAT00", "SE_LAZER00", "SE_LAZER01",
+        "SE_ENEP01", "SE_DAMAGE00", "SE_ITEM00", "SE_KIRA00", "SE_KIRA01",
+        "SE_KIRA02", "SE_TIMEOUT", "SE_GRAZE", "SE_POWERUP", "SE_PAUSE",
+        "SE_CARDGET", "SE_OPTION", "SE_DAMAGE01", "SE_TIMEOUT2", "SE_INVALID",
+        "SE_SLASH", "SE_CH00", "SE_CH01", "SE_HINT00", "SE_EXTEND",
+        "SE_BONUS3", "SE_WATER",
+    ]
+    expected_se = {name: i for i, name in enumerate(expected_se_names)}
+    expected_se["SE_COUNT"] = 37
     sound_hpp = (ROOT / "src" / "Sound.hpp").read_text(errors="replace")
-    if not re.search(r"\bSE_COUNT\s*=\s*37\b", sound_hpp):
-        failures.append("src/Sound.hpp missing SE_COUNT = 37")
+    check_exact_enum(sound_hpp, "SoundEffectId", expected_se, "src/Sound.hpp", failures)
+
     sound_cpp = (ROOT / "src" / "Sound.cpp").read_text(errors="replace")
     if re.search(r"g_SoundFileNames\[37\]|i\s*<\s*37", sound_cpp):
         failures.append("src/Sound.cpp uses bare 37 instead of SE_COUNT")
+    se_init_m = re.search(r"g_SoundFileNames\[SE_COUNT\]\s*=\s*\{(.*?)\};", sound_cpp, re.S)
+    if not se_init_m:
+        failures.append("src/Sound.cpp missing g_SoundFileNames[SE_COUNT] initializer")
+    else:
+        se_files = re.findall(r'"([^"]+)"', se_init_m.group(1))
+        expected_files = [f"{name.lower()}.wav" for name in expected_se_names]
+        if se_files != expected_files:
+            failures.append(
+                f"src/Sound.cpp g_SoundFileNames initializer mismatch (count={len(se_files)}, expected={len(expected_files)})"
+            )
 
     # 5. SupervisorGameMode sentinel check
     main_hpp = (ROOT / "src" / "Main.hpp").read_text(errors="replace")
     if not re.search(r"SUPERVISOR_MODE_UNINITIALIZED\s*=\s*-2\b", main_hpp):
         failures.append("src/Main.hpp missing SUPERVISOR_MODE_UNINITIALIZED = -2")
 
-    # 6. Input mask check in Main.cpp
+    # 6. GameInputButtonMask exact mapping + completed consumer regression checks
+    input_hpp = (ROOT / "src" / "InputPolling.hpp").read_text(errors="replace")
+    check_exact_enum(
+        input_hpp,
+        "GameInputButtonMask",
+        {
+            "INPUT_BUTTON_SHOOT": 0x0001,
+            "INPUT_BUTTON_BOMB": 0x0002,
+            "INPUT_BUTTON_PAUSE": 0x0008,
+            "INPUT_BUTTON_UP": 0x0010,
+            "INPUT_BUTTON_DOWN": 0x0020,
+            "INPUT_BUTTON_LEFT": 0x0040,
+            "INPUT_BUTTON_RIGHT": 0x0080,
+            "INPUT_BUTTON_SKIP": 0x0100,
+            "INPUT_BUTTON_FOCUS": 0x0200,
+            "INPUT_BUTTON_SCREENSHOT": 0x0800,
+        },
+        "src/InputPolling.hpp",
+        failures,
+    )
+    input_cpp = (ROOT / "src" / "InputPolling.cpp").read_text(errors="replace")
+    merge_m = re.search(r"MergeJoystickInput\b(.*?)FrontEndGetControllerState\b", input_cpp, re.S)
+    if not merge_m:
+        failures.append("src/InputPolling.cpp missing MergeJoystickInput")
+    else:
+        body = merge_m.group(1)
+        # Check for bare named button masks (excluding 4 / 0x04 which is intentionally unnamed)
+        bare_input_pat = re.compile(
+            r"(?:\|=|\?\s*|,)\s*(?:0x0*(?:1|2|8|10|20|40|80|100|200|800)|(?:1|2|8|16|32|64|128|256|512|2048))\s*(?:[:;,)])"
+        )
+        # Only check MergeWinMmButton/MergeDirectButton action args and ternary bitmask outputs
+        if re.search(
+            r"(?:MergeWinMmButton|MergeDirectButton)\([^,]+,[^,]+,\s*(?:0x0*(?:1|2|8|100)|(?:1|2|8|256))\s*,",
+            body,
+        ) or re.search(
+            r"\?\s*(?:0x0*(?:10|20|40|80)|(?:16|32|64|128))\s*:\s*0",
+            body,
+        ):
+            failures.append("src/InputPolling.cpp MergeJoystickInput regressed to bare numeric button mask")
+        for req in ("INPUT_BUTTON_SHOOT", "INPUT_BUTTON_BOMB", "INPUT_BUTTON_PAUSE", "INPUT_BUTTON_UP", "INPUT_BUTTON_DOWN", "INPUT_BUTTON_LEFT", "INPUT_BUTTON_RIGHT", "INPUT_BUTTON_SKIP"):
+            if req not in body:
+                failures.append(f"src/InputPolling.cpp MergeJoystickInput missing {req}")
+
     main_cpp = (ROOT / "src" / "Main.cpp").read_text(errors="replace")
     if re.search(r"g_MainInputEdges\s*&\s*0x0*800\b", main_cpp):
         failures.append("src/Main.cpp uses bare 0x0800 instead of INPUT_BUTTON_SCREENSHOT")
+    if "INPUT_BUTTON_SCREENSHOT" not in main_cpp:
+        failures.append("src/Main.cpp missing INPUT_BUTTON_SCREENSHOT")
 
     # 7. Shared Win32 dialog resource IDs
     res_h = (ROOT / "src" / "resource.h").read_text(errors="replace")

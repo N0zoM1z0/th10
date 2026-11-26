@@ -214,10 +214,10 @@ void __stdcall Chain::RemoveAllFromList(u8 *listBase, Chain *chain)
         next = node->next;
         if (elem != NULL)
         {
-            EnterCriticalSection(&g_CriticalSections[0]);
+            EnterCriticalSection(&g_CriticalSections[SUPERVISOR_LOCK_CHAIN]);
             g_ChainNestCounter++;
             chain->UnregisterElem(elem);
-            LeaveCriticalSection(&g_CriticalSections[0]);
+            LeaveCriticalSection(&g_CriticalSections[SUPERVISOR_LOCK_CHAIN]);
             g_ChainNestCounter--;
         }
         node = next;

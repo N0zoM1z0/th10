@@ -705,8 +705,8 @@ double GameWindowView::GetTimestamp()
     double timestampValue;
     double timestamp;
 
-    EnterCriticalSection(&g_MainSupervisorView.criticalSections[5]);
-    ++g_MainSupervisorView.criticalSectionLockCounts[5];
+    EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_MODE]);
+    ++g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_MODE];
 
     if (g_GameWindowView.performanceFrequency.QuadPart != 0)
     {
@@ -717,8 +717,8 @@ double GameWindowView::GetTimestamp()
             (double)g_GameWindowView.performanceFrequency.QuadPart;
         if (g_GameWindowView.timeOrigin > timestampValue)
             g_GameWindowView.timeOrigin = timestampValue;
-        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[5]);
-        --g_MainSupervisorView.criticalSectionLockCounts[5];
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_MODE]);
+        --g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_MODE];
         return timestampValue - g_GameWindowView.timeOrigin;
     }
 
@@ -729,8 +729,8 @@ double GameWindowView::GetTimestamp()
         g_GameWindowView.timeOrigin = timestamp;
     timestampValue = g_GameWindowView.timeOrigin * 1000.0;
     timestampValue = (timestamp - timestampValue) / 1000.0;
-    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[5]);
-    --g_MainSupervisorView.criticalSectionLockCounts[5];
+    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_MODE]);
+    --g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_MODE];
     return timestampValue;
 }
 
@@ -1337,11 +1337,11 @@ void DeleteFpsCounter(FpsCounterView *counter)
         th10::Chain *chain = th10::g_Chain;
         if (element != NULL)
         {
-            EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-            ++g_MainSupervisorView.criticalSectionLockCounts[0];
+            EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+            ++g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
             chain->UnregisterElem(element);
-            LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-            --g_MainSupervisorView.criticalSectionLockCounts[0];
+            LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+            --g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
         }
         g_ReplayTimingSource = NULL;
         delete counter;

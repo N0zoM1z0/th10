@@ -560,21 +560,21 @@ __declspec(noinline) void __stdcall GameCleanupOwner40AF00(
     th10::Chain *chain = th10::g_Chain;
     if (task != NULL)
     {
-        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
         chain->UnregisterElem(reinterpret_cast<th10::ChainElem *>(task));
-        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-        --g_MainSupervisorView.criticalSectionLockCounts[0];
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+        --g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
     }
     task = owner->drawChain;
     chain = th10::g_Chain;
     if (task != NULL)
     {
-        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
         chain->UnregisterElem(reinterpret_cast<th10::ChainElem *>(task));
-        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-        --g_MainSupervisorView.criticalSectionLockCounts[0];
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+        --g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
     }
     g_GameOwner4776FC = NULL;
 }
@@ -832,21 +832,21 @@ void __stdcall GameManagerCleanup(GameManager *manager)
     th10::Chain *chain = th10::g_Chain;
     if (element != NULL)
     {
-        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
         chain->UnregisterElem(reinterpret_cast<th10::ChainElem *>(element));
-        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-        --g_MainSupervisorView.criticalSectionLockCounts[0];
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+        --g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
     }
     element = manager->drawChain;
     chain = th10::g_Chain;
     if (element != NULL)
     {
-        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
         chain->UnregisterElem(reinterpret_cast<th10::ChainElem *>(element));
-        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
-        --g_MainSupervisorView.criticalSectionLockCounts[0];
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[SUPERVISOR_LOCK_CHAIN]);
+        --g_MainSupervisorView.criticalSectionLockCounts[SUPERVISOR_LOCK_CHAIN];
     }
     g_GameManager = NULL;
     if ((g_GameStartupState.runtimeFlags & 0x22u) == 0)
