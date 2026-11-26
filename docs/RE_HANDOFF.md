@@ -7,17 +7,22 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `AnmRenderManagerView::CopyTextureRect` at
-`0x00448360`, 227 bytes in `src/AnmManager.cpp`. It is the largest remaining
+The sole active owner is `GamePrepareAnimationSlots` at `0x00404450`,
+214 bytes in `src/StageAnimationSlots.cpp`. It is the largest remaining
 authored owner outside the operator-deferred StartSubroutine. Complete source
-already performs both loaded-texture lookups, flushes vertices, acquires two
-surfaces, calls D3DXLoadSurfaceFromSurface with filter -1, and releases them
-on the target's success/failure paths. No comparison unit exists yet.
-The recorded private interface is EDX manager, EAX destination entry, ECX
-source entry and four stack words / RET 16. Inspect the target and the
-existing linked body, then compare the complete source early. The maintained
-source currently has no direct caller for this method. Preserve unrelated
-D3D adapter evidence and its private inputs.
+already marks the three task flags, resets each object, walks signed primitive
+records, starts the VM scripts and resets the instruction pointer.
+The target uses a stack stage-owner argument and RET4; its sole call is to
+AnmVmStartScript at 0x404F30. Include that real definition and its initializer
+and loaded-script dependencies before interpreting register differences.
+
+The existing `game-manager-update-body` recipe already roots the graph at this
+stage function. Older source-era diagnostics were 184 bytes with private EDI
+in a caller-rooted graph and 204 bytes when this function was entry. Treat
+those as leads and compare the current complete source early. No dedicated
+stage-preparation comparison unit exists yet. Keep this function as entry to
+preserve the target's stack interface; its real caller is GameManager update
+at 0x4181E3.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
@@ -59,6 +64,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `anm-copy-texture-rect` | 227 B | `AnmCopyTextureRect`, two-input canonical cold, both call fields and EDX/EAX/ECX plus four stack words / RET16. Fresh lookups cross the flush and first surface query. The 133-byte flush callee passes four fields in the same graph and its own canonical cold. |
 | `script-viewer-popup-owner-destructor` | 232 B | `ScriptViewerPopupCreate`, four-input canonical cold, 22 fields and stack receiver/RET4. Single VM-member EH: 21-byte region, 28-byte FuncInfo and real 34-byte cleanup. Constructor134 and release18 pass; the VM EH verifier self-tests pass. |
 | `player-constructor` | 244 B | `ScriptViewerLifecycle-cold-2`, 14-input canonical cold, sole g_Player field and ESI receiver/EAX result. Nested option-state construction restores the last flag clear. The Player factory passes 69/5 and the standalone option constructor remains 10/10. |
 | `player-shot-track-enemy` | 266 B | `PlayerShotTracking`, two-input canonical cold, all 15 fields and unchanged source. Real EnemyWrapAngle support keeps speed on the x87 stack. Same-image angle helpers pass 80/4 and 94/6; acquisition passes its own canonical cold entry at 53/1. |

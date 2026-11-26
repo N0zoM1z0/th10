@@ -688,6 +688,28 @@ frontier; do not refresh a baseline merely to accept the new positions.
   The [MIT-licensed model](licenses/th10-decomp-MIT.txt) in
   `_reference/th10-decomp` provided the loop and stack-home leads.
   [2026-11-24]
+- **AnmRenderManagerView::CopyTextureRect @0x448360 (227)** matches all
+  bytes and both call fields in the two-input Main.cpp/AnmManager.cpp cold
+  link. Keep WinMain as the actual manager-creation entry, with its existing
+  /GL /GS profile and AnmManager.cpp's /GL /GS /EHs profile. A standalone
+  method entry preserves public thiscall / RET24 and gives 182 bytes; the
+  target is an internal EDX manager/EAX destination entry/ECX source entry
+  method with four stack words and RET16. The static target scan finds no
+  direct call/jump or absolute reference, and the source has no direct caller.
+
+  The original cached-pointer source gives 172 bytes internally and different
+  private register roles. Short-circuit the two null texture checks, then
+  reload the destination texture after FlushVertexBuffer and reload the source
+  texture after the destination surface acquisition. These read lifetimes
+  restore both the code and private transport without changing the declaration.
+  Keep the D3DX result if/return shape: the two release paths merge but retain
+  the target's otherwise unused TEST. The source-acquisition failure releases
+  only the destination; both D3DX outcomes release destination then source.
+
+  The final-source cold link passes 227/227 with two fields. FlushVertexBuffer
+  remains 133/133 with four fields in that image and its own canonical cold
+  replay. Final reports are `reload-textures-cold-*`, `flush-coupled-guard.json`
+  and `flush-canonical-cold-*` under `.analysis/anm-copy-texture-rect/`.
 - **ScriptViewerPopupOwnerView::~ScriptViewerPopupOwnerView @0x42B570 (232)**
   matches its unchanged source in the four-input popup factory cold graph with
   `/EHs`. The shared inline AnmVmView destructor and nonthrowing CRT free

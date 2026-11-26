@@ -2742,19 +2742,19 @@ void AnmRenderManagerView::CopyTextureRect(
 {
     D3d9SurfaceView *destinationSurface;
     D3d9SurfaceView *sourceSurface;
-    D3d9TextureView *destinationTexture =
-        loadedAnms[destinationAnmIndex]->textures[destinationEntryIndex].texture;
-    D3d9TextureView *sourceTexture =
-        loadedAnms[sourceAnmIndex]->textures[sourceEntryIndex].texture;
-
-    if (destinationTexture == NULL || sourceTexture == NULL)
+    if (loadedAnms[destinationAnmIndex]->textures[destinationEntryIndex].texture == NULL ||
+        loadedAnms[sourceAnmIndex]->textures[sourceEntryIndex].texture == NULL)
         return;
     FlushVertexBuffer();
+    D3d9TextureView *destinationTexture =
+        loadedAnms[destinationAnmIndex]->textures[destinationEntryIndex].texture;
     if (destinationTexture->vtable->GetSurfaceLevel(
             destinationTexture, 0, &destinationSurface) != 0)
     {
         return;
     }
+    D3d9TextureView *sourceTexture =
+        loadedAnms[sourceAnmIndex]->textures[sourceEntryIndex].texture;
     if (sourceTexture->vtable->GetSurfaceLevel(
             sourceTexture, 0, &sourceSurface) != 0)
     {
