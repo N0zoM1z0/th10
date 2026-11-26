@@ -1,8 +1,8 @@
 #include <string.h>
 
-inline void __fastcall AnmVmInitialize(
-    void *unused, AnmVmView *vm)
+inline void AnmVmView::Initialize()
 {
+    AnmVmView *vm = this;
     AnmFloat3View savedPosition = vm->positionOffset;
     unsigned int savedLayer = vm->renderLayer;
 

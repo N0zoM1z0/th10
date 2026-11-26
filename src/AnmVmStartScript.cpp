@@ -8,7 +8,7 @@
 __declspec(noinline) void __stdcall AnmVmStartScript(
     AnmLoadedView *resource, AnmVmView *vm, int scriptIndex)
 {
-    AnmVmInitialize(0, vm);
+    vm->Initialize();
     vm->positionOffset = AnmFloat3View(0.0f, 0.0f, 0.0f);
     vm->position = AnmFloat3View(0.0f, 0.0f, 0.0f);
     vm->alternatePosition = AnmFloat3View(0.0f, 0.0f, 0.0f);

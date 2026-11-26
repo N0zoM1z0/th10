@@ -14,9 +14,7 @@ extern "C" __declspec(noinline) void __stdcall LoadScript_0043e710(
         return;
     }
 
-    // Keep the declared initializer interface at this call site.
-    void (__fastcall *const initialize)(void *, AnmVmView *) = AnmVmInitialize;
-    initialize(script, object);
+    object->Initialize();
 
     unsigned int mask = object->AnimationFlags() & 0xFFFFF9FFu;
     object->ScriptIndex() = static_cast<short>(index);

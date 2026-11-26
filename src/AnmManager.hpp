@@ -630,9 +630,6 @@ struct AnmSpriteView;
 struct AnmVmView;
 struct AnmLoadedView;
 struct AnmTextureEntryView;
-// Retail 0x401DE0 is the Entity_Init-style fastcall initializer; the VM is in EDX.
-inline void __fastcall AnmVmInitialize(void *unused, AnmVmView *vm);
-
 
 struct AnmVmLayerNodeView
 {
@@ -657,7 +654,8 @@ struct AnmVmView
 {
     AnmVmView();
     ~AnmVmView();
-    void Initialize() { AnmVmInitialize(0, this); }
+    // Retail 0x401DE0 receives this VM in EDX under LTCG.
+    void Initialize();
     int InitializePulsingRadialTrail();
     float GetFloatVar(float variable);
     int GetIntVar(int variable);

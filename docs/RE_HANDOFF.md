@@ -7,20 +7,14 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `AnmVmStartScript` at `0x00404F30`, 202 bytes in
-`src/AnmVmStartScript.cpp`. It is the largest remaining authored owner outside
-the operator-deferred StartSubroutine. The natural source is complete: reset
-the VM, clear three position vectors, install 16x16 glyph dimensions and the
-script index, then execute the loaded script. The target takes ESI VM, EAX
-index and one stack resource argument with RET4.
-
-The accepted five-input stage-preparation graph emits this starter at 204
-bytes, so the starter remains open. Inspect its complete body and the retained
-39-input EnemyStartSpell graph before changing source. That graph contains
-real starter callers and the actual LoadScript definition. The former exact
-claim used a fake ECX context parameter and was withdrawn; keep the natural
-three-argument declaration. Stage preparation and StartSpell are known exact
-callers to recheck if their shared starter interface changes.
+The sole active owner is `FrontEndControllerView::AssignKeyConfigBinding`
+at `0x00430250`, 200 bytes in `src/FrontEnd.cpp`. It is the largest remaining
+authored owner outside the operator-deferred StartSubroutine. The target
+receives EAX controller, ECX binding index and EDX button index, then returns
+without stack arguments. It swaps the displaced button across five editable
+action slots, refreshes their displayed digits and plays the selection sound.
+Inspect the current natural source, both actual callers and the complete
+owner extent before selecting its canonical link and making a source change.
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
@@ -62,8 +56,9 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `entity-start-script` | 202 B | `StagePrepareAnimationSlots`, five-input canonical cold, both calls and ESI VM/EAX index/stack resource/RET4. Natural `AnmVmView::Initialize()` replaces the dummy-argument free wrapper; initializer273 remains raw-exact. Direct initializer consumers, stage214, stage dispatcher1868 and StartSpell2432 pass selected canonical cold comparisons. |
 | `anm-render-manager-destructor` | 206 B | `AnmCopyTextureRect`, two-input canonical cold, all 11 fields and stack manager/RET4. Cache next before RemoveVm in both lists. Three-state EH, 79-byte generated region and 34-byte VM cleanup pass. RemoveVm passes 268 in this graph and its own cold; WinMain passes 1,389/146 after the changed source is recompiled in its canonical graph. |
-| `game-prepare-animation-slots` | 214 B | `StagePrepareAnimationSlots`, five-input canonical cold, sole real VM-starter call and stack owner/RET4. Source unchanged. The retained 1,544-byte GameManager caller passes all 114 fields; the starter itself remains nonexact. |
+| `game-prepare-animation-slots` | 214 B | `StagePrepareAnimationSlots`, five-input canonical cold, sole real VM-starter call and stack owner/RET4. Source unchanged. The retained 1,544-byte GameManager caller passes all 114 fields; the starter now has its own 202-byte exact recipe. |
 | `anm-copy-texture-rect` | 227 B | `AnmCopyTextureRect`, two-input canonical cold, both call fields and EDX/EAX/ECX plus four stack words / RET16. Fresh lookups cross the flush and first surface query. The 133-byte flush callee passes four fields in the same graph and its own canonical cold. |
 | `script-viewer-popup-owner-destructor` | 232 B | `ScriptViewerPopupCreate`, four-input canonical cold, 22 fields and stack receiver/RET4. Single VM-member EH: 21-byte region, 28-byte FuncInfo and real 34-byte cleanup. Constructor134 and release18 pass; the VM EH verifier self-tests pass. |
 | `player-constructor` | 244 B | `ScriptViewerLifecycle-cold-2`, 14-input canonical cold, sole g_Player field and ESI receiver/EAX result. Nested option-state construction restores the last flag clear. The Player factory passes 69/5 and the standalone option constructor remains 10/10. |

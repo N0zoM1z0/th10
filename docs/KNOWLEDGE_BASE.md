@@ -226,7 +226,7 @@ versus target size unless it says ordinary bytes or normalized instructions.
   instead of 0x644.
 - 0x404F30 is now the free function
   `__stdcall AnmVmStartScript(AnmLoadedView *resource, AnmVmView *vm, int
-  scriptIndex)` calling `AnmVmInitialize(0, vm)`, following
+  scriptIndex)` calling the VM initializer, following
   `_reference/th10-decomp`. All 28 callers pass the script index last.
   `SpawnSingleBullet` and the interpreter's sprite case now form the index
   before the resource load without `_ReadWriteBarrier`. The old
@@ -235,50 +235,36 @@ versus target size unless it says ordinary bytes or normalized instructions.
   in another). That was a fake ABI parameter compensating for an opaque
   `AnmVmInitialize`, and it is gone. [2026-11-22]
 
-### `AnmVmStartScript` and `AnmVmInitialize` visibility (open)
+### VM initialization and script-start member calls
 
-Retail 0x404F30 calls 0x401DE0 with `mov edx, esi` and never sets ECX. None
-of the 10 retail call sites of 0x401DE0 sets ECX, and none takes its address.
-LTCG saw the dead first parameter and the script starter kept the VM in ESI
-across the call. These probes predate the header-inline definition:
+`AnmVmStartScript @0x404F30` matches all 202 bytes when it calls the natural
+header-inline `AnmVmView::Initialize()` member. Its VM remains in ESI, its
+index in EAX and its loaded resource on the stack with RET4. The two REL32
+fields bind the complete 273-byte initializer at 0x401DE0 and 203-byte loader
+at 0x43E710. The initializer's EDX receiver and raw bytes are unchanged.
+Keep the three-argument starter and use `object->Initialize()` in the loader
+as well. This removes the unused parameter of the former free fastcall
+wrapper and its local function-pointer workaround.
 
-| Graph for `entity-start-script` | Result |
-| --- | --- |
-| `AnmVmInitialize.cpp` absent (opaque), source passes `0` | 204 bytes: retail plus one `xor ecx, ecx` |
-| `AnmVmInitialize.cpp` present, appended or first in `/GL` input order | 200 bytes: VM arrives in EDX because LTCG knows EDX survives the call |
-| Present, initializer redeclared as one-parameter `AnmVmInitialize(AnmVmView *)` | 200 bytes, the same as above |
+The five-input canonical `entity-start-script` graph uses the real
+GamePrepareAnimationSlots caller as entry. Stage preparation passes 214
+bytes; the separate complete stage dispatcher passes 1,868 bytes/36 fields.
+StartSpell passes 2,432 bytes/108 fields in its own real 39-input cold graph.
+The initializer, manager constructor, VM removal, pool allocation, loaded
+script and ASCII initialization all pass their selected canonical cold
+comparisons. Two small graphs rooted directly at the changed member also
+retain the matrix/timer helpers and all eight screen/world VM factories.
+Reports are under `.analysis/anm-vm-start-natural/`.
 
-Neither our build nor retail writes EDX inside the 273-byte initializer.
-`_reference/th10-decomp` reaches 202 bytes only by linking a 23-byte
-stand-in initializer that "hides its register kill set behind an external
-call". That is build-context engineering, not source, so we do not use it.
-The owner stays a candidate. The interpreter and `SpawnSingleBullet` match
-retail with the opaque graph, which suggests that retail's callers saw the
-starter keep its VM in ESI. [2026-11-22]
-
-The StageCreate graph has two independently checked configurations. With
-the initializer opaque, the script loader at `0x43E710` matches all 203
-bytes and four fields using the actual `ExecuteScript` call and the shared
-game-speed and renderer declarations. Its receiver and arguments are
-ECX resource, EAX VM and EBX script index. The stage dispatcher also
-matches, with the starter accepting its VM in ESI.
-
-Adding the real initializer gives 273 exact bytes for that body and
-changes all three owners above it. The starter takes the VM in EDX and
-shrinks to 200 bytes. The loader shrinks to 197 bytes and receives the
-resource in ESI, the VM in EDX and the index in EAX. The stage dispatcher
-then matches 1,850/1,868 bytes with all 36 fields. Adding
-`GamePrepareAnimationSlots` and selecting it as entry preserves this
-result, as do the additional real StartSpell and popup callers. A named
-reference to each of the three starter position fields is byte-neutral.
-Sharing one zero vector lets C2 collapse their copies and shortens the
-starter to 130 bytes. [2026-11-23]
-
-With the header-inline initializer, a direct source call in the loader
-reassigns the script pointer to EAX and changes six bytes. Calling through
-a local pointer of the initializer's declared fastcall type restores the
-ECX load and the original prologue. LTCG still emits the direct call.
-[2026-11-24]
+Earlier free-function probes bracketed the problem. An opaque initializer
+added `xor ecx,ecx` and gave 204 bytes. A visible standalone free initializer
+kept the VM in EDX and gave 200. A fake ECX starter argument previously hid
+the first problem; its exact claim was withdrawn on 2026-11-22. Sharing one
+zero vector shrank the body to 130 bytes; named position references did not
+help. With the header-inline free initializer, a local function pointer in
+the starter still gave 204 bytes. None of these controls replaces the
+member definition above. The reference repository supplied the earlier
+three-argument starter shape, but its stand-in initializer was not used.
 
 ### Non-local regressions through calling conventions
 
@@ -720,8 +706,8 @@ frontier; do not refresh a baseline merely to accept the new positions.
   VM-bank addressing, truncated VM index and the final instruction-pointer
   reset all match. The retained GameManagerUpdateBody image remains exact at
   1,544 bytes/114 fields; its target call at 0x4181E3 passes the stack owner.
-  The starter's physical return is RET4, but its own 204-byte body differs from
-  the target's 202 and remains a separate open owner.
+  The starter is now separately exact at 202 bytes through its natural VM
+  initializer member; see the VM initialization finding above.
   Final reports are `first-cold-*` and `retained-caller-guard.*` under
   `.analysis/stage-prepare/`.
 - **AnmRenderManagerView::CopyTextureRect @0x448360 (227)** matches all
@@ -1551,12 +1537,11 @@ frontier; do not refresh a baseline merely to accept the new positions.
   normalizes all six reviewed external REL32/DIR32 fields with zero residual.
   The canonical 2026-11-16 replay is 229/229 bytes with all six fields exact;
   the former float-order/alignment caveat no longer applies. [2026-11-17]
-- **GamePrepareAnimationSlots @0x404450 (214)**: the target uses a stack owner
-  and RET4; the real graph gives EDI and plain RET. [2026-10-31]
-- **AnmVmStartScript @0x404F30 (202)**: candidate again since 2026-11-22.
-  The natural `(resource, vm, scriptIndex)` body is retail plus one
-  `xor ecx,ecx` while `AnmVmInitialize` stays opaque; see "`AnmVmStartScript`
-  and `AnmVmInitialize` visibility (open)" above. [2026-11-22]
+- **GamePrepareAnimationSlots @0x404450 (214)** and **AnmVmStartScript
+  @0x404F30 (202)** pass their complete five-input canonical cold graph with
+  their original stack arguments and RET4. The starter calls the natural
+  header-inline VM initializer member. See the VM initialization finding
+  above for the source change and selected consumer comparisons.
 - **EnemyMotionView::AdvanceMotion @0x44C2A0 (171)**: canonical selected
   17-source `/GL` VC7.1 SP1 cold replay matches the complete PDB-owned 171
   bytes, including all seven bound REL32/DIR32 operands. The original first
@@ -2806,7 +2791,7 @@ restored the EDI receiver at both calls and the full update comparison.
 - ANM render vertices are 0x1C bytes.
 - `StartPositionInterpolation`: EAX VM, EDX initial, ECX final, duration/mode on stack, RET8. Tangent vector at 491C14.
 - ANM VM: scriptIndex +0x38A, activeSpriteIndex +0x384, pending interrupt +0x304, delete mark +0x35C.
-- **AnmVmStartScript @0x00404F30 (202 bytes)**: target-private entry with the VM in ESI, the script index in EAX and the loaded resource as the only stack argument (`RET 4`). Its REL32 calls bind `AnmVmInitialize @0x00401DE0` and `LoadScript_0043E710 @0x0043E710`. The 2026-11-21 exact result used a fake ECX context parameter. It was withdrawn when the owner became the natural free function on 2026-11-22. [2026-11-22]
+- **AnmVmStartScript @0x00404F30 (202 bytes)**: target-private entry with the VM in ESI, the script index in EAX and the loaded resource as the only stack argument (`RET 4`). Its REL32 calls bind `AnmVmView::Initialize @0x00401DE0` and `LoadScript_0043E710 @0x0043E710`. The natural three-argument body passes its five-input canonical cold graph; the initializer member removes the former extra ECX setup.
 - ASCII manager: managed VM id +0x89A4, asciiAnm +0x8994.
 - `AnmRenderManagerView::AddVmVariant0 @0x004489D0` returns `AnmVmIdView` through the hidden struct-return pointer in EAX. Ghidra's `in_EAX` is that pointer, not an explicit parameter.
 - Timer flags at +0x6C/+0xB0/+0xFC/+0x128/+0x174/+0x1B0/+0x1FC/+0x228/+0x378; owner +0x20 (also the layer value); manager node +0x04; layer node +0x10; nextInDrawLayer +0x1C; scale +0x3C/+0x40; scroll +0x54/+0x58; matrices +0x23C/+0x27C; colors +0x2FC/+0x300; pending interrupt +0x304 (short); anmFile +0x308.
