@@ -26,7 +26,7 @@ char g_StartupBgmError[] =
 int __fastcall StartupWorkerView::StartupThread(StartupWorkerView *owner)
 {
     StartupWorkerView *worker = g_StartupWorker;
-    worker->signatureAnm = g_AnmRenderManagerView->PreloadAnm(1, "sig.anm");
+    worker->signatureAnm = g_AnmRenderManagerView->PreloadAnm(ANM_SLOT_SIG, "sig.anm");
     if (worker->signatureAnm == NULL)
         goto fail;
     worker->drawElement->flags |= 2;
@@ -38,7 +38,7 @@ int __fastcall StartupWorkerView::StartupThread(StartupWorkerView *owner)
     }
     worker->textReady = 1;
     g_FrontEndMusicCommentAnm =
-        g_AnmRenderManagerView->PreloadAnm(0, "text.anm");
+        g_AnmRenderManagerView->PreloadAnm(ANM_SLOT_TEXT, "text.anm");
     if (g_FrontEndMusicCommentAnm == NULL)
         goto fail;
     reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->bgmFormats =
@@ -49,7 +49,7 @@ int __fastcall StartupWorkerView::StartupThread(StartupWorkerView *owner)
     reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->PreparePlayback();
     if (FileSystem::CheckIfFileAlreadyExists("thbgm.dat"))
     {
-        if ((g_MainSupervisorView.configuration.options & 0x10) == 0)
+        if ((g_MainSupervisorView.configuration.options & GAME_CONFIG_LOAD_BGM_IN_MEMORY) == 0)
             reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->OpenDiskBgm("thbgm.dat");
         else
             strcpy(reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->unknownNameSlot,
@@ -74,12 +74,12 @@ char g_StartupBulletError[] =
 // Target41F8D0..41F921. Each failed preload emits its own original diagnostic.
 int StartupWorkerView::FinalizeStartupResources()
 {
-    if (g_AnmRenderManagerView->PreloadAnm(6, "front.anm") == NULL)
+    if (g_AnmRenderManagerView->PreloadAnm(ANM_SLOT_FRONT, "front.anm") == NULL)
     {
         th10::g_GameErrorContext.Log(g_StartupFrontError);
         return -1;
     }
-    if (g_AnmRenderManagerView->PreloadAnm(7, "bullet.anm") == NULL)
+    if (g_AnmRenderManagerView->PreloadAnm(ANM_SLOT_BULLET, "bullet.anm") == NULL)
     {
         th10::g_GameErrorContext.Log(g_StartupBulletError);
         return -1;

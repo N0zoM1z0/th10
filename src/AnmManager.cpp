@@ -4156,13 +4156,13 @@ int AsciiManagerView::Initialize()
 {
     th10::ChainElem *element;
 
-    asciiAnm = g_AnmRenderManagerView->PreloadAnm(2, "ascii.anm");
+    asciiAnm = g_AnmRenderManagerView->PreloadAnm(ANM_SLOT_ASCII, "ascii.anm");
     if (asciiAnm == NULL)
         goto fail;
-    textAnm = g_AnmRenderManagerView->PreloadAnm(0, "text.anm");
+    textAnm = g_AnmRenderManagerView->PreloadAnm(ANM_SLOT_TEXT, "text.anm");
     if (textAnm == NULL)
         goto fail;
-    captureAnm = g_AnmRenderManagerView->PreloadAnm(3, "capture.anm");
+    captureAnm = g_AnmRenderManagerView->PreloadAnm(ANM_SLOT_CAPTURE, "capture.anm");
     if (captureAnm == NULL)
         goto fail;
 

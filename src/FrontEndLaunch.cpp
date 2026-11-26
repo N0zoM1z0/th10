@@ -20,10 +20,10 @@ int FrontEndControllerView::RegisterTasks()
     element->flags &= ~2u;
     th10::g_Chain->AddToDrawChain(element, 3);
     drawTask = element;
-    frontAnm = g_AnmRenderManagerView->PreloadAnm(25, "title.anm");
+    frontAnm = g_AnmRenderManagerView->PreloadAnm(ANM_SLOT_TITLE, "title.anm");
     if (frontAnm == NULL)
         goto fail;
-    titleAnm = g_AnmRenderManagerView->PreloadAnm(26, "title_v.anm");
+    titleAnm = g_AnmRenderManagerView->PreloadAnm(ANM_SLOT_TITLE_VERTICAL, "title_v.anm");
     if (titleAnm == NULL)
         goto fail;
     cursor.wraps = 1;

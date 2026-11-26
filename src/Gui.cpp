@@ -2304,7 +2304,7 @@ typedef char GuiStageRouteFileOffsets[
 
 int GuiView::LoadData()
 {
-    stageUiAnm = g_AnmRenderManagerView->PreloadAnm(28,
+    stageUiAnm = g_AnmRenderManagerView->PreloadAnm(ANM_SLOT_STAGE_UI,
         static_cast<const GuiStageRouteView *>(g_ScriptViewerStageRoute)->stageUiFile);
     if (!stageUiAnm)
         goto failed;
@@ -2350,7 +2350,7 @@ failed:
 
 int GuiView::Initialize()
 {
-    frontAnm = g_AnmRenderManagerView->PreloadAnm(6, "front.anm");
+    frontAnm = g_AnmRenderManagerView->PreloadAnm(ANM_SLOT_FRONT, "front.anm");
     if (!frontAnm)
     {
         th10::g_GameErrorContext.Log("\x83\x66\x81\x5b\x83\x5e\x82\xaa\x89\xf3\x82\xea\x82\xc4\x82\xa2\x82\xdc\x82\xb7\r\n");

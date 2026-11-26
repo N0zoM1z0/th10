@@ -26,7 +26,7 @@ BulletManagerView::BulletManagerView()
 // priorities 20/29 and independent handles at +8/+0xC.
 int BulletManagerView::Initialize()
 {
-    bulletAnm = g_AnmRenderManagerView->PreloadAnm(7, "bullet.anm");
+    bulletAnm = g_AnmRenderManagerView->PreloadAnm(ANM_SLOT_BULLET, "bullet.anm");
     if (bulletAnm == NULL)
     {
         th10::g_GameErrorContext.Log(g_GameOwnerBulletAnmErrorMessage);

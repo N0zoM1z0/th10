@@ -3,6 +3,22 @@
 
 #include "InputState.hpp"
 
+// Evidenced by PollInputFrame / MergeJoystickInput (src/InputPolling.cpp) and
+// Main.cpp / FrontEnd.cpp / Gui.cpp input checks.
+enum GameInputButtonMask
+{
+    INPUT_BUTTON_SHOOT      = 0x0001,
+    INPUT_BUTTON_BOMB       = 0x0002,
+    INPUT_BUTTON_PAUSE      = 0x0008,
+    INPUT_BUTTON_UP         = 0x0010,
+    INPUT_BUTTON_DOWN       = 0x0020,
+    INPUT_BUTTON_LEFT       = 0x0040,
+    INPUT_BUTTON_RIGHT      = 0x0080,
+    INPUT_BUTTON_SKIP       = 0x0100,
+    INPUT_BUTTON_FOCUS      = 0x0200,
+    INPUT_BUTTON_SCREENSHOT = 0x0800
+};
+
 // Source-model view for the original private single-buffer keyboard fetch.
 // An unused receiver can arise from a real nonstatic member; the 256-byte
 // output is the register-passed second fastcall argument in EDX.

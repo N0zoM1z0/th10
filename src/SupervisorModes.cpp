@@ -159,14 +159,14 @@ int MainSupervisorView::UpdateGameMode()
     quit:
             ReleaseModeOwners();
             LeaveLock(SUPERVISOR_LOCK_MODE);
-            return 4;
+            return th10::CHAIN_CALLBACK_RESULT_EXIT_GAME_SUCCESS;
         }
     finish:
         currentGameMode = nextGameMode;
         ::LeaveCriticalSection(&criticalSections[SUPERVISOR_LOCK_MODE]);
         --criticalSectionLockCounts[SUPERVISOR_LOCK_MODE];
     }
-    return 1;
+    return th10::CHAIN_CALLBACK_RESULT_CONTINUE;
 }
 
 // Target41FF80..41FFF0 is the real caller of the mode transition owner.
@@ -178,9 +178,11 @@ int __fastcall MainSupervisorView::OnUpdate(MainSupervisorView *supervisor)
     reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->ServiceBgmFades();
     PollInputFrame(0);
     if (g_AnmRenderManagerView->ServicePreloadedAnms() != 0)
-        return 4;
+        return th10::CHAIN_CALLBACK_RESULT_EXIT_GAME_SUCCESS;
     if (supervisor->updateGate != 0)
-        return supervisor->updateGate == 2 ? 4 : 1;
+        return supervisor->updateGate == 2
+            ? th10::CHAIN_CALLBACK_RESULT_EXIT_GAME_SUCCESS
+            : th10::CHAIN_CALLBACK_RESULT_CONTINUE;
     int result = supervisor->UpdateGameMode();
     if (result != 1)
         return result;

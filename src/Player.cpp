@@ -940,7 +940,7 @@ int PlayerInitialize(Player *player)
     const int &shotType = g_GameScoreState.history.statisticsGroupB;
     const char *animationFilename =
         character == 0 ? "pl00.anm" : "pl01.anm";
-    player->resource = g_AnmRenderManagerView->PreloadAnm(8, animationFilename);
+    player->resource = g_AnmRenderManagerView->PreloadAnm(ANM_SLOT_PLAYER, animationFilename);
     if (player->resource == NULL)
     {
         th10::g_GameErrorContext.Log("\x8e\xa9\x8b\x40\x83\x66\x81\x5b\x83\x5e\x82\xaa\x8c\xa9\x82\xc2\x82\xa9\x82\xe8\x82\xdc\x82\xb9\x82\xf1\x81\x42\x83\x66\x81\x5b\x83\x5e\x82\xaa\x89\xf3\x82\xea\x82\xc4\x82\xa2\x82\xdc\x82\xb7\x0d\x0a");

@@ -38,7 +38,7 @@ int StageScriptView::LoadData(const char *path)
     const size_t copySize = originalDataSize;
     data = static_cast<StageDataHeaderView *>(malloc(copySize));
     memcpy(data, originalData, originalDataSize);
-    anm = g_AnmRenderManagerView->PreloadAnm((unknown2A30 & 1) + 4, data->anmPath);
+    anm = g_AnmRenderManagerView->PreloadAnm((unknown2A30 & 1) + ANM_SLOT_STAGE_PRIMARY, data->anmPath);
     if (anm == NULL)
     {
         th10::g_GameErrorContext.Log(

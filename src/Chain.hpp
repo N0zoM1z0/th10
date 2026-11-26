@@ -4,6 +4,18 @@
 namespace th10
 {
 
+// Evidenced by Chain::RunCalcChain / RunDrawChain and SupervisorModes.cpp.
+enum ChainCallbackResult
+{
+    CHAIN_CALLBACK_RESULT_CONTINUE_AND_REMOVE_NO_DELETE = 0,
+    CHAIN_CALLBACK_RESULT_CONTINUE                      = 1,
+    CHAIN_CALLBACK_RESULT_EXECUTE_AGAIN                 = 2,
+    CHAIN_CALLBACK_RESULT_BREAK                         = 3,
+    CHAIN_CALLBACK_RESULT_EXIT_GAME_SUCCESS             = 4,
+    CHAIN_CALLBACK_RESULT_EXIT_GAME_ERROR               = 5,
+    CHAIN_CALLBACK_RESULT_RESTART_FROM_FIRST_JOB        = 6
+};
+
 typedef int (__fastcall *ChainCallback)(void *arg);
 
 struct ChainElem

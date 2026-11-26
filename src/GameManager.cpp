@@ -602,7 +602,7 @@ namespace th10 { namespace leaf {
 // Target 0x0040AE70 preloads bullet.anm and registers two chain callbacks.
 int GameOwner40AF90View::Initialize()
 {
-    bulletAnm = g_AnmRenderManagerView->PreloadAnm(7, "bullet.anm");
+    bulletAnm = g_AnmRenderManagerView->PreloadAnm(ANM_SLOT_BULLET, "bullet.anm");
     if (bulletAnm == NULL)
     {
         th10::g_GameErrorContext.Log(g_GameOwnerUiAnmErrorMessage);

@@ -1234,6 +1234,23 @@ struct AnmRenderVertexNoDiffuseView
 typedef char AnmRenderVertexNoDiffuseViewSizeIs18[
     (sizeof(AnmRenderVertexNoDiffuseView) == 0x18) ? 1 : -1];
 
+// Directly evidenced by PreloadAnm(slot, "*.anm") calls across src/.
+enum AnmResourceSlot
+{
+    ANM_SLOT_TEXT           = 0,  // text.anm
+    ANM_SLOT_SIG            = 1,  // sig.anm
+    ANM_SLOT_ASCII          = 2,  // ascii.anm
+    ANM_SLOT_CAPTURE        = 3,  // capture.anm
+    ANM_SLOT_STAGE_PRIMARY  = 4,  // stage background ANM bank 0
+    ANM_SLOT_STAGE_SECONDARY = 5, // stage background ANM bank 1
+    ANM_SLOT_FRONT          = 6,  // front.anm
+    ANM_SLOT_BULLET         = 7,  // bullet.anm
+    ANM_SLOT_PLAYER         = 8,  // pl00.anm / pl01.anm
+    ANM_SLOT_TITLE          = 25, // title.anm
+    ANM_SLOT_TITLE_VERTICAL = 26, // title_v.anm
+    ANM_SLOT_STAGE_UI       = 28  // stage UI / logo ANM
+};
+
 // Only the renderer fields established by the shared-buffer clear/flush seam
 // are named. The 0x20000 packed vertices account exactly for the span between
 // the target-observed buffer base and its end/start cursors.

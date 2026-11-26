@@ -9,7 +9,7 @@ struct GameChainOwnerView;
 
 int EnemyLaserManagerStorageView::Initialize()
 {
-    effectResource = g_AnmRenderManagerView->PreloadAnm(7, "bullet.anm");
+    effectResource = g_AnmRenderManagerView->PreloadAnm(ANM_SLOT_BULLET, "bullet.anm");
     if (!effectResource)
     {
         th10::g_GameErrorContext.Log("\x93\x47\x92\x65\x83\x66\x81\x5b\x83\x5e\x82\xaa\x8c\xa9\x82\xc2\x82\xa9\x82\xe8\x82\xdc\x82\xb9\x82\xf1\x81\x42\x83\x66\x81\x5b\x83\x5e\x82\xaa\x89\xf3\x82\xea\x82\xc4\x82\xa2\x82\xdc\x82\xb7\x0d\x0a");

@@ -1195,23 +1195,30 @@ INT_PTR CALLBACK MainConfigurationDialogProc(
     HWND dialog, UINT message, WPARAM wparam, LPARAM lparam)
 {
     (void)lparam;
+    // Control IDs match Dialog 203 in src/th10.rc.
+    enum MainStartupDialogControlId
+    {
+        MAIN_DIALOG_BTN_FULLSCREEN = 201,
+        MAIN_DIALOG_CHK_ASK_ALWAYS = 202,
+        MAIN_DIALOG_BTN_WINDOWED   = 203
+    };
     switch (message)
     {
     case WM_INITDIALOG:
-        SendMessageA(GetDlgItem(dialog, 202), BM_SETCHECK, BST_CHECKED, 0);
+        SendMessageA(GetDlgItem(dialog, MAIN_DIALOG_CHK_ASK_ALWAYS), BM_SETCHECK, BST_CHECKED, 0);
         return 0;
     case WM_COMMAND:
         switch (LOWORD(wparam))
         {
-        case 201:
-            if (IsDlgButtonChecked(dialog, 202) == BST_CHECKED)
+        case MAIN_DIALOG_BTN_FULLSCREEN:
+            if (IsDlgButtonChecked(dialog, MAIN_DIALOG_CHK_ASK_ALWAYS) == BST_CHECKED)
                 g_MainSupervisorView.configuration.options |= GAME_CONFIG_ASK_DISPLAY_MODE_ON_STARTUP;
             else
                 g_MainSupervisorView.configuration.options &= ~static_cast<unsigned int>(GAME_CONFIG_ASK_DISPLAY_MODE_ON_STARTUP);
             EndDialog(dialog, IDYES);
             break;
-        case 203:
-            if (IsDlgButtonChecked(dialog, 202) == BST_CHECKED)
+        case MAIN_DIALOG_BTN_WINDOWED:
+            if (IsDlgButtonChecked(dialog, MAIN_DIALOG_CHK_ASK_ALWAYS) == BST_CHECKED)
                 g_MainSupervisorView.configuration.options |= GAME_CONFIG_ASK_DISPLAY_MODE_ON_STARTUP;
             else
                 g_MainSupervisorView.configuration.options &= ~static_cast<unsigned int>(GAME_CONFIG_ASK_DISPLAY_MODE_ON_STARTUP);
