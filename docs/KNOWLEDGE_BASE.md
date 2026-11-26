@@ -2558,6 +2558,21 @@ restored the EDI receiver at both calls and the full update comparison.
   [MIT-licensed reference](licenses/th10-decomp-MIT.txt) suggested using
   the shared score-state fields and repeating the record access.
 
+- **FrontEndControllerView::Draw @0x42D260 (116)** matches unchanged
+  source in the two-input FrontEnd/AnmManager draw-callback cold graph with
+  the existing /GL /GS /EHs profiles. The full extent includes 84 code bytes
+  and eight absolute switch entries for screens 9 through 16. All 14 fields,
+  fixed local destinations and EAX receiver/RET match. EDI keeps the owner;
+  practice and stage draws take it in EDI, while the other three calls use
+  their stack argument. The retained one-input /GL image instead has 120
+  bytes, an EBX owner and a stacked practice argument.
+
+  The real callback remains seven bytes. All five complete callees pass in
+  the same cold image: stage419, practice689, replay825, score entry826 and
+  replay save955. Declare the table's eight local DIR32 fields directly;
+  they already provide data coverage and must not overlap data_spans.
+  Reproduce with `--unit frontend-draw-dispatch`; reports are under
+  `.analysis/frontend-draw-dispatch/`.
 - **FrontEndControllerView::AssignKeyConfigBinding @0x430250 (200)**
   matches unchanged source in the 21-input FrontEndUpdateCallback cold graph.
   All three fields bind: RefreshKeyConfigDisplay, g_MainSoundOwner and

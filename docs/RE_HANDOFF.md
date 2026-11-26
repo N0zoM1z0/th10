@@ -7,22 +7,19 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `FrontEndControllerView::Draw` at `0x0042D260`,
-116 bytes in `src/FrontEnd.cpp`. It is the largest remaining authored owner
-outside the operator-deferred StartSubroutine. The full extent includes 84
-code bytes and eight absolute switch entries for screens 9 through 16.
-The target takes EAX owner/RET; its real callback at 0x42D2F0 moves ECX into
-EAX before tail-jumping here. Compare the complete current body and table
-before editing source, using the actual draw callback/registration graph.
+The sole active owner is `CreateStatistics42AF20` at `0x0042AF20`, 97 bytes
+in `src/GameStatisticsLoad.cpp`. Its prepared `game-statistics-create` unit
+already passes all 97 bytes and nine fields in the constructor's eight-input
+WinMain cold graph, including the complete one-allocation EH protocol.
+Accept this ready candidate from its retained complete proof; no executable
+input has changed since that cold graph. Next accept the 71-byte popup factory
+from its initializer's four-input cold proof, then resume StartSubroutine.
+The operator explicitly approved this remaining order in the current session.
 
-The statistics factory at 0x42AF20 already passes 97/9 with its allocation
-EH protocol in the constructor's eight-input cold graph. The popup factory
-at 0x42B660 passes 71/5 in its initializer's four-input cold graph. Both
-candidate recipes are ready for their later turns after this larger owner.
-
-The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
-in `src/EclVm.cpp`. It is the largest remaining authored owner, with
-542 of 550 bytes matching in `EclVmHostRunEnemy`. Its four call fields
+The operator has authorized resuming `EclVmContext::StartSubroutine` at
+`0x0044DF70` in `src/EclVm.cpp` after the two ready factories above. Its
+retained frontier is 542 of 550 bytes matching in `EclVmHostRunEnemy`.
+Its four call fields
 bind. The remaining differences are register choices in the operand loop.
 The integer operand and both integer result stores match through +0xC5.
 The float operand is loaded into ECX where the target uses EDX.
@@ -60,6 +57,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `frontend-draw-dispatch` | 116 B | `FrontEndReplaySaveDraw`, two-input draw-callback cold, all 14 fields and eight fixed switch destinations. Source unchanged. Callback7 and complete draw callees419/689/825/826/955 pass in the same image. |
 | `game-statistics-constructor` | 132 B | `GameStatisticsConstructor`, eight-input WinMain cold, five fields and EAX owner/RET. Source unchanged; real file/archive consumers restore OpenFile360. Factory97/9 and its allocation EH, loader423, finalizer564, tail142 and record274 pass in the same image. |
 | `script-viewer-popup-initialize` | 145 B | `ScriptViewerPopupCreate`, four-input canonical cold, 11 fields and EAX owner/RET. Reload the saved resource after both registrations. Direct factory71/5 and all selected popup, Chain and concrete VM initializer guards pass; factory remains a prepared candidate for later selection. |
 | `enemy-laser-spawn` | 153 B | `LaserLineUpdate`, four-input canonical cold, four fields and ESI/EDI/stack type with RET4. Current member source unchanged; replaces the stale free-helper label. Bounce410/17, update1001/31 and both constructors202/2 and219/2 pass in the same image. |
