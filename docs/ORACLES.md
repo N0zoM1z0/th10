@@ -177,9 +177,9 @@ completion.
 
 The explicit `stage_array_eh_handler = true` descriptor binds reviewed VM
 member handlers by exact parent symbol, target extent, field offset and
-handler address. It covers the stage and spell panel constructors and
-destructors, the ANM render manager constructor, and the GUI, ASCII
-manager, startup worker and script viewer destructors.
+handler address. It covers the stage, spell panel and ANM render manager
+constructors/destructors, plus the GUI, ASCII manager, startup worker,
+script viewer, popup owner and Player destructors.
 The Stage constructor and destructor generate 37- and 64-byte regions that
 must share the parent's qualified StageLifecycle PDB object and have a unique
 MAP handler entry. Both images must match the bound fields, immutable 28-byte
@@ -190,14 +190,18 @@ the qualified PDB object. LTCG can emit the inline definition in a caller's
 translation unit. The Stage link emits its copy in the StageLifecycle
 object. The verifier checks all of its bytes and its sole free field
 independently. It also checks vector-destructor and CxxFrameHandler entries.
-Only the affected Stage array-binding self-test is added to the optional Oracle
-selection; unrelated comparison mechanisms retain their current contracts.
+Verifier changes use `scripts/test-linked-stage-array-eh.py` and a bounded
+native proof for the affected parent. Documentation changes require no
+compiler or Oracle replay.
 
 The ANM constructor's 79-byte generated region contains a 4,096-VM pool
 cleanup at `+0x68`, a direct destructor tail call for the embedded VM at
 `+0x3AD130`, and a 20-VM array cleanup at `+0x72DAE4`. The verifier binds
 all three unwind states, the array counts, the saved receiver, and the real
-VM destructor in the same AnmManager object.
+VM destructor in the same AnmManager object. The manager destructor uses
+the same three-state layout and a 79-byte region at handler `0x465225`.
+Keep construction-state order even though normal member destruction runs
+in reverse.
 
 The GUI destructor binds its 184-byte generated region at the handler
 entry 0x46574E. FuncInfo at 0x471740 references six array cleanup actions
@@ -231,6 +235,12 @@ and tail-jumps to the real 34-byte VM destructor. The declared
 `ScriptViewerDestructSmall` graph emits that VM destructor in the primary
 ScriptViewer object, while the parent and generated region belong to Player.
 The partial Player VM view's ESI-receiver destructor fails this binding.
+
+The popup owner destructor binds a 21-byte region at handler `0x46523B`
+for its single VM member at `+0x18`. The parent and generated region belong
+to ScriptViewerLifecycle; the complete inline VM destructor is qualified
+in ScriptViewerPopupCreate. Parent and cleanup producer checks remain
+independent, as in the Player case.
 
 ## Validation scope during exact reconstruction
 

@@ -1011,9 +1011,10 @@ frontier; do not refresh a baseline merely to accept the new positions.
   the five-byte EAX store to `Main.clearColor` in opcode 13. The shorter
   store restores the following branch destinations and the table alignment.
   Opcode 14 calls the real `AnmVmStartScript` with ESI for the VM, EAX
-  for the script index and the resource on the stack. In this StageCreate
-  link the starter itself remains 204/202 bytes with the extra ECX clear
-  before `AnmVmInitialize`. [2026-11-23]
+  for the script index and the resource on the stack. The older StageCreate
+  image had a 204-byte starter with an extra ECX clear. The natural VM
+  initializer member now closes the starter at 202 bytes in its canonical
+  StagePrepareAnimationSlots graph; see the VM initialization finding.
 - **PlayerUpdateMovementAndOptions @0x4250B0 (1,656)**: exact with 54
   bound fields in `ClaudeReplayInitLoadScript`, including both eight-entry
   direction tables. The caller passes Player in EDI. Typed animation IDs
@@ -1527,10 +1528,10 @@ frontier; do not refresh a baseline merely to accept the new positions.
   name at +6 and the cleared DWORD at +0x10. The table begins at record+0x10
   and ends at +0x4c0; the record remains 0x437c bytes. The pooled literal's
   nine bytes equal original 0x46E858; fields bind addends 0/4/8. The other
-  five fields bind the signed kind table at 0x4743C0. The sole constructor
-  still differs at 137/132 bytes, but its bound call and the original both
-  push ESI and the complete callee returns with RET4. Its own exactness is
-  independent of this match.
+  five fields bind the signed kind table at 0x4743C0. The retained six-input
+  constructor image was 137 bytes; its eight-input WinMain recipe now
+  matches all 132. The record call still pushes ESI and the complete callee
+  returns with RET4; see the constructor finding for the file ABI repair.
 
   Earlier read-only traces explain the failed byte-view controls. C2's alias
   predicate made the tail store precede both clears. Its nine-byte copy
@@ -1642,8 +1643,9 @@ frontier; do not refresh a baseline merely to accept the new positions.
   Popup Update (134 bytes), ChainElem destructor (12) and Chain destructor
   (103) retain complete strict equality in affected graphs. No ASM or
   padding is used. [2026-11-17]
-- **Chain::Chain @0x449AA0 (59)**: still nonexact. Its 59-byte current
-  candidate differs at eight bytes associated with the first self-link
+- **Chain::Chain @0x449AA0 (59)** remains nonexact, with indeterminate
+  origin; it is outside the authored backlog. The retained 59-byte candidate
+  differs at eight bytes associated with the first self-link
   store / second sentinel address scheduling. Before explicitly ordering
   both next/prev clears the constructor was six bytes away, but that source
   left the allocator nine bytes away. Keep these separate and do not claim
@@ -1870,239 +1872,77 @@ restored the EDI receiver at both calls and the full update comparison.
 - Pop @0x00450610 (122, RET 4): EAX stack, ECX byte count, BL requested type, one stack out ptr. Push/EnterFrame/LeaveFrame use EAX stack receiver.
 - Host 0x103C prefix: active ctx +4, embedded ctx +8, script DB +0x102C, thread-list sentinel +0x1030. Run's only callers are EclVmHost::Run; host Run callers keep host in EDI (EnemyRuntimeUpdate 0x0040E0FE/0x0040E205).
 - Opcode 0x51 polar helper 0x004501B0 (30B thiscall FSINCOS) is byte-identical to AnmFloat3View::FromAngleMagnitude @0x004458B0; 0x51/0x52 use EnemyWrapAngle @0x0044BC70.
-- `EclVmContext::StartSubroutine` at `0x0044DF70` takes the destination
-  in EAX and the caller and operand index on the stack. It returns with
-  RET 8. The argument words are indexed by `valueOffset / 4`. An empty
-  destination stack receives two zero return words. A successful lookup
-  restores the active context through the caller's host. The 550-byte
-  target has four calls. Their REL32 fields are at +0x9E for
-  `ReadIntValue`, +0xD2 for `ReadFloatValue`, +0xE8 for the CRT float
-  to integer conversion at `0x00463B2C`, and +0x1DD for
-  `FindSubroutine`. Capturing the caller once after the argument loop
-  from the volatile pointer parameter puts the return-frame caller in
-  EDX and the push size in EBX. The two-source VC7.1 SP1
-  `EclVmHostRunEnemy` link reaches 550 bytes with four bound fields.
-  With the initial count check outside a do-while loop, a compiler barrier
-  after the destination cursor initialization orders its store before the
-  word offset calculation. The preheader matches through +0x6B. A volatile
-  cursor pointer preserves the target's reloads and aligns the loop from
-  +0x107. The integer conversion and raw word store leave through
-  separate branches. In an earlier candidate, a compiler barrier after
-  the raw word store prevents VC7.1 from merging the stores. A volatile word offset
-  shortens the loop by seven bytes. Deriving both cursors from the loop
-  offsets emits two memory increments and shortens the owner to 538 bytes.
-  Force-inlined reference helpers for the word offset's initialization
-  or advance were byte-neutral in the earlier for-loop candidate.
-  A volatile read of `operandCount` at the latch moves the count load to
-  the target's +0x103 and moves the word offset reload after the cursor store.
-  Combining that read with a local snapshot of the previous destination
-  and a named integer-to-float result matches 517 bytes. The float result
-  path aligns from +0xCF through +0xF1. Taking an additional local
-  destination snapshot in the raw integer branch shortens the combined
-  candidate to 544 bytes. See the [current handoff](RE_HANDOFF.md).
-  Accessing the word offset through a volatile reference for both the
-  read and the write at the latch restores EAX for its initialization
-  and preserves the entry jump and backedge reload. The volatile read
-  alone drops that entry split and the owner shrinks to 537 bytes.
-  Reading the next operand count before writing the offset, then testing
-  the captured count at the backedge, brings the strict match to 532 bytes.
-  With that latch, capturing the caller after reading the float operand
-  puts the caller load before the push and matches another three bytes.
-  The raw float word is still carried in ECX where the target uses EDX.
-  Taking the latch's instruction pointer through a volatile reference
-  after reading the destination cursor reproduces the target order of
-  all three slot loads. The operand count can then use an ordinary byte
-  read. All remaining differences in the 536-byte match are register
-  choices within the argument loop.
-  The integer operand load at +0x97 keeps its compiler tuple from
-  GlobalRegAlloc to Riscify. `CreateGlobregs` gives the result its own
-  virtual symbol, and the allocation watchpoint records the physical
-  assignment in `ChoosePhysReg`. All three scratch registers are
-  eligible. The current source chooses EAX on a tie with ECX at −1.
-  The earlier plain-caller candidate assigns ECX at −1 with EAX and EDX
-  both at 1. A watchpoint on the preference list records one entry
-  each from the earlier EAX and ECX allocations at `0x10759830`.
-  At Color entry, the EAX range feeds the shift used for the word index.
-  The ECX range comes from the instruction pointer load and supplies the
-  base for the source tag and both raw operands. Passing the word offset
-  to an inlined by-reference index calculation leaves the code unchanged.
-  Reading it through the volatile latch alias in either operand path adds
-  a four-byte reload. Capturing a local destination pointer in the raw
-  integer store fixes +0xBB but moves the float result and latch registers.
-  The word offset's allocation record explains why the earlier candidate
-  lacks the EAX preference. Its initial priority reaches 79 before
-  `ColProcessSplitGlobregs` splits the range. The following piece reaches
-  −26 through `SpillOrDefer` and `InsertByBenefit`, and local `RegAssign`
-  chooses EAX for the shift. The 536-byte candidate reaches priority
-  183 and takes EAX in `ChoosePhysReg`. Removing both volatile latch
-  accesses changes the extent to 546 bytes. Delaying the word offset
-  write until the loop continues emits 542 bytes.
-  Seeding the `for` loop from the same operand count used by the initial
-  guard preserves the 536-byte candidate's instruction stream and lets
-  the source drop the barrier between the two cursor initializations.
-  An independent `for` condition that rereads the count at entry adds a
-  second guard. The float raw-word load at +0xC6 receives the same EAX
-  and ECX preferences as the integer load, but chooses ECX with net
-  costs 0, −1 and 0. The target uses EDX for that operand.
-  With the cached-count loop, removing the remaining barrier leaves
-  both integer writes visible at Riscify entry. The direct integer result
-  and the float-to-integer conversion each reload the destination into
-  EDX and store EAX through it. Both stores survive to the second
-  `FgDoLateFlowOpts` entry. By `FgCodeMotion` entry the direct store is
-  gone, reducing the final extent from 550 to 542 bytes. Typed pointer
-  stores, an aggregate assignment and a four-byte copy reproduce the
-  merge. A single barrier after the converted integer store is
-  byte-neutral against the retained source, which puts it after the
-  direct store.
-  The target uses ECX for the direct integer result and EDX for the
-  converted result. In the 536-byte candidate, the two paths need either
-  that register difference or the barrier to stay separate.
-  Qualifying the direct integer write as volatile still produces the
-  shared store in the 542-byte cached-count loop. Deriving the payload
-  word offset from the descriptor offset lets VC7.1 materialize a separate
-  induction variable again. The resulting 552-byte body puts the word
-  offset in ECX and the instruction base in EAX. The inverse derivation
-  emits 576 bytes. This leaves the explicit two-offset loop as the closer
-  shape for isolating the allocator choices.
-  Keeping the encoded float operand in the scalar bit carrier until the
-  resolver call preserves the integer load and push. Loading it as a
-  native float first introduces an x87 load and a temporary spill.
-  One instruction snapshot supplies the source tag and both possible
-  operand loads. The destination tag is looked up again after a resolver
-  call. Keeping this distinction explicit preserves the 536-byte match.
-  The cold `EclVmStack` link reproduces the same 14 differing bytes
-  with exact integer and float readers. Capturing the raw integer
-  destination in a local and writing the integer-to-float conversion
-  directly changes which store uses the target register, while the
-  complete comparison stays at 536 bytes.
-  A watchpoint on the latch's instruction-pointer load traces its
-  physical register to `ChoosePhysReg`. When that load is assigned,
-  the destination cursor already holds EAX. The instruction pointer has
-  priority 56, no register preferences and equal costs for ECX and EDX.
-  It takes ECX. Grouping the three latch inputs into an aggregate or
-  moving their reloads into an inlined advance helper leaves this code
-  unchanged.
-  In the two-source `EclVmHostRunEnemy` link, naming the encoded integer
-  operand pointer and separately snapshotting the destination before the
-  direct integer store aligns the complete prefix through +0xC5. The
-  resulting owner matches 542 of 550 bytes. The remaining differences are
-  the float operand register at +0xC6 and the cursor and instruction
-  registers at the loop latch beginning at +0xF2.
-  Removing the barrier from this form preserves all 550 owner bytes and
-  all four linked fields in the local comparison. Its two result stores
-  remain separate, so the source no longer needs the intrinsic.
-  In the 542-byte candidate, the latch's destination, instruction and
-  word-offset candidates have equal priority 56 and no register
-  preferences. The allocator assigns EAX, ECX and EDX in that order.
-  A C2 trace through `OrderGlobregs` places those candidates consecutively
-  in its input hash buckets 27, 28 and 29 and in the output queue in the
-  same order. Each has benefit 8. `GrgNewGlobreg` assigns increasing numbers
-  and uses the low ten bits as the hash bucket. The order is also determined
-  by the secondary ordering field at candidate +0x44: the cursor,
-  instruction and offset have values 106, 105 and 104, and `OrderGlobregs`
-  sorts equal-priority candidates by this field in descending order. A
-  write watchpoint identifies `CreateGlobregs` at 0x107A8713 assigning the
-  field from its instruction-walk counter; the writes occur in offset,
-  instruction, cursor order. The three corresponding
-  reads occur in that same order in the Color input block. Moving the
-  instruction read before the cursor read in a control reverses their
-  candidate roles and gives the instruction EAX and cursor ECX, but also
-  reverses the generated read order and changes the subsequent count
-  schedule. The control matches 523 bytes and is not retained. The normal
-  traced link finishes and reproduces all 550 candidate bytes and four
-  fields, so this observation does not depend on a partial debug build.
-  A separate diagnostic changes the instruction candidate's priority in
-  the debugger process only, before ordering. With the ordinary count read,
-  C2 assigns the desired EAX and ECX to instruction and cursor but moves the
-  count load ahead of the cursor store. Qualifying the count read volatile
-  preserves the target schedule in that diagnostic; its latch then differs
-  only at +0x105 and +0x10F, where the count uses EAX instead of ECX.
-  This manipulated compiler run is a probe, not matching evidence. In an
-  ordinary link, storing the loop count as unsigned char or short instead
-  expands the function to 560 or 551 bytes respectively.
-  A separate read-only trace of the volatile-count source follows the
-  count-load destination into global candidate 18. Its priority is 64;
-  EAX and ECX are both eligible, both score zero, and its preference list
-  is empty, so `ChoosePhysReg` selects EAX. This is an independent choice,
-  rather than a mandatory reuse of the instruction pointer's register.
-  The completed trace link has the same 550 bytes and four fields as that
-  source's ordinary link. Sharing one count variable between the entry
-  guard and the loop, with either a reference or direct access, leaves that
-  candidate's complete comparison at 542 matching bytes.
-  With the retained nonvolatile count read, the count temporary instead
-  reaches local `RegAssign` as 0x1BD. Its integer-register cursor points
-  at EAX and the pass chooses EAX. The same local choice occurs when a
-  debugger-only priority adjustment gives the instruction pointer EAX and
-  cursor ECX. Reversing the source comparison changes the function's other
-  register assignments and gives 419 matching bytes; negating the original
-  comparison preserves the 542-byte match.
-  Immediately before that latch, local temporary 0x2FC supplies the float
-  to integer result's destination reload. `RegAssign` chooses EDX for it
-  and advances the integer cursor to EAX, which remains the cursor at the
-  count load. Capturing the destination in a pointer or reference before
-  the conversion adds a stack temporary and expands the owner to 556 bytes.
-  Capturing the converted integer while retaining the direct destination
-  access leaves the 542-byte match unchanged. A completed debugger link of
-  that form has identical owner bytes and four fields; its temporary numbers
-  change, but the EDX-to-EAX cursor transition and count allocation do not.
-  Expressing loop continuation
-  as a boolean after the index increment or cursor updates is also neutral,
-  for both ordinary and volatile count reads.
-  The float operand candidate has ECX and EAX preferences and scores
-  0, -1 and 0 for EAX, ECX and EDX, selecting ECX. Qualifying either
-  result-tag instruction read as volatile changes the complete body
-  to 514 matching bytes. Copying the integer operand through `memcpy`
-  leaves the prior 536-byte candidate unchanged.
-  In a read-only C2 trace of the 542-byte source, the EAX preference
-  comes from the word-index live range and the ECX preference comes from
-  the instruction-pointer range. A conflicting caller-context range
-  contributes an EAX penalty of one. `ChoosePhysReg` applies that
-  penalty before subtracting the two preferences, producing scores
-  0, -1 and 0 for EAX, ECX and EDX. The trace build finishes normally
-  under GDB and its complete 550-byte function and all four linked fields
-  equal the ordinary local build. Loading the float word directly through
-  its scalar pointer changes the owner to 552 bytes. A volatile float
-  read emits an x87 load and changes it to 555 bytes.
-  Repeating the allocator trace after removing the store barrier gives the
-  same interference penalty and preferences. Duplicating the float arm for
-  the two source tags produces a 587-byte owner; expressing those tags as
-  switch cases produces 557 bytes. Neither control-flow form preserves the
-  target's shared branch, so the remaining allocation difference needs a
-  change in the existing shared path or its live ranges.
-  With a plain destination pointer, making only the result-path reads
-  volatile gives a 550-byte owner but moves the latch's instruction read
-  ahead of the cursor read. Making the latch cursor read volatile too
-  restores the same 542-byte match as the retained source. A volatile
-  operand-count read with a plain instruction slot gives a 544-byte owner;
-  keeping the instruction slot volatile yields the existing 542-byte match.
-  In this 542-byte-match form, independently removing volatile access to
-  the destination cursor, the latch instruction slot, or the value offset
-  produces owner lengths of 542, 544, and 546 bytes respectively. The
-  operand readers may call host virtual resolvers, so an instruction pointer
-  saved before resolution cannot replace the post-call reload in general.
-- In the VC7.1 SP1 6030 trace for `StartSubroutine`, `RegAssign` assigns
-  the destination address LEA to EAX and advances the integer register
-  cursor to ECX. The 551-byte candidate with a plain caller parameter
-  assigns the destination address to ECX and emits the word offset in
-  EAX. The 550-byte candidate already carries the word offset in ECX
-  at Riscify entry, so the first difference is present before that pass.
-  At GlobalRegAlloc entry, the word offset LEA in both candidates feeds
-  a copy to the loop-carried offset. The LEA's tuple survives to Riscify.
-  The RegAssign event for the destination-address LEA is separate from
-  the register choice propagated through the word offset copy.
-  Watching the word-offset LEA's destination operand in the 513-byte
-  candidate locates the final physical-symbol write at `0x107ACB9F`,
-  in the out-of-line block reached from `RewriteAsReal`. The 517-byte
-  candidate takes the same path. `CreateGenAndKill` first replaces the
-  original offset symbol with a split symbol, then `RewriteAsReal`
-  reads ECX from that split symbol's register map. The EAX choice logged
-  for the original offset is for a separate live range.
-  Capturing the caller before reading the float operand switches the
-  caller load to EAX before the push but moves the integer operand
-  read ahead of its receiver load and shortens the function to 548 bytes.
-  The local trace runs from the two-source `EclVmHostRunEnemy` link
-  inputs. Launching `winedbg.exe` with a Windows path to the linker and a
-  pseudo-terminal exposes the local GDB proxy for read-only observation.
+- **EclVmContext::StartSubroutine @0x44DF70 (550 bytes, open)** has a
+  current cold baseline of 542 matching bytes with all four call fields
+  bound. The two-input `ecl-vm-start-subroutine` recipe compiles EclVm.cpp
+  and Enemy.cpp under VC7.1 SP1 6030 /GL, rooted at EnemyRuntimeUpdate.
+  The destination arrives in EAX; caller and first-argument index are on
+  the stack, and the complete owner returns with RET8. An empty destination
+  stack receives two zero return words. After the argument loop, capturing
+  the caller once gives EDX for the return-frame caller and EBX for the push
+  size. Successful lookup restores the active context through the caller's
+  host. The four REL32 fields
+  at +0x9E/+0xD2/+0xE8/+0x1DD bind ReadIntValue, ReadFloatValue, __ftol2
+  and FindSubroutine. The current cold report is
+  `.analysis/ecl-start-subroutine/resumed-current-cold-compare.json`.
+
+  The remaining differences are register choices. At +0xC7/+0xCE the raw
+  float word uses ECX instead of EDX. At +0xF3/+0xF7/+0xFD/+0x100 the
+  destination cursor and instruction pointer use EAX/ECX instead of
+  ECX/EAX. At +0x105/+0x10F the operand count uses EAX instead of ECX.
+  The integer path matches through +0xC5. Keep the raw float word in its
+  scalar bit carrier: a native float local introduces an x87 load/spill.
+  One instruction snapshot supplies the source tag and raw operand, but
+  the destination tag must be reloaded after resolution because the host's
+  virtual resolvers may change the caller's instruction.
+
+  Read-only C2 traces explain the float-word, latch and count allocations:
+
+  - The float word gets preferences from the EAX word-index range and ECX
+    instruction range. A conflicting caller-context range adds an EAX
+    penalty of one. ChoosePhysReg therefore scores EAX/ECX/EDX as 0/-1/0
+    and selects ECX. The completed `terra-float-costs2` trace reproduces
+    the ordinary candidate's full body and four fields.
+  - At the latch, cursor, instruction and offset have priority 56, benefit
+    8 and no register preferences. Their secondary fields at candidate
+    +0x44 are 106/105/104. CreateGlobregs writes this instruction-walk
+    counter at C2 address 0x107A8713; OrderGlobregs sorts it descending,
+    so the three candidates receive EAX/ECX/EDX. See
+    `terra-latch-tie-write`.
+  - The ordinary count load is a local RegAssign choice. The preceding
+    float-to-int destination reload takes EDX and advances the integer
+    register cursor to EAX. The count then takes EAX; it is not required
+    to reuse the instruction register. In the volatile-count control it
+    becomes a priority-64 global candidate, but still chooses EAX on a
+    zero-cost tie with ECX and an empty preference list. See
+    `terra-latch-count-scores`; that trace uses the older volatile-count
+    source, rather than the committed baseline.
+
+  Reversing the two latch reads gives the desired register roles but breaks
+  their required order and the count schedule. A debugger-only priority
+  change plus a volatile count read restores the read order but leaves the
+  count in EAX. That manipulated run is diagnostic, not matching evidence.
+  The remaining source change must address both allocation and scheduling.
+
+  Useful failed controls are already established. Deriving the payload
+  offset from metadata gives 552 bytes; the inverse gives 576. Removing
+  individual volatile cursor/instruction/offset accesses changes the body
+  length. Grouping latch inputs or using inline advance helpers did not
+  resolve the register choices. A direct scalar float load gives 552 bytes;
+  a volatile float load gives 555. Duplicating the float arm gives 587 bytes,
+  and switching on the two tags gives 557. The direct integer store no longer
+  needs a compiler barrier; removing it preserves the 550-byte candidate and
+  its 542 matching bytes. C2 can split a live range before RewriteAsReal,
+  so an early LEA assignment is not necessarily the final register: the
+  split-map write at 0x107ACB9F is the useful observation point.
+
+  The latest unsigned float-index snapshot and shared tag/word union
+  controls were both byte-neutral against this baseline. Both were
+  discarded, and the source was restored. Their comparison reports and
+  the three useful read-only trace contexts remain locally; obsolete
+  trial snapshots and debug images have been removed. Rebuild the unit
+  before another probe: the live PE/objects were last produced by the
+  discarded, byte-neutral tag/word control.
 - Script DB (0x1098 polymorphic resource): AddScriptData @0x00450220 validates SCPT, ≤32 file buffers, header 0x24, sorted 8-byte name table; derived vtable 0x0046D0B4 (slots: AddScriptData, package loader 0x0040D400, file loader 0x0040CD20), base 0x0046D0F0 (AddScriptData, 0x0040C810). Owned script pointers +0x0C..+0x88, lookup table +0x8C, nested dwords +0x1090/+0x1094.
 - Opcode 55 negates the 32-bit raw word (NEG EDX at 44F851) after tag conversion and pushes it with float tag 66h.
   - Run loads the instruction into EAX for the time comparison, then separately loads EDI at body+40.
