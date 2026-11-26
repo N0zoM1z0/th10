@@ -123,6 +123,13 @@ def main() -> int:
         ("g_GameScoreState -> g_FrontEndFlags", "?g_GameScoreState@@3UGameScoreStateView@@A", "?g_FrontEndFlags@@3IA", 0x60),
         ("g_FrontEndInput -> g_MainInputEdges", "?g_FrontEndInput@@3UFrontEndInputView@@A", "?g_MainInputEdges@@3GA", 0x06),
         ("g_FrontEndInput -> g_GuiInputCurrent", "?g_FrontEndInput@@3UFrontEndInputView@@A", "?g_GuiInputCurrent@@3IA", 0x2C),
+        ("g_FrontEndInput -> g_GuiInputEdges", "?g_FrontEndInput@@3UFrontEndInputView@@A", "?g_GuiInputEdges@@3IA", 0x32),
+        ("g_MainSupervisorView -> g_Direct3DDevice", "?g_MainSupervisorView@@3UMainSupervisorView@@A", "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A", 0x08),
+        ("g_MainSupervisorView -> g_InputJoystickXThreshold", "?g_MainSupervisorView@@3UMainSupervisorView@@A", "?g_InputJoystickXThreshold@@3FA", 0x136),
+        ("g_MainSupervisorView -> g_CriticalSections", "?g_MainSupervisorView@@3UMainSupervisorView@@A", "?g_CriticalSections@th10@@3PAU_RTL_CRITICAL_SECTION@@A", 0x64C),
+        ("g_MainSupervisorView -> g_ChainNestCounter", "?g_MainSupervisorView@@3UMainSupervisorView@@A", "?g_ChainNestCounter@th10@@3EA", 0x6F4),
+        ("g_MainSupervisorView -> gReplayFileOpenCount", "?g_MainSupervisorView@@3UMainSupervisorView@@A", "?gReplayFileOpenCount@@3EA", 0x6F6),
+        ("g_MainSupervisorView -> g_LogLockDepth", "?g_MainSupervisorView@@3UMainSupervisorView@@A", "?g_LogLockDepth@th10@@3EA", 0x6F7),
     ]
     print("\n=== 3. Struct-Interior Offset Contracts ===")
     for label, base_sym, field_sym, expected in offset_contracts:

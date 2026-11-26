@@ -13,8 +13,10 @@ The whole-program VC7.1 SP1 `/GL` + `/LTCG` build is now configured in
 `build/windows-i386/th10-reordered.exe` (reversed `.obj` order, base
 `0x00500000`) with undecorated `d3d9.dll` / `d3dx9_31.dll` imports, Win32
 dialog resource [src/th10.rc](../src/th10.rc), cross-TU bridge
-[src/ProductBridge.cpp](../src/ProductBridge.cpp), and relocatable global
-storage [src/ProductData.asm](../src/ProductData.asm).
+[src/ProductBridge.cpp](../src/ProductBridge.cpp), pure C++ strings/tables
+([src/ProductStrings.cpp](../src/ProductStrings.cpp),
+[src/ProductGlobals.cpp](../src/ProductGlobals.cpp)), and zero-initialized
+`.bss` layout [src/ProductBssLayout.asm](../src/ProductBssLayout.asm).
 
 Reproduce both builds and run the Position Independence verifier:
 

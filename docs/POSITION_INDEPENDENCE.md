@@ -28,12 +28,20 @@ fixed layout:
 
 ## Implementation
 
-- **Relocatable global storage**: [src/ProductData.asm](file:///home/pentester/coding/codex_ida/th10-reconstruction/th10/src/ProductData.asm)
-  places all `.rdata` (`CONST`), initialized `.data` (`_DATA`), and `.bss`
-  (`_BSS`) storage in standard relocatable COFF segments assembled by VC7.1
-  `ml.exe`. Every initialized pointer in `.data` (5 code/vtable pointers,
-  1 self-pointer in `th10::g_GameErrorContext`, and 236 `.rdata` string
-  pointers) is emitted as a symbolic `DD OFFSET <symbol>` relocation.
+- **Pure C++ read-only strings & constants**: [src/ProductStrings.cpp](file:///home/pentester/coding/codex_ida/th10-reconstruction/th10/src/ProductStrings.cpp)
+  defines all built-in Shift-JIS/ASCII strings (with UTF-8 comments), float
+  constants, and `.rdata` lookup tables as standard C++ literals and arrays.
+- **Pure C++ initialized data tables**: [src/ProductGlobals.cpp](file:///home/pentester/coding/codex_ida/th10-reconstruction/th10/src/ProductGlobals.cpp)
+  defines all initialized `.data` tables (bullet tables, stage records,
+  ending/demo/shot paths, callback tables with direct C++ function pointers,
+  `g_GameScoreState`, `g_MainScanWorker`, and `th10::g_GameErrorContext` with
+  a native C++ self-pointer initializer) and binds same-address aliases via
+  `#pragma comment(linker, "/alternatename:...")`.
+- **Zero-initialized `.bss` layout**: [src/ProductBssLayout.asm](file:///home/pentester/coding/codex_ida/th10-reconstruction/th10/src/ProductBssLayout.asm)
+  contains only zero-initialized `DB ... DUP(?)` reservations and `PUBLIC`
+  labels (zero strings, zero data bytes, zero hardcoded addresses) so VC7.1
+  preserves the 5 sub-4-byte struct-interior offsets (`+0x06`/`+0x32` in
+  `g_FrontEndInput` and `+0x136`/`+0x6F6`/`+0x6F7` in `g_MainSupervisorView`).
 - **DirectInput SDK constants**: `g_InputKeyboardDataFormat`,
   `g_InputJoystickDataFormat`, `g_InputKeyboardGuid`, and
   `g_InputDirectInputIID` bind directly to `dinput8.lib` / `dxguid.lib`

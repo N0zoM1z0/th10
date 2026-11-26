@@ -4,8 +4,8 @@
 Uses the pinned VC7.1 SP1 6030 toolchain (/GL + /LTCG) under headless Wine:
   - Generates undecorated import libraries for d3d9.dll and d3dx9_31.dll
   - Compiles Win32 resources (src/th10.rc) via rc.exe
-  - Assembles relocatable global storage (src/ProductData.asm) via ml.exe
-  - Compiles all active src/*.cpp translation units via cl.exe
+  - Compiles all active src/*.cpp translation units via cl.exe (including pure
+    C++ ProductStrings.cpp and ProductGlobals.cpp)
   - Links build/windows-i386/th10.exe (or th10-reordered.exe with --reverse-link)
 """
 
@@ -123,10 +123,18 @@ def select_profiles(excluded: set[str]) -> dict[str, list[str]]:
     if ede.get("source"):
         profiles[ede["source"]] = list(ede["profile"])
 
+    # Pure C++ product data TUs are compiled as standard non-/Gy COFF so VC7.1
+    # preserves declaration order for contiguous struct blocks and linker pragmas.
+    non_ltcg_data_tus = {"src/ProductGlobals.cpp", "src/ProductStrings.cpp"}
+    data_profile = ["/TP", "/MT", "/O2", "/DNDEBUG", "/Isrc"]
+
     result: dict[str, list[str]] = {}
     for p in sorted((ROOT / "src").glob("*.cpp")):
         rel = str(p.relative_to(ROOT))
         if rel in excluded:
+            continue
+        if rel in non_ltcg_data_tus:
+            result[rel] = list(data_profile)
             continue
         prof = list(profiles.get(rel, default))
         if "/GL" not in prof:
@@ -203,15 +211,15 @@ def compile_resources(msvc_root: Path, env: dict[str, str], rc_rel: str, force: 
     return res_path
 
 
-def assemble_data(msvc_root: Path, env: dict[str, str], force: bool = False) -> Path:
+def assemble_bss_layout(msvc_root: Path, env: dict[str, str], force: bool = False) -> Path:
     OBJ_DIR.mkdir(parents=True, exist_ok=True)
-    asm = ROOT / "src" / "ProductData.asm"
-    obj = OBJ_DIR / "ProductData.obj"
+    asm = ROOT / "src" / "ProductBssLayout.asm"
+    obj = OBJ_DIR / "ProductBssLayout.obj"
     if force or not obj.is_file() or obj.stat().st_mtime < asm.stat().st_mtime:
         ml_exe = str(msvc_root / "Vc7" / "bin" / "ml.exe")
         asm_win = link.windows_path(asm, env)
         obj_win = link.windows_path(obj, env)
-        print("[asm] src/ProductData.asm", flush=True)
+        print("[asm] src/ProductBssLayout.asm", flush=True)
         res = run_wine([ml_exe, "/nologo", "/c", "/coff", f"/Fo{obj_win}", asm_win], env)
         if res.returncode != 0:
             print(res.stdout)
@@ -336,10 +344,10 @@ def main() -> int:
 
     build_import_libs(msvc_root, env, force=args.fresh)
     res_objs = [compile_resources(msvc_root, env, r, force=args.fresh) for r in rc_files]
-    data_obj = assemble_data(msvc_root, env, force=args.fresh)
+    bss_obj = assemble_bss_layout(msvc_root, env, force=args.fresh)
     profiles = select_profiles(excluded)
     objects = compile_all(msvc_root, env, profiles, force=args.fresh)
-    objects.append(data_obj)
+    objects.append(bss_obj)
     return link_exe(msvc_root, env, objects, res_objs, libraries, reverse=args.reverse_link)
 
 

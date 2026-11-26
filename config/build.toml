@@ -18,7 +18,7 @@ normal_coff_and_ltcg_inputs_observed = true
 [graph]
 translation_unit_partition_state = "configured"
 link_order_state = "configured"
-sources = ["src/*.cpp", "src/ProductData.asm"]
+sources = ["src/*.cpp", "src/ProductBssLayout.asm"]
 excluded_sources = ["src/EnemyLaserPatternCancel.cpp"]
 libraries = [
     "libcmt.lib",
