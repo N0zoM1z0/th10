@@ -7,41 +7,40 @@ Use [matches.csv](../config/matches.csv) to select remaining work and
 
 ## Resume
 
-The sole active owner is `InitializeGameStatisticsRecord` at `0x0042ACB0`,
-274 bytes in `src/GameStatisticsRecordDefaults.cpp`. Its first complete cold
-comparison passes all eight fields in the six-input `GameStatisticsTail`
-graph. The fix combines typed `rankScores[5][10]` members in
-GameStatisticsRecord with direct indexed member accesses. Retaining a byte
-view for the copy keeps the wrong store ordering even with the typed parent.
-The original and the real constructor both push ESI to the RET4 callee; the
-constructor itself remains nonexact at 137/132 bytes.
+The sole active owner is `EnemyGameStateView::StartSpell` at `0x00409280`,
+2,432 bytes in `src/PlayerHudStartSpell.cpp`. Its historical exact acceptance
+at `fb13affe` predates `060d3655`, which made AddVmVariant0 noinline. The
+current cold recipe emits 1,992 bytes: six AddVmVariant0 calls instead of the
+target's one. Five panel registrations need their former inline bodies.
+Use the existing `AddVmToPrimaryBack` primitive inside CreatePanelAnimation;
+keep the global noinline method needed by the difficulty-selection owner.
+The current ledger claim has been reopened until a complete cold match passes.
 
-The final-source canonical cold replay passes this owner and the existing
-load/finalize/tail guards: 1,403 bytes and 44 fields. Keep this owner selected
-until the actual GameStatisticsRecord consumers pass. The native source is frozen
-while the serial checks run. Their outputs are under
-`.analysis/statistics-record/`: `typed-direct-copy-compare.json` is the first
-cold match, `accepted-source-*` covers the final source and the three existing
-statistics guards, and `record-consumers-cold.*` covers selected record users.
-The accepted ledger and candidate flag have not yet been changed.
+This regression is independent of the accepted statistics-record change.
+An isolated cold control restoring only GameStatistics.hpp and
+GameStatisticsRecordDefaults.cpp from `25bc76aa` produces the same complete
+1,992 bytes, all 113 field bindings and all aliases. Three unused anonymous
+namespace names vary with the worktree path; their addresses agree. The
+control and current outputs are under `.analysis/statistics-record/`, including
+`start-spell-record-definition-control.json` and `start-spell-baseline-cold.*`.
+The temporary worktree path is in `start-spell-baseline-worktree.txt`.
 
 ```bash
-scripts/repo-python scripts/build-match-unit.py \
-  --unit game-statistics-initialize-record
+scripts/repo-python scripts/build-match-unit.py --unit enemy-start-spell
 scripts/repo-python scripts/compare-linked-function.py \
-  --unit game-statistics-initialize-record --json
-scripts/repo-python scripts/replay-exact-units.py \
-  --unit game-decomphelp-fulltu-004088a0 --unit enemy-end-spell \
-  --unit game-manager-initialize --unit enemy-spell-panel-update \
-  --unit game-manager-update-body --unit enemy-start-spell \
-  --unit frontend-practice-records --json
+  --unit enemy-start-spell --json
 ```
 
-After these pass, promote the canonical unit and ledger, remove its obsolete
-frontier, regenerate progress and select the next largest authored owner.
-[KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) retains the typed-member finding and
-useful failed controls. There is no remaining source-order experiment to run
-for this owner before evaluating the queued comparisons.
+InitializeGameStatisticsRecord now passes the complete 274-byte owner and all
+eight fields. Its final-source canonical cold graph also passes the existing
+load/finalize/tail guards (1,403 bytes and 44 fields together). Six selected
+record consumers pass: DecompHelp, EnemyEndSpell, GameManager Initialize,
+spell-panel Update, GameManager Update and practice-record Refresh. See
+`accepted-source-*`, `accepted-consumer-*` and `practice-consumer-cold.json`
+in `.analysis/statistics-record/`. The sole constructor remains nonexact at
+137/132 bytes; its actual call and the original both push ESI to the RET4
+initializer. The typed-member finding and failed controls are in
+[KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md).
 
 The operator deferred `EclVmContext::StartSubroutine` at `0x0044DF70`
 in `src/EclVm.cpp`. It is the largest remaining authored owner, with
@@ -83,6 +82,7 @@ Use `scripts/check-frontier.py FRONTIER` for an existing nonexact entry in
 
 | Unit | Extent | Reproducible link |
 | --- | ---: | --- |
+| `game-statistics-initialize-record` | 274 B | `GameStatisticsTail`, eight fields, matching literal payload and stack record / RET4. Three same-image guards and six selected typed-record consumers pass cold; the independent StartSpell regression is reopened. |
 | `anm-loaded-set-execute-script-idx` | 287 B | `AnmSetVmScriptIndex`, four fields and EDX/EAX/ECX inputs. The sole 36-byte handle caller passes all three fields in the same independent cold link. |
 | `main-configure-camera` | 287 B | `StageViewport`, 12 fields and EDI receiver. All six direct consumers pass selected cold comparisons in three graphs. |
 | `frontend-main-menu-update` | 288 B | `FrontEndReplay`, 20 fields including five switch entries. The real dispatcher passes 1,128 bytes/99 fields in the same cold link. |

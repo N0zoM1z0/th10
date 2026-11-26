@@ -4,10 +4,3 @@
 # residual: hex byte offsets (ranges) that differ from the original after the
 # candidate's link-resolved fields are masked. Record changes with --update or
 # --add rather than by hand.
-
-[frontier.initialize-game-statistics-record]
-function = "InitializeGameStatisticsRecord"
-unit = "game-statistics-initialize-record"
-candidate_size = 274
-target_sha256 = "62905fe172fb66ca164498ab8964b6d0f9e8b09d783ceca25ebe2a1062712953"
-residual = ["60-63", "65-73"]

@@ -690,7 +690,7 @@ frontier; do not refresh a baseline merely to accept the new positions.
   [2026-11-24]
 - **EnemyGameStateView::StartSpell @0x409280 (2,432)** uses the
   `enemy-start-spell` recipe with real `AnmVmStartScript` support.
-  The cold replay covers 108 linked fields, including the table
+  The historical cold replay at `fb13affe` covers 108 linked fields, including the table
   reference and all seven stage destinations. The real dispatcher
   pushes the panel pointer, index, name and duration, and the owner
   returns with `RET 0x10`. The replay gate reads `ReplayManager::mode`
@@ -713,6 +713,15 @@ frontier; do not refresh a baseline merely to accept the new positions.
   Animation creation carries the layer and flags in a by-value
   appearance. Replay `enemy-start-spell` for the complete owner.
   [2026-11-24]
+
+  Reopened on 2026-11-26: `060d3655` later made AddVmVariant0 noinline for
+  difficulty selection. The current cold body is 1,992 bytes with six calls
+  instead of the target's one. Five CreatePanelAnimation registrations lost
+  their inline bodies; the existing AddVmToPrimaryBack primitive can supply
+  them without changing the global method. A separate cold build with the
+  pre-statistics-change record definition produces identical complete code,
+  all 113 field bindings and all aliases. The record layout change did not
+  cause this regression. See `.analysis/statistics-record/` for the control.
 - **ItemManagerUpdateBody @0x41AFD0 (2,320)** is exact in the registration-rooted
   `/GL` link, with 154 bound fields, 73 direct local branches and both jump
   tables at their target offsets. Expressing the distance scale as
@@ -1353,7 +1362,7 @@ frontier; do not refresh a baseline merely to accept the new positions.
   volatile reads/writes were neutral. Direct score copying after the two
   sentinels gives the right registers but leaves the read too late. Both
   `gui-creation-initialize` and `game-manager-initialize` are direct consumers.
-- **InitializeGameStatisticsRecord @0x42ACB0 (274)** has a complete first
+- **InitializeGameStatisticsRecord @0x42ACB0 (274)** has a complete accepted
   cold match with all eight fields in the six-input `GameStatisticsTail`
   graph. Declare `rankScores[5][10]` as actual GameStatisticsRecord members
   and use the indexed members directly, including the literal strcpy.
@@ -1390,7 +1399,9 @@ frontier; do not refresh a baseline merely to accept the new positions.
   cold comparison and caller/literal checks are under
   `.analysis/statistics-record/typed-direct-copy-*`. The final-source canonical
   cold replay also passes this owner and the load/finalize/tail guards
-  (1,403 bytes, 44 fields); selected record-consumer checks are in progress.
+  (1,403 bytes, 44 fields). Six selected typed-record consumers pass cold.
+  StartSpell's separate 1,992/2,432-byte regression is unchanged in a cold
+  control restoring the old record definition; it is reopened above.
 - **PlayerLoadOptionData @0x426520 (229)**: canonical scoped 20-support-TU
   VC7.1 /GL cold replay in the real `EnemyReadIntOperand`/`PlayerInitialize`
   caller graph. The complete 229-byte `src/Player.cpp` PDB contribution
